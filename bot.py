@@ -2,6 +2,7 @@ import os
 import json
 import logging
 
+from voice import get_voice
 # Load .env locally without requiring python-dotenv
 ENV_FILE = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
@@ -222,26 +223,23 @@ async def start(
 
     # 🎙️ Send Kejyar voice
 
+        # 🎙️ Send Kejyar voice
+
+        # 🎙️ Send Kejyar voice
+
     try:
-
-        voice_file = get_voice_file()
-
+        voice_file = get_voice("kejyar.mp3")
 
         if voice_file:
-
             await update.message.reply_voice(
                 voice=open(
                     voice_file,
-                    'rb'
+                    "rb"
                 )
             )
 
-
     except Exception as e:
-
-        logging.error(
-            f"Voice error: {e}"
-        )
+        logging.error(e)
 
 async def finish_lesson(
     update: Update,
