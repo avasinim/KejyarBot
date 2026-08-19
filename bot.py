@@ -71,10 +71,11 @@ USER_QUIZ = {}
 
 MENU = ReplyKeyboardMarkup(
     [
-        ['📚 وانەکان', '🔤 ئەلفوبێی کوردی'],
-        ['🗣 وشەکانی ڕۆژانە', '🔢 ژمارەکان'],
-        ['🎨 ڕەنگەکان', '👤 پێشکەوتنم'],
-        ['🎁 سەنوقی خەڵات', '🧭 ڕێگای فێربوون']
+        ['📚 وانەکان'],
+        ['👤 پێشکەوتنم', '🧭 ڕێگای فێربوون'],
+        ['🎁 سەنوقی خەڵات', '📝 تاقیکردنەوەکان'],
+        ['🔤 ئەلفوبێی کوردی', '🗣 وشەکانی ڕۆژانە'],
+        ['🔢 ژمارەکان', '🎨 ڕەنگەکان']
     ],
     resize_keyboard=True
 )
@@ -548,7 +549,23 @@ async def message(
 
 
 
-    elif text == '🎁 سەنوقی خەڵات':
+    elif text == '📝 تاقیکردنەوەکان':
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        '📝 تاقیکردنەوەی وانەی ٥',
+                        callback_data='quiz_5_start'
+                    )
+                ]
+            ]
+        )
+
+        await update.message.reply_text(
+            'تاقیکردنەوە هەڵبژێرە 👇',
+            reply_markup=keyboard
+        )
 
 
         reward = open_chest(uid)
