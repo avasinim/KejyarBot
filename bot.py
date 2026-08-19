@@ -462,9 +462,55 @@ async def quiz_answer(
 
     if quiz["index"] >= len(quiz["questions"]):
 
-        await q.message.reply_text(
-            "🎉 تاقیکردنەوە تەواو بوو!"
+        lesson = quiz["lesson"]
+
+
+        complete_lesson(
+            uid,
+            lesson
         )
+
+
+        add_score(
+            uid,
+            20
+        )
+
+
+        msg = """
+🎉 تاقیکردنەوە تەواو بوو!
+
+✅ وانەکە تەواو کرا.
+⭐ +20 XP
+"""
+
+
+        if lesson != ORDER[-1]:
+
+            index = ORDER.index(lesson)
+
+            next_lesson = ORDER[index + 1]
+
+            msg += f"""
+
+🔓 وانەی دواتر کراوە:
+
+{next_lesson}
+"""
+
+        else:
+
+            msg += """
+
+🏆 پیرۆزە!
+هەموو وانەکانت تەواو کرد.
+"""
+
+
+        await q.message.reply_text(
+            msg
+        )
+
 
         del USER_QUIZ[uid]
         return
