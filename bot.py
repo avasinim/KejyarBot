@@ -387,13 +387,13 @@ async def start_quiz(
     ) as f:
         quiz_data = json.load(f)
 
-    Ulesson = q.data.replace(
-    "quiz_",
-    ""
-).replace(
-    "_start",
-    ""
-)
+        lesson = q.data.replace(
+        "quiz_",
+        "وانە_"
+    ).replace(
+        "_start",
+        ""
+    )
 
     USER_QUIZ[uid] = {
         "index": 0,
