@@ -3,14 +3,21 @@ import json
 import logging
 
 from voice import get_voice
-# Load .env locally without requiring python-dotenv
+
+
 ENV_FILE = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     '.env'
 )
 
+
 if os.path.exists(ENV_FILE):
-    with open(ENV_FILE, 'r', encoding='utf-8') as env_file:
+    with open(
+        ENV_FILE,
+        'r',
+        encoding='utf-8'
+    ) as env_file:
+
         for line in env_file:
             line = line.strip()
 
@@ -19,11 +26,10 @@ if os.path.exists(ENV_FILE):
 
             key, value = line.split('=', 1)
 
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-
-            if key:
-                os.environ.setdefault(key, value)
+            os.environ.setdefault(
+                key.strip(),
+                value.strip().strip('"').strip("'")
+            )
 
 
 from telegram import (
@@ -32,6 +38,7 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineKeyboardButton
 )
+
 
 from telegram.ext import (
     Application,
@@ -57,13 +64,10 @@ from database import (
 )
 
 
-# 🎙️ Voice system
-from voice import get_voice_file
-
-
-logging.basicConfig(level=logging.INFO)
-
-
+logging.basicConfig(
+    level=logging.INFO
+)
+USER_QUIZ = {}
 
 MENU = ReplyKeyboardMarkup(
     [
@@ -84,36 +88,48 @@ with open(
 ) as f:
 
     LESSON_DATA = json.load(f)
+with open(
+    'quiz.json',
+    'r',
+    encoding='utf-8'
+) as f:
 
+    QUIZ_DATA = json.load(f)
+with open(
+    'quiz.json',
+    'r',
+    encoding='utf-8'
+) as f:
 
+    QUIZ_DATA = json.load(f)
 
 LESSONS = {
 
     '🔤 ئەلفوبێی کوردی':
         (
-            'درس_2',
-            LESSON_DATA['درس_2']['content']
+            'وانە_2',
+            LESSON_DATA['وانە_2']['content']
         ),
 
 
     '🗣 وشەکانی ڕۆژانە':
         (
-            'درس_3',
-            LESSON_DATA['درس_3']['content']
+            'وانە_3',
+            LESSON_DATA['وانە_3']['content']
         ),
 
 
     '🔢 ژمارەکان':
         (
-            'درس_4',
-            LESSON_DATA['درس_4']['content']
+            'وانە_4',
+            LESSON_DATA['وانە_4']['content']
         ),
 
 
     '🎨 ڕەنگەکان':
         (
-            'درس_5',
-            LESSON_DATA['درس_5']['content']
+            'وانە_5',
+            LESSON_DATA['وانە_5']['content']
         )
 
 }
@@ -121,11 +137,13 @@ LESSONS = {
 
 
 ORDER = [
-    'درس_2',
-    'درس_3',
-    'درس_4',
-    'درس_5'
+    'وانە_2',
+    'وانە_3',
+    'وانە_4',
+    'وانە_5'
 ]
+
+
 
 def level_by_xp(xp):
 
@@ -158,10 +176,9 @@ def can_open(uid, lesson):
 
     done = get_completed_lessons(uid)
 
-    i = ORDER.index(lesson)
+    index = ORDER.index(lesson)
 
-    return i == 0 or ORDER[i - 1] in done
-
+    return index == 0 or ORDER[index - 1] in done
 
 
 
@@ -169,16 +186,16 @@ def check_badges(uid):
 
     badges = {
 
-        'درس_2':
+        'وانە_2':
             '🏅 دەستپێکەری کوردی',
 
-        'درس_3':
+        'وانە_3':
             '🏅 خوێندکاری وشەکان',
 
-        'درس_4':
+        'وانە_4':
             '🏅 ژمارەناس',
 
-        'درس_5':
+        'وانە_5':
             '🏅 ڕەنگناس'
 
     }
@@ -188,18 +205,18 @@ def check_badges(uid):
 
         if lesson in get_completed_lessons(uid):
 
-            add_badge(uid, badge)
-
-
-
-
-
+            add_badge(
+                uid,
+                badge
+            )
 async def start(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
 
-    get_user(update.effective_user.id)
+    get_user(
+        update.effective_user.id
+    )
 
 
     welcome = """
@@ -221,16 +238,14 @@ async def start(
     )
 
 
-    # 🎙️ Send Kejyar voice
-
-        # 🎙️ Send Kejyar voice
-
-        # 🎙️ Send Kejyar voice
-
     try:
-        voice_file = get_voice("kejyar.mp3")
+
+        voice_file = get_voice(
+            "kejyar.mp3"
+        )
 
         if voice_file:
+
             await update.message.reply_voice(
                 voice=open(
                     voice_file,
@@ -239,7 +254,10 @@ async def start(
             )
 
     except Exception as e:
+
         logging.error(e)
+
+
 
 async def finish_lesson(
     update: Update,
@@ -294,28 +312,174 @@ async def finish_lesson(
 """
 
 
-
     if old_level != new_level:
 
         msg += f"""
 
-🎉 پیرۆزە!
+🎉 بژی!
 
 بەرزبوویتەوە بۆ:
+
 {new_level}
 """
-
 
 
     await q.edit_message_text(
         msg
     )
-    done_voice = get_voice("lesson_done.mp3")
+
+
+
+    # بعد از پایان وانەی ٥ آزمون باز شود
+
+    if lesson == 'وانە_5':
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        'دەست پێکردنی تاقیکاری وانەی ٥',
+                        callback_data='quiz_5_start'
+                    )
+                ]
+            ]
+        )
+
+
+        await q.message.reply_text(
+            '🎓 بژی! وانەی ٥ تەواو بوو.\nئێستا دەتوانیت تاقیکردنەوە بکەیت.',
+            reply_markup=keyboard
+        )
+
+
+
+    done_voice = get_voice(
+        "lesson_done.mp3"
+    )
+
 
     if done_voice:
+
         await q.message.reply_voice(
-            voice=open(done_voice, "rb")
+            voice=open(
+                done_voice,
+                "rb"
+            )
         )
+
+
+async def start_quiz(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    q = update.callback_query
+
+    await q.answer()
+
+    uid = q.from_user.id
+
+    with open(
+        'quiz.json',
+        'r',
+        encoding='utf-8'
+    ) as f:
+        quiz_data = json.load(f)
+
+    USER_QUIZ[uid] = {
+        "index": 0,
+        "questions": quiz_data["وانە_5"]
+    }
+
+    question = USER_QUIZ[uid]["questions"][0]
+
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    option,
+                    callback_data=f"answer_{option}"
+                )
+            ]
+            for option in question["options"]
+        ]
+    )
+
+    await q.message.reply_text(
+        "📝 " + question["question"],
+        reply_markup=keyboard
+    )
+
+
+async def quiz_answer(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    q = update.callback_query
+
+    await q.answer()
+
+    uid = q.from_user.id
+
+    answer = q.data.replace(
+        "answer_",
+        ""
+    )
+
+    quiz = USER_QUIZ.get(uid)
+
+    if not quiz:
+        return
+
+    question = quiz["questions"][quiz["index"]]
+
+    if answer == question["answer"]:
+
+        await q.message.reply_text(
+            "✅ ئافەرین! وەڵامی دروستە."
+        )
+
+    else:
+
+        await q.message.reply_text(
+            f"❌ هەڵەیە.\nوەڵامی دروست: {question['answer']}"
+        )
+
+
+    quiz["index"] += 1
+
+
+    if quiz["index"] >= len(quiz["questions"]):
+
+        await q.message.reply_text(
+            "🎉 تاقیکردنەوە تەواو بوو!"
+        )
+
+        del USER_QUIZ[uid]
+        return
+
+
+    question = quiz["questions"][quiz["index"]]
+
+
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    option,
+                    callback_data=f"answer_{option}"
+                )
+            ]
+            for option in question["options"]
+        ]
+    )
+
+
+    await q.message.reply_text(
+        "📝 " + question["question"],
+        reply_markup=keyboard
+    )
 
 
 async def message(
@@ -334,15 +498,27 @@ async def message(
 
         lesson, content = LESSONS[text]
 
-        # 🎙️ صدای شروع وانە
-        start_voice = get_voice("lesson_start.mp3")
+
+        start_voice = get_voice(
+            "lesson_start.mp3"
+        )
+
 
         if start_voice:
+
             await update.message.reply_voice(
-                voice=open(start_voice, "rb")
+                voice=open(
+                    start_voice,
+                    "rb"
+                )
             )
 
-        if not can_open(uid, lesson):
+
+
+        if not can_open(
+            uid,
+            lesson
+        ):
 
             await update.message.reply_text(
                 '🔒 وانەی پێشووتر تەواو بکە'
@@ -363,15 +539,21 @@ async def message(
             ]
         )
 
+
+
         await update.message.reply_text(
             content,
             reply_markup=keyboard
         )
 
 
+
     elif text == '🎁 سەنوقی خەڵات':
 
+
         reward = open_chest(uid)
+
+
 
         if reward:
 
@@ -379,12 +561,21 @@ async def message(
                 f'🎁 سەنوق کراوەتەوە!\n🪙 {reward} Coin وەرگرت.'
             )
 
-            reward_voice = get_voice("reward.mp3")
+
+            reward_voice = get_voice(
+                "reward.mp3"
+            )
+
 
             if reward_voice:
+
                 await update.message.reply_voice(
-                    voice=open(reward_voice, "rb")
+                    voice=open(
+                        reward_voice,
+                        "rb"
+                    )
                 )
+
 
         else:
 
@@ -418,15 +609,19 @@ async def message(
 
 {chr(10).join(get_badges(uid))}
 """
-
         )
+
+
 
 
     elif text == '🧭 ڕێگای فێربوون':
 
+
         path = []
 
+
         for lesson in ORDER:
+
 
             if lesson in get_completed_lessons(uid):
 
@@ -441,21 +636,19 @@ async def message(
                 )
 
 
+
         await update.message.reply_text(
             '\n'.join(path)
         )
 
 
 
-
     else:
 
+
         await update.message.reply_text(
-
             'لە منووی کەژیار هەڵبژێرە 👇',
-
             reply_markup=MENU
-
         )
 
 
@@ -468,6 +661,7 @@ def main():
     init_db()
 
 
+
     token = os.environ.get(
         'TELEGRAM_BOT_TOKEN'
     )
@@ -476,7 +670,7 @@ def main():
     if not token:
 
         raise RuntimeError(
-            'TELEGRAM_BOT_TOKEN is missing. Add it to the .env file.'
+            'TELEGRAM_BOT_TOKEN is missing.'
         )
 
 
@@ -495,11 +689,34 @@ def main():
 
 
     app.add_handler(
-        CallbackQueryHandler(
-            finish_lesson
+        CommandHandler(
+            'start',
+            start
         )
     )
 
+
+    app.add_handler(
+        CallbackQueryHandler(
+            finish_lesson,
+            pattern="^finish_"
+        )
+    )
+
+
+    app.add_handler(
+        CallbackQueryHandler(
+            start_quiz,
+            pattern="^quiz_5_start$"
+        )
+    )
+
+    app.add_handler(
+        CallbackQueryHandler(
+            quiz_answer,
+            pattern="^answer_"
+        )
+    )
 
 
     app.add_handler(
@@ -510,20 +727,18 @@ def main():
     )
 
 
-
     print(
         "🌱 KejyarBot is running..."
     )
 
+
+    app.run_polling()
 
 
     app.run_polling()
 
 
 
-
-
 if __name__ == '__main__':
 
     main()
-
