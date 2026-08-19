@@ -310,10 +310,14 @@ async def finish_lesson(
     await q.edit_message_text(
         msg
     )
+
+
+    # 🎙️ صدای تشویق پایان وانە
     done_voice = get_voice("lesson_done.mp3")
 
     if done_voice:
-        await q.message.reply_voice(
+        await context.bot.send_voice(
+            chat_id=uid,
             voice=open(done_voice, "rb")
         )
 
@@ -526,4 +530,3 @@ def main():
 if __name__ == '__main__':
 
     main()
-
