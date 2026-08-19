@@ -387,9 +387,18 @@ async def start_quiz(
     ) as f:
         quiz_data = json.load(f)
 
+    Ulesson = q.data.replace(
+    "quiz_",
+    ""
+).replace(
+    "_start",
+    ""
+)
+
     USER_QUIZ[uid] = {
         "index": 0,
-        "questions": quiz_data["وانە_5"]
+        "lesson": lesson,
+        "questions": quiz_data[lesson]
     }
 
     question = USER_QUIZ[uid]["questions"][0]
@@ -555,11 +564,34 @@ async def message(
             [
                 [
                     InlineKeyboardButton(
+                        '📝 تاقیکردنەوەی وانەی ٢',
+                        callback_data='quiz_2_start'
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        '📝 تاقیکردنەوەی وانەی ٣',
+                        callback_data='quiz_3_start'
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        '📝 تاقیکردنەوەی وانەی ٤',
+                        callback_data='quiz_4_start'
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
                         '📝 تاقیکردنەوەی وانەی ٥',
                         callback_data='quiz_5_start'
                     )
                 ]
             ]
+        )
+
+        await update.message.reply_text(
+            'تاقیکردنەوە هەڵبژێرە 👇',
+            reply_markup=keyboard
         )
 
         await update.message.reply_text(
@@ -724,9 +756,10 @@ def main():
     app.add_handler(
         CallbackQueryHandler(
             start_quiz,
-            pattern="^quiz_5_start$"
+            pattern="^quiz_.*_start$"
         )
     )
+
 
     app.add_handler(
         CallbackQueryHandler(
