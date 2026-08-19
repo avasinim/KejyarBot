@@ -594,11 +594,6 @@ async def message(
             reply_markup=keyboard
         )
 
-        await update.message.reply_text(
-            'تاقیکردنەوە هەڵبژێرە 👇',
-            reply_markup=keyboard
-        )
-
 
         reward = open_chest(uid)
 
