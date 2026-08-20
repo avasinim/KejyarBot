@@ -324,11 +324,33 @@ async def finish_lesson(
 {new_level}
 """
 
+        if lesson != ORDER[-1]:
 
-    await q.edit_message_text(
-        msg
-    )
+            keyboard = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            f"📚 دەستپێکردنی {next_lesson}",
+                            callback_data=f"next_lesson_{next_lesson}"
+                        )
+                    ]
+                ]
+            )
 
+            await q.message.reply_text(
+                msg,
+                reply_markup=keyboard
+            )
+
+        else:
+
+            await q.message.reply_text(
+                msg
+            )
+
+
+        del USER_QUIZ[uid]
+        return
 
 
     # بعد از پایان وانەی ٥ آزمون باز شود
@@ -507,10 +529,29 @@ async def quiz_answer(
 """
 
 
-        await q.message.reply_text(
-            msg
-        )
+        if lesson != ORDER[-1]:
 
+            keyboard = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            f"📚 دەستپێکردنی {next_lesson}",
+                            callback_data=f"next_lesson_{next_lesson}"
+                        )
+                    ]
+                ]
+            )
+
+            await q.message.reply_text(
+                msg,
+                reply_markup=keyboard
+            )
+
+        else:
+
+            await q.message.reply_text(
+                msg
+            )
 
         del USER_QUIZ[uid]
         return
@@ -742,14 +783,73 @@ async def message(
         )
 
 
+async def open_next_lesson(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    q = update.callback_query
+
+    await q.answer()
+
+    uid = q.from_user.id
+
+    lesson = q.data.replace(
+        "next_lesson_",
+        ""
+    )
+
+    if lesson not in ORDER:
+        return
+
+    if not can_open(
+        uid,
+        lesson
+    ):
+
+        await q.message.reply_text(
+            "🔒 وانەی پێشووتر تەواو بکە."
+        )
+
+        return
+
+    content = None
+
+    for lesson_name, lesson_data in LESSONS.items():
+
+        current_lesson, current_content = lesson_data
+
+        if current_lesson == lesson:
+
+            content = current_content
+
+            break
+
+    if not content:
+        return
+
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    '✅ تەواوکردنی وانە',
+                    callback_data=f'finish_{lesson}'
+                )
+            ]
+        ]
+    )
+
+    await q.message.reply_text(
+        content,
+        reply_markup=keyboard
+    )
+
 
 
 
 def main():
 
-
     init_db()
-
 
 
     token = os.environ.get(
@@ -811,13 +911,27 @@ def main():
 
 
     app.add_handler(
+        CallbackQueryHandler(
+            open_next_lesson,
+            pattern="^next_lesson_"
+        )
+    )
+
+
+    app.add_handler(
+        CallbackQueryHandler(
+            open_next_lesson,
+            pattern="^next_lesson_"
+        )
+    )
+
+
+    app.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND,
             message
         )
     )
-
-
     print(
         "🌱 KejyarBot is running..."
     )
