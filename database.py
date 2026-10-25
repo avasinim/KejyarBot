@@ -110,13 +110,32 @@ def get_user_level(user_id):
     return get_user(user_id)[3]
 
 
-def complete_lesson(user_id,lesson_id):
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    old=get_user(user_id)[5]
-    items=old.split(',') if old else []
-    if lesson_id not in items:items.append(lesson_id)
-    cur.execute('UPDATE users SET completed_lessons=? WHERE user_id=?',(','.join(items),user_id))
-    conn.commit();conn.close()
+def complete_lesson(user_id, lesson_id):
+    """Record a lesson exactly once; return True only for the first completion."""
+    get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        cur = conn.cursor()
+        cur.execute("SELECT completed_lessons FROM users WHERE user_id=?", (user_id,))
+        row = cur.fetchone()
+        old = row[0] if row and row[0] else ""
+        items = old.split(",") if old else []
+        if lesson_id in items:
+            conn.commit()
+            return False
+        items.append(lesson_id)
+        cur.execute(
+            "UPDATE users SET completed_lessons=? WHERE user_id=?",
+            (",".join(items), user_id),
+        )
+        conn.commit()
+        return True
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def get_completed_lessons(user_id):
@@ -139,25 +158,28 @@ def get_badges(user_id):
 
 
 def complete_quiz(user_id, quiz_id):
-    """Record a quiz once. Return True only on its first successful completion."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("SELECT completed_quizzes FROM users WHERE user_id=?", (user_id,))
-    row = cur.fetchone()
-    if row is None:
-        conn.close()
-        get_user(user_id)
-        conn = sqlite3.connect(DB_NAME)
+    """Record a quiz atomically; return True only on its first completion."""
+    get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
         cur = conn.cursor()
         cur.execute("SELECT completed_quizzes FROM users WHERE user_id=?", (user_id,))
         row = cur.fetchone()
-    old = row[0] if row and row[0] else ""
-    items = old.split(",") if old else []
-    if quiz_id in items:
+        old = row[0] if row and row[0] else ""
+        items = old.split(",") if old else []
+        if quiz_id in items:
+            conn.commit()
+            return False
+        items.append(quiz_id)
+        cur.execute(
+            "UPDATE users SET completed_quizzes=?, tests=tests+1 WHERE user_id=?",
+            (",".join(items), user_id),
+        )
+        conn.commit()
+        return True
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
         conn.close()
-        return False
-    items.append(quiz_id)
-    cur.execute("UPDATE users SET completed_quizzes=?, tests=tests+1 WHERE user_id=?", (",".join(items), user_id))
-    conn.commit()
-    conn.close()
-    return True
