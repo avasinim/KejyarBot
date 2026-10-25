@@ -31,6 +31,27 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(after[2] - before[2], 20)
         self.assertEqual(after[8] - before[8], 0)
 
+    def test_chest_cannot_be_opened_without_inventory(self):
+        before = database.get_user(12345)
+        self.assertEqual(database.open_chest(12345), 0)
+        after = database.get_user(12345)
+        self.assertEqual(after[9], before[9])
+        self.assertEqual(after[8], before[8])
+
+    def test_opening_chest_consumes_one_and_awards_valid_coins(self):
+        database.add_chest(12345)
+        before = database.get_user(12345)
+        reward = database.open_chest(12345)
+        after = database.get_user(12345)
+        self.assertIn(reward, {10, 20, 50, 100})
+        self.assertEqual(after[9], before[9] - 1)
+        self.assertEqual(after[8], before[8] + reward)
+
+    def test_badges_are_not_duplicated(self):
+        database.add_badge(12345, "🏅 وانەی یەکەم")
+        database.add_badge(12345, "🏅 وانەی یەکەم")
+        self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
