@@ -40,6 +40,19 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertIn("خۆت بپشکنە", content)
                 self.assertGreaterEqual(len(content), 1500)
 
+    def test_lesson_text_fits_one_telegram_message(self):
+        # Leave margin below Telegram's 4096-character text-message limit.
+        for lesson_key, lesson in self.lessons.items():
+            with self.subTest(lesson=lesson_key):
+                self.assertLessEqual(len(lesson["content"]), 3800)
+
+    def test_every_quiz_answer_is_taught_in_its_lesson(self):
+        for lesson_key, questions in self.quizzes.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            for index, question in enumerate(questions, start=1):
+                with self.subTest(lesson=lesson_key, question=index):
+                    self.assertIn(question["answer"], lesson_text)
+
     def test_all_quiz_sets_have_unique_questions_and_valid_answer_options(self):
         self.assertEqual(set(self.quizzes), set(self.lessons))
         for lesson_key, questions in self.quizzes.items():
