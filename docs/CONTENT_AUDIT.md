@@ -409,3 +409,5 @@ This audit is documentation only. It does not change `main`, production bot sett
 - These changes are isolated on fix/content-design-polish-2026-10-25, based on the open stability branch. They do not change main, merge the existing PR, touch production bot/database settings, or alter prerecorded voice assets.
 
 - Added a global quiz-integrity regression test across all ten lessons: question text must be unique within each lesson, each set must contain at least six questions, each question must have at least three unique non-empty options, and the answer must be one of those options.
+
+- Added learner self-check questions to lessons 4, 5, and 7–10 so every lesson now contains an objective, practice activity, and a self-assessment prompt. Added a regression test to preserve that shared instructional structure.
