@@ -22,6 +22,17 @@ class DailyConversationTests(unittest.TestCase):
     def test_empty_input_is_handled(self):
         self.assertTrue(reply_to_daily_message("   ").strip())
 
+    def test_exit_clears_roleplay_state(self):
+        state = {
+            "daily_chat_mode": True,
+            "daily_chat_scenario": "market",
+            "daily_chat_stage": 2,
+        }
+        reply_to_daily_message("خواحافیز", state)
+        self.assertFalse(state["daily_chat_mode"])
+        self.assertNotIn("daily_chat_scenario", state)
+        self.assertNotIn("daily_chat_stage", state)
+
     def test_market_roleplay_remembers_the_scenario(self):
         state = {"daily_chat_mode": True}
         first = reply_to_daily_message("با لە بازاڕ گفتوگۆ بکەین", state)
