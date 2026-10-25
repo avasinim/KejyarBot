@@ -380,3 +380,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is structural/content-alignment evidence only. It does not establish page-by-page compliance with the 2024 third edition of Diyako Hashemi’s handbook or prove that every sentence is idiomatic. No spelling was changed without source-page evidence.
 - Next release blockers remain: page-level orthography review against the selected handbook edition, browser/mobile visual review of the SVG infographics, and manual Telegram testing in a separate test environment.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+## Dynamic-speech approval guard regression test (25 October 2026)
+
+- Added a focused test for `speech.py`: dynamic generation remains disabled when the enable flag is absent, remains blocked when the configured voice ID differs from the explicitly approved ID, and is considered configured only when the enable flag, API key, voice ID, and matching approved voice ID are all present.
+- The test calls the local guard directly with mocked environment variables and does not send a request to the speech provider or use real credentials.
+- This protects the existing safety gate; it does not enable dynamic speech or establish that generated Kurdish audio is linguistically acceptable.
+- No runtime bot logic, voice configuration, `main`, production bot/database, migrations, or PR merge was changed.
