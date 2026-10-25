@@ -362,3 +362,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Replaced one repeated request item with a question about what is eaten for breakfast, using the existing lesson phrase `هێلکە و نان دەخۆم` and distractors from unrelated vocabulary.
 - Added a regression test to keep the new assessment tied to the lesson text and its answer options. No lesson content or orthography was changed.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 9 clock-time comprehension (25 October 2026)
+
+- Replaced a broad time-of-day vocabulary quiz item with a question that checks whether learners can retrieve the specific class start time stated in the lesson dialogue/example.
+- The answer `کاتژمێر نۆ` is directly grounded in the lesson sentence `وانەکە کاتژمێر نۆ دەست پێ دەکات`; added a regression test to preserve this alignment.
+- Lesson 10 questions were reviewed for variety; the existing quiz already checks complete sentences, question words for place/object/reason, and word order, so its content was left unchanged.
+- No `main`, production bot/database, migrations, or PR merge was touched.
