@@ -71,6 +71,15 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(after[9], before[9] - 1)
         self.assertEqual(after[8], before[8] + reward)
 
+    def test_concurrent_chest_opening_never_overdraws_inventory(self):
+        database.add_chest(12345)
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            rewards = list(pool.map(lambda _: database.open_chest(12345), range(16)))
+        paid_rewards = [reward for reward in rewards if reward > 0]
+        self.assertEqual(len(paid_rewards), 1)
+        self.assertEqual(database.get_user(12345)[9], 0)
+        self.assertIn(paid_rewards[0], {10, 20, 50, 100})
+
     def test_badges_are_not_duplicated(self):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         database.add_badge(12345, "🏅 وانەی یەکەم")
