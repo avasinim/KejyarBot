@@ -155,3 +155,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Commit `df8335a01c88237c285e76fc20f7cbc57cfed58b` passed GitHub Actions run `40216024376`.
 - The `checks` job succeeded for dependency installation, Python compilation, and the full unittest discovery command.
 - This is automated repository validation only; Telegram integration remains untested in a separate authorized test environment.
+
+
+## Quiz coverage and regression check (25 October 2026)
+
+- Re-read `lessons.json` and `quiz.json` from the protected work branch after the lesson-one quiz addition.
+- All six beginner lessons now have four quiz questions each (24 total). Every question has non-empty text, distinct options, and an answer that appears among its options; no structural quiz issues were found in this pass.
+- Added a regression assertion in `tests/test_content.py` requiring at least four questions for each beginner lesson, so future edits cannot silently reduce a lesson back to fewer than four.
+- GitHub Actions run `40216155708` for commit `03b70e98d0811ac6d06f8813e99a6a5d266b9705` completed successfully. The `checks` job passed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- This verifies automated structural checks only. It does not certify every Kurdish phrase against the selected book or count as a live Telegram test.
