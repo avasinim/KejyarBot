@@ -182,7 +182,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if lesson == ORDER[-1]:
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٥", callback_data="quiz_5_start")
+            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٦", callback_data="quiz_6_start")
         ]])
         await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
     else:
