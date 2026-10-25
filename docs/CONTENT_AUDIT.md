@@ -255,3 +255,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Refined three lesson 2 quiz answers so they follow the lesson's own definitions more closely: alphabet as a set of written signs, a letter as a written sign, and the contrast between «ر» and «ڕ».
 - Added a regression test tying those answers to the relevant explanatory statements in the lesson.
 - This is a consistency improvement, not a claim of page-by-page validation against the selected 2024 orthography book. Broader human review and manual Telegram testing remain pending.
+
+
+## Lesson-to-quiz answer alignment follow-up (25 October 2026)
+
+- A broader comparison of all 62 quiz answers against their lesson text found three answers whose wording or example was not directly aligned with the lesson.
+- Updated the alphabet definition answer to use the lesson's own definition, added an explicit «کتێبەکە لەژێر مێزەکەیە» example for the location question, and matched the fictional-family answer to the lesson's instruction.
+- Updated the alphabet-definition regression assertion to compare against the lesson wording. This is a text-alignment check; it does not establish that every language example is independently validated by a human editor or by page-level evidence from the selected 2024 reference book.
+- Manual Telegram rendering and end-to-end interaction tests remain pending.
