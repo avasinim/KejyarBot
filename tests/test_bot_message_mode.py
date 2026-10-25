@@ -72,7 +72,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         for lesson in bot.ORDER:
             self.assertIn(lesson, catalog)
             self.assertIn(bot.LESSON_DATA[lesson]["title"], catalog)
-        self.assertEqual(len(bot.ORDER), 6)
+        self.assertEqual(len(bot.ORDER), 10)
 
 
 if __name__ == "__main__":
