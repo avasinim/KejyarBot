@@ -55,7 +55,7 @@ class ContentConsistencyTests(unittest.TestCase):
         contrast_question = next(question for question in questions if question["question"].startswith("کام جووتە پیت"))
 
         self.assertIn("ئەلفبێ کۆمەڵە نیشانەیەکە", lesson)
-        self.assertTrue(alphabet_question["answer"].startswith("کۆمەڵە نیشانە"))
+        self.assertEqual(alphabet_question["answer"].rstrip("."), "ئەلفبێ کۆمەڵە نیشانەیەکە کە بە ڕێکخستنێکی دیاریکراو بۆ نووسینی زمانێک بەکاردێت")
         self.assertIn("پیت نیشانەی نووسراوە", lesson)
         self.assertEqual(letter_question["answer"], "نیشانەی نووسراوە")
         self.assertIn("«ر» و «ڕ» یەک نین", lesson)
