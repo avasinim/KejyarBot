@@ -31,6 +31,21 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertTrue(lesson.get("title", "").strip())
                 self.assertTrue(lesson.get("content", "").strip())
 
+    def test_all_quiz_sets_have_unique_questions_and_valid_answer_options(self):
+        self.assertEqual(set(self.quizzes), set(self.lessons))
+        for lesson_key, questions in self.quizzes.items():
+            with self.subTest(lesson=lesson_key):
+                question_texts = [item.get("question", "").strip() for item in questions]
+                self.assertGreaterEqual(len(questions), 6)
+                self.assertTrue(all(question_texts))
+                self.assertEqual(len(question_texts), len(set(question_texts)))
+                for item in questions:
+                    options = item.get("options", [])
+                    self.assertGreaterEqual(len(options), 3)
+                    self.assertTrue(all(isinstance(option, str) and option.strip() for option in options))
+                    self.assertEqual(len(options), len(set(options)))
+                    self.assertIn(item.get("answer"), options)
+
     def test_learning_path_matches_lesson_titles_and_order(self):
         expected = [
             "وانەی ١: سڵاو و ناساندنی خۆ",
