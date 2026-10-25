@@ -252,6 +252,9 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
         return
+    # Claim this question before the first await so duplicate callbacks cannot
+    # both score an answer while the next question is being sent.
+    quiz["question_message_id"] = None
     try:
         await query.edit_message_reply_markup(reply_markup=None)
     except Exception:
