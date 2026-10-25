@@ -46,7 +46,7 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertEqual(set(self.quizzes), {"وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6"})
         for lesson, questions in self.quizzes.items():
             with self.subTest(lesson=lesson):
-                self.assertTrue(questions)
+                self.assertGreaterEqual(len(questions), 4, "Each beginner lesson must provide at least four quiz questions.")
                 question_texts = [question["question"].strip() for question in questions]
                 self.assertEqual(
                     len(question_texts),
