@@ -76,6 +76,29 @@ class ContentConsistencyTests(unittest.TestCase):
                 for phrase in phrases:
                     self.assertIn(phrase, content)
 
+    def test_alphabet_lesson_and_infographic_cover_all_34_practice_entries(self):
+        lesson = self.lessons["وانە_2"]["content"]
+        svg_path = BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
+        root = ET.parse(svg_path).getroot()
+        svg_text = " ".join(node.text.strip() for node in root.iter() if node.text and node.text.strip())
+        examples = [
+            ("ئ", "ئاو"), ("ا", "دارا"), ("ب", "باوک"), ("پ", "پیاو"),
+            ("ت", "تەختە"), ("ج", "جوان"), ("چ", "چاو"), ("ح", "حەوت"),
+            ("خ", "خۆر"), ("د", "دەرگا"), ("ر", "رادیۆ"), ("ڕ", "ڕۆژ"),
+            ("ز", "زستان"), ("ژ", "ژیان"), ("س", "سێو"), ("ش", "شاخ"),
+            ("ع", "عەلی"), ("غ", "غەریب"), ("ف", "فێر"), ("ڤ", "ڤیدیۆ"),
+            ("ق", "قەڵەم"), ("ک", "کتێب"), ("گ", "گوڵ"), ("ل", "لیمۆ"),
+            ("ڵ", "هەڵە"), ("م", "ماڵ"), ("ن", "نان"), ("و", "وەرز"),
+            ("وو", "نووسین"), ("ۆ", "خۆر"), ("ه", "هەور"), ("ە", "دەست"),
+            ("ی", "یار"), ("ێ", "پێ"),
+        ]
+        self.assertEqual(len(examples), 34)
+        for letter, word in examples:
+            with self.subTest(letter=letter, word=word):
+                self.assertIn(word, lesson)
+                self.assertIn(word, svg_text)
+                self.assertIn(letter, lesson)
+
     def test_alphabet_spelling_matches_selected_reference(self):
         lesson = self.lessons["وانە_2"]["title"] + "\n" + self.lessons["وانە_2"]["content"]
         path_text = "\n".join(self.learning_path["lessons"])
