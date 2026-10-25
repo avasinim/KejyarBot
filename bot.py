@@ -203,13 +203,10 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard
         )
-    path = get_voice("lesson_done.mp3")
-    if path:
-        try:
-            with open(path, "rb") as audio:
-                await query.message.reply_voice(voice=audio)
-        except Exception:
-            logger.exception("Could not send lesson completion voice")
+    # Generate event-specific narration in the configured Kejyar voice.
+    # The repository's legacy event MP3s are byte-identical, so do not replay
+    # the welcome clip as if it were a lesson-completion announcement.
+    await send_conversation_voice(query.message, message_text)
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -365,14 +362,11 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
-        path = get_voice("lesson_start.mp3")
-        if path:
-            try:
-                with open(path, "rb") as audio:
-                    await update.message.reply_voice(voice=audio)
-            except Exception:
-                logger.exception("Could not send lesson start voice")
         await update.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+        await send_conversation_voice(
+            update.message,
+            f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
+        )
         await send_lesson_infographic(update.message, lesson)
         return
 
@@ -389,13 +383,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reward = open_chest(user_id)
         if reward:
             await update.message.reply_text(f"🎁 سەنوق کراوەتەوە!\n🪙 {reward} Coin وەرگرت.")
-            path = get_voice("reward.mp3")
-            if path:
-                try:
-                    with open(path, "rb") as audio:
-                        await update.message.reply_voice(voice=audio)
-                except Exception:
-                    logger.exception("Could not send reward voice")
+            await send_conversation_voice(
+                update.message,
+                f"پیرۆزە! {reward} کۆین وەرگرت. بەردەوام بە و وانەکانی دواتر تەواو بکە.",
+            )
         else:
             await update.message.reply_text("📦 سەنوقێکت نیە؛ وانە تەواو بکە بۆ وەرگرتنی سەنوق.")
         return
