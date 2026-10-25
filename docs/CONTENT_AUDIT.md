@@ -423,3 +423,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added regression coverage for the new labels, persistent keyboard layout, and progress summary. Automated checks must pass before this branch is considered ready; live Telegram/mobile testing remains pending.
 - Follow-up usability pass: quiz selection buttons now show the lesson number and human-readable lesson title rather than internal keys such as `وانە_3`. The quiz menu explains its purpose and gives a clear next step when no quiz is unlocked. The study-progress screen now includes completed/total lessons, completion percentage, and the next available lesson when one remains.
 - Added automated coverage for quiz-menu labels and callback payloads; latest CI run for the preceding menu code passed, and the new test is queued for CI validation.
+
+## Roadmap consistency correction (25 October 2026)
+
+- Corrected `docs/CURRICULUM_ROADMAP.md` so it no longer instructs contributors to apply Avasin Code to KejyarBot. The bot's own orthography policy remains separate and identifies Diako Hashemi's «پوختەی ڕێنووس و خاڵبەندی» as the intended reference.
+- Updated the roadmap status from the outdated three/five-lesson snapshot to the current ten-lesson starter course and recorded the latest successful CI head `a2b18948ce3ade3b3d829664a38144007236f09e`.
+- This was a documentation-only correction. No lesson text, quiz content, voice assets, production configuration, or database was changed. The selected PDF still needs page-by-page review before source-based spelling changes are made.
