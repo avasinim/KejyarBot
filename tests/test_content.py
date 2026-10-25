@@ -491,5 +491,16 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_eight_quiz_covers_breakfast_vocabulary_not_duplicate_request(self):
+        lesson = self.lessons["وانە_8"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_8"]
+            if item["question"] == "لە نموونەکەدا بۆ نانی بەیانی چی دەخورێت؟"
+        )
+        self.assertIn("هێلکە و نان دەخۆم", lesson)
+        self.assertEqual(item["answer"], "هێلکە و نان")
+        self.assertIn(item["answer"], item["options"])
+
+
 if __name__ == "__main__":
     unittest.main()
