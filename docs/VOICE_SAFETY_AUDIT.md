@@ -32,8 +32,10 @@ The bot must preserve the exact existing woman's Kejyar voice. Do not silently s
 
 CI success validates code/tests only; it does not certify the sound, speaker identity, consent, or Kurdish pronunciation.
 
-## Additional cost-control finding
+## Additional cost-control finding — resolved in the isolated branch
 
-- The current 20-response daily speech quota is stored in Telegram `context.user_data` by `bot.py`. It protects against repeated requests during the running process and refunds failed generation/delivery attempts.
-- The application is built without a configured persistent Telegram `user_data` store. Therefore, a process restart can reset the quota; the limit should not be described as a durable per-user daily cap.
-- No database schema or runtime behavior was changed for this finding. Before relying on this as a hard API-cost limit, implement and test an atomic persistent quota ledger (with a UTC or explicitly chosen timezone day boundary) in the isolated development branch. Do not run migrations against or modify any production database without explicit authorization.
+- The in-memory-only daily quota has been replaced by a persistent SQLite `speech_quota` ledger, keyed by user ID and UTC date.
+- Reservation uses a transaction (`BEGIN IMMEDIATE`) and a conditional update, so concurrent requests cannot reserve more than 20 slots for one user on one UTC day.
+- Generation or delivery failures refund the reserved slot. If the user ID is missing, dynamic speech fails closed and no provider request is made.
+- Regression tests cover the daily cap, per-user/date isolation, concurrent reservations, refund behavior, delivery failure, missing user ID, and persistence independent of `context.user_data`.
+- The schema is created idempotently by the existing `init_db()` startup routine. No production database was accessed or modified; deployment has not been performed.
