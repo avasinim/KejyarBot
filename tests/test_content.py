@@ -31,6 +31,15 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertTrue(lesson.get("title", "").strip())
                 self.assertTrue(lesson.get("content", "").strip())
 
+    def test_all_lessons_have_objectives_practice_and_self_check(self):
+        for lesson_key, lesson in self.lessons.items():
+            content = lesson["content"]
+            with self.subTest(lesson=lesson_key):
+                self.assertIn("ئامانجی وانە", content)
+                self.assertIn("ڕاهێنانی", content)
+                self.assertIn("خۆت بپشکنە", content)
+                self.assertGreaterEqual(len(content), 1500)
+
     def test_all_quiz_sets_have_unique_questions_and_valid_answer_options(self):
         self.assertEqual(set(self.quizzes), set(self.lessons))
         for lesson_key, questions in self.quizzes.items():
