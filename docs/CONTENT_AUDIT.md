@@ -104,3 +104,14 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - Runtime code in `bot.py` loads `quiz.json` as `QUIZ_DATA`; the separate `quizzes.json` file is not referenced by the reviewed runtime entry point and contains an older, partial `lesson_3` schema.
 - Kept `quizzes.json` untouched in this stability pass to avoid deleting potentially user-retained material without confirmation. Treat `quiz.json` as the active quiz source unless a repository-wide reference check establishes a different intended use; before any future removal, search all scripts, tests, documentation, and deployment configuration for references.
+
+## Stability verification checkpoint (25 October 2026)
+
+- The stability branch head reviewed for this checkpoint is `277f6cd24434612d597bf5451d28aa4a881c5cc0` (`Fix SQLite connection cleanup and quota transactions`).
+- GitHub Actions runs #40209804446 and #40209801402 both completed successfully for this commit. Their `checks` job completed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v` successfully:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40209804446
+  - https://github.com/avasinim/KejyarBot/actions/runs/40209801402
+- This checkpoint verifies automated code and regression tests only. It does not verify live Telegram behavior, regional naturalness of every Kurdish example, or source-based orthographic correctness.
+- Lesson 2 remains intentionally described as a sample rather than a complete alphabet inventory until the selected 2024 reference edition and relevant pages are checked. Do not treat the infographic's six examples as a full alphabet table.
+- Manual Telegram testing remains blocked on an authorized separate test bot/token and isolated test environment. No production token should be requested or exposed.
+
