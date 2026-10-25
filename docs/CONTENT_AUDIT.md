@@ -263,3 +263,5 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Updated the alphabet definition answer to use the lesson's own definition, added an explicit «کتێبەکە لەژێر مێزەکەیە» example for the location question, and matched the fictional-family answer to the lesson's instruction.
 - Updated the alphabet-definition regression assertion to compare against the lesson wording. This is a text-alignment check; it does not establish that every language example is independently validated by a human editor or by page-level evidence from the selected 2024 reference book.
 - Manual Telegram rendering and end-to-end interaction tests remain pending.
+
+- Continued the same alignment pass by making the food/drink and location quiz choices quote the exact sentences used in their lessons, including the contrast «نەک لە ژێرەوەی» in the location example.
