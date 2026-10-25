@@ -248,3 +248,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Two newly added questions were refined to match phrases explicitly taught in their lessons: lesson 1 now tests the exchange asking and stating a name; lesson 3 tests the taught use of the word meaning an affirmative answer.
 - Added a regression test for these two lesson-to-quiz links.
 - This focused check does not replace human linguistic review of all 62 quiz questions. Manual Telegram testing remains pending.
+
+
+## Alphabet quiz answer clarity (25 October 2026)
+
+- Refined three lesson 2 quiz answers so they follow the lesson's own definitions more closely: alphabet as a set of written signs, a letter as a written sign, and the contrast between «ر» and «ڕ».
+- Added a regression test tying those answers to the relevant explanatory statements in the lesson.
+- This is a consistency improvement, not a claim of page-by-page validation against the selected 2024 orthography book. Broader human review and manual Telegram testing remain pending.
