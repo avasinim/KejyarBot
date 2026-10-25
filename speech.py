@@ -21,17 +21,26 @@ def speech_is_configured() -> bool:
     api_key = os.getenv("ELEVENLABS_API_KEY")
     voice_id = os.getenv("KEJYAR_VOICE_ID")
     approved_voice_id = os.getenv("KEJYAR_APPROVED_VOICE_ID")
-    return bool(api_key and voice_id and approved_voice_id and voice_id == approved_voice_id)
+    dynamic_enabled = os.getenv("KEJYAR_ENABLE_DYNAMIC_SPEECH", "").lower() == "true"
+    return bool(
+        dynamic_enabled
+        and api_key
+        and voice_id
+        and approved_voice_id
+        and voice_id == approved_voice_id
+    )
 
 
 def _generate_speech(text: str) -> bytes | None:
     api_key = os.getenv("ELEVENLABS_API_KEY")
     voice_id = os.getenv("KEJYAR_VOICE_ID")
     approved_voice_id = os.getenv("KEJYAR_APPROVED_VOICE_ID")
+    dynamic_enabled = os.getenv("KEJYAR_ENABLE_DYNAMIC_SPEECH", "").lower() == "true"
     # Never generate with a voice that has not been explicitly approved as
     # the existing Kejyar voice; retain prerecorded audio if this is unset.
     if (
-        not api_key
+        not dynamic_enabled
+        or not api_key
         or not voice_id
         or not approved_voice_id
         or voice_id != approved_voice_id
