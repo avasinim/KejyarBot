@@ -395,3 +395,15 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Moved recognized goodbye phrases into the early exit branch so explicit exit intent takes priority over greeting and role-play matching; the exit still clears role-play state.
 - Added a regression test for the combined greeting/goodbye case and verifies that chat mode and role-play state are cleared.
 - This is a narrow conversation-flow fix; it does not alter lesson text, quiz answers, the KejyarBot orthography policy, speech settings, main, production data, or PR merge status.
+
+
+## Content and mobile UX polish (25 October 2026)
+
+- Expanded lessons 7–10 with additional original everyday examples, short role-play, time-word explanations, and targeted practice. These additions are authored learning material, not quotations from the orthography reference.
+- Added two applied quiz items to each of lessons 7–10. The answers are present in the corresponding lesson content and remain among the offered options.
+- Adjusted one awkward example in lesson 4 ("چەند ڕۆژە لەگەڵ یەک فێر دەبین؟") to a clearer collaborative-work question. This is a naturalness edit, not a prescriptive spelling rule.
+- Reworked the persistent Telegram keyboard to four compact rows. The ten lesson choices now appear in a two-column inline catalog with open/completed/locked markers; locked lessons remain protected by the handler.
+- Added regression tests for catalog size/layout, lesson-opening callbacks, locked-lesson rejection, the expanded examples, and quiz-answer alignment.
+- The bot's orthography policy remains separate from Avasin Code. No broad spelling normalization was applied because the selected 2024 reference PDF has not yet been verified page by page.
+- Live Telegram testing remains pending: the test checkout currently has a placeholder token, so this branch's UI and lesson callback changes must be checked with an authorized test bot before release.
+- These changes are isolated on content-design-polish-2026-10-25, based on the open stability branch. They do not change main, merge the existing PR, touch production bot/database settings, or alter prerecorded voice assets.
