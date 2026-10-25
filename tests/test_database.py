@@ -134,6 +134,12 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_user(12345)[9], 0)
         self.assertIn(paid_rewards[0], {10, 20, 50, 100})
 
+    def test_concurrent_badge_updates_do_not_overwrite_each_other(self):
+        badges = [f"badge-{index}" for index in range(12)]
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            list(pool.map(lambda badge: database.add_badge(12345, badge), badges))
+        self.assertEqual(set(database.get_badges(12345)), set(badges))
+
     def test_badges_are_not_duplicated(self):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         database.add_badge(12345, "🏅 وانەی یەکەم")
