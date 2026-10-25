@@ -222,5 +222,6 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Expanded each of the four quizzes from four to six questions. The new questions reinforce polite requests, food/drink verbs, weekday sequencing, time references, question words, and sentence order.
 - Updated the four corresponding SVG infographics to show four example lines per card, using RTL text, bidi handling, and the shared Kurdish-Arabic font stack.
 - Added regression coverage for ten extra example lines per lesson, six quiz questions per lesson, XML validity, and exact text shared between each lesson and its infographic.
+- The first CI attempt exposed a mismatched expected phrase in the new test (the content itself was present with a longer sentence). The assertion was corrected to match the exact lesson wording; verification for the corrected test commit is pending.
 - These are original beginner-level practice examples. Automated tests validate structure and consistency, not official academic endorsement or every regional wording; human Kurdish-language review and manual Telegram rendering tests remain pending.
 - No production credentials, database, migrations, or `main` changes were made. Work remains on `fix/kejyarbot-stability-2026-10-25`.
