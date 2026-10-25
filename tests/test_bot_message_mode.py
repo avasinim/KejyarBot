@@ -57,6 +57,24 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.args[0], bot.LESSON_DATA[lesson]["content"])
 
 
+    async def test_quiz_menu_uses_human_readable_lesson_titles(self):
+        completed = [bot.ORDER[0], bot.ORDER[1]]
+        update, context = self.make_update_context("📝 تاقیکردنەوەکان")
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+        ):
+            await bot.message(update, context)
+
+        args = update.message.reply_text.await_args
+        self.assertIn("تاقیکردنەوەی وانە تەواوکراوەکان", args.args[0])
+        buttons = [button for row in args.kwargs["reply_markup"].inline_keyboard for button in row]
+        self.assertEqual(len(buttons), 2)
+        for lesson in completed:
+            expected_title = bot.LESSON_DATA[lesson]["title"]
+            self.assertTrue(any(expected_title in button.text for button in buttons))
+            self.assertTrue(any(button.callback_data == f"quiz_{lesson.split('_')[1]}_start" for button in buttons))
+
     async def test_lesson_catalog_lists_all_ten_lessons_as_compact_inline_buttons(self):
         update, context = self.make_update_context("📚 پەڕگەی وانەکان")
         with (
