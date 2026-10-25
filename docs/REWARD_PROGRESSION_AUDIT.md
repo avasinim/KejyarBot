@@ -11,9 +11,11 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - Badge writes use a SQLite write transaction to avoid concurrent badge updates overwriting one another.
 - XP level thresholds are now covered at each boundary, including 49/50, 99/100, 149/150, 299/300, 449/450, 599/600, and 799/800.
 
-## Follow-up finding
+## Follow-up finding — resolved
 
-The `check_badges` mapping in `bot.py` currently assigns badges to lessons 1–5 only. Lesson 6 is part of the six-lesson learning path but does not have its own completion badge. This is a small, definite consistency gap; add a lesson-6 badge when the bot handler can be safely updated and cover the full mapping with a regression test.
+- The `check_badges` mapping now assigns a distinct completion badge to all six lessons, including `وانە_6` (`🏅 زانای ماڵ و قوتابخانە`).
+- `tests/test_content.py::test_every_lesson_has_a_completion_badge` checks the complete six-lesson mapping.
+- The code change is commit `5e8629586a42bb98aefdffde066c64c038fc65c0`; the regression test was added in `494ad93f67e1beba7ae45917b284fb22eb74dd3e`. The branch was subsequently rechecked and the latest code CI runs passed.
 
 ## CI
 
