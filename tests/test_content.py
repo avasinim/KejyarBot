@@ -171,6 +171,24 @@ class ContentConsistencyTests(unittest.TestCase):
         )
         self.assertIn("if lesson not in get_completed_lessons(user_id):", handler)
 
+    def test_lesson_menu_references_only_existing_lessons(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        start = bot_source.index("LESSON_BUTTONS = {")
+        end = bot_source.index("\n}", start) + 2
+        block = bot_source[start:end]
+        for index in range(1, 7):
+            lesson = f"وانە_{index}"
+            with self.subTest(lesson=lesson):
+                self.assertIn(lesson, block)
+                self.assertIn(lesson, self.lessons)
+
+    def test_quiz_menu_filters_to_completed_lessons(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        start = bot_source.index('if text == "📝 تاقیکردنەوەکان":')
+        end = bot_source.find("\n    if text ==", start + 1)
+        handler = bot_source[start:end if end >= 0 else len(bot_source)]
+        self.assertIn("lesson in completed", handler)
+        self.assertIn("QUIZ_DATA.get(lesson)", handler)
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
             self.assertIn(lesson, self.lessons)
