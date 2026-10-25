@@ -180,3 +180,15 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The page's alphabet section explicitly recommends “ئەلفبێ” and rejects “ئەلف بێ”, “ئەلف و بێ”, and “ئەلفوبێ”; it also states that the Central Kurdish alphabet has 34 letters. This corroborates two claims already represented in the lesson and its automated test.
 - The online page is not the selected 2024 third-edition PDF, and its content may be updated. It does not validate every spelling or the complete alphabet order in the book. Lesson 2 remains clearly labeled as a selection of examples rather than a complete chart; no content was changed just to match an unverified source version.
 - The selected PDF remains inaccessible through the current audit reader. Continue using page-level citations before changing other prescriptive spellings.
+
+
+## Expanded letter examples and infographic refresh (25 October 2026)
+
+- Expanded lessons 1, 3, 4, 5, and 6 with additional everyday dialogues, contextual examples, location phrases, number practice, color descriptions, and role-play prompts.
+- Rebuilt lesson 2 as a letter-by-letter practice lesson with 34 entries and three example words per entry. Added four quiz questions, bringing lesson 2 to eight questions.
+- Redesigned all six SVG infographics in a consistent forest-green, warm-cream, and copper/gold palette. The alphabet infographic now shows all 34 practice entries and three words for each entry; the other five use six text-led teaching cards each.
+- SVG text uses explicit RTL direction, plaintext bidi handling, and the Noto Naskh Arabic / Noto Sans Arabic font stack to preserve Kurdish text as editable text rather than rasterized lettering.
+- Source cross-check: Kurdish Academy of Language publishes a comparative Kurdish alphabet table and a Kurdish phonetic alphabet table: https://kurdishacademy.org/?page_id=284 and https://kurdishacademy.org/?page_id=357 . These are useful references for checking the writing systems, but they do not constitute a formal endorsement of these particular teaching graphics.
+- The examples are authored for practice and are not presented as quotations. The lesson explicitly cautions that alphabet inventories and ordering can vary by writing-system convention; the selected PDF edition has still not been verified page by page.
+- Added a regression test requiring 34 lesson/infographic example pairs to remain present. Structural and source-level spelling review remain separate; automated tests cannot establish that every example is the most natural regional choice.
+- The changes remain on fix/kejyarbot-stability-2026-10-25. No production bot, database, migrations, main, or PR merge was touched.
