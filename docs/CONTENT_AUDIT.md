@@ -413,3 +413,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added learner self-check questions to lessons 4, 5, and 7–10 so every lesson now contains an objective, practice activity, and a self-assessment prompt. Added a regression test to preserve that shared instructional structure.
 
 - Added regression checks that every lesson fits within a 3,800-character safety margin for Telegram's 4,096-character text limit and that every quiz answer appears in its corresponding lesson content.
+
+## Academic navigation and mobile usability (2026-10-25)
+
+- Reorganized the persistent Telegram keyboard into three consistent two-button rows: lesson catalog and learning path; quizzes and learning progress; daily conversation and rewards.
+- Renamed navigation labels to be more descriptive and consistent (catalog, learning progress, rewards) while keeping them short enough for mobile screens.
+- The learning-path view now reports completed lessons, percentage progress, a simple visual progress bar, and three clearly named learning stages. It retains the existing prerequisite lock rules; the stage labels are navigational groupings, not claims of external accreditation.
+- The lesson catalog explains the meaning of open, locked, and completed statuses and reminds learners of the instructional structure: objectives, examples, practice, and self-check.
+- Added regression coverage for the new labels, persistent keyboard layout, and progress summary. Automated checks must pass before this branch is considered ready; live Telegram/mobile testing remains pending.
