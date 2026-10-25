@@ -29,6 +29,14 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - Prioritize varied examples, clear meaning, natural usage, gradual difficulty, and useful repetition without duplicating quiz question text within the same lesson.
 - Keep KejyarBot spelling policy separate from Avasin Code.
 
+## Lesson-example expansion (25 October 2026)
+
+- Added further original illustrative material to lessons 1–6: greetings and introductions; additional letter/word examples; everyday polite expressions; number sentences and dialogue; color descriptions; and home/school vocabulary with a short dialogue.
+- These additions are authored teaching examples, not quotations attributed to any book. They broaden practice beyond the single orthography reference.
+- Re-fetched and parsed `lessons.json` after the update: JSON is valid and all six lesson records remain present.
+- CI run #254 passed for commit `1f7e2c427d6ab324585f8dc761e689e5805f7915`: https://github.com/avasinim/KejyarBot/actions/runs/40196506760 .
+- This structural CI result does not certify every new sentence's regional naturalness or settle source-sensitive spelling rules; those remain separate editorial review items.
+
 ## Items deliberately not changed
 
 - Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
