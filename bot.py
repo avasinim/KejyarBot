@@ -247,13 +247,8 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
         return
-    # Claim this question before the first await so duplicate callbacks cannot
-    # both score an answer while the next question is being sent.
-    quiz["question_message_id"] = None
-    try:
-        await query.edit_message_reply_markup(reply_markup=None)
-    except Exception:
-        logger.debug("Quiz keyboard was already removed or could not be edited")
+    # Validate callback data before claiming the question. Malformed callbacks
+    # must not leave question_message_id=None and strand the active quiz.
     raw_index = query.data.removeprefix("answer_")
     if not raw_index.isdigit():
         return
@@ -261,6 +256,13 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     choice_index = int(raw_index)
     if choice_index < 0 or choice_index >= len(question["options"]):
         return
+    # Claim this question before the first await so duplicate callbacks cannot
+    # both score an answer while the next question is being sent.
+    quiz["question_message_id"] = None
+    try:
+        await query.edit_message_reply_markup(reply_markup=None)
+    except Exception:
+        logger.debug("Quiz keyboard was already removed or could not be edited")
     answer = question["options"][choice_index]
     if answer == question["answer"]:
         quiz["score"] += 1
