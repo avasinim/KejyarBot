@@ -26,6 +26,7 @@ class ContentConsistencyTests(unittest.TestCase):
             "وانەی ٣: وشەکانی ڕۆژانە",
             "وانەی ٤: ژمارەکان",
             "وانەی ٥: ڕەنگەکان",
+            "وانەی ٦: لە ماڵ و قوتابخانە",
         ]
         self.assertEqual(self.learning_path["lessons"], expected)
         for index, title in enumerate(expected, start=1):
@@ -34,7 +35,7 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
     def test_every_quiz_question_has_valid_options_and_answer(self):
-        self.assertEqual(set(self.quizzes), {"وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5"})
+        self.assertEqual(set(self.quizzes), {"وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6"})
         for lesson, questions in self.quizzes.items():
             with self.subTest(lesson=lesson):
                 self.assertTrue(questions)
@@ -60,6 +61,19 @@ class ContentConsistencyTests(unittest.TestCase):
             with self.subTest(section=required):
                 self.assertIn(required, lesson)
         self.assertGreaterEqual(len(self.quizzes["وانە_3"]), 4)
+
+
+    def test_lessons_four_to_six_include_examples_and_practice(self):
+        expectations = {
+            "وانە_4": ("ژمارەکان", "نموونە لە گفتوگۆدا", "ڕاهێنان", "پێداچوونەوە"),
+            "وانە_5": ("ڕەنگەکان", "نموونەی ڕستە", "ڕاهێنان", "پێداچوونەوە"),
+            "وانە_6": ("لە ماڵ و قوتابخانە", "ڕستەی نموونە", "ڕاهێنان", "پێداچوونەوە"),
+        }
+        for lesson_key, sections in expectations.items():
+            with self.subTest(lesson=lesson_key):
+                for section in sections:
+                    self.assertIn(section, self.lessons[lesson_key]["content"])
+                self.assertGreaterEqual(len(self.quizzes[lesson_key]), 4)
 
     def test_grade_one_curriculum_outline_is_complete_and_consistent(self):
         plan = self.grade_01_plan
