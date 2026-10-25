@@ -123,3 +123,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Based on that source, corrected the lesson 2 heading/term, learning-path label, quiz prompt, and infographic title from «ئەلفوبێ» to «ئەلفبێ». Updated the corresponding content-consistency test to lock in the corrected term.
 - The 34-letter statement remains in the lesson, while the displayed letter examples and infographic remain explicitly a sample, not a full inventory. No alphabet ordering or list was invented.
 - Re-read the changed files after updates and run CI to confirm consistency. Source extract is searchable/indexed; this note does not claim visual inspection of the PDF page image.
+
+
+## Alphabet spelling regression guard (25 October 2026)
+
+- The searchable extract of the selected third updated edition (16 August 2024), page 3, uses «ئەلفبێ» and explicitly rejects «ئەلفوبێ» and «ئەلف بێ»; it also states a 34-letter inventory. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+- Added `test_alphabet_spelling_matches_selected_reference` to check that the lesson-2 title/content, learning-path labels, quiz prompts/options, and lesson-2 infographic contain the approved term and do not reintroduce either rejected spelling.
+- This is a focused spelling regression check, not a complete audit of alphabet inventory/order or every orthographic rule. The infographic remains a sample, not a full alphabet chart.
+- CI run #40210996888 passed before this new test was added; the new test requires a fresh CI run after commit.
