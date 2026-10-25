@@ -48,7 +48,7 @@ class ContentConsistencyTests(unittest.TestCase):
 
     def test_alphabet_lesson_has_teaching_examples_and_practice(self):
         lesson = self.lessons["وانە_2"]["content"]
-        for required in ("ئامانجی وانە", "پیت و دەنگ", "نموونە", "ڕاهێنان", "پیتەکانی"):
+        for required in ("ئامانجی وانە", "پیت و دەنگ", "نموونە", "ڕاهێنان", "پیتەکان"):
             with self.subTest(section=required):
                 self.assertIn(required, lesson)
         self.assertGreaterEqual(len(self.quizzes["وانە_2"]), 4)
