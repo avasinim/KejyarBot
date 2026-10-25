@@ -24,3 +24,11 @@
 - وەشانی کاری بۆ پشکنینی داهاتوو دیاریکرا: وەشانی سێیەمی نوێکراوەی ٢٠٢٤. بەهۆی ئەوەی لەم هەنگاوەدا ناتوانرێت ناوەڕۆکی PDF بە شێوەی پەڕەبەپەڕە پشتڕاست بکرێتەوە، هیچ یاسای ڕێنووس و هیچ دەقی وانەیەک لەسەر بنەمای ئەم لینکییە تەنها ناگۆڕدرێت.
 
 لە برانچی پارێزراوی `fix/kejyarbot-stability-2026-10-25`، فایلە ئینفۆگرافیکییەکانی وانەکانی ١ تا ٦ و پشکنینی خۆکارییان هەن. پشکنینی ناوەڕۆکی وانەکان و سەرچاوەی ڕێنووس دوو کارە جیاوازن: بوونی ئینفۆگرافیک یان سەرکەوتنی CI بە مانای پشتڕاستبوونەوەی زانستیی هەموو وشەکان نییە.
+
+
+## Online corroboration found (25 October 2026)
+
+- The author's publicly accessible online orthography page, “زمانی کوردی: ڕێنووس”, has an alphabet section that explicitly recommends **«ئەلفبێ»** and rejects the spaced or alternate forms **«ئەلف بێ»**, **«ئەلف و بێ»**, and **«ئەلفوبێ»**. It also states that the Central Kurdish alphabet has 34 letters.
+- Reference: https://chawg.org/zimani-kurdi-renus/ (sections “٢. ئەلفبێ” and “پیتەکان و دەنگەکان”).
+- This is useful corroboration for the spelling and the 34-letter claim, but it is an online resource that may be updated over time; it is **not** a page-level verification of the selected 2024 third-edition PDF. Keep those source identities separate.
+- Lesson 2 currently presents selected letters as examples and explicitly warns that the list is not a complete alphabet chart. No lesson wording was changed solely on the basis of this online corroboration.
