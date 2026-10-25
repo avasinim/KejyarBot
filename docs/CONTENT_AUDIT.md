@@ -330,3 +330,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Replaced one repeated name-introduction item with a question about choosing the appropriate morning greeting (`بەیانی باش`). The answer is present in the lesson text and among the options.
 - Added a regression test to protect this coverage and answer-to-lesson alignment. This is an assessment-design adjustment, not an orthography correction.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 3 contextual quiz coverage (25 October 2026)
+
+- Reviewed the lesson 3 quiz for whether it tested only definitions or also practical use. The standalone item asking which word is polite for a request overlapped with the lesson’s direct vocabulary list.
+- Replaced it with a market scenario asking which expression is suitable for asking a price (`تکایە، ئەمە چەندە؟`), already present in the lesson. This tests context-sensitive application while retaining the lesson’s polite-request objective.
+- Added a regression test to ensure the scenario and answer remain grounded in the lesson text. No source-sensitive orthography was changed.
+- No `main`, production bot/database, migrations, or PR merge was touched.
