@@ -102,20 +102,14 @@ LESSON_BUTTONS = {
     "📅 ڕۆژەکانی هەفتە و کات": "وانە_9",
     "🧱 ڕستەی سادە و پرسیارکردن": "وانە_10",
 }
+# Keep the persistent keyboard compact; lesson choices live in the
+# contextual inline catalog so the main screen remains usable on phones.
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
-        ["👋 سڵاو و ناساندنی خۆ"],
-        ["🔤 ئەلفبێی کوردی", "🗣 وشەکانی ڕۆژانە"],
-        ["🔢 ژمارەکان", "🎨 ڕەنگەکان"],
-        ["🏠 لە ماڵ و قوتابخانە"],
-        ["👪 خێزان و کەسانی نزیک"],
-        ["🍽️ خواردن و خواردنەوە"],
-        ["📅 ڕۆژەکانی هەفتە و کات"],
-        ["🧱 ڕستەی سادە و پرسیارکردن"],
     ],
     resize_keyboard=True,
 )
@@ -149,6 +143,27 @@ def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+
+def lesson_catalog_keyboard(user_id):
+    """Build a compact two-column catalog with explicit completion/lock status."""
+    completed = set(get_completed_lessons(user_id))
+    rows = []
+    buttons = []
+    for lesson in ORDER:
+        status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
+        title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+        number = lesson.removeprefix("وانە_")
+        buttons.append(InlineKeyboardButton(
+            f"{status} {number}. {title}",
+            callback_data=f"open_lesson_{number}",
+        ))
+        if len(buttons) == 2:
+            rows.append(buttons)
+            buttons = []
+    if buttons:
+        rows.append(buttons)
+    return InlineKeyboardMarkup(rows)
 
 async def send_voice(update, filename):
     path = get_voice(filename)
@@ -312,6 +327,36 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
+async def open_lesson_from_catalog(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    raw_number = query.data.removeprefix("open_lesson_")
+    if not raw_number.isdigit():
+        await query.message.reply_text("❌ ناسنامەی وانە دروست نیە.")
+        return
+    lesson = f"وانە_{int(raw_number)}"
+    user_id = query.from_user.id
+    context.user_data["daily_chat_mode"] = False
+    if lesson not in ORDER:
+        await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
+    if not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_conversation_voice(
+        query.message,
+        f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
+        context.user_data,
+        user_id,
+    )
+    await send_lesson_infographic(query.message, lesson)
+
+
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -377,13 +422,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["daily_chat_mode"] = False
 
     if text == "📚 وانەکان":
-        rows = []
-        completed = set(get_completed_lessons(user_id))
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
-            rows.append(f"{status} {lesson}: {title}")
-        await update.message.reply_text("\n".join(rows))
+        await update.message.reply_text(
+            "📚 وانەکانت هەڵبژێرە. 🔓 کراوەیە، 🔒 پێویستی بە تەواوکردنی وانەی پێشووە، ✅ تەواو کراوە.",
+            reply_markup=lesson_catalog_keyboard(user_id),
+        )
         return
 
     if text in LESSON_BUTTONS:
@@ -462,6 +504,7 @@ def main():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(open_lesson_from_catalog, pattern=r"^open_lesson_\\d+$"))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
