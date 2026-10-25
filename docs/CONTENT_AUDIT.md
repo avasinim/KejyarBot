@@ -9,9 +9,15 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - `quiz.json` contains quiz sets for all six lessons.
 - Each quiz question has non-empty text, at least two unique answer options, and an answer that matches one of those options.
 - The automated content tests check lesson-specific practice sections, example dialogues, the lesson-6 quiz path, and the existence and RTL structure of the six infographic assets.
+- A regression test now checks that six letter/word examples shown in the lesson-2 alphabet infographic also occur in lesson 2: `ب — باوک`, `پ — پیاو`, `چ — چاو`, `ڕ — ڕۆژ`, `ش — شاخ`, and `گ — گوڵ`.
 - The currently observed CI runs for commit `3e91a6b7679c41951461ff39f8310acccd132eaf` passed:
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
+
+## Latest verification
+
+- The infographic-example regression test was added in commit `a9d870d63397454e7e387f9aa8a38ac8dd5514b5` and re-read from the branch.
+- CI run #244 passed for that commit: https://github.com/avasinim/KejyarBot/actions/runs/40195984360 . This confirms the automated checks passed; it does not establish source-level orthographic correctness.
 
 ## Items deliberately not changed
 
