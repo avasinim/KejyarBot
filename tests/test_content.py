@@ -372,5 +372,27 @@ class ContentConsistencyTests(unittest.TestCase):
                     self.assertIn(item["answer"], self.lessons[lesson_key]["content"])
 
 
+    def test_lessons_one_and_five_quizzes_cover_distinct_skills(self):
+        lesson_one = self.lessons["وانە_1"]["content"]
+        lesson_five = self.lessons["وانە_5"]["content"]
+        lesson_one_item = next(
+            item for item in self.quizzes["وانە_1"]
+            if item["question"].startswith("ئەگەر ناوی کەسێک")
+        )
+        lesson_five_item = next(
+            item for item in self.quizzes["وانە_5"]
+            if item["question"].startswith("کام ڕستە جیاوازیی نێوان")
+        )
+
+        self.assertIn("تکایە، ناوت دووبارە دەڵێیتەوە؟", lesson_one)
+        self.assertEqual(lesson_one_item["answer"], "تکایە، ناوت دووبارە دەڵێیتەوە؟")
+        self.assertIn(lesson_one_item["answer"], lesson_one_item["options"])
+
+        contrast_example = "ئەم پەڕەیە زەردە، بەڵام ئەو پەڕەیە سپییە."
+        self.assertIn(contrast_example, lesson_five)
+        self.assertEqual(lesson_five_item["answer"], contrast_example)
+        self.assertIn(lesson_five_item["answer"], lesson_five_item["options"])
+
+
 if __name__ == "__main__":
     unittest.main()
