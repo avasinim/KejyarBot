@@ -22,13 +22,12 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         self.temp_dir.cleanup()
 
     async def test_failed_generation_does_not_consume_daily_quota(self):
-        database.reserve_speech_quota(self.user_id, self.quota_date, limit=20)
         message = type("Message", (), {"reply_voice": AsyncMock()})()
         with patch.object(bot, "speech_is_configured", return_value=True), patch.object(
             bot, "generate_speech", new=AsyncMock(return_value=None)
         ):
             await bot.send_conversation_voice(message, "سڵاو", {}, self.user_id)
-        self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 1)
+        self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 0)
         message.reply_voice.assert_not_awaited()
 
     async def test_successful_voice_delivery_consumes_one_quota(self):
