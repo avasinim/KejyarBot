@@ -1,8 +1,11 @@
 import json
 import re
 import unittest
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+import speech
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -265,6 +268,36 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertIn('direction="rtl"', svg_text)
                 self.assertIn('unicode-bidi="plaintext"', svg_text)
                 self.assertIn("Noto Naskh Arabic", svg_text)
+
+    def test_dynamic_speech_requires_explicit_enablement_and_matching_approved_voice(self):
+        with patch.dict("os.environ", {}, clear=True):
+            self.assertFalse(speech.speech_is_configured())
+            self.assertIsNone(speech._generate_speech("سڵاو"))
+
+        with patch.dict("os.environ", {
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_VOICE_ID": "voice-a",
+            "KEJYAR_APPROVED_VOICE_ID": "voice-a",
+        }, clear=True):
+            self.assertFalse(speech.speech_is_configured())
+            self.assertIsNone(speech._generate_speech("سڵاو"))
+
+        with patch.dict("os.environ", {
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_VOICE_ID": "voice-a",
+            "KEJYAR_APPROVED_VOICE_ID": "voice-b",
+        }, clear=True):
+            self.assertFalse(speech.speech_is_configured())
+            self.assertIsNone(speech._generate_speech("سڵاو"))
+
+        with patch.dict("os.environ", {
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_VOICE_ID": "voice-a",
+            "KEJYAR_APPROVED_VOICE_ID": "voice-a",
+        }, clear=True):
+            self.assertTrue(speech.speech_is_configured())
 
     def test_kejyarbot_orthography_policy_keeps_avasin_separate(self):
         policy_path = BASE_DIR / "docs" / "ORTHOGRAPHY_POLICY.md"
