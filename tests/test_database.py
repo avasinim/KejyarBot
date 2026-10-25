@@ -70,6 +70,26 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[7], 1)  # tests count
         self.assertEqual(user[2], 0)  # database ledger does not award XP itself
 
+    def test_quiz_completion_grants_xp_only_once(self):
+        self.assertTrue(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)  # XP
+        self.assertEqual(user[1], 20)  # score
+        self.assertEqual(user[7], 1)   # tests
+        self.assertEqual(user[8], 0)   # no lesson coin bonus
+
+    def test_concurrent_quiz_reward_is_granted_once(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(12345, "وانە_4"),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)
+        self.assertEqual(user[7], 1)
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)
