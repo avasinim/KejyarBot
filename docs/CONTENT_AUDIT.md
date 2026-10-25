@@ -2,14 +2,14 @@
 
 Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 
-## Checks completed
+## Current checks
 
-- `lessons.json` contains six non-empty lesson records, numbered 1–6.
-- `learning_path.json` matches the six lesson titles and their intended order.
-- `quiz.json` contains quiz sets for all six lessons.
-- Each quiz question has non-empty text, at least two unique answer options, and an answer that matches one of those options.
-- The automated content tests check lesson-specific practice sections, example dialogues, the lesson-6 quiz path, and the existence and RTL structure of the six infographic assets.
-- A regression test now checks that six letter/word examples shown in the lesson-2 alphabet infographic also occur in lesson 2: `ب — باوک`, `پ — پیاو`, `چ — چاو`, `ڕ — ڕۆژ`, `ش — شاخ`, and `گ — گوڵ`.
+- `lessons.json` contains ten non-empty lesson records, numbered 1–10, and `learning_path.json` matches their titles and intended order.
+- `quiz.json` contains quiz sets for all ten lessons; every question has non-empty text, unique options, and an answer present among those options.
+- The bot's lesson navigation, unlocking sequence, completion badges, and final-lesson quiz path are covered by regression tests for ten lessons.
+- All ten lesson SVGs are checked for well-formed XML, RTL direction, bidi handling, and the chosen Arabic-script font stack.
+- Lesson 2 now presents 34 practice entries with five words per entry (170 examples in total). Its infographic is tested against the lesson text so every listed example must appear in both places.
+- The inventory intentionally calls these “practice entries” rather than asserting that every entry is an independent alphabet letter: some orthographic combinations and vowel signs may need a separate academic classification review.
 - The currently observed CI runs for commit `3e91a6b7679c41951461ff39f8310acccd132eaf` passed:
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
@@ -203,3 +203,13 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Updated lesson navigation, sequential unlocking, completion badges, final-lesson quiz callback, and regression tests to use the ten lesson records. Lesson order is now derived from the ordered lesson data rather than fixed at six.
 - The new material uses original practice examples, not quotations. Regional vocabulary and spelling still require human review before public release.
 - CI run #389 passed for commit `58e02d8d8c5eedc971decef803b83517f3973b2e`: dependency installation, `python -m compileall -q .`, and the full unittest suite all succeeded. Run: https://github.com/avasinim/KejyarBot/actions/runs/40217276132 . This verifies automated structure and behavior, not every regional spelling or a live Telegram test.
+
+
+## Expanded alphabet examples and infographic (25 October 2026)
+
+- Expanded lesson 2 from three examples per practice entry to five, for 34 entries and 170 total word examples.
+- Rebuilt `assets/infographics/lesson-02-letters-sample.svg` in a four-column, right-to-left layout. Each entry has its own card, five examples, and a consistent forest-green / warm-cream / copper-gold visual style.
+- Added a regression test that parses the lesson's example section and checks all 34 entries have exactly five examples and that every word appears in both the lesson and SVG.
+- This is an authored teaching aid, not an official alphabet chart. Some items (including combinations such as `وو`) should be classified carefully before claiming a definitive alphabet inventory. The examples need human review for regional naturalness and source-sensitive spelling.
+- This change does not use Avasin Code and does not alter `main`, production credentials, or any database.
+- Latest CI result for this expansion: pending; verify the run on the current branch before treating this update as tested.
