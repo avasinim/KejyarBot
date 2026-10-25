@@ -47,6 +47,12 @@ class ContentConsistencyTests(unittest.TestCase):
         for lesson, questions in self.quizzes.items():
             with self.subTest(lesson=lesson):
                 self.assertTrue(questions)
+                question_texts = [question["question"].strip() for question in questions]
+                self.assertEqual(
+                    len(question_texts),
+                    len(set(question_texts)),
+                    "A lesson quiz must not repeat the same question text.",
+                )
                 for question in questions:
                     self.assertTrue(question["question"].strip())
                     self.assertGreaterEqual(len(question["options"]), 2)
