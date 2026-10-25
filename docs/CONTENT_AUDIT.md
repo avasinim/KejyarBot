@@ -241,3 +241,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Strengthened `tests/test_content.py` so all ten lessons must have at least six quiz questions. Existing checks still validate non-empty question text, distinct options, and that every answer appears among its options.
 - CI run #438 passed after the quiz-coverage test update: https://github.com/avasinim/KejyarBot/actions/runs/40218153690 . Automated CI validates structure and consistency; the new language examples have not been formally certified against the selected orthography book. Human Kurdish-language review and manual Telegram testing remain pending.
 - No production bot, production database, migrations, or `main` branch changes.
+
+
+## Quiz alignment check (25 October 2026)
+
+- Two newly added questions were refined to match phrases explicitly taught in their lessons: lesson 1 now tests the exchange asking and stating a name; lesson 3 tests the taught use of the word meaning an affirmative answer.
+- Added a regression test for these two lesson-to-quiz links.
+- This focused check does not replace human linguistic review of all 62 quiz questions. Manual Telegram testing remains pending.
