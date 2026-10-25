@@ -191,13 +191,29 @@ def get_completed_lessons(user_id):
     return x.split(',') if x else []
 
 
-def add_badge(user_id,badge):
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    old=get_user(user_id)[6]
-    items=old.split(',') if old else []
-    if badge not in items:items.append(badge)
-    cur.execute('UPDATE users SET badges=? WHERE user_id=?',(','.join(items),user_id))
-    conn.commit();conn.close()
+def add_badge(user_id, badge):
+    """Add a badge without losing another badge written concurrently."""
+    get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        cur = conn.cursor()
+        cur.execute("SELECT badges FROM users WHERE user_id=?", (user_id,))
+        row = cur.fetchone()
+        old = row[0] if row and row[0] else ""
+        items = old.split(",") if old else []
+        if badge not in items:
+            items.append(badge)
+            cur.execute(
+                "UPDATE users SET badges=? WHERE user_id=?",
+                (",".join(items), user_id),
+            )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def get_badges(user_id):
