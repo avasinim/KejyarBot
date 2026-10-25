@@ -338,6 +338,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
+        context.user_data.pop("daily_chat_scenario", None)
+        context.user_data.pop("daily_chat_stage", None)
         await update.message.reply_text(
             "🌷 بەخێربێیت بۆ گفتوگۆی ڕۆژانەی کەژیار!\n"
             "بە کوردی بنووسە؛ دەتوانین لە سڵاوکردن، بازاڕ، خواردن و قوتابخانە گفتوگۆ بکەین.\n"
