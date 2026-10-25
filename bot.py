@@ -23,16 +23,13 @@ from telegram.ext import (
 from database import (
     init_db,
     get_user,
-    add_score,
     add_xp,
-    complete_lesson,
     complete_lesson_with_rewards,
     get_completed_lessons,
     add_badge,
     get_badges,
     get_user_level,
     open_chest,
-    add_chest,
     complete_quiz,
 )
 from voice import get_voice
