@@ -59,6 +59,9 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 
 ## Daily-chat and menu transition regression coverage (25 October 2026)
 
+- Extended `tests/test_bot_quiz_callbacks.py` to verify a quiz is blocked until its lesson is completed and starts correctly after completion, including recording the first question message ID. These are mocked handler tests, not live Telegram tests.
+
+
 - Added `tests/test_bot_message_mode.py` to check that ordinary text remains in daily-chat mode and that choosing a lesson button exits daily-chat mode and routes into the lesson handler.
 - These tests exercise the message-handler integration with mocked Telegram objects; they do not replace a live Telegram test.
 - Test commit: `2e478b996573e0b6adbe6074b009e1143697f639`.
