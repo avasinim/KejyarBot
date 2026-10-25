@@ -1,6 +1,8 @@
 import sqlite3
+from pathlib import Path
 
-DB_NAME = "kejyar.db"
+BASE_DIR = Path(__file__).resolve().parent
+DB_NAME = str(BASE_DIR / "kejyar.db")
 
 
 def init_db():
