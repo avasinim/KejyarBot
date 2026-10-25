@@ -17,6 +17,22 @@ def load_json(filename):
 
 
 class ContentConsistencyTests(unittest.TestCase):
+    def test_academic_menu_has_consistent_labels_and_progress_view(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        for label in (
+            "📚 پەڕگەی وانەکان",
+            "🧭 ڕێڕەوی فێربوون",
+            "📝 تاقیکردنەوەکان",
+            "📊 پێشکەوتنی خوێندن",
+            "💬 گفتوگۆی ڕۆژانە",
+            "🎁 خەڵاتەکان",
+        ):
+            with self.subTest(label=label):
+                self.assertIn(label, bot_source)
+        self.assertIn("پێشکەوتن: {done}/{total} وانە ({percent}٪)", bot_source)
+        self.assertIn("reply_markup=MENU", bot_source)
+        self.assertIn("is_persistent=True", bot_source)
+
     @classmethod
     def setUpClass(cls):
         cls.lessons = load_json("lessons.json")
