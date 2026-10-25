@@ -140,3 +140,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Lesson 2 correctly presents a selection of letters as examples and explicitly warns that it is not a complete alphabet inventory. No full alphabet chart or letter-order claim was added.
 - No further content edits were made in this pass: possible wording/spacing choices in the Kurdish examples need page-level evidence from the selected orthography reference before changing them.
 - The spelling regression test's newline separators were corrected in commit `ae4d3df`. The GitHub connector returned no status checks for the newest commit at audit time, so CI for that exact commit remains unverified. No live Telegram test was performed. Production, `main`, and PR merge state remain untouched.
+
+
+## CI verification for content audit update (25 October 2026)
+
+- GitHub Actions workflow run `40215980145` for commit `18e53144620a55ceef51f91ae506018e64eef6ba` completed with conclusion `success`.
+- The `checks` job completed successfully, including dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- This confirms the automated suite at that commit; it does not replace manual Telegram testing or expert/source-based review of every Kurdish phrase.
+- Manual Telegram test remains blocked until an authorized test bot/token and isolated test environment are available. No production token or database was accessed.
