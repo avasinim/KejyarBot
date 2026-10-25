@@ -23,14 +23,13 @@ from telegram.ext import (
 from database import (
     init_db,
     get_user,
-    add_xp,
     complete_lesson_with_rewards,
     get_completed_lessons,
     add_badge,
     get_badges,
     get_user_level,
     open_chest,
-    complete_quiz,
+    complete_quiz_with_rewards,
 )
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
@@ -276,13 +275,12 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     lesson = quiz["lesson"]
     earned = quiz["score"]
-    first_completion = complete_quiz(update.effective_user.id, lesson)
+    first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
     result = (
         f"🎉 تاقیکردنەوە تەواو بوو!\n"
         f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
     )
     if first_completion:
-        add_xp(update.effective_user.id, 20)
         result += "⭐ +20 XP"
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
