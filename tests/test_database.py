@@ -23,6 +23,28 @@ class DatabaseTests(unittest.TestCase):
         self.assertFalse(database.complete_lesson(12345, "وانە_1"))
         self.assertEqual(database.get_completed_lessons(12345), ["وانە_1"])
 
+    def test_lesson_completion_grants_rewards_only_once(self):
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        self.assertFalse(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 10)  # XP
+        self.assertEqual(user[1], 10)  # score
+        self.assertEqual(user[8], 5)   # coins
+        self.assertEqual(user[9], 1)   # chests
+        self.assertEqual(user[5], "وانە_1")
+
+    def test_concurrent_lesson_reward_is_granted_once(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_lesson_with_rewards(12345, "وانە_2"),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 10)
+        self.assertEqual(user[8], 5)
+        self.assertEqual(user[9], 1)
+
     def test_concurrent_lesson_completion_has_one_winner(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(
