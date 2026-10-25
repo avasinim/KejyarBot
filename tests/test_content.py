@@ -20,6 +20,13 @@ class ContentConsistencyTests(unittest.TestCase):
         cls.learning_path = load_json("learning_path.json")
         cls.grade_01_plan = load_json("curriculum/grade_01_plan.json")["curriculum"]
 
+    def test_lesson_catalog_contains_only_six_lesson_records(self):
+        self.assertEqual(set(self.lessons), {f"وانە_{index}" for index in range(1, 7)})
+        for key, lesson in self.lessons.items():
+            with self.subTest(lesson=key):
+                self.assertTrue(lesson.get("title", "").strip())
+                self.assertTrue(lesson.get("content", "").strip())
+
     def test_learning_path_matches_lesson_titles_and_order(self):
         expected = [
             "وانەی ١: سڵاو و ناساندنی خۆ",
