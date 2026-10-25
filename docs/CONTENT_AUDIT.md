@@ -139,7 +139,7 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Confirmed the six lesson keys/titles align with the learning-path catalog, and each lesson has quiz items; existing regression tests already require nonempty unique quiz questions, distinct options, and an answer present among the options.
 - Lesson 2 correctly presents a selection of letters as examples and explicitly warns that it is not a complete alphabet inventory. No full alphabet chart or letter-order claim was added.
 - No further content edits were made in this pass: possible wording/spacing choices in the Kurdish examples need page-level evidence from the selected orthography reference before changing them.
-- The spelling regression test's newline separators were corrected in commit `ae4d3df`. The GitHub connector returned no status checks for the newest commit at audit time, so CI for that exact commit remains unverified. No live Telegram test was performed. Production, `main`, and PR merge state remain untouched.
+- The spelling regression test's newline separators were corrected in commit `ae4d3df`. Although the status-check endpoint returned no individual statuses, GitHub Actions subsequently confirmed successful Python checks for commit `18e5314` and for the follow-up audit-document commit `df8335a` (run `40216024376`). No live Telegram test was performed. Production, `main`, and PR merge state remain untouched.
 
 
 ## CI verification for content audit update (25 October 2026)
@@ -148,3 +148,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The `checks` job completed successfully, including dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
 - This confirms the automated suite at that commit; it does not replace manual Telegram testing or expert/source-based review of every Kurdish phrase.
 - Manual Telegram test remains blocked until an authorized test bot/token and isolated test environment are available. No production token or database was accessed.
+
+
+## Latest audit-document commit CI (25 October 2026)
+
+- Commit `df8335a01c88237c285e76fc20f7cbc57cfed58b` passed GitHub Actions run `40216024376`.
+- The `checks` job succeeded for dependency installation, Python compilation, and the full unittest discovery command.
+- This is automated repository validation only; Telegram integration remains untested in a separate authorized test environment.
