@@ -89,15 +89,29 @@ def add_coins(user_id,amount):
 
 
 def open_chest(user_id):
-    user=get_user(user_id)
-    if user[9]<=0:
-        return 0
+    """Consume one chest and award coins atomically; return 0 if none remain."""
+    get_user(user_id)
     import random
-    reward=random.choice([10,20,50,100])
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    cur.execute('UPDATE users SET chests=chests-1, coins=coins+? WHERE user_id=?',(reward,user_id))
-    conn.commit();conn.close()
-    return reward
+    reward = random.choice([10, 20, 50, 100])
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE users SET chests=chests-1, coins=coins+? "
+            "WHERE user_id=? AND chests>0",
+            (reward, user_id),
+        )
+        if cur.rowcount != 1:
+            conn.rollback()
+            return 0
+        conn.commit()
+        return reward
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def add_chest(user_id):
