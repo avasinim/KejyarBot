@@ -131,3 +131,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_alphabet_spelling_matches_selected_reference` to check that the lesson-2 title/content, learning-path labels, quiz prompts/options, and lesson-2 infographic contain the approved term and do not reintroduce either rejected spelling.
 - This is a focused spelling regression check, not a complete audit of alphabet inventory/order or every orthographic rule. The infographic remains a sample, not a full alphabet chart.
 - CI run #40210996888 passed before this new test was added; the new test requires a fresh CI run after commit.
+
+
+## Review of lessons 1–6 after alphabet spelling guard (25 October 2026)
+
+- Re-read all six lesson records and their quiz records on `fix/kejyarbot-stability-2026-10-25`.
+- Confirmed the six lesson keys/titles align with the learning-path catalog, and each lesson has quiz items; existing regression tests already require nonempty unique quiz questions, distinct options, and an answer present among the options.
+- Lesson 2 correctly presents a selection of letters as examples and explicitly warns that it is not a complete alphabet inventory. No full alphabet chart or letter-order claim was added.
+- No further content edits were made in this pass: possible wording/spacing choices in the Kurdish examples need page-level evidence from the selected orthography reference before changing them.
+- The spelling regression test's newline separators were corrected in commit `ae4d3df`. The GitHub connector returned no status checks for the newest commit at audit time, so CI for that exact commit remains unverified. No live Telegram test was performed. Production, `main`, and PR merge state remain untouched.
