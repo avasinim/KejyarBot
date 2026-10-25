@@ -27,8 +27,54 @@ def init_db():
     columns = {row[1] for row in cur.fetchall()}
     if "completed_quizzes" not in columns:
         cur.execute("ALTER TABLE users ADD COLUMN completed_quizzes TEXT DEFAULT ''")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS speech_quota (
+        user_id INTEGER NOT NULL,
+        quota_date TEXT NOT NULL,
+        used INTEGER NOT NULL DEFAULT 0 CHECK (used >= 0),
+        PRIMARY KEY (user_id, quota_date)
+    )
+    """)
     conn.commit()
     conn.close()
+
+
+def reserve_speech_quota(user_id, quota_date, limit=20):
+    """Atomically reserve one speech generation for this user and UTC date."""
+    if limit < 1:
+        return False
+    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute(
+            "INSERT OR IGNORE INTO speech_quota(user_id, quota_date, used) VALUES (?, ?, 0)",
+            (user_id, quota_date),
+        )
+        cur = conn.execute(
+            "UPDATE speech_quota SET used=used+1 "
+            "WHERE user_id=? AND quota_date=? AND used < ?",
+            (user_id, quota_date, limit),
+        )
+        return cur.rowcount == 1
+
+
+def refund_speech_quota(user_id, quota_date):
+    """Refund a reserved slot after generation or delivery fails."""
+    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+        conn.execute(
+            "UPDATE speech_quota SET used=used-1 "
+            "WHERE user_id=? AND quota_date=? AND used > 0",
+            (user_id, quota_date),
+        )
+
+
+def get_speech_quota_used(user_id, quota_date):
+    """Return the durable number of reserved speech slots for a user and date."""
+    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+        row = conn.execute(
+            "SELECT used FROM speech_quota WHERE user_id=? AND quota_date=?",
+            (user_id, quota_date),
+        ).fetchone()
+        return row[0] if row else 0
 
 
 def get_user(user_id):
