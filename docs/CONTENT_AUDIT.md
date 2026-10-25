@@ -296,3 +296,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_lessons_one_and_five_quizzes_cover_distinct_skills` to check that both answers are present in the lesson and the correct options.
 - No spelling-policy decisions or source-sensitive vocabulary were changed. This is a pedagogical coverage improvement, not page-level verification against Diyako Hashemi's handbook.
 - Re-read the modified quiz and test files after the edits; full CI verification is required for these commits. Live Telegram testing remains pending in a separate authorized test environment. No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 4 scope and example review (25 October 2026)
+
+- The lesson objective introduces numbers 0–10, but two supplementary examples introduced the number twelve and weekday names before those topics are taught in the learning path.
+- Replaced those examples with simple classroom/object-counting sentences using numbers already within the lesson scope. This reduces premature vocabulary and keeps the lesson focused on beginner counting.
+- Added `test_lesson_four_examples_stay_within_beginner_number_scope` to protect the intended examples and flag the removed scope drift.
+- This is a pedagogical sequencing change only; no orthography rule or source-sensitive spelling was inferred. Manual language review and Telegram testing remain pending.
+- No `main`, production bot/database, migrations, or PR merge was touched.
