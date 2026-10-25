@@ -468,5 +468,28 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_four_quiz_checks_simple_addition_in_context(self):
+        lesson = self.lessons["وانە_4"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_4"]
+            if item["question"] == "ئەگەر سێ سێو و دوو سێوی تر هەبێت، کۆی سێوەکان چەندە؟"
+        )
+        self.assertIn("کۆی گشتی پێنج کتێبە", lesson)
+        self.assertEqual(item["answer"], "٥")
+        self.assertIn(item["answer"], item["options"])
+
+    def test_lesson_five_quiz_checks_comparing_two_colors(self):
+        lesson = self.lessons["وانە_5"]["content"]
+        contrast_example = "ئەم پەڕەیە زەردە، بەڵام ئەو پەڕەیە سپییە."
+        item = next(
+            item for item in self.quizzes["وانە_5"]
+            if item["question"] == "کام ڕستە جیاوازیی نێوان دوو ڕەنگ نیشان دەدات؟"
+        )
+        self.assertIn(contrast_example, lesson)
+        self.assertEqual(item["answer"], contrast_example)
+        self.assertIn(item["answer"], item["options"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
