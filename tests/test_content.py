@@ -441,5 +441,17 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_three_quiz_applies_polite_request_in_context(self):
+        lesson = self.lessons["وانە_3"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_3"]
+            if item["question"] == "لە بازاڕدا بۆ پرسیارکردن لە نرخ، کام دەربڕین گونجاوە؟"
+        )
+        self.assertIn("تکایە، ئەمە چەندە؟", lesson)
+        self.assertEqual(item["answer"], "تکایە، ئەمە چەندە؟")
+        self.assertIn(item["answer"], item["options"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
