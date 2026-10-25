@@ -164,3 +164,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added a regression assertion in `tests/test_content.py` requiring at least four questions for each beginner lesson, so future edits cannot silently reduce a lesson back to fewer than four.
 - GitHub Actions run `40216155708` for commit `03b70e98d0811ac6d06f8813e99a6a5d266b9705` completed successfully. The `checks` job passed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
 - This verifies automated structural checks only. It does not certify every Kurdish phrase against the selected book or count as a live Telegram test.
+
+
+## Verification of quiz-coverage regression commit (25 October 2026)
+
+- The follow-up audit-document commit `419fdfb8a8ec1b9b912ef7162c9f5f6d6f6e994f` passed GitHub Actions run `40216215362`.
+- The `checks` job completed successfully: dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- Re-read all six lesson records and their quizzes. Each lesson has four questions; the structural check found no empty question text, repeated options within a question, or answer missing from its options.
+- A direct attempt to access the selected 2024 third-edition PDF for page-level verification was not accessible in this audit session. Therefore no uncertain spelling or wording was changed on guesswork. Manual Telegram integration testing is still pending in a separate authorized test environment.
