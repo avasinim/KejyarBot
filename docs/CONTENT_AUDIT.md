@@ -57,6 +57,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40197094742
   - https://github.com/avasinim/KejyarBot/actions/runs/40197098114
 
+## Manual Telegram test preparation (25 October 2026)
+
+- Added `docs/TEST_RUNBOOK.md` with a test-bot-only setup, token/production-data safety boundaries, and a step-by-step checklist for lessons, reward idempotency, quiz callbacks, daily-chat exit behavior, persistence across restart, and speech safety.
+- Re-read the runbook after commit `48814bbd9a69fde620a351514e04e7a205a9ece4`. This is preparation only: **no live Telegram test was executed**, because a separately authorized test bot/token and isolated environment have not been provided in this workflow.
+- CI triggered for the runbook commit: https://github.com/avasinim/KejyarBot/actions/runs/40197282682 .
+
 ## Items deliberately not changed
 
 - Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
