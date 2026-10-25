@@ -338,3 +338,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Replaced it with a market scenario asking which expression is suitable for asking a price (`تکایە، ئەمە چەندە؟`), already present in the lesson. This tests context-sensitive application while retaining the lesson’s polite-request objective.
 - Added a regression test to ensure the scenario and answer remain grounded in the lesson text. No source-sensitive orthography was changed.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 2 alphabet practice inventory regression check (25 October 2026)
+
+- Reviewed the alphabet practice list without treating it as a definitive official alphabet inventory; the lesson itself correctly flags that a source-verified formal inventory requires a named academic reference.
+- Added a regression test confirming the current teaching list contains 34 practice entries and exactly five non-empty example words per entry. This protects the documented practice format and catches accidental truncation or malformed rows.
+- No alphabet order, letter classification, Kurdish spelling, or example word was changed because those changes would require stronger source-level evidence.
+- No `main`, production bot/database, migrations, or PR merge was touched.
