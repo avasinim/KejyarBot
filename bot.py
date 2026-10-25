@@ -212,11 +212,14 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
         return
     lesson = f"وانە_{suffix}"
+    if lesson not in ORDER:
+        await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
-    if lesson in ORDER and lesson not in get_completed_lessons(user_id):
+    if lesson not in get_completed_lessons(user_id):
         await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
         return
     context.user_data["quiz"] = {
