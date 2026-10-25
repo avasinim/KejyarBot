@@ -49,14 +49,48 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
         state["daily_chat_mode"] = False
         return "خواحافیز، بە خۆشی و تەندروستی! هەر کاتێک بتەوێت کەژیار لێرەیە. 👋"
 
+    # Continue a small role-play instead of treating each turn as an unrelated keyword.
+    scenario = state.get("daily_chat_scenario")
+    if scenario == "market" and state.get("daily_chat_stage") == 1:
+        if any(word in clean for word in ("چەندە", "دەمەوێت", "تکایە", "نرخ")):
+            state["daily_chat_stage"] = 2
+            return "زۆر باشە! 🛍 فرۆشیار دەڵێت: «٣٠ هەزار دینارە». تۆ چۆن داوای داشکاندن دەکەیت؟"
+        return "با یەک ڕستەی سادە تاقی بکەینەوە: «تکایە، ئەمە چەندە؟» بە وشەی خۆت بنووسە."
+
+    if scenario == "market" and state.get("daily_chat_stage") == 2:
+        state["daily_chat_stage"] = 3
+        return "باشە، دەتوانیت بڵێیت: «تکایە، کەمێک داشکاندنم بۆ بکە». گفتوگۆکەمان باش بوو! دەتەوێت بابەتێکی تر هەڵبژێریت؟"
+
+    if scenario == "food" and state.get("daily_chat_stage") == 1:
+        state["daily_chat_stage"] = 2
+        return "باشە! فرۆشیار دەڵێت: «چی دەتەوێت بخۆیتەوە؟» تۆ داواکارییەک بە کوردی بنووسە."
+
+    if scenario == "food" and state.get("daily_chat_stage") == 2:
+        state["daily_chat_stage"] = 3
+        return "زۆر باشە! دەتوانیت زیاد بکەیت: «تکایە، سوپاس». گفتوگۆکەمان تەواو بوو؛ بابەتێکی تر هەڵبژێرە."
+
+    if scenario == "school" and state.get("daily_chat_stage") == 1:
+        state["daily_chat_stage"] = 2
+        return "مامۆستا دەپرسێت: «کام وانە بە دڵتە؟» بە ڕستەیەک وەڵام بدەرەوە."
+
+    if scenario == "school" and state.get("daily_chat_stage") == 2:
+        state["daily_chat_stage"] = 3
+        return "وەڵامێکی باشە! دەتوانیت هۆکارەکەشی زیاد بکەیت: «چونکە ...». گفتوگۆکەمان بەردەوام بکەین؟"
+
     if any(word in clean for word in ("بازاڕ", "کڕین", "نرخ", "پارە")):
-        return "لە بازاڕدا دەتوانیت بڵێیت: «تکایە، ئەمە چەندە؟» یان «من ئەمە دەمەوێت». ئێستا تۆ وەک کڕیار یەک ڕستە بنووسە."
+        state["daily_chat_scenario"] = "market"
+        state["daily_chat_stage"] = 1
+        return "با ڕۆڵگێڕی بازاڕ بکەین. 🛍 من فرۆشیارم و تۆ کڕیاریت. پرسیار بکە: «تکایە، ئەمە چەندە؟»"
 
     if any(word in clean for word in ("خواردن", "نان", "برنج", "ئاو", "چای")):
-        return "با لە خواردن گفتوگۆ بکەین: «من چای دەمەوێت، تکایە». تۆ حەزت لە چییە؟"
+        state["daily_chat_scenario"] = "food"
+        state["daily_chat_stage"] = 1
+        return "با لە چێشتخانە ڕۆڵگێڕی بکەین. 🍵 من کارمەندی چێشتخانەم؛ تۆ چی داوا دەکەیت؟"
 
     if any(word in clean for word in ("قوتابخانە", "مامۆستا", "وانە", "خوێندن")):
-        return "باشە! دەتوانیت بڵێیت: «من لە قوتابخانە زمانی کوردی دەخوێنم». تۆ لە کام وانە زیاتر حەز دەکەیت؟"
+        state["daily_chat_scenario"] = "school"
+        state["daily_chat_stage"] = 1
+        return "با گفتوگۆی قوتابخانە ڕاهێنان بکەین. 🎒 من هاوپۆلت دەبم: «سڵاو، کام وانە دەخوێنین؟»"
 
     if any(word in clean for word in ("یارمەتی", "تێناگەم", "نەزانم", "فێر")):
         return "بە خۆشییەوە یارمەتیت دەدەم. 🌱 ڕستەکەت بەش بەش بنووسە، یان بڵێ لە کام وشەدا کێشەت هەیە."
