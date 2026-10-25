@@ -72,7 +72,7 @@ class SpeechGenerationTests(unittest.TestCase):
             "KEJYAR_APPROVED_VOICE_ID": "authorized-test-voice",
         }, clear=True), patch.object(speech, "urlopen") as mocked:
             self.assertIsNone(speech._generate_speech(""))
-            self.assertIsNone(speech._generate_speech(" \\t "))
+            self.assertIsNone(speech._generate_speech("     "))
             mocked.assert_not_called()
 
     def test_generated_text_is_limited_to_1500_characters(self):
