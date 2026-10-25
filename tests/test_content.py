@@ -75,6 +75,29 @@ class ContentConsistencyTests(unittest.TestCase):
                     self.assertIn(section, self.lessons[lesson_key]["content"])
                 self.assertGreaterEqual(len(self.quizzes[lesson_key]), 4)
 
+
+    def test_all_six_lessons_have_an_infographic_asset(self):
+        expected_assets = [
+            "lesson-01-greetings.svg",
+            "lesson-02-letters-sample.svg",
+            "lesson-03-daily-words.svg",
+            "lesson-04-numbers.svg",
+            "lesson-05-colors.svg",
+            "lesson-06-home-school.svg",
+        ]
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        for filename in expected_assets:
+            with self.subTest(asset=filename):
+                self.assertTrue((assets_dir / filename).is_file())
+                self.assertIn("<svg", (assets_dir / filename).read_text(encoding="utf-8"))
+
+    def test_kejyarbot_orthography_policy_keeps_avasin_separate(self):
+        policy_path = BASE_DIR / "docs" / "ORTHOGRAPHY_POLICY.md"
+        self.assertTrue(policy_path.is_file())
+        policy = policy_path.read_text(encoding="utf-8")
+        self.assertIn("کۆدی ئاڤاشین", policy)
+        self.assertIn("دیاکۆ هاشمی", policy)
+
     def test_grade_one_curriculum_outline_is_complete_and_consistent(self):
         plan = self.grade_01_plan
         self.assertEqual(plan["grade"], 1)
