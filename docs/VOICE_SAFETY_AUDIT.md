@@ -18,7 +18,8 @@ The bot must preserve the exact existing woman's Kejyar voice. Do not silently s
 - Dynamic speech now requires `KEJYAR_ENABLE_DYNAMIC_SPEECH=true` as an explicit opt-in.
 - It also requires `ELEVENLABS_API_KEY`, `KEJYAR_VOICE_ID`, and `KEJYAR_APPROVED_VOICE_ID`, with the two voice IDs matching exactly.
 - README instructions leave dynamic speech disabled by default until the original voice ID and real Kurdish output are verified.
-- Tests cover disabled-by-default behavior and reject a mismatched voice ID.
+- Tests cover disabled-by-default behavior, reject a mismatched voice ID, verify that empty/whitespace-only text never reaches the provider, and check that generated text is capped at 1,500 characters. These are mocked tests; they do not validate real audio.
+- GitHub Actions passed for commit `a9999a603b34a3b4b785f9119148a366097c140a` (runs [#221](https://github.com/avasinim/KejyarBot/actions/runs/40195288013) and [#222](https://github.com/avasinim/KejyarBot/actions/runs/40195290719)).
 - No prerecorded audio file was modified. No production bot, production database, or `main` branch was changed.
 
 ## Remaining verification before enabling dynamic speech
