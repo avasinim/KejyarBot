@@ -172,3 +172,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The `checks` job completed successfully: dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
 - Re-read all six lesson records and their quizzes. Each lesson has four questions; the structural check found no empty question text, repeated options within a question, or answer missing from its options.
 - A direct attempt to access the selected 2024 third-edition PDF for page-level verification was not accessible in this audit session. Therefore no uncertain spelling or wording was changed on guesswork. Manual Telegram integration testing is still pending in a separate authorized test environment.
+
+
+## Online source cross-check for lesson 2 (25 October 2026)
+
+- Checked the author's publicly accessible online page “زمانی کوردی: ڕێنووس”: https://chawg.org/zimani-kurdi-renus/ .
+- The page's alphabet section explicitly recommends “ئەلفبێ” and rejects “ئەلف بێ”, “ئەلف و بێ”, and “ئەلفوبێ”; it also states that the Central Kurdish alphabet has 34 letters. This corroborates two claims already represented in the lesson and its automated test.
+- The online page is not the selected 2024 third-edition PDF, and its content may be updated. It does not validate every spelling or the complete alphabet order in the book. Lesson 2 remains clearly labeled as a selection of examples rather than a complete chart; no content was changed just to match an unverified source version.
+- The selected PDF remains inaccessible through the current audit reader. Continue using page-level citations before changing other prescriptive spellings.
