@@ -92,6 +92,12 @@ class ContentConsistencyTests(unittest.TestCase):
             "وانە_9": ("دووشەممە و چوارشەممە وانەمان هەیە", "کاتژمێر حەوت و نیوە", "سبەی پاش نیوەڕۆ"),
             "وانە_10": ("من هەموو ڕۆژێک زمانی کوردی دەخوێنم", "بۆچی ئەمڕۆ درەنگ هاتیت؟", "چۆن دەتوانم ئەم وشەیە بخوێنمەوە؟"),
         }
+        shared_examples = {
+            "وانە_7": ("ئەمە دایکمە.", "ئەوە باوکمە.", "ناوی ئەو شیرینە."),
+            "وانە_8": ("بۆ بەیانی نان و پەنیر دەخۆم.", "شۆرباکە گەرمە.", "ئاو دەخۆمەوە، نەک چای."),
+            "وانە_9": ("ئەمڕۆ دووشەممەیە.", "سبەی سێشەممەیە.", "وانەکە کاتژمێر نۆ دەست پێ دەکات."),
+            "وانە_10": ("من قوتابیم.", "ناوت چییە؟ — ناوم ئارامە.", "کتێبەکە لە کوێیە؟"),
+        }
         infographic_names = {
             "وانە_7": "lesson-07-family.svg",
             "وانە_8": "lesson-08-food-drink.svg",
@@ -106,9 +112,11 @@ class ContentConsistencyTests(unittest.TestCase):
                 example_lines = [line for line in content[start:end].splitlines() if line.startswith("• ")]
                 self.assertEqual(len(example_lines), 10)
                 self.assertGreaterEqual(len(self.quizzes[lesson_key]), 6)
+                for phrase in examples:
+                    self.assertIn(phrase, content)
                 svg_root = ET.parse(BASE_DIR / "assets" / "infographics" / infographic_names[lesson_key]).getroot()
                 svg_text = " ".join(node.text.strip() for node in svg_root.iter() if node.text and node.text.strip())
-                for phrase in examples:
+                for phrase in shared_examples[lesson_key]:
                     self.assertIn(phrase, content)
                     self.assertIn(phrase, svg_text)
 
