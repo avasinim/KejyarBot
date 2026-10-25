@@ -66,6 +66,10 @@ LESSON_INFOGRAPHICS = {
     "وانە_4": "assets/infographics/lesson-04-numbers.svg",
     "وانە_5": "assets/infographics/lesson-05-colors.svg",
     "وانە_6": "assets/infographics/lesson-06-home-school.svg",
+    "وانە_7": "assets/infographics/lesson-07-family.svg",
+    "وانە_8": "assets/infographics/lesson-08-food-drink.svg",
+    "وانە_9": "assets/infographics/lesson-09-days-time.svg",
+    "وانە_10": "assets/infographics/lesson-10-simple-sentences.svg",
 }
 
 async def send_lesson_infographic(message, lesson):
@@ -85,14 +89,18 @@ async def send_lesson_infographic(message, lesson):
             )
     except Exception:
         logger.exception("Could not send lesson infographic for %s", lesson)
-ORDER = ["وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6"]
+ORDER = list(LESSON_DATA.keys())
 LESSON_BUTTONS = {
     "👋 سڵاو و ناساندنی خۆ": "وانە_1",
-    "🔤 ئەلفوبێی کوردی": "وانە_2",
+    "🔤 ئەلفبێی کوردی": "وانە_2",
     "🗣 وشەکانی ڕۆژانە": "وانە_3",
     "🔢 ژمارەکان": "وانە_4",
     "🎨 ڕەنگەکان": "وانە_5",
     "🏠 لە ماڵ و قوتابخانە": "وانە_6",
+    "👪 خێزان و کەسانی نزیک": "وانە_7",
+    "🍽️ خواردن و خواردنەوە": "وانە_8",
+    "📅 ڕۆژەکانی هەفتە و کات": "وانە_9",
+    "🧱 ڕستەی سادە و پرسیارکردن": "وانە_10",
 }
 MENU = ReplyKeyboardMarkup(
     [
@@ -104,6 +112,10 @@ MENU = ReplyKeyboardMarkup(
         ["🔤 ئەلفوبێی کوردی", "🗣 وشەکانی ڕۆژانە"],
         ["🔢 ژمارەکان", "🎨 ڕەنگەکان"],
         ["🏠 لە ماڵ و قوتابخانە"],
+        ["👪 خێزان و کەسانی نزیک"],
+        ["🍽️ خواردن و خواردنەوە"],
+        ["📅 ڕۆژەکانی هەفتە و کات"],
+        ["🧱 ڕستەی سادە و پرسیارکردن"],
     ],
     resize_keyboard=True,
 )
@@ -123,6 +135,10 @@ def check_badges(user_id):
         "وانە_4": "🏅 ژمارەناس",
         "وانە_5": "🏅 ڕەنگناس",
         "وانە_6": "🏅 زانای ماڵ و قوتابخانە",
+        "وانە_7": "🏅 ناسەری خێزان",
+        "وانە_8": "🏅 شارەزای خواردن",
+        "وانە_9": "🏅 ناسەری کات",
+        "وانە_10": "🏅 دروستکەری ڕستە",
     }
     completed = set(get_completed_lessons(user_id))
     for lesson, badge in badges.items():
@@ -184,8 +200,9 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
     if lesson == ORDER[-1]:
+        last_lesson_number = lesson.removeprefix("وانە_")
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٦", callback_data="quiz_6_start")
+            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
         ]])
         await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
     else:
