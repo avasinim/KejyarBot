@@ -425,10 +425,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📚 پەڕگەی وانەکان":
         await update.message.reply_text(
-            "📚 پەڕگەی وانەکان
+            """📚 پەڕگەی وانەکان
 
 هەر وانەیەک بە ئامانج، نمونە، ڕاهێنان و خۆپشکنین ڕێکخراوە.
-🔓 ئامادەی خوێندنەوە  |  🔒 قۆناغی پێشوو تەواو بکە  |  ✅ تەواو کراوە",
+🔓 ئامادەی خوێندنەوە  |  🔒 قۆناغی پێشوو تەواو بکە  |  ✅ تەواو کراوە""",
             reply_markup=lesson_catalog_keyboard(user_id),
         )
         return
