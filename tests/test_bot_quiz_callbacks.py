@@ -104,5 +104,53 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(query.message.reply_text.await_count, 2)
 
 
+    async def test_quiz_cannot_start_before_lesson_is_completed(self):
+        from unittest.mock import patch
+
+        query = SimpleNamespace(
+            data="quiz_1_start",
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+
+    async def test_completed_lesson_can_start_its_quiz(self):
+        from unittest.mock import patch
+
+        query = SimpleNamespace(
+            data="quiz_1_start",
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=88))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
+            await bot.start_quiz(update, context)
+
+        self.assertEqual(context.user_data["quiz"]["lesson"], "وانە_1")
+        self.assertEqual(context.user_data["quiz"]["index"], 0)
+        self.assertEqual(context.user_data["quiz"]["question_message_id"], 88)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+
+
 if __name__ == "__main__":
     unittest.main()
