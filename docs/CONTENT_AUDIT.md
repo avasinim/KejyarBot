@@ -267,3 +267,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Continued the same alignment pass by making the food/drink and location quiz choices quote the exact sentences used in their lessons, including the contrast «نەک لە ژێرەوەی» in the location example.
 
 - CI caught two answer/options mismatches introduced during this wording alignment. The correct options are now synchronized with the answers; a fresh CI run is required to confirm the repair.
+
+
+## Documentation consistency check (25 October 2026)
+
+- Corrected a stale count in `docs/ORTHOGRAPHY_POLICY.md`: lesson 2 contains 34 practice entries with five examples each (170 total), not three examples per entry.
+- Kept the important qualification that these are practice entries, not a definitive official alphabet inventory. The selected 2024 reference PDF has not been verified page by page, and human review remains necessary.
