@@ -57,5 +57,23 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.args[0], bot.LESSON_DATA[lesson]["content"])
 
 
+    async def test_lesson_catalog_lists_all_six_lessons_even_when_locked(self):
+        update, context = self.make_update_context("📚 وانەکان")
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "can_open", return_value=False),
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        catalog = update.message.reply_text.await_args.args[0]
+        self.assertEqual(len(catalog.splitlines()), len(bot.ORDER))
+        for lesson in bot.ORDER:
+            self.assertIn(lesson, catalog)
+            self.assertIn(bot.LESSON_DATA[lesson]["title"], catalog)
+        self.assertEqual(len(bot.ORDER), 6)
+
+
 if __name__ == "__main__":
     unittest.main()
