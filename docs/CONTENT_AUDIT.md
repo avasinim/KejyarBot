@@ -212,4 +212,4 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added a regression test that parses the lesson's example section and checks all 34 entries have exactly five examples and that every word appears in both the lesson and SVG.
 - This is an authored teaching aid, not an official alphabet chart. Some items (including combinations such as `وو`) should be classified carefully before claiming a definitive alphabet inventory. The examples need human review for regional naturalness and source-sensitive spelling.
 - This change does not use Avasin Code and does not alter `main`, production credentials, or any database.
-- Latest CI result for this expansion: pending; verify the run on the current branch before treating this update as tested.
+- CI run #403 passed for commit `d6908a7ba97e87225800d7c6e405cc79cc0a3b55`: https://github.com/avasinim/KejyarBot/actions/runs/40217641807 . The Python compile and unit-test workflow passed, including the 170-example lesson/infographic consistency check. This does not certify every example as a formal academic spelling or confirm live Telegram rendering.
