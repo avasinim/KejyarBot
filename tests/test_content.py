@@ -131,6 +131,13 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertTrue(all(item.strip() for item in lesson["activities"]))
         self.assertNotIn("letter_sound_card_schema", plan)
 
+    def test_final_lesson_points_to_its_own_quiz(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        final_lesson = self.learning_path["lessons"][-1]
+        self.assertIn("وانەی ٦: لە ماڵ و قوتابخانە", final_lesson)
+        self.assertIn('"quiz_6_start"', bot_source)
+        self.assertNotIn('"quiz_5_start"', bot_source)
+
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
             self.assertIn(lesson, self.lessons)
