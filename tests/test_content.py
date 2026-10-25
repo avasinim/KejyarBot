@@ -47,7 +47,7 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
     def test_every_quiz_question_has_valid_options_and_answer(self):
-        self.assertEqual(set(self.quizzes), {"وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6"})
+        self.assertEqual(set(self.quizzes), {f"وانە_{index}" for index in range(1, 11)})
         for lesson, questions in self.quizzes.items():
             with self.subTest(lesson=lesson):
                 self.assertGreaterEqual(len(questions), 4, "Each beginner lesson must provide at least four quiz questions.")
