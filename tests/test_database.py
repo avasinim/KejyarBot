@@ -24,6 +24,13 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[7], 1)  # tests count
         self.assertEqual(user[2], 0)  # database ledger does not award XP itself
 
+    def test_xp_reward_does_not_add_coin_bonus(self):
+        before = database.get_user(12345)
+        database.add_xp(12345, 20)
+        after = database.get_user(12345)
+        self.assertEqual(after[2] - before[2], 20)
+        self.assertEqual(after[8] - before[8], 0)
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
