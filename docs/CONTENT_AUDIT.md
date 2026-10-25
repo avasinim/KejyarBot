@@ -232,3 +232,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Renamed the message-mode regression test from `test_lesson_catalog_lists_all_six_lessons_even_when_locked` to `test_lesson_catalog_lists_all_ten_lessons_even_when_locked`. Its assertion already verified ten lessons; only the stale test name was wrong.
 - CI run #432 passed after the rename: https://github.com/avasinim/KejyarBot/actions/runs/40218025405 .
 - This is a test-maintenance change only; lesson behavior and runtime code were not changed.
+
+
+## Quiz coverage balanced across all ten lessons (25 October 2026)
+
+- Added two new quiz questions to each of lessons 1, 3, 4, 5, and 6 (10 questions total), bringing every lesson to at least six questions. Lesson 2 retains eight questions; lessons 7–10 retain six each.
+- New questions cover introductions and responses to thanks, requesting help, agreement, number sequencing and addition, color recognition, and classroom/home objects and position.
+- Strengthened `tests/test_content.py` so all ten lessons must have at least six quiz questions. Existing checks still validate non-empty question text, distinct options, and that every answer appears among its options.
+- Automated CI validates structure and consistency; the new language examples have not been formally certified against the selected orthography book. Human Kurdish-language review and manual Telegram testing remain pending.
+- No production bot, production database, migrations, or `main` branch changes.
