@@ -131,6 +131,20 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertTrue(all(item.strip() for item in lesson["activities"]))
         self.assertNotIn("letter_sound_card_schema", plan)
 
+    def test_quiz_callback_validates_before_claiming_question(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        start = bot_source.index("async def quiz_answer(")
+        end = bot_source.find("\nasync def ", start + 1)
+        handler = bot_source[start:end if end >= 0 else len(bot_source)]
+        self.assertLess(
+            handler.index('if not raw_index.isdigit():'),
+            handler.index('quiz["question_message_id"] = None'),
+        )
+        self.assertLess(
+            handler.index('if choice_index < 0 or choice_index >= len(question["options"]):'),
+            handler.index('quiz["question_message_id"] = None'),
+        )
+
     def test_final_lesson_points_to_its_own_quiz(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         final_lesson = self.learning_path["lessons"][-1]
