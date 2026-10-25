@@ -65,9 +65,10 @@ class ContentConsistencyTests(unittest.TestCase):
         lesson_one = self.lessons["وانە_1"]["content"]
         question_one = next(
             question for question in self.quizzes["وانە_1"]
-            if question["question"].startswith("کاتێک کەسێک دەڵێت")
+            if question["question"] == "کام دەربڕین بۆ سڵاوکردنی بەیانی گونجاوە؟"
         )
-        self.assertIn("ناوت چییە؟", lesson_one)
+        self.assertIn("بەیانی باش", lesson_one)
+        self.assertEqual(question_one["answer"], "بەیانی باش")
         self.assertIn(question_one["answer"], lesson_one)
 
         lesson_three = self.lessons["وانە_3"]["content"]
