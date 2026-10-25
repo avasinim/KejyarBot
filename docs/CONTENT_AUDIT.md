@@ -265,3 +265,5 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Manual Telegram rendering and end-to-end interaction tests remain pending.
 
 - Continued the same alignment pass by making the food/drink and location quiz choices quote the exact sentences used in their lessons, including the contrast «نەک لە ژێرەوەی» in the location example.
+
+- CI caught two answer/options mismatches introduced during this wording alignment. The correct options are now synchronized with the answers; a fresh CI run is required to confirm the repair.
