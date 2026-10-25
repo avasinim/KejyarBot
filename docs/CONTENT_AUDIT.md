@@ -314,3 +314,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_lesson_four_quiz_assesses_number_in_context` to verify the answer is taught in the lesson and appears among the options.
 - This broadens assessment from sequence recall to using number vocabulary in context. It does not assert independent source-level validation of spelling or regional phrasing.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 6 quiz vocabulary alignment (25 October 2026)
+
+- The lesson teaches `پێنووس` as the school writing tool, while one quiz answer used `قەڵەم`. Although both terms can be used in Kurdish contexts, switching terms without explaining the relationship adds avoidable uncertainty for beginners.
+- Updated the quiz answer to the exact term taught in the lesson (`پێنووس`) and added a regression test to keep the assessment aligned with lesson vocabulary.
+- This is a consistency/pedagogy change, not a claim that the alternate term is universally incorrect. Regional and source-based terminology still needs human review against the selected handbook where relevant.
+- No `main`, production bot/database, migrations, or PR merge was touched.
