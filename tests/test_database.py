@@ -1,4 +1,5 @@
 import tempfile
+from contextlib import closing
 import unittest
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -24,7 +25,7 @@ class DatabaseTests(unittest.TestCase):
             rows = list(pool.map(lambda _: database.get_user(user_id), range(12)))
         self.assertEqual(len(rows), 12)
         self.assertTrue(all(row[0] == user_id for row in rows))
-        with database.sqlite3.connect(database.DB_NAME) as conn:
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
             count = conn.execute(
                 "SELECT COUNT(*) FROM users WHERE user_id=?", (user_id,)
             ).fetchone()[0]

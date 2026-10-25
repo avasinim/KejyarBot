@@ -43,7 +43,8 @@ def reserve_speech_quota(user_id, quota_date, limit=20):
     """Atomically reserve one speech generation for this user and UTC date."""
     if limit < 1:
         return False
-    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
         conn.execute("BEGIN IMMEDIATE")
         conn.execute(
             "INSERT OR IGNORE INTO speech_quota(user_id, quota_date, used) VALUES (?, ?, 0)",
@@ -54,38 +55,59 @@ def reserve_speech_quota(user_id, quota_date, limit=20):
             "WHERE user_id=? AND quota_date=? AND used < ?",
             (user_id, quota_date, limit),
         )
-        return cur.rowcount == 1
+        reserved = cur.rowcount == 1
+        conn.commit()
+        return reserved
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def refund_speech_quota(user_id, quota_date):
     """Refund a reserved slot after generation or delivery fails."""
-    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
         conn.execute(
             "UPDATE speech_quota SET used=used-1 "
             "WHERE user_id=? AND quota_date=? AND used > 0",
             (user_id, quota_date),
         )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def get_speech_quota_used(user_id, quota_date):
     """Return the durable number of reserved speech slots for a user and date."""
-    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
         row = conn.execute(
             "SELECT used FROM speech_quota WHERE user_id=? AND quota_date=?",
             (user_id, quota_date),
         ).fetchone()
         return row[0] if row else 0
+    finally:
+        conn.close()
 
 
 def get_user(user_id):
-    # A user may send /start and trigger another handler at nearly the same
-    # time. Let SQLite arbitrate first-time creation instead of racing SELECT
-    # followed by INSERT against the users table's primary key.
-    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+    # Explicitly close SQLite connections; the connection context manager
+    # commits or rolls back but does not close the connection.
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
         cur = conn.cursor()
         cur.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
         cur.execute("SELECT * FROM users WHERE user_id=?", (user_id,))
-        return cur.fetchone()
+        row = cur.fetchone()
+        conn.commit()
+        return row
+    finally:
+        conn.close()
 
 
 def calculate_level(xp):
