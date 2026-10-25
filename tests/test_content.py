@@ -1,5 +1,6 @@
 import json
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -90,6 +91,17 @@ class ContentConsistencyTests(unittest.TestCase):
             with self.subTest(asset=filename):
                 self.assertTrue((assets_dir / filename).is_file())
                 self.assertIn("<svg", (assets_dir / filename).read_text(encoding="utf-8"))
+
+    def test_infographics_are_well_formed_rtl_svg(self):
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        for path in sorted(assets_dir.glob("*.svg")):
+            with self.subTest(asset=path.name):
+                root = ET.parse(path).getroot()
+                self.assertTrue(root.tag.endswith("svg"))
+                self.assertTrue(root.attrib.get("viewBox"))
+                self.assertEqual(root.attrib.get("direction"), "rtl")
+                svg_text = path.read_text(encoding="utf-8")
+                self.assertIn("Noto Naskh Arabic", svg_text)
 
     def test_kejyarbot_orthography_policy_keeps_avasin_separate(self):
         policy_path = BASE_DIR / "docs" / "ORTHOGRAPHY_POLICY.md"
