@@ -1,3 +1,4 @@
+import io
 import json
 import logging
 import os
@@ -33,6 +34,8 @@ from database import (
     complete_quiz,
 )
 from voice import get_voice
+from daily_chat import PROMPTS, reply_to_daily_message
+from speech import generate_speech, speech_is_configured
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -94,6 +97,7 @@ LESSON_BUTTONS = {
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان"],
+        ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
         ["👋 سڵاو و ناساندنی خۆ"],
@@ -140,6 +144,7 @@ async def send_voice(update, filename):
         logger.exception("Could not send voice file %s", filename)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    context.user_data["daily_chat_mode"] = False
     get_user(update.effective_user.id)
     welcome = """🌱 سڵاو، بەخێربێیت بۆ کەژیار
 
@@ -303,10 +308,43 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
+async def send_conversation_voice(message, text):
+    """Send a generated reply in the configured Kejyar voice when available."""
+    if not speech_is_configured():
+        return
+    audio_bytes = await generate_speech(text)
+    if not audio_bytes:
+        logger.warning("Speech generation was unavailable for a daily-chat reply")
+        return
+    try:
+        audio = io.BytesIO(audio_bytes)
+        audio.name = "kejyar-reply.mp3"
+        await message.reply_voice(voice=audio)
+    except Exception:
+        logger.exception("Could not send generated daily-chat voice")
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
     get_user(user_id)
+
+    if text == "💬 گفتوگۆی ڕۆژانە":
+        context.user_data["daily_chat_mode"] = True
+        await update.message.reply_text(
+            "🌷 بەخێربێیت بۆ گفتوگۆی ڕۆژانەی کەژیار!\n"
+            "بە کوردی بنووسە؛ دەتوانین لە سڵاوکردن، بازاڕ، خواردن و قوتابخانە گفتوگۆ بکەین.\n"
+            "بۆ دەرچوون بنووسە «خواحافیز».\n\n"
+            + PROMPTS[0]
+        )
+        return
+
+    # Menu selections leave free conversation mode; ordinary text stays in it.
+    if text in LESSON_BUTTONS or text in {
+        "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
+        "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
+    }:
+        context.user_data["daily_chat_mode"] = False
 
     if text == "📚 وانەکان":
         rows = []
@@ -379,6 +417,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
             lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
         await update.message.reply_text("\n".join(lines))
+        return
+
+    if context.user_data.get("daily_chat_mode"):
+        reply = reply_to_daily_message(text, context.user_data)
+        await update.message.reply_text(reply, reply_markup=MENU)
+        await send_conversation_voice(update.message, reply)
         return
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
