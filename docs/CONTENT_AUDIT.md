@@ -45,6 +45,11 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40196636041
   - https://github.com/avasinim/KejyarBot/actions/runs/40196640104
 
+## Speech-quota failure-path test correction (25 October 2026)
+
+- Corrected `test_failed_generation_does_not_consume_daily_quota`: removed a pre-existing reservation that obscured the intended assertion, and now verify a failed generation leaves usage at zero.
+- Re-read the updated test file; CI run #262 passed for commit `f06d810f7f878e030044d22c54f2e8bf1dfa67ae`: https://github.com/avasinim/KejyarBot/actions/runs/40196876297 .
+
 ## Items deliberately not changed
 
 - Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
