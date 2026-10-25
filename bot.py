@@ -120,6 +120,7 @@ def check_badges(user_id):
         "وانە_3": "🏅 خوێندکاری وشەکان",
         "وانە_4": "🏅 ژمارەناس",
         "وانە_5": "🏅 ڕەنگناس",
+        "وانە_6": "🏅 زانای ماڵ و قوتابخانە",
     }
     completed = set(get_completed_lessons(user_id))
     for lesson, badge in badges.items():
