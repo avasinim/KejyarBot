@@ -176,10 +176,16 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not questions:
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
-    if lesson in ORDER and not can_open(user_id, lesson):
-        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+    if lesson in ORDER and lesson not in get_completed_lessons(user_id):
+        await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
         return
-    context.user_data["quiz"] = {"index": 0, "lesson": lesson, "questions": questions, "score": 0}
+    context.user_data["quiz"] = {
+        "index": 0,
+        "lesson": lesson,
+        "questions": questions,
+        "score": 0,
+        "question_message_id": None,
+    }
     await send_question(query.message, context.user_data["quiz"])
 
 async def send_question(message, quiz):
@@ -188,7 +194,8 @@ async def send_question(message, quiz):
         [InlineKeyboardButton(option, callback_data=f"answer_{index}")]
         for index, option in enumerate(question["options"])
     ])
-    await message.reply_text("📝 " + question["question"], reply_markup=keyboard)
+    sent = await message.reply_text("📝 " + question["question"], reply_markup=keyboard)
+    quiz["question_message_id"] = sent.message_id
 
 async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -197,6 +204,13 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz:
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
+    # Ignore stale/double-clicked buttons from an earlier question.
+    if query.message.message_id != quiz.get("question_message_id"):
+        return
+    try:
+        await query.edit_message_reply_markup(reply_markup=None)
+    except Exception:
+        logger.debug("Quiz keyboard was already removed or could not be edited")
     raw_index = query.data.removeprefix("answer_")
     if not raw_index.isdigit():
         return
@@ -280,7 +294,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "📝 تاقیکردنەوەکان":
-        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and can_open(user_id, lesson)]
+        completed = set(get_completed_lessons(user_id))
+        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
