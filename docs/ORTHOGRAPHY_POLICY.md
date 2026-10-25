@@ -41,3 +41,10 @@
 - These pages are comparative linguistic resources, not a statement that the Academy has formally reviewed or endorsed KejyarBot's infographic. Do not label the graphics “officially approved” unless that approval is obtained.
 - New examples are teaching material authored for this bot, not source quotations. The exact selected 2024 third-edition PDF remains unverified page by page; uncertain regional forms must continue to be flagged rather than silently normalized.
 - Infographics use an RTL-aware SVG text layout with the Noto Naskh Arabic / Noto Sans Arabic font stack. Rendering can still vary if a viewing device lacks those fonts, so review the SVGs in a browser and on a phone before release.
+
+
+## Ten-lesson expansion note (25 October 2026)
+
+- KejyarBot now contains ten beginner lessons. The new topics are family, food and drink, days/time, and simple sentences/questions.
+- The new examples follow the bot's own source-sensitive orthography policy; do not apply Avasin Code normalization.
+- New lesson SVGs use editable RTL text and the same font stack as the existing infographics. Check the output in a browser and on mobile before release.
