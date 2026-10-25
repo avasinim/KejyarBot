@@ -57,6 +57,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40197094742
   - https://github.com/avasinim/KejyarBot/actions/runs/40197098114
 
+## Additional quiz callback regression coverage (25 October 2026)
+
+- Added tests for a valid final answer completing the quiz and claiming the reward once, and for a valid answer advancing to the next question with the updated message ID and score.
+- These complement the malformed callback, out-of-range option, and stale-question tests. They are mocked unit tests; they do not replace a live Telegram test.
+- Test file: `tests/test_bot_quiz_callbacks.py`; commit: `8d6de4a465949a625e3d84b7b65e056878c79ba2`.
+
 ## Manual Telegram test preparation (25 October 2026)
 
 - Added `docs/TEST_RUNBOOK.md` with a test-bot-only setup, token/production-data safety boundaries, and a step-by-step checklist for lessons, reward idempotency, quiz callbacks, daily-chat exit behavior, persistence across restart, and speech safety.
