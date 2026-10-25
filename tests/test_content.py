@@ -171,6 +171,14 @@ class ContentConsistencyTests(unittest.TestCase):
         )
         self.assertIn("if lesson not in get_completed_lessons(user_id):", handler)
 
+    def test_each_lesson_has_a_completion_badge(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        start = bot_source.index("def check_badges(user_id):")
+        end = bot_source.index("\ndef lesson_keyboard", start)
+        badge_handler = bot_source[start:end]
+        for index in range(1, 7):
+            with self.subTest(lesson=index):
+                self.assertIn(f'"وانە_{index}"', badge_handler)
     def test_lesson_menu_references_only_existing_lessons(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         start = bot_source.index("LESSON_BUTTONS = {")
