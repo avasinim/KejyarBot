@@ -416,5 +416,17 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_six_quiz_uses_taught_writing_tool_term(self):
+        lesson = self.lessons["وانە_6"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_6"]
+            if item["question"] == "کام شت بۆ نووسین لە قوتابخانە بەکاردێت؟"
+        )
+        self.assertIn("پێنووس", lesson)
+        self.assertEqual(item["answer"], "پێنووس")
+        self.assertIn(item["answer"], item["options"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
