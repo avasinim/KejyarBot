@@ -22,6 +22,7 @@ from database import (
     init_db,
     get_user,
     add_score,
+    add_xp,
     complete_lesson,
     get_completed_lessons,
     add_badge,
@@ -238,7 +239,7 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
     )
     if first_completion:
-        add_score(update.effective_user.id, 20)
+        add_xp(update.effective_user.id, 20)
         result += "⭐ +20 XP"
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
