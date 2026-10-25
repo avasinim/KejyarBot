@@ -64,6 +64,32 @@ class SpeechGenerationTests(unittest.TestCase):
             self.assertFalse(speech.speech_is_configured())
             self.assertIsNone(speech._generate_speech("سڵاو"))
 
+    def test_empty_or_whitespace_text_does_not_call_provider(self):
+        with patch.dict(os.environ, {
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
+            "KEJYAR_VOICE_ID": "authorized-test-voice",
+            "KEJYAR_APPROVED_VOICE_ID": "authorized-test-voice",
+        }, clear=True), patch.object(speech, "urlopen") as mocked:
+            self.assertIsNone(speech._generate_speech(""))
+            self.assertIsNone(speech._generate_speech("   \\n  "))
+            mocked.assert_not_called()
+
+    def test_generated_text_is_limited_to_1500_characters(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = b"fake-mp3-audio"
+        long_text = "ک" * 1700
+        with patch.dict(os.environ, {
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
+            "KEJYAR_VOICE_ID": "authorized-test-voice",
+            "KEJYAR_APPROVED_VOICE_ID": "authorized-test-voice",
+        }, clear=True), patch.object(speech, "urlopen", return_value=response) as mocked:
+            speech._generate_speech(long_text)
+        request = mocked.call_args.args[0]
+        body = json.loads(request.data.decode("utf-8"))
+        self.assertEqual(len(body["inputs"][0]["text"]), 1500)
+
     def test_provider_http_error_fails_gracefully(self):
         from urllib.error import HTTPError
         with patch.dict(os.environ, {
