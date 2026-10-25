@@ -26,6 +26,7 @@ from database import (
     add_score,
     add_xp,
     complete_lesson,
+    complete_lesson_with_rewards,
     get_completed_lessons,
     add_badge,
     get_badges,
@@ -172,13 +173,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     old_level = get_user_level(user_id)
-    first_completion = complete_lesson(user_id, lesson)
+    first_completion = complete_lesson_with_rewards(user_id, lesson)
     if not first_completion:
         await query.message.reply_text("✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت.")
         return
 
-    add_score(user_id, 10)
-    add_chest(user_id)
     check_badges(user_id)
     new_level = get_user_level(user_id)
     message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
