@@ -453,5 +453,20 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_two_alphabet_practice_entries_have_five_examples_each(self):
+        content = self.lessons["وانە_2"]["content"]
+        section = content.split("🔤 پیت و وشەی نموونە", 1)[1].split("🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1)[0]
+        entries = [line.strip() for line in section.splitlines() if " — " in line]
+        self.assertEqual(len(entries), 34)
+        for entry in entries:
+            with self.subTest(entry=entry):
+                letter, examples = entry.split(" — ", 1)
+                words = [word.strip() for word in examples.split("،")]
+                self.assertTrue(letter.strip())
+                self.assertEqual(len(words), 5)
+                self.assertTrue(all(words))
+
+
+
 if __name__ == "__main__":
     unittest.main()
