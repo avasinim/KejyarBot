@@ -202,4 +202,4 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added four distinct quiz questions for each new lesson. The full beginner path now contains ten lessons, each with a corresponding SVG infographic.
 - Updated lesson navigation, sequential unlocking, completion badges, final-lesson quiz callback, and regression tests to use the ten lesson records. Lesson order is now derived from the ordered lesson data rather than fixed at six.
 - The new material uses original practice examples, not quotations. Regional vocabulary and spelling still require human review before public release.
-- Automated CI for the latest content/flow changes is pending; do not treat the earlier successful run for the six-lesson revision as verification of this ten-lesson expansion.
+- CI run #389 passed for commit `58e02d8d8c5eedc971decef803b83517f3973b2e`: dependency installation, `python -m compileall -q .`, and the full unittest suite all succeeded. Run: https://github.com/avasinim/KejyarBot/actions/runs/40217276132 . This verifies automated structure and behavior, not every regional spelling or a live Telegram test.
