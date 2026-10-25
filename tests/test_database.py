@@ -163,5 +163,37 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[0], 12345)
 
 
+    def test_speech_quota_persists_and_respects_daily_limit(self):
+        day = "2026-10-25"
+        for _ in range(20):
+            self.assertTrue(database.reserve_speech_quota(12345, day, limit=20))
+        self.assertFalse(database.reserve_speech_quota(12345, day, limit=20))
+        # Re-reading from the database models a process restart.
+        self.assertEqual(database.get_speech_quota_used(12345, day), 20)
+
+    def test_speech_quota_is_independent_per_user_and_date(self):
+        self.assertTrue(database.reserve_speech_quota(12345, "2026-10-25", limit=1))
+        self.assertFalse(database.reserve_speech_quota(12345, "2026-10-25", limit=1))
+        self.assertTrue(database.reserve_speech_quota(54321, "2026-10-25", limit=1))
+        self.assertTrue(database.reserve_speech_quota(12345, "2026-10-26", limit=1))
+
+    def test_concurrent_speech_quota_never_exceeds_limit(self):
+        day = "2026-10-25"
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.reserve_speech_quota(12345, day, limit=5),
+                range(20),
+            ))
+        self.assertEqual(sum(results), 5)
+        self.assertEqual(database.get_speech_quota_used(12345, day), 5)
+
+    def test_refund_releases_only_an_existing_reservation(self):
+        day = "2026-10-25"
+        database.refund_speech_quota(12345, day)
+        self.assertEqual(database.get_speech_quota_used(12345, day), 0)
+        self.assertTrue(database.reserve_speech_quota(12345, day, limit=1))
+        database.refund_speech_quota(12345, day)
+        self.assertEqual(database.get_speech_quota_used(12345, day), 0)
+
 if __name__ == "__main__":
     unittest.main()
