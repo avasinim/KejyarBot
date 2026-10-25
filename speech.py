@@ -17,13 +17,26 @@ logger = logging.getLogger(__name__)
 
 
 def speech_is_configured() -> bool:
-    return bool(os.getenv("ELEVENLABS_API_KEY") and os.getenv("KEJYAR_VOICE_ID"))
+    """Enable TTS only when the chosen voice matches the explicitly approved ID."""
+    api_key = os.getenv("ELEVENLABS_API_KEY")
+    voice_id = os.getenv("KEJYAR_VOICE_ID")
+    approved_voice_id = os.getenv("KEJYAR_APPROVED_VOICE_ID")
+    return bool(api_key and voice_id and approved_voice_id and voice_id == approved_voice_id)
 
 
 def _generate_speech(text: str) -> bytes | None:
     api_key = os.getenv("ELEVENLABS_API_KEY")
     voice_id = os.getenv("KEJYAR_VOICE_ID")
-    if not api_key or not voice_id or not text.strip():
+    approved_voice_id = os.getenv("KEJYAR_APPROVED_VOICE_ID")
+    # Never generate with a voice that has not been explicitly approved as
+    # the existing Kejyar voice; retain prerecorded audio if this is unset.
+    if (
+        not api_key
+        or not voice_id
+        or not approved_voice_id
+        or voice_id != approved_voice_id
+        or not text.strip()
+    ):
         return None
 
     # Keep responses short for conversational latency and API reliability.
