@@ -162,7 +162,7 @@ class ContentConsistencyTests(unittest.TestCase):
     def test_quiz_start_rejects_lessons_outside_learning_path(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         start = bot_source.index("async def start_quiz(")
-        end = bot_source.find("\\nasync def ", start + 1)
+        end = bot_source.find("\nasync def ", start + 1)
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
         self.assertIn("if lesson not in ORDER:", handler)
         self.assertLess(
