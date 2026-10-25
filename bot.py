@@ -56,6 +56,32 @@ def load_json(filename):
 
 LESSON_DATA = load_json("lessons.json")
 QUIZ_DATA = load_json("quiz.json")
+LESSON_INFOGRAPHICS = {
+    "وانە_1": "assets/infographics/lesson-01-greetings.svg",
+    "وانە_2": "assets/infographics/lesson-02-letters-sample.svg",
+    "وانە_3": "assets/infographics/lesson-03-daily-words.svg",
+    "وانە_4": "assets/infographics/lesson-04-numbers.svg",
+    "وانە_5": "assets/infographics/lesson-05-colors.svg",
+    "وانە_6": "assets/infographics/lesson-06-home-school.svg",
+}
+
+async def send_lesson_infographic(message, lesson):
+    relative_path = LESSON_INFOGRAPHICS.get(lesson)
+    if not relative_path:
+        return
+    image_path = BASE_DIR / relative_path
+    if not image_path.is_file():
+        logger.warning("Lesson infographic missing: %s", image_path)
+        return
+    try:
+        with image_path.open("rb") as infographic:
+            await message.reply_document(
+                document=infographic,
+                filename=image_path.name,
+                caption="🖼 وێنەی ڕوونکەرەوەی ئەم وانەیە",
+            )
+    except Exception:
+        logger.exception("Could not send lesson infographic for %s", lesson)
 ORDER = ["وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6"]
 LESSON_BUTTONS = {
     "👋 سڵاو و ناساندنی خۆ": "وانە_1",
@@ -275,6 +301,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_lesson_infographic(query.message, lesson)
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
@@ -308,6 +335,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except Exception:
                 logger.exception("Could not send lesson start voice")
         await update.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+        await send_lesson_infographic(update.message, lesson)
         return
 
     if text == "📝 تاقیکردنەوەکان":
