@@ -57,6 +57,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40197094742
   - https://github.com/avasinim/KejyarBot/actions/runs/40197098114
 
+## Daily-chat and menu transition regression coverage (25 October 2026)
+
+- Added `tests/test_bot_message_mode.py` to check that ordinary text remains in daily-chat mode and that choosing a lesson button exits daily-chat mode and routes into the lesson handler.
+- These tests exercise the message-handler integration with mocked Telegram objects; they do not replace a live Telegram test.
+- Test commit: `2e478b996573e0b6adbe6074b009e1143697f639`.
+
 ## Additional quiz callback regression coverage (25 October 2026)
 
 - Added tests for a valid final answer completing the quiz and claiming the reward once, and for a valid answer advancing to the next question with the updated message ID and score.
