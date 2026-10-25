@@ -171,10 +171,9 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
-    already_done = lesson in get_completed_lessons(user_id)
     old_level = get_user_level(user_id)
-    complete_lesson(user_id, lesson)
-    if already_done:
+    first_completion = complete_lesson(user_id, lesson)
+    if not first_completion:
         await query.message.reply_text("✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت.")
         return
 
