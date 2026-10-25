@@ -273,3 +273,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - Corrected a stale count in `docs/ORTHOGRAPHY_POLICY.md`: lesson 2 contains 34 practice entries with five examples each (170 total), not three examples per entry.
 - Kept the important qualification that these are practice entries, not a definitive official alphabet inventory. The selected 2024 reference PDF has not been verified page by page, and human review remains necessary.
+
+
+## Natural phrasing review — lesson 8 (25 October 2026)
+
+- Replaced the awkward example `من چای حەز دەکەم.` with `من چای بەبێ شەکر حەز لێ دەکەم.`. The replacement reuses a fuller example already present in the same lesson and avoids introducing a new unverified spelling rule.
+- This is a pedagogical phrasing correction, not a claim of page-level verification against the selected 2024 orthography handbook. Human Kurdish-language review and manual Telegram rendering checks remain pending.
