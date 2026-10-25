@@ -370,3 +370,13 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The answer `کاتژمێر نۆ` is directly grounded in the lesson sentence `وانەکە کاتژمێر نۆ دەست پێ دەکات`; added a regression test to preserve this alignment.
 - Lesson 10 questions were reviewed for variety; the existing quiz already checks complete sentences, question words for place/object/reason, and word order, so its content was left unchanged.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Final automated content-integrity sweep (25 October 2026)
+
+- Re-read `lessons.json`, `quiz.json`, `tests/test_content.py`, and this audit log on the protected work branch after the lesson 9 update.
+- Integrity checks: 10 lesson records, quiz records for all 10 lessons, 62 questions total; no repeated question text within a lesson, no duplicate options, no answer missing from its options, and no answer missing from its own lesson text.
+- The existing test suite already enforces unique question text and unique options, so no redundant test was added.
+- This is structural/content-alignment evidence only. It does not establish page-by-page compliance with the 2024 third edition of Diyako Hashemi’s handbook or prove that every sentence is idiomatic. No spelling was changed without source-page evidence.
+- Next release blockers remain: page-level orthography review against the selected handbook edition, browser/mobile visual review of the SVG infographics, and manual Telegram testing in a separate test environment.
+- No `main`, production bot/database, migrations, or PR merge was touched.
