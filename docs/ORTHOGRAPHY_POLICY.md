@@ -36,7 +36,7 @@
 
 ## Expanded lesson and infographic review (25 October 2026)
 
-- The alphabet lesson now includes 34 practice entries with three example words each, and the infographic repeats the same examples as selectable SVG text.
+- The alphabet lesson now includes 34 practice entries with five example words each (170 examples total), and the infographic repeats the same examples as selectable SVG text. These are practice entries, not a claim that the list is a definitive official alphabet inventory.
 - Reference tables consulted: Kurdish Academy of Language, “Current Practised Kurdish alphabets” (https://kurdishacademy.org/?page_id=284) and “Kurdish Phonetic Alphabets” (https://kurdishacademy.org/?page_id=357).
 - These pages are comparative linguistic resources, not a statement that the Academy has formally reviewed or endorsed KejyarBot's infographic. Do not label the graphics “officially approved” unless that approval is obtained.
 - New examples are teaching material authored for this bot, not source quotations. The exact selected 2024 third-edition PDF remains unverified page by page; uncertain regional forms must continue to be flagged rather than silently normalized.
