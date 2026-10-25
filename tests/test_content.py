@@ -65,7 +65,7 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
-    def test_recent_example_expansion_remains_in_all_six_lessons(self):
+    def test_example_expansion_remains_in_all_ten_lessons(self):
         required_phrases = {
             "وانە_1": ("نموونەی زیاتر", "خۆشحاڵم بە ناسینت"),
             "وانە_2": ("پیت و وشەی نموونە", "ڕیزبەندی و ژمارەکردنی پیتەکان"),
@@ -73,6 +73,10 @@ class ContentConsistencyTests(unittest.TestCase):
             "وانە_4": ("نموونەی ژمارەکردنی زیاتر", "چەند دەفتەرت هەیە؟"),
             "وانە_5": ("نموونەی ڕەنگ لە ڕستەی زیاتر", "پێنووسەکەت چ ڕەنگێکە؟"),
             "وانە_6": ("وشە و ڕستەی زیاتر", "دەفتەرەکەم لە کوێیە؟"),
+            "وانە_7": ("وشەکانی وانە", "ئەوە باوکمە."),
+            "وانە_8": ("وشەکانی وانە", "تکایە، پەرداخێک ئاو بدە."),
+            "وانە_9": ("ڕۆژەکانی هەفتە", "سبەی سێشەممەیە."),
+            "وانە_10": ("وشەی پرسیار", "ئەمە چییە؟"),
         }
         for lesson_key, phrases in required_phrases.items():
             with self.subTest(lesson=lesson_key):
@@ -275,7 +279,7 @@ class ContentConsistencyTests(unittest.TestCase):
         start = bot_source.index("def check_badges(")
         end = bot_source.index("\ndef lesson_keyboard(", start)
         handler = bot_source[start:end]
-        for index in range(1, 7):
+        for index in range(1, 11):
             with self.subTest(lesson=index):
                 self.assertIn(f'"وانە_{index}"', handler)
         self.assertIn("🏅 زانای ماڵ و قوتابخانە", handler)
