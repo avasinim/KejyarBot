@@ -20,8 +20,8 @@ class ContentConsistencyTests(unittest.TestCase):
         cls.learning_path = load_json("learning_path.json")
         cls.grade_01_plan = load_json("curriculum/grade_01_plan.json")["curriculum"]
 
-    def test_lesson_catalog_contains_only_six_lesson_records(self):
-        self.assertEqual(set(self.lessons), {f"وانە_{index}" for index in range(1, 7)})
+    def test_lesson_catalog_contains_ten_lesson_records(self):
+        self.assertEqual(set(self.lessons), {f"وانە_{index}" for index in range(1, 11)})
         for key, lesson in self.lessons.items():
             with self.subTest(lesson=key):
                 self.assertTrue(lesson.get("title", "").strip())
@@ -35,6 +35,10 @@ class ContentConsistencyTests(unittest.TestCase):
             "وانەی ٤: ژمارەکان",
             "وانەی ٥: ڕەنگەکان",
             "وانەی ٦: لە ماڵ و قوتابخانە",
+            "وانەی ٧: خێزان و کەسانی نزیک",
+            "وانەی ٨: خواردن و خواردنەوە",
+            "وانەی ٩: ڕۆژەکانی هەفتە و کات",
+            "وانەی ١٠: ڕستەی سادە و پرسیارکردن",
         ]
         self.assertEqual(self.learning_path["lessons"], expected)
         for index, title in enumerate(expected, start=1):
@@ -157,7 +161,7 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertGreaterEqual(len(self.quizzes[lesson_key]), 4)
 
 
-    def test_all_six_lessons_have_an_infographic_asset(self):
+    def test_all_ten_lessons_have_an_infographic_asset(self):
         expected_assets = [
             "lesson-01-greetings.svg",
             "lesson-02-letters-sample.svg",
@@ -165,6 +169,10 @@ class ContentConsistencyTests(unittest.TestCase):
             "lesson-04-numbers.svg",
             "lesson-05-colors.svg",
             "lesson-06-home-school.svg",
+            "lesson-07-family.svg",
+            "lesson-08-food-drink.svg",
+            "lesson-09-days-time.svg",
+            "lesson-10-simple-sentences.svg",
         ]
         assets_dir = BASE_DIR / "assets" / "infographics"
         for filename in expected_assets:
@@ -228,9 +236,9 @@ class ContentConsistencyTests(unittest.TestCase):
     def test_final_lesson_points_to_its_own_quiz(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         final_lesson = self.learning_path["lessons"][-1]
-        self.assertIn("وانەی ٦: لە ماڵ و قوتابخانە", final_lesson)
-        self.assertIn('"quiz_6_start"', bot_source)
-        self.assertNotIn('"quiz_5_start"', bot_source)
+        self.assertIn("وانەی ١٠: ڕستەی سادە و پرسیارکردن", final_lesson)
+        self.assertIn('callback_data=f"quiz_{last_lesson_number}_start"', bot_source)
+        self.assertNotIn('callback_data="quiz_5_start"', bot_source)
 
     def test_quiz_start_rejects_lessons_outside_learning_path(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
@@ -249,7 +257,7 @@ class ContentConsistencyTests(unittest.TestCase):
         start = bot_source.index("LESSON_BUTTONS = {")
         end = bot_source.index("\n}", start) + 2
         block = bot_source[start:end]
-        for index in range(1, 7):
+        for index in range(1, 11):
             lesson = f"وانە_{index}"
             with self.subTest(lesson=lesson):
                 self.assertIn(lesson, block)
