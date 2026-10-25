@@ -502,5 +502,16 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertIn(item["answer"], item["options"])
 
 
+    def test_lesson_nine_quiz_checks_specific_clock_time(self):
+        lesson = self.lessons["وانە_9"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_9"]
+            if item["question"] == "وانەکە کاتژمێر چەند دەست پێ دەکات؟"
+        )
+        self.assertIn("وانەکە کاتژمێر نۆ دەست پێ دەکات", lesson)
+        self.assertEqual(item["answer"], "کاتژمێر نۆ")
+        self.assertIn(item["answer"], item["options"])
+
+
 if __name__ == "__main__":
     unittest.main()
