@@ -31,3 +31,9 @@ The bot must preserve the exact existing woman's Kejyar voice. Do not silently s
 5. If distinct event prompts are required, obtain the original approved recordings rather than inventing replacements.
 
 CI success validates code/tests only; it does not certify the sound, speaker identity, consent, or Kurdish pronunciation.
+
+## Additional cost-control finding
+
+- The current 20-response daily speech quota is stored in Telegram `context.user_data` by `bot.py`. It protects against repeated requests during the running process and refunds failed generation/delivery attempts.
+- The application is built without a configured persistent Telegram `user_data` store. Therefore, a process restart can reset the quota; the limit should not be described as a durable per-user daily cap.
+- No database schema or runtime behavior was changed for this finding. Before relying on this as a hard API-cost limit, implement and test an atomic persistent quota ledger (with a UTC or explicitly chosen timezone day boundary) in the isolated development branch. Do not run migrations against or modify any production database without explicit authorization.
