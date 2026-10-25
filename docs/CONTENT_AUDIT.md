@@ -322,3 +322,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Updated the quiz answer to the exact term taught in the lesson (`پێنووس`) and added a regression test to keep the assessment aligned with lesson vocabulary.
 - This is a consistency/pedagogy change, not a claim that the alternate term is universally incorrect. Regional and source-based terminology still needs human review against the selected handbook where relevant.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 1 quiz coverage follow-up (25 October 2026)
+
+- Reviewed the six beginner questions for repeated assessment targets. Two questions focused on introducing or responding with a person’s name, while the lesson also teaches a distinct morning greeting.
+- Replaced one repeated name-introduction item with a question about choosing the appropriate morning greeting (`بەیانی باش`). The answer is present in the lesson text and among the options.
+- Added a regression test to protect this coverage and answer-to-lesson alignment. This is an assessment-design adjustment, not an orthography correction.
+- No `main`, production bot/database, migrations, or PR merge was touched.
