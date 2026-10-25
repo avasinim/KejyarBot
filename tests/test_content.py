@@ -17,6 +17,7 @@ class ContentConsistencyTests(unittest.TestCase):
         cls.lessons = load_json("lessons.json")
         cls.quizzes = load_json("quiz.json")
         cls.learning_path = load_json("learning_path.json")
+        cls.grade_01_plan = load_json("curriculum/grade_01_plan.json")["curriculum"]
 
     def test_learning_path_matches_lesson_titles_and_order(self):
         expected = [
@@ -42,6 +43,27 @@ class ContentConsistencyTests(unittest.TestCase):
                     self.assertGreaterEqual(len(question["options"]), 2)
                     self.assertEqual(len(question["options"]), len(set(question["options"])))
                     self.assertIn(question["answer"], question["options"])
+
+
+    def test_grade_one_curriculum_outline_is_complete_and_consistent(self):
+        plan = self.grade_01_plan
+        self.assertEqual(plan["grade"], 1)
+        self.assertEqual(plan["stage"], "سەرەتایی")
+        self.assertEqual(plan["status"], "outline")
+        lessons = plan["lessons"]
+        self.assertEqual(len(lessons), 20)
+        lesson_ids = [lesson["id"] for lesson in lessons]
+        self.assertEqual(len(lesson_ids), len(set(lesson_ids)))
+        self.assertEqual(lesson_ids, [f"g1-l{i:02d}" for i in range(1, 21)])
+        for lesson in lessons:
+            with self.subTest(lesson=lesson["id"]):
+                self.assertTrue(lesson["title"].strip())
+                self.assertTrue(lesson["goals"])
+                self.assertTrue(lesson["activities"])
+                self.assertTrue(lesson["assessment"].strip())
+                self.assertTrue(all(item.strip() for item in lesson["goals"]))
+                self.assertTrue(all(item.strip() for item in lesson["activities"]))
+        self.assertNotIn("letter_sound_card_schema", plan)
 
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
