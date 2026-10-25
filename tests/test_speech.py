@@ -18,6 +18,7 @@ class SpeechGenerationTests(unittest.TestCase):
         response.__enter__.return_value.read.return_value = audio
         with patch.dict(os.environ, {
             "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
             "KEJYAR_VOICE_ID": "authorized-test-voice",
             "KEJYAR_APPROVED_VOICE_ID": "authorized-test-voice",
         }, clear=True), patch.object(speech, "urlopen", return_value=response) as mocked:
@@ -34,9 +35,20 @@ class SpeechGenerationTests(unittest.TestCase):
         }])
         self.assertEqual(mocked.call_args.kwargs["timeout"], 25)
 
+    def test_dynamic_generation_requires_explicit_enable_flag(self):
+        with patch.dict(os.environ, {
+            "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_VOICE_ID": "approved-original-voice",
+            "KEJYAR_APPROVED_VOICE_ID": "approved-original-voice",
+        }, clear=True), patch.object(speech, "urlopen") as mocked:
+            self.assertFalse(speech.speech_is_configured())
+            self.assertIsNone(speech._generate_speech("سڵاو"))
+            mocked.assert_not_called()
+
     def test_generation_is_disabled_if_voice_is_not_explicitly_approved(self):
         with patch.dict(os.environ, {
             "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
             "KEJYAR_VOICE_ID": "different-voice",
             "KEJYAR_APPROVED_VOICE_ID": "original-kejyar-voice",
         }, clear=True), patch.object(speech, "urlopen") as mocked:
@@ -56,6 +68,7 @@ class SpeechGenerationTests(unittest.TestCase):
         from urllib.error import HTTPError
         with patch.dict(os.environ, {
             "ELEVENLABS_API_KEY": "test-key",
+            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
             "KEJYAR_VOICE_ID": "authorized-test-voice",
             "KEJYAR_APPROVED_VOICE_ID": "authorized-test-voice",
         }, clear=True), patch.object(
