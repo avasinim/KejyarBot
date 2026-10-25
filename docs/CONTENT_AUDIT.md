@@ -387,3 +387,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The test calls the local guard directly with mocked environment variables and does not send a request to the speech provider or use real credentials.
 - This protects the existing safety gate; it does not enable dynamic speech or establish that generated Kurdish audio is linguistically acceptable.
 - No runtime bot logic, voice configuration, `main`, production bot/database, migrations, or PR merge was changed.
+
+
+## Daily-conversation exit-priority regression (25 October 2026)
+
+- Review found that a message combining a greeting and an explicit goodbye (for example, “سڵاو، خواحافیز”) was handled by the earlier greeting branch, leaving daily-chat mode active despite the goodbye.
+- Moved recognized goodbye phrases into the early exit branch so explicit exit intent takes priority over greeting and role-play matching; the exit still clears role-play state.
+- Added a regression test for the combined greeting/goodbye case and verifies that chat mode and role-play state are cleared.
+- This is a narrow conversation-flow fix; it does not alter lesson text, quiz answers, the KejyarBot orthography policy, speech settings, main, production data, or PR merge status.
