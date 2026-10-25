@@ -546,5 +546,50 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertIn(item["answer"], item["options"])
 
 
+    def test_expanded_lessons_seven_to_ten_have_practical_examples_and_matching_quizzes(self):
+        required_examples = {
+            "وانە_7": [
+                "دایکم مامۆستایە.",
+                "براکەم لەگەڵ هاوڕێکانی یاری دەکات.",
+                "لە وێنەکەدا کێ هەیە؟",
+            ],
+            "وانە_8": [
+                "تکایە، پەرداخێک ئاو بۆ من بهێنە.",
+                "من برنج دەخۆم، بەڵام ئاو دەخۆمەوە.",
+                "— سڵاو، چی دەتەوێت؟",
+            ],
+            "وانە_9": [
+                "«دوێنێ» بۆ ڕۆژی پێش ئێستا",
+                "پاش نانی بەیانی دەچمە قوتابخانە.",
+                "سبەی بۆ ڕۆژی داهاتوو",
+            ],
+            "وانە_10": [
+                "«چەند؟» بۆ پرسیارکردن لە ژمارە یان بڕ",
+                "«بۆچی؟» بۆ پرسیارکردن لە هۆکار",
+                "— چەند وشەی نوێت فێر بووە؟",
+            ],
+        }
+        for lesson_key, examples in required_examples.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            with self.subTest(lesson=lesson_key):
+                for example in examples:
+                    self.assertIn(example, lesson_text)
+
+        new_quiz_answers = {
+            "وانە_7": ["پرسیار لە کەس", "براکەم قوتابییە."],
+            "وانە_8": ["خواردنەوە", "تکایە، لیستی خواردنەکانم پێ بدە."],
+            "وانە_9": ["ڕۆژی داهاتوو", "سێشەممە"],
+            "وانە_10": ["هۆکار", "ژمارە یان بڕ"],
+        }
+        for lesson_key, answers in new_quiz_answers.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            quiz_items = self.quizzes[lesson_key]
+            with self.subTest(lesson=lesson_key):
+                for answer in answers:
+                    self.assertIn(answer, lesson_text)
+                    item = next(question for question in quiz_items if question["answer"] == answer)
+                    self.assertIn(answer, item["options"])
+
+
 if __name__ == "__main__":
     unittest.main()
