@@ -53,6 +53,14 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertIn(required, lesson)
         self.assertGreaterEqual(len(self.quizzes["وانە_2"]), 4)
 
+
+    def test_everyday_vocabulary_lesson_has_dialogue_and_practice(self):
+        lesson = self.lessons["وانە_3"]["content"]
+        for required in ("ئامانجی وانە", "نموونەی گفتوگۆ", "وشە لە ناو ڕستەدا", "ڕاهێنان", "پێداچوونەوە"):
+            with self.subTest(section=required):
+                self.assertIn(required, lesson)
+        self.assertGreaterEqual(len(self.quizzes["وانە_3"]), 4)
+
     def test_grade_one_curriculum_outline_is_complete_and_consistent(self):
         plan = self.grade_01_plan
         self.assertEqual(plan["grade"], 1)
