@@ -218,15 +218,16 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     lesson = quiz["lesson"]
     earned = quiz["score"]
-    add_score(update.effective_user.id, 20)
-    if lesson in ORDER:
-        complete_lesson(update.effective_user.id, lesson)
-        check_badges(update.effective_user.id)
+    first_completion = complete_quiz(update.effective_user.id, lesson)
     result = (
-        f"🎉 تاقیکردنەوە تەواو بوو!\n"
-        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
-        f"⭐ +20 XP"
+        f"🎉 تاقیکردنەوە تەواو بوو!\\n"
+        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\\n"
     )
+    if first_completion:
+        add_score(update.effective_user.id, 20)
+        result += "⭐ +20 XP"
+    else:
+        result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
