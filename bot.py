@@ -29,7 +29,7 @@ from database import (
     get_user_level,
     open_chest,
     add_chest,
-    add_coins,
+    complete_quiz,
 )
 from voice import get_voice
 
