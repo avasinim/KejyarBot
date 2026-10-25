@@ -72,6 +72,16 @@ def add_score(user_id,points):
     update_level(user_id)
 
 
+def add_xp(user_id, amount):
+    """Add XP/score without awarding the lesson-specific coin bonus."""
+    conn = sqlite3.connect(DB_NAME)
+    cur = conn.cursor()
+    cur.execute("UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?", (amount, amount, user_id))
+    conn.commit()
+    conn.close()
+    update_level(user_id)
+
+
 def add_coins(user_id,amount):
     conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
     cur.execute('UPDATE users SET coins=coins+? WHERE user_id=?',(amount,user_id))
