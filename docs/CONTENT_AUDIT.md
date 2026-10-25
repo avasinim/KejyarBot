@@ -99,3 +99,8 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 ## Safety boundary
 
 This audit is documentation only. It does not change `main`, production bot settings, production databases, migrations, or prerecorded audio assets. KejyarBot's orthography remains separate from Avasin Code.
+
+## Legacy quiz-data file note (25 October 2026)
+
+- Runtime code in `bot.py` loads `quiz.json` as `QUIZ_DATA`; the separate `quizzes.json` file is not referenced by the reviewed runtime entry point and contains an older, partial `lesson_3` schema.
+- Kept `quizzes.json` untouched in this stability pass to avoid deleting potentially user-retained material without confirmation. Treat `quiz.json` as the active quiz source unless a repository-wide reference check establishes a different intended use; before any future removal, search all scripts, tests, documentation, and deployment configuration for references.
