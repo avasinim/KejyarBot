@@ -29,6 +29,31 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(state["speech_quota_used"], 4)
         message.reply_voice.assert_awaited_once()
 
+    async def test_failed_delivery_refunds_reserved_quota(self):
+        state = {"speech_quota_date": bot.date.today().isoformat(), "speech_quota_used": 3}
+        message = type("Message", (), {"reply_voice": AsyncMock(side_effect=RuntimeError("send failed"))})()
+
+        with patch.object(bot, "speech_is_configured", return_value=True), patch.object(
+            bot, "generate_speech", new=AsyncMock(return_value=b"fake-mp3")
+        ):
+            await bot.send_conversation_voice(message, "سڵاو", state)
+
+        self.assertEqual(state["speech_quota_used"], 3)
+        message.reply_voice.assert_awaited_once()
+
+    async def test_daily_cap_prevents_another_generation(self):
+        state = {"speech_quota_date": bot.date.today().isoformat(), "speech_quota_used": 20}
+        message = type("Message", (), {"reply_voice": AsyncMock()})()
+
+        with patch.object(bot, "speech_is_configured", return_value=True), patch.object(
+            bot, "generate_speech", new=AsyncMock()
+        ) as generate:
+            await bot.send_conversation_voice(message, "سڵاو", state)
+
+        generate.assert_not_awaited()
+        message.reply_voice.assert_not_awaited()
+        self.assertEqual(state["speech_quota_used"], 20)
+
     async def test_unconfigured_speech_does_not_change_quota(self):
         state = {"speech_quota_date": bot.date.today().isoformat(), "speech_quota_used": 3}
         message = type("Message", (), {"reply_voice": AsyncMock()})()
