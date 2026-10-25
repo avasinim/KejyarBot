@@ -57,7 +57,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.args[0], bot.LESSON_DATA[lesson]["content"])
 
 
-    async def test_lesson_catalog_lists_all_six_lessons_even_when_locked(self):
+    async def test_lesson_catalog_lists_all_ten_lessons_even_when_locked(self):
         update, context = self.make_update_context("📚 وانەکان")
         with (
             patch.object(bot, "get_user"),
