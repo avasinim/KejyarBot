@@ -50,6 +50,13 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - Corrected `test_failed_generation_does_not_consume_daily_quota`: removed a pre-existing reservation that obscured the intended assertion, and now verify a failed generation leaves usage at zero.
 - Re-read the updated test file; CI run #262 passed for commit `f06d810f7f878e030044d22c54f2e8bf1dfa67ae`: https://github.com/avasinim/KejyarBot/actions/runs/40196876297 .
 
+## Quiz callback regression coverage (25 October 2026)
+
+- Added `tests/test_bot_quiz_callbacks.py` to cover malformed answer callback data, out-of-range option indexes, and stale buttons from a previous question. Each case verifies the active quiz index, score, and current question ID remain unchanged.
+- Re-read the new test file on the working branch. CI runs #266 and #267 passed for commit `0e894482d52b77bf738500ff923e1d9fc5307b73`:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40197094742
+  - https://github.com/avasinim/KejyarBot/actions/runs/40197098114
+
 ## Items deliberately not changed
 
 - Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
