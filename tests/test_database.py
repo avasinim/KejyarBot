@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import database
@@ -21,6 +22,24 @@ class DatabaseTests(unittest.TestCase):
         self.assertTrue(database.complete_lesson(12345, "وانە_1"))
         self.assertFalse(database.complete_lesson(12345, "وانە_1"))
         self.assertEqual(database.get_completed_lessons(12345), ["وانە_1"])
+
+    def test_concurrent_lesson_completion_has_one_winner(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_lesson(12345, "وانە_2"),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        self.assertEqual(database.get_completed_lessons(12345), ["وانە_2"])
+
+    def test_concurrent_quiz_completion_has_one_winner(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_quiz(12345, "وانە_3"),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        self.assertEqual(database.get_user(12345)[7], 1)
 
     def test_quiz_reward_can_be_claimed_only_once(self):
         self.assertTrue(database.complete_quiz(12345, "وانە_2"))
