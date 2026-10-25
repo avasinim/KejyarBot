@@ -22,6 +22,22 @@ class DailyConversationTests(unittest.TestCase):
     def test_empty_input_is_handled(self):
         self.assertTrue(reply_to_daily_message("   ").strip())
 
+    def test_market_roleplay_remembers_the_scenario(self):
+        state = {"daily_chat_mode": True}
+        first = reply_to_daily_message("با لە بازاڕ گفتوگۆ بکەین", state)
+        second = reply_to_daily_message("تکایە، ئەمە چەندە؟", state)
+        self.assertIn("فرۆشیار", first)
+        self.assertIn("داشکاندن", second)
+        self.assertEqual(state["daily_chat_scenario"], "market")
+        self.assertEqual(state["daily_chat_stage"], 2)
+
+    def test_food_roleplay_has_a_followup_turn(self):
+        state = {"daily_chat_mode": True}
+        first = reply_to_daily_message("با لە خواردن گفتوگۆ بکەین", state)
+        second = reply_to_daily_message("چای دەمەوێت", state)
+        self.assertIn("چێشتخانە", first)
+        self.assertIn("داواکاری", second)
+
 
 if __name__ == "__main__":
     unittest.main()
