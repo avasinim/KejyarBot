@@ -454,11 +454,25 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = [
+            [InlineKeyboardButton(
+                f"📝 {lesson.removeprefix('وانە_')}. {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                callback_data=f"quiz_{lesson.split('_')[1]}_start",
+            )]
+            for lesson in ORDER
+            if QUIZ_DATA.get(lesson) and lesson in completed
+        ]
         if not buttons:
-            await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+            await update.message.reply_text(
+                "🔒 هێشتا تاقیکردنەوەیەکت ئامادە نیە.\n"
+                "سەرەتا وانەی یەکەم بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکەی دەکرێتەوە."
+            )
             return
-        await update.message.reply_text("تاقیکردنەوە هەڵبژێرە 👇", reply_markup=InlineKeyboardMarkup(buttons))
+        await update.message.reply_text(
+            "📝 تاقیکردنەوەی وانە تەواوکراوەکان\n"
+            "هەر تاقیکردنەوەیەک بۆ پشکنینی تێگەیشتنتە؛ وەڵامەکان لە وانەکان فێر دەکرێن.",
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
         return
 
     if text == "🎁 خەڵاتەکان":
@@ -478,9 +492,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "📊 پێشکەوتنی خوێندن":
         user = get_user(user_id)
         badges = get_badges(user_id)
+        completed = set(get_completed_lessons(user_id))
+        total = len(ORDER)
+        done = sum(1 for lesson in ORDER if lesson in completed)
+        percent = round(done * 100 / total) if total else 0
+        next_lesson = next((lesson for lesson in ORDER if lesson not in completed and can_open(user_id, lesson)), None)
+        next_text = (
+            f"➡️ وانەی داهاتوو: {LESSON_DATA.get(next_lesson, {}).get('title', next_lesson)}"
+            if next_lesson else "🎓 هەموو وانەکانی ئەم ڕێڕەوە تەواو کردووە!"
+        )
         await update.message.reply_text(
-            f"📊 پێشکەوتنی خوێندن\n\n⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
-            f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n🏅 نیشانەکان:\n" +
+            f"📊 پێشکەوتنی خوێندن\n\n📚 وانەکان: {done}/{total} ({percent}٪)\n"
+            f"⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
+            f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n{next_text}\n\n🏅 نیشانەکان:\n" +
             ("\n".join(badges) if badges else "هێشتا هیچ نیشانەیەک نیە.")
         )
         return
