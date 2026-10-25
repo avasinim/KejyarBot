@@ -77,16 +77,16 @@ class ContentConsistencyTests(unittest.TestCase):
                     self.assertIn(phrase, content)
 
     def test_alphabet_spelling_matches_selected_reference(self):
-        lesson = self.lessons["وانە_2"]["title"] + "\\n" + self.lessons["وانە_2"]["content"]
-        path_text = "\\n".join(self.learning_path["lessons"])
-        quiz_text = "\\n".join(
-            question["question"] + "\\n" + "\\n".join(question["options"])
+        lesson = self.lessons["وانە_2"]["title"] + "\n" + self.lessons["وانە_2"]["content"]
+        path_text = "\n".join(self.learning_path["lessons"])
+        quiz_text = "\n".join(
+            question["question"] + "\n" + "\n".join(question["options"])
             for question in self.quizzes["وانە_2"]
         )
         svg_text = (
             BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
         ).read_text(encoding="utf-8")
-        combined = "\\n".join((lesson, path_text, quiz_text, svg_text))
+        combined = "\n".join((lesson, path_text, quiz_text, svg_text))
         self.assertIn("ئەلفبێ", combined)
         self.assertNotIn("ئەلفوبێ", combined)
         self.assertNotIn("ئەلف بێ", combined)
