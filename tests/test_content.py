@@ -63,6 +63,20 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.quizzes["وانە_2"]), 4)
 
 
+    def test_alphabet_infographic_examples_match_lesson_two(self):
+        lesson = self.lessons["وانە_2"]["content"]
+        svg_path = BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
+        root = ET.parse(svg_path).getroot()
+        svg_text = " ".join(node.text.strip() for node in root.iter() if node.text and node.text.strip())
+        examples = (("ب", "باوک"), ("پ", "پیاو"), ("چ", "چاو"),
+                    ("ڕ", "ڕۆژ"), ("ش", "شاخ"), ("گ", "گوڵ"))
+        for letter, word in examples:
+            with self.subTest(letter=letter, word=word):
+                self.assertIn(letter, lesson)
+                self.assertIn(word, lesson)
+                self.assertIn(letter, svg_text)
+                self.assertIn(word, svg_text)
+
     def test_everyday_vocabulary_lesson_has_dialogue_and_practice(self):
         lesson = self.lessons["وانە_3"]["content"]
         for required in ("ئامانجی وانە", "نموونەی گفتوگۆ", "وشە لە ناو ڕستەدا", "ڕاهێنان", "پێداچوونەوە"):
