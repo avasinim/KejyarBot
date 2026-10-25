@@ -25,11 +25,11 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
     if not clean:
         return "تکایە وشە یان ڕستەیەک بنووسە تا گفتوگۆکەمان بەردەوام بکەین."
 
-    if any(word in clean for word in ("وەستان", "کۆتایی", "دەربچم", "منووی سەرەکی")):
+    if any(phrase in clean for phrase in ("وەستان", "کۆتایی", "دەربچم", "منووی سەرەکی", "خواحافیز", "خوات لەگەڵ", "دواتر دەبینم")):
         state["daily_chat_mode"] = False
         state.pop("daily_chat_scenario", None)
         state.pop("daily_chat_stage", None)
-        return "باشە، گفتوگۆکەمان لێرە کۆتایی پێ دێت. هەر کاتێک بتەوێت دەتوانیت دووبارە دەستی پێ بکەیت. 🌷"
+        return "باشە، گفتوگۆکەمان لێرە کۆتایی پێ دێت. خواحافیز! هەر کاتێک بتەوێت دەتوانیت دووبارە دەستی پێ بکەیت. 🌷"
 
     if any(word in clean for word in ("سڵاو", "بەخێربێ", "ڕۆژباش", "ئێوارەباش", "شەوباش")):
         state["daily_chat_turns"] = state.get("daily_chat_turns", 0) + 1
@@ -46,12 +46,6 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
 
     if any(word in clean for word in ("ببورە", "لێم خۆش بە")):
         return "هیچ کێشە نییە. 🌷 لە گفتوگۆدا هەڵەکردن بەشێکە لە فێربوون."
-
-    if any(word in clean for word in ("خواحافیز", "خوات لەگەڵ", "دواتر دەبینم")):
-        state["daily_chat_mode"] = False
-        state.pop("daily_chat_scenario", None)
-        state.pop("daily_chat_stage", None)
-        return "خواحافیز، بە خۆشی و تەندروستی! هەر کاتێک بتەوێت کەژیار لێرەیە. 👋"
 
     # Continue a small role-play instead of treating each turn as an unrelated keyword.
     scenario = state.get("daily_chat_scenario")
