@@ -406,4 +406,4 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added regression tests for catalog size/layout, lesson-opening callbacks, locked-lesson rejection, the expanded examples, and quiz-answer alignment.
 - The bot's orthography policy remains separate from Avasin Code. No broad spelling normalization was applied because the selected 2024 reference PDF has not yet been verified page by page.
 - Live Telegram testing remains pending: the test checkout currently has a placeholder token, so this branch's UI and lesson callback changes must be checked with an authorized test bot before release.
-- These changes are isolated on content-design-polish-2026-10-25, based on the open stability branch. They do not change main, merge the existing PR, touch production bot/database settings, or alter prerecorded voice assets.
+- These changes are isolated on fix/content-design-polish-2026-10-25, based on the open stability branch. They do not change main, merge the existing PR, touch production bot/database settings, or alter prerecorded voice assets.
