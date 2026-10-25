@@ -189,6 +189,16 @@ class ContentConsistencyTests(unittest.TestCase):
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
         self.assertIn("lesson in completed", handler)
         self.assertIn("QUIZ_DATA.get(lesson)", handler)
+    def test_every_lesson_has_a_completion_badge(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        start = bot_source.index("def check_badges(")
+        end = bot_source.index("\ndef lesson_keyboard(", start)
+        handler = bot_source[start:end]
+        for index in range(1, 7):
+            with self.subTest(lesson=index):
+                self.assertIn(f'"وانە_{index}"', handler)
+        self.assertIn("🏅 زانای ماڵ و قوتابخانە", handler)
+
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
             self.assertIn(lesson, self.lessons)
