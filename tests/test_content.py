@@ -99,8 +99,9 @@ class ContentConsistencyTests(unittest.TestCase):
                 root = ET.parse(path).getroot()
                 self.assertTrue(root.tag.endswith("svg"))
                 self.assertTrue(root.attrib.get("viewBox"))
-                self.assertEqual(root.attrib.get("direction"), "rtl")
                 svg_text = path.read_text(encoding="utf-8")
+                self.assertIn('direction="rtl"', svg_text)
+                self.assertIn('unicode-bidi="plaintext"', svg_text)
                 self.assertIn("Noto Naskh Arabic", svg_text)
 
     def test_kejyarbot_orthography_policy_keeps_avasin_separate(self):
