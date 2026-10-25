@@ -61,6 +61,21 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_recent_example_expansion_remains_in_all_six_lessons(self):
+        required_phrases = {
+            "وانە_1": ("نموونەی زیاتر", "خۆشحاڵم بە ناسینت"),
+            "وانە_2": ("نموونەی زیاتر بۆ پیتەکان", "لیستی تەواوی ئەلفوبێ"),
+            "وانە_3": ("دەربڕینی زیاتر لە ژیانی ڕۆژانەدا", "دەتوانیت یارمەتیم بدەیت؟"),
+            "وانە_4": ("نموونەی ژمارەکردنی زیاتر", "چەند دەفتەرت هەیە؟"),
+            "وانە_5": ("نموونەی ڕەنگ لە ڕستەی زیاتر", "پێنووسەکەت چ ڕەنگێکە؟"),
+            "وانە_6": ("وشە و ڕستەی زیاتر", "دەفتەرەکەم لە کوێیە؟"),
+        }
+        for lesson_key, phrases in required_phrases.items():
+            with self.subTest(lesson=lesson_key):
+                content = self.lessons[lesson_key]["content"]
+                for phrase in phrases:
+                    self.assertIn(phrase, content)
+
     def test_alphabet_lesson_has_teaching_examples_and_practice(self):
         lesson = self.lessons["وانە_2"]["content"]
         for required in ("ئامانجی وانە", "پیت و دەنگ", "نموونە", "ڕاهێنان", "پیتەکان"):
