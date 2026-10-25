@@ -37,6 +37,14 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - CI run #254 passed for commit `1f7e2c427d6ab324585f8dc761e689e5805f7915`: https://github.com/avasinim/KejyarBot/actions/runs/40196506760 .
 - This structural CI result does not certify every new sentence's regional naturalness or settle source-sensitive spelling rules; those remain separate editorial review items.
 
+## Regression coverage for expanded examples (25 October 2026)
+
+- Added `test_recent_example_expansion_remains_in_all_six_lessons` in `tests/test_content.py` to guard representative new phrases in every lesson.
+- Re-read the test file after commit `6300187b7f59ac292ea0481ac0234e4dcf0be3c7`.
+- CI runs #258 and #259 passed for that commit:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40196636041
+  - https://github.com/avasinim/KejyarBot/actions/runs/40196640104
+
 ## Items deliberately not changed
 
 - Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
