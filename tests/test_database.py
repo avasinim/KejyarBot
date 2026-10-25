@@ -18,6 +18,18 @@ class DatabaseTests(unittest.TestCase):
         database.DB_NAME = self.old_db_name
         self.temp_dir.cleanup()
 
+    def test_parallel_first_access_creates_single_user_row(self):
+        user_id = 456789
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            rows = list(pool.map(lambda _: database.get_user(user_id), range(12)))
+        self.assertEqual(len(rows), 12)
+        self.assertTrue(all(row[0] == user_id for row in rows))
+        with database.sqlite3.connect(database.DB_NAME) as conn:
+            count = conn.execute(
+                "SELECT COUNT(*) FROM users WHERE user_id=?", (user_id,)
+            ).fetchone()[0]
+        self.assertEqual(count, 1)
+
     def test_lesson_completion_is_recorded_only_once(self):
         self.assertTrue(database.complete_lesson(12345, "وانە_1"))
         self.assertFalse(database.complete_lesson(12345, "وانە_1"))
