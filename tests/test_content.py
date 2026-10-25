@@ -47,6 +47,23 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertEqual(self.lessons[f"وانە_{index}"]["title"], title.split(": ", 1)[1])
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
+    def test_new_quiz_questions_use_terms_taught_in_their_lessons(self):
+        lesson_one = self.lessons["وانە_1"]["content"]
+        question_one = next(
+            question for question in self.quizzes["وانە_1"]
+            if question["question"].startswith("کاتێک کەسێک دەڵێت")
+        )
+        self.assertIn("ناوت چییە؟", lesson_one)
+        self.assertIn(question_one["answer"], lesson_one)
+
+        lesson_three = self.lessons["وانە_3"]["content"]
+        question_three = next(
+            question for question in self.quizzes["وانە_3"]
+            if question["question"].startswith("وشەی «بەڵێ»")
+        )
+        self.assertIn("بەڵێ — بۆ وەڵامی ئەرێنی", lesson_three)
+        self.assertIn(question_three["answer"], lesson_three)
+
     def test_every_quiz_question_has_valid_options_and_answer(self):
         self.assertEqual(set(self.quizzes), {f"وانە_{index}" for index in range(1, 11)})
         for lesson, questions in self.quizzes.items():
