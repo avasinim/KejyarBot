@@ -107,10 +107,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 ## Stability verification checkpoint (25 October 2026)
 
-- The stability branch head reviewed for this checkpoint is `277f6cd24434612d597bf5451d28aa4a881c5cc0` (`Fix SQLite connection cleanup and quota transactions`).
-- GitHub Actions runs #40209804446 and #40209801402 both completed successfully for this commit. Their `checks` job completed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v` successfully:
-  - https://github.com/avasinim/KejyarBot/actions/runs/40209804446
-  - https://github.com/avasinim/KejyarBot/actions/runs/40209801402
+- The stability branch head for this checkpoint is `106188d95a4ef7e2a904459e56c21b22addc4e36` (`docs: record latest stability verification checkpoint`). It includes `277f6cd24434612d597bf5451d28aa4a881c5cc0` (`Fix SQLite connection cleanup and quota transactions`) as its parent, so the SQLite cleanup and quota fixes are present at the reviewed head.
+- GitHub Actions run #40210284689 completed successfully for the current branch head. Its `checks` job completed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v` successfully:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40210284689
+- Earlier runs #40209804446 and #40209801402 also passed for the parent code commit `277f6cd24434612d597bf5451d28aa4a881c5cc0`.
 - This checkpoint verifies automated code and regression tests only. It does not verify live Telegram behavior, regional naturalness of every Kurdish example, or source-based orthographic correctness.
 - Lesson 2 remains intentionally described as a sample rather than a complete alphabet inventory until the selected 2024 reference edition and relevant pages are checked. Do not treat the infographic's six examples as a full alphabet table.
 - Manual Telegram testing remains blocked on an authorized separate test bot/token and isolated test environment. No production token should be requested or exposed.
