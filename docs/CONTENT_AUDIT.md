@@ -19,12 +19,17 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 - Some spellings in lesson and quiz text need source-based orthographic review. The exact edition and relevant pages have not yet been verified, so no speculative global replacement or application of Avasin Code was made.
 - Quiz coverage is introductory and checks basic recall; passing structural tests does not prove the linguistic accuracy or completeness of the teaching material.
 
+## Source edition selected for the next pass
+
+- The working reference is now the **third updated edition dated 16 August 2024**, linked from the preparer's website: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf .
+- Kurdipedia's record lists several editions, including 90-page PDF versions from 2022 and 2024: https://www.kurdipedia.org/default.aspx?lng=1&q=20211004184500395359 .
+- The PDF's title page identifies it as the third updated edition. Its relevant rule pages still need to be read and compared before changing any lesson, quiz, or infographic wording.
+
 ## Next review steps
 
-1. Identify the exact PDF edition to use as the orthographic source.
-2. Read the relevant pages for alphabet inventory/order and the spelling rules being applied.
-3. Compare lesson text, quiz wording, and infographic labels with those pages.
-4. Make only evidence-backed corrections and add regression tests for confirmed rules.
+1. Inspect the selected edition's relevant pages for alphabet inventory/order and spelling rules.
+2. Compare lesson text, quiz wording, and infographic labels against those pages.
+3. Make only evidence-backed corrections and add regression tests for confirmed rules.
 
 ## Safety boundary
 
