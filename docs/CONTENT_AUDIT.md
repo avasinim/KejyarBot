@@ -192,3 +192,5 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The examples are authored for practice and are not presented as quotations. The lesson explicitly cautions that alphabet inventories and ordering can vary by writing-system convention; the selected PDF edition has still not been verified page by page.
 - Added a regression test requiring 34 lesson/infographic example pairs to remain present. Structural and source-level spelling review remain separate; automated tests cannot establish that every example is the most natural regional choice.
 - The changes remain on fix/kejyarbot-stability-2026-10-25. No production bot, database, migrations, main, or PR merge was touched.
+
+- CI run #359 passed for commit `5a09bddbbceb08467971150ba2192e93c03e7899` (compileall and the full unittest suite): https://github.com/avasinim/KejyarBot/actions/runs/40217026467 .
