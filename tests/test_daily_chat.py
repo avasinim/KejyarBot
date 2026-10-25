@@ -19,6 +19,18 @@ class DailyConversationTests(unittest.TestCase):
         reply_to_daily_message("خواحافیز", state)
         self.assertFalse(state["daily_chat_mode"])
 
+    def test_goodbye_takes_priority_over_greeting_and_clears_roleplay(self):
+        state = {
+            "daily_chat_mode": True,
+            "daily_chat_scenario": "market",
+            "daily_chat_stage": 1,
+        }
+        reply = reply_to_daily_message("سڵاو، خواحافیز", state)
+        self.assertIn("خواحافیز", reply)
+        self.assertFalse(state["daily_chat_mode"])
+        self.assertNotIn("daily_chat_scenario", state)
+        self.assertNotIn("daily_chat_stage", state)
+
     def test_empty_input_is_handled(self):
         self.assertTrue(reply_to_daily_message("   ").strip())
 
