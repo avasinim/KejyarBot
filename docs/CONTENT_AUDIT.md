@@ -346,3 +346,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added a regression test confirming the current teaching list contains 34 practice entries and exactly five non-empty example words per entry. This protects the documented practice format and catches accidental truncation or malformed rows.
 - No alphabet order, letter classification, Kurdish spelling, or example word was changed because those changes would require stronger source-level evidence.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lessons 4–5 applied-skill quiz regression checks (25 October 2026)
+
+- Reviewed the beginner-number and color quizzes against their lesson objectives. Lesson 4 already includes a simple addition-in-context item (three apples plus two more); Lesson 5 already includes a sentence comparing two colors.
+- Added regression tests that protect these applied-skill items and confirm their correct answers remain present in the lesson text and quiz options.
+- No lesson wording, answer, or spelling was changed; this update protects existing coverage rather than claiming a new curriculum change.
+- No `main`, production bot/database, migrations, or PR merge was touched.
