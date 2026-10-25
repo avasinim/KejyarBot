@@ -305,3 +305,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_lesson_four_examples_stay_within_beginner_number_scope` to protect the intended examples and flag the removed scope drift.
 - This is a pedagogical sequencing change only; no orthography rule or source-sensitive spelling was inferred. Manual language review and Telegram testing remain pending.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 4 quiz skill diversity follow-up (25 October 2026)
+
+- Replaced the lesson 4 question asking which number lies between 4 and 6; this overlapped with the existing question asking which number follows 5.
+- The replacement asks the learner to identify a correctly formed sentence connecting a number with an object, using the exact taught example `دوو پێنووسم هەیە.`.
+- Added `test_lesson_four_quiz_assesses_number_in_context` to verify the answer is taught in the lesson and appears among the options.
+- This broadens assessment from sequence recall to using number vocabulary in context. It does not assert independent source-level validation of spelling or regional phrasing.
+- No `main`, production bot/database, migrations, or PR merge was touched.
