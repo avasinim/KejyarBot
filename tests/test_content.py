@@ -91,7 +91,7 @@ class ContentConsistencyTests(unittest.TestCase):
         root = ET.parse(svg_path).getroot()
         svg_text = " ".join(node.text.strip() for node in root.iter() if node.text and node.text.strip())
         section_start = lesson.index("🔤 پیت و وشەی نموونە")
-        section_end = lesson.index("\\n\\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", section_start)
+        section_end = lesson.index("🧠 چۆن ئەم لیستە بخوێنیتەوە؟", section_start)
         section = lesson[section_start:section_end]
         entries = []
         for line in section.splitlines()[1:]:
