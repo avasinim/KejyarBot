@@ -115,3 +115,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Lesson 2 remains intentionally described as a sample rather than a complete alphabet inventory until the selected 2024 reference edition and relevant pages are checked. Do not treat the infographic's six examples as a full alphabet table.
 - Manual Telegram testing remains blocked on an authorized separate test bot/token and isolated test environment. No production token should be requested or exposed.
 
+
+
+## Source-verified lesson 2 orthography correction (25 October 2026)
+
+- The selected third updated edition of Diyako Hashemi's *Puxtey Renus u Xallbendi* is indexed with its alphabet section on page 3. The extract explicitly gives the spelling **«ئەلفبێ»**, rejects **«ئەلفوبێ»** and **«ئەلف بێ»**, and states a 34-letter inventory. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+- Based on that source, corrected the lesson 2 heading/term, learning-path label, quiz prompt, and infographic title from «ئەلفوبێ» to «ئەلفبێ». Updated the corresponding content-consistency test to lock in the corrected term.
+- The 34-letter statement remains in the lesson, while the displayed letter examples and infographic remain explicitly a sample, not a full inventory. No alphabet ordering or list was invented.
+- Re-read the changed files after updates and run CI to confirm consistency. Source extract is searchable/indexed; this note does not claim visual inspection of the PDF page image.
