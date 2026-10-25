@@ -47,6 +47,20 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertEqual(self.lessons[f"وانە_{index}"]["title"], title.split(": ", 1)[1])
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
+    def test_alphabet_quiz_definitions_match_lesson_explanations(self):
+        lesson = self.lessons["وانە_2"]["content"]
+        questions = self.quizzes["وانە_2"]
+        alphabet_question = next(question for question in questions if question["question"] == "ئەلفبێ چییە؟")
+        letter_question = next(question for question in questions if question["question"] == "پیت چییە؟")
+        contrast_question = next(question for question in questions if question["question"].startswith("کام جووتە پیت"))
+
+        self.assertIn("ئەلفبێ کۆمەڵە نیشانەیەکە", lesson)
+        self.assertTrue(alphabet_question["answer"].startswith("کۆمەڵە نیشانە"))
+        self.assertIn("پیت نیشانەی نووسراوە", lesson)
+        self.assertEqual(letter_question["answer"], "نیشانەی نووسراوە")
+        self.assertIn("«ر» و «ڕ» یەک نین", lesson)
+        self.assertEqual(contrast_question["answer"], "«ر» و «ڕ»")
+
     def test_new_quiz_questions_use_terms_taught_in_their_lessons(self):
         lesson_one = self.lessons["وانە_1"]["content"]
         question_one = next(
