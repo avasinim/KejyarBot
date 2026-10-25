@@ -358,5 +358,19 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertIn(lesson, self.lessons)
 
 
+    def test_lesson_nine_and_ten_quizzes_cover_distinct_skills(self):
+        lesson_nine_questions = [item["question"] for item in self.quizzes["وانە_9"]]
+        lesson_ten_questions = [item["question"] for item in self.quizzes["وانە_10"]]
+        self.assertEqual(len(lesson_nine_questions), len(set(lesson_nine_questions)))
+        self.assertEqual(len(lesson_ten_questions), len(set(lesson_ten_questions)))
+        self.assertIn("کام ڕستە بەرنامەی ڕۆژانە دەردەخات؟", lesson_nine_questions)
+        self.assertIn("کام پرسیار بۆ زانینی هۆکار بەکاردێت؟", lesson_ten_questions)
+        for lesson_key in ("وانە_9", "وانە_10"):
+            for item in self.quizzes[lesson_key]:
+                with self.subTest(lesson=lesson_key, question=item["question"]):
+                    self.assertIn(item["answer"], item["options"])
+                    self.assertIn(item["answer"], self.lessons[lesson_key]["content"])
+
+
 if __name__ == "__main__":
     unittest.main()
