@@ -30,6 +30,17 @@ class DatabaseTests(unittest.TestCase):
             ).fetchone()[0]
         self.assertEqual(count, 1)
 
+    def test_level_thresholds_are_consistent_at_boundaries(self):
+        expected = {
+            0: 'A1.1 🌱', 49: 'A1.1 🌱', 50: 'A1.2 🌿',
+            99: 'A1.2 🌿', 100: 'A2.1 📘', 149: 'A2.1 📘',
+            150: 'A2.2 📖', 299: 'A2.2 📖', 300: 'B1.1 🚀',
+            449: 'B1.1 🚀', 450: 'B1.2 🔥', 599: 'B1.2 🔥',
+            600: 'B2.1 🏆', 799: 'B2.1 🏆', 800: 'B2.2 👑',
+        }
+        for xp, level in expected.items():
+            with self.subTest(xp=xp):
+                self.assertEqual(database.calculate_level(xp), level)
     def test_lesson_completion_is_recorded_only_once(self):
         self.assertTrue(database.complete_lesson(12345, "وانە_1"))
         self.assertFalse(database.complete_lesson(12345, "وانە_1"))
