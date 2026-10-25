@@ -225,3 +225,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The first CI attempt exposed a mismatched expected phrase in the new test (the content itself was present with a longer sentence). The assertion was corrected to match the exact lesson wording. CI run #428 then passed: https://github.com/avasinim/KejyarBot/actions/runs/40217899262 .
 - These are original beginner-level practice examples. Automated tests validate structure and consistency, not official academic endorsement or every regional wording; human Kurdish-language review and manual Telegram rendering tests remain pending.
 - No production credentials, database, migrations, or `main` changes were made. Work remains on `fix/kejyarbot-stability-2026-10-25`.
+
+
+## Test-name consistency cleanup (25 October 2026)
+
+- Renamed the message-mode regression test from `test_lesson_catalog_lists_all_six_lessons_even_when_locked` to `test_lesson_catalog_lists_all_ten_lessons_even_when_locked`. Its assertion already verified ten lessons; only the stale test name was wrong.
+- CI run #432 passed after the rename: https://github.com/avasinim/KejyarBot/actions/runs/40218025405 .
+- This is a test-maintenance change only; lesson behavior and runtime code were not changed.
