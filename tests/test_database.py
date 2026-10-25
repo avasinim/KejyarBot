@@ -17,6 +17,11 @@ class DatabaseTests(unittest.TestCase):
         database.DB_NAME = self.old_db_name
         self.temp_dir.cleanup()
 
+    def test_lesson_completion_is_recorded_only_once(self):
+        self.assertTrue(database.complete_lesson(12345, "وانە_1"))
+        self.assertFalse(database.complete_lesson(12345, "وانە_1"))
+        self.assertEqual(database.get_completed_lessons(12345), ["وانە_1"])
+
     def test_quiz_reward_can_be_claimed_only_once(self):
         self.assertTrue(database.complete_quiz(12345, "وانە_2"))
         self.assertFalse(database.complete_quiz(12345, "وانە_2"))
