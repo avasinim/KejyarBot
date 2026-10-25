@@ -317,18 +317,21 @@ async def send_conversation_voice(message, text, user_state=None):
     if user_state.get("speech_quota_used", 0) >= 20:
         logger.info("Daily speech cap reached; continuing with text only")
         return
-    audio_bytes = await generate_speech(text)
-    if not audio_bytes:
-        logger.warning("Speech generation was unavailable for a daily-chat reply")
-        return
+    # Reserve the slot before awaiting so concurrent messages cannot exceed
+    # the daily cap. Refund it if generation or delivery fails.
+    user_state["speech_quota_used"] = user_state.get("speech_quota_used", 0) + 1
     try:
+        audio_bytes = await generate_speech(text)
+        if not audio_bytes:
+            user_state["speech_quota_used"] = max(0, user_state["speech_quota_used"] - 1)
+            logger.warning("Speech generation was unavailable for a daily-chat reply")
+            return
         audio = io.BytesIO(audio_bytes)
         audio.name = "kejyar-reply.mp3"
         await message.reply_voice(voice=audio)
-        # Failed generation must not consume the user's daily voice allowance.
-        user_state["speech_quota_used"] = user_state.get("speech_quota_used", 0) + 1
     except Exception:
-        logger.exception("Could not send generated daily-chat voice")
+        user_state["speech_quota_used"] = max(0, user_state.get("speech_quota_used", 0) - 1)
+        logger.exception("Could not generate or send generated daily-chat voice")
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
