@@ -354,3 +354,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added regression tests that protect these applied-skill items and confirm their correct answers remain present in the lesson text and quiz options.
 - No lesson wording, answer, or spelling was changed; this update protects existing coverage rather than claiming a new curriculum change.
 - No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 8 quiz variety and breakfast vocabulary (25 October 2026)
+
+- The lesson 8 quiz had two items assessing polite food/drink requests, while the lesson also teaches breakfast vocabulary in a concrete sentence.
+- Replaced one repeated request item with a question about what is eaten for breakfast, using the existing lesson phrase `هێلکە و نان دەخۆم` and distractors from unrelated vocabulary.
+- Added a regression test to keep the new assessment tied to the lesson text and its answer options. No lesson content or orthography was changed.
+- No `main`, production bot/database, migrations, or PR merge was touched.
