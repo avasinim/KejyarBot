@@ -428,5 +428,17 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_one_quiz_covers_morning_greeting(self):
+        lesson = self.lessons["وانە_1"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_1"]
+            if item["question"] == "کام دەربڕین بۆ سڵاوکردنی بەیانی گونجاوە؟"
+        )
+        self.assertIn("بەیانی باش", lesson)
+        self.assertEqual(item["answer"], "بەیانی باش")
+        self.assertIn(item["answer"], item["options"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
