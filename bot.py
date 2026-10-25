@@ -1,6 +1,6 @@
 import io
 import json
-from datetime import date
+from datetime import datetime, timezone
 import logging
 import os
 from pathlib import Path
@@ -30,6 +30,8 @@ from database import (
     get_user_level,
     open_chest,
     complete_quiz_with_rewards,
+    reserve_speech_quota,
+    refund_speech_quota,
 )
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
@@ -202,7 +204,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Generate event-specific narration in the configured Kejyar voice.
     # The repository's legacy event MP3s are byte-identical, so do not replay
     # the welcome clip as if it were a lesson-completion announcement.
-    await send_conversation_voice(query.message, message_text, context.user_data)
+    await send_conversation_voice(query.message, message_text, context.user_data, user_id)
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -308,33 +310,29 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
-async def send_conversation_voice(message, text, user_state=None):
-    """Send generated speech, with a small per-user daily cap to control API costs."""
+async def send_conversation_voice(message, text, user_state=None, user_id=None):
+    """Send generated speech with an atomic, persistent per-user UTC daily cap."""
     if not speech_is_configured():
         return
-    user_state = user_state if user_state is not None else {}
-    today = date.today().isoformat()
-    if user_state.get("speech_quota_date") != today:
-        user_state["speech_quota_date"] = today
-        user_state["speech_quota_used"] = 0
-    # Cap dynamic audio at 20 responses per user per day; text chat remains available.
-    if user_state.get("speech_quota_used", 0) >= 20:
+    # Persist the quota in SQLite so a process restart cannot reset the cap.
+    if user_id is None:
+        logger.warning("Skipping dynamic speech because user ID is unavailable")
+        return
+    quota_date = datetime.now(timezone.utc).date().isoformat()
+    if not reserve_speech_quota(user_id, quota_date, limit=20):
         logger.info("Daily speech cap reached; continuing with text only")
         return
-    # Reserve the slot before awaiting so concurrent messages cannot exceed
-    # the daily cap. Refund it if generation or delivery fails.
-    user_state["speech_quota_used"] = user_state.get("speech_quota_used", 0) + 1
     try:
         audio_bytes = await generate_speech(text)
         if not audio_bytes:
-            user_state["speech_quota_used"] = max(0, user_state["speech_quota_used"] - 1)
+            refund_speech_quota(user_id, quota_date)
             logger.warning("Speech generation was unavailable for a daily-chat reply")
             return
         audio = io.BytesIO(audio_bytes)
         audio.name = "kejyar-reply.mp3"
         await message.reply_voice(voice=audio)
     except Exception:
-        user_state["speech_quota_used"] = max(0, user_state.get("speech_quota_used", 0) - 1)
+        refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -385,6 +383,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             update.message,
             f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
             context.user_data,
+            user_id,
         )
         await send_lesson_infographic(update.message, lesson)
         return
@@ -406,6 +405,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 update.message,
                 f"پیرۆزە! {reward} کۆین وەرگرت. بەردەوام بە و وانەکانی دواتر تەواو بکە.",
                 context.user_data,
+                user_id,
             )
         else:
             await update.message.reply_text("📦 سەنوقێکت نیە؛ وانە تەواو بکە بۆ وەرگرتنی سەنوق.")
@@ -433,7 +433,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if context.user_data.get("daily_chat_mode"):
         reply = reply_to_daily_message(text, context.user_data)
         await update.message.reply_text(reply, reply_markup=MENU)
-        await send_conversation_voice(update.message, reply, context.user_data)
+        await send_conversation_voice(update.message, reply, context.user_data, user_id)
         return
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
