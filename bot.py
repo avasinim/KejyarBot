@@ -220,8 +220,8 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     earned = quiz["score"]
     first_completion = complete_quiz(update.effective_user.id, lesson)
     result = (
-        f"🎉 تاقیکردنەوە تەواو بوو!\\n"
-        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\\n"
+        f"🎉 تاقیکردنەوە تەواو بوو!\n"
+        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
     )
     if first_completion:
         add_score(update.effective_user.id, 20)
