@@ -279,3 +279,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - Replaced the awkward example `من چای حەز دەکەم.` with `من چای بەبێ شەکر حەز لێ دەکەم.`. The replacement reuses a fuller example already present in the same lesson and avoids introducing a new unverified spelling rule.
 - This is a pedagogical phrasing correction, not a claim of page-level verification against the selected 2024 orthography handbook. Human Kurdish-language review and manual Telegram rendering checks remain pending.
+
+
+## Quiz coverage review — lessons 9 and 10 (25 October 2026)
+
+- Reduced repeated quiz concepts: lesson 9 now checks identifying a daily routine sentence, and lesson 10 now checks a causal question using `بۆچی؟`, instead of repeating a previously tested day-order or location-word question.
+- Added `test_lesson_nine_and_ten_quizzes_cover_distinct_skills` to guard the intended question coverage and verify the answers remain in both the options and lesson text.
+- This is a pedagogical assessment adjustment, not a change to orthography policy. Full human review and manual Telegram testing remain pending.
