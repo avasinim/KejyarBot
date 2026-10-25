@@ -58,7 +58,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_lesson_catalog_lists_all_ten_lessons_as_compact_inline_buttons(self):
-        update, context = self.make_update_context("📚 وانەکان")
+        update, context = self.make_update_context("📚 پەڕگەی وانەکان")
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=[]),
@@ -68,7 +68,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         update.message.reply_text.assert_awaited_once()
         args = update.message.reply_text.await_args
-        self.assertIn("وانەکانت هەڵبژێرە", args.args[0])
+        self.assertIn("پەڕگەی وانەکان", args.args[0])
         markup = args.kwargs["reply_markup"]
         buttons = [button for row in markup.inline_keyboard for button in row]
         self.assertEqual(len(buttons), 10)
@@ -76,7 +76,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(button.callback_data.startswith("open_lesson_") for button in buttons))
         for lesson in bot.ORDER:
             self.assertTrue(any(bot.LESSON_DATA[lesson]["title"] in button.text for button in buttons))
-        self.assertEqual(len(bot.MENU.keyboard), 4, "Persistent menu should stay compact on mobile.")
+        self.assertEqual(len(bot.MENU.keyboard), 3, "Persistent menu should use three compact mobile rows.")
+        self.assertTrue(all(len(row) == 2 for row in bot.MENU.keyboard))
 
     async def test_opening_unlocked_lesson_from_inline_catalog(self):
         query_message = SimpleNamespace(reply_text=AsyncMock())
