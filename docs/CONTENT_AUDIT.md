@@ -213,3 +213,14 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is an authored teaching aid, not an official alphabet chart. Some items (including combinations such as `وو`) should be classified carefully before claiming a definitive alphabet inventory. The examples need human review for regional naturalness and source-sensitive spelling.
 - This change does not use Avasin Code and does not alter `main`, production credentials, or any database.
 - CI run #403 passed for commit `d6908a7ba97e87225800d7c6e405cc79cc0a3b55`: https://github.com/avasinim/KejyarBot/actions/runs/40217641807 . The Python compile and unit-test workflow passed, including the 170-example lesson/infographic consistency check. This does not certify every example as a formal academic spelling or confirm live Telegram rendering.
+
+
+## Further expansion of lessons 7–10 (25 October 2026)
+
+- Added ten additional sentence examples to each of lessons 7, 8, 9, and 10 (40 new practice sentences total), covering family descriptions, food requests and preferences, weekdays and schedules, and question formation.
+- Reviewed several phrases for clearer grammar and naturalness, including the verb agreement in the food lesson and more idiomatic wording for meeting friends.
+- Expanded each of the four quizzes from four to six questions. The new questions reinforce polite requests, food/drink verbs, weekday sequencing, time references, question words, and sentence order.
+- Updated the four corresponding SVG infographics to show four example lines per card, using RTL text, bidi handling, and the shared Kurdish-Arabic font stack.
+- Added regression coverage for ten extra example lines per lesson, six quiz questions per lesson, XML validity, and exact text shared between each lesson and its infographic.
+- These are original beginner-level practice examples. Automated tests validate structure and consistency, not official academic endorsement or every regional wording; human Kurdish-language review and manual Telegram rendering tests remain pending.
+- No production credentials, database, migrations, or `main` changes were made. Work remains on `fix/kejyarbot-stability-2026-10-25`.
