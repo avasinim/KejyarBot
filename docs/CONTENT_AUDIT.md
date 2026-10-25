@@ -286,3 +286,13 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Reduced repeated quiz concepts: lesson 9 now checks identifying a daily routine sentence, and lesson 10 now checks a causal question using `بۆچی؟`, instead of repeating a previously tested day-order or location-word question.
 - Added `test_lesson_nine_and_ten_quizzes_cover_distinct_skills` to guard the intended question coverage and verify the answers remain in both the options and lesson text.
 - This is a pedagogical assessment adjustment, not a change to orthography policy. Full human review and manual Telegram testing remain pending.
+
+
+## Quiz skill-coverage review — lessons 1 and 5 (25 October 2026)
+
+- Re-read beginner lessons 1–6 and their quiz items, focusing on repeated assessment skills rather than changing uncertain orthography.
+- Lesson 1 had two questions testing nearly the same basic name-introduction response. Replaced one with a polite request to repeat a name, using the exact phrase already taught in the lesson.
+- Lesson 5 had a question repeating the green-leaf recognition skill. Replaced it with a contrast question using the exact taught example contrasting a yellow page and a white page.
+- Added `test_lessons_one_and_five_quizzes_cover_distinct_skills` to check that both answers are present in the lesson and the correct options.
+- No spelling-policy decisions or source-sensitive vocabulary were changed. This is a pedagogical coverage improvement, not page-level verification against Diyako Hashemi's handbook.
+- Re-read the modified quiz and test files after the edits; full CI verification is required for these commits. Live Telegram testing remains pending in a separate authorized test environment. No `main`, production bot/database, migrations, or PR merge was touched.
