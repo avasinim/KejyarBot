@@ -85,6 +85,33 @@ class ContentConsistencyTests(unittest.TestCase):
                 for phrase in phrases:
                     self.assertIn(phrase, content)
 
+    def test_lessons_seven_to_ten_have_ten_more_examples_six_quiz_questions_and_updated_infographics(self):
+        expected_examples = {
+            "وانە_7": ("ئەوە باپیرمە", "براکەم لە قوتابخانە دەخوێنێت", "خێزانەکە لە کۆتایی هەفتەدا"),
+            "وانە_8": ("بۆ نانی بەیانی هێلکە و نان دەخۆم", "من چای بەبێ شەکر حەز لێ دەکەم", "شیرەکە ساردە، چایەکە گەرمە"),
+            "وانە_9": ("دووشەممە و چوارشەممە وانەمان هەیە", "کاتژمێر حەوت و نیوە", "سبەی پاش نیوەڕۆ"),
+            "وانە_10": ("من هەموو ڕۆژێک زمانی کوردی دەخوێنم", "بۆچی ئەمڕۆ درەنگ هاتیت؟", "چۆن دەتوانم ئەم وشەیە بخوێنمەوە؟"),
+        }
+        infographic_names = {
+            "وانە_7": "lesson-07-family.svg",
+            "وانە_8": "lesson-08-food-drink.svg",
+            "وانە_9": "lesson-09-days-time.svg",
+            "وانە_10": "lesson-10-simple-sentences.svg",
+        }
+        for lesson_key, examples in expected_examples.items():
+            with self.subTest(lesson=lesson_key):
+                content = self.lessons[lesson_key]["content"]
+                start = content.index("📖 نموونەی زیاتر")
+                end = content.index("🧩 ڕاهێنان", start)
+                example_lines = [line for line in content[start:end].splitlines() if line.startswith("• ")]
+                self.assertEqual(len(example_lines), 10)
+                self.assertGreaterEqual(len(self.quizzes[lesson_key]), 6)
+                svg_root = ET.parse(BASE_DIR / "assets" / "infographics" / infographic_names[lesson_key]).getroot()
+                svg_text = " ".join(node.text.strip() for node in svg_root.iter() if node.text and node.text.strip())
+                for phrase in examples:
+                    self.assertIn(phrase, content)
+                    self.assertIn(phrase, svg_text)
+
     def test_alphabet_lesson_and_infographic_provide_five_examples_for_all_34_entries(self):
         lesson = self.lessons["وانە_2"]["content"]
         svg_path = BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
