@@ -32,17 +32,14 @@ def init_db():
 
 
 def get_user(user_id):
-    conn=sqlite3.connect(DB_NAME)
-    cur=conn.cursor()
-    cur.execute("SELECT * FROM users WHERE user_id=?",(user_id,))
-    user=cur.fetchone()
-    if not user:
-        cur.execute("INSERT INTO users(user_id) VALUES(?)",(user_id,))
-        conn.commit()
-        cur.execute("SELECT * FROM users WHERE user_id=?",(user_id,))
-        user=cur.fetchone()
-    conn.close()
-    return user
+    # A user may send /start and trigger another handler at nearly the same
+    # time. Let SQLite arbitrate first-time creation instead of racing SELECT
+    # followed by INSERT against the users table's primary key.
+    with sqlite3.connect(DB_NAME, timeout=10) as conn:
+        cur = conn.cursor()
+        cur.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        cur.execute("SELECT * FROM users WHERE user_id=?", (user_id,))
+        return cur.fetchone()
 
 
 def calculate_level(xp):
