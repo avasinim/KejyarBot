@@ -158,7 +158,18 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]])
         await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
     else:
-        await query.message.reply_text(message_text)
+        next_lesson = ORDER[ORDER.index(lesson) + 1]
+        next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                f"➡️ دەستپێکردنی {next_title}",
+                callback_data=f"next_lesson_{next_lesson}"
+            )
+        ]])
+        await query.message.reply_text(
+            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
+            reply_markup=keyboard
+        )
     path = get_voice("lesson_done.mp3")
     if path:
         try:
