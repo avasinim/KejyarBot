@@ -407,3 +407,5 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The bot's orthography policy remains separate from Avasin Code. No broad spelling normalization was applied because the selected 2024 reference PDF has not yet been verified page by page.
 - Live Telegram testing remains pending: the test checkout currently has a placeholder token, so this branch's UI and lesson callback changes must be checked with an authorized test bot before release.
 - These changes are isolated on fix/content-design-polish-2026-10-25, based on the open stability branch. They do not change main, merge the existing PR, touch production bot/database settings, or alter prerecorded voice assets.
+
+- Added a global quiz-integrity regression test across all ten lessons: question text must be unique within each lesson, each set must contain at least six questions, each question must have at least three unique non-empty options, and the answer must be one of those options.
