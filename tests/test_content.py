@@ -404,5 +404,17 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_four_quiz_assesses_number_in_context(self):
+        lesson = self.lessons["وانە_4"]["content"]
+        item = next(
+            item for item in self.quizzes["وانە_4"]
+            if item["question"] == "کام ڕستە ژمارە و شت بە دروستی پەیوەست دەکات؟"
+        )
+        self.assertIn("دوو پێنووسم هەیە.", lesson)
+        self.assertEqual(item["answer"], "دوو پێنووسم هەیە.")
+        self.assertIn(item["answer"], item["options"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
