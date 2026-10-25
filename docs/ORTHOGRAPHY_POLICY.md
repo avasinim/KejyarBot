@@ -32,3 +32,12 @@
 - Reference: https://chawg.org/zimani-kurdi-renus/ (sections “٢. ئەلفبێ” and “پیتەکان و دەنگەکان”).
 - This is useful corroboration for the spelling and the 34-letter claim, but it is an online resource that may be updated over time; it is **not** a page-level verification of the selected 2024 third-edition PDF. Keep those source identities separate.
 - Lesson 2 currently presents selected letters as examples and explicitly warns that the list is not a complete alphabet chart. No lesson wording was changed solely on the basis of this online corroboration.
+
+
+## Expanded lesson and infographic review (25 October 2026)
+
+- The alphabet lesson now includes 34 practice entries with three example words each, and the infographic repeats the same examples as selectable SVG text.
+- Reference tables consulted: Kurdish Academy of Language, “Current Practised Kurdish alphabets” (https://kurdishacademy.org/?page_id=284) and “Kurdish Phonetic Alphabets” (https://kurdishacademy.org/?page_id=357).
+- These pages are comparative linguistic resources, not a statement that the Academy has formally reviewed or endorsed KejyarBot's infographic. Do not label the graphics “officially approved” unless that approval is obtained.
+- New examples are teaching material authored for this bot, not source quotations. The exact selected 2024 third-edition PDF remains unverified page by page; uncertain regional forms must continue to be flagged rather than silently normalized.
+- Infographics use an RTL-aware SVG text layout with the Noto Naskh Arabic / Noto Sans Arabic font stack. Rendering can still vary if a viewing device lacks those fonts, so review the SVGs in a browser and on a phone before release.
