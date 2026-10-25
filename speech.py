@@ -7,9 +7,13 @@ No audio is generated or uploaded when configuration is missing.
 
 import asyncio
 import json
+import logging
 import os
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+
+logger = logging.getLogger(__name__)
 
 
 def speech_is_configured() -> bool:
@@ -42,7 +46,12 @@ def _generate_speech(text: str) -> bytes | None:
         with urlopen(request, timeout=25) as response:
             audio = response.read()
             return audio or None
-    except (HTTPError, URLError, TimeoutError, OSError):
+    except HTTPError as exc:
+        # Do not log request headers or credentials.
+        logger.warning("Speech provider returned HTTP %s", exc.code)
+        return None
+    except (URLError, TimeoutError, OSError) as exc:
+        logger.warning("Speech provider request failed: %s", type(exc).__name__)
         return None
 
 
