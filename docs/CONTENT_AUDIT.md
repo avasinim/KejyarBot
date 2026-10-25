@@ -194,3 +194,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The changes remain on fix/kejyarbot-stability-2026-10-25. No production bot, database, migrations, main, or PR merge was touched.
 
 - CI run #359 passed for commit `5a09bddbbceb08467971150ba2192e93c03e7899` (compileall and the full unittest suite): https://github.com/avasinim/KejyarBot/actions/runs/40217026467 .
+
+
+## Expansion to ten beginner lessons (25 October 2026)
+
+- Added lessons 7–10: family and close relations; food and drink; days of the week and time; simple sentences and question words.
+- Added four distinct quiz questions for each new lesson. The full beginner path now contains ten lessons, each with a corresponding SVG infographic.
+- Updated lesson navigation, sequential unlocking, completion badges, final-lesson quiz callback, and regression tests to use the ten lesson records. Lesson order is now derived from the ordered lesson data rather than fixed at six.
+- The new material uses original practice examples, not quotations. Regional vocabulary and spelling still require human review before public release.
+- Automated CI for the latest content/flow changes is pending; do not treat the earlier successful run for the six-lesson revision as verification of this ten-lesson expansion.
