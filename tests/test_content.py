@@ -394,5 +394,15 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertIn(lesson_five_item["answer"], lesson_five_item["options"])
 
 
+    def test_lesson_four_examples_stay_within_beginner_number_scope(self):
+        lesson = self.lessons["وانە_4"]["content"]
+        self.assertIn("ژمارەکانی ٠ تا ١٠", lesson)
+        self.assertIn("لە پۆلەکەدا هەشت قوتابی دانیشتوون.", lesson)
+        self.assertIn("لەسەر مێزەکە سێ کتێب و دوو پێنووس هەیە.", lesson)
+        self.assertNotIn("دوازدە مانگ", lesson)
+        self.assertNotIn("یەکشەممەیە؛ سبەی دووشەممەیە", lesson)
+
+
+
 if __name__ == "__main__":
     unittest.main()
