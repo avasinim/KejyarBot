@@ -22,6 +22,11 @@ def init_db():
         chests INTEGER DEFAULT 0
     )
     """)
+    # Add the quiz-completion ledger to existing databases without destroying data.
+    cur.execute("PRAGMA table_info(users)")
+    columns = {row[1] for row in cur.fetchall()}
+    if "completed_quizzes" not in columns:
+        cur.execute("ALTER TABLE users ADD COLUMN completed_quizzes TEXT DEFAULT ''")
     conn.commit()
     conn.close()
 
@@ -121,3 +126,28 @@ def add_badge(user_id,badge):
 def get_badges(user_id):
     x=get_user(user_id)[6]
     return x.split(',') if x else []
+
+
+def complete_quiz(user_id, quiz_id):
+    """Record a quiz once. Return True only on its first successful completion."""
+    conn = sqlite3.connect(DB_NAME)
+    cur = conn.cursor()
+    cur.execute("SELECT completed_quizzes FROM users WHERE user_id=?", (user_id,))
+    row = cur.fetchone()
+    if row is None:
+        conn.close()
+        get_user(user_id)
+        conn = sqlite3.connect(DB_NAME)
+        cur = conn.cursor()
+        cur.execute("SELECT completed_quizzes FROM users WHERE user_id=?", (user_id,))
+        row = cur.fetchone()
+    old = row[0] if row and row[0] else ""
+    items = old.split(",") if old else []
+    if quiz_id in items:
+        conn.close()
+        return False
+    items.append(quiz_id)
+    cur.execute("UPDATE users SET completed_quizzes=?, tests=tests+1 WHERE user_id=?", (",".join(items), user_id))
+    conn.commit()
+    conn.close()
+    return True
