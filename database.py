@@ -234,3 +234,37 @@ def complete_quiz(user_id, quiz_id):
         raise
     finally:
         conn.close()
+
+
+def complete_quiz_with_rewards(user_id, quiz_id, points=20):
+    """Atomically record a first quiz completion and grant its XP/score."""
+    get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT completed_quizzes, xp FROM users WHERE user_id=?",
+            (user_id,),
+        )
+        row = cur.fetchone()
+        old = row[0] if row and row[0] else ""
+        items = old.split(",") if old else []
+        if quiz_id in items:
+            conn.commit()
+            return False
+        items.append(quiz_id)
+        new_xp = (row[1] or 0) + points
+        cur.execute(
+            """UPDATE users
+               SET completed_quizzes=?, tests=tests+1, score=score+?, xp=?, level=?
+               WHERE user_id=?""",
+            (",".join(items), points, new_xp, calculate_level(new_xp), user_id),
+        )
+        conn.commit()
+        return True
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
