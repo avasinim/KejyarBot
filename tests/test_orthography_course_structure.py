@@ -57,7 +57,9 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             draft = path.read_text(encoding="utf-8")
             kurdish_digits = str(number).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
             self.assertIn(f"وانەی {kurdish_digits}", draft, path.name)
-            self.assertIn(lesson["title"], draft, path.name)
+            # Titles may quote individual Kurdish letters in lesson prose.
+            normalize_title = lambda value: value.replace("«", "").replace("»", "").replace("“", "").replace("”", "").replace(chr(34), "").replace(":", "").replace("ـ", "").strip()
+            self.assertIn(normalize_title(lesson["title"]), normalize_title(draft), path.name)
 
     def test_quiz_draft_has_one_valid_multiple_choice_question_per_lesson(self):
         self.assertEqual(self.quiz["course_id"], self.course["course_id"])
