@@ -441,3 +441,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Scanned all ten lesson records and ten quiz sets for Arabic kaf U+0643; none were found.
 - Added `test_kurdish_text_uses_kurdish_kaf_codepoint` so future lesson/quiz edits cannot silently introduce that keyboard/code-point substitution.
 - CI for the test commit is running at the time of this note: https://github.com/avasinim/KejyarBot/actions/runs/40277014942 .
+
+
+## Follow-up Unicode and lexical scan (26 October 2026)
+
+- Rechecked the latest branch CI runs: the policy documentation run and the final audit-documentation run both completed successfully. The latter is run #40277063042: https://github.com/avasinim/KejyarBot/actions/runs/40277063042 .
+- Scanned all 10 lesson records, all 10 quiz sets, and all 10 SVG infographics for Arabic kaf U+0643; no occurrences were found in any of these files. The SVG scan also found no replacement-character U+FFFD or non-breaking-space U+00A0 characters.
+- Searched lesson and quiz content for the contrast «بەرامبەر» / «بەرانبەر»; neither form currently occurs, so no replacement was needed. No global substitutions were made for forms such as «چییە» or «نییە»: the bot must follow its own source-specific policy, not Avasin Code, and the reference PDF has not been reviewed page by page.
+- These are targeted text-integrity scans, not a complete linguistic proofread or a full SVG visual-rendering review. Manual Telegram/mobile testing and page-level source review remain release blockers.
+- No lesson or quiz text was changed in this pass. No main branch, production bot/database, migrations, voice assets, or PR merge was touched.
