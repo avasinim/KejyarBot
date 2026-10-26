@@ -44,6 +44,14 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         # The new course is a separate menu entry, not lesson 23 in the old course.
         self.assertIn('"do_not_modify_existing_ten_lesson_course": true', (ROOT / "course_data" / "orthography_foundations.json").read_text(encoding="utf-8"))
 
+    def test_lesson_one_draft_is_marked_for_source_review(self):
+        draft_path = ROOT / "course_data" / "orthography_lesson_01_draft.md"
+        draft = draft_path.read_text(encoding="utf-8")
+        self.assertIn("وانەی ١ — پیتەکان و دەنگەکان", draft)
+        self.assertIn("دەقی سەرەتایی بۆ پێداچوونەوەی زانستی", draft)
+        self.assertIn("ژمارەی پیت و دەنگ", draft)
+        self.assertIn("پێش وانەی بڵاوکردنەوە", draft)
+
     def test_lessons_are_not_misrepresented_as_source_reviewed(self):
         for lesson in self.course["lessons"]:
             self.assertEqual(
