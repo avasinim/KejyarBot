@@ -494,7 +494,7 @@ async def quiz_answer(
 """
 
 
-        if lesson != ORDER[-1]:
+        if lesson in ORDER and lesson not in ('وانە_1', ORDER[-1]):
 
             index = ORDER.index(lesson)
 
@@ -516,7 +516,7 @@ async def quiz_answer(
 """
 
 
-        if lesson != ORDER[-1]:
+        if lesson in ORDER and lesson not in ('وانە_1', ORDER[-1]):
 
             keyboard = InlineKeyboardMarkup(
                 [
