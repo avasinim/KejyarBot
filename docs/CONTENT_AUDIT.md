@@ -567,3 +567,8 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is a static integrity/security check; it does not certify Kurdish spelling, font shaping, RTL rendering, or mobile layout. Those still require editorial/source review and a real rendered visual check.
 - Test change commit: `54308eb8d0a91e1fbe963312b8a022bec1bf7a62`. CI result is pending at the time of this note.
 
+## Infographic phrase-alignment coverage extended (26 October 2026)
+
+- Extended `test_infographic_teaching_phrases_are_present_in_matching_lessons` to cover lessons 7–10 as well as the existing checks for lessons 1 and 3–6.
+- The new assertions verify that three selected teaching phrases from each added lesson appear in both the lesson JSON content and its corresponding SVG. This helps prevent lesson/visual drift; it does not certify spelling, source fidelity, or actual rendered appearance.
+- The test-only change is committed on `fix/kejyarbot-stability-2026-10-25`. CI verification is pending; no lesson text, quiz data, production configuration, database, migrations, or `main` was changed.
