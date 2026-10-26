@@ -191,7 +191,7 @@ class ContentConsistencyTests(unittest.TestCase):
                 )
                 for question in questions:
                     self.assertTrue(question["question"].strip())
-                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertGreaterEqual(len(question["options"]), 3)
                     self.assertEqual(len(question["options"]), len(set(question["options"])))
                     self.assertIn(question["answer"], question["options"])
 
