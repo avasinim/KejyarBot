@@ -6,6 +6,7 @@ from pathlib import Path
 from course_data.orthography_quiz_adapter import convert_quiz_draft
 from course_data.orthography_quiz_runtime import (
     SESSION_KEY,
+    apply_answer,
     build_quiz_session,
     make_answer_callback,
     parse_answer_callback,
@@ -57,6 +58,34 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
         broken["lesson_01"][0]["answer"] = "not an option"
         with self.assertRaises(ValueError):
             build_quiz_session(broken, 1)
+
+    def test_answer_progression_scores_and_finishes_without_rewards(self):
+        quizzes = {
+            "lesson_01": [
+                {"question": "Q1", "options": ["A", "B"], "answer": "B", "explanation": "why B"},
+                {"question": "Q2", "options": ["C", "D"], "answer": "C", "explanation": "why C"},
+            ]
+        }
+        session = build_quiz_session(quizzes, 1)
+        first = apply_answer(session, 1)
+        self.assertTrue(first["correct"])
+        self.assertFalse(first["completed"])
+        self.assertEqual(first["score"], 1)
+        second = apply_answer(session, 1)
+        self.assertFalse(second["correct"])
+        self.assertTrue(second["completed"])
+        self.assertEqual(second["score"], 1)
+        self.assertNotIn("xp", session)
+        self.assertNotIn("rewards", session)
+        with self.assertRaises(ValueError):
+            apply_answer(session, 0)
+
+    def test_answer_handler_rejects_wrong_session_and_bad_option(self):
+        with self.assertRaises(ValueError):
+            apply_answer({"course_id": "legacy"}, 0)
+        session = build_quiz_session(self.converted, 1)
+        with self.assertRaises(ValueError):
+            apply_answer(session, 999)
 
 
 if __name__ == "__main__":
