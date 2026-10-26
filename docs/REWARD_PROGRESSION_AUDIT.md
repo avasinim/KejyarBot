@@ -13,8 +13,8 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 
 ## Follow-up finding — resolved
 
-- The `check_badges` mapping now assigns a distinct completion badge to all six lessons, including `وانە_6` (`🏅 زانای ماڵ و قوتابخانە`).
-- `tests/test_content.py::test_every_lesson_has_a_completion_badge` checks the complete six-lesson mapping.
+- The original badge follow-up covered six lessons, including `وانە_6` (`🏅 زانای ماڵ و قوتابخانە`). The current branch has ten lessons, and `bot.py` assigns a distinct completion badge to all ten.
+- `tests/test_content.py::test_every_lesson_has_a_completion_badge` checks all ten lesson keys (`وانە_1` through `وانە_10`) in the `check_badges` mapping.
 - The code change is commit `5e8629586a42bb98aefdffde066c64c038fc65c0`; the regression test was added in `494ad93f67e1beba7ae45917b284fb22eb74dd3e`. The branch was subsequently rechecked and the latest code CI runs passed.
 
 ## CI
