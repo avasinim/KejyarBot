@@ -223,14 +223,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
-    if lesson == ORDER[-1]:
+    next_lesson = next_lesson_in_course(lesson)
+    if next_lesson is None:
         last_lesson_number = lesson.removeprefix("وانە_")
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
         ]])
-        await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        course = COURSE_BY_LESSON.get(lesson)
+        course_title = course.get("title", "") if course else ""
+        ending = f"\n\n🏁 ئەم دەورەیە تەواو بوو: {course_title}" if course_title else ""
+        await query.message.reply_text(message_text + ending + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
     else:
-        next_lesson = ORDER[ORDER.index(lesson) + 1]
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -239,7 +242,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         ]])
         await query.message.reply_text(
-            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
+            message_text + f"\n\n🔓 وانەی دواتر لە هەمان دەورە ئامادەیە: {next_title}",
             reply_markup=keyboard
         )
     # Generate event-specific narration in the configured Kejyar voice.
