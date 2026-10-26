@@ -471,4 +471,4 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is an isolated conversation-state fix. No lesson content, credentials, production bot, production database, migrations, or `main` branch were changed.
 - CI passed on the final audit commit `313bc27c6514fb403cd2be5f4905382a2d05ec20`: [run 40289259546](https://github.com/avasinim/KejyarBot/actions/runs/40289259546).
 
-- Follow-up CI for this additional quiz-reset change is pending.
+- CI passed for the quiz-reset code/test commit: [run 40289466261](https://github.com/avasinim/KejyarBot/actions/runs/40289466261). The audit-only commit's CI also passed: [run 40289477937](https://github.com/avasinim/KejyarBot/actions/runs/40289477937).
