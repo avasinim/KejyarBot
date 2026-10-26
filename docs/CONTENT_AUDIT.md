@@ -505,3 +505,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Confirmed `.gitignore` excludes `.env`, `kejyar.db`, other `.db`/SQLite files, and transient SQLite WAL/SHM sidecars.
 - This is a current-tree filename check only; it does not prove that credentials never appeared in earlier Git history, issue comments, logs, screenshots, or external copies. Previously exposed tokens must still be revoked and replaced before any authorized Telegram integration test.
 - No secret values were read, no bot was launched, and no token or production setting was used.
+
+## Quiz-to-lesson answer coverage regression test (26 October 2026)
+
+- Added `test_every_quiz_answer_is_taught_in_its_matching_lesson` to `tests/test_content.py`.
+- The test iterates over all quiz questions and verifies that each correct answer appears verbatim in the corresponding lesson content. This protects the audited 62-answer alignment against future accidental drift.
+- This is a consistency check only; it does not certify the scientific or linguistic quality of the answers or distractors.
+- No lesson text, quiz wording, production configuration, database, or migration was changed.
+
