@@ -129,6 +129,23 @@ class ContentConsistencyTests(unittest.TestCase):
         svg_order = re.findall(r'font-size="36"[^>]*>(.*?)</text>', svg)
         self.assertEqual(svg_order, expected_order)
 
+    def test_lesson_two_has_five_matching_examples_for_each_letter(self):
+        lesson = self.lessons["وانە_2"]["content"]
+        section = lesson.split("🔤 پیت و وشەی نموونە", 1)[1].split(
+            "\n\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+        )[0]
+        entries = [line for line in section.splitlines() if " — " in line]
+
+        self.assertEqual(len(entries), 34)
+        for line in entries:
+            with self.subTest(entry=line):
+                letter, examples_text = line.split(" — ", 1)
+                examples = [word.strip() for word in examples_text.split("،")]
+                self.assertEqual(len(examples), 5)
+                self.assertTrue(all(examples))
+                for word in examples:
+                    self.assertIn(letter.strip(), word)
+
     def test_alphabet_quiz_definitions_match_lesson_explanations(self):
         lesson = self.lessons["وانە_2"]["content"]
         questions = self.quizzes["وانە_2"]
