@@ -395,3 +395,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Moved recognized goodbye phrases into the early exit branch so explicit exit intent takes priority over greeting and role-play matching; the exit still clears role-play state.
 - Added a regression test for the combined greeting/goodbye case and verifies that chat mode and role-play state are cleared.
 - This is a narrow conversation-flow fix; it does not alter lesson text, quiz answers, the KejyarBot orthography policy, speech settings, main, production data, or PR merge status.
+
+
+## Quiz option minimum consistency check (26 October 2026)
+
+- Rechecked all ten quiz sets: 62 questions total, and every question currently has at least three distinct options; lesson 4 includes one four-option item.
+- The general content regression test had drifted to accepting two options, which was weaker than the project’s documented minimum. Updated the assertion to require at least three options so future two-choice regressions fail.
+- This change validates quiz structure only; it does not certify every Kurdish example against the selected reference book or replace manual Telegram testing.
+- Change is limited to `tests/test_content.py` and this audit record on `fix/kejyarbot-stability-2026-10-25`. No `main`, production bot/database, migrations, voice assets, or pull-request merge was changed.
