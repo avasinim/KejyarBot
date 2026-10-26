@@ -52,7 +52,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             await bot.message(update, context)
 
         self.assertFalse(context.user_data["daily_chat_mode"])
-        self.assertEqual(context.user_data["daily_chat_scenario"], "market")
+        self.assertNotIn("daily_chat_scenario", context.user_data)
+        self.assertNotIn("daily_chat_stage", context.user_data)
         update.message.reply_text.assert_awaited_once()
         self.assertEqual(update.message.reply_text.await_args.args[0], bot.LESSON_DATA[lesson]["content"])
 
