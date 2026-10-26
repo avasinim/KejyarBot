@@ -454,3 +454,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Re-read the updated `database.py` from the feature branch. Existing schema migration behavior is preserved; this change only improves cleanup and failure handling.
 - Existing tests cover repeat initialization and schema migration idempotence. CI for this exact change is pending at the time of this audit update.
 - No production database, migration files, bot token, or `main` branch was touched.
+
+
+## Regression test for database initialization failure (26 October 2026)
+
+- Added a mocked failure-path test for `init_db`: when schema setup raises an exception, it asserts the transaction is rolled back and the SQLite connection is closed.
+- This supplements the existing idempotent schema initialization test. The new regression test is committed on the feature branch; CI is pending for the latest test commit.
+- No production database, migration files, bot token, or `main` branch was touched.
