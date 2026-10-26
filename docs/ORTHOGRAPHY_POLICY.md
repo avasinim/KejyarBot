@@ -56,3 +56,9 @@
 - Lesson 2 and its infographic had the same 34 practice entries but placed و / وو / ۆ before ه / ە. Reordered those entries in both files to match the reference order; the lesson continues to describe them as practice entries, not a claim of official endorsement.
 - Added a regression test asserting that the lesson text and SVG entry order both match the reference order. CI passed for the three successive commits: lesson text `38d0b2716df297b9a49a26236ddf92459d71f116`, infographic `1f99b93dff83b3a80f3520ec7eef2dcde520fcb9`, and test `df052cf6d47ebbbb675644711e691561f562b57e`.
 - Scope remains limited: this verifies the alphabet order against the searchable source text and online corroboration; it is not a complete page-by-page audit of every spelling rule in the 2024 PDF.
+
+## Unicode character guard (26 October 2026)
+
+- The reference's section on ك versus ک recommends using Kurdish kaf ک (U+06A9) consistently instead of Arabic kaf ك (U+0643) in Kurdish text.
+- A scan of all ten lesson titles/content and all quiz sets found no Arabic-kaf occurrences. A regression test now guards this distinction for lesson and quiz text.
+- This is a Unicode/code-point check only; it does not replace editorial review of spelling, morphology, punctuation, or dialectal usage.
