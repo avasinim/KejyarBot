@@ -46,6 +46,11 @@ class CourseStructureTests(unittest.TestCase):
         self.assertIn("if lesson in get_completed_lessons(uid):", self.bot)
         self.assertIn("خەڵاتەکە پێشتر هەژمار کراوە", self.bot)
 
+    def test_quiz_xp_is_awarded_only_for_first_completion(self):
+        self.assertIn("already_completed = lesson in get_completed_lessons(uid)", self.bot)
+        self.assertIn("if not already_completed:", self.bot)
+        self.assertIn("XP دووبارە زیاد نەکرا", self.bot)
+
 
 if __name__ == "__main__":
     unittest.main()
