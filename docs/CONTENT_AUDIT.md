@@ -429,3 +429,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Updated `tests/test_bot_message_mode.py` to assert both role-play fields are removed when a lesson button is selected.
 - Re-read both changed files after the remote feature-branch update. GitHub Actions run #614 passed for the updated branch head: https://github.com/avasinim/KejyarBot/actions/runs/40288141082 .
 - This is a state-cleanup regression fix; no lesson text, quiz content, token, production database, or production deployment was changed.
+
+
+## Curriculum/quiz parity scan (26 October 2026)
+
+- Re-read `lessons.json`, `learning_path.json`, and `quiz.json` from the current feature-branch snapshot.
+- All 10 lesson records have non-empty titles and content; the 10 displayed learning-path titles match the lesson titles and order.
+- All 10 lessons have a corresponding quiz set, with 62 questions total (8 for lesson 2; 6 for each other lesson). No quiz-only keys or lessons without a quiz set were found.
+- Structural validation found no question with a missing answer, no answer absent from its option list, and no repeated question text within an individual lesson's quiz set.
+- This is structural parity validation, not a full expert review of Kurdish grammar, spelling, distractor quality, or whether each answer is pedagogically ideal. No lesson or quiz wording was changed during this scan.
