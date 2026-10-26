@@ -665,5 +665,39 @@ class ContentConsistencyTests(unittest.TestCase):
                         )
 
 
+    def test_infographic_teaching_phrases_are_present_in_matching_lessons(self):
+        expectations = {
+            "lesson-01-greetings.svg": (
+                "وانە_1",
+                ("سڵاو!", "چۆنی؟", "باشم، سوپاس."),
+            ),
+            "lesson-03-daily-words.svg": (
+                "وانە_3",
+                ("تکایە، دەرگاکە بکەرەوە.", "سوپاس", "ببورە"),
+            ),
+            "lesson-04-numbers.svg": (
+                "وانە_4",
+                ("٠ — سفر", "١ — یەک", "٢ — دوو", "٣ — سێ"),
+            ),
+            "lesson-05-colors.svg": (
+                "وانە_5",
+                ("سوور", "شین", "سەوز", "زەرد", "ڕەش", "سپی"),
+            ),
+            "lesson-06-home-school.svg": (
+                "وانە_6",
+                ("دەرگا", "پەنجەرە", "کورسی", "کتێب"),
+            ),
+        }
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        for filename, (lesson_key, phrases) in expectations.items():
+            with self.subTest(infographic=filename):
+                svg_text = (assets_dir / filename).read_text(encoding="utf-8")
+                lesson_text = self.lessons[lesson_key]["content"]
+                for phrase in phrases:
+                    with self.subTest(phrase=phrase):
+                        self.assertIn(phrase, lesson_text)
+                        self.assertIn(phrase, svg_text)
+
+
 if __name__ == "__main__":
     unittest.main()
