@@ -452,12 +452,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - Wrapped `init_db` schema creation and idempotent column addition in explicit exception handling: commit on success, rollback on failure, and always close the SQLite connection.
 - Re-read the updated `database.py` from the feature branch. Existing schema migration behavior is preserved; this change only improves cleanup and failure handling.
-- Existing tests cover repeat initialization and schema migration idempotence. CI for this exact change is pending at the time of this audit update.
+- Existing tests cover repeat initialization and schema migration idempotence. CI for this change passed on feature-branch head `aeca65b7d1651657d921183f84a82bc399c528e6` (runs [40289004292](https://github.com/avasinim/KejyarBot/actions/runs/40289004292) and [40289008270](https://github.com/avasinim/KejyarBot/actions/runs/40289008270)).
 - No production database, migration files, bot token, or `main` branch was touched.
 
 
 ## Regression test for database initialization failure (26 October 2026)
 
 - Added a mocked failure-path test for `init_db`: when schema setup raises an exception, it asserts the transaction is rolled back and the SQLite connection is closed.
-- This supplements the existing idempotent schema initialization test. The new regression test is committed on the feature branch; CI is pending for the latest test commit.
+- This supplements the existing idempotent schema initialization test. The new regression test is committed on the feature branch and passed in CI on head `aeca65b7d1651657d921183f84a82bc399c528e6` (run [40289008270](https://github.com/avasinim/KejyarBot/actions/runs/40289008270)).
 - No production database, migration files, bot token, or `main` branch was touched.
