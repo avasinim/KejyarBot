@@ -606,5 +606,25 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertEqual(sum(len(questions) for questions in self.quizzes.values()), 62)
 
 
+    def test_infographic_accessible_labels_match_their_lesson(self):
+        expected_labels = {
+            "lesson-01-greetings.svg": "وانەی ١: سڵاو و ناساندنی خۆ",
+            "lesson-02-letters-sample.svg": "وانەی ٢: خشتەی فراوانی پیت و پێنج وشەی نموونە بۆ هەر نیشانە",
+            "lesson-03-daily-words.svg": "وانەی ٣: وشەکانی ڕۆژانە",
+            "lesson-04-numbers.svg": "وانەی ٤: ژمارەکان",
+            "lesson-05-colors.svg": "وانەی ٥: ڕەنگەکان",
+            "lesson-06-home-school.svg": "وانەی ٦: لە ماڵ و قوتابخانە",
+            "lesson-07-family.svg": "وانەی ٧: خێزان و کەسانی نزیک",
+            "lesson-08-food-drink.svg": "وانەی ٨: خواردن و خواردنەوە",
+            "lesson-09-days-time.svg": "وانەی ٩: ڕۆژەکانی هەفتە و کات",
+            "lesson-10-simple-sentences.svg": "وانەی ١٠: ڕستەی سادە و پرسیارکردن",
+        }
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        for filename, expected_label in expected_labels.items():
+            with self.subTest(infographic=filename):
+                root = ET.parse(assets_dir / filename).getroot()
+                self.assertEqual(root.attrib.get("aria-label"), expected_label)
+
+
 if __name__ == "__main__":
     unittest.main()
