@@ -501,6 +501,33 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+
+    def test_lesson_two_practice_order_matches_selected_2024_reference(self):
+        expected = [
+            "ئ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
+            "ز", "ژ", "س", "ش", "ع", "غ", "ف", "ڤ", "ق", "ک", "گ", "ل",
+            "ڵ", "م", "ن", "ه", "ە", "و", "وو", "ۆ", "ی", "ێ",
+        ]
+        content = self.lessons["وانە_2"]["content"]
+        section = content.split("🔤 پیت و وشەی نموونە", 1)[1].split(
+            "🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+        )[0]
+        lesson_order = [
+            line.strip().split(" — ", 1)[0]
+            for line in section.splitlines()
+            if " — " in line
+        ]
+        self.assertEqual(lesson_order, expected)
+
+        svg_path = BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
+        root = ET.parse(svg_path).getroot()
+        namespace = "{http://www.w3.org/2000/svg}"
+        card_order = [
+            group.findall(f"{namespace}text")[0].text
+            for group in root.findall(f".//{namespace}g")
+        ]
+        self.assertEqual(card_order, expected)
+
     def test_lesson_four_quiz_checks_simple_addition_in_context(self):
         lesson = self.lessons["وانە_4"]["content"]
         item = next(
