@@ -429,3 +429,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Corrected `docs/CURRICULUM_ROADMAP.md` so it no longer instructs contributors to apply Avasin Code to KejyarBot. The bot's own orthography policy remains separate and identifies Diako Hashemi's «پوختەی ڕێنووس و خاڵبەندی» as the intended reference.
 - Updated the roadmap status from the outdated three/five-lesson snapshot to the current ten-lesson starter course and recorded the latest successful CI head `a2b18948ce3ade3b3d829664a38144007236f09e`.
 - This was a documentation-only correction. No lesson text, quiz content, voice assets, production configuration, or database was changed. The selected PDF still needs page-by-page review before source-based spelling changes are made.
+
+## Reference-backed alphabet-order correction (26 October 2026)
+
+- Corrected the order of the final seven practice entries in lesson 2 and its SVG infographic to match Diako Hashemi's listed Central Kurdish alphabet order.
+- Added `test_lesson_two_practice_entries_follow_reference_order` to keep lesson text and infographic synchronized with that order. CI run #40276894384 passed: https://github.com/avasinim/KejyarBot/actions/runs/40276894384 .
+- The lesson remains a practice resource, not a claim of official approval. The correction does not imply that every lesson spelling has now been checked against every page of the selected 2024 edition.
