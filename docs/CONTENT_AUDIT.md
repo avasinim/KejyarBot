@@ -414,3 +414,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is a **source-comparison finding**, not a confirmed defect against the selected third-edition PDF. The PDF remains inaccessible for page-by-page verification in this workflow, and the online page may be updated independently. The lesson and infographic were therefore left unchanged; do not silently reorder entries until the selected 2024 edition is verified and the teaching intent is confirmed.
 - The legacy `quizzes.json` file contains only two questions under `lesson_3`; the reviewed runtime entry point `bot.py` loads `quiz.json`, not `quizzes.json`. No deletion was made: before removing the legacy file, complete a repository-wide reference check across all files and branches.
 - No production/main branch, production database, bot token, or deployment was touched.
+
+## Repository-wide legacy quiz-file reference scan (26 October 2026)
+
+- Scanned tracked text/code files in the current snapshots of all four repository branches: `main`, `content-design-polish-2026-10-25`, `fix/content-design-polish-2026-10-25`, and `fix/kejyarbot-stability-2026-10-25`. Compared differing file blobs across branch snapshots and checked source code, JSON data, tests, documentation, requirements, and workflow configuration for references to `quizzes.json`.
+- The only references found were explanatory notes in `docs/CONTENT_AUDIT.md`; no runtime, test, or workflow/configuration reference was found in the scanned branch snapshots. `bot.py` on the stability branch loads `quiz.json`.
+- This establishes no references in the scanned current branch snapshots; it does **not** establish that the file is unused by untracked local files, external deployment scripts, archived branches, tags, or historical commits. The legacy file is retained to avoid irreversible deletion without a complete usage decision.
+- No lesson wording, quiz content, legacy file, `main`, production bot/database, token, migration, or deployment was changed by this scan.
