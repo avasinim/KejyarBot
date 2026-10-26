@@ -78,6 +78,20 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             self.assertGreaterEqual(question["correct_option_index"], 0)
             self.assertLess(question["correct_option_index"], len(question["options"]))
             self.assertTrue(question["question"].strip())
+            self.assertTrue(question["explanation"].strip())
+
+    def test_quiz_explanations_are_lesson_specific_not_one_repeated_template(self):
+        explanations = [
+            item["questions"][0]["explanation"]
+            for item in self.quiz["quizzes"]
+        ]
+        self.assertEqual(len(explanations), 22)
+        self.assertEqual(len(set(explanations)), 22)
+        self.assertTrue(all(len(explanation) >= 40 for explanation in explanations))
+        self.assertIn(
+            "not source-verified",
+            self.quiz["note"],
+        )
 
     def test_draft_status_is_not_misrepresented_as_source_reviewed_or_runtime_ready(self):
         self.assertEqual(self.course["status"], "curriculum_structure")
