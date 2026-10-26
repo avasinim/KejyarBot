@@ -438,3 +438,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - All 10 lessons have a corresponding quiz set, with 62 questions total (8 for lesson 2; 6 for each other lesson). No quiz-only keys or lessons without a quiz set were found.
 - Structural validation found no question with a missing answer, no answer absent from its option list, and no repeated question text within an individual lesson's quiz set.
 - This is structural parity validation, not a full expert review of Kurdish grammar, spelling, distractor quality, or whether each answer is pedagogically ideal. No lesson or quiz wording was changed during this scan.
+
+
+## SQLite helper connection safety (26 October 2026)
+
+- Updated `update_level`, `add_score`, `add_xp`, `add_coins`, and `add_chest` to use explicit `try/except/finally` transaction handling, rolling back on database errors and always closing connections.
+- Added a focused regression test covering score/XP updates, the score helper's coin bonus, XP-only behavior, level recalculation, coin addition, and chest addition.
+- Re-read `database.py` and `tests/test_database.py` from the feature branch to verify the changes are present.
+- This is a local SQLite reliability improvement only. It does not run the bot, call Telegram, read or modify secrets, change lesson content, touch production databases, or modify `main`.
