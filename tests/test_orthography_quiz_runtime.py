@@ -62,6 +62,13 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_quiz_session(broken, 1)
 
+
+    def test_rejects_missing_explanation_before_session_starts(self):
+        broken = copy.deepcopy(self.converted)
+        broken["lesson_01"][0]["explanation"] = " "
+        with self.assertRaises(ValueError):
+            build_quiz_session(broken, 1)
+
     def test_answer_progression_scores_and_finishes_without_rewards(self):
         quizzes = {
             "lesson_01": [
