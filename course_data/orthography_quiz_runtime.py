@@ -33,6 +33,8 @@ def build_quiz_session(converted_quizzes, lesson_number):
             raise ValueError("at least two options are required")
         if any(not isinstance(option, str) or not option.strip() for option in options):
             raise ValueError("options must be non-empty strings")
+        if len(options) != len(set(options)):
+            raise ValueError("options must be unique")
         if question.get("answer") not in options:
             raise ValueError("answer must match one of the options")
         if not isinstance(question.get("explanation"), str) or not question["explanation"].strip():
