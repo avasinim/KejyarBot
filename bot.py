@@ -116,6 +116,7 @@ MENU = ReplyKeyboardMarkup(
         ["🍽️ خواردن و خواردنەوە"],
         ["📅 ڕۆژەکانی هەفتە و کات"],
         ["🧱 ڕستەی سادە و پرسیارکردن"],
+        ["ڕێنووسی زمانی کوردی"],
     ],
     resize_keyboard=True,
 )
@@ -360,6 +361,25 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
+    if text == "ڕێنووسی زمانی کوردی":
+        context.user_data["daily_chat_mode"] = False
+        context.user_data.pop("daily_chat_scenario", None)
+        context.user_data.pop("daily_chat_stage", None)
+        course = load_json("course_data/orthography_foundations.json")
+        lesson_lines = [
+            f"{lesson['number']}. {lesson['title']}"
+            for lesson in course.get("lessons", [])
+        ]
+        await update.message.reply_text(
+            f"📘 {course['title']}\\n"
+            f"وانەکان: {len(lesson_lines)}\\n\\n"
+            + "\\n".join(lesson_lines)
+            + "\\n\\n⚠️ ناوەڕۆکی وانەکان هێشتا لە پشکنینی سەرچاوە و ئامادەکردندان؛ "
+              "بەشی وانەکان کاتێک دەکرێتەوە کە ناوەڕۆک و تاقیکردنەوەکانیان تەواو بن.",
+            reply_markup=MENU,
+        )
+        return
+
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -376,6 +396,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text in LESSON_BUTTONS or text in {
         "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
+        "ڕێنووسی زمانی کوردی",
     }:
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
