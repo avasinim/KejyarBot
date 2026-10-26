@@ -106,6 +106,12 @@ with open(
 
 LESSONS = {
 
+    '🔤 پیتەکان و دەنگەکان':
+        (
+            'وانە_1',
+            LESSON_DATA['وانە_1']['content']
+        ),
+
     '🔤 ئەلفوبێی کوردی':
         (
             'وانە_2',
@@ -138,6 +144,7 @@ LESSONS = {
 
 
 ORDER = [
+    'وانە_1',
     'وانە_2',
     'وانە_3',
     'وانە_4',
@@ -177,6 +184,10 @@ def can_open(uid, lesson):
 
     done = get_completed_lessons(uid)
 
+    # Keep already-completed legacy lessons accessible for existing students.
+    if lesson in done:
+        return True
+
     index = ORDER.index(lesson)
 
     return index == 0 or ORDER[index - 1] in done
@@ -186,6 +197,9 @@ def can_open(uid, lesson):
 def check_badges(uid):
 
     badges = {
+
+        'وانە_1':
+            '🏅 ناسەری پیت و دەنگ',
 
         'وانە_2':
             '🏅 دەستپێکەری کوردی',
@@ -325,6 +339,9 @@ async def finish_lesson(
 """
 
         if lesson != ORDER[-1]:
+
+            index = ORDER.index(lesson)
+            next_lesson = ORDER[index + 1]
 
             keyboard = InlineKeyboardMarkup(
                 [
@@ -919,14 +936,6 @@ def main():
 
 
     app.add_handler(
-        CallbackQueryHandler(
-            open_next_lesson,
-            pattern="^next_lesson_"
-        )
-    )
-
-
-    app.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND,
             message
@@ -935,9 +944,6 @@ def main():
     print(
         "🌱 KejyarBot is running..."
     )
-
-
-    app.run_polling()
 
 
     app.run_polling()
