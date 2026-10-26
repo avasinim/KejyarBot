@@ -405,3 +405,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The general content regression test had drifted to accepting two options, which was weaker than the project’s documented minimum. Updated the assertion to require at least three options so future two-choice regressions fail.
 - This change validates quiz structure only; it does not certify every Kurdish example against the selected reference book or replace manual Telegram testing.
 - Change is limited to `tests/test_content.py` and this audit record on `fix/kejyarbot-stability-2026-10-25`. No `main`, production bot/database, migrations, voice assets, or pull-request merge was changed.
+
+
+## Follow-up source comparison (26 October 2026)
+
+- Compared lesson 2's practice-entry order with the publicly accessible online section “٢. ئەلفبێ” on Diyako Hashemi's “زمانی کوردی: ڕێنووس” page: https://chawg.org/zimani-kurdi-renus/ .
+- The online page lists the Central Kurdish letters in this order: ئـ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، هـ، ە، و، وو، ۆ، ی، ێ. Lesson 2's practice entries place و، وو، ۆ before ه، ە, so its sequence does not match that online reference sequence.
+- This is a **source-comparison finding**, not a confirmed defect against the selected third-edition PDF. The PDF remains inaccessible for page-by-page verification in this workflow, and the online page may be updated independently. The lesson and infographic were therefore left unchanged; do not silently reorder entries until the selected 2024 edition is verified and the teaching intent is confirmed.
+- The legacy `quizzes.json` file contains only two questions under `lesson_3`; the reviewed runtime entry point `bot.py` loads `quiz.json`, not `quizzes.json`. No deletion was made: before removing the legacy file, complete a repository-wide reference check across all files and branches.
+- No production/main branch, production database, bot token, or deployment was touched.
