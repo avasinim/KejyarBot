@@ -28,6 +28,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             "daily_chat_mode": True,
             "daily_chat_scenario": "market",
             "daily_chat_stage": 2,
+            "quiz": {"lesson": "وانە_2", "index": 3},
         })
         with (
             patch.object(bot, "get_user"),
@@ -38,6 +39,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(context.user_data["daily_chat_mode"])
         self.assertNotIn("daily_chat_scenario", context.user_data)
         self.assertNotIn("daily_chat_stage", context.user_data)
+        self.assertNotIn("quiz", context.user_data)
         message.reply_text.assert_awaited_once()
 
     async def test_ordinary_text_stays_in_daily_chat_mode(self):
