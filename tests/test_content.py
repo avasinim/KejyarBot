@@ -596,5 +596,15 @@ class ContentConsistencyTests(unittest.TestCase):
                     )
 
 
+    def test_quiz_set_sizes_match_the_audited_beginner_curriculum(self):
+        expected_counts = {f"وانە_{index}": 6 for index in range(1, 11)}
+        expected_counts["وانە_2"] = 8
+        self.assertEqual(
+            {lesson_key: len(questions) for lesson_key, questions in self.quizzes.items()},
+            expected_counts,
+        )
+        self.assertEqual(sum(len(questions) for questions in self.quizzes.values()), 62)
+
+
 if __name__ == "__main__":
     unittest.main()
