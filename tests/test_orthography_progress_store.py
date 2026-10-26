@@ -40,7 +40,7 @@ class OrthographyProgressStoreTests(unittest.TestCase):
         self.assertEqual(row, ("وانە_1,وانە_2", "وانە_1", 40))
 
     def test_validates_identifiers(self):
-        for user_id, lesson_id in ((True, "lesson_01"), (1, "وانە_1"), (1, "")):
+        for user_id, lesson_id in ((True, "lesson_01"), (1, "وانە_1"), (1, ""), (1, "lesson_1"), (1, "lesson_23")):
             with self.subTest(user_id=user_id, lesson_id=lesson_id), self.assertRaises(ValueError):
                 record_course_quiz_completion(self.db_path, user_id, lesson_id)
 
