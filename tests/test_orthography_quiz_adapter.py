@@ -41,6 +41,28 @@ class OrthographyQuizAdapterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             convert_quiz_draft(data)
 
+    def test_rejects_duplicate_options_and_boolean_answer_index(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["options"][1] = data["quizzes"][0]["questions"][0]["options"][0]
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["correct_option_index"] = True
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+    def test_rejects_missing_question_text_and_empty_explanation(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["question"] = "   "
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["explanation"] = ""
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
     def test_rejects_non_object_draft_group_and_question(self):
         with self.assertRaises(ValueError):
             convert_quiz_draft(None)
