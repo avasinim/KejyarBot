@@ -644,5 +644,26 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertEqual(root.attrib.get("aria-label"), expected_label)
 
 
+    def test_infographic_svg_ids_are_unique_and_have_no_external_references(self):
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        xlink_href = "{http://www.w3.org/1999/xlink}href"
+        for path in sorted(assets_dir.glob("*.svg")):
+            with self.subTest(asset=path.name):
+                root = ET.parse(path).getroot()
+                ids = [
+                    element.attrib["id"]
+                    for element in root.iter()
+                    if element.attrib.get("id")
+                ]
+                self.assertEqual(len(ids), len(set(ids)), "SVG IDs must be unique")
+                for element in root.iter():
+                    href = element.attrib.get("href") or element.attrib.get(xlink_href)
+                    if href:
+                        self.assertTrue(
+                            href.startswith("#"),
+                            f"External SVG reference is not allowed: {href}",
+                        )
+
+
 if __name__ == "__main__":
     unittest.main()
