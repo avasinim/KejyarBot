@@ -513,3 +513,8 @@ This audit is documentation only. It does not change `main`, production bot sett
 - This is a consistency check only; it does not certify the scientific or linguistic quality of the answers or distractors.
 - No lesson text, quiz wording, production configuration, database, or migration was changed.
 
+## Quiz coverage regression guard (26 October 2026)
+
+- Added `test_quiz_set_sizes_match_the_audited_beginner_curriculum` to preserve the reviewed distribution: 8 questions in Lesson 2 and 6 questions in each of the other nine lessons, 62 questions total.
+- This catches accidental deletion or unexpected expansion of quiz items. New questions can still be added deliberately by updating the test and documenting the curriculum decision.
+- No quiz data or lesson content was changed in this step.
