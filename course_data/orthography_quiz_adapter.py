@@ -20,6 +20,7 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
 
     converted: dict[str, list[dict[str, Any]]] = {}
     seen_lessons: set[int] = set()
+    seen_question_ids: set[str] = set()
     for group in quizzes:
         if not isinstance(group, dict):
             raise ValueError("Each quiz group must be an object")
@@ -39,6 +40,14 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
         for question in questions:
             if not isinstance(question, dict):
                 raise ValueError(f"Lesson {number} question must be an object")
+            question_id = question.get("id")
+            if not isinstance(question_id, str) or not question_id.strip():
+                raise ValueError(f"Lesson {number} question has invalid id")
+            if question_id in seen_question_ids:
+                raise ValueError(f"Duplicate question id: {question_id}")
+            seen_question_ids.add(question_id)
+            if question.get("type") != "multiple_choice":
+                raise ValueError(f"Lesson {number} question has unsupported type")
             options = question.get("options")
             index = question.get("correct_option_index")
             if not isinstance(options, list) or len(options) < 2:
