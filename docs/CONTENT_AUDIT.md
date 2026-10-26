@@ -480,3 +480,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added an explicit workflow-level `permissions: contents: read` policy so the job's `GITHUB_TOKEN` is limited to read-only repository contents instead of relying on repository/org defaults.
 - This is CI permission hardening only. It does not change bot runtime behavior, secrets, production settings, databases, migrations, or `main`.
 - Awaiting CI for the updated workflow commit; automated checks do not replace the separate authorized Telegram integration test or the source-based linguistic review.
+
+
+## Source-based alphabet order correction (26 October 2026)
+
+- The searchable text of the selected third updated edition dated 16 August 2024 exposes the 34-letter sequence on the alphabet page: `ئ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، هـ، ە، و، وو، ۆ، ی، ێ`. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf .
+- Compared the source sequence with lesson 2 and found a definite ordering mismatch in the final five practice entries: the lesson had `و، وو، ۆ، ه، ە`, while the reference places `هـ، ە` before `و، وو، ۆ`.
+- Reordered the lesson 2 practice entries to match the source, and synchronized the 34-card SVG infographic to the same sequence. The five example words attached to each sign were retained; this was an ordering correction, not a change to example vocabulary.
+- Added a regression test that checks both the lesson sequence and infographic card sequence against the selected source order. This is based on the searchable PDF text extract; the PDF page image has not been visually inspected, and the lesson still describes these as practice entries rather than expanding claims about phonetic classification.
+- CI is pending for the code/content/test/documentation changes. No production, `main`, database, migration, or token changes were made.
