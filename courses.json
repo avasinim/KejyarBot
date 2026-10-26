@@ -1,12 +1,17 @@
 {
   "orthography_basic": {
     "title": "دەورەی ١: ڕێنووسی سەرەتایی",
-    "lesson_ids": ["وانە_1"],
+    "lesson_ids": [
+      "وانە_1",
+      "وانە_2"
+    ],
     "status": "active"
   },
   "daily_conversation": {
     "title": "دەورەی ٢: وت‌وێژی ڕۆژانە",
-    "lesson_ids": ["وتوێژ_1"],
+    "lesson_ids": [
+      "وتوێژ_1"
+    ],
     "status": "active"
   },
   "unified_orthography": {
