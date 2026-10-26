@@ -457,3 +457,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Re-read the updated test file and independently checked the branch's lesson JSON and SVG: both contain exactly 34 alphabet entries, each follows the expected reference order, and the lesson and infographic sequences match exactly.
 - This verification used the current repository file contents; it is not a substitute for a completed CI run. The latest commit's CI status has not yet been confirmed by the available status endpoint.
 - No lesson/quiz content was changed in this follow-up. No merge, main-branch change, production change, or voice-asset change was made.
+
+## Quiz integrity and alphabet-example cross-check (26 October 2026)
+
+- Rechecked all 10 lesson records and all 10 quiz sets on the active content/design branch. The quiz catalog contains 70 questions total (6–8 per lesson); no duplicate question text within a set, duplicate answer options, missing correct answers, fewer than three options, or correct-answer phrases absent from the associated lesson text were found in this targeted scan.
+- Rechecked lesson 2's 34 alphabet practice entries and all 170 example words. Every example contains the grapheme shown for its entry; the lesson JSON and SVG both retain the same 34-entry order.
+- These checks establish structural/text consistency only. They do not prove every example is the most pedagogically natural word or that all spelling variants match every page of the selected source. Page-by-page reference review and browser/mobile rendering remain outstanding.
+- No lesson or quiz content was changed in this pass; only this audit note was added. No main branch, production configuration, database, migration, voice asset, or PR merge was touched.
