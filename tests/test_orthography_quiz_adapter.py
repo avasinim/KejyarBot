@@ -1,0 +1,46 @@
+import copy
+import json
+import unittest
+from pathlib import Path
+
+from course_data.orthography_quiz_adapter import convert_quiz_draft
+
+
+class OrthographyQuizAdapterTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        path = Path(__file__).resolve().parents[1] / "course_data" / "orthography_foundations_quiz_draft.json"
+        cls.data = json.loads(path.read_text(encoding="utf-8"))
+
+    def test_converts_all_22_lessons_and_indexed_answers(self):
+        converted = convert_quiz_draft(self.data)
+        self.assertEqual(len(converted), 22)
+        self.assertEqual(set(converted), {f"lesson_{n:02d}" for n in range(1, 23)})
+        for group in self.data["quizzes"]:
+            n = group["lesson_number"]
+            source = group["questions"][0]
+            target = converted[f"lesson_{n:02d}"][0]
+            self.assertEqual(target["answer"], source["options"][source["correct_option_index"]])
+            self.assertEqual(target["options"], source["options"])
+
+    def test_rejects_wrong_course(self):
+        data = copy.deepcopy(self.data)
+        data["course_id"] = "legacy"
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+    def test_rejects_duplicate_lesson_number(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][1]["lesson_number"] = 1
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+    def test_rejects_invalid_correct_option_index(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["correct_option_index"] = 99
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+
+if __name__ == "__main__":
+    unittest.main()
