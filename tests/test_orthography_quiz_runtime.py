@@ -9,7 +9,9 @@ from course_data.orthography_quiz_runtime import (
     apply_answer,
     build_quiz_session,
     make_answer_callback,
+    make_start_callback,
     parse_answer_callback,
+    parse_start_callback,
 )
 
 
@@ -87,6 +89,18 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             apply_answer(session, 999)
 
+    def test_start_callbacks_are_namespaced_and_validated(self):
+        for number in range(1, 23):
+            callback = make_start_callback(number)
+            self.assertLessEqual(len(callback.encode("utf-8")), 64)
+            self.assertEqual(parse_start_callback(callback), number)
+        for invalid in (0, 23, True, "1"):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                make_start_callback(invalid)
+        self.assertIsNone(parse_start_callback("quiz_1_start"))
+        self.assertIsNone(parse_start_callback("ofquiz_start_00"))
+        self.assertIsNone(parse_start_callback("ofquiz_start_23"))
+        self.assertIsNone(parse_start_callback("ofquiz_start_1"))
 
 if __name__ == "__main__":
     unittest.main()
