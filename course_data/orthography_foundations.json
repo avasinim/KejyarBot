@@ -10,7 +10,7 @@
       "number": 1,
       "title": "پیتەکان و دەنگەکان",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -19,7 +19,7 @@
       "number": 2,
       "title": "بزوێنەکان",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -28,7 +28,7 @@
       "number": 3,
       "title": "یاسای بزوێنەکان",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -37,7 +37,7 @@
       "number": 4,
       "title": "لە ئەلفبێی کوردیدا تەنیا یەک (ت، ز، س) مان هەیە",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -46,7 +46,7 @@
       "number": 5,
       "title": "نووسینی بزوێن لە سەرەتای وشە",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -55,7 +55,7 @@
       "number": 6,
       "title": "پیتەکانی و و ی",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -64,7 +64,7 @@
       "number": 7,
       "title": "و و ی وەک بزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -73,7 +73,7 @@
       "number": 8,
       "title": "و و ی وەک نەبزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -82,7 +82,7 @@
       "number": 9,
       "title": "سێ دەنگی گرینگ",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -91,7 +91,7 @@
       "number": 10,
       "title": "پیتی ە",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -100,7 +100,7 @@
       "number": 11,
       "title": "پیتی ێ",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -109,7 +109,7 @@
       "number": 12,
       "title": "پیتی ۆ",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -118,7 +118,7 @@
       "number": 13,
       "title": "چەڵەمە (ٚ)",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -127,7 +127,7 @@
       "number": 14,
       "title": "جیاوازیی ل و ڵ",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -136,7 +136,7 @@
       "number": 15,
       "title": "جیاوازیی ڕ و ر",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -145,7 +145,7 @@
       "number": 16,
       "title": "وو (واوی جووت)",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -154,7 +154,7 @@
       "number": 17,
       "title": "پیتی ڤ",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -163,7 +163,7 @@
       "number": 18,
       "title": "شیکردنەوەی کەژیار",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -172,7 +172,7 @@
       "number": 19,
       "title": "شیکردنەوەی یاسین",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -181,7 +181,7 @@
       "number": 20,
       "title": "بزرۆکە لە ڕێنووس و بڕگەبەندی",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -190,7 +190,7 @@
       "number": 21,
       "title": "بزرۆکە لە نموونەکانی گیان و شوان",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -199,7 +199,7 @@
       "number": 22,
       "title": "پیتەکانی و و ی: بزوێن و نەبزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "not_created",
+      "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     }
@@ -215,5 +215,5 @@
     "do_not_enable_dynamic_speech": true,
     "do_not_change_production_or_main": true
   },
-  "note": "Structure only. Course title is Kurdish orthography. There is no separate final menu button; course ends after lesson 22. Content, sources, quizzes, voice presentation and infographics still need implementation."
+  "note": "Structure only. A separate 22-question quiz draft exists but is not connected to runtime and needs editorial/source review. Lesson content, sources, quizzes, voice presentation and infographics still need implementation."
 }
