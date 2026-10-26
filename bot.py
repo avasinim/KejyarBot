@@ -162,6 +162,8 @@ async def send_voice(update, filename):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
+    context.user_data.pop("daily_chat_scenario", None)
+    context.user_data.pop("daily_chat_stage", None)
     get_user(update.effective_user.id)
     welcome = """🌱 سڵاو، بەخێربێیت بۆ کەژیار
 
