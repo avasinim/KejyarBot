@@ -545,3 +545,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Preserved all five example words listed for each of the 34 entries in the lesson text; the existing regression test checks that every example remains present in the SVG.
 - The illustration is an introductory visual cue for the first example word in each row, not a claim that each of the five listed words has its own separate image. A later design pass should add individually matched image cards for every word, with particular care for words that are not straightforward to depict.
 - This is a custom vector prototype. It uses a Noto font stack, but the target runtime still needs visual checking for actual font availability, glyph shaping, diacritics, RTL flow, and readability at mobile sizes. Do not treat a successful XML/test run as proof of visual font correctness.
+
+## Lesson 5 visual learning aid (26 October 2026)
+
+- Added nine distinct, outlined color swatches to `assets/infographics/lesson-05-colors.svg` for the color names already present in the lesson (سوور، شین، سەوز، زەرد، ڕەش، سپی، قاوەیی، پرتەقاڵی، پەمەیی).
+- Added small vector cues for the red apple, green leaf, and white paper examples. These are illustrative cues, not photographic images.
+- Kept the existing lesson wording unchanged. Visual inspection in an actual browser/mobile viewport is still needed to confirm font shaping, contrast, and that the added shapes do not crowd text.
