@@ -10,6 +10,8 @@ from typing import Any
 
 def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
     """Convert indexed answers to the legacy question shape, without wiring runtime."""
+    if not isinstance(data, dict):
+        raise ValueError("Quiz draft must be an object")
     if data.get("course_id") != "orthography_foundations":
         raise ValueError("Unexpected course_id")
     quizzes = data.get("quizzes")
@@ -19,6 +21,8 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
     converted: dict[str, list[dict[str, Any]]] = {}
     seen_lessons: set[int] = set()
     for group in quizzes:
+        if not isinstance(group, dict):
+            raise ValueError("Each quiz group must be an object")
         number = group.get("lesson_number")
         if not isinstance(number, int) or isinstance(number, bool) or not 1 <= number <= 22:
             raise ValueError("Invalid lesson_number")
@@ -30,6 +34,8 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
             raise ValueError(f"Lesson {number} has no questions")
         output_questions = []
         for question in questions:
+            if not isinstance(question, dict):
+                raise ValueError(f"Lesson {number} question must be an object")
             options = question.get("options")
             index = question.get("correct_option_index")
             if not isinstance(options, list) or len(options) < 2:
