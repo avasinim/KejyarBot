@@ -35,6 +35,8 @@ def build_quiz_session(converted_quizzes, lesson_number):
             raise ValueError("options must be non-empty strings")
         if question.get("answer") not in options:
             raise ValueError("answer must match one of the options")
+        if not isinstance(question.get("explanation"), str) or not question["explanation"].strip():
+            raise ValueError("question explanation is required")
 
     # Return fresh session-owned containers so answer progression cannot mutate
     # the validated source quiz data or the legacy quiz session.
