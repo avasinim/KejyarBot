@@ -450,3 +450,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Searched lesson and quiz content for the contrast «بەرامبەر» / «بەرانبەر»; neither form currently occurs, so no replacement was needed. No global substitutions were made for forms such as «چییە» or «نییە»: the bot must follow its own source-specific policy, not Avasin Code, and the reference PDF has not been reviewed page by page.
 - These are targeted text-integrity scans, not a complete linguistic proofread or a full SVG visual-rendering review. Manual Telegram/mobile testing and page-level source review remain release blockers.
 - No lesson or quiz text was changed in this pass. No main branch, production bot/database, migrations, voice assets, or PR merge was touched.
+
+## Alphabet-order test hardening (26 October 2026)
+
+- Follow-up review found that the alphabet-order regression test used a literal backslash-n delimiter instead of actual newline characters when locating the end of the practice-entry section. Corrected the delimiter so the test isolates the intended section accurately.
+- Re-read the updated test file and independently checked the branch's lesson JSON and SVG: both contain exactly 34 alphabet entries, each follows the expected reference order, and the lesson and infographic sequences match exactly.
+- This verification used the current repository file contents; it is not a substitute for a completed CI run. The latest commit's CI status has not yet been confirmed by the available status endpoint.
+- No lesson/quiz content was changed in this follow-up. No merge, main-branch change, production change, or voice-asset change was made.
