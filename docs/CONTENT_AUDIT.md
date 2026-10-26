@@ -524,3 +524,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_infographic_accessible_labels_match_their_lesson` to `tests/test_content.py`, checking the exact SVG `aria-label` for each of the ten lesson infographics.
 - This protects screen-reader labels and lesson-to-asset identity from accidental edits. Lesson 2 intentionally uses a descriptive label for its expanded letter/example chart rather than copying the shorter lesson title.
 - The SVG files and lesson content were inspected; no content or image changes were needed in this step.
+
+## KejyarBot infographic visual direction and Lesson 1 prototype (26 October 2026)
+
+- Reworked `assets/infographics/lesson-01-greetings.svg` as the first editable SVG prototype for a consistent KejyarBot visual system: warm paper background, forest-green and copper palette, restrained Kurdish textile-inspired geometry, rounded learning cards, and a small bot emblem.
+- All displayed Kurdish copy remains real SVG text using Unicode and RTL attributes, with a Noto Naskh Arabic/Noto Sans Arabic font stack; it is not baked into AI-generated pixels. This makes wording reviewable and selectable. Actual font rendering still depends on font availability in the viewer.
+- The learning phrases are drawn from `lessons.json` lesson 1. This is a visual/layout prototype, not a source-book orthography certification. Keep the lesson text unchanged; verify source-sensitive spelling separately before making copy-wide changes.
+- The AI-generated sample image is a visual reference only and must not be shipped as the source of Kurdish text because generated text can contain spelling and glyph errors.
+- Next design pass: extend the visual language to lessons 2–10 while preserving each lesson's source content and checking the exact Kurdish strings in SVG.
