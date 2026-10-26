@@ -44,6 +44,22 @@ class OrthographyProgressStoreTests(unittest.TestCase):
             with self.subTest(user_id=user_id, lesson_id=lesson_id), self.assertRaises(ValueError):
                 record_course_quiz_completion(self.db_path, user_id, lesson_id)
 
+
+    def test_progress_is_isolated_by_user_and_course(self):
+        self.assertTrue(record_course_quiz_completion(self.db_path, 7, "lesson_01", COURSE_ID))
+        self.assertTrue(record_course_quiz_completion(self.db_path, 7, "lesson_01", "another_course"))
+        self.assertTrue(record_course_quiz_completion(self.db_path, 8, "lesson_01", COURSE_ID))
+        self.assertEqual(get_course_completed_lessons(self.db_path, 7, COURSE_ID), ["lesson_01"])
+        self.assertEqual(get_course_completed_lessons(self.db_path, 8, COURSE_ID), ["lesson_01"])
+        self.assertEqual(get_course_completed_lessons(self.db_path, 7, "another_course"), ["lesson_01"])
+
+    def test_rejects_blank_or_non_string_course_ids(self):
+        for course_id in ("", "   ", None, 123):
+            with self.subTest(course_id=course_id), self.assertRaises(ValueError):
+                record_course_quiz_completion(self.db_path, 7, "lesson_01", course_id)
+        with self.assertRaises(ValueError):
+            get_course_completed_lessons(self.db_path, 7, course_id=" ")
+
     def test_course_id_constant(self):
         self.assertEqual(COURSE_ID, "orthography_foundations")
 
