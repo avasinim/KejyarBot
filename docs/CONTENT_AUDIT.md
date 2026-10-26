@@ -472,3 +472,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - CI passed on the final audit commit `313bc27c6514fb403cd2be5f4905382a2d05ec20`: [run 40289259546](https://github.com/avasinim/KejyarBot/actions/runs/40289259546).
 
 - CI passed for the quiz-reset code/test commit: [run 40289466261](https://github.com/avasinim/KejyarBot/actions/runs/40289466261). The audit-only commit's CI also passed: [run 40289477937](https://github.com/avasinim/KejyarBot/actions/runs/40289477937).
+
+
+## CI workflow least-privilege review (26 October 2026)
+
+- Reviewed `.github/workflows/python-checks.yml`: the job checks out repository content, installs dependencies, compiles Python files, and runs unit tests; it does not need to write repository contents or manage deployments.
+- Added an explicit workflow-level `permissions: contents: read` policy so the job's `GITHUB_TOKEN` is limited to read-only repository contents instead of relying on repository/org defaults.
+- This is CI permission hardening only. It does not change bot runtime behavior, secrets, production settings, databases, migrations, or `main`.
+- Awaiting CI for the updated workflow commit; automated checks do not replace the separate authorized Telegram integration test or the source-based linguistic review.
