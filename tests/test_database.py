@@ -31,6 +31,27 @@ class DatabaseTests(unittest.TestCase):
             ).fetchone()[0]
         self.assertEqual(count, 1)
 
+    def test_reward_helpers_update_expected_fields_and_level(self):
+        database.add_score(12345, 45)
+        user = database.get_user(12345)
+        self.assertEqual(user[1], 45)  # score
+        self.assertEqual(user[2], 45)  # XP
+        self.assertEqual(user[8], 5)   # score helper coin bonus
+        self.assertEqual(user[3], "A1.1 🌱")
+
+        database.add_xp(12345, 10)
+        user = database.get_user(12345)
+        self.assertEqual(user[1], 55)
+        self.assertEqual(user[2], 55)
+        self.assertEqual(user[8], 5)   # XP helper has no coin bonus
+        self.assertEqual(user[3], "A1.2 🌿")
+
+        database.add_coins(12345, 7)
+        database.add_chest(12345)
+        user = database.get_user(12345)
+        self.assertEqual(user[8], 12)
+        self.assertEqual(user[9], 1)
+
     def test_level_thresholds_are_consistent_at_boundaries(self):
         expected = {
             0: 'A1.1 🌱', 49: 'A1.1 🌱', 50: 'A1.2 🌿',
