@@ -20,6 +20,16 @@ class CourseStructureTests(unittest.TestCase):
         self.assertIn("٣٤", lesson["content"])
         self.assertIn("وانە_1", self.courses["orthography_basic"]["lesson_ids"])
 
+    def test_course_one_includes_user_supplied_vowels_lesson(self):
+        lesson = self.lessons["وانە_2"]
+        self.assertEqual(lesson["title"], "بزوێنەکان")
+        self.assertIn("(٨) دەنگن", lesson["content"])
+        self.assertIn("(ا، ە، و، ۆ، وو، ی، ێ)", lesson["content"])
+        self.assertIn("وانە_2", self.courses["orthography_basic"]["lesson_ids"])
+        self.assertGreaterEqual(len(self.quizzes["وانە_2"]), 3)
+        for question in self.quizzes["وانە_2"]:
+            self.assertIn(question["answer"], question["options"])
+
     def test_daily_conversation_has_separate_lesson_id(self):
         lesson = self.lessons["وتوێژ_1"]
         self.assertEqual(lesson["title"], "سڵاو و ناساندنی خۆ")
