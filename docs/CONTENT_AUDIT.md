@@ -558,3 +558,12 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Lesson 4 now includes a row of Kurdish numeral markers as a visual counting aid alongside the lesson's existing 0–3 examples.
 - Lesson 6 now includes small vector illustrations of home and classroom objects to support the existing vocabulary lists.
 - These are hand-authored SVG illustrations rather than generated text images, so Kurdish text remains editable Unicode. Verify visual rendering, RTL shaping, spacing, and contrast in a browser at desktop and mobile sizes before release.
+
+
+## SVG integrity regression check (26 October 2026)
+
+- Added `test_infographic_svg_ids_are_unique_and_have_no_external_references` to `tests/test_content.py`.
+- The check parses every infographic SVG, rejects duplicate element IDs, and ensures any `href` reference is fragment-local (starts with `#`), preventing accidental remote-resource references in these learning assets.
+- This is a static integrity/security check; it does not certify Kurdish spelling, font shaping, RTL rendering, or mobile layout. Those still require editorial/source review and a real rendered visual check.
+- Test change commit: `54308eb8d0a91e1fbe963312b8a022bec1bf7a62`. CI result is pending at the time of this note.
+
