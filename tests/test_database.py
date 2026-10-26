@@ -3,6 +3,7 @@ from contextlib import closing
 import unittest
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 import database
 
@@ -18,6 +19,16 @@ class DatabaseTests(unittest.TestCase):
     def tearDown(self):
         database.DB_NAME = self.old_db_name
         self.temp_dir.cleanup()
+
+
+    def test_init_db_rolls_back_and_closes_when_schema_setup_fails(self):
+        connection = MagicMock()
+        connection.cursor.return_value.execute.side_effect = RuntimeError("schema failure")
+        with patch.object(database.sqlite3, "connect", return_value=connection):
+            with self.assertRaisesRegex(RuntimeError, "schema failure"):
+                database.init_db()
+        connection.rollback.assert_called_once_with()
+        connection.close.assert_called_once_with()
 
     def test_parallel_first_access_creates_single_user_row(self):
         user_id = 456789
