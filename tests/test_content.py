@@ -120,7 +120,7 @@ class ContentConsistencyTests(unittest.TestCase):
                           "ڵ", "م", "ن", "ه", "ە", "و", "وو", "ۆ", "ی", "ێ"]
         lesson = self.lessons["وانە_2"]["content"]
         section = lesson.split("🔤 پیت و وشەی نموونە", 1)[1].split(
-            "\\n\\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+            "\n\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
         )[0]
         actual_order = [line.split(" — ", 1)[0].strip() for line in section.splitlines() if " — " in line]
         self.assertEqual(actual_order, expected_order)
