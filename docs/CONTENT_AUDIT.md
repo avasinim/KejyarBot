@@ -551,3 +551,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added nine distinct, outlined color swatches to `assets/infographics/lesson-05-colors.svg` for the color names already present in the lesson (سوور، شین، سەوز، زەرد، ڕەش، سپی، قاوەیی، پرتەقاڵی، پەمەیی).
 - Added small vector cues for the red apple, green leaf, and white paper examples. These are illustrative cues, not photographic images.
 - Kept the existing lesson wording unchanged. Visual inspection in an actual browser/mobile viewport is still needed to confirm font shaping, contrast, and that the added shapes do not crowd text.
+
+## Lessons 3, 4, and 6 visual aids (26 October 2026)
+
+- Lesson 3 now includes small vector cues for asking/requesting, gratitude, apology, and answering. These icons are symbolic learning prompts; the existing Kurdish phrases were not edited.
+- Lesson 4 now includes a row of Kurdish numeral markers as a visual counting aid alongside the lesson's existing 0–3 examples.
+- Lesson 6 now includes small vector illustrations of home and classroom objects to support the existing vocabulary lists.
+- These are hand-authored SVG illustrations rather than generated text images, so Kurdish text remains editable Unicode. Verify visual rendering, RTL shaping, spacing, and contrast in a browser at desktop and mobile sizes before release.
