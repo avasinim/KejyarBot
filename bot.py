@@ -301,6 +301,10 @@ async def finish_lesson(
         ''
     )
 
+    # Prevent repeated button presses from granting XP, coins, and chests repeatedly.
+    if lesson in get_completed_lessons(uid):
+        await q.message.reply_text('ئەم وانەیە پێشتر تەواو کراوە. خەڵاتەکە پێشتر هەژمار کراوە.')
+        return
 
     complete_lesson(
         uid,
