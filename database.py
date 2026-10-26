@@ -6,37 +6,42 @@ DB_NAME = str(BASE_DIR / "kejyar.db")
 
 
 def init_db():
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users (
-        user_id INTEGER PRIMARY KEY,
-        score INTEGER DEFAULT 0,
-        xp INTEGER DEFAULT 0,
-        level TEXT DEFAULT 'A1.1 🌱',
-        correct_answers INTEGER DEFAULT 0,
-        completed_lessons TEXT DEFAULT '',
-        badges TEXT DEFAULT '',
-        tests INTEGER DEFAULT 0,
-        coins INTEGER DEFAULT 0,
-        chests INTEGER DEFAULT 0
-    )
-    """)
-    # Add the quiz-completion ledger to existing databases without destroying data.
-    cur.execute("PRAGMA table_info(users)")
-    columns = {row[1] for row in cur.fetchall()}
-    if "completed_quizzes" not in columns:
-        cur.execute("ALTER TABLE users ADD COLUMN completed_quizzes TEXT DEFAULT ''")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS speech_quota (
-        user_id INTEGER NOT NULL,
-        quota_date TEXT NOT NULL,
-        used INTEGER NOT NULL DEFAULT 0 CHECK (used >= 0),
-        PRIMARY KEY (user_id, quota_date)
-    )
-    """)
-    conn.commit()
-    conn.close()
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        cur = conn.cursor()
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            user_id INTEGER PRIMARY KEY,
+            score INTEGER DEFAULT 0,
+            xp INTEGER DEFAULT 0,
+            level TEXT DEFAULT 'A1.1 🌱',
+            correct_answers INTEGER DEFAULT 0,
+            completed_lessons TEXT DEFAULT '',
+            badges TEXT DEFAULT '',
+            tests INTEGER DEFAULT 0,
+            coins INTEGER DEFAULT 0,
+            chests INTEGER DEFAULT 0
+        )
+        """)
+        # Add the quiz-completion ledger to existing databases without destroying data.
+        cur.execute("PRAGMA table_info(users)")
+        columns = {row[1] for row in cur.fetchall()}
+        if "completed_quizzes" not in columns:
+            cur.execute("ALTER TABLE users ADD COLUMN completed_quizzes TEXT DEFAULT ''")
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS speech_quota (
+            user_id INTEGER NOT NULL,
+            quota_date TEXT NOT NULL,
+            used INTEGER NOT NULL DEFAULT 0 CHECK (used >= 0),
+            PRIMARY KEY (user_id, quota_date)
+        )
+        """)
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def reserve_speech_quota(user_id, quota_date, limit=20):
