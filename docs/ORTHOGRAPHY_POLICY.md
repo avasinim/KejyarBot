@@ -62,3 +62,11 @@
 - The reference's section on ك versus ک recommends using Kurdish kaf ک (U+06A9) consistently instead of Arabic kaf ك (U+0643) in Kurdish text.
 - A scan of all ten lesson titles/content and all quiz sets found no Arabic-kaf occurrences. A regression test now guards this distinction for lesson and quiz text.
 - This is a Unicode/code-point check only; it does not replace editorial review of spelling, morphology, punctuation, or dialectal usage.
+
+
+## Follow-up Unicode and lexical scan (26 October 2026)
+
+- A fresh scan of the 10 lesson records, 10 quiz sets, and 10 lesson SVG infographics found no Arabic kaf U+0643. The SVG files also contained no U+FFFD replacement characters or U+00A0 non-breaking spaces.
+- Neither «بەرامبەر» nor «بەرانبەر» occurs in the current lesson or quiz text; therefore no spelling change was justified by this scan.
+- Forms such as «چییە» and «نییە» were deliberately not normalized: Avasin Code does not govern KejyarBot, and the selected handbook still needs page-level verification before any source-sensitive change.
+- This targeted scan does not replace a human proofread, page-by-page source comparison, or browser/mobile review of the SVGs.
