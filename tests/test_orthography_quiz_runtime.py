@@ -8,6 +8,7 @@ from course_data.orthography_quiz_runtime import (
     SESSION_KEY,
     apply_answer,
     build_quiz_session,
+    clear_course_quiz_session,
     make_answer_callback,
     make_start_callback,
     parse_answer_callback,
@@ -88,6 +89,22 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
         session = build_quiz_session(self.converted, 1)
         with self.assertRaises(ValueError):
             apply_answer(session, 999)
+
+
+    def test_course_session_cleanup_preserves_legacy_quiz(self):
+        user_data = {
+            "quiz": {"lesson": "وانە_1", "score": 3},
+            SESSION_KEY: {"course_id": "orthography_foundations", "index": 2},
+        }
+        removed = clear_course_quiz_session(user_data)
+        self.assertEqual(removed["index"], 2)
+        self.assertNotIn(SESSION_KEY, user_data)
+        self.assertEqual(user_data["quiz"], {"lesson": "وانە_1", "score": 3})
+
+    def test_course_session_cleanup_is_safe_when_no_session_exists(self):
+        user_data = {"quiz": {"score": 1}}
+        self.assertIsNone(clear_course_quiz_session(user_data))
+        self.assertEqual(user_data, {"quiz": {"score": 1}})
 
     def test_start_callbacks_are_namespaced_and_validated(self):
         for number in range(1, 23):
