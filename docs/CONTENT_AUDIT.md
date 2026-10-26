@@ -489,3 +489,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Reordered the lesson 2 practice entries to match the source, and synchronized the 34-card SVG infographic to the same sequence. The five example words attached to each sign were retained; this was an ordering correction, not a change to example vocabulary.
 - Added a regression test that checks both the lesson sequence and infographic card sequence against the selected source order. This is based on the searchable PDF text extract; the PDF page image has not been visually inspected, and the lesson still describes these as practice entries rather than expanding claims about phonetic classification.
 - CI is pending for the code/content/test/documentation changes. No production, `main`, database, migration, or token changes were made.
+
+
+## Quiz option integrity check (26 October 2026)
+
+- Audited all 62 questions across the 10 quiz sets. Every question has at least two options; no question has duplicate options; each correct answer appears exactly once in its option list; question text is nonempty.
+- Checked that every answer string also appears in its corresponding lesson content; all 62 answers are present verbatim.
+- Added a regression test to preserve unique distractors and exactly one correct-answer option. This verifies data integrity, not whether every distractor is pedagogically ideal; linguistic/source review remains separate.
+- No lesson or quiz wording was changed in this step.
