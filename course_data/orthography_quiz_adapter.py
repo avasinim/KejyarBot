@@ -28,6 +28,9 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
             raise ValueError("Invalid lesson_number")
         if number in seen_lessons:
             raise ValueError(f"Duplicate lesson_number: {number}")
+        expected_lesson_id = f"lesson_{number:02d}"
+        if group.get("lesson_id") != expected_lesson_id:
+            raise ValueError(f"lesson_id must match lesson_number: {expected_lesson_id}")
         seen_lessons.add(number)
         questions = group.get("questions")
         if not isinstance(questions, list) or not questions:
