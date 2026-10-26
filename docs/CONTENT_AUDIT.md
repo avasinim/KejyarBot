@@ -2,6 +2,8 @@
 
 Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 
+> **Current-state note (26 October 2026):** The current branch contains ten lessons and quiz sets for all ten. Sections below are dated audit history; references there to six lessons, four questions per lesson, or earlier CI checkpoints describe the state at that earlier point in time and are not the current inventory. Use the **Current checks**, **Latest verification**, and later dated sections to determine the present state.
+
 ## Current checks
 
 - `lessons.json` contains ten non-empty lesson records, numbered 1–10, and `learning_path.json` matches their titles and intended order.
