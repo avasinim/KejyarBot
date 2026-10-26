@@ -287,6 +287,20 @@ class ContentConsistencyTests(unittest.TestCase):
                 self.assertIn('unicode-bidi="plaintext"', svg_text)
                 self.assertIn("Noto Naskh Arabic", svg_text)
 
+    def test_kurdish_text_nodes_have_explicit_rtl_shaping_attributes(self):
+        assets_dir = BASE_DIR / "assets" / "infographics"
+        kurdish_letters = set("ئاپتجچحخدرڕزژسشعغفڤقکگلڵمنهەووۆیێ")
+        for path in sorted(assets_dir.glob("*.svg")):
+            root = ET.parse(path).getroot()
+            text_nodes = [node for node in root.iter() if node.tag.endswith("text")]
+            for node in text_nodes:
+                text_value = "".join(node.itertext())
+                if not any(character in kurdish_letters for character in text_value):
+                    continue
+                with self.subTest(asset=path.name, text=text_value[:50]):
+                    self.assertEqual(node.attrib.get("direction"), "rtl")
+                    self.assertEqual(node.attrib.get("unicode-bidi"), "plaintext")
+
     def test_dynamic_speech_requires_explicit_enablement_and_matching_approved_voice(self):
         with patch.dict("os.environ", {}, clear=True):
             self.assertFalse(speech.speech_is_configured())
