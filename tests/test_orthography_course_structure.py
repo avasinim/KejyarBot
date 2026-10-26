@@ -34,6 +34,16 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertTrue(safety["do_not_enable_dynamic_speech"])
         self.assertTrue(safety["do_not_change_production_or_main"])
 
+    def test_runtime_menu_has_course_title_and_lists_course_lessons(self):
+        bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
+        self.assertIn('["ڕێنووسی زمانی کوردی"]', bot_source)
+        self.assertIn('if text == "ڕێنووسی زمانی کوردی":', bot_source)
+        self.assertIn('load_json("course_data/orthography_foundations.json")', bot_source)
+        self.assertIn("course['title']", bot_source)
+        self.assertIn("course.get(\"lessons\", [])", bot_source)
+        # The new course is a separate menu entry, not lesson 23 in the old course.
+        self.assertIn('"do_not_modify_existing_ten_lesson_course": true', (ROOT / "course_data" / "orthography_foundations.json").read_text(encoding="utf-8"))
+
     def test_lessons_are_not_misrepresented_as_source_reviewed(self):
         for lesson in self.course["lessons"]:
             self.assertEqual(
