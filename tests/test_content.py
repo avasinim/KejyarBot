@@ -103,6 +103,22 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertEqual(self.lessons[f"وانە_{index}"]["title"], title.split(": ", 1)[1])
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
+    def test_lesson_two_practice_entries_follow_reference_order(self):
+        # Diako Hashemi's orthography reference explicitly treats letter order as significant.
+        expected_order = ["ئ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
+                          "ز", "ژ", "س", "ش", "ع", "غ", "ف", "ڤ", "ق", "ک", "گ", "ل",
+                          "ڵ", "م", "ن", "ه", "ە", "و", "وو", "ۆ", "ی", "ێ"]
+        lesson = self.lessons["وانە_2"]["content"]
+        section = lesson.split("🔤 پیت و وشەی نموونە", 1)[1].split(
+            "\\n\\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+        )[0]
+        actual_order = [line.split(" — ", 1)[0].strip() for line in section.splitlines() if " — " in line]
+        self.assertEqual(actual_order, expected_order)
+
+        svg = (BASE_DIR / "assets/infographics/lesson-02-letters-sample.svg").read_text(encoding="utf-8")
+        svg_order = re.findall(r'font-size="36"[^>]*>(.*?)</text>', svg)
+        self.assertEqual(svg_order, expected_order)
+
     def test_alphabet_quiz_definitions_match_lesson_explanations(self):
         lesson = self.lessons["وانە_2"]["content"]
         questions = self.quizzes["وانە_2"]
