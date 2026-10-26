@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "preserve_legacy_lesson_ids": true,
+    "preserve_student_progress": true,
+    "preserve_xp_rewards_and_quiz_ids": true,
+    "dynamic_speech_enabled": false,
+    "course_progress_is_independent": true
+  },
+  "courses": [
+    {
+      "id": "orthography_basic",
+      "key": "course_orthography_basic",
+      "order": 1,
+      "title": "دەورەی ١: ڕێنووسی سەرەتایی",
+      "description": "بنەماکانی پیت، دەنگ، خوێندنەوە و نووسینی وشە.",
+      "status": "active",
+      "legacy_lesson_ids": ["وانە_1", "وانە_2"],
+      "lesson_ids": ["وانە_1", "وانە_2"]
+    },
+    {
+      "id": "daily_conversation",
+      "key": "course_daily_conversation",
+      "order": 2,
+      "title": "دەورەی ٢: وت‌وێژی ڕۆژانە",
+      "description": "سڵاو، ناساندن، ژمارە، ڕەنگ و گفتوگۆی ڕۆژانە.",
+      "status": "active",
+      "legacy_lesson_ids": ["وانە_3", "وانە_4", "وانە_5", "وانە_6"],
+      "lesson_ids": ["وانە_3", "وانە_4", "وانە_5", "وانە_6"]
+    },
+    {
+      "id": "unified_orthography",
+      "key": "course_unified_orthography",
+      "order": 3,
+      "title": "دەورەی ٣: ڕێنووسی یەکگرتوو",
+      "description": "ڕێساکانی ڕێنووسی یەکگرتوو، بەراوردی نووسین و ڕاهێنانی دەق.",
+      "status": "planned",
+      "legacy_lesson_ids": [],
+      "lesson_ids": []
+    },
+    {
+      "id": "grammar",
+      "key": "course_grammar",
+      "order": 4,
+      "title": "دەورەی ٤: ڕێزمان",
+      "description": "جۆرەکانی وشە، کردار، جێناو و ڕستەسازی.",
+      "status": "planned",
+      "legacy_lesson_ids": [],
+      "lesson_ids": []
+    }
+  ]
+}
