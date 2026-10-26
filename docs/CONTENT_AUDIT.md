@@ -470,3 +470,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_lesson_two_has_five_matching_examples_for_each_letter` in `tests/test_content.py`. In addition to checking 34 entries and five non-empty examples per entry, it checks that each example contains the entry's target grapheme.
 - Re-read the committed test file and confirmed the new test is present. The test has not yet been independently executed in this environment; GitHub's commit-status and PR-triggered workflow-run lookups returned no checks for the latest head commit, so CI is explicitly unconfirmed for this change.
 - PR #3 remains open as a draft and targets `fix/kejyarbot-stability-2026-10-25`. No merge, production deployment, database/migration changes, or voice-asset changes were made.
+
+## Test consistency and runbook correction (26 October 2026)
+
+- Tightened the general quiz-option regression assertion from a minimum of two options to three, matching the stricter quiz-set integrity test and the intended multiple-choice format. Existing quiz data was already scanned and each question has at least three options.
+- Corrected `docs/TEST_RUNBOOK.md` to name the exact active branch `fix/content-design-polish-2026-10-25` and its base `fix/kejyarbot-stability-2026-10-25`; the prior branch name omitted the `fix/` prefix.
+- Re-read both updated files after committing. These are test/documentation consistency fixes only. The complete unittest command remains `python -m unittest discover -s tests -v`; it has not been executed in this tool environment. Latest GitHub status/workflow lookups did not expose a run for the newest head, so CI remains unconfirmed.
