@@ -102,22 +102,18 @@ LESSON_BUTTONS = {
     "📅 ڕۆژەکانی هەفتە و کات": "وانە_9",
     "🧱 ڕستەی سادە و پرسیارکردن": "وانە_10",
 }
+# Keep the persistent keyboard compact; lesson choices live in the
+# contextual inline catalog so the main screen remains usable on phones.
+# Three predictable rows: study, assessment/progress, then optional activities.
+# Labels are short, consistent, and descriptive on narrow mobile screens.
 MENU = ReplyKeyboardMarkup(
     [
-        ["📚 وانەکان"],
-        ["💬 گفتوگۆی ڕۆژانە"],
-        ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
-        ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
-        ["👋 سڵاو و ناساندنی خۆ"],
-        ["🔤 ئەلفبێی کوردی", "🗣 وشەکانی ڕۆژانە"],
-        ["🔢 ژمارەکان", "🎨 ڕەنگەکان"],
-        ["🏠 لە ماڵ و قوتابخانە"],
-        ["👪 خێزان و کەسانی نزیک"],
-        ["🍽️ خواردن و خواردنەوە"],
-        ["📅 ڕۆژەکانی هەفتە و کات"],
-        ["🧱 ڕستەی سادە و پرسیارکردن"],
+        ["📚 پەڕگەی وانەکان", "🧭 ڕێڕەوی فێربوون"],
+        ["📝 تاقیکردنەوەکان", "📊 پێشکەوتنی خوێندن"],
+        ["💬 گفتوگۆی ڕۆژانە", "🎁 خەڵاتەکان"],
     ],
     resize_keyboard=True,
+    is_persistent=True,
 )
 
 def can_open(user_id, lesson):
@@ -149,6 +145,27 @@ def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+
+def lesson_catalog_keyboard(user_id):
+    """Build a compact two-column catalog with explicit completion/lock status."""
+    completed = set(get_completed_lessons(user_id))
+    rows = []
+    buttons = []
+    for lesson in ORDER:
+        status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
+        title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+        number = lesson.removeprefix("وانە_")
+        buttons.append(InlineKeyboardButton(
+            f"{status} {number}. {title}",
+            callback_data=f"open_lesson_{number}",
+        ))
+        if len(buttons) == 2:
+            rows.append(buttons)
+            buttons = []
+    if buttons:
+        rows.append(buttons)
+    return InlineKeyboardMarkup(rows)
 
 async def send_voice(update, filename):
     path = get_voice(filename)
@@ -312,6 +329,36 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
+async def open_lesson_from_catalog(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    raw_number = query.data.removeprefix("open_lesson_")
+    if not raw_number.isdigit():
+        await query.message.reply_text("❌ ناسنامەی وانە دروست نیە.")
+        return
+    lesson = f"وانە_{int(raw_number)}"
+    user_id = query.from_user.id
+    context.user_data["daily_chat_mode"] = False
+    if lesson not in ORDER:
+        await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
+    if not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_conversation_voice(
+        query.message,
+        f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
+        context.user_data,
+        user_id,
+    )
+    await send_lesson_infographic(query.message, lesson)
+
+
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -371,19 +418,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
-        "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
+        "📚 پەڕگەی وانەکان", "📊 پێشکەوتنی خوێندن", "🧭 ڕێڕەوی فێربوون",
+        "🎁 خەڵاتەکان", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
 
-    if text == "📚 وانەکان":
-        rows = []
-        completed = set(get_completed_lessons(user_id))
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
-            rows.append(f"{status} {lesson}: {title}")
-        await update.message.reply_text("\n".join(rows))
+    if text == "📚 پەڕگەی وانەکان":
+        await update.message.reply_text(
+            """📚 پەڕگەی وانەکان
+
+هەر وانەیەک بە ئامانج، نمونە، ڕاهێنان و خۆپشکنین ڕێکخراوە.
+🔓 ئامادەی خوێندنەوە  |  🔒 قۆناغی پێشوو تەواو بکە  |  ✅ تەواو کراوە""",
+            reply_markup=lesson_catalog_keyboard(user_id),
+        )
         return
 
     if text in LESSON_BUTTONS:
@@ -407,14 +454,28 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = [
+            [InlineKeyboardButton(
+                f"📝 {lesson.removeprefix('وانە_')}. {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                callback_data=f"quiz_{lesson.split('_')[1]}_start",
+            )]
+            for lesson in ORDER
+            if QUIZ_DATA.get(lesson) and lesson in completed
+        ]
         if not buttons:
-            await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+            await update.message.reply_text(
+                "🔒 هێشتا تاقیکردنەوەیەکت ئامادە نیە.\n"
+                "سەرەتا وانەی یەکەم بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکەی دەکرێتەوە."
+            )
             return
-        await update.message.reply_text("تاقیکردنەوە هەڵبژێرە 👇", reply_markup=InlineKeyboardMarkup(buttons))
+        await update.message.reply_text(
+            "📝 تاقیکردنەوەی وانە تەواوکراوەکان\n"
+            "هەر تاقیکردنەوەیەک بۆ پشکنینی تێگەیشتنتە؛ وەڵامەکان لە وانەکان فێر دەکرێن.",
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
         return
 
-    if text == "🎁 سەنوقی خەڵات":
+    if text == "🎁 خەڵاتەکان":
         reward = open_chest(user_id)
         if reward:
             await update.message.reply_text(f"🎁 سەنوق کراوەتەوە!\n🪙 {reward} Coin وەرگرت.")
@@ -428,23 +489,51 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("📦 سەنوقێکت نیە؛ وانە تەواو بکە بۆ وەرگرتنی سەنوق.")
         return
 
-    if text == "👤 پێشکەوتنم":
+    if text == "📊 پێشکەوتنی خوێندن":
         user = get_user(user_id)
         badges = get_badges(user_id)
+        completed = set(get_completed_lessons(user_id))
+        total = len(ORDER)
+        done = sum(1 for lesson in ORDER if lesson in completed)
+        percent = round(done * 100 / total) if total else 0
+        next_lesson = next((lesson for lesson in ORDER if lesson not in completed and can_open(user_id, lesson)), None)
+        next_text = (
+            f"➡️ وانەی داهاتوو: {LESSON_DATA.get(next_lesson, {}).get('title', next_lesson)}"
+            if next_lesson else "🎓 هەموو وانەکانی ئەم ڕێڕەوە تەواو کردووە!"
+        )
         await update.message.reply_text(
-            f"👤 پێشکەوتنم\n\n⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
-            f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n🏅 نیشانەکان:\n" +
+            f"📊 پێشکەوتنی خوێندن\n\n📚 وانەکان: {done}/{total} ({percent}٪)\n"
+            f"⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
+            f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n{next_text}\n\n🏅 نیشانەکان:\n" +
             ("\n".join(badges) if badges else "هێشتا هیچ نیشانەیەک نیە.")
         )
         return
 
-    if text == "🧭 ڕێگای فێربوون":
+    if text == "🧭 ڕێڕەوی فێربوون":
         completed = set(get_completed_lessons(user_id))
-        lines = []
-        for lesson in ORDER:
-            status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
-        await update.message.reply_text("\n".join(lines))
+        total = len(ORDER)
+        done = sum(1 for lesson in ORDER if lesson in completed)
+        percent = round(done * 100 / total) if total else 0
+        bar = "🟩" * (done) + "⬜" * (total - done)
+        groups = [
+            ("بەشی ١ — بنەما و ناساندن", ORDER[:3]),
+            ("بەشی ٢ — وشە و بابەتە بنەڕەتییەکان", ORDER[3:6]),
+            ("بەشی ٣ — بەکارهێنان لە ژیانی ڕۆژانە", ORDER[6:]),
+        ]
+        lines = [
+            "🧭 ڕێڕەوی فێربوون",
+            f"پێشکەوتن: {done}/{total} وانە ({percent}٪)",
+            bar,
+            "",
+            "وانەکان بە ڕیز تەواو بکە؛ وانەی داهاتوو کاتێک دەکرێتەوە کە وانەی پێشوو تەواو بێت.",
+        ]
+        for heading, lessons in groups:
+            lines.extend(["", heading])
+            for lesson in lessons:
+                status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
+                title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                lines.append(f"{status} {lesson.removeprefix('وانە_')}. {title}")
+        await update.message.reply_text("\n".join(lines), reply_markup=MENU)
         return
 
     if context.user_data.get("daily_chat_mode"):
@@ -462,6 +551,7 @@ def main():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(open_lesson_from_catalog, pattern=r"^open_lesson_\d+$"))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))

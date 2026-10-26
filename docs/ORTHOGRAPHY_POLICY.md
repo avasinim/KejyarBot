@@ -48,3 +48,25 @@
 - KejyarBot now contains ten beginner lessons. The new topics are family, food and drink, days/time, and simple sentences/questions.
 - The new examples follow the bot's own source-sensitive orthography policy; do not apply Avasin Code normalization.
 - New lesson SVGs use editable RTL text and the same font stack as the existing infographics. Check the output in a browser and on mobile before release.
+
+## Reference-backed alphabet order check (26 October 2026)
+
+- Search-indexed text for the author's **third edition updated 16 August 2024** exposes the title page and alphabet section of «پوختەی ڕێنووس و خاڵبەندی». The text states that the Central Kurdish alphabet has 34 letters and explicitly says their order should be preserved.
+- The author's online page `https://chawg.org/zimani-kurdi-renus/` independently lists the order as: ئ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، ه، ە، و، وو، ۆ، ی، ێ.
+- Lesson 2 and its infographic had the same 34 practice entries but placed و / وو / ۆ before ه / ە. Reordered those entries in both files to match the reference order; the lesson continues to describe them as practice entries, not a claim of official endorsement.
+- Added a regression test asserting that the lesson text and SVG entry order both match the reference order. CI passed for the three successive commits: lesson text `38d0b2716df297b9a49a26236ddf92459d71f116`, infographic `1f99b93dff83b3a80f3520ec7eef2dcde520fcb9`, and test `df052cf6d47ebbbb675644711e691561f562b57e`.
+- Scope remains limited: this verifies the alphabet order against the searchable source text and online corroboration; it is not a complete page-by-page audit of every spelling rule in the 2024 PDF.
+
+## Unicode character guard (26 October 2026)
+
+- The reference's section on ك versus ک recommends using Kurdish kaf ک (U+06A9) consistently instead of Arabic kaf ك (U+0643) in Kurdish text.
+- A scan of all ten lesson titles/content and all quiz sets found no Arabic-kaf occurrences. A regression test now guards this distinction for lesson and quiz text.
+- This is a Unicode/code-point check only; it does not replace editorial review of spelling, morphology, punctuation, or dialectal usage.
+
+
+## Follow-up Unicode and lexical scan (26 October 2026)
+
+- A fresh scan of the 10 lesson records, 10 quiz sets, and 10 lesson SVG infographics found no Arabic kaf U+0643. The SVG files also contained no U+FFFD replacement characters or U+00A0 non-breaking spaces.
+- Neither «بەرامبەر» nor «بەرانبەر» occurs in the current lesson or quiz text; therefore no spelling change was justified by this scan.
+- Forms such as «چییە» and «نییە» were deliberately not normalized: Avasin Code does not govern KejyarBot, and the selected handbook still needs page-level verification before any source-sensitive change.
+- This targeted scan does not replace a human proofread, page-by-page source comparison, or browser/mobile review of the SVGs.

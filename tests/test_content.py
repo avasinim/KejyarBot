@@ -17,6 +17,22 @@ def load_json(filename):
 
 
 class ContentConsistencyTests(unittest.TestCase):
+    def test_academic_menu_has_consistent_labels_and_progress_view(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        for label in (
+            "📚 پەڕگەی وانەکان",
+            "🧭 ڕێڕەوی فێربوون",
+            "📝 تاقیکردنەوەکان",
+            "📊 پێشکەوتنی خوێندن",
+            "💬 گفتوگۆی ڕۆژانە",
+            "🎁 خەڵاتەکان",
+        ):
+            with self.subTest(label=label):
+                self.assertIn(label, bot_source)
+        self.assertIn("پێشکەوتن: {done}/{total} وانە ({percent}٪)", bot_source)
+        self.assertIn("reply_markup=MENU", bot_source)
+        self.assertIn("is_persistent=True", bot_source)
+
     @classmethod
     def setUpClass(cls):
         cls.lessons = load_json("lessons.json")
@@ -30,6 +46,43 @@ class ContentConsistencyTests(unittest.TestCase):
             with self.subTest(lesson=key):
                 self.assertTrue(lesson.get("title", "").strip())
                 self.assertTrue(lesson.get("content", "").strip())
+
+    def test_all_lessons_have_objectives_practice_and_self_check(self):
+        for lesson_key, lesson in self.lessons.items():
+            content = lesson["content"]
+            with self.subTest(lesson=lesson_key):
+                self.assertIn("ئامانجی وانە", content)
+                self.assertIn("ڕاهێنانی", content)
+                self.assertIn("خۆت بپشکنە", content)
+                self.assertGreaterEqual(len(content), 1500)
+
+    def test_lesson_text_fits_one_telegram_message(self):
+        # Leave margin below Telegram's 4096-character text-message limit.
+        for lesson_key, lesson in self.lessons.items():
+            with self.subTest(lesson=lesson_key):
+                self.assertLessEqual(len(lesson["content"]), 3800)
+
+    def test_every_quiz_answer_is_taught_in_its_lesson(self):
+        for lesson_key, questions in self.quizzes.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            for index, question in enumerate(questions, start=1):
+                with self.subTest(lesson=lesson_key, question=index):
+                    self.assertIn(question["answer"], lesson_text)
+
+    def test_all_quiz_sets_have_unique_questions_and_valid_answer_options(self):
+        self.assertEqual(set(self.quizzes), set(self.lessons))
+        for lesson_key, questions in self.quizzes.items():
+            with self.subTest(lesson=lesson_key):
+                question_texts = [item.get("question", "").strip() for item in questions]
+                self.assertGreaterEqual(len(questions), 6)
+                self.assertTrue(all(question_texts))
+                self.assertEqual(len(question_texts), len(set(question_texts)))
+                for item in questions:
+                    options = item.get("options", [])
+                    self.assertGreaterEqual(len(options), 3)
+                    self.assertTrue(all(isinstance(option, str) and option.strip() for option in options))
+                    self.assertEqual(len(options), len(set(options)))
+                    self.assertIn(item.get("answer"), options)
 
     def test_learning_path_matches_lesson_titles_and_order(self):
         expected = [
@@ -49,6 +102,49 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertIn(f"وانە_{index}", self.lessons)
             self.assertEqual(self.lessons[f"وانە_{index}"]["title"], title.split(": ", 1)[1])
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
+
+    def test_kurdish_text_uses_kurdish_kaf_codepoint(self):
+        # The selected orthography reference distinguishes Kurdish kaf ک (U+06A9)
+        # from Arabic kaf ك (U+0643); keep accidental keyboard substitutions out.
+        for lesson_key, lesson in self.lessons.items():
+            with self.subTest(lesson=lesson_key):
+                self.assertNotIn("\u0643", lesson["title"] + "\n" + lesson["content"])
+        for lesson_key, questions in self.quizzes.items():
+            with self.subTest(quiz=lesson_key):
+                self.assertNotIn("\u0643", json.dumps(questions, ensure_ascii=False))
+
+    def test_lesson_two_practice_entries_follow_reference_order(self):
+        # Diako Hashemi's orthography reference explicitly treats letter order as significant.
+        expected_order = ["ئ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
+                          "ز", "ژ", "س", "ش", "ع", "غ", "ف", "ڤ", "ق", "ک", "گ", "ل",
+                          "ڵ", "م", "ن", "ه", "ە", "و", "وو", "ۆ", "ی", "ێ"]
+        lesson = self.lessons["وانە_2"]["content"]
+        section = lesson.split("🔤 پیت و وشەی نموونە", 1)[1].split(
+            "\n\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+        )[0]
+        actual_order = [line.split(" — ", 1)[0].strip() for line in section.splitlines() if " — " in line]
+        self.assertEqual(actual_order, expected_order)
+
+        svg = (BASE_DIR / "assets/infographics/lesson-02-letters-sample.svg").read_text(encoding="utf-8")
+        svg_order = re.findall(r'font-size="36"[^>]*>(.*?)</text>', svg)
+        self.assertEqual(svg_order, expected_order)
+
+    def test_lesson_two_has_five_matching_examples_for_each_letter(self):
+        lesson = self.lessons["وانە_2"]["content"]
+        section = lesson.split("🔤 پیت و وشەی نموونە", 1)[1].split(
+            "\n\n🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1
+        )[0]
+        entries = [line for line in section.splitlines() if " — " in line]
+
+        self.assertEqual(len(entries), 34)
+        for line in entries:
+            with self.subTest(entry=line):
+                letter, examples_text = line.split(" — ", 1)
+                examples = [word.strip() for word in examples_text.split("،")]
+                self.assertEqual(len(examples), 5)
+                self.assertTrue(all(examples))
+                for word in examples:
+                    self.assertIn(letter.strip(), word)
 
     def test_alphabet_quiz_definitions_match_lesson_explanations(self):
         lesson = self.lessons["وانە_2"]["content"]
@@ -95,7 +191,7 @@ class ContentConsistencyTests(unittest.TestCase):
                 )
                 for question in questions:
                     self.assertTrue(question["question"].strip())
-                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertGreaterEqual(len(question["options"]), 3)
                     self.assertEqual(len(question["options"]), len(set(question["options"])))
                     self.assertIn(question["answer"], question["options"])
 
@@ -486,6 +582,18 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_infographics_use_safe_kurdish_text_codepoints(self):
+        infographic_dir = BASE_DIR / "assets" / "infographics"
+        infographics = sorted(infographic_dir.glob("*.svg"))
+        self.assertEqual(len(infographics), 10)
+
+        for path in infographics:
+            content = path.read_text(encoding="utf-8")
+            with self.subTest(infographic=path.name):
+                self.assertNotIn("\u0643", content, "Use Kurdish kaf ک (U+06A9), not Arabic kaf ك (U+0643).")
+                self.assertNotIn("\uFFFD", content, "Infographic contains a Unicode replacement character.")
+                self.assertNotIn("\u00A0", content, "Unexpected non-breaking space in infographic source.")
+
     def test_lesson_two_alphabet_practice_entries_have_five_examples_each(self):
         content = self.lessons["وانە_2"]["content"]
         section = content.split("🔤 پیت و وشەی نموونە", 1)[1].split("🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1)[0]
@@ -544,6 +652,51 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertIn("وانەکە کاتژمێر نۆ دەست پێ دەکات", lesson)
         self.assertEqual(item["answer"], "کاتژمێر نۆ")
         self.assertIn(item["answer"], item["options"])
+
+
+    def test_expanded_lessons_seven_to_ten_have_practical_examples_and_matching_quizzes(self):
+        required_examples = {
+            "وانە_7": [
+                "دایکم مامۆستایە.",
+                "براکەم لەگەڵ هاوڕێکانی یاری دەکات.",
+                "لە وێنەکەدا کێ هەیە؟",
+            ],
+            "وانە_8": [
+                "تکایە، پەرداخێک ئاو بۆ من بهێنە.",
+                "من برنج دەخۆم، بەڵام ئاو دەخۆمەوە.",
+                "— سڵاو، چی دەتەوێت؟",
+            ],
+            "وانە_9": [
+                "«دوێنێ» بۆ ڕۆژی پێش ئێستا",
+                "پاش نانی بەیانی دەچمە قوتابخانە.",
+                "«سبەی» بۆ ڕۆژی داهاتوو",
+            ],
+            "وانە_10": [
+                "«چەند؟» بۆ پرسیارکردن لە ژمارە یان بڕ",
+                "«بۆچی؟» بۆ پرسیارکردن لە هۆکار",
+                "— چەند وشەی نوێت فێر بووە؟",
+            ],
+        }
+        for lesson_key, examples in required_examples.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            with self.subTest(lesson=lesson_key):
+                for example in examples:
+                    self.assertIn(example, lesson_text)
+
+        new_quiz_answers = {
+            "وانە_7": ["کەس", "براکەم قوتابییە."],
+            "وانە_8": ["خواردنەوە", "تکایە، لیستی خواردنەکانم پێ بدە."],
+            "وانە_9": ["ڕۆژی داهاتوو", "سێشەممە"],
+            "وانە_10": ["هۆکار", "ژمارە یان بڕ"],
+        }
+        for lesson_key, answers in new_quiz_answers.items():
+            lesson_text = self.lessons[lesson_key]["content"]
+            quiz_items = self.quizzes[lesson_key]
+            with self.subTest(lesson=lesson_key):
+                for answer in answers:
+                    self.assertIn(answer, lesson_text)
+                    item = next(question for question in quiz_items if question["answer"] == answer)
+                    self.assertIn(answer, item["options"])
 
 
 if __name__ == "__main__":
