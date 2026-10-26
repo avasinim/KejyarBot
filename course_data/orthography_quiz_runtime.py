@@ -100,3 +100,24 @@ def apply_answer(session, option_index):
         "score": session["score"],
         "question_number": index + 1,
     }
+
+
+def make_start_callback(lesson_number):
+    """Build a short, course-specific Telegram callback for a lesson."""
+    if not isinstance(lesson_number, int) or isinstance(lesson_number, bool):
+        raise ValueError("lesson_number must be an integer")
+    if not 1 <= lesson_number <= 22:
+        raise ValueError("lesson_number must be between 1 and 22")
+    return f"ofquiz_start_{lesson_number:02d}"
+
+
+def parse_start_callback(callback_data):
+    """Return a lesson number only for a valid callback in this course namespace."""
+    prefix = "ofquiz_start_"
+    if not isinstance(callback_data, str) or not callback_data.startswith(prefix):
+        return None
+    suffix = callback_data[len(prefix):]
+    if len(suffix) != 2 or not suffix.isdigit():
+        return None
+    number = int(suffix)
+    return number if 1 <= number <= 22 else None
