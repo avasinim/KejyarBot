@@ -71,15 +71,23 @@ USER_QUIZ = {}
 
 MENU = ReplyKeyboardMarkup(
     [
-        ['📚 وانەکان'],
+        ['📚 کۆرسەکان'],
         ['👤 پێشکەوتنم', '🧭 ڕێگای فێربوون'],
-        ['🎁 سەنوقی خەڵات', '📝 تاقیکردنەوەکان'],
-        ['🔤 پیتەکان و دەنگەکان'],
-        ['🔤 ئەلفوبێی کوردی', '🗣 وشەکانی ڕۆژانە'],
-        ['🔢 ژمارەکان', '🎨 ڕەنگەکان']
+        ['🎁 سەنوقی خەڵات', '📝 تاقیکردنەوەکان']
     ],
     resize_keyboard=True
 )
+
+COURSES = {
+    'orthography_basic': {
+        'title': 'دەورەی ١: ڕێنووسی سەرەتایی',
+        'lessons': ['وانە_1']
+    },
+    'daily_conversation': {
+        'title': 'دەورەی ٢: وت‌وێژی ڕۆژانە',
+        'lessons': ['وتوێژ_1']
+    }
+}
 
 
 
@@ -180,6 +188,10 @@ def can_open(uid, lesson):
 
     # Keep already-completed legacy lessons accessible for existing students.
     if lesson in done:
+        return True
+
+    # Course 2 has an independent lesson path.
+    if lesson not in ORDER:
         return True
 
     index = ORDER.index(lesson)
@@ -565,6 +577,14 @@ async def message(
 
 
 
+    if text == '📚 کۆرسەکان':
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton(COURSES['orthography_basic']['title'], callback_data='course_orthography_basic')],
+            [InlineKeyboardButton(COURSES['daily_conversation']['title'], callback_data='course_daily_conversation')]
+        ])
+        await update.message.reply_text('کۆرسەکەت هەڵبژێرە 👇', reply_markup=keyboard)
+        return
+
     if text in LESSONS:
 
 
@@ -764,6 +784,35 @@ async def message(
         )
 
 
+async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    course_id = q.data.replace('course_', '')
+    course = COURSES.get(course_id)
+    if not course:
+        await q.message.reply_text('ئەم کۆرسە نەدۆزرایەوە.')
+        return
+    buttons = []
+    for lesson_id in course['lessons']:
+        label = 'وانەی ١: پیتەکان و دەنگەکان' if lesson_id == 'وانە_1' else 'وانەی ١: سڵاو و ناساندنی خۆ'
+        buttons.append([InlineKeyboardButton(label, callback_data=f'course_lesson_{lesson_id}')])
+    await q.message.reply_text(course['title'], reply_markup=InlineKeyboardMarkup(buttons))
+
+
+async def open_course_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    lesson_id = q.data.replace('course_lesson_', '')
+    lesson_data = LESSON_DATA.get(lesson_id)
+    if not lesson_data:
+        await q.message.reply_text('ناوەڕۆکی وانەکە بەردەست نییە.')
+        return
+    keyboard = InlineKeyboardMarkup([[
+        InlineKeyboardButton('✅ تەواوکردنی وانە', callback_data=f'finish_{lesson_id}')
+    ]])
+    await q.message.reply_text(lesson_data['content'], reply_markup=keyboard)
+
+
 async def open_next_lesson(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
@@ -857,6 +906,9 @@ def main():
         )
     )
 
+
+    app.add_handler(CallbackQueryHandler(open_course, pattern="^course_(orthography_basic|daily_conversation)$"))
+    app.add_handler(CallbackQueryHandler(open_course_lesson, pattern="^course_lesson_"))
 
     app.add_handler(
         CallbackQueryHandler(
