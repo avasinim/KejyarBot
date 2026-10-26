@@ -18,6 +18,28 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data=user_data if user_data is not None else {})
         return update, context
 
+    async def test_start_clears_all_daily_chat_state(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={
+            "daily_chat_mode": True,
+            "daily_chat_scenario": "market",
+            "daily_chat_stage": 2,
+        })
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "send_voice", new_callable=AsyncMock),
+        ):
+            await bot.start(update, context)
+
+        self.assertFalse(context.user_data["daily_chat_mode"])
+        self.assertNotIn("daily_chat_scenario", context.user_data)
+        self.assertNotIn("daily_chat_stage", context.user_data)
+        message.reply_text.assert_awaited_once()
+
     async def test_ordinary_text_stays_in_daily_chat_mode(self):
         update, context = self.make_update_context(
             "دەمەوێت لە بازاڕ گفتوگۆ بکەم",
