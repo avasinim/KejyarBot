@@ -41,6 +41,20 @@ class OrthographyQuizAdapterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             convert_quiz_draft(data)
 
+    def test_rejects_non_object_draft_group_and_question(self):
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(None)
+
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0] = None
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0] = None
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
     def test_rejects_invalid_correct_option_index(self):
         data = copy.deepcopy(self.data)
         data["quizzes"][0]["questions"][0]["correct_option_index"] = 99
