@@ -464,3 +464,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Rechecked lesson 2's 34 alphabet practice entries and all 170 example words. Every example contains the grapheme shown for its entry; the lesson JSON and SVG both retain the same 34-entry order.
 - These checks establish structural/text consistency only. They do not prove every example is the most pedagogically natural word or that all spelling variants match every page of the selected source. Page-by-page reference review and browser/mobile rendering remain outstanding.
 - No lesson or quiz content was changed in this pass; only this audit note was added. No main branch, production configuration, database, migration, voice asset, or PR merge was touched.
+
+## Alphabet example regression guard (26 October 2026)
+
+- Added `test_lesson_two_has_five_matching_examples_for_each_letter` in `tests/test_content.py`. In addition to checking 34 entries and five non-empty examples per entry, it checks that each example contains the entry's target grapheme.
+- Re-read the committed test file and confirmed the new test is present. The test has not yet been independently executed in this environment; GitHub's commit-status and PR-triggered workflow-run lookups returned no checks for the latest head commit, so CI is explicitly unconfirmed for this change.
+- PR #3 remains open as a draft and targets `fix/kejyarbot-stability-2026-10-25`. No merge, production deployment, database/migration changes, or voice-asset changes were made.
