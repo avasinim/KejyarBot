@@ -18,10 +18,16 @@ class OrthographyQuizAdapterTests(unittest.TestCase):
         self.assertEqual(set(converted), {f"lesson_{n:02d}" for n in range(1, 23)})
         for group in self.data["quizzes"]:
             n = group["lesson_number"]
-            source = group["questions"][0]
-            target = converted[f"lesson_{n:02d}"][0]
-            self.assertEqual(target["answer"], source["options"][source["correct_option_index"]])
-            self.assertEqual(target["options"], source["options"])
+            targets = converted[f"lesson_{n:02d}"]
+            self.assertEqual(len(targets), len(group["questions"]))
+            for source, target in zip(group["questions"], targets):
+                self.assertEqual(
+                    set(target), {"question", "options", "answer", "explanation"}
+                )
+                self.assertEqual(target["question"], source["question"])
+                self.assertEqual(target["answer"], source["options"][source["correct_option_index"]])
+                self.assertEqual(target["options"], source["options"])
+                self.assertEqual(target["explanation"], source["explanation"])
 
     def test_rejects_wrong_course(self):
         data = copy.deepcopy(self.data)
