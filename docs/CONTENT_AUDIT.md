@@ -469,4 +469,4 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Updated the start handler to clear `daily_chat_scenario` and `daily_chat_stage` as well as disabling daily-chat mode.
 - Added a regression test that starts with all three state values set and verifies the state is reset.
 - This is an isolated conversation-state fix. No lesson content, credentials, production bot, production database, migrations, or `main` branch were changed.
-- CI for the new fix is pending.
+- CI passed on the final audit commit `313bc27c6514fb403cd2be5f4905382a2d05ec20`: [run 40289259546](https://github.com/avasinim/KejyarBot/actions/runs/40289259546).
