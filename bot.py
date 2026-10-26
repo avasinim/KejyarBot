@@ -375,6 +375,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
+        context.user_data.pop("daily_chat_scenario", None)
+        context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
         rows = []
