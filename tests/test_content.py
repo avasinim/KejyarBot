@@ -627,7 +627,7 @@ class ContentConsistencyTests(unittest.TestCase):
     def test_infographic_accessible_labels_match_their_lesson(self):
         expected_labels = {
             "lesson-01-greetings.svg": "وانەی ١: سڵاو و ناساندنی خۆ",
-            "lesson-02-letters-sample.svg": "وانەی ٢: خشتەی فراوانی پیت و پێنج وشەی نموونە بۆ هەر نیشانە",
+            "lesson-02-letters-sample.svg": "وانەی ٢: ئەلفبێی کوردی بە پیت و وشە و وێنەی نموونە",
             "lesson-03-daily-words.svg": "وانەی ٣: وشەکانی ڕۆژانە",
             "lesson-04-numbers.svg": "وانەی ٤: ژمارەکان",
             "lesson-05-colors.svg": "وانەی ٥: ڕەنگەکان",
