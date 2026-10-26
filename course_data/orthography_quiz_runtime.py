@@ -121,3 +121,10 @@ def parse_start_callback(callback_data):
         return None
     number = int(suffix)
     return number if 1 <= number <= 22 else None
+
+
+def clear_course_quiz_session(user_data):
+    """Clear only this draft course's in-memory quiz state, preserving legacy state."""
+    if not hasattr(user_data, "pop"):
+        raise ValueError("user_data must be a mutable mapping")
+    return user_data.pop(SESSION_KEY, None)
