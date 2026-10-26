@@ -59,6 +59,22 @@ def load_json(filename):
 
 LESSON_DATA = load_json("lessons.json")
 QUIZ_DATA = load_json("quiz.json")
+COURSE_DATA = load_json("courses.json")
+COURSES = sorted(COURSE_DATA.get("courses", []), key=lambda item: item.get("order", 999))
+COURSE_BY_LESSON = {lesson: course for course in COURSES for lesson in course.get("lesson_ids", [])}
+
+def course_lessons(course_id):
+    course = next((item for item in COURSES if item["id"] == course_id), {})
+    return [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
+
+def next_lesson_in_course(lesson):
+    course = COURSE_BY_LESSON.get(lesson)
+    if not course:
+        return None
+    lessons = course_lessons(course["id"])
+    index = lessons.index(lesson)
+    return lessons[index + 1] if index + 1 < len(lessons) else None
+
 LESSON_INFOGRAPHICS = {
     "وانە_1": "assets/infographics/lesson-01-greetings.svg",
     "وانە_2": "assets/infographics/lesson-02-letters-sample.svg",
@@ -104,7 +120,7 @@ LESSON_BUTTONS = {
 }
 MENU = ReplyKeyboardMarkup(
     [
-        ["📚 وانەکان"],
+        ["🎓 دەورەکان", "📚 وانەکان"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -124,6 +140,11 @@ def can_open(user_id, lesson):
     if lesson not in ORDER:
         return False
     completed = set(get_completed_lessons(user_id))
+    course = COURSE_BY_LESSON.get(lesson)
+    if course:
+        lessons = course_lessons(course["id"])
+        index = lessons.index(lesson)
+        return index == 0 or lessons[index - 1] in completed
     index = ORDER.index(lesson)
     return index == 0 or ORDER[index - 1] in completed
 
@@ -374,21 +395,26 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
+        "🎓 دەورەکان", "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
         context.user_data.pop("daily_chat_stage", None)
 
-    if text == "📚 وانەکان":
-        rows = []
+    if text in {"🎓 دەورەکان", "📚 وانەکان"}:
         completed = set(get_completed_lessons(user_id))
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
-            rows.append(f"{status} {lesson}: {title}")
-        await update.message.reply_text("\n".join(rows))
+        lines = ["🎓 دەورەکانی کەژیار"]
+        for course in COURSES:
+            lessons = course_lessons(course["id"])
+            done = sum(lesson in completed for lesson in lessons)
+            state = f"{done}/{len(lessons)} وانە" if lessons else "بە پلانی پەرەپێدان"
+            lines.append(f"\n{course['title']}\n{course.get('description', '')}\n📌 {state}")
+            for lesson in lessons:
+                status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
+                title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                lines.append(f"  {status} {lesson}: {title}")
+        await update.message.reply_text("\n".join(lines))
         return
 
     if text in LESSON_BUTTONS:
@@ -445,10 +471,16 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
-        lines = []
-        for lesson in ORDER:
-            status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
+        lines = ["🧭 ڕێگای فێربوون بە جیاوازیی دەورەکان"]
+        for course in COURSES:
+            lessons = course_lessons(course["id"])
+            lines.append(f"\n{course['title']}")
+            if not lessons:
+                lines.append("  ⏳ ناوەڕۆکەکە لە قۆناغی پلاندانانە.")
+                continue
+            for lesson in lessons:
+                status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
+                lines.append(f"  {status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
         await update.message.reply_text("\n".join(lines))
         return
 
