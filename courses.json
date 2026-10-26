@@ -1,0 +1,22 @@
+{
+  "orthography_basic": {
+    "title": "دەورەی ١: ڕێنووسی سەرەتایی",
+    "lesson_ids": ["وانە_1"],
+    "status": "active"
+  },
+  "daily_conversation": {
+    "title": "دەورەی ٢: وت‌وێژی ڕۆژانە",
+    "lesson_ids": ["وتوێژ_1"],
+    "status": "active"
+  },
+  "unified_orthography": {
+    "title": "دەورەی ٣: ڕێنووسی یەکگرتوو",
+    "lesson_ids": [],
+    "status": "planned"
+  },
+  "grammar": {
+    "title": "دەورەی ٤: ڕێزمان",
+    "lesson_ids": [],
+    "status": "planned"
+  }
+}
