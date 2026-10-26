@@ -518,3 +518,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added `test_quiz_set_sizes_match_the_audited_beginner_curriculum` to preserve the reviewed distribution: 8 questions in Lesson 2 and 6 questions in each of the other nine lessons, 62 questions total.
 - This catches accidental deletion or unexpected expansion of quiz items. New questions can still be added deliberately by updating the test and documenting the curriculum decision.
 - No quiz data or lesson content was changed in this step.
+
+## Infographic accessibility-label regression guard (26 October 2026)
+
+- Added `test_infographic_accessible_labels_match_their_lesson` to `tests/test_content.py`, checking the exact SVG `aria-label` for each of the ten lesson infographics.
+- This protects screen-reader labels and lesson-to-asset identity from accidental edits. Lesson 2 intentionally uses a descriptive label for its expanded letter/example chart rather than copying the shorter lesson title.
+- The SVG files and lesson content were inspected; no content or image changes were needed in this step.
