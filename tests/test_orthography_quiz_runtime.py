@@ -120,6 +120,11 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
         self.assertIsNone(clear_course_quiz_session(user_data))
         self.assertEqual(user_data, {"quiz": {"score": 1}})
 
+
+    def test_course_session_cleanup_rejects_non_mapping(self):
+        with self.assertRaises(ValueError):
+            clear_course_quiz_session(["not", "a", "mapping"])
+
     def test_start_callbacks_are_namespaced_and_validated(self):
         for number in range(1, 23):
             callback = make_start_callback(number)
