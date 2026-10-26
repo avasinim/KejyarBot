@@ -478,23 +478,28 @@ async def quiz_answer(
         lesson = quiz["lesson"]
 
 
+        already_completed = lesson in get_completed_lessons(uid)
+
         complete_lesson(
             uid,
             lesson
         )
 
+        # Quiz rewards are granted only the first time this lesson is completed.
+        if not already_completed:
+            add_score(
+                uid,
+                20
+            )
+            reward_message = "⭐ +20 XP"
+        else:
+            reward_message = "ℹ️ ئەم وانەیە پێشتر تەواو کراوە؛ XP دووبارە زیاد نەکرا."
 
-        add_score(
-            uid,
-            20
-        )
-
-
-        msg = """
+        msg = f"""
 🎉 تاقیکردنەوە تەواو بوو!
 
 ✅ وانەکە تەواو کرا.
-⭐ +20 XP
+{reward_message}
 """
 
 
