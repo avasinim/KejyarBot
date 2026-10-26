@@ -421,3 +421,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The only references found were explanatory notes in `docs/CONTENT_AUDIT.md`; no runtime, test, or workflow/configuration reference was found in the scanned branch snapshots. `bot.py` on the stability branch loads `quiz.json`.
 - This establishes no references in the scanned current branch snapshots; it does **not** establish that the file is unused by untracked local files, external deployment scripts, archived branches, tags, or historical commits. The legacy file is retained to avoid irreversible deletion without a complete usage decision.
 - No lesson wording, quiz content, legacy file, `main`, production bot/database, token, migration, or deployment was changed by this scan.
+
+
+## Daily-chat role-play state cleanup (26 October 2026)
+
+- Fixed the menu transition in `bot.py`: leaving daily-chat mode through a lesson or another main-menu action now clears the saved role-play scenario and stage as well as disabling the mode.
+- Updated `tests/test_bot_message_mode.py` to assert both role-play fields are removed when a lesson button is selected.
+- Re-read both changed files after the remote feature-branch update. GitHub Actions run #614 passed for the updated branch head: https://github.com/avasinim/KejyarBot/actions/runs/40288141082 .
+- This is a state-cleanup regression fix; no lesson text, quiz content, token, production database, or production deployment was changed.
