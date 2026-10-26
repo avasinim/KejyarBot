@@ -497,3 +497,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Checked that every answer string also appears in its corresponding lesson content; all 62 answers are present verbatim.
 - Added a regression test to preserve unique distractors and exactly one correct-answer option. This verifies data integrity, not whether every distractor is pedagogically ideal; linguistic/source review remains separate.
 - No lesson or quiz wording was changed in this step.
+
+
+## Repository artifact exposure check (26 October 2026)
+
+- Reviewed the complete Git tree for the current feature branch (45 tracked files). No tracked `.env` file, SQLite database, SQLite sidecar, or filename matching common token/secret/credential patterns was found.
+- Confirmed `.gitignore` excludes `.env`, `kejyar.db`, other `.db`/SQLite files, and transient SQLite WAL/SHM sidecars.
+- This is a current-tree filename check only; it does not prove that credentials never appeared in earlier Git history, issue comments, logs, screenshots, or external copies. Previously exposed tokens must still be revoked and replaced before any authorized Telegram integration test.
+- No secret values were read, no bot was launched, and no token or production setting was used.
