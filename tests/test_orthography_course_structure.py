@@ -13,18 +13,19 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         with COURSE_PATH.open(encoding="utf-8") as source:
             cls.course = json.load(source)
 
-    def test_course_has_exactly_22_sequential_lessons(self):
+    def test_course_title_and_22_sequential_lessons(self):
         lessons = self.course["lessons"]
+        self.assertEqual(self.course["title"], "دەورەی ١: ڕێنووسی زمانی کوردی")
         self.assertEqual(self.course["lesson_count"], 22)
         self.assertEqual(len(lessons), 22)
         self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 23)))
         self.assertEqual(len({lesson["id"] for lesson in lessons}), 22)
 
-    def test_course_ends_with_separate_orthography_menu_key(self):
+    def test_course_ends_after_lesson_22_without_a_duplicate_course_button(self):
         behavior = self.course["completion_behavior"]
         self.assertEqual(behavior["after_lesson"], 22)
-        self.assertTrue(behavior["show_separate_menu_button"])
-        self.assertEqual(behavior["button_text"], "ڕێنووسی زمانی کوردی")
+        self.assertFalse(behavior["show_separate_menu_button"])
+        self.assertIsNone(behavior["button_text"])
         self.assertFalse(behavior["treat_button_as_lesson_23"])
 
     def test_existing_course_and_production_are_protected_by_design(self):
