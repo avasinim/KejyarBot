@@ -35,6 +35,13 @@ class OrthographyQuizAdapterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             convert_quiz_draft(data)
 
+
+    def test_rejects_lesson_id_number_mismatch(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["lesson_id"] = "lesson_02"
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
     def test_rejects_duplicate_lesson_number(self):
         data = copy.deepcopy(self.data)
         data["quizzes"][1]["lesson_number"] = 1
