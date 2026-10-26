@@ -532,3 +532,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The learning phrases are drawn from `lessons.json` lesson 1. This is a visual/layout prototype, not a source-book orthography certification. Keep the lesson text unchanged; verify source-sensitive spelling separately before making copy-wide changes.
 - The AI-generated sample image is a visual reference only and must not be shipped as the source of Kurdish text because generated text can contain spelling and glyph errors.
 - Next design pass: extend the visual language to lessons 2–10 while preserving each lesson's source content and checking the exact Kurdish strings in SVG.
+
+## Kurdish-specific Unicode regression guard (26 October 2026)
+
+- Added a regression test that checks the exact Kurdish-specific characters in the Lesson 2 text and SVG, including ڕ (U+0695), ڵ (U+06B5), ۆ (U+06C6), ێ (U+06CE), ە (U+06D5), and also ڤ، پ، چ، ژ.
+- This catches accidental substitution with visually similar Arabic/Persian characters. It does not certify font shaping or every spelling/diacritic; those still require rendered visual review and source-based proofreading.
+- AI-rendered poster lettering is reference-only. The shipped alphabet must use editable Unicode text and a font with verified Kurdish glyph coverage, with exact words reviewed separately.
