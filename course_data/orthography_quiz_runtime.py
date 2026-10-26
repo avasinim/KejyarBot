@@ -64,3 +64,39 @@ def parse_answer_callback(callback_data):
     if not suffix.isdigit():
         return None
     return int(suffix)
+
+
+def apply_answer(session, option_index):
+    """Score one answer and advance this session; never awards persistent rewards.
+
+    Returns a result dictionary. Duplicate answers after completion are rejected.
+    """
+    if not isinstance(session, dict) or session.get("course_id") != COURSE_ID:
+        raise ValueError("not an orthography course quiz session")
+    if not isinstance(option_index, int) or isinstance(option_index, bool) or option_index < 0:
+        raise ValueError("option_index must be a non-negative integer")
+    questions = session.get("questions")
+    index = session.get("index")
+    if not isinstance(questions, list) or not isinstance(index, int) or isinstance(index, bool):
+        raise ValueError("invalid quiz session")
+    if index >= len(questions):
+        raise ValueError("quiz session is already complete")
+    question = questions[index]
+    options = question["options"]
+    if option_index >= len(options):
+        raise ValueError("option_index is out of range")
+
+    selected = options[option_index]
+    correct = selected == question["answer"]
+    if correct:
+        session["score"] = session.get("score", 0) + 1
+    session["index"] = index + 1
+    return {
+        "correct": correct,
+        "selected": selected,
+        "answer": question["answer"],
+        "explanation": question["explanation"],
+        "completed": session["index"] >= len(questions),
+        "score": session["score"],
+        "question_number": index + 1,
+    }
