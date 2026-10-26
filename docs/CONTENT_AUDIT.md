@@ -538,3 +538,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added a regression test that checks the exact Kurdish-specific characters in the Lesson 2 text and SVG, including ڕ (U+0695), ڵ (U+06B5), ۆ (U+06C6), ێ (U+06CE), ە (U+06D5), and also ڤ، پ، چ، ژ.
 - This catches accidental substitution with visually similar Arabic/Persian characters. It does not certify font shaping or every spelling/diacritic; those still require rendered visual review and source-based proofreading.
 - AI-rendered poster lettering is reference-only. The shipped alphabet must use editable Unicode text and a font with verified Kurdish glyph coverage, with exact words reviewed separately.
+
+## Kurdish alphabet infographic redesign (26 October 2026)
+
+- Rebuilt `assets/infographics/lesson-02-letters-sample.svg` as a custom KejyarBot alphabet chart with a forest-green/cream/copper palette, restrained kilim-inspired geometry, 34 editable Unicode letter rows, RTL text attributes, and a hand-drawn vector illustration per row.
+- Preserved all five example words listed for each of the 34 entries in the lesson text; the existing regression test checks that every example remains present in the SVG.
+- The illustration is an introductory visual cue for the first example word in each row, not a claim that each of the five listed words has its own separate image. A later design pass should add individually matched image cards for every word, with particular care for words that are not straightforward to depict.
+- This is a custom vector prototype. It uses a Noto font stack, but the target runtime still needs visual checking for actual font availability, glyph shaping, diacritics, RTL flow, and readability at mobile sizes. Do not treat a successful XML/test run as proof of visual font correctness.
