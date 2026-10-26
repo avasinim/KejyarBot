@@ -572,3 +572,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Extended `test_infographic_teaching_phrases_are_present_in_matching_lessons` to cover lessons 7–10 as well as the existing checks for lessons 1 and 3–6.
 - The new assertions verify that three selected teaching phrases from each added lesson appear in both the lesson JSON content and its corresponding SVG. This helps prevent lesson/visual drift; it does not certify spelling, source fidelity, or actual rendered appearance.
 - The test-only change is committed on `fix/kejyarbot-stability-2026-10-25`. CI verification is pending; no lesson text, quiz data, production configuration, database, migrations, or `main` was changed.
+
+## Lesson 2 alphabet source cross-check (26 October 2026)
+
+- Checked the lesson 2 alphabet inventory against Diako Hashemi, *Puxtey Renus U Xallbendi Weshani*, third updated edition (16 August 2024). The source explicitly lists 34 Kurdish letters/signs in this order: ئ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، ه، ە، و، وو، ۆ، ی، ێ.
+- The source includes `وو` as a separate item in its 34-item list, so it must not be removed simply because it may look like a doubled letter sequence. The lesson’s inventory should remain source-aligned rather than be normalized by guesswork.
+- This is an inventory/order cross-check only. The five example words listed for each item still need a separate editorial review; no lesson examples or scientific text were changed in this step.
+- Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
