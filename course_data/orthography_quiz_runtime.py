@@ -129,6 +129,6 @@ def parse_start_callback(callback_data):
 
 def clear_course_quiz_session(user_data):
     """Clear only this draft course's in-memory quiz state, preserving legacy state."""
-    if not hasattr(user_data, "pop"):
+    if not isinstance(user_data, MutableMapping):
         raise ValueError("user_data must be a mutable mapping")
     return user_data.pop(SESSION_KEY, None)
