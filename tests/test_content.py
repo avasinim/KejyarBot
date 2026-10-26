@@ -584,5 +584,17 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertIn(item["answer"], item["options"])
 
 
+    def test_every_quiz_answer_is_taught_in_its_matching_lesson(self):
+        for lesson_key, questions in self.quizzes.items():
+            lesson_content = self.lessons[lesson_key]["content"]
+            for index, question in enumerate(questions, start=1):
+                with self.subTest(lesson=lesson_key, question=index):
+                    self.assertIn(
+                        question["answer"],
+                        lesson_content,
+                        "Correct answers must be supported by the matching lesson content.",
+                    )
+
+
 if __name__ == "__main__":
     unittest.main()
