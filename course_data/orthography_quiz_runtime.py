@@ -1,3 +1,5 @@
+from collections.abc import MutableMapping
+
 """Isolated session helpers for the draft 22-lesson orthography course.
 
 This module deliberately does not touch the legacy quiz state, database rewards,
