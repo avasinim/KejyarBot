@@ -103,6 +103,16 @@ class ContentConsistencyTests(unittest.TestCase):
             self.assertEqual(self.lessons[f"وانە_{index}"]["title"], title.split(": ", 1)[1])
             self.assertTrue(self.lessons[f"وانە_{index}"]["content"].strip())
 
+    def test_kurdish_text_uses_kurdish_kaf_codepoint(self):
+        # The selected orthography reference distinguishes Kurdish kaf ک (U+06A9)
+        # from Arabic kaf ك (U+0643); keep accidental keyboard substitutions out.
+        for lesson_key, lesson in self.lessons.items():
+            with self.subTest(lesson=lesson_key):
+                self.assertNotIn("\u0643", lesson["title"] + "\n" + lesson["content"])
+        for lesson_key, questions in self.quizzes.items():
+            with self.subTest(quiz=lesson_key):
+                self.assertNotIn("\u0643", json.dumps(questions, ensure_ascii=False))
+
     def test_lesson_two_practice_entries_follow_reference_order(self):
         # Diako Hashemi's orthography reference explicitly treats letter order as significant.
         expected_order = ["ئ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
