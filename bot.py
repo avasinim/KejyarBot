@@ -626,6 +626,12 @@ async def message(
             [
                 [
                     InlineKeyboardButton(
+                        '📝 تاقیکردنەوەی وانەی ١',
+                        callback_data='quiz_1_start'
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
                         '📝 تاقیکردنەوەی وانەی ٢',
                         callback_data='quiz_2_start'
                     )
