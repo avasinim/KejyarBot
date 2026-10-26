@@ -122,35 +122,68 @@ def calculate_level(xp):
 
 
 def update_level(user_id):
-    user=get_user(user_id)
-    conn=sqlite3.connect(DB_NAME)
-    cur=conn.cursor()
-    cur.execute('UPDATE users SET level=? WHERE user_id=?',(calculate_level(user[2]),user_id))
-    conn.commit();conn.close()
+    user = get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute(
+            "UPDATE users SET level=? WHERE user_id=?",
+            (calculate_level(user[2]), user_id),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
-def add_score(user_id,points):
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    cur.execute('UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?',(points,points,user_id))
-    conn.commit();conn.close()
-    add_coins(user_id,5)
+def add_score(user_id, points):
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute(
+            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
+            (points, points, user_id),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+    add_coins(user_id, 5)
     update_level(user_id)
 
 
 def add_xp(user_id, amount):
     """Add XP/score without awarding the lesson-specific coin bonus."""
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?", (amount, amount, user_id))
-    conn.commit()
-    conn.close()
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute(
+            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
+            (amount, amount, user_id),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
     update_level(user_id)
 
 
-def add_coins(user_id,amount):
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    cur.execute('UPDATE users SET coins=coins+? WHERE user_id=?',(amount,user_id))
-    conn.commit();conn.close()
+def add_coins(user_id, amount):
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute(
+            "UPDATE users SET coins=coins+? WHERE user_id=?",
+            (amount, user_id),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def open_chest(user_id):
@@ -180,9 +213,18 @@ def open_chest(user_id):
 
 
 def add_chest(user_id):
-    conn=sqlite3.connect(DB_NAME);cur=conn.cursor()
-    cur.execute('UPDATE users SET chests=chests+1 WHERE user_id=?',(user_id,))
-    conn.commit();conn.close()
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute(
+            "UPDATE users SET chests=chests+1 WHERE user_id=?",
+            (user_id,),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
 
 def get_user_level(user_id):
