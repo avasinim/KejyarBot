@@ -1,11 +1,9 @@
 {
   "course_id": "orthography_foundations",
-  "title": "دەورەی ١: ڕێنووسی سەرەتایی",
+  "title": "دەورەی ١: ڕێنووسی زمانی کوردی",
   "language": "ckb",
   "status": "curriculum_structure",
   "lesson_count": 22,
-  "completion_key": "orthography_foundations_completed",
-  "next_menu_key": "ڕێنووسی زمانی کوردی",
   "lessons": [
     {
       "id": "lesson_01",
@@ -208,8 +206,8 @@
   ],
   "completion_behavior": {
     "after_lesson": 22,
-    "show_separate_menu_button": true,
-    "button_text": "ڕێنووسی زمانی کوردی",
+    "show_separate_menu_button": false,
+    "button_text": null,
     "treat_button_as_lesson_23": false
   },
   "safety": {
@@ -217,5 +215,5 @@
     "do_not_enable_dynamic_speech": true,
     "do_not_change_production_or_main": true
   },
-  "note": "Structure only. Do not present the lessons as source-reviewed or runtime-integrated until the lesson texts, references, quizzes, and handler tests are completed."
+  "note": "Structure only. Course title is Kurdish orthography. There is no separate final menu button; course ends after lesson 22. Content, sources, quizzes, voice presentation and infographics still need implementation."
 }
