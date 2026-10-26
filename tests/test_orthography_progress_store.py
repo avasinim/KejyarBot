@@ -60,6 +60,17 @@ class OrthographyProgressStoreTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             get_course_completed_lessons(self.db_path, 7, course_id=" ")
 
+
+    def test_accepts_each_of_the_22_course_lesson_ids(self):
+        for number in range(1, 23):
+            lesson_id = f"lesson_{number:02d}"
+            with self.subTest(lesson_id=lesson_id):
+                self.assertTrue(record_course_quiz_completion(self.db_path, 99, lesson_id))
+        self.assertEqual(
+            get_course_completed_lessons(self.db_path, 99),
+            [f"lesson_{number:02d}" for number in range(1, 23)],
+        )
+
     def test_course_id_constant(self):
         self.assertEqual(COURSE_ID, "orthography_foundations")
 
