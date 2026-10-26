@@ -93,11 +93,16 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         update.message.reply_text.assert_awaited_once()
         catalog = update.message.reply_text.await_args.args[0]
-        self.assertEqual(len(catalog.splitlines()), len(bot.ORDER))
+        # Course headings and progress summaries make the catalog longer
+        # than the raw lesson count; assert lesson coverage, not line count.
         for lesson in bot.ORDER:
             self.assertIn(lesson, catalog)
             self.assertIn(bot.LESSON_DATA[lesson]["title"], catalog)
         self.assertEqual(len(bot.ORDER), 10)
+        self.assertEqual(
+            sum(1 for lesson in bot.ORDER if lesson in catalog),
+            len(bot.LESSON_DATA),
+        )
 
 
 if __name__ == "__main__":
