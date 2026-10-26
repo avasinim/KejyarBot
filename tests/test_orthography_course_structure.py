@@ -55,7 +55,8 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             path = DRAFT_DIR / f"orthography_lesson_{number:02d}_draft.md"
             self.assertTrue(path.is_file(), f"Missing draft: {path.name}")
             draft = path.read_text(encoding="utf-8")
-            self.assertIn(f"وانەی {number}", draft, path.name)
+            kurdish_digits = str(number).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
+            self.assertIn(f"وانەی {kurdish_digits}", draft, path.name)
             self.assertIn(lesson["title"], draft, path.name)
 
     def test_quiz_draft_has_one_valid_multiple_choice_question_per_lesson(self):
