@@ -195,6 +195,24 @@ class ContentConsistencyTests(unittest.TestCase):
         self.assertNotIn("ئەلفوبێ", combined)
         self.assertNotIn("ئەلف بێ", combined)
 
+
+    def test_kurdish_specific_letters_use_their_exact_unicode_characters(self):
+        svg_path = BASE_DIR / "assets" / "infographics" / "lesson-02-letters-sample.svg"
+        root = ET.parse(svg_path).getroot()
+        svg_text = " ".join(node.text.strip() for node in root.iter() if node.text and node.text.strip())
+        lesson = self.lessons["وانە_2"]["content"]
+        # Assert the actual Kurdish characters, not visually similar Arabic/Persian substitutes.
+        required_letters = ("ڕ", "ڵ", "ۆ", "ێ", "ە", "ڤ", "پ", "چ", "ژ")
+        for letter in required_letters:
+            with self.subTest(letter=letter, codepoint=f"U+{ord(letter):04X}"):
+                self.assertIn(letter, lesson)
+                self.assertIn(letter, svg_text)
+        self.assertEqual(ord("ڕ"), 0x0695)
+        self.assertEqual(ord("ڵ"), 0x06B5)
+        self.assertEqual(ord("ۆ"), 0x06C6)
+        self.assertEqual(ord("ێ"), 0x06CE)
+        self.assertEqual(ord("ە"), 0x06D5)
+
     def test_alphabet_lesson_has_teaching_examples_and_practice(self):
         lesson = self.lessons["وانە_2"]["content"]
         for required in ("ئامانجی وانە", "پیت و دەنگ", "نموونە", "ڕاهێنان", "پیتەکان"):
