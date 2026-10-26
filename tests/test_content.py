@@ -565,6 +565,18 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+    def test_lesson_infographics_use_safe_kurdish_text_codepoints(self):
+        infographic_dir = BASE_DIR / "assets" / "infographics"
+        infographics = sorted(infographic_dir.glob("*.svg"))
+        self.assertEqual(len(infographics), 10)
+
+        for path in infographics:
+            content = path.read_text(encoding="utf-8")
+            with self.subTest(infographic=path.name):
+                self.assertNotIn("\u0643", content, "Use Kurdish kaf ک (U+06A9), not Arabic kaf ك (U+0643).")
+                self.assertNotIn("\uFFFD", content, "Infographic contains a Unicode replacement character.")
+                self.assertNotIn("\u00A0", content, "Unexpected non-breaking space in infographic source.")
+
     def test_lesson_two_alphabet_practice_entries_have_five_examples_each(self):
         content = self.lessons["وانە_2"]["content"]
         section = content.split("🔤 پیت و وشەی نموونە", 1)[1].split("🧠 چۆن ئەم لیستە بخوێنیتەوە؟", 1)[0]
