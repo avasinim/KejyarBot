@@ -446,3 +446,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Added a focused regression test covering score/XP updates, the score helper's coin bonus, XP-only behavior, level recalculation, coin addition, and chest addition.
 - Re-read `database.py` and `tests/test_database.py` from the feature branch to verify the changes are present.
 - This is a local SQLite reliability improvement only. It does not run the bot, call Telegram, read or modify secrets, change lesson content, touch production databases, or modify `main`.
+
+
+## Database initialization failure cleanup (26 October 2026)
+
+- Wrapped `init_db` schema creation and idempotent column addition in explicit exception handling: commit on success, rollback on failure, and always close the SQLite connection.
+- Re-read the updated `database.py` from the feature branch. Existing schema migration behavior is preserved; this change only improves cleanup and failure handling.
+- Existing tests cover repeat initialization and schema migration idempotence. CI for this exact change is pending at the time of this audit update.
+- No production database, migration files, bot token, or `main` branch was touched.
