@@ -97,13 +97,6 @@ with open(
 ) as f:
 
     QUIZ_DATA = json.load(f)
-with open(
-    'quiz.json',
-    'r',
-    encoding='utf-8'
-) as f:
-
-    QUIZ_DATA = json.load(f)
 
 LESSONS = {
 
@@ -329,7 +322,6 @@ async def finish_lesson(
 
 
     if old_level != new_level:
-
         msg += f"""
 
 🎉 بژی!
@@ -339,74 +331,39 @@ async def finish_lesson(
 {new_level}
 """
 
-        if lesson != ORDER[-1]:
-
-            index = ORDER.index(lesson)
-            next_lesson = ORDER[index + 1]
-
-            keyboard = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            f"📚 دەستپێکردنی {next_lesson}",
-                            callback_data=f"next_lesson_{next_lesson}"
-                        )
-                    ]
-                ]
-            )
-
-            await q.message.reply_text(
-                msg,
-                reply_markup=keyboard
-            )
-
-        else:
-
-            await q.message.reply_text(
-                msg
-            )
-
-
-        del USER_QUIZ[uid]
-        return
-
-
-    # بعد از پایان وانەی ٥ آزمون باز شود
-
-    if lesson == 'وانە_5':
-
+    # Always show progression after lesson completion, not only on level-up.
+    if lesson in ORDER and lesson != ORDER[-1]:
+        index = ORDER.index(lesson)
+        next_lesson = ORDER[index + 1]
         keyboard = InlineKeyboardMarkup(
-            [
-                [
+            [[
+                InlineKeyboardButton(
+                    f"📚 دەستپێکردنی {next_lesson}",
+                    callback_data=f"next_lesson_{next_lesson}"
+                )
+            ]]
+        )
+        await q.message.reply_text(msg, reply_markup=keyboard)
+    else:
+        if lesson == 'وانە_5':
+            keyboard = InlineKeyboardMarkup(
+                [[
                     InlineKeyboardButton(
                         'دەست پێکردنی تاقیکاری وانەی ٥',
                         callback_data='quiz_5_start'
                     )
-                ]
-            ]
-        )
-
-
-        await q.message.reply_text(
-            '🎓 بژی! وانەی ٥ تەواو بوو.\nئێستا دەتوانیت تاقیکردنەوە بکەیت.',
-            reply_markup=keyboard
-        )
-
-
-
-    done_voice = get_voice(
-        "lesson_done.mp3"
-    )
-
-
-    if done_voice:
-
-        await q.message.reply_voice(
-            voice=open(
-                done_voice,
-                "rb"
+                ]]
             )
-        )
+            await q.message.reply_text(
+                '🎓 بژی! وانەی ٥ تەواو بوو.\nئێستا دەتوانیت تاقیکردنەوە بکەیت.',
+                reply_markup=keyboard
+            )
+        else:
+            await q.message.reply_text(msg)
+
+    done_voice = get_voice("lesson_done.mp3")
+    if done_voice:
+        await q.message.reply_voice(voice=open(done_voice, "rb"))
 
 
 async def start_quiz(
