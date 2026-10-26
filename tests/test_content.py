@@ -687,6 +687,22 @@ class ContentConsistencyTests(unittest.TestCase):
                 "وانە_6",
                 ("دەرگا", "پەنجەرە", "کورسی", "کتێب"),
             ),
+            "lesson-07-family.svg": (
+                "وانە_7",
+                ("ئەمە دایکمە.", "ئەوە باوکمە.", "براکەم قوتابییە."),
+            ),
+            "lesson-08-food-drink.svg": (
+                "وانە_8",
+                ("بۆ بەیانی نان و پەنیر دەخۆم.", "شۆرباکە گەرمە.", "تکایە، پەرداخێک ئاو بدە."),
+            ),
+            "lesson-09-days-time.svg": (
+                "وانە_9",
+                ("ئەمڕۆ دووشەممەیە.", "سبەی سێشەممەیە.", "دوێنێ لە کتێبخانە بووم."),
+            ),
+            "lesson-10-simple-sentences.svg": (
+                "وانە_10",
+                ("من قوتابیم.", "ئێمە زمانی کوردی فێر دەبین.", "ئەم سێوە سوورە."),
+            ),
         }
         assets_dir = BASE_DIR / "assets" / "infographics"
         for filename, (lesson_key, phrases) in expectations.items():
