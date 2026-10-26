@@ -435,3 +435,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Corrected the order of the final seven practice entries in lesson 2 and its SVG infographic to match Diako Hashemi's listed Central Kurdish alphabet order.
 - Added `test_lesson_two_practice_entries_follow_reference_order` to keep lesson text and infographic synchronized with that order. CI run #40276894384 passed: https://github.com/avasinim/KejyarBot/actions/runs/40276894384 .
 - The lesson remains a practice resource, not a claim of official approval. The correction does not imply that every lesson spelling has now been checked against every page of the selected 2024 edition.
+
+## Unicode orthography regression check (26 October 2026)
+
+- Scanned all ten lesson records and ten quiz sets for Arabic kaf U+0643; none were found.
+- Added `test_kurdish_text_uses_kurdish_kaf_codepoint` so future lesson/quiz edits cannot silently introduce that keyboard/code-point substitution.
+- CI for the test commit is running at the time of this note: https://github.com/avasinim/KejyarBot/actions/runs/40277014942 .
