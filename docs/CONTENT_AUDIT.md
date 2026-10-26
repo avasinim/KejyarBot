@@ -466,7 +466,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 ## Daily-chat state reset on `/start` (26 October 2026)
 
 - Review found that `/start` disabled daily-chat mode but could leave the previous scenario and stage in `context.user_data`.
-- Updated the start handler to clear `daily_chat_scenario` and `daily_chat_stage` as well as disabling daily-chat mode.
-- Added a regression test that starts with all three state values set and verifies the state is reset.
+- Updated the start handler to clear `daily_chat_scenario` and `daily_chat_stage`, disable daily-chat mode, and discard any active in-memory quiz so stale answer buttons cannot continue the old quiz after `/start`.
+- Added a regression test that starts with daily-chat state and an active quiz set, then verifies all are reset.
 - This is an isolated conversation-state fix. No lesson content, credentials, production bot, production database, migrations, or `main` branch were changed.
 - CI passed on the final audit commit `313bc27c6514fb403cd2be5f4905382a2d05ec20`: [run 40289259546](https://github.com/avasinim/KejyarBot/actions/runs/40289259546).
+
+- Follow-up CI for this additional quiz-reset change is pending.
