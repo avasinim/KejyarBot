@@ -502,6 +502,17 @@ class ContentConsistencyTests(unittest.TestCase):
 
 
 
+
+    def test_quiz_options_are_unique_and_correct_answer_occurs_once(self):
+        for lesson_key, questions in self.quizzes.items():
+            for index, question in enumerate(questions, start=1):
+                with self.subTest(lesson=lesson_key, question=index):
+                    options = question["options"]
+                    self.assertGreaterEqual(len(options), 2)
+                    self.assertEqual(len(options), len(set(options)))
+                    self.assertEqual(options.count(question["answer"]), 1)
+                    self.assertTrue(question["question"].strip())
+
     def test_lesson_two_practice_order_matches_selected_2024_reference(self):
         expected = [
             "ئ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
