@@ -32,7 +32,7 @@ class CourseStructureTests(unittest.TestCase):
             self.assertEqual(self.courses[course_id]["lesson_ids"], [])
 
     def test_lesson_one_quiz_answers_exist_in_options(self):
-        questions = self.quizzes["وانە_1"]["questions"]
+        questions = self.quizzes["وانە_1"]
         self.assertGreaterEqual(len(questions), 2)
         for question in questions:
             self.assertIn(question["answer"], question["options"])
