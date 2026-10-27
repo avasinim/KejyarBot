@@ -57,6 +57,19 @@ def load_json(filename):
     with path.open("r", encoding="utf-8") as file:
         return json.load(file)
 
+def format_lesson_draft(markdown):
+    """Convert simple draft Markdown to readable plain text for Telegram."""
+    lines = []
+    for line in markdown.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("#"):
+            line = stripped.lstrip("#").strip()
+        elif stripped.startswith(">"):
+            line = stripped.lstrip(">").strip()
+        line = line.replace("**", "").replace("__", "").replace("`", "")
+        lines.append(line)
+    return "\n".join(lines).strip()
+
 # Course 1 is the 22-lesson orthography course. Keep database keys stable
 # (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
 ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
@@ -68,7 +81,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     number = course_lesson["number"]
     lesson_key = f"وانە_{number}"
     draft_path = BASE_DIR / "course_data" / f"orthography_lesson_{number:02d}_draft.md"
-    draft_content = draft_path.read_text(encoding="utf-8") if draft_path.is_file() else (
+    draft_content = format_lesson_draft(draft_path.read_text(encoding="utf-8")) if draft_path.is_file() else (
         "⚠️ ناوەڕۆکی ئەم وانەیە هێشتا ئامادە نییە."
     )
     LESSON_DATA[lesson_key] = {
