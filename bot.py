@@ -292,6 +292,30 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
+async def send_lesson_text(message, content, reply_markup=None):
+    """Send lesson drafts in Telegram-safe chunks without splitting Unicode text."""
+    limit = 3800
+    chunks = []
+    remaining = content.strip()
+    while remaining:
+        if len(remaining) <= limit:
+            chunks.append(remaining)
+            break
+        split_at = remaining.rfind("\n", 0, limit)
+        if split_at < limit // 2:
+            split_at = remaining.rfind(" ", 0, limit)
+        if split_at < limit // 2:
+            split_at = limit
+        chunks.append(remaining[:split_at].strip())
+        remaining = remaining[split_at:].strip()
+    if not chunks:
+        chunks = ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+    for index, chunk in enumerate(chunks):
+        await message.reply_text(
+            chunk,
+            reply_markup=reply_markup if index == len(chunks) - 1 else None,
+        )
+
 async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -307,7 +331,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
 
@@ -323,7 +347,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):
