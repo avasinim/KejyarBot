@@ -105,6 +105,12 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
             apply_answer(session, 999)
 
 
+    def test_answer_handler_rejects_corrupted_current_question(self):
+        session = build_quiz_session(self.converted, 1)
+        session["questions"][0]["options"] = None
+        with self.assertRaises(ValueError):
+            apply_answer(session, 0)
+
     def test_course_session_cleanup_preserves_legacy_quiz(self):
         user_data = {
             "quiz": {"lesson": "وانە_1", "score": 3},
