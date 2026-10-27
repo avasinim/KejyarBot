@@ -73,7 +73,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     )
     LESSON_DATA[lesson_key] = {
         "title": course_lesson["title"],
-        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\\n\\n{draft_content}",
+        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\n\n{draft_content}",
     }
     LESSON_BUTTONS[course_lesson["title"]] = lesson_key
     QUIZ_DATA[lesson_key] = []
@@ -365,7 +365,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for lesson in ORDER:
             status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
             rows.append(f"{status} {lesson}: {LESSON_DATA[lesson]['title']}")
-        await update.message.reply_text(ORTHOGRAPHY_COURSE["title"] + "\\n\\n" + "\\n".join(rows), reply_markup=MENU)
+        await update.message.reply_text(ORTHOGRAPHY_COURSE["title"] + "\n\n" + "\n".join(rows), reply_markup=MENU)
         return
 
     if text in LESSON_BUTTONS:
