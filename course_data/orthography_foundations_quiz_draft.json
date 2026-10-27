@@ -360,6 +360,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "لە نووسینی «هێمن»دا پیتی «ێ» هەیە. ئەم پرسیارە ناسینەوەی پیت تاقی دەکاتەوە؛ شیکردنەوەی دەنگیی ورد پێویستی بە خوێندنەوەی شێوەزاری ئامانج هەیە."
+        },
+        {
+          "id": "l9_q2",
+          "type": "multiple_choice",
+          "question": "لە کام وشەدا پیتی «ۆ» دەبینرێت؟",
+          "options": [
+            "«خۆر»",
+            "«هێمن»",
+            "«سەرما»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە «خۆر»دا پیتی «ۆ» هەیە."
+        },
+        {
+          "id": "l9_q3",
+          "type": "multiple_choice",
+          "question": "کام هەڵبژاردە سێ پیتی ئامانجی وانەکە بە دروستی دەنووسێت؟",
+          "options": [
+            "«ە»، «ێ»، «ۆ»",
+            "«ه»، «ی»، «و»",
+            "«ر»، «ڕ»، «ل»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "وانەی ٩ لە ناسینەوەی «ە»، «ێ» و «ۆ» دەکۆڵێتەوە."
         }
       ]
     },
@@ -378,6 +402,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "لە «سەرما»دا پیتی «ە» هەیە. ئامانجی پرسیارەکە ناسینەوەی شێوەی نووسراوی پیتەکەیە، نەک گشتاندنی یاسای دەنگی."
+        },
+        {
+          "id": "l10_q2",
+          "type": "multiple_choice",
+          "question": "کام وشە پیتی «ە»ی تێدایە؟",
+          "options": [
+            "«هەوار»",
+            "«هیوا»",
+            "«خۆر»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە «هەوار»دا پیتی «ە» بەکارهاتووە."
+        },
+        {
+          "id": "l10_q3",
+          "type": "multiple_choice",
+          "question": "کام ڕستە دروستە؟",
+          "options": [
+            "«ە» و «ه» دوو شێوەی نووسینی جیاوازن",
+            "«ە» و «ه» هەمیشە هەمان پیتن",
+            "لە وشەدا تەنیا پیتی «ه» بەکاردێت"
+          ],
+          "correct_option_index": 0,
+          "explanation": "جیاوازیی شێوەی نووسینی پیتەکان بە ڕوونی ببینە؛ یەکیان مەگرە."
         }
       ]
     },
@@ -396,6 +444,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "لە «کێو»دا پیتی «ێ» هەیە. لە وەڵامدانەوەدا پیتی نووسراو بناسەوە و لە شیکردنەوەی دەنگی جیاوازی بکە."
+        },
+        {
+          "id": "l11_q2",
+          "type": "multiple_choice",
+          "question": "لە «ئەستێرە»دا کام پیت نیشانە دەکەیت؟",
+          "options": [
+            "«ێ»",
+            "«ۆ»",
+            "«و»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«ئەستێرە» پیتی «ێ»ی تێدایە."
+        },
+        {
+          "id": "l11_q3",
+          "type": "multiple_choice",
+          "question": "کام وشە پیتی «ێ»ی تێدایە؟",
+          "options": [
+            "«هێدی»",
+            "«درۆ»",
+            "«مەرگ»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە «هێدی»دا پیتی «ێ» لە دوای «ه» هاتووە."
         }
       ]
     },
@@ -414,6 +486,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "وشەی «خۆر» پیتی «ۆ»ی تێدایە؛ شێوەی نووسینی «ۆ» لە «و» جیاوازە."
+        },
+        {
+          "id": "l12_q2",
+          "type": "multiple_choice",
+          "question": "کام وشە پیتی «ۆ»ی تێدایە؟",
+          "options": [
+            "«چرۆ»",
+            "«کێو»",
+            "«هیوا»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە «چرۆ»دا پیتی «ۆ» هەیە."
+        },
+        {
+          "id": "l12_q3",
+          "type": "multiple_choice",
+          "question": "کام بەراوردە دروستە؟",
+          "options": [
+            "«ۆ» و «و» شێوەی نووسینی جیاوازن",
+            "«ۆ» و «و» هەمیشە هەمان پیتن",
+            "«ۆ» لە نووسینی کوردیدا نییە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "پرسیارەکە ناسینەوەی شێوەی نووسین تاقی دەکاتەوە."
         }
       ]
     },
@@ -599,5 +695,5 @@
     }
   ],
   "note": "Explanations are lesson-specific editorial drafts, not source-verified claims. Review each question, correct option, explanation and cited evidence against the approved lesson and source before runtime integration.",
-  "total_question_count": 38
+  "total_question_count": 46
 }
