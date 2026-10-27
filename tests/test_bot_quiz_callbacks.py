@@ -219,5 +219,32 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێشتر تەواو کراوە", query.message.reply_text.await_args.args[0])
 
 
+    async def test_final_lesson_completion_offers_final_lesson_quiz(self):
+        final_lesson = bot.ORDER[-1]
+        query = SimpleNamespace(
+            data=f"finish_{final_lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1 🌱", "A1.2 🌿"]),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_called_once_with(12345, final_lesson)
+        reply = query.message.reply_text.await_args
+        button = reply.kwargs["reply_markup"].inline_keyboard[0][0]
+        self.assertEqual(button.callback_data, "quiz_22_start")
+        self.assertIn("تاقیکردنەوە", button.text)
+
+
 if __name__ == "__main__":
     unittest.main()
