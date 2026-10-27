@@ -41,7 +41,7 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
             if not isinstance(question, dict):
                 raise ValueError(f"Lesson {number} question must be an object")
             question_id = question.get("id")
-            if not isinstance(question_id, str) or not question_id.strip():
+            if not isinstance(question_id, str) or not question_id.strip() or question_id != question_id.strip():
                 raise ValueError(f"Lesson {number} question has invalid id")
             if question_id in seen_question_ids:
                 raise ValueError(f"Duplicate question id: {question_id}")
