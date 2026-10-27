@@ -3,7 +3,7 @@
   "course_title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
   "status": "draft_needs_editorial_and_source_review",
   "lesson_quiz_count": "variable; expanded source-grounded draft questions",
-  "notes": "ئەم کویزانە پێش‌نوسن و پێش بەستنەوە بە بۆت دەبێت لەگەڵ سەرچاوە و ناوەڕۆکی کۆتایی وانەکان بپشکنرێنەوە.,وەڵامی ڕاست لە correct_option_index ـدا بە ژمارەی ٠ بنچینەییە.,ئەم فایلە بە خۆی بە ڕێڕەوی زیندووی بۆت نەبەستراوەتەوە. Additional audit note: lesson 18 and 19 both retain the user-specified title 'پیتی (ی)', but their source text concerns syllabification; source/topic mismatch requires source-owner confirmation before treating the quizzes as final. Additional questions added for lessons 12, 14, 15, 16, 17, 20, 21 and 22 using examples and statements present in the original lesson text. Draft still requires pedagogical/source review.",
+  "notes": "ئەم کویزانە پێش‌نوسن و پێش بەستنەوە بە بۆت دەبێت لەگەڵ سەرچاوە و ناوەڕۆکی کۆتایی وانەکان بپشکنرێنەوە.,وەڵامی ڕاست لە correct_option_index ـدا بە ژمارەی ٠ بنچینەییە.,ئەم فایلە بە خۆی بە ڕێڕەوی زیندووی بۆت نەبەستراوەتەوە. Additional audit note: lesson 18 and 19 both retain the user-specified title 'پیتی (ی)', but their source text concerns syllabification; source/topic mismatch requires source-owner confirmation before treating the quizzes as final. Additional questions added for lessons 12, 14, 15, 16, 17, 20, 21 and 22 using examples and statements present in the original lesson text. Draft still requires pedagogical/source review. Lesson 13 received two direct text-grounded questions. Do not treat the source's terminology or orthographic claims as independently validated.",
   "quizzes": [
     {
       "lesson_id": "lesson_01",
@@ -260,6 +260,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "وانەکە جیاوازیی نێوان پیت، نیشانەی زیادە و نیشانەی دەنگناسی ڕوون دەکاتەوە. بۆ ناساندنی «ٚ» پێویستە ئەرکی ڕاستەقینە، نموونە و سەرچاوەی پشتڕاستکراو هەبێت؛ ناوی «چەڵەمە»ش هێشتا پشتڕاستکردنەوەی سەرچاوەیی دەوێت."
+        },
+        {
+          "id": "l13_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی دەقی وانەی ١٣، کامە لە لیستی پیتەکانی ناو وانەکەدا هاتووە؟",
+          "options": [
+            "«ڵ»",
+            "«ب»",
+            "«م»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی ئەسڵی ناوی «ۆ، ێ، ڵ، ڕ» دەهێنێتەوە. ئەم پرسیارە تەنیا ناسینەوەی زانیاریی دەقەکەیە."
+        },
+        {
+          "id": "l13_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ١٣، بەکارهێنانی هەڵەی پیتە ناوبراوەکان چی لێدەکەوێتەوە؟",
+          "options": [
+            "واتای وشە دەگۆڕێت",
+            "هەموو وشەکان دەبنە ناو",
+            "تەنیا درێژی وشە دەگۆڕێت"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی ئەسڵی دەڵێت ئەگەر ئەو پیتانە بە هەڵە بەکاربهێنرێن، واتای وشە دەگۆڕن؛ بەڵام یاساکانی تایبەت بە هەر پیتێک پێویستیان بە پشکنینی سەرچاوەیی هەیە."
         }
       ]
     },
