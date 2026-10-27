@@ -58,10 +58,10 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
                 raise ValueError(f"Lesson {number} has duplicate options")
             if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < len(options):
                 raise ValueError(f"Lesson {number} has invalid correct_option_index")
-            if not isinstance(question.get("question"), str) or not question["question"].strip():
-                raise ValueError(f"Lesson {number} has empty question")
-            if not isinstance(question.get("explanation"), str) or not question["explanation"].strip():
-                raise ValueError(f"Lesson {number} has empty explanation")
+            if not isinstance(question.get("question"), str) or not question["question"].strip() or question["question"] != question["question"].strip():
+                raise ValueError(f"Lesson {number} has empty or whitespace-padded question")
+            if not isinstance(question.get("explanation"), str) or not question["explanation"].strip() or question["explanation"] != question["explanation"].strip():
+                raise ValueError(f"Lesson {number} has empty or whitespace-padded explanation")
             output_questions.append({"question": question["question"], "options": options[:], "answer": options[index], "explanation": question["explanation"]})
         converted[f"lesson_{number:02d}"] = output_questions
     if seen_lessons != set(range(1, 23)):
