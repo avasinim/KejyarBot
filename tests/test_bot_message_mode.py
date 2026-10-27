@@ -106,5 +106,42 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(button.text.startswith("🔒"))
 
 
+    async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        content = "ئ" * 3900 + "\n" + "ب" * 200
+        completion_keyboard = object()
+
+        await bot.send_lesson_text(message, content, completion_keyboard)
+
+        calls = message.reply_text.await_args_list
+        self.assertGreater(len(calls), 1)
+        chunks = [call.args[0] for call in calls]
+        self.assertTrue(all(0 < len(chunk) <= 3800 for chunk in chunks))
+        self.assertTrue(all(call.kwargs.get("reply_markup") is None for call in calls[:-1]))
+        self.assertIs(calls[-1].kwargs["reply_markup"], completion_keyboard)
+        self.assertEqual("".join(chunks), "ئ" * 3900 + "ب" * 200)
+
+    async def test_locked_lesson_callback_does_not_send_lesson_content(self):
+        query = SimpleNamespace(
+            data="open_lesson_وانە_2",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new_callable=AsyncMock) as send_lesson,
+        ):
+            await bot.open_selected_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+        send_lesson.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
