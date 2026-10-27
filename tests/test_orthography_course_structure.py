@@ -38,17 +38,16 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertTrue(safety["do_not_enable_dynamic_speech"])
         self.assertTrue(safety["do_not_change_production_or_main"])
 
-    def test_runtime_menu_lists_new_course_separately(self):
+    def test_runtime_uses_22_lessons_as_the_only_course(self):
         bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
-        self.assertIn('["ڕێنووسی زمانی کوردی"]', bot_source)
-        self.assertIn('if text == "ڕێنووسی زمانی کوردی":', bot_source)
         self.assertIn('load_json("course_data/orthography_foundations.json")', bot_source)
-        self.assertIn("course['title']", bot_source)
-        self.assertIn('course.get("lessons", [])', bot_source)
-        # The separate course must not become lesson 23 of the older course.
-        self.assertIn('"do_not_modify_existing_ten_lesson_course": true',
-                      COURSE_PATH.read_text(encoding="utf-8"))
-
+        self.assertIn('load_json("course_data/orthography_foundations_quiz_draft.json")', bot_source)
+        self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
+        self.assertIn('orthography_lesson_{number:02d}_draft.md', bot_source)
+        self.assertIn("MENU_ROWS.append(titles)", bot_source)
+        self.assertNotIn('load_json("lessons.json")', bot_source)
+        self.assertNotIn('load_json("quiz.json")', bot_source)
+        self.assertNotIn('"ڕێنووسی زمانی کوردی"', bot_source)
     def test_all_22_draft_files_exist_and_match_catalog_numbers_and_titles(self):
         for lesson in self.course["lessons"]:
             number = lesson["number"]
