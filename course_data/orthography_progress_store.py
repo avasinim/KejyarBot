@@ -11,8 +11,8 @@ LESSON_ID_PATTERN = re.compile(r"^lesson_(0[1-9]|1[0-9]|2[0-2])$")
 
 
 def _validate_user_id(user_id):
-    if not isinstance(user_id, int) or isinstance(user_id, bool):
-        raise ValueError("user_id must be an integer")
+    if not isinstance(user_id, int) or isinstance(user_id, bool) or user_id <= 0:
+        raise ValueError("user_id must be a positive integer")
 
 
 def _validate_course_id(course_id):
