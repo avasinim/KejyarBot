@@ -44,7 +44,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
 
         for quiz_lesson in quiz_lessons:
             number = quiz_lesson["lesson_number"]
-            self.assertEqual(quiz_lesson["lesson_id"], f"lesson_{number}")
+            self.assertEqual(quiz_lesson["lesson_id"], f"lesson_{number:02d}")
             self.assertTrue(quiz_lesson["questions"], f"Lesson {number} has no quiz questions")
 
         question_ids = [
