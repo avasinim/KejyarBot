@@ -1,6 +1,6 @@
 {
   "course_id": "orthography_foundations",
-  "title": "دەورەی ١: ڕێنووسی زمانی کوردی",
+  "title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
   "language": "ckb",
   "status": "curriculum_structure",
   "lesson_count": 22,
@@ -211,9 +211,9 @@
     "treat_button_as_lesson_23": false
   },
   "safety": {
-    "do_not_modify_existing_ten_lesson_course": true,
+    "do_not_keep_legacy_ten_lesson_course_as_separate_course": true,
     "do_not_enable_dynamic_speech": true,
     "do_not_change_production_or_main": true
   },
-  "note": "Structure only. A separate 22-question quiz draft exists but is not connected to runtime and needs editorial/source review. Lesson content, sources, quizzes, voice presentation and infographics still need implementation."
+  "note": "کۆرسی ١ بریتییە لە ٢٢ وانەی ڕێنووسی سەرەتاییی زمانی کوردی. کۆرسی ١٠ وانەیی پێشووتر نابێت وەک کۆرسێکی جیاواز بمێنێتەوە. ئەم فایلە پێکهاتەی کۆرسە؛ پەیوەستکردنی وانە و کویز بە runtime هێشتا پێویستی بە تەواوکردن و تاقیکردنەوە هەیە."
 }
