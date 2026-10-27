@@ -401,9 +401,15 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
     if not lesson_ids:
+        status_labels = {
+            "planned": "لە پلانداناندا",
+            "active": "چالاک",
+            "draft": "پێش‌نووس",
+        }
+        status = status_labels.get(course.get("status", "planned"), "لە پلانداناندا")
         await query.message.reply_text(
             f"{course['title']}\n\n"
-            f"📌 دۆخ: {course.get('status', 'planned')}\n"
+            f"📌 دۆخ: {status}\n"
             f"{course.get('description', '')}\n\n"
             "ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە؛ وانە کۆنەکان بە ناوی ئەم کۆرسەوە پیشان نادرێن."
         )
