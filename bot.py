@@ -98,16 +98,15 @@ async def send_lesson_infographic(message, lesson):
     return
 
 ORDER = list(LESSON_DATA.keys())
-MENU_ROWS = [
-    ["📚 وانەکان"],
-    ["💬 گفتوگۆی ڕۆژانە"],
-    ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
-    ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
-]
-for index in range(0, len(ORTHOGRAPHY_COURSE.get("lessons", [])), 2):
-    titles = [lesson["title"] for lesson in ORTHOGRAPHY_COURSE["lessons"][index:index + 2]]
-    MENU_ROWS.append(titles)
-MENU = ReplyKeyboardMarkup(MENU_ROWS, resize_keyboard=True)
+MENU = ReplyKeyboardMarkup(
+    [
+        ["📚 وانەکان"],
+        ["💬 گفتوگۆی ڕۆژانە"],
+        ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
+        ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
+    ],
+    resize_keyboard=True,
+)
 
 def can_open(user_id, lesson):
     if lesson not in ORDER:
@@ -293,6 +292,25 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
+async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    lesson = query.data.removeprefix("open_lesson_")
+    user_id = query.from_user.id
+    if lesson not in ORDER:
+        await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
+        return
+    if not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    await query.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+    await send_lesson_infographic(query.message, lesson)
+
+
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -361,11 +379,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📚 وانەکان":
         completed = set(get_completed_lessons(user_id))
-        rows = []
+        keyboard_rows = []
         for lesson in ORDER:
             status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            rows.append(f"{status} {lesson}: {LESSON_DATA[lesson]['title']}")
-        await update.message.reply_text(ORTHOGRAPHY_COURSE["title"] + "\n\n" + "\n".join(rows), reply_markup=MENU)
+            title = LESSON_DATA[lesson]["title"]
+            keyboard_rows.append([InlineKeyboardButton(
+                f"{status} {lesson}: {title}",
+                callback_data=f"open_lesson_{lesson}",
+            )])
+        await update.message.reply_text(
+            ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
+            + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
+            reply_markup=InlineKeyboardMarkup(keyboard_rows),
+        )
         return
 
     if text in LESSON_BUTTONS:
@@ -448,6 +474,7 @@ def main():
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
+    app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
     logger.info("KejyarBot is running")
     app.run_polling()
