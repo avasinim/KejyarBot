@@ -61,7 +61,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             normalize_title = lambda value: value.replace("«", "").replace("»", "").replace("“", "").replace("”", "").replace(chr(34), "").replace(":", "").replace("ـ", "").strip()
             self.assertIn(normalize_title(lesson["title"]), normalize_title(draft), path.name)
 
-    def test_quiz_draft_has_one_valid_multiple_choice_question_per_lesson(self):
+    def test_quiz_draft_has_valid_multiple_choice_questions_per_lesson(self):
         self.assertEqual(self.quiz["course_id"], self.course["course_id"])
         self.assertEqual(self.quiz["lesson_quiz_count"], 22)
         quizzes = self.quiz["quizzes"]
@@ -70,15 +70,21 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             [item["lesson_number"] for item in quizzes],
             list(range(1, 23)),
         )
+        total_questions = 0
         for item in quizzes:
-            self.assertEqual(len(item["questions"]), 1)
-            question = item["questions"][0]
-            self.assertEqual(question["type"], "multiple_choice")
-            self.assertGreaterEqual(len(question["options"]), 2)
-            self.assertGreaterEqual(question["correct_option_index"], 0)
-            self.assertLess(question["correct_option_index"], len(question["options"]))
-            self.assertTrue(question["question"].strip())
-            self.assertTrue(question["explanation"].strip())
+            self.assertGreaterEqual(len(item["questions"]), 1)
+            total_questions += len(item["questions"])
+            for question in item["questions"]:
+                self.assertEqual(question["type"], "multiple_choice")
+                self.assertGreaterEqual(len(question["options"]), 2)
+                self.assertGreaterEqual(question["correct_option_index"], 0)
+                self.assertLess(question["correct_option_index"], len(question["options"]))
+                self.assertTrue(question["question"].strip())
+                self.assertTrue(question["explanation"].strip())
+        self.assertEqual(total_questions, self.quiz["total_question_count"])
+        self.assertEqual(total_questions, 28)
+        self.assertEqual([len(item["questions"]) for item in quizzes[:3]], [3, 3, 3])
+        self.assertTrue(all(len(item["questions"]) == 1 for item in quizzes[3:]))
 
     def test_quiz_explanations_are_lesson_specific_not_one_repeated_template(self):
         explanations = [
