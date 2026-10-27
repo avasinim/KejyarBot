@@ -8,7 +8,7 @@
     {
       "id": "lesson_01",
       "number": 1,
-      "title": "پیتەکان و دەنگەکان",
+      "title": "ئەلفبێی زمانی کوردی",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -17,7 +17,7 @@
     {
       "id": "lesson_02",
       "number": 2,
-      "title": "بزوێنەکان",
+      "title": "یاسای بزوێنەکان",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -26,7 +26,7 @@
     {
       "id": "lesson_03",
       "number": 3,
-      "title": "یاسای بزوێنەکان",
+      "title": "پیتە هاوشێوەکان",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -35,7 +35,7 @@
     {
       "id": "lesson_04",
       "number": 4,
-      "title": "یەکخستنی هەندێک پیت لە ڕێنووسی کوردیدا",
+      "title": "نووسینی بزوێنەکان لە سەرەتای وشە",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -44,7 +44,7 @@
     {
       "id": "lesson_05",
       "number": 5,
-      "title": "نووسینی بزوێن لە سەرەتای وشە",
+      "title": "دوو پیتی هاوبەش",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -53,7 +53,7 @@
     {
       "id": "lesson_06",
       "number": 6,
-      "title": "پیتەکانی و و ی",
+      "title": "و، ی وەک بزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -62,7 +62,7 @@
     {
       "id": "lesson_07",
       "number": 7,
-      "title": "و و ی وەک بزوێن",
+      "title": "و، ی وەک نەبزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -71,7 +71,7 @@
     {
       "id": "lesson_08",
       "number": 8,
-      "title": "و و ی وەک نەبزوێن",
+      "title": "سێ دەنگی گرینگ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -80,7 +80,7 @@
     {
       "id": "lesson_09",
       "number": 9,
-      "title": "سێ پیتی گرینگ ە، ێ، ۆ",
+      "title": "پیتی ە",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -89,7 +89,7 @@
     {
       "id": "lesson_10",
       "number": 10,
-      "title": "پیتی ە",
+      "title": "پیتی ێ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -98,7 +98,7 @@
     {
       "id": "lesson_11",
       "number": 11,
-      "title": "پیتی ێ",
+      "title": "پیتی ۆ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -107,7 +107,7 @@
     {
       "id": "lesson_12",
       "number": 12,
-      "title": "پیتی ۆ",
+      "title": "سێ دەنگی گرینگ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -116,7 +116,7 @@
     {
       "id": "lesson_13",
       "number": 13,
-      "title": "نیشانەی ٚ و شێوازی نووسینی کوردی",
+      "title": "چەڵەمە",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -125,7 +125,7 @@
     {
       "id": "lesson_14",
       "number": 14,
-      "title": "جیاوازیی ل و ڵ",
+      "title": "پیتی ڵ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -134,7 +134,7 @@
     {
       "id": "lesson_15",
       "number": 15,
-      "title": "جیاوازیی ڕ و ر",
+      "title": "پیتی ڕ",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -143,7 +143,7 @@
     {
       "id": "lesson_16",
       "number": 16,
-      "title": "وو (واوی جووت)",
+      "title": "وو ـ واوی جووت",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -179,7 +179,7 @@
     {
       "id": "lesson_20",
       "number": 20,
-      "title": "بزرۆکە لە ڕێنووس و بڕگەبەندی",
+      "title": "بزرۆکە و بڕگەبڕگەکردن",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
@@ -197,7 +197,7 @@
     {
       "id": "lesson_22",
       "number": 22,
-      "title": "پیتەکانی و و ی: بزوێن و نەبزوێن",
+      "title": "پیتی و، ی ـ بزوێن و نەبزوێن",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
