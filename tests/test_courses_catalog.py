@@ -13,6 +13,8 @@ class CourseCatalogTests(unittest.TestCase):
             cls.catalog = json.load(handle)["courses"]
         with (ROOT / "course_data" / "orthography_foundations.json").open(encoding="utf-8") as handle:
             cls.orthography = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_plan.json").open(encoding="utf-8") as handle:
+            cls.conversation_plan = json.load(handle)
 
     def test_four_courses_have_unique_ids_and_order(self):
         self.assertEqual(len(self.catalog), 4)
@@ -33,6 +35,19 @@ class CourseCatalogTests(unittest.TestCase):
             with self.subTest(course=course_id):
                 self.assertEqual(by_id[course_id]["status"], "planned")
                 self.assertEqual(by_id[course_id]["lesson_ids"], [])
+
+    def test_daily_conversation_plan_is_provisional_and_does_not_activate_course(self):
+        by_id = {course["id"]: course for course in self.catalog}
+        conversation = by_id["daily_conversation"]
+        self.assertEqual(conversation["status"], "planned")
+        self.assertEqual(conversation["lesson_ids"], [])
+        self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
+        self.assertEqual(self.conversation_plan["status"], "provisional_outline_needs_user_source_review")
+        self.assertEqual(self.conversation_plan["lesson_status"], "titles_and_sequence_are_proposals_only")
+        proposed = self.conversation_plan["proposed_sequence"]
+        self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 13)))
+        self.assertTrue(all(lesson["working_title"] and lesson["focus"] for lesson in proposed))
+        self.assertEqual(self.conversation_plan["source_status"], "source_text_not_yet_attached_to_this_plan")
 
     def test_no_lesson_is_accidentally_assigned_to_multiple_courses(self):
         all_ids = [
