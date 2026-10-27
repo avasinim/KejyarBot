@@ -427,7 +427,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
-        await update.message.reply_text(data["content"], reply_markup=lesson_keyboard(lesson))
+        await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
         await send_conversation_voice(
             update.message,
             f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
