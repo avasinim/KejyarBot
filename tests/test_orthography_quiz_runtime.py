@@ -105,6 +105,17 @@ class OrthographyQuizRuntimeIsolationTests(unittest.TestCase):
             apply_answer(session, 999)
 
 
+    def test_answer_handler_rejects_invalid_index_and_score(self):
+        session = build_quiz_session(self.converted, 1)
+        session["index"] = -1
+        with self.assertRaises(ValueError):
+            apply_answer(session, 0)
+
+        session = build_quiz_session(self.converted, 1)
+        session["score"] = True
+        with self.assertRaises(ValueError):
+            apply_answer(session, 0)
+
     def test_answer_handler_rejects_corrupted_current_question(self):
         session = build_quiz_session(self.converted, 1)
         session["questions"][0]["options"] = None
