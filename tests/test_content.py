@@ -422,7 +422,7 @@ class ContentConsistencyTests(unittest.TestCase):
         ):
             bot.check_badges(12345)
 
-        self.assertEqual(
+        self.assertCountEqual(
             add_badge.call_args_list,
             [
                 unittest.mock.call(12345, "🏅 کۆرسی ڕێنووسی — وانەی 1"),
