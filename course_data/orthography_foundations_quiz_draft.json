@@ -24,6 +24,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "پیتە نووسراوەکانی «کورد» بریتین لە «ک»، «و»، «ر»، «د». پیت شێوەی نووسراوە؛ دەنگ لە قسەکردندا دەبیسترێت."
+        },
+        {
+          "id": "l1_q2",
+          "type": "multiple_choice",
+          "question": "کام ڕستەیەک جیاوازیی نێوان پیت و دەنگ باشتر ڕوون دەکاتەوە؟",
+          "options": [
+            "پیت نیشانەی نووسراوە؛ دەنگ لە قسەکردندا دەبیسترێت",
+            "پیت و دەنگ هەمیشە هەمان شتن",
+            "دەنگ تەنیا لە نووسین دەبینرێت"
+          ],
+          "correct_option_index": 0,
+          "explanation": "پیت بە شێوەی نووسراو دەناسرێت، بەڵام دەنگ لە قسەکردندا دەبیسترێت."
+        },
+        {
+          "id": "l1_q3",
+          "type": "multiple_choice",
+          "question": "لە وشەی «کورد»دا کام هەڵبژاردە پیتە نووسراوەکان بە ڕیز پیشان دەدات؟",
+          "options": [
+            "ک، و، ر، د",
+            "ک، ر، د",
+            "و، ر، د، س"
+          ],
+          "correct_option_index": 0,
+          "explanation": "شێوە نووسراوەکە «کورد» لە پیتەکانی ک، و، ر، د پێک دێت."
         }
       ]
     },
@@ -42,6 +66,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "پیت لە نووسینەوە دەناسرێت و بزوێن لە ئاستی دەنگدا شیکاری دەکرێت؛ بۆیە ئەمانە دوو ئاستی جیاوازن."
+        },
+        {
+          "id": "l2_q2",
+          "type": "multiple_choice",
+          "question": "کامەیان لە وانەی بزوێنەکاندا دەنگە، نەک پێویستە نیشانەی نووسراوی بێت؟",
+          "options": [
+            "بزوێن لە قسەکردندا دەبیسترێت",
+            "هەر بزوێنێک ناچارە یەک پیتی تایبەتی هەبێت",
+            "ژمارەی بزوێنەکان هەمیشە یەکسانە بە ژمارەی پیتەکان"
+          ],
+          "correct_option_index": 0,
+          "explanation": "بزوێن یەکەیەکی دەنگییە؛ نیشانەی نووسینی دەنگەکان بە سیستەمی ڕێنووسی زمانەکەوە پەیوەستە."
+        },
+        {
+          "id": "l2_q3",
+          "type": "multiple_choice",
+          "question": "لە شیکردنەوەی وشەیەکدا کام ڕێگا گونجاوترە؟",
+          "options": [
+            "نیشانە نووسراوەکان و دەنگە بیستراوەکان جیا جیا تۆمار بکەین",
+            "بە تەنیا ژمارەی پیتەکان وەک ژمارەی دەنگەکان دابنێین",
+            "بەبێ خوێندنەوە هەموو دەنگەکان دیاری بکەین"
+          ],
+          "correct_option_index": 0,
+          "explanation": "جیاکردنەوەی ئاستی نووسین و ئاستی دەنگ ڕێگری لە تێکەڵکردنی پیت و دەنگ دەکات."
         }
       ]
     },
@@ -60,6 +108,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "یاسای ڕێنووس چۆنیەتی نووسین دیاری دەکات، بەڵام دەنگناسی لە دەنگ و ڕەفتاری دەنگەکان دەکۆڵێتەوە."
+        },
+        {
+          "id": "l3_q2",
+          "type": "multiple_choice",
+          "question": "پێش ئەوەی یاسایەکی ڕێنووسی بە گشتی بەکاربهێنین، کام زانیارییە پێویستە؟",
+          "options": [
+            "سەرچاوە، جۆری کوردی و نموونەی پشتڕاستکراو",
+            "تەنیا یەک وشە بەبێ سەرچاوە",
+            "تەنیا ژمارەی پیتەکانی وشە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "یاسا دەبێت بە سەرچاوە و جۆری کوردیی ئامانجەوە ببەسترێت و بە نموونە بپشکنرێت."
+        },
+        {
+          "id": "l3_q3",
+          "type": "multiple_choice",
+          "question": "بۆچی یەک نموونە بە تەنیا بەس نییە بۆ گشتی‌کردنی یاسایەکی دەنگی؟",
+          "options": [
+            "چونکە پێویستە نموونەی زیاتر و سنوور یان دژە‌نموونە بپشکنرێت",
+            "چونکە هیچ یاسایەک ناتوانرێت پشکنرێت",
+            "چونکە هەموو وشەکان یەکسان دەخوێندرێنەوە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "پشکنینی چەند نموونە و سنووری یاسا یارمەتی دەدات بانگەشەیەک بە نادروستی گشتی نەکرێت."
         }
       ]
     },
@@ -406,5 +478,6 @@
       ]
     }
   ],
-  "note": "Explanations are lesson-specific editorial drafts, not source-verified claims. Review each question, correct option, explanation and cited evidence against the approved lesson and source before runtime integration."
+  "note": "Explanations are lesson-specific editorial drafts, not source-verified claims. Review each question, correct option, explanation and cited evidence against the approved lesson and source before runtime integration.",
+  "total_question_count": 28
 }
