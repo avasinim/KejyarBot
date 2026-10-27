@@ -326,7 +326,7 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
     explanation = question.get("explanation", "").strip()
     if explanation:
-        feedback += f"\\n\\n📘 ڕوونکردنەوە: {explanation}"
+        feedback += f"\n\n📘 ڕوونکردنەوە: {explanation}"
     await query.message.reply_text(feedback)
 
     quiz["index"] += 1
