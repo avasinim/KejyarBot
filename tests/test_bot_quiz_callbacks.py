@@ -254,8 +254,8 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.quiz_answer(update, context)
 
         feedback = query.message.reply_text.await_args_list[0].args[0]
-        self.assertIn("\\n\\n📘 ڕوونکردنەوە:", feedback)
-        self.assertNotIn("\\\\n", feedback)
+        self.assertIn("\n\n📘 ڕوونکردنەوە:", feedback)
+        self.assertNotIn("\\n", feedback)
 
 
 if __name__ == "__main__":
