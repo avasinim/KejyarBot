@@ -126,11 +126,24 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "answer": options[correct_index],
             })
 
-LESSON_INFOGRAPHICS = {}
+# Optional local image assets. Keep the original lesson text available if an image is absent.
+LESSON_INFOGRAPHICS = {
+    "وانە_1": Path("assets/lessons/lesson_01_alphabet.png"),
+}
 
 async def send_lesson_infographic(message, lesson):
-    # Course 1 infographics will be connected after they are created and reviewed.
-    return
+    image_path = LESSON_INFOGRAPHICS.get(lesson)
+    if image_path and image_path.is_file():
+        try:
+            with image_path.open("rb") as image_file:
+                await message.reply_photo(
+                    photo=image_file,
+                    caption="🌿 کەویار | وانەی ١: پیتەکان و دەنگەکان",
+                )
+            return
+        except Exception:
+            logger.exception("Could not send lesson infographic for %s", lesson)
+    # Missing/unreadable image must never prevent the lesson text from being sent.
 
 ORDER = list(LESSON_DATA.keys())
 MENU = ReplyKeyboardMarkup(
