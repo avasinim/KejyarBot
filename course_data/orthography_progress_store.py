@@ -18,6 +18,8 @@ def _validate_user_id(user_id):
 def _validate_course_id(course_id):
     if not isinstance(course_id, str) or not course_id.strip():
         raise ValueError("course_id is required")
+    if course_id != course_id.strip():
+        raise ValueError("course_id must not contain surrounding whitespace")
 
 
 def _validate_lesson_id(lesson_id):
