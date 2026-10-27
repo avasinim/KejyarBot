@@ -391,16 +391,18 @@ class ContentConsistencyTests(unittest.TestCase):
         )
         self.assertIn("if lesson not in get_completed_lessons(user_id):", handler)
 
-    def test_lesson_menu_references_only_existing_lessons(self):
+    def test_lesson_menu_references_only_existing_runtime_lessons(self):
+        import bot
+
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
-        start = bot_source.index("LESSON_BUTTONS = {")
-        end = bot_source.index("\n}", start) + 2
-        block = bot_source[start:end]
-        for index in range(1, 11):
-            lesson = f"وانە_{index}"
+        self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
+        self.assertIn('LESSON_BUTTONS[course_lesson["title"]] = lesson_key', bot_source)
+        self.assertEqual(len(bot.ORDER), 22)
+        self.assertEqual(bot.ORDER, [f"وانە_{index}" for index in range(1, 23)])
+        self.assertEqual(set(bot.LESSON_BUTTONS.values()), set(bot.ORDER))
+        for lesson in bot.ORDER:
             with self.subTest(lesson=lesson):
-                self.assertIn(lesson, block)
-                self.assertIn(lesson, self.lessons)
+                self.assertTrue(bot.LESSON_DATA[lesson]["title"].strip())
 
     def test_quiz_menu_filters_to_completed_lessons(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
@@ -409,15 +411,24 @@ class ContentConsistencyTests(unittest.TestCase):
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
         self.assertIn("lesson in completed", handler)
         self.assertIn("QUIZ_DATA.get(lesson)", handler)
-    def test_every_lesson_has_a_completion_badge(self):
-        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
-        start = bot_source.index("def check_badges(")
-        end = bot_source.index("\ndef lesson_keyboard(", start)
-        handler = bot_source[start:end]
-        for index in range(1, 11):
-            with self.subTest(lesson=index):
-                self.assertIn(f'"وانە_{index}"', handler)
-        self.assertIn("🏅 زانای ماڵ و قوتابخانە", handler)
+    def test_completed_lessons_receive_dynamic_badges_within_runtime_order(self):
+        import bot
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[
+                "وانە_1", "وانە_22", "not-a-lesson", "وانە_999"
+            ]),
+            patch.object(bot, "add_badge") as add_badge,
+        ):
+            bot.check_badges(12345)
+
+        self.assertEqual(
+            add_badge.call_args_list,
+            [
+                unittest.mock.call(12345, "🏅 کۆرسی ڕێنووسی — وانەی 1"),
+                unittest.mock.call(12345, "🏅 کۆرسی ڕێنووسی — وانەی 22"),
+            ],
+        )
 
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
