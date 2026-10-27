@@ -114,7 +114,10 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     QUIZ_DATA[lesson_key] = []
 
 for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
-    number = quiz_lesson.get("lesson_number")
+    number = quiz_lesson.get("lesson_number", quiz_lesson.get("number"))
+    if number is None:
+        logger.warning("Skipping quiz entry without lesson_number or number: %r", quiz_lesson)
+        continue
     lesson_key = f"وانە_{number}"
     for question in quiz_lesson.get("questions", []):
         options = question.get("options", [])
