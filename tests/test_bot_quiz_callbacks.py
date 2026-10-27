@@ -246,5 +246,17 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تاقیکردنەوە", button.text)
 
 
+    async def test_explanation_uses_real_line_breaks(self):
+        update, context, query = self.make_context("answer_0")
+        context.user_data["quiz"]["questions"][0]["explanation"] = "ئەمە ڕوونکردنەوەیە."
+        query.message.reply_text = AsyncMock()
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True):
+            await bot.quiz_answer(update, context)
+
+        feedback = query.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("\\n\\n📘 ڕوونکردنەوە:", feedback)
+        self.assertNotIn("\\\\n", feedback)
+
+
 if __name__ == "__main__":
     unittest.main()
