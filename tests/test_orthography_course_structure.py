@@ -19,7 +19,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
 
     def test_course_title_and_22_sequential_lessons(self):
         lessons = self.course["lessons"]
-        self.assertEqual(self.course["title"], "دەورەی ١: ڕێنووسی زمانی کوردی")
+        self.assertEqual(self.course["title"], "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی")
         self.assertEqual(self.course["lesson_count"], 22)
         self.assertEqual(len(lessons), 22)
         self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 23)))
@@ -34,7 +34,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
 
     def test_existing_course_and_production_are_protected_by_design(self):
         safety = self.course["safety"]
-        self.assertTrue(safety["do_not_modify_existing_ten_lesson_course"])
+        self.assertTrue(safety["do_not_keep_legacy_ten_lesson_course_as_separate_course"])
         self.assertTrue(safety["do_not_enable_dynamic_speech"])
         self.assertTrue(safety["do_not_change_production_or_main"])
 
