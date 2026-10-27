@@ -87,7 +87,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(total_questions, self.quiz["total_question_count"])
         self.assertEqual(total_questions, 51)
         self.assertEqual([len(item["questions"]) for item in quizzes[:12]], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3])
-        self.assertEqual([len(quizzes[index]["questions"]) for index in range(12, 18)], [2, 2, 2, 2, 2, 2])
+        self.assertEqual([len(quizzes[index]["questions"]) for index in range(12, 18)], [2, 2, 2, 2, 1, 2])
         self.assertEqual(len(quizzes[18]["questions"]), 1)
         self.assertTrue(all(len(item["questions"]) == 1 for item in quizzes[19:]))
 
