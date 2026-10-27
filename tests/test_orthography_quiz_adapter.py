@@ -91,6 +91,17 @@ class OrthographyQuizAdapterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             convert_quiz_draft(data)
 
+    def test_rejects_whitespace_padded_question_and_explanation(self):
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["question"] = " padded question "
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
+        data = copy.deepcopy(self.data)
+        data["quizzes"][0]["questions"][0]["explanation"] = " padded explanation "
+        with self.assertRaises(ValueError):
+            convert_quiz_draft(data)
+
     def test_rejects_whitespace_padded_option(self):
         data = copy.deepcopy(self.data)
         data["quizzes"][0]["questions"][0]["options"][0] = " padded option "
