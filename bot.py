@@ -402,9 +402,9 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
     if not lesson_ids:
         await query.message.reply_text(
-            f"{course['title']}\\n\\n"
-            f"📌 دۆخ: {course.get('status', 'planned')}\\n"
-            f"{course.get('description', '')}\\n\\n"
+            f"{course['title']}\n\n"
+            f"📌 دۆخ: {course.get('status', 'planned')}\n"
+            f"{course.get('description', '')}\n\n"
             "ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە؛ وانە کۆنەکان بە ناوی ئەم کۆرسەوە پیشان نادرێن."
         )
         return
@@ -419,7 +419,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             callback_data=f"open_lesson_{lesson}",
         )])
     await query.message.reply_text(
-        f"{course['title']}\\n\\n{course.get('description', '')}",
+        f"{course['title']}\n\n{course.get('description', '')}",
         reply_markup=InlineKeyboardMarkup(keyboard_rows),
     )
 
@@ -456,7 +456,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             for course in COURSES
         ]
         await update.message.reply_text(
-            "📚 کۆرسەکانی کەژیار\\n\\n"
+            "📚 کۆرسەکانی کەژیار\n\n"
             "کۆرسەکان جیاوازن. کۆرسی یەکەم ٢٢ وانەی ڕێنووسی سەرەتایی هەیە؛ کۆرسەکانی دیکە تا ئامادەبوونی وانە ڕێکخراوەکان بە ڕوونی نیشان دراون.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
