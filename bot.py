@@ -93,13 +93,13 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         title = original["title"]
         lesson_body = original["content"].strip()
         lesson_card = (
-            "╭━━━━━━━━━━━━━━━━━━╮\\n"
-            f"🌿 کەویار  •  وانەی {kurdish_digits(number)}\\n"
-            f"📖 {title}\\n"
-            "╰━━━━━━━━━━━━━━━━━━╯\\n\\n"
-            f"{lesson_body}\\n\\n"
-            "━━━━━━━━━━━━━━━━━━\\n"
-            "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\\n"
+            "╭━━━━━━━━━━━━━━━━━━╮\n"
+            f"🌿 کەویار  •  وانەی {kurdish_digits(number)}\n"
+            f"📖 {title}\n"
+            "╰━━━━━━━━━━━━━━━━━━╯\n\n"
+            f"{lesson_body}\n\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\n"
             "🎯 کاتێک تەواو بوویت، دوگمەی «تەواوکردنی وانە» دابگرە."
         )
     else:
@@ -107,7 +107,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         lesson_card = "⚠️ دەقی ئەسڵی ئەم وانەیە هێشتا لە فایلەکەدا نییە."
     LESSON_DATA[lesson_key] = {
         "title": title,
-        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\\n\\n{lesson_card}",
+        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\n\n{lesson_card}",
     }
     LESSON_BUTTONS[title] = lesson_key
     QUIZ_DATA[lesson_key] = []
