@@ -394,26 +394,26 @@
         {
           "id": "l10_q1",
           "type": "multiple_choice",
-          "question": "کام وشە پیتی «ە»ی تێدایە؟",
+          "question": "لە ناوی «فەرزانە»دا کام پیت لە کۆتاییدا هاتووە؟",
           "options": [
-            "«سەرما»",
-            "«هیوا»",
-            "«کورد»"
+            "«ە»",
+            "«ه»",
+            "«ۆ»"
           ],
           "correct_option_index": 0,
-          "explanation": "لە «سەرما»دا پیتی «ە» هەیە. ئامانجی پرسیارەکە ناسینەوەی شێوەی نووسراوی پیتەکەیە، نەک گشتاندنی یاسای دەنگی."
+          "explanation": "«فەرزانە» بە پیتی «ە» کۆتایی دێت؛ ئەم پرسیارە ناسینەوەی پیتە."
         },
         {
           "id": "l10_q2",
           "type": "multiple_choice",
-          "question": "کام وشە پیتی «ە»ی تێدایە؟",
+          "question": "لە ناوی «کەژیار»دا کام پیت دوای «ک» هاتووە؟",
           "options": [
-            "«هەوار»",
-            "«هیوا»",
-            "«خۆر»"
+            "«ە»",
+            "«ی»",
+            "«ا»"
           ],
           "correct_option_index": 0,
-          "explanation": "لە «هەوار»دا پیتی «ە» بەکارهاتووە."
+          "explanation": "لە «کەژیار»دا پیتی «ە» دوای «ک» هاتووە."
         },
         {
           "id": "l10_q3",
@@ -618,6 +618,18 @@
           ],
           "correct_option_index": 0,
           "explanation": "وانەکە «کەو / یار» وەک دابەشکردنی پێشنیارکراو دەهێنێتەوە. بڕگەبەندی و ئەرکی «و» دەبێت بە خوێندنەوە و سەرچاوەی شێوەزاری ئامانج پشتڕاست بکرێنەوە."
+        },
+        {
+          "id": "l18_q2",
+          "type": "multiple_choice",
+          "question": "لە ناوی «کەژیار»دا کام پیت لە بەشی «یار»دا دەبینرێت؟",
+          "options": [
+            "«ی»",
+            "«ۆ»",
+            "«ە»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە «کەژیار»دا پیتی «ی» لە بەشی «یار»دا هەیە. لەم پرسیارەدا تەنیا ناسینەوەی پیت تاقی دەکرێتەوە؛ ئەرکی دەنگی بە شێوەیەکی جیاواز شیکاری دەکرێت."
         }
       ]
     },
@@ -695,5 +707,5 @@
     }
   ],
   "note": "Explanations are lesson-specific editorial drafts, not source-verified claims. Review each question, correct option, explanation and cited evidence against the approved lesson and source before runtime integration.",
-  "total_question_count": 46
+  "total_question_count": 47
 }
