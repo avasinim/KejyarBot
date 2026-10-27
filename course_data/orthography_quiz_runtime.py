@@ -83,8 +83,13 @@ def apply_answer(session, option_index):
         raise ValueError("option_index must be a non-negative integer")
     questions = session.get("questions")
     index = session.get("index")
-    if not isinstance(questions, list) or not isinstance(index, int) or isinstance(index, bool):
+    score = session.get("score")
+    if not isinstance(questions, list) or not questions or not isinstance(index, int) or isinstance(index, bool):
         raise ValueError("invalid quiz session")
+    if not isinstance(score, int) or isinstance(score, bool) or score < 0:
+        raise ValueError("invalid quiz score")
+    if index < 0 or index > len(questions):
+        raise ValueError("invalid quiz question index")
     if index >= len(questions):
         raise ValueError("quiz session is already complete")
     question = questions[index]
