@@ -1,11 +1,11 @@
-from collections.abc import MutableMapping
-
 """Isolated session helpers for the draft 22-lesson orthography course.
 
 This module deliberately does not touch the legacy quiz state, database rewards,
 or bot handlers. Runtime wiring must wait for course-specific progress/reward
 storage and integration tests.
 """
+
+from collections.abc import MutableMapping
 
 COURSE_ID = "orthography_foundations"
 SESSION_KEY = "orthography_foundations_quiz"
@@ -88,7 +88,15 @@ def apply_answer(session, option_index):
     if index >= len(questions):
         raise ValueError("quiz session is already complete")
     question = questions[index]
-    options = question["options"]
+    if not isinstance(question, dict):
+        raise ValueError("invalid current question")
+    options = question.get("options")
+    if not isinstance(options, list) or not options or not isinstance(question.get("answer"), str):
+        raise ValueError("invalid current question options or answer")
+    if question["answer"] not in options:
+        raise ValueError("current answer must match an option")
+    if not isinstance(question.get("explanation"), str) or not question["explanation"].strip():
+        raise ValueError("current question explanation is required")
     if option_index >= len(options):
         raise ValueError("option_index is out of range")
 
