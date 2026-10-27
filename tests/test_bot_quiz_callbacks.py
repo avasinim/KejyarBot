@@ -1,6 +1,6 @@
 import unittest
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, patch
 
 import bot
 
@@ -152,6 +152,71 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["quiz"]["question_message_id"], 88)
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
+
+
+    def test_lesson_lock_requires_previous_lesson_completion(self):
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, "وانە_1"))
+            self.assertFalse(bot.can_open(12345, "وانە_2"))
+            self.assertFalse(bot.can_open(12345, "وانە_22"))
+            self.assertFalse(bot.can_open(12345, "not-a-lesson"))
+
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
+            self.assertTrue(bot.can_open(12345, "وانە_2"))
+            self.assertFalse(bot.can_open(12345, "وانە_3"))
+
+    async def test_first_lesson_completion_offers_only_the_next_lesson(self):
+        query = SimpleNamespace(
+            data="finish_وانە_1",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1 🌱", "A1.1 🌱"]),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        complete.assert_called_once_with(12345, "وانە_1")
+        query.message.reply_text.assert_awaited_once()
+        reply = query.message.reply_text.await_args
+        self.assertIn("وانەکە تەواو بوو", reply.args[0])
+        keyboard = reply.kwargs["reply_markup"]
+        button = keyboard.inline_keyboard[0][0]
+        self.assertEqual(button.callback_data, "next_lesson_وانە_2")
+
+    async def test_repeated_lesson_completion_does_not_offer_next_lesson_again(self):
+        query = SimpleNamespace(
+            data="finish_وانە_1",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "check_badges") as badges,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_called_once_with(12345, "وانە_1")
+        badges.assert_not_called()
+        voice.assert_not_awaited()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێشتر تەواو کراوە", query.message.reply_text.await_args.args[0])
 
 
 if __name__ == "__main__":
