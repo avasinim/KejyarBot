@@ -119,7 +119,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(0 < len(chunk) <= 3800 for chunk in chunks))
         self.assertTrue(all(call.kwargs.get("reply_markup") is None for call in calls[:-1]))
         self.assertIs(calls[-1].kwargs["reply_markup"], completion_keyboard)
-        self.assertEqual("".join(chunks), "ئ" * 3900 + "ب" * 200)
+        self.assertEqual("".join(chunks), content)
 
     async def test_locked_lesson_callback_does_not_send_lesson_content(self):
         query = SimpleNamespace(
