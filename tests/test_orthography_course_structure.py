@@ -71,20 +71,23 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             list(range(1, 23)),
         )
         total_questions = 0
+        question_ids = []
         for item in quizzes:
             self.assertGreaterEqual(len(item["questions"]), 1)
             total_questions += len(item["questions"])
             for question in item["questions"]:
+                question_ids.append(question["id"])
                 self.assertEqual(question["type"], "multiple_choice")
                 self.assertGreaterEqual(len(question["options"]), 2)
                 self.assertGreaterEqual(question["correct_option_index"], 0)
                 self.assertLess(question["correct_option_index"], len(question["options"]))
                 self.assertTrue(question["question"].strip())
                 self.assertTrue(question["explanation"].strip())
+        self.assertEqual(len(question_ids), len(set(question_ids)))
         self.assertEqual(total_questions, self.quiz["total_question_count"])
-        self.assertEqual(total_questions, 38)
-        self.assertEqual([len(item["questions"]) for item in quizzes[:8]], [3, 3, 3, 3, 3, 3, 3, 3])
-        self.assertTrue(all(len(item["questions"]) == 1 for item in quizzes[8:]))
+        self.assertEqual(total_questions, 46)
+        self.assertEqual([len(item["questions"]) for item in quizzes[:12]], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3])
+        self.assertTrue(all(len(item["questions"]) == 1 for item in quizzes[12:]))
 
     def test_quiz_explanations_are_lesson_specific_not_one_repeated_template(self):
         explanations = [
