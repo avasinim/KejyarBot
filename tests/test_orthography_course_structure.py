@@ -85,11 +85,9 @@ class OrthographyCourseStructureTests(unittest.TestCase):
                 self.assertTrue(question["explanation"].strip())
         self.assertEqual(len(question_ids), len(set(question_ids)))
         self.assertEqual(total_questions, self.quiz["total_question_count"])
-        self.assertEqual(total_questions, 51)
+        self.assertEqual(total_questions, 56)
         self.assertEqual([len(item["questions"]) for item in quizzes[:12]], [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3])
-        self.assertEqual([len(quizzes[index]["questions"]) for index in range(12, 18)], [2, 2, 2, 2, 1, 2])
-        self.assertEqual(len(quizzes[18]["questions"]), 1)
-        self.assertTrue(all(len(item["questions"]) == 1 for item in quizzes[19:]))
+        self.assertEqual([len(quizzes[index]["questions"]) for index in range(12, 22)], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
 
     def test_quiz_explanations_are_lesson_specific_not_one_repeated_template(self):
         explanations = [
