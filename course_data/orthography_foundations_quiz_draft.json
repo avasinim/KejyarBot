@@ -3,7 +3,7 @@
   "course_title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
   "status": "draft_needs_editorial_and_source_review",
   "lesson_quiz_count": "variable; expanded source-grounded draft questions",
-  "notes": "ئەم کویزانە پێش‌نوسن و پێش بەستنەوە بە بۆت دەبێت لەگەڵ سەرچاوە و ناوەڕۆکی کۆتایی وانەکان بپشکنرێنەوە.,وەڵامی ڕاست لە correct_option_index ـدا بە ژمارەی ٠ بنچینەییە.,ئەم فایلە بە خۆی بە ڕێڕەوی زیندووی بۆت نەبەستراوەتەوە. Additional audit note: lesson 18 and 19 both retain the user-specified title 'پیتی (ی)', but their source text concerns syllabification; source/topic mismatch requires source-owner confirmation before treating the quizzes as final. Additional questions added for lessons 12, 14, 15, 16, 17, 20, 21 and 22 using examples and statements present in the original lesson text. Draft still requires pedagogical/source review. Lesson 13 received two direct text-grounded questions. Do not treat the source's terminology or orthographic claims as independently validated.",
+  "notes": "ئەم کویزانە پێش‌نوسن و پێش بەستنەوە بە بۆت دەبێت لەگەڵ سەرچاوە و ناوەڕۆکی کۆتایی وانەکان بپشکنرێنەوە.,وەڵامی ڕاست لە correct_option_index ـدا بە ژمارەی ٠ بنچینەییە.,ئەم فایلە بە خۆی بە ڕێڕەوی زیندووی بۆت نەبەستراوەتەوە. Additional audit note: lesson 18 and 19 both retain the user-specified title 'پیتی (ی)', but their source text concerns syllabification; source/topic mismatch requires source-owner confirmation before treating the quizzes as final. Additional questions added for lessons 12, 14, 15, 16, 17, 20, 21 and 22 using examples and statements present in the original lesson text. Draft still requires pedagogical/source review. Lesson 13 received two direct text-grounded questions. Do not treat the source's terminology or orthographic claims as independently validated. Lessons 1-11 expanded with two additional direct-source questions each. Claims are framed as source-based checks, not independent scientific validation.",
   "quizzes": [
     {
       "lesson_id": "lesson_01",
@@ -20,6 +20,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "پیتە نووسراوەکانی «کورد» بریتین لە «ک»، «و»، «ر»، «د». پیت شێوەی نووسراوە؛ دەنگ لە قسەکردندا دەبیسترێت."
+        },
+        {
+          "id": "l1_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی دەقی وانەی ١، ئەلفبێی کوردی چەند پیت و چەند دەنگی هەیە؟",
+          "options": [
+            "٣٤ پیت و ٣٧ دەنگ",
+            "٣٧ پیت و ٣٤ دەنگ",
+            "٣٤ پیت و ٣٤ دەنگ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی ئەسڵی دەڵێت ٣٧ دەنگ و ٣٤ پیت؛ ئەم ژمارانە لە چوارچێوەی سەرچاوەکەدا تاقی دەکرێنەوە."
+        },
+        {
+          "id": "l1_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ١، بزرۆکە لە ڕێنووسی لاتینیدا بە چ هێمایەک نووسراوە؟",
+          "options": [
+            "i",
+            "w",
+            "y"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە بزرۆکە بە هێمای لاتینی «i» دەنووسێت."
         }
       ]
     },
@@ -38,6 +62,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "پیت لە نووسینەوە دەناسرێت و بزوێن لە ئاستی دەنگدا شیکاری دەکرێت؛ بۆیە ئەمانە دوو ئاستی جیاوازن."
+        },
+        {
+          "id": "l2_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی یاساکانی وانەی ٢، بزوێنەکان لە کوێ دەنووسرێن؟",
+          "options": [
+            "دوای پیتی نەبزوێن",
+            "هەمیشە پێش پیتی نەبزوێن",
+            "تەنها لە سەرەتای وشە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە دەڵێت بزوێنەکان هەمیشە دوای پیتی نەبزوێن دەنووسرێن؛ ئەمە بانگەشەی سەرچاوەکەیە و پێویستی بە پشکنینی زانستیی جیاواز هەیە."
+        },
+        {
+          "id": "l2_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٢، دەقی وانەکە لەبارەی دوو بزوێن بەدوای یەکدا چی دەڵێت؟",
+          "options": [
+            "هیچکات بە دوای یەکدا نایەن",
+            "هەمیشە بە دوای یەکدا دێن",
+            "تەنها لە کۆتایی وشە دێن"
+          ],
+          "correct_option_index": 0,
+          "explanation": "وەڵامەکە لە یاسای نووسراوی وانەکە وەرگیراوە؛ گشتگیریی ئەم یاسایە پێویستی بە پشکنینی سەرچاوەی زیاتر هەیە."
         }
       ]
     },
@@ -56,6 +104,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "لە وانەی «پیتە هاوشێوەکان»دا نموونەی «ت، ط» و «قطار = قەتار» هاتووە."
+        },
+        {
+          "id": "l3_q2",
+          "type": "multiple_choice",
+          "question": "لە نموونەی «ثمر = سەمەر»دا، کام پیتی فارسی بە «س» گۆڕاوە؟",
+          "options": [
+            "ث",
+            "ط",
+            "ظ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "وانەی ٣ نموونەی «ثمر = سەمەر» دەهێنێتەوە بۆ پەیوەندیی «ث» و «س»."
+        },
+        {
+          "id": "l3_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٣، «غذا» چۆن نووسراوە؟",
+          "options": [
+            "غەزا",
+            "غەدا",
+            "غەسا"
+          ],
+          "correct_option_index": 0,
+          "explanation": "نموونەی نووسراو لە دەقی ئەسڵی «غذا = غەزا»یە."
         }
       ]
     },
@@ -74,6 +146,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەی ٤ دەڵێت بزوێنەکان لە سەرەتای وشە بە یارمەتی پیتی «ئـ» دەنووسرێن؛ نموونەی «ایمان = ئیمان» لە دەقەکەدا هاتووە."
+        },
+        {
+          "id": "l4_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٤، بۆ نووسینی بزوێن لە سەرەتای وشەدا کام پیتی یاریدەدەر بەکاردێت؟",
+          "options": [
+            "ئـ",
+            "هـ",
+            "و"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە «ئـ» وەک پیتی یاریدەدەر بۆ نووسینی بزوێن لە سەرەتای وشە دەناسێنێت."
+        },
+        {
+          "id": "l4_q3",
+          "type": "multiple_choice",
+          "question": "لە نموونەی وانەی ٤دا، «اِیمان» بە چ شێوەیەک نووسراوە؟",
+          "options": [
+            "ئیمان",
+            "ئەیمان",
+            "ئێمان"
+          ],
+          "correct_option_index": 0,
+          "explanation": "نموونەی دەقی ئەسڵی «ایمان 👈 ئـ + ی = ئیمان»ە."
         }
       ]
     },
@@ -92,6 +188,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە «و» و «ی» بە دوو پیتی هاوبەش ناساندووە، چونکە بە پێی شوێن و ئەرکیان دەتوانن جیاواز کار بکەن."
+        },
+        {
+          "id": "l5_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٥، کام دوو پیت هەم بزوێن و هەم نەبزوێنن؟",
+          "options": [
+            "و و ی",
+            "ل و ڵ",
+            "ر و ڕ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە «و» و «ی» بە دوو پیتی هاوبەش دەناسێنێت."
+        },
+        {
+          "id": "l5_q3",
+          "type": "multiple_choice",
+          "question": "لە وانەی ٥دا، بۆ جیاکردنەوەی دوو کارکردی «و» و «ی» چی گرنگە؟",
+          "options": [
+            "زانینی بابەتەکانی وانەکە و شوێنی بەکارهێنان",
+            "گۆڕینی هەموو وشەکان بۆ لاتینی",
+            "سڕینەوەی بزوێنەکان"
+          ],
+          "correct_option_index": 0,
+          "explanation": "وانەکە دەڵێت بۆ دیاریکردنی کارکردی ئەو دوو پیتە دەبێت چەند بابەتی گرنگ بزانین."
         }
       ]
     },
@@ -110,6 +230,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە لە ژێر «ئو» نموونەکانی «کو، چو، سو، دو، شو» دەهێنێتەوە؛ «دی، می» لە نموونەکانی «ئی» دان."
+        },
+        {
+          "id": "l6_q2",
+          "type": "multiple_choice",
+          "question": "کام وشە لە لیستی نموونەکانی «و»ی بزوێن لە وانەی ٦دا هاتووە؟",
+          "options": [
+            "«کو»",
+            "«وت»",
+            "«یا»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«کو» لە لیستی نموونەکانی وانەی ٦دا هاتووە."
+        },
+        {
+          "id": "l6_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٦، «ی» کاتێک بزوێنە، کام نموونەیە لە لیستەکەدا هاتووە؟",
+          "options": [
+            "«می»",
+            "«ین»",
+            "«یس»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«می» لە نموونەکانی «ئی»ی وانەکەدا هاتووە."
         }
       ]
     },
@@ -128,6 +272,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە دەڵێت «و» و «ی» وەک نەبزوێن لە سەرەتای وشە و بڕگە دێن و لە کۆتایی وشەشدا دەتوانن بێن."
+        },
+        {
+          "id": "l7_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٧، «و» و «ی» کاتێک نەبزوێنن لە کوێ دەتوانن بێن؟",
+          "options": [
+            "لە سەرەتای وشە و بڕگە، هەروەها لە کۆتایی وشە",
+            "تەنها لە ناوەڕاستی وشە",
+            "تەنها لە کۆتایی بڕگە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "ئەمە بە شێوەی ڕاستەوخۆ لە دەقی وانەی ٧دا هاتووە."
+        },
+        {
+          "id": "l7_q3",
+          "type": "multiple_choice",
+          "question": "کامە لە نموونەکانی «ی»ی نەبزوێن لە وانەی ٧دا هاتووە؟",
+          "options": [
+            "«یا»",
+            "«می»",
+            "«هی»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«یا» لە لیستی نموونەکانی نەبزوێنی «ی» هاتووە؛ «می» و «هی» لە وانەی ٦دان."
         }
       ]
     },
@@ -146,6 +314,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە ئەم هاوتاکردنانە دەخاتەڕوو: فەتحە لەگەڵ «ە»، ضەمە لەگەڵ «ۆ»، و کەسرە لەگەڵ «ێ»."
+        },
+        {
+          "id": "l8_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٨، هێمای «ـَ» بە کام پیت نووسراوە؟",
+          "options": [
+            "ە",
+            "ۆ",
+            "ێ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە دەقی وانەکەدا «ـَ = ە» نووسراوە."
+        },
+        {
+          "id": "l8_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٨، هێمای «ـِ» بە کام پیت نووسراوە؟",
+          "options": [
+            "ێ",
+            "ە",
+            "ۆ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "لە دەقی وانەکەدا «ـِ = ێ» نووسراوە."
         }
       ]
     },
@@ -164,6 +356,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە «سَرما = سەرما» وەک نموونەی پیتی «ە» دەهێنێتەوە. «هیوا» و «هونەر» لە دەقەکەدا نموونەی پیتی «هـ»ن."
+        },
+        {
+          "id": "l9_q2",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ٩، کام پیت لە «هیوا»دا دەستپێکی وشەکەیە و لە «ە» جیاوازە؟",
+          "options": [
+            "هـ",
+            "ە",
+            "ۆ"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە «هـ» لە نموونەکانی «هیوا» و «هەوار»دا جیا دەکاتەوە لە پیتی «ە»."
+        },
+        {
+          "id": "l9_q3",
+          "type": "multiple_choice",
+          "question": "کام وشە لە نموونەکانی پیتی «ە» لە وانەی ٩دا هاتووە؟",
+          "options": [
+            "«هەرمان»",
+            "«هێمن»",
+            "«خۆر»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«هەرمان» لە نموونەکانی «ە» هاتووە؛ «هێمن» بۆ «ێ» و «خۆر» بۆ «ۆ» لە وانەکانی دیکەدا هاتوون."
         }
       ]
     },
@@ -182,6 +398,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە «هِمن = هێمن» وەک نموونەی نووسینی «ێ» دەهێنێتەوە."
+        },
+        {
+          "id": "l10_q2",
+          "type": "multiple_choice",
+          "question": "کام وشە لە نموونەکانی پیتی «ێ» لە وانەی ١٠دا هاتووە؟",
+          "options": [
+            "«هێدی»",
+            "«هەرمان»",
+            "«نۆرە»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«هێدی» لە نموونەکانی وانەی ١٠دا هاتووە."
+        },
+        {
+          "id": "l10_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ١٠، پیتی «ێ» بە کام دەنگی فارسی بەراورد کراوە؟",
+          "options": [
+            "کسرە / ژێرە",
+            "فتحە / سەرە",
+            "ضمه / بۆرە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە «ێ» بە دەنگی کسرە (ژێرە) بەراورد دەکات."
         }
       ]
     },
@@ -200,6 +440,30 @@
           ],
           "correct_option_index": 0,
           "explanation": "دەقی وانەکە «خُر = خۆر» وەک نموونەی پیتی «ۆ» دەهێنێتەوە؛ دوو هەڵبژاردەی دیکە پەیوەندییان بە وانەکانی «ێ» و «ە»وە هەیە."
+        },
+        {
+          "id": "l11_q2",
+          "type": "multiple_choice",
+          "question": "کام وشە لە نموونەکانی پیتی «ۆ» لە وانەی ١١دا هاتووە؟",
+          "options": [
+            "«سۆرانی»",
+            "«سەرما»",
+            "«هێدی»"
+          ],
+          "correct_option_index": 0,
+          "explanation": "«سۆرانی» لە لیستی نموونەکانی «ۆ»ی وانەی ١١دایە."
+        },
+        {
+          "id": "l11_q3",
+          "type": "multiple_choice",
+          "question": "بەپێی وانەی ١١، پیتی «ۆ» بە کام دەنگی فارسی بەراورد کراوە؟",
+          "options": [
+            "ضمه / بۆرە",
+            "کسرە / ژێرە",
+            "فتحە / سەرە"
+          ],
+          "correct_option_index": 0,
+          "explanation": "دەقی وانەکە «ۆ» بە ضمه (بۆرە) بەراورد دەکات."
         }
       ]
     },
