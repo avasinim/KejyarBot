@@ -70,27 +70,46 @@ def format_lesson_draft(markdown):
         lines.append(line)
     return "\n".join(lines).strip()
 
-# Course 1 is the 22-lesson orthography course. Keep database keys stable
-# (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
+# Course 1 uses the user's own original texts, not the older editorial drafts.
+# Keep all lesson IDs stable so existing student progress and rewards are preserved.
 ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
 COURSE_MANIFEST = load_json("courses.json")
+ORIGINAL_LESSONS = load_json("course_data/orthography_original_lessons.json").get("lessons", [])
+ORIGINAL_LESSONS_BY_NUMBER = {item["number"]: item for item in ORIGINAL_LESSONS}
 COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
 ORTHOGRAPHY_QUIZ_DRAFT = load_json("course_data/orthography_foundations_quiz_draft.json")
 LESSON_DATA = {}
 QUIZ_DATA = {}
 LESSON_BUTTONS = {}
+
+def kurdish_digits(value):
+    return str(value).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
+
 for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     number = course_lesson["number"]
     lesson_key = f"وانە_{number}"
-    draft_path = BASE_DIR / "course_data" / f"orthography_lesson_{number:02d}_draft.md"
-    draft_content = format_lesson_draft(draft_path.read_text(encoding="utf-8")) if draft_path.is_file() else (
-        "⚠️ ناوەڕۆکی ئەم وانەیە هێشتا ئامادە نییە."
-    )
+    original = ORIGINAL_LESSONS_BY_NUMBER.get(number)
+    if original:
+        title = original["title"]
+        lesson_body = original["content"].strip()
+        lesson_card = (
+            "╭━━━━━━━━━━━━━━━━━━╮\\n"
+            f"🌿 کەویار  •  وانەی {kurdish_digits(number)}\\n"
+            f"📖 {title}\\n"
+            "╰━━━━━━━━━━━━━━━━━━╯\\n\\n"
+            f"{lesson_body}\\n\\n"
+            "━━━━━━━━━━━━━━━━━━\\n"
+            "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\\n"
+            "🎯 کاتێک تەواو بوویت، دوگمەی «تەواوکردنی وانە» دابگرە."
+        )
+    else:
+        title = course_lesson["title"]
+        lesson_card = "⚠️ دەقی ئەسڵی ئەم وانەیە هێشتا لە فایلەکەدا نییە."
     LESSON_DATA[lesson_key] = {
-        "title": course_lesson["title"],
-        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\n\n{draft_content}",
+        "title": title,
+        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\\n\\n{lesson_card}",
     }
-    LESSON_BUTTONS[course_lesson["title"]] = lesson_key
+    LESSON_BUTTONS[title] = lesson_key
     QUIZ_DATA[lesson_key] = []
 
 for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
