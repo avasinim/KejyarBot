@@ -128,7 +128,7 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
 
 # Optional local image assets. Keep the original lesson text available if an image is absent.
 LESSON_INFOGRAPHICS = {
-    "وانە_1": Path("photo_2026-10-27_00-13-52.jpg"),
+    "وانە_1": BASE_DIR / "photo_2026-10-27_00-13-52.jpg",
 }
 
 async def send_lesson_infographic(message, lesson):
