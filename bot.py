@@ -109,7 +109,8 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         "title": title,
         "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\n\n{lesson_card}",
     }
-    LESSON_BUTTONS[title] = lesson_key
+    # Prefix each label with its lesson number so repeated titles remain independently accessible.
+    LESSON_BUTTONS[f"وانەی {kurdish_digits(number)}: {title}"] = lesson_key
     QUIZ_DATA[lesson_key] = []
 
 for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
