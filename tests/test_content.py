@@ -396,7 +396,7 @@ class ContentConsistencyTests(unittest.TestCase):
 
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
-        self.assertIn('LESSON_BUTTONS[course_lesson["title"]] = lesson_key', bot_source)
+        self.assertIn('LESSON_BUTTONS[f"وانەی {kurdish_digits(number)}: {title}"] = lesson_key', bot_source)
         self.assertEqual(len(bot.ORDER), 22)
         self.assertEqual(bot.ORDER, [f"وانە_{index}" for index in range(1, 23)])
         self.assertEqual(set(bot.LESSON_BUTTONS.values()), set(bot.ORDER))
