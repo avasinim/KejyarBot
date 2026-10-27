@@ -43,7 +43,8 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertIn('load_json("course_data/orthography_foundations.json")', bot_source)
         self.assertIn('load_json("course_data/orthography_foundations_quiz_draft.json")', bot_source)
         self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
-        self.assertIn('orthography_lesson_{number:02d}_draft.md', bot_source)
+        self.assertIn('load_json("course_data/orthography_original_lessons.json")', bot_source)
+        self.assertIn('ORIGINAL_LESSONS_BY_NUMBER.get(number)', bot_source)
         # The lesson catalog is intentionally rendered as inline buttons, not 22 reply-keyboard menu rows.
         self.assertIn("keyboard_rows.append([InlineKeyboardButton(", bot_source)
         self.assertIn('reply_markup=InlineKeyboardMarkup(keyboard_rows)', bot_source)
