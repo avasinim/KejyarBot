@@ -57,69 +57,57 @@ def load_json(filename):
     with path.open("r", encoding="utf-8") as file:
         return json.load(file)
 
-LESSON_DATA = load_json("lessons.json")
-QUIZ_DATA = load_json("quiz.json")
-LESSON_INFOGRAPHICS = {
-    "وانە_1": "assets/infographics/lesson-01-greetings.svg",
-    "وانە_2": "assets/infographics/lesson-02-letters-sample.svg",
-    "وانە_3": "assets/infographics/lesson-03-daily-words.svg",
-    "وانە_4": "assets/infographics/lesson-04-numbers.svg",
-    "وانە_5": "assets/infographics/lesson-05-colors.svg",
-    "وانە_6": "assets/infographics/lesson-06-home-school.svg",
-    "وانە_7": "assets/infographics/lesson-07-family.svg",
-    "وانە_8": "assets/infographics/lesson-08-food-drink.svg",
-    "وانە_9": "assets/infographics/lesson-09-days-time.svg",
-    "وانە_10": "assets/infographics/lesson-10-simple-sentences.svg",
-}
+# Course 1 is the 22-lesson orthography course. Keep database keys stable
+# (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
+ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
+ORTHOGRAPHY_QUIZ_DRAFT = load_json("course_data/orthography_foundations_quiz_draft.json")
+LESSON_DATA = {}
+QUIZ_DATA = {}
+LESSON_BUTTONS = {}
+for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
+    number = course_lesson["number"]
+    lesson_key = f"وانە_{number}"
+    draft_path = BASE_DIR / "course_data" / f"orthography_lesson_{number:02d}_draft.md"
+    draft_content = draft_path.read_text(encoding="utf-8") if draft_path.is_file() else (
+        "⚠️ ناوەڕۆکی ئەم وانەیە هێشتا ئامادە نییە."
+    )
+    LESSON_DATA[lesson_key] = {
+        "title": course_lesson["title"],
+        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\\n\\n{draft_content}",
+    }
+    LESSON_BUTTONS[course_lesson["title"]] = lesson_key
+    QUIZ_DATA[lesson_key] = []
+
+for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
+    number = quiz_lesson.get("lesson_number")
+    lesson_key = f"وانە_{number}"
+    for question in quiz_lesson.get("questions", []):
+        options = question.get("options", [])
+        correct_index = question.get("correct_option_index", -1)
+        if 0 <= correct_index < len(options):
+            QUIZ_DATA.setdefault(lesson_key, []).append({
+                "question": question["question"],
+                "options": options,
+                "answer": options[correct_index],
+            })
+
+LESSON_INFOGRAPHICS = {}
 
 async def send_lesson_infographic(message, lesson):
-    relative_path = LESSON_INFOGRAPHICS.get(lesson)
-    if not relative_path:
-        return
-    image_path = BASE_DIR / relative_path
-    if not image_path.is_file():
-        logger.warning("Lesson infographic missing: %s", image_path)
-        return
-    try:
-        with image_path.open("rb") as infographic:
-            await message.reply_document(
-                document=infographic,
-                filename=image_path.name,
-                caption="🖼 وێنەی ڕوونکەرەوەی ئەم وانەیە",
-            )
-    except Exception:
-        logger.exception("Could not send lesson infographic for %s", lesson)
+    # Course 1 infographics will be connected after they are created and reviewed.
+    return
+
 ORDER = list(LESSON_DATA.keys())
-LESSON_BUTTONS = {
-    "👋 سڵاو و ناساندنی خۆ": "وانە_1",
-    "🔤 ئەلفبێی کوردی": "وانە_2",
-    "🗣 وشەکانی ڕۆژانە": "وانە_3",
-    "🔢 ژمارەکان": "وانە_4",
-    "🎨 ڕەنگەکان": "وانە_5",
-    "🏠 لە ماڵ و قوتابخانە": "وانە_6",
-    "👪 خێزان و کەسانی نزیک": "وانە_7",
-    "🍽️ خواردن و خواردنەوە": "وانە_8",
-    "📅 ڕۆژەکانی هەفتە و کات": "وانە_9",
-    "🧱 ڕستەی سادە و پرسیارکردن": "وانە_10",
-}
-MENU = ReplyKeyboardMarkup(
-    [
-        ["📚 وانەکان"],
-        ["💬 گفتوگۆی ڕۆژانە"],
-        ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
-        ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
-        ["👋 سڵاو و ناساندنی خۆ"],
-        ["🔤 ئەلفبێی کوردی", "🗣 وشەکانی ڕۆژانە"],
-        ["🔢 ژمارەکان", "🎨 ڕەنگەکان"],
-        ["🏠 لە ماڵ و قوتابخانە"],
-        ["👪 خێزان و کەسانی نزیک"],
-        ["🍽️ خواردن و خواردنەوە"],
-        ["📅 ڕۆژەکانی هەفتە و کات"],
-        ["🧱 ڕستەی سادە و پرسیارکردن"],
-        ["ڕێنووسی زمانی کوردی"],
-    ],
-    resize_keyboard=True,
-)
+MENU_ROWS = [
+    ["📚 وانەکان"],
+    ["💬 گفتوگۆی ڕۆژانە"],
+    ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
+    ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
+]
+for index in range(0, len(ORTHOGRAPHY_COURSE.get("lessons", [])), 2):
+    titles = [lesson["title"] for lesson in ORTHOGRAPHY_COURSE["lessons"][index:index + 2]]
+    MENU_ROWS.append(titles)
+MENU = ReplyKeyboardMarkup(MENU_ROWS, resize_keyboard=True)
 
 def can_open(user_id, lesson):
     if lesson not in ORDER:
@@ -129,22 +117,11 @@ def can_open(user_id, lesson):
     return index == 0 or ORDER[index - 1] in completed
 
 def check_badges(user_id):
-    badges = {
-        "وانە_1": "🏅 دەستپێکەری کەژیار",
-        "وانە_2": "🏅 دەستپێکەری کوردی",
-        "وانە_3": "🏅 خوێندکاری وشەکان",
-        "وانە_4": "🏅 ژمارەناس",
-        "وانە_5": "🏅 ڕەنگناس",
-        "وانە_6": "🏅 زانای ماڵ و قوتابخانە",
-        "وانە_7": "🏅 ناسەری خێزان",
-        "وانە_8": "🏅 شارەزای خواردن",
-        "وانە_9": "🏅 ناسەری کات",
-        "وانە_10": "🏅 دروستکەری ڕستە",
-    }
     completed = set(get_completed_lessons(user_id))
-    for lesson, badge in badges.items():
-        if lesson in completed:
-            add_badge(user_id, badge)
+    for lesson in completed:
+        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
+        if 1 <= number <= len(ORDER):
+            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -361,25 +338,6 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
-    if text == "ڕێنووسی زمانی کوردی":
-        context.user_data["daily_chat_mode"] = False
-        context.user_data.pop("daily_chat_scenario", None)
-        context.user_data.pop("daily_chat_stage", None)
-        course = load_json("course_data/orthography_foundations.json")
-        lesson_lines = [
-            f"{lesson['number']}. {lesson['title']}"
-            for lesson in course.get("lessons", [])
-        ]
-        await update.message.reply_text(
-            f"📘 {course['title']}\\n"
-            f"وانەکان: {len(lesson_lines)}\\n\\n"
-            + "\\n".join(lesson_lines)
-            + "\\n\\n⚠️ ناوەڕۆکی وانەکان هێشتا لە پشکنینی سەرچاوە و ئامادەکردندان؛ "
-              "بەشی وانەکان کاتێک دەکرێتەوە کە ناوەڕۆک و تاقیکردنەوەکانیان تەواو بن.",
-            reply_markup=MENU,
-        )
-        return
-
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -396,20 +354,18 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text in LESSON_BUTTONS or text in {
         "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
-        "ڕێنووسی زمانی کوردی",
     }:
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
-        rows = []
         completed = set(get_completed_lessons(user_id))
+        rows = []
         for lesson in ORDER:
             status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
-            rows.append(f"{status} {lesson}: {title}")
-        await update.message.reply_text("\n".join(rows))
+            rows.append(f"{status} {lesson}: {LESSON_DATA[lesson]['title']}")
+        await update.message.reply_text(ORTHOGRAPHY_COURSE["title"] + "\\n\\n" + "\\n".join(rows), reply_markup=MENU)
         return
 
     if text in LESSON_BUTTONS:
