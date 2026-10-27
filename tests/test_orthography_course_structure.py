@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 COURSE_PATH = ROOT / "course_data" / "orthography_foundations.json"
 QUIZ_PATH = ROOT / "course_data" / "orthography_foundations_quiz_draft.json"
+SOURCE_PATH = ROOT / "course_data" / "orthography_original_lessons.json"
 DRAFT_DIR = ROOT / "course_data"
 
 
@@ -16,6 +17,8 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             cls.course = json.load(source)
         with QUIZ_PATH.open(encoding="utf-8") as source:
             cls.quiz = json.load(source)
+        with SOURCE_PATH.open(encoding="utf-8") as source:
+            cls.original = json.load(source)
 
     def test_course_title_and_22_sequential_lessons(self):
         lessons = self.course["lessons"]
@@ -24,6 +27,32 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(len(lessons), 22)
         self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 23)))
         self.assertEqual(len({lesson["id"] for lesson in lessons}), 22)
+
+    def test_source_catalog_plan_and_quiz_are_aligned_by_number_and_title(self):
+        source_lessons = self.original["lessons"]
+        planned_lessons = self.course["lessons"]
+        quiz_lessons = self.quiz["quizzes"]
+
+        expected_numbers = list(range(1, 23))
+        self.assertEqual([item["number"] for item in source_lessons], expected_numbers)
+        self.assertEqual([item["number"] for item in planned_lessons], expected_numbers)
+        self.assertEqual([item["lesson_number"] for item in quiz_lessons], expected_numbers)
+
+        source_titles = {item["number"]: item["title"] for item in source_lessons}
+        planned_titles = {item["number"]: item["title"] for item in planned_lessons}
+        self.assertEqual(source_titles, planned_titles)
+
+        for quiz_lesson in quiz_lessons:
+            number = quiz_lesson["lesson_number"]
+            self.assertEqual(quiz_lesson["lesson_id"], f"lesson_{number}")
+            self.assertTrue(quiz_lesson["questions"], f"Lesson {number} has no quiz questions")
+
+        question_ids = [
+            question["id"]
+            for quiz_lesson in quiz_lessons
+            for question in quiz_lesson["questions"]
+        ]
+        self.assertEqual(len(question_ids), len(set(question_ids)))
 
     def test_course_ends_after_lesson_22_without_a_duplicate_course_button(self):
         behavior = self.course["completion_behavior"]
