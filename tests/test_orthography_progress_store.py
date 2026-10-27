@@ -54,7 +54,7 @@ class OrthographyProgressStoreTests(unittest.TestCase):
         self.assertEqual(get_course_completed_lessons(self.db_path, 7, "another_course"), ["lesson_01"])
 
     def test_rejects_blank_or_non_string_course_ids(self):
-        for course_id in ("", "   ", None, 123):
+        for course_id in ("", "   ", None, 123, " another_course", "another_course "):
             with self.subTest(course_id=course_id), self.assertRaises(ValueError):
                 record_course_quiz_completion(self.db_path, 7, "lesson_01", course_id)
         with self.assertRaises(ValueError):
