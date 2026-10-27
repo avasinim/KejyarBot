@@ -73,6 +73,8 @@ def format_lesson_draft(markdown):
 # Course 1 is the 22-lesson orthography course. Keep database keys stable
 # (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
 ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
+COURSE_MANIFEST = load_json("courses.json")
+COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
 ORTHOGRAPHY_QUIZ_DRAFT = load_json("course_data/orthography_foundations_quiz_draft.json")
 LESSON_DATA = {}
 QUIZ_DATA = {}
@@ -388,6 +390,40 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
         refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
 
+async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    course_id = query.data.removeprefix("course_")
+    course = next((item for item in COURSES if item["id"] == course_id), None)
+    if course is None:
+        await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
+        return
+
+    lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
+    if not lesson_ids:
+        await query.message.reply_text(
+            f"{course['title']}\\n\\n"
+            f"📌 دۆخ: {course.get('status', 'planned')}\\n"
+            f"{course.get('description', '')}\\n\\n"
+            "ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە؛ وانە کۆنەکان بە ناوی ئەم کۆرسەوە پیشان نادرێن."
+        )
+        return
+
+    completed = set(get_completed_lessons(query.from_user.id))
+    keyboard_rows = []
+    for lesson in lesson_ids:
+        status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
+        title = LESSON_DATA[lesson]["title"]
+        keyboard_rows.append([InlineKeyboardButton(
+            f"{status} {lesson}: {title}",
+            callback_data=f"open_lesson_{lesson}",
+        )])
+    await query.message.reply_text(
+        f"{course['title']}\\n\\n{course.get('description', '')}",
+        reply_markup=InlineKeyboardMarkup(keyboard_rows),
+    )
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -415,18 +451,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
-        completed = set(get_completed_lessons(user_id))
-        keyboard_rows = []
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA[lesson]["title"]
-            keyboard_rows.append([InlineKeyboardButton(
-                f"{status} {lesson}: {title}",
-                callback_data=f"open_lesson_{lesson}",
-            )])
+        keyboard_rows = [
+            [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
+            for course in COURSES
+        ]
         await update.message.reply_text(
-            ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
-            + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
+            "📚 کۆرسەکانی کەژیار\\n\\n"
+            "کۆرسەکان جیاوازن. کۆرسی یەکەم ٢٢ وانەی ڕێنووسی سەرەتایی هەیە؛ کۆرسەکانی دیکە تا ئامادەبوونی وانە ڕێکخراوەکان بە ڕوونی نیشان دراون.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
@@ -510,6 +541,7 @@ def main():
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
