@@ -127,6 +127,7 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "question": question["question"],
                 "options": options,
                 "answer": options[correct_index],
+                "explanation": question.get("explanation", ""),
             })
 
 # Optional local image assets. Keep the original lesson text available if an image is absent.
@@ -320,9 +321,13 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     answer = question["options"][choice_index]
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    explanation = question.get("explanation", "").strip()
+    if explanation:
+        feedback += f"\\n\\n📘 ڕوونکردنەوە: {explanation}"
+    await query.message.reply_text(feedback)
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
