@@ -52,8 +52,8 @@ def convert_quiz_draft(data: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
             index = question.get("correct_option_index")
             if not isinstance(options, list) or len(options) < 2:
                 raise ValueError(f"Lesson {number} has invalid options")
-            if any(not isinstance(option, str) or not option.strip() for option in options):
-                raise ValueError(f"Lesson {number} has empty/non-text option")
+            if any(not isinstance(option, str) or not option.strip() or option != option.strip() for option in options):
+                raise ValueError(f"Lesson {number} has empty, padded, or non-text option")
             if len(set(options)) != len(options):
                 raise ValueError(f"Lesson {number} has duplicate options")
             if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < len(options):
