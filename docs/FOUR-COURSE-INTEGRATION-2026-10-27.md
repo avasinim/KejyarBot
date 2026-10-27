@@ -10,3 +10,6 @@
 
 ## Validation note
 The branch was updated through GitHub. I could inspect the resulting files, but I have not run the full Python test suite or live Telegram verification from the user's Windows checkout. Do not treat this as production-ready until those checks pass.
+
+
+The integration is isolated on a non-production `fix/` branch so repository checks can run automatically; no merge or deployment is performed by this change.
