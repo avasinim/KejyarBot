@@ -59,6 +59,28 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertTrue(all(lesson["working_title"] and lesson["focus"] for lesson in proposed))
         self.assertEqual(self.conversation_plan["source_status"], "source_text_not_yet_attached_to_this_plan")
 
+    def test_daily_conversation_drafts_have_valid_quiz_answers_and_corrected_phrases(self):
+        for filename in (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_12.json",
+        ):
+            with self.subTest(file=filename):
+                with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
+                    draft = json.load(handle)
+                for lesson in draft["lessons"]:
+                    for question in lesson["quiz"]:
+                        self.assertGreaterEqual(question["answer"], 0)
+                        self.assertLess(question["answer"], len(question["options"]))
+                        self.assertEqual(len(question["options"]), len(set(question["options"])))
+
+        with (ROOT / "course_data" / "daily_conversation_lessons_07_12.json").open(encoding="utf-8") as handle:
+            draft = json.load(handle)
+        lesson7 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 7)
+        lesson12 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 12)
+        self.assertEqual(lesson7["dialogue"][1][1], "بەیانی باش، کەژیار! بەڵێ، نان و پەنیرم خواردووە و چایم خواردووەتەوە. تۆ چی؟")
+        self.assertNotIn("dialogue[1][1]", lesson7)
+        self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
+
     def test_no_lesson_is_accidentally_assigned_to_multiple_courses(self):
         all_ids = [
             lesson_id
