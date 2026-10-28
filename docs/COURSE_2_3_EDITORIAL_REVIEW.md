@@ -54,14 +54,14 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 
 | Lesson | Topic | Practical improvement |
 |---|---|---|
-| 1 | Unicode and unified spelling | Show the difference between visually similar letters with a simple exampleetters; distinguish the actual Kurdish code point from Arabic/Latin lookalikes. |
-| 4 | Consonant clusters and syllables | Verify pronunciation and syllabification for the cited examples, with exact source/page and a clear phonological explanation. |
-| 6 | Difference between ڕ and ر | Unicode code points are now recorded (ڕ U+0695, ر U+0631). Still verify the example words against a reliable dictionary/source and cite the chosen spelling rule. |
-| 7 | ک/ك, ھ/ه and ە | Unicode code points are now recorded: ک U+06A9 / ك U+0643; ھ U+06BE / ه U+0647; ە U+06D5. Still add whole-word examples and verify the orthographic rule, not just visual similarity. |
-| 9 | Particles and joined spelling | Replace generic placeholders with real examples from the selected source and record edition/page. |
-| 10 | Compound and derived words | Add real source-attested examples, analyze their components, and cite edition/page. |
-| 11 | Adverbs, loanwords and compound numerals | Add real examples and a source-backed rule for each included topic; record edition/page. |
-| 12 | Final review | Build a short authentic proofreading passage and an answer key whose corrections each point to a verified rule/source. |
+| 1 | Unicode and unified spelling | Show the difference between visually similar letters with a simple example; distinguish Kurdish letters from lookalikes. |
+| 4 | Consonant clusters and syllables | Make the explanation of consonant clusters and syllables clear, with simple examples and a beginner-friendly explanation. |
+| 6 | Difference between ڕ and ر | Unicode code points are recorded (ڕ U+0695, ر U+0631). Use familiar words to demonstrate the distinction clearly. |
+| 7 | ک/ك, ھ/ه and ە | Unicode code points are recorded: ک U+06A9 / ك U+0643; ھ U+06BE / ه U+0647; ە U+06D5. Add whole-word examples and a short, clear explanation. |
+| 9 | Particles and joined spelling | Replace generic placeholders with familiar, practical examples. |
+| 10 | Compound and derived words | Add familiar compound and derived words and explain their components. |
+| 11 | Adverbs, loanwords and compound numerals | Add simple examples for each topic and explain the intended pattern clearly. |
+| 12 | Final review | Build a short proofreading passage and an answer key that matches the rules taught in the lessons. |
 
 ### Source-verification protocol
 - Select and consistently identify the intended edition of Diyako Hashemi's *پوختەی ڕێنووس و خاڵبەندی* and any supplementary reference.
