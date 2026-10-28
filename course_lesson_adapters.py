@@ -142,6 +142,9 @@ def adapt_unified_orthography_lessons(payload):
             sections.extend(["", "🛠️ کاری پڕاکتیکی", raw["role_play"]])
         if raw.get("source_note"):
             sections.extend(["", "📚 تێبینیی سەرچاوە", raw["source_note"]])
+        if raw.get("review_findings"):
+            sections.extend(["", "🔍 خاڵەکانی پشکنین"])
+            sections.extend(f"• {item}" for item in raw["review_findings"])
         if raw.get("review_status"):
             sections.extend(["", f"📌 دۆخی پشکنین: {raw['review_status']}"])
         lessons_by_id[key] = {
