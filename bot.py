@@ -491,7 +491,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = [[InlineKeyboardButton(f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
