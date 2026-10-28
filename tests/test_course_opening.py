@@ -24,6 +24,12 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("هێشتا چالاک نەکراوە", message)
         self.assertIsNone(kwargs.get("reply_markup"))
 
+    def test_draft_courses_cannot_open_lessons_even_by_direct_callback(self):
+        self.assertFalse(bot.course_is_active("daily_conversation"))
+        self.assertFalse(bot.course_is_active("unified_orthography"))
+        self.assertFalse(bot.can_open(12345, "daily_conversation_01"))
+        self.assertFalse(bot.can_open(12345, "unified_orthography_01"))
+
     async def test_active_course_lists_only_its_catalog_lessons(self):
         query = SimpleNamespace(
             data="course_orthography_basic",
