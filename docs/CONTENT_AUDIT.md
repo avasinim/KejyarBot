@@ -646,3 +646,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Rewrote lessons 1–3 into learner-facing lessons with objectives, examples, practice and short recap; removed source-review boilerplate from lesson 1 and simplified lessons 2–3.
 - Simplified lesson 4's quiz to test the beginner concept of comparing spelling and pronunciation rather than asking learners to remember a source-review warning.
 - Updated course/quiz status metadata and structural test expectations to reflect beginner editorial review. These drafts still need runtime integration checks and a fresh test run; current-head CI is not yet verified. Production, main, bot token, live database, and dynamic speech remain untouched.
+
+
+## Beginner quiz cleanup and CI — 28 October 2026
+
+- Simplified the lesson 5, 8, 13, 17–21 quiz questions that had been testing source-review caveats instead of beginner learning outcomes. They now focus on recognizing the written form, identifying the lesson's target word/letter, and distinguishing written letters from sounds.
+- Re-read the full 22-question quiz file: 22 questions remain, each with at least three distinct options, a valid answer index, and a lesson-specific explanation. Lesson 18 quiz wording agrees with the corrected **کەژ / یار** draft.
+- Verified GitHub Actions for commit `b09e025aa2cfd5d9ac8c90e49f0d84d118084665`: Python checks passed (`compileall` and `unittest discover -s tests -v`), and the orthography-course-structure workflow passed. This verifies that commit only; any later commit requires its own check.
+- Course 1 remains a 22-lesson beginner course. No new citations were added as part of this pass. The course files still need a later end-to-end runtime check before declaring the lessons live; production, `main`, live token/database and dynamic speech were not changed.
