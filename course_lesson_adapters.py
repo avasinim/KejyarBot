@@ -33,6 +33,7 @@ def adapt_conversation_lessons(course_id, lesson_files):
                 "content": format_conversation_lesson(raw),
                 "source_number": number,
                 "course_id": course_id,
+                "review_status": raw.get("review_status", "draft_source_check_required"),
             }
             quiz_items = []
             for question in raw.get("quiz", []):
@@ -78,6 +79,10 @@ def format_conversation_lesson(lesson):
             sections.extend(f"{index}. {item}" for index, item in enumerate(lesson[field], 1))
     if lesson.get("role_play"):
         sections.extend(["", "🎭 ڕۆڵگێڕی", lesson["role_play"]])
+    if lesson.get("source_note"):
+        sections.extend(["", "📚 تێبینیی سەرچاوە", lesson["source_note"]])
+    if lesson.get("review_status"):
+        sections.extend(["", f"📌 دۆخی پشکنین: {lesson['review_status']}"])
     return "\n".join(sections)
 
 
