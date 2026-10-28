@@ -654,3 +654,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Re-read the full 22-question quiz file: 22 questions remain, each with at least three distinct options, a valid answer index, and a lesson-specific explanation. Lesson 18 quiz wording agrees with the corrected **کەژ / یار** draft.
 - Verified GitHub Actions for commit `b09e025aa2cfd5d9ac8c90e49f0d84d118084665`: Python checks passed (`compileall` and `unittest discover -s tests -v`), and the orthography-course-structure workflow passed. This verifies that commit only; any later commit requires its own check.
 - Course 1 remains a 22-lesson beginner course. No new citations were added as part of this pass. The course files still need a later end-to-end runtime check before declaring the lessons live; production, `main`, live token/database and dynamic speech were not changed.
+
+
+## Course 1 beginner-content pass — 28 October 2026
+
+- Reworked lesson drafts **1–22** into learner-facing beginner lessons: plain definitions, visible examples, guided practice, and short self-checks. The drafts no longer ask learners to look up sources or fill in editorial evidence tables. No bibliography hunt was done, per the user's instruction that this introductory course should not be delayed for sources.
+- The content pass covers the core distinctions (letter vs sound, vowels, spelling at word beginnings, **و/ی**, **ە/ێ/ۆ**, **ل/ڵ**, **ر/ڕ**, **وو**, **ڤ**), guided reading of **کەژیار** and **یاسین**, and the final review lesson. Lessons 18 and 19 now focus on reading and identifying written letters rather than advanced phonological claims.
+- Simplified quiz items 4, 5, 7–9, 13–14, 17–22 to test beginner recognition and lesson comprehension instead of source-review caveats. Updated lesson 22's quiz to match the revised lesson. The 22-question quiz still has one multiple-choice question per lesson; the structural test verifies three distinct options and valid answer indices.
+- Prior CI passed on commit `b09e025aa2cfd5d9ac8c90e49f0d84d118084665`; lesson and quiz edits after that commit have triggered new runs, and their final status must be checked before claiming the latest head is green. This work remains on the test branch; no merge, production change, token/database change, or dynamic-speech activation.
