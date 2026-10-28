@@ -19,14 +19,16 @@
 - The menu must show the three in-scope courses distinctly. Each course must have independent ordered lesson access, quiz routing, completion progression, and namespaced IDs; Course 1 legacy IDs must remain unchanged.
 - The existing daily-chat feature is not a substitute for the structured 12-lesson Course 2.
 
-## Required completion gates
-1. Review all 22 Course 1 lessons and quiz items; prioritize source flags for lessons 4, 8, 13, 18, 19, and 21.
-2. Review all 12 Course 2 dialogue lessons for naturalness, consistent Kurdish spelling, useful vocabulary, and valid quiz answers.
-3. Review all 12 Course 3 lessons against cited sources; resolve every `draft_source_check_required` flag and distinguish source claims from editorial recommendations.
-4. Runtime integration has been added for Courses 2 and 3 on this isolated branch. Confirm CI passes, then continue source/language review before changing either course from `draft_for_review` to `active`.
-5. Add/run tests for course catalog, all 46 loaded lesson records (22 + 12 + 12), unique lesson IDs, ordered unlocking, course-specific next lesson, quiz start/answer/completion, and progress isolation. The default legacy roadmap and quick lesson menu must remain scoped to Course 1.
-6. Run manual Telegram checks only with an authorized isolated test bot/token.
+## Required completion gates — prioritize Courses 2 and 3
 
+The user has asked to stop spending disproportionate time on Course 1. The next work phase prioritizes completing Courses 2 and 3; do not reopen Course 1 review unless a blocking regression is found.
+
+1. **Course 2 — daily conversation:** review all 12 lessons for natural dialogue, consistent spelling, useful vocabulary, and quiz-answer correctness. Record source/edition and page or clearly mark a lesson as original editorial material rather than implying it is source-derived. Resolve all lesson-level language/source flags before activation.
+2. **Course 3 — unified orthography:** review all 12 lessons against selected, accessible references. For each rule/example, record edition and page(s), verify the example, and separate source statements from editorial recommendations. Replace unresolved placeholders and resolve all review findings before activation.
+3. **Integration checks:** verify all 46 records load (22 + 12 + 12), lesson IDs are unique, each course has independent ordered unlocking/next-lesson behavior, quiz start/answer/completion routing works, and progress remains isolated by course.
+4. **Manual Telegram smoke test:** run the checklist in `docs/PRE_RELEASE_TELEGRAM_SMOKE_TEST.md` only with an authorized isolated test bot/token.
+5. **Course 1:** keep the existing active course and its legacy lesson IDs stable. Defer non-blocking source-review items until Courses 2 and 3 are ready; do not let them hold up the current workstream.
+6. Do not mark Course 2 or 3 active until language/source review and integration checks pass. Automated tests do not count as editorial approval.
 ## Safety boundaries
 - Do not merge PRs, change `main`, touch production bot/database/tokens, or deploy without explicit approval.
 - Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false`; preserve the existing approved voice.
