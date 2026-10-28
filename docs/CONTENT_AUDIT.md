@@ -2,19 +2,17 @@
 
 Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
 
-> **Current-state note (26 October 2026):** The current branch contains ten lessons and quiz sets for all ten. Sections below are dated audit history; references there to six lessons, four questions per lesson, or earlier CI checkpoints describe the state at that earlier point in time and are not the current inventory. Use the **Current checks**, **Latest verification**, and later dated sections to determine the present state.
+> **Current runtime state (28 October 2026):** The bot's active course is **one 22-lesson course** loaded from `course_data/orthography_foundations.json`, with lesson drafts in `course_data/orthography_lesson_01_draft.md` through `orthography_lesson_22_draft.md`. This supersedes older audit notes that describe the ten-lesson `lessons.json` / `quiz.json` course as the active runtime. Those ten-lesson files and their SVG infographics remain legacy content and are not loaded by the current runtime. Do not mix their lesson titles or infographics into the 22-lesson course.
 
 ## Current checks
 
-- `lessons.json` contains ten non-empty lesson records, numbered 1–10, and `learning_path.json` matches their titles and intended order.
-- `quiz.json` contains quiz sets for all ten lessons; every question has non-empty text, unique options, and an answer present among those options.
-- The bot's lesson navigation, unlocking sequence, completion badges, and final-lesson quiz path are covered by regression tests for ten lessons.
-- All ten lesson SVGs are checked for well-formed XML, RTL direction, bidi handling, and the chosen Arabic-script font stack.
-- Lesson 2 now presents 34 practice entries with five words per entry (170 examples in total). Its infographic is tested against the lesson text so every listed example must appear in both places.
-- The inventory intentionally calls these “practice entries” rather than asserting that every entry is an independent alphabet letter: some orthographic combinations and vowel signs may need a separate academic classification review.
-- The currently observed CI runs for commit `3e91a6b7679c41951461ff39f8310acccd132eaf` passed:
-  - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
-  - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
+- The course catalog has 22 sequential lesson numbers and stable keys `وانە_1` through `وانە_22`; the runtime builds its catalog from this course file.
+- All 22 lesson draft files exist and match their catalog number/title. Their content remains marked **needs source review and editorial entry**; structural presence is not approval of linguistic accuracy.
+- The active quiz draft contains one multiple-choice question for each of the 22 lessons. Every current question has three distinct options and a valid correct-option index. The structure test now enforces at least three options and uniqueness.
+- Quiz explanations and prompts are still drafts requiring editorial and source review; a passing structural test does not establish that every claim is academically verified.
+- The active 22-lesson course has no connected infographics yet. The existing ten SVGs belong to the legacy ten-lesson content and are intentionally not sent by the active 22-lesson runtime.
+- Dynamic speech remains disabled until explicitly approved. Existing voice workflow must be preserved; do not replace the established voice.
+- No change to `main`, production bot/token/database, or deployment is authorized by this audit.
 
 ## Quiz state validation follow-up — 28 October 2026
 
