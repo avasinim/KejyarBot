@@ -48,5 +48,30 @@ class DraftCourseCallbackGateTests(unittest.IsolatedAsyncioTestCase):
         award.assert_not_called()
 
 
+    async def test_stale_draft_quiz_session_is_cancelled_without_quiz_rewards(self):
+        update, message, query = self.make_update("answer_0")
+        update.effective_user = query.from_user
+        context = SimpleNamespace(user_data={
+            "quiz": {
+                "lesson": "daily_conversation_01",
+                "index": 0,
+                "questions": [{
+                    "question": "Test?",
+                    "options": ["A", "B"],
+                    "answer": "A",
+                    "explanation": "Test explanation",
+                }],
+                "score": 0,
+                "question_message_id": 77,
+            }
+        })
+        with patch.object(bot, "complete_quiz_with_rewards") as award:
+            await bot.quiz_answer(update, context)
+        self.assertNotIn("quiz", context.user_data)
+        message.reply_text.assert_awaited_once()
+        self.assertIn("🔒", message.reply_text.await_args.args[0])
+        award.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()
