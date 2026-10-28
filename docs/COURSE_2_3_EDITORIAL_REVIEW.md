@@ -40,7 +40,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 9 | Changed the date anchor to “twenty-seventh of Befranbar” at the user's request and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
 | 11 | Quiz key was checked against the dialogue; clarified that the 8 AM meeting at the bus station is also the departure point. Review travel-planning phrasing and consistency of transport terms. |
-| 12 | The closing line was polished to “یەکتر دەبینینەوە”; the three quiz keys were structurally checked and remain aligned with the taught phrases. Final naturalness pass flagged the meeting question «کاتژمێر چەند لە بازاڕ کۆببینەوە؟» for clarification because the reply specifies meeting in front of the shop; content edit is still pending. |
+| 12 | The closing line was polished to “یەکتر دەبینینەوە”; the three quiz keys were structurally checked and remain aligned with the taught phrases. Clarified the meeting question to «کاتژمێر چەند لە بەردەم دوکانەکە کۆببینەوە؟» so the question matches the reply's exact meeting point. |
 
 ### Remaining release gates
 1. Complete the targeted editorial checks above for all 12 dialogues, including natural Kurdish, consistent names/terms, useful real-life phrasing, and spelling.
