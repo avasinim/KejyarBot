@@ -58,7 +58,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 2 | Alphabet and letter/sound distinction | Added plain-language definitions of «پیت» and «دەنگ» plus a practical read-and-write comparison to support the quiz distinction; verify examples during final language review. |
 | 3 | Vowels and syllables | Reworked the quiz to ask learners to read a word aloud and identify its syllables, matching the lesson's stated method rather than relying on a distracting letter-count option. |
 | 4 | Consonant clusters and syllables | Quiz now asks learners to identify «س» and «ت» in «مەست», directly checking the concrete cluster taught in the lesson; final language review remains. |
-| 6 | Difference between ڕ and ر | Added «باران» and «ڕۆژ» to show the two letters in familiar words; final language review remains. |
+| 6 | Difference between ڕ and ر | Quiz now asks which familiar word begins with «ڕ» and contrasts «ڕۆژ» with «باران», which contains ordinary «ر»; final language review remains. |
 | 7 | ک/ك, ھ/ه and ە | Clarified that «هەوا / ھەوا» is only a digital code-point comparison and that «ھەوا» should not be taught as an interchangeable ordinary spelling; use «هەوا» in normal Kurdish text unless the course's explicit convention says otherwise. |
 | 5 | Hamza / «ئ» | Replaced the abstract quiz question with a direct recognition question using «ئاو», matching the lesson's stated beginner objective and examples. |
 | 8 | و، وو، ی و ێ | Simplified the quiz and explanation by removing the Latin phonetic symbol; the answer now refers directly to the long sound in «دوور». |
