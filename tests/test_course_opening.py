@@ -75,6 +75,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("3 کۆرسی چالاک هەن", text)
         self.assertIn("پلاندانراو", text)
         self.assertIn("ڕێزمان", text)
+        self.assertIn("پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە", text)
 
 
 if __name__ == "__main__":
