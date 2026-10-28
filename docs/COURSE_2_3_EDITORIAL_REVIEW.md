@@ -63,11 +63,13 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 11 | Adverbs, loanwords and compound numerals | Add simple examples for each topic and explain the intended pattern clearly. |
 | 12 | Final review | Build a short proofreading passage and an answer key that matches the rules taught in the lessons. |
 
-### Source-verification protocol
-- Select and consistently identify the intended edition of Diyako Hashemi's *پوختەی ڕێنووس و خاڵبەندی* and any supplementary reference.
-- For every rule or example, record the edition and page/section; verify it against the actual text rather than inferring from the source title or a broad topic label.
-- Do not invent page numbers, quotations, rules, or examples. If the source text/page is unavailable, keep the item explicitly unresolved.
-- Review the quiz answer key against the approved lesson content after the source audit, then rerun the adapter, course integrity, and full unit tests.
+### Practical review checklist
+- Is the explanation easy for a beginner to understand?
+- Are examples familiar, correctly written, and sufficient to practice the point?
+- Does each exercise teach the stated objective?
+- Does every quiz answer match the lesson text, with no ambiguous or duplicate options?
+- Keep internal editorial notes out of learner-facing lesson text.
+- Do not require citations, page numbers, or a bibliography for these beginner lessons.
 
 ## Integration verification
 
@@ -78,13 +80,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 ## Current status
 
 - Runtime/CI: automated suite passed on commit `6ed2c74fc1629102320d8cca3136ecc58edc5e12`; the latest lesson-data edits need a fresh CI result.
-- Course 2: four dialogue-to-quiz findings resolved; full editorial/source review still pending.
-- Course 3: lesson-specific source/example findings listed above remain unresolved.
+- Course 2: four dialogue-to-quiz findings resolved; practical editorial review still pending.
+- Course 3: lesson-specific clarity and example improvements listed above remain unresolved.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
-
-### Optional internal reference note (not a learner-facing requirement)
-- Diyako Hashemi, *پوختەی ڕێنووس و خاڵبەندی*, PDF edition hosted by Fêrgeya Zimanê Kurdî: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_4.pdf
-- A separate source register in this repository records this as the 2024 PDF edition and warns that a later 2025 print edition differs in pagination. Do not transfer page numbers from one edition to the other. This is internal context only; course lessons do not need citations or page references.
-- The current repository tree does not contain a bundled PDF/source document, and this review pass has not verified the relevant pages for Course 3 lessons 4, 6, 7, 9, 10, 11, or 12. Therefore this is a lead for direct source inspection, not evidence that any of those rules/examples are validated.
-- Next source-review step: inspect the actual PDF pages for the matching headings, capture edition plus printed page and PDF page separately, and only then replace generic examples. Until that happens, affected lessons remain drafts only until their clarity, examples, and quiz alignment are reviewed.
