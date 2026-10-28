@@ -51,6 +51,32 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertLess(question["answer"], len(question["options"]))
                     self.assertTrue(question["explanation"].strip())
 
+    def test_daily_conversation_quiz_prompts_are_not_exact_duplicates(self):
+        filenames = (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
+        )
+        seen = {}
+        for filename in filenames:
+            for lesson in self._load_course_data(filename):
+                for question in lesson["quiz"]:
+                    prompt = " ".join(
+                        question["q"].casefold().strip().rstrip("؟?!،.").split()
+                    )
+                    with self.subTest(lesson=lesson["number"], prompt=prompt):
+                        self.assertNotIn(
+                            prompt,
+                            seen,
+                            msg=(
+                                f"Repeated quiz prompt in lessons {seen.get(prompt)} "
+                                f"and {lesson['number']}: {question['q']}"
+                            ),
+                        )
+                        seen[prompt] = lesson["number"]
+
     def test_unified_orthography_drafts_have_complete_practice_structure(self):
         lessons = self._load_course_data("unified_orthography_lessons_01_12.json")
         self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 13)))
