@@ -178,6 +178,52 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     query.message.reply_text.await_args.args[0],
                 )
 
+    async def test_namespaced_course_quiz_callback_preserves_full_lesson_key(self):
+        lesson = "daily_conversation_01"
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=88))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=[lesson]):
+            await bot.start_quiz(update, context)
+
+        self.assertEqual(context.user_data["quiz"]["lesson"], lesson)
+        self.assertEqual(context.user_data["quiz"]["questions"], bot.QUIZ_DATA[lesson])
+        query.answer.assert_awaited_once()
+
+    async def test_unified_orthography_quiz_callback_preserves_full_lesson_key(self):
+        lesson = "unified_orthography_01"
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=89))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=[lesson]):
+            await bot.start_quiz(update, context)
+
+        self.assertEqual(context.user_data["quiz"]["lesson"], lesson)
+        self.assertEqual(context.user_data["quiz"]["questions"], bot.QUIZ_DATA[lesson])
+        query.answer.assert_awaited_once()
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
