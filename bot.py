@@ -37,6 +37,7 @@ from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
+from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -130,6 +131,32 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "answer": options[correct_index],
                 "explanation": question.get("explanation", ""),
             })
+
+
+# Load Courses 2 and 3 into the isolated runtime model. Their manifest statuses
+# remain draft_for_review until human language/source review is complete.
+CONVERSATION_DRAFTS = [
+    load_json("course_data/daily_conversation_lessons_01_06.json"),
+    load_json("course_data/daily_conversation_lessons_07_12.json"),
+]
+CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
+    "daily_conversation", CONVERSATION_DRAFTS
+)
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json(
+    "course_data/unified_orthography_lessons_01_12.json"
+)
+UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(
+    UNIFIED_ORTHOGRAPHY_DRAFT
+)
+for draft_lessons, draft_quizzes in (
+    (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
+    (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+):
+    overlap = set(LESSON_DATA).intersection(draft_lessons)
+    if overlap:
+        raise ValueError(f"Duplicate lesson IDs across courses: {sorted(overlap)}")
+    LESSON_DATA.update(draft_lessons)
+    QUIZ_DATA.update(draft_quizzes)
 
 # Optional local image assets. Keep the original lesson text available if an image is absent.
 LESSON_INFOGRAPHICS = {
