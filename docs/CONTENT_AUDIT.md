@@ -632,3 +632,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - During review of lessons 17–22, lesson 18's analysis of **کەژیار** used the segment **کەو / یار**, even though the target word is written **کەژیار** and does not contain **و** in that segment. Corrected the proposed segmentation and its related table entry to **کەژ / یار** and changed the letter-specific note from **و** to **ژ**. This corrects an internal text mismatch; the phonological segmentation itself still requires source/pronunciation verification.
 - Lesson 16's **خۆر** → **شوان** comparison correction is recorded above. No runtime activation or production change was made. Current-head CI remains unverified.
+
+
+## Lesson 18 quiz consistency follow-up — 28 October 2026
+
+- Cross-checked the lesson 18 quiz after correcting the draft and found it still used the obsolete **کەو / یار** wording. Updated the quiz question and explanation to **کەژ / یار** and removed the incorrect claim about the letter **و** from the explanation.
+- Re-read the quiz JSON and parsed the lesson 18 question: question and explanation now agree with the edited draft; the obsolete segment no longer appears in the quiz file. This is a consistency correction only; the proposed syllabification still requires expert/source verification.
