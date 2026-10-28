@@ -46,6 +46,21 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertTrue(questions)
                     self.assertTrue(all(q.get("question") and q.get("explanation") for q in questions))
 
+    def test_every_loaded_quiz_has_valid_questions_and_answer_options(self):
+        for lesson_id, questions in bot.QUIZ_DATA.items():
+            with self.subTest(lesson=lesson_id):
+                self.assertIn(lesson_id, bot.LESSON_DATA)
+                self.assertTrue(questions)
+                for question_number, question in enumerate(questions, start=1):
+                    with self.subTest(question=question_number):
+                        self.assertTrue(question.get("question", "").strip())
+                        options = question.get("options")
+                        self.assertIsInstance(options, list)
+                        self.assertGreaterEqual(len(options), 2)
+                        self.assertTrue(all(isinstance(option, str) and option.strip() for option in options))
+                        self.assertIn(question.get("answer"), options)
+                        self.assertTrue(question.get("explanation", "").strip())
+
     def test_all_48_conversation_lessons_stay_locked_even_with_fake_completion(self):
         # A stale database row or a crafted callback must not bypass the
         # course-level activation gate, even if every draft lesson appears done.
