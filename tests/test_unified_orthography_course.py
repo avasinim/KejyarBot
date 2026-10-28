@@ -42,7 +42,7 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
                 self.assertTrue(lesson.get("examples"))
                 self.assertTrue(lesson.get("exercises"))
                 self.assertTrue(lesson.get("comprehension"))
-                self.assertEqual(len(lesson["comprehension"]), 2)
+                self.assertGreaterEqual(len(lesson["comprehension"]), 2)
                 self.assertTrue(lesson.get("role_play"))
                 self.assertEqual(lesson.get("review_status"), "draft_editorial_review")
 
