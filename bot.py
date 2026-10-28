@@ -140,6 +140,7 @@ CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
     load_json("course_data/daily_conversation_lessons_07_30.json"),
     load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
 ]
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
