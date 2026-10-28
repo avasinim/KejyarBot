@@ -304,6 +304,35 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                         )
 
 
+    def test_source_quiz_answers_map_to_the_exact_runtime_correct_options(self):
+        course_files = (
+            ("daily_conversation", (
+                "daily_conversation_lessons_01_06.json",
+                "daily_conversation_lessons_07_30.json",
+                "daily_conversation_lessons_31_36.json",
+                "daily_conversation_lessons_37_42.json",
+                "daily_conversation_lessons_43_48.json",
+            )),
+            ("unified_orthography", ("unified_orthography_lessons_01_12.json",)),
+        )
+        for course_id, filenames in course_files:
+            for filename in filenames:
+                for lesson in self._load_course_data(filename):
+                    lesson_id = f"{course_id}_{lesson['number']:02d}"
+                    runtime_questions = bot.QUIZ_DATA[lesson_id]
+                    source_questions = lesson["quiz"]
+                    with self.subTest(lesson=lesson_id):
+                        self.assertEqual(len(runtime_questions), len(source_questions))
+                        for source, runtime in zip(source_questions, runtime_questions):
+                            with self.subTest(question=source["q"]):
+                                self.assertEqual(runtime["question"], source["q"])
+                                self.assertEqual(runtime["options"], source["options"])
+                                self.assertEqual(
+                                    runtime["answer"], source["options"][source["answer"]]
+                                )
+                                self.assertEqual(runtime["explanation"], source["explanation"])
+
+
     def test_daily_conversation_role_plays_are_not_generic_duplicates(self):
         filenames = (
             "daily_conversation_lessons_01_06.json",
