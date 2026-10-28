@@ -12,7 +12,7 @@
 ## ڕێکخستنی Railway
 
 1. لە Railway service ـێکی Python worker لە repository ـەکە دروست بکە، بەڵام تا پشکنین و پەسەندکردنی deployment، auto-deploy لە `main` چالاک مەکە.
-2. فایلەی `railway.toml` فرمانی دەستپێکردن، restart on failure و یەک replica دیاری دەکات.
+2. فایلەی `railway.toml` فرمانی دەستپێکردن، restart policyی `ALWAYS` و یەک replica دیاری دەکات؛ Railway هەوڵ دەدات worker دووبارە هەڵبکاتەوە ئەگەر بوەستێت.
 3. لە Settings ـی service ـەکە، Volume ـێک زیاد بکە و Mount Path ـەکە بکە بە `/data`. بێ volume، داتابەیسی SQLite لە نێوان redeploy/restart ـەکاندا دەتوانێت لەدەست بچێت.
 4. لە Variables ـی service ـەکە دابنێ:
    - `TELEGRAM_BOT_TOKEN` = تۆکنی بۆتی تاقیکردنەوە (لە deploymentی بەرهەمهێناندا تەنها دوای ڕەزامەندی، تۆکنی بەرهەمهێنان).
