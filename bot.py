@@ -243,14 +243,18 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
-    if lesson == ORDER[-1]:
-        last_lesson_number = lesson.removeprefix("وانە_")
-        keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
-        ]])
-        await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+    next_lesson = next_course_lesson(lesson)
+    if next_lesson is None:
+        # Preserve the legacy Course 1 quiz callback contract.
+        if lesson.startswith("وانە_"):
+            last_lesson_number = lesson.removeprefix("وانە_")
+            keyboard = InlineKeyboardMarkup([[
+                InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
+            ]])
+            await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        else:
+            await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
-        next_lesson = ORDER[ORDER.index(lesson) + 1]
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
