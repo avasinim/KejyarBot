@@ -23,11 +23,19 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertEqual(course["status"], "active")
         self.assertEqual(course["lesson_ids"], [f"وانە_{i}" for i in range(1, 23)])
 
-    def test_new_courses_are_not_exposed_as_runtime_lessons_yet(self):
-        for course_id in ("daily_conversation", "unified_orthography", "grammar"):
+    def test_courses_two_and_three_are_wired_but_not_activated(self):
+        for course_id in ("daily_conversation", "unified_orthography"):
             with self.subTest(course=course_id):
-                self.assertEqual(self.by_id[course_id]["status"], "planned")
-                self.assertEqual(self.by_id[course_id]["lesson_ids"], [])
+                course = self.by_id[course_id]
+                self.assertEqual(course["status"], "draft_for_review")
+                self.assertEqual(
+                    course["lesson_ids"],
+                    [f"{course_id}_{number:02d}" for number in range(1, 13)],
+                )
+        self.assertEqual(self.by_id["grammar"]["status"], "planned")
+        self.assertEqual(self.by_id["grammar"]["lesson_ids"], [])
+        self.assertIn("adapt_conversation_lessons", self.bot_source)
+        self.assertIn("adapt_unified_orthography_lessons", self.bot_source)
 
     def test_legacy_reward_and_progress_keys_are_still_used(self):
         # The legacy lesson identifiers are deliberately not renamed during
@@ -36,7 +44,7 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertIn("complete_lesson_with_rewards(user_id, lesson)", self.bot_source)
         self.assertIn("complete_quiz_with_rewards(update.effective_user.id, lesson)", self.bot_source)
 
-    def test_course_runtime_does_not_claim_unintegrated_courses_are_ready(self):
+    def test_course_runtime_keeps_draft_courses_behind_activation_gate(self):
         self.assertIn('lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]', self.bot_source)
         self.assertIn('"ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە', self.bot_source)
 
