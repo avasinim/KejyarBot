@@ -177,7 +177,7 @@ async def send_lesson_infographic(message, lesson):
             logger.exception("Could not send lesson infographic for %s", lesson)
     # Missing/unreadable image must never prevent the lesson text from being sent.
 
-ORDER = list(LESSON_DATA.keys())
+ORDER = [lesson_id for lesson_id in LESSON_DATA if lesson_id.startswith("وانە_")]
 COURSE_LESSON_ORDER = {course['id']: visible_course_lessons(course, LESSON_DATA) for course in COURSES}
 LESSON_COURSE = {lesson_id: course_id for course_id, ids in COURSE_LESSON_ORDER.items() for lesson_id in ids}
 MENU = ReplyKeyboardMarkup(
