@@ -8,28 +8,10 @@
       "description": "٢٢ وانە؛ بنەماکانی پیت و دەنگ و ڕێنووسی سەرەتایی.",
       "status": "active",
       "lesson_ids": [
-        "وانە_1",
-        "وانە_2",
-        "وانە_3",
-        "وانە_4",
-        "وانە_5",
-        "وانە_6",
-        "وانە_7",
-        "وانە_8",
-        "وانە_9",
-        "وانە_10",
-        "وانە_11",
-        "وانە_12",
-        "وانە_13",
-        "وانە_14",
-        "وانە_15",
-        "وانە_16",
-        "وانە_17",
-        "وانە_18",
-        "وانە_19",
-        "وانە_20",
-        "وانە_21",
-        "وانە_22"
+        "وانە_1", "وانە_2", "وانە_3", "وانە_4", "وانە_5", "وانە_6",
+        "وانە_7", "وانە_8", "وانە_9", "وانە_10", "وانە_11", "وانە_12",
+        "وانە_13", "وانە_14", "وانە_15", "وانە_16", "وانە_17", "وانە_18",
+        "وانە_19", "وانە_20", "وانە_21", "وانە_22"
       ]
     },
     {
@@ -37,21 +19,13 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "١٢ وانەی وتووێژ؛ ناوەڕۆک پەیوەست کراوە، بەڵام پێش چالاککردن پێویستی بە پشکنینی زمانی و تاقیکردنەوەی ڕاستەوخۆ هەیە.",
-      "status": "draft_for_review",
+      "description": "١٢ وانەی وتووێژی ڕۆژانە؛ ئامادەی تاقیکردنەوە لە بۆتی تاقیکردنەوە.",
+      "status": "active",
       "lesson_ids": [
-        "daily_conversation_01",
-        "daily_conversation_02",
-        "daily_conversation_03",
-        "daily_conversation_04",
-        "daily_conversation_05",
-        "daily_conversation_06",
-        "daily_conversation_07",
-        "daily_conversation_08",
-        "daily_conversation_09",
-        "daily_conversation_10",
-        "daily_conversation_11",
-        "daily_conversation_12"
+        "daily_conversation_01", "daily_conversation_02", "daily_conversation_03",
+        "daily_conversation_04", "daily_conversation_05", "daily_conversation_06",
+        "daily_conversation_07", "daily_conversation_08", "daily_conversation_09",
+        "daily_conversation_10", "daily_conversation_11", "daily_conversation_12"
       ]
     },
     {
@@ -59,21 +33,13 @@
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: ڕێنووسی یەکگرتووی زمانی کوردی",
-      "description": "١٢ وانەی ڕێنووسی یەکگرتوو؛ هەموو وانەکان هێشتا پێویستیان بە پشکنینی سەرچاوە هەیە.",
-      "status": "draft_for_review",
+      "description": "١٢ وانەی ڕێنووسی یەکگرتوو؛ ناوەڕۆک لە بۆتی تاقیکردنەوەدا بەردەستە.",
+      "status": "active",
       "lesson_ids": [
-        "unified_orthography_01",
-        "unified_orthography_02",
-        "unified_orthography_03",
-        "unified_orthography_04",
-        "unified_orthography_05",
-        "unified_orthography_06",
-        "unified_orthography_07",
-        "unified_orthography_08",
-        "unified_orthography_09",
-        "unified_orthography_10",
-        "unified_orthography_11",
-        "unified_orthography_12"
+        "unified_orthography_01", "unified_orthography_02", "unified_orthography_03",
+        "unified_orthography_04", "unified_orthography_05", "unified_orthography_06",
+        "unified_orthography_07", "unified_orthography_08", "unified_orthography_09",
+        "unified_orthography_10", "unified_orthography_11", "unified_orthography_12"
       ]
     },
     {
@@ -81,7 +47,7 @@
       "key": "course_grammar",
       "order": 4,
       "title": "کۆرسی ٤: ڕێزمان",
-      "description": "لە پلانداناندا؛ وانەکان دوای پێداچوونەوەی سەرچاوەیی زیاد دەکرێن.",
+      "description": "لە پلانداناندا؛ وانەکان دوای ئامادەکردنی ناوەڕۆک زیاد دەکرێن.",
       "status": "planned",
       "lesson_ids": []
     }
