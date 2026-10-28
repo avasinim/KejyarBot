@@ -414,6 +414,38 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تاقیکردنەوە", button.text)
 
 
+    async def test_final_lesson_completion_uses_namespaced_quiz_callback_for_each_new_course(self):
+        for course_id in ("daily_conversation", "unified_orthography"):
+            final_lesson = bot.COURSE_LESSON_ORDER[course_id][-1]
+            with self.subTest(course=course_id):
+                query = SimpleNamespace(
+                    data=f"finish_{final_lesson}",
+                    from_user=SimpleNamespace(id=12345),
+                    answer=AsyncMock(),
+                    message=SimpleNamespace(reply_text=AsyncMock()),
+                )
+                update = SimpleNamespace(callback_query=query)
+                context = SimpleNamespace(user_data={})
+
+                with (
+                    patch.object(bot, "can_open", return_value=True),
+                    patch.object(bot, "get_user_level", side_effect=["A1.1 🌱", "A1.1 🌱"]),
+                    patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+                    patch.object(bot, "check_badges"),
+                    patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+                ):
+                    await bot.finish_lesson(update, context)
+
+                complete.assert_called_once_with(12345, final_lesson)
+                query.answer.assert_awaited_once()
+                reply = query.message.reply_text.await_args
+                self.assertEqual(
+                    reply.kwargs["reply_markup"].inline_keyboard[0][0].callback_data,
+                    f"quiz_{final_lesson}_start",
+                )
+                self.assertIn("تاقیکردنەوە", reply.args[0])
+
     async def test_explanation_uses_real_line_breaks(self):
         update, context, query = self.make_context("answer_0")
         context.user_data["quiz"]["questions"][0]["explanation"] = "ئەمە ڕوونکردنەوەیە."
