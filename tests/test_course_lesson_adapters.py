@@ -26,6 +26,8 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertEqual(list(lessons), expected)
         self.assertEqual(list(quizzes), expected)
         self.assertTrue(all(lessons[key]["content"] for key in expected))
+        self.assertTrue(all(lessons[key]["review_status"] == "draft_source_check_required" for key in expected))
+        self.assertTrue(all("تێبینیی سەرچاوە" in lessons[key]["content"] for key in expected))
 
     def test_unified_orthography_adapter_loads_twelve_draft_lessons(self):
         payload = load_payload("course_data/unified_orthography_lessons_01_12.json")
