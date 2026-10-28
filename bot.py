@@ -555,6 +555,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "planned": "لە پلانداناندا",
             "active": "چالاک",
             "draft": "پێش‌نووس",
+            "draft_for_review": "لە پێداچوونەوەدایە",
         }
         status = status_labels.get(course.get("status", "planned"), "لە پلانداناندا")
         await query.message.reply_text(
