@@ -641,18 +641,31 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
         buttons = []
-        for lesson in ORDER:
-            if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
+        # Show quizzes from every active course, in manifest/course lesson order.
+        # Keep Course 1's legacy numeric callback IDs stable for existing users.
+        for course in COURSES:
+            course_id = course.get("id")
+            if not course_is_active(course_id):
                 continue
-            # Preserve numeric legacy callbacks; use the complete namespaced key
-            # for future courses so underscores are never truncated.
-            quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
-            buttons.append([
-                InlineKeyboardButton(
-                    f"📝 تاقیکردنەوەی {lesson}",
-                    callback_data=f"quiz_{quiz_lesson_id}_start",
+            for lesson in COURSE_LESSON_ORDER.get(course_id, []):
+                if (
+                    not QUIZ_DATA.get(lesson)
+                    or lesson not in completed
+                    or not quiz_is_available(lesson)
+                ):
+                    continue
+                quiz_lesson_id = (
+                    lesson.removeprefix("وانە_")
+                    if lesson.startswith("وانە_")
+                    else lesson
                 )
-            ])
+                lesson_title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                buttons.append([
+                    InlineKeyboardButton(
+                        f"📝 {lesson_title}",
+                        callback_data=f"quiz_{quiz_lesson_id}_start",
+                    )
+                ])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
