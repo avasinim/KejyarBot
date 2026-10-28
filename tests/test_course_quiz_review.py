@@ -16,6 +16,10 @@ class CourseOneQuizReviewTests(unittest.TestCase):
         self.assertIn("وانە_20", COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED)
         self.assertFalse(quiz_is_available("وانە_20"))
 
+    def test_duplicate_title_lesson_12_is_flagged_for_review(self):
+        self.assertIn("وانە_12", COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED)
+        self.assertFalse(quiz_is_available("وانە_12"))
+
     def test_unflagged_lesson_remains_available(self):
         self.assertTrue(quiz_is_available("وانە_1"))
         self.assertTrue(quiz_is_available("وانە_22"))
