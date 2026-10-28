@@ -42,6 +42,12 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertTrue(all(quizzes[key] for key in expected))
         self.assertTrue(all(question.get("explanation") for key in expected for question in quizzes[key]))
         self.assertTrue(any("خاڵەکانی پشکنین" in lessons[key]["content"] for key in expected))
+        for lesson in payload["lessons"]:
+            if lesson.get("review_findings"):
+                key = f"unified_orthography_{lesson['number']:02d}"
+                for finding in lesson["review_findings"]:
+                    with self.subTest(lesson=lesson["number"], finding=finding):
+                        self.assertIn(finding, lessons[key]["content"])
 
     def test_course_one_legacy_keys_are_not_used(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", self.payloads)
