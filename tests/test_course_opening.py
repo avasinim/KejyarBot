@@ -6,6 +6,32 @@ import bot
 
 
 class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
+    async def test_course_menu_shows_activation_status_before_selection(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(text="📚 وانەکان", reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)):
+            await bot.message(update, SimpleNamespace(user_data={}))
+
+        message.reply_text.assert_awaited_once()
+        kwargs = message.reply_text.await_args.kwargs
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        labels = [row[0].text for row in keyboard]
+        self.assertEqual(len(labels), 4)
+        self.assertIn("🟢 چالاک", labels[0])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[1])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[2])
+        self.assertIn("⚪ لە پلانداناندا", labels[3])
+        self.assertEqual(
+            [row[0].callback_data for row in keyboard],
+            ["course_orthography_basic", "course_daily_conversation",
+             "course_unified_orthography", "course_grammar"],
+        )
+
     async def test_planned_course_does_not_expose_legacy_lessons(self):
         query = SimpleNamespace(
             data="course_daily_conversation",
@@ -49,6 +75,54 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(keyboard), 22)
         callback_ids = [row[0].callback_data for row in keyboard]
         self.assertEqual(callback_ids, [f"open_lesson_وانە_{n}" for n in range(1, 23)])
+        labels = [row[0].text for row in keyboard]
+        self.assertEqual(labels[0], "🔓 وانەی ١: ئەلفبێی زمانی کوردی")
+        self.assertEqual(labels[-1].split(":")[0], "🔓 وانەی ٢٢")
+
+    async def test_quiz_catalog_uses_readable_lesson_numbers_and_stable_callbacks(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(
+            text="📝 تاقیکردنەوەکان",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)), patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
+            await bot.message(update, context)
+
+        message.reply_text.assert_awaited_once()
+        kwargs = message.reply_text.await_args.kwargs
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(keyboard[0][0].text, "📝 تاقیکردنەوەی وانەی ١")
+        self.assertEqual(keyboard[0][0].callback_data, "quiz_1_start")
+        self.assertNotIn("وانە_1", keyboard[0][0].text)
+
+    async def test_learning_path_does_not_show_internal_lesson_ids(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(
+            text="🧭 ڕێگای فێربوون",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)), patch.object(bot, "get_completed_lessons", return_value=[]), patch.object(bot, "can_open", side_effect=lambda user_id, lesson: lesson == "وانە_1"):
+            await bot.message(update, context)
+
+        message.reply_text.assert_awaited_once()
+        reply = message.reply_text.await_args.args[0]
+        self.assertIn("وانەی ١:", reply)
+        self.assertNotIn("وانە_1:", reply)
+        self.assertIn("وانەی ٢٢:", reply)
 
 
 if __name__ == "__main__":

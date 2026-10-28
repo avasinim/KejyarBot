@@ -32,7 +32,7 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(self.orthography["lesson_count"], 22)
 
         expected_drafts = {
-            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 13)],
+            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 49)],
             "unified_orthography": [f"unified_orthography_{n:02d}" for n in range(1, 13)],
         }
         for course_id, expected_ids in expected_drafts.items():
@@ -46,13 +46,16 @@ class CourseCatalogTests(unittest.TestCase):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
         self.assertEqual(conversation["status"], "draft_for_review")
-        self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 13)])
+        self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 49)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
         self.assertEqual(self.conversation_plan["lesson_status"], "titles_and_sequence_are_proposals_only")
         for filename, expected_numbers in (
             ("daily_conversation_lessons_01_06.json", list(range(1, 7))),
-            ("daily_conversation_lessons_07_12.json", list(range(7, 13))),
+            ("daily_conversation_lessons_07_30.json", list(range(7, 31))),
+            ("daily_conversation_lessons_31_36.json", list(range(31, 37))),
+            ("daily_conversation_lessons_37_42.json", list(range(37, 43))),
+            ("daily_conversation_lessons_43_48.json", list(range(43, 49))),
         ):
             with self.subTest(file=filename):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
@@ -61,14 +64,17 @@ class CourseCatalogTests(unittest.TestCase):
                 self.assertEqual([lesson["number"] for lesson in draft["lessons"]], expected_numbers)
                 self.assertTrue(all(lesson.get("dialogue") and lesson.get("vocabulary") and lesson.get("exercises") and lesson.get("quiz") for lesson in draft["lessons"]))
         proposed = self.conversation_plan["proposed_sequence"]
-        self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 13)))
+        self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 49)))
         self.assertTrue(all(lesson["working_title"] and lesson["focus"] for lesson in proposed))
         self.assertEqual(self.conversation_plan["source_status"], "source_text_not_yet_attached_to_this_plan")
 
     def test_daily_conversation_drafts_have_valid_quiz_answers_and_corrected_phrases(self):
         for filename in (
             "daily_conversation_lessons_01_06.json",
-            "daily_conversation_lessons_07_12.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
         ):
             with self.subTest(file=filename):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
@@ -87,7 +93,7 @@ class CourseCatalogTests(unittest.TestCase):
                         self.assertLess(question["answer"], len(question["options"]))
                         self.assertEqual(len(question["options"]), len(set(question["options"])))
 
-        with (ROOT / "course_data" / "daily_conversation_lessons_07_12.json").open(encoding="utf-8") as handle:
+        with (ROOT / "course_data" / "daily_conversation_lessons_07_30.json").open(encoding="utf-8") as handle:
             draft = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first_draft = json.load(handle)
@@ -105,6 +111,37 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(lesson7["dialogue"][1][1], "بەیانی باش، کەژیار! بەڵێ، نان و پەنیرم خواردووە و چایم خواردووەتەوە. تۆ چی؟")
         self.assertNotIn("dialogue[1][1]", lesson7)
         self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
+
+    def test_conversation_titles_and_review_gates_match_the_48_lesson_plan(self):
+        with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
+            first = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_07_30.json").open(encoding="utf-8") as handle:
+            later = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_31_36.json").open(encoding="utf-8") as handle:
+            middle = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_37_42.json").open(encoding="utf-8") as handle:
+            later_middle = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_43_48.json").open(encoding="utf-8") as handle:
+            final = json.load(handle)
+        lessons = first["lessons"] + later["lessons"] + middle["lessons"] + later_middle["lessons"] + final["lessons"]
+        planned = self.conversation_plan["proposed_sequence"]
+        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 49)))
+        self.assertEqual(
+            [lesson["title"] for lesson in lessons],
+            [lesson["working_title"] for lesson in planned],
+        )
+        self.assertTrue(all(lesson.get("review_status") == "draft_editorial_review" for lesson in lessons))
+        self.assertEqual(self.catalog[1]["status"], "draft_for_review")
+        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 48)
+        for lesson in lessons:
+            self.assertTrue(lesson["dialogue"])
+            self.assertTrue(lesson["vocabulary"])
+            self.assertTrue(lesson["exercises"])
+            self.assertTrue(lesson["quiz"])
+            for question in lesson["quiz"]:
+                self.assertTrue(question.get("explanation", "").strip())
+                self.assertEqual(len(question["options"]), len(set(question["options"])))
+                self.assertTrue(all(isinstance(option, str) and option.strip() for option in question["options"]))
 
     def test_no_lesson_is_accidentally_assigned_to_multiple_courses(self):
         all_ids = [

@@ -1,7 +1,7 @@
 """Pure helpers for keeping lesson identity and unlocking scoped to one course.
 
 The legacy Course 1 keys are intentionally preserved. New courses use namespaced
-keys, e.g. conversation_01 and unified_01, to avoid collisions in SQLite progress.
+keys, e.g. daily_conversation_01 and unified_orthography_01, to avoid collisions in SQLite progress.
 """
 import re
 

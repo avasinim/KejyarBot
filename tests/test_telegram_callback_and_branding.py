@@ -35,10 +35,10 @@ class TelegramCallbackAndBrandingTests(unittest.TestCase):
 
     def test_lesson_header_and_infographic_caption_use_kejyars_correct_name(self):
         source = (ROOT / "bot.py").read_text(encoding="utf-8")
-        self.assertIn('f"🌿 کەژیار  •  وانەی {kurdish_digits(number)}\\n"', source)
         self.assertIn('caption="🌿 کەژیار | وانەی ١: پیتەکان و دەنگەکان"', source)
-        self.assertNotIn('f"🌿 کەویار  •  وانەی {kurdish_digits(number)}\\n"', source)
-        self.assertNotIn('caption="🌿 کەویار | وانەی ١: پیتەکان و دەنگەکان"', source)
+        self.assertNotIn("کەویار", source)
+        self.assertNotIn("╭━━━━━━━━━━━━━━━━━━╮", source)
+        self.assertNotIn('"content": f"📚 {ORTHOGRAPHY_COURSE[', source)
 
 
 if __name__ == "__main__":

@@ -146,6 +146,33 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[2], 20)
         self.assertEqual(user[7], 1)
 
+    def test_namespaced_course_rewards_do_not_collide_with_legacy_course_one(self):
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "daily_conversation_01"))
+        self.assertFalse(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)
+        self.assertEqual(user[1], 20)
+        self.assertEqual(user[8], 10)
+        self.assertEqual(user[9], 2)
+        self.assertEqual(
+            set(database.get_completed_lessons(12345)),
+            {"وانە_1", "daily_conversation_01"},
+        )
+
+    def test_namespaced_quiz_rewards_do_not_collide_with_legacy_course_one(self):
+        self.assertTrue(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        self.assertTrue(database.complete_quiz_with_rewards(12345, "daily_conversation_01"))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 40)
+        self.assertEqual(user[1], 40)
+        self.assertEqual(user[7], 2)
+        self.assertEqual(
+            set(user[10].split(",")),
+            {"وانە_1", "daily_conversation_01"},
+        )
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)

@@ -95,11 +95,9 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     if original:
         title = original["title"]
         lesson_body = original["content"].strip()
+        # The course and lesson headers are already shown by the bot UI.
+        # Keep the lesson message focused on the supplied lesson text.
         lesson_card = (
-            "╭━━━━━━━━━━━━━━━━━━╮\n"
-            f"🌿 کەژیار  •  وانەی {kurdish_digits(number)}\n"
-            f"📖 {title}\n"
-            "╰━━━━━━━━━━━━━━━━━━╯\n\n"
             f"{lesson_body}\n\n"
             "━━━━━━━━━━━━━━━━━━\n"
             "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\n"
@@ -110,7 +108,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         lesson_card = "⚠️ دەقی ئەسڵی ئەم وانەیە هێشتا لە فایلەکەدا نییە."
     LESSON_DATA[lesson_key] = {
         "title": title,
-        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\n\n{lesson_card}",
+        "content": lesson_card,
     }
     # Prefix each label with its lesson number so repeated titles remain independently accessible.
     LESSON_BUTTONS[f"وانەی {kurdish_digits(number)}: {title}"] = lesson_key
@@ -138,7 +136,10 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
 # remain draft_for_review until human language/source review is complete.
 CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
-    load_json("course_data/daily_conversation_lessons_07_12.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
 ]
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
@@ -197,6 +198,17 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+def active_course_lessons():
+    """Return lessons only from explicitly active courses, in course order."""
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
+
+
 def can_open(user_id, lesson):
     course_id = LESSON_COURSE.get(lesson)
     if course_id is None or not course_is_active(course_id):
@@ -216,9 +228,21 @@ def next_course_lesson(lesson):
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        if not course_id or not course_is_active(course_id):
+            continue
+        course_order = COURSE_LESSON_ORDER.get(course_id, [])
+        if lesson not in course_order:
+            continue
+        number = course_order.index(lesson) + 1
+        if course_id == "orthography_basic":
+            # Preserve the established Course 1 badge wording.
+            badge = f"🏅 کۆرسی ڕێنووسی — وانەی {number}"
+        else:
+            course = next((item for item in COURSES if item.get("id") == course_id), None)
+            course_title = course.get("title", "کۆرس") if course else "کۆرس"
+            badge = f"🏅 {course_title} — وانەی {number}"
+        add_badge(user_id, badge)
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -298,14 +322,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
+        course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(next_lesson), [])
+        next_number = course_order.index(next_lesson) + 1 if next_lesson in course_order else 0
+        next_label = f"وانەی {kurdish_digits(next_number)}: {next_title}"
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                f"➡️ دەستپێکردنی {next_title}",
+                f"➡️ دەستپێکردنی {next_label}",
                 callback_data=f"next_lesson_{next_lesson}"
             )
         ]])
         await query.message.reply_text(
-            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
+            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_label}",
             reply_markup=keyboard
         )
     # Generate event-specific narration in the configured Kejyar voice.
@@ -568,11 +595,11 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     completed = set(get_completed_lessons(query.from_user.id))
     keyboard_rows = []
-    for lesson in lesson_ids:
+    for number, lesson in enumerate(lesson_ids, start=1):
         status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
         title = LESSON_DATA[lesson]["title"]
         keyboard_rows.append([InlineKeyboardButton(
-            f"{status} {lesson}: {title}",
+            f"{status} وانەی {kurdish_digits(number)}: {title}",
             callback_data=f"open_lesson_{lesson}",
         )])
     await query.message.reply_text(
@@ -608,13 +635,22 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
+        status_labels = {
+            "active": "🟢 چالاک",
+            "draft_for_review": "🟡 لە پێداچوونەوەدایە",
+            "draft": "🟡 پێش‌نوس",
+            "planned": "⚪ لە پلانداناندا",
+        }
         keyboard_rows = [
-            [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
+            [InlineKeyboardButton(
+                f"{status_labels.get(course.get('status'), '⚪ چالاک نییە')} · {course['title']}",
+                callback_data=f"course_{course['id']}",
+            )]
             for course in COURSES
         ]
         await update.message.reply_text(
             "📚 کۆرسەکانی کەژیار\n\n"
-            "کۆرسەکان جیاوازن. کۆرسی یەکەم ٢٢ وانەی ڕێنووسی سەرەتایی هەیە؛ کۆرسەکانی دیکە تا ئامادەبوونی وانە ڕێکخراوەکان بە ڕوونی نیشان دراون.",
+            "دۆخی هەر کۆرسێک لەسەر دوگمەکە دیارە. تەنها کۆرسی چالاک وانەکانی دەکرێنەوە؛ کۆرسەکانی دیکە هێشتا لە پێداچوونەوە یان پلانداناندان.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
@@ -641,15 +677,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
         buttons = []
-        for lesson in ORDER:
+        for lesson in active_course_lessons():
             if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
                 continue
             # Preserve numeric legacy callbacks; use the complete namespaced key
             # for future courses so underscores are never truncated.
             quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+            course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(lesson), [])
+            lesson_number = course_order.index(lesson) + 1 if lesson in course_order else 0
             buttons.append([
                 InlineKeyboardButton(
-                    f"📝 تاقیکردنەوەی {lesson}",
+                    f"📝 تاقیکردنەوەی وانەی {kurdish_digits(lesson_number)}",
                     callback_data=f"quiz_{quiz_lesson_id}_start",
                 )
             ])
@@ -686,9 +724,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         lines = []
-        for lesson in ORDER:
+        for lesson in active_course_lessons():
             status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
+            course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(lesson), [])
+            lesson_number = course_order.index(lesson) + 1 if lesson in course_order else 0
+            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+            lines.append(f"{status} — وانەی {kurdish_digits(lesson_number)}: {title}")
         await update.message.reply_text("\n".join(lines))
         return
 
