@@ -65,7 +65,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 9 | Particles and joined spelling | Quiz now checks the particle «لە» in «من لە ماڵم» and distinguishes it from the subject «من» and place noun «ماڵ»; verify join/separation rules against the course's intended convention before release. |
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; quiz now checks the derived-word example «بەهێز» while contrasting the compound «کتێب‌خانە». Final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Replaced the numeral-only quiz with a direct question on «زۆر» in «زۆر خێرا», aligning the check with the lesson's adverb example; loanword and numeral coverage still need review. |
-| 11 | Adverbs, loanwords and compound numerals | Added «تەلەفۆن» as a loanword and «سی و دوو» as a compound numeral; check the lesson gives enough context for both. |
+| 11 | Adverbs, loanwords and compound numerals | Added sentence-level contexts for «زۆر خێرا», «ئەمڕۆ», and «تەلەفۆن»; numeral examples «بیست و یەک» and «سی و دوو» now explicitly remind learners to follow one course convention. The exact numeral/loanword spelling convention still needs final review. |
 | 12 | Final review | Quiz now asks learners to correct «رۆژ» to «ڕۆژ», directly testing one of the explicit corrections in the practice passage; final consistency check remains. |
 | 12 | Final review | Added a short passage with three explicit corrections («كورد» → «کورد», «ياری» → «یاری», «رۆژ» → «ڕۆژ») and an answer key; final review against the course's spelling rules remains. |
 
