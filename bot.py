@@ -539,7 +539,6 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         status_labels = {
             "planned": "لە پلانداناندا",
             "draft": "پێش‌نووس",
-            "draft_for_review": "لە پێداچوونەوەدا",
             "draft_for_review": "لە پێداچوونەوەدایە",
         }
         status = status_labels.get(course.get("status", "planned"), "چالاک نییە")
