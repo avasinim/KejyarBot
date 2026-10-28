@@ -85,6 +85,8 @@ class CourseCatalogTests(unittest.TestCase):
             draft = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first_draft = json.load(handle)
+        lesson5 = next(lesson for lesson in first_draft["lessons"] if lesson["number"] == 5)
+        self.assertEqual(lesson5["dialogue"][1][1], "ماڵمان لە گەڕەکێکی ئارامە، نزیک پارکەکە.")
         lesson1 = next(lesson for lesson in first_draft["lessons"] if lesson["number"] == 1)
         self.assertEqual(lesson1["dialogue"][5][1], "باشە، تا دواتر لە بەردەم کتێبخانەکە دەبینمەوە.")
 
