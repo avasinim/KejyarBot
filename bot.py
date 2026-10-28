@@ -245,13 +245,19 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     next_lesson = next_course_lesson(lesson)
     if next_lesson is None:
-        # Preserve the legacy Course 1 quiz callback contract.
-        if lesson.startswith("وانە_"):
-            last_lesson_number = lesson.removeprefix("وانە_")
-            keyboard = InlineKeyboardMarkup([[
-                InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
-            ]])
-            await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        # Keep legacy numeric callbacks stable while allowing namespaced course IDs.
+        quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی وانەی کۆتایی",
+                callback_data=f"quiz_{quiz_lesson_id}_start",
+            )
+        ]])
+        if QUIZ_DATA.get(lesson):
+            await query.message.reply_text(
+                message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.",
+                reply_markup=keyboard,
+            )
         else:
             await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
@@ -276,10 +282,12 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if not suffix.isdigit():
+    # Numeric callback suffixes belong to Course 1; namespaced suffixes are
+    # used by future courses without colliding with existing SQLite progress.
+    lesson = f"وانە_{suffix}" if suffix.isdigit() else suffix
+    if not lesson or lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
         return
-    lesson = f"وانە_{suffix}"
     if lesson not in LESSON_COURSE:
         await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
         return
@@ -618,7 +626,7 @@ def main():
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
+    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
