@@ -1,6 +1,6 @@
 import unittest
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, patch
 
 import bot
 
@@ -31,8 +31,9 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
     def test_active_courses_open_only_their_first_lesson_initially(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
-        self.assertTrue(bot.can_open(12345, "daily_conversation_01"))
-        self.assertTrue(bot.can_open(12345, "unified_orthography_01"))
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, "daily_conversation_01"))
+            self.assertTrue(bot.can_open(12345, "unified_orthography_01"))
 
     async def test_active_course_lists_only_its_catalog_lessons(self):
         query = SimpleNamespace(
