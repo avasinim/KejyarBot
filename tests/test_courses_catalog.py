@@ -72,7 +72,11 @@ class CourseCatalogTests(unittest.TestCase):
                     self.assertTrue(lesson["vocabulary"])
                     self.assertTrue(lesson["exercises"])
                     self.assertTrue(lesson["quiz"])
+                    self.assertTrue(all(len(item) == 2 and item[0] and item[1] for item in lesson["vocabulary"]))
+                    self.assertTrue(all(isinstance(item, str) and item.strip() for item in lesson["exercises"]))
                     for question in lesson["quiz"]:
+                        self.assertTrue(question["q"].strip())
+                        self.assertGreaterEqual(len(question["options"]), 2)
                         self.assertGreaterEqual(question["answer"], 0)
                         self.assertLess(question["answer"], len(question["options"]))
                         self.assertEqual(len(question["options"]), len(set(question["options"])))
