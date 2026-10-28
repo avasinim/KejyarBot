@@ -60,6 +60,50 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         )
         update.message.reply_text.assert_awaited_once()
 
+    async def test_goodbye_exits_daily_chat_mode_in_bot_handler(self):
+        update, context = self.make_update_context(
+            "خواحافیز",
+            {"daily_chat_mode": True, "daily_chat_scenario": "market", "daily_chat_stage": 2},
+        )
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.message(update, context)
+
+        self.assertFalse(context.user_data["daily_chat_mode"])
+        self.assertNotIn("daily_chat_scenario", context.user_data)
+        self.assertNotIn("daily_chat_stage", context.user_data)
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("خواحافیز", update.message.reply_text.await_args.args[0])
+
+    async def test_chest_without_inventory_gives_clear_message_and_no_voice_reward(self):
+        update, context = self.make_update_context("🎁 سەنوقی خەڵات")
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "open_chest", return_value=0),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("سەنوقێکت نیە", update.message.reply_text.await_args.args[0])
+        voice.assert_not_awaited()
+
+    async def test_opened_chest_reports_reward_and_uses_configured_voice_path(self):
+        update, context = self.make_update_context("🎁 سەنوقی خەڵات")
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "open_chest", return_value=20),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("20 Coin", update.message.reply_text.await_args.args[0])
+        voice.assert_awaited_once()
+        self.assertIn("20 کۆین", voice.await_args.args[1])
+
     async def test_lesson_menu_button_exits_daily_chat_mode(self):
         lesson_button = next(iter(bot.LESSON_BUTTONS))
         lesson = bot.LESSON_BUTTONS[lesson_button]
