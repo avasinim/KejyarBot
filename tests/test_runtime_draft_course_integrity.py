@@ -304,6 +304,38 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                         )
 
 
+    def test_daily_conversation_plan_titles_match_all_48_lesson_records(self):
+        with open(
+            bot.BASE_DIR / "course_data" / "daily_conversation_plan.json",
+            encoding="utf-8",
+        ) as handle:
+            plan = json.load(handle)
+
+        lesson_files = (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
+        )
+        lessons = [
+            lesson
+            for filename in lesson_files
+            for lesson in self._load_course_data(filename)
+        ]
+        plan_entries = plan["proposed_sequence"]
+        self.assertEqual([entry["number"] for entry in plan_entries], list(range(1, 49)))
+        self.assertEqual(sorted(lesson["number"] for lesson in lessons), list(range(1, 49)))
+        actual_titles = {lesson["number"]: lesson["title"] for lesson in lessons}
+        for entry in plan_entries:
+            with self.subTest(lesson=entry["number"]):
+                self.assertEqual(
+                    entry["working_title"],
+                    actual_titles[entry["number"]],
+                    msg=f"Plan title drift for lesson {entry['number']}",
+                )
+
+
     def test_source_quiz_answers_map_to_the_exact_runtime_correct_options(self):
         course_files = (
             ("daily_conversation", (
