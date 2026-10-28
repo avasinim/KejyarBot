@@ -16,6 +16,14 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
 
+## 27 October 2026 — defensive quiz-state follow-up
+
+- `bot.py` now validates the active quiz structure, question index, option list, and answer membership before scoring a callback. Malformed in-memory state is cleared with a learner-facing retry message rather than being allowed to raise an indexing/key error.
+- Added focused regression tests for an out-of-range quiz index and duplicate quiz options in `tests/test_bot_message_mode.py`.
+- Updated `test_quiz_callback_validates_before_claiming_question` to assert against the current local `options` variable and to check the new recovery guards; the earlier source-string assertion referenced `question["options"]` and no longer matched the hardened handler.
+- Raised the quiz-options regression minimum to three options in `tests/test_content.py`.
+- These edits were re-read from the branch, but **have not yet been executed by a local test run or confirmed by a new passing CI run**. Treat the changes as pending verification, not as a release pass.
+
 ## Latest verification
 
 - The infographic-example regression test was added in commit `a9d870d63397454e7e387f9aa8a38ac8dd5514b5` and re-read from the branch.
