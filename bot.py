@@ -614,7 +614,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
         await update.message.reply_text(
             "📚 کۆرسەکانی کەژیار\n\n"
-            "کۆرسەکان جیاوازن. کۆرسی یەکەم ٢٢ وانەی ڕێنووسی سەرەتایی هەیە؛ کۆرسەکانی دیکە تا ئامادەبوونی وانە ڕێکخراوەکان بە ڕوونی نیشان دراون.",
+            "سێ کۆرسی چالاک هەن: ڕێنووسی سەرەتایی، وتووێژ و ڕێنووسی یەکگرتوو. کۆرسی ڕێزمان لە پلانداناندایە.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
@@ -699,10 +699,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         lines = []
-        for lesson in ORDER:
-            status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
-        await update.message.reply_text("\n".join(lines))
+        for course in COURSES:
+            course_id = course.get("id")
+            if not course_is_active(course_id):
+                continue
+            lines.append(f"📚 {course.get('title', course_id)}")
+            for lesson in COURSE_LESSON_ORDER.get(course_id, []):
+                status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
+                title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                lines.append(f"{status} — {title}")
+            lines.append("")
+        await update.message.reply_text("\n".join(lines).strip() or "هێشتا هیچ کۆرسێکی چالاک نیە.")
         return
 
     if context.user_data.get("daily_chat_mode"):
