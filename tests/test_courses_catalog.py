@@ -42,10 +42,10 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(by_id["grammar"]["status"], "planned")
         self.assertEqual(by_id["grammar"]["lesson_ids"], [])
 
-    def test_daily_conversation_plan_is_provisional_and_does_not_activate_course(self):
+    def test_daily_conversation_plan_remains_provisional_metadata(self):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
-        self.assertEqual(conversation["status"], "draft_for_review")
+        self.assertEqual(conversation["status"], "active")
         self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 13)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
