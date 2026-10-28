@@ -37,7 +37,7 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "٣٠ وانەی وتووێژ؛ وانەکانی ١٣–٣٠ پێش‌نوسن و پێش چالاککردن پێویستیان بە پشکنین و تاقیکردنەوە هەیە.",
+      "description": "٣٦ وانەی وتووێژ؛ وانەکانی ١٣–٣٦ پێش‌نوسن و پێش چالاککردن پێویستیان بە پشکنین و تاقیکردنەوە هەیە.",
       "status": "draft_for_review",
       "lesson_ids": [
         "daily_conversation_01",
@@ -69,7 +69,13 @@
         "daily_conversation_27",
         "daily_conversation_28",
         "daily_conversation_29",
-        "daily_conversation_30"
+        "daily_conversation_30",
+        "daily_conversation_31",
+        "daily_conversation_32",
+        "daily_conversation_33",
+        "daily_conversation_34",
+        "daily_conversation_35",
+        "daily_conversation_36"
       ]
     },
     {
