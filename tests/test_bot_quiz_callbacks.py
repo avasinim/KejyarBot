@@ -266,6 +266,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         keyboard = reply.kwargs["reply_markup"]
         button = keyboard.inline_keyboard[0][0]
         self.assertEqual(button.callback_data, "next_lesson_وانە_2")
+        self.assertEqual(button.text, "➡️ دەستپێکردنی وانەی ٢: بزوێنەکان")
 
     async def test_repeated_lesson_completion_does_not_offer_next_lesson_again(self):
         query = SimpleNamespace(
