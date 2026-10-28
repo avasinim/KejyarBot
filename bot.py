@@ -97,7 +97,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         lesson_body = original["content"].strip()
         lesson_card = (
             "╭━━━━━━━━━━━━━━━━━━╮\n"
-            f"🌿 کەویار  •  وانەی {kurdish_digits(number)}\n"
+            f"🌿 کەژیار  •  وانەی {kurdish_digits(number)}\n"
             f"📖 {title}\n"
             "╰━━━━━━━━━━━━━━━━━━╯\n\n"
             f"{lesson_body}\n\n"
@@ -171,7 +171,7 @@ async def send_lesson_infographic(message, lesson):
             with image_path.open("rb") as image_file:
                 await message.reply_photo(
                     photo=image_file,
-                    caption="🌿 کەویار | وانەی ١: پیتەکان و دەنگەکان",
+                    caption="🌿 کەژیار | وانەی ١: پیتەکان و دەنگەکان",
                 )
             return
         except Exception:
