@@ -190,5 +190,29 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پرسیاری تاقیکردنەوە نادروست", query.message.reply_text.await_args.args[0])
 
 
+    async def test_malformed_quiz_score_is_cleared_without_crashing(self):
+        query = SimpleNamespace(
+            data="answer_0",
+            answer=AsyncMock(),
+            message=SimpleNamespace(message_id=10, reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query, effective_user=SimpleNamespace(id=12345))
+        context = SimpleNamespace(user_data={
+            "quiz": {
+                "lesson": "وانە_1",
+                "index": 0,
+                "questions": [{"question": "پرسیار", "options": ["A", "B", "C"], "answer": "A"}],
+                "score": "0",
+                "question_message_id": 10,
+            }
+        })
+
+        await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پرسیاری تاقیکردنەوە نادروست", query.message.reply_text.await_args.args[0])
+
+
 if __name__ == "__main__":
     unittest.main()
