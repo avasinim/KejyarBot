@@ -53,6 +53,51 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(labels[0], "🔓 وانەی ١: ئەلفبێی زمانی کوردی")
         self.assertEqual(labels[-1].split(":")[0], "🔓 وانەی ٢٢")
 
+    async def test_quiz_catalog_uses_readable_lesson_numbers_and_stable_callbacks(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(
+            text="📝 تاقیکردنەوەکان",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
+            await bot.message(update, context)
+
+        message.reply_text.assert_awaited_once()
+        kwargs = message.reply_text.await_args.kwargs
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(keyboard[0][0].text, "📝 تاقیکردنەوەی وانەی ١")
+        self.assertEqual(keyboard[0][0].callback_data, "quiz_1_start")
+        self.assertNotIn("وانە_1", keyboard[0][0].text)
+
+    async def test_learning_path_does_not_show_internal_lesson_ids(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(
+            text="🧭 ڕێگای فێربوون",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=[]), patch.object(bot, "can_open", side_effect=lambda user_id, lesson: lesson == "وانە_1"):
+            await bot.message(update, context)
+
+        message.reply_text.assert_awaited_once()
+        reply = message.reply_text.await_args.args[0]
+        self.assertIn("وانەی ١:", reply)
+        self.assertNotIn("وانە_1:", reply)
+        self.assertIn("وانەی ٢٢:", reply)
+
 
 if __name__ == "__main__":
     unittest.main()
