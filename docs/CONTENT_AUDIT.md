@@ -626,3 +626,9 @@ This audit is documentation only. It does not change `main`, production bot sett
 - While continuing the lesson 9–16 review, found the same target-letter mismatch in lesson 16: its comparison table listed **خۆر** as an example of the single letter **و**, although the written character in that word is **ۆ**. Replaced that example with **شوان** so the table actually shows the intended character. This is a spelling/target-letter correction, not a claim that all phonetic analysis is complete.
 - Re-read lesson 16 after the edit. The remaining examples and rules, especially the broad claim about final **وو**, still require source verification before publication or runtime use.
 - Latest lesson-draft changes remain unverified by current-head CI; no production, main branch, token, or live bot changes were made.
+
+
+## Lesson 18 spelling-segment audit — 28 October 2026
+
+- During review of lessons 17–22, lesson 18's analysis of **کەژیار** used the segment **کەو / یار**, even though the target word is written **کەژیار** and does not contain **و** in that segment. Corrected the proposed segmentation and its related table entry to **کەژ / یار** and changed the letter-specific note from **و** to **ژ**. This corrects an internal text mismatch; the phonological segmentation itself still requires source/pronunciation verification.
+- Lesson 16's **خۆر** → **شوان** comparison correction is recorded above. No runtime activation or production change was made. Current-head CI remains unverified.
