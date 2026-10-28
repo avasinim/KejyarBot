@@ -60,7 +60,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 4 | Consonant clusters and syllables | Quiz now asks learners to identify «س» and «ت» in «مەست», directly checking the concrete cluster taught in the lesson; final language review remains. |
 | 6 | Difference between ڕ and ر | Quiz now asks which familiar word begins with «ڕ» and contrasts «ڕۆژ» with «باران», which contains ordinary «ر»; final language review remains. |
 | 7 | ک/ك, ھ/ه and ە | Clarified that «هەوا / ھەوا» is only a digital code-point comparison and that «ھەوا» should not be taught as an interchangeable ordinary spelling; use «هەوا» in normal Kurdish text unless the course's explicit convention says otherwise. |
-| 5 | Hamza / «ئ» | Replaced the abstract quiz question with a direct recognition question using «ئاو», matching the lesson's stated beginner objective and examples. |
+| 5 | Hamza / «ئ» | Replaced the abstract quiz question with direct recognition of «ئاو» and aligned comprehension/role-play tasks with finding and writing «ئ» in the lesson examples. |
 | 8 | و، وو، ی و ێ | Simplified the quiz and explanation by removing the Latin phonetic symbol; the answer now refers directly to the long sound in «دوور». |
 | 9 | Particles and joined spelling | Quiz now checks the particle «لە» in «من لە ماڵم» and distinguishes it from the subject «من» and place noun «ماڵ»; verify join/separation rules against the course's intended convention before release. |
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; quiz now checks the derived-word example «بەهێز» while contrasting the compound «کتێب‌خانە». Final language review is still needed. |
