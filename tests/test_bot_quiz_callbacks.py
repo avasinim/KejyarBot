@@ -137,6 +137,32 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("پێداچوونەوەی سەرچاوەدایە", query.message.reply_text.await_args.args[0])
 
+    async def test_all_source_review_quizzes_reject_direct_start_callbacks(self):
+        gated_lessons = (2, 4, 8, 13, 14, 16, 18, 19, 21)
+        for number in gated_lessons:
+            with self.subTest(lesson=number):
+                query = SimpleNamespace(
+                    data=f"quiz_{number}_start",
+                    from_user=SimpleNamespace(id=12345),
+                    answer=AsyncMock(),
+                    message=SimpleNamespace(reply_text=AsyncMock()),
+                )
+                update = SimpleNamespace(
+                    callback_query=query,
+                    effective_user=SimpleNamespace(id=12345),
+                )
+                context = SimpleNamespace(user_data={})
+
+                await bot.start_quiz(update, context)
+
+                self.assertNotIn("quiz", context.user_data)
+                query.answer.assert_awaited_once()
+                query.message.reply_text.assert_awaited_once()
+                self.assertIn(
+                    "پێداچوونەوەی سەرچاوەدایە",
+                    query.message.reply_text.await_args.args[0],
+                )
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
