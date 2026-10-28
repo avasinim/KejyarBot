@@ -16,6 +16,13 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
 
+## Latest branch CI verified — 28 October 2026
+
+- Follow-up retrieval found completed successful GitHub Actions runs associated with the current branch tip `d1f941bbb3f0665b370cce378de722487f7e3152`:
+  - Python checks: https://github.com/avasinim/KejyarBot/actions/runs/40640998335 — compile step passed and **127 tests passed** (`Ran 127 tests ... OK`).
+  - Orthography course structure: https://github.com/avasinim/KejyarBot/actions/runs/40640998372 — dedicated course-structure test job passed.
+- This supersedes the earlier pending-CI note for this branch tip. The result confirms automated tests, not a live Telegram manual test, and does not authorize merging or deployment.
+
 ## CI baseline recovered — 27 October 2026
 
 - Retrieved the completed GitHub Actions job for run `40288141082`: compile step passed and `python -m unittest discover -s tests -v` passed with **92 tests**. Log: https://github.com/avasinim/KejyarBot/actions/runs/40288141082
