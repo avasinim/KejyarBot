@@ -373,7 +373,7 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if (
         course_id is None
         or not course_is_active(course_id)
-        or lesson not in get_completed_lessons(query.from_user.id)
+        or lesson not in get_completed_lessons(update.effective_user.id)
     ):
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
