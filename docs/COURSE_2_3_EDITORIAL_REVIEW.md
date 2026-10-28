@@ -31,10 +31,10 @@ These are editorial checks to perform, not claims that the wording is necessaril
 |---|---|
 | 1 | Clarified the farewell to «تا دواتر لە بەردەم کتێبخانەکە یەکتر دەبینینەوە»; broader naturalness review across the course remains. |
 | 2 | Review the naturalness of the self-introduction and the question/answer about where someone is from. |
-| 3 | Clarified the closing line to «باشە، لەوێ یەکتر دەبینینەوە»; question-word usage and the sequence of questions still need a broader naturalness review. |
+| 3 | Polished the question «تۆ بۆچی دێیتە ئەوێ؟» to «تۆ بۆچی دەچیتە ئەوێ؟» so the verb matches the speaker asking why the other person is going to the library. The full dialogue still needs a final naturalness pass. |
 | 4 | Quiz keys were checked against the dialogue; review family vocabulary definitions and consistency of singular/plural forms. |
 | 5 | Quiz key was checked against the dialogue; review the polite invitation and pre-visit phone-call phrasing. |
-| 6 | Review the daily routine for tense consistency and natural time expressions. |
+| 6 | Changed the fragment «نیوەڕۆ چۆن؟» to the direct beginner-friendly question «نیوەڕۆ چی دەکەیت؟» to match the lesson's daily-routine topic. Continue the overall naturalness and tense-consistency review. |
 | 7 | Review food vocabulary and repeated expressions for preference and drinking/eating; check colloquial naturalness. |
 | 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
 | 9 | Changed the date anchor to “twenty-seventh of Befranbar” at the user's request and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
