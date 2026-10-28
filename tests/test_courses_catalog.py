@@ -64,6 +64,9 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 13)))
         self.assertTrue(all(lesson["working_title"] and lesson["focus"] for lesson in proposed))
         self.assertEqual(self.conversation_plan["source_status"], "source_text_not_yet_attached_to_this_plan")
+        guardrails = self.conversation_plan["release_guardrails"]
+        self.assertTrue(any("تەنها بۆ تاقیکردنەوەی ناوخۆی ئەم برانچە" in item for item in guardrails))
+        self.assertTrue(any("پێویستی بە ڕێگەپێدانی جیاواز هەیە" in item for item in guardrails))
 
     def test_daily_conversation_drafts_have_valid_quiz_answers_and_corrected_phrases(self):
         for filename in (
