@@ -39,7 +39,7 @@ The following items are already marked for editorial/source review by `course_qu
 - Lesson 15: the quiz now includes a direct recognition item for «ڕ» in «بڕیار», alongside the contrast between «ر» and «ڕ». This is more varied and remains grounded in the lesson's examples.
 - Lesson 18: the quiz currently has only one question. Do not add more until the syllable split «کەژ / یار» and the lesson's claims about «ی» are checked; adding questions before that review would multiply uncertain claims.
 - Lesson 19: the quiz currently has only one question. Its split «یا / ری» and its claim that «ی» is a vowel in «ری» need review against the intended source before expanding the quiz.
-- Lesson 22: the three questions cover «و» as /u/, «و» as /w/, and «ی» as /y/ only partially; the current quiz asks directly about «Kurd = کورد» and «Diyar = دیار», while the lesson also gives «ş iwan = شوان» and «Esrîn = ئەسرین». Consider using one of those taught examples to test the other role of «و» or «ی» instead of requiring phonetic notation.
+- Lesson 22: question 1 was simplified to ask learners to recognize «شوان» as an example of «و»ی نەبزوێن, using the lesson's own examples and avoiding specialist phonetic notation. Questions 2 and 3 still check the taught examples «کورد» and «دیار»; review the balance of the four roles of «و» and «ی» before considering the set complete.
 
 ## Guardrails
 
