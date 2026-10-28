@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
 import bot
+from course_quiz_review import COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED
 
 
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
@@ -147,7 +148,12 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێداچوونەوەی سەرچاوەدایە", query.message.reply_text.await_args.args[0])
 
     async def test_all_source_review_quizzes_reject_direct_start_callbacks(self):
-        gated_lessons = (2, 4, 8, 13, 14, 16, 18, 19, 21)
+        # Derive callback coverage from the actual gate, so adding a newly
+        # flagged lesson cannot silently leave its direct callback untested.
+        gated_lessons = sorted(
+            int(lesson_key.removeprefix("وانە_"))
+            for lesson_key in COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED
+        )
         for number in gated_lessons:
             with self.subTest(lesson=number):
                 query = SimpleNamespace(
