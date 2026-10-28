@@ -365,6 +365,15 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz:
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
+    # Defense in depth: do not continue a stale quiz session if its lesson
+    # has since been placed behind the editorial source-review gate.
+    if not quiz_is_available(quiz.get("lesson", "")):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ "
+            "تکایە دواتر هەوڵ بدەوە."
+        )
+        return
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
         return
