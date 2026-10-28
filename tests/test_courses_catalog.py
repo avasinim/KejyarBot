@@ -73,6 +73,8 @@ class CourseCatalogTests(unittest.TestCase):
             "daily_conversation_lessons_01_06.json",
             "daily_conversation_lessons_07_30.json",
             "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
         ):
             with self.subTest(file=filename):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
@@ -110,14 +112,18 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertNotIn("dialogue[1][1]", lesson7)
         self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
 
-    def test_conversation_titles_and_review_gates_match_the_36_lesson_plan(self):
+    def test_conversation_titles_and_review_gates_match_the_48_lesson_plan(self):
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_07_30.json").open(encoding="utf-8") as handle:
             later = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_31_36.json").open(encoding="utf-8") as handle:
+            middle = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_37_42.json").open(encoding="utf-8") as handle:
+            later_middle = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_43_48.json").open(encoding="utf-8") as handle:
             final = json.load(handle)
-        lessons = first["lessons"] + later["lessons"] + final["lessons"]
+        lessons = first["lessons"] + later["lessons"] + middle["lessons"] + later_middle["lessons"] + final["lessons"]
         planned = self.conversation_plan["proposed_sequence"]
         self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 49)))
         self.assertEqual(
@@ -126,7 +132,7 @@ class CourseCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(lesson.get("review_status") == "draft_editorial_review" for lesson in lessons))
         self.assertEqual(self.catalog[1]["status"], "draft_for_review")
-        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 36)
+        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 48)
         for lesson in lessons:
             self.assertTrue(lesson["dialogue"])
             self.assertTrue(lesson["vocabulary"])
