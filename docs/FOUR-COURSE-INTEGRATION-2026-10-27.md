@@ -31,3 +31,12 @@
 - Do not merge PRs, change `main`, touch production bot/database/tokens, or deploy without explicit approval.
 - Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false`; preserve the existing approved voice.
 - Automated structural checks are not a substitute for human linguistic and source review.
+
+## Source audit follow-up (2026-10-28)
+
+- The listed Kurdipedia record for **پوختەی ڕێنووس و خاڵبەندی 2024** identifies دیاکۆ هاشمی as preparer and describes the 2024 updates/editions, including the second-edition update dated 21 February 2024 and a later update dated 16 August 2024. This is a useful bibliographic anchor, but it does not by itself validate each lesson rule.
+- Source record: https://kurdipedia.org/default.aspx?lng=1&q=20220823204947429918
+- Search result for the same record also identifies the earlier 2021 publication separately: https://kurdipedia.org/default.aspx?lng=1&q=20211004184500395359. Do not mix the 2021 record with the 2024 edition when citing page-specific rules.
+- Course 3's current per-lesson source notes are editorial reminders, not precise citations: they generally lack page numbers and verbatim evidence. Keep all 12 lessons in `draft_source_check_required` until a reviewer records the selected edition, page(s), and the rule/example verified for each lesson.
+- Course 2 remains without traceable lesson-level sources; no bibliography was invented. Its 27 quiz items also currently lack answer explanations.
+- External reference check performed for bibliographic metadata only; it is not a substitute for reviewing the actual PDF pages or approving Kurdish language content.
