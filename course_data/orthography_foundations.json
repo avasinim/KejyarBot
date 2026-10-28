@@ -2,15 +2,15 @@
   "course_id": "orthography_foundations",
   "title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
   "language": "ckb",
-  "status": "curriculum_structure",
+  "status": "beginner_course_editorial_pass",
   "lesson_count": 22,
   "lessons": [
     {
       "id": "lesson_01",
       "number": 1,
       "title": "پیتەکان و دەنگەکان",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -18,8 +18,8 @@
       "id": "lesson_02",
       "number": 2,
       "title": "بزوێنەکان",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -27,8 +27,8 @@
       "id": "lesson_03",
       "number": 3,
       "title": "یاسای بزوێنەکان",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -36,8 +36,8 @@
       "id": "lesson_04",
       "number": 4,
       "title": "یەکخستنی هەندێک پیت لە ڕێنووسی کوردیدا",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -45,8 +45,8 @@
       "id": "lesson_05",
       "number": 5,
       "title": "نووسینی بزوێن لە سەرەتای وشە",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -54,8 +54,8 @@
       "id": "lesson_06",
       "number": 6,
       "title": "پیتەکانی و و ی",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -63,8 +63,8 @@
       "id": "lesson_07",
       "number": 7,
       "title": "و و ی وەک بزوێن",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -72,8 +72,8 @@
       "id": "lesson_08",
       "number": 8,
       "title": "و و ی وەک نەبزوێن",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -81,8 +81,8 @@
       "id": "lesson_09",
       "number": 9,
       "title": "سێ پیتی گرینگ ە، ێ، ۆ",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -90,8 +90,8 @@
       "id": "lesson_10",
       "number": 10,
       "title": "پیتی ە",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -99,8 +99,8 @@
       "id": "lesson_11",
       "number": 11,
       "title": "پیتی ێ",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -108,8 +108,8 @@
       "id": "lesson_12",
       "number": 12,
       "title": "پیتی ۆ",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -117,8 +117,8 @@
       "id": "lesson_13",
       "number": 13,
       "title": "نیشانەی ٚ و شێوازی نووسینی کوردی",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -126,8 +126,8 @@
       "id": "lesson_14",
       "number": 14,
       "title": "جیاوازیی ل و ڵ",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -135,8 +135,8 @@
       "id": "lesson_15",
       "number": 15,
       "title": "جیاوازیی ڕ و ر",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -144,8 +144,8 @@
       "id": "lesson_16",
       "number": 16,
       "title": "وو (واوی جووت)",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -153,8 +153,8 @@
       "id": "lesson_17",
       "number": 17,
       "title": "پیتی ڤ",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -162,8 +162,8 @@
       "id": "lesson_18",
       "number": 18,
       "title": "شیکردنەوەی کەژیار",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -171,8 +171,8 @@
       "id": "lesson_19",
       "number": 19,
       "title": "شیکردنەوەی یاسین",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -180,8 +180,8 @@
       "id": "lesson_20",
       "number": 20,
       "title": "بزرۆکە لە ڕێنووس و بڕگەبەندی",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -189,8 +189,8 @@
       "id": "lesson_21",
       "number": 21,
       "title": "بزرۆکە لە نموونەکانی گیان و شوان",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     },
@@ -198,8 +198,8 @@
       "id": "lesson_22",
       "number": 22,
       "title": "پیتەکانی و و ی: بزوێن و نەبزوێن",
-      "content_status": "needs_source_review_and_editorial_entry",
-      "quiz_status": "draft_needs_editorial_and_source_review",
+      "content_status": "beginner_draft_needs_clarity_and_examples",
+      "quiz_status": "beginner_quiz_draft_needs_lesson_alignment",
       "audio_status": "use_existing_voice_workflow_only",
       "infographic_status": "not_created"
     }
@@ -215,5 +215,5 @@
     "do_not_enable_dynamic_speech": true,
     "do_not_change_production_or_main": true
   },
-  "note": "کۆرسی ١ بریتییە لە ٢٢ وانەی ڕێنووسی سەرەتاییی زمانی کوردی. کۆرسی ١٠ وانەیی پێشووتر نابێت وەک کۆرسێکی جیاواز بمێنێتەوە. ئەم فایلە پێکهاتەی کۆرسە؛ پەیوەستکردنی وانە و کویز بە runtime هێشتا پێویستی بە تەواوکردن و تاقیکردنەوە هەیە."
+  "note": "کۆرسی ١ بریتییە لە ٢٢ وانەی ڕێنووسی سەرەتاییی زمانی کوردی. ئەم کۆرسە بۆ فێرخوازانی سەرەتاییە؛ پێشڕەوی کار لەسەر ڕوونیی ڕوونکردنەوە، نموونەی زۆر و سادە، ڕاهێنان و هاوتایی کویزەکانە، نەک داواکاریی سەرچاوەی زۆر. وانە و کویزەکان هێشتا پێویستیان بە پشکنینی دەقی کۆتایی و تاقیکردنەوەی runtime هەیە. کۆرسی ١٠ وانەیی کۆن نابێت وەک کۆرسێکی جیاواز بمێنێتەوە."
 }
