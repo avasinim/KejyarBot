@@ -38,6 +38,6 @@
 - Source record: https://kurdipedia.org/default.aspx?lng=1&q=20220823204947429918
 - Search result for the same record also identifies the earlier 2021 publication separately: https://kurdipedia.org/default.aspx?lng=1&q=20211004184500395359. Do not mix the 2021 record with the 2024 edition when citing page-specific rules.
 - Course 3's current per-lesson source notes are editorial reminders, not precise citations: they generally lack page numbers and verbatim evidence. Keep all 12 lessons in `draft_source_check_required` until a reviewer records the selected edition, page(s), and the rule/example verified for each lesson.
-- Course 2 remains without traceable lesson-level sources; no bibliography was invented. Its 27 quiz items also currently lack answer explanations.
+- Course 2 remains without traceable lesson-level sources; no bibliography was invented. Its 27 quiz items have formative explanations in the current JSON drafts, but those explanations do not verify the keyed answers or replace source/language review.
 - External reference check performed for bibliographic metadata only; it is not a substitute for reviewing the actual PDF pages or approving Kurdish language content.
 - Course 3 formative explanations were added to all 12 quiz questions. Explanations are general learning feedback, not evidence that the keyed answers or orthographic rules have been source-validated. Lessons 9 and 11 include visible flags where example slots are still placeholders.
