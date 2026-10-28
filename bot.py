@@ -190,9 +190,15 @@ MENU = ReplyKeyboardMarkup(
     resize_keyboard=True,
 )
 
+def course_is_active(course_id):
+    """Only explicitly active courses may expose lessons, progress, or rewards."""
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    return bool(course and course.get("status") == "active")
+
+
 def can_open(user_id, lesson):
     course_id = LESSON_COURSE.get(lesson)
-    if course_id is None:
+    if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
     return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
@@ -317,6 +323,9 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     if lesson not in LESSON_COURSE:
         await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
+    if not course_is_active(LESSON_COURSE[lesson]):
+        await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
