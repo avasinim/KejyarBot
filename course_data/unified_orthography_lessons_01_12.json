@@ -64,7 +64,7 @@
         "بۆچی لە دەقی دیجیتاڵدا Unicode گرنگە؟"
       ],
       "role_play": "دەقێکی کورت لە مۆبایل بنووسە و پیتە کوردییەکان بپشکنە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "نموونەکان بە شێوەیەکی سادە پیشان بدرێن؛ جیاوازیی پیتی کوردی و پیتی هاوشێوە بە نموونەی ڕوون ڕابگەیەنرێت."
       ]
@@ -108,7 +108,7 @@
         "بۆچی پێویستە ڕیزبەندیی ئەلفبێ لە سەرچاوە بپشکنین؟"
       ],
       "role_play": "پیتێک هەڵبژێرە و لە دوو وشەدا ئەرکی جیاوازی دیاری بکە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": []
     },
     {
@@ -154,7 +154,7 @@
         "چۆن وشە بە بڕگە دابەش دەکەیت؟"
       ],
       "role_play": "سێ وشە هەڵبژێرە و بڕگەکانیان بە دەنگ بژمێرە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": []
     },
     {
@@ -196,7 +196,7 @@
         "بۆچی دەبێت بزرۆکە لە ڕێنووس جیا بکرێتەوە؟"
       ],
       "role_play": "دوو وشە هەڵبژێرە و هێشوویان دیاری بکە؛ بڕیارەکەت ڕوون بکەرەوە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "پێناسەی هێشوو و بزرۆکە بە زمانی سادەتر ڕوون بکرێتەوە؛ نموونەی «مەست» و «ژن» بە شێوەیەکی ئاسان و بێ تێکەڵکردنی ڕێنووس و بێژە پێشکەش بکرێن."
       ]
@@ -240,7 +240,7 @@
         "لە وشەی لێکدراودا بۆچی پێویستە یاسای سەرچاوە بپشکنین؟"
       ],
       "role_play": "دوو نموونەی سەرچاوە بۆ ئـ بدۆزەوە و جیاوازییان ڕوون بکەرەوە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": []
     },
     {
@@ -291,7 +291,7 @@
         "چۆن دڵنیادەبینەوە پیتەکە Unicode ـی دروستە؟"
       ],
       "role_play": "دەقێک پشکنە و هەموو شوێنەکانی ڕ/ر نیشانە بکە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "نموونەکانی «ڕاز/رەنگ» بە شێوەیەکی ئاسان و ڕوون پیشان بدرێن؛ ئامانج فێرکردنی جیاوازیی پیتەکانە، نە وردەکاریی تەکنیکی."
       ]
@@ -348,7 +348,7 @@
         "بۆچی پیتی هاوشێوەی عەرەبی نابێت بە شێوەی خۆڕایی بەکاربهێنرێت؟"
       ],
       "role_play": "ڕستەیەک بە پیتی کوردی بنووسە و لە پیتە هاوشێوەکان پشکنینی بکە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "نموونەی وشەی تەواو بۆ ک/ك، ھ/ه و ە زیاد بکرێت؛ فێرخواز بە کردار جیاوازیی پیتەکان ببینێت."
       ]
@@ -392,7 +392,7 @@
         "چۆن ئەرکی ی لە وشەدا دیاری دەکەیت؟"
       ],
       "role_play": "سێ وشە لە سەرچاوە هەڵبژێرە و ئەرکی و، وو، ی یان ێ ڕوون بکەرەوە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": []
     },
     {
@@ -434,7 +434,7 @@
         "چۆن شێوەی پێکەوەنووسین بە بەڵگە پشتڕاست دەکەیتەوە؟"
       ],
       "role_play": "دوو نموونەی ئامراز بەراورد بکە و سەرچاوەی هەر یەک بنووسە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "نموونەی ڕۆژانە و سادە بۆ ئامرازەکان و پێکەوەنووسین زیاد بکرێت؛ یاساکان بە نموونەی ڕوون ڕوون بکرێنەوە."
       ]
@@ -478,7 +478,7 @@
         "لە چاککردنەوەی وشەدا بۆچی پێکهاتە گرنگە؟"
       ],
       "role_play": "وشەیەک لێکبدەوە و بەشەکانی دیاری بکە؛ شێوازی نووسین بە سەرچاوە پشتڕاست بکەرەوە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "وشەی ڕاستەقینەی لێکدراو و داڕێژراو زیاد بکرێت و بەشەکانیان بە شێوەیەکی سادە شیکاری بکرێن."
       ]
@@ -522,7 +522,7 @@
         "بۆچی ژمارەی لێکدراو پێویستی بە یاسای تایبەتی هەیە؟"
       ],
       "role_play": "نموونەیەکی ژمارەی لێکدراو لە سەرچاوە بدۆزەوە و شێوەنووسینەکەی ڕوون بکەرەوە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "نموونەی ئاشکرا بۆ هاوەڵکار، وشەی بیانی و ژمارەی لێکدراو زیاد بکرێت؛ هەر یەک بە ڕستەیەکی ئاسان ڕوون بکرێتەوە."
       ]
@@ -562,7 +562,7 @@
         "بۆچی هەر چاکسازییەک پێویستی بە بەڵگەی سەرچاوە هەیە؟"
       ],
       "role_play": "دەقێکی کورت پشکنە؛ هەڵەکان، چاکسازی و یاسای پشتگیرییان بنووسە.",
-      "review_status": "draft_source_check_required",
+      "review_status": "draft_editorial_review",
       "review_findings": [
         "دەقێکی کورت و ئاشکرا بۆ پشکنین زیاد بکرێت؛ کلیلەکانی وەڵام لەگەڵ دەق و یاساکانی وانەکان بگونجێن."
       ]
