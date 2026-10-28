@@ -37,18 +37,44 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "١٢ وانەی ڕەشنووسی گفتوگۆی ڕۆژانە؛ پێویستی بە پشکنینی زمان و تاقیکردنەوە هەیە پێش چالاککردن.",
-      "status": "planned",
-      "lesson_ids": []
+      "description": "١٢ وانەی وتووێژ؛ ناوەڕۆک پەیوەست کراوە، بەڵام پێش چالاککردن پێویستی بە پشکنینی زمانی و تاقیکردنەوەی ڕاستەوخۆ هەیە.",
+      "status": "draft_for_review",
+      "lesson_ids": [
+        "daily_conversation_01",
+        "daily_conversation_02",
+        "daily_conversation_03",
+        "daily_conversation_04",
+        "daily_conversation_05",
+        "daily_conversation_06",
+        "daily_conversation_07",
+        "daily_conversation_08",
+        "daily_conversation_09",
+        "daily_conversation_10",
+        "daily_conversation_11",
+        "daily_conversation_12"
+      ]
     },
     {
       "id": "unified_orthography",
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: ڕێنووسی یەکگرتووی زمانی کوردی",
-      "description": "لە پلانداناندا؛ وانەکان دوای پێداچوونەوەی سەرچاوەیی زیاد دەکرێن.",
-      "status": "planned",
-      "lesson_ids": []
+      "description": "١٢ وانەی ڕێنووسی یەکگرتوو؛ هەموو وانەکان هێشتا پێویستیان بە پشکنینی سەرچاوە هەیە.",
+      "status": "draft_for_review",
+      "lesson_ids": [
+        "unified_orthography_01",
+        "unified_orthography_02",
+        "unified_orthography_03",
+        "unified_orthography_04",
+        "unified_orthography_05",
+        "unified_orthography_06",
+        "unified_orthography_07",
+        "unified_orthography_08",
+        "unified_orthography_09",
+        "unified_orthography_10",
+        "unified_orthography_11",
+        "unified_orthography_12"
+      ]
     },
     {
       "id": "grammar",
