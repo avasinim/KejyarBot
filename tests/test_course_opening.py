@@ -66,7 +66,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         )
         context = SimpleNamespace(user_data={})
 
-        with patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)), patch.object(bot, "get_completed_lessons", return_value=["وانە_1"]):
             await bot.message(update, context)
 
         message.reply_text.assert_awaited_once()
@@ -89,7 +89,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         )
         context = SimpleNamespace(user_data={})
 
-        with patch.object(bot, "get_completed_lessons", return_value=[]), patch.object(bot, "can_open", side_effect=lambda user_id, lesson: lesson == "وانە_1"):
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)), patch.object(bot, "get_completed_lessons", return_value=[]), patch.object(bot, "can_open", side_effect=lambda user_id, lesson: lesson == "وانە_1"):
             await bot.message(update, context)
 
         message.reply_text.assert_awaited_once()
