@@ -260,6 +260,42 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz:
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
+
+    # Treat corrupted/stale in-memory quiz state as recoverable, not as an
+    # uncaught IndexError/KeyError that leaves the learner stuck.
+    questions = quiz.get("questions") if isinstance(quiz, dict) else None
+    index = quiz.get("index") if isinstance(quiz, dict) else None
+    if (
+        not isinstance(questions, list)
+        or not questions
+        or not isinstance(index, int)
+        or isinstance(index, bool)
+        or index < 0
+        or index >= len(questions)
+        or not isinstance(questions[index], dict)
+    ):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+        )
+        return
+    question = questions[index]
+    options = question.get("options")
+    answer = question.get("answer")
+    if (
+        not isinstance(options, list)
+        or not options
+        or not all(isinstance(option, str) and option for option in options)
+        or len(options) != len(set(options))
+        or answer not in options
+        or not isinstance(quiz.get("question_message_id"), int)
+    ):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "⚠️ پرسیاری تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+        )
+        return
+
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
         return
@@ -268,9 +304,8 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     raw_index = query.data.removeprefix("answer_")
     if not raw_index.isdigit():
         return
-    question = quiz["questions"][quiz["index"]]
     choice_index = int(raw_index)
-    if choice_index < 0 or choice_index >= len(question["options"]):
+    if choice_index < 0 or choice_index >= len(options):
         return
     # Claim this question before the first await so duplicate callbacks cannot
     # both score an answer while the next question is being sent.
