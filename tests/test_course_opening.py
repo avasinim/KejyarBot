@@ -20,8 +20,8 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         args, kwargs = query.message.reply_text.await_args
         message = args[0]
-        self.assertIn("لە پلانداناندا", message)
-        self.assertIn("وانەی ڕێکخراوی ئامادەی نییە", message)
+        self.assertIn("لە پێداچوونەوەدایە", message)
+        self.assertIn("هێشتا چالاک نەکراوە", message)
         self.assertIsNone(kwargs.get("reply_markup"))
 
     async def test_active_course_lists_only_its_catalog_lessons(self):
