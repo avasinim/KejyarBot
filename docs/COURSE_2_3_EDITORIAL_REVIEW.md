@@ -87,6 +87,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 
 - Runtime/CI: latest content commits have no associated workflow run or status-check results available through the current GitHub connection; CI is not verified for these edits.
 - Draft-course UI: corrected the status message so it accurately says Courses 2–3 contain lessons still under review and are not yet enabled for learners, rather than implying no organized lessons exist. Manifest status gates remain unchanged.
+- Course 2 quiz pass: structurally checked all 27 quiz items across the two lesson JSON files; answer indices/options are valid and each keyed answer appears in its lesson data. This is a static consistency check, not a live Telegram run.
 - Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 1 farewell wording and lesson 9 date/meeting phrasing plus lesson 12 closing line were clarified. Practical editorial review still pending; lesson 8 now includes the seller's response to the bag request.
 - Course 3: concrete examples or clarifications were added in lessons 1, 2, 4, 6, 7, 9, 10, 11, and 12. Lesson 12 now includes a short proofreading passage and answer key. Final language review remains, especially checking examples against the intended course spelling rules.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
