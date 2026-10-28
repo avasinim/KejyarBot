@@ -52,7 +52,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێداچوونەوەی سەرچاوەدایە", query.message.reply_text.await_args.args[0])
+        self.assertIn("لە پێداچوونەوەدایە", query.message.reply_text.await_args.args[0])
 
     async def test_malformed_answer_does_not_strand_active_question(self):
         update, context, query = self.make_context("answer_nope")
