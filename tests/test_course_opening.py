@@ -51,7 +51,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(callback_ids, [f"open_lesson_وانە_{n}" for n in range(1, 23)])
         labels = [row[0].text for row in keyboard]
         self.assertEqual(labels[0], "🔓 وانەی ١: ئەلفبێی زمانی کوردی")
-        self.assertEqual(labels[-1].split(":")[0], "🔒 وانەی ٢٢")
+        self.assertEqual(labels[-1].split(":")[0], "🔓 وانەی ٢٢")
 
 
 if __name__ == "__main__":
