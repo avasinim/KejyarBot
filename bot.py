@@ -289,6 +289,10 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         or len(options) != len(set(options))
         or answer not in options
         or not isinstance(quiz.get("question_message_id"), int)
+        or isinstance(quiz.get("question_message_id"), bool)
+        or not isinstance(quiz.get("score"), int)
+        or isinstance(quiz.get("score"), bool)
+        or quiz.get("score") < 0
     ):
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
