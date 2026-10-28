@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-from course_lesson_adapters import adapt_conversation_lessons
+from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -26,6 +26,16 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertEqual(list(lessons), expected)
         self.assertEqual(list(quizzes), expected)
         self.assertTrue(all(lessons[key]["content"] for key in expected))
+
+    def test_unified_orthography_adapter_loads_twelve_draft_lessons(self):
+        payload = load_payload("course_data/unified_orthography_lessons_01_12.json")
+        lessons, quizzes = adapt_unified_orthography_lessons(payload)
+        expected = [f"unified_orthography_{i:02d}" for i in range(1, 13)]
+        self.assertEqual(list(lessons), expected)
+        self.assertEqual(list(quizzes), expected)
+        self.assertTrue(all(lessons[key]["content"] for key in expected))
+        self.assertTrue(all(lessons[key]["review_status"] == "draft_source_check_required" for key in expected))
+        self.assertTrue(all(quizzes[key] for key in expected))
 
     def test_course_one_legacy_keys_are_not_used(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", self.payloads)
