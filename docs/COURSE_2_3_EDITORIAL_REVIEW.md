@@ -67,7 +67,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 11 | Adverbs, loanwords and compound numerals | Replaced the numeral-only quiz with a direct question on «زۆر» in «زۆر خێرا», aligning the check with the lesson's adverb example; loanword and numeral coverage still need review. |
 | 11 | Adverbs, loanwords and compound numerals | Reworked exercises and quiz to cover all three parts: «زۆر» modifying «خێرا», «تەلەفۆن» in a sentence, and the exact displayed forms «بیست و یەک» / «سی و دوو». Quiz explanations avoid claiming a universal numeral or loanword rule before the course convention is verified. |
 | 12 | Final review | Quiz now asks learners to correct «رۆژ» to «ڕۆژ», directly testing one of the explicit corrections in the practice passage; final consistency check remains. |
-| 12 | Final review | Added a short passage with three explicit corrections («كورد» → «کورد», «ياری» → «یاری», «رۆژ» → «ڕۆژ») and an answer key; final review against the course's spelling rules remains. |
+| 12 | Final review | Aligned the passage, answer key, exercises, and three quiz items: «كورد» → «کورد», «ياري» → «یاری», and «رۆژ» → «ڕۆژ». Each correction now has its own quiz check. These are lesson-specific examples, not a universal spelling rule; final course-wide convention review remains. |
 
 ### Practical review checklist
 - Is the explanation easy for a beginner to understand?
