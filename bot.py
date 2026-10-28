@@ -310,14 +310,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
+        course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(next_lesson), [])
+        next_number = course_order.index(next_lesson) + 1 if next_lesson in course_order else 0
+        next_label = f"وانەی {kurdish_digits(next_number)}: {next_title}"
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                f"➡️ دەستپێکردنی {next_title}",
+                f"➡️ دەستپێکردنی {next_label}",
                 callback_data=f"next_lesson_{next_lesson}"
             )
         ]])
         await query.message.reply_text(
-            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
+            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_label}",
             reply_markup=keyboard
         )
     # Generate event-specific narration in the configured Kejyar voice.
