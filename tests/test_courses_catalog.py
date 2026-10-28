@@ -106,7 +106,7 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertNotIn("dialogue[1][1]", lesson7)
         self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
 
-    def test_conversation_titles_and_review_gates_match_the_24_lesson_plan(self):
+    def test_conversation_titles_and_review_gates_match_the_30_lesson_plan(self):
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_07_30.json").open(encoding="utf-8") as handle:
@@ -120,7 +120,7 @@ class CourseCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(lesson.get("review_status") == "draft_editorial_review" for lesson in lessons))
         self.assertEqual(self.catalog[1]["status"], "draft_for_review")
-        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 24)
+        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 30)
         for lesson in lessons:
             self.assertTrue(lesson["dialogue"])
             self.assertTrue(lesson["vocabulary"])
