@@ -570,7 +570,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 تاقیکردنەوەی {lesson}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = []
+        for lesson in ORDER:
+            if not QUIZ_DATA.get(lesson) or lesson not in completed:
+                continue
+            # Preserve numeric legacy callbacks; use the complete namespaced key
+            # for future courses so underscores are never truncated.
+            quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+            buttons.append([
+                InlineKeyboardButton(
+                    f"📝 تاقیکردنەوەی {lesson}",
+                    callback_data=f"quiz_{quiz_lesson_id}_start",
+                )
+            ])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
