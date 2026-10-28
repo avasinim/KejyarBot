@@ -29,7 +29,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 
 | Lesson | Focus for review |
 |---|---|
-| 1 | Check greeting and farewell expressions for naturalness and consistency across the remaining lessons. |
+| 1 | Clarified the farewell to «تا دواتر لە بەردەم کتێبخانەکە یەکتر دەبینینەوە»; broader naturalness review across the course remains. |
 | 2 | Review the naturalness of the self-introduction and the question/answer about where someone is from. |
 | 3 | Check question-word usage and the sequence of questions for a natural conversation. |
 | 4 | Quiz keys were checked against the dialogue; review family vocabulary definitions and consistency of singular/plural forms. |
@@ -80,7 +80,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 ## Current status
 
 - Runtime/CI: latest content commits have no associated workflow run or status-check results available through the current GitHub connection; CI is not verified for these edits.
-- Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 9 date/meeting phrasing and lesson 12 closing line were clarified. Practical editorial review still pending.
+- Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 1 farewell wording and lesson 9 date/meeting phrasing plus lesson 12 closing line were clarified. Practical editorial review still pending.
 - Course 3: concrete examples were added in lessons 1, 4, 6, 7, 9, 10, 11, and 12. Lesson 12 now includes a short proofreading passage and answer key. Final language review remains, especially checking examples against the intended course spelling rules.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
