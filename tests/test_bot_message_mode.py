@@ -106,6 +106,27 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(button.text.startswith("🔒"))
 
 
+    async def test_quiz_selection_menu_shows_readable_lesson_titles(self):
+        update, context = self.make_update_context("📝 تاقیکردنەوەکان")
+        completed = list(bot.ORDER)
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(len(buttons), len(bot.ORDER))
+        for lesson, button in zip(bot.ORDER, buttons):
+            with self.subTest(lesson=lesson):
+                self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
+                self.assertEqual(
+                    button.callback_data,
+                    f"quiz_{lesson.split('_')[1]}_start",
+                )
+
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
         content = "ئ" * 3900 + "\n" + "ب" * 200
