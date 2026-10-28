@@ -31,7 +31,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 |---|---|
 | 1 | Clarified the farewell to «تا دواتر لە بەردەم کتێبخانەکە یەکتر دەبینینەوە»; broader naturalness review across the course remains. |
 | 2 | Review the naturalness of the self-introduction and the question/answer about where someone is from. |
-| 3 | Check question-word usage and the sequence of questions for a natural conversation. |
+| 3 | Clarified the closing line to «باشە، لەوێ یەکتر دەبینینەوە»; question-word usage and the sequence of questions still need a broader naturalness review. |
 | 4 | Quiz keys were checked against the dialogue; review family vocabulary definitions and consistency of singular/plural forms. |
 | 5 | Quiz key was checked against the dialogue; review the polite invitation and pre-visit phone-call phrasing. |
 | 6 | Review the daily routine for tense consistency and natural time expressions. |
