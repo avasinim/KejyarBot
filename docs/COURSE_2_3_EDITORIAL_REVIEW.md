@@ -56,7 +56,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 |---|---|---|
 | 1 | Unicode and unified spelling | Added whole-word comparisons «کورد / كورد» and «یاری / ياری»; final check that the explanation is beginner-friendly remains. |
 | 2 | Alphabet and letter/sound distinction | Removed a repeated key point, made the examples concrete (written/seen vs. heard), and changed the quiz to test that distinction directly. The broad claim about letter and sound counts still needs a precise example before release. |
-| 3 | Vowels and syllables | Reworked the quiz to ask learners to read a word aloud and identify its syllables, matching the lesson's stated method rather than relying on a distracting letter-count option. |
+| 3 | Vowels and syllables | Reworked the quiz to ask learners to read aloud and identify syllables; added explicit segmentation «کۆ-مار» and «هێ-لا-نە» plus a syllable-marking exercise. Confirm pronunciation/dialect consistency in final review. |
 | 4 | Consonant clusters and syllables | Quiz now asks learners to identify «س» and «ت» in «مەست», directly checking the concrete cluster taught in the lesson; final language review remains. |
 | 6 | Difference between ڕ and ر | Quiz now asks which familiar word begins with «ڕ» and contrasts «ڕۆژ» with «باران», which contains ordinary «ر»; final language review remains. |
 | 7 | ک/ك, ھ/ه and ە | Clarified that «هەوا / ھەوا» is only a digital code-point comparison and that «ھەوا» should not be taught as an interchangeable ordinary spelling; use «هەوا» in normal Kurdish text unless the course's explicit convention says otherwise. |
