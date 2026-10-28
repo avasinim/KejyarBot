@@ -531,7 +531,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text(
             f"{course['title']}\n\n📌 دۆخ: {status}\n"
             f"{course.get('description', '')}\n\n"
-            "ئەم کۆرسە هێشتا چالاک نەکراوە؛ وانەی ڕێکخراوی ئامادەی نییە."
+            "وانەکانی ئەم کۆرسە هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
         )
         return
 
