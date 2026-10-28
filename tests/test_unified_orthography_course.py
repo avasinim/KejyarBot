@@ -24,7 +24,7 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
             if item["id"] == "unified_orthography"
         )
 
-    def test_course_remains_planned_until_runtime_and_source_review(self):
+    def test_course_remains_planned_until_editorial_and_runtime_review(self):
         self.assertEqual(self.course["status"], "draft_for_review")
         self.assertEqual(self.course["lesson_ids"], [f"unified_orthography_{n:02d}" for n in range(1, 13)])
 
@@ -44,7 +44,7 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
                 self.assertTrue(lesson.get("comprehension"))
                 self.assertEqual(len(lesson["comprehension"]), 2)
                 self.assertTrue(lesson.get("role_play"))
-                self.assertEqual(lesson.get("review_status"), "draft_source_check_required")
+                self.assertEqual(lesson.get("review_status"), "draft_editorial_review")
 
     def test_quiz_answer_indexes_are_valid(self):
         for lesson in self.data["lessons"]:
