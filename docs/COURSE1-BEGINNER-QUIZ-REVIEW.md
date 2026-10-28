@@ -39,7 +39,7 @@ The following items are already marked for editorial/source review by `course_qu
 - Lesson 15: the quiz now includes a direct recognition item for «ڕ» in «بڕیار», alongside the contrast between «ر» and «ڕ». This is more varied and remains grounded in the lesson's examples.
 - Lesson 18: the quiz currently has only one question. Do not add more until the syllable split «کەژ / یار» and the lesson's claims about «ی» are checked; adding questions before that review would multiply uncertain claims.
 - Lesson 19: the quiz currently has only one question. Its split «یا / ری» and its claim that «ی» is a vowel in «ری» need review against the intended source before expanding the quiz.
-- Lesson 22: question 1 was simplified to ask learners to recognize «شوان» as an example of «و»ی نەبزوێن, using the lesson's own examples and avoiding specialist phonetic notation. Questions 2 and 3 still check the taught examples «کورد» and «دیار»; review the balance of the four roles of «و» and «ی» before considering the set complete.
+- Lesson 22: questions 1–3 now use the lesson's familiar examples «شوان», «کورد» and «دیار» to recognize «و» and «ی» as بزوێن/نەبزوێن without IPA notation. Confirm the source's intended reading of «دیار» before treating the full set as content-reviewed.
 
 ## Guardrails
 
@@ -48,3 +48,8 @@ The following items are already marked for editorial/source review by `course_qu
 - Do not put citations or source discussions inside learner-facing lessons or quiz questions unless the project owner specifically asks for them.
 - Do not change `main`, merge the draft PR, deploy, or alter the production bot/database as part of this audit.
 - Run the relevant Python tests before claiming the review gate is verified at runtime.
+
+
+## Structural validation snapshot
+
+A read-only structural scan of `course_data/orthography_foundations_quiz_draft.json` on 2026-10-28 found 22 quiz sets (lesson numbers 1–22), 62 questions, no duplicate lesson numbers or question IDs, and no questions with empty text, a non-three-option choice list, blank options, or an out-of-range `correct_option_index`. This is a JSON-structure check only; it does not prove that each Kurdish answer or lesson rule is factually correct, and it is not a Python runtime test.
