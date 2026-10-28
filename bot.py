@@ -547,7 +547,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{course['title']}\n\n"
             f"📌 دۆخ: {status}\n"
             f"{course.get('description', '')}\n\n"
-            "ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە؛ وانە کۆنەکان بە ناوی ئەم کۆرسەوە پیشان نادرێن."
+            "وانەکانی ئەم کۆرسە هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
         )
         return
 
