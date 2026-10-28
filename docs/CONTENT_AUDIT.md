@@ -16,6 +16,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
 
+## CI baseline recovered — 27 October 2026
+
+- Retrieved the completed GitHub Actions job for run `40288141082`: compile step passed and `python -m unittest discover -s tests -v` passed with **92 tests**. Log: https://github.com/avasinim/KejyarBot/actions/runs/40288141082
+- This is a useful passing baseline for the code at that run's commit only. It predates the latest defensive quiz-state commits, so it does **not** verify the current branch head or the new regression tests.
+- The available workflow-run connector only returns pull-request-triggered runs, so it cannot establish whether the latest push-triggered run has completed. Current-head CI remains unverified.
+
 ## Branch integration caution — 27 October 2026
 
 - A GitHub compare of `main` against `fix/kejyarbot-stability-2026-10-25` reported the branch as `diverged`: 507 commits ahead and 1 behind, with `main` at `341c6b20437a0b1cd90826fea34d114a6fbe7422`.
