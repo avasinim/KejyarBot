@@ -13,7 +13,7 @@
 - Course 1 is loaded in the current runtime using its legacy stable lesson IDs. Preserve these IDs and existing student progress.
 - Course 2 and Course 3 lesson data files are now loaded through validated adapters into `LESSON_DATA`/`QUIZ_DATA` using namespaced keys. The manifest contains their 12 ordered IDs each and marks both `draft_for_review`; the menu therefore keeps them visible but unavailable until editorial/source review is complete.
 - Course 2: 12 dialogue lessons and 27 quiz questions pass structural index validation. All 12 are explicitly flagged `draft_source_check_required`, because the current JSON drafts do not include traceable sources; their missing source citations are recorded rather than invented.
-- Course 2 quiz audit: all 27 quiz questions currently lack explanations. This is an editorial improvement item, not a structural parser failure.
+- Course 2 quiz audit: formative explanations have now been added to all 27 quiz questions, and a regression assertion requires them. Explanations for questions that depend on dialogue details are explicitly marked as needing comparison with the final lesson text; the course remains locked pending source/language review.
 - Course 3: 12 lessons and 12 quiz questions pass structural index validation; all 12 lessons remain flagged `draft_source_check_required`.
 - `course_lesson_adapters.py` contains an adapter for conversation-style lessons. The unified-orthography draft has a different schema and requires a dedicated renderer/adapter before activation.
 - The menu must show the three in-scope courses distinctly. Each course must have independent ordered lesson access, quiz routing, completion progression, and namespaced IDs; Course 1 legacy IDs must remain unchanged.
