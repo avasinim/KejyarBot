@@ -58,10 +58,10 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 4 | Consonant clusters and syllables | Added «دەست» as a concrete cluster example; final language review is still needed. |
 | 6 | Difference between ڕ and ر | Added «باران» and «ڕۆژ» to show the two letters in familiar words; final language review remains. |
 | 7 | ک/ك, ھ/ه and ە | Added whole-word comparisons «کورد / كورد», «هەوا / ھەوا», and «کەس»; verify the teaching explanation makes clear these are digital character distinctions, not interchangeable spelling variants. |
-| 9 | Particles and joined spelling | Replace generic placeholders with familiar, practical examples. |
+| 9 | Particles and joined spelling | Added short everyday sentence examples for «لە»، «بە خێرایی»، and «بێ ئاگایی»; verify join/separation rules against the course's intended convention. |
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Added «تەلەفۆن» as a loanword and «سی و دوو» as a compound numeral; check the lesson gives enough context for both. |
-| 12 | Final review | Added a short practice passage; a matching proofreading answer key still needs to be completed and checked. |
+| 12 | Final review | Added a short passage with three explicit corrections («كورد» → «کورد», «ياری» → «یاری», «رۆژ» → «ڕۆژ») and an answer key; final review against the course's spelling rules remains. |
 
 ### Practical review checklist
 - Is the explanation easy for a beginner to understand?
@@ -81,6 +81,6 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 
 - Runtime/CI: latest content commits have no associated workflow run or status-check results available through the current GitHub connection; CI is not verified for these edits.
 - Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 9 date/meeting phrasing and lesson 12 closing line were clarified. Practical editorial review still pending.
-- Course 3: concrete examples were added in lessons 1, 4, 6, 7, 10, 11, and 12. Final language review remains; lesson 9 still needs a targeted practical review, and lesson 12 still needs a proofreading answer key.
+- Course 3: concrete examples were added in lessons 1, 4, 6, 7, 9, 10, 11, and 12. Lesson 12 now includes a short proofreading passage and answer key. Final language review remains, especially checking examples against the intended course spelling rules.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
