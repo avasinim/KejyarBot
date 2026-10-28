@@ -1,7 +1,7 @@
 {
   "course_id": "orthography_foundations",
   "course_title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
-  "status": "beginner_quiz_alignment_audited_runtime_test_pending",
+  "status": "beginner_quiz_editorial_pass",
   "lesson_quiz_count": 22,
   "notes": [
     "هاوتاییی ٢٢ پرسیار لەگەڵ وانەکان پشکنراوە و ئەنجامەکە لە course_data/QUIZ_ALIGNMENT_AUDIT.md تۆمار کراوە.",
