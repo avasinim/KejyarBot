@@ -9,13 +9,13 @@ import bot
 
 
 class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
-    def test_all_46_manifest_lessons_are_loaded_without_id_collisions(self):
+    def test_all_52_manifest_lessons_are_loaded_without_id_collisions(self):
         expected = {
             "orthography_basic": [f"وانە_{n}" for n in range(1, 23)],
-            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 13)],
+            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 19)],
             "unified_orthography": [f"unified_orthography_{n:02d}" for n in range(1, 13)],
         }
-        self.assertEqual(len(bot.LESSON_DATA), 46)
+        self.assertEqual(len(bot.LESSON_DATA), 52)
         for course_id, lesson_ids in expected.items():
             with self.subTest(course=course_id):
                 self.assertEqual(bot.COURSE_LESSON_ORDER[course_id], lesson_ids)
