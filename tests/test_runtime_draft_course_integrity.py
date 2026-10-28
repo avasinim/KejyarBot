@@ -54,6 +54,16 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 with self.subTest(lesson=lesson_id):
                     self.assertFalse(bot.can_open(12345, lesson_id))
 
+    def test_draft_course_completions_never_grant_legacy_badges(self):
+        draft_ids = (
+            bot.COURSE_LESSON_ORDER["daily_conversation"]
+            + bot.COURSE_LESSON_ORDER["unified_orthography"]
+        )
+        with patch.object(bot, "get_completed_lessons", return_value=draft_ids), \
+             patch.object(bot, "add_badge") as add_badge:
+            bot.check_badges(12345)
+        add_badge.assert_not_called()
+
     def test_next_lesson_never_crosses_course_boundaries(self):
         for course_id in ("daily_conversation", "unified_orthography"):
             lesson_ids = bot.COURSE_LESSON_ORDER[course_id]
