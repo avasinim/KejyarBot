@@ -39,6 +39,13 @@ Before changing either course status to `active`:
 - Keep the production bot, production token, production database, `main`, and PR merge untouched unless separately and explicitly authorized.
 - Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false` and preserve the existing approved voice.
 
+## Automated checks (2026-10-28)
+
+- Latest GitHub Actions run for commit `1b2fda8a7dd80efaa599b2f9c9ddaf6a54bce48c` passed: `python -m compileall -q .` and all 187 tests passed.
+- The first run after adding callback/branding regression tests exposed stale Course 1 quiz-review test expectations. The tests were updated to match the explicit source-review gate; quizzes were not re-enabled to make the tests pass.
+- Added a regression test that checks 188 generated course/lesson callback payloads against Telegram's 64-byte limit, ensures course callback IDs are unique, and protects the `کەژیار` spelling in the generated lesson header/caption.
+- These are automated structural/runtime checks only. They do not constitute manual Telegram testing or linguistic approval of Courses 2–3.
+
 ## Separate confirmed typo fix
 
 Commit `63b3ba1565ac69c0f3f5222970b27858a48e41a3` changes the Course 1 lesson header and Lesson 1 infographic caption from `کەویار` to `کەژیار`. It does not change the original lesson prose where `کەویار` is deliberately shown as a contrasting example. This commit is on the test branch only and is not automatically deployed to Botkeep.
