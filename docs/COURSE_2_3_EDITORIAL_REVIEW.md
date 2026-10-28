@@ -94,3 +94,4 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 - Course 3: concrete examples or clarifications were added in lessons 1, 2, 4, 6, 7, 9, 10, 11, and 12. Lesson 12 now includes a short proofreading passage and answer key. Final language review remains, especially checking examples against the intended course spelling rules.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
+- Status-map consistency: removed a duplicate `draft_for_review` key in `open_course` and added the same status to the empty-course response map.
