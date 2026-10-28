@@ -246,5 +246,63 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [])
 
 
+    @staticmethod
+    def _normalized_text(value):
+        import re
+        return re.sub(r"\\s+", " ", value.casefold().strip().rstrip("؟?!،,.؛:")).strip()
+
+    def test_draft_lessons_have_no_exact_duplicate_vocabulary_dialogue_or_quiz_options(self):
+        filenames = (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
+            "unified_orthography_lessons_01_12.json",
+        )
+        for filename in filenames:
+            for lesson in self._load_course_data(filename):
+                with self.subTest(file=filename, lesson=lesson["number"]):
+                    vocabulary = lesson.get("vocabulary", [])
+                    terms = [
+                        item[0] if isinstance(item, list) else item
+                        for item in vocabulary
+                        if (item[0] if isinstance(item, list) else item)
+                    ]
+                    normalized_terms = [self._normalized_text(term) for term in terms]
+                    self.assertEqual(
+                        len(normalized_terms), len(set(normalized_terms)),
+                        msg=f"Duplicate vocabulary term in {filename}, lesson {lesson['number']}",
+                    )
+
+                    dialogue = lesson.get("dialogue", [])
+                    dialogue_lines = [
+                        item[1] if isinstance(item, list) and len(item) > 1 else item
+                        for item in dialogue
+                    ]
+                    normalized_lines = [
+                        self._normalized_text(line)
+                        for line in dialogue_lines
+                        if isinstance(line, str) and line.strip()
+                    ]
+                    self.assertEqual(
+                        len(normalized_lines), len(set(normalized_lines)),
+                        msg=f"Duplicate dialogue line in {filename}, lesson {lesson['number']}",
+                    )
+
+                    for question in lesson.get("quiz", []):
+                        normalized_options = [
+                            self._normalized_text(option)
+                            for option in question.get("options", [])
+                        ]
+                        self.assertEqual(
+                            len(normalized_options), len(set(normalized_options)),
+                            msg=(
+                                f"Duplicate quiz options in {filename}, lesson "
+                                f"{lesson['number']}: {question.get('q')}"
+                            ),
+                        )
+
+
 if __name__ == "__main__":
     unittest.main()
