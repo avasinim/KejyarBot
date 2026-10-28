@@ -46,7 +46,7 @@ class CourseManifestRegressionTests(unittest.TestCase):
 
     def test_course_runtime_keeps_draft_courses_behind_activation_gate(self):
         self.assertIn('lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]', self.bot_source)
-        self.assertIn('"ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە', self.bot_source)
+        self.assertIn("بۆ خوێندکاران چالاک نەکراون", self.bot_source)
 
     def test_quiz_menu_preserves_namespaced_lesson_ids(self):
         # Splitting on underscores would truncate daily_conversation_01.
