@@ -636,6 +636,15 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "📚 کۆرسەکانی کەژیار\n\n"
             f"{len(active_courses)} کۆرسی چالاک هەن: {active_names}."
         )
+        draft_review_courses = [
+            course for course in active_courses
+            if course.get("id") in {"daily_conversation", "unified_orthography"}
+        ]
+        if draft_review_courses:
+            catalog_text += (
+                "\n\nℹ️ تێبینی: وانەکانی کۆرسی ٢ و ٣ لەم برانچی تاقیکردنەوەیەدا بەردەستن، "
+                "بەڵام پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە."
+            )
         if planned_courses:
             planned_names = "، ".join(
                 course.get("title", course.get("id", "")).split(": ", 1)[-1]
