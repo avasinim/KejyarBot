@@ -1,8 +1,11 @@
+import os
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_NAME = str(BASE_DIR / "kejyar.db")
+# Hosted services should point this at a mounted persistent volume, e.g. /data/kejyar.db.
+# Local development keeps the historical database location by default.
+DB_NAME = os.environ.get("KEJYAR_DB_PATH", str(BASE_DIR / "kejyar.db"))
 
 
 def init_db():
