@@ -40,6 +40,13 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertIn('lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]', self.bot_source)
         self.assertIn('"ئەم کۆرسە وانەی ڕێکخراوی ئامادەی نییە', self.bot_source)
 
+    def test_quiz_menu_preserves_namespaced_lesson_ids(self):
+        # Splitting on underscores would truncate daily_conversation_01.
+        self.assertIn('lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson', self.bot_source)
+        self.assertIn('callback_data=f"quiz_{quiz_lesson_id}_start"', self.bot_source)
+        self.assertIn('suffix.isdigit() else suffix', self.bot_source)
+        self.assertNotIn("lesson.split", self.bot_source)
+
 
 if __name__ == "__main__":
     unittest.main()
