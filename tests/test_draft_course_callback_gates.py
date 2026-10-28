@@ -58,6 +58,17 @@ class DraftCourseCallbackGateTests(unittest.IsolatedAsyncioTestCase):
         award.assert_not_called()
 
 
+    async def test_forged_draft_quiz_start_cannot_show_questions(self):
+        update, message, query = self.make_update("quiz_daily_conversation_01_start")
+        context = SimpleNamespace(user_data={})
+        with patch.object(bot, "send_question", new_callable=AsyncMock) as send_question:
+            await bot.start_quiz(update, context)
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("چالاک نەکراوە", message.reply_text.await_args.args[0])
+        self.assertNotIn("quiz", context.user_data)
+        send_question.assert_not_awaited()
+
     async def test_stale_draft_quiz_session_is_cancelled_without_quiz_rewards(self):
         update, message, query = self.make_update("answer_0")
         update.effective_user = query.from_user
