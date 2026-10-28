@@ -54,7 +54,7 @@ class LessonInfographicDeliveryTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(call.kwargs.get("reply_markup") is None for call in calls[:-1]))
         self.assertIs(calls[-1].kwargs.get("reply_markup"), keyboard)
         delivered = "".join(call.args[0] for call in calls).replace("\n", "")
-        expected = content.replace("\\n", "")
+        expected = content.replace("\n", "")
         self.assertEqual(len(delivered), len(expected))
         self.assertEqual(delivered, expected)
 
