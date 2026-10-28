@@ -34,6 +34,24 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertTrue(questions)
                     self.assertTrue(all(q.get("question") and q.get("explanation") for q in questions))
 
+    def test_all_48_conversation_lessons_stay_locked_even_with_fake_completion(self):
+        # A stale database row or a crafted callback must not bypass the
+        # course-level activation gate, even if every draft lesson appears done.
+        all_draft_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        self.assertEqual(len(all_draft_ids), 48)
+        for lesson_id in all_draft_ids:
+            with self.subTest(lesson=lesson_id):
+                self.assertFalse(bot.can_open(12345, lesson_id))
+                self.assertIsNone(bot.next_course_lesson(lesson_id) if lesson_id not in all_draft_ids else None)
+
+    def test_next_lesson_never_crosses_course_boundaries(self):
+        for course_id in ("daily_conversation", "unified_orthography"):
+            lesson_ids = bot.COURSE_LESSON_ORDER[course_id]
+            with self.subTest(course=course_id):
+                for current, following in zip(lesson_ids, lesson_ids[1:]):
+                    self.assertEqual(bot.next_course_lesson(current), following)
+                self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
+
     def test_course_four_remains_planned_and_empty(self):
         course = next(course for course in bot.COURSES if course["id"] == "grammar")
         self.assertEqual(course["status"], "planned")
