@@ -107,6 +107,28 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.quiz_answer(update, context)
             reward.assert_called_once_with(12345, "وانە_1")
 
+    async def test_namespaced_course_quiz_completion_rewards_keep_course_identity(self):
+        lesson = "daily_conversation_01"
+        update, context, query = self.make_context("answer_0")
+        context.user_data["quiz"]["lesson"] = lesson
+        context.user_data["quiz"]["questions"] = [{
+            "question": "پرسیاری وتووێژ",
+            "options": ["وەڵامی دروست", "وەڵامی هەڵە"],
+            "answer": "وەڵامی دروست",
+        }]
+        query.message.reply_text = AsyncMock()
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward,
+        ):
+            await bot.quiz_answer(update, context)
+
+        reward.assert_called_once_with(12345, lesson)
+        self.assertNotIn("quiz", context.user_data)
+        result_text = query.message.reply_text.await_args_list[-1].args[0]
+        self.assertIn("+20 XP", result_text)
+
     async def test_correct_answer_on_nonfinal_question_advances_once(self):
         update, context, query = self.make_context("answer_0")
         context.user_data["quiz"]["questions"].append({
