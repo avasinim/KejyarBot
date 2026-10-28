@@ -47,6 +47,7 @@ def include(path: Path) -> bool:
 def main() -> int:
     required = {
         "bot.py",
+        "main.py",
         "database.py",
         "voice.py",
         "daily_chat.py",
