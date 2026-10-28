@@ -33,7 +33,7 @@ def adapt_conversation_lessons(course_id, lesson_files):
                 "content": format_conversation_lesson(raw),
                 "source_number": number,
                 "course_id": course_id,
-                "review_status": raw.get("review_status", "draft_source_check_required"),
+                "review_status": raw.get("review_status", "draft_editorial_review"),
             }
             quiz_items = []
             for question in raw.get("quiz", []):
@@ -79,13 +79,6 @@ def format_conversation_lesson(lesson):
             sections.extend(f"{index}. {item}" for index, item in enumerate(lesson[field], 1))
     if lesson.get("role_play"):
         sections.extend(["", "🎭 ڕۆڵگێڕی", lesson["role_play"]])
-    if lesson.get("source_note"):
-        sections.extend(["", "📚 تێبینیی سەرچاوە", lesson["source_note"]])
-    if lesson.get("review_findings"):
-        sections.extend(["", "🔍 خاڵەکانی پشکنین"])
-        sections.extend(f"• {item}" for item in lesson["review_findings"])
-    if lesson.get("review_status"):
-        sections.extend(["", f"📌 دۆخی پشکنین: {lesson['review_status']}"])
     return "\n".join(sections)
 
 
@@ -93,7 +86,7 @@ def adapt_unified_orthography_lessons(payload):
     """Adapt unified-orthography drafts to namespaced lesson and quiz records.
 
     The returned records remain drafts; callers must not activate the course
-    until every source-review flag has been resolved by an editor.
+    until its practical editorial review is complete.
     """
     lessons_by_id = {}
     quizzes_by_id = {}
@@ -140,19 +133,12 @@ def adapt_unified_orthography_lessons(payload):
                 )
         if raw.get("role_play"):
             sections.extend(["", "🛠️ کاری پڕاکتیکی", raw["role_play"]])
-        if raw.get("source_note"):
-            sections.extend(["", "📚 تێبینیی سەرچاوە", raw["source_note"]])
-        if raw.get("review_findings"):
-            sections.extend(["", "🔍 خاڵەکانی پشکنین"])
-            sections.extend(f"• {item}" for item in raw["review_findings"])
-        if raw.get("review_status"):
-            sections.extend(["", f"📌 دۆخی پشکنین: {raw['review_status']}"])
         lessons_by_id[key] = {
             "title": title,
             "content": "\n".join(sections),
             "source_number": number,
             "course_id": course_id,
-            "review_status": raw.get("review_status", "draft_source_check_required"),
+            "review_status": raw.get("review_status", "draft_editorial_review"),
         }
         quiz_items = []
         for question in raw.get("quiz", []):
