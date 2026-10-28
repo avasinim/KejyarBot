@@ -4,6 +4,11 @@ This module deliberately does not disable lessons or change course activation.
 """
 COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED = frozenset({
     "وانە_2",
+    "وانە_17",
+    "وانە_11",
+    "وانە_10",
+    "وانە_9",
+    "وانە_6",
     "وانە_4",
     "وانە_5",
     "وانە_7",
