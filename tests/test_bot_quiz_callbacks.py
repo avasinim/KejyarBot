@@ -6,6 +6,15 @@ import bot
 
 
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        # Quiz callbacks revalidate persisted lesson completion. Keep these unit
+        # tests independent of a real SQLite file and isolate each test user.
+        patcher = patch.object(
+            bot, "get_completed_lessons", return_value=["وانە_1", "وانە_2"]
+        )
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def make_context(self, callback_data, message_id=77):
         query = SimpleNamespace(
             data=callback_data,
