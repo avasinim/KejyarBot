@@ -13,9 +13,9 @@
 - Course 1 is loaded in the current runtime using its legacy stable lesson IDs. Preserve these IDs and existing student progress.
 - Course 2 and Course 3 lesson data files are now loaded through validated adapters into `LESSON_DATA`/`QUIZ_DATA` using namespaced keys. The manifest contains their 12 ordered IDs each and marks both `draft_for_review`; the menu therefore keeps them visible but unavailable until editorial/source review is complete.
 - Course 2: 12 dialogue lessons and 27 quiz questions pass structural index validation. All 12 are explicitly flagged `draft_source_check_required`, because the current JSON drafts do not include traceable sources; their missing source citations are recorded rather than invented.
-- Course 2 quiz audit: formative explanations have now been added to all 27 quiz questions, and a regression assertion requires them. Explanations for questions that depend on dialogue details are explicitly marked as needing comparison with the final lesson text; the course remains locked pending source/language review.
-- Course 3: 12 lessons and 12 quiz questions pass structural index validation; all 12 lessons remain flagged `draft_source_check_required`.
-- `course_lesson_adapters.py` contains an adapter for conversation-style lessons. The unified-orthography draft has a different schema and requires a dedicated renderer/adapter before activation.
+- Course 2 quiz audit: formative explanations have been added to all 27 quiz questions, and a regression assertion requires them. Dialogue-dependent questions have visible lesson-level review notes; the course remains locked pending source/language review.
+- Course 3: 12 lessons and 12 quiz questions pass structural index validation. Formative explanations have been added to all 12 quiz questions and are regression-tested. Placeholder examples in lessons 9 and 11 are flagged visibly as editorial-review findings. All 12 lessons remain `draft_source_check_required`.
+- `course_lesson_adapters.py` contains separate adapters for conversation-style and unified-orthography lessons; both render source notes and visible review findings. Adapter rendering does not itself approve the content for activation.
 - The menu must show the three in-scope courses distinctly. Each course must have independent ordered lesson access, quiz routing, completion progression, and namespaced IDs; Course 1 legacy IDs must remain unchanged.
 - The existing daily-chat feature is not a substitute for the structured 12-lesson Course 2.
 
@@ -40,3 +40,4 @@
 - Course 3's current per-lesson source notes are editorial reminders, not precise citations: they generally lack page numbers and verbatim evidence. Keep all 12 lessons in `draft_source_check_required` until a reviewer records the selected edition, page(s), and the rule/example verified for each lesson.
 - Course 2 remains without traceable lesson-level sources; no bibliography was invented. Its 27 quiz items also currently lack answer explanations.
 - External reference check performed for bibliographic metadata only; it is not a substitute for reviewing the actual PDF pages or approving Kurdish language content.
+- Course 3 formative explanations were added to all 12 quiz questions. Explanations are general learning feedback, not evidence that the keyed answers or orthographic rules have been source-validated. Lessons 9 and 11 include visible flags where example slots are still placeholders.
