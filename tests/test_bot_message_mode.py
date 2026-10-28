@@ -136,7 +136,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
         self.assertIn("وانەی ڕێکخراوی ئامادەی نییە", query.message.reply_text.await_args.args[0])
-        self.assertIn("دۆخ: لە پلانداناندا", query.message.reply_text.await_args.args[0])
+        self.assertIn("دۆخ: لە پێداچوونەوەدایە", query.message.reply_text.await_args.args[0])
         self.assertNotIn("planned", query.message.reply_text.await_args.args[0])
 
 
