@@ -700,12 +700,24 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
 
+async def telegram_startup(app):
+    """Log successful Telegram authentication without exposing the bot token."""
+    bot_info = await app.bot.get_me()
+    logger.info(
+        "Telegram authentication succeeded: username=@%s, bot_id=%s",
+        bot_info.username,
+        bot_info.id,
+    )
+
+
 def main():
-    init_db()
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
-    app = Application.builder().token(token).build()
+
+    # Do not initialize/create the local SQLite database until configuration exists.
+    init_db()
+    app = Application.builder().token(token).post_init(telegram_startup).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
@@ -714,8 +726,15 @@ def main():
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
-    logger.info("KejyarBot is running")
-    app.run_polling()
+    logger.info("KejyarBot is starting; waiting for Telegram authentication and polling.")
+    try:
+        app.run_polling()
+    except Exception:
+        logger.exception(
+            "KejyarBot failed during startup or polling. Check the test token, "
+            "network access, and whether another process is polling this same test bot."
+        )
+        raise
 
 if __name__ == "__main__":
     main()
