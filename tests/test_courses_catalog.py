@@ -31,16 +31,22 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(len(set(first["lesson_ids"])), 22)
         self.assertEqual(self.orthography["lesson_count"], 22)
 
-        for course_id in ("daily_conversation", "unified_orthography", "grammar"):
+        expected_drafts = {
+            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 13)],
+            "unified_orthography": [f"unified_orthography_{n:02d}" for n in range(1, 13)],
+        }
+        for course_id, expected_ids in expected_drafts.items():
             with self.subTest(course=course_id):
-                self.assertEqual(by_id[course_id]["status"], "planned")
-                self.assertEqual(by_id[course_id]["lesson_ids"], [])
+                self.assertEqual(by_id[course_id]["status"], "draft_for_review")
+                self.assertEqual(by_id[course_id]["lesson_ids"], expected_ids)
+        self.assertEqual(by_id["grammar"]["status"], "planned")
+        self.assertEqual(by_id["grammar"]["lesson_ids"], [])
 
     def test_daily_conversation_plan_is_provisional_and_does_not_activate_course(self):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
-        self.assertEqual(conversation["status"], "planned")
-        self.assertEqual(conversation["lesson_ids"], [])
+        self.assertEqual(conversation["status"], "draft_for_review")
+        self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 13)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
         self.assertEqual(self.conversation_plan["lesson_status"], "titles_and_sequence_are_proposals_only")
