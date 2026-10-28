@@ -26,6 +26,12 @@ class CourseOneQuizReviewTests(unittest.TestCase):
                 self.assertIn(lesson_key, COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED)
                 self.assertFalse(quiz_is_available(lesson_key))
 
+    def test_repetitive_question_patterns_are_flagged(self):
+        for lesson_key in ("وانە_4", "وانە_6", "وانە_9", "وانە_10", "وانە_11", "وانە_17"):
+            with self.subTest(lesson_key=lesson_key):
+                self.assertIn(lesson_key, COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED)
+                self.assertFalse(quiz_is_available(lesson_key))
+
     def test_unflagged_lesson_remains_available(self):
         self.assertTrue(quiz_is_available("وانە_1"))
         self.assertTrue(quiz_is_available("وانە_22"))
