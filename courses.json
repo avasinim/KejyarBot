@@ -37,7 +37,7 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "١٢ وانەی وتووێژ؛ ناوەڕۆک پەیوەست کراوە، بەڵام پێش چالاککردن پێویستی بە پشکنینی زمانی و تاقیکردنەوەی ڕاستەوخۆ هەیە.",
+      "description": "١٨ وانەی وتووێژ؛ وانەکانی ١٣–١٨ زیادکراون و هەموو ناوەڕۆکەکە پێش چالاککردن پێویستی بە پشکنینی زمانی و تاقیکردنەوەی ڕاستەوخۆ هەیە.",
       "status": "draft_for_review",
       "lesson_ids": [
         "daily_conversation_01",
@@ -51,7 +51,13 @@
         "daily_conversation_09",
         "daily_conversation_10",
         "daily_conversation_11",
-        "daily_conversation_12"
+        "daily_conversation_12",
+        "daily_conversation_13",
+        "daily_conversation_14",
+        "daily_conversation_15",
+        "daily_conversation_16",
+        "daily_conversation_17",
+        "daily_conversation_18"
       ]
     },
     {
