@@ -1,4 +1,4 @@
-"""Structural safeguards for the draft unified-orthography course.
+"""Structural safeguards for the unified-orthography course.
 
 These tests validate data shape only; they do not certify linguistic rules or examples.
 """
@@ -24,8 +24,8 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
             if item["id"] == "unified_orthography"
         )
 
-    def test_course_remains_planned_until_editorial_and_runtime_review(self):
-        self.assertEqual(self.course["status"], "draft_for_review")
+    def test_course_is_active_with_review_status_preserved(self):
+        self.assertEqual(self.course["status"], "active")
         self.assertEqual(self.course["lesson_ids"], [f"unified_orthography_{n:02d}" for n in range(1, 13)])
 
     def test_course_has_twelve_ordered_drafts(self):
