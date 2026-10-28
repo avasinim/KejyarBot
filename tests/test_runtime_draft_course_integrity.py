@@ -60,14 +60,15 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertTrue(lesson[field].strip())
                 for field in ("key_points", "examples", "exercises", "comprehension"):
                     self.assertTrue(lesson[field])
-                question = lesson["quiz"]
-                self.assertTrue(question["q"].strip())
-                self.assertGreaterEqual(len(question["options"]), 2)
-                self.assertTrue(all(option.strip() for option in question["options"]))
-                self.assertIsInstance(question["answer"], int)
-                self.assertGreaterEqual(question["answer"], 0)
-                self.assertLess(question["answer"], len(question["options"]))
-                self.assertTrue(question["explanation"].strip())
+                self.assertTrue(lesson["quiz"])
+                for question in lesson["quiz"]:
+                    self.assertTrue(question["q"].strip())
+                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertTrue(all(option.strip() for option in question["options"]))
+                    self.assertIsInstance(question["answer"], int)
+                    self.assertGreaterEqual(question["answer"], 0)
+                    self.assertLess(question["answer"], len(question["options"]))
+                    self.assertTrue(question["explanation"].strip())
 
     def test_all_82_manifest_lessons_are_loaded_without_id_collisions(self):
         expected = {
