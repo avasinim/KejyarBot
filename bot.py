@@ -228,9 +228,21 @@ def next_course_lesson(lesson):
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        if not course_id or not course_is_active(course_id):
+            continue
+        course_order = COURSE_LESSON_ORDER.get(course_id, [])
+        if lesson not in course_order:
+            continue
+        number = course_order.index(lesson) + 1
+        if course_id == "orthography_basic":
+            # Preserve the established Course 1 badge wording.
+            badge = f"🏅 کۆرسی ڕێنووسی — وانەی {number}"
+        else:
+            course = next((item for item in COURSES if item.get("id") == course_id), None)
+            course_title = course.get("title", "کۆرس") if course else "کۆرس"
+            badge = f"🏅 {course_title} — وانەی {number}"
+        add_badge(user_id, badge)
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
