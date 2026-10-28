@@ -64,6 +64,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; quiz now checks the derived-word example «بەهێز» while contrasting the compound «کتێب‌خانە». Final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Replaced the numeral-only quiz with a direct question on «زۆر» in «زۆر خێرا», aligning the check with the lesson's adverb example; loanword and numeral coverage still need review. |
 | 11 | Adverbs, loanwords and compound numerals | Added «تەلەفۆن» as a loanword and «سی و دوو» as a compound numeral; check the lesson gives enough context for both. |
+| 12 | Final review | Quiz now asks learners to correct «رۆژ» to «ڕۆژ», directly testing one of the explicit corrections in the practice passage; final consistency check remains. |
 | 12 | Final review | Added a short passage with three explicit corrections («كورد» → «کورد», «ياری» → «یاری», «رۆژ» → «ڕۆژ») and an answer key; final review against the course's spelling rules remains. |
 
 ### Practical review checklist
