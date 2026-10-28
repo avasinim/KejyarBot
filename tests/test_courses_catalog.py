@@ -68,6 +68,10 @@ class CourseCatalogTests(unittest.TestCase):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
                     draft = json.load(handle)
                 for lesson in draft["lessons"]:
+                    self.assertTrue(lesson["dialogue"])
+                    self.assertTrue(lesson["vocabulary"])
+                    self.assertTrue(lesson["exercises"])
+                    self.assertTrue(lesson["quiz"])
                     for question in lesson["quiz"]:
                         self.assertGreaterEqual(question["answer"], 0)
                         self.assertLess(question["answer"], len(question["options"]))
