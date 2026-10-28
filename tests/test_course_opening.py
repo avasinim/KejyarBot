@@ -6,6 +6,32 @@ import bot
 
 
 class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
+    async def test_course_menu_shows_activation_status_before_selection(self):
+        from unittest.mock import patch
+
+        message = SimpleNamespace(text="📚 وانەکان", reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        with patch.object(bot, "get_user", return_value=(12345, 0, 0, "A1.1", 0, None, 0, 0, 0, 0)):
+            await bot.message(update, SimpleNamespace(user_data={}))
+
+        message.reply_text.assert_awaited_once()
+        kwargs = message.reply_text.await_args.kwargs
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        labels = [row[0].text for row in keyboard]
+        self.assertEqual(len(labels), 4)
+        self.assertIn("🟢 چالاک", labels[0])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[1])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[2])
+        self.assertIn("⚪ لە پلانداناندا", labels[3])
+        self.assertEqual(
+            [row[0].callback_data for row in keyboard],
+            ["course_orthography_basic", "course_daily_conversation",
+             "course_unified_orthography", "course_grammar"],
+        )
+
     async def test_planned_course_does_not_expose_legacy_lessons(self):
         query = SimpleNamespace(
             data="course_daily_conversation",
