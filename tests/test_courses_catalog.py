@@ -98,7 +98,7 @@ class CourseCatalogTests(unittest.TestCase):
         lesson5 = next(lesson for lesson in first_draft["lessons"] if lesson["number"] == 5)
         self.assertEqual(lesson5["dialogue"][1][1], "ماڵمان لە گەڕەکێکی ئارامدایە، نزیک پارکەکە.")
         lesson1 = next(lesson for lesson in first_draft["lessons"] if lesson["number"] == 1)
-        self.assertEqual(lesson1["dialogue"][5][1], "باشە، تا دواتر لە بەردەم کتێبخانەکە دەبینمەوە.")
+        self.assertEqual(lesson1["dialogue"][5][1], "باشە، تا دواتر لە بەردەم کتێبخانەکە یەکتر دەبینینەوە.")
 
         lesson7 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 7)
         lesson12 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 12)
