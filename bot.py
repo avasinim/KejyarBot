@@ -456,6 +456,22 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
         return
 
+    # A manifest entry alone never activates a course. Planned/draft courses
+    # remain unavailable even if lesson IDs are added prematurely.
+    if course.get("status") != "active":
+        status_labels = {
+            "planned": "لە پلانداناندا",
+            "draft": "پێش‌نووس",
+            "draft_for_review": "لە پێداچوونەوەدایە",
+        }
+        status = status_labels.get(course.get("status", "planned"), "چالاک نییە")
+        await query.message.reply_text(
+            f"{course['title']}\\n\\n📌 دۆخ: {status}\\n"
+            f"{course.get('description', '')}\\n\\n"
+            "ئەم کۆرسە هێشتا چالاک نەکراوە."
+        )
+        return
+
     lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
     if not lesson_ids:
         status_labels = {
