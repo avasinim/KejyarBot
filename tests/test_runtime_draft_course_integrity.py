@@ -89,7 +89,7 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertTrue(lesson["quiz"])
                 for question in lesson["quiz"]:
                     self.assertTrue(question["q"].strip())
-                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertGreaterEqual(len(question["options"]), 3)
                     self.assertTrue(all(option.strip() for option in question["options"]))
                     self.assertIsInstance(question["answer"], int)
                     self.assertGreaterEqual(question["answer"], 0)
