@@ -27,6 +27,10 @@ The script creates `KejyarBot-Botkeep-Source.zip` beside the repository folder a
 
 Botkeep's ZIP uploader rejects binary files, so the existing MP3 recordings are intentionally not included. After the server is provisioned and SFTP access is available, upload the existing `voices/` directory (including `kejyar.mp3`, `lesson_start.mp3`, `lesson_done.mp3`, and `reward.mp3`) to the server's project root without renaming or replacing the recordings. Confirm the remote files exist before starting the bot. Do not substitute newly generated audio. The current repository's four event MP3 files are byte-identical; this is known and must not be silently changed.
 
+### Lesson 1 image asset
+
+The current `bot.py` also looks for `photo_2026-10-27_00-13-52.jpg` in the project root for the Course 1, Lesson 1 infographic. That binary is not tracked in the development branch and is excluded from the source ZIP. If the original image is available in the local project folder, upload that exact file to the project root via SFTP after provisioning; do not replace it with an unrelated graphic. If it is absent, the bot should still deliver the lesson text, but the image will not be sent.
+
 ## Environment variables
 
 Add secrets in Botkeep's Environment/Secrets settings; never commit them to GitHub.
