@@ -633,7 +633,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             for course in active_courses
         )
         catalog_text = (
-            "📚 کۆرسەکانی کەژیار\\n\\n"
+            "📚 کۆرسەکانی کەژیار\n\n"
             f"{len(active_courses)} کۆرسی چالاک هەن: {active_names}."
         )
         if planned_courses:
@@ -641,7 +641,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 course.get("title", course.get("id", "")).split(": ", 1)[-1]
                 for course in planned_courses
             )
-            catalog_text += f"\\n\\n📌 کۆرسەکانی پلاندانراو: {planned_names}."
+            catalog_text += f"\n\n📌 کۆرسەکانی پلاندانراو: {planned_names}."
         await update.message.reply_text(
             catalog_text,
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
