@@ -11,7 +11,9 @@
 
 ## Current integration state
 - Course 1 is loaded in the current runtime using its legacy stable lesson IDs. Preserve these IDs and existing student progress.
-- Course 2 and Course 3 lesson data files exist, but the current `bot.py` runtime does not yet load these files into `LESSON_DATA`/`QUIZ_DATA`; their manifest entries still have empty `lesson_ids` and planned status.
+- Course 2 and Course 3 lesson data files are now loaded through validated adapters into `LESSON_DATA`/`QUIZ_DATA` using namespaced keys. The manifest contains their 12 ordered IDs each and marks both `draft_for_review`; the menu therefore keeps them visible but unavailable until editorial/source review is complete.
+- Course 2: 12 dialogue lessons and 27 quiz questions pass structural index validation.
+- Course 3: 12 lessons and 12 quiz questions pass structural index validation; all 12 lessons remain flagged `draft_source_check_required`.
 - `course_lesson_adapters.py` contains an adapter for conversation-style lessons. The unified-orthography draft has a different schema and requires a dedicated renderer/adapter before activation.
 - The menu must show the three in-scope courses distinctly. Each course must have independent ordered lesson access, quiz routing, completion progression, and namespaced IDs; Course 1 legacy IDs must remain unchanged.
 - The existing daily-chat feature is not a substitute for the structured 12-lesson Course 2.
@@ -20,8 +22,8 @@
 1. Review all 22 Course 1 lessons and quiz items; prioritize source flags for lessons 4, 8, 13, 18, 19, and 21.
 2. Review all 12 Course 2 dialogue lessons for naturalness, consistent Kurdish spelling, useful vocabulary, and valid quiz answers.
 3. Review all 12 Course 3 lessons against cited sources; resolve every `draft_source_check_required` flag and distinguish source claims from editorial recommendations.
-4. Integrate Course 2 and Course 3 into the runtime without changing Course 1's stored IDs.
-5. Add/run tests for course catalog, all 46 expected lessons (22 + 12 + 12), unique lesson IDs, ordered unlocking, course-specific next lesson, quiz start/answer/completion, and progress isolation.
+4. Runtime integration has been added for Courses 2 and 3 on this isolated branch. Confirm CI passes, then continue source/language review before changing either course from `draft_for_review` to `active`.
+5. Add/run tests for course catalog, all 46 loaded lesson records (22 + 12 + 12), unique lesson IDs, ordered unlocking, course-specific next lesson, quiz start/answer/completion, and progress isolation. The default legacy roadmap and quick lesson menu must remain scoped to Course 1.
 6. Run manual Telegram checks only with an authorized isolated test bot/token.
 
 ## Safety boundaries
