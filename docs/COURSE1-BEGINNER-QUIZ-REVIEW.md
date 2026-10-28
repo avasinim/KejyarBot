@@ -34,6 +34,12 @@ The following items are already marked for editorial/source review by `course_qu
 - Lessons 18 and 19: both are titled `پیتی (ی)`, but the examples concern syllabification and require editorial/source review. Confirm the intended lesson titles and the correctness of the divisions before revising them.
 - Lesson 20: questions 1 and 3 both ask about the short vowel `/i/` and the burzoka. The source text did not clearly support the claim at the time of the audit; confirm it from the intended reference and remove the duplicate question.
 - Lesson 21: the question about a named metrical research analysis is too specialized for an introductory orthography quiz unless the course explicitly teaches it. Confirm the source and replace it with a basic, taught syllabification task if appropriate.
+- Lesson 1: question 2 tests the source's overall counts of letters and sounds, which may be memorization-heavy for beginners; retain only if these exact counts are an explicit learning objective. Question 3 on the Latin symbol for burzoka is direct but uses terminology that should be explained in the lesson.
+- Lesson 3: the questions are based on the lesson's Persian-to-Kurdish spelling examples. Keep them as example recognition, but ensure the lesson explains the matching letters simply; avoid treating the examples as a rule for every Persian word unless the source supports that generalization.
+- Lesson 15: the quiz now includes a direct recognition item for «ڕ» in «بڕیار», alongside the contrast between «ر» and «ڕ». This is more varied and remains grounded in the lesson's examples.
+- Lesson 18: the quiz currently has only one question. Do not add more until the syllable split «کەژ / یار» and the lesson's claims about «ی» are checked; adding questions before that review would multiply uncertain claims.
+- Lesson 19: the quiz currently has only one question. Its split «یا / ری» and its claim that «ی» is a vowel in «ری» need review against the intended source before expanding the quiz.
+- Lesson 22: the three questions cover «و» as /u/, «و» as /w/, and «ی» as /y/ only partially; the current quiz asks directly about «Kurd = کورد» and «Diyar = دیار», while the lesson also gives «ş iwan = شوان» and «Esrîn = ئەسرین». Consider using one of those taught examples to test the other role of «و» or «ی» instead of requiring phonetic notation.
 
 ## Guardrails
 
