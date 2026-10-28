@@ -41,6 +41,20 @@ class LessonInfographicDeliveryTests(unittest.IsolatedAsyncioTestCase):
         send_image.assert_awaited_once_with(query.message, lesson)
         self.assertEqual(calls, ["text", "image"])
 
+    async def test_long_lesson_text_is_chunked_and_keyboard_is_only_on_final_chunk(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        keyboard = object()
+        content = ("نمونەی وانە.\n" * 900).strip()
+
+        await bot.send_lesson_text(message, content, keyboard)
+
+        self.assertGreater(message.reply_text.await_count, 1)
+        calls = message.reply_text.await_args_list
+        self.assertTrue(all(len(call.args[0]) <= 3800 for call in calls))
+        self.assertTrue(all(call.kwargs.get("reply_markup") is None for call in calls[:-1]))
+        self.assertIs(calls[-1].kwargs.get("reply_markup"), keyboard)
+        self.assertEqual("".join(call.args[0] for call in calls).replace("\\n", ""), content.replace("\\n", ""))
+
     async def test_opening_lesson_sends_text_then_optional_infographic(self):
         await self.assert_text_then_infographic(
             "open_lesson_وانە_1", "وانە_1", "open_selected_lesson"
