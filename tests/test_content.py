@@ -376,7 +376,8 @@ class ContentConsistencyTests(unittest.TestCase):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         final_lesson = self.learning_path["lessons"][-1]
         self.assertIn("وانەی ١٠: ڕستەی سادە و پرسیارکردن", final_lesson)
-        self.assertIn('callback_data=f"quiz_{last_lesson_number}_start"', bot_source)
+        self.assertIn('quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson', bot_source)
+        self.assertIn('callback_data=f"quiz_{quiz_lesson_id}_start"', bot_source)
         self.assertNotIn('callback_data="quiz_5_start"', bot_source)
 
     def test_quiz_start_rejects_lessons_outside_learning_path(self):
@@ -384,9 +385,9 @@ class ContentConsistencyTests(unittest.TestCase):
         start = bot_source.index("async def start_quiz(")
         end = bot_source.find("\nasync def ", start + 1)
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
-        self.assertIn("if lesson not in ORDER:", handler)
+        self.assertIn("if lesson not in LESSON_COURSE:", handler)
         self.assertLess(
-            handler.index("if lesson not in ORDER:"),
+            handler.index("if lesson not in LESSON_COURSE:"),
             handler.index("questions = QUIZ_DATA.get(lesson)"),
         )
         self.assertIn("if lesson not in get_completed_lessons(user_id):", handler)
@@ -409,7 +410,7 @@ class ContentConsistencyTests(unittest.TestCase):
         start = bot_source.index('if text == "📝 تاقیکردنەوەکان":')
         end = bot_source.find("\n    if text ==", start + 1)
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
-        self.assertIn("lesson in completed", handler)
+        self.assertIn("lesson not in completed", handler)
         self.assertIn("QUIZ_DATA.get(lesson)", handler)
     def test_completed_lessons_receive_dynamic_badges_within_runtime_order(self):
         import bot
