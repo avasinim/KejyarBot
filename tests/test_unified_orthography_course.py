@@ -57,5 +57,15 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
 
 
 
+    def test_lesson_7_objective_matches_the_ordinary_kurdish_heh_examples(self):
+        lesson = next(item for item in self.data["lessons"] if item["number"] == 7)
+        objective = lesson["objective"]
+        self.assertIn("«ه»", objective)
+        self.assertIn("«ھ»", objective)
+        self.assertIn("«ك»", objective)
+        self.assertNotIn("«ک»، «ھ» و «ە»", objective)
+
+
+
 if __name__ == "__main__":
     unittest.main()
