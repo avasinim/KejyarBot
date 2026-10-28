@@ -9,6 +9,7 @@ This checklist is for the isolated test bot only. It does not authorize merging 
 - [ ] Keep `.env` and `kejyar.db` local and untracked.
 - [ ] Start from the reviewed feature branch and install dependencies in its virtual environment.
 - [ ] Run `python -m compileall -q .` and `python -m unittest discover -s tests -v`; both must pass before Telegram testing.
+- [ ] Run `python check_telegram_connection.py`; confirm it reports the isolated test bot username/ID without showing the token. This checks authentication/network only and does not start polling.
 
 ## Telegram test sequence
 
