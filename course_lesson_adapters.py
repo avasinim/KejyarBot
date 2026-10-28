@@ -138,7 +138,7 @@ def adapt_unified_orthography_lessons(payload):
             sections.extend(["", f"📌 دۆخی پشکنین: {raw['review_status']}"])
         lessons_by_id[key] = {
             "title": title,
-            "content": "\\n".join(sections),
+            "content": "\n".join(sections),
             "source_number": number,
             "course_id": course_id,
             "review_status": raw.get("review_status", "draft_source_check_required"),
