@@ -36,6 +36,7 @@ from database import (
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
+from course_runtime import can_open_lesson, visible_course_lessons
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -150,6 +151,8 @@ async def send_lesson_infographic(message, lesson):
     # Missing/unreadable image must never prevent the lesson text from being sent.
 
 ORDER = list(LESSON_DATA.keys())
+COURSE_LESSON_ORDER = {course['id']: visible_course_lessons(course, LESSON_DATA) for course in COURSES}
+LESSON_COURSE = {lesson_id: course_id for course_id, ids in COURSE_LESSON_ORDER.items() for lesson_id in ids}
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان"],
@@ -161,11 +164,20 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def can_open(user_id, lesson):
-    if lesson not in ORDER:
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id is None:
         return False
     completed = set(get_completed_lessons(user_id))
-    index = ORDER.index(lesson)
-    return index == 0 or ORDER[index - 1] in completed
+    return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
+
+
+def next_course_lesson(lesson):
+    course_id = LESSON_COURSE.get(lesson)
+    course_order = COURSE_LESSON_ORDER.get(course_id, [])
+    if lesson not in course_order:
+        return None
+    index = course_order.index(lesson)
+    return course_order[index + 1] if index + 1 < len(course_order) else None
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
