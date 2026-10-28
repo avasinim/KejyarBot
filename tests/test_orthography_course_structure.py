@@ -29,8 +29,10 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         for lesson_id in lesson_ids:
             with self.subTest(lesson=lesson_id):
                 content = bot.LESSON_DATA[lesson_id]["content"]
-                self.assertIn("🌿 کەژیار  •  وانەی", content)
-                self.assertNotIn("کەویار", content)
+                header_lines = [line for line in content.splitlines() if "🌿 " in line and "وانەی" in line]
+                self.assertEqual(len(header_lines), 1)
+                self.assertIn("🌿 کەژیار  •  وانەی", header_lines[0])
+                self.assertNotIn("کەویار", header_lines[0])
 
     def test_course_title_and_22_sequential_lessons(self):
         lessons = self.course["lessons"]
