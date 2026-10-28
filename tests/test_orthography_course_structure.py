@@ -98,25 +98,22 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(len(explanations), 22)
         self.assertEqual(len(set(explanations)), 22)
         self.assertTrue(all(len(explanation) >= 40 for explanation in explanations))
-        self.assertIn(
-            "not source-verified",
-            self.quiz["note"],
-        )
+        self.assertIn("فێرخوازانی سەرەتایی", self.quiz["note"])
 
     def test_draft_status_is_not_misrepresented_as_source_reviewed_or_runtime_ready(self):
-        self.assertEqual(self.course["status"], "curriculum_structure")
+        self.assertEqual(self.course["status"], "beginner_course_editorial_pass")
         self.assertEqual(
             self.quiz["status"],
-            "draft_needs_editorial_and_source_review",
+            "beginner_quiz_editorial_pass",
         )
         for lesson in self.course["lessons"]:
             self.assertEqual(
                 lesson["content_status"],
-                "needs_source_review_and_editorial_entry",
+                "beginner_draft_needs_clarity_and_examples",
             )
             self.assertEqual(
                 lesson["quiz_status"],
-                "draft_needs_editorial_and_source_review",
+                "beginner_quiz_draft_needs_lesson_alignment",
             )
 
 
