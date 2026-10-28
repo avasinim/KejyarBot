@@ -638,3 +638,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 
 - Cross-checked the lesson 18 quiz after correcting the draft and found it still used the obsolete **کەو / یار** wording. Updated the quiz question and explanation to **کەژ / یار** and removed the incorrect claim about the letter **و** from the explanation.
 - Re-read the quiz JSON and parsed the lesson 18 question: question and explanation now agree with the edited draft; the obsolete segment no longer appears in the quiz file. This is a consistency correction only; the proposed syllabification still requires expert/source verification.
+
+
+## Scope update — beginner-course priority
+
+- The user clarified that Course 1 is introductory and should not be delayed for bibliography/source citation work. The editorial priority is now clear explanations, useful simple examples, practice, and matching each quiz to its lesson. Do not spend the remaining audit time collecting citations for this beginner course.
+- Rewrote lessons 1–3 into learner-facing lessons with objectives, examples, practice and short recap; removed source-review boilerplate from lesson 1 and simplified lessons 2–3.
+- Simplified lesson 4's quiz to test the beginner concept of comparing spelling and pronunciation rather than asking learners to remember a source-review warning.
+- Updated course/quiz status metadata and structural test expectations to reflect beginner editorial review. These drafts still need runtime integration checks and a fresh test run; current-head CI is not yet verified. Production, main, bot token, live database, and dynamic speech remain untouched.
