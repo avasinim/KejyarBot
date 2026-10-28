@@ -21,7 +21,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         args, kwargs = query.message.reply_text.await_args
         message = args[0]
         self.assertIn("لە پێداچوونەوەدایە", message)
-        self.assertIn("هێشتا چالاک نەکراوە", message)
+        self.assertIn("بۆ خوێندکاران چالاک نەکراون", message)
         self.assertIsNone(kwargs.get("reply_markup"))
 
     def test_draft_courses_cannot_open_lessons_even_by_direct_callback(self):
