@@ -68,7 +68,7 @@ class CourseCatalogTests(unittest.TestCase):
     def test_daily_conversation_drafts_have_valid_quiz_answers_and_corrected_phrases(self):
         for filename in (
             "daily_conversation_lessons_01_06.json",
-            "daily_conversation_lessons_07_12.json",
+            "daily_conversation_lessons_07_18.json",
         ):
             with self.subTest(file=filename):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
@@ -87,7 +87,7 @@ class CourseCatalogTests(unittest.TestCase):
                         self.assertLess(question["answer"], len(question["options"]))
                         self.assertEqual(len(question["options"]), len(set(question["options"])))
 
-        with (ROOT / "course_data" / "daily_conversation_lessons_07_12.json").open(encoding="utf-8") as handle:
+        with (ROOT / "course_data" / "daily_conversation_lessons_07_18.json").open(encoding="utf-8") as handle:
             draft = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first_draft = json.load(handle)
