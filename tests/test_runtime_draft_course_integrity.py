@@ -28,7 +28,7 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertFalse(bot.course_is_active(course_id))
                 for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
                     self.assertFalse(bot.can_open(12345, lesson_id))
-                    self.assertIn("draft_source_check_required", bot.LESSON_DATA[lesson_id]["review_status"])
+                    self.assertIn("draft_editorial_review", bot.LESSON_DATA[lesson_id]["review_status"])
                     self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
                     questions = bot.QUIZ_DATA[lesson_id]
                     self.assertTrue(questions)
