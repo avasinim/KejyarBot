@@ -368,9 +368,15 @@ class ContentConsistencyTests(unittest.TestCase):
             handler.index('quiz["question_message_id"] = None'),
         )
         self.assertLess(
-            handler.index('if choice_index < 0 or choice_index >= len(question["options"]):'),
+            handler.index('if choice_index < 0 or choice_index >= len(options):'),
             handler.index('quiz["question_message_id"] = None'),
         )
+        self.assertLess(
+            handler.index("or not isinstance(index, int)"),
+            handler.index('quiz["question_message_id"] = None'),
+        )
+        self.assertIn("context.user_data.pop(\"quiz\", None)", handler)
+        self.assertIn("or len(options) != len(set(options))", handler)
 
     def test_final_lesson_points_to_its_own_quiz(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
