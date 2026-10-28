@@ -1,0 +1,10 @@
+# Railway runs this bot as a persistent worker; it must not be scaled above one replica
+# because Telegram long polling should have a single active consumer for this token.
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "python bot.py"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+numReplicas = 1
