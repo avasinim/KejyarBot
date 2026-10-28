@@ -365,12 +365,26 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz:
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
-    # Defense in depth: do not continue a stale quiz session if its lesson
-    # has since been placed behind the editorial source-review gate.
-    if not quiz_is_available(quiz.get("lesson", "")):
+    # Revalidate the lesson/course gates for every answer callback. This
+    # prevents a stale quiz session from continuing after access or progress
+    # changes, even if the quiz was valid when it first started.
+    lesson = quiz.get("lesson", "")
+    course_id = LESSON_COURSE.get(lesson)
+    if (
+        course_id is None
+        or not course_is_active(course_id)
+        or lesson not in get_completed_lessons(query.from_user.id)
+    ):
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
-            "📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ "
+            "🔒 دەستگەیشتن بەو تاقیکردنەوەیە چیتر چالاک نییە؛ "
+            "تکایە لە منووی کۆرسەکانەوە دووبارە دەستی پێ بکە."
+        )
+        return
+    if not quiz_is_available(lesson):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەدایە؛ "
             "تکایە دواتر هەوڵ بدەوە."
         )
         return
