@@ -138,7 +138,7 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
 # remain draft_for_review until human language/source review is complete.
 CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
-    load_json("course_data/daily_conversation_lessons_07_12.json"),
+    load_json("course_data/daily_conversation_lessons_07_18.json"),
 ]
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
