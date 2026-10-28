@@ -41,9 +41,9 @@ class DraftCourseCallbackGateTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_forged_next_lesson_callback_cannot_reveal_draft_content(self):
         update, message, query = self.make_update("next_lesson_daily_conversation_02")
-        with patch.object(bot, "send_lesson_text", new_callable=AsyncMock) as send_text, \\
-             patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock) as send_image:
-            await bot.open_next_lesson(update, SimpleNamespace())
+        with patch.object(bot, "send_lesson_text", new_callable=AsyncMock) as send_text:
+            with patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock) as send_image:
+                await bot.open_next_lesson(update, SimpleNamespace())
         message.reply_text.assert_awaited_once()
         self.assertIn("🔒", message.reply_text.await_args.args[0])
         send_text.assert_not_awaited()
