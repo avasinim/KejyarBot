@@ -93,6 +93,29 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertEqual(bot.next_course_lesson(current), following)
                 self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
 
+    def test_badges_use_course_local_numbers_and_skip_inactive_courses(self):
+        recorded = []
+        course_title = next(
+            course["title"] for course in bot.COURSES
+            if course["id"] == "daily_conversation"
+        )
+        with (
+            patch.object(
+                bot, "get_completed_lessons",
+                return_value=["وانە_1", "daily_conversation_02", "unified_orthography_01"],
+            ),
+            patch.object(
+                bot, "course_is_active",
+                side_effect=lambda course_id: course_id in {"orthography_basic", "daily_conversation"},
+            ),
+            patch.object(bot, "add_badge", side_effect=lambda user_id, badge: recorded.append(badge)),
+        ):
+            bot.check_badges(12345)
+        self.assertIn("🏅 کۆرسی ڕێنووسی — وانەی 1", recorded)
+        self.assertIn(f"🏅 {course_title} — وانەی 2", recorded)
+        self.assertEqual(len(recorded), 2)
+        self.assertFalse(any("unified_orthography" in badge for badge in recorded))
+
     def test_course_one_progression_does_not_spill_into_course_two(self):
         legacy_ids = bot.COURSE_LESSON_ORDER["orthography_basic"]
         conversation_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
