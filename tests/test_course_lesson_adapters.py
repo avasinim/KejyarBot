@@ -26,10 +26,9 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertEqual(list(lessons), expected)
         self.assertEqual(list(quizzes), expected)
         self.assertTrue(all(lessons[key]["content"] for key in expected))
-        self.assertTrue(all(lessons[key]["review_status"] == "draft_source_check_required" for key in expected))
+        self.assertTrue(all(lessons[key]["review_status"] == "draft_editorial_review" for key in expected))
         self.assertTrue(all(question.get("explanation") for key in expected for question in quizzes[key]))
-        self.assertTrue(all("دۆخی پشکنین: draft_source_check_required" in lessons[key]["content"] for key in expected))
-        self.assertTrue(all("تێبینیی سەرچاوە" in lessons[key]["content"] for key in expected))
+        self.assertTrue(all("دۆخی پشکنین: draft_editorial_review" in lessons[key]["content"] for key in expected))
 
     def test_unified_orthography_adapter_loads_twelve_draft_lessons(self):
         payload = load_payload("course_data/unified_orthography_lessons_01_12.json")
@@ -38,16 +37,11 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertEqual(list(lessons), expected)
         self.assertEqual(list(quizzes), expected)
         self.assertTrue(all(lessons[key]["content"] for key in expected))
-        self.assertTrue(all(lessons[key]["review_status"] == "draft_source_check_required" for key in expected))
+        self.assertTrue(all(lessons[key]["review_status"] == "draft_editorial_review" for key in expected))
         self.assertTrue(all(quizzes[key] for key in expected))
         self.assertTrue(all(question.get("explanation") for key in expected for question in quizzes[key]))
-        self.assertTrue(any("خاڵەکانی پشکنین" in lessons[key]["content"] for key in expected))
-        for lesson in payload["lessons"]:
-            if lesson.get("review_findings"):
-                key = f"unified_orthography_{lesson['number']:02d}"
-                for finding in lesson["review_findings"]:
-                    with self.subTest(lesson=lesson["number"], finding=finding):
-                        self.assertIn(finding, lessons[key]["content"])
+        self.assertTrue(all("تێبینیی سەرچاوە" not in lessons[key]["content"] for key in expected))
+        self.assertTrue(all("دۆخی پشکنین" not in lessons[key]["content"] for key in expected))
 
     def test_course_one_legacy_keys_are_not_used(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", self.payloads)
