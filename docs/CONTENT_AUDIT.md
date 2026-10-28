@@ -611,3 +611,11 @@ This audit is documentation only. It does not change `main`, production bot sett
 - The source includes `وو` as a separate item in its 34-item list, so it must not be removed simply because it may look like a doubled letter sequence. The lesson’s inventory should remain source-aligned rather than be normalized by guesswork.
 - This is an inventory/order cross-check only. The five example words listed for each item still need a separate editorial review; no lesson examples or scientific text were changed in this step.
 - Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+
+
+## Lesson 7 example audit — 28 October 2026
+
+- Reviewed drafts for lessons 1–8. The drafts remain unapproved pending source review; structural completeness is not a substitute for checking each word against the intended Central Kurdish variety and the course's orthography reference.
+- Found a clear target-letter mismatch in lesson 7: **خۆر** contains **ۆ**, not the target letter **و**, so it was not an appropriate default example for a lesson specifically teaching **و** as a vowel. Replaced it with **توت** and retained **دوور** as a separate example. Replaced **گیان** in the vowel-ی example list with **دین**, and marked the former as requiring separate dialect/pronunciation verification rather than assuming its letter function.
+- Re-read the edited lesson after the changes. These edits are limited to the test branch and do not change the runtime course content; the lesson draft is not connected to the active bot runtime. The quiz remains a draft and still needs editorial/source alignment review.
+- Current-head CI has not been verified for these two latest lesson-draft commits. Do not describe them as test-verified until a workflow run for the current head is inspected.
