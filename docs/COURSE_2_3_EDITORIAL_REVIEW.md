@@ -58,6 +58,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 4 | Consonant clusters and syllables | Added «دەست» as a concrete cluster example; final language review is still needed. |
 | 6 | Difference between ڕ and ر | Added «باران» and «ڕۆژ» to show the two letters in familiar words; final language review remains. |
 | 7 | ک/ك, ھ/ه and ە | Clarified that «هەوا / ھەوا» is only a digital code-point comparison and that «ھەوا» should not be taught as an interchangeable ordinary spelling; use «هەوا» in normal Kurdish text unless the course's explicit convention says otherwise. |
+| 8 | و، وو، ی و ێ | Simplified the quiz and explanation by removing the Latin phonetic symbol; the answer now refers directly to the long sound in «دوور». |
 | 9 | Particles and joined spelling | Clarified the «بێ ئاگایی» example and added a complete sentence for «بە کوردی»; still verify join/separation rules against the course's intended convention before release. |
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Added «تەلەفۆن» as a loanword and «سی و دوو» as a compound numeral; check the lesson gives enough context for both. |
