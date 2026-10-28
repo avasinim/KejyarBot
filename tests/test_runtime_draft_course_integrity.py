@@ -101,6 +101,21 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         self.assertNotIn(legacy_ids[-1], conversation_ids)
         self.assertEqual(conversation_ids[0], "daily_conversation_01")
 
+    def test_every_loaded_lesson_belongs_to_exactly_one_manifest_course(self):
+        manifest_ids = [
+            lesson_id
+            for course in bot.COURSES
+            for lesson_id in course.get("lesson_ids", [])
+        ]
+        self.assertEqual(len(manifest_ids), len(set(manifest_ids)))
+        self.assertEqual(set(manifest_ids), set(bot.LESSON_DATA))
+        self.assertEqual(set(bot.LESSON_COURSE), set(bot.LESSON_DATA))
+        for course in bot.COURSES:
+            expected = [lesson for lesson in course.get("lesson_ids", []) if lesson in bot.LESSON_DATA]
+            self.assertEqual(bot.COURSE_LESSON_ORDER[course["id"]], expected)
+            for lesson_id in expected:
+                self.assertEqual(bot.LESSON_COURSE[lesson_id], course["id"])
+
     def test_course_four_remains_planned_and_empty(self):
         course = next(course for course in bot.COURSES if course["id"] == "grammar")
         self.assertEqual(course["status"], "planned")
