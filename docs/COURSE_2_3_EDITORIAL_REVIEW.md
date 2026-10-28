@@ -47,14 +47,14 @@ These are editorial checks to perform, not claims that the wording is necessaril
 
 ## Course 3 — Unified orthography (12 lessons)
 
-All 12 lessons remain drafts. The current JSON has unresolved source/example review findings in lessons 1, 4, 6, 7, 9, 10, 11, and 12. The following are the concrete unresolved tasks recorded in the lesson data:
+All 12 lessons remain drafts. The current JSON has unresolved source/example review findings in lessons 1, 4, 6, 7, 9, 10, 11, and 12. Technical Unicode code points were added to lessons 6 and 7; this does not count as source verification of the orthographic rules or example words. The following are the concrete unresolved tasks recorded in the lesson data:
 
 | Lesson | Topic | Required evidence or correction |
 |---|---|---|
 | 1 | Unicode and unified spelling | Add a technically correct Unicode code-point example for visually similar letters; distinguish the actual Kurdish code point from Arabic/Latin lookalikes. |
 | 4 | Consonant clusters and syllables | Verify pronunciation and syllabification for the cited examples, with exact source/page and a clear phonological explanation. |
-| 6 | Difference between ڕ and ر | Verify example words against a reliable dictionary/source and cite the chosen spelling rule. |
-| 7 | ک/ك, ھ/ه and ە | Add whole-word examples and verify the relevant Unicode code points; explain the orthographic rule, not just visual similarity. |
+| 6 | Difference between ڕ and ر | Unicode code points are now recorded (ڕ U+0695, ر U+0631). Still verify the example words against a reliable dictionary/source and cite the chosen spelling rule. |
+| 7 | ک/ك, ھ/ه and ە | Unicode code points are now recorded: ک U+06A9 / ك U+0643; ھ U+06BE / ه U+0647; ە U+06D5. Still add whole-word examples and verify the orthographic rule, not just visual similarity. |
 | 9 | Particles and joined spelling | Replace generic placeholders with real examples from the selected source and record edition/page. |
 | 10 | Compound and derived words | Add real source-attested examples, analyze their components, and cite edition/page. |
 | 11 | Adverbs, loanwords and compound numerals | Add real examples and a source-backed rule for each included topic; record edition/page. |
@@ -74,7 +74,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 
 ## Current status
 
-- Runtime/CI: automated suite passed on commit `55c6a2525b4493c933ae58325a7d61908d45c3dd`.
+- Runtime/CI: automated suite passed on commit `6ed2c74fc1629102320d8cca3136ecc58edc5e12`; the latest lesson-data edits need a fresh CI result.
 - Course 2: four dialogue-to-quiz findings resolved; full editorial/source review still pending.
 - Course 3: lesson-specific source/example findings listed above remain unresolved.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
