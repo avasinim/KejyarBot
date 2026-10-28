@@ -551,7 +551,7 @@ class ContentConsistencyTests(unittest.TestCase):
             for index, question in enumerate(questions, start=1):
                 with self.subTest(lesson=lesson_key, question=index):
                     options = question["options"]
-                    self.assertGreaterEqual(len(options), 2)
+                    self.assertGreaterEqual(len(options), 3)
                     self.assertEqual(len(options), len(set(options)))
                     self.assertEqual(options.count(question["answer"]), 1)
                     self.assertTrue(question["question"].strip())
