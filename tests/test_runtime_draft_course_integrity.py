@@ -4,6 +4,7 @@ These tests intentionally verify that draft material is loaded for integration
 checks without making it available to learners.
 """
 import unittest
+from unittest.mock import patch
 
 import bot
 
@@ -39,10 +40,10 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         # course-level activation gate, even if every draft lesson appears done.
         all_draft_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
         self.assertEqual(len(all_draft_ids), 48)
-        for lesson_id in all_draft_ids:
-            with self.subTest(lesson=lesson_id):
-                self.assertFalse(bot.can_open(12345, lesson_id))
-                self.assertIsNone(bot.next_course_lesson(lesson_id) if lesson_id not in all_draft_ids else None)
+        with patch.object(bot, "get_completed_lessons", return_value=all_draft_ids):
+            for lesson_id in all_draft_ids:
+                with self.subTest(lesson=lesson_id):
+                    self.assertFalse(bot.can_open(12345, lesson_id))
 
     def test_next_lesson_never_crosses_course_boundaries(self):
         for course_id in ("daily_conversation", "unified_orthography"):
