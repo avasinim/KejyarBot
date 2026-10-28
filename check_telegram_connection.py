@@ -35,8 +35,10 @@ async def check_telegram():
         return 2
 
     bot = Bot(token=token)
+    initialized = False
     try:
         await bot.initialize()
+        initialized = True
         info = await bot.get_me()
     except InvalidToken:
         print("AUTH ERROR: Telegram rejected the configured token. Check the isolated test-bot token.")
@@ -52,7 +54,7 @@ async def check_telegram():
         print(f"TELEGRAM ERROR: {type(exc).__name__}. Token and request details were withheld.")
         return 6
     finally:
-        if bot._initialized:
+        if initialized:
             await bot.shutdown()
 
     print(f"TELEGRAM AUTH OK: @{info.username} (bot_id={info.id}). Token was not displayed.")
