@@ -635,13 +635,22 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
+        status_labels = {
+            "active": "🟢 چالاک",
+            "draft_for_review": "🟡 لە پێداچوونەوەدایە",
+            "draft": "🟡 پێش‌نوس",
+            "planned": "⚪ لە پلانداناندا",
+        }
         keyboard_rows = [
-            [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
+            [InlineKeyboardButton(
+                f"{status_labels.get(course.get('status'), '⚪ چالاک نییە')} · {course['title']}",
+                callback_data=f"course_{course['id']}",
+            )]
             for course in COURSES
         ]
         await update.message.reply_text(
             "📚 کۆرسەکانی کەژیار\n\n"
-            "کۆرسەکان جیاوازن. کۆرسی یەکەم ٢٢ وانەی ڕێنووسی سەرەتایی هەیە؛ کۆرسەکانی دیکە تا ئامادەبوونی وانە ڕێکخراوەکان بە ڕوونی نیشان دراون.",
+            "دۆخی هەر کۆرسێک لەسەر دوگمەکە دیارە. تەنها کۆرسی چالاک وانەکانی دەکرێنەوە؛ کۆرسەکانی دیکە هێشتا لە پێداچوونەوە یان پلانداناندان.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
