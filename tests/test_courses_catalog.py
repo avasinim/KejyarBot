@@ -75,6 +75,11 @@ class CourseCatalogTests(unittest.TestCase):
 
         with (ROOT / "course_data" / "daily_conversation_lessons_07_12.json").open(encoding="utf-8") as handle:
             draft = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
+            first_draft = json.load(handle)
+        lesson1 = next(lesson for lesson in first_draft["lessons"] if lesson["number"] == 1)
+        self.assertEqual(lesson1["dialogue"][5][1], "باشە، تا دواتر لە بەردەم کتێبخانەکە دەبینمەوە.")
+
         lesson7 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 7)
         lesson12 = next(lesson for lesson in draft["lessons"] if lesson["number"] == 12)
         self.assertEqual(lesson7["dialogue"][1][1], "بەیانی باش، کەژیار! بەڵێ، نان و پەنیرم خواردووە و چایم خواردووەتەوە. تۆ چی؟")
