@@ -16,6 +16,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
 
+## Branch integration caution — 27 October 2026
+
+- A GitHub compare of `main` against `fix/kejyarbot-stability-2026-10-25` reported the branch as `diverged`: 507 commits ahead and 1 behind, with `main` at `341c6b20437a0b1cd90826fea34d114a6fbe7422`.
+- Do not merge this branch or open a merge-ready PR based on file-level tests alone. First inspect the commit graph and determine why the histories diverged; reconcile the intended test-branch history in an isolated branch, then run the full checks.
+- This finding is a release/integration blocker only; no change to `main` or production was made.
+
 ## 27 October 2026 — defensive quiz-state follow-up
 
 - `bot.py` now validates the active quiz structure, question index, option list, and answer membership before scoring a callback. Malformed in-memory state is cleared with a learner-facing retry message rather than being allowed to raise an indexing/key error.
