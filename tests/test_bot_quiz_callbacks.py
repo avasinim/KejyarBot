@@ -361,6 +361,32 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێشتر تەواو کراوە", query.message.reply_text.await_args.args[0])
 
 
+    async def test_namespaced_course_lesson_completion_offers_same_course_next_lesson(self):
+        lesson = "daily_conversation_01"
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1 🌱", "A1.1 🌱"]),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_called_once_with(12345, lesson)
+        reply = query.message.reply_text.await_args
+        button = reply.kwargs["reply_markup"].inline_keyboard[0][0]
+        self.assertEqual(button.callback_data, "next_lesson_daily_conversation_02")
+        self.assertIn("دەستپێکردنی", button.text)
+
     async def test_final_lesson_completion_offers_final_lesson_quiz(self):
         final_lesson = bot.ORDER[-1]
         query = SimpleNamespace(
