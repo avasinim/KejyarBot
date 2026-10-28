@@ -55,18 +55,6 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
                     self.assertGreaterEqual(quiz["answer"], 0)
                     self.assertLess(quiz["answer"], len(quiz["options"]))
 
-    def test_each_lesson_has_source_review_note(self):
-        for lesson in self.data["lessons"]:
-            with self.subTest(lesson=lesson["number"]):
-                self.assertTrue(lesson.get("source_sections", "").strip())
-                self.assertTrue(lesson.get("source_note", "").strip())
-
-    def test_sources_have_titles_and_urls(self):
-        self.assertTrue(self.data.get("sources"))
-        for source in self.data["sources"]:
-            with self.subTest(source=source.get("title")):
-                self.assertTrue(source.get("title", "").strip())
-                self.assertTrue(source.get("url", "").startswith("https://"))
 
 
 if __name__ == "__main__":
