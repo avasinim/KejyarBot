@@ -20,6 +20,18 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         with SOURCE_PATH.open(encoding="utf-8") as source:
             cls.original = json.load(source)
 
+    def test_runtime_course_one_lesson_headers_use_correct_bot_name(self):
+        # Catch regressions where lesson cards spell Kejyar as "کەویار".
+        import bot
+
+        lesson_ids = bot.COURSE_LESSON_ORDER["orthography_basic"]
+        self.assertEqual(len(lesson_ids), 22)
+        for lesson_id in lesson_ids:
+            with self.subTest(lesson=lesson_id):
+                content = bot.LESSON_DATA[lesson_id]["content"]
+                self.assertIn("🌿 کەژیار  •  وانەی", content)
+                self.assertNotIn("کەویار", content)
+
     def test_course_title_and_22_sequential_lessons(self):
         lessons = self.course["lessons"]
         self.assertEqual(self.course["title"], "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی")
