@@ -38,6 +38,7 @@ from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
+from course_quiz_review import quiz_is_available
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -286,11 +287,13 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 callback_data=f"quiz_{quiz_lesson_id}_start",
             )
         ]])
-        if QUIZ_DATA.get(lesson):
+        if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
             await query.message.reply_text(
                 message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.",
                 reply_markup=keyboard,
             )
+        elif QUIZ_DATA.get(lesson):
+            await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ دوای پشتڕاستکردنەوە چالاک دەکرێت.")
         else:
             await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
@@ -326,6 +329,9 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     if not course_is_active(LESSON_COURSE[lesson]):
         await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
+        return
+    if not quiz_is_available(lesson):
+        await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ تکایە دواتر هەوڵ بدەوە.")
         return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
@@ -612,7 +618,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         completed = set(get_completed_lessons(user_id))
         buttons = []
         for lesson in ORDER:
-            if not QUIZ_DATA.get(lesson) or lesson not in completed:
+            if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
                 continue
             # Preserve numeric legacy callbacks; use the complete namespaced key
             # for future courses so underscores are never truncated.
