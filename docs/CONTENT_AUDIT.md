@@ -16,6 +16,12 @@ Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
   - https://github.com/avasinim/KejyarBot/actions/runs/40195442921
   - https://github.com/avasinim/KejyarBot/actions/runs/40195446238
 
+## Quiz state validation follow-up — 28 October 2026
+
+- Defensive review found one remaining malformed-state edge case: a non-integer/negative quiz score could fail after a correct answer was selected, and a boolean message ID could pass Python's integer check.
+- `bot.py` now rejects boolean/non-integer message IDs and missing, boolean, non-integer, or negative scores before scoring. Added `test_malformed_quiz_score_is_cleared_without_crashing` to `tests/test_bot_message_mode.py`.
+- This is a defensive test-branch change only. The latest passing 127-test CI run predates this follow-up; CI for this new commit must pass before the fix is considered verified. No `main`, production bot, token, or database was changed.
+
 ## Latest branch CI verified — 28 October 2026
 
 - Follow-up retrieval found completed successful GitHub Actions runs associated with the current branch tip `d1f941bbb3f0665b370cce378de722487f7e3152`:
