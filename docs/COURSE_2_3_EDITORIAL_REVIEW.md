@@ -95,3 +95,4 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
 - Status-map consistency: removed a duplicate `draft_for_review` key in `open_course` and added the same status to the empty-course response map.
+- Activation troubleshooting: `bot.py` now checks for a configured Telegram token before initializing SQLite, logs the authenticated test-bot username/ID through `post_init` (never the token), and records startup/polling exceptions with a traceback. This improves diagnosis but is not proof of a successful live Telegram connection; that still requires a separate test-bot token and a local run.
