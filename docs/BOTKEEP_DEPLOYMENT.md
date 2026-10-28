@@ -9,7 +9,7 @@ This guide is for a **separate test deployment**. It does not authorize a produc
 - Project root: repository root (the folder containing `bot.py` and `requirements.txt`)
 - Runtime: Python
 - Install command: `python -m pip install -r requirements.txt`
-- Start command: `python bot.py`
+- Start command: `python main.py` (the compatibility entry point expected by Botkeep; it delegates to `bot.main()`).
 
 Do not deploy from `main`: it does not contain the current four-course development state.
 
