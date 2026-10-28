@@ -56,5 +56,26 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(callback_ids, [f"open_lesson_وانە_{n}" for n in range(1, 23)])
 
 
+    async def test_course_menu_summary_matches_manifest_statuses(self):
+        message = SimpleNamespace(
+            text="📚 وانەکان",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        message.reply_text.assert_awaited_once()
+        text = message.reply_text.await_args.args[0]
+        self.assertIn("3 کۆرسی چالاک هەن", text)
+        self.assertIn("پلاندانراو", text)
+        self.assertIn("ڕێزمان", text)
+
+
 if __name__ == "__main__":
     unittest.main()
