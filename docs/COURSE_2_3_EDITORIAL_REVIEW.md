@@ -37,7 +37,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 6 | Review the daily routine for tense consistency and natural time expressions. |
 | 7 | Review food vocabulary and repeated expressions for preference and drinking/eating; check colloquial naturalness. |
 | 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
-| 9 | Added “twenty-seventh of May” as a clear date anchor and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
+| 9 | Changed the date anchor to “twenty-seventh of Befranbar” at the user's request and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
 | 11 | Quiz key was checked against the dialogue; review travel-planning phrasing and consistency of the transport terms. |
 | 12 | The closing line was polished to “یەکتر دەبینینەوە”; the three quiz keys were structurally checked and remain aligned with the taught phrases. Continue the final naturalness pass. |
@@ -55,13 +55,13 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | Lesson | Topic | Practical improvement |
 |---|---|---|
 | 1 | Unicode and unified spelling | Show the difference between visually similar letters with a simple example; distinguish Kurdish letters from lookalikes. |
-| 4 | Consonant clusters and syllables | Make the explanation of consonant clusters and syllables clear, with simple examples and a beginner-friendly explanation. |
+| 4 | Consonant clusters and syllables | Added «دەست» as a concrete cluster example; final language review is still needed. |
 | 6 | Difference between ڕ and ر | Unicode code points are recorded (ڕ U+0695, ر U+0631). Use familiar words to demonstrate the distinction clearly. |
 | 7 | ک/ك, ھ/ه and ە | Unicode code points are recorded: ک U+06A9 / ك U+0643; ھ U+06BE / ه U+0647; ە U+06D5. Add whole-word examples and a short, clear explanation. |
 | 9 | Particles and joined spelling | Replace generic placeholders with familiar, practical examples. |
-| 10 | Compound and derived words | Add familiar compound and derived words and explain their components. |
+| 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Add simple examples for each topic and explain the intended pattern clearly. |
-| 12 | Final review | Build a short proofreading passage and an answer key that matches the rules taught in the lessons. |
+| 12 | Final review | Added a short practice passage; a matching proofreading answer key still needs to be completed and checked. |
 
 ### Practical review checklist
 - Is the explanation easy for a beginner to understand?
@@ -79,8 +79,8 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 
 ## Current status
 
-- Runtime/CI: rerun CI after the latest beginner-friendly content and adapter changes; report the current run result separately.
+- Runtime/CI: latest content commits have no associated workflow run or status-check results available through the current GitHub connection; CI is not verified for these edits.
 - Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 9 date/meeting phrasing and lesson 12 closing line were clarified. Practical editorial review still pending.
-- Course 3: lesson-specific clarity and example improvements listed above remain unresolved.
+- Course 3: concrete examples were added in lessons 4, 10, and 12; final language review remains. Lesson 1, 6, 7, 9, and 11 improvements remain pending, and lesson 12 still needs an answer key.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
