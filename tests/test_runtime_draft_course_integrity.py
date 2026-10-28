@@ -3,13 +3,72 @@
 These tests intentionally verify that draft material is loaded for integration
 checks without making it available to learners.
 """
+import json
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 import bot
 
 
 class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
+    @staticmethod
+    def _load_course_data(filename):
+        path = Path(__file__).resolve().parents[1] / "course_data" / filename
+        with path.open(encoding="utf-8") as handle:
+            return json.load(handle)["lessons"]
+
+    def test_daily_conversation_drafts_have_complete_practice_structure(self):
+        filenames = (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+            "daily_conversation_lessons_43_48.json",
+        )
+        lessons = [
+            lesson
+            for filename in filenames
+            for lesson in self._load_course_data(filename)
+        ]
+        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 49)))
+        for lesson in lessons:
+            with self.subTest(lesson=lesson["number"]):
+                self.assertTrue(lesson["title"].strip())
+                self.assertTrue(lesson["objective"].strip())
+                self.assertGreaterEqual(len(lesson["dialogue"]), 2)
+                self.assertGreaterEqual(len(lesson["vocabulary"]), 3)
+                self.assertTrue(lesson["exercises"])
+                self.assertTrue(lesson["comprehension"])
+                self.assertTrue(lesson["role_play"].strip())
+                self.assertTrue(lesson["quiz"])
+                for question in lesson["quiz"]:
+                    self.assertTrue(question["q"].strip())
+                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertTrue(all(option.strip() for option in question["options"]))
+                    self.assertIsInstance(question["answer"], int)
+                    self.assertGreaterEqual(question["answer"], 0)
+                    self.assertLess(question["answer"], len(question["options"]))
+                    self.assertTrue(question["explanation"].strip())
+
+    def test_unified_orthography_drafts_have_complete_practice_structure(self):
+        lessons = self._load_course_data("unified_orthography_lessons_01_12.json")
+        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 13)))
+        for lesson in lessons:
+            with self.subTest(lesson=lesson["number"]):
+                for field in ("title", "objective", "role_play"):
+                    self.assertTrue(lesson[field].strip())
+                for field in ("key_points", "examples", "exercises", "comprehension"):
+                    self.assertTrue(lesson[field])
+                question = lesson["quiz"]
+                self.assertTrue(question["q"].strip())
+                self.assertGreaterEqual(len(question["options"]), 2)
+                self.assertTrue(all(option.strip() for option in question["options"]))
+                self.assertIsInstance(question["answer"], int)
+                self.assertGreaterEqual(question["answer"], 0)
+                self.assertLess(question["answer"], len(question["options"]))
+                self.assertTrue(question["explanation"].strip())
+
     def test_all_82_manifest_lessons_are_loaded_without_id_collisions(self):
         expected = {
             "orthography_basic": [f"وانە_{n}" for n in range(1, 23)],
