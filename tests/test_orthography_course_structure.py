@@ -75,7 +75,16 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             self.assertEqual(len(item["questions"]), 1)
             question = item["questions"][0]
             self.assertEqual(question["type"], "multiple_choice")
-            self.assertGreaterEqual(len(question["options"]), 2)
+            self.assertGreaterEqual(
+                len(question["options"]),
+                3,
+                f"Lesson {item['lesson_number']} needs at least three answer options.",
+            )
+            self.assertEqual(
+                len(question["options"]),
+                len(set(question["options"])),
+                f"Lesson {item['lesson_number']} must not repeat answer options.",
+            )
             self.assertGreaterEqual(question["correct_option_index"], 0)
             self.assertLess(question["correct_option_index"], len(question["options"]))
             self.assertTrue(question["question"].strip())
