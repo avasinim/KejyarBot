@@ -17,12 +17,15 @@ class ConversationLessonAdapterTests(unittest.TestCase):
     def setUpClass(cls):
         cls.payloads = [
             load_payload("course_data/daily_conversation_lessons_01_06.json"),
-            load_payload("course_data/daily_conversation_lessons_07_12.json"),
+            load_payload("course_data/daily_conversation_lessons_07_30.json"),
+            load_payload("course_data/daily_conversation_lessons_31_36.json"),
+            load_payload("course_data/daily_conversation_lessons_37_42.json"),
+            load_payload("course_data/daily_conversation_lessons_43_48.json"),
         ]
 
-    def test_loads_twelve_lessons_with_unique_namespaced_keys(self):
+    def test_loads_48_lessons_with_unique_namespaced_keys(self):
         lessons, quizzes = adapt_conversation_lessons("daily_conversation", self.payloads)
-        expected = [f"daily_conversation_{i:02d}" for i in range(1, 13)]
+        expected = [f"daily_conversation_{i:02d}" for i in range(1, 49)]
         self.assertEqual(list(lessons), expected)
         self.assertEqual(list(quizzes), expected)
         self.assertTrue(all(lessons[key]["content"] for key in expected))
@@ -47,7 +50,7 @@ class ConversationLessonAdapterTests(unittest.TestCase):
     def test_course_one_legacy_keys_are_not_used(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", self.payloads)
         self.assertNotIn("وانە_1", lessons)
-        self.assertNotIn("وانە_12", lessons)
+        self.assertNotIn("وانە_22", lessons)
 
     def test_invalid_quiz_answer_index_is_rejected(self):
         payload = {"lessons": [{
