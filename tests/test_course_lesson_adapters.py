@@ -40,6 +40,8 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         self.assertTrue(all(lessons[key]["content"] for key in expected))
         self.assertTrue(all(lessons[key]["review_status"] == "draft_source_check_required" for key in expected))
         self.assertTrue(all(quizzes[key] for key in expected))
+        self.assertTrue(all(question.get("explanation") for key in expected for question in quizzes[key]))
+        self.assertTrue(any("خاڵەکانی پشکنین" in lessons[key]["content"] for key in expected))
 
     def test_course_one_legacy_keys_are_not_used(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", self.payloads)
