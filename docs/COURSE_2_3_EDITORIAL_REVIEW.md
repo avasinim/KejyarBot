@@ -73,13 +73,13 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 
 ## Integration verification
 
-The automated suite currently checks that all 46 configured lesson IDs across Courses 1–3 load without collisions, Courses 2–3 remain review-gated, and Course 4 remains empty. Automated checks do not replace editorial/source review or a manual Telegram smoke test.
+The automated suite currently checks that all 46 configured lesson IDs across Courses 1–3 load without collisions, Courses 2–3 remain review-gated, and Course 4 remains empty. Automated checks do not replace practical editorial review or a manual Telegram smoke test.
 
 Manual smoke test must use an authorized isolated test bot/account only. Confirm course navigation, next-lesson unlocking, quiz answer handling, progress isolation, long-message chunking, and optional infographic delivery. Do not use the production bot token for this check.
 
 ## Current status
 
-- Runtime/CI: automated suite passed on commit `6ed2c74fc1629102320d8cca3136ecc58edc5e12`; the latest lesson-data edits need a fresh CI result.
+- Runtime/CI: rerun CI after the latest beginner-friendly content and adapter changes; report the current run result separately.
 - Course 2: four dialogue-to-quiz findings resolved; practical editorial review still pending.
 - Course 3: lesson-specific clarity and example improvements listed above remain unresolved.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
