@@ -1,0 +1,92 @@
+{
+  "course_id": "unified_orthography",
+  "design_status": "design_spec_draft",
+  "visual_direction": "Academic, clear, Kurdish-first; prioritize readability over decoration.",
+  "palette": {
+    "background": "warm off-white",
+    "primary": "forest green",
+    "text": "charcoal",
+    "accent": "copper-gold"
+  },
+  "typography": {
+    "script": "Kurdish Arabic script with full Unicode support",
+    "rules": [
+      "RTL layout throughout",
+      "Use a font that renders Kurdish letters clearly",
+      "Keep examples large and distinct from explanations",
+      "Never substitute Arabic lookalike characters for Kurdish Unicode characters"
+    ]
+  },
+  "lesson_layout": [
+    {
+      "order": 1,
+      "component": "lesson header",
+      "content": "course number, lesson number, title, progress indicator"
+    },
+    {
+      "order": 2,
+      "component": "learning goals",
+      "content": "two or three short measurable goals"
+    },
+    {
+      "order": 3,
+      "component": "rule card",
+      "content": "one source-based rule at a time, with citation/section note"
+    },
+    {
+      "order": 4,
+      "component": "example comparison",
+      "content": "correct/source form and contrasting form, with explanation; label disagreements between sources"
+    },
+    {
+      "order": 5,
+      "component": "guided practice",
+      "content": "short task followed by explanation"
+    },
+    {
+      "order": 6,
+      "component": "comprehension",
+      "content": "two questions tied to lesson examples"
+    },
+    {
+      "order": 7,
+      "component": "quiz",
+      "content": "multiple-choice items; answer positions validated in tests"
+    },
+    {
+      "order": 8,
+      "component": "source footer",
+      "content": "source title and relevant section; note that the lesson is a learning aid"
+    }
+  ],
+  "infographic_system": {
+    "one_visual_per_lesson": true,
+    "format": "vertical compact infographic suitable for Telegram",
+    "include": [
+      "lesson number and title",
+      "one key rule",
+      "two or three examples",
+      "small practice prompt",
+      "source attribution"
+    ],
+    "avoid": [
+      "dense paragraphs",
+      "decorative imagery obscuring Kurdish script",
+      "unverified spelling rules",
+      "mixing Course 1 Diako-only framing with Course 3 source comparison"
+    ]
+  },
+  "accessibility": [
+    "high contrast",
+    "large Kurdish script",
+    "short text blocks",
+    "consistent symbols and card positions"
+  ],
+  "release_checks": [
+    "RTL and Unicode rendering test",
+    "all quiz answer indexes valid",
+    "all rules linked to source sections",
+    "no unsupported claims",
+    "do not enable lessons before source review and bot integration tests"
+  ]
+}
