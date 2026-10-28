@@ -215,10 +215,24 @@ def next_course_lesson(lesson):
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
+    courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        if course_id is None:
+            continue
+        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
+            # Preserve the exact legacy badge label for Course 1.
+            number = int(lesson.removeprefix("وانە_"))
+            if 1 <= number <= len(ORDER):
+                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+            continue
+        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
+        course = courses_by_id.get(course_id, {})
+        if isinstance(lesson_number, int) and lesson_number > 0:
+            add_badge(
+                user_id,
+                f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}",
+            )
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
