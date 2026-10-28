@@ -285,7 +285,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Numeric callback suffixes belong to Course 1; namespaced suffixes are
     # used by future courses without colliding with existing SQLite progress.
     lesson = f"وانە_{suffix}" if suffix.isdigit() else suffix
-    if not lesson or lesson not in LESSON_COURSE:
+    if not lesson:
         await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
         return
     if lesson not in LESSON_COURSE:
@@ -330,6 +330,10 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # must not leave question_message_id=None and strand the active quiz.
     raw_index = query.data.removeprefix("answer_")
     if not raw_index.isdigit():
+        return
+    if not quiz.get("questions") or not 0 <= quiz.get("index", -1) < len(quiz["questions"]):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text("⚠️ تاقیکردنەوەکە دروست نیە؛ تکایە دووبارە دەستی پێ بکە.")
         return
     question = quiz["questions"][quiz["index"]]
     choice_index = int(raw_index)
