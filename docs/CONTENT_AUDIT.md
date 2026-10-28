@@ -619,3 +619,10 @@ This audit is documentation only. It does not change `main`, production bot sett
 - Found a clear target-letter mismatch in lesson 7: **خۆر** contains **ۆ**, not the target letter **و**, so it was not an appropriate default example for a lesson specifically teaching **و** as a vowel. Replaced it with **توت** and retained **دوور** as a separate example. Replaced **گیان** in the vowel-ی example list with **دین**, and marked the former as requiring separate dialect/pronunciation verification rather than assuming its letter function.
 - Re-read the edited lesson after the changes. These edits are limited to the test branch and do not change the runtime course content; the lesson draft is not connected to the active bot runtime. The quiz remains a draft and still needs editorial/source alignment review.
 - Current-head CI has not been verified for these two latest lesson-draft commits. Do not describe them as test-verified until a workflow run for the current head is inspected.
+
+
+## Lesson 16 comparison audit — 28 October 2026
+
+- While continuing the lesson 9–16 review, found the same target-letter mismatch in lesson 16: its comparison table listed **خۆر** as an example of the single letter **و**, although the written character in that word is **ۆ**. Replaced that example with **شوان** so the table actually shows the intended character. This is a spelling/target-letter correction, not a claim that all phonetic analysis is complete.
+- Re-read lesson 16 after the edit. The remaining examples and rules, especially the broad claim about final **وو**, still require source verification before publication or runtime use.
+- Latest lesson-draft changes remain unverified by current-head CI; no production, main branch, token, or live bot changes were made.
