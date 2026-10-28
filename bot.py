@@ -626,9 +626,24 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
             for course in COURSES
         ]
+        active_courses = [course for course in COURSES if course_is_active(course.get("id"))]
+        planned_courses = [course for course in COURSES if not course_is_active(course.get("id"))]
+        active_names = "، ".join(
+            course.get("title", course.get("id", "")).split(": ", 1)[-1]
+            for course in active_courses
+        )
+        catalog_text = (
+            "📚 کۆرسەکانی کەژیار\\n\\n"
+            f"{len(active_courses)} کۆرسی چالاک هەن: {active_names}."
+        )
+        if planned_courses:
+            planned_names = "، ".join(
+                course.get("title", course.get("id", "")).split(": ", 1)[-1]
+                for course in planned_courses
+            )
+            catalog_text += f"\\n\\n📌 کۆرسەکانی پلاندانراو: {planned_names}."
         await update.message.reply_text(
-            "📚 کۆرسەکانی کەژیار\n\n"
-            "سێ کۆرسی چالاک هەن: ڕێنووسی سەرەتایی، وتووێژ و ڕێنووسی یەکگرتوو. کۆرسی ڕێزمان لە پلانداناندایە.",
+            catalog_text,
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
