@@ -246,5 +246,59 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تاقیکردنەوە", button.text)
 
 
+    async def test_lesson_22_quiz_start_maps_to_its_real_draft_question(self):
+        query = SimpleNamespace(
+            data="quiz_22_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=228))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_22"]):
+            await bot.start_quiz(update, context)
+
+        quiz = context.user_data["quiz"]
+        expected = bot.QUIZ_DATA["وانە_22"][0]
+        self.assertEqual(quiz["lesson"], "وانە_22")
+        self.assertEqual(quiz["questions"][0]["question"], expected["question"])
+        self.assertEqual(quiz["questions"][0]["answer"], expected["answer"])
+        self.assertEqual(quiz["question_message_id"], 228)
+        sent_markup = query.message.reply_text.await_args.kwargs["reply_markup"]
+        self.assertEqual(
+            [row[0].callback_data for row in sent_markup.inline_keyboard],
+            [f"answer_{i}" for i in range(len(expected["options"]))],
+        )
+        query.answer.assert_awaited_once()
+
+    async def test_lesson_22_quiz_answer_records_completion_and_clears_state(self):
+        question = bot.QUIZ_DATA["وانە_22"][0]
+        update, context, query = self.make_context("answer_0", message_id=77)
+        context.user_data["quiz"].update({
+            "lesson": "وانە_22",
+            "questions": [question],
+            "score": 0,
+        })
+        query.message.reply_text = AsyncMock()
+
+        correct_index = question["options"].index(question["answer"])
+        query.data = f"answer_{correct_index}"
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            await bot.quiz_answer(update, context)
+
+        reward.assert_called_once_with(12345, "وانە_22")
+        self.assertNotIn("quiz", context.user_data)
+        self.assertTrue(any("تاقیکردنەوە تەواو بوو" in call.args[0]
+                            for call in query.message.reply_text.await_args_list))
+        self.assertTrue(any("1/1" in call.args[0]
+                            for call in query.message.reply_text.await_args_list))
+
+
 if __name__ == "__main__":
     unittest.main()
