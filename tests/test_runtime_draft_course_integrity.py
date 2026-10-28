@@ -54,6 +54,25 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 with self.subTest(lesson=lesson_id):
                     self.assertFalse(bot.can_open(12345, lesson_id))
 
+    def test_progress_and_quiz_catalog_lessons_are_scoped_to_active_courses(self):
+        active_lessons = bot.active_course_lessons()
+        self.assertEqual(active_lessons, bot.COURSE_LESSON_ORDER["orthography_basic"])
+        self.assertTrue(all(lesson.startswith("وانە_") for lesson in active_lessons))
+        for course_id in ("daily_conversation", "unified_orthography"):
+            self.assertTrue(
+                set(bot.COURSE_LESSON_ORDER[course_id]).isdisjoint(active_lessons)
+            )
+
+    def test_active_course_lessons_include_namespaced_lessons_when_course_activates(self):
+        with patch.object(
+            bot, "course_is_active",
+            side_effect=lambda course_id: course_id == "daily_conversation",
+        ):
+            active_lessons = bot.active_course_lessons()
+        self.assertEqual(active_lessons, bot.COURSE_LESSON_ORDER["daily_conversation"])
+        self.assertEqual(len(active_lessons), 48)
+        self.assertTrue(all(lesson.startswith("daily_conversation_") for lesson in active_lessons))
+
     def test_draft_course_completions_never_grant_legacy_badges(self):
         draft_ids = (
             bot.COURSE_LESSON_ORDER["daily_conversation"]
