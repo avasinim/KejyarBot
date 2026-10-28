@@ -81,6 +81,9 @@ def format_conversation_lesson(lesson):
         sections.extend(["", "🎭 ڕۆڵگێڕی", lesson["role_play"]])
     if lesson.get("source_note"):
         sections.extend(["", "📚 تێبینیی سەرچاوە", lesson["source_note"]])
+    if lesson.get("review_findings"):
+        sections.extend(["", "🔍 خاڵەکانی پشکنین"])
+        sections.extend(f"• {item}" for item in lesson["review_findings"])
     if lesson.get("review_status"):
         sections.extend(["", f"📌 دۆخی پشکنین: {lesson['review_status']}"])
     return "\n".join(sections)
