@@ -30,7 +30,7 @@ class CourseManifestRegressionTests(unittest.TestCase):
                 self.assertEqual(course["status"], "draft_for_review")
                 self.assertEqual(
                     course["lesson_ids"],
-                    [f"{course_id}_{number:02d}" for number in range(1, 13)],
+                    [f"{course_id}_{number:02d}" for number in range(1, 49 if course_id == "daily_conversation" else 13)],
                 )
         self.assertEqual(self.by_id["grammar"]["status"], "planned")
         self.assertEqual(self.by_id["grammar"]["lesson_ids"], [])
