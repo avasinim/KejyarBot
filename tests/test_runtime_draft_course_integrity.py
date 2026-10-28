@@ -1,5 +1,6 @@
 """Runtime integrity checks for the active multi-course candidate."""
 import unittest
+from unittest.mock import patch
 
 import bot
 
@@ -19,11 +20,12 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         self.assertEqual(len(bot.LESSON_DATA), len(set(bot.LESSON_DATA)))
 
     def test_active_course_lessons_and_quizzes_are_loaded(self):
-        for course_id in ("daily_conversation", "unified_orthography"):
-            with self.subTest(course=course_id):
-                self.assertTrue(bot.course_is_active(course_id))
-                for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
-                    self.assertEqual(bot.can_open(12345, lesson_id), lesson_id == bot.COURSE_LESSON_ORDER[course_id][0])
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            for course_id in ("daily_conversation", "unified_orthography"):
+                with self.subTest(course=course_id):
+                    self.assertTrue(bot.course_is_active(course_id))
+                    for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
+                        self.assertEqual(bot.can_open(12345, lesson_id), lesson_id == bot.COURSE_LESSON_ORDER[course_id][0])
                     self.assertIn("draft_editorial_review", bot.LESSON_DATA[lesson_id]["review_status"])
                     self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
                     questions = bot.QUIZ_DATA[lesson_id]
