@@ -466,8 +466,8 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         }
         status = status_labels.get(course.get("status", "planned"), "چالاک نییە")
         await query.message.reply_text(
-            f"{course['title']}\\n\\n📌 دۆخ: {status}\\n"
-            f"{course.get('description', '')}\\n\\n"
+            f"{course['title']}\n\n📌 دۆخ: {status}\n"
+            f"{course.get('description', '')}\n\n"
             "ئەم کۆرسە هێشتا چالاک نەکراوە."
         )
         return
