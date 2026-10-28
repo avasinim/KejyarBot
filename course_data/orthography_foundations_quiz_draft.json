@@ -1,7 +1,7 @@
 {
   "course_id": "orthography_foundations",
   "course_title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
-  "status": "draft_needs_editorial_and_source_review",
+  "status": "beginner_quiz_editorial_pass",
   "lesson_quiz_count": 22,
   "notes": [
     "ئەم کویزانە پێش‌نوسن و پێش بەستنەوە بە بۆت دەبێت لەگەڵ سەرچاوە و ناوەڕۆکی کۆتایی وانەکان بپشکنرێنەوە.",
@@ -406,5 +406,5 @@
       ]
     }
   ],
-  "note": "Explanations are lesson-specific editorial drafts, not source-verified claims. Review each question, correct option, explanation and cited evidence against the approved lesson and source before runtime integration."
+  "note": "ئەم ٢٢ پرسیارە بۆ فێرخوازانی سەرەتایی پێش‌نوسن. هەر پرسیار و وەڵامێک دەبێت لەگەڵ وانەی هەمان ژمارە هاوتا بێت؛ ئامانج ڕوونیی پرسیار، هەڵبژاردەی جیاواز و ڕوونکردنەوەی کورتە. پێش بەستن بە runtime، تاقیکردنەوەی کویزەکان جێبەجێ بکرێت."
 }
