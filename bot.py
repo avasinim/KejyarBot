@@ -580,11 +580,11 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     completed = set(get_completed_lessons(query.from_user.id))
     keyboard_rows = []
-    for lesson in lesson_ids:
+    for number, lesson in enumerate(lesson_ids, start=1):
         status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
         title = LESSON_DATA[lesson]["title"]
         keyboard_rows.append([InlineKeyboardButton(
-            f"{status} {lesson}: {title}",
+            f"{status} وانەی {kurdish_digits(number)}: {title}",
             callback_data=f"open_lesson_{lesson}",
         )])
     await query.message.reply_text(
@@ -659,9 +659,11 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Preserve numeric legacy callbacks; use the complete namespaced key
             # for future courses so underscores are never truncated.
             quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+            course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(lesson), [])
+            lesson_number = course_order.index(lesson) + 1 if lesson in course_order else 0
             buttons.append([
                 InlineKeyboardButton(
-                    f"📝 تاقیکردنەوەی {lesson}",
+                    f"📝 تاقیکردنەوەی وانەی {kurdish_digits(lesson_number)}",
                     callback_data=f"quiz_{quiz_lesson_id}_start",
                 )
             ])
@@ -700,7 +702,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         lines = []
         for lesson in active_course_lessons():
             status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
+            course_order = COURSE_LESSON_ORDER.get(LESSON_COURSE.get(lesson), [])
+            lesson_number = course_order.index(lesson) + 1 if lesson in course_order else 0
+            title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+            lines.append(f"{status} — وانەی {kurdish_digits(lesson_number)}: {title}")
         await update.message.reply_text("\n".join(lines))
         return
 
