@@ -32,7 +32,7 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(self.orthography["lesson_count"], 22)
 
         expected_drafts = {
-            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 43)],
+            "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 49)],
             "unified_orthography": [f"unified_orthography_{n:02d}" for n in range(1, 13)],
         }
         for course_id, expected_ids in expected_drafts.items():
@@ -46,7 +46,7 @@ class CourseCatalogTests(unittest.TestCase):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
         self.assertEqual(conversation["status"], "draft_for_review")
-        self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 43)])
+        self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 49)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
         self.assertEqual(self.conversation_plan["lesson_status"], "titles_and_sequence_are_proposals_only")
@@ -55,6 +55,7 @@ class CourseCatalogTests(unittest.TestCase):
             ("daily_conversation_lessons_07_30.json", list(range(7, 31))),
             ("daily_conversation_lessons_31_36.json", list(range(31, 37))),
             ("daily_conversation_lessons_37_42.json", list(range(37, 43))),
+            ("daily_conversation_lessons_43_48.json", list(range(43, 49))),
         ):
             with self.subTest(file=filename):
                 with (ROOT / "course_data" / filename).open(encoding="utf-8") as handle:
@@ -63,7 +64,7 @@ class CourseCatalogTests(unittest.TestCase):
                 self.assertEqual([lesson["number"] for lesson in draft["lessons"]], expected_numbers)
                 self.assertTrue(all(lesson.get("dialogue") and lesson.get("vocabulary") and lesson.get("exercises") and lesson.get("quiz") for lesson in draft["lessons"]))
         proposed = self.conversation_plan["proposed_sequence"]
-        self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 43)))
+        self.assertEqual([lesson["number"] for lesson in proposed], list(range(1, 49)))
         self.assertTrue(all(lesson["working_title"] and lesson["focus"] for lesson in proposed))
         self.assertEqual(self.conversation_plan["source_status"], "source_text_not_yet_attached_to_this_plan")
 
@@ -118,7 +119,7 @@ class CourseCatalogTests(unittest.TestCase):
             final = json.load(handle)
         lessons = first["lessons"] + later["lessons"] + final["lessons"]
         planned = self.conversation_plan["proposed_sequence"]
-        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 43)))
+        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 49)))
         self.assertEqual(
             [lesson["title"] for lesson in lessons],
             [lesson["working_title"] for lesson in planned],
