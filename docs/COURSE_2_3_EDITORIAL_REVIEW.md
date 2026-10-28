@@ -4,6 +4,9 @@ Branch: `fix/four-course-structure-2026-10-27`
 
 ## Scope and safety
 
+**Editorial principle clarified on 2026-10-28:** These are beginner-friendly educational bot courses. Learner-facing lessons should not contain source lists, citations, page numbers, or bibliographic discussion. Do not hold simple teaching material to a publication-level evidence standard. Focus review on clear Kurdish, useful examples, beginner accessibility, internal consistency, and quiz answers matching the lesson. Use external references privately only if a concrete factual uncertainty needs resolving; do not require a source for every lesson or example.
+
+
 This queue is for Course 2 (daily conversation) and Course 3 (unified orthography). Course 1 is out of scope unless a regression blocks integration. Course 4 remains planned and empty. This document is a review tracker, not a claim that the courses are linguistically or bibliographically approved.
 
 Do not activate either draft course until the checks below are completed. Do not merge the draft PR, deploy, modify the production bot/token/database, or enable dynamic speech without explicit user approval. Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false`.
@@ -42,16 +45,16 @@ These are editorial checks to perform, not claims that the wording is necessaril
 ### Remaining release gates
 1. Complete the targeted editorial checks above for all 12 dialogues, including natural Kurdish, consistent names/terms, useful real-life phrasing, and spelling.
 2. Recheck every quiz key against the dialogue or lesson text; do not rely on explanations alone.
-3. Clearly label original editorial dialogue/vocabulary as original teaching material; cite sources only for claims that actually depend on a reference.
-4. Keep each lesson marked `draft_source_check_required` until editorial review is complete.
+3. Keep dialogue natural, useful, and understandable for beginners; source citations are not a lesson requirement.
+4. Keep each lesson in draft until its practical editorial review and quiz-key checks are complete. Do not require page citations or bibliographic proof as a release gate.
 
 ## Course 3 — Unified orthography (12 lessons)
 
-All 12 lessons remain drafts. The current JSON has unresolved source/example review findings in lessons 1, 4, 6, 7, 9, 10, 11, and 12. Technical Unicode code points were added to lessons 6 and 7; this does not count as source verification of the orthographic rules or example words. The following are the concrete unresolved tasks recorded in the lesson data:
+All 12 lessons remain drafts for practical editorial review, not bibliography review. Learner-facing lessons do not need source notes, citations, page numbers, or bibliographies. Focus on whether the explanations are simple, examples are familiar and clear, the Kurdish spelling is consistent with the intended course, and the quiz checks what the lesson actually teaches. The following are the remaining beginner-usability tasks recorded in the lesson data:
 
-| Lesson | Topic | Required evidence or correction |
+| Lesson | Topic | Practical improvement |
 |---|---|---|
-| 1 | Unicode and unified spelling | Add a technically correct Unicode code-point example for visually similar letters; distinguish the actual Kurdish code point from Arabic/Latin lookalikes. |
+| 1 | Unicode and unified spelling | Show the difference between visually similar letters with a simple exampleetters; distinguish the actual Kurdish code point from Arabic/Latin lookalikes. |
 | 4 | Consonant clusters and syllables | Verify pronunciation and syllabification for the cited examples, with exact source/page and a clear phonological explanation. |
 | 6 | Difference between ڕ and ر | Unicode code points are now recorded (ڕ U+0695, ر U+0631). Still verify the example words against a reliable dictionary/source and cite the chosen spelling rule. |
 | 7 | ک/ك, ھ/ه and ە | Unicode code points are now recorded: ک U+06A9 / ك U+0643; ھ U+06BE / ه U+0647; ە U+06D5. Still add whole-word examples and verify the orthographic rule, not just visual similarity. |
@@ -80,8 +83,8 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
 
-### Source candidate located for follow-up (not yet verified against Course 3 rules)
+### Optional internal reference note (not a learner-facing requirement)
 - Diyako Hashemi, *پوختەی ڕێنووس و خاڵبەندی*, PDF edition hosted by Fêrgeya Zimanê Kurdî: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_4.pdf
-- A separate source register in this repository records this as the 2024 PDF edition and warns that a later 2025 print edition differs in pagination. Do not transfer page numbers from one edition to the other.
+- A separate source register in this repository records this as the 2024 PDF edition and warns that a later 2025 print edition differs in pagination. Do not transfer page numbers from one edition to the other. This is internal context only; course lessons do not need citations or page references.
 - The current repository tree does not contain a bundled PDF/source document, and this review pass has not verified the relevant pages for Course 3 lessons 4, 6, 7, 9, 10, 11, or 12. Therefore this is a lead for direct source inspection, not evidence that any of those rules/examples are validated.
-- Next source-review step: inspect the actual PDF pages for the matching headings, capture edition plus printed page and PDF page separately, and only then replace generic examples. Until that happens, all affected lessons remain `draft_source_check_required`.
+- Next source-review step: inspect the actual PDF pages for the matching headings, capture edition plus printed page and PDF page separately, and only then replace generic examples. Until that happens, affected lessons remain drafts only until their clarity, examples, and quiz alignment are reviewed.
