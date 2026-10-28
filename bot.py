@@ -198,6 +198,17 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+def active_course_lessons():
+    """Return lessons only from explicitly active courses, in course order."""
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
+
+
 def can_open(user_id, lesson):
     course_id = LESSON_COURSE.get(lesson)
     if course_id is None or not course_is_active(course_id):
@@ -642,7 +653,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
         buttons = []
-        for lesson in ORDER:
+        for lesson in active_course_lessons():
             if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
                 continue
             # Preserve numeric legacy callbacks; use the complete namespaced key
@@ -687,7 +698,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         lines = []
-        for lesson in ORDER:
+        for lesson in active_course_lessons():
             status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
             lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
         await update.message.reply_text("\n".join(lines))
