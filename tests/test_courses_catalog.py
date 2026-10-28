@@ -106,6 +106,31 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertNotIn("dialogue[1][1]", lesson7)
         self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
 
+    def test_conversation_titles_and_review_gates_match_the_24_lesson_plan(self):
+        with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
+            first = json.load(handle)
+        with (ROOT / "course_data" / "daily_conversation_lessons_07_24.json").open(encoding="utf-8") as handle:
+            later = json.load(handle)
+        lessons = first["lessons"] + later["lessons"]
+        planned = self.conversation_plan["proposed_sequence"]
+        self.assertEqual([lesson["number"] for lesson in lessons], list(range(1, 25)))
+        self.assertEqual(
+            [lesson["title"] for lesson in lessons],
+            [lesson["working_title"] for lesson in planned],
+        )
+        self.assertTrue(all(lesson.get("review_status") == "draft_editorial_review" for lesson in lessons))
+        self.assertEqual(self.catalog[1]["status"], "draft_for_review")
+        self.assertEqual(len(self.catalog[1]["lesson_ids"]), 24)
+        for lesson in lessons:
+            self.assertTrue(lesson["dialogue"])
+            self.assertTrue(lesson["vocabulary"])
+            self.assertTrue(lesson["exercises"])
+            self.assertTrue(lesson["quiz"])
+            for question in lesson["quiz"]:
+                self.assertTrue(question.get("explanation", "").strip())
+                self.assertEqual(len(question["options"]), len(set(question["options"])))
+                self.assertTrue(all(isinstance(option, str) and option.strip() for option in question["options"]))
+
     def test_no_lesson_is_accidentally_assigned_to_multiple_courses(self):
         all_ids = [
             lesson_id
