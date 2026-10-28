@@ -44,7 +44,7 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertTrue(lesson["quiz"])
                 for question in lesson["quiz"]:
                     self.assertTrue(question["q"].strip())
-                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertGreaterEqual(len(question["options"]), 3)
                     self.assertTrue(all(option.strip() for option in question["options"]))
                     self.assertIsInstance(question["answer"], int)
                     self.assertGreaterEqual(question["answer"], 0)
@@ -142,7 +142,7 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                         self.assertTrue(question.get("question", "").strip())
                         options = question.get("options")
                         self.assertIsInstance(options, list)
-                        self.assertGreaterEqual(len(options), 2)
+                        self.assertGreaterEqual(len(options), 3)
                         self.assertTrue(all(isinstance(option, str) and option.strip() for option in options))
                         self.assertIn(question.get("answer"), options)
                         self.assertTrue(question.get("explanation", "").strip())
