@@ -23,6 +23,7 @@ class BotkeepPackageTests(unittest.TestCase):
     def test_all_runtime_entrypoints_and_course_data_are_included(self):
         required = {
             "bot.py",
+            "main.py",
             "database.py",
             "voice.py",
             "daily_chat.py",
