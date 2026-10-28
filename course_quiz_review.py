@@ -11,6 +11,7 @@ COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED = frozenset({
     "وانە_16",
     "وانە_18",
     "وانە_19",
+    "وانە_20",
     "وانە_21",
 })
 
