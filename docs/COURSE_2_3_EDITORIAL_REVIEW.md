@@ -37,10 +37,10 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 6 | Review the daily routine for tense consistency and natural time expressions. |
 | 7 | Review food vocabulary and repeated expressions for preference and drinking/eating; check colloquial naturalness. |
 | 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
-| 9 | The date “twenty-seventh of the month” has no named month or situational anchor; decide whether it is an intentional date-reading exercise or should be contextualized. Check the “today/tomorrow” timeline stays clear. |
+| 9 | Added “twenty-seventh of May” as a clear date anchor and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
 | 11 | Quiz key was checked against the dialogue; review travel-planning phrasing and consistency of the transport terms. |
-| 12 | Check the final dialogue consolidates earlier vocabulary without introducing unexplained new phrasing; review all three quiz keys against the full dialogue. |
+| 12 | The closing line was polished to “یەکتر دەبینینەوە”; the three quiz keys were structurally checked and remain aligned with the taught phrases. Continue the final naturalness pass. |
 
 ### Remaining release gates
 1. Complete the targeted editorial checks above for all 12 dialogues, including natural Kurdish, consistent names/terms, useful real-life phrasing, and spelling.
@@ -80,7 +80,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 ## Current status
 
 - Runtime/CI: rerun CI after the latest beginner-friendly content and adapter changes; report the current run result separately.
-- Course 2: four dialogue-to-quiz findings resolved; practical editorial review still pending.
+- Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 9 date/meeting phrasing and lesson 12 closing line were clarified. Practical editorial review still pending.
 - Course 3: lesson-specific clarity and example improvements listed above remain unresolved.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
 
