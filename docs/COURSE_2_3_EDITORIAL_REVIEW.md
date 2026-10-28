@@ -33,7 +33,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 5 | Quiz key was checked against the dialogue; review the polite invitation and pre-visit phone-call phrasing. |
 | 6 | Review the daily routine for tense consistency and natural time expressions. |
 | 7 | Review food vocabulary and repeated expressions for preference and drinking/eating; check colloquial naturalness. |
-| 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 dinars/kg plus 1 kg oranges at 3,000 dinars/kg totals 9,000 dinars. Check the pricing exchange remains clear for learners. |
+| 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
 | 9 | The date “twenty-seventh of the month” has no named month or situational anchor; decide whether it is an intentional date-reading exercise or should be contextualized. Check the “today/tomorrow” timeline stays clear. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
 | 11 | Quiz key was checked against the dialogue; review travel-planning phrasing and consistency of the transport terms. |
