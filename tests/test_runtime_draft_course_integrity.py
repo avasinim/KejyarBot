@@ -53,6 +53,14 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertEqual(bot.next_course_lesson(current), following)
                 self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
 
+    def test_course_one_progression_does_not_spill_into_course_two(self):
+        legacy_ids = bot.COURSE_LESSON_ORDER["orthography_basic"]
+        conversation_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        self.assertEqual(legacy_ids, [f"وانە_{n}" for n in range(1, 23)])
+        self.assertEqual(bot.next_course_lesson(legacy_ids[-1]), None)
+        self.assertNotIn(legacy_ids[-1], conversation_ids)
+        self.assertEqual(conversation_ids[0], "daily_conversation_01")
+
     def test_course_four_remains_planned_and_empty(self):
         course = next(course for course in bot.COURSES if course["id"] == "grammar")
         self.assertEqual(course["status"], "planned")
