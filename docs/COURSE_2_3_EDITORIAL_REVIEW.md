@@ -62,7 +62,7 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 | 7 | ک/ك, ھ/ه and ە | Clarified that «هەوا / ھەوا» is only a digital code-point comparison and that «ھەوا» should not be taught as an interchangeable ordinary spelling; use «هەوا» in normal Kurdish text unless the course's explicit convention says otherwise. |
 | 5 | Hamza / «ئ» | Replaced the abstract quiz question with a direct recognition question using «ئاو», matching the lesson's stated beginner objective and examples. |
 | 8 | و، وو، ی و ێ | Simplified the quiz and explanation by removing the Latin phonetic symbol; the answer now refers directly to the long sound in «دوور». |
-| 9 | Particles and joined spelling | Clarified the «بێ ئاگایی» example and added a complete sentence for «بە کوردی»; still verify join/separation rules against the course's intended convention before release. |
+| 9 | Particles and joined spelling | Quiz now checks the particle «لە» in «من لە ماڵم» and distinguishes it from the subject «من» and place noun «ماڵ»; verify join/separation rules against the course's intended convention before release. |
 | 10 | Compound and derived words | Added concrete examples «کتێب‌خانە» and «بەهێز» with components; quiz now checks the derived-word example «بەهێز» while contrasting the compound «کتێب‌خانە». Final language review is still needed. |
 | 11 | Adverbs, loanwords and compound numerals | Replaced the numeral-only quiz with a direct question on «زۆر» in «زۆر خێرا», aligning the check with the lesson's adverb example; loanword and numeral coverage still need review. |
 | 11 | Adverbs, loanwords and compound numerals | Added «تەلەفۆن» as a loanword and «سی و دوو» as a compound numeral; check the lesson gives enough context for both. |
