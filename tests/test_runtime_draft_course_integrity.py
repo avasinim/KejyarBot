@@ -25,12 +25,21 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 with self.subTest(course=course_id):
                     self.assertTrue(bot.course_is_active(course_id))
                     for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
-                        self.assertEqual(bot.can_open(12345, lesson_id), lesson_id == bot.COURSE_LESSON_ORDER[course_id][0])
-                    self.assertIn("draft_editorial_review", bot.LESSON_DATA[lesson_id]["review_status"])
-                    self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
-                    questions = bot.QUIZ_DATA[lesson_id]
-                    self.assertTrue(questions)
-                    self.assertTrue(all(q.get("question") and q.get("explanation") for q in questions))
+                        with self.subTest(lesson=lesson_id):
+                            self.assertEqual(
+                                bot.can_open(12345, lesson_id),
+                                lesson_id == bot.COURSE_LESSON_ORDER[course_id][0],
+                            )
+                            self.assertIn(
+                                "draft_editorial_review",
+                                bot.LESSON_DATA[lesson_id]["review_status"],
+                            )
+                            self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
+                            questions = bot.QUIZ_DATA[lesson_id]
+                            self.assertTrue(questions)
+                            self.assertTrue(
+                                all(q.get("question") and q.get("explanation") for q in questions)
+                            )
 
     def test_course_four_remains_planned_and_empty(self):
         course = next(course for course in bot.COURSES if course["id"] == "grammar")
