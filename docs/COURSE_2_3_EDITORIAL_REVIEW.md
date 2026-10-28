@@ -39,7 +39,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
 | 9 | Changed the date anchor to “twenty-seventh of Befranbar” at the user's request and changed the meeting question to a more direct “When will we see each other?” phrasing; the today/tomorrow timeline remains clear. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
-| 11 | Quiz key was checked against the dialogue; review travel-planning phrasing and consistency of the transport terms. |
+| 11 | Quiz key was checked against the dialogue; clarified that the 8 AM meeting at the bus station is also the departure point. Review travel-planning phrasing and consistency of transport terms. |
 | 12 | The closing line was polished to “یەکتر دەبینینەوە”; the three quiz keys were structurally checked and remain aligned with the taught phrases. Continue the final naturalness pass. |
 
 ### Remaining release gates
