@@ -20,11 +20,30 @@ Do not activate either draft course until the checks below are completed. Do not
 - Rewrote the four quiz explanations to state the relevant dialogue evidence and cleared only those four lessons' dialogue-answer findings.
 - CI passed after a test assertion was adjusted to check that review status is rendered independently of whether a lesson still has findings.
 
+### Targeted Course 2 review queue
+
+These are editorial checks to perform, not claims that the wording is necessarily wrong:
+
+| Lesson | Focus for review |
+|---|---|
+| 1 | Check greeting and farewell expressions for naturalness and consistency across the remaining lessons. |
+| 2 | Review the naturalness of the self-introduction and the question/answer about where someone is from. |
+| 3 | Check question-word usage and the sequence of questions for a natural conversation. |
+| 4 | Quiz keys were checked against the dialogue; review family vocabulary definitions and consistency of singular/plural forms. |
+| 5 | Quiz key was checked against the dialogue; review the polite invitation and pre-visit phone-call phrasing. |
+| 6 | Review the daily routine for tense consistency and natural time expressions. |
+| 7 | Review food vocabulary and repeated expressions for preference and drinking/eating; check colloquial naturalness. |
+| 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 dinars/kg plus 1 kg oranges at 3,000 dinars/kg totals 9,000 dinars. Check the pricing exchange remains clear for learners. |
+| 9 | The date “twenty-seventh of the month” has no named month or situational anchor; decide whether it is an intentional date-reading exercise or should be contextualized. Check the “today/tomorrow” timeline stays clear. |
+| 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
+| 11 | Quiz key was checked against the dialogue; review travel-planning phrasing and consistency of the transport terms. |
+| 12 | Check the final dialogue consolidates earlier vocabulary without introducing unexplained new phrasing; review all three quiz keys against the full dialogue. |
+
 ### Remaining release gates
-1. Review all 12 dialogues for natural Kurdish, consistency of names/terms, useful real-life phrasing, and spelling.
-2. Check all quiz keys against their dialogue or lesson text; do not rely on explanations alone.
-3. Add sources where claims depend on a reference; clearly label original editorial dialogue/vocabulary as original teaching material rather than implying a published source.
-4. Keep each lesson marked `draft_source_check_required` until the editorial review is actually complete.
+1. Complete the targeted editorial checks above for all 12 dialogues, including natural Kurdish, consistent names/terms, useful real-life phrasing, and spelling.
+2. Recheck every quiz key against the dialogue or lesson text; do not rely on explanations alone.
+3. Clearly label original editorial dialogue/vocabulary as original teaching material; cite sources only for claims that actually depend on a reference.
+4. Keep each lesson marked `draft_source_check_required` until editorial review is complete.
 
 ## Course 3 — Unified orthography (12 lessons)
 
@@ -55,7 +74,7 @@ Manual smoke test must use an authorized isolated test bot/account only. Confirm
 
 ## Current status
 
-- Runtime/CI: automated suite passed on commit `ebcc9c2f508fefcddaf912491bde78303610f314`.
+- Runtime/CI: automated suite passed on commit `55c6a2525b4493c933ae58325a7d61908d45c3dd`.
 - Course 2: four dialogue-to-quiz findings resolved; full editorial/source review still pending.
 - Course 3: lesson-specific source/example findings listed above remain unresolved.
 - Pull request #4 remains a draft and must not be merged without explicit approval.
