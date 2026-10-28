@@ -117,6 +117,26 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(query.message.reply_text.await_count, 2)
 
 
+    async def test_source_review_quiz_cannot_start_even_via_direct_callback(self):
+        query = SimpleNamespace(
+            data="quiz_2_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێداچوونەوەی سەرچاوەدایە", query.message.reply_text.await_args.args[0])
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
