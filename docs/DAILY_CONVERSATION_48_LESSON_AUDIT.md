@@ -231,3 +231,9 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - The quiz assesses price and trying on the shirt, so it aligns with the dialogue but leaves the discount function in the exercise unsupported.
 - During editorial revision, either add a short, natural discount-request exchange with a clear seller response, or replace the exercise with one practising a function already modelled. Do not assume every seller offers a discount, and do not silently alter the draft.
 - Review flag only; no lesson JSON was changed.
+
+### Lesson 41: changing a plan is assigned but not modelled or assessed (2026-10-29)
+
+- Lesson 41, **«پلان بۆ هەفتە»**, models listing activities by weekday and negotiating an exercise time (“after noon is better”). Its third exercise asks the learner to change a plan and explain why, but the dialogue contains no actual cancellation, rescheduling, or reason for a change; neither quiz item checks this function.
+- During editorial revision, either add a short exchange that changes one scheduled activity and gives a reason, then assess that function, or narrow the exercise to the scheduling language demonstrated. Keep the exercise accessible to learners at this level and do not change the draft lesson silently.
+- Review flag only; no lesson JSON was changed.
