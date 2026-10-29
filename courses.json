@@ -37,8 +37,8 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "٤٨ وانەی وتووێژ؛ پێش‌نوس، بۆ پشکنینی زمانی و فێرکاری.",
-      "status": "draft_for_review",
+      "description": "٤٨ وانەی وتووێژ؛ کۆرسەکە چالاکە و وانەکان بە ڕێڕەوی پێشکەوتنی تایبەتی خۆیان دەکرێنەوە.",
+      "status": "active",
       "lesson_ids": [
         "daily_conversation_01",
         "daily_conversation_02",
@@ -95,8 +95,8 @@
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: ڕێنووسی یەکگرتووی زمانی کوردی",
-      "description": "١٢ وانەی پێش‌نوسی ڕێنووسی یەکگرتوو؛ پێویستی بە پشکنینی سەرچاوە و فێرکاری هەیە.",
-      "status": "draft_for_review",
+      "description": "١٢ وانەی ڕێنووسی یەکگرتوو؛ کۆرسەکە چالاکە و وانەکان بە ڕێڕەوی پێشکەوتنی تایبەتی خۆیان دەکرێنەوە.",
+      "status": "active",
       "lesson_ids": [
         "unified_orthography_01",
         "unified_orthography_02",
