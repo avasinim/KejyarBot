@@ -62,7 +62,7 @@ Do not commit local secrets, `.env`, SQLite databases, backups, or generated run
 ## Continuation checkpoint — 2026-10-29
 
 - Current integration branch: `fix/integration-daily-conversation-48-2026-10-29`.
-- Code/test head validated locally by the owner: `d4af297a0e54e790ed8e0e31397c775da066bf7c`; `python -m unittest discover -s tests -v` passed all 244 tests in 7.238 seconds. The subsequent commits update documentation only; re-run the suite after fetching the latest branch head if desired.
+- Code/test head validated locally by the owner: `d4af297a0e54e790ed8e0e31397c775da066bf7c`; `python -m unittest discover -s tests -v` passed all 244 tests in 7.238 seconds. GitHub Actions run [40879773830](https://github.com/avasinim/KejyarBot/actions/runs/40879773830) also passed on documentation-updated head `608d09a79e1afd77e442d158963f9f8ad9c37524`, including `compileall` and the complete unittest suite.
 - Editorial status trackers were corrected to reflect the 48-lesson active Course 2, 12-lesson active Course 3, retained review metadata, and the current integration branch. Production is not deployed.
 - CI succeeded for that commit: https://github.com/avasinim/KejyarBot/actions/runs/40822621759. The run completed the compileall and full unittest steps successfully.
 - The root image `photo_2026-10-27_00-13-52.jpg` is tracked in the development branch and is the optional Course 1, Lesson 1 infographic. `tools/prepare_botkeep_zip.py` intentionally excludes JPG/binary files; the image must be transferred separately by SFTP after the server exists. The lesson text is designed to remain available if the image is absent.
