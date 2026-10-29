@@ -223,15 +223,19 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         self.assertEqual(len(active_lessons), 48)
         self.assertTrue(all(lesson.startswith("daily_conversation_") for lesson in active_lessons))
 
-    def test_draft_course_completions_never_grant_legacy_badges(self):
-        draft_ids = (
+    def test_activated_course_completions_grant_course_local_badges(self):
+        completed_ids = (
             bot.COURSE_LESSON_ORDER["daily_conversation"]
             + bot.COURSE_LESSON_ORDER["unified_orthography"]
         )
-        with patch.object(bot, "get_completed_lessons", return_value=draft_ids), \
+        with patch.object(bot, "get_completed_lessons", return_value=completed_ids), \
              patch.object(bot, "add_badge") as add_badge:
             bot.check_badges(12345)
-        add_badge.assert_not_called()
+        self.assertEqual(add_badge.call_count, 60)
+        badges = [call.args[1] for call in add_badge.call_args_list]
+        self.assertTrue(any("کۆرسی ٢" in badge and "وانەی 1" in badge for badge in badges))
+        self.assertTrue(any("کۆرسی ٣" in badge and "وانەی 1" in badge for badge in badges))
+        self.assertFalse(any("کۆرسی ڕێنووسی —" in badge for badge in badges))
 
     def test_next_lesson_never_crosses_course_boundaries(self):
         for course_id in ("daily_conversation", "unified_orthography"):
