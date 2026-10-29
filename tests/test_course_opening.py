@@ -106,5 +106,18 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە", text)
 
 
+    def test_completion_in_one_course_never_unlocks_another_courses_next_lesson(self):
+        # Unlock checks must use the target course's ordered lesson list.
+        cases = [
+            ("daily_conversation_02", ["وانە_1"]),
+            ("unified_orthography_02", ["daily_conversation_01"]),
+            ("وانە_2", ["unified_orthography_01"]),
+        ]
+        for target_lesson, completed_lessons in cases:
+            with self.subTest(target_lesson=target_lesson, completed=completed_lessons):
+                with patch.object(bot, "get_completed_lessons", return_value=completed_lessons):
+                    self.assertFalse(bot.can_open(12345, target_lesson))
+
+
 if __name__ == "__main__":
     unittest.main()
