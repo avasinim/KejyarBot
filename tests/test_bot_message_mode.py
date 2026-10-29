@@ -381,5 +381,48 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         voice.assert_not_awaited()
 
 
+    async def test_final_quiz_reply_failure_still_clears_quiz_state(self):
+        message = SimpleNamespace(
+            message_id=700,
+            reply_text=AsyncMock(side_effect=[
+                None,  # answer feedback
+                RuntimeError("telegram unavailable"),  # final result
+            ]),
+        )
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            message=message,
+            data="answer_0",
+            edit_message_reply_markup=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        quiz = {
+            "index": 0,
+            "lesson": "daily_conversation_01",
+            "questions": [{
+                "question": "Q",
+                "options": ["A", "B"],
+                "answer": "A",
+                "explanation": "",
+            }],
+            "score": 0,
+            "question_message_id": 700,
+        }
+        context = SimpleNamespace(user_data={"quiz": quiz})
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=["daily_conversation_01"]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "complete_quiz_with_rewards", return_value=True) as complete,
+        ):
+            with self.assertRaises(RuntimeError):
+                await bot.quiz_answer(update, context)
+
+        complete.assert_called_once_with(12345, "daily_conversation_01")
+        self.assertNotIn("quiz", context.user_data)
+
 if __name__ == "__main__":
     unittest.main()
