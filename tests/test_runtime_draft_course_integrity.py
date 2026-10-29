@@ -52,17 +52,14 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                         self.assertEqual(len(options), len(set(options)))
                         self.assertIn(question.get("answer"), options)
 
-    def test_active_course_lessons_and_quizzes_are_loaded(self):
+    def test_review_gated_course_lessons_and_quizzes_are_loaded_but_locked(self):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             for course_id in ("daily_conversation", "unified_orthography"):
                 with self.subTest(course=course_id):
-                    self.assertTrue(bot.course_is_active(course_id))
+                    self.assertFalse(bot.course_is_active(course_id))
                     for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
                         with self.subTest(lesson=lesson_id):
-                            self.assertEqual(
-                                bot.can_open(12345, lesson_id),
-                                lesson_id == bot.COURSE_LESSON_ORDER[course_id][0],
-                            )
+                            self.assertFalse(bot.can_open(12345, lesson_id))
                             self.assertIn(
                                 "draft_editorial_review",
                                 bot.LESSON_DATA[lesson_id]["review_status"],
