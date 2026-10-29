@@ -31,21 +31,21 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(len(set(first["lesson_ids"])), 22)
         self.assertEqual(self.orthography["lesson_count"], 22)
 
-        expected_drafts = {
+        expected_active_courses = {
             "daily_conversation": [f"daily_conversation_{n:02d}" for n in range(1, 49)],
             "unified_orthography": [f"unified_orthography_{n:02d}" for n in range(1, 13)],
         }
-        for course_id, expected_ids in expected_drafts.items():
+        for course_id, expected_ids in expected_active_courses.items():
             with self.subTest(course=course_id):
-                self.assertEqual(by_id[course_id]["status"], "draft_for_review")
+                self.assertEqual(by_id[course_id]["status"], "active")
                 self.assertEqual(by_id[course_id]["lesson_ids"], expected_ids)
         self.assertEqual(by_id["grammar"]["status"], "planned")
         self.assertEqual(by_id["grammar"]["lesson_ids"], [])
 
-    def test_daily_conversation_plan_is_provisional_and_does_not_activate_course(self):
+    def test_daily_conversation_plan_retains_editorial_notes_after_runtime_activation(self):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
-        self.assertEqual(conversation["status"], "draft_for_review")
+        self.assertEqual(conversation["status"], "active")
         self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 49)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
@@ -112,7 +112,7 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertNotIn("dialogue[1][1]", lesson7)
         self.assertEqual(lesson12["dialogue"][7][1], "بە پێ دەڕۆین؛ کتێبخانەکە نزیکە.")
 
-    def test_conversation_titles_and_review_gates_match_the_48_lesson_plan(self):
+    def test_conversation_titles_and_editorial_metadata_match_the_48_lesson_plan(self):
         with (ROOT / "course_data" / "daily_conversation_lessons_01_06.json").open(encoding="utf-8") as handle:
             first = json.load(handle)
         with (ROOT / "course_data" / "daily_conversation_lessons_07_30.json").open(encoding="utf-8") as handle:
@@ -131,7 +131,7 @@ class CourseCatalogTests(unittest.TestCase):
             [lesson["working_title"] for lesson in planned],
         )
         self.assertTrue(all(lesson.get("review_status") == "draft_editorial_review" for lesson in lessons))
-        self.assertEqual(self.catalog[1]["status"], "draft_for_review")
+        self.assertEqual(self.catalog[1]["status"], "active")
         self.assertEqual(len(self.catalog[1]["lesson_ids"]), 48)
         for lesson in lessons:
             self.assertTrue(lesson["dialogue"])
