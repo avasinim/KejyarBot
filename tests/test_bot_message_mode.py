@@ -61,6 +61,34 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         message.reply_text.assert_awaited_once()
         log_exception.assert_called_once()
 
+    async def test_lesson_completion_confirmation_survives_level_lookup_error(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            from_user=SimpleNamespace(id=12345),
+            data="finish_وانە_1",
+            message=message,
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1 🌱", RuntimeError("db unavailable")]),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "next_course_lesson", return_value=None),
+            patch.object(bot, "QUIZ_DATA", {}),
+            patch.object(bot.logger, "exception") as log_exception,
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_called_once_with(12345, "وانە_1")
+        message.reply_text.assert_awaited_once()
+        self.assertIn("وانەکە تەواو بوو", message.reply_text.await_args.args[0])
+        self.assertIn("+10 XP", message.reply_text.await_args.args[0])
+        log_exception.assert_called_once()
+
     async def test_lesson_completion_confirmation_survives_badge_database_error(self):
         message = SimpleNamespace(reply_text=AsyncMock())
         query = SimpleNamespace(
