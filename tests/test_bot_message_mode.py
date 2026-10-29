@@ -180,7 +180,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertNotIn("بۆ خوێندکاران چالاک نەکراون", query.message.reply_text.await_args.args[0])
+        self.assertIn("بۆ خوێندکاران چالاک نەکراون", query.message.reply_text.await_args.args[0])
         keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len(buttons), 12)
