@@ -24,8 +24,8 @@ class UnifiedOrthographyCourseTests(unittest.TestCase):
             if item["id"] == "unified_orthography"
         )
 
-    def test_course_is_active_with_review_status_preserved(self):
-        self.assertEqual(self.course["status"], "active")
+    def test_course_remains_review_gated_until_editorial_review(self):
+        self.assertEqual(self.course["status"], "draft_for_review")
         self.assertEqual(self.course["lesson_ids"], [f"unified_orthography_{n:02d}" for n in range(1, 13)])
 
     def test_course_has_twelve_ordered_drafts(self):
