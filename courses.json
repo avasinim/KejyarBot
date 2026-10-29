@@ -95,7 +95,7 @@
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: پوختەی ڕێنووس و خاڵبەندی — دیاکۆ هاشمی",
-      "description": "٥٥ وانە بەپێی ناوەڕۆکی کتێبی پوختەی ڕێنووس و خاڵبەندی؛ یاسا، نموونە، ڕاهێنان و کویز.",
+      "description": "٦٦ وانە بەپێی کتێبی دیاکۆ هاشمی؛ ٥٠ بابەتی ڕێنووس، ١٢ وانەی خاڵبەندی و ٤ بەشی پاشبنەمایی.",
       "status": "active",
       "lesson_ids": [
         "unified_orthography_01",
@@ -152,7 +152,18 @@
         "unified_orthography_52",
         "unified_orthography_53",
         "unified_orthography_54",
-        "unified_orthography_55"
+        "unified_orthography_55",
+        "unified_orthography_56",
+        "unified_orthography_57",
+        "unified_orthography_58",
+        "unified_orthography_59",
+        "unified_orthography_60",
+        "unified_orthography_61",
+        "unified_orthography_62",
+        "unified_orthography_63",
+        "unified_orthography_64",
+        "unified_orthography_65",
+        "unified_orthography_66"
       ]
     },
     {
