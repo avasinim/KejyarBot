@@ -1,0 +1,27 @@
+name: Orthography course structure tests
+
+on:
+  push:
+    branches:
+      - fix/kejyarbot-stability-2026-10-25
+  pull_request:
+    branches:
+      - main
+      - fix/kejyarbot-stability-2026-10-25
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  orthography-course-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out test branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate orthography course structure and quiz draft
+        run: python -m unittest discover -s tests -p "test_orthography_course_structure.py" -v

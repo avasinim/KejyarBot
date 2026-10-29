@@ -1,0 +1,41 @@
+# Voice Safety Audit — KejyarBot
+
+Date: 2026-10-25  
+Branch: `fix/kejyarbot-stability-2026-10-25`
+
+## User requirement
+
+The bot must preserve the exact existing woman's Kejyar voice. Do not silently substitute a different voice. No production deployment or production bot changes are authorized by this audit.
+
+## Findings
+
+- GitHub reports all four prerecorded files (`voices/kejyar.mp3`, `voices/lesson_done.mp3`, `voices/lesson_start.mp3`, and `voices/reward.mp3`) as 1,415,880 bytes with the same Git blob SHA `33b67c66445c93bfdbd93eae1daad157aa843a20`. They are byte-identical in the repository. They have not been replaced because the approved source recordings for distinct event prompts are not available for comparison.
+- Dynamic generation previously relied on environment credentials and matching voice IDs alone. A matching pair of environment values is not proof that the ID is the original Kejyar voice.
+- ElevenLabs documentation currently describes Eleven v4/Text to Dialogue, but Kurdish is not named in the published list of Eleven v4 supported languages. A mocked unit test only verifies request construction; it does not prove real Kurdish pronunciation or voice identity.
+
+## Safeguards applied
+
+- Dynamic speech now requires `KEJYAR_ENABLE_DYNAMIC_SPEECH=true` as an explicit opt-in.
+- It also requires `ELEVENLABS_API_KEY`, `KEJYAR_VOICE_ID`, and `KEJYAR_APPROVED_VOICE_ID`, with the two voice IDs matching exactly.
+- README instructions leave dynamic speech disabled by default until the original voice ID and real Kurdish output are verified.
+- Tests cover disabled-by-default behavior, reject a mismatched voice ID, verify that empty/whitespace-only text never reaches the provider, and check that generated text is capped at 1,500 characters. These are mocked tests; they do not validate real audio.
+- GitHub Actions passed for commit `a9999a603b34a3b4b785f9119148a366097c140a` (runs [#221](https://github.com/avasinim/KejyarBot/actions/runs/40195288013) and [#222](https://github.com/avasinim/KejyarBot/actions/runs/40195290719)).
+- No prerecorded audio file was modified. No production bot, production database, or `main` branch was changed.
+
+## Remaining verification before enabling dynamic speech
+
+1. Recover and verify the exact approved original voice ID from the authorized provider account; do not guess it.
+2. Confirm consent and access rights for that voice.
+3. Make a real, authorized Kurdish sample test and have a competent Kurdish speaker check pronunciation and whether the voice still matches the intended speaker.
+4. If Kurdish output is not supported or the voice cannot be verified, keep dynamic speech disabled and use the existing prerecorded assets.
+5. If distinct event prompts are required, obtain the original approved recordings rather than inventing replacements.
+
+CI success validates code/tests only; it does not certify the sound, speaker identity, consent, or Kurdish pronunciation.
+
+## Additional cost-control finding — resolved in the isolated branch
+
+- The in-memory-only daily quota has been replaced by a persistent SQLite `speech_quota` ledger, keyed by user ID and UTC date.
+- Reservation uses a transaction (`BEGIN IMMEDIATE`) and a conditional update, so concurrent requests cannot reserve more than 20 slots for one user on one UTC day.
+- Generation or delivery failures refund the reserved slot. If the user ID is missing, dynamic speech fails closed and no provider request is made.
+- Regression tests cover the daily cap, per-user/date isolation, concurrent reservations, refund behavior, delivery failure, missing user ID, and persistence independent of `context.user_data`.
+- The schema is created idempotently by the existing `init_db()` startup routine. No production database was accessed or modified; deployment has not been performed.

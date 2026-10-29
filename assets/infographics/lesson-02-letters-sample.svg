@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="2520" viewBox="0 0 1200 2520" role="img" aria-label="وانەی ٢: ئەلفبێی کوردی بە پیت و وشە و وێنەی نموونە">
+<defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff9e9"/><stop offset="1" stop-color="#e9efe4"/></linearGradient><pattern id="kilim" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M22 2L42 22L22 42L2 22Z" fill="none" stroke="#c58a46" stroke-width="2" opacity=".55"/><path d="M22 11L33 22L22 33L11 22Z" fill="none" stroke="#315b49" stroke-width="2" opacity=".5"/></pattern></defs>
+<rect width="1200" height="2520" fill="url(#paper)"/><rect x="18" y="18" width="1164" height="2484" rx="28" fill="none" stroke="#315b49" stroke-width="3"/>
+<rect x="30" y="30" width="1140" height="170" rx="24" fill="#214b3e"/><rect x="30" y="30" width="1140" height="18" fill="url(#kilim)"/>
+<text x="600" y="91" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="42" font-weight="700" fill="#fff9e9">کەژیار بۆت • ئەلفبێی کوردی</text>
+<text x="600" y="139" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="24" fill="#f0d49d">٣٤ نیشانە • وشەی نموونە • وێنەی فێرکاری</text>
+<text x="600" y="223" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="21" fill="#315b49">پیتەکان بە Unicode ـی کوردی نووسراون؛ وێنەکان بۆ یارمەتیدانی بیرکردنەوەن.</text>
+<g><rect x="42" y="234" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="239" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="271" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ئ</text>
+ <circle cx="178" cy="260" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M 178 238 C 170 252,160 263,160 272 A18 18 0 0 0 196 272 C 196 263,186 252,178 238Z" fill="#76b9c5" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="265" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">ئاو</text>
+ <text x="1125" y="265" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">ئاو، ئاگر، ئاسمان، ئازاد، ئامانج</text></g>
+<g><rect x="42" y="298" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="303" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="335" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ا</text>
+ <circle cx="178" cy="324" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="313" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 345 Q161 322 178 323 Q195 322 196 345Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="329" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">دارا</text>
+ <text x="1125" y="329" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">دارا، باڵا، بازار، ناو، ئاواز</text></g>
+<g><rect x="42" y="362" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="367" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="399" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ب</text>
+ <circle cx="178" cy="388" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="377" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 409 Q161 386 178 387 Q195 386 196 409Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="393" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">باوک</text>
+ <text x="1125" y="393" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">باوک، باران، بەفر، بەهار، باخچە</text></g>
+<g><rect x="42" y="426" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="431" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="463" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">پ</text>
+ <circle cx="178" cy="452" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="441" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 473 Q161 450 178 451 Q195 450 196 473Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="457" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">پیاو</text>
+ <text x="1125" y="457" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">پیاو، پەنجەرە، پەرتووک، پێنووس، پەپوولە</text></g>
+<g><rect x="42" y="490" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="495" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="527" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ت</text>
+ <circle cx="178" cy="516" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M154 497 Q170 492 178 503 Q186 492 202 497 V536 Q185 530 178 539 Q170 530 154 536Z" fill="#fff8e9" stroke="#315b49" stroke-width="3"/><path d="M178 503 V538" stroke="#c58a46" stroke-width="2"/>
+ <text x="238" y="521" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">تەختە</text>
+ <text x="1125" y="521" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">تەختە، تەمەن، تەماتە، تەندروستی، تەواو</text></g>
+<g><rect x="42" y="554" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="559" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="591" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ج</text>
+ <circle cx="178" cy="580" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M178 558 C198 550,198 572,183 577 C203 584,190 602,178 588 C166 602,153 584,173 577 C158 572,158 550,178 558Z" fill="#d9a6a0" stroke="#315b49" stroke-width="2"/><circle cx="178" cy="577" r="6" fill="#c58a46"/><path d="M178 588 V605" stroke="#315b49" stroke-width="3"/>
+ <text x="238" y="585" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">جوان</text>
+ <text x="1125" y="585" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">جوان، جادە، جۆر، جیهان، جیاواز</text></g>
+<g><rect x="42" y="618" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="623" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="655" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">چ</text>
+ <circle cx="178" cy="644" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M153 644 Q178 616 203 644 Q178 672 153 644Z" fill="#fff" stroke="#315b49" stroke-width="3"/><circle cx="178" cy="644" r="10" fill="#79a8ad" stroke="#315b49" stroke-width="2"/><circle cx="178" cy="644" r="4" fill="#315b49"/>
+ <text x="238" y="649" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">چاو</text>
+ <text x="1125" y="649" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">چاو، چای، چیا، چۆن، چوار</text></g>
+<g><rect x="42" y="682" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="687" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="719" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ح</text>
+ <circle cx="178" cy="708" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><text x="178" y="719" text-anchor="middle" font-size="31" font-weight="700" fill="#315b49">٧</text>
+ <text x="238" y="713" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">حەوت</text>
+ <text x="1125" y="713" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">حەوت، حەوشە، حەز، حەیا، حەقیقت</text></g>
+<g><rect x="42" y="746" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="751" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="783" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">خ</text>
+ <circle cx="178" cy="772" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="772" r="13" fill="#c58a46" stroke="#315b49" stroke-width="2"/><path d="M178 747V753 M178 791V797 M153 772H159 M197 772H203 M160 754l5 5 M196 790l-5-5 M196 754l-5 5 M160 790l5-5" stroke="#315b49" stroke-width="3" stroke-linecap="round"/>
+ <text x="238" y="777" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">خۆر</text>
+ <text x="1125" y="777" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">خۆر، خێزان، خەڵک، خۆش، خەون</text></g>
+<g><rect x="42" y="810" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="815" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="847" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">د</text>
+ <circle cx="178" cy="836" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><rect x="162" y="812" width="32" height="49" rx="3" fill="#b88b60" stroke="#315b49" stroke-width="3"/><circle cx="186" cy="838" r="2.5" fill="#c58a46"/>
+ <text x="238" y="841" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">دەرگا</text>
+ <text x="1125" y="841" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">دەرگا، دەریا، دار، دەست، دڵ</text></g>
+<g><rect x="42" y="874" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="879" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="911" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ر</text>
+ <circle cx="178" cy="900" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><rect x="154" y="885" width="48" height="34" rx="6" fill="#d8e7df" stroke="#315b49" stroke-width="3"/><circle cx="170" cy="901" r="10" fill="#fff" stroke="#315b49" stroke-width="2"/><path d="M185 893h10 M185 900h10 M185 907h10 M161 878l22 -6" stroke="#c58a46" stroke-width="3"/>
+ <text x="238" y="905" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">رادیۆ</text>
+ <text x="1125" y="905" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">رادیۆ، مرۆڤ، دەریا، باران، سەرباز</text></g>
+<g><rect x="42" y="938" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="943" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="975" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ڕ</text>
+ <circle cx="178" cy="964" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="964" r="13" fill="#c58a46" stroke="#315b49" stroke-width="2"/><path d="M178 939V945 M178 983V989 M153 964H159 M197 964H203 M160 946l5 5 M196 982l-5-5 M196 946l-5 5 M160 982l5-5" stroke="#315b49" stroke-width="3" stroke-linecap="round"/>
+ <text x="238" y="969" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">ڕۆژ</text>
+ <text x="1125" y="969" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">ڕۆژ، ڕەنگ، ڕێگا، ڕاست، ڕۆمان</text></g>
+<g><rect x="42" y="1002" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1007" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1039" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ز</text>
+ <circle cx="178" cy="1028" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M178 1005V1051 M158 1016L198 1040 M198 1016L158 1040" stroke="#315b49" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="1028" r="5" fill="#c58a46"/>
+ <text x="238" y="1033" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">زستان</text>
+ <text x="1125" y="1033" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">زستان، زەرد، زانکۆ، زۆر، زەوی</text></g>
+<g><rect x="42" y="1066" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1071" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1103" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ژ</text>
+ <circle cx="178" cy="1092" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="1081" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 1113 Q161 1090 178 1091 Q195 1090 196 1113Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1097" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">ژیان</text>
+ <text x="1125" y="1097" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">ژیان، ژمارە، ژوور، ژن، ژێر</text></g>
+<g><rect x="42" y="1130" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1135" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1167" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">س</text>
+ <circle cx="178" cy="1156" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M178 1146 C153 1126,147 1164,163 1178 Q178 1189 193 1178 C209 1164,203 1126,178 1146Z" fill="#c85f4d" stroke="#315b49" stroke-width="2"/><path d="M178 1145q-1 -12 6 -17" stroke="#315b49" stroke-width="3" fill="none"/><ellipse cx="189" cy="1133" rx="9" ry="4" transform="rotate(-25 189 1133)" fill="#709a68"/>
+ <text x="238" y="1161" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">سێو</text>
+ <text x="1125" y="1161" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">سێو، سەوز، سڵاو، سەر، سەردەم</text></g>
+<g><rect x="42" y="1194" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1199" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1231" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ش</text>
+ <circle cx="178" cy="1220" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M151 1240L174 1200L183 1216L193 1204L207 1240Z" fill="#86a99b" stroke="#315b49" stroke-width="2"/><path d="M174 1200L180 1212L175 1210L169 1211Z" fill="#fff"/>
+ <text x="238" y="1225" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">شاخ</text>
+ <text x="1125" y="1225" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">شاخ، شار، شیر، شەو، شەقام</text></g>
+<g><rect x="42" y="1258" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1263" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1295" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ع</text>
+ <circle cx="178" cy="1284" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="1273" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 1305 Q161 1282 178 1283 Q195 1282 196 1305Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1289" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">عەلی</text>
+ <text x="1125" y="1289" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">عەلی، عەقڵ، عەشق، عەدالەت، عەیب</text></g>
+<g><rect x="42" y="1322" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1327" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1359" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">غ</text>
+ <circle cx="178" cy="1348" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="1337" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 1369 Q161 1346 178 1347 Q195 1346 196 1369Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1353" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">غەریب</text>
+ <text x="1125" y="1353" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">غەریب، غار، غەزەل، غەفڵەت، غەدر</text></g>
+<g><rect x="42" y="1386" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1391" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1423" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ف</text>
+ <circle cx="178" cy="1412" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M154 1393 Q170 1388 178 1399 Q186 1388 202 1393 V1432 Q185 1426 178 1435 Q170 1426 154 1432Z" fill="#fff8e9" stroke="#315b49" stroke-width="3"/><path d="M178 1399 V1434" stroke="#c58a46" stroke-width="2"/>
+ <text x="238" y="1417" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">فێر</text>
+ <text x="1125" y="1417" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">فێر، فەرموو، فڕۆکە، فڕین، فەرهەنگ</text></g>
+<g><rect x="42" y="1450" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1455" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1487" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ڤ</text>
+ <circle cx="178" cy="1476" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><rect x="154" y="1456" width="48" height="34" rx="5" fill="#315b49" stroke="#c58a46" stroke-width="3"/><path d="M171 1466L187 1473L171 1482Z" fill="#fff8e9"/><path d="M168 1497H188" stroke="#315b49" stroke-width="3"/>
+ <text x="238" y="1481" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">ڤیدیۆ</text>
+ <text x="1125" y="1481" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">ڤیدیۆ، ڤایرۆس، ڤۆڵت، ڤیلا، ڤیزا</text></g>
+<g><rect x="42" y="1514" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1519" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1551" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ق</text>
+ <circle cx="178" cy="1540" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M161 1560L191 1520L200 1529L170 1569Z" fill="#c58a46" stroke="#315b49" stroke-width="2"/><path d="M191 1520l8 -5 l4 4 l-3 10" fill="#fff8e9" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1545" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">قەڵەم</text>
+ <text x="1125" y="1545" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">قەڵەم، قاپ، قوتابخانە، قەڵا، قوربانی</text></g>
+<g><rect x="42" y="1578" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1583" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1615" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ک</text>
+ <circle cx="178" cy="1604" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M154 1585 Q170 1580 178 1591 Q186 1580 202 1585 V1624 Q185 1618 178 1627 Q170 1618 154 1624Z" fill="#fff8e9" stroke="#315b49" stroke-width="3"/><path d="M178 1591 V1626" stroke="#c58a46" stroke-width="2"/>
+ <text x="238" y="1609" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">کتێب</text>
+ <text x="1125" y="1609" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">کتێب، کچ، کورد، کەس، کۆڵان</text></g>
+<g><rect x="42" y="1642" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1647" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1679" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">گ</text>
+ <circle cx="178" cy="1668" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M178 1646 C198 1638,198 1660,183 1665 C203 1672,190 1690,178 1676 C166 1690,153 1672,173 1665 C158 1660,158 1638,178 1646Z" fill="#d9a6a0" stroke="#315b49" stroke-width="2"/><circle cx="178" cy="1665" r="6" fill="#c58a46"/><path d="M178 1676 V1693" stroke="#315b49" stroke-width="3"/>
+ <text x="238" y="1673" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">گوڵ</text>
+ <text x="1125" y="1673" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">گوڵ، گەرم، گۆرانی، گەورە، گەنج</text></g>
+<g><rect x="42" y="1706" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1711" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1743" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ل</text>
+ <circle cx="178" cy="1732" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><ellipse cx="178" cy="1732" rx="24" ry="14" transform="rotate(-25 178 1732)" fill="#e5c65d" stroke="#315b49" stroke-width="2"/><path d="M194 1723q8 -10 15 -4" stroke="#315b49" stroke-width="2" fill="none"/>
+ <text x="238" y="1737" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">لە</text>
+ <text x="1125" y="1737" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">لە، لیمۆ، لێرە، لایەن، لەش</text></g>
+<g><rect x="42" y="1770" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1775" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1807" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ڵ</text>
+ <circle cx="178" cy="1796" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M178 1774 C198 1766,198 1788,183 1793 C203 1800,190 1818,178 1804 C166 1818,153 1800,173 1793 C158 1788,158 1766,178 1774Z" fill="#d9a6a0" stroke="#315b49" stroke-width="2"/><circle cx="178" cy="1793" r="6" fill="#c58a46"/><path d="M178 1804 V1821" stroke="#315b49" stroke-width="3"/>
+ <text x="238" y="1801" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">گوڵ</text>
+ <text x="1125" y="1801" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">گوڵ، هەڵە، کۆڵان، دڵ، باڵ</text></g>
+<g><rect x="42" y="1834" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1839" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1871" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">م</text>
+ <circle cx="178" cy="1860" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M151 1858L178 1836L205 1858V1883H151Z" fill="#c58a46" stroke="#315b49" stroke-width="3"/><rect x="171" y="1865" width="14" height="18" fill="#fff8e9" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1865" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">ماڵ</text>
+ <text x="1125" y="1865" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">ماڵ، مەزن، مەکتەب، منداڵ، مانگ</text></g>
+<g><rect x="42" y="1898" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1903" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1935" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ن</text>
+ <circle cx="178" cy="1924" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M153 1934Q150 1909 170 1905Q178 1896 187 1907Q207 1909 203 1934Q198 1946 158 1944Z" fill="#d6a15c" stroke="#315b49" stroke-width="2"/><path d="M166 1913l7 7 M180 1910l7 7 M190 1917l5 5" stroke="#fff0c9" stroke-width="3"/>
+ <text x="238" y="1929" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">نان</text>
+ <text x="1125" y="1929" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">نان، ناو، نیشان، نیشتمان، نووسین</text></g>
+<g><rect x="42" y="1962" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="1967" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="1999" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ه</text>
+ <circle cx="178" cy="1988" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M154 1998Q148 1986 162 1980Q167 1963 181 1973Q198 1965 200 1982Q212 1986 202 1998Z" fill="#fff" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="1993" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">هەور</text>
+ <text x="1125" y="1993" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">هەور، هەناسە، هەڵوێست، هەنگاو، هەڵبژاردن</text></g>
+<g><rect x="42" y="2026" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2031" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2063" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ە</text>
+ <circle cx="178" cy="2052" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M166 2074L160 2051Q159 2044 165 2044Q169 2044 171 2052L171 2032Q171 2025 178 2025Q184 2025 184 2033V2048V2029Q184 2023 190 2028V2049V2035Q190 2029 196 2035V2059Q195 2072 183 2076Z" fill="#d8aa75" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="2057" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">دەست</text>
+ <text x="1125" y="2057" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">دەست، کەس، بەفر، گەورە، نەخۆش</text></g>
+<g><rect x="42" y="2090" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2095" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2127" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">و</text>
+ <circle cx="178" cy="2116" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M156 2136Q151 2096 200 2094Q202 2134 156 2136Z" fill="#79a276" stroke="#315b49" stroke-width="2"/><path d="M158 2134L195 2100" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="2121" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">وەرز</text>
+ <text x="1125" y="2121" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">وەرز، وەڵام، وەستا، وڵات، وریا</text></g>
+<g><rect x="42" y="2154" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2159" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2191" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">وو</text>
+ <circle cx="178" cy="2180" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M161 2200L191 2160L200 2169L170 2209Z" fill="#c58a46" stroke="#315b49" stroke-width="2"/><path d="M191 2160l8 -5 l4 4 l-3 10" fill="#fff8e9" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="2185" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">نووسین</text>
+ <text x="1125" y="2185" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">نووسین، دوور، گەردوون، شوو، بوون</text></g>
+<g><rect x="42" y="2218" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2223" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2255" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ۆ</text>
+ <circle cx="178" cy="2244" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="2244" r="13" fill="#c58a46" stroke="#315b49" stroke-width="2"/><path d="M178 2219V2225 M178 2263V2269 M153 2244H159 M197 2244H203 M160 2226l5 5 M196 2262l-5-5 M196 2226l-5 5 M160 2262l5-5" stroke="#315b49" stroke-width="3" stroke-linecap="round"/>
+ <text x="238" y="2249" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">خۆر</text>
+ <text x="1125" y="2249" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">خۆر، کۆڕ، کۆمەڵ، کۆچ، هۆنراوە</text></g>
+<g><rect x="42" y="2282" width="1116" height="58" rx="13" fill="#fffdf6" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2287" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2319" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ی</text>
+ <circle cx="178" cy="2308" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><circle cx="178" cy="2297" r="10" fill="#d8aa75" stroke="#315b49" stroke-width="2"/><path d="M160 2329 Q161 2306 178 2307 Q195 2306 196 2329Z" fill="#6b9a82" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="2313" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">یار</text>
+ <text x="1125" y="2313" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">یار، یاری، یەک، یاسا، یارمەتی</text></g>
+<g><rect x="42" y="2346" width="1116" height="58" rx="13" fill="#f0f2e8" stroke="#d8c59d" stroke-width="1.2"/>
+ <rect x="48" y="2351" width="86" height="48" rx="10" fill="#285344"/>
+ <text x="91" y="2383" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="30" font-weight="700" fill="#fff8e7">ێ</text>
+ <circle cx="178" cy="2372" r="33" fill="#e4eddf" stroke="#c58a46" stroke-width="2"/><path d="M171 2348Q182 2347 183 2362L188 2375Q196 2380 198 2390Q196 2398 171 2396Q154 2393 158 2384L168 2370Z" fill="#d8aa75" stroke="#315b49" stroke-width="2"/>
+ <text x="238" y="2377" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="23" font-weight="700" fill="#254b3f">پێ</text>
+ <text x="1125" y="2377" text-anchor="end" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, Noto Sans, sans-serif" font-size="20" fill="#394b40">پێ، شێر، خێزان، پێشەنگ، خێرا</text></g>
+<rect x="42" y="2468" width="1116" height="30" rx="10" fill="url(#kilim)"/>
+</svg>

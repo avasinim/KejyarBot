@@ -2,3 +2,18 @@
 __pycache__/
 *.pyc
 kejyar.db
+
+# Local Python environments and test caches
+.venv/
+venv/
+.pytest_cache/
+
+# SQLite database files and transient journal/sidecar files
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm

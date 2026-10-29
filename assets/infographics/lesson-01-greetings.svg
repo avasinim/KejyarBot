@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1120" viewBox="0 0 1200 1120" role="img" aria-label="وانەی ١: سڵاو و ناساندنی خۆ">
+<defs>
+ <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf6e9"/><stop offset="1" stop-color="#edf2e8"/></linearGradient>
+ <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#315f4c"/><stop offset="1" stop-color="#1d4037"/></linearGradient>
+ <pattern id="weave" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M21 2 L40 21 L21 40 L2 21 Z" fill="none" stroke="#c68a4b" stroke-width="2" opacity=".4"/><path d="M21 10 L32 21 L21 32 L10 21 Z" fill="none" stroke="#315f4c" stroke-width="2" opacity=".45"/></pattern>
+ <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#233b31" flood-opacity=".10"/></filter>
+</defs>
+<rect width="1200" height="1120" rx="30" fill="url(#paper)"/>
+<rect x="18" y="18" width="1164" height="1084" rx="26" fill="none" stroke="#315f4c" stroke-width="3"/>
+<rect x="28" y="28" width="1144" height="16" rx="8" fill="url(#weave)"/>
+<rect x="32" y="60" width="1136" height="170" rx="26" fill="url(#green)"/>
+<rect x="32" y="60" width="14" height="170" rx="7" fill="#d3a45f"/>
+<g transform="translate(95 105)">
+ <circle cx="42" cy="35" r="37" fill="#f6e8c7" stroke="#d3a45f" stroke-width="3"/>
+ <rect x="16" y="12" width="52" height="47" rx="13" fill="#315f4c" stroke="#fff8e8" stroke-width="2"/>
+ <rect x="25" y="22" width="34" height="18" rx="8" fill="#d8eee3"/>
+ <circle cx="35" cy="31" r="3" fill="#1d4037"/><circle cx="49" cy="31" r="3" fill="#1d4037"/>
+ <path d="M35 48 Q42 54 49 48" fill="none" stroke="#fff8e8" stroke-width="2.5" stroke-linecap="round"/>
+ <path d="M27 60 L20 71 L34 66 M57 60 L64 71 L50 66" fill="none" stroke="#d3a45f" stroke-width="4" stroke-linecap="round"/>
+ <circle cx="42" cy="-8" r="5" fill="#d3a45f"/><path d="M42 -3 V2" stroke="#d3a45f" stroke-width="4"/>
+</g>
+<text x="190" y="124" text-anchor="start" font-family="Noto Sans, sans-serif" font-size="28" font-weight="700" fill="#f7e8c7">KejyarBot</text>
+<text x="190" y="160" text-anchor="start" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="21" fill="#f5f1e5">فێربوونی زمانی کوردی</text>
+<text x="805" y="119" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="39" font-weight="700" fill="#fffaf0">وانەی ١: سڵاو و ناساندنی خۆ</text>
+<text x="805" y="164" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="22" fill="#e7c98e">لە سڵاوەوە بۆ گفتوگۆی سروشتی</text>
+<g opacity=".9" transform="translate(1055 86)"><path d="M0 50 L28 22 L56 50 L28 78 Z" fill="none" stroke="#d3a45f" stroke-width="3"/><path d="M10 50 L28 32 L46 50 L28 68 Z" fill="none" stroke="#f7e8c7" stroke-width="2"/><circle cx="28" cy="50" r="5" fill="#d3a45f"/></g>
+<text x="600" y="278" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="24" font-weight="700" fill="#315f4c">ئەمڕۆ فێر دەبیت: سڵاوکردن • وەڵامدانەوە • ناساندنی ناو</text>
+<g filter="url(#shadow)">
+ <rect x="48" y="312" width="350" height="235" rx="22" fill="#fffdf7" stroke="#d8c9a8" stroke-width="2"/>
+ <rect x="48" y="312" width="350" height="13" rx="6" fill="#c68a4b"/>
+ <circle cx="223" cy="372" r="27" fill="#f6e8c7"/><path d="M210 370 Q223 354 236 370 M212 379 Q223 391 234 379" fill="none" stroke="#315f4c" stroke-width="4" stroke-linecap="round"/>
+ <text x="223" y="425" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="27" font-weight="700" fill="#315f4c">سڵاوکردن</text>
+ <text x="223" y="468" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">سڵاو!</text>
+ <text x="223" y="508" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">بەیانی باش.</text>
+</g>
+<g filter="url(#shadow)">
+ <rect x="425" y="312" width="350" height="235" rx="22" fill="#fffdf7" stroke="#d8c9a8" stroke-width="2"/>
+ <rect x="425" y="312" width="350" height="13" rx="6" fill="#7c9b91"/>
+ <circle cx="600" cy="372" r="27" fill="#e3eee6"/><path d="M583 372 Q600 354 617 372 Q600 390 583 372 Z" fill="none" stroke="#315f4c" stroke-width="3"/><circle cx="600" cy="372" r="5" fill="#c68a4b"/>
+ <text x="600" y="425" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="27" font-weight="700" fill="#315f4c">پرسیارکردن</text>
+ <text x="600" y="468" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">چۆنی؟</text>
+ <text x="600" y="508" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">ناوت چییە؟</text>
+</g>
+<g filter="url(#shadow)">
+ <rect x="802" y="312" width="350" height="235" rx="22" fill="#fffdf7" stroke="#d8c9a8" stroke-width="2"/>
+ <rect x="802" y="312" width="350" height="13" rx="6" fill="#b86d55"/>
+ <circle cx="977" cy="372" r="27" fill="#f5e5db"/><path d="M964 372 L974 382 L991 360" fill="none" stroke="#b86d55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="977" y="425" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="27" font-weight="700" fill="#315f4c">وەڵامدانەوە</text>
+ <text x="977" y="468" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">باشم، سوپاس.</text>
+ <text x="977" y="508" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="23" fill="#394b40">منیش باشم.</text>
+</g>
+<rect x="48" y="578" width="1104" height="292" rx="24" fill="#f4ead3" stroke="#d8c9a8" stroke-width="2"/>
+<text x="600" y="624" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="30" font-weight="700" fill="#315f4c">گفتوگۆی نموونە</text>
+<path d="M100 646 H1100" stroke="#d8c9a8" stroke-width="2"/>
+<g>
+ <rect x="92" y="670" width="470" height="72" rx="18" fill="#fffdf7" stroke="#8ba99b" stroke-width="2"/>
+ <text x="327" y="714" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="25" fill="#315f4c">A: سڵاو!</text>
+ <rect x="638" y="670" width="470" height="72" rx="18" fill="#e1eee5" stroke="#8ba99b" stroke-width="2"/>
+ <text x="873" y="714" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="25" fill="#315f4c">B: سڵاو!</text>
+ <rect x="92" y="758" width="470" height="72" rx="18" fill="#fffdf7" stroke="#8ba99b" stroke-width="2"/>
+ <text x="327" y="802" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="25" fill="#315f4c">A: چۆنی؟</text>
+ <rect x="638" y="758" width="470" height="72" rx="18" fill="#e1eee5" stroke="#8ba99b" stroke-width="2"/>
+ <text x="873" y="802" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="25" fill="#315f4c">B: باشم، سوپاس. تۆ چۆنی؟</text>
+</g>
+<rect x="48" y="897" width="1104" height="120" rx="22" fill="#315f4c"/>
+<rect x="48" y="897" width="1104" height="120" rx="22" fill="url(#weave)" opacity=".32"/>
+<text x="600" y="944" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="25" font-weight="700" fill="#fffaf0">ڕاهێنان</text>
+<text x="600" y="983" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="21" fill="#f6e8c7">سڵاو بکە، حال‌و‌ئەحوال بپرسە و ناوی خۆت بڵێ.</text>
+<text x="600" y="1064" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="18" fill="#52675b">کەژیار بۆت • فێربوونی زمانی کوردی بە نموونەی ڕۆژانە</text>
+</svg>

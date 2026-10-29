@@ -1,0 +1,664 @@
+# KejyarBot lesson and quiz content audit
+
+Branch reviewed: `fix/kejyarbot-stability-2026-10-25`
+
+> **Current runtime state (28 October 2026):** The bot's active course is **one 22-lesson course** loaded from `course_data/orthography_foundations.json`, with lesson drafts in `course_data/orthography_lesson_01_draft.md` through `orthography_lesson_22_draft.md`. This supersedes older audit notes that describe the ten-lesson `lessons.json` / `quiz.json` course as the active runtime. Those ten-lesson files and their SVG infographics remain legacy content and are not loaded by the current runtime. Do not mix their lesson titles or infographics into the 22-lesson course.
+
+## Current checks
+
+- The course catalog has 22 sequential lesson numbers and stable keys `وانە_1` through `وانە_22`; the runtime builds its catalog from this course file.
+- All 22 lesson draft files exist and match their catalog number/title. Their content remains marked **needs source review and editorial entry**; structural presence is not approval of linguistic accuracy.
+- The active quiz draft contains one multiple-choice question for each of the 22 lessons. Every current question has three distinct options and a valid correct-option index. The structure test now enforces at least three options and uniqueness.
+- Quiz explanations and prompts are still drafts requiring editorial and source review; a passing structural test does not establish that every claim is academically verified.
+- The active 22-lesson course has no connected infographics yet. The existing ten SVGs belong to the legacy ten-lesson content and are intentionally not sent by the active 22-lesson runtime.
+- Dynamic speech remains disabled until explicitly approved. Existing voice workflow must be preserved; do not replace the established voice.
+- No change to `main`, production bot/token/database, or deployment is authorized by this audit.
+
+## Quiz state validation follow-up — 28 October 2026
+
+- Defensive review found one remaining malformed-state edge case: a non-integer/negative quiz score could fail after a correct answer was selected, and a boolean message ID could pass Python's integer check.
+- `bot.py` now rejects boolean/non-integer message IDs and missing, boolean, non-integer, or negative scores before scoring. Added `test_malformed_quiz_score_is_cleared_without_crashing` to `tests/test_bot_message_mode.py`.
+- Follow-up CI passed for this change: Python checks ran **128 tests** and reported `OK`; compileall passed. Run: https://github.com/avasinim/KejyarBot/actions/runs/40641183167. The dedicated orthography course-structure workflow also completed successfully: https://github.com/avasinim/KejyarBot/actions/runs/40641183188.
+- This verifies the automated branch tests for the malformed-score follow-up, but does not replace a live Telegram manual test. No `main`, production bot, token, or database was changed.
+
+## Latest branch CI verified — 28 October 2026
+
+- Follow-up retrieval found completed successful GitHub Actions runs associated with the current branch tip `d1f941bbb3f0665b370cce378de722487f7e3152`:
+  - Python checks: https://github.com/avasinim/KejyarBot/actions/runs/40640998335 — compile step passed and **127 tests passed** (`Ran 127 tests ... OK`).
+  - Orthography course structure: https://github.com/avasinim/KejyarBot/actions/runs/40640998372 — dedicated course-structure test job passed.
+- This supersedes the earlier pending-CI note for this branch tip. The result confirms automated tests, not a live Telegram manual test, and does not authorize merging or deployment.
+
+## CI baseline recovered — 27 October 2026
+
+- Retrieved the completed GitHub Actions job for run `40288141082`: compile step passed and `python -m unittest discover -s tests -v` passed with **92 tests**. Log: https://github.com/avasinim/KejyarBot/actions/runs/40288141082
+- This is a useful passing baseline for the code at that run's commit only. It predates the latest defensive quiz-state commits, so it does **not** verify the current branch head or the new regression tests.
+- The available workflow-run connector only returns pull-request-triggered runs, so it cannot establish whether the latest push-triggered run has completed. Current-head CI remains unverified.
+
+## Branch integration caution — 27 October 2026
+
+- A GitHub compare of `main` against `fix/kejyarbot-stability-2026-10-25` reported the branch as `diverged`: 507 commits ahead and 1 behind, with `main` at `341c6b20437a0b1cd90826fea34d114a6fbe7422`.
+- Do not merge this branch or open a merge-ready PR based on file-level tests alone. First inspect the commit graph and determine why the histories diverged; reconcile the intended test-branch history in an isolated branch, then run the full checks.
+- This finding is a release/integration blocker only; no change to `main` or production was made.
+
+## 27 October 2026 — defensive quiz-state follow-up
+
+- `bot.py` now validates the active quiz structure, question index, option list, and answer membership before scoring a callback. Malformed in-memory state is cleared with a learner-facing retry message rather than being allowed to raise an indexing/key error.
+- Added focused regression tests for an out-of-range quiz index and duplicate quiz options in `tests/test_bot_message_mode.py`.
+- Updated `test_quiz_callback_validates_before_claiming_question` to assert against the current local `options` variable and to check the new recovery guards; the earlier source-string assertion referenced `question["options"]` and no longer matched the hardened handler.
+- Raised the quiz-options regression minimum to three options in `tests/test_content.py`.
+- These edits were re-read from the branch, but **have not yet been executed by a local test run or confirmed by a new passing CI run**. Treat the changes as pending verification, not as a release pass.
+
+## Latest verification
+
+- The infographic-example regression test was added in commit `a9d870d63397454e7e387f9aa8a38ac8dd5514b5` and re-read from the branch.
+- CI run #244 passed for that commit: https://github.com/avasinim/KejyarBot/actions/runs/40195984360 . This confirms the automated checks passed; it does not establish source-level orthographic correctness.
+- The documentation update itself was also checked by CI runs #246 and #247; both passed for commit `6ddd91e3cbef61b71d5f08575bf807b06e92703c`: https://github.com/avasinim/KejyarBot/actions/runs/40196071449 and https://github.com/avasinim/KejyarBot/actions/runs/40196074868.
+
+## Expanded vocabulary and example policy
+
+- The Diako Hashemi book is a reference for orthography and punctuation, not the exclusive source or limit for lesson vocabulary, example sentences, dialogues, or exercises.
+- Expand teaching examples using appropriate Kurdish dictionaries, other Kurdish-language textbooks and linguistic references, literature, and natural everyday dialogue where suitable.
+- New illustrative sentences and practice items may be authored directly when pedagogically useful; do not present invented examples as quotations or attribute them to a source.
+- Keep source-sensitive claims (such as alphabet inventory/order or prescriptive spelling rules) distinct from ordinary illustrative examples. Verify claims against suitable references, and record source details when a factual linguistic claim depends on them.
+- Prioritize varied examples, clear meaning, natural usage, gradual difficulty, and useful repetition without duplicating quiz question text within the same lesson.
+- Keep KejyarBot spelling policy separate from Avasin Code.
+
+## Lesson-example expansion (25 October 2026)
+
+- Added further original illustrative material to lessons 1–6: greetings and introductions; additional letter/word examples; everyday polite expressions; number sentences and dialogue; color descriptions; and home/school vocabulary with a short dialogue.
+- These additions are authored teaching examples, not quotations attributed to any book. They broaden practice beyond the single orthography reference.
+- Re-fetched and parsed `lessons.json` after the update: JSON is valid and all six lesson records remain present.
+- CI run #254 passed for commit `1f7e2c427d6ab324585f8dc761e689e5805f7915`: https://github.com/avasinim/KejyarBot/actions/runs/40196506760 .
+- This structural CI result does not certify every new sentence's regional naturalness or settle source-sensitive spelling rules; those remain separate editorial review items.
+
+## Regression coverage for expanded examples (25 October 2026)
+
+- Added `test_recent_example_expansion_remains_in_all_six_lessons` in `tests/test_content.py` to guard representative new phrases in every lesson.
+- Re-read the test file after commit `6300187b7f59ac292ea0481ac0234e4dcf0be3c7`.
+- CI runs #258 and #259 passed for that commit:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40196636041
+  - https://github.com/avasinim/KejyarBot/actions/runs/40196640104
+
+## Speech-quota failure-path test correction (25 October 2026)
+
+- Corrected `test_failed_generation_does_not_consume_daily_quota`: removed a pre-existing reservation that obscured the intended assertion, and now verify a failed generation leaves usage at zero.
+- Re-read the updated test file; CI run #262 passed for commit `f06d810f7f878e030044d22c54f2e8bf1dfa67ae`: https://github.com/avasinim/KejyarBot/actions/runs/40196876297 .
+
+## Quiz callback regression coverage (25 October 2026)
+
+- Added `tests/test_bot_quiz_callbacks.py` to cover malformed answer callback data, out-of-range option indexes, and stale buttons from a previous question. Each case verifies the active quiz index, score, and current question ID remain unchanged.
+- Re-read the new test file on the working branch. CI runs #266 and #267 passed for commit `0e894482d52b77bf738500ff923e1d9fc5307b73`:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40197094742
+  - https://github.com/avasinim/KejyarBot/actions/runs/40197098114
+
+## Daily-chat and menu transition regression coverage (25 October 2026)
+
+- Extended `tests/test_bot_quiz_callbacks.py` to verify a quiz is blocked until its lesson is completed and starts correctly after completion, including recording the first question message ID. These are mocked handler tests, not live Telegram tests.
+
+
+- Added `tests/test_bot_message_mode.py` to check that ordinary text remains in daily-chat mode and that choosing a lesson button exits daily-chat mode and routes into the lesson handler.
+- These tests exercise the message-handler integration with mocked Telegram objects; they do not replace a live Telegram test.
+- Test commit: `2e478b996573e0b6adbe6074b009e1143697f639`.
+
+## Additional quiz callback regression coverage (25 October 2026)
+
+- Added tests for a valid final answer completing the quiz and claiming the reward once, and for a valid answer advancing to the next question with the updated message ID and score.
+- These complement the malformed callback, out-of-range option, and stale-question tests. They are mocked unit tests; they do not replace a live Telegram test.
+- Test file: `tests/test_bot_quiz_callbacks.py`; commit: `8d6de4a465949a625e3d84b7b65e056878c79ba2`.
+
+## Manual Telegram test preparation (25 October 2026)
+
+- Added `docs/TEST_RUNBOOK.md` with a test-bot-only setup, token/production-data safety boundaries, and a step-by-step checklist for lessons, reward idempotency, quiz callbacks, daily-chat exit behavior, persistence across restart, and speech safety.
+- Re-read the runbook after commit `48814bbd9a69fde620a351514e04e7a205a9ece4`. This is preparation only: **no live Telegram test was executed**, because a separately authorized test bot/token and isolated environment have not been provided in this workflow.
+- CI triggered for the runbook commit: https://github.com/avasinim/KejyarBot/actions/runs/40197282682 .
+
+## Items deliberately not changed
+
+- Lesson 2 states that the Sorani Kurdish alphabet has 34 letters, while the lesson presents a sample of letters rather than a complete alphabet table. The claim and the exact inventory/order should be checked against the selected edition of Diako Hashemi's `پوختەی ڕێنووس و خاڵبەندی` before changing either the number or the examples.
+- Some spellings in lesson and quiz text need source-based orthographic review. The exact edition and relevant pages have not yet been verified, so no speculative global replacement or application of Avasin Code was made.
+- Quiz coverage is introductory and checks basic recall; passing structural tests does not prove the linguistic accuracy or completeness of the teaching material.
+
+## Source edition selected for the next pass
+
+- The working reference is now the **third updated edition dated 16 August 2024**, linked from the preparer's website: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf .
+- Kurdipedia's record lists several editions, including 90-page PDF versions from 2022 and 2024: https://www.kurdipedia.org/default.aspx?lng=1&q=20211004184500395359 .
+- The PDF's title page identifies it as the third updated edition. Its relevant rule pages still need to be read and compared before changing any lesson, quiz, or infographic wording.
+
+## Next review steps
+
+1. Inspect the selected edition's relevant pages for alphabet inventory/order and spelling rules.
+2. Compare lesson text, quiz wording, and infographic labels against those pages.
+3. Make only evidence-backed corrections and add regression tests for confirmed rules.
+
+## Safety boundary
+
+This audit is documentation only. It does not change `main`, production bot settings, production databases, migrations, or prerecorded audio assets. KejyarBot's orthography remains separate from Avasin Code.
+
+## Legacy quiz-data file note (25 October 2026)
+
+- Runtime code in `bot.py` loads `quiz.json` as `QUIZ_DATA`; the separate `quizzes.json` file is not referenced by the reviewed runtime entry point and contains an older, partial `lesson_3` schema.
+- Kept `quizzes.json` untouched in this stability pass to avoid deleting potentially user-retained material without confirmation. Treat `quiz.json` as the active quiz source unless a repository-wide reference check establishes a different intended use; before any future removal, search all scripts, tests, documentation, and deployment configuration for references.
+
+## Stability verification checkpoint (25 October 2026)
+
+- The stability branch head for this checkpoint is `106188d95a4ef7e2a904459e56c21b22addc4e36` (`docs: record latest stability verification checkpoint`). It includes `277f6cd24434612d597bf5451d28aa4a881c5cc0` (`Fix SQLite connection cleanup and quota transactions`) as its parent, so the SQLite cleanup and quota fixes are present at the reviewed head.
+- GitHub Actions run #40210284689 completed successfully for the current branch head. Its `checks` job completed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v` successfully:
+  - https://github.com/avasinim/KejyarBot/actions/runs/40210284689
+- Earlier runs #40209804446 and #40209801402 also passed for the parent code commit `277f6cd24434612d597bf5451d28aa4a881c5cc0`.
+- This checkpoint verifies automated code and regression tests only. It does not verify live Telegram behavior, regional naturalness of every Kurdish example, or source-based orthographic correctness.
+- Lesson 2 remains intentionally described as a sample rather than a complete alphabet inventory until the selected 2024 reference edition and relevant pages are checked. Do not treat the infographic's six examples as a full alphabet table.
+- Manual Telegram testing remains blocked on an authorized separate test bot/token and isolated test environment. No production token should be requested or exposed.
+
+
+
+## Source-verified lesson 2 orthography correction (25 October 2026)
+
+- The selected third updated edition of Diyako Hashemi's *Puxtey Renus u Xallbendi* is indexed with its alphabet section on page 3. The extract explicitly gives the spelling **«ئەلفبێ»**, rejects **«ئەلفوبێ»** and **«ئەلف بێ»**, and states a 34-letter inventory. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+- Based on that source, corrected the lesson 2 heading/term, learning-path label, quiz prompt, and infographic title from «ئەلفوبێ» to «ئەلفبێ». Updated the corresponding content-consistency test to lock in the corrected term.
+- The 34-letter statement remains in the lesson, while the displayed letter examples and infographic remain explicitly a sample, not a full inventory. No alphabet ordering or list was invented.
+- Re-read the changed files after updates and run CI to confirm consistency. Source extract is searchable/indexed; this note does not claim visual inspection of the PDF page image.
+
+
+## Alphabet spelling regression guard (25 October 2026)
+
+- The searchable extract of the selected third updated edition (16 August 2024), page 3, uses «ئەلفبێ» and explicitly rejects «ئەلفوبێ» and «ئەلف بێ»; it also states a 34-letter inventory. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+- Added `test_alphabet_spelling_matches_selected_reference` to check that the lesson-2 title/content, learning-path labels, quiz prompts/options, and lesson-2 infographic contain the approved term and do not reintroduce either rejected spelling.
+- This is a focused spelling regression check, not a complete audit of alphabet inventory/order or every orthographic rule. The infographic remains a sample, not a full alphabet chart.
+- CI run #40210996888 passed before this new test was added; the new test requires a fresh CI run after commit.
+
+
+## Review of lessons 1–6 after alphabet spelling guard (25 October 2026)
+
+- Re-read all six lesson records and their quiz records on `fix/kejyarbot-stability-2026-10-25`.
+- Confirmed the six lesson keys/titles align with the learning-path catalog, and each lesson has quiz items; existing regression tests already require nonempty unique quiz questions, distinct options, and an answer present among the options.
+- Lesson 2 correctly presents a selection of letters as examples and explicitly warns that it is not a complete alphabet inventory. No full alphabet chart or letter-order claim was added.
+- No further content edits were made in this pass: possible wording/spacing choices in the Kurdish examples need page-level evidence from the selected orthography reference before changing them.
+- The spelling regression test's newline separators were corrected in commit `ae4d3df`. Although the status-check endpoint returned no individual statuses, GitHub Actions subsequently confirmed successful Python checks for commit `18e5314` and for the follow-up audit-document commit `df8335a` (run `40216024376`). No live Telegram test was performed. Production, `main`, and PR merge state remain untouched.
+
+
+## CI verification for content audit update (25 October 2026)
+
+- GitHub Actions workflow run `40215980145` for commit `18e53144620a55ceef51f91ae506018e64eef6ba` completed with conclusion `success`.
+- The `checks` job completed successfully, including dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- This confirms the automated suite at that commit; it does not replace manual Telegram testing or expert/source-based review of every Kurdish phrase.
+- Manual Telegram test remains blocked until an authorized test bot/token and isolated test environment are available. No production token or database was accessed.
+
+
+## Latest audit-document commit CI (25 October 2026)
+
+- Commit `df8335a01c88237c285e76fc20f7cbc57cfed58b` passed GitHub Actions run `40216024376`.
+- The `checks` job succeeded for dependency installation, Python compilation, and the full unittest discovery command.
+- This is automated repository validation only; Telegram integration remains untested in a separate authorized test environment.
+
+
+## Quiz coverage and regression check (25 October 2026)
+
+- Re-read `lessons.json` and `quiz.json` from the protected work branch after the lesson-one quiz addition.
+- All six beginner lessons now have four quiz questions each (24 total). Every question has non-empty text, distinct options, and an answer that appears among its options; no structural quiz issues were found in this pass.
+- Added a regression assertion in `tests/test_content.py` requiring at least four questions for each beginner lesson, so future edits cannot silently reduce a lesson back to fewer than four.
+- GitHub Actions run `40216155708` for commit `03b70e98d0811ac6d06f8813e99a6a5d266b9705` completed successfully. The `checks` job passed dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- This verifies automated structural checks only. It does not certify every Kurdish phrase against the selected book or count as a live Telegram test.
+
+
+## Verification of quiz-coverage regression commit (25 October 2026)
+
+- The follow-up audit-document commit `419fdfb8a8ec1b9b912ef7162c9f5f6d6f6e994f` passed GitHub Actions run `40216215362`.
+- The `checks` job completed successfully: dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- Re-read all six lesson records and their quizzes. Each lesson has four questions; the structural check found no empty question text, repeated options within a question, or answer missing from its options.
+- A direct attempt to access the selected 2024 third-edition PDF for page-level verification was not accessible in this audit session. Therefore no uncertain spelling or wording was changed on guesswork. Manual Telegram integration testing is still pending in a separate authorized test environment.
+
+
+## Online source cross-check for lesson 2 (25 October 2026)
+
+- Checked the author's publicly accessible online page “زمانی کوردی: ڕێنووس”: https://chawg.org/zimani-kurdi-renus/ .
+- The page's alphabet section explicitly recommends “ئەلفبێ” and rejects “ئەلف بێ”, “ئەلف و بێ”, and “ئەلفوبێ”; it also states that the Central Kurdish alphabet has 34 letters. This corroborates two claims already represented in the lesson and its automated test.
+- The online page is not the selected 2024 third-edition PDF, and its content may be updated. It does not validate every spelling or the complete alphabet order in the book. Lesson 2 remains clearly labeled as a selection of examples rather than a complete chart; no content was changed just to match an unverified source version.
+- The selected PDF remains inaccessible through the current audit reader. Continue using page-level citations before changing other prescriptive spellings.
+
+
+## Expanded letter examples and infographic refresh (25 October 2026)
+
+- Expanded lessons 1, 3, 4, 5, and 6 with additional everyday dialogues, contextual examples, location phrases, number practice, color descriptions, and role-play prompts.
+- Rebuilt lesson 2 as a letter-by-letter practice lesson with 34 entries and three example words per entry. Added four quiz questions, bringing lesson 2 to eight questions.
+- Redesigned all six SVG infographics in a consistent forest-green, warm-cream, and copper/gold palette. The alphabet infographic now shows all 34 practice entries and three words for each entry; the other five use six text-led teaching cards each.
+- SVG text uses explicit RTL direction, plaintext bidi handling, and the Noto Naskh Arabic / Noto Sans Arabic font stack to preserve Kurdish text as editable text rather than rasterized lettering.
+- Source cross-check: Kurdish Academy of Language publishes a comparative Kurdish alphabet table and a Kurdish phonetic alphabet table: https://kurdishacademy.org/?page_id=284 and https://kurdishacademy.org/?page_id=357 . These are useful references for checking the writing systems, but they do not constitute a formal endorsement of these particular teaching graphics.
+- The examples are authored for practice and are not presented as quotations. The lesson explicitly cautions that alphabet inventories and ordering can vary by writing-system convention; the selected PDF edition has still not been verified page by page.
+- Added a regression test requiring 34 lesson/infographic example pairs to remain present. Structural and source-level spelling review remain separate; automated tests cannot establish that every example is the most natural regional choice.
+- The changes remain on fix/kejyarbot-stability-2026-10-25. No production bot, database, migrations, main, or PR merge was touched.
+
+- CI run #359 passed for commit `5a09bddbbceb08467971150ba2192e93c03e7899` (compileall and the full unittest suite): https://github.com/avasinim/KejyarBot/actions/runs/40217026467 .
+
+
+## Expansion to ten beginner lessons (25 October 2026)
+
+- Added lessons 7–10: family and close relations; food and drink; days of the week and time; simple sentences and question words.
+- Added four distinct quiz questions for each new lesson. The full beginner path now contains ten lessons, each with a corresponding SVG infographic.
+- Updated lesson navigation, sequential unlocking, completion badges, final-lesson quiz callback, and regression tests to use the ten lesson records. Lesson order is now derived from the ordered lesson data rather than fixed at six.
+- The new material uses original practice examples, not quotations. Regional vocabulary and spelling still require human review before public release.
+- CI run #389 passed for commit `58e02d8d8c5eedc971decef803b83517f3973b2e`: dependency installation, `python -m compileall -q .`, and the full unittest suite all succeeded. Run: https://github.com/avasinim/KejyarBot/actions/runs/40217276132 . This verifies automated structure and behavior, not every regional spelling or a live Telegram test.
+
+
+## Expanded alphabet examples and infographic (25 October 2026)
+
+- Expanded lesson 2 from three examples per practice entry to five, for 34 entries and 170 total word examples.
+- Rebuilt `assets/infographics/lesson-02-letters-sample.svg` in a four-column, right-to-left layout. Each entry has its own card, five examples, and a consistent forest-green / warm-cream / copper-gold visual style.
+- Added a regression test that parses the lesson's example section and checks all 34 entries have exactly five examples and that every word appears in both the lesson and SVG.
+- This is an authored teaching aid, not an official alphabet chart. Some items (including combinations such as `وو`) should be classified carefully before claiming a definitive alphabet inventory. The examples need human review for regional naturalness and source-sensitive spelling.
+- This change does not use Avasin Code and does not alter `main`, production credentials, or any database.
+- CI run #403 passed for commit `d6908a7ba97e87225800d7c6e405cc79cc0a3b55`: https://github.com/avasinim/KejyarBot/actions/runs/40217641807 . The Python compile and unit-test workflow passed, including the 170-example lesson/infographic consistency check. This does not certify every example as a formal academic spelling or confirm live Telegram rendering.
+
+
+## Further expansion of lessons 7–10 (25 October 2026)
+
+- Added ten additional sentence examples to each of lessons 7, 8, 9, and 10 (40 new practice sentences total), covering family descriptions, food requests and preferences, weekdays and schedules, and question formation.
+- Reviewed several phrases for clearer grammar and naturalness, including the verb agreement in the food lesson and more idiomatic wording for meeting friends.
+- Expanded each of the four quizzes from four to six questions. The new questions reinforce polite requests, food/drink verbs, weekday sequencing, time references, question words, and sentence order.
+- Updated the four corresponding SVG infographics to show four example lines per card, using RTL text, bidi handling, and the shared Kurdish-Arabic font stack.
+- Added regression coverage for ten extra example lines per lesson, six quiz questions per lesson, XML validity, and exact text shared between each lesson and its infographic.
+- The first CI attempt exposed a mismatched expected phrase in the new test (the content itself was present with a longer sentence). The assertion was corrected to match the exact lesson wording. CI run #428 then passed: https://github.com/avasinim/KejyarBot/actions/runs/40217899262 .
+- These are original beginner-level practice examples. Automated tests validate structure and consistency, not official academic endorsement or every regional wording; human Kurdish-language review and manual Telegram rendering tests remain pending.
+- No production credentials, database, migrations, or `main` changes were made. Work remains on `fix/kejyarbot-stability-2026-10-25`.
+
+
+## Test-name consistency cleanup (25 October 2026)
+
+- Renamed the message-mode regression test from `test_lesson_catalog_lists_all_six_lessons_even_when_locked` to `test_lesson_catalog_lists_all_ten_lessons_even_when_locked`. Its assertion already verified ten lessons; only the stale test name was wrong.
+- CI run #432 passed after the rename: https://github.com/avasinim/KejyarBot/actions/runs/40218025405 .
+- This is a test-maintenance change only; lesson behavior and runtime code were not changed.
+
+
+## Quiz coverage balanced across all ten lessons (25 October 2026)
+
+- Added two new quiz questions to each of lessons 1, 3, 4, 5, and 6 (10 questions total), bringing every lesson to at least six questions. Lesson 2 retains eight questions; lessons 7–10 retain six each.
+- New questions cover introductions and responses to thanks, requesting help, agreement, number sequencing and addition, color recognition, and classroom/home objects and position.
+- Strengthened `tests/test_content.py` so all ten lessons must have at least six quiz questions. Existing checks still validate non-empty question text, distinct options, and that every answer appears among its options.
+- CI run #438 passed after the quiz-coverage test update: https://github.com/avasinim/KejyarBot/actions/runs/40218153690 . Automated CI validates structure and consistency; the new language examples have not been formally certified against the selected orthography book. Human Kurdish-language review and manual Telegram testing remain pending.
+- No production bot, production database, migrations, or `main` branch changes.
+
+
+## Quiz alignment check (25 October 2026)
+
+- Two newly added questions were refined to match phrases explicitly taught in their lessons: lesson 1 now tests the exchange asking and stating a name; lesson 3 tests the taught use of the word meaning an affirmative answer.
+- Added a regression test for these two lesson-to-quiz links.
+- This focused check does not replace human linguistic review of all 62 quiz questions. Manual Telegram testing remains pending.
+
+
+## Alphabet quiz answer clarity (25 October 2026)
+
+- Refined three lesson 2 quiz answers so they follow the lesson's own definitions more closely: alphabet as a set of written signs, a letter as a written sign, and the contrast between «ر» and «ڕ».
+- Added a regression test tying those answers to the relevant explanatory statements in the lesson.
+- This is a consistency improvement, not a claim of page-by-page validation against the selected 2024 orthography book. Broader human review and manual Telegram testing remain pending.
+
+
+## Lesson-to-quiz answer alignment follow-up (25 October 2026)
+
+- A broader comparison of all 62 quiz answers against their lesson text found three answers whose wording or example was not directly aligned with the lesson.
+- Updated the alphabet definition answer to use the lesson's own definition, added an explicit «کتێبەکە لەژێر مێزەکەیە» example for the location question, and matched the fictional-family answer to the lesson's instruction.
+- Updated the alphabet-definition regression assertion to compare against the lesson wording. This is a text-alignment check; it does not establish that every language example is independently validated by a human editor or by page-level evidence from the selected 2024 reference book.
+- Manual Telegram rendering and end-to-end interaction tests remain pending.
+
+- Continued the same alignment pass by making the food/drink and location quiz choices quote the exact sentences used in their lessons, including the contrast «نەک لە ژێرەوەی» in the location example.
+
+- CI caught two answer/options mismatches introduced during this wording alignment. The correct options are now synchronized with the answers; a fresh CI run is required to confirm the repair.
+
+
+## Documentation consistency check (25 October 2026)
+
+- Corrected a stale count in `docs/ORTHOGRAPHY_POLICY.md`: lesson 2 contains 34 practice entries with five examples each (170 total), not three examples per entry.
+- Kept the important qualification that these are practice entries, not a definitive official alphabet inventory. The selected 2024 reference PDF has not been verified page by page, and human review remains necessary.
+
+
+## Natural phrasing review — lesson 8 (25 October 2026)
+
+- Replaced the awkward example `من چای حەز دەکەم.` with `من چای بەبێ شەکر حەز لێ دەکەم.`. The replacement reuses a fuller example already present in the same lesson and avoids introducing a new unverified spelling rule.
+- This is a pedagogical phrasing correction, not a claim of page-level verification against the selected 2024 orthography handbook. Human Kurdish-language review and manual Telegram rendering checks remain pending.
+
+
+## Quiz coverage review — lessons 9 and 10 (25 October 2026)
+
+- Reduced repeated quiz concepts: lesson 9 now checks identifying a daily routine sentence, and lesson 10 now checks a causal question using `بۆچی؟`, instead of repeating a previously tested day-order or location-word question.
+- Added `test_lesson_nine_and_ten_quizzes_cover_distinct_skills` to guard the intended question coverage and verify the answers remain in both the options and lesson text.
+- This is a pedagogical assessment adjustment, not a change to orthography policy. Full human review and manual Telegram testing remain pending.
+
+
+## Quiz skill-coverage review — lessons 1 and 5 (25 October 2026)
+
+- Re-read beginner lessons 1–6 and their quiz items, focusing on repeated assessment skills rather than changing uncertain orthography.
+- Lesson 1 had two questions testing nearly the same basic name-introduction response. Replaced one with a polite request to repeat a name, using the exact phrase already taught in the lesson.
+- Lesson 5 had a question repeating the green-leaf recognition skill. Replaced it with a contrast question using the exact taught example contrasting a yellow page and a white page.
+- Added `test_lessons_one_and_five_quizzes_cover_distinct_skills` to check that both answers are present in the lesson and the correct options.
+- No spelling-policy decisions or source-sensitive vocabulary were changed. This is a pedagogical coverage improvement, not page-level verification against Diyako Hashemi's handbook.
+- Re-read the modified quiz and test files after the edits; full CI verification is required for these commits. Live Telegram testing remains pending in a separate authorized test environment. No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 4 scope and example review (25 October 2026)
+
+- The lesson objective introduces numbers 0–10, but two supplementary examples introduced the number twelve and weekday names before those topics are taught in the learning path.
+- Replaced those examples with simple classroom/object-counting sentences using numbers already within the lesson scope. This reduces premature vocabulary and keeps the lesson focused on beginner counting.
+- Added `test_lesson_four_examples_stay_within_beginner_number_scope` to protect the intended examples and flag the removed scope drift.
+- This is a pedagogical sequencing change only; no orthography rule or source-sensitive spelling was inferred. Manual language review and Telegram testing remain pending.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 4 quiz skill diversity follow-up (25 October 2026)
+
+- Replaced the lesson 4 question asking which number lies between 4 and 6; this overlapped with the existing question asking which number follows 5.
+- The replacement asks the learner to identify a correctly formed sentence connecting a number with an object, using the exact taught example `دوو پێنووسم هەیە.`.
+- Added `test_lesson_four_quiz_assesses_number_in_context` to verify the answer is taught in the lesson and appears among the options.
+- This broadens assessment from sequence recall to using number vocabulary in context. It does not assert independent source-level validation of spelling or regional phrasing.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 6 quiz vocabulary alignment (25 October 2026)
+
+- The lesson teaches `پێنووس` as the school writing tool, while one quiz answer used `قەڵەم`. Although both terms can be used in Kurdish contexts, switching terms without explaining the relationship adds avoidable uncertainty for beginners.
+- Updated the quiz answer to the exact term taught in the lesson (`پێنووس`) and added a regression test to keep the assessment aligned with lesson vocabulary.
+- This is a consistency/pedagogy change, not a claim that the alternate term is universally incorrect. Regional and source-based terminology still needs human review against the selected handbook where relevant.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 1 quiz coverage follow-up (25 October 2026)
+
+- Reviewed the six beginner questions for repeated assessment targets. Two questions focused on introducing or responding with a person’s name, while the lesson also teaches a distinct morning greeting.
+- Replaced one repeated name-introduction item with a question about choosing the appropriate morning greeting (`بەیانی باش`). The answer is present in the lesson text and among the options.
+- Added a regression test to protect this coverage and answer-to-lesson alignment. This is an assessment-design adjustment, not an orthography correction.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 3 contextual quiz coverage (25 October 2026)
+
+- Reviewed the lesson 3 quiz for whether it tested only definitions or also practical use. The standalone item asking which word is polite for a request overlapped with the lesson’s direct vocabulary list.
+- Replaced it with a market scenario asking which expression is suitable for asking a price (`تکایە، ئەمە چەندە؟`), already present in the lesson. This tests context-sensitive application while retaining the lesson’s polite-request objective.
+- Added a regression test to ensure the scenario and answer remain grounded in the lesson text. No source-sensitive orthography was changed.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 2 alphabet practice inventory regression check (25 October 2026)
+
+- Reviewed the alphabet practice list without treating it as a definitive official alphabet inventory; the lesson itself correctly flags that a source-verified formal inventory requires a named academic reference.
+- Added a regression test confirming the current teaching list contains 34 practice entries and exactly five non-empty example words per entry. This protects the documented practice format and catches accidental truncation or malformed rows.
+- No alphabet order, letter classification, Kurdish spelling, or example word was changed because those changes would require stronger source-level evidence.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lessons 4–5 applied-skill quiz regression checks (25 October 2026)
+
+- Reviewed the beginner-number and color quizzes against their lesson objectives. Lesson 4 already includes a simple addition-in-context item (three apples plus two more); Lesson 5 already includes a sentence comparing two colors.
+- Added regression tests that protect these applied-skill items and confirm their correct answers remain present in the lesson text and quiz options.
+- No lesson wording, answer, or spelling was changed; this update protects existing coverage rather than claiming a new curriculum change.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 8 quiz variety and breakfast vocabulary (25 October 2026)
+
+- The lesson 8 quiz had two items assessing polite food/drink requests, while the lesson also teaches breakfast vocabulary in a concrete sentence.
+- Replaced one repeated request item with a question about what is eaten for breakfast, using the existing lesson phrase `هێلکە و نان دەخۆم` and distractors from unrelated vocabulary.
+- Added a regression test to keep the new assessment tied to the lesson text and its answer options. No lesson content or orthography was changed.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Lesson 9 clock-time comprehension (25 October 2026)
+
+- Replaced a broad time-of-day vocabulary quiz item with a question that checks whether learners can retrieve the specific class start time stated in the lesson dialogue/example.
+- The answer `کاتژمێر نۆ` is directly grounded in the lesson sentence `وانەکە کاتژمێر نۆ دەست پێ دەکات`; added a regression test to preserve this alignment.
+- Lesson 10 questions were reviewed for variety; the existing quiz already checks complete sentences, question words for place/object/reason, and word order, so its content was left unchanged.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+
+## Final automated content-integrity sweep (25 October 2026)
+
+- Re-read `lessons.json`, `quiz.json`, `tests/test_content.py`, and this audit log on the protected work branch after the lesson 9 update.
+- Integrity checks: 10 lesson records, quiz records for all 10 lessons, 62 questions total; no repeated question text within a lesson, no duplicate options, no answer missing from its options, and no answer missing from its own lesson text.
+- The existing test suite already enforces unique question text and unique options, so no redundant test was added.
+- This is structural/content-alignment evidence only. It does not establish page-by-page compliance with the 2024 third edition of Diyako Hashemi’s handbook or prove that every sentence is idiomatic. No spelling was changed without source-page evidence.
+- Next release blockers remain: page-level orthography review against the selected handbook edition, browser/mobile visual review of the SVG infographics, and manual Telegram testing in a separate test environment.
+- No `main`, production bot/database, migrations, or PR merge was touched.
+
+## Dynamic-speech approval guard regression test (25 October 2026)
+
+- Added a focused test for `speech.py`: dynamic generation remains disabled when the enable flag is absent, remains blocked when the configured voice ID differs from the explicitly approved ID, and is considered configured only when the enable flag, API key, voice ID, and matching approved voice ID are all present.
+- The test calls the local guard directly with mocked environment variables and does not send a request to the speech provider or use real credentials.
+- This protects the existing safety gate; it does not enable dynamic speech or establish that generated Kurdish audio is linguistically acceptable.
+- No runtime bot logic, voice configuration, `main`, production bot/database, migrations, or PR merge was changed.
+
+
+## Daily-conversation exit-priority regression (25 October 2026)
+
+- Review found that a message combining a greeting and an explicit goodbye (for example, “سڵاو، خواحافیز”) was handled by the earlier greeting branch, leaving daily-chat mode active despite the goodbye.
+- Moved recognized goodbye phrases into the early exit branch so explicit exit intent takes priority over greeting and role-play matching; the exit still clears role-play state.
+- Added a regression test for the combined greeting/goodbye case and verifies that chat mode and role-play state are cleared.
+- This is a narrow conversation-flow fix; it does not alter lesson text, quiz answers, the KejyarBot orthography policy, speech settings, main, production data, or PR merge status.
+
+
+## Quiz option minimum consistency check (26 October 2026)
+
+- Rechecked all ten quiz sets: 62 questions total, and every question currently has at least three distinct options; lesson 4 includes one four-option item.
+- The general content regression test had drifted to accepting two options, which was weaker than the project’s documented minimum. Updated the assertion to require at least three options so future two-choice regressions fail.
+- This change validates quiz structure only; it does not certify every Kurdish example against the selected reference book or replace manual Telegram testing.
+- Change is limited to `tests/test_content.py` and this audit record on `fix/kejyarbot-stability-2026-10-25`. No `main`, production bot/database, migrations, voice assets, or pull-request merge was changed.
+
+
+## Follow-up source comparison (26 October 2026)
+
+- Compared lesson 2's practice-entry order with the publicly accessible online section “٢. ئەلفبێ” on Diyako Hashemi's “زمانی کوردی: ڕێنووس” page: https://chawg.org/zimani-kurdi-renus/ .
+- The online page lists the Central Kurdish letters in this order: ئـ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، هـ، ە، و، وو، ۆ، ی، ێ. Lesson 2's practice entries place و، وو، ۆ before ه، ە, so its sequence does not match that online reference sequence.
+- This is a **source-comparison finding**, not a confirmed defect against the selected third-edition PDF. The PDF remains inaccessible for page-by-page verification in this workflow, and the online page may be updated independently. The lesson and infographic were therefore left unchanged; do not silently reorder entries until the selected 2024 edition is verified and the teaching intent is confirmed.
+- The legacy `quizzes.json` file contains only two questions under `lesson_3`; the reviewed runtime entry point `bot.py` loads `quiz.json`, not `quizzes.json`. No deletion was made: before removing the legacy file, complete a repository-wide reference check across all files and branches.
+- No production/main branch, production database, bot token, or deployment was touched.
+
+## Repository-wide legacy quiz-file reference scan (26 October 2026)
+
+- Scanned tracked text/code files in the current snapshots of all four repository branches: `main`, `content-design-polish-2026-10-25`, `fix/content-design-polish-2026-10-25`, and `fix/kejyarbot-stability-2026-10-25`. Compared differing file blobs across branch snapshots and checked source code, JSON data, tests, documentation, requirements, and workflow configuration for references to `quizzes.json`.
+- The only references found were explanatory notes in `docs/CONTENT_AUDIT.md`; no runtime, test, or workflow/configuration reference was found in the scanned branch snapshots. `bot.py` on the stability branch loads `quiz.json`.
+- This establishes no references in the scanned current branch snapshots; it does **not** establish that the file is unused by untracked local files, external deployment scripts, archived branches, tags, or historical commits. The legacy file is retained to avoid irreversible deletion without a complete usage decision.
+- No lesson wording, quiz content, legacy file, `main`, production bot/database, token, migration, or deployment was changed by this scan.
+
+
+## Daily-chat role-play state cleanup (26 October 2026)
+
+- Fixed the menu transition in `bot.py`: leaving daily-chat mode through a lesson or another main-menu action now clears the saved role-play scenario and stage as well as disabling the mode.
+- Updated `tests/test_bot_message_mode.py` to assert both role-play fields are removed when a lesson button is selected.
+- Re-read both changed files after the remote feature-branch update. GitHub Actions run #614 passed for the updated branch head: https://github.com/avasinim/KejyarBot/actions/runs/40288141082 .
+- This is a state-cleanup regression fix; no lesson text, quiz content, token, production database, or production deployment was changed.
+
+
+## Curriculum/quiz parity scan (26 October 2026)
+
+- Re-read `lessons.json`, `learning_path.json`, and `quiz.json` from the current feature-branch snapshot.
+- All 10 lesson records have non-empty titles and content; the 10 displayed learning-path titles match the lesson titles and order.
+- All 10 lessons have a corresponding quiz set, with 62 questions total (8 for lesson 2; 6 for each other lesson). No quiz-only keys or lessons without a quiz set were found.
+- Structural validation found no question with a missing answer, no answer absent from its option list, and no repeated question text within an individual lesson's quiz set.
+- This is structural parity validation, not a full expert review of Kurdish grammar, spelling, distractor quality, or whether each answer is pedagogically ideal. No lesson or quiz wording was changed during this scan.
+
+
+## SQLite helper connection safety (26 October 2026)
+
+- Updated `update_level`, `add_score`, `add_xp`, `add_coins`, and `add_chest` to use explicit `try/except/finally` transaction handling, rolling back on database errors and always closing connections.
+- Added a focused regression test covering score/XP updates, the score helper's coin bonus, XP-only behavior, level recalculation, coin addition, and chest addition.
+- Re-read `database.py` and `tests/test_database.py` from the feature branch to verify the changes are present.
+- This is a local SQLite reliability improvement only. It does not run the bot, call Telegram, read or modify secrets, change lesson content, touch production databases, or modify `main`.
+
+
+## Database initialization failure cleanup (26 October 2026)
+
+- Wrapped `init_db` schema creation and idempotent column addition in explicit exception handling: commit on success, rollback on failure, and always close the SQLite connection.
+- Re-read the updated `database.py` from the feature branch. Existing schema migration behavior is preserved; this change only improves cleanup and failure handling.
+- Existing tests cover repeat initialization and schema migration idempotence. CI for this change passed on feature-branch head `aeca65b7d1651657d921183f84a82bc399c528e6` (runs [40289004292](https://github.com/avasinim/KejyarBot/actions/runs/40289004292) and [40289008270](https://github.com/avasinim/KejyarBot/actions/runs/40289008270)).
+- No production database, migration files, bot token, or `main` branch was touched.
+
+
+## Regression test for database initialization failure (26 October 2026)
+
+- Added a mocked failure-path test for `init_db`: when schema setup raises an exception, it asserts the transaction is rolled back and the SQLite connection is closed.
+- This supplements the existing idempotent schema initialization test. The new regression test is committed on the feature branch and passed in CI on head `aeca65b7d1651657d921183f84a82bc399c528e6` (run [40289008270](https://github.com/avasinim/KejyarBot/actions/runs/40289008270)).
+- No production database, migration files, bot token, or `main` branch was touched.
+
+
+## Daily-chat state reset on `/start` (26 October 2026)
+
+- Review found that `/start` disabled daily-chat mode but could leave the previous scenario and stage in `context.user_data`.
+- Updated the start handler to clear `daily_chat_scenario` and `daily_chat_stage`, disable daily-chat mode, and discard any active in-memory quiz so stale answer buttons cannot continue the old quiz after `/start`.
+- Added a regression test that starts with daily-chat state and an active quiz set, then verifies all are reset.
+- This is an isolated conversation-state fix. No lesson content, credentials, production bot, production database, migrations, or `main` branch were changed.
+- CI passed on the final audit commit `313bc27c6514fb403cd2be5f4905382a2d05ec20`: [run 40289259546](https://github.com/avasinim/KejyarBot/actions/runs/40289259546).
+
+- CI passed for the quiz-reset code/test commit: [run 40289466261](https://github.com/avasinim/KejyarBot/actions/runs/40289466261). The audit-only commit's CI also passed: [run 40289477937](https://github.com/avasinim/KejyarBot/actions/runs/40289477937).
+
+
+## CI workflow least-privilege review (26 October 2026)
+
+- Reviewed `.github/workflows/python-checks.yml`: the job checks out repository content, installs dependencies, compiles Python files, and runs unit tests; it does not need to write repository contents or manage deployments.
+- Added an explicit workflow-level `permissions: contents: read` policy so the job's `GITHUB_TOKEN` is limited to read-only repository contents instead of relying on repository/org defaults.
+- This is CI permission hardening only. It does not change bot runtime behavior, secrets, production settings, databases, migrations, or `main`.
+- Awaiting CI for the updated workflow commit; automated checks do not replace the separate authorized Telegram integration test or the source-based linguistic review.
+
+
+## Source-based alphabet order correction (26 October 2026)
+
+- The searchable text of the selected third updated edition dated 16 August 2024 exposes the 34-letter sequence on the alphabet page: `ئ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، هـ، ە، و، وو، ۆ، ی، ێ`. Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf .
+- Compared the source sequence with lesson 2 and found a definite ordering mismatch in the final five practice entries: the lesson had `و، وو، ۆ، ه، ە`, while the reference places `هـ، ە` before `و، وو، ۆ`.
+- Reordered the lesson 2 practice entries to match the source, and synchronized the 34-card SVG infographic to the same sequence. The five example words attached to each sign were retained; this was an ordering correction, not a change to example vocabulary.
+- Added a regression test that checks both the lesson sequence and infographic card sequence against the selected source order. This is based on the searchable PDF text extract; the PDF page image has not been visually inspected, and the lesson still describes these as practice entries rather than expanding claims about phonetic classification.
+- CI is pending for the code/content/test/documentation changes. No production, `main`, database, migration, or token changes were made.
+
+
+## Quiz option integrity check (26 October 2026)
+
+- Audited all 62 questions across the 10 quiz sets. Every question has at least two options; no question has duplicate options; each correct answer appears exactly once in its option list; question text is nonempty.
+- Checked that every answer string also appears in its corresponding lesson content; all 62 answers are present verbatim.
+- Added a regression test to preserve unique distractors and exactly one correct-answer option. This verifies data integrity, not whether every distractor is pedagogically ideal; linguistic/source review remains separate.
+- No lesson or quiz wording was changed in this step.
+
+
+## Repository artifact exposure check (26 October 2026)
+
+- Reviewed the complete Git tree for the current feature branch (45 tracked files). No tracked `.env` file, SQLite database, SQLite sidecar, or filename matching common token/secret/credential patterns was found.
+- Confirmed `.gitignore` excludes `.env`, `kejyar.db`, other `.db`/SQLite files, and transient SQLite WAL/SHM sidecars.
+- This is a current-tree filename check only; it does not prove that credentials never appeared in earlier Git history, issue comments, logs, screenshots, or external copies. Previously exposed tokens must still be revoked and replaced before any authorized Telegram integration test.
+- No secret values were read, no bot was launched, and no token or production setting was used.
+
+## Quiz-to-lesson answer coverage regression test (26 October 2026)
+
+- Added `test_every_quiz_answer_is_taught_in_its_matching_lesson` to `tests/test_content.py`.
+- The test iterates over all quiz questions and verifies that each correct answer appears verbatim in the corresponding lesson content. This protects the audited 62-answer alignment against future accidental drift.
+- This is a consistency check only; it does not certify the scientific or linguistic quality of the answers or distractors.
+- No lesson text, quiz wording, production configuration, database, or migration was changed.
+
+## Quiz coverage regression guard (26 October 2026)
+
+- Added `test_quiz_set_sizes_match_the_audited_beginner_curriculum` to preserve the reviewed distribution: 8 questions in Lesson 2 and 6 questions in each of the other nine lessons, 62 questions total.
+- This catches accidental deletion or unexpected expansion of quiz items. New questions can still be added deliberately by updating the test and documenting the curriculum decision.
+- No quiz data or lesson content was changed in this step.
+
+## Infographic accessibility-label regression guard (26 October 2026)
+
+- Added `test_infographic_accessible_labels_match_their_lesson` to `tests/test_content.py`, checking the exact SVG `aria-label` for each of the ten lesson infographics.
+- This protects screen-reader labels and lesson-to-asset identity from accidental edits. Lesson 2 intentionally uses a descriptive label for its expanded letter/example chart rather than copying the shorter lesson title.
+- The SVG files and lesson content were inspected; no content or image changes were needed in this step.
+
+## KejyarBot infographic visual direction and Lesson 1 prototype (26 October 2026)
+
+- Reworked `assets/infographics/lesson-01-greetings.svg` as the first editable SVG prototype for a consistent KejyarBot visual system: warm paper background, forest-green and copper palette, restrained Kurdish textile-inspired geometry, rounded learning cards, and a small bot emblem.
+- All displayed Kurdish copy remains real SVG text using Unicode and RTL attributes, with a Noto Naskh Arabic/Noto Sans Arabic font stack; it is not baked into AI-generated pixels. This makes wording reviewable and selectable. Actual font rendering still depends on font availability in the viewer.
+- The learning phrases are drawn from `lessons.json` lesson 1. This is a visual/layout prototype, not a source-book orthography certification. Keep the lesson text unchanged; verify source-sensitive spelling separately before making copy-wide changes.
+- The AI-generated sample image is a visual reference only and must not be shipped as the source of Kurdish text because generated text can contain spelling and glyph errors.
+- Next design pass: extend the visual language to lessons 2–10 while preserving each lesson's source content and checking the exact Kurdish strings in SVG.
+
+## Kurdish-specific Unicode regression guard (26 October 2026)
+
+- Added a regression test that checks the exact Kurdish-specific characters in the Lesson 2 text and SVG, including ڕ (U+0695), ڵ (U+06B5), ۆ (U+06C6), ێ (U+06CE), ە (U+06D5), and also ڤ، پ، چ، ژ.
+- This catches accidental substitution with visually similar Arabic/Persian characters. It does not certify font shaping or every spelling/diacritic; those still require rendered visual review and source-based proofreading.
+- AI-rendered poster lettering is reference-only. The shipped alphabet must use editable Unicode text and a font with verified Kurdish glyph coverage, with exact words reviewed separately.
+
+## Kurdish alphabet infographic redesign (26 October 2026)
+
+- Rebuilt `assets/infographics/lesson-02-letters-sample.svg` as a custom KejyarBot alphabet chart with a forest-green/cream/copper palette, restrained kilim-inspired geometry, 34 editable Unicode letter rows, RTL text attributes, and a hand-drawn vector illustration per row.
+- Preserved all five example words listed for each of the 34 entries in the lesson text; the existing regression test checks that every example remains present in the SVG.
+- The illustration is an introductory visual cue for the first example word in each row, not a claim that each of the five listed words has its own separate image. A later design pass should add individually matched image cards for every word, with particular care for words that are not straightforward to depict.
+- This is a custom vector prototype. It uses a Noto font stack, but the target runtime still needs visual checking for actual font availability, glyph shaping, diacritics, RTL flow, and readability at mobile sizes. Do not treat a successful XML/test run as proof of visual font correctness.
+
+## Lesson 5 visual learning aid (26 October 2026)
+
+- Added nine distinct, outlined color swatches to `assets/infographics/lesson-05-colors.svg` for the color names already present in the lesson (سوور، شین، سەوز، زەرد، ڕەش، سپی، قاوەیی، پرتەقاڵی، پەمەیی).
+- Added small vector cues for the red apple, green leaf, and white paper examples. These are illustrative cues, not photographic images.
+- Kept the existing lesson wording unchanged. Visual inspection in an actual browser/mobile viewport is still needed to confirm font shaping, contrast, and that the added shapes do not crowd text.
+
+## Lessons 3, 4, and 6 visual aids (26 October 2026)
+
+- Lesson 3 now includes small vector cues for asking/requesting, gratitude, apology, and answering. These icons are symbolic learning prompts; the existing Kurdish phrases were not edited.
+- Lesson 4 now includes a row of Kurdish numeral markers as a visual counting aid alongside the lesson's existing 0–3 examples.
+- Lesson 6 now includes small vector illustrations of home and classroom objects to support the existing vocabulary lists.
+- These are hand-authored SVG illustrations rather than generated text images, so Kurdish text remains editable Unicode. Verify visual rendering, RTL shaping, spacing, and contrast in a browser at desktop and mobile sizes before release.
+
+
+## SVG integrity regression check (26 October 2026)
+
+- Added `test_infographic_svg_ids_are_unique_and_have_no_external_references` to `tests/test_content.py`.
+- The check parses every infographic SVG, rejects duplicate element IDs, and ensures any `href` reference is fragment-local (starts with `#`), preventing accidental remote-resource references in these learning assets.
+- This is a static integrity/security check; it does not certify Kurdish spelling, font shaping, RTL rendering, or mobile layout. Those still require editorial/source review and a real rendered visual check.
+- Test change commit: `54308eb8d0a91e1fbe963312b8a022bec1bf7a62`. CI result is pending at the time of this note.
+
+## Infographic phrase-alignment coverage extended (26 October 2026)
+
+- Extended `test_infographic_teaching_phrases_are_present_in_matching_lessons` to cover lessons 7–10 as well as the existing checks for lessons 1 and 3–6.
+- The new assertions verify that three selected teaching phrases from each added lesson appear in both the lesson JSON content and its corresponding SVG. This helps prevent lesson/visual drift; it does not certify spelling, source fidelity, or actual rendered appearance.
+- The test-only change is committed on `fix/kejyarbot-stability-2026-10-25`. CI verification is pending; no lesson text, quiz data, production configuration, database, migrations, or `main` was changed.
+
+## Lesson 2 alphabet source cross-check (26 October 2026)
+
+- Checked the lesson 2 alphabet inventory against Diako Hashemi, *Puxtey Renus U Xallbendi Weshani*, third updated edition (16 August 2024). The source explicitly lists 34 Kurdish letters/signs in this order: ئ، ا، ب، پ، ت، ج، چ، ح، خ، د، ر، ڕ، ز، ژ، س، ش، ع، غ، ف، ڤ، ق، ک، گ، ل، ڵ، م، ن، ه، ە، و، وو، ۆ، ی، ێ.
+- The source includes `وو` as a separate item in its 34-item list, so it must not be removed simply because it may look like a doubled letter sequence. The lesson’s inventory should remain source-aligned rather than be normalized by guesswork.
+- This is an inventory/order cross-check only. The five example words listed for each item still need a separate editorial review; no lesson examples or scientific text were changed in this step.
+- Source: https://diyako.yageyziman.com/wp-content/uploads/2024/08/Puxtey_Renus_U_Xallbendi_Weshani_3_New.pdf
+
+
+## Lesson 7 example audit — 28 October 2026
+
+- Reviewed drafts for lessons 1–8. The drafts remain unapproved pending source review; structural completeness is not a substitute for checking each word against the intended Central Kurdish variety and the course's orthography reference.
+- Found a clear target-letter mismatch in lesson 7: **خۆر** contains **ۆ**, not the target letter **و**, so it was not an appropriate default example for a lesson specifically teaching **و** as a vowel. Replaced it with **توت** and retained **دوور** as a separate example. Replaced **گیان** in the vowel-ی example list with **دین**, and marked the former as requiring separate dialect/pronunciation verification rather than assuming its letter function.
+- Re-read the edited lesson after the changes. These edits are limited to the test branch and do not change the runtime course content; the lesson draft is not connected to the active bot runtime. The quiz remains a draft and still needs editorial/source alignment review.
+- Current-head CI has not been verified for these two latest lesson-draft commits. Do not describe them as test-verified until a workflow run for the current head is inspected.
+
+
+## Lesson 16 comparison audit — 28 October 2026
+
+- While continuing the lesson 9–16 review, found the same target-letter mismatch in lesson 16: its comparison table listed **خۆر** as an example of the single letter **و**, although the written character in that word is **ۆ**. Replaced that example with **شوان** so the table actually shows the intended character. This is a spelling/target-letter correction, not a claim that all phonetic analysis is complete.
+- Re-read lesson 16 after the edit. The remaining examples and rules, especially the broad claim about final **وو**, still require source verification before publication or runtime use.
+- Latest lesson-draft changes remain unverified by current-head CI; no production, main branch, token, or live bot changes were made.
+
+
+## Lesson 18 spelling-segment audit — 28 October 2026
+
+- During review of lessons 17–22, lesson 18's analysis of **کەژیار** used the segment **کەو / یار**, even though the target word is written **کەژیار** and does not contain **و** in that segment. Corrected the proposed segmentation and its related table entry to **کەژ / یار** and changed the letter-specific note from **و** to **ژ**. This corrects an internal text mismatch; the phonological segmentation itself still requires source/pronunciation verification.
+- Lesson 16's **خۆر** → **شوان** comparison correction is recorded above. No runtime activation or production change was made. Current-head CI remains unverified.
+
+
+## Lesson 18 quiz consistency follow-up — 28 October 2026
+
+- Cross-checked the lesson 18 quiz after correcting the draft and found it still used the obsolete **کەو / یار** wording. Updated the quiz question and explanation to **کەژ / یار** and removed the incorrect claim about the letter **و** from the explanation.
+- Re-read the quiz JSON and parsed the lesson 18 question: question and explanation now agree with the edited draft; the obsolete segment no longer appears in the quiz file. This is a consistency correction only; the proposed syllabification still requires expert/source verification.
+
+
+## Scope update — beginner-course priority
+
+- The user clarified that Course 1 is introductory and should not be delayed for bibliography/source citation work. The editorial priority is now clear explanations, useful simple examples, practice, and matching each quiz to its lesson. Do not spend the remaining audit time collecting citations for this beginner course.
+- Rewrote lessons 1–3 into learner-facing lessons with objectives, examples, practice and short recap; removed source-review boilerplate from lesson 1 and simplified lessons 2–3.
+- Simplified lesson 4's quiz to test the beginner concept of comparing spelling and pronunciation rather than asking learners to remember a source-review warning.
+- Updated course/quiz status metadata and structural test expectations to reflect beginner editorial review. These drafts still need runtime integration checks and a fresh test run; current-head CI is not yet verified. Production, main, bot token, live database, and dynamic speech remain untouched.
+
+
+## Beginner quiz cleanup and CI — 28 October 2026
+
+- Simplified the lesson 5, 8, 13, 17–21 quiz questions that had been testing source-review caveats instead of beginner learning outcomes. They now focus on recognizing the written form, identifying the lesson's target word/letter, and distinguishing written letters from sounds.
+- Re-read the full 22-question quiz file: 22 questions remain, each with at least three distinct options, a valid answer index, and a lesson-specific explanation. Lesson 18 quiz wording agrees with the corrected **کەژ / یار** draft.
+- Verified GitHub Actions for commit `b09e025aa2cfd5d9ac8c90e49f0d84d118084665`: Python checks passed (`compileall` and `unittest discover -s tests -v`), and the orthography-course-structure workflow passed. This verifies that commit only; any later commit requires its own check.
+- Course 1 remains a 22-lesson beginner course. No new citations were added as part of this pass. The course files still need a later end-to-end runtime check before declaring the lessons live; production, `main`, live token/database and dynamic speech were not changed.
+
+
+## Course 1 beginner-content pass — 28 October 2026
+
+- Reworked lesson drafts **1–22** into learner-facing beginner lessons: plain definitions, visible examples, guided practice, and short self-checks. The drafts no longer ask learners to look up sources or fill in editorial evidence tables. No bibliography hunt was done, per the user's instruction that this introductory course should not be delayed for sources.
+- The content pass covers the core distinctions (letter vs sound, vowels, spelling at word beginnings, **و/ی**, **ە/ێ/ۆ**, **ل/ڵ**, **ر/ڕ**, **وو**, **ڤ**), guided reading of **کەژیار** and **یاسین**, and the final review lesson. Lessons 18 and 19 now focus on reading and identifying written letters rather than advanced phonological claims.
+- Simplified quiz items 4, 5, 7–9, 13–14, 17–22 to test beginner recognition and lesson comprehension instead of source-review caveats. Updated lesson 22's quiz to match the revised lesson. The 22-question quiz still has one multiple-choice question per lesson; the structural test verifies three distinct options and valid answer indices.
+- Python checks (`compileall` and `unittest discover -s tests -v`) and the orthography-course-structure workflow both passed on code commit `2e0301ea409a3ca80a503e00803ab372d55c681d`: [Python checks](https://github.com/avasinim/KejyarBot/actions/runs/40642864185) · [course structure](https://github.com/avasinim/KejyarBot/actions/runs/40642864109). The subsequent commit `812019edfed8ebaf348cbcbb54c4da2256b103a0` only updates this audit document. This work remains on the test branch; no merge, production change, token/database change, or dynamic-speech activation.
