@@ -72,6 +72,25 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         message.reply_voice.assert_not_awaited()
         self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 20)
 
+    def test_concurrent_quota_reservations_never_exceed_daily_cap(self):
+        from concurrent.futures import ThreadPoolExecutor
+
+        attempts = 60
+        cap = 20
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda _: database.reserve_speech_quota(
+                    self.user_id, self.quota_date, limit=cap
+                ),
+                range(attempts),
+            ))
+
+        self.assertEqual(sum(results), cap)
+        self.assertEqual(
+            database.get_speech_quota_used(self.user_id, self.quota_date),
+            cap,
+        )
+
     async def test_unconfigured_speech_does_not_change_quota(self):
         message = type("Message", (), {"reply_voice": AsyncMock()})()
         with patch.object(bot, "speech_is_configured", return_value=False):
