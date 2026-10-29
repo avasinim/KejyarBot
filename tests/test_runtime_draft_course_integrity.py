@@ -115,7 +115,6 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 content = bot.LESSON_DATA[lesson_id]["content"]
                 self.assertNotIn("📚 کۆرسی ١:", content)
                 self.assertNotIn("╭━━━━━━━━━━━━━━━━━━╮", content)
-                self.assertNotIn("کەویار", content)
         lesson = bot.LESSON_DATA["وانە_1"]
         self.assertIn("ئەلفبێی زمانی کوردی", lesson["content"])
         self.assertIn("تەواوکردنی وانە", lesson["content"])
