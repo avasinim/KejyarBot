@@ -39,8 +39,8 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
                 f"finish_{lesson}",
                 f"next_lesson_{lesson}",
             ])
-            quiz_suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
-            payloads.append(f"quiz_{quiz_suffix}_start")
+            # Match the exact callback format used by bot.py for every course.
+            payloads.append(f"quiz_{lesson}_start")
 
         oversized = [(payload, len(payload.encode("utf-8"))) for payload in payloads
                      if not 1 <= len(payload.encode("utf-8")) <= 64]
