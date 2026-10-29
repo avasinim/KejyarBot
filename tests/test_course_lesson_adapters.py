@@ -72,5 +72,13 @@ class ConversationLessonAdapterTests(unittest.TestCase):
             adapt_conversation_lessons("daily_conversation", [payload])
 
 
+    def test_duplicate_quiz_options_are_rejected(self):
+        payload = {"lessons": [{"number": 1, "title": "Test", "quiz": [{"q": "Question?", "options": ["Same", "Same"], "answer": 0}]}]}
+        with self.assertRaises(ValueError):
+            adapt_conversation_lessons("daily_conversation", [payload])
+        with self.assertRaises(ValueError):
+            adapt_unified_orthography_lessons({"course_id": "unified_orthography", "lessons": payload["lessons"]})
+
+
 if __name__ == "__main__":
     unittest.main()
