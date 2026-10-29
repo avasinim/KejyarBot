@@ -48,6 +48,16 @@ class CourseOneQuizReviewTests(unittest.TestCase):
         self.assertTrue(quiz_is_available("وانە_200"))
         self.assertTrue(quiz_is_available("daily_conversation_20"))
 
+    def test_runtime_enforces_review_gate_when_starting_and_answering_quizzes(self):
+        from pathlib import Path
+
+        source = Path(bot.__file__).read_text(encoding="utf-8")
+        start_quiz_source = source.split("async def start_quiz", 1)[1].split("async def send_question", 1)[0]
+        quiz_answer_source = source.split("async def quiz_answer", 1)[1].split("async def send_lesson_text", 1)[0]
+
+        self.assertIn("if not quiz_is_available(lesson):", start_quiz_source)
+        self.assertIn("if not quiz_is_available(lesson):", quiz_answer_source)
+
 
 if __name__ == "__main__":
     unittest.main()
