@@ -69,7 +69,7 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - The adapter regression test now loads all five conversation data files and verifies namespaced keys for lessons 1–48. Existing malformed-question, blank-option, duplicate-option, duplicate-number, and non-contiguous-number checks are preserved.
 - Runtime integrity tests verify all 82 manifest lessons load without ID collisions, all 48 conversation lessons remain locked even when fake completion rows exist, and progress/quiz listings stay scoped to active courses.
 - GitHub Actions run #40827126187 passed on commit `0d2c8ec9302dc1a89ef06d4254dd2f46768eb6f3`: compile check and 236 Python tests passed.
-- This is integration evidence only. The PR remains Draft; no merge, deployment, bot activation, production data change, or dynamic-speech enablement occurred.
+- At this historical checkpoint the PR was still Draft. It was subsequently merged into the integration base branch only; this did not deploy production or enable dynamic speech.
 
 ### Follow-up regression coverage (2026-10-29)
 
@@ -79,15 +79,15 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - These tests verify that a legacy Course 1 lesson key (`وانە_1`) and a namespaced conversation key (`daily_conversation_01`) retain separate completion/reward records, and that repeating the legacy key does not award twice.
 - GitHub Actions run #40827536324 passed on commit `63063b7aa488403e26e59cd6f13acfffe0e702eb`: `compileall` and all 238 Python tests passed.
 - The test suite logs one expected error-level message from the test that deliberately simulates failed voice delivery and checks quota refund behavior; the workflow and test suite still completed successfully.
-- Current PR #6 remains open and Draft, with no merge or deployment. All 48 conversation lessons remain review-gated; dynamic speech remains disabled.
+- At this historical checkpoint PR #6 was open and Draft; it was subsequently merged into `fix/four-course-structure-2026-10-27` only. Course 2 was later marked active in the integration manifest at the owner's request; editorial review remains pending and production is not deployed.
 
 ### Follow-up packaging and plan consistency check (2026-10-29)
 
 - Updated the Botkeep packager's required-file list and its regression test to require all five current conversation lesson data files (lessons 1–48) plus `daily_conversation_plan.json`; the obsolete `daily_conversation_lessons_07_12.json` is no longer treated as the required runtime source.
-- Corrected stale plan notes that still described the course as having only 30 lessons and incorrectly said the release status should remain `planned`. The plan now accurately records 48 proposed lesson entries and states that the course remains `draft_for_review` until editorial review and explicit activation approval.
+- Corrected stale plan notes that described only 30 lessons. The plan records all 48 lesson entries and retains editorial-review notes; the integration manifest was later marked `active` at the owner's explicit request, without implying final language approval.
 - Updated `course_runtime.py` documentation examples to match the actual namespaced lesson keys.
 - GitHub Actions run #40828234599 passed on commit `9f0de71653586c9fc6a7fef1063f3bc30705c634`: compile check and all 238 Python tests passed.
-- The PR remains open and Draft; no merge, deployment, production bot/data changes, or dynamic-speech enablement occurred.
+- At this historical checkpoint the PR was still open and Draft. It was later merged into the integration base branch only; no production deployment, production data change, or dynamic-speech enablement occurred.
 
 
 ### Follow-up content overlap and menu clarity review (2026-10-29)
@@ -105,20 +105,20 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - These are review flags, not confirmed defects. No lesson text or vocabulary was changed.
 - Found a learner-facing clarity gap in the course catalog: the explanatory text described course status, but the four selection buttons themselves did not show it. Updated the buttons to label active, review-gated, draft, and planned courses while preserving the existing callback IDs. Added a regression test asserting the four statuses and unchanged callback IDs.
 - The new regression test has been committed, but its GitHub Actions result must be checked before considering this change verified. The 238-test result above predates this menu change.
-- All 48 conversation lessons remain `draft_for_review`; no course was activated, and no merge, deployment, production bot/data change, or dynamic-speech enablement occurred.
+- At this historical checkpoint all 48 lesson records remained under editorial review and the course had not been activated. Later, Course 2 was marked active in the integration manifest at the owner's explicit request; editorial review metadata remains, and production is not deployed.
 
 
 ### Follow-up targeted progression review and latest CI verification (2026-10-29)
 
 - Inspected the actual dialogue, objectives, exercises, role-play prompts, and quiz prompts for the repeated-topic clusters, rather than relying on titles alone.
-- Shopping progression is visible but needs editorial confirmation: lesson 8 practices a multi-item produce purchase and total cost; lesson 25 compares prices and sizes; lesson 38 asks about clothing size and trying an item before deciding. The currency changes from toman in lesson 8 to dinar in lesson 38 without an explanation of the setting. Flag this for consistency/context review; do not silently rewrite it in this technical audit.
+- Shopping progression is visible but needs editorial confirmation: lesson 8 practices a multi-item produce purchase and total cost; lesson 25 compares prices and sizes; lesson 38 asks about clothing size and trying an item before deciding. An earlier audit flagged a currency mismatch; the integration edit subsequently normalized lesson 8 to dinar, matching lesson 38. Their arithmetic and currency wording are now internally consistent, though the real-life context still deserves editorial review.
 - Directions progress from multi-step directions and spatial relations in lesson 10, to finding a park and estimating walking time in lesson 29, to locating a neighborhood bakery in lesson 43. The latter is simpler than lesson 10, so lesson 43 should be confirmed as deliberate review/consolidation rather than assumed progression.
 - Food lessons have distinguishable stated targets: lesson 7 preferences and drinks, lesson 26 requesting a meat-free meal, lesson 37 ordering from a menu, and lesson 39 sequencing meal preparation. Lesson 37 and lesson 26 overlap on restaurant requests; lesson 37 should ideally add a clearly different function such as clarifying ingredients, confirming the order, or asking for the bill.
 - Environmental lessons differ in emphasis: lesson 33 is park etiquette/protecting plants and avoiding litter; lesson 46 adds separating plastic for reuse and group action. This appears to be a plausible progression, subject to language review.
 - Long-term learning goals in lesson 35 differ from scheduling weekly activities in lesson 41; the exercise prompts reinforce that distinction.
 - No lesson prose was changed in this pass. These are content-editorial flags, not claims of grammatical correctness.
-- Verified the latest PR head `ebf71bd702b0a36368261498939d47916be57934`: GitHub Actions run #40830749666 (“Python checks”, run 1727) completed successfully, including `compileall` and the full unittest step. This is the first verified CI result after the course-status menu regression test was added.
-- PR #6 remains open and Draft. All 48 conversation lessons remain review-gated; no merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
+- Verified the PR head `ebf71bd702b0a36368261498939d47916be57934` at that historical checkpoint: GitHub Actions run #40830749666 (“Python checks”, run 1727) completed successfully, including `compileall` and the full unittest step. Later integration commits were validated separately by the owner with the local test suite.
+- At this historical checkpoint PR #6 was open and Draft. It was subsequently merged into the integration base branch only, and Course 2 was later activated in the integration manifest at the owner's request. Editorial review remains pending; production is not deployed and dynamic speech remains disabled.
 
 
 ### Student progress isolation and callback-gate verification (2026-10-29)
@@ -127,7 +127,7 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - Added a database regression test confirming that the same namespaced lesson key is stored independently for two student IDs, each student receives their own first-completion reward, and a repeated completion by one student does not alter the other student's progress or XP.
 - GitHub Actions run #40834804899 passed on commit `2bc232f0338fcea2e4cedb8bb2a1820f6987107c`. Dependency installation, `compileall`, the complete unittest step, and job cleanup all completed successfully.
 - The test was first appended below the module's `unittest.main()` guard; this placement was caught during review and corrected so the test remains a method of the database test class and is discoverable by unittest. CI passed after that correction.
-- Current PR #6 head is `2bc232f0338fcea2e4cedb8bb2a1820f6987107c`; it remains open and Draft against `fix/four-course-structure-2026-10-27`. No merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
+- At this historical checkpoint PR #6 head was `2bc232f0338fcea2e4cedb8bb2a1820f6987107c` and the PR was still open and Draft against `fix/four-course-structure-2026-10-27`. It was subsequently merged into that integration base branch only; later commits on the current integration branch were validated locally, with no production deployment or dynamic-speech enablement.
 - Remaining limitation: GitHub Actions validates automated behavior, not Kurdish language naturalness or pedagogical quality. The editorial review flags above remain unresolved until a human language review is completed.
 
 ### Concurrency reward regression coverage (2026-10-29)
