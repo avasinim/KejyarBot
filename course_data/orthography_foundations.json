@@ -71,11 +71,12 @@
     {
       "id": "lesson_08",
       "number": 8,
-      "title": "سێ دەنگی گرینگ",
+      "title": "سێ دەنگی گرینگ: ناساندنی نیشانەکان",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
-      "infographic_status": "not_created"
+      "infographic_status": "not_created",
+      "source_title": "سێ دەنگی گرینگ"
     },
     {
       "id": "lesson_09",
@@ -107,11 +108,12 @@
     {
       "id": "lesson_12",
       "number": 12,
-      "title": "سێ دەنگی گرینگ",
+      "title": "سێ دەنگی گرینگ: نووسین و نموونەکان",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
-      "infographic_status": "not_created"
+      "infographic_status": "not_created",
+      "source_title": "سێ دەنگی گرینگ"
     },
     {
       "id": "lesson_13",
@@ -161,20 +163,22 @@
     {
       "id": "lesson_18",
       "number": 18,
-      "title": "پیتی (ی)",
+      "title": "پیتی (ی): لە وشەی کەژیار و کەویار",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
-      "infographic_status": "not_created"
+      "infographic_status": "not_created",
+      "source_title": "پیتی (ی)"
     },
     {
       "id": "lesson_19",
       "number": 19,
-      "title": "پیتی (ی)",
+      "title": "پیتی (ی): لە سەرەتای وشە و ناو بڕگە",
       "content_status": "needs_source_review_and_editorial_entry",
       "quiz_status": "draft_needs_editorial_and_source_review",
       "audio_status": "use_existing_voice_workflow_only",
-      "infographic_status": "not_created"
+      "infographic_status": "not_created",
+      "source_title": "پیتی (ی)"
     },
     {
       "id": "lesson_20",
