@@ -72,6 +72,45 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         message.reply_voice.assert_not_awaited()
         self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 20)
 
+    def test_concurrent_lesson_completion_rewards_are_granted_once(self):
+        from concurrent.futures import ThreadPoolExecutor
+
+        database.get_user(self.user_id)
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_lesson_with_rewards(
+                    self.user_id, "daily_conversation_01"
+                ),
+                range(8),
+            ))
+
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(self.user_id)
+        self.assertIn("daily_conversation_01", user[5].split(","))
+        self.assertEqual(user[1], 10)  # score
+        self.assertEqual(user[2], 10)  # XP
+        self.assertEqual(user[8], 5)   # coins
+        self.assertEqual(user[9], 1)   # chest
+
+    def test_concurrent_quiz_completion_rewards_are_granted_once(self):
+        from concurrent.futures import ThreadPoolExecutor
+
+        database.get_user(self.user_id)
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(
+                    self.user_id, "daily_conversation_01"
+                ),
+                range(8),
+            ))
+
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(self.user_id)
+        self.assertIn("daily_conversation_01", user[10].split(","))
+        self.assertEqual(user[1], 20)  # score
+        self.assertEqual(user[2], 20)  # XP
+        self.assertEqual(user[7], 1)   # completed quiz count
+
     def test_concurrent_quota_reservations_never_exceed_daily_cap(self):
         from concurrent.futures import ThreadPoolExecutor
 
