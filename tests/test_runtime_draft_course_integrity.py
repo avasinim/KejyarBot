@@ -109,14 +109,14 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertTrue(all(lesson_id in bot.LESSON_DATA for lesson_id in lesson_ids))
         self.assertEqual(len(bot.LESSON_DATA), len(set(bot.LESSON_DATA)))
 
-    def test_original_lesson_content_does_not_repeat_course_or_decorative_headers(self):
+    def test_runtime_course_one_lesson_headers_are_preserved(self):
         for lesson_id in bot.COURSE_LESSON_ORDER["orthography_basic"]:
             with self.subTest(lesson=lesson_id):
                 content = bot.LESSON_DATA[lesson_id]["content"]
                 self.assertIn("📚 کۆرسی ١:", content)
                 self.assertIn("╭━━━━━━━━━━━━━━━━━━╮", content)
                 self.assertIn("🌿 کەژیار", content)
-                self.assertNotIn("🌿 کەویار", content.splitlines()[2])
+                self.assertNotIn("🌿 کەویار", content.splitlines()[3])
         lesson = bot.LESSON_DATA["وانە_1"]
         self.assertIn("ئەلفبێی زمانی کوردی", lesson["content"])
         self.assertIn("تەواوکردنی وانە", lesson["content"])
