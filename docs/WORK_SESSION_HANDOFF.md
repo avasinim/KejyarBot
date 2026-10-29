@@ -57,3 +57,13 @@ If the project uses its Windows virtual environment, prefer:
 ```
 
 Do not commit local secrets, `.env`, SQLite databases, backups, or generated runtime data.
+
+
+## Continuation checkpoint — 2026-10-29
+
+- Latest verified test-branch commit: `2465e230cbe719a1ee7f270725cbc9ec60977e79` (`test: guard lesson infographic SFTP packaging rule`).
+- CI succeeded for that commit: https://github.com/avasinim/KejyarBot/actions/runs/40822621759. The run completed the compileall and full unittest steps successfully.
+- The root image `photo_2026-10-27_00-13-52.jpg` is tracked in the development branch and is the optional Course 1, Lesson 1 infographic. `tools/prepare_botkeep_zip.py` intentionally excludes JPG/binary files; the image must be transferred separately by SFTP after the server exists. The lesson text is designed to remain available if the image is absent.
+- `docs/BOTKEEP_DEPLOYMENT.md` now states this correctly. `tests/test_botkeep_packager.py` includes a guard asserting that the exact image exists in the repository but is excluded from the ZIP package.
+- No ZIP was created or uploaded. No production service/token/data was changed, no merge/deployment occurred, and dynamic speech remains disabled unless the user explicitly approves otherwise.
+- Next safe work: continue focused review of course navigation, progress persistence, quiz/reward idempotency, and package constraints; make only evidence-based changes on this test branch and verify CI after each change.
