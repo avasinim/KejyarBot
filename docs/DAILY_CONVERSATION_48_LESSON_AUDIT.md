@@ -45,3 +45,17 @@ These are possible topic overlaps, not confirmed errors. An editor should compar
 ## Conclusion
 
 The current data passed the listed structural checks. That does not establish linguistic correctness, pedagogical quality, or production readiness. The topic overlaps above should be reviewed by a human editor before the course is activated.
+
+
+## Cross-lesson repetition scan (follow-up)
+
+A second scan compared normalized dialogue lines, role-play prompts, quiz questions, and vocabulary terms across all 48 lessons.
+
+- No exact duplicate role-play prompts were found across lessons.
+- No exact duplicate quiz-question prompts were found across lessons.
+- Two dialogue lines repeat exactly across different lessons:
+  - Lessons 1 and 12: `سڵاو ئاڕگەش چۆنی`
+  - Lessons 13 and 43: `زۆر سپاس بۆ ڕێنماییەکەت`
+- 28 vocabulary terms appear in more than one lesson. Reuse is expected for core language, so this is not automatically a defect. Review topic overlaps to ensure that repeated terms are revisited in a useful new context.
+
+The two repeated dialogue lines should be checked by the editor. They may be intentional reinforcement, but if not, revise one instance so the dialogue feels specific to its lesson. No lesson text was changed by this scan.
