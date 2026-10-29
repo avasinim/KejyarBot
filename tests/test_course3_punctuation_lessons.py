@@ -46,7 +46,7 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
     def test_quote_and_parenthesis_usage(self):
         quotes = " ".join(self.lessons[56]["key_points"] + [v for pair in self.lessons[56]["examples"] for v in pair])
         parentheses = " ".join(self.lessons[57]["key_points"] + [v for pair in self.lessons[57]["examples"] for v in pair])
-        self.assertIn("دەقگێڕانەوەی ناو دەقگێڕانەوە", quotes)
+        self.assertIn("دەقگێڕانەوەی یەکەم", quotes)
         self.assertIn("firewall", parentheses)
         self.assertIn("١٧٨٣", parentheses)
 
