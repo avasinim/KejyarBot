@@ -22,7 +22,7 @@ class CourseCatalogTests(unittest.TestCase):
         self.assertEqual(len({course["id"] for course in self.catalog}), 4)
         self.assertEqual(len({course["key"] for course in self.catalog}), 4)
 
-    def test_only_ready_orthography_course_has_structured_lesson_ids(self):
+    def test_active_courses_have_structured_lesson_ids(self):
         by_id = {course["id"]: course for course in self.catalog}
         first = by_id["orthography_basic"]
         self.assertEqual(first["status"], "active")
