@@ -191,3 +191,11 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - **Lesson 40 quiz alignment:** the quiz checks the film topic and the meaning of “سەرنجڕاکێش,” consistent with the objective of expressing opinions about books and films. No objective/quiz mismatch found in this limited check.
 - No lesson source text or quiz was edited in this pass. Findings are review flags only; all draft/release guardrails remain unchanged.
 
+### Mechanical integrity sweep: all 48 draft lessons and quiz answer indexes (2026-10-29)
+
+- Re-read the six lesson JSON files on the integration branch and confirmed the combined lesson set contains exactly lessons 1–48, with no missing lesson numbers.
+- Confirmed each of the 48 records has an objective, at least one exercise, and a role-play activity.
+- Checked every quiz item across the 48 lessons: all answer indexes point to an existing option, and no quiz item has duplicate option strings. No structural quiz-option/index defects were found in this pass.
+- This is a structural check only; it does **not** certify that every marked answer is pedagogically ideal, that every distractor is fair, or that the Kurdish wording is fully natural. Those require lesson-by-lesson semantic and language review.
+- No lesson content, activation status, runtime logic, production data, or speech settings were changed.
+
