@@ -294,9 +294,6 @@ class DatabaseTests(unittest.TestCase):
         database.refund_speech_quota(12345, day)
         self.assertEqual(database.get_speech_quota_used(12345, day), 0)
 
-if __name__ == "__main__":
-    unittest.main()
-
 
     def test_lesson_progress_and_rewards_are_isolated_per_student(self):
         first_user, second_user = 12345, 54321
@@ -312,3 +309,7 @@ if __name__ == "__main__":
         self.assertEqual(database.get_completed_lessons(second_user), ["daily_conversation_01"])
         self.assertEqual(database.get_user(first_user)[2], 10)
         self.assertEqual(database.get_user(second_user)[2], 10)
+
+
+if __name__ == "__main__":
+    unittest.main()
