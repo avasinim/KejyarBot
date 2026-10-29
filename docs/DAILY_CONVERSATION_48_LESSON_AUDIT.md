@@ -135,13 +135,13 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - Added `test_concurrent_duplicate_lesson_and_quiz_callbacks_award_once` in `tests/test_database.py`.
 - The test fires 16 concurrent duplicate lesson-completion calls and 16 concurrent duplicate quiz-completion calls for the same user and lesson key. It verifies each operation grants rewards exactly once and that XP, score, coins, chests, and test totals match the expected single-award totals.
 - GitHub Actions run #40835142571 passed on commit `48e7569e84ee018d530fddd339c0369f7794495f`: Python compilation and the full unittest suite passed.
-- PR #6 remains open, Draft, and unmerged. No production bot/token/data changes, deployment, course activation, or dynamic-speech enablement occurred.
+- At this historical checkpoint PR #6 was open and Draft. It was subsequently merged into `fix/four-course-structure-2026-10-27` only; Course 2 was later activated in the integration manifest at the owner's request. No production deployment or dynamic-speech enablement occurred.
 
 ### Focused progression review (2026-10-29)
 
 A focused reread compared the actual dialogue, vocabulary, exercises, and quiz prompts in the main overlap clusters. This is an editorial triage only; no lesson text was changed.
 
-- **Shopping (8, 25, 38):** the dialogue scenarios are meaningfully different: lesson 8 buys fruit and calculates a total; lesson 25 compares bag prices and size; lesson 38 asks about shirt size and trying it on. The principal consistency decision is currency localization: lesson 8 uses toman while lesson 38 uses dinar. Choose an intentional learner-region policy (or explicitly teach the distinction) before approval; do not silently change prices.
+- **Shopping (8, 25, 38):** the dialogue scenarios are meaningfully different: lesson 8 buys fruit and calculates a total; lesson 25 compares bag prices and size; lesson 38 asks about shirt size and trying it on. An earlier audit flagged lesson 8's toman against lesson 38's dinar; the integration edit later normalized lesson 8 to dinar, so the two shopping dialogues now use the same currency.
 - **Directions (10, 29, 43):** these also have distinct contexts: finding a library with relative positions; following left/right turns and estimating walking time; locating a bakery in a neighborhood. Reuse of location words appears purposeful rather than an exact lesson duplicate.
 - **Health (13, 45):** lesson 13 practices describing symptoms and finding a clinic; lesson 45 practices booking/rescheduling an appointment. These are complementary functions, though a language reviewer should check the naturalness of the appointment exchange.
 - **Environment (33, 46):** lesson 33 focuses on keeping a park clean and protecting plants; lesson 46 adds separating plastic bottles for reuse. The learning outcomes are distinct enough to retain pending language review.
@@ -170,10 +170,10 @@ This pass reread the actual review-lesson dialogue and exercises for lessons 12,
 
 A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the plan does not define a learner-region or currency-localization policy.
 
-- **Lesson 8:** the dialogue gives a consistent total: two kilograms of apples at 3,000 toman per kilogram plus one kilogram of oranges at 3,000 toman totals 9,000 toman. The arithmetic is correct as written.
+- **Lesson 8 (historical content snapshot):** the original audit found a consistent total of 9,000 toman. A later integration edit changed the currency labels to dinar while preserving the same arithmetic: two kilograms at 3,000 dinars plus one kilogram at 3,000 dinars equals 9,000 dinars.
 - **Lesson 25:** the dialogue models asking for a cheaper bag and comparing price/size. The task matches its stated comparison focus.
 - **Lesson 38:** the dialogue models asking about a shirt's price and size and trying it on; its final exercise asks the learner to request a discount, but the dialogue does not model a discount request. This is an objective-to-practice alignment gap. During language editing, either add a natural example of asking for a discount or change the exercise to practise the expressions actually taught.
-- **Currency policy:** lesson 8 uses toman while lesson 38 uses dinar. The course plan contains no rule explaining the intended region or why both currencies are introduced. Before approval, choose a consistent setting or explicitly teach the currency distinction; do not silently alter prices or currencies during a technical audit.
+- **Currency policy (superseded finding):** the earlier snapshot mixed toman in lesson 8 and dinar in lesson 38. The integration edit normalized lesson 8 to dinar; the current dialogues are consistent on that point. Confirm the prices still make sense for the intended audience during the pending editorial review.
 - No lesson source text was changed in this pass. These are review flags for the language/content editor, not an approval to revise the authored dialogue.
 
 ### Follow-up appointment-time and cumulative-assessment consistency check (2026-10-29)
@@ -267,4 +267,4 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - Following the owner's explicit instruction, Courses 2 (48 daily-conversation lessons) and 3 (12 unified-orthography lessons) are now marked `active` in `courses.json` on the working branch.
 - Runtime access follows each course's own lesson order: the first lesson opens, and later lessons remain locked until the immediate predecessor is completed. Progress remains isolated by course-specific lesson IDs.
 - Existing lesson-level `draft_editorial_review` metadata and the plan's provisional notes are retained as editorial provenance; they are not runtime course-activation gates.
-- This is a branch-level code change only. PR #6 remains open and Draft; no merge or deployment has been performed. Dynamic speech remains disabled.
+- This was a branch-level code change at the time of the original audit. PR #6 was later merged into the integration base branch only; no production deployment has occurred and dynamic speech remains disabled.
