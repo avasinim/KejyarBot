@@ -48,6 +48,18 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 0)
         message.reply_voice.assert_awaited_once()
 
+    async def test_failed_refund_is_attempted_only_once_and_does_not_escape(self):
+        message = type("Message", (), {"reply_voice": AsyncMock()})()
+        with (
+            patch.object(bot, "speech_is_configured", return_value=True),
+            patch.object(bot, "generate_speech", new=AsyncMock(return_value=None)),
+            patch.object(bot, "refund_speech_quota", side_effect=RuntimeError("db unavailable")) as refund,
+        ):
+            await bot.send_conversation_voice(message, "سڵاو", {}, self.user_id)
+        refund.assert_called_once_with(self.user_id, self.quota_date)
+        self.assertEqual(database.get_speech_quota_used(self.user_id, self.quota_date), 1)
+        message.reply_voice.assert_not_awaited()
+
     async def test_daily_cap_prevents_another_generation(self):
         for _ in range(20):
             self.assertTrue(database.reserve_speech_quota(self.user_id, self.quota_date, limit=20))
