@@ -31,22 +31,6 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
         state.pop("daily_chat_stage", None)
         return "باشە، گفتوگۆکەمان لێرە کۆتایی پێ دێت. خواحافیز! هەر کاتێک بتەوێت دەتوانیت دووبارە دەستی پێ بکەیت. 🌷"
 
-    if any(word in clean for word in ("سڵاو", "بەخێربێ", "ڕۆژباش", "ئێوارەباش", "شەوباش")):
-        state["daily_chat_turns"] = state.get("daily_chat_turns", 0) + 1
-        return "سڵاو، بەخێربێیت! 🌷 چۆنیت ئەمڕۆ؟ دەتوانین بە کوردی گفتوگۆ بکەین."
-
-    if any(phrase in clean for phrase in ("چۆنی", "چۆنیت", "باشی", "حاڵت چۆنە")):
-        return "سوپاس، باشم و ئامادەم یارمەتیت بدەم. تۆ چۆنیت؟ ئەمڕۆ چی کردووە؟"
-
-    if any(phrase in clean for phrase in ("ناوت چی", "کێیت", "تۆ کێی")):
-        return "من کەژیارم، یاریدەدەری فێربوونی زمانی کوردی. دەتوانین وانە بخوێنینەوە و گفتوگۆی ڕۆژانە ڕاهێنان بکەین. 🌱"
-
-    if any(word in clean for word in ("سوپاس", "دەستخۆش", "زۆر باش")):
-        return "سەرچاوە، بە خۆشییەوە! 😊 ئامادەیت بە ڕستەیەکی تری ڕۆژانە ڕاهێنان بکەین؟"
-
-    if any(word in clean for word in ("ببورە", "لێم خۆش بە")):
-        return "هیچ کێشە نییە. 🌷 لە گفتوگۆدا هەڵەکردن بەشێکە لە فێربوون."
-
     # Continue a small role-play instead of treating each turn as an unrelated keyword.
     scenario = state.get("daily_chat_scenario")
     if scenario == "market" and state.get("daily_chat_stage") == 1:
@@ -74,6 +58,22 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
     if scenario == "school" and state.get("daily_chat_stage") == 2:
         state["daily_chat_stage"] = 3
         return "وەڵامێکی باشە! دەتوانیت هۆکارەکەشی زیاد بکەیت: «چونکە ...». گفتوگۆکەمان بەردەوام بکەین؟"
+
+    if any(word in clean for word in ("سڵاو", "بەخێربێ", "ڕۆژباش", "ئێوارەباش", "شەوباش")):
+        state["daily_chat_turns"] = state.get("daily_chat_turns", 0) + 1
+        return "سڵاو، بەخێربێیت! 🌷 چۆنیت ئەمڕۆ؟ دەتوانین بە کوردی گفتوگۆ بکەین."
+
+    if any(phrase in clean for phrase in ("چۆنی", "چۆنیت", "باشی", "حاڵت چۆنە")):
+        return "سوپاس، باشم و ئامادەم یارمەتیت بدەم. تۆ چۆنیت؟ ئەمڕۆ چی کردووە؟"
+
+    if any(phrase in clean for phrase in ("ناوت چی", "کێیت", "تۆ کێی")):
+        return "من کەژیارم، یاریدەدەری فێربوونی زمانی کوردی. دەتوانین وانە بخوێنینەوە و گفتوگۆی ڕۆژانە ڕاهێنان بکەین. 🌱"
+
+    if any(word in clean for word in ("سوپاس", "دەستخۆش", "زۆر باش")):
+        return "سەرچاوە، بە خۆشییەوە! 😊 ئامادەیت بە ڕستەیەکی تری ڕۆژانە ڕاهێنان بکەین؟"
+
+    if any(word in clean for word in ("ببورە", "لێم خۆش بە")):
+        return "هیچ کێشە نییە. 🌷 لە گفتوگۆدا هەڵەکردن بەشێکە لە فێربوون."
 
     if any(word in clean for word in ("بازاڕ", "کڕین", "نرخ", "پارە")):
         state["daily_chat_scenario"] = "market"
