@@ -296,3 +296,19 @@ class DatabaseTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    def test_lesson_progress_and_rewards_are_isolated_per_student(self):
+        first_user, second_user = 12345, 54321
+        self.assertTrue(database.complete_lesson_with_rewards(first_user, "daily_conversation_01"))
+        self.assertEqual(database.get_completed_lessons(first_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_completed_lessons(second_user), [])
+        self.assertEqual(database.get_user(first_user)[2], 10)
+        self.assertEqual(database.get_user(second_user)[2], 0)
+
+        self.assertTrue(database.complete_lesson_with_rewards(second_user, "daily_conversation_01"))
+        self.assertFalse(database.complete_lesson_with_rewards(first_user, "daily_conversation_01"))
+        self.assertEqual(database.get_completed_lessons(first_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_completed_lessons(second_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_user(first_user)[2], 10)
+        self.assertEqual(database.get_user(second_user)[2], 10)
