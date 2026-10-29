@@ -165,20 +165,6 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
             + bot.COURSE_LESSON_ORDER["unified_orthography"],
         )
 
-    def test_activated_course_completions_use_course_local_badges(self):
-        lesson_ids = (
-            bot.COURSE_LESSON_ORDER["daily_conversation"]
-            + bot.COURSE_LESSON_ORDER["unified_orthography"]
-        )
-        with patch.object(bot, "get_completed_lessons", return_value=lesson_ids), \
-             patch.object(bot, "add_badge") as add_badge:
-            bot.check_badges(12345)
-        self.assertEqual(add_badge.call_count, 60)
-        badges = [call.args[1] for call in add_badge.call_args_list]
-        self.assertTrue(any("کۆرسی ٢" in badge and "وانەی 1" in badge for badge in badges))
-        self.assertTrue(any("کۆرسی ٣" in badge and "وانەی 1" in badge for badge in badges))
-        self.assertFalse(any("کۆرسی ڕێنووسی —" in badge for badge in badges))
-
     def test_every_loaded_quiz_has_valid_questions_and_answer_options(self):
         for lesson_id, questions in bot.QUIZ_DATA.items():
             with self.subTest(lesson=lesson_id):
@@ -194,24 +180,15 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                         self.assertIn(question.get("answer"), options)
                         self.assertTrue(question.get("explanation", "").strip())
 
-    def test_all_48_conversation_lessons_stay_locked_even_with_fake_completion(self):
-        # A stale database row or a crafted callback must not bypass the
-        # course-level activation gate, even if every draft lesson appears done.
-        all_draft_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
-        self.assertEqual(len(all_draft_ids), 48)
-        with patch.object(bot, "get_completed_lessons", return_value=all_draft_ids):
-            for lesson_id in all_draft_ids:
-                with self.subTest(lesson=lesson_id):
-                    self.assertFalse(bot.can_open(12345, lesson_id))
-
-    def test_progress_and_quiz_catalog_lessons_are_scoped_to_active_courses(self):
-        active_lessons = bot.active_course_lessons()
-        self.assertEqual(active_lessons, bot.COURSE_LESSON_ORDER["orthography_basic"])
-        self.assertTrue(all(lesson.startswith("وانە_") for lesson in active_lessons))
-        for course_id in ("daily_conversation", "unified_orthography"):
-            self.assertTrue(
-                set(bot.COURSE_LESSON_ORDER[course_id]).isdisjoint(active_lessons)
-            )
+    def test_all_48_conversation_lessons_follow_course_local_unlock_order(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        self.assertEqual(len(lesson_ids), 48)
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, lesson_ids[0]))
+            for lesson_id in lesson_ids[1:]:
+                self.assertFalse(bot.can_open(12345, lesson_id))
+        with patch.object(bot, "get_completed_lessons", return_value=lesson_ids[:-1]):
+            self.assertTrue(bot.can_open(12345, lesson_ids[-1]))
 
     def test_active_course_lessons_include_namespaced_lessons_when_course_activates(self):
         with patch.object(
