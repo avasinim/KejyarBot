@@ -19,6 +19,18 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertTrue(all(lesson_id in bot.LESSON_DATA for lesson_id in lesson_ids))
         self.assertEqual(len(bot.LESSON_DATA), len(set(bot.LESSON_DATA)))
 
+    def test_course_one_has_22_original_text_records(self):
+        self.assertEqual(set(bot.ORIGINAL_LESSONS_BY_NUMBER), set(range(1, 23)))
+        for number in range(1, 23):
+            with self.subTest(number=number):
+                original = bot.ORIGINAL_LESSONS_BY_NUMBER[number]
+                runtime = bot.LESSON_DATA[f"وانە_{number}"]
+                self.assertTrue(original["title"].strip())
+                self.assertTrue(original["content"].strip())
+                self.assertEqual(runtime["title"], original["title"])
+                self.assertIn(original["content"].strip(), runtime["content"])
+                self.assertNotIn("هێشتا لە فایلەکەدا نییە", runtime["content"])
+
     def test_every_manifest_lesson_has_usable_content_and_structured_quiz_data(self):
         for course in bot.COURSES:
             if course.get("status") != "active":
