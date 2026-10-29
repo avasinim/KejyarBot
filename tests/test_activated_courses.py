@@ -22,7 +22,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 12)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 55)
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
@@ -34,8 +34,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for course_id in ("orthography_basic", "daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 82)
-        self.assertEqual(len(set(all_ids)), 82)
+        self.assertEqual(len(all_ids), 125)
+        self.assertEqual(len(set(all_ids)), 125)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"][0], "وانە_1")
 
     def test_course_two_and_three_progression_is_independent(self):
@@ -70,7 +70,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 12)
+        self.assertEqual(len(keyboard), 55)
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_unified_orthography_01",
