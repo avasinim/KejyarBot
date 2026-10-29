@@ -398,7 +398,12 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "score": 0,
         "question_message_id": None,
     }
-    await send_question(query.message, context.user_data["quiz"])
+    try:
+        await send_question(query.message, context.user_data["quiz"])
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not send first quiz question for user_id=%s", user_id)
+        raise
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
