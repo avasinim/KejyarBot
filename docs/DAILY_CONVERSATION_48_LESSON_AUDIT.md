@@ -104,3 +104,16 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - Found a learner-facing clarity gap in the course catalog: the explanatory text described course status, but the four selection buttons themselves did not show it. Updated the buttons to label active, review-gated, draft, and planned courses while preserving the existing callback IDs. Added a regression test asserting the four statuses and unchanged callback IDs.
 - The new regression test has been committed, but its GitHub Actions result must be checked before considering this change verified. The 238-test result above predates this menu change.
 - All 48 conversation lessons remain `draft_for_review`; no course was activated, and no merge, deployment, production bot/data change, or dynamic-speech enablement occurred.
+
+
+### Follow-up targeted progression review and latest CI verification (2026-10-29)
+
+- Inspected the actual dialogue, objectives, exercises, role-play prompts, and quiz prompts for the repeated-topic clusters, rather than relying on titles alone.
+- Shopping progression is visible but needs editorial confirmation: lesson 8 practices a multi-item produce purchase and total cost; lesson 25 compares prices and sizes; lesson 38 asks about clothing size and trying an item before deciding. The currency changes from toman in lesson 8 to dinar in lesson 38 without an explanation of the setting. Flag this for consistency/context review; do not silently rewrite it in this technical audit.
+- Directions progress from multi-step directions and spatial relations in lesson 10, to finding a park and estimating walking time in lesson 29, to locating a neighborhood bakery in lesson 43. The latter is simpler than lesson 10, so lesson 43 should be confirmed as deliberate review/consolidation rather than assumed progression.
+- Food lessons have distinguishable stated targets: lesson 7 preferences and drinks, lesson 26 requesting a meat-free meal, lesson 37 ordering from a menu, and lesson 39 sequencing meal preparation. Lesson 37 and lesson 26 overlap on restaurant requests; lesson 37 should ideally add a clearly different function such as clarifying ingredients, confirming the order, or asking for the bill.
+- Environmental lessons differ in emphasis: lesson 33 is park etiquette/protecting plants and avoiding litter; lesson 46 adds separating plastic for reuse and group action. This appears to be a plausible progression, subject to language review.
+- Long-term learning goals in lesson 35 differ from scheduling weekly activities in lesson 41; the exercise prompts reinforce that distinction.
+- No lesson prose was changed in this pass. These are content-editorial flags, not claims of grammatical correctness.
+- Verified the latest PR head `ebf71bd702b0a36368261498939d47916be57934`: GitHub Actions run #40830749666 (“Python checks”, run 1727) completed successfully, including `compileall` and the full unittest step. This is the first verified CI result after the course-status menu regression test was added.
+- PR #6 remains open and Draft. All 48 conversation lessons remain review-gated; no merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
