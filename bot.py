@@ -234,7 +234,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -253,14 +253,19 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
-    if lesson == ORDER[-1]:
-        last_lesson_number = lesson.removeprefix("وانە_")
+    next_lesson = next_course_lesson(lesson)
+    if next_lesson is None:
+        quiz_suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
+            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{quiz_suffix}_start")
         ]])
-        await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+            await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        elif QUIZ_DATA.get(lesson):
+            await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەدایە.")
+        else:
+            await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
-        next_lesson = ORDER[ORDER.index(lesson) + 1]
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -282,12 +287,15 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if not suffix.isdigit():
-        await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
-        return
-    lesson = f"وانە_{suffix}"
-    if lesson not in ORDER:
+    lesson = f"وانە_{suffix}" if suffix.isdigit() else suffix
+    if not suffix or lesson not in LESSON_COURSE:
         await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
+    if not course_is_active(LESSON_COURSE[lesson]):
+        await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
+        return
+    if not quiz_is_available(lesson):
+        await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
@@ -434,7 +442,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     await query.answer()
     lesson = query.data.removeprefix("open_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -453,7 +461,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     lesson = query.data.removeprefix("next_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER or not can_open(user_id, lesson):
+    if lesson not in LESSON_COURSE or not can_open(user_id, lesson):
         await query.message.reply_text("🔒 وانەی پێشووتر تەواو بکە.")
         return
     data = LESSON_DATA.get(lesson)
