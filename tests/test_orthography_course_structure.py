@@ -38,15 +38,25 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertTrue(safety["do_not_enable_dynamic_speech"])
         self.assertTrue(safety["do_not_change_production_or_main"])
 
-    def test_runtime_uses_22_lessons_as_the_only_course(self):
+    def test_runtime_preserves_course_one_ids_and_loads_active_courses_two_and_three(self):
         bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
+        manifest_path = ROOT / "courses.json"
+        with manifest_path.open(encoding="utf-8") as source:
+            manifest = json.load(source)
+        courses = {course["id"]: course for course in manifest["courses"]}
         self.assertIn('load_json("course_data/orthography_foundations.json")', bot_source)
         self.assertIn('load_json("course_data/orthography_foundations_quiz_draft.json")', bot_source)
         self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
-        self.assertIn('orthography_lesson_{number:02d}_draft.md', bot_source)
-        # The lesson catalog is intentionally rendered as inline buttons, not 22 reply-keyboard menu rows.
-        self.assertIn("keyboard_rows.append([InlineKeyboardButton(", bot_source)
+        self.assertIn('load_json("course_data/daily_conversation_lessons_01_06.json")', bot_source)
+        self.assertIn('load_json("course_data/unified_orthography_lessons_01_12.json")', bot_source)
+        self.assertIn('callback_data=f"open_lesson_{lesson}"', bot_source)
         self.assertIn('reply_markup=InlineKeyboardMarkup(keyboard_rows)', bot_source)
+        self.assertEqual(courses["orthography_basic"]["status"], "active")
+        self.assertEqual(len(courses["orthography_basic"]["lesson_ids"]), 22)
+        self.assertEqual(courses["daily_conversation"]["status"], "active")
+        self.assertEqual(len(courses["daily_conversation"]["lesson_ids"]), 48)
+        self.assertEqual(courses["unified_orthography"]["status"], "active")
+        self.assertEqual(len(courses["unified_orthography"]["lesson_ids"]), 12)
         self.assertNotIn('load_json("lessons.json")', bot_source)
         self.assertNotIn('load_json("quiz.json")', bot_source)
         self.assertNotIn('"ڕێنووسی زمانی کوردی"', bot_source)

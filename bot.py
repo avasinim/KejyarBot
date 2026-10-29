@@ -36,6 +36,9 @@ from database import (
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
+from course_runtime import can_open_lesson, visible_course_lessons
+from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
+from course_quiz_review import quiz_is_available
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -104,16 +107,73 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "answer": options[correct_index],
             })
 
+
+# Courses 2 and 3 are activated by the project owner. Editorial review
+# metadata stays attached to lesson data; it is not an activation gate.
+COURSE_MANIFEST = load_json("courses.json")
+COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
+CONVERSATION_DRAFTS = [
+    load_json("course_data/daily_conversation_lessons_01_06.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
+]
+CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
+    "daily_conversation", CONVERSATION_DRAFTS
+)
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_12.json")
+UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
+for course_lessons, course_quizzes in (
+    (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
+    (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+):
+    duplicate_ids = set(LESSON_DATA).intersection(course_lessons)
+    if duplicate_ids:
+        raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_ids)}")
+    LESSON_DATA.update(course_lessons)
+    QUIZ_DATA.update(course_quizzes)
+
 LESSON_INFOGRAPHICS = {}
 
 async def send_lesson_infographic(message, lesson):
     # Course 1 infographics will be connected after they are created and reviewed.
     return
 
-ORDER = list(LESSON_DATA.keys())
+ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
+COURSE_LESSON_ORDER = {
+    course["id"]: visible_course_lessons(course, LESSON_DATA)
+    for course in COURSES
+}
+LESSON_COURSE = {
+    lesson_id: course_id
+    for course_id, lesson_ids in COURSE_LESSON_ORDER.items()
+    for lesson_id in lesson_ids
+}
+
+def course_is_active(course_id):
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    return bool(course and course.get("status") == "active")
+
+def next_course_lesson(lesson):
+    course_id = LESSON_COURSE.get(lesson)
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    if lesson not in order:
+        return None
+    index = order.index(lesson)
+    return order[index + 1] if index + 1 < len(order) else None
+
+def active_course_lessons():
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
 MENU = ReplyKeyboardMarkup(
     [
-        ["📚 وانەکان"],
+        ["📚 وانەکان", "📘 کۆرسەکان"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -122,18 +182,28 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def can_open(user_id, lesson):
-    if lesson not in ORDER:
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    index = ORDER.index(lesson)
-    return index == 0 or ORDER[index - 1] in completed
+    return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
+    courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        if course_id is None or not course_is_active(course_id):
+            continue
+        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
+            number = int(lesson.removeprefix("وانە_"))
+            if 1 <= number <= len(ORDER):
+                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+            continue
+        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
+        course = courses_by_id.get(course_id, {})
+        if isinstance(lesson_number, int) and lesson_number > 0:
+            add_badge(user_id, f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -173,7 +243,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -192,14 +262,27 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
-    if lesson == ORDER[-1]:
-        last_lesson_number = lesson.removeprefix("وانە_")
+    next_lesson = next_course_lesson(lesson)
+    if next_lesson is None:
+        if lesson.startswith("وانە_"):
+            last_lesson_number = lesson.removeprefix("وانە_")
+            quiz_suffix = last_lesson_number
+        else:
+            last_lesson_number = None
+            quiz_suffix = lesson
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی وانەی کۆتایی",
+                callback_data=f"quiz_{last_lesson_number}_start" if last_lesson_number is not None else f"quiz_{quiz_suffix}_start",
+            )
         ]])
-        await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+            await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        elif QUIZ_DATA.get(lesson):
+            await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەدایە.")
+        else:
+            await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
-        next_lesson = ORDER[ORDER.index(lesson) + 1]
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -221,12 +304,21 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if not suffix.isdigit():
-        await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
+    if suffix.isdigit():
+        lesson = f"وانە_{suffix}"
+        if lesson not in ORDER:
+            await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+            return
+    else:
+        lesson = suffix
+        if lesson not in LESSON_COURSE:
+            await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+            return
+    if not course_is_active(LESSON_COURSE[lesson]):
+        await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
-    lesson = f"وانە_{suffix}"
-    if lesson not in ORDER:
-        await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+    if not quiz_is_available(lesson):
+        await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
@@ -373,7 +465,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     await query.answer()
     lesson = query.data.removeprefix("open_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -392,7 +484,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     lesson = query.data.removeprefix("next_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER or not can_open(user_id, lesson):
+    if lesson not in LESSON_COURSE or not can_open(user_id, lesson):
         await query.message.reply_text("🔒 وانەی پێشووتر تەواو بکە.")
         return
     data = LESSON_DATA.get(lesson)
@@ -427,6 +519,33 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
         refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
 
+async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    course_id = query.data.removeprefix("course_")
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    if course is None:
+        await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
+        return
+    if not course_is_active(course_id):
+        await query.message.reply_text(f"{course['title']}\n\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
+        return
+    lesson_ids = COURSE_LESSON_ORDER.get(course_id, [])
+    completed = set(get_completed_lessons(query.from_user.id))
+    rows = []
+    for lesson in lesson_ids:
+        status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
+        title = LESSON_DATA[lesson]["title"]
+        rows.append([InlineKeyboardButton(
+            f"{status} {title}",
+            callback_data=f"open_lesson_{lesson}",
+        )])
+    await query.message.reply_text(
+        f"{course['title']}\n\n{course.get('description', '')}",
+        reply_markup=InlineKeyboardMarkup(rows),
+    )
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -446,7 +565,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
+        "📚 وانەکان", "📘 کۆرسەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
@@ -466,6 +585,21 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
             ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
             + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
+            reply_markup=InlineKeyboardMarkup(keyboard_rows),
+        )
+        return
+
+    if text == "📘 کۆرسەکان":
+        keyboard_rows = []
+        for course in COURSES:
+            status = "🟢 چالاک" if course_is_active(course.get("id")) else "⚪ پلاندانراو"
+            keyboard_rows.append([InlineKeyboardButton(
+                f"{status} · {course['title']}",
+                callback_data=f"course_{course['id']}",
+            )])
+        active_count = sum(1 for course in COURSES if course_is_active(course.get("id")))
+        await update.message.reply_text(
+            f"📚 کۆرسەکانی کەژیار\n\n{active_count} کۆرسی چالاک هەن.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
@@ -491,7 +625,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = []
+        for lesson in active_course_lessons():
+            if QUIZ_DATA.get(lesson) and lesson in completed:
+                suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+                buttons.append([InlineKeyboardButton(
+                    f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                    callback_data=f"quiz_{suffix}_start",
+                )])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
@@ -547,7 +688,8 @@ def main():
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
+    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
