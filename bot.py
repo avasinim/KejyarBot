@@ -95,11 +95,9 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     if original:
         title = original["title"]
         lesson_body = original["content"].strip()
+        # The course and lesson headers are already shown by the bot UI.
+        # Keep the lesson message focused on the supplied lesson text.
         lesson_card = (
-            "╭━━━━━━━━━━━━━━━━━━╮\n"
-            f"🌿 کەژیار  •  وانەی {kurdish_digits(number)}\n"
-            f"📖 {title}\n"
-            "╰━━━━━━━━━━━━━━━━━━╯\n\n"
             f"{lesson_body}\n\n"
             "━━━━━━━━━━━━━━━━━━\n"
             "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\n"
@@ -110,7 +108,7 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
         lesson_card = "⚠️ دەقی ئەسڵی ئەم وانەیە هێشتا لە فایلەکەدا نییە."
     LESSON_DATA[lesson_key] = {
         "title": title,
-        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\n\n{lesson_card}",
+        "content": lesson_card,
     }
     # Prefix each label with its lesson number so repeated titles remain independently accessible.
     LESSON_BUTTONS[f"وانەی {kurdish_digits(number)}: {title}"] = lesson_key
