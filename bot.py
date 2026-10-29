@@ -162,6 +162,15 @@ def next_course_lesson(lesson):
         return None
     index = order.index(lesson)
     return order[index + 1] if index + 1 < len(order) else None
+
+def active_course_lessons():
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
@@ -542,7 +551,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
+        "📚 وانەکان", "📘 کۆرسەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
