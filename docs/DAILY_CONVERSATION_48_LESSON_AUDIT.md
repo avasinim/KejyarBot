@@ -59,3 +59,12 @@ A second scan compared normalized dialogue lines, role-play prompts, quiz questi
 - 28 vocabulary terms appear in more than one lesson. Reuse is expected for core language, so this is not automatically a defect. Review topic overlaps to ensure that repeated terms are revisited in a useful new context.
 
 The two repeated dialogue lines should be checked by the editor. They may be intentional reinforcement, but if not, revise one instance so the dialogue feels specific to its lesson. No lesson text was changed by this scan.
+
+
+## Integration verification (2026-10-29)
+
+- The integration branch retains the Course 1 source lesson file from the four-course safety base; the separate PR #5 edit to that original source was not copied, so this integration does not silently rewrite user-provided lesson text.
+- The adapter regression test now loads all five conversation data files and verifies namespaced keys for lessons 1–48. Existing malformed-question, blank-option, duplicate-option, duplicate-number, and non-contiguous-number checks are preserved.
+- Runtime integrity tests verify all 82 manifest lessons load without ID collisions, all 48 conversation lessons remain locked even when fake completion rows exist, and progress/quiz listings stay scoped to active courses.
+- GitHub Actions run #40827126187 passed on commit `0d2c8ec9302dc1a89ef06d4254dd2f46768eb6f3`: compile check and 236 Python tests passed.
+- This is integration evidence only. The PR remains Draft; no merge, deployment, bot activation, production data change, or dynamic-speech enablement occurred.
