@@ -251,3 +251,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - Exercise 2 asks learners to write two questions to identify the cause of a problem, but the dialogue does not provide a second diagnostic question or a clear sequence of checks. This makes the requested exercise more demanding than the dialogue's model and leaves the troubleshooting objective only partly scaffolded.
 - During editorial revision, add one or two simple, non-technical diagnostic questions (for example, whether other devices can connect) or narrow the exercise to the troubleshooting language already modelled. Keep it beginner-friendly and avoid presenting a single fix as guaranteed. Do not change the draft silently.
 - Review flag only; no lesson JSON was changed.
+
+### Lesson 11: return-time planning is raised but not completed (2026-10-29)
+
+- Lesson 11, **«گواستنەوە و گەشت»**, includes planning a trip by bus, a meeting point/time, estimated journey duration, and preparation. Near the end, Kêjyar says they should also decide when to return, but the dialogue ends without either speaker proposing or confirming a return time.
+- The exercise asks learners to plan a fictional trip, so it could naturally practise this missing step; the current quiz only assesses the meeting point and checking trip information. This leaves a practical planning turn unresolved rather than modelling a complete itinerary.
+- During editorial revision, either complete the return-time exchange with a clearly tentative example and confirmation, or remove the unfinished prompt. Do not invent a real timetable or imply that the example is an actual transport schedule. Do not change the draft silently.
+- Review flag only; no lesson JSON was changed.
