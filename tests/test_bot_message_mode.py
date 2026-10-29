@@ -222,5 +222,52 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         send_lesson.assert_not_awaited()
 
 
+    async def test_stale_next_lesson_callback_cannot_bypass_unlock_gate(self):
+        query = SimpleNamespace(
+            data="next_lesson_daily_conversation_02",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new_callable=AsyncMock) as send_lesson,
+            patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock) as send_image,
+        ):
+            await bot.open_next_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+        send_lesson.assert_not_awaited()
+        send_image.assert_not_awaited()
+
+    async def test_stale_finish_callback_cannot_award_rewards_for_locked_lesson(self):
+        query = SimpleNamespace(
+            data="finish_daily_conversation_02",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+        complete.assert_not_called()
+        voice.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
