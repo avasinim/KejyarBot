@@ -56,7 +56,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(courses["daily_conversation"]["status"], "active")
         self.assertEqual(len(courses["daily_conversation"]["lesson_ids"]), 48)
         self.assertEqual(courses["unified_orthography"]["status"], "active")
-        self.assertEqual(len(courses["unified_orthography"]["lesson_ids"]), 12)
+        self.assertEqual(len(courses["unified_orthography"]["lesson_ids"]), 55)
         self.assertNotIn('load_json("lessons.json")', bot_source)
         self.assertNotIn('load_json("quiz.json")', bot_source)
         self.assertNotIn('"ڕێنووسی زمانی کوردی"', bot_source)
