@@ -90,6 +90,19 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("سەنوقێکت نیە", update.message.reply_text.await_args.args[0])
         voice.assert_not_awaited()
 
+    async def test_chest_database_failure_returns_retry_message_without_voice(self):
+        update, context = self.make_update_context("🎁 سەنوقی خەڵات")
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "open_chest", side_effect=RuntimeError("database unavailable")),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("دووبارە هەوڵ بدەرەوە", update.message.reply_text.await_args.args[0])
+        voice.assert_not_awaited()
+
     async def test_opened_chest_reports_reward_and_uses_configured_voice_path(self):
         update, context = self.make_update_context("🎁 سەنوقی خەڵات")
         with (
