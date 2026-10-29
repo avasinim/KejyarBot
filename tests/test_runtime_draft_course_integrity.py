@@ -249,7 +249,7 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
     @staticmethod
     def _normalized_text(value):
         import re
-        return re.sub(r"\\s+", " ", value.casefold().strip().rstrip("؟?!،,.؛:")).strip()
+        return re.sub(r"\s+", " ", value.casefold().strip().rstrip("؟?!،,.؛:")).strip()
 
     def test_draft_lessons_have_no_exact_duplicate_vocabulary_dialogue_or_quiz_options(self):
         filenames = (
