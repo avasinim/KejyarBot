@@ -453,5 +453,45 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertNotIn("quiz", context.user_data)
 
+    async def test_answer_feedback_failure_clears_quiz_state_without_rewards(self):
+        message = SimpleNamespace(
+            message_id=701,
+            reply_text=AsyncMock(side_effect=RuntimeError("telegram unavailable")),
+        )
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            message=message,
+            data="answer_0",
+            edit_message_reply_markup=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        quiz = {
+            "index": 0,
+            "lesson": "daily_conversation_01",
+            "questions": [{
+                "question": "Q",
+                "options": ["A", "B"],
+                "answer": "A",
+                "explanation": "",
+            }],
+            "score": 0,
+            "question_message_id": 701,
+        }
+        context = SimpleNamespace(user_data={"quiz": quiz})
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=["daily_conversation_01"]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "complete_quiz_with_rewards") as complete,
+        ):
+            with self.assertRaises(RuntimeError):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        complete.assert_not_called()
+
 if __name__ == "__main__":
     unittest.main()
