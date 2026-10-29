@@ -40,9 +40,12 @@ def adapt_conversation_lessons(course_id, lesson_files):
                 options = question.get("options", [])
                 answer_index = question.get("answer")
                 if (
-                    not question.get("q")
+                    not isinstance(question.get("q"), str)
+                    or not question["q"].strip()
                     or not isinstance(options, list)
                     or len(options) < 2
+                    or any(not isinstance(option, str) or not option.strip() for option in options)
+                    or len(options) != len(set(options))
                     or not isinstance(answer_index, int)
                     or isinstance(answer_index, bool)
                     or not 0 <= answer_index < len(options)
@@ -145,9 +148,12 @@ def adapt_unified_orthography_lessons(payload):
             options = question.get("options", [])
             answer_index = question.get("answer")
             if (
-                not question.get("q")
+                not isinstance(question.get("q"), str)
+                or not question["q"].strip()
                 or not isinstance(options, list)
                 or len(options) < 2
+                or any(not isinstance(option, str) or not option.strip() for option in options)
+                or len(options) != len(set(options))
                 or not isinstance(answer_index, int)
                 or isinstance(answer_index, bool)
                 or not 0 <= answer_index < len(options)
