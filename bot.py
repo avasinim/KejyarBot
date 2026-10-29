@@ -475,7 +475,16 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
-        await send_question(query.message, quiz)
+        try:
+            await send_question(query.message, quiz)
+        except Exception:
+            context.user_data.pop("quiz", None)
+            logger.exception(
+                "Could not send next quiz question for user_id=%s lesson=%s",
+                update.effective_user.id,
+                quiz.get("lesson"),
+            )
+            raise
         return
 
     lesson = quiz["lesson"]
