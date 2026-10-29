@@ -146,6 +146,33 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[2], 20)
         self.assertEqual(user[7], 1)
 
+    def test_namespaced_course_rewards_do_not_collide_with_legacy_course_one(self):
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "daily_conversation_01"))
+        self.assertFalse(database.complete_lesson_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)
+        self.assertEqual(user[1], 20)
+        self.assertEqual(user[8], 10)
+        self.assertEqual(user[9], 2)
+        self.assertEqual(
+            set(database.get_completed_lessons(12345)),
+            {"وانە_1", "daily_conversation_01"},
+        )
+
+    def test_namespaced_quiz_rewards_do_not_collide_with_legacy_course_one(self):
+        self.assertTrue(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        self.assertTrue(database.complete_quiz_with_rewards(12345, "daily_conversation_01"))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, "وانە_1"))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 40)
+        self.assertEqual(user[1], 40)
+        self.assertEqual(user[7], 2)
+        self.assertEqual(
+            set(user[10].split(",")),
+            {"وانە_1", "daily_conversation_01"},
+        )
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)
@@ -266,6 +293,73 @@ class DatabaseTests(unittest.TestCase):
         self.assertTrue(database.reserve_speech_quota(12345, day, limit=1))
         database.refund_speech_quota(12345, day)
         self.assertEqual(database.get_speech_quota_used(12345, day), 0)
+
+
+    def test_lesson_progress_and_rewards_are_isolated_per_student(self):
+        first_user, second_user = 12345, 54321
+        self.assertTrue(database.complete_lesson_with_rewards(first_user, "daily_conversation_01"))
+        self.assertEqual(database.get_completed_lessons(first_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_completed_lessons(second_user), [])
+        self.assertEqual(database.get_user(first_user)[2], 10)
+        self.assertEqual(database.get_user(second_user)[2], 0)
+
+        self.assertTrue(database.complete_lesson_with_rewards(second_user, "daily_conversation_01"))
+        self.assertFalse(database.complete_lesson_with_rewards(first_user, "daily_conversation_01"))
+        self.assertEqual(database.get_completed_lessons(first_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_completed_lessons(second_user), ["daily_conversation_01"])
+        self.assertEqual(database.get_user(first_user)[2], 10)
+        self.assertEqual(database.get_user(second_user)[2], 10)
+
+
+    def test_quiz_progress_and_rewards_are_isolated_per_student(self):
+        first_user, second_user = 12345, 54321
+        quiz_id = "daily_conversation_01"
+
+        self.assertTrue(database.complete_quiz_with_rewards(first_user, quiz_id))
+        self.assertEqual(database.get_user(first_user)[2], 20)
+        self.assertEqual(database.get_user(first_user)[7], 1)
+        self.assertEqual(database.get_user(second_user)[2], 0)
+        self.assertEqual(database.get_user(second_user)[7], 0)
+
+        self.assertTrue(database.complete_quiz_with_rewards(second_user, quiz_id))
+        self.assertFalse(database.complete_quiz_with_rewards(first_user, quiz_id))
+        self.assertEqual(database.get_user(first_user)[2], 20)
+        self.assertEqual(database.get_user(second_user)[2], 20)
+        self.assertEqual(database.get_user(first_user)[7], 1)
+        self.assertEqual(database.get_user(second_user)[7], 1)
+
+
+    def test_concurrent_duplicate_lesson_and_quiz_callbacks_award_once(self):
+        user_id = 12345
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            lesson_results = list(pool.map(
+                lambda _: database.complete_lesson_with_rewards(
+                    user_id, "daily_conversation_01"
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(lesson_results), 1)
+        user_after_lesson = database.get_user(user_id)
+        self.assertEqual(user_after_lesson[2], 10)
+        self.assertEqual(user_after_lesson[1], 10)
+        self.assertEqual(user_after_lesson[8], 5)
+        self.assertEqual(user_after_lesson[9], 1)
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            quiz_results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(
+                    user_id, "daily_conversation_01"
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(quiz_results), 1)
+        user_after_quiz = database.get_user(user_id)
+        self.assertEqual(user_after_quiz[2], 30)
+        self.assertEqual(user_after_quiz[1], 30)
+        self.assertEqual(user_after_quiz[7], 1)
+        self.assertEqual(user_after_quiz[8], 5)
+        self.assertEqual(user_after_quiz[9], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

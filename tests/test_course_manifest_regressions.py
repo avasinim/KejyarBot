@@ -23,14 +23,15 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertEqual(course["status"], "active")
         self.assertEqual(course["lesson_ids"], [f"وانە_{i}" for i in range(1, 23)])
 
-    def test_courses_two_and_three_are_wired_but_review_gated(self):
+    def test_courses_two_and_three_are_active_and_wired(self):
         for course_id in ("daily_conversation", "unified_orthography"):
             with self.subTest(course=course_id):
                 course = self.by_id[course_id]
-                self.assertEqual(course["status"], "draft_for_review")
+                self.assertEqual(course["status"], "active")
+                lesson_count = 48 if course_id == "daily_conversation" else 12
                 self.assertEqual(
                     course["lesson_ids"],
-                    [f"{course_id}_{number:02d}" for number in range(1, 13)],
+                    [f"{course_id}_{number:02d}" for number in range(1, lesson_count + 1)],
                 )
         self.assertEqual(self.by_id["grammar"]["status"], "planned")
         self.assertEqual(self.by_id["grammar"]["lesson_ids"], [])
@@ -44,7 +45,7 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertIn("complete_lesson_with_rewards(user_id, lesson)", self.bot_source)
         self.assertIn("complete_quiz_with_rewards(update.effective_user.id, lesson)", self.bot_source)
 
-    def test_course_runtime_keeps_draft_courses_behind_activation_gate(self):
+    def test_course_runtime_keeps_planned_course_behind_activation_gate(self):
         self.assertIn('lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]', self.bot_source)
         self.assertIn("بۆ خوێندکاران چالاک نەکراون", self.bot_source)
 

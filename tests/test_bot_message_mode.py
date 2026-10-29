@@ -166,7 +166,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(button.callback_data, f"open_lesson_وانە_{number}")
             self.assertTrue(button.text.startswith("🔒"))
 
-    async def test_active_course_does_not_relabel_legacy_lessons(self):
+    async def test_active_unified_orthography_course_lists_12_lessons(self):
         query = SimpleNamespace(
             data="course_unified_orthography",
             from_user=SimpleNamespace(id=12345),
@@ -180,11 +180,9 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertNotIn("بۆ خوێندکاران چالاک نەکراون", query.message.reply_text.await_args.args[0])
-        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), 12)
-        self.assertEqual(buttons[0].callback_data, "open_lesson_unified_orthography_01")
+        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(len(keyboard), 12)
+        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_unified_orthography_01")
 
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):

@@ -134,11 +134,14 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
             })
 
 
-# Load Courses 2 and 3 into the isolated runtime model. Their manifest statuses
-# remain draft_for_review until human language/source review is complete.
+# Load Courses 2 and 3 into the runtime model. The owner has explicitly requested
+# activation; lesson-level editorial review metadata is retained for transparency.
 CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
-    load_json("course_data/daily_conversation_lessons_07_12.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
 ]
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
@@ -192,9 +195,20 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def course_is_active(course_id):
-    """Only explicitly active courses may expose lessons, progress, or rewards."""
+    """Return whether the manifest explicitly marks a course as active."""
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     return bool(course and course.get("status") == "active")
+
+
+def active_course_lessons():
+    """Return lessons only from explicitly active courses, in course order."""
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
 
 
 def can_open(user_id, lesson):
@@ -218,7 +232,8 @@ def check_badges(user_id):
     courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
         course_id = LESSON_COURSE.get(lesson)
-        if course_id is None:
+        # Never issue badges for draft/planned courses, including stale DB rows.
+        if course_id is None or not course_is_active(course_id):
             continue
         if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
             # Preserve the exact legacy badge label for Course 1.
@@ -556,7 +571,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # A manifest entry alone never activates a course. Planned/draft courses
     # remain unavailable even if lesson IDs are added prematurely.
-    if course.get("status") != "active":
+    if not course_is_active(course_id):
         status_labels = {
             "planned": "لە پلانداناندا",
             "draft": "پێش‌نووس",
@@ -629,8 +644,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
+        status_labels = {
+            "active": "🟢 چالاک",
+            "draft_for_review": "🟡 لە پێداچوونەوەدایە",
+            "draft": "🟡 پێش‌نووس",
+            "planned": "⚪ لە پلانداناندا",
+        }
         keyboard_rows = [
-            [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
+            [
+                InlineKeyboardButton(
+                    f"{status_labels.get(course.get('status'), '⚪ چالاک نییە')} · {course['title']}",
+                    callback_data=f"course_{course['id']}",
+                )
+            ]
             for course in COURSES
         ]
         active_courses = [course for course in COURSES if course_is_active(course.get("id"))]

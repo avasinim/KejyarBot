@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main", "fix/**"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "fix/**"]
 
 # This workflow only reads source files and runs tests; no write permissions are needed.
 permissions:
