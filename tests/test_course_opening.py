@@ -28,6 +28,24 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(buttons), 12)
         self.assertEqual(buttons[0].callback_data, "open_lesson_daily_conversation_01")
 
+    def test_course_and_lesson_callback_payloads_fit_telegram_limit(self):
+        # Telegram limits callback_data to 1–64 UTF-8 bytes, not characters.
+        payloads = []
+        for course in bot.COURSES:
+            payloads.append(f"course_{course['id']}")
+        for lesson in bot.LESSON_COURSE:
+            payloads.extend([
+                f"open_lesson_{lesson}",
+                f"finish_{lesson}",
+                f"next_lesson_{lesson}",
+            ])
+            quiz_suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+            payloads.append(f"quiz_{quiz_suffix}_start")
+
+        oversized = [(payload, len(payload.encode("utf-8"))) for payload in payloads
+                     if not 1 <= len(payload.encode("utf-8")) <= 64]
+        self.assertEqual(oversized, [])
+
     def test_active_courses_open_only_their_first_lesson_initially(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
