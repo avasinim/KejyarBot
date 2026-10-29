@@ -36,6 +36,9 @@ from database import (
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
+from course_runtime import can_open_lesson, visible_course_lessons
+from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
+from course_quiz_review import quiz_is_available
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -104,13 +107,61 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "answer": options[correct_index],
             })
 
+
+# Courses 2 and 3 are activated by the project owner. Editorial review
+# metadata stays attached to lesson data; it is not an activation gate.
+COURSE_MANIFEST = load_json("courses.json")
+COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
+CONVERSATION_DRAFTS = [
+    load_json("course_data/daily_conversation_lessons_01_06.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
+]
+CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
+    "daily_conversation", CONVERSATION_DRAFTS
+)
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_12.json")
+UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
+for course_lessons, course_quizzes in (
+    (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
+    (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+):
+    duplicate_ids = set(LESSON_DATA).intersection(course_lessons)
+    if duplicate_ids:
+        raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_ids)}")
+    LESSON_DATA.update(course_lessons)
+    QUIZ_DATA.update(course_quizzes)
+
 LESSON_INFOGRAPHICS = {}
 
 async def send_lesson_infographic(message, lesson):
     # Course 1 infographics will be connected after they are created and reviewed.
     return
 
-ORDER = list(LESSON_DATA.keys())
+ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
+COURSE_LESSON_ORDER = {
+    course["id"]: visible_course_lessons(course, LESSON_DATA)
+    for course in COURSES
+}
+LESSON_COURSE = {
+    lesson_id: course_id
+    for course_id, lesson_ids in COURSE_LESSON_ORDER.items()
+    for lesson_id in lesson_ids
+}
+
+def course_is_active(course_id):
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    return bool(course and course.get("status") == "active")
+
+def next_course_lesson(lesson):
+    course_id = LESSON_COURSE.get(lesson)
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    if lesson not in order:
+        return None
+    index = order.index(lesson)
+    return order[index + 1] if index + 1 < len(order) else None
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان"],
@@ -122,18 +173,28 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def can_open(user_id, lesson):
-    if lesson not in ORDER:
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    index = ORDER.index(lesson)
-    return index == 0 or ORDER[index - 1] in completed
+    return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
+    courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        if course_id is None or not course_is_active(course_id):
+            continue
+        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
+            number = int(lesson.removeprefix("وانە_"))
+            if 1 <= number <= len(ORDER):
+                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+            continue
+        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
+        course = courses_by_id.get(course_id, {})
+        if isinstance(lesson_number, int) and lesson_number > 0:
+            add_badge(user_id, f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
