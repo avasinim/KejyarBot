@@ -122,6 +122,11 @@ class BotkeepPackageTests(unittest.TestCase):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(contents, encoding="utf-8")
 
+            # An allowed-looking .py symlink must not leak files from outside the repo.
+            outside_secret = Path(temporary) / "external_secret.py"
+            outside_secret.write_text("API_KEY=must-not-ship", encoding="utf-8")
+            (root / "leaked_source.py").symlink_to(outside_secret)
+
             with patch.object(packager, "ROOT", root), patch.object(packager, "OUTPUT", output):
                 with contextlib.redirect_stdout(io.StringIO()):
                     result = packager.main()
@@ -133,7 +138,8 @@ class BotkeepPackageTests(unittest.TestCase):
             self.assertTrue(required.issubset(names), sorted(required - names))
             for forbidden in (".env", "kejyar.db", "voices/kejyar.mp3",
                               "tests/test_secret.py", "docs/internal.txt",
-                              "tools/internal.py", "bot_backup.py"):
+                              "tools/internal.py", "bot_backup.py",
+                              "leaked_source.py"):
                 self.assertNotIn(forbidden, names)
 
 
