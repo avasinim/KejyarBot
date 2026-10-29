@@ -27,7 +27,7 @@ class LessonUnlockSequenceTests(unittest.TestCase):
             course for course in bot.COURSES
             if course.get("status") == "active"
         ]
-        self.assertEqual([course["id"] for course in active_courses], ["orthography_basic"])
+        self.assertEqual([course["id"] for course in active_courses], ["orthography_basic", "daily_conversation", "unified_orthography"])
         active_ids = bot.COURSE_LESSON_ORDER["orthography_basic"]
         self.assertGreaterEqual(len(active_ids), 2)
         for lesson_id in active_ids[1:]:
@@ -36,7 +36,7 @@ class LessonUnlockSequenceTests(unittest.TestCase):
                 with patch.object(bot, "get_completed_lessons", return_value=[previous]):
                     self.assertTrue(bot.can_open(12345, lesson_id))
 
-        # Progress in the active legacy course must never unlock a draft course.
+        # Progress in one active course must never unlock another course's later lesson.
         for course in bot.COURSES:
             if course.get("status") == "active":
                 continue
