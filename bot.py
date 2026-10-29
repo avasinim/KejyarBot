@@ -264,9 +264,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     next_lesson = next_course_lesson(lesson)
     if next_lesson is None:
-        quiz_suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+        if lesson.startswith("وانە_"):
+            last_lesson_number = lesson.removeprefix("وانە_")
+            quiz_suffix = last_lesson_number
+        else:
+            last_lesson_number = None
+            quiz_suffix = lesson
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{quiz_suffix}_start")
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی وانەی کۆتایی",
+                callback_data=f"quiz_{last_lesson_number}_start" if last_lesson_number is not None else f"quiz_{quiz_suffix}_start",
+            )
         ]])
         if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
             await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
@@ -296,10 +304,16 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    lesson = f"وانە_{suffix}" if suffix.isdigit() else suffix
-    if not suffix or lesson not in LESSON_COURSE:
-        await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
-        return
+    if suffix.isdigit():
+        lesson = f"وانە_{suffix}"
+        if lesson not in ORDER:
+            await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+            return
+    else:
+        lesson = suffix
+        if lesson not in LESSON_COURSE:
+            await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+            return
     if not course_is_active(LESSON_COURSE[lesson]):
         await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
@@ -613,13 +627,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         completed = set(get_completed_lessons(user_id))
         buttons = []
         for lesson in active_course_lessons():
-            if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
-                continue
-            suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
-            buttons.append([InlineKeyboardButton(
-                f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
-                callback_data=f"quiz_{suffix}_start",
-            )])
+            if QUIZ_DATA.get(lesson) and lesson in completed:
+                suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+                buttons.append([InlineKeyboardButton(
+                    f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                    callback_data=f"quiz_{suffix}_start",
+                )])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
