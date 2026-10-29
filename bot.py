@@ -122,7 +122,7 @@ CONVERSATION_DRAFTS = [
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
 )
-UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_12.json")
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
