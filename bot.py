@@ -586,7 +586,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # A manifest entry alone never activates a course. Planned/draft courses
     # remain unavailable even if lesson IDs are added prematurely.
-    if course.get("status") != "active":
+    if not course_is_active(course_id):
         status_labels = {
             "planned": "لە پلانداناندا",
             "draft": "پێش‌نووس",

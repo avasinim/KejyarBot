@@ -60,6 +60,29 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
             self.assertFalse(bot.can_open(12345, "daily_conversation_01"))
             self.assertFalse(bot.can_open(12345, "unified_orthography_01"))
 
+    async def test_review_override_opens_draft_course_catalog_for_local_review(self):
+        query = SimpleNamespace(
+            data="course_daily_conversation",
+            answer=AsyncMock(),
+            from_user=SimpleNamespace(id=12345),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+
+        with (
+            patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "true"}),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+        ):
+            await bot.open_course(update, SimpleNamespace())
+
+        query.message.reply_text.assert_awaited_once()
+        args, kwargs = query.message.reply_text.await_args
+        self.assertIn("٤٨ وانەی وتووێژ", args[0])
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(len(keyboard), 48)
+        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_daily_conversation_01")
+        self.assertEqual(keyboard[-1][0].callback_data, "open_lesson_daily_conversation_48")
+
     async def test_active_course_lists_only_its_catalog_lessons(self):
         query = SimpleNamespace(
             data="course_orthography_basic",
