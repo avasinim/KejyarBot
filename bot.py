@@ -195,9 +195,24 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def course_is_active(course_id):
-    """Only explicitly active courses may expose lessons, progress, or rewards."""
+    """Expose active courses, plus explicitly opted-in draft courses for local review only."""
     course = next((item for item in COURSES if item.get("id") == course_id), None)
-    return bool(course and course.get("status") == "active")
+    if not course:
+        return False
+    if course.get("status") == "active":
+        return True
+
+    # Default-off review switch for the user's isolated test bot. Never change
+    # the manifest status or enable draft content in normal/production runs.
+    review_enabled = os.environ.get(
+        "KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW", ""
+    ).strip().lower() in {"1", "true", "yes", "on"}
+    reviewable_drafts = {"daily_conversation", "unified_orthography"}
+    return (
+        review_enabled
+        and course_id in reviewable_drafts
+        and course.get("status") == "draft_for_review"
+    )
 
 
 def active_course_lessons():
