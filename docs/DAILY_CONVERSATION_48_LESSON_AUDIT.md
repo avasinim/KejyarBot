@@ -212,3 +212,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - This finding complements the earlier flag for lesson 42, whose objective also includes expressing an opinion without a clear opinion exchange in its dialogue. When revising, distinguish lesson 42's everyday planning/opinion practice from lesson 48's independent multi-stop plan and contingency handling.
 - No lesson JSON, runtime logic, or activation state was changed.
 
+### Gallery lesson: permission-seeking exchange is left unresolved (2026-10-29)
+
+- Lesson 34, **«لە پێشانگا و هونەر»**, includes the question **«ئایا دەتوانین وێنەکە بگرینەوە؟»** (can we take a photo of the artwork?), but the reply only says to read the gallery rules first. The dialogue never models how to check the rule, ask staff, or respond to a yes/no permission answer.
+- The exercises include preparing questions for gallery staff, but the quiz does not assess this practical permission-seeking function. This leaves a useful real-world interaction introduced but not completed or assessed.
+- During editorial revision, add a brief exchange in which they check the posted rule or ask staff and receive an explicit answer, without assuming all galleries allow photography. Add a quiz item only if the lesson's objective is intended to assess this function.
+- This is a pedagogical completeness flag only. No lesson JSON, policy assumption, runtime behavior, or activation state was changed.
+
