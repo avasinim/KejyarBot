@@ -61,6 +61,16 @@ class DailyConversationTests(unittest.TestCase):
         self.assertIn("چێشتخانە", first)
         self.assertIn("داواکاری", second)
 
+    def test_active_market_roleplay_takes_priority_over_generic_thanks(self):
+        state = {
+            "daily_chat_mode": True,
+            "daily_chat_scenario": "market",
+            "daily_chat_stage": 1,
+        }
+        reply = reply_to_daily_message("سوپاس، ئەمە چەندە؟", state)
+        self.assertIn("٣٠ هەزار دینارە", reply)
+        self.assertEqual(state["daily_chat_stage"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
