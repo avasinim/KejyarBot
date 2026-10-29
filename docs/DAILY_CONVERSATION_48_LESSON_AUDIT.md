@@ -199,3 +199,9 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - This is a structural check only; it does **not** certify that every marked answer is pedagogically ideal, that every distractor is fair, or that the Kurdish wording is fully natural. Those require lesson-by-lesson semantic and language review.
 - No lesson content, activation status, runtime logic, production data, or speech settings were changed.
 
+### Follow-up bank-and-money lesson objective coverage (2026-10-29)
+
+- Lesson 31, **«لە بانک و پارە»**, states an objective covering asking about money, making payments, and protecting money. The dialogue demonstrates locating a bank, asking about withdrawing money, needing a bank card, and protecting cash; it does not actually model a payment or compare payment methods.
+- The exercises ask learners to write two payment methods, so this part of the objective/exercise is not scaffolded by the dialogue. During editorial revision, either add a short, everyday payment exchange (for example, asking which payment methods are accepted) or narrow the stated objective/exercise to the functions the dialogue teaches. Do not invent bank policies or change the lesson JSON without the user's approval.
+- This is a teaching-alignment flag, not a code/runtime defect. No lesson content or activation status was changed.
+
