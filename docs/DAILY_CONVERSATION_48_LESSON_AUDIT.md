@@ -237,3 +237,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - Lesson 41, **«پلان بۆ هەفتە»**, models listing activities by weekday and negotiating an exercise time (“after noon is better”). Its third exercise asks the learner to change a plan and explain why, but the dialogue contains no actual cancellation, rescheduling, or reason for a change; neither quiz item checks this function.
 - During editorial revision, either add a short exchange that changes one scheduled activity and gives a reason, then assess that function, or narrow the exercise to the scheduling language demonstrated. Keep the exercise accessible to learners at this level and do not change the draft lesson silently.
 - Review flag only; no lesson JSON was changed.
+
+### Lesson 30: cumulative review does not assess all stated functions (2026-10-29)
+
+- Lesson 30, **«پێداچوونەوەی گشتی و گفتوگۆی درێژ»**, states that learners will combine questions, requests, directions, planning, and everyday responses. The dialogue does include shopping, food, directions, and a contingency message, and the exercises ask for a longer integrated dialogue.
+- Both quiz items focus on the first destination and interpreting location/direction language. Neither checks the planning/contingency function or whether the learner can combine multiple turns independently. This is a cumulative-assessment coverage gap rather than a dialogue contradiction.
+- During editorial revision, consider replacing or supplementing one quiz item with a short integrated decision or plan-change question grounded in the dialogue. Keep the quiz at the course's beginner level and do not change the draft silently.
+- Review flag only; no lesson JSON was changed.
