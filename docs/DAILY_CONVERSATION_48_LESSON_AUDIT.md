@@ -224,3 +224,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - Lesson 14 lists asking about class start time as an objective, but the dialogue only covers unfinished assignments, a difficult language lesson, and arranging to meet at the library after noon. It never asks when a class starts.
 - The exercises focus on favourite subjects, unfinished assignments, and planning study time; neither quiz item assesses the stated start-time skill.
 - During editorial revision, either add a brief question-and-answer about class start time and assess it, or narrow the objective to match the content. No lesson data was changed; this remains a review flag.
+
+### Lesson 38: discount-request exercise lacks a dialogue model (2026-10-29)
+
+- Lesson 38, **«لە کڕین و بازاڕ»**, has a clear dialogue about shirt price, larger size, and trying the shirt on before deciding. Its third exercise, however, asks the learner to write a sentence requesting a discount; no speaker models or responds to a discount request in the dialogue.
+- The quiz assesses price and trying on the shirt, so it aligns with the dialogue but leaves the discount function in the exercise unsupported.
+- During editorial revision, either add a short, natural discount-request exchange with a clear seller response, or replace the exercise with one practising a function already modelled. Do not assume every seller offers a discount, and do not silently alter the draft.
+- Review flag only; no lesson JSON was changed.
