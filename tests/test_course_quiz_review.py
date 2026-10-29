@@ -48,6 +48,40 @@ class CourseOneQuizReviewTests(unittest.TestCase):
         self.assertTrue(quiz_is_available("وانە_200"))
         self.assertTrue(quiz_is_available("daily_conversation_20"))
 
+
+    def test_runtime_rejects_start_callbacks_for_every_flagged_lesson(self):
+        from types import SimpleNamespace
+        from unittest.mock import AsyncMock, patch
+        import asyncio
+
+        async def check_flagged_start(lesson_key):
+            number = lesson_key.removeprefix("وانە_")
+            query = SimpleNamespace(
+                data=f"quiz_{number}_start",
+                message=SimpleNamespace(reply_text=AsyncMock()),
+                answer=AsyncMock(),
+            )
+            update = SimpleNamespace(
+                callback_query=query,
+                effective_user=SimpleNamespace(id=12345),
+            )
+            context = SimpleNamespace(user_data={})
+
+            with (
+                patch.object(bot, "course_is_active", return_value=True),
+                patch.object(bot, "get_completed_lessons", return_value=[lesson_key]),
+            ):
+                await bot.start_quiz(update, context)
+
+            query.answer.assert_awaited_once()
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("پێداچوونەوە", query.message.reply_text.await_args.args[0])
+            self.assertNotIn("quiz", context.user_data)
+
+        for lesson_key in sorted(COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED):
+            with self.subTest(lesson=lesson_key):
+                asyncio.run(check_flagged_start(lesson_key))
+
     def test_runtime_rejects_answer_callbacks_for_every_flagged_lesson(self):
         from types import SimpleNamespace
         from unittest.mock import AsyncMock, patch
