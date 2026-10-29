@@ -771,7 +771,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "🎁 سەنوقی خەڵات":
-        reward = open_chest(user_id)
+        try:
+            reward = open_chest(user_id)
+        except Exception:
+            logger.exception("Failed to open reward chest for user_id=%s", user_id)
+            await update.message.reply_text(
+                "⚠️ لەم ساتەدا نەمانتوانی سەنوقەکە بکەینەوە. تکایە دووبارە هەوڵ بدەرەوە."
+            )
+            return
         if reward:
             await update.message.reply_text(f"🎁 سەنوق کراوەتەوە!\n🪙 {reward} Coin وەرگرت.")
             await send_conversation_voice(
