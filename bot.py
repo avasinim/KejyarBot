@@ -134,8 +134,8 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
             })
 
 
-# Load Courses 2 and 3 into the isolated runtime model. Their manifest statuses
-# remain draft_for_review until human language/source review is complete.
+# Load Courses 2 and 3 into the runtime model. The owner has explicitly requested
+# activation; lesson-level editorial review metadata is retained for transparency.
 CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
     load_json("course_data/daily_conversation_lessons_07_30.json"),
@@ -195,24 +195,9 @@ MENU = ReplyKeyboardMarkup(
 )
 
 def course_is_active(course_id):
-    """Expose active courses, plus explicitly opted-in draft courses for local review only."""
+    """Return whether the manifest explicitly marks a course as active."""
     course = next((item for item in COURSES if item.get("id") == course_id), None)
-    if not course:
-        return False
-    if course.get("status") == "active":
-        return True
-
-    # Default-off review switch for the user's isolated test bot. Never change
-    # the manifest status or enable draft content in normal/production runs.
-    review_enabled = os.environ.get(
-        "KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW", ""
-    ).strip().lower() in {"1", "true", "yes", "on"}
-    reviewable_drafts = {"daily_conversation", "unified_orthography"}
-    return (
-        review_enabled
-        and course_id in reviewable_drafts
-        and course.get("status") == "draft_for_review"
-    )
+    return bool(course and course.get("status") == "active")
 
 
 def active_course_lessons():
