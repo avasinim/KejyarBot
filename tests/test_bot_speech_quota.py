@@ -111,6 +111,61 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(user[2], 20)  # XP
         self.assertEqual(user[7], 1)   # completed quiz count
 
+    def test_lesson_reward_transaction_rolls_back_on_database_error(self):
+        database.get_user(self.user_id)
+        conn = __import__("sqlite3").connect(database.DB_NAME)
+        try:
+            conn.execute("""
+                CREATE TRIGGER fail_lesson_reward
+                BEFORE UPDATE OF completed_lessons ON users
+                WHEN NEW.completed_lessons LIKE '%daily_conversation_01%'
+                BEGIN
+                    SELECT RAISE(ABORT, 'injected lesson write failure');
+                END
+            """)
+            conn.commit()
+        finally:
+            conn.close()
+
+        with self.assertRaises(Exception):
+            database.complete_lesson_with_rewards(
+                self.user_id, "daily_conversation_01"
+            )
+
+        user = database.get_user(self.user_id)
+        self.assertEqual(user[5], "")
+        self.assertEqual(user[1], 0)  # score
+        self.assertEqual(user[2], 0)  # XP
+        self.assertEqual(user[8], 0)  # coins
+        self.assertEqual(user[9], 0)  # chest
+
+    def test_quiz_reward_transaction_rolls_back_on_database_error(self):
+        database.get_user(self.user_id)
+        conn = __import__("sqlite3").connect(database.DB_NAME)
+        try:
+            conn.execute("""
+                CREATE TRIGGER fail_quiz_reward
+                BEFORE UPDATE OF completed_quizzes ON users
+                WHEN NEW.completed_quizzes LIKE '%daily_conversation_01%'
+                BEGIN
+                    SELECT RAISE(ABORT, 'injected quiz write failure');
+                END
+            """)
+            conn.commit()
+        finally:
+            conn.close()
+
+        with self.assertRaises(Exception):
+            database.complete_quiz_with_rewards(
+                self.user_id, "daily_conversation_01"
+            )
+
+        user = database.get_user(self.user_id)
+        self.assertEqual(user[10], "")
+        self.assertEqual(user[1], 0)  # score
+        self.assertEqual(user[2], 0)  # XP
+        self.assertEqual(user[7], 0)  # completed quiz count
+
     def test_concurrent_quota_reservations_never_exceed_daily_cap(self):
         from concurrent.futures import ThreadPoolExecutor
 
