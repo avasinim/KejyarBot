@@ -1,5 +1,7 @@
 import unittest
 
+import bot
+
 from course_quiz_review import (
     COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED,
     quiz_is_available,
@@ -31,6 +33,12 @@ class CourseOneQuizReviewTests(unittest.TestCase):
             with self.subTest(lesson_key=lesson_key):
                 self.assertIn(lesson_key, COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED)
                 self.assertFalse(quiz_is_available(lesson_key))
+
+    def test_review_flags_reference_existing_course_one_quizzes(self):
+        course_one_keys = {f"وانە_{number}" for number in range(1, 23)}
+        self.assertTrue(COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED <= course_one_keys)
+        self.assertTrue(COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED <= set(bot.QUIZ_DATA))
+        self.assertTrue(all(bot.QUIZ_DATA[key] for key in COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED))
 
     def test_unflagged_lesson_remains_available(self):
         self.assertTrue(quiz_is_available("وانە_1"))
