@@ -23,11 +23,11 @@ class CourseManifestRegressionTests(unittest.TestCase):
         self.assertEqual(course["status"], "active")
         self.assertEqual(course["lesson_ids"], [f"وانە_{i}" for i in range(1, 23)])
 
-    def test_courses_two_and_three_are_wired_and_active(self):
+    def test_courses_two_and_three_are_wired_but_review_gated(self):
         for course_id in ("daily_conversation", "unified_orthography"):
             with self.subTest(course=course_id):
                 course = self.by_id[course_id]
-                self.assertEqual(course["status"], "active")
+                self.assertEqual(course["status"], "draft_for_review")
                 self.assertEqual(
                     course["lesson_ids"],
                     [f"{course_id}_{number:02d}" for number in range(1, 13)],
