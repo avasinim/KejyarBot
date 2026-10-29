@@ -6,7 +6,7 @@ import bot
 
 
 class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
-    async def test_active_conversation_course_shows_its_own_lessons(self):
+    async def test_draft_conversation_course_stays_locked(self):
         query = SimpleNamespace(
             data="course_daily_conversation",
             from_user=SimpleNamespace(id=12345),
@@ -22,11 +22,8 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         args, kwargs = query.message.reply_text.await_args
         message = args[0]
-        self.assertNotIn("بۆ خوێندکاران چالاک نەکراون", message)
-        self.assertIsNotNone(kwargs.get("reply_markup"))
-        buttons = [button for row in kwargs["reply_markup"].inline_keyboard for button in row]
-        self.assertEqual(len(buttons), 12)
-        self.assertEqual(buttons[0].callback_data, "open_lesson_daily_conversation_01")
+        self.assertIn("بۆ خوێندکاران چالاک نەکراون", message)
+        self.assertIsNone(kwargs.get("reply_markup"))
 
     def test_active_course_catalog_matches_runtime_lesson_data(self):
         for course in bot.COURSES:
@@ -56,12 +53,12 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
                      if not 1 <= len(payload.encode("utf-8")) <= 64]
         self.assertEqual(oversized, [])
 
-    def test_active_courses_open_only_their_first_lesson_initially(self):
-        self.assertTrue(bot.course_is_active("daily_conversation"))
-        self.assertTrue(bot.course_is_active("unified_orthography"))
+    def test_draft_courses_cannot_open_lessons_before_review(self):
+        self.assertFalse(bot.course_is_active("daily_conversation"))
+        self.assertFalse(bot.course_is_active("unified_orthography"))
         with patch.object(bot, "get_completed_lessons", return_value=[]):
-            self.assertTrue(bot.can_open(12345, "daily_conversation_01"))
-            self.assertTrue(bot.can_open(12345, "unified_orthography_01"))
+            self.assertFalse(bot.can_open(12345, "daily_conversation_01"))
+            self.assertFalse(bot.can_open(12345, "unified_orthography_01"))
 
     async def test_active_course_lists_only_its_catalog_lessons(self):
         query = SimpleNamespace(
@@ -100,7 +97,7 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
 
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("3 کۆرسی چالاک هەن", text)
+        self.assertIn("1 کۆرسی چالاک هەیە", text)
         self.assertIn("پلاندانراو", text)
         self.assertIn("ڕێزمان", text)
         self.assertIn("پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە", text)
