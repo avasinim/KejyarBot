@@ -127,3 +127,10 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - The test was first appended below the module's `unittest.main()` guard; this placement was caught during review and corrected so the test remains a method of the database test class and is discoverable by unittest. CI passed after that correction.
 - Current PR #6 head is `2bc232f0338fcea2e4cedb8bb2a1820f6987107c`; it remains open and Draft against `fix/four-course-structure-2026-10-27`. No merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
 - Remaining limitation: GitHub Actions validates automated behavior, not Kurdish language naturalness or pedagogical quality. The editorial review flags above remain unresolved until a human language review is completed.
+
+### Concurrency reward regression coverage (2026-10-29)
+
+- Added `test_concurrent_duplicate_lesson_and_quiz_callbacks_award_once` in `tests/test_database.py`.
+- The test fires 16 concurrent duplicate lesson-completion calls and 16 concurrent duplicate quiz-completion calls for the same user and lesson key. It verifies each operation grants rewards exactly once and that XP, score, coins, chests, and test totals match the expected single-award totals.
+- GitHub Actions run #40835142571 passed on commit `48e7569e84ee018d530fddd339c0369f7794495f`: Python compilation and the full unittest suite passed.
+- PR #6 remains open, Draft, and unmerged. No production bot/token/data changes, deployment, course activation, or dynamic-speech enablement occurred.
