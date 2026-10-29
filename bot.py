@@ -36,6 +36,9 @@ from database import (
 from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
+from course_runtime import can_open_lesson, visible_course_lessons
+from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
+from course_quiz_review import quiz_is_available
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -70,29 +73,54 @@ def format_lesson_draft(markdown):
         lines.append(line)
     return "\n".join(lines).strip()
 
-# Course 1 is the 22-lesson orthography course. Keep database keys stable
-# (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
+# Course 1 uses the user's own original texts, not the older editorial drafts.
+# Keep all lesson IDs stable so existing student progress and rewards are preserved.
 ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
+COURSE_MANIFEST = load_json("courses.json")
+ORIGINAL_LESSONS = load_json("course_data/orthography_original_lessons.json").get("lessons", [])
+ORIGINAL_LESSONS_BY_NUMBER = {item["number"]: item for item in ORIGINAL_LESSONS}
+COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
 ORTHOGRAPHY_QUIZ_DRAFT = load_json("course_data/orthography_foundations_quiz_draft.json")
 LESSON_DATA = {}
 QUIZ_DATA = {}
 LESSON_BUTTONS = {}
+
+def kurdish_digits(value):
+    return str(value).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
+
 for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     number = course_lesson["number"]
     lesson_key = f"وانە_{number}"
-    draft_path = BASE_DIR / "course_data" / f"orthography_lesson_{number:02d}_draft.md"
-    draft_content = format_lesson_draft(draft_path.read_text(encoding="utf-8")) if draft_path.is_file() else (
-        "⚠️ ناوەڕۆکی ئەم وانەیە هێشتا ئامادە نییە."
-    )
+    original = ORIGINAL_LESSONS_BY_NUMBER.get(number)
+    if original:
+        title = original["title"]
+        lesson_body = original["content"].strip()
+        lesson_card = (
+            "╭━━━━━━━━━━━━━━━━━━╮\n"
+            f"🌿 کەژیار  •  وانەی {kurdish_digits(number)}\n"
+            f"📖 {title}\n"
+            "╰━━━━━━━━━━━━━━━━━━╯\n\n"
+            f"{lesson_body}\n\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            "✨ بە هێواشی بخوێنەوە و نموونەکان تێبینی بکە.\n"
+            "🎯 کاتێک تەواو بوویت، دوگمەی «تەواوکردنی وانە» دابگرە."
+        )
+    else:
+        title = course_lesson["title"]
+        lesson_card = "⚠️ دەقی ئەسڵی ئەم وانەیە هێشتا لە فایلەکەدا نییە."
     LESSON_DATA[lesson_key] = {
-        "title": course_lesson["title"],
-        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\n\n{draft_content}",
+        "title": title,
+        "content": f"📚 {ORTHOGRAPHY_COURSE['title']}\n\n{lesson_card}",
     }
-    LESSON_BUTTONS[course_lesson["title"]] = lesson_key
+    # Prefix each label with its lesson number so repeated titles remain independently accessible.
+    LESSON_BUTTONS[f"وانەی {kurdish_digits(number)}: {title}"] = lesson_key
     QUIZ_DATA[lesson_key] = []
 
 for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
-    number = quiz_lesson.get("lesson_number")
+    number = quiz_lesson.get("lesson_number", quiz_lesson.get("number"))
+    if number is None:
+        logger.warning("Skipping quiz entry without lesson_number or number: %r", quiz_lesson)
+        continue
     lesson_key = f"وانە_{number}"
     for question in quiz_lesson.get("questions", []):
         options = question.get("options", [])
@@ -102,15 +130,60 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
                 "question": question["question"],
                 "options": options,
                 "answer": options[correct_index],
+                "explanation": question.get("explanation", ""),
             })
 
-LESSON_INFOGRAPHICS = {}
+
+# Load Courses 2 and 3 into the runtime model. The owner has explicitly requested
+# activation; lesson-level editorial review metadata is retained for transparency.
+CONVERSATION_DRAFTS = [
+    load_json("course_data/daily_conversation_lessons_01_06.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
+]
+CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
+    "daily_conversation", CONVERSATION_DRAFTS
+)
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json(
+    "course_data/unified_orthography_lessons_01_12.json"
+)
+UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(
+    UNIFIED_ORTHOGRAPHY_DRAFT
+)
+for draft_lessons, draft_quizzes in (
+    (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
+    (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+):
+    overlap = set(LESSON_DATA).intersection(draft_lessons)
+    if overlap:
+        raise ValueError(f"Duplicate lesson IDs across courses: {sorted(overlap)}")
+    LESSON_DATA.update(draft_lessons)
+    QUIZ_DATA.update(draft_quizzes)
+
+# Optional local image assets. Keep the original lesson text available if an image is absent.
+LESSON_INFOGRAPHICS = {
+    "وانە_1": BASE_DIR / "photo_2026-10-27_00-13-52.jpg",
+}
 
 async def send_lesson_infographic(message, lesson):
-    # Course 1 infographics will be connected after they are created and reviewed.
-    return
+    image_path = LESSON_INFOGRAPHICS.get(lesson)
+    if image_path and image_path.is_file():
+        try:
+            with image_path.open("rb") as image_file:
+                await message.reply_photo(
+                    photo=image_file,
+                    caption="🌿 کەژیار | وانەی ١: پیتەکان و دەنگەکان",
+                )
+            return
+        except Exception:
+            logger.exception("Could not send lesson infographic for %s", lesson)
+    # Missing/unreadable image must never prevent the lesson text from being sent.
 
-ORDER = list(LESSON_DATA.keys())
+ORDER = [lesson_id for lesson_id in LESSON_DATA if lesson_id.startswith("وانە_")]
+COURSE_LESSON_ORDER = {course['id']: visible_course_lessons(course, LESSON_DATA) for course in COURSES}
+LESSON_COURSE = {lesson_id: course_id for course_id, ids in COURSE_LESSON_ORDER.items() for lesson_id in ids}
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان"],
@@ -121,19 +194,60 @@ MENU = ReplyKeyboardMarkup(
     resize_keyboard=True,
 )
 
+def course_is_active(course_id):
+    """Return whether the manifest explicitly marks a course as active."""
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    return bool(course and course.get("status") == "active")
+
+
+def active_course_lessons():
+    """Return lessons only from explicitly active courses, in course order."""
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
+
+
 def can_open(user_id, lesson):
-    if lesson not in ORDER:
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    index = ORDER.index(lesson)
-    return index == 0 or ORDER[index - 1] in completed
+    return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
+
+
+def next_course_lesson(lesson):
+    course_id = LESSON_COURSE.get(lesson)
+    course_order = COURSE_LESSON_ORDER.get(course_id, [])
+    if lesson not in course_order:
+        return None
+    index = course_order.index(lesson)
+    return course_order[index + 1] if index + 1 < len(course_order) else None
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
+    courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
-        number = int(lesson.removeprefix("وانە_")) if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit() else 0
-        if 1 <= number <= len(ORDER):
-            add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        course_id = LESSON_COURSE.get(lesson)
+        # Never issue badges for draft/planned courses, including stale DB rows.
+        if course_id is None or not course_is_active(course_id):
+            continue
+        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
+            # Preserve the exact legacy badge label for Course 1.
+            number = int(lesson.removeprefix("وانە_"))
+            if 1 <= number <= len(ORDER):
+                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+            continue
+        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
+        course = courses_by_id.get(course_id, {})
+        if isinstance(lesson_number, int) and lesson_number > 0:
+            add_badge(
+                user_id,
+                f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}",
+            )
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -173,7 +287,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -192,14 +306,26 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
-    if lesson == ORDER[-1]:
-        last_lesson_number = lesson.removeprefix("وانە_")
+    next_lesson = next_course_lesson(lesson)
+    if next_lesson is None:
+        # Keep legacy numeric callbacks stable while allowing namespaced course IDs.
+        quiz_lesson_id = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
         keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("📝 تاقیکردنەوەی وانەی کۆتایی", callback_data=f"quiz_{last_lesson_number}_start")
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی وانەی کۆتایی",
+                callback_data=f"quiz_{quiz_lesson_id}_start",
+            )
         ]])
-        await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+        if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+            await query.message.reply_text(
+                message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.",
+                reply_markup=keyboard,
+            )
+        elif QUIZ_DATA.get(lesson):
+            await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ دوای پشتڕاستکردنەوە چالاک دەکرێت.")
+        else:
+            await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
-        next_lesson = ORDER[ORDER.index(lesson) + 1]
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -221,12 +347,20 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if not suffix.isdigit():
+    # Numeric callback suffixes belong to Course 1; namespaced suffixes are
+    # used by future courses without colliding with existing SQLite progress.
+    lesson = f"وانە_{suffix}" if suffix.isdigit() else suffix
+    if not lesson:
         await query.message.reply_text("❌ ناسنامەی تاقیکردنەوە دروست نیە.")
         return
-    lesson = f"وانە_{suffix}"
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
+        return
+    if not course_is_active(LESSON_COURSE[lesson]):
+        await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
+        return
+    if not quiz_is_available(lesson):
+        await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەی سەرچاوەدایە؛ تکایە دواتر هەوڵ بدەوە.")
         return
     questions = QUIZ_DATA.get(lesson)
     if not questions:
@@ -260,46 +394,29 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz:
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
-
-    # Treat corrupted/stale in-memory quiz state as recoverable, not as an
-    # uncaught IndexError/KeyError that leaves the learner stuck.
-    questions = quiz.get("questions") if isinstance(quiz, dict) else None
-    index = quiz.get("index") if isinstance(quiz, dict) else None
+    # Revalidate the lesson/course gates for every answer callback. This
+    # prevents a stale quiz session from continuing after access or progress
+    # changes, even if the quiz was valid when it first started.
+    lesson = quiz.get("lesson", "")
+    course_id = LESSON_COURSE.get(lesson)
     if (
-        not isinstance(questions, list)
-        or not questions
-        or not isinstance(index, int)
-        or isinstance(index, bool)
-        or index < 0
-        or index >= len(questions)
-        or not isinstance(questions[index], dict)
+        course_id is None
+        or not course_is_active(course_id)
+        or lesson not in get_completed_lessons(update.effective_user.id)
     ):
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
-            "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            "🔒 دەستگەیشتن بەو تاقیکردنەوەیە چیتر چالاک نییە؛ "
+            "تکایە لە منووی کۆرسەکانەوە دووبارە دەستی پێ بکە."
         )
         return
-    question = questions[index]
-    options = question.get("options")
-    answer = question.get("answer")
-    if (
-        not isinstance(options, list)
-        or not options
-        or not all(isinstance(option, str) and option for option in options)
-        or len(options) != len(set(options))
-        or answer not in options
-        or not isinstance(quiz.get("question_message_id"), int)
-        or isinstance(quiz.get("question_message_id"), bool)
-        or not isinstance(quiz.get("score"), int)
-        or isinstance(quiz.get("score"), bool)
-        or quiz.get("score") < 0
-    ):
+    if not quiz_is_available(lesson):
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
-            "⚠️ پرسیاری تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            "📚 تاقیکردنەوەی ئەم وانەیە لە پێداچوونەوەدایە؛ "
+            "تکایە دواتر هەوڵ بدەوە."
         )
         return
-
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
         return
@@ -308,8 +425,13 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     raw_index = query.data.removeprefix("answer_")
     if not raw_index.isdigit():
         return
+    if not quiz.get("questions") or not 0 <= quiz.get("index", -1) < len(quiz["questions"]):
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text("⚠️ تاقیکردنەوەکە دروست نیە؛ تکایە دووبارە دەستی پێ بکە.")
+        return
+    question = quiz["questions"][quiz["index"]]
     choice_index = int(raw_index)
-    if choice_index < 0 or choice_index >= len(options):
+    if choice_index < 0 or choice_index >= len(question["options"]):
         return
     # Claim this question before the first await so duplicate callbacks cannot
     # both score an answer while the next question is being sent.
@@ -321,9 +443,13 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     answer = question["options"][choice_index]
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    explanation = question.get("explanation", "").strip()
+    if explanation:
+        feedback += f"\n\n📘 ڕوونکردنەوە: {explanation}"
+    await query.message.reply_text(feedback)
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
@@ -354,12 +480,19 @@ async def send_lesson_text(message, content, reply_markup=None):
             chunks.append(remaining)
             break
         split_at = remaining.rfind("\n", 0, limit)
-        if split_at < limit // 2:
+        if split_at >= limit // 2:
+            # Keep the newline at the end of the current chunk so paragraph
+            # and line breaks survive Telegram's message-size splitting.
+            split_at += 1
+        else:
             split_at = remaining.rfind(" ", 0, limit)
-        if split_at < limit // 2:
-            split_at = limit
-        chunks.append(remaining[:split_at].strip())
-        remaining = remaining[split_at:].strip()
+            if split_at >= limit // 2:
+                # Keep the separating space instead of silently joining words.
+                split_at += 1
+            else:
+                split_at = limit
+        chunks.append(remaining[:split_at])
+        remaining = remaining[split_at:]
     if not chunks:
         chunks = ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
     for index, chunk in enumerate(chunks):
@@ -373,7 +506,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     await query.answer()
     lesson = query.data.removeprefix("open_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER:
+    if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
@@ -392,7 +525,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     lesson = query.data.removeprefix("next_lesson_")
     user_id = query.from_user.id
-    if lesson not in ORDER or not can_open(user_id, lesson):
+    if lesson not in LESSON_COURSE or not can_open(user_id, lesson):
         await query.message.reply_text("🔒 وانەی پێشووتر تەواو بکە.")
         return
     data = LESSON_DATA.get(lesson)
@@ -427,6 +560,63 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
         refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
 
+async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    course_id = query.data.removeprefix("course_")
+    course = next((item for item in COURSES if item["id"] == course_id), None)
+    if course is None:
+        await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
+        return
+
+    # A manifest entry alone never activates a course. Planned/draft courses
+    # remain unavailable even if lesson IDs are added prematurely.
+    if not course_is_active(course_id):
+        status_labels = {
+            "planned": "لە پلانداناندا",
+            "draft": "پێش‌نووس",
+            "draft_for_review": "لە پێداچوونەوەدایە",
+        }
+        status = status_labels.get(course.get("status", "planned"), "چالاک نییە")
+        await query.message.reply_text(
+            f"{course['title']}\n\n📌 دۆخ: {status}\n"
+            f"{course.get('description', '')}\n\n"
+            "وانەکانی ئەم کۆرسە هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
+        )
+        return
+
+    lesson_ids = [lesson for lesson in course.get("lesson_ids", []) if lesson in LESSON_DATA]
+    if not lesson_ids:
+        status_labels = {
+            "planned": "لە پلانداناندا",
+            "active": "چالاک",
+            "draft": "پێش‌نووس",
+            "draft_for_review": "لە پێداچوونەوەدایە",
+        }
+        status = status_labels.get(course.get("status", "planned"), "لە پلانداناندا")
+        await query.message.reply_text(
+            f"{course['title']}\n\n"
+            f"📌 دۆخ: {status}\n"
+            f"{course.get('description', '')}\n\n"
+            "وانەکانی ئەم کۆرسە هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
+        )
+        return
+
+    completed = set(get_completed_lessons(query.from_user.id))
+    keyboard_rows = []
+    for lesson in lesson_ids:
+        status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
+        title = LESSON_DATA[lesson]["title"]
+        keyboard_rows.append([InlineKeyboardButton(
+            f"{status} {lesson}: {title}",
+            callback_data=f"open_lesson_{lesson}",
+        )])
+    await query.message.reply_text(
+        f"{course['title']}\n\n{course.get('description', '')}",
+        reply_markup=InlineKeyboardMarkup(keyboard_rows),
+    )
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -454,18 +644,47 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
-        completed = set(get_completed_lessons(user_id))
-        keyboard_rows = []
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA[lesson]["title"]
-            keyboard_rows.append([InlineKeyboardButton(
-                f"{status} {lesson}: {title}",
-                callback_data=f"open_lesson_{lesson}",
-            )])
+        status_labels = {
+            "active": "🟢 چالاک",
+            "draft_for_review": "🟡 لە پێداچوونەوەدایە",
+            "draft": "🟡 پێش‌نووس",
+            "planned": "⚪ لە پلانداناندا",
+        }
+        keyboard_rows = [
+            [
+                InlineKeyboardButton(
+                    f"{status_labels.get(course.get('status'), '⚪ چالاک نییە')} · {course['title']}",
+                    callback_data=f"course_{course['id']}",
+                )
+            ]
+            for course in COURSES
+        ]
+        active_courses = [course for course in COURSES if course_is_active(course.get("id"))]
+        planned_courses = [course for course in COURSES if not course_is_active(course.get("id"))]
+        active_names = "، ".join(
+            course.get("title", course.get("id", "")).split(": ", 1)[-1]
+            for course in active_courses
+        )
+        catalog_text = (
+            "📚 کۆرسەکانی کەژیار\n\n"
+            f"{len(active_courses)} کۆرسی چالاک هەن: {active_names}."
+        )
+        draft_review_courses = [
+            course for course in COURSES
+            if course.get("status") == "draft_for_review"
+        ]
+        if draft_review_courses:
+            catalog_text += (
+                "\n\nℹ️ کۆرسی ٢ و ٣ هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
+            )
+        if planned_courses:
+            planned_names = "، ".join(
+                course.get("title", course.get("id", "")).split(": ", 1)[-1]
+                for course in planned_courses
+            )
+            catalog_text += f"\n\n📌 کۆرسەکانی پلاندانراو: {planned_names}."
         await update.message.reply_text(
-            ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
-            + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
+            catalog_text,
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
         )
         return
@@ -491,7 +710,32 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = []
+        # Show quizzes from every active course, in manifest/course lesson order.
+        # Keep Course 1's legacy numeric callback IDs stable for existing users.
+        for course in COURSES:
+            course_id = course.get("id")
+            if not course_is_active(course_id):
+                continue
+            for lesson in COURSE_LESSON_ORDER.get(course_id, []):
+                if (
+                    not QUIZ_DATA.get(lesson)
+                    or lesson not in completed
+                    or not quiz_is_available(lesson)
+                ):
+                    continue
+                quiz_lesson_id = (
+                    lesson.removeprefix("وانە_")
+                    if lesson.startswith("وانە_")
+                    else lesson
+                )
+                lesson_title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                buttons.append([
+                    InlineKeyboardButton(
+                        f"📝 {lesson_title}",
+                        callback_data=f"quiz_{quiz_lesson_id}_start",
+                    )
+                ])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
@@ -525,10 +769,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         lines = []
-        for lesson in ORDER:
-            status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
-        await update.message.reply_text("\n".join(lines))
+        for course in COURSES:
+            course_id = course.get("id")
+            if not course_is_active(course_id):
+                continue
+            lines.append(f"📚 {course.get('title', course_id)}")
+            for lesson in COURSE_LESSON_ORDER.get(course_id, []):
+                status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
+                title = LESSON_DATA.get(lesson, {}).get("title", lesson)
+                lines.append(f"{status} — {title}")
+            lines.append("")
+        await update.message.reply_text("\n".join(lines).strip() or "هێشتا هیچ کۆرسێکی چالاک نیە.")
         return
 
     if context.user_data.get("daily_chat_mode"):
@@ -539,21 +790,41 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
 
+async def telegram_startup(app):
+    """Log successful Telegram authentication without exposing the bot token."""
+    bot_info = await app.bot.get_me()
+    logger.info(
+        "Telegram authentication succeeded: username=@%s, bot_id=%s",
+        bot_info.username,
+        bot_info.id,
+    )
+
+
 def main():
-    init_db()
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
-    app = Application.builder().token(token).build()
+
+    # Do not initialize/create the local SQLite database until configuration exists.
+    init_db()
+    app = Application.builder().token(token).post_init(telegram_startup).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
+    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
-    logger.info("KejyarBot is running")
-    app.run_polling()
+    logger.info("KejyarBot is starting; waiting for Telegram authentication and polling.")
+    try:
+        app.run_polling()
+    except Exception:
+        logger.exception(
+            "KejyarBot failed during startup or polling. Check the test token, "
+            "network access, and whether another process is polling this same test bot."
+        )
+        raise
 
 if __name__ == "__main__":
     main()
