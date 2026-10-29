@@ -219,3 +219,8 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - During editorial revision, add a brief exchange in which they check the posted rule or ask staff and receive an explicit answer, without assuming all galleries allow photography. Add a quiz item only if the lesson's objective is intended to assess this function.
 - This is a pedagogical completeness flag only. No lesson JSON, policy assumption, runtime behavior, or activation state was changed.
 
+### Lesson 14 objective alignment (2026-10-29)
+
+- Lesson 14 lists asking about class start time as an objective, but the dialogue only covers unfinished assignments, a difficult language lesson, and arranging to meet at the library after noon. It never asks when a class starts.
+- The exercises focus on favourite subjects, unfinished assignments, and planning study time; neither quiz item assesses the stated start-time skill.
+- During editorial revision, either add a brief question-and-answer about class start time and assess it, or narrow the objective to match the content. No lesson data was changed; this remains a review flag.
