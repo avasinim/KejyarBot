@@ -33,6 +33,34 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         )
         log_error.assert_called_once()
 
+    async def test_unexpected_callback_error_uses_callback_message_fallback(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(message=message)
+        update = SimpleNamespace(effective_message=None, callback_query=query)
+        context = SimpleNamespace(error=RuntimeError("callback failure"))
+
+        with patch.object(bot.logger, "error"):
+            await bot.handle_unexpected_error(update, context)
+
+        message.reply_text.assert_awaited_once()
+        self.assertIn("کێشەیەکی کاتی", message.reply_text.await_args.args[0])
+
+    async def test_unexpected_error_does_not_raise_if_retry_notice_fails(self):
+        message = SimpleNamespace(
+            reply_text=AsyncMock(side_effect=RuntimeError("telegram unavailable"))
+        )
+        update = SimpleNamespace(effective_message=message, callback_query=None)
+        context = SimpleNamespace(error=RuntimeError("handler failure"))
+
+        with (
+            patch.object(bot.logger, "error"),
+            patch.object(bot.logger, "exception") as log_exception,
+        ):
+            await bot.handle_unexpected_error(update, context)
+
+        message.reply_text.assert_awaited_once()
+        log_exception.assert_called_once()
+
     async def test_start_clears_all_daily_chat_state(self):
         message = SimpleNamespace(reply_text=AsyncMock())
         update = SimpleNamespace(
