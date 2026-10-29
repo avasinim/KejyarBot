@@ -42,6 +42,11 @@ class BotkeepPackageTests(unittest.TestCase):
         }
         self.assertTrue(required.issubset(self.relative), sorted(required - self.relative))
 
+    def test_lesson_1_jpg_is_tracked_but_excluded_from_zip(self):
+        image_path = ROOT / "photo_2026-10-27_00-13-52.jpg"
+        self.assertTrue(image_path.is_file(), "Lesson 1 source infographic must exist in the repository")
+        self.assertNotIn(image_path.relative_to(ROOT).as_posix(), self.relative)
+
     def test_text_svg_infographics_are_included(self):
         self.assertIn("assets/infographics/lesson-01-greetings.svg", self.relative)
         self.assertIn("assets/infographics/lesson-02-letters-sample.svg", self.relative)
