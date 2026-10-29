@@ -53,7 +53,10 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual([item["lesson_number"] for item in quiz_lessons], expected_numbers)
 
         source_titles = {item["number"]: item["title"] for item in source_lessons}
-        planned_titles = {item["number"]: item["title"] for item in planned_lessons}
+        planned_titles = {
+            item["number"]: item.get("source_title", item["title"])
+            for item in planned_lessons
+        }
         self.assertEqual(source_titles, planned_titles)
 
         for quiz_lesson in quiz_lessons:
