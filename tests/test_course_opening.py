@@ -6,7 +6,7 @@ import bot
 
 
 class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
-    async def test_draft_conversation_course_stays_locked(self):
+    async def test_active_conversation_course_lists_all_48_lessons(self):
         query = SimpleNamespace(
             data="course_daily_conversation",
             from_user=SimpleNamespace(id=12345),
@@ -14,16 +14,15 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
             message=SimpleNamespace(reply_text=AsyncMock()),
         )
         update = SimpleNamespace(callback_query=query)
-
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
-
-        query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
         args, kwargs = query.message.reply_text.await_args
-        message = args[0]
-        self.assertIn("بۆ خوێندکاران چالاک نەکراون", message)
-        self.assertIsNone(kwargs.get("reply_markup"))
+        self.assertIn("٤٨ وانەی وتووێژ", args[0])
+        keyboard = kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(len(keyboard), 48)
+        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_daily_conversation_01")
+        self.assertEqual(keyboard[-1][0].callback_data, "open_lesson_daily_conversation_48")
 
     def test_active_course_catalog_matches_runtime_lesson_data(self):
         for course in bot.COURSES:
@@ -53,35 +52,28 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
                      if not 1 <= len(payload.encode("utf-8")) <= 64]
         self.assertEqual(oversized, [])
 
-    def test_draft_courses_cannot_open_lessons_before_review(self):
-        self.assertFalse(bot.course_is_active("daily_conversation"))
-        self.assertFalse(bot.course_is_active("unified_orthography"))
+    def test_courses_two_and_three_are_active_and_first_lessons_open(self):
+        self.assertTrue(bot.course_is_active("daily_conversation"))
+        self.assertTrue(bot.course_is_active("unified_orthography"))
         with patch.object(bot, "get_completed_lessons", return_value=[]):
-            self.assertFalse(bot.can_open(12345, "daily_conversation_01"))
-            self.assertFalse(bot.can_open(12345, "unified_orthography_01"))
+            self.assertTrue(bot.can_open(12345, "daily_conversation_01"))
+            self.assertTrue(bot.can_open(12345, "unified_orthography_01"))
+            self.assertFalse(bot.can_open(12345, "daily_conversation_02"))
+            self.assertFalse(bot.can_open(12345, "unified_orthography_02"))
 
-    async def test_review_override_opens_draft_course_catalog_for_local_review(self):
-        query = SimpleNamespace(
-            data="course_daily_conversation",
-            answer=AsyncMock(),
-            from_user=SimpleNamespace(id=12345),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-
-        with (
-            patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "true"}),
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-        ):
-            await bot.open_course(update, SimpleNamespace())
-
-        query.message.reply_text.assert_awaited_once()
-        args, kwargs = query.message.reply_text.await_args
-        self.assertIn("٤٨ وانەی وتووێژ", args[0])
-        keyboard = kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 48)
-        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_daily_conversation_01")
-        self.assertEqual(keyboard[-1][0].callback_data, "open_lesson_daily_conversation_48")
+    async def test_active_course_catalogs_open_without_review_override(self):
+        for course_id, expected_count in (("daily_conversation", 48), ("unified_orthography", 12)):
+            query = SimpleNamespace(
+                data=f"course_{course_id}",
+                answer=AsyncMock(),
+                from_user=SimpleNamespace(id=12345),
+                message=SimpleNamespace(reply_text=AsyncMock()),
+            )
+            with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "false"}):
+                with patch.object(bot, "get_completed_lessons", return_value=[]):
+                    await bot.open_course(SimpleNamespace(callback_query=query), SimpleNamespace())
+            keyboard = query.message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+            self.assertEqual(len(keyboard), expected_count)
 
     async def test_active_course_lists_only_its_catalog_lessons(self):
         query = SimpleNamespace(
@@ -120,10 +112,10 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
 
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("1 کۆرسی چالاک هەن", text)
+        self.assertIn("3 کۆرسی چالاک هەن", text)
         self.assertIn("پلاندانراو", text)
         self.assertIn("ڕێزمان", text)
-        self.assertIn("بۆ خوێندکاران چالاک نەکراون", text)
+        self.assertNotIn("بۆ خوێندکاران چالاک نەکراون", text)
 
 
     def test_completion_in_one_course_never_unlocks_another_courses_next_lesson(self):
@@ -153,8 +145,8 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         labels = [row[0].text for row in keyboard]
         self.assertEqual(len(labels), 4)
         self.assertIn("🟢 چالاک", labels[0])
-        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[1])
-        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[2])
+        self.assertIn("🟢 چالاک", labels[1])
+        self.assertIn("🟢 چالاک", labels[2])
         self.assertIn("⚪ لە پلانداناندا", labels[3])
         self.assertEqual(
             [row[0].callback_data for row in keyboard],
