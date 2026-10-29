@@ -1,14 +1,16 @@
 # Courses 2–3 Editorial Review Status
 
-Date: 2026-10-28  
-Branch: `fix/four-course-structure-2026-10-27`  
-Scope: test branch only. No production files, bot token, database, or deployment changed.
+Date: 2026-10-29  
+Branch: `fix/integration-daily-conversation-48-2026-10-29`  
+Scope: integration branch only. No production files, bot token, database, or deployment changed.
+
+> **Current status:** By the owner's explicit request, Course 2 (48 lessons) and Course 3 (12 lessons) are technically `active` in the integration manifest. Lesson-level editorial review remains incomplete; this is not final language approval or a production release. The full local suite passed 244 tests on commit `d4af297` (7.238 seconds). Dynamic speech remains disabled.
 
 ## Current state
 
-- Course 2, `daily_conversation`: 12 ordered lessons. Each lesson has an objective, dialogue, vocabulary, exercises, comprehension prompts, role-play guidance, and valid multiple-choice quiz data.
+- Course 2, `daily_conversation`: 48 ordered lessons. Each lesson has an objective, dialogue, vocabulary, exercises, comprehension prompts, role-play guidance, and valid multiple-choice quiz data. The detailed lesson-by-lesson review notes below were written for lessons 1–12; lessons 13–48 are tracked in `docs/DAILY_CONVERSATION_48_LESSON_AUDIT.md`.
 - Course 3, `unified_orthography`: 12 ordered lessons. Each lesson has an objective, key points, examples, exercises, comprehension prompts, practical work, and valid multiple-choice quiz data.
-- Both courses intentionally remain `draft_for_review`. Structural validity is not linguistic approval; do not activate either course solely because the bot can load it.
+- Both courses are technically active in the integration manifest by explicit owner request. Structural validity is not linguistic approval; retain `draft_editorial_review` metadata until practical language review is complete and do not infer production release.
 - Course 4 remains planned and out of scope.
 
 ## Course 2 — required editorial pass
@@ -19,7 +21,7 @@ Scope: test branch only. No production files, bot token, database, or deployment
 4. Check progression from greetings and self-introduction through family, home, routines, food, shopping, time, directions, travel, and final practice.
 5. After editorial corrections, test opening lessons in order, completion/unlock behavior, quiz callbacks, and returning to the course menu on the isolated Telegram test bot.
 
-## Course 3 — issues to resolve before activation
+## Course 3 — editorial issues to resolve before production release
 
 1. **Lesson 7, `ک/ك، ھ/ه و ە`:** The lesson mixes practical Kurdish spelling with Unicode look-alike/code-point discussion. Keep the distinction between the Kurdish letter `ه` and the visually similar `ھ` explicit; do not present `ھ` as a normal replacement for `ه`. Decide whether the technical-code-point material belongs in this beginner course.
 2. **Lesson 9, `ئامرازەکان و پێکەوەنووسین`:** The examples test spacing in specific phrases, while the lesson itself correctly notes that the general joining/separation rule has not yet been confirmed. Verify every example against the course's chosen orthographic authority before stating a general rule.
@@ -30,13 +32,13 @@ Scope: test branch only. No production files, bot token, database, or deployment
 
 ## Release gate
 
-Before changing either course status to `active`:
+Before any production release:
 
 - Resolve the items above and record which authority/standard governs the examples.
 - Re-check all 24 lessons and quiz keys against the final edited lesson text.
 - Run the repository test suite in a clean checkout and confirm the test results.
 - Test the complete learner journey on the isolated Telegram test bot.
-- Keep the production bot, production token, production database, `main`, and PR merge untouched unless separately and explicitly authorized.
+- Keep the production bot, production token, production database, and `main` untouched unless separately and explicitly authorized. PR #6 was merged only into `fix/four-course-structure-2026-10-27`; this integration branch's subsequent commits are separate.
 - Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false` and preserve the existing approved voice.
 
 ## Automated checks (2026-10-28)
@@ -65,7 +67,7 @@ This is a review log, not a blanket rewrite. Course JSON was inspected directly;
 5. **Lesson 5, productive practice:** The exercise asks learners to repeat location/room-count information already supplied. Add a productive task that makes them use the vocabulary in a new description.
 6. **Lesson 6, time expression:** Confirm the preferred spoken form for telling time and keep it consistent across lessons 6, 9, 11 and 12.
 7. **Lesson 7, vocabulary precision:** The gloss for “مریشک” says it means chicken as food in this dialogue, which can confuse the animal and meat senses. Give a simpler context-sensitive gloss. Also verify that past/perfect forms such as “خواردووە” fit the intended beginner progression.
-8. **Lesson 8, currency/context:** The arithmetic is internally correct: two kilograms of apples at 3,000 plus one kilogram of oranges at 3,000 equals 9,000 toman. Confirm the currency is intentional for the audience or mark the prices as fictional/context-specific.
+8. **Lesson 8, currency/context:** The arithmetic is internally correct: two kilograms of apples at 3,000 dinars plus one kilogram of oranges at 3,000 dinars equals 9,000 dinars. The current dialogue consistently uses dinar; confirm that the prices are clear for beginners.
 9. **Lesson 9, date convention:** “بیست و حەوتی مانگی بەفرانبار” assumes a particular calendar/month convention. Confirm it fits the intended audience and standardize clock-time notation throughout.
 10. **Lesson 10, directions:** The dialogue combines straight ahead, turning right, beside, opposite and behind. The quiz keys match the dialogue, but learners need a simple route-sequence exercise before being assessed on all relations together.
 11. **Lesson 11, travel plan:** The dialogue appropriately marks the one-hour trip duration as an estimate to be checked; preserve that uncertainty. Review whether “کاتژمێر چەند دەڕۆین؟” is the most natural phrasing for the intended register.
@@ -87,4 +89,4 @@ This is a review log, not a blanket rewrite. Course JSON was inspected directly;
 
 ### Review boundary
 
-No lesson content or course activation status was changed during this focused pass. These findings need editorial decisions and, where a rule is disputed, confirmation against the chosen Kurdish orthographic source before changes are made.
+This focused pass was a historical editorial log and did not change lesson content. Course activation was subsequently requested and applied in the integration manifest. The remaining findings need editorial decisions and, where a rule is disputed, confirmation against the chosen Kurdish orthographic source before changes are made.
