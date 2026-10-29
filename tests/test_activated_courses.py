@@ -24,6 +24,9 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 12)
 
+    def test_startup_validation_confirms_both_activated_courses_are_complete(self):
+        bot.validate_activated_course_runtime()
+
     def test_course_lesson_ids_are_unique_and_do_not_replace_course_one_ids(self):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 22)
         all_ids = [
