@@ -17,7 +17,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), message, query
 
-    def test_manifest_activates_48_and_12_lessons_without_activating_course_four(self):
+    def test_manifest_activates_48_and_55_lessons_without_activating_course_four(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
@@ -65,7 +65,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "open_lesson_daily_conversation_01",
         )
 
-    async def test_open_course_three_shows_all_12_lesson_buttons(self):
+    async def test_open_course_three_shows_all_55_lesson_buttons(self):
         update, message, query = self.make_update("course_unified_orthography")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
