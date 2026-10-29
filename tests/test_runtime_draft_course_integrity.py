@@ -19,6 +19,27 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                 self.assertTrue(all(lesson_id in bot.LESSON_DATA for lesson_id in lesson_ids))
         self.assertEqual(len(bot.LESSON_DATA), len(set(bot.LESSON_DATA)))
 
+    def test_every_manifest_lesson_has_usable_content_and_structured_quiz_data(self):
+        for course in bot.COURSES:
+            if course.get("status") != "active":
+                continue
+            for lesson_id in course.get("lesson_ids", []):
+                with self.subTest(course=course["id"], lesson=lesson_id):
+                    lesson = bot.LESSON_DATA[lesson_id]
+                    self.assertTrue(lesson.get("title", "").strip())
+                    self.assertTrue(lesson.get("content", "").strip())
+                    self.assertIn(lesson_id, bot.QUIZ_DATA)
+                    questions = bot.QUIZ_DATA[lesson_id]
+                    self.assertTrue(questions, "Every active lesson must have quiz data, even if editorial review gates access.")
+                    for question in questions:
+                        options = question.get("options")
+                        self.assertTrue(question.get("question", "").strip())
+                        self.assertIsInstance(options, list)
+                        self.assertGreaterEqual(len(options), 2)
+                        self.assertTrue(all(isinstance(option, str) and option.strip() for option in options))
+                        self.assertEqual(len(options), len(set(options)))
+                        self.assertIn(question.get("answer"), options)
+
     def test_active_course_lessons_and_quizzes_are_loaded(self):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             for course_id in ("daily_conversation", "unified_orthography"):
