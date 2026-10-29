@@ -286,6 +286,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    # Navigation away from a quiz invalidates its old inline answer buttons.
+    context.user_data.pop("quiz", None)
     await query.answer()
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
@@ -505,6 +507,8 @@ async def send_lesson_text(message, content, reply_markup=None):
 
 async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    # Navigation away from a quiz invalidates its old inline answer buttons.
+    context.user_data.pop("quiz", None)
     await query.answer()
     lesson = query.data.removeprefix("open_lesson_")
     user_id = query.from_user.id
@@ -524,6 +528,8 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    # Navigation away from a quiz invalidates its old inline answer buttons.
+    context.user_data.pop("quiz", None)
     await query.answer()
     lesson = query.data.removeprefix("next_lesson_")
     user_id = query.from_user.id
@@ -573,6 +579,8 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    # Navigation away from a quiz invalidates its old inline answer buttons.
+    context.user_data.pop("quiz", None)
     await query.answer()
     course_id = query.data.removeprefix("course_")
     course = next((item for item in COURSES if item["id"] == course_id), None)
