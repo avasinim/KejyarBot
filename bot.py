@@ -676,8 +676,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if course.get("status") == "draft_for_review"
         ]
         if draft_review_courses:
+            review_names = "، ".join(
+                course.get("title", course.get("id", "")).split(": ", 1)[-1]
+                for course in draft_review_courses
+            )
             catalog_text += (
-                "\n\nℹ️ کۆرسی ٢ و ٣ هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
+                f"\n\nℹ️ {review_names} هێشتا لە پێداچوونەوەی ناوەڕۆکدان؛ "
+                "بەڵام لە ڕێڕەوی فێربووندا چالاکن و دەتوانیت وانەکانیان بکەیتەوە."
             )
         if planned_courses:
             planned_names = "، ".join(
