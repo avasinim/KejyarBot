@@ -86,3 +86,21 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - Updated `course_runtime.py` documentation examples to match the actual namespaced lesson keys.
 - GitHub Actions run #40828234599 passed on commit `9f0de71653586c9fc6a7fef1063f3bc30705c634`: compile check and all 238 Python tests passed.
 - The PR remains open and Draft; no merge, deployment, production bot/data changes, or dynamic-speech enablement occurred.
+
+
+### Follow-up content overlap and menu clarity review (2026-10-29)
+
+- Re-read the titles, objectives, dialogue lines, role-play prompts, quiz prompts, and vocabulary across all five current data files (48 lessons). This was a cross-lesson repetition and progression scan, not a Kurdish-language correctness review.
+- Confirmed two exact repeated dialogue lines after whitespace/punctuation normalization:
+  - Lessons 1 and 12: “سڵاو ئاڕگەش! چۆنی؟” / “سڵاو ئاڕگەش، چۆنی؟”
+  - Lessons 13 and 43: “زۆر سپاس بۆ ڕێنماییەکەت.”
+- No exact repeated role-play prompts or quiz prompts were found across lessons. Vocabulary recycling occurs, including terms reused in the same broad topic; that is not inherently a defect.
+- The title/objective scan adds these editorial review candidates to the previously identified clusters:
+  - Lessons 7, 26, 37, 39: food/drink, restaurant requests, meat-free requests, and preparing food. Verify that each lesson teaches a distinct communicative outcome.
+  - Lessons 33 and 46: parks/nature and environmental protection. Confirm lesson 46 extends rather than duplicates the environmental language in lesson 33.
+  - Lessons 34 and 40: art/exhibitions and books/films both practice opinions; distinguish the target expressions and context.
+  - Lessons 35 and 41: future goals and weekly planning; verify that long-term goals and near-term scheduling are clearly differentiated.
+- These are review flags, not confirmed defects. No lesson text or vocabulary was changed.
+- Found a learner-facing clarity gap in the course catalog: the explanatory text described course status, but the four selection buttons themselves did not show it. Updated the buttons to label active, review-gated, draft, and planned courses while preserving the existing callback IDs. Added a regression test asserting the four statuses and unchanged callback IDs.
+- The new regression test has been committed, but its GitHub Actions result must be checked before considering this change verified. The 238-test result above predates this menu change.
+- All 48 conversation lessons remain `draft_for_review`; no course was activated, and no merge, deployment, production bot/data change, or dynamic-speech enablement occurred.
