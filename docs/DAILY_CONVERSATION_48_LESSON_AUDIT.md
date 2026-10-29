@@ -244,3 +244,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - Both quiz items focus on the first destination and interpreting location/direction language. Neither checks the planning/contingency function or whether the learner can combine multiple turns independently. This is a cumulative-assessment coverage gap rather than a dialogue contradiction.
 - During editorial revision, consider replacing or supplementing one quiz item with a short integrated decision or plan-change question grounded in the dialogue. Keep the quiz at the course's beginner level and do not change the draft silently.
 - Review flag only; no lesson JSON was changed.
+
+### Lesson 24: troubleshooting exercise is only lightly scaffolded (2026-10-29)
+
+- Lesson 24, **«داواکردن و چارەسەرکردنی کێشە»**, introduces an internet connection problem. The dialogue asks whether the modem was checked and suggests restarting it, so it models one initial check and one simple response.
+- Exercise 2 asks learners to write two questions to identify the cause of a problem, but the dialogue does not provide a second diagnostic question or a clear sequence of checks. This makes the requested exercise more demanding than the dialogue's model and leaves the troubleshooting objective only partly scaffolded.
+- During editorial revision, add one or two simple, non-technical diagnostic questions (for example, whether other devices can connect) or narrow the exercise to the troubleshooting language already modelled. Keep it beginner-friendly and avoid presenting a single fix as guaranteed. Do not change the draft silently.
+- Review flag only; no lesson JSON was changed.
