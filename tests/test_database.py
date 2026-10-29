@@ -329,5 +329,37 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_user(second_user)[7], 1)
 
 
+    def test_concurrent_duplicate_lesson_and_quiz_callbacks_award_once(self):
+        user_id = 12345
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            lesson_results = list(pool.map(
+                lambda _: database.complete_lesson_with_rewards(
+                    user_id, "daily_conversation_01"
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(lesson_results), 1)
+        user_after_lesson = database.get_user(user_id)
+        self.assertEqual(user_after_lesson[2], 10)
+        self.assertEqual(user_after_lesson[1], 10)
+        self.assertEqual(user_after_lesson[8], 5)
+        self.assertEqual(user_after_lesson[9], 1)
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            quiz_results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(
+                    user_id, "daily_conversation_01"
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(quiz_results), 1)
+        user_after_quiz = database.get_user(user_id)
+        self.assertEqual(user_after_quiz[2], 30)
+        self.assertEqual(user_after_quiz[1], 30)
+        self.assertEqual(user_after_quiz[7], 1)
+        self.assertEqual(user_after_quiz[8], 5)
+        self.assertEqual(user_after_quiz[9], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
