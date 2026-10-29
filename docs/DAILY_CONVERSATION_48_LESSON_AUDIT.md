@@ -117,3 +117,13 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - No lesson prose was changed in this pass. These are content-editorial flags, not claims of grammatical correctness.
 - Verified the latest PR head `ebf71bd702b0a36368261498939d47916be57934`: GitHub Actions run #40830749666 (“Python checks”, run 1727) completed successfully, including `compileall` and the full unittest step. This is the first verified CI result after the course-status menu regression test was added.
 - PR #6 remains open and Draft. All 48 conversation lessons remain review-gated; no merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
+
+
+### Student progress isolation and callback-gate verification (2026-10-29)
+
+- Re-inspected runtime gates for opening lessons, finishing lessons, starting quizzes, answering quizzes, and awarding badges. Course-level status is rechecked on lesson and quiz callbacks; quiz-answer callbacks also revalidate active course status and lesson completion. Forged callbacks for the 48 draft conversation lessons are covered by callback-level regression tests.
+- Added a database regression test confirming that the same namespaced lesson key is stored independently for two student IDs, each student receives their own first-completion reward, and a repeated completion by one student does not alter the other student's progress or XP.
+- GitHub Actions run #40834804899 passed on commit `2bc232f0338fcea2e4cedb8bb2a1820f6987107c`. Dependency installation, `compileall`, the complete unittest step, and job cleanup all completed successfully.
+- The test was first appended below the module's `unittest.main()` guard; this placement was caught during review and corrected so the test remains a method of the database test class and is discoverable by unittest. CI passed after that correction.
+- Current PR #6 head is `2bc232f0338fcea2e4cedb8bb2a1820f6987107c`; it remains open and Draft against `fix/four-course-structure-2026-10-27`. No merge, deployment, production bot/data change, course activation, or dynamic-speech enablement occurred.
+- Remaining limitation: GitHub Actions validates automated behavior, not Kurdish language naturalness or pedagogical quality. The editorial review flags above remain unresolved until a human language review is completed.
