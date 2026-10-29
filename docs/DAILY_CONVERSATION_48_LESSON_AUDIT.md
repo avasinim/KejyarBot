@@ -205,3 +205,10 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - The exercises ask learners to write two payment methods, so this part of the objective/exercise is not scaffolded by the dialogue. During editorial revision, either add a short, everyday payment exchange (for example, asking which payment methods are accepted) or narrow the stated objective/exercise to the functions the dialogue teaches. Do not invent bank policies or change the lesson JSON without the user's approval.
 - This is a teaching-alignment flag, not a code/runtime defect. No lesson content or activation status was changed.
 
+### Final review lesson: stated opinion skill is not assessed (2026-10-29)
+
+- Lesson 48 objective explicitly includes **«بۆچوون»** (expressing an opinion), but its dialogue is primarily a sequence of errands and conditional plans (library return, shopping, park, lunch, and notifying each other if a problem occurs). Neither quiz item asks the learner to express, understand, or justify an opinion.
+- This creates a specific objective-to-dialogue-and-assessment gap in the final integrated review. During editorial revision, either add a natural exchange in which the speakers state a preference and briefly give a reason, with a quiz item checking that function, or remove «بۆچوون» from the objective. Do not silently change the draft lesson.
+- This finding complements the earlier flag for lesson 42, whose objective also includes expressing an opinion without a clear opinion exchange in its dialogue. When revising, distinguish lesson 42's everyday planning/opinion practice from lesson 48's independent multi-stop plan and contingency handling.
+- No lesson JSON, runtime logic, or activation state was changed.
+
