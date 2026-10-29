@@ -1,7 +1,6 @@
-"""Runtime integrity checks for the isolated multi-course candidate.
+"""Runtime integrity checks for the activated multi-course candidate.
 
-These tests intentionally verify that draft material is loaded for integration
-checks without making it available to learners.
+Lesson-level editorial metadata remains visible, while the course manifest is active.
 """
 import json
 import unittest
@@ -121,41 +120,64 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         self.assertIn("ئەلفبێی زمانی کوردی", lesson["content"])
         self.assertIn("تەواوکردنی وانە", lesson["content"])
 
-    def test_draft_course_lessons_and_quizzes_are_loaded_but_review_gated(self):
+    def test_activated_course_lessons_and_quizzes_are_available(self):
         for course_id in ("daily_conversation", "unified_orthography"):
             with self.subTest(course=course_id):
-                self.assertFalse(bot.course_is_active(course_id))
-                for lesson_id in bot.COURSE_LESSON_ORDER[course_id]:
-                    self.assertFalse(bot.can_open(12345, lesson_id))
+                self.assertTrue(bot.course_is_active(course_id))
+                lesson_ids = bot.COURSE_LESSON_ORDER[course_id]
+                self.assertTrue(lesson_ids)
+                with patch.object(bot, "get_completed_lessons", return_value=[]):
+                    self.assertTrue(bot.can_open(12345, lesson_ids[0]))
+                    if len(lesson_ids) > 1:
+                        self.assertFalse(bot.can_open(12345, lesson_ids[1]))
+                for lesson_id in lesson_ids:
                     self.assertIn("draft_editorial_review", bot.LESSON_DATA[lesson_id]["review_status"])
                     self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
                     questions = bot.QUIZ_DATA[lesson_id]
                     self.assertTrue(questions)
                     self.assertTrue(all(q.get("question") and q.get("explanation") for q in questions))
 
-    def test_review_override_exposes_courses_2_and_3_only_when_explicitly_enabled(self):
-        # This switch is for the user's isolated test bot; manifest statuses
-        # remain draft_for_review and the default runtime remains locked.
-        with (
-            patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "true"}),
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-        ):
-            for course_id in ("daily_conversation", "unified_orthography"):
-                with self.subTest(course=course_id):
-                    self.assertTrue(bot.course_is_active(course_id))
-                    first_lesson = bot.COURSE_LESSON_ORDER[course_id][0]
-                    self.assertTrue(bot.can_open(12345, first_lesson))
-            self.assertTrue(bot.course_is_active("orthography_basic"))
+    def test_course_activation_does_not_depend_on_review_override_flag(self):
+        for flag in ("false", "true", ""):
+            with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": flag}):
+                self.assertTrue(bot.course_is_active("daily_conversation"))
+                self.assertTrue(bot.course_is_active("unified_orthography"))
+        self.assertFalse(bot.course_is_active("grammar"))
 
-        with (
-            patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "false"}),
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-        ):
-            for course_id in ("daily_conversation", "unified_orthography"):
-                with self.subTest(course=course_id, disabled=True):
-                    self.assertFalse(bot.course_is_active(course_id))
-                    first_lesson = bot.COURSE_LESSON_ORDER[course_id][0]
-                    self.assertFalse(bot.can_open(12345, first_lesson))
+    def test_all_48_conversation_lessons_follow_course_local_unlock_order(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        self.assertEqual(len(lesson_ids), 48)
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, lesson_ids[0]))
+            for lesson_id in lesson_ids[1:]:
+                self.assertFalse(bot.can_open(12345, lesson_id))
+        with patch.object(bot, "get_completed_lessons", return_value=lesson_ids[:-1]):
+            self.assertTrue(bot.can_open(12345, lesson_ids[-1]))
+
+    def test_active_course_lessons_include_all_82_manifest_lessons(self):
+        active_lessons = bot.active_course_lessons()
+        self.assertEqual(len(active_lessons), 82)
+        self.assertEqual(set(active_lessons), set(bot.LESSON_DATA))
+        self.assertEqual(
+            active_lessons,
+            bot.COURSE_LESSON_ORDER["orthography_basic"]
+            + bot.COURSE_LESSON_ORDER["daily_conversation"]
+            + bot.COURSE_LESSON_ORDER["unified_orthography"],
+        )
+
+    def test_activated_course_completions_use_course_local_badges(self):
+        lesson_ids = (
+            bot.COURSE_LESSON_ORDER["daily_conversation"]
+            + bot.COURSE_LESSON_ORDER["unified_orthography"]
+        )
+        with patch.object(bot, "get_completed_lessons", return_value=lesson_ids), \
+             patch.object(bot, "add_badge") as add_badge:
+            bot.check_badges(12345)
+        self.assertEqual(add_badge.call_count, 60)
+        badges = [call.args[1] for call in add_badge.call_args_list]
+        self.assertTrue(any("کۆرسی ٢" in badge and "وانەی 1" in badge for badge in badges))
+        self.assertTrue(any("کۆرسی ٣" in badge and "وانەی 1" in badge for badge in badges))
+        self.assertFalse(any("کۆرسی ڕێنووسی —" in badge for badge in badges))
 
     def test_every_loaded_quiz_has_valid_questions_and_answer_options(self):
         for lesson_id, questions in bot.QUIZ_DATA.items():
