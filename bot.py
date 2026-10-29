@@ -315,9 +315,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             user_id,
             lesson,
         )
-    new_level = get_user_level(user_id)
+    new_level = None
+    try:
+        new_level = get_user_level(user_id)
+    except Exception:
+        logger.exception(
+            "Lesson reward was saved, but level lookup failed for user_id=%s lesson=%s",
+            user_id,
+            lesson,
+        )
     message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
-    if old_level != new_level:
+    if new_level is not None and old_level != new_level:
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
     next_lesson = next_course_lesson(lesson)
