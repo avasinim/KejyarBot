@@ -28,6 +28,10 @@ EXCLUDED_FILES = {
 
 
 def include(path: Path) -> bool:
+    # Never follow symlinks: an allowed-looking filename could point outside
+    # the repository and accidentally package a secret or unrelated file.
+    if path.is_symlink():
+        return False
     relative = path.relative_to(ROOT)
     if any(part in EXCLUDED_DIRS for part in relative.parts):
         return False
