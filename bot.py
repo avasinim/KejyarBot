@@ -304,7 +304,17 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت.")
         return
 
-    check_badges(user_id)
+    # Badge persistence is secondary to the already-committed lesson reward.
+    # A badge DB error must not hide the success confirmation or imply the lesson
+    # can be completed again for another reward.
+    try:
+        check_badges(user_id)
+    except Exception:
+        logger.exception(
+            "Lesson completion was saved, but badge update failed for user_id=%s lesson=%s",
+            user_id,
+            lesson,
+        )
     new_level = get_user_level(user_id)
     message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
     if old_level != new_level:
