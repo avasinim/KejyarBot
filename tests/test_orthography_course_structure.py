@@ -48,7 +48,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertIn('load_json("course_data/orthography_foundations_quiz_draft.json")', bot_source)
         self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
         self.assertIn('load_json("course_data/daily_conversation_lessons_01_06.json")', bot_source)
-        self.assertIn('load_json("course_data/unified_orthography_lessons_01_12.json")', bot_source)
+        self.assertIn('load_json("course_data/unified_orthography_lessons_01_66.json")', bot_source)
         self.assertIn('callback_data=f"open_lesson_{lesson}"', bot_source)
         self.assertIn('reply_markup=InlineKeyboardMarkup(keyboard_rows)', bot_source)
         self.assertEqual(courses["orthography_basic"]["status"], "active")
