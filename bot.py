@@ -835,6 +835,30 @@ async def telegram_startup(app):
     )
 
 
+async def handle_unexpected_error(update: object, context: ContextTypes.DEFAULT_TYPE):
+    """Log unexpected update failures and show a generic, non-sensitive retry message."""
+    error = getattr(context, "error", None)
+    if error is not None:
+        logger.error(
+            "Unhandled exception while processing Telegram update",
+            exc_info=(type(error), error, error.__traceback__),
+        )
+    else:
+        logger.error("Unhandled exception while processing Telegram update")
+
+    message = getattr(update, "effective_message", None)
+    if message is None:
+        callback_query = getattr(update, "callback_query", None)
+        message = getattr(callback_query, "message", None)
+    if message is not None:
+        try:
+            await message.reply_text(
+                "⚠️ کێشەیەکی کاتی ڕوویدا. تکایە دووبارە هەوڵ بدەرەوە."
+            )
+        except Exception:
+            logger.exception("Could not send the temporary-error notice to Telegram user")
+
+
 def main():
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
@@ -851,6 +875,7 @@ def main():
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
+    app.add_error_handler(handle_unexpected_error)
     logger.info("KejyarBot is starting; waiting for Telegram authentication and polling.")
     try:
         app.run_polling()
