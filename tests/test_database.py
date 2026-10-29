@@ -189,6 +189,45 @@ class DatabaseTests(unittest.TestCase):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
 
+    def test_legacy_database_migration_preserves_existing_progress(self):
+        legacy_path = str(Path(self.temp_dir.name) / "legacy.db")
+        with closing(database.sqlite3.connect(legacy_path)) as conn:
+            conn.execute("""
+                CREATE TABLE users (
+                    user_id INTEGER PRIMARY KEY,
+                    score INTEGER DEFAULT 0,
+                    xp INTEGER DEFAULT 0,
+                    level TEXT DEFAULT 'A1.1 🌱',
+                    correct_answers INTEGER DEFAULT 0,
+                    completed_lessons TEXT DEFAULT '',
+                    badges TEXT DEFAULT '',
+                    tests INTEGER DEFAULT 0,
+                    coins INTEGER DEFAULT 0,
+                    chests INTEGER DEFAULT 0
+                )
+            """)
+            conn.execute(
+                "INSERT INTO users(user_id, xp, completed_lessons, badges) VALUES (?, ?, ?, ?)",
+                (98765, 40, "وانە_1,daily_conversation_01", "🏅 existing badge"),
+            )
+            conn.commit()
+
+        current_path = database.DB_NAME
+        try:
+            database.DB_NAME = legacy_path
+            database.init_db()
+            database.init_db()
+            user = database.get_user(98765)
+            self.assertEqual(user[2], 40)
+            self.assertEqual(user[5], "وانە_1,daily_conversation_01")
+            self.assertEqual(user[6], "🏅 existing badge")
+            self.assertEqual(database.get_completed_lessons(98765), ["وانە_1", "daily_conversation_01"])
+            with closing(database.sqlite3.connect(legacy_path)) as conn:
+                columns = {row[1] for row in conn.execute("PRAGMA table_info(users)")}
+            self.assertIn("completed_quizzes", columns)
+        finally:
+            database.DB_NAME = current_path
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
