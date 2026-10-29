@@ -79,20 +79,20 @@ All 12 lessons remain drafts for practical editorial review, not bibliography re
 
 ## Integration verification
 
-The automated suite currently checks that all 46 configured lesson IDs across Courses 1–3 load without collisions, Courses 2–3 remain review-gated, and Course 4 remains empty. Automated checks do not replace practical editorial review or a manual Telegram smoke test.
+The automated suite checks that all 82 configured lesson IDs across active Courses 1–3 load without collisions, each course keeps its own progression, and Course 4 remains planned and empty. Courses 2–3 are technically active in the integration manifest at the owner's explicit request; lesson-level editorial review metadata remains visible and does not certify language review as complete. Automated checks do not replace practical editorial review or a manual Telegram smoke test.
 
 Manual smoke test must use an authorized isolated test bot/account only. Confirm course navigation, next-lesson unlocking, quiz answer handling, progress isolation, long-message chunking, and optional infographic delivery. Do not use the production bot token for this check.
 
 ## Current status
 
-- Runtime/CI: latest content commits have no associated workflow run or status-check results available through the current GitHub connection; CI is not verified for these edits.
-- Draft-course UI: corrected the status message so it accurately says Courses 2–3 contain lessons still under review and are not yet enabled for learners, rather than implying no organized lessons exist. Manifest status gates remain unchanged.
+- Runtime/CI: local full suite was run on commit `d4af297a0e54e790ed8e0e31397c775da066bf7c` and passed: 244 tests in 7.238 seconds (`OK`). No GitHub Actions run/status is currently available for that exact head, so CI is not independently verified for this commit.
+- Course activation: Courses 2–3 are active in `courses.json` on the integration branch by explicit owner request. Editorial status on lesson records remains `draft_editorial_review`; this is a warning for follow-up review, not a runtime access gate. Course 4 remains planned and unavailable.
 - Course 2 quiz pass: structurally checked all 27 quiz items across the two lesson JSON files; answer indices/options are valid and each keyed answer appears in its lesson data. This is a static consistency check, not a live Telegram run.
 - Runtime access guard: quiz-answer callbacks now re-check that the lesson belongs to an active course and is completed before accepting further answers; stale quiz state is cleared if either condition fails. Editorial quiz availability is still checked separately.
 - Course-menu status label: added an explicit `draft_for_review` label so Courses 2–3 appear as under review rather than falling back to the planned-course label.
 - Course 2: dialogue-to-quiz checks for lessons 4, 5, 10, and 11 remain resolved; lesson 1 farewell wording and lesson 9 date/meeting phrasing plus lesson 12 closing line were clarified. Practical editorial review still pending; lesson 8 now includes the seller's response to the bag request.
 - Course 3: concrete examples or clarifications were added in lessons 1, 2, 4, 6, 7, 9, 10, 11, and 12. Lesson 12 now includes a short proofreading passage and answer key. Final language review remains, especially checking examples against the intended course spelling rules.
-- Pull request #4 remains a draft and must not be merged without explicit approval.
+- Pull request #6 was merged into `fix/four-course-structure-2026-10-27`, not `main`. Subsequent commits on this integration branch still require their own validation; do not infer production deployment from the PR merge.
 
 - Status-map consistency: removed a duplicate `draft_for_review` key in `open_course` and added the same status to the empty-course response map.
 - Activation troubleshooting: `bot.py` now checks for a configured Telegram token before initializing SQLite, logs the authenticated test-bot username/ID through `post_init` (never the token), and records startup/polling exceptions with a traceback. This improves diagnosis but is not proof of a successful live Telegram connection; that still requires a separate test-bot token and a local run.
