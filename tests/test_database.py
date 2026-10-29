@@ -79,6 +79,25 @@ class DatabaseTests(unittest.TestCase):
         self.assertFalse(database.complete_lesson(12345, "وانە_1"))
         self.assertEqual(database.get_completed_lessons(12345), ["وانە_1"])
 
+    def test_lesson_reward_update_failure_rolls_back_progress_and_rewards(self):
+        before = database.get_user(12345)
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            conn.execute(
+                """CREATE TRIGGER fail_lesson_reward_update
+                   BEFORE UPDATE ON users
+                   WHEN OLD.user_id = 12345
+                   BEGIN SELECT RAISE(ABORT, 'injected reward failure'); END"""
+            )
+            conn.commit()
+
+        with self.assertRaisesRegex(database.sqlite3.IntegrityError, "injected reward failure"):
+            database.complete_lesson_with_rewards(12345, "atomic-lesson")
+
+        after = database.get_user(12345)
+        self.assertEqual(after[1:4], before[1:4])  # score, XP, level
+        self.assertEqual(after[5], before[5])      # completed lessons
+        self.assertEqual(after[8:10], before[8:10])  # coins, chests
+
     def test_lesson_completion_grants_rewards_only_once(self):
         self.assertTrue(database.complete_lesson_with_rewards(12345, "وانە_1"))
         self.assertFalse(database.complete_lesson_with_rewards(12345, "وانە_1"))
