@@ -116,5 +116,32 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
                     self.assertFalse(bot.can_open(12345, target_lesson))
 
 
+    async def test_course_menu_shows_activation_status_before_selection(self):
+        message = SimpleNamespace(text="📚 وانەکان", reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        with patch.object(bot, "get_user"):
+            await bot.message(update, SimpleNamespace(user_data={}))
+
+        message.reply_text.assert_awaited_once()
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        labels = [row[0].text for row in keyboard]
+        self.assertEqual(len(labels), 4)
+        self.assertIn("🟢 چالاک", labels[0])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[1])
+        self.assertIn("🟡 لە پێداچوونەوەدایە", labels[2])
+        self.assertIn("⚪ لە پلانداناندا", labels[3])
+        self.assertEqual(
+            [row[0].callback_data for row in keyboard],
+            [
+                "course_orthography_basic",
+                "course_daily_conversation",
+                "course_unified_orthography",
+                "course_grammar",
+            ],
+        )
+
 if __name__ == "__main__":
     unittest.main()
