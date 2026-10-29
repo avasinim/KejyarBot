@@ -78,3 +78,11 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - GitHub Actions run #40827536324 passed on commit `63063b7aa488403e26e59cd6f13acfffe0e702eb`: `compileall` and all 238 Python tests passed.
 - The test suite logs one expected error-level message from the test that deliberately simulates failed voice delivery and checks quota refund behavior; the workflow and test suite still completed successfully.
 - Current PR #6 remains open and Draft, with no merge or deployment. All 48 conversation lessons remain review-gated; dynamic speech remains disabled.
+
+### Follow-up packaging and plan consistency check (2026-10-29)
+
+- Updated the Botkeep packager's required-file list and its regression test to require all five current conversation lesson data files (lessons 1–48) plus `daily_conversation_plan.json`; the obsolete `daily_conversation_lessons_07_12.json` is no longer treated as the required runtime source.
+- Corrected stale plan notes that still described the course as having only 30 lessons and incorrectly said the release status should remain `planned`. The plan now accurately records 48 proposed lesson entries and states that the course remains `draft_for_review` until editorial review and explicit activation approval.
+- Updated `course_runtime.py` documentation examples to match the actual namespaced lesson keys.
+- GitHub Actions run #40828234599 passed on commit `9f0de71653586c9fc6a7fef1063f3bc30705c634`: compile check and all 238 Python tests passed.
+- The PR remains open and Draft; no merge, deployment, production bot/data changes, or dynamic-speech enablement occurred.
