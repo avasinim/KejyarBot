@@ -18,6 +18,21 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data=user_data if user_data is not None else {})
         return update, context
 
+    async def test_unexpected_update_error_is_logged_and_user_gets_retry_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        update = SimpleNamespace(effective_message=message, callback_query=None)
+        context = SimpleNamespace(error=RuntimeError("internal database detail"))
+
+        with patch.object(bot.logger, "error") as log_error:
+            await bot.handle_unexpected_error(update, context)
+
+        message.reply_text.assert_awaited_once()
+        self.assertIn("دووبارە هەوڵ بدەرەوە", message.reply_text.await_args.args[0])
+        self.assertNotIn(
+            "internal database detail", message.reply_text.await_args.args[0]
+        )
+        log_error.assert_called_once()
+
     async def test_start_clears_all_daily_chat_state(self):
         message = SimpleNamespace(reply_text=AsyncMock())
         update = SimpleNamespace(
