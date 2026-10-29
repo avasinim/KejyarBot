@@ -644,13 +644,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{len(active_courses)} کۆرسی چالاک هەن: {active_names}."
         )
         draft_review_courses = [
-            course for course in active_courses
-            if course.get("id") in {"daily_conversation", "unified_orthography"}
+            course for course in COURSES
+            if course.get("status") == "draft_for_review"
         ]
         if draft_review_courses:
             catalog_text += (
-                "\n\nℹ️ تێبینی: وانەکانی کۆرسی ٢ و ٣ لەم برانچی تاقیکردنەوەیەدا بەردەستن، "
-                "بەڵام پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە."
+                "\n\nℹ️ کۆرسی ٢ و ٣ هێشتا لە پێداچوونەوەدان و بۆ خوێندکاران چالاک نەکراون."
             )
         if planned_courses:
             planned_names = "، ".join(
