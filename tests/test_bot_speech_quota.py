@@ -1,3 +1,4 @@
+import sqlite3
 import tempfile
 import unittest
 from datetime import datetime, timezone
@@ -111,9 +112,48 @@ class SpeechQuotaTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(user[2], 20)  # XP
         self.assertEqual(user[7], 1)   # completed quiz count
 
+    def test_concurrent_chest_opening_consumes_only_available_chest(self):
+        from concurrent.futures import ThreadPoolExecutor
+
+        database.get_user(self.user_id)
+        database.add_chest(self.user_id)
+        with ThreadPoolExecutor(max_workers=10) as pool:
+            rewards = list(pool.map(
+                lambda _: database.open_chest(self.user_id), range(10)
+            ))
+
+        paid_rewards = [reward for reward in rewards if reward > 0]
+        self.assertEqual(len(paid_rewards), 1)
+        user = database.get_user(self.user_id)
+        self.assertEqual(user[9], 0)  # no chest can be consumed twice
+        self.assertEqual(user[8], paid_rewards[0])  # coins match the single reward
+
+    def test_chest_opening_rolls_back_if_coin_write_fails(self):
+        database.get_user(self.user_id)
+        database.add_chest(self.user_id)
+        conn = sqlite3.connect(database.DB_NAME)
+        try:
+            conn.execute("""
+                CREATE TRIGGER fail_chest_reward
+                BEFORE UPDATE OF coins ON users
+                BEGIN
+                    SELECT RAISE(ABORT, 'injected chest reward failure');
+                END
+            """)
+            conn.commit()
+        finally:
+            conn.close()
+
+        with self.assertRaises(sqlite3.IntegrityError):
+            database.open_chest(self.user_id)
+
+        user = database.get_user(self.user_id)
+        self.assertEqual(user[9], 1)  # failed opening does not consume the chest
+        self.assertEqual(user[8], 0)  # failed opening does not grant coins
+
     def test_lesson_reward_transaction_rolls_back_on_database_error(self):
         database.get_user(self.user_id)
-        conn = __import__("sqlite3").connect(database.DB_NAME)
+        conn = sqlite3.connect(database.DB_NAME)
         try:
             conn.execute("""
                 CREATE TRIGGER fail_lesson_reward
