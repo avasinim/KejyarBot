@@ -25,3 +25,21 @@ class QuizStateNavigationTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("quiz", context.user_data)
         self.assertTrue(context.user_data["daily_chat_mode"])
         update.message.reply_text.assert_awaited_once()
+
+    async def test_inline_course_navigation_clears_active_quiz(self):
+        query = SimpleNamespace(
+            data="course_grammar",
+            answer=AsyncMock(),
+            from_user=SimpleNamespace(id=12345),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "quiz": {"lesson": "daily_conversation_01", "question_message_id": 77}
+        })
+
+        await bot.open_course(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
