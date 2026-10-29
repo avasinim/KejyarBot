@@ -155,6 +155,31 @@ def course_is_active(course_id):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     return bool(course and course.get("status") == "active")
 
+
+def validate_activated_course_runtime():
+    """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
+    expected_counts = {"daily_conversation": 48, "unified_orthography": 12}
+    for course_id, expected_count in expected_counts.items():
+        if not course_is_active(course_id):
+            raise RuntimeError(f"Required course {course_id} is not active in courses.json")
+        lesson_ids = COURSE_LESSON_ORDER.get(course_id, [])
+        if len(lesson_ids) != expected_count:
+            raise RuntimeError(
+                f"Required course {course_id} loaded {len(lesson_ids)} lessons; "
+                f"expected {expected_count}"
+            )
+        missing_lessons = [lesson_id for lesson_id in lesson_ids if lesson_id not in LESSON_DATA]
+        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)]
+        if missing_lessons or missing_quizzes:
+            raise RuntimeError(
+                f"Required course {course_id} is incomplete at startup: "
+                f"missing_lessons={missing_lessons}, missing_quizzes={missing_quizzes}"
+            )
+        logger.info(
+            "Course runtime ready: %s status=active lessons=%d quizzes=%d",
+            course_id, len(lesson_ids), sum(bool(QUIZ_DATA.get(key)) for key in lesson_ids),
+        )
+
 def next_course_lesson(lesson):
     course_id = LESSON_COURSE.get(lesson)
     order = COURSE_LESSON_ORDER.get(course_id, [])
@@ -681,6 +706,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
 
 def main():
+    validate_activated_course_runtime()
     init_db()
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
