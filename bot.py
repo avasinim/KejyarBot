@@ -93,7 +93,9 @@ for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
     lesson_key = f"وانە_{number}"
     original = ORIGINAL_LESSONS_BY_NUMBER.get(number)
     if original:
-        title = original["title"]
+        # Use the manifest's display title when present so repeated lesson titles
+        # can be disambiguated without changing the user's original lesson text.
+        title = course_lesson.get("title") or original["title"]
         lesson_body = original["content"].strip()
         lesson_card = (
             "╭━━━━━━━━━━━━━━━━━━╮\n"
