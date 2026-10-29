@@ -136,7 +136,8 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
     def test_review_override_exposes_courses_2_and_3_only_when_explicitly_enabled(self):
         # This switch is for the user's isolated test bot; manifest statuses
         # remain draft_for_review and the default runtime remains locked.
-        with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "true"}):
+        with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "true"}), \\
+             patch.object(bot, "get_completed_lessons", return_value=[]):
             for course_id in ("daily_conversation", "unified_orthography"):
                 with self.subTest(course=course_id):
                     self.assertTrue(bot.course_is_active(course_id))
@@ -144,7 +145,8 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
                     self.assertTrue(bot.can_open(12345, first_lesson))
             self.assertTrue(bot.course_is_active("orthography_basic"))
 
-        with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "false"}):
+        with patch.dict("os.environ", {"KEJYAR_ENABLE_DRAFT_COURSES_FOR_REVIEW": "false"}), \\
+             patch.object(bot, "get_completed_lessons", return_value=[]):
             for course_id in ("daily_conversation", "unified_orthography"):
                 with self.subTest(course=course_id, disabled=True):
                     self.assertFalse(bot.course_is_active(course_id))
