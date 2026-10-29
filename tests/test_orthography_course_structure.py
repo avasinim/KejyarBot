@@ -169,5 +169,24 @@ class OrthographyCourseStructureTests(unittest.TestCase):
             )
 
 
+    def test_disambiguated_manifest_titles_reach_runtime_without_changing_source_text(self):
+        import bot
+
+        for number in (8, 12, 18, 19):
+            with self.subTest(lesson=number):
+                planned = self.course["lessons"][number - 1]
+                original = self.original["lessons"][number - 1]
+                lesson_key = f"وانە_{number}"
+
+                self.assertEqual(planned["source_title"], original["title"])
+                self.assertEqual(bot.LESSON_DATA[lesson_key]["title"], planned["title"])
+                self.assertIn(planned["title"], bot.LESSON_DATA[lesson_key]["content"])
+                self.assertIn(original["content"].strip(), bot.LESSON_DATA[lesson_key]["content"])
+                self.assertIn(
+                    f"وانەی {str(number).translate(str.maketrans('0123456789', '٠١٢٣٤٥٦٧٨٩'))}: {planned['title']}",
+                    bot.LESSON_BUTTONS,
+                )
+
+
 if __name__ == "__main__":
     unittest.main()
