@@ -1,6 +1,6 @@
 # Course 2–3 Editorial Review Queue
-Updated: 2026-10-28
-Branch: `fix/four-course-structure-2026-10-27`
+Updated: 2026-10-29
+Branch: `fix/integration-daily-conversation-48-2026-10-29`
 
 ## Scope and safety
 
@@ -9,9 +9,11 @@ Branch: `fix/four-course-structure-2026-10-27`
 
 This queue is for Course 2 (daily conversation) and Course 3 (unified orthography). Course 1 is out of scope unless a regression blocks integration. Course 4 remains planned and empty. This document is a review tracker, not a claim that the courses are linguistically or bibliographically approved.
 
-Do not activate either draft course until the checks below are completed. Do not merge the draft PR, deploy, modify the production bot/token/database, or enable dynamic speech without explicit user approval. Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false`.
+Courses 2–3 are technically active in this integration branch at the owner's explicit request; this is not a claim that editorial review is complete or that production has been released. Keep `KEJYAR_ENABLE_DYNAMIC_SPEECH=false`. Do not change the production bot/token/database or deploy without explicit approval.
 
-## Course 2 — Daily conversation (12 lessons)
+## Course 2 — Daily conversation (48 lessons)
+
+The targeted queue immediately below records earlier review findings for lessons 1–12 only. Lessons 13–48 have separate structural/editorial tracking in `docs/DAILY_CONVERSATION_48_LESSON_AUDIT.md`.
 
 ### Completed in this pass
 - Rechecked the dialogue against the quiz keys for lessons 4, 5, 10, and 11.
@@ -36,7 +38,7 @@ These are editorial checks to perform, not claims that the wording is necessaril
 | 5 | Corrected the home-location sentence to «ماڵمان لە گەڕەکێکی ئارامدایە، نزیک پارکەکە» and made the first exercise explicitly cover location, rooms, and home features. The invitation and pre-visit phone-call phrasing still need a broader naturalness review. |
 | 6 | Changed the fragment «نیوەڕۆ چۆن؟» to the direct beginner-friendly question «نیوەڕۆ چی دەکەیت؟» to match the lesson's daily-routine topic. Continue the overall naturalness and tense-consistency review. |
 | 7 | Aligned the objective with the actual dialogue: breakfast, food preferences, and drinks. The dialogue does not teach ordering food, so that claim was removed from the objective. Continue checking repeated expressions and colloquial naturalness. |
-| 8 | Arithmetic is internally consistent: 2 kg apples at 3,000 toman/kg plus 1 kg oranges at 3,000 toman/kg totals 9,000 toman. The lesson's currency wording has been changed from dinar to toman. Check the pricing exchange remains clear for learners. |
+| 8 | Arithmetic is internally consistent in the current draft: 2 kg apples at 3,000 dinars/kg plus 1 kg oranges at 3,000 dinars/kg totals 9,000 dinars. The dialogue now consistently uses dinar; check that the pricing exchange remains clear for learners. |
 | 9 | Smoothed the opening reply to «سڵاو کەژیار، بەڵێ. ئێستا کاتژمێر چەندە؟» so the question about the current time flows directly into the answer. The today/tomorrow timeline remains clear; final date/locale convention review is still needed. |
 | 10 | Quiz keys were checked against the dialogue; review the distinction between “beside,” “opposite,” and “behind” with a simple spatial diagram/example if needed. |
 | 11 | Quiz key was checked against the dialogue; clarified that the 8 AM meeting at the bus station is also the departure point. Review travel-planning phrasing and consistency of transport terms. |
@@ -46,11 +48,11 @@ These are editorial checks to perform, not claims that the wording is necessaril
 1. Complete the targeted editorial checks above for all 12 dialogues, including natural Kurdish, consistent names/terms, useful real-life phrasing, and spelling.
 2. Recheck every quiz key against the dialogue or lesson text; do not rely on explanations alone.
 3. Keep dialogue natural, useful, and understandable for beginners; source citations are not a lesson requirement.
-4. Keep each lesson in draft until its practical editorial review and quiz-key checks are complete. Do not require page citations or bibliographic proof as a release gate.
+4. Preserve the `draft_editorial_review` metadata until practical editorial checks are complete. This metadata is not a runtime lock on this explicitly activated integration branch. Do not require page citations or bibliographic proof as a release gate.
 
 ## Course 3 — Unified orthography (12 lessons)
 
-All 12 lessons remain drafts for practical editorial review, not bibliography review. Learner-facing lessons do not need source notes, citations, page numbers, or bibliographies. Focus on whether the explanations are simple, examples are familiar and clear, the Kurdish spelling is consistent with the intended course, and the quiz checks what the lesson actually teaches. The following are the remaining beginner-usability tasks recorded in the lesson data:
+All 12 lesson records retain editorial-review status for practical review, not bibliography review; the course is technically active in the integration manifest at the owner's request. Learner-facing lessons do not need source notes, citations, page numbers, or bibliographies. Focus on whether the explanations are simple, examples are familiar and clear, the Kurdish spelling is consistent with the intended course, and the quiz checks what the lesson actually teaches. The following are the remaining beginner-usability tasks recorded in the lesson data:
 
 | Lesson | Topic | Practical improvement |
 |---|---|---|
