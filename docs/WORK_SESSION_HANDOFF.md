@@ -25,6 +25,8 @@
 - Branding check: runtime course-one lesson headers and the lesson-one infographic caption use **کەژیار**.
 - A failed branding test had searched the entire lesson body and accidentally matched a linguistic example in lesson 18. The test was narrowed to inspect the actual lesson header only; lesson content was left untouched.
 - CI for commit `0ee813a99468d1b3bc04c97b7dc58cd5ddd0f69b` succeeded: https://github.com/avasinim/KejyarBot/actions/runs/40756095356
+- Handoff documentation commit `661d8f257790236ed63013bf562e709161000abf` also passed CI: https://github.com/avasinim/KejyarBot/actions/runs/40756398723
+- Latest verified test-branch commit at the start of the 2026-10-28 session: `661d8f257790236ed63013bf562e709161000abf`.
 - Recent CI run for the test that only blocks direct callbacks to planned courses also succeeded: https://github.com/avasinim/KejyarBot/actions/runs/40755119546
 
 ## Remaining work for the next session
