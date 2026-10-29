@@ -27,29 +27,25 @@ class LessonUnlockSequenceTests(unittest.TestCase):
             course for course in bot.COURSES
             if course.get("status") == "active"
         ]
-        self.assertGreaterEqual(len(active_courses), 2)
-        for course in active_courses:
-            lesson_ids = bot.COURSE_LESSON_ORDER[course["id"]]
-            self.assertGreaterEqual(len(lesson_ids), 2)
-            first, second = lesson_ids[0], lesson_ids[1]
-            with self.subTest(course=course["id"], lesson=second):
-                # Completing an identically positioned lesson in a different
-                # course must not satisfy this course's immediate predecessor.
-                other_course_completion = next(
-                    (
-                        ids[0]
-                        for other_id, ids in bot.COURSE_LESSON_ORDER.items()
-                        if other_id != course["id"] and ids
-                    ),
-                    None,
-                )
-                with patch.object(
-                    bot, "get_completed_lessons",
-                    return_value=[other_course_completion] if other_course_completion else [],
-                ):
-                    self.assertFalse(bot.can_open(12345, second))
-                with patch.object(bot, "get_completed_lessons", return_value=[first]):
-                    self.assertTrue(bot.can_open(12345, second))
+        self.assertEqual([course["id"] for course in active_courses], ["orthography_basic"])
+        active_ids = bot.COURSE_LESSON_ORDER["orthography_basic"]
+        self.assertGreaterEqual(len(active_ids), 2)
+        for lesson_id in active_ids[1:]:
+            previous = active_ids[active_ids.index(lesson_id) - 1]
+            with self.subTest(lesson=lesson_id):
+                with patch.object(bot, "get_completed_lessons", return_value=[previous]):
+                    self.assertTrue(bot.can_open(12345, lesson_id))
+
+        # Progress in the active legacy course must never unlock a draft course.
+        for course in bot.COURSES:
+            if course.get("status") == "active":
+                continue
+            lesson_ids = bot.COURSE_LESSON_ORDER.get(course["id"], [])
+            if not lesson_ids:
+                continue
+            with self.subTest(course=course["id"]):
+                with patch.object(bot, "get_completed_lessons", return_value=active_ids):
+                    self.assertFalse(bot.can_open(12345, lesson_ids[0]))
 
     def test_planned_course_cannot_open_even_if_it_has_runtime_lessons(self):
         planned = next(
