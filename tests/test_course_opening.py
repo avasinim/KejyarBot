@@ -28,6 +28,16 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(buttons), 12)
         self.assertEqual(buttons[0].callback_data, "open_lesson_daily_conversation_01")
 
+    def test_active_course_catalog_matches_runtime_lesson_data(self):
+        for course in bot.COURSES:
+            if course.get("status") != "active":
+                continue
+            for lesson_id in course.get("lesson_ids", []):
+                with self.subTest(course=course["id"], lesson=lesson_id):
+                    self.assertIn(lesson_id, bot.LESSON_DATA)
+                    self.assertEqual(bot.LESSON_COURSE.get(lesson_id), course["id"])
+                    self.assertIn(lesson_id, bot.COURSE_LESSON_ORDER.get(course["id"], []))
+
     def test_course_and_lesson_callback_payloads_fit_telegram_limit(self):
         # Telegram limits callback_data to 1–64 UTF-8 bytes, not characters.
         payloads = []
