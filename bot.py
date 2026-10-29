@@ -138,7 +138,10 @@ for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
 # remain draft_for_review until human language/source review is complete.
 CONVERSATION_DRAFTS = [
     load_json("course_data/daily_conversation_lessons_01_06.json"),
-    load_json("course_data/daily_conversation_lessons_07_12.json"),
+    load_json("course_data/daily_conversation_lessons_07_30.json"),
+    load_json("course_data/daily_conversation_lessons_31_36.json"),
+    load_json("course_data/daily_conversation_lessons_37_42.json"),
+    load_json("course_data/daily_conversation_lessons_43_48.json"),
 ]
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
@@ -197,6 +200,17 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+def active_course_lessons():
+    """Return lessons only from explicitly active courses, in course order."""
+    return [
+        lesson
+        for course in COURSES
+        if course_is_active(course.get("id"))
+        for lesson in COURSE_LESSON_ORDER.get(course.get("id"), [])
+        if lesson in LESSON_DATA
+    ]
+
+
 def can_open(user_id, lesson):
     course_id = LESSON_COURSE.get(lesson)
     if course_id is None or not course_is_active(course_id):
@@ -218,7 +232,8 @@ def check_badges(user_id):
     courses_by_id = {course.get("id"): course for course in COURSES}
     for lesson in completed:
         course_id = LESSON_COURSE.get(lesson)
-        if course_id is None:
+        # Never issue badges for draft/planned courses, including stale DB rows.
+        if course_id is None or not course_is_active(course_id):
             continue
         if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
             # Preserve the exact legacy badge label for Course 1.
