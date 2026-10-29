@@ -37,7 +37,7 @@ class CourseCatalogTests(unittest.TestCase):
         }
         for course_id, expected_ids in expected_drafts.items():
             with self.subTest(course=course_id):
-                self.assertEqual(by_id[course_id]["status"], "active")
+                self.assertEqual(by_id[course_id]["status"], "draft_for_review")
                 self.assertEqual(by_id[course_id]["lesson_ids"], expected_ids)
         self.assertEqual(by_id["grammar"]["status"], "planned")
         self.assertEqual(by_id["grammar"]["lesson_ids"], [])
@@ -45,7 +45,7 @@ class CourseCatalogTests(unittest.TestCase):
     def test_daily_conversation_plan_remains_provisional_metadata(self):
         by_id = {course["id"]: course for course in self.catalog}
         conversation = by_id["daily_conversation"]
-        self.assertEqual(conversation["status"], "active")
+        self.assertEqual(conversation["status"], "draft_for_review")
         self.assertEqual(conversation["lesson_ids"], [f"daily_conversation_{n:02d}" for n in range(1, 13)])
         self.assertEqual(self.conversation_plan["course_id"], "daily_conversation")
         self.assertEqual(self.conversation_plan["status"], "draft_lessons_created_needs_review")
