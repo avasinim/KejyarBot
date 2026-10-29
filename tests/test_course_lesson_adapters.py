@@ -58,6 +58,19 @@ class ConversationLessonAdapterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             adapt_conversation_lessons("daily_conversation", [payload])
 
+    def test_blank_question_and_option_are_rejected(self):
+        cases = [
+            {"q": "  ", "options": ["A", "B"], "answer": 0},
+            {"q": "Question?", "options": ["A", "  "], "answer": 0},
+        ]
+        for quiz in cases:
+            payload = {"lessons": [{"number": 1, "title": "Test", "quiz": [quiz]}]}
+            with self.subTest(quiz=quiz):
+                with self.assertRaises(ValueError):
+                    adapt_conversation_lessons("daily_conversation", [payload])
+                with self.assertRaises(ValueError):
+                    adapt_unified_orthography_lessons({"course_id": "unified_orthography", "lessons": payload["lessons"]})
+
     def test_duplicate_lesson_number_is_rejected(self):
         payload = {"lessons": [
             {"number": 1, "title": "One", "quiz": []},
