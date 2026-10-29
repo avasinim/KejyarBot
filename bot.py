@@ -489,8 +489,10 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         result += "⭐ +20 XP"
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
-    await query.message.reply_text(result)
+    # The reward transaction is committed. Clear the in-memory quiz before
+    # sending the final Telegram message so a send failure cannot strand state.
     context.user_data.pop("quiz", None)
+    await query.message.reply_text(result)
 
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lesson drafts in Telegram-safe chunks without splitting Unicode text."""
