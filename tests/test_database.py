@@ -311,5 +311,23 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_user(second_user)[2], 10)
 
 
+    def test_quiz_progress_and_rewards_are_isolated_per_student(self):
+        first_user, second_user = 12345, 54321
+        quiz_id = "daily_conversation_01"
+
+        self.assertTrue(database.complete_quiz_with_rewards(first_user, quiz_id))
+        self.assertEqual(database.get_user(first_user)[2], 20)
+        self.assertEqual(database.get_user(first_user)[7], 1)
+        self.assertEqual(database.get_user(second_user)[2], 0)
+        self.assertEqual(database.get_user(second_user)[7], 0)
+
+        self.assertTrue(database.complete_quiz_with_rewards(second_user, quiz_id))
+        self.assertFalse(database.complete_quiz_with_rewards(first_user, quiz_id))
+        self.assertEqual(database.get_user(first_user)[2], 20)
+        self.assertEqual(database.get_user(second_user)[2], 20)
+        self.assertEqual(database.get_user(first_user)[7], 1)
+        self.assertEqual(database.get_user(second_user)[7], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
