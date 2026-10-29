@@ -549,18 +549,27 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
     if not reserve_speech_quota(user_id, quota_date, limit=20):
         logger.info("Daily speech cap reached; continuing with text only")
         return
+
+    def refund_reserved_slot():
+        # A failed refund must not escape this best-effort voice path or trigger
+        # a second refund attempt that could decrement a later reservation.
+        try:
+            refund_speech_quota(user_id, quota_date)
+        except Exception:
+            logger.exception("Could not refund reserved daily speech quota")
+
     try:
         audio_bytes = await generate_speech(text)
         if not audio_bytes:
-            refund_speech_quota(user_id, quota_date)
             logger.warning("Speech generation was unavailable for a daily-chat reply")
+            refund_reserved_slot()
             return
         audio = io.BytesIO(audio_bytes)
         audio.name = "kejyar-reply.mp3"
         await message.reply_voice(voice=audio)
     except Exception:
-        refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
+        refund_reserved_slot()
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
