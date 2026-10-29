@@ -111,7 +111,10 @@ def adapt_unified_orthography_lessons(payload):
         title = raw.get("title", "").strip()
         if not title:
             raise ValueError(f"Missing title for {key}")
-        sections = [f"📖 {title}"]
+        sections = [
+            "✦ کەژیار ✦",
+            f"📖 {title}",
+        ]
         if raw.get("objective"):
             sections.extend(["", "🎯 ئامانج", raw["objective"]])
         if raw.get("key_points"):
