@@ -61,7 +61,11 @@ def main() -> int:
         "course_data/orthography_original_lessons.json",
         "course_data/orthography_foundations_quiz_draft.json",
         "course_data/daily_conversation_lessons_01_06.json",
-        "course_data/daily_conversation_lessons_07_12.json",
+        "course_data/daily_conversation_lessons_07_30.json",
+        "course_data/daily_conversation_lessons_31_36.json",
+        "course_data/daily_conversation_lessons_37_42.json",
+        "course_data/daily_conversation_lessons_43_48.json",
+        "course_data/daily_conversation_plan.json",
         "course_data/unified_orthography_lessons_01_12.json",
     }
     files = sorted(
