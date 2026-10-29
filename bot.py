@@ -158,7 +158,7 @@ def course_is_active(course_id):
 
 def validate_activated_course_runtime():
     """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
-    expected_counts = {"daily_conversation": 48, "unified_orthography": 12}
+    expected_counts = {"daily_conversation": 48, "unified_orthography": 55}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
