@@ -113,8 +113,10 @@ class RuntimeDraftCourseIntegrityTests(unittest.TestCase):
         for lesson_id in bot.COURSE_LESSON_ORDER["orthography_basic"]:
             with self.subTest(lesson=lesson_id):
                 content = bot.LESSON_DATA[lesson_id]["content"]
-                self.assertNotIn("📚 کۆرسی ١:", content)
-                self.assertNotIn("╭━━━━━━━━━━━━━━━━━━╮", content)
+                self.assertIn("📚 کۆرسی ١:", content)
+                self.assertIn("╭━━━━━━━━━━━━━━━━━━╮", content)
+                self.assertIn("🌿 کەژیار", content)
+                self.assertNotIn("🌿 کەویار", content.splitlines()[2])
         lesson = bot.LESSON_DATA["وانە_1"]
         self.assertIn("ئەلفبێی زمانی کوردی", lesson["content"])
         self.assertIn("تەواوکردنی وانە", lesson["content"])
