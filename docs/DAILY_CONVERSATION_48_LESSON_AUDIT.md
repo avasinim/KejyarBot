@@ -2,11 +2,13 @@
 
 Date: 2026-10-28
 
+> **Current integration status (2026-10-29):** At the owner's explicit request, Course 2 is marked `active` in `courses.json` on `fix/integration-daily-conversation-48-2026-10-29`. All 48 lesson records still retain `draft_editorial_review` metadata. Structural validation is not final language approval, and this branch change is not a production deployment. The current local test run on `d4af297` passed 244 tests; the exact head has no associated GitHub Actions run recorded here. Dynamic speech remains disabled.
+
 ## Scope and safety
 
 - Reviewed the five lesson-data files and `daily_conversation_plan.json` on branch `feature/expand-lesson-catalog-2026-10-28`.
 - This is a structural/editorial triage, not approval of Kurdish language accuracy.
-- All 48 lessons remain marked `draft_editorial_review`. Do not activate the course based on this audit alone.
+- All 48 lesson records retain `draft_editorial_review` metadata. The integration manifest is now technically active by explicit owner request; do not treat this structural audit as final language approval or production-release approval.
 - No lesson text was changed by this audit.
 
 ## Structural checks
@@ -36,7 +38,7 @@ These are possible topic overlaps, not confirmed errors. An editor should compar
 
 ## Recommended next steps
 
-1. Keep the course gated as `draft_for_review`.
+1. Preserve the lesson-level `draft_editorial_review` metadata until practical language and quiz review is complete. The course manifest is active on the integration branch by explicit owner request; do not infer production release.
 2. Review each candidate cluster for progression and meaningful differentiation; preserve deliberate recycling where it supports learning.
 3. Perform a Kurdish-language and orthography review against the project's chosen beginner-level conventions.
 4. Test dialogues and quizzes with learners or a reviewer before considering activation.
