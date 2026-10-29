@@ -148,3 +148,19 @@ A focused reread compared the actual dialogue, vocabulary, exercises, and quiz p
 - Repeated dialogue lines remain limited to the previously recorded pairs in lessons 1/12 and 13/43. This scan found no exact duplicate quiz prompts or role-play prompts and no malformed quiz answer indices or fewer-than-three-option quiz questions.
 
 **Disposition:** retain the 48 lessons as drafts. Resolve currency/localization policy and complete Kurdish naturalness/teaching review before considering activation.
+
+### Follow-up cumulative-skill and sensitive-dialogue review (2026-10-29)
+
+This pass reread the actual review-lesson dialogue and exercises for lessons 12, 18, 30, 36, 42, and 48, plus the emergency and appointment scenarios. No lesson text was edited; the findings below are review guidance, not final Kurdish-language judgments.
+
+- **Lesson 12** is an early integrated task: greeting, meeting time/place, shopping, walking directions, food, and studying. Its exercises separately prompt asking prices and directions. The dialogue includes the phrase “کۆببینەوە”; confirm the intended spelling/inflection with the project's Kurdish-language reviewer rather than silently normalizing it.
+- **Lesson 18** has a narrower, identifiable target: negotiate a meeting time and place, account for rain, and communicate a plan change. Its exercise to use expressions from lessons 1–17 is useful cumulative practice.
+- **Lesson 30** combines shopping, food, and directions, much like lesson 12. To keep it from feeling like a repeat, the editor should ensure the learner is assessed on combining functions independently—not only recalling a similar itinerary.
+- **Lesson 36** has a distinct conditional-planning target: decide what to do if the weather changes and communicate a changed meeting plan. Keep that as its assessment focus.
+- **Lesson 42** combines transport, returning a library book, choosing a restaurant, and an optional park visit. Its stated “opinion” target is not clearly demonstrated in the dialogue; either add a clear opinion function during language editing or narrow the objective.
+- **Lesson 48** is a final multi-stop integrated conversation (library, market, park, lunch) and uses material from lessons 43–47 in the exercise. Its distinction from lesson 42 should be explicit in the assessment: a complete independent plan across multiple places, with a contingency if a problem occurs.
+- **Curriculum recommendation:** retain spaced review, but label each review lesson with a short cumulative skill checklist (e.g. meeting negotiation; conditional plan change; multi-function itinerary; independent multi-stop plan). Make quiz and role-play assess that skill, not just topic recall. This is a differentiation recommendation, not a reason to remove lessons.
+- **Lesson 28 (emergency):** the current scenario asks learners to call for help, give the location, stay calm, and avoid blocking traffic. Because this is an emergency-themed learning dialogue, have a qualified reviewer check the safety wording. Keep any advice minimal and broadly safe, and emphasize contacting local emergency services and following their instructions; avoid presenting the language exercise as comprehensive first-aid guidance.
+- **Lesson 45 (medical appointment):** the dialogue teaches requesting and changing a booking, but the time exchange “پێنجشەممە کاتژمێر دە” does not specify morning/evening and “کاتژمێر دوای نیوەڕۆ هەیە؟” should be checked for naturalness and clarity. Make the appointment time unambiguous during human language review.
+- These are editorial flags only. No source lesson data, active course status, runtime behavior, production bot, or dynamic-speech setting was changed.
+
