@@ -39,6 +39,7 @@ from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from course_infographics import course_infographic_path
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -134,11 +135,17 @@ for course_lessons, course_quizzes in (
     LESSON_DATA.update(course_lessons)
     QUIZ_DATA.update(course_quizzes)
 
-LESSON_INFOGRAPHICS = {}
-
-async def send_lesson_infographic(message, lesson):
-    # Course 1 infographics will be connected after they are created and reviewed.
-    return
+async def send_lesson_infographic(message, lesson_id):
+    """Send an authored course-specific PNG when one exists; text remains primary."""
+    lesson = LESSON_DATA.get(lesson_id)
+    path = course_infographic_path(lesson_id, lesson, BASE_DIR)
+    if path is None:
+        return
+    try:
+        with path.open("rb") as image_file:
+            await message.reply_photo(photo=image_file)
+    except Exception:
+        logger.exception("Could not send infographic for lesson %s", lesson_id)
 
 ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
 COURSE_LESSON_ORDER = {
