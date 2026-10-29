@@ -134,3 +134,17 @@ The two repeated dialogue lines should be checked by the editor. They may be int
 - The test fires 16 concurrent duplicate lesson-completion calls and 16 concurrent duplicate quiz-completion calls for the same user and lesson key. It verifies each operation grants rewards exactly once and that XP, score, coins, chests, and test totals match the expected single-award totals.
 - GitHub Actions run #40835142571 passed on commit `48e7569e84ee018d530fddd339c0369f7794495f`: Python compilation and the full unittest suite passed.
 - PR #6 remains open, Draft, and unmerged. No production bot/token/data changes, deployment, course activation, or dynamic-speech enablement occurred.
+
+### Focused progression review (2026-10-29)
+
+A focused reread compared the actual dialogue, vocabulary, exercises, and quiz prompts in the main overlap clusters. This is an editorial triage only; no lesson text was changed.
+
+- **Shopping (8, 25, 38):** the dialogue scenarios are meaningfully different: lesson 8 buys fruit and calculates a total; lesson 25 compares bag prices and size; lesson 38 asks about shirt size and trying it on. The principal consistency decision is currency localization: lesson 8 uses toman while lesson 38 uses dinar. Choose an intentional learner-region policy (or explicitly teach the distinction) before approval; do not silently change prices.
+- **Directions (10, 29, 43):** these also have distinct contexts: finding a library with relative positions; following left/right turns and estimating walking time; locating a bakery in a neighborhood. Reuse of location words appears purposeful rather than an exact lesson duplicate.
+- **Health (13, 45):** lesson 13 practices describing symptoms and finding a clinic; lesson 45 practices booking/rescheduling an appointment. These are complementary functions, though a language reviewer should check the naturalness of the appointment exchange.
+- **Environment (33, 46):** lesson 33 focuses on keeping a park clean and protecting plants; lesson 46 adds separating plastic bottles for reuse. The learning outcomes are distinct enough to retain pending language review.
+- **Help (28, 47):** lesson 28 concerns an urgent incident involving a person who has fallen; lesson 47 concerns a lost item and asking staff for help. These are distinct scenarios, but lesson 28's emergency wording and advice should receive careful human review for clarity and appropriateness.
+- **Review lessons (12, 18, 30, 36, 42, 48):** these intentionally recycle everyday functions. Their dialogues increasingly combine multiple settings and planning tasks, but the repeated “review + plan + library/food/shopping” pattern remains a possible monotony risk. A reviewer should verify that each review lesson explicitly assesses a different cumulative skill, rather than removing useful spaced practice automatically.
+- Repeated dialogue lines remain limited to the previously recorded pairs in lessons 1/12 and 13/43. This scan found no exact duplicate quiz prompts or role-play prompts and no malformed quiz answer indices or fewer-than-three-option quiz questions.
+
+**Disposition:** retain the 48 lessons as drafts. Resolve currency/localization policy and complete Kurdish naturalness/teaching review before considering activation.
