@@ -181,10 +181,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
         self.assertIn("بۆ خوێندکاران چالاک نەکراون", query.message.reply_text.await_args.args[0])
-        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), 12)
-        self.assertEqual(buttons[0].callback_data, "open_lesson_unified_orthography_01")
+        self.assertNotIn("reply_markup", query.message.reply_text.await_args.kwargs)
 
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
