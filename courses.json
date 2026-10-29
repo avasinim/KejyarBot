@@ -19,8 +19,8 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "١٢ وانەی وتووێژی ڕۆژانە؛ ئامادەی تاقیکردنەوە لە بۆتی تاقیکردنەوە.",
-      "status": "active",
+      "description": "١٢ وانەی پێش‌نووس؛ پێش چالاککردن پێویستیان بە پێداچوونەوەی زمانی و تاقیکردنەوە هەیە.",
+      "status": "draft_for_review",
       "lesson_ids": [
         "daily_conversation_01", "daily_conversation_02", "daily_conversation_03",
         "daily_conversation_04", "daily_conversation_05", "daily_conversation_06",
@@ -33,8 +33,8 @@
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: ڕێنووسی یەکگرتووی زمانی کوردی",
-      "description": "١٢ وانەی ڕێنووسی یەکگرتوو؛ ناوەڕۆک لە بۆتی تاقیکردنەوەدا بەردەستە.",
-      "status": "active",
+      "description": "١٢ وانەی پێش‌نووسی ڕێنووسی یەکگرتوو؛ پێش چالاککردن پێویستیان بە پشکنینی سەرچاوە هەیە.",
+      "status": "draft_for_review",
       "lesson_ids": [
         "unified_orthography_01", "unified_orthography_02", "unified_orthography_03",
         "unified_orthography_04", "unified_orthography_05", "unified_orthography_06",
