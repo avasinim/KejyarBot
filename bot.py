@@ -644,8 +644,19 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop("daily_chat_stage", None)
 
     if text == "📚 وانەکان":
+        status_labels = {
+            "active": "🟢 چالاک",
+            "draft_for_review": "🟡 لە پێداچوونەوەدایە",
+            "draft": "🟡 پێش‌نووس",
+            "planned": "⚪ لە پلانداناندا",
+        }
         keyboard_rows = [
-            [InlineKeyboardButton(course["title"], callback_data=f"course_{course['id']}")]
+            [
+                InlineKeyboardButton(
+                    f"{status_labels.get(course.get('status'), '⚪ چالاک نییە')} · {course['title']}",
+                    callback_data=f"course_{course['id']}",
+                )
+            ]
             for course in COURSES
         ]
         active_courses = [course for course in COURSES if course_is_active(course.get("id"))]
