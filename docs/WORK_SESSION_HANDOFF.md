@@ -69,3 +69,10 @@ Do not commit local secrets, `.env`, SQLite databases, backups, or generated run
 - `docs/BOTKEEP_DEPLOYMENT.md` now states this correctly. `tests/test_botkeep_packager.py` includes a guard asserting that the exact image exists in the repository but is excluded from the ZIP package.
 - No ZIP was created or uploaded. No production service/token/data was changed, no merge/deployment occurred, and dynamic speech remains disabled unless the user explicitly approves otherwise.
 - Next safe work: continue focused review of course navigation, progress persistence, quiz/reward idempotency, and package constraints; make only evidence-based changes on this test branch and verify CI after each change.
+
+## Additional audit checkpoint — 2026-10-29
+
+- Verified branch head before this change: `1554d86abf87794f98f709c2d715acb1273c3474`; latest known CI run `40882340339` passed with the 250-test suite.
+- Focused review of `.gitignore` found that SQLite rollback-journal sidecars (`*.db-journal`, `*.sqlite-journal`, and `*.sqlite3-journal`) were not ignored, although WAL/SHM sidecars were. These files may contain transient database pages, so the patterns were added on the integration branch in commit `e377a244e91f586ca4f5c225f32a6197b8bb22d0`.
+- This is a repository hygiene change only; no database, token, speech setting, course content, production service, or deployment was touched. CI for the new commit is pending at the time of this note.
+- Quota review confirmed the current tests cover atomic reservation, daily limit, persistence, and basic refund. A future deeper change to reservation/refund identity should only be made with a concrete design and regression coverage; do not claim duplicate-refund idempotency is currently guaranteed.
