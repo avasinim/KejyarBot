@@ -120,6 +120,8 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         with (
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "quiz_is_available", return_value=True),
             patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward,
         ):
             await bot.quiz_answer(update, context)
@@ -216,7 +218,11 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         )
         context = SimpleNamespace(user_data={})
 
-        with patch.object(bot, "get_completed_lessons", return_value=[lesson]):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
             await bot.start_quiz(update, context)
 
         self.assertEqual(context.user_data["quiz"]["lesson"], lesson)
