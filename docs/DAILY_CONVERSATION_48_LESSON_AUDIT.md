@@ -258,3 +258,11 @@ A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the
 - The exercise asks learners to plan a fictional trip, so it could naturally practise this missing step; the current quiz only assesses the meeting point and checking trip information. This leaves a practical planning turn unresolved rather than modelling a complete itinerary.
 - During editorial revision, either complete the return-time exchange with a clearly tentative example and confirmation, or remove the unfinished prompt. Do not invent a real timetable or imply that the example is an actual transport schedule. Do not change the draft silently.
 - Review flag only; no lesson JSON was changed.
+
+
+### Owner-directed activation update (2026-10-29)
+
+- Following the owner's explicit instruction, Courses 2 (48 daily-conversation lessons) and 3 (12 unified-orthography lessons) are now marked `active` in `courses.json` on the working branch.
+- Runtime access follows each course's own lesson order: the first lesson opens, and later lessons remain locked until the immediate predecessor is completed. Progress remains isolated by course-specific lesson IDs.
+- Existing lesson-level `draft_editorial_review` metadata and the plan's provisional notes are retained as editorial provenance; they are not runtime course-activation gates.
+- This is a branch-level code change only. PR #6 remains open and Draft; no merge or deployment has been performed. Dynamic speech remains disabled.
