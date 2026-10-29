@@ -48,15 +48,55 @@ class CourseOneQuizReviewTests(unittest.TestCase):
         self.assertTrue(quiz_is_available("وانە_200"))
         self.assertTrue(quiz_is_available("daily_conversation_20"))
 
-    def test_runtime_enforces_review_gate_when_starting_and_answering_quizzes(self):
-        from pathlib import Path
+    def test_runtime_rejects_answer_callbacks_for_every_flagged_lesson(self):
+        from types import SimpleNamespace
+        from unittest.mock import AsyncMock, patch
 
-        source = Path(bot.__file__).read_text(encoding="utf-8")
-        start_quiz_source = source.split("async def start_quiz", 1)[1].split("async def send_question", 1)[0]
-        quiz_answer_source = source.split("async def quiz_answer", 1)[1].split("async def send_lesson_text", 1)[0]
+        async def check_flagged_lesson(lesson_key):
+            query = SimpleNamespace(
+                data="answer_0",
+                message=SimpleNamespace(
+                    message_id=77,
+                    reply_text=AsyncMock(),
+                ),
+                answer=AsyncMock(),
+                edit_message_reply_markup=AsyncMock(),
+            )
+            update = SimpleNamespace(
+                callback_query=query,
+                effective_user=SimpleNamespace(id=12345),
+            )
+            context = SimpleNamespace(user_data={
+                "quiz": {
+                    "index": 0,
+                    "lesson": lesson_key,
+                    "questions": [{
+                        "question": "پرسیار",
+                        "options": ["وەڵامی ١", "وەڵامی ٢"],
+                        "answer": "وەڵامی ١",
+                    }],
+                    "score": 0,
+                    "question_message_id": 77,
+                }
+            })
 
-        self.assertIn("if not quiz_is_available(lesson):", start_quiz_source)
-        self.assertIn("if not quiz_is_available(lesson):", quiz_answer_source)
+            with (
+                patch.object(bot, "get_completed_lessons", return_value=[lesson_key]),
+                patch.object(bot, "course_is_active", return_value=True),
+            ):
+                await bot.quiz_answer(update, context)
+
+            self.assertNotIn("quiz", context.user_data)
+            query.answer.assert_awaited_once()
+            query.edit_message_reply_markup.assert_not_awaited()
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("پێداچوونەوە", query.message.reply_text.await_args.args[0])
+
+        import asyncio
+
+        for lesson_key in sorted(COURSE1_QUIZ_SOURCE_REVIEW_REQUIRED):
+            with self.subTest(lesson=lesson_key):
+                asyncio.run(check_flagged_lesson(lesson_key))
 
 
 if __name__ == "__main__":
