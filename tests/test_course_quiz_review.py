@@ -58,6 +58,7 @@ class CourseOneQuizReviewTests(unittest.TestCase):
             number = lesson_key.removeprefix("وانە_")
             query = SimpleNamespace(
                 data=f"quiz_{number}_start",
+                from_user=SimpleNamespace(id=12345),
                 message=SimpleNamespace(reply_text=AsyncMock()),
                 answer=AsyncMock(),
             )
