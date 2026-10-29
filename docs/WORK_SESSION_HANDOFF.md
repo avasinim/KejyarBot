@@ -76,3 +76,10 @@ Do not commit local secrets, `.env`, SQLite databases, backups, or generated run
 - Focused review of `.gitignore` found that SQLite rollback-journal sidecars (`*.db-journal`, `*.sqlite-journal`, and `*.sqlite3-journal`) were not ignored, although WAL/SHM sidecars were. These files may contain transient database pages, so the patterns were added on the integration branch in commit `e377a244e91f586ca4f5c225f32a6197b8bb22d0`.
 - This is a repository hygiene change only; no database, token, speech setting, course content, production service, or deployment was touched. CI for the new commit is pending at the time of this note.
 - Quota review confirmed the current tests cover atomic reservation, daily limit, persistence, and basic refund. A future deeper change to reservation/refund identity should only be made with a concrete design and regression coverage; do not claim duplicate-refund idempotency is currently guaranteed.
+
+## Package symlink safety — 2026-10-29
+
+- A focused review found that the Botkeep ZIP packager used `Path.is_file()`, which follows symbolic links. A repository path with an allowed text suffix could therefore point outside the repository and be included in the archive.
+- Updated `tools/prepare_botkeep_zip.py` to reject symlink paths and added a regression test that creates an allowed-looking `leaked_source.py` link to an external test-only secret and asserts it is absent from the built ZIP.
+- Commits: `35df288` (reject symlinks), `00ee904` (regression test). CI for the newest commit is pending as of this checkpoint.
+- Changes are confined to the integration branch and temporary test fixture. No real secret, local database, course content, bot token, voice setting, production service, or deployment was accessed or changed.
