@@ -97,10 +97,10 @@ class CourseOpeningTests(unittest.IsolatedAsyncioTestCase):
 
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("1 کۆرسی چالاک هەیە", text)
+        self.assertIn("1 کۆرسی چالاک هەن", text)
         self.assertIn("پلاندانراو", text)
         self.assertIn("ڕێزمان", text)
-        self.assertIn("پێداچوونەوەی ناوەڕۆکیان هێشتا تەواو نییە", text)
+        self.assertIn("بۆ خوێندکاران چالاک نەکراون", text)
 
 
     def test_completion_in_one_course_never_unlocks_another_courses_next_lesson(self):
