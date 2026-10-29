@@ -307,6 +307,34 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, "وانە_2"))
             self.assertFalse(bot.can_open(12345, "وانە_3"))
 
+    async def test_locked_lesson_completion_callback_cannot_grant_rewards(self):
+        lesson = "daily_conversation_02"
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
+            patch.object(bot, "get_user_level") as level,
+            patch.object(bot, "check_badges") as badges,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_not_called()
+        level.assert_not_called()
+        badges.assert_not_called()
+        voice.assert_not_awaited()
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێشووتر", query.message.reply_text.await_args.args[0])
+
     async def test_first_lesson_completion_offers_only_the_next_lesson(self):
         query = SimpleNamespace(
             data="finish_وانە_1",
