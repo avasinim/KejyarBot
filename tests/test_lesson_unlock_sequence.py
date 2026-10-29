@@ -47,6 +47,31 @@ class LessonUnlockSequenceTests(unittest.TestCase):
                 with patch.object(bot, "get_completed_lessons", return_value=active_ids):
                     self.assertFalse(bot.can_open(12345, lesson_ids[0]))
 
+    def test_progress_in_another_active_course_cannot_unlock_lesson(self):
+        active_courses = [
+            course for course in bot.COURSES
+            if course.get("status") == "active"
+        ]
+        for target_course in active_courses:
+            target_lessons = bot.COURSE_LESSON_ORDER.get(target_course["id"], [])
+            if len(target_lessons) < 2:
+                continue
+            target_lesson = target_lessons[1]
+            for source_course in active_courses:
+                if source_course["id"] == target_course["id"]:
+                    continue
+                source_lessons = bot.COURSE_LESSON_ORDER.get(source_course["id"], [])
+                if not source_lessons:
+                    continue
+                with self.subTest(
+                    target_course=target_course["id"],
+                    source_course=source_course["id"],
+                ):
+                    with patch.object(
+                        bot, "get_completed_lessons", return_value=[source_lessons[0]]
+                    ):
+                        self.assertFalse(bot.can_open(12345, target_lesson))
+
     def test_planned_course_cannot_open_even_if_it_has_runtime_lessons(self):
         planned = next(
             course for course in bot.COURSES
