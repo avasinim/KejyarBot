@@ -164,7 +164,7 @@ def next_course_lesson(lesson):
     return order[index + 1] if index + 1 < len(order) else None
 MENU = ReplyKeyboardMarkup(
     [
-        ["📚 وانەکان"],
+        ["📚 وانەکان", "📘 کۆرسەکان"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -496,6 +496,33 @@ async def send_conversation_voice(message, text, user_state=None, user_id=None):
         refund_speech_quota(user_id, quota_date)
         logger.exception("Could not generate or send generated daily-chat voice")
 
+async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    course_id = query.data.removeprefix("course_")
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    if course is None:
+        await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
+        return
+    if not course_is_active(course_id):
+        await query.message.reply_text(f"{course['title']}\n\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
+        return
+    lesson_ids = COURSE_LESSON_ORDER.get(course_id, [])
+    completed = set(get_completed_lessons(query.from_user.id))
+    rows = []
+    for lesson in lesson_ids:
+        status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
+        title = LESSON_DATA[lesson]["title"]
+        rows.append([InlineKeyboardButton(
+            f"{status} {title}",
+            callback_data=f"open_lesson_{lesson}",
+        )])
+    await query.message.reply_text(
+        f"{course['title']}\n\n{course.get('description', '')}",
+        reply_markup=InlineKeyboardMarkup(rows),
+    )
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -539,6 +566,21 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    if text == "📘 کۆرسەکان":
+        keyboard_rows = []
+        for course in COURSES:
+            status = "🟢 چالاک" if course_is_active(course.get("id")) else "⚪ پلاندانراو"
+            keyboard_rows.append([InlineKeyboardButton(
+                f"{status} · {course['title']}",
+                callback_data=f"course_{course['id']}",
+            )])
+        active_count = sum(1 for course in COURSES if course_is_active(course.get("id")))
+        await update.message.reply_text(
+            f"📚 کۆرسەکانی کەژیار\n\n{active_count} کۆرسی چالاک هەن.",
+            reply_markup=InlineKeyboardMarkup(keyboard_rows),
+        )
+        return
+
     if text in LESSON_BUTTONS:
         lesson = LESSON_BUTTONS[text]
         if not can_open(user_id, lesson):
@@ -560,7 +602,15 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "📝 تاقیکردنەوەکان":
         completed = set(get_completed_lessons(user_id))
-        buttons = [[InlineKeyboardButton(f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}", callback_data=f"quiz_{lesson.split('_')[1]}_start")] for lesson in ORDER if QUIZ_DATA.get(lesson) and lesson in completed]
+        buttons = []
+        for lesson in active_course_lessons():
+            if not QUIZ_DATA.get(lesson) or lesson not in completed or not quiz_is_available(lesson):
+                continue
+            suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+            buttons.append([InlineKeyboardButton(
+                f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                callback_data=f"quiz_{suffix}_start",
+            )])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
@@ -616,7 +666,8 @@ def main():
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_\d+_start$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
+    app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$")
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
