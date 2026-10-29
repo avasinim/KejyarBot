@@ -28,9 +28,10 @@ class CourseManifestRegressionTests(unittest.TestCase):
             with self.subTest(course=course_id):
                 course = self.by_id[course_id]
                 self.assertEqual(course["status"], "draft_for_review")
+                lesson_count = 48 if course_id == "daily_conversation" else 12
                 self.assertEqual(
                     course["lesson_ids"],
-                    [f"{course_id}_{number:02d}" for number in range(1, 13)],
+                    [f"{course_id}_{number:02d}" for number in range(1, lesson_count + 1)],
                 )
         self.assertEqual(self.by_id["grammar"]["status"], "planned")
         self.assertEqual(self.by_id["grammar"]["lesson_ids"], [])
