@@ -465,12 +465,19 @@ async def send_lesson_text(message, content, reply_markup=None):
             chunks.append(remaining)
             break
         split_at = remaining.rfind("\n", 0, limit)
-        if split_at < limit // 2:
+        if split_at >= limit // 2:
+            # Keep the newline at the end of the current chunk so paragraph
+            # and line breaks survive Telegram's message-size splitting.
+            split_at += 1
+        else:
             split_at = remaining.rfind(" ", 0, limit)
-        if split_at < limit // 2:
-            split_at = limit
-        chunks.append(remaining[:split_at].strip())
-        remaining = remaining[split_at:].strip()
+            if split_at >= limit // 2:
+                # Keep the separating space instead of silently joining words.
+                split_at += 1
+            else:
+                split_at = limit
+        chunks.append(remaining[:split_at])
+        remaining = remaining[split_at:]
     if not chunks:
         chunks = ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
     for index, chunk in enumerate(chunks):
