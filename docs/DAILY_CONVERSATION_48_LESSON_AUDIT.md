@@ -164,3 +164,13 @@ This pass reread the actual review-lesson dialogue and exercises for lessons 12,
 - **Lesson 45 (medical appointment):** the dialogue teaches requesting and changing a booking, but the time exchange “پێنجشەممە کاتژمێر دە” does not specify morning/evening and “کاتژمێر دوای نیوەڕۆ هەیە؟” should be checked for naturalness and clarity. Make the appointment time unambiguous during human language review.
 - These are editorial flags only. No source lesson data, active course status, runtime behavior, production bot, or dynamic-speech setting was changed.
 
+### Follow-up shopping lesson objective-to-exercise alignment (2026-10-29)
+
+A reread of the course plan and shopping lessons 8, 25, and 38 confirms that the plan does not define a learner-region or currency-localization policy.
+
+- **Lesson 8:** the dialogue gives a consistent total: two kilograms of apples at 3,000 toman per kilogram plus one kilogram of oranges at 3,000 toman totals 9,000 toman. The arithmetic is correct as written.
+- **Lesson 25:** the dialogue models asking for a cheaper bag and comparing price/size. The task matches its stated comparison focus.
+- **Lesson 38:** the dialogue models asking about a shirt's price and size and trying it on; its final exercise asks the learner to request a discount, but the dialogue does not model a discount request. This is an objective-to-practice alignment gap. During language editing, either add a natural example of asking for a discount or change the exercise to practise the expressions actually taught.
+- **Currency policy:** lesson 8 uses toman while lesson 38 uses dinar. The course plan contains no rule explaining the intended region or why both currencies are introduced. Before approval, choose a consistent setting or explicitly teach the currency distinction; do not silently alter prices or currencies during a technical audit.
+- No lesson source text was changed in this pass. These are review flags for the language/content editor, not an approval to revise the authored dialogue.
+
