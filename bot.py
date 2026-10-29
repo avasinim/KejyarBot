@@ -476,7 +476,18 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     explanation = question.get("explanation", "").strip()
     if explanation:
         feedback += f"\n\n📘 ڕوونکردنەوە: {explanation}"
-    await query.message.reply_text(feedback)
+    try:
+        await query.message.reply_text(feedback)
+    except Exception:
+        # The callback has claimed this question. If feedback cannot be
+        # delivered, discard the session rather than leave it stuck at None.
+        context.user_data.pop("quiz", None)
+        logger.exception(
+            "Could not send quiz answer feedback for user_id=%s lesson=%s",
+            update.effective_user.id,
+            lesson,
+        )
+        raise
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
