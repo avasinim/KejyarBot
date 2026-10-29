@@ -634,6 +634,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     get_user(user_id)
 
     if text == "💬 گفتوگۆی ڕۆژانە":
+        # Invalidate inline quiz callbacks when switching interaction modes.
+        context.user_data.pop("quiz", None)
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
         context.user_data.pop("daily_chat_stage", None)
@@ -650,6 +652,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📚 وانەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
+        # Old inline quiz buttons must not remain valid after menu navigation.
+        context.user_data.pop("quiz", None)
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
         context.user_data.pop("daily_chat_stage", None)
