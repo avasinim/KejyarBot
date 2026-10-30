@@ -122,7 +122,7 @@ CONVERSATION_DRAFTS = [
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
 )
-UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_12.json")
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
@@ -134,10 +134,8 @@ for course_lessons, course_quizzes in (
     LESSON_DATA.update(course_lessons)
     QUIZ_DATA.update(course_quizzes)
 
-LESSON_INFOGRAPHICS = {}
-
-async def send_lesson_infographic(message, lesson):
-    # Course 1 infographics will be connected after they are created and reviewed.
+async def send_lesson_infographic(message, lesson_id):
+    """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
 
 ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
@@ -158,7 +156,7 @@ def course_is_active(course_id):
 
 def validate_activated_course_runtime():
     """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
-    expected_counts = {"daily_conversation": 48, "unified_orthography": 12}
+    expected_counts = {"daily_conversation": 48, "unified_orthography": 66}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
