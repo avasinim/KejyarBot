@@ -43,7 +43,7 @@ class Course3BookCoverageTests(unittest.TestCase):
 
     def test_lesson_62_matches_book_symbol_numbering_and_hash_example(self):
         lesson = self.lessons[61]
-        self.assertIn("هەشت جۆر هێمای دیکە", lesson["objective"])
+        self.assertIn("حەوت جۆر هێمای دیکە", lesson["objective"])
         examples = " ".join(value for pair in lesson["examples"] for value in pair)
         self.assertIn("#١ لە لیستەکەدا", examples)
         self.assertNotIn("١# لە لیستەکەدا", examples)
