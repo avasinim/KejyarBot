@@ -44,7 +44,7 @@ class Course3BookCoverageTests(unittest.TestCase):
     def test_appendix_and_book_back_matter_remain_separate_lessons(self):
         self.assertEqual(
             [lesson["title"] for lesson in self.lessons[62:]],
-            ["پاشەکی", "ژێدەر", "دەرەنجام", "تەواو"],
+            ["پاشەکی و ڕوونکردنەوە", "ژێدەر", "دەرەنجام", "سوپاسنامە و تەواو"],
         )
 
 
