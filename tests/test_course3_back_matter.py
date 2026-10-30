@@ -56,7 +56,7 @@ class Course3BackMatterTests(unittest.TestCase):
         conclusion_text = " ".join(conclusion["key_points"])
         acknowledgement_text = " ".join(acknowledgements["key_points"])
         self.assertIn("مەبەست", conclusion_text)
-        self.assertIn("ڕێنووسی یەکگرتوو", conclusion_text)
+        self.assertIn("ڕێنووسێکی یەکگرتووش", conclusion_text)
         self.assertIn("حەمەسەعید حەسەن", acknowledgement_text)
         self.assertIn("سوپاسنامە", acknowledgements["title"])
         self.assertEqual(conclusion["source"]["pages"], "٨٤")
