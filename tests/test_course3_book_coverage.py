@@ -34,8 +34,11 @@ class Course3BookCoverageTests(unittest.TestCase):
         )
         for marker in ("/", "ر", "[]", "#", "*", "=", "&", "_", "{}"):
             self.assertIn(marker, content)
-        self.assertEqual(lesson["source"]["section"], 53)
-        self.assertEqual(lesson["source"]["subsection"], "12–19")
+        self.assertEqual(lesson["source"]["book"], "پوختەی ڕێنووس و خاڵبەندی")
+        self.assertEqual(lesson["source"]["author"], "دیاکۆ هاشمی")
+        self.assertEqual(lesson["source"]["edition"], 4)
+        self.assertEqual(lesson["source"]["pages"], "٨٣–٨٤")
+        self.assertIn("پەڕە ٨٣–٨٤", lesson["source"]["source_policy"])
         self.assertGreaterEqual(len(lesson["quiz"]), 3)
 
     def test_appendix_and_book_back_matter_remain_separate_lessons(self):
