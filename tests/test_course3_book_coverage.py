@@ -41,6 +41,15 @@ class Course3BookCoverageTests(unittest.TestCase):
         self.assertIn("پەڕە ٨٣–٨٤", lesson["source"]["source_policy"])
         self.assertGreaterEqual(len(lesson["quiz"]), 3)
 
+    def test_lesson_62_matches_book_symbol_numbering_and_hash_example(self):
+        lesson = self.lessons[61]
+        self.assertIn("هەشت جۆر هێمای دیکە", lesson["objective"])
+        examples = " ".join(value for pair in lesson["examples"] for value in pair)
+        self.assertIn("#١ لە لیستەکەدا", examples)
+        self.assertNotIn("١# لە لیستەکەدا", examples)
+        self.assertEqual(lesson["source"]["pages"], "٨٣–٨٤")
+        self.assertEqual(lesson["review_status"], "draft_editorial_review")
+
     def test_appendix_and_book_back_matter_remain_separate_lessons(self):
         self.assertEqual(
             [lesson["title"] for lesson in self.lessons[62:]],
