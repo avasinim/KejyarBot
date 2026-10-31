@@ -33,6 +33,7 @@ Dengdêra E di van peyvan de tê dîtin:
 | mezin | E |
 | şert | E |
 | der | E |
+| şer | E |
 | ser | E |
 
 ### 3. Dengdêra I
@@ -200,8 +201,6 @@ Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya
 | kor | O |
 | roj | O |
 | kom | O |
-| dor (source) | O |
-| kor (source) | O |
 
 Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 
