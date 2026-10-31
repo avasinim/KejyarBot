@@ -19,8 +19,8 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | 1 | Corrected draft present | Separate key; exact option test |
 | 2 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
 | 3 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
-| 4 | Replacement draft present; not verbatim restoration; vowel-length explanation checked against printed p. 11 | Separate key; exact option test |
-| 5 | Replacement draft present; not verbatim restoration; vowel-length explanation checked against printed p. 11 | Separate key; exact option test |
+| 4 | User-provided full lesson text confirmed in conversation; current branch copy is source-aligned; final line-by-line reconciliation remains editorial work | Separate key; exact option test |
+| 5 | User-provided full lesson text confirmed in conversation; current branch copy is source-aligned; final line-by-line reconciliation remains editorial work | Separate key; exact option test |
 | 6 | Recovered draft restored from `Pasted text(1).txt` (brand casing/layout normalized) | Five options restored; master key matches exact option text |
 | 7 | Corrected draft present | Separate key; exact option test |
 | 8 | Recovered from `Pasted markdown(3).md`; V position corrected and source contrasts added | Key matches original option order; exact option test |
@@ -29,12 +29,11 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | 11 | Corrected draft present | Separate key; exact option test |
 | 12 | Recovered from `Pasted markdown(3).md`; ezafe and locative word-bank forms corrected | Key matches original quiz options; exact option test |
 
-**Recovery completed:** Lessons 2, 3, and 6 have been restored from the user's Library file `Pasted text(1).txt`; Lessons 8, 9 and 12 have been restored from `Pasted markdown(3).md`. Their original teaching text and quiz option order were recovered; the master answer-key entries were corrected to match the exact selected option text. Lesson 6 received only Markdown/layout and brand-casing normalization. Lessons 8 and 9 preserve the recovered original quiz option order; Lesson 12 preserves its original quiz and reading sequence with two minimal corrections. Lessons 4 and 5 remain transcript-confirmed, but their exact message bodies have not yet been restored; the current files are clearly labelled replacement drafts, not verbatim restorations.
+**Recovery completed:** Lessons 2, 3, and 6 have been restored from the user's Library file `Pasted text(1).txt`; Lessons 8, 9 and 12 have been restored from `Pasted markdown(3).md`. Their original teaching text and quiz option order were recovered; the master answer-key entries were corrected to match the exact selected option text. Lesson 6 received only Markdown/layout and brand-casing normalization. Lessons 8 and 9 preserve the recovered original quiz option order; Lesson 12 preserves its original quiz and reading sequence with two minimal corrections. Lessons 4 and 5 were supplied in full in the conversation. Their current branch copies are source-aligned; preserve the user-provided wording as the reference and do not ask the user to resend them.
 
 ## Course 2 — 12 lessons
 
-- One source-aligned 12-lesson draft is present.
-- Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly. Lesson 9 now explicitly includes the source's three-way pronoun gender distinction (nêr, mê, nêtar), including the neutral use of ew, and has a regression guard. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly.
+- One source-aligned 12-lesson draft is present. The user supplied the full texts for Lessons 1–3 in the conversation; the current branch copies are editorially source-aligned and must be checked against those user messages, not treated as invented originals. Do not ask the user to resend the texts. Lesson 1 was checked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly. Lesson 9 now explicitly includes the source's three-way pronoun gender distinction (nêr, mê, nêtar), including the neutral use of ew, and has a regression guard.
 - Lessons 4–12 are editorially revised from recovered lesson material.
 - Lesson 12: the expanded six-category draft is now selected and copied into the canonical 12-lesson master. The former baseline section was replaced; the separate replacement file is retained only as an editorial snapshot. The consolidated master key was aligned to the selected quiz options and is regression-tested. Do not load the snapshot as a second lesson.
 - The consolidated key must match the exact quiz options in the selected lesson draft. The current canonical Course 2 Lesson 1 quiz and key are source-aligned and regression-tested; this does not convert the new draft into a recovered original.
@@ -162,3 +161,8 @@ A direct review of Celadet Alî Bedir-Xan, *Bingehên gramera kurdmancî*, print
 This is a source-alignment edit to the editorial draft, not a claim of verbatim transcription. The lesson order and course separation are unchanged.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 51–52. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 Kurmanji Latin-script normalization
+
+All lesson headings and structural labels in `latin_course_2_source_aligned_lessons_01_12.md` now use Kurmanji Latin forms (`Ders`, `Armanc`, `Naverok`, `Xebat`, `Kuis`, `Têbînîyên çavkaniyê`). Sorani-script labels and prose were removed from the course file; the master pack now contains 24 lesson headings in Latin script and no Arabic-script characters in either Latin course. A regression assertion enforces the script boundary across both courses.
