@@ -11,6 +11,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def setUp(self):
         self.manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
+    def _assert_complete_unique_question_keys(self, question_ids, key_ids, expected_numbers):
+        expected = set(expected_numbers)
+        self.assertEqual(len(question_ids), len(set(question_ids)))
+        self.assertEqual(set(question_ids), expected)
+        self.assertEqual(len(key_ids), len(set(key_ids)))
+        self.assertEqual(set(key_ids), expected)
+
     def test_manifest_is_draft_and_not_runtime_loaded(self):
         self.assertEqual(self.manifest["status"], "draft_not_loaded_by_runtime")
 
@@ -114,6 +121,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         )
         self.assertEqual(len(questions), 10)
         self.assertEqual(len(key_rows), 10)
+        expected = {(lesson, question) for lesson in (4, 5) for question in range(1, 6)}
+        self._assert_complete_unique_question_keys(list(questions), [(int(l), int(q)) for l, q, _, _ in key_rows], expected)
         for lesson, question, letter, answer in key_rows:
             self.assertEqual(questions[(int(lesson), int(question))][letter], answer.strip())
 
@@ -160,6 +169,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 rows.append((cells[0], cells[1], cells[2], cells[3]))
         self.assertEqual(len(questions), 10)
         self.assertEqual(len(rows), 10)
+        expected = {(lesson, question) for lesson in (8, 9) for question in range(1, 6)}
+        self._assert_complete_unique_question_keys(list(questions), [(int(l), int(q)) for l, q, _, _ in rows], expected)
         for lesson, number, option, answer in rows:
             self.assertEqual(questions[(int(lesson), int(number))][option], answer)
 
@@ -193,6 +204,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer in rows:
             self.assertEqual(questions[number][letter], answer)
 
