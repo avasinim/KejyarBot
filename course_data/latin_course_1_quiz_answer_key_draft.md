@@ -51,7 +51,7 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 | 9 | 5 | C | Û |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
-| 10 | 3 | B | Sê herf |
+| 10 | 3 | B | Sê |
 | 10 | 4 | B | C û Ç |
 | 10 | 5 | A | Rêza herfan |
 | 11 | 1 | B | çav |
@@ -59,10 +59,10 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 | 11 | 3 | B | îro |
 | 11 | 4 | B | Ş |
 | 11 | 5 | A | Rêza herfan |
-| 12 | 1 | C | 31 herf |
+| 12 | 1 | C | 31 |
 | 12 | 2 | A | A, E, Ê, I, Î, O, U, Û |
 | 12 | 3 | B | çav |
-| 12 | 4 | B | 4 peyv |
+| 12 | 4 | B | 4 |
 | 12 | 5 | C | Nivîsandinê kontrol bikî |
 
 ## پشکنینی تایبەتی و سنووری بەڵگە
