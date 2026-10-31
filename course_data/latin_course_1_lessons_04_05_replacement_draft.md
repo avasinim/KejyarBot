@@ -60,7 +60,7 @@ Dengdêra U di van peyvan de tê dîtin:
 | xurt | U |
 | kulîlk | U |
 
-Pirtûka bingehîn di nirxandina dengdêrên kin de hin formên taybet jî destnîşan dike؛ ji ber vê yekê tu di vê dersê de wek mînakeke bingehîn nayê danîn، lê dikare di xwendinê de wek mînakeke zêde were nasîn.
+Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
 
 ### 5. Cudahiyên ku divê neyên tevlihevkirin
 | Dengdêrên kin | Dengdêrên cuda |
@@ -173,7 +173,7 @@ Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudah
 | pîr | Î |
 | nîv | Î |
 | jîn | Î |
-| şîr | Î |
+| şîr | Î |\n| xwîn | Î |
 
 Î ji I cuda ye. Di dil de I heye، di pîr de Î heye.
 
@@ -196,7 +196,7 @@ Di xwendinê de dengê O bi baldarî nas bike؛ wê bi U an Û re neguherîne.
 | bûn | Û |
 | dû | Û |
 | mû | Û |
-| xwîn | Û |
+| xwîn | Î |
 | şûştin | Û |
 
 Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn، ne bi U.
@@ -222,7 +222,7 @@ av — êvar — pîr — sor — bûk — çav — şîr — kor
 - O: dor, sor, kor
 - Û: dûr, bûk, bûn
 
-**Xebata 3:** Cihê herfa nîşankirî bibîne û binivîse: pênc, îro, şûştin, xwîn.
+**Xebata 3:** Cihê herfa nîşankirî bibîne û binivîse: pênc, îro, şîr, xwîn.
 
 ### 9. Testa Kejyar
 1. Kîjan kom ji dengdêrên dirêj pêk tê?
