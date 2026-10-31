@@ -48,6 +48,11 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertNotEqual(first["source_part"], second["source_part"])
 
 
+    def test_course_two_lesson_document_has_real_markdown_line_breaks(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        self.assertNotIn(r"\\n", lesson_text)
+        self.assertIn("**دۆخی گەڕاندنەوە:**", lesson_text)
+
     def test_course_two_quiz_answer_key_matches_exact_option_text(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md").read_text(encoding="utf-8")
