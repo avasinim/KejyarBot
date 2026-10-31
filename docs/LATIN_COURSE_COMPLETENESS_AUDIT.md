@@ -41,7 +41,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 
 ## Regression protection added
 
-The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate.
+The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
 
 ## Release blockers
 
