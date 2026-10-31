@@ -221,3 +221,14 @@ Course 1 Lessons 6–7 were checked against the vowel section on printed pp. 24�
 Course 2 Lesson 6 was checked against printed pp. 61–62: the source lists determiners before and after nouns, including `ev keçik`, `kîjan mirov`, `hespê beza`, and nested modifier groups. The lesson now distinguishes the function of `ev` in `ev keçik` (noun modifier) from standalone `ev` used as a demonstrative pronoun. Course 2 Lesson 7 was checked against printed pp. 62–64: the three definite determiners are `ê`, `a`, and `ên`, with masculine singular, feminine singular, and plural uses respectively; the source also treats their use before adjectives separately from the post-nominal forms. Existing lesson examples reflect this distinction, so no broad rewrite was needed.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 24–27 and 61–64: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 1 Lessons 8–9 — V/W contrast and marked-letter inventory
+
+Course 1 Lesson 8 was checked against Bedir-Xan's discussion of **V** and **W** on printed p. 17. The source gives the contrast sets `dev/dew`, `vir/wîr`, `ava/awa`, and `evî/ewî`, and explicitly discusses how the two letters are articulated and written. The lesson retains the contrast examples as evidence that V and W are distinct; it does not turn the examples into a claim that paired words have identical meanings or into a broad rule for every dialect.
+
+Course 1 Lesson 9's inventory (`Ç, Ê, Î, Ş, Û`) was checked against the 31-letter Latin alphabet taught in Part I. These are treated as distinct alphabet letters, not decorative accents or optional typography. The lesson's contrast pairs (`C/Ç`, `E/Ê`, `I/Î`, `S/Ş`, `U/Û`) correctly preserve the written distinctions.
+
+No lesson rewrite was necessary in this pass. A regression test now guards the source contrast examples, the five marked letters, and their five base-letter distinctions.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p. 17 and Part I, printed pp. 11–34. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
