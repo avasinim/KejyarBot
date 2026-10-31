@@ -1,3 +1,4 @@
+import re
 import json
 import unittest
 from pathlib import Path
@@ -490,12 +491,12 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                question = re.match(r"^\\s*(\d+)\. (.+)$", line)
+                question = re.match(r"^\s*(\d+)\. (.+)$", line)
                 if question:
                     current = int(question.group(1))
                     questions[current] = {}
                     continue
-                option = re.match(r"^\\s*-?\\s*([A-D])\\) (.+)$", line)
+                option = re.match(r"^\s*-?\s*([A-D])\) (.+)$", line)
                 if option and current is not None:
                     questions[current][option.group(1)] = option.group(2)
         rows = []
