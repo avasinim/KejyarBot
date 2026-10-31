@@ -160,42 +160,42 @@ Herfa nîşankirî nasnameya xwe heye. Ji bo nimûne, Ç û C ne yek in؛ Ê û 
 - Û: dûr, bûk
 
 **Xebata 3:** Herfa rast hilbijêre:
-- C / Çav
-- E / Êvar
-- I / Îro
-- S / Şev
-- U / Ûr
+- C / Ç
+- E / Ê
+- I / Î
+- S / Ş
+- U / Û
 
 ### 6. Testa Kejyar
 1. Di peyva çav de kîjan herf heye?
-A) C
-B) Ç
-C) Ş
-D) S
+A) S
+B) C
+C) Ç
+D) Ş
 
 2. Di peyva êvar de kîjan dengdêr heye?
-A) E
-B) Ê
+A) Ê
+B) E
 C) I
 D) Î
 
 3. Di peyva îro de kîjan dengdêr heye?
-A) I
-B) Î
-C) U
-D) Û
+A) U
+B) I
+C) Û
+D) Î
 
 4. Di peyva şev de kîjan herf heye?
 A) S
 B) Ş
-C) C
-D) Ç
+C) Ç
+D) C
 
 5. Di peyva dûr de kîjan dengdêr heye?
-A) U
-B) Û
-C) O
-D) Î
+A) Î
+B) O
+C) Û
+D) U
 
 ### Xulasa
 Pênc herfên vê dersê Ç, Ê, Î, Ş û Û ne. Ç û Ş dengdar in؛ Ê, Î û Û dengdêr in. نیشانەکانیان بەشێکن لە خۆی هەرەفەکە و نابێت لە نووسین بسڕدرێنەوە.
