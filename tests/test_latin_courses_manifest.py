@@ -228,5 +228,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("cotên wateyî yeksan", lesson_89)
 
 
+    def test_course_one_lesson_seven_does_not_misclassify_xwin_as_u_circumflex(self):
+        lesson = (ROOT / "course_data" / "latin_course_1_lesson_07_corrected_draft.md").read_text(encoding="utf-8")
+        long_u_section = lesson.split("### 2. Dengdêra Û", 1)[1].split("### 3.", 1)[0]
+        self.assertNotIn("| xwîn | Û |", long_u_section)
+        self.assertIn("xwîn", long_u_section)
+        self.assertIn("bi Î tê nivîsîn", long_u_section)
+
+
 if __name__ == "__main__":
     unittest.main()
