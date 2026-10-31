@@ -70,7 +70,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             key_text, flags=__import__("re").MULTILINE
         )
         self.assertEqual(len(questions), 60)
-        self.assertEqual(len(key_rows), 55)
+        self.assertEqual(len(key_rows), 60)
         for lesson, question, option, answer_text in key_rows:
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected)
