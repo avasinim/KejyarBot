@@ -160,6 +160,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("Rêzîn", lesson_twelve)
         self.assertIn("`stûna çaran`", lesson_twelve)
         self.assertIn("`a pêncan`", lesson_twelve)
+        for example in ("`vî hespî`", "`van hespan`", "`wê mehinê`", "`deh mirov hatin`", "`deh mirovan got`", "`kîjan mirov hat?`", "`tu mirov`", "`her mirov`", "`gelek fêkî`", "`hevqas pere`", "`mehinên te`", "`qelemên wê`"):
+            self.assertIn(example, lesson_twelve)
         self.assertIn("SELECTED CONTENT", snapshot)
         self.assertIn("do not load it separately", snapshot)
         self.assertEqual(master.count("## وانەی ١٢ —"), 1)
