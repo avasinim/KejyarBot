@@ -5,6 +5,20 @@ Status: editorial patch list based on the recovered 12-lesson drafts and Part I 
 Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002, Part I: “Elfabêya kurdî”, printed pp. 11–34.
 The book identifies 31 letters and 8 vowels; short vowels are `e, i, u`; long vowels are `a, ê, î, o, û`. The V/W section gives contrastive examples on pp. 16–17.
 
+## Source-level verification update — printed page 11
+
+A direct check of the digital edition's printed p. 11 confirms the eight-vowel inventory and supplies compact example sets for each target vowel:
+- Short E: `der, şer, ser`.
+- Short I: `kin, din, bin`.
+- Short U: `kurd, kur, kul`.
+- Long A: `av, sar, bar`.
+- Long Ê: `dêr, şêr, mêr`.
+- Long Î: `tîr, zîv, şîv`.
+- Long O: `dor, sor, kor`.
+- Long Û: `kûr, şûr, dûr`.
+
+The replacement drafts for Lessons 4–5 now include these source-attested examples in the appropriate vowel groups. This is a source-alignment enhancement to the replacement drafts, not a restoration of the earlier verbatim lesson outputs. Regression tests assert that these examples remain in the correct short/long lesson and that `bûk` and `şûştin` are not placed under short U.
+
 ## Confirmed corrections
 
 ### Lesson 1 — Elfabeya Kurdî
