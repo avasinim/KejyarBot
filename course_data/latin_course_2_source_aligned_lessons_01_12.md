@@ -392,7 +392,7 @@ Pirtûk ji bo kesên yekem û duyem carinan `xwe` jî di tabloyên xwemalî de n
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
 
-1. Di `Her kes di bêje` de pronavê nebinavkirî bibîne.
+1. Di `Her kes dibêje` de pronavê nebinavkirî bibîne.
 2. Di `Yê ko hat bira yê min bû` de pronavên îşarkî û pronavê girêkî bibîne.
 3. Ji bo navdêrên nêr، mê û gelemjimar pronavên xwemalîn bi `min` çêbike.
 4. Di `destmalên min — yên min` de pronavê xwemalîn bibîne û erkê `yên` rave bike.
