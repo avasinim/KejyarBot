@@ -80,7 +80,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 in_quiz = False
                 current = None
                 continue
-            question = re.match(r"^(\\d+)\\. (.+)$", line)
+            question = re.match(r"^(\d+)\. (.+)$", line)
             if question:
                 current = (lesson_number, int(question.group(1)))
                 self.assertNotIn(current, questions)
@@ -88,20 +88,20 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 # Lessons 1–11 use inline options; selected Lesson 12 uses
                 # one option per line. Support both without weakening checks.
                 inline_options = re.findall(
-                    r"([ABC])\\) (.*?)(?= [ABC]\\) |$)",
+                    r"([ABC])\) (.*?)(?= [ABC]\) |$)",
                     question.group(2),
                 )
                 for letter, option_text in inline_options:
                     self.assertNotIn(letter, questions[current])
                     questions[current][letter] = option_text
                 continue
-            option = re.match(r"^([ABC])\\) (.+)$", line)
+            option = re.match(r"^([ABC])\) (.+)$", line)
             if option and current is not None:
                 self.assertNotIn(option.group(1), questions[current])
                 questions[current][option.group(1)] = option.group(2)
 
         key_rows = re.findall(
-            r"^\\| (\\d+) \\| (\\d+) \\| ([ABC]) \\| ([^|]+) \\|",
+            r"^\| (\d+) \| (\d+) \| ([ABC]) \| ([^|]+) \|",
             key_text, flags=re.MULTILINE
         )
         expected_ids = {
