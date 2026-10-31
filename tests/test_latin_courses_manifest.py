@@ -100,6 +100,20 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("ew", lesson_nine)
 
 
+    def test_course_two_lessons_ten_and_eleven_cover_remaining_source_pronoun_types(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_ten = lesson_text.split("## وانەی ١٠ —", 1)[1].split("## وانەی ١١ —", 1)[0]
+        lesson_eleven = lesson_text.split("## وانەی ١١ —", 1)[1].split("## وانەی ١٢ —", 1)[0]
+
+        for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`"):
+            self.assertIn(form, lesson_ten)
+
+        for form in ("Pronavên nebinavkirî", "`yek`", "`her kes`", "`hinek`", "Pronavên xwemalîn", "`yê min`", "`ya min`", "`yên min`"):
+            self.assertIn(form, lesson_eleven)
+
+        self.assertIn("ji rengdêrên xwemalîn", lesson_eleven)
+
+
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
         master = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         snapshot = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
