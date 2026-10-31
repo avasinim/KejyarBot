@@ -57,7 +57,7 @@ Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Bedir-Xan navd�
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
 - **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
 
-Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştêkî taybet dide nasîn. Di nimûneyên çavkaniyê de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
+Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên çavkaniyê de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
 ### Xebat
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
@@ -84,7 +84,7 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
 
-**Têbînî:** di nav hin navên heywanan de zayenda mê û nêr dikare bi formên cuda were nîşandan; lê zayenda rêzimanî ya navdêrê her dem تەنیا بە زایەندی زیندەوەرەکە دیاری ناکرێت.
+**Têbînî:** di nav hin navên heywanan de zayenda mê û nêr dikare bi formên cuda were nîşandan; lê zayenda rêzimanî ya navdêrê her dem bi zayenda rastîn a heywan an mirovê re yek nîne.
 
 ### Xebat
 1. `derî` û `çem` di çi zayendê de ne?
