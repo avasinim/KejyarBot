@@ -18,11 +18,11 @@
 2. وانەی ٤: `bûk` و `şûştin` لە لیستی U بسڕدرێنەوە؛ هەردووکیان Ûیان هەیە. لیستی U بە نموونەی پشتڕاستکراو وەک `tu, gur, kur, gund, xurt, kulîlk` ڕێکبخرێت؛ `tu` وەک استثنا/شێوەی سەرچاوە نیشانەدار بکرێت.
 3. وانەی ٥: بۆ O لەبری `zoro` نموونەی سەرچاوەیی `dor, sor, kor` بەکاربهێنرێت، تا کاتێک فەرهەنگ و سەرچاوەی کۆرس `zoro` پشتڕاست بکەنەوە. جیاوازیی درێژی دەنگ و کوالێتیی دەنگ تێکەڵ نەکرێت.
 4. وانەی ٧: ڕوون بکرێتەوە کە U تەنیا «کورتکراوەی Û» نییە؛ جیاوازیی کوالێتی/شوێنی دەنگیش هەیە.
-5. وانەی ٨: `zivistan` وەک نموونەی V لە سەرەتای وشە لاببرێت؛ V لە ناوەڕاستی ئەم وشەیەدایە. بەراوردی `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî` بخرێتە ناوەوە.
-6. وانەی ٩: ناونیشان و ناوەڕۆک هاوتا بکرێن؛ Ê/Î/Û بزوێنن، نابێت لە وانەی «dengdarên taybet»دا بە هەمان پۆل لەگەڵ پیتە بێ‌بزوێنەکان پیشان بدرێن. دووبارەبوونەوەی وانەی ٢یش کەم بکرێتەوە.
+5. وانەی ٨: دەقی ڕەسەنی وانەکە لە `Pasted markdown(3).md` گەڕێندرایەوە. `zivistan` لە خشتەدا لە `destpêk` بۆ `navîn` چاک کرا؛ چونکە V لە ناوەڕاستی وشەکەدایە. بەراوردە سەرچاوەییەکانی `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî` وەک نموونەی زیادە زیاد کران.
+6. وانەی ٩: دەقی ڕەسەنی وانەکە گەڕێندرایەوە و ناونیشانی `Herfên Taybet di Elfabeya Kurdî de` پارێزرا. `xwîn` لە Û بۆ Î گوازرایەوە، چونکە پیتی Îی تێدایە؛ هەروەها `U / Ûr` بە `U / Û` چاک کرا.
 7. وانەی ١٠: پەیوەندیی دەنگ و پیت بە بنەمای پەڕەی ١٥ی سەرچاوەی کۆرس ڕوون بکرێتەوە؛ هەموو جیاوازییە فۆنێتیکییەکان بە پیتی جیاواز نانووسرێن.
 8. وانەی ١١: نموونەکانی جیاوازیی ڕێنووس بە شێوەی ڕستە و واتای دیاریکراو پشکنین بکرێن؛ نموونەیەک کە لە دیالێکتێکی تر وشەی دروستە بە «هەڵە» ناونەبرێت.
-9. وانەی ١٢: `Ev pirtûk a min e` بە `Ev pirtûka min e` چاک بکرێت؛ پاشگر/نیشانەی ezafe بە وشەکەوە بنووسرێت. پێنج پرسیاری کویزەکە بمێنێتەوە، بەڵام کلیل و ڕوونکردنەوەی هەر پرسیار پشکنین بکرێت.
+9. وانەی ١٢: دەقی ڕەسەنی وانەکە گەڕێندرایەوە. `Ev pirtûk a min e` بە `Ev pirtûka min e` چاک کرا؛ لە word-bank ـی ڕاهێناندا `dibistan` بە `dibistanê` گۆڕدرا بۆ هاوتایی لەگەڵ `Zarok di ______ de ne`. پێنج پرسیاری کویزەکە و ڕیزبەندیی هەڵبژاردەکان پارێزراون.
 
 ## کۆرسی ٢ — ڕێزمانی کورمانجی
 سەرچاوەی بنەڕەتی: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002.
@@ -181,3 +181,7 @@
 - هەردوو کۆرس بە سەرچاوە و ناسنامەی جیاواز پارێزراون؛ هیچ ناوەڕۆکیان تێکەڵ نەکراوە.
 - Latest verified CI: run `41205708504` passed; `compileall` and **152 unit tests** passed.
 - پشکنینی کۆتاییی دەقی وانەکان و هاوتاکردنی هەڵبژاردە/کلیلەکان لەگەڵ runtime هێشتا پێش‌مەرجی چالاککردنن.
+
+
+## Recovery update — Course 1 Lessons 8–9 and 12
+The recovered originals from `Pasted markdown(3).md` are now the canonical lesson drafts. The former rewritten Lesson 8–9 and Lesson 12 files are archived as superseded. Their original quiz option order is preserved; the Lesson 9 key has been corrected to B for all five questions. Lesson 8's `zivistan` position, Lesson 9's `xwîn` vowel classification and malformed exercise, and Lesson 12's ezafe/locative forms are guarded by tests. `latin_courses_master_draft.md` consolidates the selected 24 lessons in order.
