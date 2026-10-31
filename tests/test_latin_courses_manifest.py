@@ -305,6 +305,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson_four, lesson_five = lesson_text.split("## Ders 5:", 1)
         source_short = ("der", "şer", "ser", "kin", "din", "bin", "kur", "kurd", "kul")
         source_long = ("av", "sar", "bar", "dêr", "şêr", "mêr", "tîr", "zîv", "şîv", "dor", "sor", "kor", "kûr", "şûr", "dûr")
+        self.assertIn("tenê dirêjahiya heman dengî nayê watekirin", lesson_four + lesson_five)
+        self.assertIn("cihê derxistina dengdêrên kin û dirêj", lesson_four + lesson_five)
         for example in source_short:
             self.assertIn(f"| {example} |", lesson_four)
         for example in source_long:
