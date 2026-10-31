@@ -3,11 +3,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 
 | وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
-| 1 | 1 | B | 31 herf |
-| 1 | 2 | C | 8 dengdêr |
-| 1 | 3 | B | E, I, U |
-| 1 | 4 | C | Î |
-| 1 | 5 | B | ş |
 | 2 | 1 | C | 31 herf |
 | 2 | 2 | B | Ç |
 | 2 | 3 | B | î |
@@ -33,11 +28,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 | 6 | 3 | C | îro |
 | 6 | 4 | B | Î |
 | 6 | 5 | B | Du herfên cuda ne |
-| 7 | 1 | A | U |
-| 7 | 2 | B | Û |
-| 7 | 3 | C | bûn |
-| 7 | 4 | B | U |
-| 7 | 5 | B | Du herfên cuda ne |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê herf |
@@ -68,3 +58,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 
 
 **ئاگاداریی نوێ:** کلیلەکانی کۆنی وانەکانی ٨ و ٩ لابراون، چونکە دەقی جێگرەوەی نوێیان option order ـی جیاوازی هەیە. کلیلەی دروستی ئەم دوو وانە لە `latin_course_1_lessons_08_09_answer_key.md`دایە.
+
+
+**نوێکاری:** کلیلە کۆنەکانی وانەی ١ و ٧ لابراون، چونکە بۆیان پێش‌نووسی چاککراوی جیاواز و کلیلەی تایبەتی دروست کراوە: `latin_course_1_lesson_01_answer_key.md` و `latin_course_1_lesson_07_answer_key.md`.
