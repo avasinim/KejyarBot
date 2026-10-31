@@ -24,6 +24,11 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             self.assertEqual(len(quizzes[lesson_id]), 5)
             self.assertTrue(all(len(question["options"]) in (3, 4) for question in quizzes[lesson_id]))
 
+    def test_bot_routes_course_selection_callbacks_for_both_latin_courses(self):
+        bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
+        self.assertIn("kurmanji_latin_orthography|kurmanji_latin_grammar", bot_source)
+        self.assertIn('pattern=r"^course_', bot_source)
+
     def test_course_progress_unlocking_is_isolated_between_the_two_courses(self):
         lessons, _, courses = load_latin_courses()
         first, second = [course["lesson_ids"] for course in courses]
