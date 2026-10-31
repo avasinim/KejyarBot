@@ -1,6 +1,6 @@
 # کلیلەی یەکگرتووی وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
 
-Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 use explicitly labelled replacement drafts; Lessons 8–9 use recovered original text with minimal corrections and the original option order is preserved.
+Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 are source-aligned editorial copies of the user's already supplied lesson texts; Lessons 8–9 use recovered original text with minimal corrections and the original option order is preserved.
 
 | وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
@@ -68,7 +68,7 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 ## پشکنینی تایبەتی و سنووری بەڵگە
 
 - وانەکانی ١–٣ و ٦: لە دەقی گەڕێنراوەوە وەرگیراون؛ کلیلەکە لەگەڵ هەڵبژاردەکانی دەقی وانەکان پشکنراوە.
-- وانەکانی ٤–٥: ئەم کلیلە بۆ پێش‌نووسە جێگرەوە نوێیەکانە؛ دەقی ڕەسەنی پێشوویان بە وشەبەوشە نەگەڕێندراوەتەوە.
+- وانەکانی ٤–٥: دەقی تەواوی ئەم دوو وانەیە لەلایەن بەکارهێنەرەوە پێشتر نێردراوە؛ ئەم کلیلە بۆ وەشانی سەرچاوە-هاوتاکراوی برانچی کارە و داوای ناردنەوەی دەقەکان ناکرێت.
 - وانەی ٧: کلیلەکە بۆ پێش‌نووسی چاککراوە.
 - وانەکانی ٨–٩: کلیلەکە بۆ پێش‌نووسە جێگرەوە چاککراوەکانە، نەک دەقی کۆنیان.
 - وانەکانی ١٠–١٢: کلیلەکان لەگەڵ پێش‌نووسە چاککراوەکان هاوتا کراون.
