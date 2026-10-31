@@ -151,5 +151,38 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[(int(lesson), int(number))][option], answer)
 
 
+    def test_course_one_lesson_one_answer_key_matches_exact_options(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_01_corrected_draft.md").read_text(encoding="utf-8")
+        key_text = (ROOT / "course_data" / "latin_course_1_lesson_01_answer_key.md").read_text(encoding="utf-8")
+        questions = {}
+        current = None
+        in_quiz = False
+        for line in lesson_text.splitlines():
+            if line.startswith("### 6. Testa Kejyar"):
+                in_quiz = True
+                continue
+            if in_quiz:
+                if line.startswith("### Xulasa"):
+                    in_quiz = False
+                    continue
+                if line and line[0].isdigit() and ". " in line:
+                    number, _ = line.split(". ", 1)
+                    current = int(number)
+                    questions[current] = {}
+                    continue
+                if len(line) > 3 and line[0] in "ABCD" and line[1:3] == ") ":
+                    questions[current][line[0]] = line[3:]
+        rows = []
+        for line in key_text.splitlines():
+            if line.startswith("|"):
+                cells = [cell.strip() for cell in line.strip("|").split("|")]
+                if len(cells) >= 3 and cells[0].isdigit():
+                    rows.append((int(cells[0]), cells[1], cells[2]))
+        self.assertEqual(len(questions), 5)
+        self.assertEqual(len(rows), 5)
+        for number, letter, answer in rows:
+            self.assertEqual(questions[number][letter], answer)
+
+
 if __name__ == "__main__":
     unittest.main()
