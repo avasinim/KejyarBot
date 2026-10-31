@@ -246,7 +246,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
         self.assertIn("not runtime-loaded", master)
         course_one, course_two = master.split("## Course 2 —", 1)
-        c1_numbers = [int(number) for number in re.findall(r"^## Ders (\\d+):", course_one, flags=re.MULTILINE)]
+        c1_numbers = [int(number) for number in re.findall(r"^## Ders (\d+):", course_one, flags=re.MULTILINE)]
         digit_map = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
         c2_numbers = [int(number.translate(digit_map)) for number in re.findall(r"^## وانەی ([٠-٩]+) —", course_two, flags=re.MULTILINE)]
         self.assertEqual(c1_numbers, list(range(1, 13)))
@@ -255,7 +255,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(master.count("### Provenance — Course 2"), 12)
         self.assertNotIn("orthography_foundations", master)
 
-        lesson_heads = list(re.finditer(r"^## (?:Ders \\d+:.*|وانەی [٠-٩]+ —.*)$", master, flags=re.MULTILINE))
+        lesson_heads = list(re.finditer(r"^## (?:Ders \d+:.*|وانەی [٠-٩]+ —.*)$", master, flags=re.MULTILINE))
         self.assertEqual(len(lesson_heads), 24)
         for index, heading in enumerate(lesson_heads):
             end = lesson_heads[index + 1].start() if index + 1 < len(lesson_heads) else len(master)
@@ -266,7 +266,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             summary = re.search(r"^### Xulasa.*$", quiz, flags=re.MULTILINE)
             if summary:
                 quiz = quiz[:summary.start()]
-            questions = re.findall(r"^\\d+\\. ", quiz, flags=re.MULTILINE)
+            questions = re.findall(r"^\d+\\. ", quiz, flags=re.MULTILINE)
             self.assertEqual(len(questions), 5, heading.group(0))
 
         self.assertIn("New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.", master)
@@ -489,7 +489,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                question = re.match(r"^\\s*(\\d+)\\. (.+)$", line)
+                question = re.match(r"^\\s*(\d+)\\. (.+)$", line)
                 if question:
                     current = int(question.group(1))
                     questions[current] = {}
@@ -557,7 +557,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         )
         drafts = [(ROOT / "course_data" / name).read_text(encoding="utf-8") for name in paths]
         for draft in drafts:
-            self.assertIsNone(re.search(r"[\\u0600-\\u06FF]", draft))
+            self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in draft))
         self.assertIn("| xwîn | Î |", drafts[2])
         self.assertNotIn("| xwîn | Û |", drafts[2])
         self.assertIn("dev/dew", drafts[3])
