@@ -40,7 +40,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 
 ## Regression protection added
 
-The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. The Course 1 master answer key now contains all 60 question rows across all 12 lessons; a regression test verifies complete coverage, uniqueness, and agreement with the selected per-lesson key files. It checks the Course 1 Lessons 4–5 replacement key against their selected options, preserves the recovered original option order for Lessons 8–9, and verifies the recovered Lesson 12 key. A master-pack test checks all 24 lesson slots and five quiz questions per lesson.
+The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. The Course 1 master answer key now contains all 60 question rows across all 12 lessons; a regression test verifies complete coverage, uniqueness, and agreement with the selected per-lesson key files. It checks the Course 1 Lessons 4–5 selected key against their selected options, preserves the recovered original option order for Lessons 8–9, and verifies the recovered Lesson 12 key. A master-pack test checks all 24 lesson slots and five quiz questions per lesson.
 
 ## Release blockers
 
@@ -85,12 +85,12 @@ Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeu
 
 A second pass against the source table of contents and printed pp. 76–89 found that the 12-lesson draft did not yet teach every pronoun class named by Bedir-Xan. The missing coverage is now added without changing the Latin-course boundary or importing Course 1 material:
 
-- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 79–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included. It also teaches reflexive `xwe` (printed pp. 76–77; listed as **Pronavên xwemalîn** in the contents) and the singular neuter pronoun `ê` (p. 89), with examples and a distinction from plural `wan`.
+- Lesson 10 adds **Pronavên lihevxistî** (printed pp. 79–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included. It also teaches reflexive `xwe` (printed pp. 76–77; listed as **Pronavên xwemalîn** in the contents) and the singular neuter pronoun `ê` (p. 89), with examples and a distinction from plural `wan`.
 - Lesson 11 adds **Pronavên nebinavkirî** (printed pp. 86–87), with source-grounded examples such as `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt`, and `gelek`.
 - Lesson 11 distinguishes two separate source categories: **demonstrative pronouns of the qerse form** `yê/ya/yên` (printed pp. 81–83), and **Pronavên xwemalîn** (possessive pronouns, printed pp. 87–89). The demonstrative section uses `Yê ko hat bira yê min bû`, `Yên ko hatin bira yên min bûn`, and `Ya ko hat dotmama min bû`, explaining the relative `ko`. The possessive section explains the two-pronoun structure and gives `yê min`, `ya min`, `yên min`, and `destmalên min — yên min`. These forms are not simply reflexive `xwe`.
 - A regression test guards the new source categories and examples.
 
-Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxisitî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxistî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 This is an editorial source-alignment completion, not a claim that the new explanatory prose is a verbatim transcription of the book.
 
@@ -131,8 +131,8 @@ Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî
 
 ## Course 1 follow-up — source examples and text consistency (2026-10-31)
 
-- A direct check of Celadet Alî Bedir-Xan's printed p. 11 confirms the short-vowel examples `der/şer/ser`, `kin/din/bin`, `kurd/kur/kul`, and long-vowel examples `av/sar/bar`, `dêr/şêr/mêr`, `tîr/zîv/şîv`, `dor/sor/kor`, `kûr/şûr/dûr`. The Course 1 replacement drafts for Lessons 4–5 now include these examples in the corresponding vowel groups. They remain explicitly labelled replacement drafts, not verbatim restorations of the earlier outputs.
-- The replacement draft keeps `bûk` and `şûştin` under long `Û`, not short `U`; tests guard that boundary and the exact quiz answer-key mappings.
+- A direct check of Celadet Alî Bedir-Xan's printed p. 11 confirms the short-vowel examples `der/şer/ser`, `kin/din/bin`, `kurd/kur/kul`, and long-vowel examples `av/sar/bar`, `dêr/şêr/mêr`, `tîr/zîv/şîv`, `dor/sor/kor`, `kûr/şûr/dûr`. The current Course 1 Lesson 4–5 editorial copies include these examples in the corresponding vowel groups. The user supplied both complete lesson texts earlier; preserve those original texts as the reference and do not request them again.
+- The current Lesson 4–5 copies keep `bûk` and `şûştin` under long `Û`, not short `U`; tests guard that boundary and the exact quiz answer-key mappings.
 - Lesson 6 had accidental Sorani-script fragments in its explanatory note and exercise instructions. These have been normalized into Kurmanji Latin prose without changing the recovered example list or quiz choices. A test now rejects Arabic-script characters in that lesson.
 - The source PDF's printed p. 11 also supports the distinction between the eight vowel letters and their short/long grouping. See Part I, printed p. 11: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
@@ -171,3 +171,9 @@ All lesson headings and structural labels in `latin_course_2_source_aligned_less
 ## Five user-supplied lesson texts — handling rule
 
 The five full lesson texts have already been provided by the user in the conversation. Their lesson slots are Course 1 Lessons 4 and 5, and Course 2 Lessons 1, 2 and 3. The master pack records these five as user-provided. Continue using the existing conversation text and branch copies; never ask the user to paste or upload them again. Keep exact user wording as the reference, and record any source-alignment correction separately rather than silently rewriting the original.
+
+
+## Course 2 Lesson 10 — terminology spelling correction
+
+The section heading and references for the fused pronoun class are standardized as **Pronavên lihevxistî**, matching the source's printed heading on pp. 79–81. A regression test asserts the corrected form and rejects the former transposition typo `lihevxisitî`.
+
