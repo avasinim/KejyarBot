@@ -4,7 +4,7 @@
 **Armanca dersê:** Xwendekar hemû bingehên elfabê û rastnivîsînê di peyv, hevok û nivîsandina serbixwe de bikar bîne.
 
 ### 1. Dubarekirina alfabeyê
-Elfabeya kurdî ya latînî 31 herf hene:
+Elfabeya kurdî ya latînî 31 herf dihewîne:
 
 A B C Ç D E Ê F G H I Î J K L M N O P Q R S Ş T U Û V W X Y Z
 
@@ -21,7 +21,7 @@ av — mal — dar — jin — zarok — pirtûk — çav — şev — roj — �
 4. Mamoste dersê vedibêje.
 5. Em her roj peyvên nû dinivîsin.
 
-**Baldarî:** Di hevoka duyem de forma rast Ev pirtûka min e ye؛ a wek peyveke serbixwe di navbera pirtûk û min de nayê danîn.
+**Baldarî:** Di hevoka duyem de forma rast Ev pirtûka min e ye; a wek peyveke serbixwe di navbera pirtûk û min de nayê danîn.
 
 ### 4. Peyvên kêmkirî temam bike
 | Peyva kêmkirî | Peyva temam |
@@ -51,7 +51,7 @@ Piştî nivîsandinê kontrol bike:
 - Herfên nîşankirî bi nîşana xwe hatine nivîsîn.
 - Cihberî û veqetandina peyvan rast e.
 
-### 7. Testa dawî ya korsa yekem
+### 7. Testa dawî ya kursa yekem
 1. Çend herf di alfabeya kurdî ya latînî de hene?
 A) 28
 B) 29
