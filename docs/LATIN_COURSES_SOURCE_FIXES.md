@@ -92,3 +92,12 @@
 - کویزی هەر وانەیەک ٥ پرسیارە؛ کلیلەی ١٠ پرسیار لە `course_data/latin_course_1_lessons_08_09_answer_key.md` دانرا.
 - تاقیکردنەوەی خۆکار بۆ هاوتایی دەقی هەڵبژاردە و کلیلە زیاد کرا: `test_course_one_lessons_eight_and_nine_keys_match_exact_options`.
 - هەڵبژاردەی وەڵامی ڕاست لە کویزی وانەی ٩ بە جۆرێک ڕێکخراوە کە هەموویان لە هەمان شوێن نەبن.
+
+
+## Latest continuation — quiz-key consistency and CI repair (2026-10-31)
+- Re-audited the replacement drafts for Course 1 lessons 8–9. The replacement answer key is exact for all 10 questions; the legacy Course 1 answer-key file had stale rows for lessons 8–9 with a different option order. Those stale rows have been removed so there is one authoritative key per replacement draft.
+- Added a test that compares every answer-key text against the exact option selected in replacement lessons 8–9.
+- The first CI run exposed a malformed regular expression in a duplicated test method. Removed the duplicate method, retained the corrected exact-option test, and reran the full workflow.
+- Latest verified workflow: run `41204504221`, conclusion **success**. Both `compileall` and `python -m unittest discover -s tests -v` passed.
+- The Latin-course manifest remains `draft_not_loaded_by_runtime`; it contains two independent courses of 12 lessons each, sourced separately from Part I (orthography) and Part II (grammar).
+- Compared with `fix/kejyarbot-stability-2026-10-25`, this work branch is 39 commits ahead, 0 behind, and the comparison reports 12 changed files. No runtime course registration or production activation has been performed.
