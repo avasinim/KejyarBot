@@ -1,6 +1,6 @@
 # Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
 
-> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order; replacement drafts are not represented as verbatim recovered originals.
+> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order. Any replacement/source-aligned draft is explicitly labelled and is not represented as a verbatim recovery.
 
 ## Source and course separation
 - Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
@@ -344,7 +344,7 @@ Di vê dersê de me cudahiya dengdêr û dengdar, heşt dengdêrên kurdî û ro
 **Kejyar • Fêrbûn bi pratîkê**
 
 ### Provenance — Course 1, Lesson 4
-New replacement draft; exact earlier transcript body unavailable verbatim.
+User-provided lesson text confirmed in conversation; the current branch copy remains a replacement draft until exact transcript text is restored.
 
 ## Ders 4: Dengdêrên Kin — E, I, U
 
@@ -480,7 +480,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 ---
 
 ### Provenance — Course 1, Lesson 5
-New replacement draft; exact earlier transcript body unavailable verbatim.
+User-provided lesson text confirmed in conversation; the current branch copy remains a replacement draft until exact transcript text is restored.
 
 ## Ders 5: Dengdêrên Dirêj — A, Ê, Î, O, Û
 
@@ -1434,7 +1434,7 @@ Di vê kursê de xwendekar bi alfabeya kurdî ya latînî, dengdêr û dengdar, 
 ## Course 2 — Bingehên Gramera Kurmancî
 
 ### Provenance — Course 2, Lesson 1
-New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
+User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
 
 ## وانەی ١ — Gramêr û Hêmanên Ziman
 ### ئامانج
@@ -1476,7 +1476,7 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 ---
 
 ### Provenance — Course 2, Lesson 2
-New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
+User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
 
 ## وانەی ٢ — Navdêr: Hevenav û Serenav
 ### ئامانج
@@ -1485,9 +1485,9 @@ Nasîna navdêrên giştî û taybet.
 ### ناوەڕۆک
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Bedir-Xan navdêran dike du kom:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînak `Sado`, `Bêlan`, `Herekol`, `Kurdistan`.
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
 
-Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav yek kes an cihê taybet dide nasîn.
+Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên çavkaniyê de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
 ### Xebat
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
@@ -1502,7 +1502,7 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 ---
 
 ### Provenance — Course 2, Lesson 3
-New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
+User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
 
 ## وانەی ٣ — Zayenda Navdêran
 ### ئامانج
@@ -1511,11 +1511,13 @@ Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
 ### ناوەڕۆک
 Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem bi zayenda rastîn a heywan an mirovê re yek nîne; tiştên bêcan jî dikarin zayenda rêzimanî ya xwe hebin.
 
-Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
-- Nêr: `derî`, `çem`, `hesp`, `gund`, `kur`.
-- Mê: `dar` (wateya darê kesk/riwek), `mehin`, `gol`, `jin`, `Sînemxan`.
+Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
+- **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
+- **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
-**Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku riwek/dirêjahiya kesk e mê ye; dema ku wateya darê hişk/çûbê dide nêr e. Ev nimûne nîşan dide ku zayend dikare bi wateya bêjeyê ve girêdayî be.
+**Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
+
+**Têbînî:** di nav hin navên heywanan de zayenda mê û nêr dikare bi formên cuda were nîşandan; lê zayenda rêzimanî ya navdêrê her dem bi zayenda rastîn a heywan an mirovê re yek nîne.
 
 ### Xebat
 1. `derî` û `çem` di çi zayendê de ne?
