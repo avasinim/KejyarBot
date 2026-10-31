@@ -86,9 +86,9 @@ Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeu
 
 A second pass against the source table of contents and printed pp. 76–89 found that the 12-lesson draft did not yet teach every pronoun class named by Bedir-Xan. The missing coverage is now added without changing the Latin-course boundary or importing Course 1 material:
 
-- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 76–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included. It also restores the reflexive `xwe` (p. 87) and the singular neuter pronoun `ê` (pp. 88–89), with examples and a distinction from plural `wan`.
+- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 79–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included. It also teaches reflexive `xwe` (printed pp. 76–77; listed as **Pronavên xwemalîn** in the contents) and the singular neuter pronoun `ê` (p. 89), with examples and a distinction from plural `wan`.
 - Lesson 11 adds **Pronavên nebinavkirî** (printed pp. 86–87), with source-grounded examples such as `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt`, and `gelek`.
-- Lesson 11 adds **Pronavên xwemalîn** (printed pp. 87–89), showing the source's `yê/ya/yên` plus personal-pronoun pattern, and distinguishing these full pronouns from possessive adjectives such as `hespê min`.
+- Lesson 11 now correctly presents `yê/ya/yên` as the source's **demonstrative pronouns of the remote/unspecified set** (printed pp. 81–83), not as a separate possessive-pronoun class. It uses the source examples `Yê ko hat bira yê min bû`, `Yên ko hatin bira yên min bûn`, and `Ya ko hat dotmama min bû`; it explains that `ko` is the relative pronoun and that these demonstrative forms are not used alone. The source's **Pronavên xwemalîn** heading on p. 87 belongs to reflexive `xwe`, now taught in Lesson 10; `yê/ya/yên` must not be mislabeled as reflexive or possessive pronouns.
 - A regression test guards the new source categories and examples.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxisitî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
@@ -117,3 +117,7 @@ Regression tests now guard the key source examples and ensure the lessons keep n
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 55–70. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 These are editorially expanded explanations of the cited grammar, not verbatim reproductions of the book.
+
+
+### Correction: source taxonomy for `xwe` and `yê/ya/yên`
+A closer read of the original printed pp. 76–89 corrected a taxonomy error in the earlier draft. The contents page labels the p. 87 section **Pronavên xwemalîn**, but the body identifies its content as reflexive `xwe`; `xwe` is neuter and can represent both genders and both numbers. The three forms `yê/ya/yên` are separately introduced on pp. 81–83 as remote/unspecified demonstrative pronouns, always functioning as subjects and followed by the relative pronoun `ko`. Lesson 11 was rewritten accordingly, and regression tests now prevent the earlier misclassification of `yê/ya/yên` as a possessive/reflexive pronoun class.
