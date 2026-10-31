@@ -11,35 +11,40 @@ Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel
 
 ## وانەی ١ — Gramêr û Hêmanên Ziman
 ### ئامانج
-فێرخواز بتوانێت جیاوازیی نێوان دەنگ، پیت، بڕگە، وشە، کۆمەڵەوشە و ڕستە بناسێت.
+فێرخواز بتوانێت پێناسەی گرامەر و زوانی کورمانجی بناسێت و چوار هێمای سەرەکیی پێکهاتەی زمان لە یەک جیا بکاتەوە: تێپ، کیت، بێژە و کۆمەڵ.
 
 ### ناوەڕۆک
-Gramêr zanista rêxistina ziman e. Di vê kursê de em pêşî hêmanên bingehîn nas dikin:
-- **Deng:** tiştê ku di axaftinê de tê bihîstin.
-- **Tîp:** nîşana nivîskî ya dengê di alfabeyê de.
-- **Kît:** yekeya dengî ya ku bi yek carî tê bilêvkirin; dikare ji yek an çend tîpan pêk were.
-- **Bêje:** yekeya peyvî ya ku wateya xwe heye.
-- **Kom:** çend bêje ku bi hev re komekê çêdikin.
-- **Qiset:** hevoka ku bi rêzkirina bêjeyan wateyekê temam dike.
+**Gramêr:** li gorî pirtûkê, tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e.
+
+**Zimanê kurdmancî:** zimanê gelê kurdmanc e؛ kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
+
+### Hêmanên ziman
+Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê dest pê dike, ji kîtan derbas dibe, bêje çêdike û paşê kom çêdibe:
+- **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
+- **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
+- **Bêje:** yekeya ku dikare kesek, heywanek an tiştekî binimîne.
+- **Kom:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
+
+**Qiset** di pirtûkê de wek encama peyhevketina koman tê ravekirin؛ ji ber vê yekê di lîsteya çar hêmanên bingehîn de wek hêmaneke pêncemîn nayê hejmartin.
 
 ### Nimûne
-- Tîp: `a`
-- Kît: `ta`, `deng`
-- Bêje: `hesp`, `xanî`
-- Kom: `Parêz çûbû Rewanê`
-- Qiset: `Îro dinya sar e.`
+- Tîp: `a`, `g`, `ê`
+- Kît: `ta`, `den`, `ser`, `co`, `rût`, `a`, `poz`, `ê`
+- Bêje: `hesp`, `peyar`, `xanî`, `spehî`, `gotin`, `were`
+- Kom: `Par ez çûbûm Rewanê.`, `Îro dinya sar e.`, `Gundê me di navbera du avan de ye.`
 
 ### Xebat
 1. Di bêjeya `hesp` de çend tîp hene?
-2. `deng` bêje ye an kît?
-3. Ji van nimûneyan yek kom û yek qiset bibîne: `xanî`, `Îro dinya sar e`, `hespê mezin`.
+2. `ta` kît e an bêje?
+3. Di rêza `tîp → kît → bêje → kom` de, kît pêşî çi tê?
+4. Çima `Îro dinya sar e` kom e, ne tîp an kît?
 
 ### Kuis — 5 pirs
-1. Tîp çi ye? A) yekeya wateyê B) nîşana nivîskî C) komek hevok
-2. Kît çi ye? A) navê kesekî B) daçek C) yekeya dengî
-3. `xanî` çi ye? A) bêje B) tîp C) qiset
-4. `Îro dinya sar e` çi ye? A) tîp B) qiset C) kît
-5. `hespê mezin` çi ye? A) deng B) tîp C) kom
+1. Gramêr çi ye? A) tenê zanista dengdanê B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) komek nav
+2. Li gorî pirtûkê, çend hêmanên bingehîn ên ziman hene? A) 3 B) 4 C) 6
+3. Tîp çi ye? A) nîşana nivîskî B) yekeya wateyê C) komek bêje
+4. `hesp` di çi kategoriyê de ye? A) kît B) bêje C) kom
+5. Qiset çawa pêk tê? A) bi dubarekirina tîpan B) bi peyhevketina koman C) bi yek tîpê
 
 ---
 
