@@ -71,16 +71,16 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 continue
             if not in_quiz:
                 continue
-            question = re.match(r"^(\\d+)\\. (.+)$", line)
+            question = re.match(r"^(\d+)\. (.+)$", line)
             if question:
                 current = int(question.group(1))
                 self.assertNotIn(current, questions)
                 questions[current] = {}
-                for letter, option in re.findall(r"([ABC])\\) (.*?)(?= [ABC]\\) |$)", question.group(2)):
+                for letter, option in re.findall(r"([ABC])\) (.*?)(?= [ABC]\) |$)", question.group(2)):
                     questions[current][letter] = option
                 continue
         key_rows = re.findall(
-            r"^\\| 1 \\| (\\d+) \\| ([ABC]) \\| ([^|]+) \\|",
+            r"^\| 1 \| (\d+) \| ([ABC]) \| ([^|]+) \|",
             key_text,
             flags=re.MULTILINE,
         )
