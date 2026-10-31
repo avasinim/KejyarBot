@@ -40,6 +40,8 @@ Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herf�
 | şîr | Î |
 | rêzên pîr | Î |
 
+**Têbînîya çavkaniyê:** Li gorî Bedir-Xan, cudahiya `I` û `Î` tenê dirêjahiya dengê yek herfê nîne. Ev du deng ji aliyê cihê derxistinê ve cuda ne: dengdêra kin `i` bi dirêjkirinê nabê `î`, wekî ku `e` bi dirêjkirinê nabê `ê`. Di vê alfabeyê de nîşana li ser `Î` hem cudahiya dengî û hem jî cudahiya nivîskî nîşan dide.
+
 ### 3. Cudahiyên I û Î
 
 | I | Î |
