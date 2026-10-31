@@ -136,3 +136,8 @@ Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî
 - The replacement draft keeps `bûk` and `şûştin` under long `Û`, not short `U`; tests guard that boundary and the exact quiz answer-key mappings.
 - Lesson 6 had accidental Sorani-script fragments in its explanatory note and exercise instructions. These have been normalized into Kurmanji Latin prose without changing the recovered example list or quiz choices. A test now rejects Arabic-script characters in that lesson.
 - The source PDF's printed p. 11 also supports the distinction between the eight vowel letters and their short/long grouping. See Part I, printed p. 11: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 1 Lesson 12 — practice sentence agreement
+
+A final pedagogical pass found that the fill-in sentence `Zarok di ______ de ne` paired with the bare word-bank item `dibistan`, which would produce an incomplete locative form. The exercise now uses `Zarok li ______ ne` with the correctly inflected bank item `dibistanê`. A regression test guards the word-bank form and sentence pattern. This is a small language-quality correction; it does not add a new grammar lesson or alter the five-question quiz.
