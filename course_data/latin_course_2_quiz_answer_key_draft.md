@@ -1,5 +1,5 @@
 # کلیل و ڕوونکردنەوەی کویزی پێش‌نووسی کۆرسی ٢
-Status: editorial draft — پێش runtime پێویستی بە هاوتاکردنەوەی هەڵبژاردەکان هەیە.
+Status: editorial answer-key draft — exact option text is aligned with the selected 12-lesson Course 2 draft and regression-tested; it is not runtime data.
 
 ئەم کلیلە بە شێوەی وەڵامی ڕاست (نەک ژمارەی هەڵبژاردە) تۆمار کراوە، بۆ ئەوەی لە کاتی ڕێکخستنی شوێنی هەڵبژاردەکاندا هەڵەی index ڕوونەدات.
 
@@ -62,7 +62,7 @@ Status: editorial draft — پێش runtime پێویستی بە هاوتاکرد�
 | 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | `kîjan` پرسیاری هەڵبژاردنە. |
 
 ## ئاگاداریی پێش runtime
-1. هەڵبژاردەکان لە کویزی JSON ـدا پێویستە بە وەڵامی ڕاستی ئەم خشتەیە هاوتا بکرێن؛ پاشان `correct_option_index` دیاری بکرێت.
+1. Before any future runtime integration, the JSON quiz options must be compared against this key and `correct_option_index` generated from the final option order. The current editorial key is tested against the selected lesson text; no runtime index is asserted here.
 2. لە وانەی ٤ و ٥دا پێویستە نموونەکانی تاک/کۆ و tewang لە دەقی سەرەکی و کویزدا بە وردی یەکسان بن؛ ئەگەر نموونەیەک لە ڕووی چاپ/OCR ناڕوون بێت، لاببرێت تا پشتڕاست دەبێتەوە.
 3. ئەم کلیلە پێش‌نووسە؛ هێشتا بە handler ـی بۆت نەبەستراوە و تاقیکردنەوەی runtimeی نەکراوە.
 
