@@ -1,4 +1,7 @@
 import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
 
 from latin_course_runtime import load_latin_courses
 from course_runtime import can_open_lesson
