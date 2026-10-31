@@ -1,4 +1,4 @@
-## Kursa 1 — Ders 12: Kileya bersivan bo pêşnûseya rastkirî
+## Kursa 1 — Ders 12: Kileya bersivan bo deqa vegerandî ya bi du çakirin
 
 | Pirs | Bersiva rast | Naveroka bersiva rast |
 |---:|:---:|---|
