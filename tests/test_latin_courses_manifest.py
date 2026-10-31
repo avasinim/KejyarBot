@@ -893,5 +893,18 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("du herfên cuda ne", lessons)
 
 
+    def test_course_two_lessons_ten_and_eleven_match_source_pronoun_distinctions(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        master_text = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
+        for content in (lesson_text, master_text):
+            self.assertIn("`jê` = `ji vî / ji wî / ji vê / ji wê`", content)
+            self.assertIn("hevdu", content)
+            self.assertIn("herêmî/axaftinî", content)
+            self.assertIn("yê, ya, yên", content)
+            self.assertIn("kî, kê", content)
+            self.assertIn("ko", content)
+        self.assertNotIn("di hin bikaranînên nû de tê dîtin", lesson_text)
+
+
 if __name__ == "__main__":
     unittest.main()
