@@ -19,8 +19,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(len(key_ids), len(set(key_ids)))
         self.assertEqual(set(key_ids), expected)
 
-    def test_manifest_is_draft_and_not_runtime_loaded(self):
-        self.assertEqual(self.manifest["status"], "draft_not_loaded_by_runtime")
+    def test_manifest_is_editorial_source_metadata_loaded_only_on_work_branch(self):
+        self.assertEqual(self.manifest["status"], "editorial_source_metadata_loaded_by_runtime_on_work_branch_only")
 
     def test_two_latin_courses_are_separate_and_ordered(self):
         courses = self.manifest["courses"]
@@ -281,7 +281,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         import re
 
         master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
-        self.assertIn("Not loaded by runtime", master)
+        self.assertIn("latin_course_runtime.py", master)
+        self.assertIn("production activation/deployment remains separate", master)
         course_one, course_two = master.split("## Course 2 —", 1)
         c1_numbers = [int(number) for number in re.findall(r"^## Ders (\d+):", course_one, flags=re.MULTILINE)]
         c2_numbers = [int(number) for number in re.findall(r"^## Ders (\d+) —", course_two, flags=re.MULTILINE)]
