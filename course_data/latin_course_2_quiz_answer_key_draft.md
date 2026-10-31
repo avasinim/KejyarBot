@@ -68,8 +68,3 @@ Status: editorial draft — پێش runtime پێویستی بە هاوتاکرد�
 
 
 **نوێکاری:** کلیلە کۆنەکانی وانەی ١٢ لابراون؛ وانەکە بازنووسین کراوە و کلیلەی تایبەتیی نوێ لە `latin_course_2_lesson_12_answer_key.md` دایە.
-| 12 | 1 | B | taybetmendiya navdêrê rave dike | Rengdêr taybetmendiya navdêrê rave dike. |
-| 12 | 2 | C | rengdêrê wesfîn | mezin taybetmendiyê nîşan dide. |
-| 12 | 3 | A | rengdêrê jmarîn | sê bi navdêrê mal ve girêdayî ye. |
-| 12 | 4 | B | beşeke serbixwe | Pirtûk jmarnav ji rengdêran cuda dike û wek beşeke serbixwe vedikole. |
-| 12 | 5 | C | jmarnav | nîv di beşa jmarnavê de tê gotin. |
