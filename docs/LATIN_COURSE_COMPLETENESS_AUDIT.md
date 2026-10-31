@@ -17,11 +17,11 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | Lesson | Draft status in this branch | Quiz/key status |
 |---:|---|---|
 | 1 | Corrected draft present | Separate key; exact option test |
-| 2 | No lesson draft file found | Five answer-key rows exist in legacy key draft; source lesson/options need recovery |
-| 3 | No lesson draft file found | Five answer-key rows exist in legacy key draft; source lesson/options need recovery |
+| 2 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
+| 3 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
 | 4 | Replacement draft present; not verbatim restoration | Separate key; exact option test |
 | 5 | Replacement draft present; not verbatim restoration | Separate key; exact option test |
-| 6 | No lesson draft file found | Five answer-key rows exist in legacy key draft; source lesson/options need recovery |
+| 6 | Recovered draft restored from `Pasted text(1).txt` (brand casing/layout normalized) | Five options restored; master key matches exact option text |
 | 7 | Corrected draft present | Separate key; exact option test |
 | 8 | Replacement draft present | Separate key; exact option test |
 | 9 | Replacement draft present | Separate key; exact option test |
@@ -29,7 +29,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | 11 | Corrected draft present | Separate key; exact option test |
 | 12 | Corrected draft present | Separate key; exact option test |
 
-**Do not invent replacement content for Lessons 2, 3, or 6 and label it recovered/source-verbatim.** Recover the original lesson text and quiz options from the user's supplied book/material or a verified repository artifact first. The legacy answer-key table alone is not enough to reconstruct the exact option order.
+**Recovery completed:** Lessons 2, 3, and 6 have been restored from the user's Library file `Pasted text(1).txt`. Their original teaching text and quiz option order were recovered; the master answer-key entries were corrected to match the exact selected option text. Lesson 6 received only Markdown/layout and brand-casing normalization. Lessons 4 and 5 remain transcript-confirmed, but their exact message bodies have not yet been restored; do not reconstruct them and label them verbatim.
 
 ## Course 2 — 12 lessons
 
@@ -45,7 +45,7 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 
 ## Release blockers
 
-- [ ] Recover/author and review Course 1 Lessons 2, 3, and 6 with explicit source provenance.
+- [x] Restore Course 1 Lessons 2, 3, and 6 from the recovered source file, record provenance, and verify their exact quiz keys.
 - [ ] Reconcile the Course 1 master key so all 12 lessons have one selected, exact option key.
 - [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
 - [ ] Complete human linguistic/source review for all 24 lessons.
