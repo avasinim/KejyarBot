@@ -1308,7 +1308,7 @@ Rastnivîsîn pêdivî bi hilbijartina herfa rast, parastina rêza herfan û niv
 **Kejyar • Fêrbûn bi pratîkê**
 
 ### Provenance — Course 1, Lesson 12
-Recovered from Pasted markdown(3).md; two minimal grammar/inflection corrections.
+Recovered from Pasted markdown(3).md; minimal grammar/inflection corrections.
 
 ## Ders 12: Xwendin û Nivîsandina Pratîk
 
@@ -1328,7 +1328,7 @@ Elfabeya Kurdî ya Latînî:
 
 `A B C Ç D E Ê F G H I Î J K L M N O P Q R S Ş T U Û V W X Y Z`
 
-Alfabe 31 herf hene:
+Di alfabeyê de 31 herf hene:
 
 - 8 dengdêr: `A E Ê I Î O U Û`
 - 23 dengdar: `B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z`
@@ -1849,7 +1849,7 @@ Pirtûk ji bo kesên yekem û duyem carinan `xwe` jî di tabloyên xwemalî de n
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
 
-1. Di `Her kes di bêje` de pronavê nebinavkirî bibîne.
+1. Di `Her kes dibêje` de pronavê nebinavkirî bibîne.
 2. Di `Yê ko hat bira yê min bû` de pronavên îşarkî û pronavê girêkî bibîne.
 3. Ji bo navdêrên nêr، mê û gelemjimar pronavên xwemalîn bi `min` çêbike.
 4. Di `destmalên min — yên min` de pronavê xwemalîn bibîne û erkê `yên` rave bike.
