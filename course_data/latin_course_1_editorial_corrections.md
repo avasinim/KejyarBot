@@ -7,7 +7,7 @@ The book identifies 31 letters and 8 vowels; short vowels are `e, i, u`; long vo
 
 ## Source-level verification update — printed page 11
 
-A direct check of the digital edition's printed p. 11 confirms the eight-vowel inventory and supplies compact example sets for each target vowel:
+A direct check of the digital edition's printed p. 11 confirms the eight-vowel inventory and supplies compact example sets for each target vowel. Printed p. 39 further explains that the short/long division is not merely a matter of stretching the same sound: the vowel groups also differ in sound quality and articulation position. Lessons 4–5 now state this explicitly, without claiming that each vowel forms a simple duration-only pair. Page 11 supplies these compact example sets:
 - Short E: `der, şer, ser`.
 - Short I: `kin, din, bin`.
 - Short U: `kurd, kur, kul`.
