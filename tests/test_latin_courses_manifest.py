@@ -527,6 +527,10 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_answer_key.md").read_text(encoding="utf-8")
 
+        self.assertIn("li gorî dirêjî û kurtahiya dengê xwe", lesson_text)
+        self.assertIn("E — I — U", lesson_text)
+        self.assertIn("A — Ê — Î — O — Û", lesson_text)
+
         questions = {}
         lesson_number = None
         current_question = None
