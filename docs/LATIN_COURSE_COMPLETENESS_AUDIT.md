@@ -36,7 +36,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 - One source-aligned 12-lesson draft is present.
 - Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals.
 - Lessons 4–12 are editorially revised from recovered lesson material.
-- Lesson 12 has two competing drafts and two corresponding answer keys. Exactly one must be selected before runtime integration; never load both under one lesson ID.
+- Lesson 12: the expanded six-category draft is now selected and copied into the canonical 12-lesson master. The former baseline section was replaced; the separate replacement file is retained only as an editorial snapshot. The consolidated master key was aligned to the selected quiz options and is regression-tested. Do not load the snapshot as a second lesson.
 - The consolidated key must match the exact quiz options in the selected lesson draft.
 
 ## Regression protection added
@@ -47,7 +47,7 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 
 - [ ] Recover/author and review Course 1 Lessons 2, 3, and 6 with explicit source provenance.
 - [ ] Reconcile the Course 1 master key so all 12 lessons have one selected, exact option key.
-- [ ] Select one Course 2 Lesson 12 version and retire/clearly archive the alternative.
+- [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
 - [ ] Complete human linguistic/source review for all 24 lessons.
 - [ ] Add runtime integration and progress-isolation tests only after content selection is approved.
 - [ ] Preserve the existing voice workflow; keep dynamic speech disabled.
