@@ -189,3 +189,10 @@ The section heading and references for the fused pronoun class are standardized 
 ## Course 2 Lesson 1 — source terminology consistency
 
 The opening grammar lesson now uses the source's exact four-element label **Komek** consistently in the definition, example label, exercise and learning sequence (`Tîp → Kît → Bêje → Komek`). The `Bêje` definition no longer narrows the category to names of people, animals or things; the lesson's examples include the source's non-noun forms `spehî`, `gotin` and `were`. Regression assertions guard the four source labels and this broader definition.
+
+
+## Course 2 Lesson 1 — distinction between spoken sounds and four written units
+
+A direct recheck of the source's printed p. 37 (PDF page 37) clarifies a distinction that the lesson's earlier summary compressed. Bedir-Xan first explains that spoken-language elements are sounds, that sounds are represented by letters, and that letters combine into syllables, syllables into words, and words into meaningful groups. He then identifies four elements in the written/structural sequence: **Tîp, Kît, Bêje, Komek**. A succession of groups forms **Qiset**. Lesson 1 now teaches both levels explicitly, without incorrectly counting spoken sound or qiset as a fifth member of the four-item list. Regression assertions guard this distinction.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p. 37: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
