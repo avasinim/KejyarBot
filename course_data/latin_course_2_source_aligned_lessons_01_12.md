@@ -21,13 +21,13 @@ Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêman
 ### Hêmanên ziman
 Bedir-Xan pêşî cudahiya zimanê devkî û nivîskî ronî dike: di zimanê devkî de hêmanên bingehîn deng in; deng bi tîpan têne nîşankirin. Piştre tîp ji bo çêkirina kîtan, kît ji bo çêkirina bêjeyan, û bêje ji bo çêkirina komekan tên bikaranîn.
 
-Pirtûk di rêzbendiya xwe ya çar hêmanên pêkhateya nivîskî de van dide:
+Pirtûk di rêzbendiya xwe ya çar hêmanên ziman de van dide:
 - **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
 - **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
 - **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
 - **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
 
-**Qiset** encama peyhevketina komekan e; ew li ser komekê tê û di lîsteya çar hêmanên pêkhateya nivîskî de wek hêmaneke pêncemîn nayê hejmartin.
+**Qiset** encama peyhevketina komekan e; ew li ser komekê tê û di lîsteya çar hêmanên ziman de wek hêmaneke pêncemîn nayê hejmartin.
 
 ### Nimûne
 - Tîp: `a`, `g`, `ê`
