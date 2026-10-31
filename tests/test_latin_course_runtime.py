@@ -78,7 +78,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             "| B | b |"
         )
         rendered = bot.format_lesson_draft(source)
-        self.assertIn("Mezin: a • Biçûk: a", rendered)
+        self.assertIn("Mezin: A • Biçûk: a", rendered)
         self.assertIn("Mezin: B • Biçûk: b", rendered)
         self.assertNotIn("|---|", rendered)
         self.assertNotIn("| A |", rendered)
