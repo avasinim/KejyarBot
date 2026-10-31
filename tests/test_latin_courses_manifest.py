@@ -120,7 +120,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(set(options), set("ABC"), f"Incomplete options for {question_id}")
         for lesson, question, option, answer_text in key_rows:
             selected = questions[(int(lesson), int(question))][option]
-            self.assertEqual(answer_text.strip(), selected)
+            self.assertEqual(answer_text.strip(), selected, f"Answer-key mismatch at lesson {lesson}, question {question}, option {option}")
 
     def test_course_one_replacement_lessons_have_exact_answer_keys(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
