@@ -244,7 +244,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         import re
 
         master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
-        self.assertIn("not runtime-loaded", master)
+        self.assertIn("Not loaded by runtime", master)
         course_one, course_two = master.split("## Course 2 —", 1)
         c1_numbers = [int(number) for number in re.findall(r"^## Ders (\d+):", course_one, flags=re.MULTILINE)]
         digit_map = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
@@ -254,6 +254,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(master.count("### Provenance — Course 1"), 12)
         self.assertEqual(master.count("### Provenance — Course 2"), 12)
         self.assertNotIn("orthography_foundations", master)
+        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in course_one))
 
         lesson_heads = list(re.finditer(r"^## (?:Ders \d+:.*|وانەی [٠-٩]+ —.*)$", master, flags=re.MULTILINE))
         self.assertEqual(len(lesson_heads), 24)
@@ -269,8 +270,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
             questions = re.findall(r"^\d+\. ", quiz, flags=re.MULTILINE)
             self.assertEqual(len(questions), 5, heading.group(0))
 
-        self.assertIn("New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.", master)
-        self.assertIn("New source-aligned replacement draft; the earlier exact transcript body is not available.", master)
+        self.assertIn("New replacement draft; exact earlier transcript body unavailable verbatim.", master)
+        self.assertIn("New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.", master)
 
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
