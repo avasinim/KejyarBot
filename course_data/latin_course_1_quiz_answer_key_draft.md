@@ -18,16 +18,16 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 | 3 | 3 | B | A |
 | 3 | 4 | B | B, M, R |
 | 3 | 5 | B | Du dengdêr di `welat` de |
-| 4 | 1 | B | E, I, U |
-| 4 | 2 | B | I |
-| 4 | 3 | C | U |
-| 4 | 4 | B | Ê |
-| 4 | 5 | C | E |
-| 5 | 1 | A | A |
-| 5 | 2 | B | Ê |
-| 5 | 3 | B | Î |
-| 5 | 4 | C | O |
-| 5 | 5 | B | Û |
+
+
+
+
+
+
+
+
+
+
 | 6 | 1 | A | I |
 | 6 | 2 | B | Î |
 | 6 | 3 | C | îro |
@@ -69,3 +69,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 - L12: کویزی پێنج‌پرسیاری لە دەقی ڕزگارکراودا هەیە؛ ئەو تۆمارە کۆنەی دەیگوت L12 کویزی نییە، هەڵە و stale ـە.
 - L1: نموونەی `jin` لە خانەی I و J دووبارە بەکارهاتووە؛ بۆ ڕوونیی فێرکاری I بە `kin` بگۆڕدرێت، بەڵام `jin` هەروەها وشەیەکە کە I ـی تێدایە.
 - هیچ `correct_option_index` ـێک نابێت بۆ runtime زیاد بکرێت تا option order ـی هەموو وانەکان لە فایلە ڕەسەنەکاندا پشتڕاست بکرێتەوە.
+
+
+**ئاگاداری:** ڕیزەکانی کۆرسی ١ وانە ٤ و ٥ لەم کلیلە کۆنە لابراون، چونکە option order ـی دەقی کۆن بە شێوەی وشەبەوشە لەبەردەست نییە. کلیلەی دروست بۆ دوو پێش‌نووسی جێگرەوەی نوێ لە `latin_course_1_lessons_04_05_answer_key.md` دایە.
