@@ -879,5 +879,19 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 self.assertEqual(master[(lesson, question)], answer, f"Master key mismatch at lesson {lesson}, question {question}")
 
 
+    def test_course_one_lessons_eight_and_nine_preserve_source_letter_distinctions(self):
+        master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
+        start = master.index("## Ders 8: Cudahiyên Dengên V û W")
+        end = master.index("### Provenance — Course 1, Lesson 10", start)
+        lessons = master[start:end]
+
+        for contrast in ("dev/dew", "vir/wîr", "ava/awa", "evî/ewî"):
+            self.assertIn(contrast, lessons)
+        for marked, base in (("Ç", "C"), ("Ê", "E"), ("Î", "I"), ("Ş", "S"), ("Û", "U")):
+            self.assertIn(f"`{marked}`", lessons)
+            self.assertIn(f"`{base}`", lessons)
+        self.assertIn("du herfên cuda ne", lessons)
+
+
 if __name__ == "__main__":
     unittest.main()
