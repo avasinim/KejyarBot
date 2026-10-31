@@ -438,21 +438,27 @@ Di berawirdkirinê de divê bizanî ka em du tişt berawird dikin an yek tişt w
 ### 3. Rengdêrên îşarkî
 Rengdêrên îşarkî nîşan didin ka kîjan navdêr tê armanc kirin.
 
-Mînak:
-- ev keçik
-- ew mirov
+Mînakên çavkaniyê:
+- `ev mirov` — mirovê nêzîk.
+- `ew mirov` — mirovê dûr an yê ku berê hatiye gotin.
+- `vî hespî / van hespan` — formên nêr li gorî mêjer û tewangê.
+- `wî hespî / wan hespan` — formên nêr ên dûr.
+- `vê mehinê / van mehinan` — formên mê.
+- `wê mehinê / wan mehinan` — formên mê ên dûr.
+
+Dema rengdêrê îşarkî li pêş navdêrê tê, navdêr li gorî zayend, mêjer û tewangê dikare biguhere. Di komên navdêrên yek zayendê de, carinan tenê navdêra dawî bi rengdêrê îşarkî tê nîşandan.
 
 Baldar be: dema ev an ew bi tenê û bê navdêr tê, dikare wek pronavê îşarkî bixebite؛ dema ku rasterast navdêrekê diyar dike, erkê rengdêrî/îşarkî heye.
 
 ### 4. Rengdêrên jmarîn
 Ev cure hejmarê navdêrê diyar dike.
 
-Mînak:
-- sê mal
-- çar xanî
-- deh bizin
+Mînakên hejmarên bingehîn:
+- `deh mirov hatin` / `deh mirovan got`.
+- `çel mirov hatin` / `çel mirovan got`.
+- `sê mal`, `çar xanî`, `deh bizin`.
 
-Di van koman de hejmar bi navdêrê ve girêdayî ye û pirsê «çend?» bersiv dide.
+Hejmar dikare li gorî erkê xwe navdêrê di tewangê de jî biguherîne؛ ji ber vê yekê di `deh mirov hatin` û `deh mirovan got` de navdêr bi heman formê nayê bikaranîn.
 
 **Rêzîn:** Pirtûk cureya duyem a rengdêrên jmarîn jî nîşan dide: rengdêrên rêzîn. Ev form rêza navdêrê diyar dikin û bi gelemperî piştî navdêrê tên:
 - `stûna çaran` — stûna di rêza çaran de.
@@ -464,23 +470,43 @@ Ji ber vê yekê rengdêrên jmarîn tenê hejmarên wek `sê mal` nînin؛ hin 
 ### 5. Rengdêrên pirsiyarkî
 Ev rengdêr bi navdêr re pirs çêdikin.
 
-Mînak:
-- kîjan mirov?
-- çend kitêb?
+Mînakên çavkaniyê:
+- `kîjan mirov hat?`
+- `kîjan mirov hatin?`
+- `çend mirovan xwar?`
+- `çend kitêb?`
+
+Ev rengdêr di pêşiya navdêrê de tên û pirsê li ser nasîn an hejmarê navdêrê çêdikin.
 
 ### 6. Rengdêrên nebinavkirî
 Ev rengdêr navdêrê bê ku kes an hejmareke rastî diyar bike, bi awayekî giştî nîşan didin.
 
-Mînak:
-- hin çiya
-- çend kitêb
+Mînakên çavkaniyê:
+- `tu mirov`
+- `her mirov`
+- `herçî mêr`
+- `filan kes`
+- `gelek fêkî`
+- `hemî mirov`
+- `hevqas pere`
+- `çend çiya`
+
+Ev rengdêran navdêr bi awayekî giştî an bê destnîşankirina hejmarê ya rastî diyar dikin. Hin ji wan, wek `gelek`, `hemî` û `çend`, dikarin li gorî cihê xwe di hevokê de wek pronav jî bixebitin.
 
 ### 7. Rengdêrên xwemalîn
 Ev rengdêr têkiliya xwedîtiyê diyar dikin.
 
-Mînak:
-- hespê min
-- kitêba te
+Mînakên çavkaniyê:
+- `hespê min`
+- `mehinên te`
+- `kitêba vî`
+- `qelemên wê`
+- `xaniyê me`
+- `çiyayê we`
+- `kurên van`
+- `keçên wan`
+
+Rengdêrên xwemalîn her gav piştî navdêrê tên û veqetandek di navbera wan û navdêrê de dikeve. Veqetandek li gorî mêjer û zayenda navdêrê tê hilbijartin.
 
 ### 8. Jmarnav: beşeke cuda
 Jmarnav di pirtûkê de di beşeke cuda de tê vekolîn؛ ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn hejmarê navdêrekê diyar dike، lê jmarnav xwe wek beşeke rêzimanî ya serbixwe heye û dikare li gorî erkê xwe di hevokê de were bikaranîn.
@@ -504,7 +530,13 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 - kîjan mirov
 - hin çiya
 - hespê min
-- nîv roj
+- mehinên te
+- kurên van
+- `tu mirov`
+- `gelek fêkî`
+- `vî hespî`
+- `van hespan`
+- `nîv roj
 
 **Xebata 2:** Ji bo her cureya rengdêrê yek nimûneya din binivîse.
 
