@@ -82,7 +82,7 @@ The current source-aligned branch copies for Lessons 4–5 include these source-
 
 ## Release gates
 - The user supplied the complete texts of Lessons 4–5 in the conversation. The current branch files are source-aligned editorial working copies; preserve the user-provided wording and quiz option order as the authority during reconciliation. Do not request that the user resend the lessons.
-- Add explicit answer keys and lesson-specific explanations to all quizzes; no quiz is ready for runtime until its options and key are verified.
+- All 12 Course 1 lessons now have a consolidated 60-question master answer key and selected per-lesson keys. Automated tests verify coverage, uniqueness and exact option-to-answer text for the selected branch drafts. Runtime option indices and handler integration remain separate release gates; do not treat editorial keys as runtime-ready data.
 - Preserve original Kurmanji Latin forms and do not apply the Avasin Academy Arabic-script orthography rules.
 - Do not merge these drafts into a runtime course until course IDs, progress isolation, quiz handlers, and offline tests are added and passed.
 
