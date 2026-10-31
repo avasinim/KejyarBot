@@ -41,12 +41,12 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 
 ## Regression protection added
 
-The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts, and guards the short/long vowel grouping and source-grounded explanation. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
+The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. The Course 1 master answer key now contains all 60 question rows across all 12 lessons; a regression test verifies complete coverage, uniqueness, and agreement with the selected per-lesson key files. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts, and guards the short/long vowel grouping and source-grounded explanation. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
 
 ## Release blockers
 
 - [x] Restore Course 1 Lessons 2, 3, and 6 from the recovered source file, record provenance, and verify their exact quiz keys.
-- [ ] Reconcile the Course 1 master key so all 12 lessons have one selected, exact option key.
+- [x] Reconcile the Course 1 master key into 60 unique rows (five per lesson); cross-check the consolidated rows against the selected per-lesson keys, while the existing lesson tests verify answer text against the quiz options.
 - [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
 - [ ] Complete human linguistic/source review for all 24 lessons.
 - [ ] Add runtime integration and progress-isolation tests only after content selection is approved.
