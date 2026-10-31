@@ -34,7 +34,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 ## Course 2 — 12 lessons
 
 - One source-aligned 12-lesson draft is present.
-- Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals.
+- Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly.
 - Lessons 4–12 are editorially revised from recovered lesson material.
 - Lesson 12: the expanded six-category draft is now selected and copied into the canonical 12-lesson master. The former baseline section was replaced; the separate replacement file is retained only as an editorial snapshot. The consolidated master key was aligned to the selected quiz options and is regression-tested. Do not load the snapshot as a second lesson.
 - The consolidated key must match the exact quiz options in the selected lesson draft.
@@ -57,5 +57,19 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 ## Course 1 vowel classification source check
 
 The replacement explanations for Lessons 4–5 were corrected against Celadet Alî Bedir-Xan, *Elfabêya kurdî*, printed p. 11 (PDF page 11): the book states that Kurdish has eight vowels and classifies them by duration into short vowels **e, i, u** and long vowels **a, ê, î, o, û**. The replacement drafts now explain this duration-based classification directly rather than implying that length is not the basis of the grouping. The regression test guards the two exact vowel sets and the corrected explanation.
+
+Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 Lesson 1 source-alignment check
+
+Checked against Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 37–38 (PDF lines around the start of Part II). The lesson now preserves:
+- Grammar as the totality of rules for correct speaking and writing.
+- The book's short introduction to Kurmanji as the language of the Kurmanji people.
+- The four listed language elements: **Tîp → Kît → Bêje → Komek**.
+- **Qiset** as the result of successive combinations of **Komek**, not as a fifth item in the four-element list.
+- The source's examples (Par ez çûbûm Rewanê, Îro dinya sar e, Gundê me di navbera du avan de ye) without the earlier malformed Parêz transcription.
+
+The five-question quiz and its answer key were revised together; a regression test now checks the four-element sequence, the qiset distinction, and exact key-to-option text. This is a source-alignment edit to a new draft, not a verbatim restoration of the unavailable earlier lesson.
 
 Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
