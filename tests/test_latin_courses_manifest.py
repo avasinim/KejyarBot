@@ -240,6 +240,12 @@ class LatinCoursesManifestTests(unittest.TestCase):
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected, f"Answer-key mismatch at lesson {lesson}, question {question}, option {option}")
 
+    def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
+        self.assertNotRegex(lesson_text, r"[\\u0600-\\u06FF]")
+        self.assertIn("Peyvên li jêrê bi du koman veqetîne", lesson_text)
+        self.assertIn("wateyê de wekhev", lesson_text)
+
     def test_course_one_recovered_lessons_02_03_06_match_master_answer_keys(self):
         import re
 
