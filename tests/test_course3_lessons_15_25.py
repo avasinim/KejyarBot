@@ -39,6 +39,28 @@ class Course3Lessons15To25Tests(unittest.TestCase):
                 for term in terms:
                     self.assertIn(term, content)
 
+    def test_lesson_15_preserves_the_source_verb_paradigms_and_both_written_variants(self):
+        lesson = self.lessons[14]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("ڕامەهێنن", "هەڵدەکەیت", "ڕات هێناوە", "هەڵتان نەسپارد / هەڵتاننەسپارد", "ڕای گەیاند / ڕایگەیاند"):
+            self.assertIn(marker, content)
+
+    def test_lessons_16_to_21_restore_source_conjugation_examples(self):
+        expected = {
+            16: ("نەماندەنووسی", "فێرتان نەکردبوو"),
+            17: ("ئااڵیان هەڵنەکردبوو", "دەستیان هەڵنەگرتبوو"),
+            18: ("دەستیان تێ نەخستبوو", "دەستیان لێ نەدابوو"),
+            19: ("ئەوان مووچەیان وەرنەگرتبوو", "دەستتان لێ هەڵنەگرتبوو"),
+            20: ("نامەکەم بەو دا", "ئەوان گرووپێکیان پێک هێنا", "ڕێک کەوتن"),
+            21: ("بەفیڕۆم نەداوە", "لەدایک نەبووە"),
+        }
+        for number, markers in expected.items():
+            with self.subTest(lesson=number):
+                lesson = self.lessons[number - 1]
+                content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+                for marker in markers:
+                    self.assertIn(marker, content)
+
     def test_lesson_25_preserves_root_d_before_postposition_da(self):
         lesson = self.lessons[24]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])

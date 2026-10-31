@@ -94,8 +94,8 @@
       "id": "unified_orthography",
       "key": "course_unified_orthography",
       "order": 3,
-      "title": "کۆرسی ٣: پوختەی ڕێنووس و خاڵبەندی — دیاکۆ هاشمی",
-      "description": "٦٦ وانە بەپێی کتێبی دیاکۆ هاشمی؛ ٥٠ بابەتی ڕێنووس، ١٢ وانەی خاڵبەندی و ٤ بەشی پاشبنەمایی.",
+      "title": "کۆرسی ٣: ڕێنووس و خاڵبەندی",
+      "description": "٦٦ وانەی فێرکاریی کەژیار؛ ڕێنووسی وشە و خاڵبەندی لە بنەماوە تا ئاستی پێشکەوتوو.",
       "status": "active",
       "lesson_ids": [
         "unified_orthography_01",

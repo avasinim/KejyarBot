@@ -1,5 +1,5 @@
-import io
 import json
+import io
 from datetime import datetime, timezone
 import logging
 import os
@@ -137,6 +137,21 @@ for course_lessons, course_quizzes in (
 async def send_lesson_infographic(message, lesson_id):
     """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
+
+async def send_lesson_branding(message, lesson_id):
+    """Show text-only KejyarBot branding; Courses 2, 3 and 4 use no images."""
+    if LESSON_COURSE.get(lesson_id) not in {
+        "daily_conversation",
+        "unified_orthography",
+        "grammar",
+    }:
+        return
+    lesson = LESSON_DATA.get(lesson_id, {})
+    caption = (
+        f"🌿 کەژیار | KejyarBot\n"
+        f"📖 وانەی {lesson.get('source_number', '')} — {lesson.get('title', '')}"
+    )
+    await message.reply_text(caption)
 
 ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
 COURSE_LESSON_ORDER = {
@@ -434,11 +449,15 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception:
         logger.debug("Quiz keyboard was already removed or could not be edited")
     answer = question["options"][choice_index]
+    explanation = question.get("explanation", "").strip()
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    if explanation:
+        feedback += f"\n💡 ڕوونکردنەوە: {explanation}"
+    await query.message.reply_text(feedback)
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
@@ -498,6 +517,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
+    await send_lesson_branding(query.message, lesson)
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
@@ -514,6 +534,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
+    await send_lesson_branding(query.message, lesson)
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
@@ -636,6 +657,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
+        await send_lesson_branding(update.message, lesson)
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
         await send_conversation_voice(
             update.message,
@@ -718,7 +740,7 @@ def main():
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
-    logger.info("KejyarBot is running")
+    logger.info("Starting KejyarBot; waiting for Telegram API initialization")
     app.run_polling()
 
 if __name__ == "__main__":

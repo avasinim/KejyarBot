@@ -24,6 +24,19 @@ class Course3Lessons26To34Tests(unittest.TestCase):
                     self.assertIn(question["answer"], range(3))
                     self.assertTrue(question["explanation"])
 
+    def test_lesson_27_preserves_the_book_postposition_sentences(self):
+        lesson = self.lessons[26]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in (
+            "ئەو لە خۆشیدا نازانێت چی بکات",
+            "لە ماڵدا ئەوم بینی",
+            "ئەو لە ماڵدایە",
+            "لە ئامێدیڕا بە پێیان هات",
+            "لە چوارچراوە هاتوون",
+            "بە ماڵەوە ڕۆیشتووین",
+        ):
+            self.assertIn(marker, content)
+
     def test_preposition_and_postposition_rules_are_distinguished(self):
         preposition = self.lessons[25]
         postposition = self.lessons[26]
@@ -32,6 +45,20 @@ class Course3Lessons26To34Tests(unittest.TestCase):
         self.assertIn("بە هێز", preposition_text)
         self.assertIn("بەهێز", preposition_text)
         self.assertIn("لە کوردستاندا", postposition_text)
+
+    def test_lesson_26_contains_the_book_examples_for_simple_and_compound_prepositions(self):
+        lesson = self.lessons[25]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in (
+            "ئەو بە فڕۆکە بۆ کوردستان سەفەر دەکات.",
+            "کاروان لە کەرکووک لەدایک بووە.",
+            "تا وانەکە فێر نەبوو، وازی نەهێنا.",
+            "من بێ تۆ ناژیم.",
+            "پێنووسەکە لەسەر مێزەکەیە.",
+            "کتێبەکە لەژێر ڕۆژنامەکەیە.",
+            "من بەبێ تۆ ناژیم.",
+        ):
+            self.assertIn(marker, content)
 
     def test_foreign_word_lesson_covers_kurdish_spelling_and_tashdid(self):
         lesson = self.lessons[32]
