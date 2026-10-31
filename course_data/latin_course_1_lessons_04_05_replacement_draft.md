@@ -71,7 +71,7 @@ Dengdêra U di van peyvan de tê dîtin:
 
 Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
 
-**Têbînîya çavkaniyê:** Di §10 de Bedir-Xan diyar dike ku I bi gelemperî ne di destpêkê û ne di dawiyê ya bêjeyên kurdmancî de tê; hin daçek û pronav wek li, di, ji, bi, çi ji vê rêbazê derketî ne. Herwiha U bi gelemperî piştî dengdarên g, h, k, q, x tê; mînakên pirtûkê guh, gul, kul, kur, xurt in. Formên tu û du wek awarte têne nîqaşkirin. Ev têbînî rêنماییی dabeşkirina dengê U û I ye؛ cihê her peyvê divê bi mînak û çavkaniya xwe were fêrkirin.
+**Têbînîya çavkaniyê:** Di §10 de Bedir-Xan diyar dike ku I bi gelemperî ne di destpêkê û ne di dawiyê ya bêjeyên kurdmancî de tê; hin daçek û pronav wek li, di, ji, bi, çi ji vê rêbazê derketî ne. Herwiha U bi gelemperî piştî dengdarên g, h, k, q, x tê; mînakên pirtûkê guh, gul, kul, kur, xurt in. Formên tu û du wek awarte têne nîqaşkirin. Ev têbînî tenê agahiyeke li ser belavbûna dengên I û U ye; ne rêgezeke bêistisna ye. Cihê her peyvê divê bi mînak û çavkaniya xwe were fêrkirin.
 
 ### 5. Cudahiyên ku divê neyên tevlihevkirin
 | Dengdêrên kin | Dengdêrên cuda |
