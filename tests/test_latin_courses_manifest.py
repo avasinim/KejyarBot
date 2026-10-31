@@ -294,6 +294,20 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     f"Course 1 lesson {lesson_number}, question {number}, option {letter}",
                 )
 
+    def test_course_one_replacement_vowel_lessons_include_bedir_xan_source_examples(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
+        lesson_four, lesson_five = lesson_text.split("## Ders 5:", 1)
+        source_short = ("der", "ser", "kin", "din", "bin", "kur", "kurd", "kul")
+        source_long = ("av", "sar", "bar", "dêr", "şêr", "mêr", "tîr", "zîv", "şîv", "dor", "sor", "kor", "kûr", "şûr", "dûr")
+        for example in source_short:
+            self.assertIn(f"| {example} |", lesson_four)
+        for example in source_long:
+            self.assertIn(f"| {example} |", lesson_five)
+        self.assertNotIn("| bûk | U |", lesson_four)
+        self.assertNotIn("| şûştin | U |", lesson_four)
+        self.assertIn("| bûk | Û |", lesson_five)
+        self.assertIn("| şûştin | Û |", lesson_five)
+
     def test_course_one_replacement_lessons_have_exact_answer_keys(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_answer_key.md").read_text(encoding="utf-8")
