@@ -243,3 +243,10 @@ Course 2 Lesson 10 was checked against printed pp. 76–80. The source lists the
 Course 2 Lesson 11 was checked against printed pp. 81–88. It preserves the source's two demonstrative-pronoun classes (`ev/ew` and `yê/ya/yên`), the relative pronoun `ko`, interrogative forms (`kî, kê, çi/çî, kîjik, kîjan, çend, kû`), indefinite pronouns and possessive pronouns. The separate conjunction `ko` that may mean `heke` is introduced only as a distinct homonymous function, not confused with the relative pronoun. No unsupported equivalence or replacement of the source's `ko` with `ku` is introduced.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–88; Part I printed pp. 11–34. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 Lesson 12 — source-aligned numeral classification
+
+A direct check of printed pp. 97–100 shows that the numeral section is more structured than the earlier lesson summary stated. The source distinguishes definite and indefinite numerals; definite numerals have four groups (cardinal, ordinal, fractional and collective), while indefinite examples include `gelek, hindik, pir, bêhtir, zehf`. The source also explains simple and compound numerals, and separate inflection patterns for `nîv`, `yek` and `hezar`. Lesson 12 now includes this classification and the key inflection cautions without changing its five quiz questions or answer order. The six adjective classes and their positions remain consistent with printed pp. 89–95.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 89–100, especially §§119–152. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
