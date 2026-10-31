@@ -204,6 +204,13 @@ Bedir-Xan sê veqetandekên binavkirî dide:
 
 Veqetandek piştî navdêrê tê û navdêrê bi awayekî binavkirî dide nasîn. Ev pêveka binavkirinê divê ji tewangê cuda were fêrbûn; her du dikarin di formên hevokê de hev re xuya bibin, lê erkên wan yek nînin.
 
+**Dema navdêr bi rengdêr re tê:** pirtûk nîşan dide ku veqetandeka binavkirî dikare li pêşiya rengdêrê jî were û navdêrê ku rengdêr rave dike bi awayekî nas nîşan bide:
+- `Ez ê gewir dixwazim.` — `ê` navdêra nêr a veşartî nîşan dide.
+- `Ez a sor dixwazim.` — `a` navdêra mê a veşartî nîşan dide.
+- `Ez ên sor dixwazim.` — `ên` gelemjimar nîşan dide.
+
+Ev formên kurtkirî ji bo ku navdêr ji nû ve neyê dubarekirin tên bikaranîn; divê bi `ê/a/ên` ya li paş navdêrê re neyên tevlihevkirin.
+
 ### Xebat
 Veqetandeka rast hilbijêre:
 1. `hesp__ Soro`
@@ -233,10 +240,10 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 
 **2. Piştî navdêrê, dema bireser/rengdêr li pey were:**
 - `-ekî` ji bo nêr yekjimar: `hespekî delal hat`.
-- `-eke` ji bo mê yekjimar: `mehinêke delal hat`.
+- `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
 - `-ine` ji bo gelemjar: `mehinine delal hatin`.
 
-Nîşe: di çap û formên pirtûkê de hin cudahiyên nivîsînê hene; formên `ek/ek/in` û `ekî/eke/ine` bi erk û cihê bireserê ve girêdayî ne. Ev form bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di çavkaniyê de di rewşên tewandî de jî formên din, wek `-ekî/-ekê/-ina`, tên nîşandan؛ ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
