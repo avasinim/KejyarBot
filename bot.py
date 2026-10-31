@@ -62,16 +62,43 @@ def load_json(filename):
         return json.load(file)
 
 def format_lesson_draft(markdown):
-    """Convert simple draft Markdown to readable plain text for Telegram."""
+    """Render lesson Markdown as readable Telegram plain text without losing table cells."""
+    source_lines = markdown.splitlines()
     lines = []
-    for line in markdown.splitlines():
-        stripped = line.strip()
+    index = 0
+    while index < len(source_lines):
+        stripped = source_lines[index].strip()
+        if stripped.startswith("|") and stripped.endswith("|"):
+            table = []
+            while index < len(source_lines):
+                candidate = source_lines[index].strip()
+                if not (candidate.startswith("|") and candidate.endswith("|")):
+                    break
+                cells = [cell.strip() for cell in candidate.strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    table.append(cells)
+                index += 1
+            if table:
+                headers = table[0]
+                for row_number, row in enumerate(table[1:], 1):
+                    pairs = [
+                        f"{headers[cell]}: {value}"
+                        for cell, value in enumerate(row)
+                        if cell < len(headers) and value
+                    ]
+                    lines.append(" • ".join(pairs) if pairs else " | ".join(row))
+                if len(table) == 1:
+                    lines.append(" | ".join(headers))
+            continue
         if stripped.startswith("#"):
             line = stripped.lstrip("#").strip()
         elif stripped.startswith(">"):
             line = stripped.lstrip(">").strip()
+        else:
+            line = source_lines[index]
         line = line.replace("**", "").replace("__", "").replace("`", "")
         lines.append(line)
+        index += 1
     return "\n".join(lines).strip()
 
 # Course 1 is the 22-lesson orthography course. Keep database keys stable
