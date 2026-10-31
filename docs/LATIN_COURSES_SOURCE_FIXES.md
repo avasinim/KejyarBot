@@ -77,7 +77,8 @@
 - **کۆرسی ١:** وانەکانی ٢–٣ و ٦ لە `Pasted text(1).txt` ڕزگار کراون؛ وانەکانی ٨–٩ و ١٢ لە `Pasted markdown(3).md` ڕزگار کراون. وانەکانی ١، ٧، ١٠ و ١١ پێش‌نووسی چاککراویان هەیە.
 - کلیلەی وانەکانی ٤–٥ لە `course_data/latin_course_1_lessons_04_05_answer_key.md` لەگەڵ هەڵبژاردەکانی وەشانی کاری branch تاقیکراوەتەوە؛ دەقی نێردراوی بەکارهێنەر و ڕیزبەندیی هەڵبژاردەکان لە کاتی reconciliation ـدا دەبێت بپارێزرێن.
 - کلیلەی کۆرسی ١ و ٢ هەر یەک ٦٠ پرسیاریان هەیە؛ تاقیکردنەوەکان تەواوی ژمارەی پرسیار، ناسنامەی هەڵبژاردە و دەقی وەڵامی ڕاست دەپشکنن.
-- CIی نوێترین branch: run `41212784228` بۆ commitی `9d485b111bb0c3b65dd763827052d2c36ba98d7a` سەرکەوتوو بوو؛ `compileall` و ١٦٩ تاقیکردنەوە سەرکەوتوون.
+- CIی نوێترین branch: run `41213047692` بۆ commitی `c61ecdba2280a5cbd6f5ee189e2e4c4b383c0497` سەرکەوتوو بوو؛ `compileall` و ١٦٩ تاقیکردنەوە سەرکەوتوون.
+- لە بەراورد بە بنەمای پشکنینی لاتینی `3c04b047ba3bc8d3de82796f5ff996659c43d489`، ١٦ پەڕگەی ناوەڕۆکی کۆرس، audit و تاقیکردنەوە گۆڕاون؛ هیچ پەڕگەی runtime وەک `bot.py`, `courses.json`, `database.py`, `speech.py` یان migration لە ئەم بەشەی کاردا نەگۆڕاوە. `main` و deployment دەستکاری نەکراون.
 
 ## CI confirmation — latest source-draft state
 - Latest content commit at this audit point: `838a7e1c448a7238bf611af7e96586b55d072f2b`.
