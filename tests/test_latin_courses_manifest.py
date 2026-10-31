@@ -273,9 +273,9 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(master.count("### Provenance — Course 1"), 12)
         self.assertEqual(master.count("### Provenance — Course 2"), 12)
         self.assertNotIn("orthography_foundations", master)
-        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in course_one))
+        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in course_one + course_two))
 
-        lesson_heads = list(re.finditer(r"^## (?:Ders \d+:.*|وانەی [٠-٩]+ —.*)$", master, flags=re.MULTILINE))
+        lesson_heads = list(re.finditer(r"^## Ders \d+(?::| —).*$", master, flags=re.MULTILINE))
         self.assertEqual(len(lesson_heads), 24)
         for index, heading in enumerate(lesson_heads):
             end = lesson_heads[index + 1].start() if index + 1 < len(lesson_heads) else len(master)
