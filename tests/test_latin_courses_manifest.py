@@ -543,7 +543,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 lesson_number = int(lesson_heading.group(1))
                 in_quiz = False
                 continue
-            if line == "### 7. Testa Kejyar":
+            if line.startswith("### ") and "Testa Kejyar" in line:
                 in_quiz = True
                 continue
             if in_quiz:
