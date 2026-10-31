@@ -274,7 +274,7 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 
 ## وانەی ١٠ — Pronavên Bireser û Berbihevîn
 ### ئامانج
-Nasîna pronavên bireser û pronavên berbihevîn.
+Nasîna pronavên bireser, berbihevîn, lihevxisitî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
 
 ### ناوەڕۆک
 Pronavên bireser di cihê navdêrê de tên û di hin hevokên rabirdû de wek bireser xuya dibin. Formên ku Bedir-Xan dide:
@@ -328,7 +328,7 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 
 ## وانەی ١١ — Pronavên Îşarkî, Girêkî û Pirsiyarkî
 ### ئامانج
-Nasîna pronavên îşarkî, girêkî û pirsiyarkî.
+Nasîna pronavên îşarkî, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 
 ### ناوەڕۆک
 **Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Pirtûk her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
