@@ -48,6 +48,17 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertNotEqual(first["source_part"], second["source_part"])
 
 
+    def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
+        master = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        snapshot = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
+        lesson_twelve = master.split("## وانەی ١٢ —", 1)[1].split("## تێبینیی سەرچاوە", 1)[0]
+        self.assertIn("Şeş cureyên rengdêrên di çavkaniyê de nas bike.", lesson_twelve)
+        self.assertIn("Rengdêrên xwemalîn", lesson_twelve)
+        self.assertIn("Dereceyên rengdêrên wesfîn", lesson_twelve)
+        self.assertIn("SELECTED CONTENT", snapshot)
+        self.assertIn("do not load it separately", snapshot)
+        self.assertEqual(master.count("## وانەی ١٢ —"), 1)
+
     def test_course_two_lesson_document_has_real_markdown_line_breaks(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         self.assertNotIn(r"\n", lesson_text)
