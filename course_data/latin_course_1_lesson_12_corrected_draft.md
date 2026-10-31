@@ -34,10 +34,10 @@ av — mal — dar — jin — zarok — pirtûk — çav — şev — roj — �
 | _iya | çiya |
 
 ### 5. Hevokan temam bike
-Peyva guncaw hilbijêre: pirtûk — dibistan — av — mamoste — heval.
+Peyva guncaw hilbijêre: pirtûk — dibistanê — av — mamoste — heval.
 
 1. Ez ______ dixwînim.
-2. Zarok di ______ de ne.
+2. Zarok li ______ ne.
 3. Ez ______ vedixwim.
 4. ______ dersê vedibêje.
 5. Ew ______ê min e.
