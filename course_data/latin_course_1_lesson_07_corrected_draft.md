@@ -5,7 +5,7 @@
 - Herfên U û Û ji hev cuda bike.
 - Di peyvan de dengdêra rast nas bike.
 - Nîşana li ser Û di nivîsandinê de biparêze.
-- Fêm bike ku cudahiya wan tenê dirêjî û kurtahî nîne؛ taybetmendiya deng û awayê derxistina wan jî girîng e.
+- Fêm bike ku cudahiya wan tenê dirêjî û kurtahî nîne; taybetmendiya deng û awayê derxistina wan jî girîng e.
 
 ### 1. Dengdêra U
 U di koma dengdêrên kin de ye. Di van peyvan de U heye:
@@ -32,7 +32,7 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 **Têbînî:** `xwîn` bi Î tê nivîsîn; ji ber vê yekê ne mînaka U ye û ne mînaka Û ye.
 
 ### 3. Cudahiyên U û Û
-U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn؛ lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
+U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn; lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
 
 | U | Û |
 |---|---|
@@ -47,7 +47,7 @@ U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di k
 3. Nîşana li ser Û ji bîr neke.
 4. Peyvê bixwîne û dengê wê bi mînaka rast re berawird bike.
 
-**Têbînî:** Hin peyv dikarin ji bo xwendina zêde werin pêşkêşkirin؛ lê di xebata bingehîn de mînakên zelal ên her komê bikar bîne û peyvên ku di wan de herfa armanc tune ye wek mînak nede.
+**Têbînî:** Hin peyv dikarin ji bo xwendina zêde werin pêşkêşkirin; lê di xebata bingehîn de mînakên zelal ên her komê bikar bîne û peyvên ku di wan de herfa armanc tune ye wek mînak nede.
 
 ### 5. Xebata Kejyar
 **Xebata 1:** Peyvan li gorî herfa wan kom bike:
@@ -92,6 +92,6 @@ C) Her du dengdar in
 D) Her du bê nîşan in
 
 ### Xulasa
-U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêrên dirêj de ye؛ lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
+U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêrên dirêj de ye; lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
 
 **Kejyar • Fêrbûn bi pratîkê**
