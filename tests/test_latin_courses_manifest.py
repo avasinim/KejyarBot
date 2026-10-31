@@ -190,7 +190,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         import re
 
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        headings = [int(number) for number in re.findall(r"^## Ders (\\d+) —", lesson_text, flags=re.MULTILINE)]
+        headings = [int(number) for number in re.findall(r"^## Ders (\d+) —", lesson_text, flags=re.MULTILINE)]
         self.assertEqual(headings, list(range(1, 13)))
         self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_text))
         for label in ("### Armanc", "### Naverok", "### Xebat", "### Kuis"):
@@ -201,7 +201,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def test_course_two_lesson_document_has_real_markdown_line_breaks(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         self.assertNotIn(r"\n", lesson_text)
-        self.assertIn("**دۆخی گەڕاندنەوە:**", lesson_text)
+        self.assertIn("**Rewşa vegerandinê:**", lesson_text)
 
     def test_course_two_quiz_answer_key_matches_exact_option_text(self):
         import re
@@ -213,7 +213,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         current = None
         in_quiz = False
         for line in lesson_text.splitlines():
-            heading = re.match(r"^## Ders (\\d+) —", line)
+            heading = re.match(r"^## Ders (\d+) —", line)
             if heading:
                 lesson_number = int(heading.group(1))
                 in_quiz = False
@@ -278,7 +278,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("Not loaded by runtime", master)
         course_one, course_two = master.split("## Course 2 —", 1)
         c1_numbers = [int(number) for number in re.findall(r"^## Ders (\d+):", course_one, flags=re.MULTILINE)]
-        c2_numbers = [int(number) for number in re.findall(r"^## Ders (\\d+) —", course_two, flags=re.MULTILINE)]
+        c2_numbers = [int(number) for number in re.findall(r"^## Ders (\d+) —", course_two, flags=re.MULTILINE)]
         self.assertEqual(c1_numbers, list(range(1, 13)))
         self.assertEqual(c2_numbers, list(range(1, 13)))
         self.assertEqual(master.count("### Provenance — Course 1"), 12)
