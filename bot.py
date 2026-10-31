@@ -39,6 +39,7 @@ from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from latin_course_runtime import load_latin_courses
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -133,6 +134,34 @@ for course_lessons, course_quizzes in (
         raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_ids)}")
     LESSON_DATA.update(course_lessons)
     QUIZ_DATA.update(course_quizzes)
+
+# The two Kurmanji Latin courses have separate source parts, lesson IDs and
+# answer keys. They are activated on this isolated work branch only.
+LATIN_COURSE_DRAFT = load_json("course_data/latin_courses_manifest_draft.json")
+LATIN_LESSONS, LATIN_QUIZZES, LATIN_COURSE_RECORDS = load_latin_courses()
+latin_manifest_courses = LATIN_COURSE_DRAFT.get("courses", [])
+if [item.get("id") for item in latin_manifest_courses] != [
+    item["id"] for item in LATIN_COURSE_RECORDS
+]:
+    raise ValueError("Latin course manifest and runtime parser course IDs do not match")
+for manifest_course, parsed_course in zip(latin_manifest_courses, LATIN_COURSE_RECORDS):
+    if manifest_course.get("lesson_ids") != parsed_course["lesson_ids"]:
+        raise ValueError(f"Latin lesson manifest mismatch for {parsed_course['id']}")
+    if len(parsed_course["lesson_ids"]) != 12:
+        raise ValueError(f"Latin course must have 12 lessons: {parsed_course['id']}")
+    active_course = dict(manifest_course)
+    active_course["status"] = "active"
+    active_course["order"] = len(COURSES) + 1
+    COURSES.append(active_course)
+
+duplicate_latin_ids = set(LESSON_DATA).intersection(LATIN_LESSONS)
+if duplicate_latin_ids:
+    raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_latin_ids)}")
+for lesson_id, lesson in LATIN_LESSONS.items():
+    lesson["content"] = format_lesson_draft(lesson["content"])
+LESSON_DATA.update(LATIN_LESSONS)
+QUIZ_DATA.update(LATIN_QUIZZES)
+COURSES.sort(key=lambda item: item.get("order", 999))
 
 LESSON_INFOGRAPHICS = {}
 
