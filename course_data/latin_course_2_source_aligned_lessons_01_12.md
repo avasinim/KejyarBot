@@ -114,7 +114,7 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 | `Ez mehinê dibînim.` | `Ez mehînan dibînim.` |
 | `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
 
-Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin؛ divê wan wekî pêvekên giştî yên hemû gelemjmaran nehêlin.
+Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
 
 **Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin؛ çavkaniyê vê yekê bi taybetî diyar dike.
 
@@ -147,7 +147,7 @@ Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê x
 
 Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
 
-**Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêویستە navdêr bi zayend û erkê wê re were fêrbûn، ne bi pêکهاتەیەکی یەکسان بۆ هەموو وشەکان.
+**Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêwîst e ku navdêr bi zayend û erkê wê re were fêrbûn, ne ku rêbazeke yekgirtî ji bo hemû peyvan were sepandin.
 
 **Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûڵ دەکات. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî nimûneya çavkaniyê).
 
