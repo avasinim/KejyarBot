@@ -50,8 +50,9 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 - [x] Complete assistant-led linguistic/source review of all 24 lessons; add source-based examples and regression guards where needed. Independent native-speaker review remains recommended before runtime activation.
 - [x] Add a lossless Markdown runtime parser for the 24 selected lessons and their 120 answer-key-verified quiz questions.
 - [x] Render Markdown lesson tables as readable Telegram rows while preserving every header/cell value; add a regression test for the table renderer.
+- [x] Remove stray Markdown horizontal separators and the recovered `<text>` wrapper from Telegram lesson output; add a regression test.
 - [x] Register both Latin courses as active only on this isolated work branch; add namespaced lesson IDs and progress-unlocking isolation tests.
-- [x] Run branch CI: 173 tests passed, including compileall and the new parser tests.
+- [x] Run branch CI: 177 tests passed, including compileall, parser/runtime smoke tests, and Telegram table-rendering regression checks.
 - [ ] Complete independent native-speaker review and final text reconciliation before production release.
 - [ ] Preserve the existing voice workflow; keep dynamic speech disabled.
 - [ ] Do not modify `main`, production bot/token/database, or deploy without explicit user approval.
