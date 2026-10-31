@@ -27,10 +27,9 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 | bûk | Û |
 | bûn | Û |
 | şûştin | Û |
-| xwîn | Û |
 | mû | Û |
 
-### 3. Cudahiyên U û Û
+**Têbînî:** `xwîn` bi Î tê nivîsîn; ji ber vê yekê ne mînaka U ye û ne mînaka Û ye.\n\n### 3. Cudahiyên U û Û
 U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn؛ lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
 
 | U | Û |
