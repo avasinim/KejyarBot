@@ -68,6 +68,21 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("jmarnav", lesson)
         self.assertEqual(len(quizzes["kurmanji_latin_grammar_12"]), 5)
 
+    def test_bot_renders_markdown_tables_as_readable_telegram_rows(self):
+        import bot
+
+        source = (
+            "| Mezin | Biçûk |\\n"
+            "|---|---|\\n"
+            "| A | a |\\n"
+            "| B | b |"
+        )
+        rendered = bot.format_lesson_draft(source)
+        self.assertIn("Mezin: a • Biçûk: a", rendered)
+        self.assertIn("Mezin: B • Biçûk: b", rendered)
+        self.assertNotIn("|---|", rendered)
+        self.assertNotIn("| A |", rendered)
+
     def test_lesson_content_is_not_reformatted_or_truncated(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_01"]["content"]
