@@ -68,6 +68,22 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("jmarnav", lesson)
         self.assertEqual(len(quizzes["kurmanji_latin_grammar_12"]), 5)
 
+    def test_telegram_chunking_preserves_every_character_and_respects_limit(self):
+        import bot
+
+        content = ("ئەڤە دەقی وانەیە.\\n" * 500) + ("x" * 4100) + "\\nکۆتایی."
+        chunks = bot.split_lesson_text(content, limit=3800)
+        self.assertGreater(len(chunks), 1)
+        self.assertTrue(all(len(chunk) <= 3800 for chunk in chunks))
+        self.assertEqual("".join(chunks), content.strip())
+
+    def test_telegram_chunking_handles_empty_and_exact_limit(self):
+        import bot
+
+        self.assertEqual(bot.split_lesson_text("  "), ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."])
+        exact = "ک" * 3800
+        self.assertEqual(bot.split_lesson_text(exact), [exact])
+
     def test_bot_renders_markdown_tables_as_readable_telegram_rows(self):
         import bot
 
