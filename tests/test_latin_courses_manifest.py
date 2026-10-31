@@ -374,8 +374,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
             )
 
 
-    def test_course_one_replacement_lessons_08_09_keys_match_exact_options(self):
-        lesson_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md"
+    def test_course_one_recovered_lessons_08_09_keys_match_original_option_order(self):
+        lesson_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_recovered_draft.md"
         key_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_answer_key.md"
         lesson_text = lesson_path.read_text(encoding="utf-8")
         key_text = key_path.read_text(encoding="utf-8")
@@ -390,20 +390,22 @@ class LatinCoursesManifestTests(unittest.TestCase):
             elif line.startswith("## Ders 9:"):
                 lesson_number = 9
                 in_quiz = False
-            if line.startswith("### 6. Testa Kejyar"):
+            if line.startswith("### 6. Testa Kejyar") or line.startswith("### 8. Testa Kejyar"):
                 in_quiz = True
                 continue
             if in_quiz:
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                if line and line[0].isdigit() and ". " in line:
-                    number, _ = line.split(". ", 1)
-                    current = (lesson_number, int(number))
+                question = re.match(r"^\\s*(\\d+)\\. (.+)$", line)
+                if question:
+                    current = (lesson_number, int(question.group(1)))
+                    self.assertNotIn(current, questions)
                     questions[current] = {}
                     continue
-                if len(line) > 3 and line[0] in "ABCD" and line[1:3] == ") ":
-                    questions[current][line[0]] = line[3:]
+                option = re.match(r"^\\s*-?\\s*([A-D])\\) (.+)$", line)
+                if option and current is not None:
+                    questions[current][option.group(1)] = option.group(2)
 
         rows = []
         for line in key_text.splitlines():
@@ -418,13 +420,23 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self._assert_complete_unique_question_keys(list(questions), [(int(l), int(q)) for l, q, _, _ in rows], expected)
         for lesson, number, option, answer in rows:
             self.assertEqual(questions[(int(lesson), int(number))][option], answer)
+        self.assertEqual([questions[(9, q)]["B"] for q in range(1, 6)], ["Ç", "Ê", "Î", "Ş", "Û"])
+
+        lesson_eight, lesson_nine = lesson_text.split("## Ders 9:", 1)
+        self.assertIn("| zivistan | navîn |", lesson_eight)
+        self.assertIn("| xwîn | Î |", lesson_nine)
+        circumflex_section = lesson_nine.split("### 5. Herfa Û", 1)[1].split("### 6.", 1)[0]
+        self.assertNotIn("xwîn", circumflex_section)
+        self.assertIn("U / Û", lesson_nine)
+        self.assertNotIn("U / Ûr", lesson_nine)
 
 
-    def test_course_one_lesson_twelve_practice_uses_correct_locative_form(self):
-        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_12_corrected_draft.md").read_text(encoding="utf-8")
-        self.assertIn("pirtûk — dibistanê — av — mamoste — heval", lesson_text)
-        self.assertIn("Zarok li ______ ne.", lesson_text)
-        self.assertNotIn("Zarok di ______ de ne.", lesson_text)
+    def test_course_one_lesson_twelve_recovered_practice_uses_correct_locative_form(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_12_recovered_draft.md").read_text(encoding="utf-8")
+        self.assertIn("Peyv: `pirtûk — dibistanê — av — mamoste — heval`", lesson_text)
+        self.assertIn("Zarok di ______ de ne.", lesson_text)
+        self.assertIn("Ev pirtûka min e.", lesson_text)
+        self.assertNotIn("Ev pirtûk a min e.", lesson_text)
 
     def test_course_one_lesson_one_describes_short_i_position_correctly(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_01_corrected_draft.md").read_text(encoding="utf-8")
@@ -446,13 +458,14 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                if line and line[0].isdigit() and ". " in line:
-                    number, _ = line.split(". ", 1)
-                    current = int(number)
+                question = re.match(r"^\\s*(\\d+)\\. (.+)$", line)
+                if question:
+                    current = int(question.group(1))
                     questions[current] = {}
                     continue
-                if len(line) > 3 and line[0] in "ABCD" and line[1:3] == ") ":
-                    questions[current][line[0]] = line[3:]
+                option = re.match(r"^\\s*-?\\s*([A-D])\\) (.+)$", line)
+                if option and current is not None:
+                    questions[current][option.group(1)] = option.group(2)
         rows = []
         for line in key_text.splitlines():
             if line.startswith("|"):
@@ -561,13 +574,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
 
     def test_course_one_lesson_twelve_answer_key_matches_exact_options(self):
-        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_12_corrected_draft.md").read_text(encoding="utf-8")
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_12_recovered_draft.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_1_lesson_12_answer_key.md").read_text(encoding="utf-8")
         questions = {}
         current = None
         in_quiz = False
         for line in lesson_text.splitlines():
-            if line.startswith("### 7. Testa dawî"):
+            if line.startswith("### 7. Testa dawî ya korsa yekem"):
                 in_quiz = True
                 continue
             if in_quiz:
