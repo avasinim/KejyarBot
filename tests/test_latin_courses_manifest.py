@@ -266,7 +266,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             summary = re.search(r"^### Xulasa.*$", quiz, flags=re.MULTILINE)
             if summary:
                 quiz = quiz[:summary.start()]
-            questions = re.findall(r"^\d+\\. ", quiz, flags=re.MULTILINE)
+            questions = re.findall(r"^\d+\. ", quiz, flags=re.MULTILINE)
             self.assertEqual(len(questions), 5, heading.group(0))
 
         self.assertIn("New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.", master)
@@ -489,7 +489,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                question = re.match(r"^\\s*(\d+)\\. (.+)$", line)
+                question = re.match(r"^\\s*(\d+)\. (.+)$", line)
                 if question:
                     current = int(question.group(1))
                     questions[current] = {}
