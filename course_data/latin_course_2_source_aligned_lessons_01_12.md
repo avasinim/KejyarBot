@@ -323,7 +323,18 @@ Nasîna pronavên îşarkî, girêkî û pirsiyarkî.
 
 **Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di pirtûkê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike؛ `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
 
-**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide.
+**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide. Pirtûk her wiha `kîjik` û `kîjan` wek formên pirsiyarkî, û `çend` û `kû` di pirsên hejmar û cihê de vedikole.
+
+### Pronavên nebinavkirî
+Ev pronav li şûna navdêrên ku di gotinê de bi awayekî taybet nehatine destnîşankirin tên. Pirtûk nimûneyên wek `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt` û `gelek` dide. Forma wan li gorî erkê wan di hevokê de dikare biguhere.
+
+### Pronavên xwemalîn
+Pronavên xwemalîn têkiliya xwedîtiyê nîşan didin û bi gelemperî ji pronavên îşarkî yên qerse `yê/ya/yên` û pronavê kesîn pêk tên:
+- Nêr yekjimar: `yê min`, `yê te`, `yê me`
+- Mê yekjimar: `ya min`, `ya te`, `ya me`
+- Gelemjimar: `yên min`, `yên te`, `yên me`
+
+Di van formên pêkhatî de `yê/ya/yên` tiştê xwedîkirî nîşan dide û pronavê kesîn xwedîtiyê diyar dike. Ev cure ji rengdêrên xwemalîn ên wek `hespê min` cuda ye; li vir tevahiya formê wek pronav dixebite.
 
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
