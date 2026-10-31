@@ -352,7 +352,7 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 
 ## وانەی ١١ — Pronavên Îşarkî, Girêkî û Pirsiyarkî
 ### ئامانج
-Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî û nebinavkirî.
+Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 
 ### ناوەڕۆک
 **Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Pirtûk her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
@@ -378,12 +378,24 @@ Ev sê form pronavên îşarkî ne ku kes, tişt an heywan nîşan didin, lê d�
 
 Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. `yê min`, `ya min` û `yên min` di van nimûneyan de bi awayê pêkhatî xwedîtiyê jî nîşan didin, lê ev ne cureyeke serbixwe ya pronavê di vê beşê de ye. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
 
+### Pronavên xwemalîn
+Pronavên xwemalîn xwedîtiyê nîşan didin û ji du pronavan pêk tên: pronavê îşarkî yê qerse (`yê`, `ya`, `yên`) û pronavê kesîn. Pronavê yekem tiştê ku qala wî tê kirin nîşan dide; pronavê duyem xwedîtiyê diyar dike.
+
+| Mêjer û zayend | Nimûne |
+|---|---|
+| Nêr yekjimar | `yê min`, `yê te`, `yê wî` |
+| Mê yekjimar | `ya min`, `ya te`, `ya wê` |
+| Gelemjimar | `yên min`, `yên te`, `yên wan` |
+
+Pirtûk ji bo kesên yekem û duyem carinan `xwe` jî di tabloyên xwemalî de nîşan dide. Di kesê sêyem de pronavên `vî/vê/van` nêzîkî û `wî/wê/wan` dûrbûnê diyar dikin. Nimûneyên çavkaniyê: `destmalên min — yên min` û `gopalê min — yê min`. Ev pronav ji rengdêrên xwemalîn ên wek `hespê min` cuda ne: li vir tevahiya komê li şûna navdêrê tê û wek pronav dixebite.
+
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
 
 1. Di `Her kes di bêje` de pronavê nebinavkirî bibîne.
 2. Di `Yê ko hat bira yê min bû` de pronavên îşarkî û pronavê girêkî bibîne.
-3. Rave bike çima `yê/ya/yên` bi tenê nayên bikaranîn û `ko` li pey wan tê.
+3. Ji bo navdêrên nêr، mê û gelemjimar pronavên xwemalîn bi `min` çêbike.
+4. Di `destmalên min — yên min` de pronavê xwemalîn bibîne û erkê `yên` rave bike.
 
 ### Kuis — 5 pirs
 1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
