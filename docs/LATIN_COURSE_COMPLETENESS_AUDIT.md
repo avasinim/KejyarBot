@@ -23,13 +23,13 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | 5 | Replacement draft present; not verbatim restoration; vowel-length explanation checked against printed p. 11 | Separate key; exact option test |
 | 6 | Recovered draft restored from `Pasted text(1).txt` (brand casing/layout normalized) | Five options restored; master key matches exact option text |
 | 7 | Corrected draft present | Separate key; exact option test |
-| 8 | Replacement draft present | Separate key; exact option test |
-| 9 | Replacement draft present | Separate key; exact option test |
+| 8 | Recovered from `Pasted markdown(3).md`; V position corrected and source contrasts added | Key matches original option order; exact option test |
+| 9 | Recovered from `Pasted markdown(3).md`; `xwîn` moved to Î and malformed exercise corrected | Key follows original option order; exact option test |
 | 10 | Corrected draft present | Separate key; exact option test |
 | 11 | Corrected draft present | Separate key; exact option test |
-| 12 | Corrected draft present | Separate key; exact option test |
+| 12 | Recovered from `Pasted markdown(3).md`; ezafe and locative word-bank forms corrected | Key matches original quiz options; exact option test |
 
-**Recovery completed:** Lessons 2, 3, and 6 have been restored from the user's Library file `Pasted text(1).txt`. Their original teaching text and quiz option order were recovered; the master answer-key entries were corrected to match the exact selected option text. Lesson 6 received only Markdown/layout and brand-casing normalization. Lessons 4 and 5 remain transcript-confirmed, but their exact message bodies have not yet been restored; do not reconstruct them and label them verbatim.
+**Recovery completed:** Lessons 2, 3, and 6 have been restored from the user's Library file `Pasted text(1).txt`; Lessons 8, 9 and 12 have been restored from `Pasted markdown(3).md`. Their original teaching text and quiz option order were recovered; the master answer-key entries were corrected to match the exact selected option text. Lesson 6 received only Markdown/layout and brand-casing normalization. Lessons 8 and 9 preserve the recovered original quiz option order; Lesson 12 preserves its original quiz and reading sequence with two minimal corrections. Lessons 4 and 5 remain transcript-confirmed, but their exact message bodies have not yet been restored; the current files are clearly labelled replacement drafts, not verbatim restorations.
 
 ## Course 2 — 12 lessons
 
@@ -41,14 +41,14 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 
 ## Regression protection added
 
-The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. The Course 1 master answer key now contains all 60 question rows across all 12 lessons; a regression test verifies complete coverage, uniqueness, and agreement with the selected per-lesson key files. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts, and guards the short/long vowel grouping and source-grounded explanation. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
+The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. The Course 1 master answer key now contains all 60 question rows across all 12 lessons; a regression test verifies complete coverage, uniqueness, and agreement with the selected per-lesson key files. It checks the Course 1 Lessons 4–5 replacement key against their selected options, preserves the recovered original option order for Lessons 8–9, and verifies the recovered Lesson 12 key. A master-pack test checks all 24 lesson slots and five quiz questions per lesson.
 
 ## Release blockers
 
-- [x] Restore Course 1 Lessons 2, 3, and 6 from the recovered source file, record provenance, and verify their exact quiz keys.
+- [x] Restore Course 1 Lessons 2, 3, 6, 8, 9 and 12 from recovered source files, record provenance, and verify their quiz keys.
 - [x] Reconcile the Course 1 master key into 60 unique rows (five per lesson); cross-check the consolidated rows against the selected per-lesson keys, while the existing lesson tests verify answer text against the quiz options.
 - [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
-- [ ] Complete human linguistic/source review for all 24 lessons.
+- [ ] Complete final human linguistic/source review for all 24 lessons; editorial drafts and recovered lessons have automated structure/key checks, not a human sign-off.
 - [ ] Add runtime integration and progress-isolation tests only after content selection is approved.
 - [ ] Preserve the existing voice workflow; keep dynamic speech disabled.
 - [ ] Do not modify `main`, production bot/token/database, or deploy without explicit user approval.
@@ -141,3 +141,8 @@ Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî
 ## Course 1 Lesson 12 — practice sentence agreement
 
 A final pedagogical pass found that the fill-in sentence `Zarok di ______ de ne` paired with the bare word-bank item `dibistan`, which would produce an incomplete locative form. The exercise now uses `Zarok li ______ ne` with the correctly inflected bank item `dibistanê`. A regression test guards the word-bank form and sentence pattern. This is a small language-quality correction; it does not add a new grammar lesson or alter the five-question quiz.
+
+
+## Consolidated 24-lesson master pack and recovery correction
+
+`course_data/latin_courses_master_draft.md` consolidates all 24 selected lessons in their authoritative order. Course 1 Lessons 8, 9 and 12 are based on recovered original text, not replacement rewrites. Course 1 Lessons 4–5 and Course 2 Lessons 1–3 remain explicitly labelled new replacement drafts because their exact original message bodies are unavailable. A regression test checks all 24 lesson headings, order, provenance tags and five quiz questions per lesson. The master pack remains editorial-only and is not loaded by runtime.
