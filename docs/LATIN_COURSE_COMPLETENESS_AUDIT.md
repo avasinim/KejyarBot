@@ -90,7 +90,7 @@ A second pass against the source table of contents and printed pp. 76–89 found
 - Lesson 11 distinguishes two separate source categories: **demonstrative pronouns of the qerse form** `yê/ya/yên` (printed pp. 81–83), and **Pronavên xwemalîn** (possessive pronouns, printed pp. 87–89). The demonstrative section uses `Yê ko hat bira yê min bû`, `Yên ko hatin bira yên min bûn`, and `Ya ko hat dotmama min bû`, explaining the relative `ko`. The possessive section explains the two-pronoun structure and gives `yê min`, `ya min`, `yên min`, and `destmalên min — yên min`. These forms are not simply reflexive `xwe`.
 - A regression test guards the new source categories and examples.
 
-Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxistî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 72; the additional lihevxistî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 This is an editorial source-alignment completion, not a claim that the new explanatory prose is a verbatim transcription of the book.
 
