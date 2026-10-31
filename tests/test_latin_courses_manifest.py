@@ -240,6 +240,38 @@ class LatinCoursesManifestTests(unittest.TestCase):
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected, f"Answer-key mismatch at lesson {lesson}, question {question}, option {option}")
 
+    def test_master_latin_course_pack_has_24_ordered_lessons_and_complete_quizzes(self):
+        import re
+
+        master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
+        self.assertIn("not runtime-loaded", master)
+        course_one, course_two = master.split("## Course 2 —", 1)
+        c1_numbers = [int(number) for number in re.findall(r"^## Ders (\\d+):", course_one, flags=re.MULTILINE)]
+        digit_map = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
+        c2_numbers = [int(number.translate(digit_map)) for number in re.findall(r"^## وانەی ([٠-٩]+) —", course_two, flags=re.MULTILINE)]
+        self.assertEqual(c1_numbers, list(range(1, 13)))
+        self.assertEqual(c2_numbers, list(range(1, 13)))
+        self.assertEqual(master.count("### Provenance — Course 1"), 12)
+        self.assertEqual(master.count("### Provenance — Course 2"), 12)
+        self.assertNotIn("orthography_foundations", master)
+
+        lesson_heads = list(re.finditer(r"^## (?:Ders \\d+:.*|وانەی [٠-٩]+ —.*)$", master, flags=re.MULTILINE))
+        self.assertEqual(len(lesson_heads), 24)
+        for index, heading in enumerate(lesson_heads):
+            end = lesson_heads[index + 1].start() if index + 1 < len(lesson_heads) else len(master)
+            lesson = master[heading.start():end]
+            quiz_head = re.search(r"^### .*?(?:Testa|Kuis).*$", lesson, flags=re.MULTILINE)
+            self.assertIsNotNone(quiz_head, heading.group(0))
+            quiz = lesson[quiz_head.start():]
+            summary = re.search(r"^### Xulasa.*$", quiz, flags=re.MULTILINE)
+            if summary:
+                quiz = quiz[:summary.start()]
+            questions = re.findall(r"^\\d+\\. ", quiz, flags=re.MULTILINE)
+            self.assertEqual(len(questions), 5, heading.group(0))
+
+        self.assertIn("New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.", master)
+        self.assertIn("New source-aligned replacement draft; the earlier exact transcript body is not available.", master)
+
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
         self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_text))
