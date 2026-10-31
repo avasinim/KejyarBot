@@ -249,11 +249,14 @@ Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Bedir-Xan d
 | duyem yekjimar | tu | te |
 | sêyem yekjimar nêr | ew | wî |
 | sêyem yekjimar mê | ew | wê |
+| sêyem yekjimar nêtar | ew | ew |
 | yekem gelemjar | em | me |
 | duyem gelemjar | hon | we |
 | sêyem gelemjar | ew | wan |
 
 Di hin hevokên rabirdû de forma kirarî tê bikaranîn; mînak: `Min got`, `Te xwar`, `Wî xist`, `Wê xwar`, `Me xwar`, `We got`, `Wan xist`.
+
+**Sê zayendên pronav:** çavkaniyê pronavên nêr, mê û nêtar cuda dike. `wî` forma nêr e û `wê` forma mê ye; formên din ên kesîn di rêzimanê de nêtar tên hesibandin. `ew` dikare li şûna navdêrên nêr û mê jî were, ji ber vê yekê di tabloyê de wek forma nêtar jî hatiye nîşandan.
 
 **Nîşe ya dîrokî/ortografî:** pirtûka 2002 formê `hon` dinivîse. Di hin standardên nû de `hûn` tê dîtin. Di vê kursê de `hon` wek forma çavkaniyê diparêzin û `hûn` tenê wek variantê nû nîşan dikin; yek ji wan bê agahdarî nayê guhertin.
 
