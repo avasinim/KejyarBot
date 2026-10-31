@@ -3,16 +3,16 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 
 | وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
-| 2 | 1 | C | 31 herf |
+| 2 | 1 | C | 31 |
 | 2 | 2 | B | Ç |
 | 2 | 3 | B | î |
 | 2 | 4 | D | Ç / ç |
 | 2 | 5 | C | Herfa yekem a navê taybet |
-| 3 | 1 | C | 8 dengdêr |
+| 3 | 1 | C | 8 |
 | 3 | 2 | C | Î |
 | 3 | 3 | B | A |
 | 3 | 4 | B | B, M, R |
-| 3 | 5 | B | Du dengdêr di `welat` de |
+| 3 | 5 | B | Du |
 
 
 
