@@ -322,7 +322,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 
 ## وانەی ١٢ — Rengdêr û Jmarnav
 
-**Dîroka hilbijartinê:** Ev guhertoya firehkirî ya pêşnûseya jêgirtinê wek guhertoya bingehîn hilbijêrdraw e; pêşnûseya baseline ya berê li vir bi wê hatiye şûngirtin. Kileya masterê li gorî vebijarkên vê guhertoyê hatî nûkirin.
+**Dîroka hilbijartinê:** Ev guhertoya firehkirî ya pêşnûseya jêgirtinê wek guhertoya bingehîn hilbijartî ye; pêşnûseya baseline ya berê li vir bi wê hatiye şûngirtin. Kileya masterê li gorî vebijarkên vê guhertoyê hatî nûkirin.
 
 ### Armanc
 Di dawiya dersê de xwendekar dikare:
