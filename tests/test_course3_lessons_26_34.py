@@ -33,6 +33,20 @@ class Course3Lessons26To34Tests(unittest.TestCase):
         self.assertIn("بەهێز", preposition_text)
         self.assertIn("لە کوردستاندا", postposition_text)
 
+    def test_lesson_26_contains_the_book_examples_for_simple_and_compound_prepositions(self):
+        lesson = self.lessons[25]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in (
+            "ئەو بە فڕۆکە بۆ کوردستان سەفەر دەکات.",
+            "کاروان لە کەرکووک لەدایک بووە.",
+            "تا وانەکە فێر نەبوو، وازی نەهێنا.",
+            "من بێ تۆ ناژیم.",
+            "پێنووسەکە لەسەر مێزەکەیە.",
+            "کتێبەکە لەژێر ڕۆژنامەکەیە.",
+            "من بەبێ تۆ ناژیم.",
+        ):
+            self.assertIn(marker, content)
+
     def test_foreign_word_lesson_covers_kurdish_spelling_and_tashdid(self):
         lesson = self.lessons[32]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
