@@ -157,7 +157,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson_ten = lesson_text.split("## Ders 10 —", 1)[1].split("## Ders 11 —", 1)[0]
         lesson_eleven = lesson_text.split("## Ders 11 —", 1)[1].split("## Ders 12 —", 1)[0]
 
-        for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`", "Pronavê nêtar `xwe`", "`Wî xwe kuşt.`", "Pronavê nêtar ê `ê`", "`Min da ê`"):
+        for form in ("Pronavên lihevxistî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`", "Pronavê nêtar `xwe`", "`Wî xwe kuşt.`", "Pronavê nêtar ê `ê`", "`Min da ê`"):
             self.assertIn(form, lesson_ten)
 
         for form in ("Pronavên nebinavkirî", "`yek`", "`her kes`", "`hinek`", "Pronavên îşarkî yên qerse", "`Yê ko hat bira yê min bû.`", "`Yên ko hatin bira yên min bûn.`", "`Ya ko hat dotmama min bû.`", "Pronavên xwemalîn", "`yê min`", "`ya min`", "`yên min`", "`destmalên min — yên min`"):
@@ -192,6 +192,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         headings = [int(number) for number in re.findall(r"^## Ders (\d+) —", lesson_text, flags=re.MULTILINE)]
         self.assertEqual(headings, list(range(1, 13)))
+        self.assertIn("Pronavên lihevxistî", lesson_text)
+        self.assertNotIn("lihevxisitî", lesson_text)
         self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_text))
         for label in ("### Armanc", "### Naverok", "### Xebat", "### Kuis"):
             self.assertIn(label, lesson_text)
