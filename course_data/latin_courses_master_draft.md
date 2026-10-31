@@ -1,30 +1,13 @@
 # Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
 
----
-
 > Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order; replacement drafts are not represented as verbatim recovered originals.
 
----
-
 ## Source and course separation
-
----
-
 - Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
-
----
-
 - Course 2: the same volume, *Bingehên gramera kurdmancî*, Part II, printed pp. 37–100.
-
----
-
 - The two courses remain separate in subject scope, lesson IDs, quizzes, answer keys and progression. No Sorani/Arabic-script course is included.
 
----
-
 ## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
-
----
 
 ### Provenance — Course 1, Lesson 1
 Corrected pedagogical draft; 31-letter inventory and vowel classification checked.
@@ -115,8 +98,6 @@ D) z
 Elfabeya kurdî ya latînî 31 herf heye: 8 dengdêr û 23 dengdar. Herfên mezin û biçûk du formên heman herf in.
 
 **Kejyar • Fêrbûn bi pratîkê**
-
----
 
 ### Provenance — Course 1, Lesson 2
 Recovered from the user's source file; original lesson sequence retained.
@@ -253,8 +234,6 @@ Di vê dersê de me rêza herfan, herfên taybet û cudahiya herfên mezin û bi
 
 **Kejyar • Fêrbûn bi pratîkê**
 
----
-
 ### Provenance — Course 1, Lesson 3
 Recovered from the user's source file; original lesson sequence retained.
 
@@ -363,8 +342,6 @@ Di vê dersê de me cudahiya dengdêr û dengdar, heşt dengdêrên kurdî û ro
 **Dersa bê:** Dengdêrên kin — E, I, U.
 
 **Kejyar • Fêrbûn bi pratîkê**
-
----
 
 ### Provenance — Course 1, Lesson 4
 New replacement draft; exact earlier transcript body unavailable verbatim.
@@ -499,8 +476,6 @@ D) Her du bê nîşan in
 
 ### Xulasa
 Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de nas bike û bi dengdêrên nîşankirî Ê, Î, Û re tevlihev neke.
-
----
 
 ---
 
@@ -650,8 +625,6 @@ D) Î
 ### Xulasa
 Di vê dersê de pênc dengdêrên koma dirêj nas kirin: A, Ê, Î, O, Û. Herfên nîşankirî divê bi nîşana xwe bên parastin û bi dengdêrên din re neyên tevlihevkirin.
 
----
-
 ### Provenance — Course 1, Lesson 6
 Recovered from the user's source file; explanatory script cleanup only.
 
@@ -768,8 +741,6 @@ I — Î
 
 **Kejyar • Fêrbûn bi pratîkê**
 
----
-
 ### Provenance — Course 1, Lesson 7
 Recovered and corrected draft; original lesson sequence retained.
 
@@ -869,8 +840,6 @@ D) Her du bê nîşan in
 U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêrên dirêj de ye; lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
 
 **Kejyar • Fêrbûn bi pratîkê**
-
----
 
 ### Provenance — Course 1, Lesson 8
 Recovered from Pasted markdown(3).md; V position corrected and source contrast pairs added.
@@ -993,8 +962,6 @@ D) Her du nîşan in
 ### Xulasa
 
 Di vê dersê de me herfên `V` û `W` nas kirin û fêr bûn ku ew du dengdarên cuda ne. Ji bo rastnivîsînê divê cudahiya wan were parastin.
-
----
 
 ---
 
@@ -1146,8 +1113,6 @@ D) Î
 
 Di vê dersê de me pênc herfên taybet nas kirin: `Ç, Ê, Î, Ş, Û`. Nîşanên wan beşek ji herfê ne û divê di nivîsandina peyvan de bên parastin.
 
----
-
 ### Provenance — Course 1, Lesson 10
 Recovered from Pasted markdown(3).md; ezafe and locative forms corrected; original quiz order retained.
 
@@ -1241,8 +1206,6 @@ D) Cihê peyvê di rûpelê de
 Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf û deng girêdayî hev in, lê ne heman tişt in; nivîsîn cudahiyên girîng ên dengî nîşan dide, ne hemû guherînên biçûk ên axaftinê.
 
 **Kejyar • Fêrbûn bi pratîkê**
-
----
 
 ### Provenance — Course 1, Lesson 11
 Recovered and corrected draft.
@@ -1343,8 +1306,6 @@ D) Cihê peyvê
 Rastnivîsîn pêdivî bi hilbijartina herfa rast, parastina rêza herfan û nivîsandina rast a nîşanan heye. Her peyvê berî qedandina nivîsê careke din bixwîne û kontrol bike.
 
 **Kejyar • Fêrbûn bi pratîkê**
-
----
 
 ### Provenance — Course 1, Lesson 12
 Recovered from Pasted markdown(3).md; two minimal grammar/inflection corrections.
@@ -1470,11 +1431,7 @@ Di vê kursê de xwendekar bi alfabeya kurdî ya latînî, dengdêr û dengdar, 
 
 **12/12 Ders — Kursa 1 bi dawî hat.**
 
----
-
 ## Course 2 — Bingehên Gramera Kurmancî
-
----
 
 ### Provenance — Course 2, Lesson 1
 New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
@@ -1518,8 +1475,6 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 
 ---
 
----
-
 ### Provenance — Course 2, Lesson 2
 New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
 
@@ -1543,8 +1498,6 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
 4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
 5. Hevenav ji bo çi tê? A) navê taybet tenê B) pirs C) navê giştî
-
----
 
 ---
 
@@ -1575,8 +1528,6 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
 3. `çem` di pirtûkê de çi ye? A) nêr B) mê C) her du
 4. `dar` bi wateya riwekê çi ye? A) nêr B) mê C) bêzayend
 5. Zayenda navên tiştên bêcan çawa tê diyarkirin? A) tenê zayenda biyolojîk B) bi rengê wan C) zayenda rêzimanî
-
----
 
 ---
 
@@ -1614,8 +1565,6 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 3. `mehinik` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
 4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku yek tişt in B) ji ber ku ew du pêvajoyên rêzimanî ne C) ji ber ku navdêr tune ne
 5. `hespin` çi nîşan dide? A) yekjimar B) serenav C) gelemjimar
-
----
 
 ---
 
@@ -1657,8 +1606,6 @@ Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`
 
 ---
 
----
-
 ### Provenance — Course 2, Lesson 6
 Recovered draft; source-aligned and editorially corrected.
 
@@ -1684,8 +1631,6 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 3. Di `hespê beza` de bireser çi ye? A) beza B) hesp C) hespê
 4. Bireser dikare li ku were? A) tenê di dawiya qisetê B) pêşî an paşî navdêrê C) tenê pêşî lêkerê
 5. `xencera min` nimûneyek ji çi ye? A) pronavê kesîn B) lêker C) bireserê navdêrê
-
----
 
 ---
 
@@ -1723,8 +1668,6 @@ Veqetandeka rast hilbijêre:
 3. `-a` di nimûneyên pirtûkê de ji bo çi ye? A) mê yekjimar B) nêr yekjimar C) gelemjimar
 4. `-ên` ji bo çi ye? A) tenê mê yekjimar B) gelemjara her du zayendan C) tenê nêr yekjimar
 5. `hespên Soro` çi ye? A) veqetandeka nebinavkirî B) lêker C) veqetandeka binavkirî ya gelemjimar
-
----
 
 ---
 
@@ -1766,8 +1709,6 @@ Forma guncaw hilbijêre û sedemê bibêje:
 
 ---
 
----
-
 ### Provenance — Course 2, Lesson 9
 Recovered draft; source-aligned and editorially corrected.
 
@@ -1803,8 +1744,6 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 3. Forma kirarî ya `ew` nêr di nimûneyên rabirdû de çi ye? A) wî B) wê C) wan
 4. Forma kirarî ya `em` çi ye? A) we B) me C) min
 5. Pirtûka 2002 kîjan forma kesê duyem gelemjar dinivîse? A) hûn B) hun C) hon
-
----
 
 ---
 
@@ -1865,8 +1804,6 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 
 ---
 
----
-
 ### Provenance — Course 2, Lesson 11
 Recovered draft; source-aligned and editorially corrected.
 
@@ -1923,8 +1860,6 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 3. Forma girêkî ya ku pirtûka 2002 bikar tîne çi ye? A) ko B) ku C) kî
 4. `Kî hat?` çi cure pirs e? A) îşarkî B) pirsiyarkî C) bireser
 5. `kîjan` ji bo çi tê bikaranîn? A) nîşandana demê B) nîşandana zayendê C) hilbijartina kes/tişt di nav çend vebijarkan de
-
----
 
 ---
 
