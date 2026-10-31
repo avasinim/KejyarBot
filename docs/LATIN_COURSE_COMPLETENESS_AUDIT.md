@@ -153,3 +153,12 @@ A final pedagogical pass found that the fill-in sentence `Zarok di ______ de ne`
 - Course 1 Lesson 12: the alphabet count introduction now uses the grammatical form `Di alfabeyê de 31 herf hene`; the recovered quiz and exercise order remain unchanged.
 - Course 2 Lesson 11: the indefinite-pronoun example is normalized to `Her kes dibêje` (the present-tense prefix remains attached to the verb). A regression assertion rejects the split form `Her kes di bêje`.
 - These are language-level edits to editorial drafts only; they do not activate either course or change runtime data.
+
+
+## Course 2 Lessons 2–3 — noun taxonomy and grammatical gender source pass
+
+A direct review of Celadet Alî Bedir-Xan, *Bingehên gramera kurdmancî*, printed pp. 51–52, expanded the examples in the two opening noun lessons to use the book's own lists. Lesson 2 now includes the source's proper-name examples (`Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd`, `Ferazende`). Lesson 3 now uses the source's masculine and feminine noun lists and retains the semantic contrast for `dar`: plant/tree = feminine (`vê darê`), wood/log = masculine (`vî darî`). Automated tests guard the added source examples, the two `dar` forms, and the Kurmanji-Latin-only script boundary.
+
+This is a source-alignment edit to the editorial draft, not a claim of verbatim transcription. The lesson order and course separation are unchanged.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 51–52. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
