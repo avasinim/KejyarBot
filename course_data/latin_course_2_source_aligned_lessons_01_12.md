@@ -315,11 +315,11 @@ Mînak:
 - `Hespan ceh xwar.` → `Wan ew xwar.`
 - `Min qelem ji destê xwe xist.`
 
-Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `hev` û `êk` dide. `hevdu` di hin bikaranînên nû de tê dîtin, lê divê wek şêwazekî cuda were nîşandan, ne ku forma serekî ya çavkaniyê bigire.
+Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `hev` û `êk` dide. Pirtûk di şîroveya xwe ya dîrokî de dibêje ku formên wek `hevdu`, `hev dû`, `êkdu` û `êk dû` li hin deveran di axaftina rojane de belav bûne; lê di nivîsa standard de forma bingehîn `hev` û `êk` diparêze. Ji ber vê yekê `hevdu` wek formeke herêmî/axaftinî nîşan dide, ne wek formeke nû ya standard.
 
 ### Pronavên lihevxistî
 Pirtûk cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
-- `jê` = `ji vî / ji wê`
+- `jê` = `ji vî / ji wî / ji vê / ji wê`
 - `lê` = `li vî / li wê`
 - `pê` = `bi vî / bi wê`
 - `tê` = `di vî / di wê`
