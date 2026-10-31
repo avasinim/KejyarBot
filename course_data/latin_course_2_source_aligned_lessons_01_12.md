@@ -184,6 +184,8 @@ Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xu
 
 **Bingeh:** Bireserê navdêrê ne heman tişt e bi pronavên îşarkî `ev/ew`; ew du mijarên cuda ne.
 
+**Têbînîya rêzimanî:** Di komê `ev keçik` de `ev` pêşnavdêr/bireser e û navdêrê `keçik` diyar dike. Dema `ev` bi serê xwe li şûna navdêrekê tê (mînak `Ev hat.`), wek pronavê îşarkî dixebite. Ji ber vê yekê divê peyvê tenê li gorî forma xwe neyê tesnîfkirin; erkê wê di nav kom û hevokê de girîng e.
+
 ### Xebat
 Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê beza`, `xencera min`, `çar xanî`.
 
