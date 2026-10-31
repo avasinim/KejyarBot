@@ -30,7 +30,7 @@ Herf nîşana nivîskî ye ku di alfabeyê de ji bo nîşandana dengên ziman t�
 | Di axaftinê de tê derxistin | Di nivîsandinê de tê bikaranîn |
 | Hêmana dengî ya ziman e | Hêmana nivîskî ya ziman e |
 
-Deng û herf bi hev re girêdayî ne، lê ne heman tişt in.
+Deng û herf bi hev re girêdayî ne, lê ne heman tişt in.
 
 ### 4. Nivîsîn û cudahiyên dengî
 Di nivîsînê de herfên cuda cudahiyên girîng ên dengî nîşan didin. Mînak:
@@ -40,7 +40,7 @@ Di nivîsînê de herfên cuda cudahiyên girîng ên dengî nîşan didin. Mîn
 - S / Ş: sêv / şev
 - U / Û: kur / dûr
 
-Pirtûka bingehîn di beşa alfabeyê de cudahiyên dengî û awayê nîşandana wan bi herfan rave dike. Lê her guherîna biçûk a dengê ku di axaftina kesan de çêdibe، ne pêwîستە herfeke nû di nivîsînê de bixwaze. Nivîsîn bi rêسایەتییەکی دیاریکراو cudahiyên گرنگی زمان نیشان دەدات.
+Pirtûka bingehîn di beşa alfabeyê de cudahiyên dengî û awayê nîşandana wan bi herfan rave dike. Lê her guherîna biçûk a dengê di axaftina kesan de ne mecbûr e ku di nivîsînê de bi herfeke nû were nîşandan. Rastnivîsîn bi rêgezeke diyarkirî cudahiyên girîng ên zimanê nîşan dide.
 
 ### 5. Rêza herfan
 Her peyv ji rêzeke taybet a herfan pêk tê. Guhertina rêza herfan dikare peyvê biguherîne an rêzeke nepeyvî çêbike.
