@@ -38,16 +38,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 | 7 | 3 | C | bûn |
 | 7 | 4 | B | U |
 | 7 | 5 | B | Du herfên cuda ne |
-| 8 | 1 | B | W |
-| 8 | 2 | B | V |
-| 8 | 3 | C | wêne |
-| 8 | 4 | B | V |
-| 8 | 5 | B | Du herfên cuda ne |
-| 9 | 1 | B | Ç |
-| 9 | 2 | B | Ê |
-| 9 | 3 | B | Î |
-| 9 | 4 | B | Ş |
-| 9 | 5 | B | Û |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê herf |
@@ -72,3 +62,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 
 
 **ئاگاداری:** ڕیزەکانی کۆرسی ١ وانە ٤ و ٥ لەم کلیلە کۆنە لابراون، چونکە option order ـی دەقی کۆن بە شێوەی وشەبەوشە لەبەردەست نییە. کلیلەی دروست بۆ دوو پێش‌نووسی جێگرەوەی نوێ لە `latin_course_1_lessons_04_05_answer_key.md` دایە.
+
+
+**نوێکاری:** کلیلە کۆنەکانی وانەی ٨ و ٩ لابراون، چونکە دەقی وانەکان چاککراوەتەوە و ڕیزبەندی هەڵبژاردەکان گۆڕاوە. کلیلەی نوێ و هاوتای دەقی هەڵبژاردەکان لە `latin_course_1_lessons_08_09_answer_key.md` دایە.
