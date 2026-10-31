@@ -19,6 +19,8 @@ E — I — U
 
 Li gorî raveya çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya dengê xwe dibin du kom: kin û dirêj. Ji ber vê yekê xwendekar divê E, I û U wek dengdêrên kin nas bike û bi mînakên rast di peyvan de wan fêr bibe.
 
+**Têbînî:** Kurt û dirêj tenê navê du astên dirêjahiya dengê nînin. Çavkaniyê dibêje ku dengdêrên kin û dirêj ji aliyê deng û cihê derxistinê ve jî ji hev cuda ne; ji ber vê yekê wan wek heman dengê ku tenê dirêj hatiye kişandin fêm neke.
+
 ### 2. Dengdêra E
 Dengdêra E di van peyvan de tê dîtin:
 
@@ -149,6 +151,8 @@ Di rêzkirina bingehîn a dengdêran de pênc herf di koma dengdêrên dirêj de
 A — Ê — Î — O — Û
 
 Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya dengê xwe tên dabeşkirin. A, Ê, Î, O û Û di koma dengdêrên dirêj de ne. Xwendekar divê her herf bi dengê wê û bi mînakên peyvan nas bike.
+
+**Têbînî:** Dabeşkirina kin/dirêj tenê dirêjahiya heman dengî nayê watekirin. Çavkaniyê cudahiya deng û cihê derxistina dengdêrên kin û dirêj jî girîng dibîne; ji ber vê yekê her herf bi taybetmendiya dengê xwe fêr bibin.
 
 ### 2. Dengdêra A
 | Peyv | Dengdêr |
