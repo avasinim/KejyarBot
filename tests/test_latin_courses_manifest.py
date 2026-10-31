@@ -108,31 +108,47 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
 
     def test_course_one_replacement_lessons_08_09_keys_match_exact_options(self):
-        import re
-        path = ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md"
+        lesson_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md"
         key_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_answer_key.md"
-        text = path.read_text(encoding="utf-8")
+        lesson_text = lesson_path.read_text(encoding="utf-8")
         key_text = key_path.read_text(encoding="utf-8")
         questions = {}
         lesson_number = 0
         current = None
-        for line in text.splitlines():
-            heading = re.match(r"^## Ders ([89]):", line)
-            if heading:
-                lesson_number = int(heading.group(1))
-                current = None
-            q = re.match(r"^(\d+)\. (.+)$", line)
-            if q and lesson_number in (8, 9):
-                current = (lesson_number, int(q.group(1)))
-                questions[current] = {}
-            option = re.match(r"^([A-D])\) (.+)$", line)
-            if option and current:
-                questions[current][option.group(1)] = option.group(2)
-        rows = re.findall(r"^\| ([89]) \| (\d+) \| ([A-D]) \| ([^|]+) \|", key_text, re.MULTILINE)
+        in_quiz = False
+        for line in lesson_text.splitlines():
+            if line.startswith("## Ders 8:"):
+                lesson_number = 8
+                in_quiz = False
+            elif line.startswith("## Ders 9:"):
+                lesson_number = 9
+                in_quiz = False
+            if line.startswith("### 6. Testa Kejyar"):
+                in_quiz = True
+                continue
+            if in_quiz:
+                if line.startswith("### Xulasa"):
+                    in_quiz = False
+                    continue
+                if line and line[0].isdigit() and ". " in line:
+                    number, _ = line.split(". ", 1)
+                    current = (lesson_number, int(number))
+                    questions[current] = {}
+                    continue
+                if len(line) > 3 and line[0] in "ABCD" and line[1:3] == ") ":
+                    questions[current][line[0]] = line[3:]
+
+        rows = []
+        for line in key_text.splitlines():
+            if not line.startswith("|"):
+                continue
+            cells = [cell.strip() for cell in line.strip("|").split("|")]
+            if len(cells) >= 4 and cells[0] in {"8", "9"} and cells[1].isdigit():
+                rows.append((cells[0], cells[1], cells[2], cells[3]))
         self.assertEqual(len(questions), 10)
         self.assertEqual(len(rows), 10)
         for lesson, number, option, answer in rows:
-            self.assertEqual(questions[(int(lesson), int(number))][option], answer.strip())
+            self.assertEqual(questions[(int(lesson), int(number))][option], answer)
 
 
 if __name__ == "__main__":
