@@ -90,7 +90,7 @@ A second pass against the source table of contents and printed pp. 76–89 found
 - Lesson 11 distinguishes two separate source categories: **demonstrative pronouns of the qerse form** `yê/ya/yên` (printed pp. 81–83), and **Pronavên xwemalîn** (possessive pronouns, printed pp. 87–89). The demonstrative section uses `Yê ko hat bira yê min bû`, `Yên ko hatin bira yên min bûn`, and `Ya ko hat dotmama min bû`, explaining the relative `ko`. The possessive section explains the two-pronoun structure and gives `yê min`, `ya min`, `yên min`, and `destmalên min — yên min`. These forms are not simply reflexive `xwe`.
 - A regression test guards the new source categories and examples.
 
-Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 72; the additional lihevxistî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 72; the separate lihevxistî section begins on printed p. 79. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 This is an editorial source-alignment completion, not a claim that the new explanatory prose is a verbatim transcription of the book.
 
@@ -177,3 +177,8 @@ The five full lesson texts have already been provided by the user in the convers
 
 The section heading and references for the fused pronoun class are standardized as **Pronavên lihevxistî**, matching the source's printed heading on pp. 79–81. A regression test asserts the corrected form and rejects the former transposition typo `lihevxisitî`.
 
+
+
+## Course 2 Lesson 1 — source terminology consistency
+
+The opening grammar lesson now uses the source's exact four-element label **Komek** consistently in the definition, example label, exercise and learning sequence (`Tîp → Kît → Bêje → Komek`). The `Bêje` definition no longer narrows the category to names of people, animals or things; the lesson's examples include the source's non-noun forms `spehî`, `gotin` and `were`. Regression assertions guard the four source labels and this broader definition.
