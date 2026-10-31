@@ -52,7 +52,7 @@ Mînak:
 ### 6. Xebata Kejyar
 1. Di peyvên av, mal, jin, roj, şev, çav, kur de herfa destpêkê û dawiyê binivîse.
 2. Di cotên C/Ç, E/Ê, I/Î, S/Ş, U/Û de cudahiya herfan bibêje.
-3. Ji bo peyva mal herfan bi rêzê binivîse؛ paşê rêzeke cuda çêke û bibêje ka ew heman peyv e an na.
+3. Ji bo peyva mal herfan bi rêzê binivîse; paşê rêzeke cuda çêke û bibêje ka ew heman peyv e an na.
 
 ### 7. Testa Kejyar
 1. Deng bi kîjan hestê tê nasîn?
@@ -86,6 +86,6 @@ C) Mezinahiya peyvê
 D) Cihê peyvê di rûpelê de
 
 ### Xulasa
-Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf û deng girêdayî hev in، lê ne heman tişt in؛ nivîsîn cudahiyên girîng ên dengî nîşan dide، ne hemû guherînên biçûk ên axaftinê.
+Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf û deng girêdayî hev in, lê ne heman tişt in; nivîsîn cudahiyên girîng ên dengî nîşan dide, ne hemû guherînên biçûk ên axaftinê.
 
 **Kejyar • Fêrbûn bi pratîkê**
