@@ -91,6 +91,23 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[int(number)][option], answer.strip())
 
 
+    def test_course_two_noun_and_gender_examples_match_bedir_xan_source(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_two = lesson_text.split("## وانەی ٢ —", 1)[1].split("## وانەی ٣ —", 1)[0]
+        lesson_three = lesson_text.split("## وانەی ٣ —", 1)[1].split("## وانەی ٤ —", 1)[0]
+
+        for name in ("Sado", "Bêlan", "Herekol", "Hevind", "Sîpan", "Xabûr", "Hindistan", "Hezro", "Kerevan", "Zîn", "Dêrgul", "Kurdistan", "Agirî", "Cemşîd", "Ferazende"):
+            self.assertIn(f"`{name}`", lesson_two)
+
+        for name in ("mêş", "nêrî", "ga", "xanî", "Ferat", "beran", "Xurşîd", "êzing", "hiş", "kevir", "law", "dirhav"):
+            self.assertIn(f"`{name}`", lesson_three)
+        for name in ("Sînemxan", "meh", "çêlek", "tifing", "bizin", "bîr", "pehnav", "Hezarom", "co", "enî", "top", "ejnû"):
+            self.assertIn(f"`{name}`", lesson_three)
+
+        self.assertIn("vê darê", lesson_three)
+        self.assertIn("vî darî", lesson_three)
+        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_two + lesson_three))
+
     def test_course_two_lesson_nine_includes_all_three_pronoun_genders(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         lesson_nine = lesson_text.split("## وانەی ٩ —", 1)[1].split("## وانەی ١٠ —", 1)[0]
