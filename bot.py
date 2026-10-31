@@ -3,6 +3,7 @@ import json
 from datetime import datetime, timezone
 import logging
 import os
+import re
 from pathlib import Path
 
 from telegram import (
@@ -68,7 +69,7 @@ def format_lesson_draft(markdown):
     index = 0
     while index < len(source_lines):
         stripped = source_lines[index].strip()
-        if re.fullmatch(r"(?:---+|\\*{3,}|_{3,})", stripped):
+        if re.fullmatch(r"(?:---+|\*{3,}|_{3,})", stripped):
             index += 1
             continue
         if stripped.startswith("|") and stripped.endswith("|"):
