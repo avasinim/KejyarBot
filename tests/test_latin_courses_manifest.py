@@ -54,52 +54,73 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("**دۆخی گەڕاندنەوە:**", lesson_text)
 
     def test_course_two_quiz_answer_key_matches_exact_option_text(self):
+        import re
+
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md").read_text(encoding="utf-8")
         questions = {}
         lesson_number = 0
+        current = None
         in_quiz = False
         for line in lesson_text.splitlines():
-            heading = __import__("re").match(r"^## وانەی ([٠-٩]+)", line)
+            heading = re.match(r"^## وانەی ([٠-٩]+)", line)
             if heading:
                 digits = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
                 lesson_number = int(heading.group(1).translate(digits))
                 in_quiz = False
-            if line.startswith("### Kuis"):
-                in_quiz = True
+                current = None
                 continue
-            if in_quiz:
-                match = __import__("re").match(r"^(\d+)\. .*? A\) (.*?) B\) (.*?) C\) (.*?)$", line)
-                if match:
-                    questions[(lesson_number, int(match.group(1)))] = {
-                        "A": match.group(2), "B": match.group(3), "C": match.group(4)
-                    }
-                if line.startswith("## "):
-                    in_quiz = False
+            if line.startswith("### Kuis") or line.startswith("### 10. Testa Kejyar"):
+                in_quiz = True
+                current = None
+                continue
+            if not in_quiz:
+                continue
+            if line.startswith("### Xulasa") or line.startswith("## "):
+                in_quiz = False
+                current = None
+                continue
+            question = re.match(r"^(\\d+)\\. (.+)$", line)
+            if question:
+                current = (lesson_number, int(question.group(1)))
+                self.assertNotIn(current, questions)
+                questions[current] = {}
+                # Lessons 1–11 use inline options; selected Lesson 12 uses
+                # one option per line. Support both without weakening checks.
+                inline_options = re.findall(
+                    r"([ABC])\\) (.*?)(?= [ABC]\\) |$)",
+                    question.group(2),
+                )
+                for letter, option_text in inline_options:
+                    self.assertNotIn(letter, questions[current])
+                    questions[current][letter] = option_text
+                continue
+            option = re.match(r"^([ABC])\\) (.+)$", line)
+            if option and current is not None:
+                self.assertNotIn(option.group(1), questions[current])
+                questions[current][option.group(1)] = option.group(2)
 
-        key_rows = __import__("re").findall(
-            r"^\| (\d+) \| (\d+) \| ([ABC]) \| ([^|]+) \|",
-            key_text, flags=__import__("re").MULTILINE
+        key_rows = re.findall(
+            r"^\\| (\\d+) \\| (\\d+) \\| ([ABC]) \\| ([^|]+) \\|",
+            key_text, flags=re.MULTILINE
         )
-        self.assertEqual(len(questions), 60)
-        self.assertEqual(len(key_rows), 60)
-
-        # A total of 60 rows is not enough: every lesson must own exactly
-        # questions 1–5, and the answer key must cover that same full set.
         expected_ids = {
             (lesson, question)
             for lesson in range(1, 13)
             for question in range(1, 6)
         }
-        self.assertEqual(set(questions), expected_ids)
-        key_ids = [(int(lesson), int(question)) for lesson, question, _, _ in key_rows]
-        self.assertEqual(len(key_ids), len(set(key_ids)))
-        self.assertEqual(set(key_ids), expected_ids)
-
+        self.assertEqual(len(questions), 60)
+        self.assertEqual(len(key_rows), 60)
+        self._assert_complete_unique_question_keys(
+            list(questions),
+            [(int(lesson), int(question)) for lesson, question, _, _ in key_rows],
+            expected_ids,
+        )
+        for question_id, options in questions.items():
+            self.assertEqual(set(options), set("ABC"), f"Incomplete options for {question_id}")
         for lesson, question, option, answer_text in key_rows:
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected)
-
 
     def test_course_one_replacement_lessons_have_exact_answer_keys(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
