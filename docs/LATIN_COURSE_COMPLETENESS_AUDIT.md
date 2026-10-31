@@ -19,8 +19,8 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 | 1 | Corrected draft present | Separate key; exact option test |
 | 2 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
 | 3 | Recovered draft restored from `Pasted text(1).txt` | Five options restored; master key matches exact option text |
-| 4 | Replacement draft present; not verbatim restoration | Separate key; exact option test |
-| 5 | Replacement draft present; not verbatim restoration | Separate key; exact option test |
+| 4 | Replacement draft present; not verbatim restoration; vowel-length explanation checked against printed p. 11 | Separate key; exact option test |
+| 5 | Replacement draft present; not verbatim restoration; vowel-length explanation checked against printed p. 11 | Separate key; exact option test |
 | 6 | Recovered draft restored from `Pasted text(1).txt` (brand casing/layout normalized) | Five options restored; master key matches exact option text |
 | 7 | Corrected draft present | Separate key; exact option test |
 | 8 | Replacement draft present | Separate key; exact option test |
@@ -41,7 +41,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 
 ## Regression protection added
 
-The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
+The manifest test suite now checks that per-lesson quiz keys have unique question IDs and cover the complete expected 1–5 set, rather than accepting a correct total row count that could conceal a missing lesson/question and a duplicate. It also compares the exact answer text in the Course 1 Lessons 4–5 replacement key against the selected option text in both replacement drafts, and guards the short/long vowel grouping and source-grounded explanation. This validates only the current replacement drafts; it does not claim to restore the unavailable earlier transcript wording or option order.
 
 ## Release blockers
 
@@ -52,3 +52,10 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 - [ ] Add runtime integration and progress-isolation tests only after content selection is approved.
 - [ ] Preserve the existing voice workflow; keep dynamic speech disabled.
 - [ ] Do not modify `main`, production bot/token/database, or deploy without explicit user approval.
+
+
+## Course 1 vowel classification source check
+
+The replacement explanations for Lessons 4–5 were corrected against Celadet Alî Bedir-Xan, *Elfabêya kurdî*, printed p. 11 (PDF page 11): the book states that Kurdish has eight vowels and classifies them by duration into short vowels **e, i, u** and long vowels **a, ê, î, o, û**. The replacement drafts now explain this duration-based classification directly rather than implying that length is not the basis of the grouping. The regression test guards the two exact vowel sets and the corrected explanation.
+
+Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
