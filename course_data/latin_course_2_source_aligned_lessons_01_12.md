@@ -31,13 +31,13 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 - Tîp: `a`, `g`, `ê`
 - Kît: `ta`, `den`, `ser`, `co`, `rût`, `a`, `poz`, `ê`
 - Bêje: `hesp`, `peyar`, `xanî`, `spehî`, `gotin`, `were`
-- Kom: `Par ez çûbûm Rewanê.`, `Îro dinya sar e.`, `Gundê me di navbera du avan de ye.`
+- Komek: `Par ez çûbûm Rewanê.`, `Îro dinya sar e.`, `Gundê me di navbera du avan de ye.`
 
 ### Xebat
 1. Di bêjeya `hesp` de çend tîp hene?
 2. `ta` kît e an bêje?
 3. Di rêza `tîp → kît → bêje → komek` de, kît pêşî çi tê?
-4. Çima `Îro dinya sar e` kom e, ne tîp an kît?
+4. Çima `Îro dinya sar e` komek e, ne tîp an kît?
 
 ### Kuis — 5 pirs
 1. Gramêr çi ye? A) tenê zanista dengdanê B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) komek nav
