@@ -670,6 +670,8 @@ Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herf�
 | şîr | Î |
 | rêzên pîr | Î |
 
+**Têbînîya çavkaniyê:** Li gorî Bedir-Xan, cudahiya `I` û `Î` tenê dirêjahiya dengê yek herfê nîne. Ev du deng ji aliyê cihê derxistinê ve cuda ne: dengdêra kin `i` bi dirêjkirinê nabê `î`, wekî ku `e` bi dirêjkirinê nabê `ê`. Di vê alfabeyê de nîşana li ser `Î` hem cudahiya dengî û hem jî cudahiya nivîskî nîşan dide.
+
 ### 3. Cudahiyên I û Î
 
 | I | Î |
@@ -777,6 +779,8 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 | mû | Û |
 
 **Têbînî:** `xwîn` bi Î tê nivîsîn; ji ber vê yekê ne mînaka U ye û ne mînaka Û ye.
+
+**Têbînîya çavkaniyê:** Di pirtûkê de dengdêrên kin `e, i, u` û yên dirêj `a, ê, î, o, û` ne. Bedir-Xan dibêje dengdêra kin bi dirêjkirinê nayê veguherandin dengdêreke dirêj; cihê derxistina wan jî cuda ye. Ji ber vê yekê `U` û `Û` divê wekî du dengdêrên cuda bên fêrbûn, ne tenê wekî heman dengê kurt û dirêj.
 
 ### 3. Cudahiyên U û Û
 U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn; lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
@@ -1627,6 +1631,8 @@ Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dik
 Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xulamê min`. Di vê komê de her hêman dikare hêmaneke din jî rave bike.
 
 **Bingeh:** Bireserê navdêrê ne heman tişt e bi pronavên îşarkî `ev/ew`; ew du mijarên cuda ne.
+
+**Têbînîya rêzimanî:** Di komê `ev keçik` de `ev` pêşnavdêr/bireser e û navdêrê `keçik` diyar dike. Dema `ev` bi serê xwe li şûna navdêrekê tê (mînak `Ev hat.`), wek pronavê îşarkî dixebite. Ji ber vê yekê divê peyvê tenê li gorî forma xwe neyê tesnîfkirin; erkê wê di nav kom û hevokê de girîng e.
 
 ### Xebat
 Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê beza`, `xencera min`, `çar xanî`.
