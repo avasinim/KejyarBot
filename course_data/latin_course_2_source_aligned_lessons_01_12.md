@@ -536,7 +536,7 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 - `gelek fêkî`
 - `vî hespî`
 - `van hespan`
-- `nîv roj
+- nîv roj
 
 **Xebata 2:** Ji bo her cureya rengdêrê yek nimûneya din binivîse.
 
