@@ -50,7 +50,7 @@ Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herf�
 | min | nîv |
 | kirin | îro |
 
-**Têbînî:** Ev tablo ji bo nasîna herfan e; peyvên her du stûnan ne hemî cotên wateyê de wekhev in an tenê di yek dengî de ji hev cuda ne.
+**Têbînî:** Ev tablo ji bo nasîna herfan e; cotên peyvan ne hemî ji aliyê wateyê ve wekhev in û ne hemî tenê di yek dengî de ji hev cuda ne.
 
 ### 4. Rola nîşana Î di rastnivîsînê de
 
@@ -67,7 +67,7 @@ Kêşeyeke biçûk: her peyvê bixwîne û dengdêra wê bibîne.
 
 jin — pîr — dil — şîr — pir — mîr — min — nîv
 
-**Xebata 2:** Peyvên li jêrê bi du koman veqetîne:
+**Xebata 2:** Peyvên li jêr bi du koman veqetîne:
 
 îro — jin — pîr — dil — şîr — pir — nîv — min
 
