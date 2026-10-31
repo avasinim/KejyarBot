@@ -1,8 +1,14 @@
-# کلیلە وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
-Status: editorial answer-key draft. The option labels below are based on the recovered option order. Lessons 4–5 were transcript-confirmed and their answer labels were recovered from the earlier conversation; their exact bodies still need verbatim restoration into the master file.
+# کلیلەی یەکگرتووی وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
+
+Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 and 8–9 use the explicitly labelled replacement drafts and their matching replacement keys; they are not claimed to restore unavailable earlier transcript bodies or option order.
 
 | وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
+| 1 | 1 | B | 31 |
+| 1 | 2 | C | 8 |
+| 1 | 3 | B | E, I, U |
+| 1 | 4 | C | Î |
+| 1 | 5 | B | ş |
 | 2 | 1 | C | 31 |
 | 2 | 2 | B | Ç |
 | 2 | 3 | B | î |
@@ -13,21 +19,36 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 | 3 | 3 | B | A |
 | 3 | 4 | B | B, M, R |
 | 3 | 5 | B | Du |
-
-
-
-
-
-
-
-
-
-
+| 4 | 1 | B | E, I, U |
+| 4 | 2 | B | I |
+| 4 | 3 | A | gur |
+| 4 | 4 | C | E |
+| 4 | 5 | B | Du herfên cuda ne |
+| 5 | 1 | B | A, Ê, Î, O, Û |
+| 5 | 2 | B | Ê |
+| 5 | 3 | A | pîr |
+| 5 | 4 | B | sor |
+| 5 | 5 | C | Û |
 | 6 | 1 | A | I |
 | 6 | 2 | B | Î |
 | 6 | 3 | C | îro |
 | 6 | 4 | B | Î |
 | 6 | 5 | B | Du herfên cuda ne |
+| 7 | 1 | B | U |
+| 7 | 2 | C | Û |
+| 7 | 3 | C | bûn |
+| 7 | 4 | C | U |
+| 7 | 5 | B | Du herfên cuda ne |
+| 8 | 1 | B | W |
+| 8 | 2 | B | V |
+| 8 | 3 | C | wêne |
+| 8 | 4 | B | V |
+| 8 | 5 | B | Du herfên cuda ne |
+| 9 | 1 | C | Ç |
+| 9 | 2 | A | Ê |
+| 9 | 3 | D | Î |
+| 9 | 4 | B | Ş |
+| 9 | 5 | C | Û |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê herf |
@@ -44,20 +65,11 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 | 12 | 4 | B | 4 peyv |
 | 12 | 5 | C | Nivîsandinê kontrol bikî |
 
-## پشکنینی تایبەتی
-- L4 و L5: کلیلەکانی وەڵام بە ڕیز لە transcript ـی پێشوو وەرگیراون؛ پێش runtime دەبێت option order ـی دەقی ڕەسەن دووبارە لەگەڵ ئەم کلیلانە هاوتا بکرێتەوە.
-- L12: کویزی پێنج‌پرسیاری لە دەقی ڕزگارکراودا هەیە؛ ئەو تۆمارە کۆنەی دەیگوت L12 کویزی نییە، هەڵە و stale ـە.
-- L1: نموونەی `jin` لە خانەی I و J دووبارە بەکارهاتووە؛ بۆ ڕوونیی فێرکاری I بە `kin` بگۆڕدرێت، بەڵام `jin` هەروەها وشەیەکە کە I ـی تێدایە.
-- هیچ `correct_option_index` ـێک نابێت بۆ runtime زیاد بکرێت تا option order ـی هەموو وانەکان لە فایلە ڕەسەنەکاندا پشتڕاست بکرێتەوە.
+## پشکنینی تایبەتی و سنووری بەڵگە
 
-
-**ئاگاداری:** ڕیزەکانی کۆرسی ١ وانە ٤ و ٥ لەم کلیلە کۆنە لابراون، چونکە option order ـی دەقی کۆن بە شێوەی وشەبەوشە لەبەردەست نییە. کلیلەی دروست بۆ دوو پێش‌نووسی جێگرەوەی نوێ لە `latin_course_1_lessons_04_05_answer_key.md` دایە.
-
-
-**نوێکاری:** کلیلە کۆنەکانی وانەی ٨ و ٩ لابراون، چونکە دەقی وانەکان چاککراوەتەوە و ڕیزبەندی هەڵبژاردەکان گۆڕاوە. کلیلەی نوێ و هاوتای دەقی هەڵبژاردەکان لە `latin_course_1_lessons_08_09_answer_key.md` دایە.
-
-
-**ئاگاداریی نوێ:** کلیلەکانی کۆنی وانەکانی ٨ و ٩ لابراون، چونکە دەقی جێگرەوەی نوێیان option order ـی جیاوازی هەیە. کلیلەی دروستی ئەم دوو وانە لە `latin_course_1_lessons_08_09_answer_key.md`دایە.
-
-
-**نوێکاری:** کلیلە کۆنەکانی وانەی ١ و ٧ لابراون، چونکە بۆیان پێش‌نووسی چاککراوی جیاواز و کلیلەی تایبەتی دروست کراوە: `latin_course_1_lesson_01_answer_key.md` و `latin_course_1_lesson_07_answer_key.md`.
+- وانەکانی ١–٣ و ٦: لە دەقی گەڕێنراوەوە وەرگیراون؛ کلیلەکە لەگەڵ هەڵبژاردەکانی دەقی وانەکان پشکنراوە.
+- وانەکانی ٤–٥: ئەم کلیلە بۆ پێش‌نووسە جێگرەوە نوێیەکانە؛ دەقی ڕەسەنی پێشوویان بە وشەبەوشە نەگەڕێندراوەتەوە.
+- وانەی ٧: کلیلەکە بۆ پێش‌نووسی چاککراوە.
+- وانەکانی ٨–٩: کلیلەکە بۆ پێش‌نووسە جێگرەوە چاککراوەکانە، نەک دەقی کۆنیان.
+- وانەکانی ١٠–١٢: کلیلەکان لەگەڵ پێش‌نووسە چاککراوەکان هاوتا کراون.
+- هەموو ٦٠ تۆماری وەڵام لەم خشتەیەدا دەبێت ناسنامەی پرسیاری تایبەتی خۆیان هەبێت؛ هیچ correct_option_index ـێک بۆ runtime زیاد نەکرێت تا پشکنینی جیاوازیی هەڵبژاردەکان و ڕێکخستنی runtime بە جیاوازی پەسەند نەکرێت.
