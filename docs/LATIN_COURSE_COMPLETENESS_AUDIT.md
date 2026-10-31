@@ -37,7 +37,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 - Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly.
 - Lessons 4–12 are editorially revised from recovered lesson material.
 - Lesson 12: the expanded six-category draft is now selected and copied into the canonical 12-lesson master. The former baseline section was replaced; the separate replacement file is retained only as an editorial snapshot. The consolidated master key was aligned to the selected quiz options and is regression-tested. Do not load the snapshot as a second lesson.
-- The consolidated key must match the exact quiz options in the selected lesson draft.
+- The consolidated key must match the exact quiz options in the selected lesson draft. The current canonical Course 2 Lesson 1 quiz and key are source-aligned and regression-tested; this does not convert the new draft into a recovered original.
 
 ## Regression protection added
 
