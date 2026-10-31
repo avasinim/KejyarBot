@@ -71,6 +71,19 @@ class LatinCoursesManifestTests(unittest.TestCase):
         )
         self.assertEqual(len(questions), 60)
         self.assertEqual(len(key_rows), 60)
+
+        # A total of 60 rows is not enough: every lesson must own exactly
+        # questions 1–5, and the answer key must cover that same full set.
+        expected_ids = {
+            (lesson, question)
+            for lesson in range(1, 13)
+            for question in range(1, 6)
+        }
+        self.assertEqual(set(questions), expected_ids)
+        key_ids = [(int(lesson), int(question)) for lesson, question, _, _ in key_rows]
+        self.assertEqual(len(key_ids), len(set(key_ids)))
+        self.assertEqual(set(key_ids), expected_ids)
+
         for lesson, question, option, answer_text in key_rows:
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected)
