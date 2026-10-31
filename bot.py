@@ -503,24 +503,32 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
+def split_lesson_text(content, limit=3800):
+    """Split lesson text at readable boundaries without dropping any characters."""
+    remaining = content.strip()
+    if not remaining:
+        return ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+    chunks = []
+    while len(remaining) > limit:
+        split_at = remaining.rfind("\n", 0, limit)
+        if split_at >= limit // 2:
+            split_at += 1
+        else:
+            split_at = remaining.rfind(" ", 0, limit)
+            if split_at >= limit // 2:
+                split_at += 1
+            else:
+                split_at = limit
+        chunks.append(remaining[:split_at])
+        remaining = remaining[split_at:]
+    if remaining:
+        chunks.append(remaining)
+    return chunks
+
+
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lesson drafts in Telegram-safe chunks without splitting Unicode text."""
-    limit = 3800
-    chunks = []
-    remaining = content.strip()
-    while remaining:
-        if len(remaining) <= limit:
-            chunks.append(remaining)
-            break
-        split_at = remaining.rfind("\n", 0, limit)
-        if split_at < limit // 2:
-            split_at = remaining.rfind(" ", 0, limit)
-        if split_at < limit // 2:
-            split_at = limit
-        chunks.append(remaining[:split_at].strip())
-        remaining = remaining[split_at:].strip()
-    if not chunks:
-        chunks = ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+    chunks = split_lesson_text(content)
     for index, chunk in enumerate(chunks):
         await message.reply_text(
             chunk,
