@@ -298,9 +298,11 @@ Nasîna pronavên îşarkî, girêkî û pirsiyarkî.
 - `ew`: tişt/kesê dûr an ku berê hatî gotin.
 - `yê, ya, yên`: formên îşarkî yên ku dikarin li şûna navdêrê werin.
 
-**Pronavên girêkî:** pirtûk `ko` wek forma girêkî dide; di vê kursê de forma çavkaniyê `ko` tê parastin. `ku` dikare di standardên din de xuya bibe, lê li vir bê agahdarî nayê şûngirtin.
+**Pronavên girêkî:** pirtûk `ko` wek pronavê girêkî dide û dibêje ku ji bo her du mêjer û zayendan heman form e. Di vê kursê de forma çavkaniyê `ko` tê parastin; `ku` di standardên din de dikare were dîtin, lê li vir bê agahdarî nayê şûngirtin.
 
-**Pronavên pirsiyarkî:** `kî`, `kê`, `çi`, `kîjan` ji bo pirsê tên bikaranîn. Wate û forma wan li gorî tiştê ku tê pirsîn diguhere.
+**Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di pirtûkê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike؛ `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
+
+**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide.
 
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
