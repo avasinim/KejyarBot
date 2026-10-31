@@ -1,4 +1,4 @@
-## Course 1 — answer key update for replacement lessons 4–5
+## Course 1 — answer key for the source-aligned copies of user-supplied Lessons 4–5
 
 | Lesson | Question | Correct option | Exact correct answer |
 |---:|---:|:---:|---|
@@ -13,4 +13,4 @@
 | 5 | 4 | B | sor |
 | 5 | 5 | C | Û |
 
-These keys belong only to the replacement lesson drafts in latin_course_1_lessons_04_05_replacement_draft.md. They do not claim to restore the exact option order of the earlier, unavailable lesson outputs.
+These keys are regression-checked against the current source-aligned branch copies of the two complete lessons already supplied by the user. The legacy filename `latin_course_1_lessons_04_05_replacement_draft.md` is retained for compatibility only; it is not evidence that the user failed to provide the lessons. The original user-provided wording and quiz option order remain the reference for any final reconciliation.
