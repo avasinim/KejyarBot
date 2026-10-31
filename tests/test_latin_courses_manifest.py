@@ -238,6 +238,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer in rows:
             self.assertEqual(questions[number][letter], answer)
 
@@ -297,6 +298,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer_text in rows:
             self.assertEqual(questions[number][letter], answer_text)
 
@@ -330,6 +332,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer in rows:
             self.assertEqual(questions[number][letter], answer)
 
@@ -363,6 +366,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer in rows:
             self.assertEqual(questions[number][letter], answer)
 
@@ -396,6 +400,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
+        self._assert_complete_unique_question_keys(list(questions), [number for number, _, _ in rows], range(1, 6))
         for number, letter, answer in rows:
             self.assertEqual(questions[number][letter], answer)
 
