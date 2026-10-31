@@ -376,7 +376,7 @@ Ev sê form pronavên îşarkî ne ku kes, tişt an heywan nîşan didin, lê d�
 - `Ya ko hat dotmama min bû.`
 - `Yên ko hatin dotmamên min bûn.`
 
-Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. `yê min`, `ya min` û `yên min` di van nimûneyan de bi awayê pêkhatî xwedîtiyê jî nîşan didin, lê ev ne cureyeke serbixwe ya pronavê di vê beşê de ye. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
+Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. Dema `yê/ya/yên` bi pronavê kesîn re tên, pêkhateya pronavên xwemalîn çêdibe؛ ev cure di beşa jêrîn de bi taybetî tê ravekirin. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
 
 ### Pronavên xwemalîn
 Pronavên xwemalîn xwedîtiyê nîşan didin û ji du pronavan pêk tên: pronavê îşarkî yê qerse (`yê`, `ya`, `yên`) û pronavê kesîn. Pronavê yekem tiştê ku qala wî tê kirin nîşan dide; pronavê duyem xwedîtiyê diyar dike.
