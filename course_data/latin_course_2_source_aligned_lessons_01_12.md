@@ -19,11 +19,11 @@ Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêman
 **Zimanê kurdmancî:** zimanê gelê kurdmanc e; kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
 
 ### Hêmanên ziman
-Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê dest pê dike, ji kîtan derbas dibe, bêje çêdike û paşê kom çêdibe:
+Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê dest pê dike, ji kîtan derbas dibe, bêje çêdike û paşê komek çêdibe:
 - **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
 - **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
-- **Bêje:** yekeya ku dikare kesek, heywanek an tiştekî binimîne.
-- **Kom:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
+- **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
+- **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
 
 **Qiset** di pirtûkê de wek encama peyhevketina koman tê ravekirin; ji ber vê yekê di lîsteya çar hêmanên bingehîn de wek hêmaneke pêncemîn nayê hejmartin.
 
@@ -36,7 +36,7 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 ### Xebat
 1. Di bêjeya `hesp` de çend tîp hene?
 2. `ta` kît e an bêje?
-3. Di rêza `tîp → kît → bêje → kom` de, kît pêşî çi tê?
+3. Di rêza `tîp → kît → bêje → komek` de, kît pêşî çi tê?
 4. Çima `Îro dinya sar e` kom e, ne tîp an kît?
 
 ### Kuis — 5 pirs
