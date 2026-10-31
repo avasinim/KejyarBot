@@ -217,5 +217,16 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[number][letter], answer)
 
 
+    def test_course_one_replacement_drafts_keep_latin_script_and_vowel_labels(self):
+        import re
+        lesson_45 = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
+        lesson_89 = (ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md").read_text(encoding="utf-8")
+        for draft in (lesson_45, lesson_89):
+            self.assertIsNone(re.search(r"[\u0600-\u06FF]", draft))
+        self.assertIn("| xwîn | Î |", lesson_45)
+        self.assertNotIn("| xwîn | Û |", lesson_45)
+        self.assertIn("cotên wateyî yeksan", lesson_89)
+
+
 if __name__ == "__main__":
     unittest.main()
