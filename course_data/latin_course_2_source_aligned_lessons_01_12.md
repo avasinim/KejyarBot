@@ -417,6 +417,13 @@ Mînak:
 
 Di van koman de hejmar bi navdêrê ve girêdayî ye û pirsê «çend?» bersiv dide.
 
+**Rêzîn:** Pirtûk cureya duyem a rengdêrên jmarîn jî nîşan dide: rengdêrên rêzîn. Ev form rêza navdêrê diyar dikin û bi gelemperî piştî navdêrê tên:
+- `stûna çaran` — stûna di rêza çaran de.
+- `a pêncan` — ya di rêza pêncan de.
+- `ê heftan` — ya di rêza heftan de.
+
+Ji ber vê yekê rengdêrên jmarîn tenê hejmarên wek `sê mal` nînin؛ hin ji wan hejmarê an rêza tiştê diyar dikin.
+
 ### 5. Rengdêrên pirsiyarkî
 Ev rengdêr bi navdêr re pirs çêdikin.
 
