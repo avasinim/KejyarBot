@@ -104,6 +104,59 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(query.message.reply_text.await_count, 2)
 
 
+    async def test_both_latin_course_quizzes_start_with_namespaced_lesson_ids(self):
+        for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
+            with self.subTest(course_id=course_id):
+                lesson = bot.COURSE_LESSON_ORDER[course_id][0]
+                query = SimpleNamespace(
+                    data=f"quiz_{lesson}_start",
+                    from_user=SimpleNamespace(id=12345),
+                    answer=AsyncMock(),
+                    message=SimpleNamespace(
+                        reply_text=AsyncMock(return_value=SimpleNamespace(message_id=880))
+                    ),
+                )
+                update = SimpleNamespace(
+                    callback_query=query,
+                    effective_user=SimpleNamespace(id=12345),
+                )
+                context = SimpleNamespace(user_data={})
+                with (
+                    patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+                    patch.object(bot, "quiz_is_available", return_value=True),
+                ):
+                    await bot.start_quiz(update, context)
+
+                quiz = context.user_data["quiz"]
+                expected = bot.QUIZ_DATA[lesson][0]
+                self.assertEqual(quiz["lesson"], lesson)
+                self.assertEqual(quiz["questions"], bot.QUIZ_DATA[lesson])
+                self.assertEqual(quiz["question_message_id"], 880)
+                self.assertEqual(query.message.reply_text.await_args.args[0], "📝 " + expected["question"])
+                markup = query.message.reply_text.await_args.kwargs["reply_markup"]
+                self.assertEqual(
+                    [row[0].callback_data for row in markup.inline_keyboard],
+                    [f"answer_{i}" for i in range(len(expected["options"]))],
+                )
+
+    async def test_latin_quiz_answer_uses_selected_option_and_rewards_correct_course_lesson(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        correct_index = question["options"].index(question["answer"])
+        update, context, query = self.make_context(f"answer_{correct_index}")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+        })
+        query.message.reply_text = AsyncMock()
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            await bot.quiz_answer(update, context)
+
+        reward.assert_called_once_with(12345, lesson)
+        self.assertNotIn("quiz", context.user_data)
+        self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
