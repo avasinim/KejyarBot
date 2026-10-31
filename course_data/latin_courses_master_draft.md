@@ -1754,7 +1754,7 @@ Recovered draft; source-aligned and editorially corrected.
 
 ## Ders 10 — Pronavên Bireser û Berbihevîn
 ### Armanc
-Nasîna pronavên bireser, berbihevîn, lihevxisitî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
+Nasîna pronavên bireser, berbihevîn, lihevxistî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
 
 ### Naverok
 Pronavên bireser di cihê navdêrê de tên û di hin hevokên rabirdû de wek bireser xuya dibin. Formên ku Bedir-Xan dide:
@@ -1767,14 +1767,14 @@ Mînak:
 
 Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `hev` û `êk` dide. `hevdu` di hin bikaranînên nû de tê dîtin, lê divê wek şêwazekî cuda were nîşandan, ne ku forma serekî ya çavkaniyê bigire.
 
-### Pronavên lihevxisitî
-Pirtûk cureyeke din bi navê **pronavên lihevxisitî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
+### Pronavên lihevxistî
+Pirtûk cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
 - `jê` = `ji vî / ji wê`
 - `lê` = `li vî / li wê`
 - `pê` = `bi vî / bi wê`
 - `tê` = `di vî / di wê`
 
-Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxisitî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
+Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxistî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
 
 ### Pronavê nêtar `xwe`
 `xwe` pronavê nêtar e û dikare ji bo her du zayendan û hejmaran were bikaranîn. Dema kirar û bireser di hevokê de heman kes bin, `xwe` li şûna dubarekirina pronavê bireser tê:
@@ -1794,7 +1794,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 ### Xebat
 1. Di `Wê ew dît` de pronavên bireser bibîne.
 2. Bi `hev` û `êk` du hevok çêbike.
-3. Di `Min jê stand` de pronavê lihevxisitî bibîne û rave bike ku `jê` ji kîjan daçek û pronavê pêk hatiye.
+3. Di `Min jê stand` de pronavê lihevxistî bibîne û rave bike ku `jê` ji kîjan daçek û pronavê pêk hatiye.
 4. Rastekirina hevoka `Min bi wî pê ve da` bike û sedemê rave bike.
 
 ### Kuis — 5 pirs
