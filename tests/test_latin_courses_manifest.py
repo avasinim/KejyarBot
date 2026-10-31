@@ -158,19 +158,19 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     continue
                 if not in_quiz:
                     continue
-                question = re.match(r"^(\\d+)\\. (.+)$", line)
+                question = re.match(r"^(\d+)\. (.+)$", line)
                 if question:
                     current = int(question.group(1))
                     self.assertNotIn(current, questions)
                     questions[current] = {}
                     continue
-                option = re.match(r"^- ([A-D])\\) (.+)$", line)
+                option = re.match(r"^- ([A-D])\) (.+)$", line)
                 if option and current is not None:
                     self.assertNotIn(option.group(1), questions[current])
                     questions[current][option.group(1)] = option.group(2)
 
             key_rows = re.findall(
-                rf"^\\| {lesson_number} \\| (\\d+) \\| ([A-D]) \\| ([^|]+) \\|",
+                rf"^\| {lesson_number} \| (\d+) \| ([A-D]) \| ([^|]+) \|",
                 key_text, flags=re.MULTILINE
             )
             expected = set(range(1, 6))
