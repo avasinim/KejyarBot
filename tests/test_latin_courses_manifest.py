@@ -146,7 +146,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertIn(form, lesson_eleven)
 
         self.assertIn("ne cureyeke serbixwe ya pronavê", lesson_eleven)
-        self.assertIn("Pronavê xwemalîn `xwe`", lesson_ten)
+        self.assertIn("Pronavê nêtar `xwe`", lesson_ten)
         self.assertIn("Pronavên xwemalîn xwedîtiyê nîşan didin", lesson_eleven)
         self.assertIn("ji du pronavan pêk tên", lesson_eleven)
 
