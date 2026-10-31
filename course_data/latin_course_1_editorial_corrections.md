@@ -25,8 +25,8 @@ The book identifies 31 letters and 8 vowels; short vowels are `e, i, u`; long vo
 - Preserve the distinction between vowel length and vowel quality. The source does not license reducing every short/long pair to duration alone.
 - Existing A examples: `av, bav, mal, dar, zarok, bajar, çav`.
 - Existing Ê examples: `êvar, pênc, sê, mêrik, hêvî, çêkirin`.
-- Existing Î examples: `îro, pîr, nîv, hêvî, jîn, şîr`.
-- Existing Û examples: `dûr, bûk, bû, dû, mû, xwîn`. Verify the actual vowel target in each exercise before finalizing.
+- Existing Î examples: `îro, pîr, nîv, hêvî, jîn, şîr, xwîn`.
+- Existing Û examples: `dûr, bûk, bû, dû, mû`. `xwîn` contains Î, not Û; move it to the Î examples and check each exercise's actual vowel target.
 
 ### Lesson 6 — Cudahiyên Dengên I û Î
 - Keep the contrast as two distinct letters/sounds; the diacritic in `Î` is part of the letter.
@@ -34,7 +34,7 @@ The book identifies 31 letters and 8 vowels; short vowels are `e, i, u`; long vo
 - Avoid describing all listed words as minimal pairs; most are contrastive examples, not meaning-matched minimal pairs.
 
 ### Lesson 7 — Cudahiyên Dengên U û Û
-- Keep `bûk` and `şûştin` exclusively in the Û group; the recovered lesson already notes that `bûk` has Û.
+- Keep `bûk` and `şûştin` exclusively in the Û group; the recovered lesson already notes that `bûk` has Û. `xwîn` contains Î, not Û, and must not be listed as a Û example.
 - Explain that the source treats U and Û as distinct vowel qualities and not merely as one sound written short/long.
 - Keep the source examples for U and Û separate; do not let an exercise place `bûn`, `xwîn`, or `dûr` under U.
 
