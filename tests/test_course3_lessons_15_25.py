@@ -39,6 +39,12 @@ class Course3Lessons15To25Tests(unittest.TestCase):
                 for term in terms:
                     self.assertIn(term, content)
 
+    def test_lesson_15_preserves_the_source_verb_paradigms_and_both_written_variants(self):
+        lesson = self.lessons[14]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("ڕامەهێنن", "هەڵدەکەیت", "ڕات هێناوە", "هەڵتان نەسپارد / هەڵتاننەسپارد", "ڕای گەیاند / ڕایگەیاند"):
+            self.assertIn(marker, content)
+
     def test_lesson_25_preserves_root_d_before_postposition_da(self):
         lesson = self.lessons[24]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
