@@ -69,6 +69,9 @@ def format_lesson_draft(markdown):
     index = 0
     while index < len(source_lines):
         stripped = source_lines[index].strip()
+        if re.fullmatch(r"(?:---+|\\*{3,}|_{3,})", stripped):
+            index += 1
+            continue
         if stripped.startswith("|") and stripped.endswith("|"):
             table = []
             while index < len(source_lines):
@@ -97,6 +100,7 @@ def format_lesson_draft(markdown):
             line = stripped.lstrip(">").strip()
         else:
             line = source_lines[index]
+        line = re.sub(r"</?text>", "", line)
         line = line.replace("**", "").replace("__", "").replace("`", "")
         lines.append(line)
         index += 1
