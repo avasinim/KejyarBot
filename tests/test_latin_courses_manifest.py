@@ -201,10 +201,9 @@ class LatinCoursesManifestTests(unittest.TestCase):
         current = None
         in_quiz = False
         for line in lesson_text.splitlines():
-            heading = re.match(r"^## وانەی ([٠-٩]+)", line)
+            heading = re.match(r"^## Ders (\\d+) —", line)
             if heading:
-                digits = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-                lesson_number = int(heading.group(1).translate(digits))
+                lesson_number = int(heading.group(1))
                 in_quiz = False
                 current = None
                 continue
