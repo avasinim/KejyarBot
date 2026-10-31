@@ -196,3 +196,10 @@ The opening grammar lesson now uses the source's exact four-element label **Kome
 A direct recheck of the source's printed p. 37 (PDF page 37) clarifies a distinction that the lesson's earlier summary compressed. Bedir-Xan first explains that spoken-language elements are sounds, that sounds are represented by letters, and that letters combine into syllables, syllables into words, and words into meaningful groups. He then identifies four elements in the language sequence: **Tîp, Kît, Bêje, Komek**. A succession of groups forms **Qiset**. Lesson 1 now teaches both levels explicitly, without incorrectly counting spoken sound or qiset as a fifth member of the four-item list. Regression assertions guard this distinction.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p. 37: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 1 Lesson 4 — source-specific distribution of I and U
+
+A direct check of the source's §10 (printed pp. 39–40) confirms two distribution notes omitted from the earlier short-vowel lesson: I generally does not occur word-initially or word-finally in native Kurmanji words, with listed function-word exceptions (li, di, ji, bi, çi); U commonly follows g, h, k, q, x, with examples such as guh, gul, kul, kur, xurt, while tu and du are identified as exceptions. Lesson 4 now includes these as source observations, explicitly not as an exhaustive spelling rule. Regression assertions guard the note.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 39–40, §10: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
