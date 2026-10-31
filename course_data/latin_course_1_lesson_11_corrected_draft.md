@@ -92,6 +92,6 @@ C) Mezinahiya herfan
 D) Cihê peyvê
 
 ### Xulasa
-Rastnivîsîn پێویستی بە هەڵبژاردنی پیتی ڕاست، پاراستنی ڕیزی پیتەکان و نووسینی دروستی نیشانەکان هەیە. هەر وشەیەک پێش تەواوکردنی نووسینەکە دووبارە بخوێنەوە و پشکنینی بکە.
+Rastnivîsîn pêdivî bi hilbijartina herfa rast, parastina rêza herfan û nivîsandina rast a nîşanan heye. Her peyvê berî qedandina nivîsê careke din bixwîne û kontrol bike.
 
 **Kejyar • Fêrbûn bi pratîkê**
