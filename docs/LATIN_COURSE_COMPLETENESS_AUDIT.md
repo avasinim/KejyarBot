@@ -49,6 +49,7 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 - [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
 - [x] Complete assistant-led linguistic/source review of all 24 lessons; add source-based examples and regression guards where needed. Independent native-speaker review remains recommended before runtime activation.
 - [x] Add a lossless Markdown runtime parser for the 24 selected lessons and their 120 answer-key-verified quiz questions.
+- [x] Render Markdown lesson tables as readable Telegram rows while preserving every header/cell value; add a regression test for the table renderer.
 - [x] Register both Latin courses as active only on this isolated work branch; add namespaced lesson IDs and progress-unlocking isolation tests.
 - [x] Run branch CI: 173 tests passed, including compileall and the new parser tests.
 - [ ] Complete independent native-speaker review and final text reconciliation before production release.
