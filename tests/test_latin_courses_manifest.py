@@ -909,5 +909,14 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertNotIn("di hin bikaranînên nû de tê dîtin", lesson_text)
 
 
+    def test_course_two_lesson_twelve_covers_source_numeral_classes(self):
+        lesson = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
+        start = lesson.index("## Ders 12 — Rengdêr û Jmarnav")
+        end = lesson.index("## Têbînîyên çavkaniyê", start)
+        body = lesson[start:end]
+        for term in ("jmarnavên binavkirî", "jmarnavên nebinavkirî", "rêzîn", "birewîn", "komelîn", "gelek", "hindik", "bêhtir", "nîvî", "yekê", "hezarî", "bîst û çar"):
+            self.assertIn(term, body)
+
+
 if __name__ == "__main__":
     unittest.main()
