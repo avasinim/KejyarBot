@@ -142,12 +142,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
         for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`", "Pronavê vegerok `xwe`", "`Wî xwe kuşt.`", "Pronavê nêtar ê `ê`", "`Min da ê`"):
             self.assertIn(form, lesson_ten)
 
-        for form in ("Pronavên nebinavkirî", "`yek`", "`her kes`", "`hinek`", "Pronavên îşarkî yên qerse", "`Yê ko hat bira yê min bû.`", "`Yên ko hatin bira yên min bûn.`", "`Ya ko hat dotmama min bû.`"):
+        for form in ("Pronavên nebinavkirî", "`yek`", "`her kes`", "`hinek`", "Pronavên îşarkî yên qerse", "`Yê ko hat bira yê min bû.`", "`Yên ko hatin bira yên min bûn.`", "`Ya ko hat dotmama min bû.`", "Pronavên xwemalîn", "`yê min`", "`ya min`", "`yên min`", "`destmalên min — yên min`"):
             self.assertIn(form, lesson_eleven)
 
         self.assertIn("ne cureyeke serbixwe ya pronavê", lesson_eleven)
         self.assertIn("Pronavê xwemalîn `xwe`", lesson_ten)
-        self.assertNotIn("Pronavên xwemalîn têkiliya xwedîtiyê", lesson_eleven)
+        self.assertIn("Pronavên xwemalîn xwedîtiyê nîşan didin", lesson_eleven)
+        self.assertIn("ji du pronavan pêk tên", lesson_eleven)
 
 
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
