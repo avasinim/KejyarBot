@@ -149,7 +149,7 @@ Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`
 
 **Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêwîst e ku navdêr bi zayend û erkê wê re were fêrbûn, ne ku rêbazeke yekgirtî ji bo hemû peyvan were sepandin.
 
-**Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûڵ دەکات. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî nimûneya çavkaniyê).
+**Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî nimûneya çavkaniyê).
 
 **Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehinin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
@@ -243,7 +243,7 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 - `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
 - `-ine` ji bo gelemjar: `mehinine delal hatin`.
 
-Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di çavkaniyê de di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan؛ ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di çavkaniyê de di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
