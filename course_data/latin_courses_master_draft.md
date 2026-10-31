@@ -2,7 +2,7 @@
 
 ---
 
-> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order; replacement drafts are never represented as verbatim recovered originals.
+> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order; replacement drafts are not represented as verbatim recovered originals.
 
 ---
 
@@ -18,7 +18,7 @@
 
 ---
 
-- The two courses remain separate in content, lesson IDs, quizzes, answer keys and progression. No Sorani/Arabic-script course is included.
+- The two courses remain separate in subject scope, lesson IDs, quizzes, answer keys and progression. No Sorani/Arabic-script course is included.
 
 ---
 
@@ -27,7 +27,7 @@
 ---
 
 ### Provenance — Course 1, Lesson 1
-Corrected draft based on the recovered course plan.
+Corrected pedagogical draft; 31-letter inventory and vowel classification checked.
 
 ## Ders 1: Elfabeya Kurdî ya Latînî
 
@@ -114,10 +114,12 @@ D) z
 ### Xulasa
 Elfabeya kurdî ya latînî 31 herf heye: 8 dengdêr û 23 dengdar. Herfên mezin û biçûk du formên heman herf in.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 2
-Recovered from the user's source file; formatting normalized.
+Recovered from the user's source file; original lesson sequence retained.
 
 ## Ders 2: Rêza Herfan û Taybetmendiyên Wan
 
@@ -249,10 +251,12 @@ Hin herf di nivîsandinê de dişibin hev, lê ew ne heman herf in:
 
 Di vê dersê de me rêza herfan, herfên taybet û cudahiya herfên mezin û biçûk fêr bûn. Di dersa bê de em ê dest bi Dengdêr û Dengdar bikin û cudahiya wan bi mînakên zêdetir rave bikin.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 3
-Recovered from the user's source file; formatting normalized.
+Recovered from the user's source file; original lesson sequence retained.
 
 ## Ders 3: Dengdêr û Dengdar
 
@@ -358,10 +362,12 @@ Di vê dersê de me cudahiya dengdêr û dengdar, heşt dengdêrên kurdî û ro
 
 **Dersa bê:** Dengdêrên kin — E, I, U.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 4
-New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.
+New replacement draft; exact earlier transcript body unavailable verbatim.
 
 ## Ders 4: Dengdêrên Kin — E, I, U
 
@@ -499,7 +505,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 ---
 
 ### Provenance — Course 1, Lesson 5
-New replacement draft. The earlier exact transcript body is confirmed to have existed but is not available verbatim.
+New replacement draft; exact earlier transcript body unavailable verbatim.
 
 ## Ders 5: Dengdêrên Dirêj — A, Ê, Î, O, Û
 
@@ -647,7 +653,7 @@ Di vê dersê de pênc dengdêrên koma dirêj nas kirin: A, Ê, Î, O, Û. Herf
 ---
 
 ### Provenance — Course 1, Lesson 6
-Recovered from the user's source file; limited script/layout cleanup.
+Recovered from the user's source file; explanatory script cleanup only.
 
 ## Ders 6: Cudahiyên Dengên I û Î
 
@@ -760,10 +766,12 @@ I — Î
 
 Îro me cudahiya herfên I û Î fêr bû. Divê xwendekar van herfan di xwendin û nivîsandinê de ji hev cuda bike.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 7
-Recovered and corrected draft based on the user's source file.
+Recovered and corrected draft; original lesson sequence retained.
 
 ## Ders 7: Cudahiyên Dengên U û Û
 
@@ -860,10 +868,12 @@ D) Her du bê nîşan in
 ### Xulasa
 U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêrên dirêj de ye; lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 8
-Recovered from Pasted markdown(3).md; V position and source contrasts checked.
+Recovered from Pasted markdown(3).md; V position corrected and source contrast pairs added.
 
 ## Ders 8: Cudahiyên Dengên V û W
 
@@ -951,34 +961,34 @@ Xebata 3: Bi her yek ji herfên `V` û `W` sê peyv binivîse.
 ### 6. Testa Kejyar
 
 1. Di peyva «welat» de kîjan herf heye?
-   - A) V
-   - B) W
-   - C) U
-   - D) Û
+A) V
+B) W
+C) U
+D) Û
 
 2. Di peyva «av» de kîjan herf di dawiyê de ye?
-   - A) W
-   - B) V
-   - C) F
-   - D) B
+A) W
+B) V
+C) F
+D) B
 
 3. Kîjan peyv bi W dest pê dike?
-   - A) ve
-   - B) vê
-   - C) wêne
-   - D) av
+A) ve
+B) vê
+C) wêne
+D) av
 
 4. Di peyva «nivîs» de kîjan herf heye?
-   - A) W
-   - B) V
-   - C) Z
-   - D) X
+A) W
+B) V
+C) Z
+D) X
 
 5. V û W di kurmancî de çawa ne?
-   - A) Herfa yek in
-   - B) Du herfên cuda ne
-   - C) Her du dengdêr in
-   - D) Her du nîşan in
+A) Herfa yek in
+B) Du herfên cuda ne
+C) Her du dengdêr in
+D) Her du nîşan in
 
 ### Xulasa
 
@@ -989,7 +999,7 @@ Di vê dersê de me herfên `V` û `W` nas kirin û fêr bûn ku ew du dengdarê
 ---
 
 ### Provenance — Course 1, Lesson 9
-Recovered from Pasted markdown(3).md; Î/Û classification and malformed exercise corrected.
+Recovered from Pasted markdown(3).md; Î/Û classification and exercise corrected; original quiz order retained.
 
 ## Ders 9: Herfên Taybet di Elfabeya Kurdî de
 
@@ -1103,34 +1113,34 @@ Xebata 3: Bi her yek ji van pênc herfan peyvek binivîse.
 ### 8. Testa Kejyar
 
 1. Di peyva «çav» de kîjan herf heye?
-   - A) C
-   - B) Ç
-   - C) Ş
-   - D) S
+A) C
+B) Ç
+C) Ş
+D) S
 
 2. Di peyva «êvar» de kîjan herf heye?
-   - A) E
-   - B) Ê
-   - C) I
-   - D) Î
+A) E
+B) Ê
+C) I
+D) Î
 
 3. Di peyva «îro» de kîjan herf heye?
-   - A) I
-   - B) Î
-   - C) U
-   - D) Û
+A) I
+B) Î
+C) U
+D) Û
 
 4. Di peyva «şev» de kîjan herf heye?
-   - A) S
-   - B) Ş
-   - C) C
-   - D) Ç
+A) S
+B) Ş
+C) C
+D) Ç
 
 5. Di peyva «dûr» de kîjan herf heye?
-   - A) U
-   - B) Û
-   - C) O
-   - D) Î
+A) U
+B) Û
+C) O
+D) Î
 
 ### Xulasa
 
@@ -1139,7 +1149,7 @@ Di vê dersê de me pênc herfên taybet nas kirin: `Ç, Ê, Î, Ş, Û`. Nîşa
 ---
 
 ### Provenance — Course 1, Lesson 10
-Recovered from Pasted markdown(3).md; two clear language/inflection corrections applied.
+Recovered from Pasted markdown(3).md; ezafe and locative forms corrected; original quiz order retained.
 
 ## Ders 10: Têkiliya Deng û Herfê
 
@@ -1229,6 +1239,8 @@ D) Cihê peyvê di rûpelê de
 
 ### Xulasa
 Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf û deng girêdayî hev in, lê ne heman tişt in; nivîsîn cudahiyên girîng ên dengî nîşan dide, ne hemû guherînên biçûk ên axaftinê.
+
+**Kejyar • Fêrbûn bi pratîkê**
 
 ---
 
@@ -1330,10 +1342,12 @@ D) Cihê peyvê
 ### Xulasa
 Rastnivîsîn pêdivî bi hilbijartina herfa rast, parastina rêza herfan û nivîsandina rast a nîşanan heye. Her peyvê berî qedandina nivîsê careke din bixwîne û kontrol bike.
 
+**Kejyar • Fêrbûn bi pratîkê**
+
 ---
 
 ### Provenance — Course 1, Lesson 12
-Recovered and corrected draft.
+Recovered from Pasted markdown(3).md; two minimal grammar/inflection corrections.
 
 ## Ders 12: Xwendin û Nivîsandina Pratîk
 
@@ -1421,34 +1435,34 @@ Piştî nivîsandinê, herf, rêza peyvan û nîşanên taybet kontrol bike.
 ### 7. Testa dawî ya korsa yekem
 
 1. Çend herf di alfabeya kurdî ya latînî de hene?
-   - A) 28
-   - B) 29
-   - C) 31
-   - D) 32
+A) 28
+B) 29
+C) 31
+D) 32
 
 2. Kîjan rêz tenê ji dengdêran pêk hatiye?
-   - A) A, E, Ê, I, Î, O, U, Û
-   - B) B, C, D, F
-   - C) A, B, C, Ç
-   - D) E, F, G, H
+A) A, E, Ê, I, Î, O, U, Û
+B) B, C, D, F
+C) A, B, C, Ç
+D) E, F, G, H
 
 3. Kîjan peyv rast hatiye nivîsîn?
-   - A) cav
-   - B) çav
-   - C) sav
-   - D) şav
+A) cav
+B) çav
+C) sav
+D) şav
 
 4. Di hevoka «Ez kurmancî hîn dibim» de çend peyv hene?
-   - A) 3
-   - B) 4
-   - C) 5
-   - D) 6
+A) 3
+B) 4
+C) 5
+D) 6
 
 5. Piştî nivîsandina hevokê çi divê bikî?
-   - A) Herfan jê bibî
-   - B) Rêza peyvan biguherînî
-   - C) Nivîsandinê kontrol bikî
-   - D) Peyvan bêyî kontrol bihêlî
+A) Herfan jê bibî
+B) Rêza peyvan biguherînî
+C) Nivîsandinê kontrol bikî
+D) Peyvan bêyî kontrol bihêlî
 
 ### 8. Xulasa û qedandina kursê
 
@@ -1463,7 +1477,7 @@ Di vê kursê de xwendekar bi alfabeya kurdî ya latînî, dengdêr û dengdar, 
 ---
 
 ### Provenance — Course 2, Lesson 1
-New source-aligned replacement draft; the earlier exact transcript body is not available.
+New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
 
 ## وانەی ١ — Gramêr û Hêmanên Ziman
 ### ئامانج
@@ -1507,7 +1521,7 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 ---
 
 ### Provenance — Course 2, Lesson 2
-New source-aligned replacement draft; the earlier exact transcript body is not available.
+New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
 
 ## وانەی ٢ — Navdêr: Hevenav û Serenav
 ### ئامانج
@@ -1535,7 +1549,7 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 ---
 
 ### Provenance — Course 2, Lesson 3
-New source-aligned replacement draft; the earlier exact transcript body is not available.
+New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.
 
 ## وانەی ٣ — Zayenda Navdêran
 ### ئامانج
@@ -1567,7 +1581,7 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
 ---
 
 ### Provenance — Course 2, Lesson 4
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٤ — Mêjer
 ### ئامانج
@@ -1606,7 +1620,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 ---
 
 ### Provenance — Course 2, Lesson 5
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٥ — Tewanga Navdêran
 ### ئامانج
@@ -1646,7 +1660,7 @@ Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`
 ---
 
 ### Provenance — Course 2, Lesson 6
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٦ — Bireserê Navdêrê
 ### ئامانج
@@ -1676,7 +1690,7 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 ---
 
 ### Provenance — Course 2, Lesson 7
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٧ — Veqetandekên Binavkirî
 ### ئامانج
@@ -1715,7 +1729,7 @@ Veqetandeka rast hilbijêre:
 ---
 
 ### Provenance — Course 2, Lesson 8
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٨ — Veqetandekên Nebinavkirî
 ### ئامانج
@@ -1755,7 +1769,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 ---
 
 ### Provenance — Course 2, Lesson 9
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ٩ — Pronavên Kesîn û Kirar
 ### ئامانج
@@ -1795,7 +1809,7 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 ---
 
 ### Provenance — Course 2, Lesson 10
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ١٠ — Pronavên Bireser û Berbihevîn
 ### ئامانج
@@ -1854,7 +1868,7 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 ---
 
 ### Provenance — Course 2, Lesson 11
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ١١ — Pronavên Îşarkî, Girêkî û Pirsiyarkî
 ### ئامانج
@@ -1915,7 +1929,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 ---
 
 ### Provenance — Course 2, Lesson 12
-Recovered draft, source-aligned and editorially corrected.
+Recovered draft; source-aligned and editorially corrected.
 
 ## وانەی ١٢ — Rengdêr û Jmarnav
 
