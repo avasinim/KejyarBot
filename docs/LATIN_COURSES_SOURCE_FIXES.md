@@ -84,3 +84,11 @@
 - GitHub Actions run: `41204130738` — **success**.
 - The Python workflow ran compileall and the full unittest discovery command. The seven methods in `tests/test_latin_courses_manifest.py` passed as part of that suite.
 - The test branch comparison is against `fix/kejyarbot-stability-2026-10-25`; the Latin-course work is ahead by 24 commits and changes only the workflow, Latin-course draft/audit files, and the added test file. No bot runtime file, course registry, production data, or live service was changed by this work.
+
+
+## پێش‌نووسە جێگرەوەکانی کۆرسی ١ — وانەکانی ٨ و ٩
+- `course_data/latin_course_1_lessons_08_09_replacement_draft.md`: وانەی ٨ لەسەر V/W دووبارە نووسرایەوە؛ هەڵەی پێشوو کە `zivistan` بە Vی سەرەتایی پیشان دەدا چاک کرا. مێژووی دەنگی V/W لەگەڵ نموونەکانی سەرچاوە `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî` پەیوەست کرا.
+- وانەی ٩ ناونیشانی `Herfên Nîşankirî` وەرگرت؛ چونکە `Ç, Ê, Î, Ş, Û` هەموویان هەمان جۆری دەنگ نین: `Ç, Ş` دەنگدارن، `Ê, Î, Û` دەنگدەرن. لە دەقە کۆنەکەدا هەموویان بە شێوەیەکی هەڵە لە ژێر یەک جۆری دەنگدا باس کرابوون.
+- کویزی هەر وانەیەک ٥ پرسیارە؛ کلیلەی ١٠ پرسیار لە `course_data/latin_course_1_lessons_08_09_answer_key.md` دانرا.
+- تاقیکردنەوەی خۆکار بۆ هاوتایی دەقی هەڵبژاردە و کلیلە زیاد کرا: `test_course_one_lessons_eight_and_nine_keys_match_exact_options`.
+- هەڵبژاردەی وەڵامی ڕاست لە کویزی وانەی ٩ بە جۆرێک ڕێکخراوە کە هەموویان لە هەمان شوێن نەبن.
