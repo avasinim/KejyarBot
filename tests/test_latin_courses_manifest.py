@@ -302,7 +302,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
         self.assertIn("User-provided lesson text confirmed in conversation", master)
         self.assertIn("current branch copy is editorially source-aligned", master)
-        self.assertIn("current branch copy is source-aligned pending exact transcript restoration", master)
+        self.assertEqual(master.count("User-provided lesson text confirmed in conversation"), 5)
 
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
