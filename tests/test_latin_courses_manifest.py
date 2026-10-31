@@ -518,17 +518,20 @@ class LatinCoursesManifestTests(unittest.TestCase):
             "latin_course_1_lesson_01_corrected_draft.md",
             "latin_course_1_lesson_07_corrected_draft.md",
             "latin_course_1_lessons_04_05_replacement_draft.md",
-            "latin_course_1_lessons_08_09_replacement_draft.md",
+            "latin_course_1_lessons_08_09_recovered_draft.md",
             "latin_course_1_lesson_10_corrected_draft.md",
             "latin_course_1_lesson_11_corrected_draft.md",
-            "latin_course_1_lesson_12_corrected_draft.md",
+            "latin_course_1_lesson_12_recovered_draft.md",
         )
         drafts = [(ROOT / "course_data" / name).read_text(encoding="utf-8") for name in paths]
         for draft in drafts:
-            self.assertIsNone(re.search(r"[\u0600-\u06FF]", draft))
+            self.assertIsNone(re.search(r"[\\u0600-\\u06FF]", draft))
         self.assertIn("| xwîn | Î |", drafts[2])
         self.assertNotIn("| xwîn | Û |", drafts[2])
-        self.assertIn("cotên wateyî yeksan", drafts[3])
+        self.assertIn("dev/dew", drafts[3])
+        self.assertIn("xwîn | Î", drafts[3])
+        self.assertIn("Ev pirtûka min e.", drafts[6])
+
 
     def test_course_one_lesson_seven_does_not_misclassify_xwin_as_u_circumflex(self):
         lesson = (ROOT / "course_data" / "latin_course_1_lesson_07_corrected_draft.md").read_text(encoding="utf-8")
