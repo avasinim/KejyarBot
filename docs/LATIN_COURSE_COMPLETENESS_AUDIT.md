@@ -121,3 +121,10 @@ These are editorially expanded explanations of the cited grammar, not verbatim r
 
 ### Correction: source taxonomy for `xwe`, `yê/ya/yên`, and possessive pronouns
 The source treats `xwe` on printed pp. 76–77 as a neuter pronoun that can represent both genders and both numbers; it is not the section titled **Pronavên xwemalîn**. The forms `yê/ya/yên` are introduced separately on pp. 81–83 as demonstrative pronouns of the qerse form, always functioning as subjects and followed by relative `ko` in the examples. The actual **Pronavên xwemalîn** section begins on p. 87 (body text) and explains possessive pronouns formed from a remote demonstrative plus a personal pronoun, e.g. `yê min`, `ya min`, `yên min`. Lesson 11 now teaches these three distinctions separately, and regression tests guard the corrected taxonomy.
+
+
+## Course 2 Lesson 12 — fuller adjective paradigms
+
+A further comparison with printed pp. 91–96 expanded Lesson 12 beyond single introductory examples. The demonstrative-adjective section now includes source forms for masculine and feminine nouns in singular/plural oblique contexts (`vî hespî/van hespan`, `wî hespî/wan hespan`, `vê mehinê/van mehinan`, `wê mehinê/wan mehinan`) and explains agreement and the source's option to mark only the final noun in some coordinated noun groups. The cardinal numeral section adds subject/object contrasts (`deh mirov hatin/deh mirovan got`, `çel mirov hatin/çel mirovan got`); the interrogative section adds `kîjan mirov` and `çend` examples; the indefinite adjective section now includes the source's `tu`, `her`, `herçî`, `filan`, `gelek`, `hemî`, `hevqas`, and `çend`; and the possessive adjective section now demonstrates forms across genders and numbers (`hespê min`, `mehinên te`, `kitêba vî`, `qelemên wê`, `xaniyê me`, `çiyayê we`, `kurên van`, `keçên wan`). New assertions guard these source examples.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 91–96. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
