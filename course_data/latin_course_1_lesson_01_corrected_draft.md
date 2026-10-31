@@ -38,12 +38,12 @@ Di vê alfabeyê de 8 dengdêr û 23 dengdar hene.
 | U | gur |
 | Û | dûr |
 
-**Baldar be:** I û J du herfên cuda ne. Peyva kin bi I dest pê dike؛ peyva jin bi J dest pê dike û I jî di xwe de dihewîne. Ji bo nasîna I di destpêka peyvê de, kin mînakeke zelaltir e.
+**Baldar be:** I û J du herfên cuda ne. Peyva kin bi I dest pê dike; peyva jin bi J dest pê dike û I jî di xwe de dihewîne. Ji bo nasîna I di destpêka peyvê de, kin mînakeke zelaltir e.
 
 ### 4. Herfên mezin û biçûk
 Forma mezin bi gelemperî di destpêka hevokê û di destpêka navên taybet de tê bikaranîn. Forma biçûk di nav peyvan de tê bikaranîn.
 
-Mînak: A → a؛ Ç → ç؛ Ê → ê؛ Î → î؛ Ş → ş؛ Û → û.
+Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 
 ### 5. Xebata Kejyar
 1. Dengdêrên di van peyvan de bibîne: av — ez — êvar — kin — îro — roj — gur — dûr.
