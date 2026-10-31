@@ -290,8 +290,9 @@ class LatinCoursesManifestTests(unittest.TestCase):
             questions = re.findall(r"^\d+\. ", quiz, flags=re.MULTILINE)
             self.assertEqual(len(questions), 5, heading.group(0))
 
-        self.assertIn("New replacement draft; exact earlier transcript body unavailable verbatim.", master)
-        self.assertIn("New source-aligned replacement draft; exact earlier transcript body unavailable verbatim.", master)
+        self.assertIn("User-provided lesson text confirmed in conversation", master)
+        self.assertIn("current branch copy remains a replacement draft", master)
+        self.assertIn("current branch copy is source-aligned pending exact transcript restoration", master)
 
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
