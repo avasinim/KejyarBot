@@ -146,3 +146,10 @@ A final pedagogical pass found that the fill-in sentence `Zarok di ______ de ne`
 ## Consolidated 24-lesson master pack and recovery correction
 
 `course_data/latin_courses_master_draft.md` consolidates all 24 selected lessons in their authoritative order. Course 1 Lessons 8, 9 and 12 are based on recovered original text, not replacement rewrites. Course 1 Lessons 4–5 and Course 2 Lessons 1–3 remain explicitly labelled new replacement drafts because their exact original message bodies are unavailable. A regression test checks all 24 lesson headings, order, provenance tags and five quiz questions per lesson. The master pack remains editorial-only and is not loaded by runtime.
+
+
+## Final microcopy and exercise pass
+
+- Course 1 Lesson 12: the alphabet count introduction now uses the grammatical form `Di alfabeyê de 31 herf hene`; the recovered quiz and exercise order remain unchanged.
+- Course 2 Lesson 11: the indefinite-pronoun example is normalized to `Her kes dibêje` (the present-tense prefix remains attached to the verb). A regression assertion rejects the split form `Her kes di bêje`.
+- These are language-level edits to editorial drafts only; they do not activate either course or change runtime data.
