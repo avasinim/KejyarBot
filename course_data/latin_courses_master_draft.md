@@ -1,6 +1,6 @@
 # Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
 
-> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order. Any replacement/source-aligned draft is explicitly labelled and is not represented as a verbatim recovery.
+> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
 
 ## Source and course separation
 - Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
@@ -344,7 +344,7 @@ Di vê dersê de me cudahiya dengdêr û dengdar, heşt dengdêrên kurdî û ro
 **Kejyar • Fêrbûn bi pratîkê**
 
 ### Provenance — Course 1, Lesson 4
-User-provided lesson text confirmed in conversation; the current branch copy remains a replacement draft until exact transcript text is restored.
+User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
 
 ## Ders 4: Dengdêrên Kin — E, I, U
 
@@ -480,7 +480,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 ---
 
 ### Provenance — Course 1, Lesson 5
-User-provided lesson text confirmed in conversation; the current branch copy remains a replacement draft until exact transcript text is restored.
+User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
 
 ## Ders 5: Dengdêrên Dirêj — A, Ê, Î, O, Û
 
@@ -1434,16 +1434,16 @@ Di vê kursê de xwendekar bi alfabeya kurdî ya latînî, dengdêr û dengdar, 
 ## Course 2 — Bingehên Gramera Kurmancî
 
 ### Provenance — Course 2, Lesson 1
-User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
+User-provided lesson text confirmed in conversation; current branch copy is source-aligned and under final review.
 
-## وانەی ١ — Gramêr û Hêmanên Ziman
-### ئامانج
-فێرخواز بتوانێت پێناسەی گرامەر و زوانی کورمانجی بناسێت و چوار هێمای سەرەکیی پێکهاتەی زمان لە یەک جیا بکاتەوە: تێپ، کیت، بێژە و کۆمەڵ.
+## Ders 1 — Gramêr û Hêmanên Ziman
+### Armanc
+Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêmanên bingehîn ên pêkhateya ziman ji hev cuda bike: tîp, kît, bêje û komek.
 
-### ناوەڕۆک
+### Naverok
 **Gramêr:** li gorî pirtûkê, tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e.
 
-**Zimanê kurdmancî:** zimanê gelê kurdmanc e؛ kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
+**Zimanê kurdmancî:** zimanê gelê kurdmanc e; kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
 
 ### Hêmanên ziman
 Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê dest pê dike, ji kîtan derbas dibe, bêje çêdike û paşê kom çêdibe:
@@ -1452,7 +1452,7 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 - **Bêje:** yekeya ku dikare kesek, heywanek an tiştekî binimîne.
 - **Kom:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
 
-**Qiset** di pirtûkê de wek encama peyhevketina koman tê ravekirin؛ ji ber vê yekê di lîsteya çar hêmanên bingehîn de wek hêmaneke pêncemîn nayê hejmartin.
+**Qiset** di pirtûkê de wek encama peyhevketina koman tê ravekirin; ji ber vê yekê di lîsteya çar hêmanên bingehîn de wek hêmaneke pêncemîn nayê hejmartin.
 
 ### Nimûne
 - Tîp: `a`, `g`, `ê`
@@ -1476,13 +1476,13 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 ---
 
 ### Provenance — Course 2, Lesson 2
-User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
+User-provided lesson text confirmed in conversation; current branch copy is source-aligned and under final review.
 
-## وانەی ٢ — Navdêr: Hevenav û Serenav
-### ئامانج
+## Ders 2 — Navdêr: Hevenav û Serenav
+### Armanc
 Nasîna navdêrên giştî û taybet.
 
-### ناوەڕۆک
+### Naverok
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Bedir-Xan navdêran dike du kom:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
 - **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
@@ -1502,13 +1502,13 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 ---
 
 ### Provenance — Course 2, Lesson 3
-User-provided lesson text confirmed in conversation; the current branch copy is source-aligned pending exact transcript restoration.
+User-provided lesson text confirmed in conversation; current branch copy is source-aligned and under final review.
 
-## وانەی ٣ — Zayenda Navdêran
-### ئامانج
+## Ders 3 — Zayenda Navdêran
+### Armanc
 Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
 
-### ناوەڕۆک
+### Naverok
 Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem bi zayenda rastîn a heywan an mirovê re yek nîne; tiştên bêcan jî dikarin zayenda rêzimanî ya xwe hebin.
 
 Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
@@ -1536,11 +1536,11 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
 ### Provenance — Course 2, Lesson 4
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٤ — Mêjer
-### ئامانج
+## Ders 4 — Mêjer
+### Armanc
 Jimar û guherîna navdêrê di yekjimar û gelemjimar de nas bike.
 
-### ناوەڕۆک
+### Naverok
 Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir nîşan dide. Bedir-Xan yekjimar û gelemjimar bi hev re dide û diyar dike ku guherîna mêjerê dikare bi guherîna forma navdêrê re were nîşandan.
 
 **Nimûneyên yekjimar û gelemjimar:**
@@ -1554,7 +1554,7 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 
 Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
 
-**Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin؛ çavkaniyê vê yekê bi taybetî diyar dike.
+**Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; çavkaniyê vê yekê bi taybetî diyar dike.
 
 ### Xebat
 1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehin e/Ev mehin in` de cuda bike.
@@ -1573,11 +1573,11 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 ### Provenance — Course 2, Lesson 5
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٥ — Tewanga Navdêran
-### ئامانج
+## Ders 5 — Tewanga Navdêran
+### Armanc
 Fêmkirina guherîna forma navdêrê li gorî erk û cihê wê di hevokê de.
 
-### ناوەڕۆک
+### Naverok
 Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê xwe diguherin. Bedir-Xan tewangê ji mêjerê cuda dike. Navdêr dema kirar be, gelek caran forma xwe ya bingehîn diparêze; dema bireser be, li gorî zayend, mêjer û dengên dawiyê dikare pêvek bistîne an dengên xwe biguherîne.
 
 **Nimûneyên bingehîn ên çavkaniyê:**
@@ -1611,11 +1611,11 @@ Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`
 ### Provenance — Course 2, Lesson 6
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٦ — Bireserê Navdêrê
-### ئامانج
+## Ders 6 — Bireserê Navdêrê
+### Armanc
 Nasîna hêmanên ku navdêrekê rave dikin an sînorê wî teng dikin.
 
-### ناوەڕۆک
+### Naverok
 Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dike an jê re agahiyek din zêde dike. Ew dikare pêşî an paşî navdêrê were.
 - Pêşî navdêrê: `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`.
 - Paşî navdêrê: `hespê beza`, `mehinên spehî`, `xencera min`.
@@ -1639,11 +1639,11 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 ### Provenance — Course 2, Lesson 7
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٧ — Veqetandekên Binavkirî
-### ئامانج
+## Ders 7 — Veqetandekên Binavkirî
+### Armanc
 Nasîna veqetandekên ku navdêrê diyar û nasnamekirî dikin.
 
-### ناوەڕۆک
+### Naverok
 Bedir-Xan sê veqetandekên binavkirî dide:
 - `-ê`: bo navdêrên nêr ên yekjimar — `hespê Soro`, `deriyê malê`.
 - `-a`: bo navdêrên mê ên yekjimar — `mehîna Cemşîd`, `ava tenik`.
@@ -1676,11 +1676,11 @@ Veqetandeka rast hilbijêre:
 ### Provenance — Course 2, Lesson 8
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٨ — Veqetandekên Nebinavkirî
-### ئامانج
+## Ders 8 — Veqetandekên Nebinavkirî
+### Armanc
 Cudahîkirina navdêrên nebinavkirî û formên wan bi rêya veqetandekê.
 
-### ناوەڕۆک
+### Naverok
 Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet nehatiye nasandin. Bedir-Xan du rewş cuda dike:
 
 **1. Piştî navdêrê, bê bireser:**
@@ -1714,11 +1714,11 @@ Forma guncaw hilbijêre û sedemê bibêje:
 ### Provenance — Course 2, Lesson 9
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ٩ — Pronavên Kesîn û Kirar
-### ئامانج
+## Ders 9 — Pronavên Kesîn û Kirar
+### Armanc
 Cudahîkirina pronavên kesîn ji formên kirarî/agent.
 
-### ناوەڕۆک
+### Naverok
 Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Bedir-Xan di tabloya xwe de forma kesîn û forma kirarî bi hev re dide:
 | Kes | Pronavê kesîn | Forma kirarî |
 |---|---|---|
@@ -1752,11 +1752,11 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 ### Provenance — Course 2, Lesson 10
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ١٠ — Pronavên Bireser û Berbihevîn
-### ئامانج
+## Ders 10 — Pronavên Bireser û Berbihevîn
+### Armanc
 Nasîna pronavên bireser, berbihevîn, lihevxisitî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
 
-### ناوەڕۆک
+### Naverok
 Pronavên bireser di cihê navdêrê de tên û di hin hevokên rabirdû de wek bireser xuya dibin. Formên ku Bedir-Xan dide:
 `min, te, wî, wê, me, we, wan`.
 
@@ -1789,7 +1789,7 @@ Pirtûk forma `ê` wek pronavê nêtar ê yekjimar nîşan dide. Ew dikare di hi
 - `Min da vî / vê / wî / wê` → `Min da ê`.
 - `Ezê bibim vî / vê / wî / wê` → `Ezê bibim ê`.
 
-Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
+Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 
 ### Xebat
 1. Di `Wê ew dît` de pronavên bireser bibîne.
@@ -1809,11 +1809,11 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 ### Provenance — Course 2, Lesson 11
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ١١ — Pronavên Îşarkî, Girêkî û Pirsiyarkî
-### ئامانج
+## Ders 11 — Pronavên Îşarkî, Girêkî û Pirsiyarkî
+### Armanc
 Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 
-### ناوەڕۆک
+### Naverok
 **Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Pirtûk her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
 - `ev`: tişt/kesê nêzîk.
 - `ew`: tişt/kesê dûr an ku berê hatî gotin.
@@ -1821,7 +1821,7 @@ Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinav
 
 **Pronavên girêkî:** pirtûk `ko` wek pronavê girêkî dide û dibêje ku ji bo her du mêjer û zayendan heman form e. Di vê kursê de forma çavkaniyê `ko` tê parastin; `ku` di standardên din de dikare were dîtin, lê li vir bê agahdarî nayê şûngirtin.
 
-**Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di pirtûkê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike؛ `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
+**Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di pirtûkê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike; `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
 
 **Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide. Pirtûk her wiha `kîjik` û `kîjan` wek formên pirsiyarkî, û `çend` û `kû` di pirsên hejmar û cihê de vedikole.
 
@@ -1835,7 +1835,7 @@ Ev sê form pronavên îşarkî ne ku kes, tişt an heywan nîşan didin, lê d�
 - `Ya ko hat dotmama min bû.`
 - `Yên ko hatin dotmamên min bûn.`
 
-Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. Dema `yê/ya/yên` bi pronavê kesîn re tên, pêkhateya pronavên xwemalîn çêdibe؛ ev cure di beşa jêrîn de bi taybetî tê ravekirin. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
+Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. Dema `yê/ya/yên` bi pronavê kesîn re tên, pêkhateya pronavên xwemalîn çêdibe; ev cure di beşa jêrîn de bi taybetî tê ravekirin. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
 
 ### Pronavên xwemalîn
 Pronavên xwemalîn xwedîtiyê nîşan didin û ji du pronavan pêk tên: pronavê îşarkî yê qerse (`yê`, `ya`, `yên`) û pronavê kesîn. Pronavê yekem tiştê ku qala wî tê kirin nîşan dide; pronavê duyem xwedîtiyê diyar dike.
@@ -1853,7 +1853,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 
 1. Di `Her kes dibêje` de pronavê nebinavkirî bibîne.
 2. Di `Yê ko hat bira yê min bû` de pronavên îşarkî û pronavê girêkî bibîne.
-3. Ji bo navdêrên nêr، mê û gelemjimar pronavên xwemalîn bi `min` çêbike.
+3. Ji bo navdêrên nêr, mê û gelemjimar pronavên xwemalîn bi `min` çêbike.
 4. Di `destmalên min — yên min` de pronavê xwemalîn bibîne û erkê `yên` rave bike.
 
 ### Kuis — 5 pirs
@@ -1868,7 +1868,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 ### Provenance — Course 2, Lesson 12
 Recovered draft; source-aligned and editorially corrected.
 
-## وانەی ١٢ — Rengdêr û Jmarnav
+## Ders 12 — Rengdêr û Jmarnav
 
 **Dîroka hilbijartinê:** Ev guhertoya firehkirî ya pêşnûseya jêgirtinê wek guhertoya bingehîn hilbijartî ye; pêşnûseya baseline ya berê li vir bi wê hatiye şûngirtin. Kileya masterê li gorî vebijarkên vê guhertoyê hatî nûkirin.
 
