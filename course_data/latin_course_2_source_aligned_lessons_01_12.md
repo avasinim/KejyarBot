@@ -55,9 +55,9 @@ Nasîna navdêrên giştî û taybet.
 ### ناوەڕۆک
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Bedir-Xan navdêran dike du kom:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînak `Sado`, `Bêlan`, `Herekol`, `Kurdistan`.
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
 
-Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav yek kes an cihê taybet dide nasîn.
+Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştêkî taybet dide nasîn. Di nimûneyên çavkaniyê de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
 ### Xebat
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
@@ -78,11 +78,13 @@ Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
 ### ناوەڕۆک
 Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem bi zayenda rastîn a heywan an mirovê re yek nîne; tiştên bêcan jî dikarin zayenda rêzimanî ya xwe hebin.
 
-Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
-- Nêr: `derî`, `çem`, `hesp`, `gund`, `kur`.
-- Mê: `dar` (wateya darê kesk/riwek), `mehin`, `gol`, `jin`, `Sînemxan`.
+Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
+- **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
+- **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
-**Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku riwek/dirêjahiya kesk e mê ye; dema ku wateya darê hişk/çûbê dide nêr e. Ev nimûne nîşan dide ku zayend dikare bi wateya bêjeyê ve girêdayî be.
+**Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
+
+**Têbînî:** di nav hin navên heywanan de zayenda mê û nêr dikare bi formên cuda were nîşandan; lê zayenda rêzimanî ya navdêrê her dem تەنیا بە زایەندی زیندەوەرەکە دیاری ناکرێت.
 
 ### Xebat
 1. `derî` û `çem` di çi zayendê de ne?
