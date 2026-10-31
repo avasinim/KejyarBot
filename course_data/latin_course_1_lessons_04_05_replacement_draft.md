@@ -173,7 +173,8 @@ Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudah
 | pîr | Î |
 | nîv | Î |
 | jîn | Î |
-| şîr | Î |\n| xwîn | Î |
+| şîr | Î |
+| xwîn | Î |
 
 Î ji I cuda ye. Di dil de I heye، di pîr de Î heye.
 
@@ -196,7 +197,6 @@ Di xwendinê de dengê O bi baldarî nas bike؛ wê bi U an Û re neguherîne.
 | bûn | Û |
 | dû | Û |
 | mû | Û |
-| xwîn | Î |
 | şûştin | Û |
 
 Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn، ne bi U.
