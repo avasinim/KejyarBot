@@ -149,6 +149,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("`gund`", lesson_five)
         self.assertIn("`maseyan → masan`", lesson_five)
 
+    def test_course_two_lesson_six_distinguishes_determiner_from_standalone_pronoun(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_six = lesson_text.split("## Ders 6 —", 1)[1].split("## Ders 7 —", 1)[0]
+        self.assertIn("`ev keçik` de `ev` pêşnavdêr/bireser e", lesson_six)
+        self.assertIn("`Ev hat.`", lesson_six)
+        self.assertIn("wek pronavê îşarkî dixebite", lesson_six)
+
     def test_course_two_lessons_seven_and_eight_distinguish_determiner_environments(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         lesson_seven = lesson_text.split("## Ders 7 —", 1)[1].split("## Ders 8 —", 1)[0]
@@ -315,6 +322,16 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("User-provided lesson text confirmed in conversation", master)
         self.assertIn("current branch copy is editorially source-aligned", master)
         self.assertEqual(master.count("User-provided lesson text confirmed in conversation"), 5)
+
+    def test_course_one_vowel_lessons_preserve_source_phonetic_distinctions(self):
+        master = (ROOT / "course_data" / "latin_courses_master_draft.md").read_text(encoding="utf-8")
+        lesson_six = master.split("## Ders 6:", 1)[1].split("## Ders 7:", 1)[0]
+        lesson_seven = master.split("## Ders 7:", 1)[1].split("## Ders 8:", 1)[0]
+        self.assertIn("tenê dirêjahiya dengê yek herfê nîne", lesson_six)
+        self.assertIn("bi dirêjkirinê nabê `î`", lesson_six)
+        self.assertIn("`e, i, u`", lesson_seven)
+        self.assertIn("`a, ê, î, o, û`", lesson_seven)
+        self.assertIn("ne tenê wekî heman dengê kurt û dirêj", lesson_seven)
 
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
