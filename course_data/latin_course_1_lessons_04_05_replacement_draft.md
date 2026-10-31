@@ -47,7 +47,7 @@ Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
 | kirin | I |
 | biçûk | I |
 
-Baldar be: I û Î du herfên cuda ne. Di dil de I heye, lê di dîl de Î heye؛ nîşana li ser Î nasnameya herfê diguherîne.
+Baldar be: I û Î du herfên cuda ne. Di dil de I heye؛ di pîr de Î heye. I û Î her دو herفên cuda ne.
 
 ### 4. Dengdêra U
 Dengdêra U di van peyvan de tê dîtin:
@@ -141,7 +141,7 @@ Di rêzkirina bingehîn a dengdêran de pênc herf di koma dengdêrên dirêj de
 
 A — Ê — Î — O — Û
 
-Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudahiya dengdêran de taybetmendiya deng û awayê derxistinê jî girîng e. Ji ber vê yekê her herf bi mînak û bi dengê xwe fêr bibە.
+Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudahiya dengdêran de taybetmendiya deng û awayê derxistinê jî girîng e. Ji ber vê yekê her herf bi mînak û bi dengê xwe fêr bibe.
 
 ### 2. Dengdêra A
 | Peyv | Dengdêr |
