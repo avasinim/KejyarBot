@@ -1,6 +1,6 @@
 # Kursa 2 — Ders 12: Rengdêr û Jmarnav
 
-**Status:** Expanded alternative draft. Before runtime integration, choose this version OR the baseline lesson 12 in `latin_course_2_source_aligned_lessons_01_12.md`; never load both under lesson number 12. Its matching key is `latin_course_2_lesson_12_answer_key.md`.
+**Status:** SELECTED CONTENT — canonical Lesson 12 has been copied into `latin_course_2_source_aligned_lessons_01_12.md` and the consolidated Course 2 key. This file is retained as the source snapshot for editorial traceability only; do not load it separately or assign it a second lesson ID. Its option key remains `latin_course_2_lesson_12_answer_key.md` as a cross-check.
 **Kejyar • Bingehên Gramera Kurmancî**
 
 ### Armancên dersê
