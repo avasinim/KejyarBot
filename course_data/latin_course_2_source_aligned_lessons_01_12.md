@@ -320,7 +320,7 @@ Pirtûk cureyeke din bi navê **pronavên lihevxisitî** rave dike. Ev form ji p
 
 Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxisitî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
 
-### Pronavê vegerok `xwe`
+### Pronavê xwemalîn `xwe`
 `xwe` pronavê nêtar e û dikare ji bo her du zayendan û hejmaran were bikaranîn. Dema kirar û bireser di hevokê de heman kes bin, `xwe` li şûna dubarekirina pronavê bireser tê:
 - `Wî xwe kuşt.`
 - `Wê xwe kuşt.`
@@ -352,7 +352,7 @@ Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
 
 ## وانەی ١١ — Pronavên Îşarkî, Girêkî û Pirsiyarkî
 ### ئامانج
-Nasîna pronavên îşarkî, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
+Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî û nebinavkirî.
 
 ### ناوەڕۆک
 **Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Pirtûk her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
@@ -369,20 +369,21 @@ Nasîna pronavên îşarkî, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 ### Pronavên nebinavkirî
 Ev pronav li şûna navdêrên ku di gotinê de bi awayekî taybet nehatine destnîşankirin tên. Pirtûk nimûneyên wek `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt` û `gelek` dide. Forma wan li gorî erkê wan di hevokê de dikare biguhere.
 
-### Pronavên xwemalîn
-Pronavên xwemalîn têkiliya xwedîtiyê nîşan didin û bi gelemperî ji pronavên îşarkî yên qerse `yê/ya/yên` û pronavê kesîn pêk tên:
-- Nêr yekjimar: `yê min`, `yê te`, `yê me`
-- Mê yekjimar: `ya min`, `ya te`, `ya me`
-- Gelemjimar: `yên min`, `yên te`, `yên me`
+### Pronavên îşarkî yên qerse: `yê`, `ya`, `yên`
+Ev sê form pronavên îşarkî ne ku kes, tişt an heywan nîşan didin, lê dûrî an nêzîkbûna wan diyar nakin. Di hevokê de her tim kirar in û bi tenê nayên bikaranîn; piştî wan pronavê girêkî `ko` tê:
+- `Yê ko hat bira yê min bû.`
+- `Yên ko hatin bira yên min bûn.`
+- `Ya ko hat dotmama min bû.`
+- `Yên ko hatin dotmamên min bûn.`
 
-Di van formên pêkhatî de `yê/ya/yên` tiştê xwedîkirî nîşan dide û pronavê kesîn xwedîtiyê diyar dike. Ev cure ji rengdêrên xwemalîn ên wek `hespê min` cuda ye; li vir tevahiya formê wek pronav dixebite.
+Di van hevokan de `yê/ya/yên` pronavên îşarkî yên qerse ne; `ko` pronavê girêkî ye û komekê bi hev ve girê dide. `yê min`, `ya min` û `yên min` di van nimûneyan de bi awayê pêkhatî xwedîtiyê jî nîşan didin, lê ev ne cureyeke serbixwe ya pronavê di vê beşê de ye. Divê wan ji rengdêrên xwemalîn ên wek `hespê min` cuda bikin.
 
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
 
 1. Di `Her kes di bêje` de pronavê nebinavkirî bibîne.
-2. Ji bo navdêrekî nêr, navdêrekî mê û navdêrên gelemjimar formeke xwemalîn bi `min` çêbike.
-3. Cudahîya `yê min` û `hespê min` bi peyvên xwe rave bike.
+2. Di `Yê ko hat bira yê min bû` de pronavên îşarkî û pronavê girêkî bibîne.
+3. Rave bike çima `yê/ya/yên` bi tenê nayên bikaranîn û `ko` li pey wan tê.
 
 ### Kuis — 5 pirs
 1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
