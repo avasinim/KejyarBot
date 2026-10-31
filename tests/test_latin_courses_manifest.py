@@ -57,7 +57,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
         self.assertIn("tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman", lesson_one)
         self.assertIn("çar hêmanên bingehîn", lesson_one)
-        self.assertIn("Tîp → kît → bêje → kom", lesson_one)
+        self.assertIn("tîp → kît → bêje → kom", lesson_one)
         self.assertIn("Qiset", lesson_one)
         self.assertIn("wek hêmaneke pêncemîn nayê hejmartin", lesson_one)
         self.assertNotIn("Parêz çûbû Rewanê", lesson_one)
@@ -93,7 +93,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def test_course_two_lesson_nine_includes_all_three_pronoun_genders(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         lesson_nine = lesson_text.split("## وانەی ٩ —", 1)[1].split("## وانەی ١٠ —", 1)[0]
-        self.assertIn("sê zayendên pronav", lesson_nine)
+        self.assertIn("Sê zayendên pronav", lesson_nine)
         self.assertIn("sêyem yekjimar nêtar", lesson_nine)
         self.assertIn("wî", lesson_nine)
         self.assertIn("wê", lesson_nine)
