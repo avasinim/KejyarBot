@@ -101,3 +101,10 @@
 - Latest verified workflow: run `41204504221`, conclusion **success**. Both `compileall` and `python -m unittest discover -s tests -v` passed.
 - The Latin-course manifest remains `draft_not_loaded_by_runtime`; it contains two independent courses of 12 lessons each, sourced separately from Part I (orthography) and Part II (grammar).
 - Compared with `fix/kejyarbot-stability-2026-10-25`, this work branch is 39 commits ahead, 0 behind, and the comparison reports 12 changed files. No runtime course registration or production activation has been performed.
+
+
+## وانەی ١ی کۆرسی ١ — چاکسازیی نموونەی I/J
+- پێش‌نووسی ڕاستکراو لە `course_data/latin_course_1_lesson_01_corrected_draft.md` دروست کرا.
+- `kin` بۆ نموونەی ڕوونی I لە سەرەتای وشە بەکارهاتووە؛ `jin` لە ژێر J دەمێنێتەوە، بەڵام ڕوون کراوەتەوە کە ئەو وشەیە I ـیشی تێدایە.
+- هەموو ٣١ پیتەکە لە خشتەیەکی یەکگرتووی گەورە/بچووکدا ڕێکخران؛ ٨ بزوێن و ٢٣ دەنگدار بە ژمارەی دروست پیشان دراون.
+- کلیلەی ٥ پرسیار لە `course_data/latin_course_1_lesson_01_answer_key.md` دانرا و تاقیکردنەوەی هاوتایی هەڵبژاردەکان زیاد کرا.
