@@ -24,7 +24,7 @@ Herfên kurdî li gorî rêzeke diyarkirî tên rêzkirin. Ev rêz ji bo xwendin
 | A B C Ç D E Ê F | G H I Î J K L M |
 | N O P Q R S Ş T | U Û V W X Y Z |
 
-<text>Rêza herfan ji A heta Z</text>
+*Rêza herfan ji A heta Z*
 
 ### 2. Herfên taybet
 
