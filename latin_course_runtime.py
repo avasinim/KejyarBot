@@ -134,11 +134,12 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
         if line.startswith("### ") or line.startswith("## "):
             break
         option_line = line.strip()
+        if option_line in {"---", "***", "___"}:
+            continue
         option_line = re.sub(r"^-\s*", "", option_line)
         if re.match(r"^[A-D]\)\s*", option_line):
             _append_inline_options(current, option_line)
         elif current["options"] and option_line and not option_line.startswith("#"):
-            # Wrapped option text is joined without changing the original prose.
             letter, value = current["options"][-1]
             current["options"][-1] = (letter, value + " " + option_line)
     finish()
