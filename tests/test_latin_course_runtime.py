@@ -72,9 +72,9 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         import bot
 
         source = (
-            "| Mezin | Biçûk |\\n"
-            "|---|---|\\n"
-            "| A | a |\\n"
+            "| Mezin | Biçûk |\n"
+            "|---|---|\n"
+            "| A | a |\n"
             "| B | b |"
         )
         rendered = bot.format_lesson_draft(source)
