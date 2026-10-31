@@ -54,7 +54,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md").read_text(encoding="utf-8")
-        lesson_one = lesson_text.split("## وانەی ١ —", 1)[1].split("## وانەی ٢ —", 1)[0]
+        lesson_one = lesson_text.split("## Ders 1 —", 1)[1].split("## Ders 2 —", 1)[0]
 
         self.assertIn("tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman", lesson_one)
         self.assertIn("çar hêmanên bingehîn", lesson_one)
@@ -93,8 +93,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_two_noun_and_gender_examples_match_bedir_xan_source(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        lesson_two = lesson_text.split("## وانەی ٢ —", 1)[1].split("## وانەی ٣ —", 1)[0]
-        lesson_three = lesson_text.split("## وانەی ٣ —", 1)[1].split("## وانەی ٤ —", 1)[0]
+        lesson_two = lesson_text.split("## Ders 2 —", 1)[1].split("## Ders 3 —", 1)[0]
+        lesson_three = lesson_text.split("## Ders 3 —", 1)[1].split("## Ders 4 —", 1)[0]
 
         for name in ("Sado", "Bêlan", "Herekol", "Hevind", "Sîpan", "Xabûr", "Hindistan", "Hezro", "Kerevan", "Zîn", "Dêrgul", "Kurdistan", "Agirî", "Cemşîd", "Ferazende"):
             self.assertIn(f"`{name}`", lesson_two)
@@ -110,7 +110,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_two_lesson_nine_includes_all_three_pronoun_genders(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        lesson_nine = lesson_text.split("## وانەی ٩ —", 1)[1].split("## وانەی ١٠ —", 1)[0]
+        lesson_nine = lesson_text.split("## Ders 9 —", 1)[1].split("## Ders 10 —", 1)[0]
         self.assertIn("Sê zayendên pronav", lesson_nine)
         self.assertIn("sêyem yekjimar nêtar", lesson_nine)
         self.assertIn("wî", lesson_nine)
@@ -120,8 +120,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_two_lessons_four_and_five_separate_number_from_noun_inflection(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        lesson_four = lesson_text.split("## وانەی ٤ —", 1)[1].split("## وانەی ٥ —", 1)[0]
-        lesson_five = lesson_text.split("## وانەی ٥ —", 1)[1].split("## وانەی ٦ —", 1)[0]
+        lesson_four = lesson_text.split("## Ders 4 —", 1)[1].split("## Ders 5 —", 1)[0]
+        lesson_five = lesson_text.split("## Ders 5 —", 1)[1].split("## Ders 6 —", 1)[0]
 
         self.assertIn("`Mîr hat.`", lesson_four)
         self.assertIn("`Mîr hatin.`", lesson_four)
@@ -142,8 +142,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_two_lessons_seven_and_eight_distinguish_determiner_environments(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        lesson_seven = lesson_text.split("## وانەی ٧ —", 1)[1].split("## وانەی ٨ —", 1)[0]
-        lesson_eight = lesson_text.split("## وانەی ٨ —", 1)[1].split("## وانەی ٩ —", 1)[0]
+        lesson_seven = lesson_text.split("## Ders 7 —", 1)[1].split("## Ders 8 —", 1)[0]
+        lesson_eight = lesson_text.split("## Ders 8 —", 1)[1].split("## Ders 9 —", 1)[0]
 
         for form in ("`-ê`", "`-a`", "`-ên`", "`Ez ê gewir dixwazim.`", "`Ez a sor dixwazim.`", "`Ez ên sor dixwazim.`"):
             self.assertIn(form, lesson_seven)
@@ -154,8 +154,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_two_lessons_ten_and_eleven_cover_remaining_source_pronoun_types(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
-        lesson_ten = lesson_text.split("## وانەی ١٠ —", 1)[1].split("## وانەی ١١ —", 1)[0]
-        lesson_eleven = lesson_text.split("## وانەی ١١ —", 1)[1].split("## وانەی ١٢ —", 1)[0]
+        lesson_ten = lesson_text.split("## Ders 10 —", 1)[1].split("## Ders 11 —", 1)[0]
+        lesson_eleven = lesson_text.split("## Ders 11 —", 1)[1].split("## Ders 12 —", 1)[0]
 
         for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`", "Pronavê nêtar `xwe`", "`Wî xwe kuşt.`", "Pronavê nêtar ê `ê`", "`Min da ê`"):
             self.assertIn(form, lesson_ten)
@@ -173,7 +173,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
         master = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         snapshot = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
-        lesson_twelve = master.split("## وانەی ١٢ —", 1)[1].split("## تێبینیی سەرچاوە", 1)[0]
+        lesson_twelve = master.split("## Ders 12 —", 1)[1].split("## تێبینیی سەرچاوە", 1)[0]
         self.assertIn("Şeş cureyên rengdêrên di çavkaniyê de nas bike.", lesson_twelve)
         self.assertIn("Rengdêrên xwemalîn", lesson_twelve)
         self.assertIn("Dereceyên rengdêrên wesfîn", lesson_twelve)
@@ -184,7 +184,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertIn(example, lesson_twelve)
         self.assertIn("SELECTED CONTENT", snapshot)
         self.assertIn("do not load it separately", snapshot)
-        self.assertEqual(master.count("## وانەی ١٢ —"), 1)
+        self.assertEqual(master.count("## Ders 12 —"), 1)
 
     def test_course_two_lesson_document_has_real_markdown_line_breaks(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
@@ -267,8 +267,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("Not loaded by runtime", master)
         course_one, course_two = master.split("## Course 2 —", 1)
         c1_numbers = [int(number) for number in re.findall(r"^## Ders (\d+):", course_one, flags=re.MULTILINE)]
-        digit_map = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-        c2_numbers = [int(number.translate(digit_map)) for number in re.findall(r"^## وانەی ([٠-٩]+) —", course_two, flags=re.MULTILINE)]
+        c2_numbers = [int(number) for number in re.findall(r"^## Ders (\\d+) —", course_two, flags=re.MULTILINE)]
         self.assertEqual(c1_numbers, list(range(1, 13)))
         self.assertEqual(c2_numbers, list(range(1, 13)))
         self.assertEqual(master.count("### Provenance — Course 1"), 12)
