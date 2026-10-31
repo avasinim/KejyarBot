@@ -164,7 +164,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     self.assertNotIn(current, questions)
                     questions[current] = {}
                     continue
-                option = re.match(r"^- ([A-D])\) (.+)$", line)
+                option = re.match(r"^\s*-\s+([A-D])\) (.+)$", line)
                 if option and current is not None:
                     self.assertNotIn(option.group(1), questions[current])
                     questions[current][option.group(1)] = option.group(2)
