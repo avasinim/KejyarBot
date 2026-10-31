@@ -4,6 +4,7 @@ import json
 from datetime import datetime, timezone
 import logging
 import os
+from pathlib import Path
 
 from telegram import (
     Update,
@@ -40,6 +41,7 @@ from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 
+BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
