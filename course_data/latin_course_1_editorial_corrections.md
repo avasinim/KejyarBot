@@ -24,6 +24,7 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 ### Lesson 1 — Elfabeya Kurdî
 - Keep the 31-letter alphabet and the eight-vowel split.
 - The letter table currently uses `jin` for both I and J. It is technically a word containing both letters, but pedagogically duplicates one example. Use `kin` for I (also supported as a short-I example in the source) and retain `jin` for J.
+- The corrected draft now explicitly says that `kin` begins with K and contains I medially, while `jin` begins with J and also contains I medially. This avoids implying that short I normally begins Kurmanji words; the source discusses its restricted initial/final distribution on printed p. 39.
 - Add I to the vowel-identification exercise if the current exercise set omits it.
 - Keep the source distinction between written letter and spoken sound; do not imply that each written letter is itself a vowel/consonant sound without explaining the levels.
 
