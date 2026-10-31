@@ -48,6 +48,48 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertNotEqual(first["source_part"], second["source_part"])
 
 
+    def test_course_two_lesson_one_tracks_four_source_elements_and_exact_answer_key(self):
+        import re
+
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        key_text = (ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md").read_text(encoding="utf-8")
+        lesson_one = lesson_text.split("## وانەی ١ —", 1)[1].split("## وانەی ٢ —", 1)[0]
+
+        self.assertIn("tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman", lesson_one)
+        self.assertIn("çar hêmanên bingehîn", lesson_one)
+        self.assertIn("Tîp → kît → bêje → kom", lesson_one)
+        self.assertIn("Qiset", lesson_one)
+        self.assertIn("wek hêmaneke pêncemîn nayê hejmartin", lesson_one)
+        self.assertNotIn("Parêz çûbû Rewanê", lesson_one)
+
+        questions = {}
+        current = None
+        in_quiz = False
+        for line in lesson_one.splitlines():
+            if line.startswith("### Kuis"):
+                in_quiz = True
+                continue
+            if not in_quiz:
+                continue
+            question = re.match(r"^(\\d+)\\. (.+)$", line)
+            if question:
+                current = int(question.group(1))
+                self.assertNotIn(current, questions)
+                questions[current] = {}
+                for letter, option in re.findall(r"([ABC])\\) (.*?)(?= [ABC]\\) |$)", question.group(2)):
+                    questions[current][letter] = option
+                continue
+        key_rows = re.findall(
+            r"^\\| 1 \\| (\\d+) \\| ([ABC]) \\| ([^|]+) \\|",
+            key_text,
+            flags=re.MULTILINE,
+        )
+        self.assertEqual(set(questions), set(range(1, 6)))
+        self.assertEqual(len(key_rows), 5)
+        for number, option, answer in key_rows:
+            self.assertEqual(questions[int(number)][option], answer.strip())
+
+
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
         master = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         snapshot = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
