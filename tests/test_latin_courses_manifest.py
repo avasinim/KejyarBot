@@ -144,5 +144,33 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[(int(lesson), int(question))][letter], answer.strip())
 
 
+    def test_course_one_replacement_lessons_08_09_keys_match_exact_options(self):
+        import re
+        path = ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md"
+        key_path = ROOT / "course_data" / "latin_course_1_lessons_08_09_answer_key.md"
+        text = path.read_text(encoding="utf-8")
+        key_text = key_path.read_text(encoding="utf-8")
+        questions = {}
+        lesson_number = 0
+        current = None
+        for line in text.splitlines():
+            heading = re.match(r"^## Ders ([89]):", line)
+            if heading:
+                lesson_number = int(heading.group(1))
+                current = None
+            q = re.match(r"^(\d+)\. (.+)$", line)
+            if q and lesson_number in (8, 9):
+                current = (lesson_number, int(q.group(1)))
+                questions[current] = {}
+            option = re.match(r"^([A-D])\) (.+)$", line)
+            if option and current:
+                questions[current][option.group(1)] = option.group(2)
+        rows = re.findall(r"^\| ([89]) \| (\d+) \| ([A-D]) \| ([^|]+) \|", key_text, re.MULTILINE)
+        self.assertEqual(len(questions), 10)
+        self.assertEqual(len(rows), 10)
+        for lesson, number, option, answer in rows:
+            self.assertEqual(questions[(int(lesson), int(number))][option], answer.strip())
+
+
 if __name__ == "__main__":
     unittest.main()
