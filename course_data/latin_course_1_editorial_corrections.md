@@ -83,3 +83,8 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 - Add explicit answer keys and lesson-specific explanations to all quizzes; no quiz is ready for runtime until its options and key are verified.
 - Preserve original Kurmanji Latin forms and do not apply the Avasin Academy Arabic-script orthography rules.
 - Do not merge these drafts into a runtime course until course IDs, progress isolation, quiz handlers, and offline tests are added and passed.
+
+
+## Editorial cleanup — Lesson 6
+
+The recovered Lesson 6 contained a few accidental Sorani/Arabic-script fragments inside its explanatory note and practice instructions. These were converted to clear Kurmanji Latin wording without changing the lesson's target contrast, word list, or quiz options. A regression test now rejects Arabic-script characters anywhere in this Latin-course lesson. The remaining vowel-pair table is explicitly described as a recognition aid, not as a list of minimal pairs or synonymous pairs.
