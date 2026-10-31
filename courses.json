@@ -120,6 +120,52 @@
       "description": "لە پلانداناندا؛ وانەکان دوای ئامادەکردنی ناوەڕۆک زیاد دەکرێن.",
       "status": "planned",
       "lesson_ids": []
+    },
+    {
+      "id": "kurmanji_latin_orthography",
+      "key": "course_kurmanji_latin_orthography",
+      "order": 5,
+      "title": "Kursa 1: Bingehên Rastnivîsîna Kurdî ya Latînî",
+      "description": "12 dersên bingehên alfabeyê û rastnivîsîna kurdî ya latînî.",
+      "source_part": "Part I — Elfabêya kurdî, pp. 11–34",
+      "status": "active",
+      "lesson_ids": [
+        "kurmanji_latin_orthography_01",
+        "kurmanji_latin_orthography_02",
+        "kurmanji_latin_orthography_03",
+        "kurmanji_latin_orthography_04",
+        "kurmanji_latin_orthography_05",
+        "kurmanji_latin_orthography_06",
+        "kurmanji_latin_orthography_07",
+        "kurmanji_latin_orthography_08",
+        "kurmanji_latin_orthography_09",
+        "kurmanji_latin_orthography_10",
+        "kurmanji_latin_orthography_11",
+        "kurmanji_latin_orthography_12"
+      ]
+    },
+    {
+      "id": "kurmanji_latin_grammar",
+      "key": "course_kurmanji_latin_grammar",
+      "order": 6,
+      "title": "Kursa 2: Bingehên Gramera Kurmancî",
+      "description": "12 dersên bingehên gramera kurmancî li gorî çavkaniya Celadet Alî Bedir-Xan.",
+      "source_part": "Part II — Bingehên gramera kurdmancî, pp. 37–100",
+      "status": "active",
+      "lesson_ids": [
+        "kurmanji_latin_grammar_01",
+        "kurmanji_latin_grammar_02",
+        "kurmanji_latin_grammar_03",
+        "kurmanji_latin_grammar_04",
+        "kurmanji_latin_grammar_05",
+        "kurmanji_latin_grammar_06",
+        "kurmanji_latin_grammar_07",
+        "kurmanji_latin_grammar_08",
+        "kurmanji_latin_grammar_09",
+        "kurmanji_latin_grammar_10",
+        "kurmanji_latin_grammar_11",
+        "kurmanji_latin_grammar_12"
+      ]
     }
   ]
 }
