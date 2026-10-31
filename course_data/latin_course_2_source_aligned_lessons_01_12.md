@@ -287,6 +287,15 @@ Mînak:
 
 Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `hev` û `êk` dide. `hevdu` di hin bikaranînên nû de tê dîtin, lê divê wek şêwazekî cuda were nîşandan, ne ku forma serekî ya çavkaniyê bigire.
 
+### Pronavên lihevxisitî
+Pirtûk cureyeke din bi navê **pronavên lihevxisitî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
+- `jê` = `ji vî / ji wê`
+- `lê` = `li vî / li wê`
+- `pê` = `bi vî / bi wê`
+- `tê` = `di vî / di wê`
+
+Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxisitî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
+
 ### Xebat
 1. Di `Wê ew dît` de pronavên bireser bibîne.
 2. Bi `hev` û `êk` du hevok çêbike.
