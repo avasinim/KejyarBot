@@ -740,7 +740,7 @@ def main():
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
-    logger.info("KejyarBot is running")
+    logger.info("Starting KejyarBot; waiting for Telegram API initialization")
     app.run_polling()
 
 if __name__ == "__main__":
