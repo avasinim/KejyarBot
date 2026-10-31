@@ -1,5 +1,5 @@
 # Kursa 1 — Ders 4 û 5: Pêşnûseya nû ya temamkirinê
-Status: **replacement drafts written now**. Ev ne vegerandina peyv-bi-peyv a outputa kevn e; ew du outputên kevn hebûna wan piştrast bû, lê nivîsa rastîn li ber destê me tune bû. Ev du ders ji nû ve, li gorî rêza kursê û çavkaniya bingehîn, hatine nivîsîn.
+Status: **source-aligned editorial copies of the user's five supplied lesson texts**. The user already provided both full lesson texts in the conversation. This legacy filename is retained for repository compatibility; it does not mean the lessons were newly invented or that the user must resend them. The original wording remains the reference; source-alignment edits are recorded separately.
 
 ---
 
