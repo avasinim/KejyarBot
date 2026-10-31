@@ -198,4 +198,4 @@ C) Û
 D) U
 
 ### Xulasa
-Pênc herfên vê dersê Ç, Ê, Î, Ş û Û ne. Ç û Ş dengdar in؛ Ê, Î û Û dengdêr in. نیشانەکانیان بەشێکن لە خۆی هەرەفەکە و نابێت لە نووسین بسڕدرێنەوە.
+Pênc herfên vê dersê Ç, Ê, Î, Ş û Û ne. Ç û Ş dengdar in؛ Ê, Î û Û dengdêr in. Nîşanên wan beşek ji nasnameya herfê ne û di nivîsandinê de divê neyên jêbirin.
