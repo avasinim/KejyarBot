@@ -299,6 +299,8 @@ Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de t
 ### Xebat
 1. Di `Wê ew dît` de pronavên bireser bibîne.
 2. Bi `hev` û `êk` du hevok çêbike.
+3. Di `Min jê stand` de pronavê lihevxisitî bibîne û rave bike ku `jê` ji kîjan daçek û pronavê pêk hatiye.
+4. Rastekirina hevoka `Min bi wî pê ve da` bike û sedemê rave bike.
 
 ### Kuis — 5 pirs
 1. Kîjan yek ji pronavên bireser e? A) ez B) min C) tu
@@ -338,6 +340,10 @@ Di van formên pêkhatî de `yê/ya/yên` tiştê xwedîkirî nîşan dide û pr
 
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
+
+1. Di `Her kes di bêje` de pronavê nebinavkirî bibîne.
+2. Ji bo navdêrekî nêr, navdêrekî mê û navdêrên gelemjimar formeke xwemalîn bi `min` çêbike.
+3. Cudahîya `yê min` û `hespê min` bi peyvên xwe rave bike.
 
 ### Kuis — 5 pirs
 1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
