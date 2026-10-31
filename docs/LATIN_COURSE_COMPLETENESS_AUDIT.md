@@ -232,3 +232,14 @@ Course 1 Lesson 9's inventory (`Ç, Ê, Î, Ş, Û`) was checked against the 31-
 No lesson rewrite was necessary in this pass. A regression test now guards the source contrast examples, the five marked letters, and their five base-letter distinctions.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p. 17 and Part I, printed pp. 11–34. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 1 Lessons 10–11 and Course 2 Lessons 10–11 — final source and scope pass
+
+Course 1 Lessons 10–11 were reviewed as practical literacy lessons. Lesson 10's distinction between spoken sound and written letter is a foundational teaching explanation, while Lesson 11's spelling checklist is a practical synthesis of the alphabet distinctions taught in Part I. Neither lesson is presented as a verbatim chapter or as a new spelling rule attributed to Bedir-Xan. Their examples remain Kurmanji Latin forms and preserve the course's own scope.
+
+Course 2 Lesson 10 was checked against printed pp. 76–80. The source lists the object-pronoun forms `min, te, wî, wê, me, we, wan`; discusses reflexive `xwe`; identifies the neuter singular `ê` and explicitly says it cannot replace plural `wan`; and gives `hev` and `êk` as reciprocal pronouns. The source's examples for the fused pronoun `jê` expand to `ji vî, ji wî, ji vê, ji wê`, so the lesson now includes all four source forms. The source also describes variants such as `hevdu` and `êkdu` as regional/colloquial developments rather than the basic standard written forms; the lesson note now reflects that qualification instead of calling them simply newer usage.
+
+Course 2 Lesson 11 was checked against printed pp. 81–88. It preserves the source's two demonstrative-pronoun classes (`ev/ew` and `yê/ya/yên`), the relative pronoun `ko`, interrogative forms (`kî, kê, çi/çî, kîjik, kîjan, çend, kû`), indefinite pronouns and possessive pronouns. The separate conjunction `ko` that may mean `heke` is introduced only as a distinct homonymous function, not confused with the relative pronoun. No unsupported equivalence or replacement of the source's `ko` with `ku` is introduced.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–88; Part I printed pp. 11–34. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
