@@ -80,3 +80,17 @@ Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeu
 The pronoun section in printed pp. 71–73 distinguishes three grammatical genders for pronouns: masculine, feminine, and neuter. The recovered Course 2 Lesson 9 draft previously listed only masculine and feminine third-person singular rows. It now adds the neuter row and explains that wî is masculine, wê feminine, and the remaining personal forms are treated as neuter in the source's classification. The quiz's existing masculine agent-form question remains unchanged. A regression test guards the presence of all three categories and the forms ew, wî, and wê.
 
 Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 pronoun completeness — source pages 76–89
+
+A second pass against the source table of contents and printed pp. 76–89 found that the 12-lesson draft did not yet teach every pronoun class named by Bedir-Xan. The missing coverage is now added without changing the Latin-course boundary or importing Course 1 material:
+
+- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 76–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included.
+- Lesson 11 adds **Pronavên nebinavkirî** (printed pp. 86–87), with source-grounded examples such as `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt`, and `gelek`.
+- Lesson 11 adds **Pronavên xwemalîn** (printed pp. 87–89), showing the source's `yê/ya/yên` plus personal-pronoun pattern, and distinguishing these full pronouns from possessive adjectives such as `hespê min`.
+- A regression test guards the new source categories and examples.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxisitî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+This is an editorial source-alignment completion, not a claim that the new explanatory prose is a verbatim transcription of the book.
