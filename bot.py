@@ -1,3 +1,4 @@
+import base64
 import io
 import json
 from datetime import datetime, timezone
@@ -144,7 +145,7 @@ async def send_lesson_branding(message, lesson_id):
         return
     lesson = LESSON_DATA.get(lesson_id, {})
     caption = (
-        f"🌿 کەژیار | KejyarBot\\n"
+        f"🌿 کەژیار | KejyarBot\n"
         f"📖 وانەی {lesson.get('source_number', '')} — {lesson.get('title', '')}"
     )
     logo_path = BASE_DIR / "assets" / "kejyarbot_logo.png.b64"
@@ -459,7 +460,7 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
     if explanation:
-        feedback += f"\\n💡 ڕوونکردنەوە: {explanation}"
+        feedback += f"\n💡 ڕوونکردنەوە: {explanation}"
     await query.message.reply_text(feedback)
 
     quiz["index"] += 1
