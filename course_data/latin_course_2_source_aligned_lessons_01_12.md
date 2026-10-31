@@ -320,7 +320,7 @@ Pirtûk cureyeke din bi navê **pronavên lihevxisitî** rave dike. Ev form ji p
 
 Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxisitî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
 
-### Pronavê xwemalîn `xwe`
+### Pronavê nêtar `xwe`
 `xwe` pronavê nêtar e û dikare ji bo her du zayendan û hejmaran were bikaranîn. Dema kirar û bireser di hevokê de heman kes bin, `xwe` li şûna dubarekirina pronavê bireser tê:
 - `Wî xwe kuşt.`
 - `Wê xwe kuşt.`
