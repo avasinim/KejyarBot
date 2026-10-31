@@ -31,11 +31,11 @@ Gramêr zanista rêxistina ziman e. Di vê kursê de em pêşî hêmanên bingeh
 3. Ji van nimûneyan yek kom û yek qiset bibîne: `xanî`, `Îro dinya sar e`, `hespê mezin`.
 
 ### Kuis — 5 pirs
-1. Tîp çi ye? A) nîşana nivîskî B) yekeya wateyê C) komek hevok
-2. Kît çi ye? A) yekeya dengî B) navê kesekî C) daçek
+1. Tîp çi ye? A) yekeya wateyê B) nîşana nivîskî C) komek hevok
+2. Kît çi ye? A) navê kesekî B) daçek C) yekeya dengî
 3. `xanî` çi ye? A) bêje B) tîp C) qiset
-4. `Îro dinya sar e` çi ye? A) qiset B) tîp C) kît
-5. `hespê mezin` çi ye? A) kom B) deng C) tîp
+4. `Îro dinya sar e` çi ye? A) tîp B) qiset C) kît
+5. `hespê mezin` çi ye? A) deng B) tîp C) kom
 
 ---
 
@@ -54,11 +54,11 @@ Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav yek kes an cih�
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
 
 ### Kuis — 5 pirs
-1. Navdêr çi nîşan dide? A) kes/heywan/tişt B) tenê reng C) tenê dem
-2. `hesp` çi ye? A) hevenav B) serenav C) daçek
+1. Navdêr çi nîşan dide? A) tenê reng B) kes/heywan/tişt C) tenê dem
+2. `hesp` çi ye? A) serenav B) daçek C) hevenav
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
-4. `Zîn` di vê nimûneyê de çi ye? A) serenav B) hevenav C) kît
-5. Hevenav ji bo çi tê? A) navê giştî B) navê taybet tenê C) pirs
+4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
+5. Hevenav ji bo çi tê? A) navê taybet tenê B) pirs C) navê giştî
 
 ---
 
@@ -81,11 +81,11 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
 3. Her du wateyên `dar` bi hev cuda bike.
 
 ### Kuis — 5 pirs
-1. Di kurmancî de çend zayend hene? A) 2 B) 3 C) 4
-2. `derî` li gorî lîsteya pirtûkê nêr e an mê? A) nêr B) mê C) bêzayend
+1. Di kurmancî de çend zayend hene? A) 3 B) 2 C) 4
+2. `derî` li gorî lîsteya pirtûkê nêr e an mê? A) mê B) bêzayend C) nêr
 3. `çem` di pirtûkê de çi ye? A) nêr B) mê C) her du
-4. `dar` bi wateya riwekê çi ye? A) mê B) nêr C) bêzayend
-5. Zayenda navên tiştên bêcan çawa tê diyarkirin? A) zayenda rêzimanî B) tenê zayenda biyolojîk C) bi rengê wan
+4. `dar` bi wateya riwekê çi ye? A) nêr B) mê C) bêzayend
+5. Zayenda navên tiştên bêcan çawa tê diyarkirin? A) tenê zayenda biyolojîk B) bi rengê wan C) zayenda rêzimanî
 
 ---
 
@@ -106,11 +106,11 @@ Gelejmar tenê zêdekirina hejmarekê nîne; di hin hevokan de forma navdêrê j
 Formên yekjimar û gelemjimar ji hev cuda bike û binivîse: `hespek/hespin`, `mehinik/mehinin`.
 
 ### Kuis — 5 pirs
-1. Mêjer çi nîşan dide? A) yek an gelek B) reng C) kes
-2. Forma gelemjimar a `hespek` di nimûneya dersê de çi ye? A) hespin B) hespê C) hespa
+1. Mêjer çi nîşan dide? A) reng B) yek an gelek C) kes
+2. Forma gelemjimar a `hespek` di nimûneya dersê de çi ye? A) hespê B) hespa C) hespin
 3. `mehinik` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
-4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku ew du pêvajoyên rêzimanî ne B) ji ber ku yek tişt in C) ji ber ku navdêr tune ne
-5. `hespin` çi nîşan dide? A) gelemjimar B) yekjimar C) serenav
+4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku yek tişt in B) ji ber ku ew du pêvajoyên rêzimanî ne C) ji ber ku navdêr tune ne
+5. `hespin` çi nîşan dide? A) yekjimar B) serenav C) gelemjimar
 
 ---
 
@@ -133,11 +133,11 @@ Di van hevokan de navdêrên tewandî bibîne:
 - `Ez hespên dibînim.`
 
 ### Kuis — 5 pirs
-1. Tewang çi ye? A) guherîna forma peyvê B) zêdekirina reng C) pirs
-2. Di nimûneya dersê de forma tewandî ya `hesp` çi ye? A) hespî B) hespin C) hespê
+1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
+2. Di nimûneya dersê de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
 3. Forma tewandî ya `mehin` di nimûneya yekjimar de çi ye? A) mehinê B) mehina C) mehinan
-4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma gelemjimar a tewandî B) forma yekjimar C) serenav
-5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) na B) erê C) tenê navên mê
+4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
+5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
 
 ---
 
@@ -158,11 +158,11 @@ Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xu
 Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê beza`, `xencera min`, `çar xanî`.
 
 ### Kuis — 5 pirs
-1. Bireserê navdêrê çi dike? A) navdêrê rave dike/taybet dike B) lêkerê guher dike C) dengê peyvê diguherîne
-2. Di `ev keçik` de navdêr kîjan e? A) keçik B) ev C) her du
+1. Bireserê navdêrê çi dike? A) lêkerê guher dike B) navdêrê rave dike/taybet dike C) dengê peyvê diguherîne
+2. Di `ev keçik` de navdêr kîjan e? A) ev B) her du C) keçik
 3. Di `hespê beza` de bireser çi ye? A) beza B) hesp C) hespê
-4. Bireser dikare li ku were? A) pêşî an paşî navdêrê B) tenê di dawiya qisetê C) tenê pêşî lêkerê
-5. `xencera min` nimûneyek ji çi ye? A) bireserê navdêrê B) pronavê kesîn C) lêker
+4. Bireser dikare li ku were? A) tenê di dawiya qisetê B) pêşî an paşî navdêrê C) tenê pêşî lêkerê
+5. `xencera min` nimûneyek ji çi ye? A) pronavê kesîn B) lêker C) bireserê navdêrê
 
 ---
 
@@ -185,11 +185,11 @@ Veqetandeka rast hilbijêre:
 3. `hesp__ Soro` (gelemjimar)
 
 ### Kuis — 5 pirs
-1. Çend veqetandekên binavkirî hene? A) 3 B) 2 C) 5
-2. `-ê` bi gelemperî ji bo çi ye? A) nêr yekjimar B) mê yekjimar C) gelemjimar
+1. Çend veqetandekên binavkirî hene? A) 2 B) 3 C) 5
+2. `-ê` bi gelemperî ji bo çi ye? A) mê yekjimar B) gelemjimar C) nêr yekjimar
 3. `-a` di nimûneyên pirtûkê de ji bo çi ye? A) mê yekjimar B) nêr yekjimar C) gelemjimar
-4. `-ên` ji bo çi ye? A) gelemjara her du zayendan B) tenê mê yekjimar C) tenê nêr yekjimar
-5. `hespên Soro` çi ye? A) veqetandeka binavkirî ya gelemjimar B) veqetandeka nebinavkirî C) lêker
+4. `-ên` ji bo çi ye? A) tenê mê yekjimar B) gelemjara her du zayendan C) tenê nêr yekjimar
+5. `hespên Soro` çi ye? A) veqetandeka nebinavkirî B) lêker C) veqetandeka binavkirî ya gelemjimar
 
 ---
 
@@ -220,11 +220,11 @@ Forma guncaw hilbijêre û sedemê bibêje:
 - `mehin__ delal hat`
 
 ### Kuis — 5 pirs
-1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî hê nenaskirî B) tiştekî her tim nas C) tenê cih
-2. `hespek hat` di çi rewşê de ye? A) bê bireser B) bi rengdêr C) gelemjimar
+1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
+2. `hespek hat` di çi rewşê de ye? A) bi rengdêr B) gelemjimar C) bê bireser
 3. Forma gelemjimar a nebinavkirî ya bê bireser çi ye? A) -in B) -ên C) -a
-4. Dema bireser li pey were, forma nêr yekjimar çi ye? A) -ekî B) -ek C) -ên
-5. `-ên` û `-ine` ma yek in? A) na, erkên wan cuda ne B) erê C) her tim
+4. Dema bireser li pey were, forma nêr yekjimar çi ye? A) -ek B) -ekî C) -ên
+5. `-ên` û `-ine` ma yek in? A) erê B) her tim C) na, erkên wan cuda ne
 
 ---
 
@@ -252,11 +252,11 @@ Di hin hevokên rabirdû de forma kirarî tê bikaranîn; mînak: `Min got`, `Te
 Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan ew xwar`.
 
 ### Kuis — 5 pirs
-1. Di tabloya pirtûkê de forma kirarî ya `ez` çi ye? A) min B) te C) me
-2. Forma kirarî ya `tu` çi ye? A) te B) wî C) we
+1. Di tabloya pirtûkê de forma kirarî ya `ez` çi ye? A) te B) min C) me
+2. Forma kirarî ya `tu` çi ye? A) wî B) we C) te
 3. Forma kirarî ya `ew` nêr di nimûneyên rabirdû de çi ye? A) wî B) wê C) wan
-4. Forma kirarî ya `em` çi ye? A) me B) we C) min
-5. Pirtûka 2002 kîjan forma kesê duyem gelemjar dinivîse? A) hon B) hûn C) hun
+4. Forma kirarî ya `em` çi ye? A) we B) me C) min
+5. Pirtûka 2002 kîjan forma kesê duyem gelemjar dinivîse? A) hûn B) hun C) hon
 
 ---
 
@@ -280,11 +280,11 @@ Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `he
 2. Bi `hev` û `êk` du hevok çêbike.
 
 ### Kuis — 5 pirs
-1. Kîjan yek ji pronavên bireser e? A) min B) ez C) tu
-2. Forma bireserî ya `ew` mê çi ye? A) wê B) wî C) ew
+1. Kîjan yek ji pronavên bireser e? A) ez B) min C) tu
+2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
 3. Pirtûk ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
-4. `Wan ew xwar` di çi de nimûne ye? A) pronavên bireser B) pronavên îşarkî C) rengdêr
-5. `hevdu` divê çawa were nîşandan? A) wek variantê bikaranîna nû B) wek forma ku pirtûk tenê nas dike C) wek rengdêr
+4. `Wan ew xwar` di çi de nimûne ye? A) pronavên îşarkî B) pronavên bireser C) rengdêr
+5. `hevdu` divê çawa were nîşandan? A) wek forma ku pirtûk tenê nas dike B) wek rengdêr C) wek variantê bikaranîna nû
 
 ---
 
@@ -308,11 +308,11 @@ Nasîna pronavên îşarkî, girêkî û pirsiyarkî.
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
 
 ### Kuis — 5 pirs
-1. Kîjan cot pronavên îşarkî yên bingehîn e? A) ev/ew B) min/te C) kî/çi
-2. Kîjan formên îşarkî yên din di çavkaniyê de tên? A) yê/ya/yên B) min/te/me C) ez/tu/em
+1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
+2. Kîjan formên îşarkî yên din di çavkaniyê de tên? A) min/te/me B) ez/tu/em C) yê/ya/yên
 3. Forma girêkî ya ku pirtûka 2002 bikar tîne çi ye? A) ko B) ku C) kî
-4. `Kî hat?` çi cure pirs e? A) pirsiyarkî B) îşarkî C) bireser
-5. `kîjan` ji bo çi tê bikaranîn? A) hilbijartina kes/tişt di nav çend vebijarkan de B) nîşandana demê C) nîşandana zayendê
+4. `Kî hat?` çi cure pirs e? A) îşarkî B) pirsiyarkî C) bireser
+5. `kîjan` ji bo çi tê bikaranîn? A) nîşandana demê B) nîşandana zayendê C) hilbijartina kes/tişt di nav çend vebijarkan de
 
 ---
 
@@ -341,11 +341,11 @@ Di van koman de rengdêr û jmarnav cuda bike:
 - `nîv roj`
 
 ### Kuis — 5 pirs
-1. Rengdêr çi dike? A) taybetmendiya navdêrê rave dike B) kesê axêver nîşan dide C) tenê dem nîşan dide
-2. `mezin` di `malê mezin` de çi ye? A) rengdêrê wesfîn B) jmarnav C) pronav
+1. Rengdêr çi dike? A) kesê axêver nîşan dide B) taybetmendiya navdêrê rave dike C) tenê dem nîşan dide
+2. `mezin` di `malê mezin` de çi ye? A) jmarnav B) pronav C) rengdêrê wesfîn
 3. `sê` di `sê mal` de çi ye? A) rengdêrê jmarîn B) rengdêrê wesfîn C) daçek
-4. Pirtûk jmarnavê di kîjan beşê de cuda dike? A) beşeke serbixwe B) di bin pronav de C) di bin lêker de
-5. `nîv` di pirtûkê de di kîjan mijarê de tê gotin? A) jmarnav B) pronavê kesîn C) veqetandeka binavkirî
+4. Pirtûk jmarnavê di kîjan beşê de cuda dike? A) di bin pronav de B) beşeke serbixwe C) di bin lêker de
+5. `nîv` di pirtûkê de di kîjan mijarê de tê gotin? A) pronavê kesîn B) veqetandeka binavkirî C) jmarnav
 
 ---
 
