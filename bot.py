@@ -138,6 +138,22 @@ async def send_lesson_infographic(message, lesson_id):
     """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
 
+async def send_lesson_branding(message, lesson_id):
+    """Show the KejyarBot logo before every Course 3 lesson."""
+    if LESSON_COURSE.get(lesson_id) != "unified_orthography":
+        return
+    lesson = LESSON_DATA.get(lesson_id, {})
+    caption = (
+        f"🌿 کەژیار | KejyarBot\\n"
+        f"📖 وانەی {lesson.get('source_number', '')} — {lesson.get('title', '')}"
+    )
+    logo_path = BASE_DIR / "assets" / "kejyarbot_logo.jpg"
+    if logo_path.is_file():
+        with logo_path.open("rb") as logo:
+            await message.reply_photo(photo=logo, caption=caption)
+    else:
+        await message.reply_text(caption)
+
 ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
 COURSE_LESSON_ORDER = {
     course["id"]: visible_course_lessons(course, LESSON_DATA)
@@ -434,11 +450,15 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception:
         logger.debug("Quiz keyboard was already removed or could not be edited")
     answer = question["options"][choice_index]
+    explanation = question.get("explanation", "").strip()
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    if explanation:
+        feedback += f"\\n💡 ڕوونکردنەوە: {explanation}"
+    await query.message.reply_text(feedback)
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
@@ -498,6 +518,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
+    await send_lesson_branding(query.message, lesson)
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
@@ -514,6 +535,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
+    await send_lesson_branding(query.message, lesson)
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     await send_lesson_infographic(query.message, lesson)
 
@@ -636,6 +658,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
+        await send_lesson_branding(update.message, lesson)
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
         await send_conversation_voice(
             update.message,
