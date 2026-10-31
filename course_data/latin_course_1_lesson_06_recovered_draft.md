@@ -71,7 +71,7 @@ jin — pîr — dil — şîr — pir — mîr — min — nîv
 
 îro — jin — pîr — dil — şîr — pir — nîv — min
 
-**Xebata 3:** بە هەر یەک لەم دوو هەرفەوە دوو وشەی نوێ بنووسە:
+**Xebata 3:** Bi her yek ji van herfên jêrîn re du peyvên nû binivîse:
 
 I — Î
 
