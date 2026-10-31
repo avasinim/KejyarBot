@@ -147,12 +147,18 @@ if [item.get("id") for item in latin_manifest_courses] != [
 for manifest_course, parsed_course in zip(latin_manifest_courses, LATIN_COURSE_RECORDS):
     if manifest_course.get("lesson_ids") != parsed_course["lesson_ids"]:
         raise ValueError(f"Latin lesson manifest mismatch for {parsed_course['id']}")
-    if len(parsed_course["lesson_ids"]) != 12:
-        raise ValueError(f"Latin course must have 12 lessons: {parsed_course['id']}")
-    active_course = dict(manifest_course)
-    active_course["status"] = "active"
-    active_course["order"] = len(COURSES) + 1
-    COURSES.append(active_course)
+    registered_course = next(
+        (item for item in COURSES if item.get("id") == parsed_course["id"]),
+        None,
+    )
+    if registered_course is None:
+        raise ValueError(f"Latin course is missing from courses.json: {parsed_course['id']}")
+    if registered_course.get("status") != "active":
+        raise ValueError(f"Latin course is not active in this branch manifest: {parsed_course['id']}")
+    if registered_course.get("lesson_ids") != parsed_course["lesson_ids"]:
+        raise ValueError(f"Runtime course lesson IDs mismatch for {parsed_course['id']}")
+    if registered_course.get("source_part") != parsed_course["source_part"]:
+        raise ValueError(f"Runtime source part mismatch for {parsed_course['id']}")
 
 duplicate_latin_ids = set(LESSON_DATA).intersection(LATIN_LESSONS)
 if duplicate_latin_ids:
