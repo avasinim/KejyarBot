@@ -186,6 +186,18 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("do not load it separately", snapshot)
         self.assertEqual(master.count("## Ders 12 —"), 1)
 
+    def test_course_two_lesson_document_is_kurmanji_latin_and_has_12_latin_headings(self):
+        import re
+
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        headings = [int(number) for number in re.findall(r"^## Ders (\\d+) —", lesson_text, flags=re.MULTILINE)]
+        self.assertEqual(headings, list(range(1, 13)))
+        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_text))
+        for label in ("### Armanc", "### Naverok", "### Xebat", "### Kuis"):
+            self.assertIn(label, lesson_text)
+        self.assertNotIn("### ئامانج", lesson_text)
+        self.assertNotIn("### ناوەڕۆک", lesson_text)
+
     def test_course_two_lesson_document_has_real_markdown_line_breaks(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         self.assertNotIn(r"\n", lesson_text)
