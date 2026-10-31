@@ -265,8 +265,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
                     rows.append((int(cells[0]), cells[1], cells[2]))
         self.assertEqual(len(questions), 5)
         self.assertEqual(len(rows), 5)
-        for number, letter, answer in rows:
-            self.assertEqual(questions[number][letter], answer)
+        for number, letter, answer_text in rows:
+            self.assertEqual(questions[number][letter], answer_text)
 
 
 if __name__ == "__main__":
