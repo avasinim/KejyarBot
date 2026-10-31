@@ -32,6 +32,8 @@ Dengdêra E di van peyvan de tê dîtin:
 | heval | E |
 | mezin | E |
 | şert | E |
+| der | E |
+| ser | E |
 
 ### 3. Dengdêra I
 Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
@@ -46,6 +48,8 @@ Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
 | hilbijartin | I |
 | kirin | I |
 | biçûk | I |
+| din | I |
+| bin | I |
 
 Baldar be: I û Î du herfên cuda ne. Di dil de I heye; di pîr de Î heye. I û Î her du herfên cuda ne.
 
@@ -59,6 +63,8 @@ Dengdêra U di van peyvan de tê dîtin:
 | gund | U |
 | xurt | U |
 | kulîlk | U |
+| kurd | U |
+| kul | U |
 
 Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
 
@@ -153,6 +159,8 @@ Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya
 | zarok | A |
 | bajar | A |
 | çav | A |
+| sar | A |
+| bar | A |
 
 ### 3. Dengdêra Ê
 | Peyv | Dengdêr |
@@ -163,6 +171,9 @@ Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya
 | mêrik | Ê |
 | hêvî | Ê |
 | çêkirin | Ê |
+| dêr | Ê |
+| şêr | Ê |
+| mêr | Ê |
 
 Ê ji E cuda ye. Di ez de E heye, di êvar de Ê heye.
 
@@ -175,6 +186,9 @@ Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya
 | jîn | Î |
 | şîr | Î |
 | xwîn | Î |
+| tîr | Î |
+| zîv | Î |
+| şîv | Î |
 
 Î ji I cuda ye. Di dil de I heye, di pîr de Î heye.
 
@@ -186,6 +200,8 @@ Li gorî çavkaniya bingehîn, dengdêrên kurdî li gorî dirêjî û kurtahiya
 | kor | O |
 | roj | O |
 | kom | O |
+| dor (source) | O |
+| kor (source) | O |
 
 Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 
@@ -198,6 +214,8 @@ Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 | dû | Û |
 | mû | Û |
 | şûştin | Û |
+| kûr | Û |
+| şûr | Û |
 
 Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn, ne bi U.
 
