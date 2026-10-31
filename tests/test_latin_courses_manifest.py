@@ -149,6 +149,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("Pronavê nêtar `xwe`", lesson_ten)
         self.assertIn("Pronavên xwemalîn xwedîtiyê nîşan didin", lesson_eleven)
         self.assertIn("ji du pronavan pêk tên", lesson_eleven)
+        self.assertIn("Her kes dibêje", lesson_eleven)
+        self.assertNotIn("Her kes di bêje", lesson_eleven)
 
 
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
@@ -469,6 +471,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("Peyv: `pirtûk — dibistanê — av — mamoste — heval`", lesson_text)
         self.assertIn("Zarok di ______ de ne.", lesson_text)
         self.assertIn("Ev pirtûka min e.", lesson_text)
+        self.assertIn("Di alfabeyê de 31 herf hene:", lesson_text)
+        self.assertNotIn("Alfabe 31 herf hene:", lesson_text)
         self.assertNotIn("Ev pirtûk a min e.", lesson_text)
 
     def test_course_one_lesson_one_describes_short_i_position_correctly(self):
