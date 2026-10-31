@@ -54,15 +54,15 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 - Keep the source examples for U and Û separate; do not let an exercise place `bûn`, `xwîn`, or `dûr` under U.
 
 ### Lesson 8 — Cudahiyên Dengên V û W
-- Correct the table entry `zivistan | destpêk`: the word begins with Z and has no V. Remove it from the V-at-word-start list.
+- Correct the recovered table entry `zivistan | destpêk` to `zivistan | navîn`: the word begins with Z but contains V medially. Retain it as a V-containing word; do not classify V as initial in this example.
 - Use the source's contrastive examples: `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî`.
 - Keep reliable position examples: V in `ve` (initial), `nivîs` (medial), `av` (final); W in `welat`, `wêne` (initial), `law` (final).
-- Rebuild the sorting exercise so every item actually contains the target letter. Do not include `zivistan` in the V/W sorting set.
+- Preserve the recovered sorting exercise because `zivistan` does contain V medially. Add the source's contrastive pairs `dev/dew`, `vir/wîr`, `ava/awa`, and `evî/ewî` as supplementary examples, not as meaning-equivalent pairs.
 
 ### Lesson 9 — Herfên Taybet di Elfabeya Kurdî de
 - Keep the current title “Herfên Taybet di Elfabeya Kurdî de”: it describes the lesson's focus on marked letters. Do not relabel it “Dengdarên Taybet”, because Ê, Î and Û are vowels.
 - Explain that this lesson groups marked letters for orthographic practice, not a single phonological class: Ç and Ş are consonants; Ê, Î and Û are vowels.
-- Correct the malformed exercise `U / Ûr` to `U / Û` in the word `dûr`.
+- Correct the malformed exercise `U / Ûr` to `U / Û` and identify `dûr` as the target word. Move `xwîn` from the Û examples to the Î examples; `xwîn` contains Î, not Û.
 - Avoid repeating Lesson 2's entire explanation; focus on accurate recognition, typing, and preserving the diacritics in actual words.
 
 ### Lesson 10 — Têkiliya Deng û Herfê
@@ -77,6 +77,7 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 ### Lesson 12 — Xwendin û Nivîsandina Pratîk
 - Keep it as the review/practice lesson for Lessons 1–11; its five-question quiz exists in the recovered draft and must not be mistakenly marked absent.
 - Correct `Ev pirtûk a min e` to `Ev pirtûka min e`. The ezafe linker belongs attached to the noun in this construction; compare the source's attached forms such as `xencera min` (Part II, p. 61).
+- In the fill-in word bank, use `dibistanê` for the sentence `Zarok di ______ de ne`, so the oblique/locative form is supplied correctly.
 - Check that each reading passage and quiz item uses only distinctions taught earlier in the course.
 
 ## Release gates
@@ -89,3 +90,8 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 ## Editorial cleanup — Lesson 6
 
 The recovered Lesson 6 contained a few accidental Sorani/Arabic-script fragments inside its explanatory note and practice instructions. These were converted to clear Kurmanji Latin wording without changing the lesson's target contrast, word list, or quiz options. A regression test now rejects Arabic-script characters anywhere in this Latin-course lesson. The remaining vowel-pair table is explicitly described as a recognition aid, not as a list of minimal pairs or synonymous pairs.
+
+
+## Recovery update — Lessons 8, 9 and 12
+
+The exact original bodies for Course 1 Lessons 8, 9 and 12 were recovered from `Pasted markdown(3).md` and restored to `latin_course_1_lessons_08_09_recovered_draft.md` and `latin_course_1_lesson_12_recovered_draft.md`. The older rewritten drafts are marked superseded. Lesson 8 keeps the original content but corrects the V position in `zivistan` from initial to medial and adds the source's V/W contrast examples. Lesson 9 preserves the original quiz option order, moves `xwîn` to the Î group and repairs `U / Ûr`. Lesson 12 preserves the original reading and quiz sequence, correcting the ezafe spelling and supplying the inflected `dibistanê` form in its exercise word bank. Regression tests now verify the restored option order and exact keys.
