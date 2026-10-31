@@ -100,6 +100,40 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("ew", lesson_nine)
 
 
+    def test_course_two_lessons_four_and_five_separate_number_from_noun_inflection(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_four = lesson_text.split("## وانەی ٤ —", 1)[1].split("## وانەی ٥ —", 1)[0]
+        lesson_five = lesson_text.split("## وانەی ٥ —", 1)[1].split("## وانەی ٦ —", 1)[0]
+
+        self.assertIn("`Mîr hat.`", lesson_four)
+        self.assertIn("`Mîr hatin.`", lesson_four)
+        self.assertIn("`Ev mehin e.`", lesson_four)
+        self.assertIn("`Ev mehin in.`", lesson_four)
+        self.assertIn("`hespek/hespin`", lesson_four)
+        self.assertIn("tenê wek nîşana gelemjimarê", lesson_four)
+        self.assertNotIn("`hesp` → `hespan`", lesson_four)
+
+        self.assertIn("`Hesp hat.`", lesson_five)
+        self.assertIn("`Ez hespî dibînim.`", lesson_five)
+        self.assertIn("`Ez mehinê dibînim.`", lesson_five)
+        self.assertIn("`Ez hespan dibînim.`", lesson_five)
+        self.assertIn("`Ez mehînan dibînim.`", lesson_five)
+        self.assertIn("`kum`", lesson_five)
+        self.assertIn("`gund`", lesson_five)
+        self.assertIn("`maseyan → masan`", lesson_five)
+
+    def test_course_two_lessons_seven_and_eight_distinguish_determiner_environments(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_seven = lesson_text.split("## وانەی ٧ —", 1)[1].split("## وانەی ٨ —", 1)[0]
+        lesson_eight = lesson_text.split("## وانەی ٨ —", 1)[1].split("## وانەی ٩ —", 1)[0]
+
+        for form in ("`-ê`", "`-a`", "`-ên`", "`Ez ê gewir dixwazim.`", "`Ez a sor dixwazim.`", "`Ez ên sor dixwazim.`"):
+            self.assertIn(form, lesson_seven)
+
+        for form in ("`-ek`", "`-in`", "`-ekî`", "`-eke`", "`-ine`", "`-ekê`", "`-ina`", "`mehîneke delal hat`"):
+            self.assertIn(form, lesson_eight)
+
+
     def test_course_two_lessons_ten_and_eleven_cover_remaining_source_pronoun_types(self):
         lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         lesson_ten = lesson_text.split("## وانەی ١٠ —", 1)[1].split("## وانەی ١١ —", 1)[0]
