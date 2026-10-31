@@ -140,22 +140,19 @@ async def send_lesson_infographic(message, lesson_id):
     return
 
 async def send_lesson_branding(message, lesson_id):
-    """Show the KejyarBot logo before every Course 3 lesson."""
-    if LESSON_COURSE.get(lesson_id) != "unified_orthography":
+    """Show text-only KejyarBot branding; Courses 2, 3 and 4 use no images."""
+    if LESSON_COURSE.get(lesson_id) not in {
+        "daily_conversation",
+        "unified_orthography",
+        "grammar",
+    }:
         return
     lesson = LESSON_DATA.get(lesson_id, {})
     caption = (
         f"🌿 کەژیار | KejyarBot\n"
         f"📖 وانەی {lesson.get('source_number', '')} — {lesson.get('title', '')}"
     )
-    logo_path = BASE_DIR / "assets" / "kejyarbot_logo.png.b64"
-    if logo_path.is_file():
-        logo_bytes = base64.b64decode(logo_path.read_text(encoding="ascii"))
-        logo = io.BytesIO(logo_bytes)
-        logo.name = "kejyarbot-logo.png"
-        await message.reply_photo(photo=logo, caption=caption)
-    else:
-        await message.reply_text(caption)
+    await message.reply_text(caption)
 
 ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
 COURSE_LESSON_ORDER = {
