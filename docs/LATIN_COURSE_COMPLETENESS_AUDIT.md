@@ -86,7 +86,7 @@ Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeu
 
 A second pass against the source table of contents and printed pp. 76–89 found that the 12-lesson draft did not yet teach every pronoun class named by Bedir-Xan. The missing coverage is now added without changing the Latin-course boundary or importing Course 1 material:
 
-- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 76–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included.
+- Lesson 10 adds **Pronavên lihevxisitî** (printed pp. 76–81), including the source's preposition-pronoun combinations `jê`, `lê`, `pê`, `tê` and compound forms such as `jev/jêk` and `pev/pêk`. The caution about not duplicating a preposition already contained in a fused form is included. It also restores the reflexive `xwe` (p. 87) and the singular neuter pronoun `ê` (pp. 88–89), with examples and a distinction from plural `wan`.
 - Lesson 11 adds **Pronavên nebinavkirî** (printed pp. 86–87), with source-grounded examples such as `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt`, and `gelek`.
 - Lesson 11 adds **Pronavên xwemalîn** (printed pp. 87–89), showing the source's `yê/ya/yên` plus personal-pronoun pattern, and distinguishing these full pronouns from possessive adjectives such as `hespê min`.
 - A regression test guards the new source categories and examples.
