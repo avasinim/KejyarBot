@@ -82,8 +82,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("Mezin: B • Biçûk: b", rendered)
         self.assertNotIn("|---|", rendered)
         self.assertNotIn("| A |", rendered)
-        wrapped = bot.format_lesson_draft("Before\\n---\\n<text>Heşt herfên dengdêr</text>\\nAfter")
-        self.assertEqual(wrapped, "Before\\nHeşt herfên dengdêr\\nAfter")
+        wrapped = bot.format_lesson_draft("Before\n---\n<text>Heşt herfên dengdêr</text>\nAfter")
+        self.assertEqual(wrapped, "Before\nHeşt herfên dengdêr\nAfter")
 
     def test_lesson_content_is_not_reformatted_or_truncated(self):
         lessons, _, _ = load_latin_courses()
