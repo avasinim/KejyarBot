@@ -43,7 +43,7 @@ Bedir-Xan çar hêmanên bingehîn ji hev cuda dike. Rêza pêkhatinê ji tîpê
 1. Gramêr çi ye? A) tenê zanista dengdanê B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) komek nav
 2. Li gorî pirtûkê, çend hêmanên bingehîn ên ziman hene? A) 3 B) 4 C) 6
 3. Tîp çi ye? A) nîşana nivîskî B) yekeya wateyê C) komek bêje
-4. `hesp` di çi kategoriyê de ye? A) kît B) bêje C) kom
+4. `hesp` di çi kategoriyê de ye? A) kît B) bêje C) komek
 5. Qiset çawa pêk tê? A) bi dubarekirina tîpan B) bi peyhevketina koman C) bi yek tîpê
 
 ---
