@@ -296,6 +296,21 @@ Pirtûk cureyeke din bi navê **pronavên lihevxisitî** rave dike. Ev form ji p
 
 Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxisitî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
 
+### Pronavê vegerok `xwe`
+`xwe` pronavê nêtar e û dikare ji bo her du zayendan û hejmaran were bikaranîn. Dema kirar û bireser di hevokê de heman kes bin, `xwe` li şûna dubarekirina pronavê bireser tê:
+- `Wî xwe kuşt.`
+- `Wê xwe kuşt.`
+- `Wan xwe kuşt.`
+
+Ji ber vê yekê di hevoka wek `Ez xwe di neynikê de dibînim` de `xwe` ji heman kesê `ez` re vedigere. Di hin hevokên din de `xwe` dikare bi pronavên kesîn re bê bikaranîn; divê li gorî kes û mêjera hevokê were fêmkirin.
+
+### Pronavê nêtar ê `ê`
+Pirtûk forma `ê` wek pronavê nêtar ê yekjimar nîşan dide. Ew dikare di hin rewşan de li şûna `vî`, `vê`, `wî` an `wê` were, lê ji bo gelemjimarê nayê bikaranîn:
+- `Min da vî / vê / wî / wê` → `Min da ê`.
+- `Ezê bibim vî / vê / wî / wê` → `Ezê bibim ê`.
+
+Ev form divê ji `wan` cuda were fêrbûn؛ `ê` yekjimar e û `wan` gelemjimar.
+
 ### Xebat
 1. Di `Wê ew dît` de pronavên bireser bibîne.
 2. Bi `hev` û `êk` du hevok çêbike.
