@@ -88,34 +88,34 @@ Piştî nivîsandinê, herf, rêza peyvan û nîşanên taybet kontrol bike.
 ### 7. Testa dawî ya korsa yekem
 
 1. Çend herf di alfabeya kurdî ya latînî de hene?
-   - A) 28
-   - B) 29
-   - C) 31
-   - D) 32
+A) 28
+B) 29
+C) 31
+D) 32
 
 2. Kîjan rêz tenê ji dengdêran pêk hatiye?
-   - A) A, E, Ê, I, Î, O, U, Û
-   - B) B, C, D, F
-   - C) A, B, C, Ç
-   - D) E, F, G, H
+A) A, E, Ê, I, Î, O, U, Û
+B) B, C, D, F
+C) A, B, C, Ç
+D) E, F, G, H
 
 3. Kîjan peyv rast hatiye nivîsîn?
-   - A) cav
-   - B) çav
-   - C) sav
-   - D) şav
+A) cav
+B) çav
+C) sav
+D) şav
 
 4. Di hevoka «Ez kurmancî hîn dibim» de çend peyv hene?
-   - A) 3
-   - B) 4
-   - C) 5
-   - D) 6
+A) 3
+B) 4
+C) 5
+D) 6
 
 5. Piştî nivîsandina hevokê çi divê bikî?
-   - A) Herfan jê bibî
-   - B) Rêza peyvan biguherînî
-   - C) Nivîsandinê kontrol bikî
-   - D) Peyvan bêyî kontrol bihêlî
+A) Herfan jê bibî
+B) Rêza peyvan biguherînî
+C) Nivîsandinê kontrol bikî
+D) Peyvan bêyî kontrol bihêlî
 
 ### 8. Xulasa û qedandina kursê
 
