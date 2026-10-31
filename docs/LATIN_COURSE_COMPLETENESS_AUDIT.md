@@ -94,3 +94,10 @@ A second pass against the source table of contents and printed pp. 76–89 found
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 76–89. The six broad pronoun classes are listed on printed p. 74; the additional lihevxisitî section begins on p. 76. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 This is an editorial source-alignment completion, not a claim that the new explanatory prose is a verbatim transcription of the book.
+
+
+## Course 2 Lesson 12 — ordinal numeral adjectives
+
+The source's printed pp. 94–95 explicitly divides **rengdêrên jmarîn** into cardinal and ordinal forms. The Lesson 12 draft previously showed cardinal examples (`sê mal`, `çar xanî`, `deh bizin`) but omitted the ordinal class. It now explains that ordinal forms indicate a noun's sequence and normally follow the noun, with source-grounded examples such as `stûna çaran`, `a pêncan`, and `ê heftan`. A regression assertion guards this distinction and examples.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 94–95. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
