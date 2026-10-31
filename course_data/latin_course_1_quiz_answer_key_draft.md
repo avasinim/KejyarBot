@@ -65,3 +65,6 @@ Status: editorial answer-key draft. The option labels below are based on the rec
 
 
 **نوێکاری:** کلیلە کۆنەکانی وانەی ٨ و ٩ لابراون، چونکە دەقی وانەکان چاککراوەتەوە و ڕیزبەندی هەڵبژاردەکان گۆڕاوە. کلیلەی نوێ و هاوتای دەقی هەڵبژاردەکان لە `latin_course_1_lessons_08_09_answer_key.md` دایە.
+
+
+**ئاگاداریی نوێ:** کلیلەکانی کۆنی وانەکانی ٨ و ٩ لابراون، چونکە دەقی جێگرەوەی نوێیان option order ـی جیاوازی هەیە. کلیلەی دروستی ئەم دوو وانە لە `latin_course_1_lessons_08_09_answer_key.md`دایە.
