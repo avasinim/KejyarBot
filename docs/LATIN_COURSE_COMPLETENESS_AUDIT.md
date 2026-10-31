@@ -212,3 +212,12 @@ Course 1 Lessons 4–5 were checked against Bedir-Xan's vowel classification on 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 39–40, 55–61, 64–65: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
 Latest verified CI on this pass: run `41226992878`, commit `b37efb33f19b43c49f9943018c625d1bac1d9069`, `compileall` and **183 tests passed**.
+
+
+## Course 1 Lessons 6–7 and Course 2 Lessons 6–7 — source cross-check
+
+Course 1 Lessons 6–7 were checked against the vowel section on printed pp. 24–27. The source classifies short vowels as `e, i, u` and long vowels as `a, ê, î, o, û`; importantly, it explicitly says a short vowel does not become its long counterpart merely by being lengthened, because the articulation/quality differs. The Course 1 vowel lessons now state this distinction so learners do not infer that `I/Î` or `U/Û` are only duration pairs.
+
+Course 2 Lesson 6 was checked against printed pp. 61–62: the source lists determiners before and after nouns, including `ev keçik`, `kîjan mirov`, `hespê beza`, and nested modifier groups. The lesson now distinguishes the function of `ev` in `ev keçik` (noun modifier) from standalone `ev` used as a demonstrative pronoun. Course 2 Lesson 7 was checked against printed pp. 62–64: the three definite determiners are `ê`, `a`, and `ên`, with masculine singular, feminine singular, and plural uses respectively; the source also treats their use before adjectives separately from the post-nominal forms. Existing lesson examples reflect this distinction, so no broad rewrite was needed.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 24–27 and 61–64: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
