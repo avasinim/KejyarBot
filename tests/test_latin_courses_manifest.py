@@ -236,5 +236,38 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertIn("bi Î tê nivîsîn", long_u_section)
 
 
+    def test_course_two_replacement_lesson_twelve_key_matches_exact_options(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
+        key_text = (ROOT / "course_data" / "latin_course_2_lesson_12_answer_key.md").read_text(encoding="utf-8")
+        questions = {}
+        current = None
+        in_quiz = False
+        for line in lesson_text.splitlines():
+            if line.startswith("### 10. Testa Kejyar"):
+                in_quiz = True
+                continue
+            if in_quiz:
+                if line.startswith("### Xulasa"):
+                    in_quiz = False
+                    continue
+                if line and line[0].isdigit() and ". " in line:
+                    number, _ = line.split(". ", 1)
+                    current = int(number)
+                    questions[current] = {}
+                    continue
+                if len(line) > 3 and line[0] in "ABC" and line[1:3] == ") ":
+                    questions[current][line[0]] = line[3:]
+        rows = []
+        for line in key_text.splitlines():
+            if line.startswith("|"):
+                cells = [cell.strip() for cell in line.strip("|").split("|")]
+                if len(cells) >= 3 and cells[0].isdigit():
+                    rows.append((int(cells[0]), cells[1], cells[2]))
+        self.assertEqual(len(questions), 5)
+        self.assertEqual(len(rows), 5)
+        for number, letter, answer in rows:
+            self.assertEqual(questions[number][letter], answer)
+
+
 if __name__ == "__main__":
     unittest.main()
