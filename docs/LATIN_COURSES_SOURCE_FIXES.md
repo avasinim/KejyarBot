@@ -95,7 +95,7 @@
 
 
 ## Latest continuation — quiz-key consistency and CI repair (2026-10-31)
-- Re-audited the replacement drafts for Course 1 lessons 8–9. The replacement answer key is exact for all 10 questions; the legacy Course 1 answer-key file had stale rows for lessons 8–9 with a different option order. Those stale rows have been removed so there is one authoritative key per replacement draft.
+- Re-audited the recovered original Course 1 Lessons 8–9. Their answer key is exact for all 10 questions; stale legacy rows with a different option order were removed so the recovered lessons have one authoritative key.
 - Added a test that compares every answer-key text against the exact option selected in replacement lessons 8–9.
 - The first CI run exposed a malformed regular expression in a duplicated test method. Removed the duplicate method, retained the corrected exact-option test, and reran the full workflow.
 - Latest verified workflow: run `41204504221`, conclusion **success**. Both `compileall` and `python -m unittest discover -s tests -v` passed.
