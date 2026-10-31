@@ -2,7 +2,7 @@ name: Python checks
 
 on:
   push:
-    branches: ["main", "fix/**"]
+    branches: ["main", "fix/**", "work/**"]
   pull_request:
     branches: ["main"]
 
