@@ -107,43 +107,6 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
 
 
-    def test_course_one_lessons_eight_and_nine_keys_match_exact_options(self):
-        lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md").read_text(encoding="utf-8")
-        key_text = (ROOT / "course_data" / "latin_course_1_lessons_08_09_answer_key.md").read_text(encoding="utf-8")
-        import re
-        questions = {}
-        lesson_number = 0
-        in_quiz = False
-        for line in lesson_text.splitlines():
-            heading = re.match(r"^## Ders ([89]):", line)
-            if heading:
-                lesson_number = int(heading.group(1))
-                in_quiz = False
-            if line.startswith("### 6. Testa Kejyar"):
-                in_quiz = True
-                continue
-            if in_quiz:
-                question = re.match(r"^(\\d+)\\. (.+)$", line)
-                if question:
-                    current = (lesson_number, int(question.group(1)))
-                    questions[current] = {}
-                    continue
-                option = re.match(r"^([A-D])\\) (.+)$", line)
-                if option:
-                    questions[current][option.group(1)] = option.group(2)
-                if line.startswith("### Xulasa"):
-                    in_quiz = False
-
-        key_rows = re.findall(
-            r"^\\| ([89]) \\| (\\d+) \\| ([A-D]) \\| ([^|]+) \\|",
-            key_text, flags=re.MULTILINE
-        )
-        self.assertEqual(len(questions), 10)
-        self.assertEqual(len(key_rows), 10)
-        for lesson, question, letter, answer in key_rows:
-            self.assertEqual(questions[(int(lesson), int(question))][letter], answer.strip())
-
-
     def test_course_one_replacement_lessons_08_09_keys_match_exact_options(self):
         import re
         path = ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md"
