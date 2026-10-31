@@ -20,7 +20,7 @@ Elfabeya Kurdî ya Latînî:
 
 `A B C Ç D E Ê F G H I Î J K L M N O P Q R S Ş T U Û V W X Y Z`
 
-Alfabe 31 herf hene:
+Di alfabeyê de 31 herf hene:
 
 - 8 dengdêr: `A E Ê I Î O U Û`
 - 23 dengdar: `B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z`
