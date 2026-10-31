@@ -379,6 +379,9 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def test_course_one_replacement_vowel_lessons_include_bedir_xan_source_examples(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
         lesson_four, lesson_five = lesson_text.split("## Ders 5:", 1)
+        self.assertIn("§10", lesson_four)
+        self.assertIn("bi gelemperî ne di destpêkê", lesson_four)
+        self.assertIn("guh, gul, kul, kur, xurt", lesson_four)
         source_short = ("der", "şer", "ser", "kin", "din", "bin", "kur", "kurd", "kul")
         source_long = ("av", "sar", "bar", "dêr", "şêr", "mêr", "tîr", "zîv", "şîv", "dor", "sor", "kor", "kûr", "şûr", "dûr")
         self.assertIn("tenê dirêjahiya heman dengî nayê watekirin", lesson_four + lesson_five)
