@@ -15,7 +15,7 @@ Di rastnivîsîna kurmancî de divê herfa ku di peyva armanc de heye bi awayê 
 | pênc | penc |
 | dûr | dur |
 
-Ev berawirdkirin ji bo peyvên armanc ên vê dersê ye؛ formên li stûna rast divê bi herf û nîşana xwe bên parastin.
+Ev berawirdkirin ji bo peyvên armanc ên vê dersê ye; formên li stûna rast divê bi herf û nîşana xwe bên parastin.
 
 ### 2. Rêza herfan biparêze
 Her peyv ji rêzeke taybet a herfan pêk tê. Dema rêza herfan biguhere, forma peyvê jî diguhere an dibe rêzeke nepeyvî.
@@ -44,7 +44,7 @@ Van herfan bi nîşana xwe binivîse:
 
 Mînak: çiya, êvar, îro, şev, dûr.
 
-Nîşanên van herfan xeml nînin؛ ew beşek ji nasnameya herfan in.
+Nîşanên van herfan xeml nînin; ew beşek ji nasnameya herfan in.
 
 ### 5. Rêbaza kontrolkirina peyvê
 Dema peyvekê dinivîsî:
