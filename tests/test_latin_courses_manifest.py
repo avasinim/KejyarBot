@@ -90,6 +90,16 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[int(number)][option], answer.strip())
 
 
+    def test_course_two_lesson_nine_includes_all_three_pronoun_genders(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        lesson_nine = lesson_text.split("## وانەی ٩ —", 1)[1].split("## وانەی ١٠ —", 1)[0]
+        self.assertIn("sê zayendên pronav", lesson_nine)
+        self.assertIn("sêyem yekjimar nêtar", lesson_nine)
+        self.assertIn("wî", lesson_nine)
+        self.assertIn("wê", lesson_nine)
+        self.assertIn("ew", lesson_nine)
+
+
     def test_course_two_lesson_twelve_has_one_canonical_selected_version(self):
         master = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         snapshot = (ROOT / "course_data" / "latin_course_2_lesson_12_replacement_draft.md").read_text(encoding="utf-8")
