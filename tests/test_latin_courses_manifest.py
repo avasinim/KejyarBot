@@ -217,16 +217,20 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[number][letter], answer)
 
 
-    def test_course_one_replacement_drafts_keep_latin_script_and_vowel_labels(self):
+    def test_course_one_latin_drafts_keep_latin_script_and_vowel_labels(self):
         import re
-        lesson_45 = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
-        lesson_89 = (ROOT / "course_data" / "latin_course_1_lessons_08_09_replacement_draft.md").read_text(encoding="utf-8")
-        for draft in (lesson_45, lesson_89):
+        paths = (
+            "latin_course_1_lesson_01_corrected_draft.md",
+            "latin_course_1_lesson_07_corrected_draft.md",
+            "latin_course_1_lessons_04_05_replacement_draft.md",
+            "latin_course_1_lessons_08_09_replacement_draft.md",
+        )
+        drafts = [(ROOT / "course_data" / name).read_text(encoding="utf-8") for name in paths]
+        for draft in drafts:
             self.assertIsNone(re.search(r"[\u0600-\u06FF]", draft))
-        self.assertIn("| xwîn | Î |", lesson_45)
-        self.assertNotIn("| xwîn | Û |", lesson_45)
-        self.assertIn("cotên wateyî yeksan", lesson_89)
-
+        self.assertIn("| xwîn | Î |", drafts[2])
+        self.assertNotIn("| xwîn | Û |", drafts[2])
+        self.assertIn("cotên wateyî yeksan", drafts[3])
 
     def test_course_one_lesson_seven_does_not_misclassify_xwin_as_u_circumflex(self):
         lesson = (ROOT / "course_data" / "latin_course_1_lesson_07_corrected_draft.md").read_text(encoding="utf-8")
