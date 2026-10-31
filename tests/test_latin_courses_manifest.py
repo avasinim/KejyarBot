@@ -224,6 +224,9 @@ class LatinCoursesManifestTests(unittest.TestCase):
             "latin_course_1_lesson_07_corrected_draft.md",
             "latin_course_1_lessons_04_05_replacement_draft.md",
             "latin_course_1_lessons_08_09_replacement_draft.md",
+            "latin_course_1_lesson_10_corrected_draft.md",
+            "latin_course_1_lesson_11_corrected_draft.md",
+            "latin_course_1_lesson_12_corrected_draft.md",
         )
         drafts = [(ROOT / "course_data" / name).read_text(encoding="utf-8") for name in paths]
         for draft in drafts:
