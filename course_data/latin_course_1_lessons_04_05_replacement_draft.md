@@ -47,7 +47,7 @@ Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
 | kirin | I |
 | biçûk | I |
 
-Baldar be: I û Î du herfên cuda ne. Di dil de I heye؛ di pîr de Î heye. I û Î her دو herفên cuda ne.
+Baldar be: I û Î du herfên cuda ne. Di dil de I heye; di pîr de Î heye. I û Î her du herfên cuda ne.
 
 ### 4. Dengdêra U
 Dengdêra U di van peyvan de tê dîtin:
@@ -69,7 +69,7 @@ Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşki
 | I | Î |
 | U | Û |
 
-Nîşana li ser Ê, Î, Û xeml nîne؛ beşek ji herfê ye. Ji ber vê yekê U û Û wek hev nenivîse.
+Nîşana li ser Ê, Î, Û xeml nîne; beşek ji herfê ye. Ji ber vê yekê U û Û wek hev nenivîse.
 
 ### 6. Xebata Kêjyar
 **Xebata 1:** Dengdêra armanc di peyvan de nîşan bike:
@@ -141,7 +141,7 @@ Di rêzkirina bingehîn a dengdêran de pênc herf di koma dengdêrên dirêj de
 
 A — Ê — Î — O — Û
 
-Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudahiya dengdêran de taybetmendiya deng û awayê derxistinê jî girîng e. Ji ber vê yekê her herf bi mînak û bi dengê xwe fêr bibe.
+Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade; di cudahiya dengdêran de taybetmendiya deng û awayê derxistinê jî girîng e. Ji ber vê yekê her herf bi mînak û bi dengê xwe fêr bibe.
 
 ### 2. Dengdêra A
 | Peyv | Dengdêr |
@@ -164,7 +164,7 @@ Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudah
 | hêvî | Ê |
 | çêkirin | Ê |
 
-Ê ji E cuda ye. Di ez de E heye، di êvar de Ê heye.
+Ê ji E cuda ye. Di ez de E heye, di êvar de Ê heye.
 
 ### 4. Dengdêra Î
 | Peyv | Dengdêr |
@@ -176,7 +176,7 @@ Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudah
 | şîr | Î |
 | xwîn | Î |
 
-Î ji I cuda ye. Di dil de I heye، di pîr de Î heye.
+Î ji I cuda ye. Di dil de I heye, di pîr de Î heye.
 
 ### 5. Dengdêra O
 | Peyv | Dengdêr |
@@ -187,7 +187,7 @@ Navê koma dirêj tenê wateya dirêjkirina mekanîkî ya dengê nade؛ di cudah
 | roj | O |
 | kom | O |
 
-Di xwendinê de dengê O bi baldarî nas bike؛ wê bi U an Û re neguherîne.
+Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 
 ### 6. Dengdêra Û
 | Peyv | Dengdêr |
@@ -199,7 +199,7 @@ Di xwendinê de dengê O bi baldarî nas bike؛ wê bi U an Û re neguherîne.
 | mû | Û |
 | şûştin | Û |
 
-Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn، ne bi U.
+Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn, ne bi U.
 
 ### 7. Berawirdkirina herfan
 | Kom | Herf |
