@@ -72,7 +72,7 @@ Status: editorial draft — پێش runtime پێویستی بە هاوتاکرد�
 | 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Rengdêr taybetmendî an taybetiya navdêrê rave dike. |
 | 12 | 2 | C | rengdêra wesfîn | `mezin` taybetmendiyê nîşan dide. |
 | 12 | 3 | A | rengdêra jmarîn | `sê` bi navdêrê `mal` ve girêdayî ye. |
-| 12 | 4 | B | beşeke serbixwe | Pirtûk jmarnav ji rengdêran cuda dike û wek beşeke serbixwe vedikole. |
+| 12 | 4 | B | wek beşeke serbixwe | Pirtûk jmarnav ji rengdêran cuda dike û wek beşeke serbixwe vedikole. |
 | 12 | 5 | C | nimûneyeke jmarnav | `nîv` di beşa jmarnavan de wek nimûne tê pêşkêşkirin. |
 
 
