@@ -203,3 +203,12 @@ Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî
 A direct check of the source's §10 (printed pp. 39–40) confirms two distribution notes omitted from the earlier short-vowel lesson: I generally does not occur word-initially or word-finally in native Kurmanji words, with listed function-word exceptions (li, di, ji, bi, çi); U commonly follows g, h, k, q, x, with examples such as guh, gul, kul, kur, xurt, while tu and du are identified as exceptions. Lesson 4 now includes these as source observations, explicitly not as an exhaustive spelling rule. Regression assertions guard the note.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 39–40, §10: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 1 Lessons 4–5 and Course 2 Lessons 4–5 — source cross-check
+
+Course 1 Lessons 4–5 were checked against Bedir-Xan's vowel classification on printed p. 39 and the following §10 notes on printed pp. 39–40. The existing short/long sets are consistent with the source: E/I/U are short; A/Ê/Î/O/Û are long. Lesson 4 now also records the source's I and U distribution observations with the stated exceptions, without turning them into exceptionless spelling rules. Course 2 Lesson 4's singular/plural examples and its `hespek/hespin`, `mehinik/mehinin` forms were checked against printed pp. 55–56 and pp. 64–65; Lesson 5's distinction between number and noun inflection was checked against printed pp. 57–61. The existing lessons already distinguish plural agreement, oblique noun forms, and the indefinite suffixes, so no grammar content rewrite was needed in this pass. The two courses remain independent and retain their separate source sections.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 39–40, 55–61, 64–65: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+Latest verified CI on this pass: run `41226992878`, commit `b37efb33f19b43c49f9943018c625d1bac1d9069`, `compileall` and **183 tests passed**.
