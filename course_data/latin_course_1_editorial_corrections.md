@@ -1,5 +1,5 @@
 # چاکسازیی دەقی کۆرسی ١ — Bingehên Rastnivîsîna Kurdî ya Latînî
-Status: editorial patch list based on the recovered 12-lesson drafts and Part I of Celadet Alî Bedir-Xan (2002). These are corrections to apply to the Latin Course 1 master copy; they do not modify the separate Sorani 22-lesson course.
+Status: editorial patch list for Course 1's 12 lesson slots, based on the user-supplied/recovered lesson texts and Part I of Celadet Alî Bedir-Xan (2002). These are corrections to apply to the Latin Course 1 master copy; they do not modify the separate Sorani 22-lesson course.
 
 ## Source
 Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002, Part I: “Elfabêya kurdî”, printed pp. 11–34.
@@ -17,7 +17,7 @@ A direct check of the digital edition's printed p. 11 confirms the eight-vowel i
 - Long O: `dor, sor, kor`.
 - Long Û: `kûr, şûr, dûr`.
 
-The replacement drafts for Lessons 4–5 now include these source-attested examples in the appropriate vowel groups. This is a source-alignment enhancement to the replacement drafts, not a restoration of the earlier verbatim lesson outputs. Regression tests assert that these examples remain in the correct short/long lesson and that `bûk` and `şûştin` are not placed under short U.
+The current source-aligned branch copies for Lessons 4–5 include these source-attested examples in the appropriate vowel groups. The user supplied both complete lesson texts earlier; keep those original messages as the reference and do not ask for them again. The branch copies are editorial working copies and should not be described as newly invented lessons. Regression tests assert that these examples remain in the correct short/long lesson and that `bûk` and `şûştin` are not placed under short U.
 
 ## Confirmed corrections
 
@@ -81,7 +81,7 @@ The replacement drafts for Lessons 4–5 now include these source-attested examp
 - Check that each reading passage and quiz item uses only distinctions taught earlier in the course.
 
 ## Release gates
-- The exact text of Lessons 4–5 was confirmed in prior conversation but was not restored verbatim in the recovered master file. Their content above is an editorial correction record, not a claim of verbatim restoration.
+- The user supplied the complete texts of Lessons 4–5 in the conversation. The current branch files are source-aligned editorial working copies; preserve the user-provided wording and quiz option order as the authority during reconciliation. Do not request that the user resend the lessons.
 - Add explicit answer keys and lesson-specific explanations to all quizzes; no quiz is ready for runtime until its options and key are verified.
 - Preserve original Kurmanji Latin forms and do not apply the Avasin Academy Arabic-script orthography rules.
 - Do not merge these drafts into a runtime course until course IDs, progress isolation, quiz handlers, and offline tests are added and passed.
