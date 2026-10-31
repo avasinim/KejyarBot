@@ -133,6 +133,60 @@ class LatinCoursesManifestTests(unittest.TestCase):
             selected = questions[(int(lesson), int(question))][option]
             self.assertEqual(answer_text.strip(), selected, f"Answer-key mismatch at lesson {lesson}, question {question}, option {option}")
 
+    def test_course_one_recovered_lessons_02_03_06_match_master_answer_keys(self):
+        import re
+
+        key_text = (ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md").read_text(encoding="utf-8")
+        paths = {
+            2: "latin_course_1_lesson_02_recovered_draft.md",
+            3: "latin_course_1_lesson_03_recovered_draft.md",
+            6: "latin_course_1_lesson_06_recovered_draft.md",
+        }
+        for lesson_number, filename in paths.items():
+            lesson_text = (ROOT / "course_data" / filename).read_text(encoding="utf-8")
+            questions = {}
+            current = None
+            in_quiz = False
+            for line in lesson_text.splitlines():
+                if line.startswith("### 7. Testa dersê") or line.startswith("### 6. Testa Kejyarê"):
+                    in_quiz = True
+                    current = None
+                    continue
+                if in_quiz and line.startswith("### Xulasa"):
+                    in_quiz = False
+                    current = None
+                    continue
+                if not in_quiz:
+                    continue
+                question = re.match(r"^(\\d+)\\. (.+)$", line)
+                if question:
+                    current = int(question.group(1))
+                    self.assertNotIn(current, questions)
+                    questions[current] = {}
+                    continue
+                option = re.match(r"^- ([A-D])\\) (.+)$", line)
+                if option and current is not None:
+                    self.assertNotIn(option.group(1), questions[current])
+                    questions[current][option.group(1)] = option.group(2)
+
+            key_rows = re.findall(
+                rf"^\\| {lesson_number} \\| (\\d+) \\| ([A-D]) \\| ([^|]+) \\|",
+                key_text, flags=re.MULTILINE
+            )
+            expected = set(range(1, 6))
+            self._assert_complete_unique_question_keys(
+                list(questions),
+                [int(number) for number, _, _ in key_rows],
+                expected,
+            )
+            self.assertEqual(len(key_rows), 5)
+            for number, letter, answer in key_rows:
+                self.assertEqual(
+                    questions[int(number)][letter],
+                    answer.strip(),
+                    f"Course 1 lesson {lesson_number}, question {number}, option {letter}",
+                )
+
     def test_course_one_replacement_lessons_have_exact_answer_keys(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
         key_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_answer_key.md").read_text(encoding="utf-8")
