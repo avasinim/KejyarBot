@@ -34,7 +34,7 @@ Do not substitute the separate Sorani/Arabic-script 22-lesson `orthography_found
 ## Course 2 — 12 lessons
 
 - One source-aligned 12-lesson draft is present.
-- Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly.
+- Lessons 1–3 are explicitly marked as newly written source-aligned drafts, not recovered verbatim originals. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly. Lesson 9 now explicitly includes the source's three-way pronoun gender distinction (nêr, mê, nêtar), including the neutral use of ew, and has a regression guard. Lesson 1 was reworked against printed pp. 37–38: the source's four elements are Tîp, Kît, Bêje, and Komek; Qiset is described as arising from the sequence of Komek units, not as a fifth item in that list. The lesson's grammar definition, Kurmanji-language introduction, source examples, quiz, and key were aligned accordingly.
 - Lessons 4–12 are editorially revised from recovered lesson material.
 - Lesson 12: the expanded six-category draft is now selected and copied into the canonical 12-lesson master. The former baseline section was replaced; the separate replacement file is retained only as an editorial snapshot. The consolidated master key was aligned to the selected quiz options and is regression-tested. Do not load the snapshot as a second lesson.
 - The consolidated key must match the exact quiz options in the selected lesson draft. The current canonical Course 2 Lesson 1 quiz and key are source-aligned and regression-tested; this does not convert the new draft into a recovered original.
@@ -71,5 +71,12 @@ Checked against Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera ku
 - The source's examples (Par ez çûbûm Rewanê, Îro dinya sar e, Gundê me di navbera du avan de ye) without the earlier malformed Parêz transcription.
 
 The five-question quiz and its answer key were revised together; a regression test now checks the four-element sequence, the qiset distinction, and exact key-to-option text. This is a source-alignment edit to a new draft, not a verbatim restoration of the unavailable earlier lesson.
+
+Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 Lesson 9 source-alignment check
+
+The pronoun section in printed pp. 71–73 distinguishes three grammatical genders for pronouns: masculine, feminine, and neuter. The recovered Course 2 Lesson 9 draft previously listed only masculine and feminine third-person singular rows. It now adds the neuter row and explains that wî is masculine, wê feminine, and the remaining personal forms are treated as neuter in the source's classification. The quiz's existing masculine agent-form question remains unchanged. A regression test guards the presence of all three categories and the forms ew, wî, and wê.
 
 Source: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
