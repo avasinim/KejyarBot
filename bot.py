@@ -147,10 +147,12 @@ async def send_lesson_branding(message, lesson_id):
         f"🌿 کەژیار | KejyarBot\\n"
         f"📖 وانەی {lesson.get('source_number', '')} — {lesson.get('title', '')}"
     )
-    logo_path = BASE_DIR / "assets" / "kejyarbot_logo.jpg"
+    logo_path = BASE_DIR / "assets" / "kejyarbot_logo.png.b64"
     if logo_path.is_file():
-        with logo_path.open("rb") as logo:
-            await message.reply_photo(photo=logo, caption=caption)
+        logo_bytes = base64.b64decode(logo_path.read_text(encoding="ascii"))
+        logo = io.BytesIO(logo_bytes)
+        logo.name = "kejyarbot-logo.png"
+        await message.reply_photo(photo=logo, caption=caption)
     else:
         await message.reply_text(caption)
 
