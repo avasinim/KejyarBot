@@ -25,7 +25,7 @@ V dengdareke kurmancî ye. Ew dikare di destpêk, navîn an dawiyê peyvê de we
 | zivistan | navîn |
 | av | dawî |
 
-**Têbînî:** Di peyva zivistan de V di destpêkê de nîne؛ peyv bi Z dest pê dike û V di navînê de ye.
+**Têbînî:** Di peyva zivistan de V di destpêkê de nîne; peyv bi Z dest pê dike û V di navînê de ye.
 
 ### 2. Herfa W
 W jî dengdareke kurmancî ye û dikare di cihên cuda yên peyvê de were.
@@ -48,7 +48,7 @@ V û W du herfên cuda ne. Di nivîsandinê de divê yek li şûna ya din neyê 
 | ava | awa |
 | evî | ewî |
 
-Ev cot ji bo guhdarî û berawirdkirina dengî bikar bîne؛ peyvên nû wek cotên واتایی یەکسان pêşkêş neke.
+Ev cot ji bo guhdarî û berawirdkirina dengî bikar bîne; peyvên nû wek cotên wateyî yeksan pêşkêş neke.
 
 ### 4. Rêbaza nasînê
 Dema peyvekê dixwînî:
@@ -114,9 +114,9 @@ Di dawiya vê dersê de xwendekar dikare:
 - Di peyvan de herfa rast bibîne û binivîse.
 
 ### 1. Herfên nîşankirî çi ne?
-Di elfabeya kurdî ya latînî de hin herf bi nîşanên nivîskî tên nivîsîn. Ev nîşan beşek ji nasnameya herfê ne؛ ne xeml in û divê neyên rakirin.
+Di elfabeya kurdî ya latînî de hin herf bi nîşanên nivîskî tên nivîsîn. Ev nîşan beşek ji nasnameya herfê ne; ne xeml in û divê neyên rakirin.
 
-Di vê dersê de pênc herfên nîشانکirî nas dikin:
+Di vê dersê de pênc herfên nîşankirî nas dikin:
 **Ç — Ê — Î — Ş — Û**
 
 ### 2. Herfên dengdar: Ç û Ş
@@ -145,7 +145,7 @@ Di vê dersê de pênc herfên nîشانکirî nas dikin:
 | Ş | S |
 | Û | U |
 
-Herfa nîşankirî nasnameya xwe heye. Ji bo nimûne, Ç û C ne yek in؛ Ê û E ne yek in؛ Î û I ne yek in؛ Ş û S ne yek in؛ Û û U ne yek in.
+Herfa nîşankirî nasnameya xwe heye. Ji bo nimûne, Ç û C ne yek in; Ê û E ne yek in; Î û I ne yek in; Ş û S ne yek in; Û û U ne yek in.
 
 ### 5. Xebata Kejyar
 **Xebata 1:** Di peyvên jêrîn de herfa nîşankirî bibîne:
@@ -198,4 +198,4 @@ C) Û
 D) U
 
 ### Xulasa
-Pênc herfên vê dersê Ç, Ê, Î, Ş û Û ne. Ç û Ş dengdar in؛ Ê, Î û Û dengdêr in. Nîşanên wan beşek ji nasnameya herfê ne û di nivîsandinê de divê neyên jêbirin.
+Pênc herfên vê dersê Ç, Ê, Î, Ş û Û ne. Ç û Ş dengdar in; Ê, Î û Û dengdêr in. Nîşanên wan beşek ji nasnameya herfê ne û di nivîsandinê de divê neyên jêbirin.
