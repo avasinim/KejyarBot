@@ -101,3 +101,19 @@ This is an editorial source-alignment completion, not a claim that the new expla
 The source's printed pp. 94–95 explicitly divides **rengdêrên jmarîn** into cardinal and ordinal forms. The Lesson 12 draft previously showed cardinal examples (`sê mal`, `çar xanî`, `deh bizin`) but omitted the ordinal class. It now explains that ordinal forms indicate a noun's sequence and normally follow the noun, with source-grounded examples such as `stûna çaran`, `a pêncan`, and `ê heftan`. A regression assertion guards this distinction and examples.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 94–95. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+
+## Course 2 Lessons 4–8 — number, noun inflection and determiners
+
+A source-level recheck of printed pp. 55–70 identified a key pedagogical boundary that needed to be made explicit:
+
+- **Lesson 4 — Mêjer (pp. 55–56):** the plural examples now follow the source pairs `Mîr hat/Mîr hatin`, `Ev mehin e/Ev mehin in`, `Min mehin dît/Min mehin dîtin`, and `Ez mehinê dibînim/Ez mehînan dibînim`. The lesson explicitly warns that `hespan` and `mehînan` in the cited examples are oblique/inflected forms, not a general plural suffix. It keeps `hespek/hespin` as the source's indefinite singular/plural pair rather than generalizing it to all nouns.
+- **Lesson 5 — Tewanga navdêran (pp. 57–60):** the lesson now contrasts subject forms (`Hesp hat`, `Mehin hat`) with object forms (`Ez hespî dibînim`, `Ez mehinê dibînim`) and plural object forms (`Ez hespan dibînim`, `Ez mehînan dibînim`). It adds the source's exceptions for masculine nouns without `e/a` and the alternative forms the source accepts for some masculine nouns containing `e/a`. The source's singular/plural changes `maseyan → masan` and `çiyayan → çiyan` are also represented. These are taught as source-specific patterns, not as a universal rule for every noun.
+- **Lesson 7 — definite determiners (pp. 62–64):** retains `ê/a/ên` and adds their use before adjectives when the noun is omitted, with the source's `ê gewir`, `a sor`, and `ên sor` patterns.
+- **Lesson 8 — indefinite determiners (pp. 63–70):** distinguishes `-ek/-ek/-in` after a noun without a following descriptor from `-ekî/-eke/-ine` when a descriptor follows. It now notes the additional forms that appear in oblique environments (`-ekî/-ekê/-ina`) instead of presenting the two basic rows as exhaustive.
+
+Regression tests now guard the key source examples and ensure the lessons keep number separate from oblique inflection, and definite forms separate from indefinite forms. Quiz answer-key option text remains unchanged and is checked against all 60 Course 2 questions.
+
+Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 55–70. Source PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
+
+These are editorially expanded explanations of the cited grammar, not verbatim reproductions of the book.
