@@ -521,5 +521,62 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[number][letter], answer)
 
 
+    def test_course_one_replacement_lessons_four_and_five_keys_match_exact_options(self):
+        import re
+
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_replacement_draft.md").read_text(encoding="utf-8")
+        key_text = (ROOT / "course_data" / "latin_course_1_lessons_04_05_answer_key.md").read_text(encoding="utf-8")
+
+        questions = {}
+        lesson_number = None
+        current_question = None
+        in_quiz = False
+
+        for raw_line in lesson_text.splitlines():
+            line = raw_line.strip()
+            lesson_heading = re.match(r"^## Ders ([45]):", line)
+            if lesson_heading:
+                lesson_number = int(lesson_heading.group(1))
+                in_quiz = False
+                continue
+            if line == "### 7. Testa Kejyar":
+                in_quiz = True
+                continue
+            if in_quiz:
+                if line == "### Xulasa":
+                    in_quiz = False
+                    continue
+                question_match = re.match(r"^(\d+)\.\s+", line)
+                if question_match:
+                    current_question = (lesson_number, int(question_match.group(1)))
+                    self.assertNotIn(current_question, questions)
+                    questions[current_question] = {}
+                    continue
+                option_match = re.match(r"^([A-D])\)\s+(.+)$", line)
+                if option_match:
+                    self.assertIsNotNone(current_question)
+                    option, answer = option_match.groups()
+                    self.assertNotIn(option, questions[current_question])
+                    questions[current_question][option] = answer
+
+        rows = []
+        for line in key_text.splitlines():
+            if line.startswith("|"):
+                cells = [cell.strip() for cell in line.strip("|").split("|")]
+                if len(cells) >= 4 and cells[0] in {"4", "5"} and cells[1].isdigit():
+                    rows.append((int(cells[0]), int(cells[1]), cells[2], cells[3]))
+
+        expected = {(lesson, question) for lesson in (4, 5) for question in range(1, 6)}
+        self.assertEqual(set(questions), expected)
+        self.assertEqual(len(rows), 10)
+        self._assert_complete_unique_question_keys(
+            list(questions),
+            [(lesson, question) for lesson, question, _, _ in rows],
+            expected,
+        )
+        for lesson, number, option, answer in rows:
+            self.assertEqual(questions[(lesson, number)][option], answer)
+
+
 if __name__ == "__main__":
     unittest.main()
