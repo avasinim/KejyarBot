@@ -901,7 +901,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertIn("hevdu", content)
             self.assertIn("herêmî/axaftinî", content)
             self.assertIn("yê, ya, yên", content)
-            self.assertIn("kî, kê", content)
+            self.assertIn("Kî, kê; çi, çî", content)
             self.assertIn("ko", content)
         self.assertNotIn("di hin bikaranînên nû de tê dîtin", lesson_text)
 
