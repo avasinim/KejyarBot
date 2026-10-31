@@ -27,6 +27,24 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             self.assertEqual(len(quizzes[lesson_id]), 5)
             self.assertTrue(all(len(question["options"]) in (3, 4) for question in quizzes[lesson_id]))
 
+    def test_bot_runtime_loads_both_latin_courses_without_collisions(self):
+        import bot
+
+        expected = {
+            "kurmanji_latin_orthography": "Part I",
+            "kurmanji_latin_grammar": "Part II",
+        }
+        for course_id, source_part in expected.items():
+            self.assertTrue(bot.course_is_active(course_id))
+            lesson_ids = bot.COURSE_LESSON_ORDER[course_id]
+            self.assertEqual(len(lesson_ids), 12)
+            self.assertEqual(len(set(lesson_ids)), 12)
+            self.assertTrue(all(bot.LESSON_COURSE[item] == course_id for item in lesson_ids))
+            self.assertTrue(all(len(bot.QUIZ_DATA[item]) == 5 for item in lesson_ids))
+            self.assertTrue(all(source_part in course["source_part"] for course in bot.COURSES if course["id"] == course_id))
+        self.assertEqual(len(bot.COURSES), 6)
+        self.assertEqual(len(bot.ORDER), 22)
+
     def test_bot_routes_course_selection_callbacks_for_both_latin_courses(self):
         bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
         self.assertIn("kurmanji_latin_orthography|kurmanji_latin_grammar", bot_source)
