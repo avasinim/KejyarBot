@@ -105,7 +105,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson_ten = lesson_text.split("## وانەی ١٠ —", 1)[1].split("## وانەی ١١ —", 1)[0]
         lesson_eleven = lesson_text.split("## وانەی ١١ —", 1)[1].split("## وانەی ١٢ —", 1)[0]
 
-        for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`"):
+        for form in ("Pronavên lihevxisitî", "`jê`", "`lê`", "`pê`", "`tê`", "`jev/jêk`", "`pev/pêk`", "Pronavê vegerok `xwe`", "`Wî xwe kuşt.`", "Pronavê nêtar ê `ê`", "`Min da ê`"):
             self.assertIn(form, lesson_ten)
 
         for form in ("Pronavên nebinavkirî", "`yek`", "`her kes`", "`hinek`", "Pronavên xwemalîn", "`yê min`", "`ya min`", "`yên min`"):
