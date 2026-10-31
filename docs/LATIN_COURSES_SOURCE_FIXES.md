@@ -86,17 +86,17 @@
 - The test branch comparison is against `fix/kejyarbot-stability-2026-10-25`; the Latin-course work is ahead by 24 commits and changes only the workflow, Latin-course draft/audit files, and the added test file. No bot runtime file, course registry, production data, or live service was changed by this work.
 
 
-## پێش‌نووسە جێگرەوەکانی کۆرسی ١ — وانەکانی ٨ و ٩
-- `course_data/latin_course_1_lessons_08_09_replacement_draft.md`: وانەی ٨ لەسەر V/W دووبارە نووسرایەوە؛ هەڵەی پێشوو کە `zivistan` بە Vی سەرەتایی پیشان دەدا چاک کرا. مێژووی دەنگی V/W لەگەڵ نموونەکانی سەرچاوە `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî` پەیوەست کرا.
-- وانەی ٩ ناونیشانی `Herfên Nîşankirî` وەرگرت؛ چونکە `Ç, Ê, Î, Ş, Û` هەموویان هەمان جۆری دەنگ نین: `Ç, Ş` دەنگدارن، `Ê, Î, Û` دەنگدەرن. لە دەقە کۆنەکەدا هەموویان بە شێوەیەکی هەڵە لە ژێر یەک جۆری دەنگدا باس کرابوون.
+## دەقی ڕزگارکراوی کۆرسی ١ — وانەکانی ٨ و ٩
+- `course_data/latin_course_1_lessons_08_09_recovered_draft.md`: دەقی ڕەسەنی وانەکانی ٨ و ٩ ڕزگار کرا؛ تەنیا هەڵەی دیاریکراو چاک کرا؛ هەڵەی پێشوو کە `zivistan` بە Vی سەرەتایی پیشان دەدا چاک کرا. مێژووی دەنگی V/W لەگەڵ نموونەکانی سەرچاوە `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî` پەیوەست کرا.
+- وانەی ٩ ناونیشانی `Herfên Taybet di Elfabeya Kurdî de`ی پاراست؛ چونکە `Ç, Ê, Î, Ş, Û` هەموویان هەمان جۆری دەنگ نین: `Ç, Ş` دەنگدارن، `Ê, Î, Û` دەنگدەرن. لە دەقە کۆنەکەدا هەموویان بە شێوەیەکی هەڵە لە ژێر یەک جۆری دەنگدا باس کرابوون.
 - کویزی هەر وانەیەک ٥ پرسیارە؛ کلیلەی ١٠ پرسیار لە `course_data/latin_course_1_lessons_08_09_answer_key.md` دانرا.
-- تاقیکردنەوەی خۆکار بۆ هاوتایی دەقی هەڵبژاردە و کلیلە زیاد کرا: `test_course_one_lessons_eight_and_nine_keys_match_exact_options`.
+- تاقیکردنەوەی خۆکار بۆ هاوتایی دەقی هەڵبژاردە و کلیلە زیاد کرا: `test_course_one_recovered_lessons_08_09_keys_match_original_option_order`.
 - هەڵبژاردەی وەڵامی ڕاست لە کویزی وانەی ٩ بە جۆرێک ڕێکخراوە کە هەموویان لە هەمان شوێن نەبن.
 
 
 ## Latest continuation — quiz-key consistency and CI repair (2026-10-31)
 - Re-audited the recovered original Course 1 Lessons 8–9. Their answer key is exact for all 10 questions; stale legacy rows with a different option order were removed so the recovered lessons have one authoritative key.
-- Added a test that compares every answer-key text against the exact option selected in replacement lessons 8–9.
+- Added a test that compares every answer-key text against the exact option selected in the recovered original Lessons 8–9.
 - The first CI run exposed a malformed regular expression in a duplicated test method. Removed the duplicate method, retained the corrected exact-option test, and reran the full workflow.
 - Latest verified workflow: run `41204504221`, conclusion **success**. Both `compileall` and `python -m unittest discover -s tests -v` passed.
 - The Latin-course manifest remains `draft_not_loaded_by_runtime`; it contains two independent courses of 12 lessons each, sourced separately from Part I (orthography) and Part II (grammar).
