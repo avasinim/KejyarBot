@@ -77,3 +77,10 @@
 - کویزی جێگرەوەی وانەکانی ٤–٥ی کۆرسی ١: ١٠ پرسیار و کلیلەکەی لە `course_data/latin_course_1_lessons_04_05_answer_key.md`دایە.
 - کلیلەی کۆرسی ٢ ٦٠ پرسیارە؛ دەقی وەڵامی ڕاست لە خشتەکەدا ئێستا بە دەقی هەمان هەڵبژاردە هاوتا کراوە و تاقیکردنەوەی خۆکار بۆی زیاد کراوە.
 - CI لە GitHub Actions بۆ commitی `95867d67959b467ca32b46455e9967c4abd03dcb` سەرکەوتوو بوو.
+
+
+## CI confirmation — latest source-draft state
+- Latest content commit at this audit point: `838a7e1c448a7238bf611af7e96586b55d072f2b`.
+- GitHub Actions run: `41204130738` — **success**.
+- The Python workflow ran compileall and the full unittest discovery command. The seven methods in `tests/test_latin_courses_manifest.py` passed as part of that suite.
+- The test branch comparison is against `fix/kejyarbot-stability-2026-10-25`; the Latin-course work is ahead by 24 commits and changes only the workflow, Latin-course draft/audit files, and the added test file. No bot runtime file, course registry, production data, or live service was changed by this work.
