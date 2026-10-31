@@ -420,6 +420,12 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[(int(lesson), int(number))][option], answer)
 
 
+    def test_course_one_lesson_twelve_practice_uses_correct_locative_form(self):
+        lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_12_corrected_draft.md").read_text(encoding="utf-8")
+        self.assertIn("pirtûk — dibistanê — av — mamoste — heval", lesson_text)
+        self.assertIn("Zarok li ______ ne.", lesson_text)
+        self.assertNotIn("Zarok di ______ de ne.", lesson_text)
+
     def test_course_one_lesson_one_describes_short_i_position_correctly(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_01_corrected_draft.md").read_text(encoding="utf-8")
         self.assertIn("Peyva `kin` bi K dest pê dike û I di nav xwe de dihewîne", lesson_text)
