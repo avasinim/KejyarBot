@@ -1,6 +1,6 @@
 # Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
 
-> Editorial master draft only. Not loaded by runtime and not approved for activation. This file consolidates the selected lesson texts in authoritative order. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
+> Editorial master source for the two Latin courses. The isolated work branch loads these lessons through `latin_course_runtime.py`; production activation/deployment remains separate and has not been performed. Content remains subject to final text verification. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
 
 ## Source and course separation
 - Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
