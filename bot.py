@@ -3,6 +3,7 @@ import json
 from datetime import datetime, timezone
 import logging
 import os
+import re
 from pathlib import Path
 
 from telegram import (
@@ -39,6 +40,7 @@ from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from latin_course_runtime import load_latin_courses
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -61,16 +63,47 @@ def load_json(filename):
         return json.load(file)
 
 def format_lesson_draft(markdown):
-    """Convert simple draft Markdown to readable plain text for Telegram."""
+    """Render lesson Markdown as readable Telegram text while preserving table values."""
+    source_lines = markdown.splitlines()
     lines = []
-    for line in markdown.splitlines():
-        stripped = line.strip()
+    index = 0
+    while index < len(source_lines):
+        stripped = source_lines[index].strip()
+        if re.fullmatch(r"(?:---+|\*{3,}|_{3,})", stripped):
+            index += 1
+            continue
+        if stripped.startswith("|") and stripped.endswith("|"):
+            table = []
+            while index < len(source_lines):
+                candidate = source_lines[index].strip()
+                if not (candidate.startswith("|") and candidate.endswith("|")):
+                    break
+                cells = [cell.strip() for cell in candidate.strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    table.append(cells)
+                index += 1
+            if table:
+                headers = table[0]
+                for row in table[1:]:
+                    pairs = [
+                        f"{headers[cell]}: {value}"
+                        for cell, value in enumerate(row)
+                        if cell < len(headers) and value
+                    ]
+                    lines.append(" • ".join(pairs) if pairs else " | ".join(row))
+                if len(table) == 1:
+                    lines.append(" | ".join(headers))
+            continue
         if stripped.startswith("#"):
             line = stripped.lstrip("#").strip()
         elif stripped.startswith(">"):
             line = stripped.lstrip(">").strip()
+        else:
+            line = source_lines[index]
+        line = re.sub(r"</?text>", "", line)
         line = line.replace("**", "").replace("__", "").replace("`", "")
         lines.append(line)
+        index += 1
     return "\n".join(lines).strip()
 
 # Course 1 is the 22-lesson orthography course. Keep database keys stable
@@ -134,6 +167,37 @@ for course_lessons, course_quizzes in (
     LESSON_DATA.update(course_lessons)
     QUIZ_DATA.update(course_quizzes)
 
+# The two Kurmanji Latin courses remain separate by source part, lesson IDs and quiz keys.
+LATIN_COURSE_DRAFT = load_json("course_data/latin_courses_manifest_draft.json")
+LATIN_LESSONS, LATIN_QUIZZES, LATIN_COURSE_RECORDS = load_latin_courses()
+latin_manifest_courses = LATIN_COURSE_DRAFT.get("courses", [])
+if [item.get("id") for item in latin_manifest_courses] != [
+    item["id"] for item in LATIN_COURSE_RECORDS
+]:
+    raise ValueError("Latin course manifest and runtime parser course IDs do not match")
+for manifest_course, parsed_course in zip(latin_manifest_courses, LATIN_COURSE_RECORDS):
+    if manifest_course.get("lesson_ids") != parsed_course["lesson_ids"]:
+        raise ValueError(f"Latin lesson manifest mismatch for {parsed_course['id']}")
+    registered_course = next(
+        (item for item in COURSES if item.get("id") == parsed_course["id"]),
+        None,
+    )
+    if registered_course is None or registered_course.get("status") != "active":
+        raise ValueError(f"Latin course is missing or inactive in courses.json: {parsed_course['id']}")
+    if registered_course.get("lesson_ids") != parsed_course["lesson_ids"]:
+        raise ValueError(f"Runtime course lesson IDs mismatch for {parsed_course['id']}")
+    if registered_course.get("source_part") != parsed_course["source_part"]:
+        raise ValueError(f"Runtime source part mismatch for {parsed_course['id']}")
+
+duplicate_latin_ids = set(LESSON_DATA).intersection(LATIN_LESSONS)
+if duplicate_latin_ids:
+    raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_latin_ids)}")
+for lesson_id, lesson in LATIN_LESSONS.items():
+    lesson["content"] = format_lesson_draft(lesson["content"])
+LESSON_DATA.update(LATIN_LESSONS)
+QUIZ_DATA.update(LATIN_QUIZZES)
+COURSES.sort(key=lambda item: item.get("order", 999))
+
 async def send_lesson_infographic(message, lesson_id):
     """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
@@ -156,7 +220,7 @@ def course_is_active(course_id):
 
 def validate_activated_course_runtime():
     """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
-    expected_counts = {"daily_conversation": 48, "unified_orthography": 66}
+    expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -459,29 +523,35 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
-async def send_lesson_text(message, content, reply_markup=None):
-    """Send lesson drafts in Telegram-safe chunks without splitting Unicode text."""
-    limit = 3800
+def split_lesson_text(content, limit=3800):
+    """Split text without dropping whitespace at Telegram message boundaries."""
+    content = content.strip()
+    if not content:
+        return ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
     chunks = []
-    remaining = content.strip()
-    while remaining:
-        if len(remaining) <= limit:
-            chunks.append(remaining)
-            break
-        split_at = remaining.rfind("\n", 0, limit)
-        if split_at < limit // 2:
-            split_at = remaining.rfind(" ", 0, limit)
-        if split_at < limit // 2:
-            split_at = limit
-        chunks.append(remaining[:split_at].strip())
-        remaining = remaining[split_at:].strip()
-    if not chunks:
-        chunks = ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+    start = 0
+    while start < len(content):
+        end = min(start + limit, len(content))
+        if end < len(content):
+            newline = content.rfind("\n", start, end)
+            space = content.rfind(" ", start, end)
+            boundary = max(newline, space)
+            if boundary > start + limit // 2:
+                end = boundary + (1 if content[boundary] == "\n" else 1)
+        chunks.append(content[start:end])
+        start = end
+    return chunks
+
+
+async def send_lesson_text(message, content, reply_markup=None):
+    """Send lesson drafts in Telegram-safe chunks without losing characters."""
+    chunks = split_lesson_text(content)
     for index, chunk in enumerate(chunks):
         await message.reply_text(
             chunk,
             reply_markup=reply_markup if index == len(chunks) - 1 else None,
         )
+
 
 async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -712,7 +782,7 @@ def main():
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar)$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
