@@ -397,15 +397,14 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 if line.startswith("### Xulasa"):
                     in_quiz = False
                     continue
-                question = re.match(r"^\\s*(\\d+)\\. (.+)$", line)
-                if question:
-                    current = (lesson_number, int(question.group(1)))
+                if line and line[0].isdigit() and ". " in line:
+                    number, _ = line.split(". ", 1)
+                    current = (lesson_number, int(number))
                     self.assertNotIn(current, questions)
                     questions[current] = {}
                     continue
-                option = re.match(r"^\\s*-?\\s*([A-D])\\) (.+)$", line)
-                if option and current is not None:
-                    questions[current][option.group(1)] = option.group(2)
+                if len(line) > 3 and line[0] in "ABCD" and line[1:3] == ") " and current is not None:
+                    questions[current][line[0]] = line[3:]
 
         rows = []
         for line in key_text.splitlines():
