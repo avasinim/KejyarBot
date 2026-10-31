@@ -88,34 +88,34 @@ Xebata 3: Bi her yek ji herfên `V` û `W` sê peyv binivîse.
 ### 6. Testa Kejyar
 
 1. Di peyva «welat» de kîjan herf heye?
-   - A) V
-   - B) W
-   - C) U
-   - D) Û
+A) V
+B) W
+C) U
+D) Û
 
 2. Di peyva «av» de kîjan herf di dawiyê de ye?
-   - A) W
-   - B) V
-   - C) F
-   - D) B
+A) W
+B) V
+C) F
+D) B
 
 3. Kîjan peyv bi W dest pê dike?
-   - A) ve
-   - B) vê
-   - C) wêne
-   - D) av
+A) ve
+B) vê
+C) wêne
+D) av
 
 4. Di peyva «nivîs» de kîjan herf heye?
-   - A) W
-   - B) V
-   - C) Z
-   - D) X
+A) W
+B) V
+C) Z
+D) X
 
 5. V û W di kurmancî de çawa ne?
-   - A) Herfa yek in
-   - B) Du herfên cuda ne
-   - C) Her du dengdêr in
-   - D) Her du nîşan in
+A) Herfa yek in
+B) Du herfên cuda ne
+C) Her du dengdêr in
+D) Her du nîşan in
 
 ### Xulasa
 
@@ -235,34 +235,34 @@ Xebata 3: Bi her yek ji van pênc herfan peyvek binivîse.
 ### 8. Testa Kejyar
 
 1. Di peyva «çav» de kîjan herf heye?
-   - A) C
-   - B) Ç
-   - C) Ş
-   - D) S
+A) C
+B) Ç
+C) Ş
+D) S
 
 2. Di peyva «êvar» de kîjan herf heye?
-   - A) E
-   - B) Ê
-   - C) I
-   - D) Î
+A) E
+B) Ê
+C) I
+D) Î
 
 3. Di peyva «îro» de kîjan herf heye?
-   - A) I
-   - B) Î
-   - C) U
-   - D) Û
+A) I
+B) Î
+C) U
+D) Û
 
 4. Di peyva «şev» de kîjan herf heye?
-   - A) S
-   - B) Ş
-   - C) C
-   - D) Ç
+A) S
+B) Ş
+C) C
+D) Ç
 
 5. Di peyva «dûr» de kîjan herf heye?
-   - A) U
-   - B) Û
-   - C) O
-   - D) Î
+A) U
+B) Û
+C) O
+D) Î
 
 ### Xulasa
 
