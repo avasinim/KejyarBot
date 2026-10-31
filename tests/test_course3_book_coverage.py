@@ -23,6 +23,12 @@ class Course3BookCoverageTests(unittest.TestCase):
             for lesson in self.lessons
         ))
 
+    def test_no_lesson_repeats_an_exact_example_row(self):
+        for lesson in self.lessons:
+            with self.subTest(lesson=lesson["number"]):
+                rows = [pair[0].strip() for pair in lesson["examples"]]
+                self.assertEqual(len(rows), len(set(rows)))
+
     def test_final_punctuation_lesson_covers_book_subsections_12_through_19(self):
         lesson = self.lessons[61]
         content = " ".join(
