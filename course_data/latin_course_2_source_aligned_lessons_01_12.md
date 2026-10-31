@@ -448,7 +448,7 @@ Mînakên çavkaniyê:
 
 Dema rengdêrê îşarkî li pêş navdêrê tê, navdêr li gorî zayend, mêjer û tewangê dikare biguhere. Di komên navdêrên yek zayendê de, carinan tenê navdêra dawî bi rengdêrê îşarkî tê nîşandan.
 
-Baldar be: dema ev an ew bi tenê û bê navdêr tê, dikare wek pronavê îşarkî bixebite؛ dema ku rasterast navdêrekê diyar dike, erkê rengdêrî/îşarkî heye.
+Baldar be: dema ev an ew bi tenê û bê navdêr tê, dikare wek pronavê îşarkî bixebite; dema ku rasterast navdêrekê diyar dike, erkê rengdêrî/îşarkî heye.
 
 ### 4. Rengdêrên jmarîn
 Ev cure hejmarê navdêrê diyar dike.
@@ -458,14 +458,14 @@ Mînakên hejmarên bingehîn:
 - `çel mirov hatin` / `çel mirovan got`.
 - `sê mal`, `çar xanî`, `deh bizin`.
 
-Hejmar dikare li gorî erkê xwe navdêrê di tewangê de jî biguherîne؛ ji ber vê yekê di `deh mirov hatin` û `deh mirovan got` de navdêr bi heman formê nayê bikaranîn.
+Hejmar dikare li gorî erkê xwe navdêrê di tewangê de jî biguherîne; ji ber vê yekê di `deh mirov hatin` û `deh mirovan got` de navdêr bi heman formê nayê bikaranîn.
 
 **Rêzîn:** Pirtûk cureya duyem a rengdêrên jmarîn jî nîşan dide: rengdêrên rêzîn. Ev form rêza navdêrê diyar dikin û bi gelemperî piştî navdêrê tên:
 - `stûna çaran` — stûna di rêza çaran de.
 - `a pêncan` — ya di rêza pêncan de.
 - `ê heftan` — ya di rêza heftan de.
 
-Ji ber vê yekê rengdêrên jmarîn tenê hejmarên wek `sê mal` nînin؛ hin ji wan hejmarê an rêza tiştê diyar dikin.
+Ji ber vê yekê rengdêrên jmarîn tenê hejmarên wek `sê mal` nînin; hin ji wan hejmarê an rêza tiştê diyar dikin.
 
 ### 5. Rengdêrên pirsiyarkî
 Ev rengdêr bi navdêr re pirs çêdikin.
@@ -509,7 +509,7 @@ Mînakên çavkaniyê:
 Rengdêrên xwemalîn her gav piştî navdêrê tên û veqetandek di navbera wan û navdêrê de dikeve. Veqetandek li gorî mêjer û zayenda navdêrê tê hilbijartin.
 
 ### 8. Jmarnav: beşeke cuda
-Jmarnav di pirtûkê de di beşeke cuda de tê vekolîn؛ ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn hejmarê navdêrekê diyar dike، lê jmarnav xwe wek beşeke rêzimanî ya serbixwe heye û dikare li gorî erkê xwe di hevokê de were bikaranîn.
+Jmarnav di pirtûkê de di beşeke cuda de tê vekolîn; ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn hejmarê navdêrekê diyar dike, lê jmarnav xwe wek beşeke rêzimanî ya serbixwe heye û dikare li gorî erkê xwe di hevokê de were bikaranîn.
 
 Di beşa jmarnavan de pirtûk hejmarên binavkirî, nîv, yek û hezar û tewangê jmarnavan jî vedikole.
 
@@ -569,7 +569,7 @@ B) pronavê kesîn
 C) nimûneyeke jmarnav
 
 ### Xulasa
-Bedir-Xan şeş cureyên rengdêr cuda dike: wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî û xwemalîn. Derece di bin rengdêrên wesfîn de tê fêrbûn. Jmarnav jî di pirtûkê de beşeke cuda ye، û tenê bi hejmarên yek, du û sê nayê kurtkirin.
+Bedir-Xan şeş cureyên rengdêr cuda dike: wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî û xwemalîn. Derece di bin rengdêrên wesfîn de tê fêrbûn. Jmarnav jî di pirtûkê de beşeke cuda ye, û tenê bi hejmarên yek, du û sê nayê kurtkirin.
 
 ## تێبینیی سەرچاوە
 Pirtûk xwe dibêje ku temam nîne û beşên lêker, hoker, daçek û hevoksaziyê tê de tune ne. Ji ber vê yekê ev kurs wek «bingehên gramera kurdmancî li gorî vê çavkaniyê» pêşkêş dibe، نەک wek gramera temam a hemû kurmancî.
