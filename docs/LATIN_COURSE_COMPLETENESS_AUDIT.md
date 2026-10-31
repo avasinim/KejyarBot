@@ -2,7 +2,7 @@
 
 **Checked:** 2026-10-31  
 **Branch:** `work/latin-courses-source-alignment-2026-10-31`  
-**Status:** editorial drafts only; not loaded by the bot runtime.
+**Status:** runtime integration active on this isolated work branch; production bot/deployment untouched. The lesson texts remain editorially reviewed drafts pending final text verification and independent native-speaker review.
 
 ## Scope separation
 
@@ -48,7 +48,10 @@ The manifest test suite now checks that per-lesson quiz keys have unique questio
 - [x] Reconcile the Course 1 master key into 60 unique rows (five per lesson); cross-check the consolidated rows against the selected per-lesson keys, while the existing lesson tests verify answer text against the quiz options.
 - [x] Select the expanded Course 2 Lesson 12 version, copy it into the master, align the consolidated key, and mark the snapshot as non-runtime.
 - [x] Complete assistant-led linguistic/source review of all 24 lessons; add source-based examples and regression guards where needed. Independent native-speaker review remains recommended before runtime activation.
-- [ ] Add runtime integration and progress-isolation tests only after content selection is approved.
+- [x] Add a lossless Markdown runtime parser for the 24 selected lessons and their 120 answer-key-verified quiz questions.
+- [x] Register both Latin courses as active only on this isolated work branch; add namespaced lesson IDs and progress-unlocking isolation tests.
+- [x] Run branch CI: 173 tests passed, including compileall and the new parser tests.
+- [ ] Complete independent native-speaker review and final text reconciliation before production release.
 - [ ] Preserve the existing voice workflow; keep dynamic speech disabled.
 - [ ] Do not modify `main`, production bot/token/database, or deploy without explicit user approval.
 
@@ -144,21 +147,21 @@ A final pedagogical pass found that the fill-in sentence `Zarok di ______ de ne`
 
 ## Consolidated 24-lesson master pack and recovery correction
 
-`course_data/latin_courses_master_draft.md` consolidates all 24 selected lessons in their authoritative order. The user confirmed that five complete lesson texts were already supplied in the conversation (Course 1 Lessons 4–5 and Course 2 Lessons 1–3); their provenance is explicitly recorded in the master pack. Do not ask the user to resend them. The branch copies are source-aligned working versions, and the exact original wording remains the reference when reconciling any final transcription differences. A regression test checks all 24 lesson headings, order, provenance tags and five quiz questions per lesson. The master pack remains editorial-only and is not loaded by runtime.
+`course_data/latin_courses_master_draft.md` consolidates all 24 selected lessons in their authoritative order. The user confirmed that five complete lesson texts were already supplied in the conversation (Course 1 Lessons 4–5 and Course 2 Lessons 1–3); their provenance is explicitly recorded in the master pack. Do not ask the user to resend them. The branch copies are source-aligned working versions, and the exact original wording remains the reference when reconciling any final transcription differences. A regression test checks all 24 lesson headings, order, provenance tags and five quiz questions per lesson. The master pack is now loaded on this isolated work branch through `latin_course_runtime.py`; it remains editorial content and production activation/deployment has not been performed.
 
 
 ## Final microcopy and exercise pass
 
 - Course 1 Lesson 12: the alphabet count introduction now uses the grammatical form `Di alfabeyê de 31 herf hene`; the recovered quiz and exercise order remain unchanged.
 - Course 2 Lesson 11: the indefinite-pronoun example is normalized to `Her kes dibêje` (the present-tense prefix remains attached to the verb). A regression assertion rejects the split form `Her kes di bêje`.
-- These are language-level edits to editorial drafts only; they do not activate either course or change runtime data.
+- These language-level edits are retained as editorial history; the two courses are now wired into runtime only on the isolated work branch. Production remains unchanged.
 
 
 ## Course 2 Lessons 2–3 — noun taxonomy and grammatical gender source pass
 
 A direct review of Celadet Alî Bedir-Xan, *Bingehên gramera kurdmancî*, printed pp. 51–52, expanded the examples in the two opening noun lessons to use the book's own lists. Lesson 2 now includes the source's proper-name examples (`Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd`, `Ferazende`). Lesson 3 now uses the source's masculine and feminine noun lists and retains the semantic contrast for `dar`: plant/tree = feminine (`vê darê`), wood/log = masculine (`vî darî`). Automated tests guard the added source examples, the two `dar` forms, and the Kurmanji-Latin-only script boundary.
 
-This is a source-alignment edit to the editorial draft, not a claim of verbatim transcription. The lesson order and course separation are unchanged.
+This is a source-alignment edit to the editorial content, not a claim of verbatim transcription. The lesson order and course separation are unchanged; branch runtime loading is isolated from production.
 
 Source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed pp. 51–52. PDF: https://kurdshop.net/content/upload/1/root/celadet-ali-bedir-xan-elfabeugramer-02.pdf
 
