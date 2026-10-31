@@ -1,6 +1,6 @@
 # کلیلەی یەکگرتووی وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
 
-Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 and 8–9 use the explicitly labelled replacement drafts and their matching replacement keys; they are not claimed to restore unavailable earlier transcript bodies or option order.
+Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 use explicitly labelled replacement drafts; Lessons 8–9 use recovered original text with minimal corrections and the original option order is preserved.
 
 | وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
@@ -44,11 +44,11 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 | 8 | 3 | C | wêne |
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
-| 9 | 1 | C | Ç |
-| 9 | 2 | A | Ê |
-| 9 | 3 | D | Î |
+| 9 | 1 | B | Ç |
+| 9 | 2 | B | Ê |
+| 9 | 3 | B | Î |
 | 9 | 4 | B | Ş |
-| 9 | 5 | C | Û |
+| 9 | 5 | B | Û |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê |
