@@ -103,16 +103,25 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe de dide:
 Jimar û guherîna navdêrê di yekjimar û gelemjimar de nas bike.
 
 ### ناوەڕۆک
-Mêjer nîşan dide ka navdêr di hevokê de yek tişt an ji yekê zêdetir tişt nîşan dide. Bedir-Xan di mînakên xwe de formên yekjimar û gelemjimar bi hev re dide:
-- `hespek` → `hespin`
-- `mehinik` → `mehinin`
-- `hesp` → `hespan` (di çarçoveya tewangê de)
-- `mehin` → `mehînan` (di çarçoveya tewangê de)
+Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir nîşan dide. Bedir-Xan yekjimar û gelemjimar bi hev re dide û diyar dike ku guherîna mêjerê dikare bi guherîna forma navdêrê re were nîşandan.
 
-Gelejmar tenê zêdekirina hejmarekê nîne; di hin hevokan de forma navdêrê jî diguhere. Ji ber vê yekê divê fêr bibin ku yekjimar/gelemjimar û tewang du tiştên girêdayî lê cuda ne.
+**Nimûneyên yekjimar û gelemjimar:**
+| Yekjimar | Gelemjimar |
+|---|---|
+| `Mîr hat.` | `Mîr hatin.` |
+| `Ev mehin e.` | `Ev mehin in.` |
+| `Min mehin dît.` | `Min mehin dîtin.` |
+| `Ez mehinê dibînim.` | `Ez mehînan dibînim.` |
+| `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
+
+Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin؛ divê wan wekî pêvekên giştî yên hemû gelemjmaran nehêlin.
+
+**Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin؛ çavkaniyê vê yekê bi taybetî diyar dike.
 
 ### Xebat
-Formên yekjimar û gelemjimar ji hev cuda bike û binivîse: `hespek/hespin`, `mehinik/mehinin`.
+1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehin e/Ev mehin in` de cuda bike.
+2. Di `hespek/hespin` de pêveka nebinavkirî bibîne.
+3. Rave bike çima `hespan` di dersa tewangê de tê xwendin, ne wek pêveka gelemjimarê ya bingehîn.
 
 ### Kuis — 5 pirs
 1. Mêjer çi nîşan dide? A) reng B) yek an gelek C) kes
@@ -128,18 +137,26 @@ Formên yekjimar û gelemjimar ji hev cuda bike û binivîse: `hespek/hespin`, `
 Fêmkirina guherîna forma navdêrê li gorî erk û cihê wê di hevokê de.
 
 ### ناوەڕۆک
-Kurmancî zimanekî tewangbar e. Di hin rewşan de navdêr forma xwe diguherîne; ev guherîn bi zayend, mêjer û erkê rêzimanî ve girêdayî ye. Di nimûneyên pirtûkê de:
-- Nêr, yekjimar: `hesp` → `hespî` (di erkê bireserê de)
-- Mê, yekjimar: `mehin` → `mehinê`
-- Gelemjimar: `hesp` → `hespan`; `mehin` → `mehînan`
+Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê xwe diguherin. Bedir-Xan tewangê ji mêjerê cuda dike. Navdêr dema kirar be, gelek caran forma xwe ya bingehîn diparêze; dema bireser be, li gorî zayend, mêjer û dengên dawiyê dikare pêvek bistîne an dengên xwe biguherîne.
 
-Ev tablo tenê nimûneyên bingehîn nîşan dide; ne her nav bi heman rêbazê tê guherandin. Hin navên nêr ên ku di wan de dengên `e` an `a` hene dikarin bi awayekî din tewang bibin; pirtûk nimûneyên cuda dide. Ji ber vê yekê forma navdêrê divê bi hevokê û zayenda wê re were fêrbûn.
+**Nimûneyên bingehîn ên çavkaniyê:**
+| Erk / rewş | Nêr yekjimar | Mê yekjimar | Gelemjimar |
+|---|---|---|---|
+| Kirar | `Hesp hat.` | `Mehin hat.` | `Hesp hatin.` / `Mehin hatin.` |
+| Bireser | `Ez hespî dibînim.` | `Ez mehinê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
+
+Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
+
+**Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêویستە navdêr bi zayend û erkê wê re were fêrbûn، ne bi pêکهاتەیەکی یەکسان بۆ هەموو وشەکان.
+
+**Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûڵ دەکات. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyayan/çiyan` (li gorî nimûneya çavkaniyê).
+
+**Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehinin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
 ### Xebat
-Di van hevokan de navdêrên tewandî bibîne:
-- `Ez hespî dibînim.`
-- `Ez mehinê dibînim.`
-- `Ez hespên dibînim.`
+1. Di `Hesp hat` û `Ez hespî dibînim` de erkên navdêrê cuda bike.
+2. Guherîna `mehin → mehinê` û `mehin → mehînan` bi zayend û mêjer ve girê bide.
+3. Ji bo çima `gund` di hin nimûneyan de bê tewang dimîne, sedemê ji rêbazê dengên `e/a` re girê bide.
 
 ### Kuis — 5 pirs
 1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
