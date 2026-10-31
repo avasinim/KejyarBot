@@ -117,7 +117,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
                 current = None
                 in_quiz = False
                 continue
-            if line.startswith("### 7. Testa Kejyar"):
+            if re.match(r"^### \\d+\\. Testa Kejyar$", line):
                 in_quiz = True
                 current = None
                 continue
