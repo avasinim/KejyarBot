@@ -242,7 +242,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
 
     def test_course_one_lesson_six_recovered_prose_is_consistently_latin_script(self):
         lesson_text = (ROOT / "course_data" / "latin_course_1_lesson_06_recovered_draft.md").read_text(encoding="utf-8")
-        self.assertNotRegex(lesson_text, r"[\\u0600-\\u06FF]")
+        self.assertFalse(any(chr(0x0600) <= char <= chr(0x06FF) for char in lesson_text))
         self.assertIn("Peyvên li jêrê bi du koman veqetîne", lesson_text)
         self.assertIn("wateyê de wekhev", lesson_text)
 
