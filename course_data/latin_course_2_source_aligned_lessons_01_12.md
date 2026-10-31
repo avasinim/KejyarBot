@@ -517,7 +517,14 @@ Rengdêrên xwemalîn her gav piştî navdêrê tên û veqetandek di navbera wa
 ### 8. Jmarnav: beşeke cuda
 Jmarnav di pirtûkê de di beşeke cuda de tê vekolîn; ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn hejmarê navdêrekê diyar dike, lê jmarnav xwe wek beşeke rêzimanî ya serbixwe heye û dikare li gorî erkê xwe di hevokê de were bikaranîn.
 
-Di beşa jmarnavan de pirtûk hejmarên binavkirî, nîv, yek û hezar û tewangê jmarnavan jî vedikole.
+Di beşa jmarnavan de pirtûk du komên sereke cuda dike: **jmarnavên binavkirî** û **jmarnavên nebinavkirî**. Jmarnavên binavkirî jî çar cure ne: **bingehîn** (hejmarên rast), **rêzîn** (rêzê nîşan didin), **birewîn** (beşek ji hejmarê nîşan didin) û **komelîn**. Jmarnavên nebinavkirî wek `gelek`, `hindik`, `pir`, `bêhtir` û `zehf` hejmarê bi awayekî ne-diyar nîşan didin.
+
+Hin formên taybet jî rêgezên xwe hene:
+- **Nîv:** dema bi serê xwe tê bikaranîn dikare bi `-î` were tewandin (`nîvî`); dema li pêşiya hejmar an navdêrekê tê, forma `nîv` diparêze.
+- **Yek:** di hin bikaranînên serbixwe de bi `-ê` tê (`yekê`); lê dema rasterast li pêşiya navdêrê tê, forma `yek` dimîne û navdêr li gorî rêzê xwe tewandinê werdigire.
+- **Hezar:** di bikaranîna serbixwe de dikare bi `-î` were tewandin (`hezarî`); di hejmarên tevlihev de rêza tewandinê li gorî hejmarê dawî tê diyarkirin.
+
+Jmarnavên **hêsan** ji yek bêjeyê pêk tên; yên **tevlihev** ji çend beşan pêk tên û gelek caran bi `û` tên girêdan: `bîst û çar`, `sed û bîst`. Ji ber vê yekê, di fêrbûnê de divê tenê navê hejmarê nas nekin, lê erk, cure û tewangê wê jî bibînin.
 
 Mînakên bingehîn:
 - yek
