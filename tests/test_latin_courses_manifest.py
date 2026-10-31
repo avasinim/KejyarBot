@@ -582,5 +582,48 @@ class LatinCoursesManifestTests(unittest.TestCase):
             self.assertEqual(questions[(lesson, number)][option], answer)
 
 
+    def test_course_one_master_answer_key_covers_all_lessons_and_matches_selected_keys(self):
+        master_text = (ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md").read_text(encoding="utf-8")
+        master = {}
+        for line in master_text.splitlines():
+            if not line.startswith("|"):
+                continue
+            cells = [cell.strip() for cell in line.strip("|").split("|")]
+            if len(cells) >= 4 and cells[0].isdigit() and cells[1].isdigit():
+                key = (int(cells[0]), int(cells[1]))
+                self.assertNotIn(key, master)
+                master[key] = (cells[2], cells[3])
+
+        expected = {(lesson, question) for lesson in range(1, 13) for question in range(1, 6)}
+        self.assertEqual(set(master), expected)
+        self.assertEqual(len(master), 60)
+
+        selected_key_files = [
+            (1, "latin_course_1_lesson_01_answer_key.md", "single"),
+            (4, "latin_course_1_lessons_04_05_answer_key.md", "multi"),
+            (5, "latin_course_1_lessons_04_05_answer_key.md", "multi"),
+            (7, "latin_course_1_lesson_07_answer_key.md", "single"),
+            (8, "latin_course_1_lessons_08_09_answer_key.md", "multi"),
+            (9, "latin_course_1_lessons_08_09_answer_key.md", "multi"),
+            (10, "latin_course_1_lesson_10_answer_key.md", "single"),
+            (11, "latin_course_1_lesson_11_answer_key.md", "single"),
+            (12, "latin_course_1_lesson_12_answer_key.md", "single"),
+        ]
+        for lesson, filename, shape in selected_key_files:
+            key_text = (ROOT / "course_data" / filename).read_text(encoding="utf-8")
+            rows = {}
+            for line in key_text.splitlines():
+                if not line.startswith("|"):
+                    continue
+                cells = [cell.strip() for cell in line.strip("|").split("|")]
+                if shape == "single" and len(cells) >= 3 and cells[0].isdigit():
+                    rows[int(cells[0])] = (cells[1], cells[2])
+                elif shape == "multi" and len(cells) >= 4 and cells[0].isdigit() and int(cells[0]) == lesson:
+                    rows[int(cells[1])] = (cells[2], cells[3])
+            self.assertEqual(set(rows), set(range(1, 6)), f"Incomplete selected key for lesson {lesson}")
+            for question, answer in rows.items():
+                self.assertEqual(master[(lesson, question)], answer, f"Master key mismatch at lesson {lesson}, question {question}")
+
+
 if __name__ == "__main__":
     unittest.main()
