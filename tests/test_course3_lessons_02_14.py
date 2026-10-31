@@ -52,7 +52,7 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("سوور سوور", content)
         self.assertIn("بااڵبەرز", content)
         self.assertIn("دەمارەشانە", content)
-        for marker in ("مارماسی", "مانگەشەو", "دەربەدەر", "هێلکەوڕۆن", "مێرگەسوور", "لرفەلرف", "ماڵەوماڵ", "وێنەگرتن", "گوڵوموڵ", "هەزارپێ"):
+        for marker in ("مارماسی", "مانگەشەو", "دەربەدەر", "هێلکەوڕۆن", "مێرگەسوور", "لرفەلرف", "ماڵەوماڵ", "وێنەگرتن", "گوڵوموڵ", "هەزارپێ", "مشتوماڵ"):
             self.assertIn(marker, content)
 
     def test_lesson_14_covers_ordinal_and_compound_number_rules(self):
