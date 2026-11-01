@@ -123,8 +123,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
       "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
-      "audio_status": "not_assigned; user referenced fb86aba958e03498234bdb26d8da7bae2462d0fd but no audio filename or asset was identified",
-      "source_note": "User explicitly designated this material as Lesson 9. Includes the mappings آ→ئا, اَ→ئە, اِ→ئێـ, اُ→ئۆ and additional words beginning with ئا. The referenced identifier fb86aba958e03498234bdb26d8da7bae2462d0fd has not been verified as an audio asset."
+      "audio_status": "assigned",
+      "source_note": "User explicitly designated this material as Lesson 9. Includes the mappings آ→ئا, اَ→ئە, اِ→ئێـ, اُ→ئۆ and additional words beginning with ئا. The referenced identifier fb86aba958e03498234bdb26d8da7bae2462d0fd has not been verified as an audio asset. Audio asset verified in the referenced GitHub commit: ئا.ogg (commit title: پیتی ئا); assigned to Lesson 9 as requested.",
+      "audio_file": "ئا.ogg",
+      "audio_source_commit": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
+      "audio_source_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd"
     },
     {
       "id": "arami_course1_lesson_10",
