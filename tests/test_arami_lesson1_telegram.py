@@ -51,7 +51,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         self.assertEqual(query.message.reply_text.await_count, 10)
         self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
-        self.assertIn("بەشی ٨", query.message.reply_text.await_args_list[8].args[0])
+        self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
         self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
 
     async def test_audio_callback_sends_only_confirmed_asset_path(self):
