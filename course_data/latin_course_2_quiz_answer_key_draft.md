@@ -21,51 +21,51 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 3 | 3 | A | nêr | Çavkaniyê çem di koma nêr de dide. |
 | 3 | 4 | B | mê | Dar di vê nimûneyê de navdêra mê ye. |
 | 3 | 5 | C | zayenda rêzimanî | Tiştên bêcan jî dikarin zayenda rêzimanî hebin. |
-| 4 | 1 | B | yek an gelek | Mêjer yekjimar an gelemjimar nîşan dide. |
-| 4 | 2 | C | hespin | hespin şêweya gelemjimar a nimûneyê ye. |
-| 4 | 3 | A | yekjimar | mehînek yekjimar e. |
-| 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Mêjer û tewang du pêvajoyên cuda yên rêzimanî ne. |
-| 4 | 5 | C | gelemjimar | hespin şêweya gelemjimar e. |
-| 5 | 1 | B | guherîna forma peyvê | Tewang guherîna forma peyvê li gorî erkê wê yê rêzimanî ye. |
-| 5 | 2 | C | hespî | hespî nimûneyeke tewanga navdêra nêr e. |
-| 5 | 3 | A | mehinê | mehinê nimûneyeke tewanga navdêra mê ye. |
-| 5 | 4 | B | forma gelemjimar a tewandî | hespan forma gelemjimar a tewandî ye. |
-| 5 | 5 | C | na | Na, hemû navdêr bi heman awayî natewin. |
-| 6 | 1 | B | navdêrê rave dike/taybet dike | Bireser agahiyê li ser navdêrê zêde dike an wê taybet dike. |
-| 6 | 2 | C | keçik | Di ev keçik de navdêra bingehîn keçik e. |
-| 6 | 3 | A | beza | Di hespê beza de beza biresera navdêrê ye. |
-| 6 | 4 | B | pêşî an paşî navdêrê | Bireser dikare berî an piştî navdêrê were. |
-| 6 | 5 | C | bireserê navdêrê | xencera min nimûneyeke biresera navdêrê ye. |
-| 7 | 1 | B | 3 | Di vê beşê de sê veqetandek hene: ê, a, ên. |
-| 7 | 2 | C | nêr yekjimar | -ê ji bo navdêra nêr a yekjimar e. |
-| 7 | 3 | A | mê yekjimar | -a ji bo navdêra mê a yekjimar e. |
-| 7 | 4 | B | gelemjara her du zayendan | -ên ji bo gelemjara her du zayendan e. |
-| 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | hespên Soro nimûneyeke veqetandeka binavkirî ya gelemjimar e. |
-| 8 | 1 | B | tiştekî hê nenaskirî | Veqetandeka nebinavkirî tiştekî hîn nenaskirî nîşan dide. |
-| 8 | 2 | C | bê bireser | hespek hat nimûneya hevokê bê bireser e. |
-| 8 | 3 | A | -in | -in di nimûneya çavkaniyê de şêweya gelemjimar e. |
-| 8 | 4 | B | -ekî | -ekî dema bireser piştî navdêra nêr a yekjimar were tê bikaranîn. |
-| 8 | 5 | C | na, erkên wan cuda ne | Na, -ên û -ine du erkên cuda hene. |
-| 9 | 1 | B | min | Di tabloya çavkaniyê de cot ez/min hatiye dayîn. |
-| 9 | 2 | C | te | Di tabloya çavkaniyê de cot tu/te hatiye dayîn. |
-| 9 | 3 | A | wî | wî forma kirarî ya ew ji bo nêr e. |
-| 9 | 4 | B | me | Di tabloya çavkaniyê de cot em/me hatiye dayîn. |
-| 9 | 5 | A | hon | hon pronavê kesê duyem ê gelemjar e. |
-| 10 | 1 | B | min | min yek ji pronavên bireser e. |
-| 10 | 2 | C | wê | wê forma mê ya ew e. |
-| 10 | 3 | A | hev, êk | hev û êk formên pronavên berbihevîn in. |
-| 10 | 4 | B | pronavên bireser | wan û ew di nimûneyên pronavên bireser de tên bikaranîn. |
-| 10 | 5 | B | du an zêdetir kes bi hev re | Pronavê berbihevîn têkiliya du an zêdetir kesan bi hev re nîşan dide. |
-| 11 | 1 | B | ev/ew | ev û ew du formên îşarkî yên pî ne. |
-| 11 | 2 | C | yê/ya/yên | yê, ya û yên formên îşarkî yên qerse ne. |
-| 11 | 3 | A | ko | ko di çavkaniyê de wek pronavê girêk tê bikaranîn. |
-| 11 | 4 | B | pirsiyarkî | Kî hat? pirsê li ser kesekî dike. |
-| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | kîjan ji bo hilbijartina kesek an tiştekî di nav gelek vebijarkan de tê bikaranîn. |
-| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Rengdêr taybetmendî an rewşa navdêrê rave dike. |
-| 12 | 2 | C | rengdêra wesfîn | mezin rengdêra wesfîn e. |
+| 4 | 1 | B | Yek an zêdetirbûna kes an tiştan | Mêjer jimara kes an tiştan nîşan dide. |
+| 4 | 2 | A | Behsa yek kes an tiştî dike | Yekejmar behsa yek kes an tiştî dike. |
+| 4 | 3 | B | Gelejmar | Di hevoka «Zarok dixwînin» de kiryar gelejmar e. |
+| 4 | 4 | C | Zarok dixwînin | Ev hevok gelejmar nîşan dide. |
+| 4 | 5 | B | Na, hin navdêr dikarin heman formê biparêzin | Hin navdêr di yekejmar û gelejmarê de heman formê diparêzin. |
+| 5 | 1 | A | Guherîna forma peyvê li gorî erkê wê di hevokê de | Tewang forma peyvê li gorî erk û têkiliya wê di hevokê de diguherîne. |
+| 5 | 2 | B | Erk û têkiliya peyvê di hevokê de | Tewang bi erk û têkiliya peyvê di hevokê de ve girêdayî ye. |
+| 5 | 3 | C | malê | Di hevoka «Ez ji malê têm» de «malê» cihê jêhatinê nîşan dide. |
+| 5 | 4 | B | kitêbê | Di hevoka «Ez kitêbê dixwînim» de «kitêbê» tiştê ku tê xwendin nîşan dide. |
+| 5 | 5 | B | Na, erkê peyvê dikare forma wê biguherîne | Erkê peyvê di hevokê de dikare forma wê biguherîne. |
+| 6 | 1 | A | Nîşandana nêzîkî û dûriyê | «Ev» û «ew» nêzîkî û dûriyê nîşan didin. |
+| 6 | 2 | B | pirtûk | Di koma «ev pirtûk» de «pirtûk» navdêr e. |
+| 6 | 3 | C | ew | «Ew» ji bo nîşandana tiştekî dûr tê bikaranîn. |
+| 6 | 4 | B | mal | Di hevoka «Ev mal nû ye» de «mal» navê tiştê ye. |
+| 6 | 5 | A | Navdêrê nîşan dide | Di koma «ew zarok» de «ew» navdêrê nîşan dide. |
+| 7 | 1 | B | Ku em behsa tiştekî an kesekî diyarkirî dikin | Binavkirin kes an tiştekî diyarkirî nîşan dide. |
+| 7 | 2 | A | Navdêr | Veqetandek bi navdêrê re têkildar e. |
+| 7 | 3 | B | Na, divê erk û rêzika wê were analîzkirin | Her guherîna dawiyê ne veqetandeka binavkirî ye. |
+| 7 | 4 | C | Zayend, mêjer û erkê navdêrê | Di analîza veqetandekê de zayend, mêjer û erk girîng in. |
+| 7 | 5 | A | Rêzikên rêzimanî | Veqetandekên binavkirî bi rêzikên rêzimanî ve girêdayî ne. |
+| 8 | 1 | B | Kes an tişt nehatine bi awayekî taybet nasandin | Nebinavkirin kes an tiştekî ku bi awayekî taybet nehatiye nasandin nîşan dide. |
+| 8 | 2 | A | -ek | Pêşnûsa dersê «-ek» wek paşgireke gelemperî ya nebinavkirî dide. |
+| 8 | 3 | B | pirtûkek | Forma nebinavkirî ya «pirtûk» di vê mînakê de «pirtûkek» e. |
+| 8 | 4 | B | Zarokek | Di hevoka «Zarokek hat» de navdêr «Zarokek» e. |
+| 8 | 5 | B | Na, li gorî zayend, mêjer û erkê navdêrê diguhere | Forma binavkirî li gorî zayend, mêjer û erkê navdêrê diguhere. |
+| 9 | 1 | A | Peyveke ku li şûna navdêrekî tê | Pronav dikare li şûna navdêrekî were bikaranîn. |
+| 9 | 2 | C | ez | «Ez» pronavê kesê yekem ê yekjimar e. |
+| 9 | 3 | A | hûn | «Hûn» pronavê kesê duyem ê gelemjimar e. |
+| 9 | 4 | B | Ew | Di hevoka «Ew dixwîne» de «Ew» pronav e. |
+| 9 | 5 | B | em | Di hevoka «Em dixebitin» de «em» kirar e. |
+| 10 | 1 | B | Kes an tişta ku kiryar li ser tê kirin | Bireser kes an tişta ku kiryar li ser tê kirin e. |
+| 10 | 2 | B | te | Di hevoka «Ez te dibînim» de «te» bireser e. |
+| 10 | 3 | B | wê | «Wê» forma pronavê bireser ji bo kesê sêyem ê mê yekjimar e. |
+| 10 | 4 | C | hev | «Hev» dikare têkiliya berbihevîn nîşan bide. |
+| 10 | 5 | A | Têkiliya di navbera kesan de | Di hevoka «Em hev nas dikin» de «hev» têkiliya di navbera kesan de nîşan dide. |
+| 11 | 1 | B | ev | «Ev» tiştekî nêzîk nîşan dide. |
+| 11 | 2 | B | kî | «Kî» ji bo pirsîna kesan tê bikaranîn. |
+| 11 | 3 | A | çi | «Çi» ji bo pirsîna tiştekî tê bikaranîn. |
+| 11 | 4 | B | Hevokan bi hev ve girêdide | Ev bersiv li gorî pêşnûsa heyî ye; lê karanîna «ko» di relative clause de wek pronavê girêkî û karanîna wê wek girêder divê ji hev bên cudakirin. |
+| 11 | 5 | A | kîjan | «Kîjan» ji bo hilbijartina kes an tiştekî di nav çend vebijarkan de tê bikaranîn. |
+| 12 | 1 | B | Taybetmendiya navdêrê rave dike | Rengdêr taybetmendiya navdêrê rave dike. |
+| 12 | 2 | C | nû | Di hevoka «Ev kitêb nû ye» de «nû» rengdêr e. |
 | 12 | 3 | C | Şeş | Şeş hejmareke bingehîn e ku jimara 6 nîşan dide. |
-| 12 | 4 | C | yekem | yekem jmarnava rêzî ye û rêza tiştekî di rêzê de nîşan dide. |
-| 12 | 5 | C | sê | Di hevoka «Sê zarok hatin» de sê jmarnav e û hejmar nîşan dide. |
+| 12 | 4 | C | yekem | «Yekem» jmarnava rêzî ye û rêza tiştekî nîşan dide. |
+| 12 | 5 | C | sê | Di hevoka «Sê zarok hatin» de «sê» jmarnav e û hejmar nîşan dide. |
 
 ## Têbînî berî runtime
 
@@ -73,3 +73,5 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 2. Di dersên 4 û 5 de, nimûneyên yekjimar, gelemjimar û tewangê divê di nivîsa dersê û kuizê de bi hev re li hev bên.
 3. Ev mifte hîn pêşnûse ye; bi handlerê botê re nehatiye girêdan û testa runtime nehatiye kirin.
 4. Ders 12 du pêşnûsên cuda hebûn. Di runtime de tenê yek nivîsa dawî û mifteya wê were bikaranîn; her du nivîs bi heman nasnameyê bar neke.
+5. Pirsên 4–12 bi kuizەکانی وانەی ئێستا بەراورد و کلیلیان نوێ کرایەوە؛ وانەکانی 1–3 بەهۆی نەبوونی دەقی تەواوی کویز هێشتا پشتڕاست نەکراونەتەوە.
+6. لە وانەی 11، پرسیاری 4 لەگەڵ دەقی پێش‌نووسەکە هاوتایە، بەڵام پێش runtime دەبێت جیاوازیی `ko` وەک pronavê girêkî و `ko` وەک girêder لەگەڵ سەرچاوەی Celadet ڕێکبخرێت.
