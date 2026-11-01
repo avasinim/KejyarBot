@@ -41,3 +41,17 @@
 1. Continue source-level review of Course 2 lessons 1–5 and 8–10, checking every example and terminology choice against Celadet's text.
 2. Review Course 1's remaining lessons and all its quiz keys against its separate source.
 3. Run the full test suite in the project environment before proposing any activation or release step.
+
+## Additional Course 2 source checks in this continuation
+The source was cross-checked against the 2002 Nefel digital edition, not a later reprint or an unrelated Kurmanji grammar.
+
+- **Lessons 4–5, §§47–58 (printed pages 55–60):** the source defines singular/plural and then explains declension separately. Section 55 gives masculine singular `-î`, feminine singular `-ê`, and plural `-an`; section 57 explicitly preserves three regional variants:
+  - `Soro kevirî tavêje.`
+  - `Soro kê vir tavêje.`
+  - `Soro kevir tavêje.`
+  The Lesson 5 draft had incorrectly split the verb `tavêje` into `ta vêje` and had split the third `kevir` form. Both the lesson and its regression assertions have now been corrected to the exact 2002 source forms.
+- **Lessons 7–8, §§61–68 (printed pages 62–66):** confirmed the three definite suffixes `ê, a, ên`, the two indefinite patterns `ek, ek, in` and `ekî, eke, ine`, and the source distinction between a noun with no following modifier and one with a modifier.
+- **Lesson 10, §§77, 86, 90–93 (printed pages 72–80):** confirmed the object-pronoun forms `min, te, wî, wê, me, we, wan`, the reciprocal pronouns `hev, êk`, and the source's regional note for `êk`.
+- **Lesson 11, §§99–102 (printed pages 83–84):** confirmed the relative-pronoun `ko`, its distinct conjunction homonym, and the interrogative forms `kî/kê` and `çi/çî`.
+
+The Lesson 5 correction does not alter Course 1 or its Shikofta source.
