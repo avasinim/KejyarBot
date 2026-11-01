@@ -82,6 +82,32 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.args[0], bot.add_kejyar_brand_signature(bot.LESSON_DATA[lesson]["content"]))
 
 
+    async def test_latin_menu_key_groups_both_active_latin_courses(self):
+        label = "ڕێنووسی لاتینی کوردیی"
+        self.assertIn(label, [button.text for row in bot.MENU.keyboard for button in row])
+        update, context = self.make_update_context(label)
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("دوو کۆرسە", update.message.reply_text.await_args.args[0])
+        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = [row[0].callback_data for row in keyboard.inline_keyboard]
+        self.assertEqual(callbacks, [
+            "course_kurmanji_latin_orthography",
+            "course_kurmanji_latin_grammar",
+        ])
+
+    async def test_generic_course_list_does_not_duplicate_latin_courses(self):
+        update, context = self.make_update_context("📘 کۆرسەکان")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = [row[0].callback_data for row in keyboard.inline_keyboard]
+        self.assertNotIn("course_kurmanji_latin_orthography", callbacks)
+        self.assertNotIn("course_kurmanji_latin_grammar", callbacks)
+
     async def test_lesson_catalog_renders_all_lessons_as_inline_buttons_even_when_locked(self):
         update, context = self.make_update_context("📚 وانەکان")
         with (
