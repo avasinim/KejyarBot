@@ -1,6 +1,6 @@
 {
   "course_id": "arami_orthography_foundations",
-  "title": "ڕێنووسی سەرەتاییی ئارامی",
+  "title": "ڕێنووسی سەرەتاییی کوردی",
   "status": "lessons_08_to_13_sources_registered_or_received; lesson_13_saved",
   "lessons": [
     {
@@ -397,5 +397,42 @@
       17
     ]
   },
-  "course_total_lessons": 21
+  "course_total_lessons": 21,
+  "program": {
+    "title": "کۆرسی ١",
+    "structure": "کۆرسی ١ لە چوار دەورە پێکدێت",
+    "rounds": [
+      {
+        "number": 1,
+        "title": "ڕێنووسی سەرەتاییی کوردی",
+        "lesson_count": 21,
+        "status": "content_received_design_and_practice_pending"
+      },
+      {
+        "number": 2,
+        "title": "وتووێژ",
+        "lesson_count": null,
+        "status": "separate_round"
+      },
+      {
+        "number": 3,
+        "title": "ڕێنووسی یەکگرتوو",
+        "lesson_count": null,
+        "status": "separate_round"
+      },
+      {
+        "number": 4,
+        "title": "ڕێزمان",
+        "lesson_count": null,
+        "status": "separate_round"
+      }
+    ],
+    "separate_course_2": {
+      "title": "کۆرسی ٢ ـ ڕێنووسی لاتینی",
+      "independent": true,
+      "must_not_mix_with_course_1": true
+    }
+  },
+  "round": 1,
+  "round_title": "ڕێنووسی سەرەتاییی کوردی"
 }
