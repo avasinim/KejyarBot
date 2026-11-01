@@ -144,14 +144,41 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         update.message.reply_text.assert_awaited_once()
         keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), len(bot.ORDER))
-        for lesson, button in zip(bot.ORDER, buttons):
+        expected_lessons = [lesson for lesson in bot.ORDER if not bot.quiz_requires_submission(lesson)]
+        self.assertEqual(len(buttons), len(expected_lessons))
+        for lesson, button in zip(expected_lessons, buttons):
             with self.subTest(lesson=lesson):
                 self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
                 self.assertEqual(
                     button.callback_data,
                     f"quiz_{lesson.split('_')[1]}_start",
                 )
+
+    async def test_clickable_practice_menu_lists_only_lesson_three_and_both_latin_courses(self):
+        update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
+        completed = [
+            *bot.ORDER,
+            *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
+            *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
+        ]
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+        ):
+            await bot.message(update, context)
+
+        self.assertIn("ڕاهێنانی کرتەیی", update.message.reply_text.await_args.args[0])
+        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        expected = [
+            "وانە_3",
+            *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
+            *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
+        ]
+        self.assertEqual(
+            [button.callback_data for button in buttons],
+            [bot.lesson_practice_callback(lesson) for lesson in expected],
+        )
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
