@@ -174,7 +174,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         for term in ("| nivîs | I |", "| hilbijartin | I |", "| gund | U |", "| xurt | U |", "| kulîlk | U |"):
             self.assertNotIn(term, short)
         long = lessons["kurmanji_latin_orthography_05"]["content"]
-        for term in ("| êzing | Ê |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
+        for term in ("| ard | A |", "| êzing | Ê |", "| dîk | Î |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
             self.assertIn(term, long)
         for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
             self.assertNotIn(term, long)
@@ -192,7 +192,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("| kevir | navîn |", lesson8)
         self.assertIn("| wî | destpêk |", lesson8)
         self.assertIn("| wêran | destpêk |", lesson8)
-        self.assertIn("`vegerîn — wan — av — wêran — welat — veşartin`", lesson8)
+        self.assertIn("`vegerîn — wan — çav — wêran — welat — veşartin`", lesson8)
         self.assertNotIn("| wê | destpêk |", lesson8)
         self.assertIn("| dev | dew |", lesson8)
         self.assertIn("| vir | wîr |", lesson8)
