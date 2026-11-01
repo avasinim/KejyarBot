@@ -28,7 +28,7 @@ Source:
 5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
 6. Fixed the runtime quiz parser so the KejyarBot footer is not appended to the final answer option in lessons where the quiz is the final section.
 
-## Initial content checks / remaining audit
+## Source checks and remaining audit
 
 - The 31-letter alphabet count in Course 1 Lesson 1 agrees with Şikofteh (printed pp. 12, 29).
 - Replaced the Lesson 1 example for `I` (`kin`) with `dil`, which appears in Şikofteh's I-letter examples (printed p. 18).
@@ -42,7 +42,12 @@ Source:
 - KejyarBot footer branding (`🤖 کەژیار — KejyarBot@`) has now been standardized across all 12 lessons in both Latin course documents. Editorial provenance blocks are retained outside learner text and the runtime loader strips them from lesson bodies.
 - Removed explicit author/book citations from learner-facing text in both Latin courses; source identities and editorial notes remain in the source documents and this audit.
 - Course 1's five-question answer key is an editorial draft; it must be reconciled with the final corrected lesson bodies and source examples.
-- Course 2 remains tied only to Celadet Alî Bedir-Xan. Its pronoun/adjective/numeral content still needs a separate scientific source audit; no Course 1 material was imported into it.
+- Course 2's source page map is confirmed against the PDF contents and body: nouns/hevenav/serenav p. 51; gender p. 52; number pp. 55–56; tewang pp. 57–60; noun modifiers p. 61; definite/indefinite determiners pp. 62–67; pronouns pp. 71–87; adjectives pp. 89–95; numerals pp. 97–100.
+- Compared Course 2's noun, gender, number, tewang and determiner examples against the PDF. In Lessons 4 and 8, corrected the feminine indefinite forms `mehinik/mehinin/mehinine` to `mehînek/mehînin/mehînine`, matching the printed p. 64–65 examples and the distinction between `-ek/-in` and `-eke/-ine` patterns.
+- Course 2 pronoun checks: `hon` is the source's second-person plural form; `wî/wê` are masculine/feminine third-person object forms; `hev/êk` are reciprocal pronouns (printed pp. 72–78). The lesson keeps `hevdu` as a regional/spoken variant, not the book's written standard form.
+- Course 2 Lesson 11 correctly separates relative pronoun `ko` (printed p. 83) from conjunction `ko` (printed p. 84); they have different functions and must not be merged.
+- Course 2 Lesson 12 follows the source's separate adjective and numeral sections (pp. 89–100). The grammar section itself states that it is incomplete and omits verbs, adverbs, prepositions and syntax; the bot course does not claim to teach those omitted topics.
+- No Course 1 material was imported into Course 2.
 - Final static validation mirroring the runtime quiz parser checked all 24 lessons: Course 1 = 60 questions / 60 matching answer keys; Course 2 = 60 questions / 60 matching answer keys; 120/120 total. All 24 lessons have the KejyarBot footer and no provenance note leaks into the lesson body. This was a content/parser simulation, not a GitHub Actions or local Python test run.
 
 ## Safety / release boundary
