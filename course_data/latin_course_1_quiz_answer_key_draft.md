@@ -43,11 +43,11 @@
 | 8 | 3 | C | wêne |
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
-| 9 | 1 | B | Ç |
-| 9 | 2 | B | Ê |
-| 9 | 3 | B | Î |
-| 9 | 4 | B | Ş |
-| 9 | 5 | B | Û |
+| 9 | 1 | B | Ji nîveka qirikê |
+| 9 | 2 | B | Nîvdeng |
+| 9 | 3 | C | zozan |
+| 9 | 4 | B | xort |
+| 9 | 5 | B | Nîvdeng e |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê |
