@@ -227,6 +227,16 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("Bi gelemperî, navdêrên nêr", oblique)
         self.assertNotIn("Bi gelemperî di gelemperî de", oblique)
 
+    def test_course_two_lesson_eight_keeps_indefinite_suffix_patterns_distinct(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_grammar_08"]["content"]
+        for term in ("`hespek hat`", "`mehînek hat`", "`hespin hatin`", "`mehînin hatin`"):
+            self.assertIn(term, lesson)
+        for term in ("`hespekî delal hat`", "`mehîneke delal hat`", "`mehînine delal hatin`"):
+            self.assertIn(term, lesson)
+        self.assertIn("`-ekî`, `-ekê`, `-ina`", lesson)
+        self.assertNotIn("`-ina` ji bo gelemjara giştî", lesson)
+
     def test_course_two_lesson_three_preserves_celadet_dar_gender_by_meaning(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_03"]["content"]
