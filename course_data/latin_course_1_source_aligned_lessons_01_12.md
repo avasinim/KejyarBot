@@ -484,7 +484,7 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 |---|---|
 | av | A |
 | bav | A |
-| mal | A |
+| Aşxane | A |
 | dar | A |
 | aş | A |
 | agahî | A |
