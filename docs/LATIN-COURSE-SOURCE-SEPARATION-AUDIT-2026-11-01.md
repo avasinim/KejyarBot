@@ -64,4 +64,6 @@ Source:
 - Both canonical lesson documents contain 12 lesson sections each.
 - All learner-facing explanations, examples, exercises, questions and answer options are written in Kurmanji using the Latin alphabet. The only non-Latin-script content in the lesson bodies is the agreed Kejyar mascot signature `کەژیار`.
 - Both 60-row answer-key documents now use Kurmanji Latin for their headings, answer explanations and editorial notes; no Sorani or Persian script remains in either answer key.
+- Updated the runtime manifest, catalogue and runtime loader so the source identity for each course is identical across all three places; the bot's startup metadata check can compare them without a false mismatch.
+- Updated the regression tests to assert the separate Şikofteh and Celadet sources and to reject Arabic-script content in learner lessons and answer keys (except the Kejyar mascot signature).
 - Course 1 follows the North Khorasan Kurmanji language scope of Şikofteh's book. Course 2 follows the separate Kurmanji grammar scope of Celadet's Part II. Do not transfer rules, terms or examples between these books.
