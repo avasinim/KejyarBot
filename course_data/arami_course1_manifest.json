@@ -1,24 +1,25 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "فێرکاریی ڕێنووسی ئارامی",
-  "status": "isolated_integration_pending",
+  "status": "isolated_lesson1_reading_integration_pending_validation",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
       "number": 1,
       "title": "ڕێنووسی سەرەتاییی ئارامی زمانی کوردی",
       "content_source": "user_supplied_immutable",
-      "content_status": "do_not_edit",
+      "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
       "audio_status": "user_confirmed_asset_repository_root",
       "practice_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
       "assessment_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
-      "runtime_status": "isolated_telegram_callback_route_registered; full_lesson_text_delivery_pending",
+      "runtime_status": "isolated_Telegram_reading_audio_practice_assessment_routes_registered",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
-      "presentation_status": "telegram_menu_audio_practice_assessment_and_missed_question_retry_wired; lesson_text_delivery_pending",
+      "presentation_status": "lesson_text_delivered_in_source_sections; audio_practice_assessment_and_retry_wired",
       "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
-      "interaction_presentation": "arami_lesson1_presentation.py"
+      "interaction_presentation": "arami_lesson1_presentation.py",
+      "content_file": "course_data/arami_course1_lesson_01_content.json"
     },
     {
       "id": "arami_course1_lesson_02",
