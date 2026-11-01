@@ -121,6 +121,16 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("wek pevdeng", lesson)
         self.assertIn("| xew | dawî |", lesson)
         self.assertNotIn("| xwarin | navîn |", lesson)
+    def test_course_one_lesson_nine_tracks_source_x_y_z_descriptions(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_orthography_09"]["content"]
+        self.assertIn("Dengên X, Y û Z", lesson)
+        self.assertIn("X ji nîveka qirikê", lesson)
+        self.assertIn("Y nîvdeng e", lesson)
+        self.assertIn("Z di navbera diranan de", lesson)
+        self.assertIn("| zozan | Z |", lesson)
+        self.assertNotIn("Herfên Taybet di Elfabeya Kurmancî de", lesson)
+
     def test_course_two_reciprocal_e_k_region_matches_celadet_source(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_10"]["content"]
