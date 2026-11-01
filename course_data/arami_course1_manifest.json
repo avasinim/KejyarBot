@@ -340,6 +340,22 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented"
+    },
+    {
+      "id": "arami_course1_lesson_21",
+      "number": 21,
+      "title": "بڕگە و هێشوو (Cluster)",
+      "status": "source_review_pending",
+      "content_status": "user_supplied_lesson_21_received_and_preserved",
+      "source_policy": "Preserve user-supplied wording, examples, order and definitions; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_21_syllable_cluster_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_asset": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
+      "audio_status": "user_explicitly_assigned_existing_audio_commit; runtime_playback_not_verified",
+      "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
+      "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course."
     }
   ],
   "safety": {
@@ -352,7 +368,7 @@
     "source_text_immutable": true,
     "no_latin_course_changes": true
   },
-  "course_size": 20,
+  "course_size": 21,
   "source_audit": {
     "archive_file": "کەژیار.pdf",
     "audit_date": "2026-11-01",
@@ -361,7 +377,7 @@
       18,
       19
     ],
-    "note": "The supplied archive contains lesson bodies for Lessons 1–12 and 14–17; Lesson 4's source heading is only 'وانەی ٤', so no title is inferred. Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles. This is a historical audit of the original archive numbering; on 2026-11-02 the user inserted a new Lesson 11, shifting former Lessons 11–19 to Lessons 12–20. No existing lesson was deleted.",
+    "note": "The supplied archive contains lesson bodies for Lessons 1–12 and 14–17; Lesson 4's source heading is only 'وانەی ٤', so no title is inferred. Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles. This is a historical audit of the original archive numbering; on 2026-11-02 the user inserted a new Lesson 11, shifting former Lessons 11–19 to Lessons 12–20. No existing lesson was deleted. User subsequently confirmed Round 1, Course 1 ends with 21 lessons; Lesson 21 (syllable and cluster) was added as the final lesson.",
     "lesson_numbers_with_source_content": [
       1,
       2,
@@ -381,5 +397,5 @@
       17
     ]
   },
-  "course_total_lessons": 20
+  "course_total_lessons": 21
 }
