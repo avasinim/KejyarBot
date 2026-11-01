@@ -868,7 +868,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 2. Herfa W
 
-`W` jî dengdareke kurmancî ye, lê ji `V` cuda ye.
+`W` ne dengdareke asayî ye; Şikofteh wê wekî herfa nîvdeng nas dike. Herfa `Y` jî di heman komê de ye. `W` bi dengdêran re şêweyên wek `wa, we, wê, wi, wî` çêdike û bi hin dengdaran re jî di komên `xw, kw, gw` de tê.
 
 | Peyv | Cihê W |
 |---|---|
@@ -959,7 +959,7 @@ D) Her du nîşan in
 
 ### Xulasa
 
-Di vê dersê de me herfên `V` û `W` nas kirin û fêr bûn ku ew du dengdarên cuda ne. Ji bo rastnivîsînê divê cudahiya wan were parastin.
+Di vê dersê de me `V` wek dengdar û `W` wek nîvdeng nas kirin. `Y` jî nîvdeng e. Ji bo rastnivîsînê divê ئەم جیاوازییەی پۆلێنکردن بپارێزرێت.
 
 ---
 
