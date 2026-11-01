@@ -31,11 +31,11 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 5 | 3 | C | malê | Di hevoka «Ez ji malê têm» de «malê» cihê jêhatinê nîşan dide. |
 | 5 | 4 | B | kitêbê | Di hevoka «Ez kitêbê dixwînim» de «kitêbê» tiştê ku tê xwendin nîşan dide. |
 | 5 | 5 | B | Na, erkê peyvê dikare forma wê biguherîne | Erkê peyvê di hevokê de dikare forma wê biguherîne. |
-| 6 | 1 | A | Nîşandana nêzîkî û dûriyê | «Ev» û «ew» nêzîkî û dûriyê nîşan didin. |
-| 6 | 2 | B | pirtûk | Di koma «ev pirtûk» de «pirtûk» navdêr e. |
-| 6 | 3 | C | ew | «Ew» ji bo nîşandana tiştekî dûr tê bikaranîn. |
-| 6 | 4 | B | mal | Di hevoka «Ev mal nû ye» de «mal» navê tiştê ye. |
-| 6 | 5 | A | Navdêrê nîşan dide | Di koma «ew zarok» de «ew» navdêrê nîşan dide. |
+| 6 | 1 | B | navdêrê rave dike/taybet dike | Bireserê navdêrê navdêrê rave dike an taybet dike. |
+| 6 | 2 | C | keçik | Di koma «ev keçik» de «keçik» navdêr e; «ev» bireser e. |
+| 6 | 3 | A | beza | Di koma «hespê beza» de «beza» bireser e û navdêra «hesp» rave dike. |
+| 6 | 4 | B | pêşî an paşî navdêrê | Bireser dikare pêşî an paşî navdêrê were. |
+| 6 | 5 | C | bireserê navdêrê | «Xencera min» nimûneyeke bireserê navdêrê ye. |
 | 7 | 1 | B | Ku em behsa tiştekî an kesekî diyarkirî dikin | Binavkirin kes an tiştekî diyarkirî nîşan dide. |
 | 7 | 2 | A | Navdêr | Veqetandek bi navdêrê re têkildar e. |
 | 7 | 3 | B | Na, divê erk û rêzika wê were analîzkirin | Her guherîna dawiyê ne veqetandeka binavkirî ye. |
@@ -56,11 +56,11 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 10 | 3 | B | wê | «Wê» forma pronavê bireser ji bo kesê sêyem ê mê yekjimar e. |
 | 10 | 4 | C | hev | «Hev» dikare têkiliya berbihevîn nîşan bide. |
 | 10 | 5 | A | Têkiliya di navbera kesan de | Di hevoka «Em hev nas dikin» de «hev» têkiliya di navbera kesan de nîşan dide. |
-| 11 | 1 | B | ev | «Ev» tiştekî nêzîk nîşan dide. |
-| 11 | 2 | B | kî | «Kî» ji bo pirsîna kesan tê bikaranîn. |
-| 11 | 3 | A | çi | «Çi» ji bo pirsîna tiştekî tê bikaranîn. |
-| 11 | 4 | B | Hevokan bi hev ve girêdide | Ev bersiv li gorî pêşnûsa heyî ye; lê karanîna «ko» di relative clause de wek pronavê girêkî û karanîna wê wek girêder divê ji hev bên cudakirin. |
-| 11 | 5 | A | kîjan | «Kîjan» ji bo hilbijartina kes an tiştekî di nav çend vebijarkan de tê bikaranîn. |
+| 11 | 1 | B | ev/ew | `ev` û `ew` pronavên îşarkî yên bingehîn in. |
+| 11 | 2 | C | yê/ya/yên | `yê`, `ya` û `yên` formên pronavên îşarkî yên qerse ne. |
+| 11 | 3 | A | ko | `ko` forma pronavê girêkî ya ku di vê pêşnûsê de hatiye parastin e. |
+| 11 | 4 | B | pirsiyarkî | `Kî hat?` pirs e û `kî` pronavê pirsiyarkî ye. |
+| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | `kîjan` ji bo hilbijartina kes an tiştekî di nav çend vebijarkan de tê. |
 | 12 | 1 | B | Taybetmendiya navdêrê rave dike | Rengdêr taybetmendiya navdêrê rave dike. |
 | 12 | 2 | C | nû | Di hevoka «Ev kitêb nû ye» de «nû» rengdêr e. |
 | 12 | 3 | C | Şeş | Şeş hejmareke bingehîn e ku jimara 6 nîşan dide. |
