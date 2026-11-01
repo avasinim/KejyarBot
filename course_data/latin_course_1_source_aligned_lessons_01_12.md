@@ -640,10 +640,10 @@ Herfa I yek ji dengdêrên kurmancî ye.
 | jin | I |
 | dil | I |
 | pir | I |
-| min | I |
-| nivîs | I |
+| bizin | I |
+| zivistan | I |
 | kirin | I |
-| hilbijartin | I |
+| hêstir | I |
 
 ### 2. Herfa Î
 
@@ -667,7 +667,7 @@ I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan ten�
 | jin | pîr |
 | dil | şîr |
 | pir | mîr |
-| min | nîv |
+| bizin | nîv |
 | kirin | îro |
 
 **Têbînî:** Ev tablo ji bo nasîna herfan e; cotên peyvan ne hemî ji aliyê wateyê ve wekhev in û ne hemî tenê di yek dengî de ji hev cuda ne.
@@ -685,11 +685,11 @@ I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan ten�
 
 Kêşeyeke biçûk: her peyvê bixwîne û dengdêra wê bibîne.
 
-jin — pîr — dil — şîr — pir — mîr — min — nîv
+jin — pîr — dil — şîr — pir — mîr — bizin — nîv
 
 **Xebata 2:** Peyvên li jêr bi du koman veqetîne:
 
-îro — jin — pîr — dil — şîr — pir — nîv — min
+îro — jin — pîr — dil — şîr — pir — nîv — bizin
 
 **Xebata 3:** Bi her yek ji van herfên jêrîn re du peyvên nû binivîse:
 
@@ -750,9 +750,9 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 |---|---|
 | kur | U |
 | gur | U |
-| gund | U |
-| xurt | U |
-| kulîlk | U |
+| kum | U |
+| kul | U |
+| kul | U |
 
 ### 2. Dengdêra Û
 Û di koma dengdêrên dirêj de ye. Nîşana li ser wê beşek ji herfê ye.
@@ -762,7 +762,7 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 | dûr | Û |
 | bûk | Û |
 | bûn | Û |
-| şûştin | Û |
+| kûr | Û |
 | mû | Û |
 
 **Têbînî:** `xwîn` bi Î tê nivîsîn; ji ber vê yekê ne mînaka U ye û ne mînaka Û ye.
@@ -790,11 +790,11 @@ U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di k
 ### 5. Xebata Kejyar
 **Xebata 1:** Peyvan li gorî herfa wan kom bike:
 
-kur — dûr — gur — bûk — gund — bûn — xurt — şûştin
+kur — dûr — gur — bûk — kum — bûn — kul — kûr
 
 **Xebata 2:** Dengdêra rast bi tîpa mezin nîşan bike:
 
-kulîlk — xwîn — dûr — gur — mû — gund
+gul — xwîn — dûr — gur — mû — kum
 
 **Xebata 3:** Bi U sê peyv û bi Û sê peyv binivîse.
 
@@ -812,7 +812,7 @@ C) Û
 D) Î
 
 3. Kîjan peyv bi Û hatiye nivîsîn?
-A) gund
+A) kum
 B) gur
 C) bûn
 D) kur
