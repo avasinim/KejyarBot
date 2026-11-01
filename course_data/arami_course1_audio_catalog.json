@@ -16,10 +16,10 @@
       "commit_sha": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
       "commit_title": "دەنگەکان",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/5642e5310cc856f7bfd8c821086a9f2febe419e6",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_assignment_user_confirmed",
+      "lesson_id": "arami_course1_lesson_01",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "assignment_status": "user_confirmed_as_arami_course1_lesson_01_audio; original_recording_preserved",
       "audio_topic_label": "دەنگەکان"
     },
     {
