@@ -86,4 +86,15 @@ def load_arami_lesson1_interactions(base_dir):
         item = vowel_items[0]
         if item["options"][item["answer_index"]] != "٨ بزوێن":
             raise AramiCourseError(f"Lesson 1 {mode} vowel-count answer must be eight")
+        color_items = [
+            item for item in questions
+            if item.get("section_id") == "lesson1_chart_categories"
+        ]
+        if len(color_items) != 1:
+            raise AramiCourseError(f"Lesson 1 {mode} must contain exactly one chart color-key item")
+        color_item = color_items[0]
+        if color_item["options"][color_item["answer_index"]] != "سوور":
+            raise AramiCourseError(f"Lesson 1 {mode} chart color-key answer must remain red")
+        if any(not isinstance(item.get("source_evidence"), str) or not item["source_evidence"].strip() for item in questions):
+            raise AramiCourseError(f"Lesson 1 {mode} questions require source evidence")
     return bank
