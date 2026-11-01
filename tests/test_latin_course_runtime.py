@@ -174,9 +174,9 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         for term in ("| nivîs | I |", "| hilbijartin | I |", "| gund | U |", "| xurt | U |", "| kulîlk | U |"):
             self.assertNotIn(term, short)
         long = lessons["kurmanji_latin_orthography_05"]["content"]
-        for term in ("| ard | A |", "| êzing | Ê |", "| dîk | Î |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
+        for term in ("| êzing | Ê |", "| dîk | Î |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
             self.assertIn(term, long)
-        for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
+        self.assertIn("- A: av, bav, ard", long)\n        for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
             self.assertNotIn(term, long)
 
     def test_course_one_i_ii_examples_and_w_examples_are_source_attested(self):
