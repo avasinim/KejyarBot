@@ -853,9 +853,9 @@ Di dawiya dersê de xwendekar dikare:
 
 | Peyv | Cihê V |
 |---|---|
-| av | dawî |
+| çav | dawî |
 | vedan | destpêk |
-| zivistan | navîn |
+| dirav | navîn |
 | kevir | navîn |
 | xwarin | di vê peyvê de tune ye |
 | vegerîn | destpêk |
@@ -894,7 +894,7 @@ Herfa `V` dikare di destpêk, navîn an dawîya peyvê de were:
 
 - `vedan`
 - `kevir`
-- `av`
+- `çav`
 
 Herfa `W` jî dikare di destpêk an dawîya peyvê de were:
 
@@ -908,14 +908,14 @@ Alîkariya Kêjyar
 
 Peyvên jêrîn li gorî herfa wan kom bike:
 
-`av — welat — vedan — wî — kevir — kew — zivistan — wêran`
+`çav — welat — vedan — wî — kevir — kew — dirav — wêran`
 
 - Koma yekem: peyvên bi `V`.
 - Koma duyem: peyvên bi `W`.
 
 Xebata 2: Di peyvên jêrîn de herfa `V` an `W` bibîne:
 
-`vegerîn — wan — av — wêran — welat — veşartin`
+`vegerîn — wan — çav — wêran — welat — veşartin`
 
 Xebata 3: Bi her yek ji herfên `V` û `W` sê peyv binivîse.
 
@@ -927,7 +927,7 @@ B) W
 C) U
 D) Û
 
-2. Di peyva «av» de kîjan herf di dawiyê de ye?
+2. Di peyva «çav» de kîjan herf di dawiyê de ye?
 A) W
 B) V
 C) F
