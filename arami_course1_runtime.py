@@ -117,3 +117,28 @@ def load_arami_lesson1_interactions(base_dir):
         if special_letter is None or special_letter["options"][special_letter["answer_index"]] not in {"نەخێر", "نەخێر"}:
             raise AramiCourseError(f"Lesson 1 {mode} must preserve the no-special-letter fact")
     return bank
+
+
+def load_arami_lesson1_content(base_dir):
+    """Load the source-faithful lesson text separately from interaction data."""
+    root = Path(base_dir).resolve()
+    path = root / "course_data" / "arami_course1_lesson_01_content.json"
+    try:
+        content = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AramiCourseError("Arami Lesson 1 source text could not be loaded") from exc
+    if content.get("course_id") != COURSE_ID or content.get("lesson_id") != LESSON_1_ID:
+        raise AramiCourseError("lesson text belongs to a different course or lesson")
+    sections = content.get("sections")
+    if not isinstance(sections, list) or len(sections) != 8:
+        raise AramiCourseError("Arami Lesson 1 must contain its eight original sections")
+    if not isinstance(content.get("objectives"), list) or not content["objectives"]:
+        raise AramiCourseError("Arami Lesson 1 objectives are missing")
+    if not isinstance(content.get("conclusion"), str) or not content["conclusion"].strip():
+        raise AramiCourseError("Arami Lesson 1 conclusion is missing")
+    for section in sections:
+        if not isinstance(section, dict) or not isinstance(section.get("title"), str):
+            raise AramiCourseError("invalid Arami Lesson 1 source section")
+        if not any(key in section for key in ("body", "table", "questions")):
+            raise AramiCourseError("empty Arami Lesson 1 source section")
+    return content
