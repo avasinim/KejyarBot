@@ -20,6 +20,7 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             "lessons": [
                 {"id": LESSON_1_ID, "content_status": "do_not_edit",
                  "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
+                 "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
                  "audio_status": "user_confirmed_asset_repository_root"},
                 {"id": "arami_course1_lesson_02"},
                 {"id": "arami_course1_lesson_03"},
