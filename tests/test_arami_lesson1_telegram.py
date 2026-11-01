@@ -99,5 +99,68 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.edit_message_reply_markup.assert_not_awaited()
 
 
+
+class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.bank = {
+            "practice": [{
+                "id": "q1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "چەند پیت؟",
+                "options": ["٣٤", "٣٣"], "answer_index": 0,
+            }],
+            "assessment": [{
+                "id": "a1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "ئەلفبێ چەند پیتە؟",
+                "options": ["٣٣", "٣٤"], "answer_index": 1,
+            }],
+        }
+
+    async def _start_and_answer(self, selected_index):
+        update, query = make_update("assessment")
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "assessment")
+        question_message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update(f"pick:{selected_index}", message_id=question_message_id)
+        await callback(update, context, "/unused")
+        update, query = make_update("submit", message_id=question_message_id)
+        await callback(update, context, "/unused")
+        return context, query
+
+    async def test_assessment_wrong_answer_offers_retry_and_retry_starts_practice(self):
+        context, result_query = await self._start_and_answer(0)
+        self.assertTrue(context.user_data["arami_lesson1_session"]["closed"])
+        result_query.edit_message_text.assert_awaited_once()
+        markup = result_query.edit_message_text.await_args.kwargs["reply_markup"]
+        callbacks = [
+            button.callback_data
+            for row in markup.inline_keyboard
+            for button in row
+        ]
+        self.assertIn("arami1:retry", callbacks)
+
+        update, retry_query = make_update("retry", message_id=10)
+        # The completed result is edited in place, so its original message id remains valid.
+        update.callback_query.message.message_id = 10
+        context.user_data["arami_lesson1_message_id"] = 10
+        await callback(update, context, "/unused")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
+
+    async def test_perfect_assessment_does_not_offer_retry(self):
+        _context, result_query = await self._start_and_answer(1)
+        markup = result_query.edit_message_text.await_args.kwargs["reply_markup"]
+        callbacks = [
+            button.callback_data
+            for row in markup.inline_keyboard
+            for button in row
+        ]
+        self.assertNotIn("arami1:retry", callbacks)
+        self.assertIn("arami1:menu", callbacks)
+
+
 if __name__ == "__main__":
     unittest.main()
