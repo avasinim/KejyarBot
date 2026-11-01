@@ -206,8 +206,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lesson = lessons["kurmanji_latin_grammar_03"]["content"]
         self.assertIn("`vê darê`", lesson)
         self.assertIn("`vî darî`", lesson)
-        self.assertIn("bi wateya dara kesk/riwekê mê ye", lesson)
-        self.assertIn("bi wateya dara hişk/çûbê nêr e", lesson)
+        self.assertIn("wateya dara kesk/riwekê dide mê ye", lesson)
+        self.assertIn("wateya dara hişk/çûbê dide nêr e", lesson)
 
     def test_course_two_lesson_twelve_preserves_celadet_adjective_and_numeral_classes(self):
         lessons, _, _ = load_latin_courses()
