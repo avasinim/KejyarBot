@@ -19,32 +19,30 @@ def test_lesson1_practice_and_assessment_banks_are_valid():
     assert validate_question_bank(bank["assessment"])
 
 
-def test_each_question_has_visible_chart_evidence():
+def test_each_question_has_verified_lesson_evidence():
     bank = load_bank()
     for mode in ("practice", "assessment"):
         for question in bank[mode]:
-            assert question["section_id"].startswith("lesson1_chart_")
+            assert question["section_id"] in {"lesson1_vowel_count", "lesson1_chart_categories"}
             assert question["source_evidence"]
             assert 0 <= question["answer_index"] < len(question["options"])
 
 
-def test_only_chart_supported_counts_and_color_are_tested():
+def test_only_verified_lesson_facts_and_chart_color_are_tested():
     bank = load_bank()
     allowed_prompts = {
-        "بەپێی خشتەی وانەی یەکەم، ژمارەی گشتیی پیتەکانی ئەلفبێ چەندە؟",
-        "لە خشتەکەدا ژمارەی نەبزوێنەکان چەندە؟",
-        "بەپێی ڕونکردنەوەی وانەی ١، ژمارەی بزوێنەکان چەندە؟",
-        "لە ڕونکردنەوەی وانەی ١دا ژمارەی بزوێنەکان چەندە؟",
+        "ژمارەی بزوێنەکانی وانەی ١ چەندە؟",
+        "بەپێی فێرکاریی وانەی ١، چەند بزوێن هەن؟",
         "لە خشتەی وانەکەدا بزوێنەکان بە کام ڕەنگە دیاریکراون؟",
-        "ژمارەی گشتیی پیتەکانی ئەلفبێی نیشاندراو لە خشتەکەدا چەندە؟",
-        "ژمارەی نەبزوێنەکان لە خشتەکەدا چەندە؟",
-        "ژمارەی بزوێنەکان لە خشتەکەدا چەندە؟",
         "کام ڕەنگ لە خشتەکەدا بۆ نیشاندانی بزوێنەکان بەکارهاتووە؟",
     }
     for mode in ("practice", "assessment"):
         assert all(q["prompt"] in allowed_prompts for q in bank[mode])
     assert bank["source_correction"]["lesson_1_vowel_count"] == 8
-    assert all("٦ پیت" not in q["options"] for mode in ("practice", "assessment") for q in bank[mode])
+    vowel_questions = [q for mode in ("practice", "assessment") for q in bank[mode] if q["section_id"] == "lesson1_vowel_count"]
+    assert len(vowel_questions) == 2
+    assert all(q["options"][q["answer_index"]] == "٨ بزوێن" for q in vowel_questions)
+    assert all("٦ بزوێن" not in q["options"] for q in vowel_questions)
     assert bank["not_yet_authored"][:3] == [
         "sound-to-letter listening items",
         "letter-sequence completion",
