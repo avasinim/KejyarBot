@@ -114,6 +114,13 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("gîyan", lesson)
         self.assertNotIn("du dengdar", lesson)
 
+    def test_course_one_separates_w_semivowel_from_pevdeng_clusters(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_orthography_08"]["content"]
+        self.assertIn("W` bi dengdaran re", lesson)
+        self.assertIn("wek pevdeng", lesson)
+        self.assertIn("| xew | dawî |", lesson)
+        self.assertNotIn("| xwarin | navîn |", lesson)
     def test_course_two_neuter_personal_pronoun_has_no_invented_agent_form(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_09"]["content"]
