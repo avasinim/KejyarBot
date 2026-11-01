@@ -12,9 +12,11 @@
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
       "audio_status": "user_confirmed_asset_repository_root",
-      "practice_status": "interaction_engine_added_question_bank_pending",
-      "assessment_status": "engine_added_question_bank_pending",
-      "runtime_status": "not_registered"
+      "practice_status": "source_grounded_chart_practice_bank_added; runtime_integration_pending",
+      "assessment_status": "source_grounded_chart_assessment_bank_added; runtime_integration_pending",
+      "runtime_status": "not_registered",
+      "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
+      "presentation_status": "existing_user_supplied_alphabet_chart_preserved_as_lesson_media; UI_integration_pending"
     },
     {
       "id": "arami_course1_lesson_02",
