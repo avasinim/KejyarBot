@@ -101,7 +101,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         vw_lesson = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("23 herfên din", alphabet_lesson)
         self.assertIn("W û Y wek **nîvdeng**", alphabet_lesson)
-        self.assertIn("V bêdengeke kurmancî ye", vw_lesson)
+        self.assertIn("V` bêdengeke kurmancî ye", vw_lesson)
         self.assertIn("W` nîvdeng e", vw_lesson)
         self.assertIn("Y` jî di heman komê de ye", vw_lesson)
 
