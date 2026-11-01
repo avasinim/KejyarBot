@@ -244,10 +244,20 @@
     {
       "id": "arami_course1_lesson_16",
       "number": 16,
-      "title": "جیاوازیی نێوان پیتی (هـ) و (ە)",
+      "title": "پیتی «ڤ» = V, v",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_16_received_and_preserved; source_saved_without_semantic_edits",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_16_v_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_status": "user_referenced_existing_recording; runtime_playback_not_verified",
+      "audio_commits": [
+        "feb5293b322c1eb63d0481af02148cc9d1af64a8"
+      ],
+      "audio_assignment_note": "User explicitly associates commit feb5293b322c1eb63d0481af02148cc9d1af64a8 with the ڤ sound in this lesson. Playback/runtime not yet verified.",
+      "source_note": "Outer heading identifies this as Lesson 16; a copied closing heading says Lesson 15. Numbering follows the explicit outer heading."
     },
     {
       "id": "arami_course1_lesson_17",
