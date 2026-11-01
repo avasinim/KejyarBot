@@ -74,8 +74,7 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             source_bank = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_interactions.json"
             target = root / "course_data" / source_bank.name
             bank = json.loads(source_bank.read_text(encoding="utf-8"))
-            color = next(item for item in bank["practice"] if item["section_id"] == "lesson1_chart_categories")
-            color["options"][color["answer_index"]] = "سەوز"
+            bank["practice"][0]["section_id"] = "lesson1_chart_categories"
             target.write_text(json.dumps(bank, ensure_ascii=False), encoding="utf-8")
             with self.assertRaises(AramiCourseError):
                 load_arami_lesson1_interactions(root)
@@ -90,6 +89,8 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             manifest = self.fixture(Path(temp))
             manifest["lessons"][0]["audio_asset"] = "voices/lesson_start.mp3"
+            path = Path(temp) / "course_data" / "arami_course1_manifest.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
             with self.assertRaises(AramiCourseError):
                 load_arami_course1(temp)
 
