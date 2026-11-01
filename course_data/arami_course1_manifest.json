@@ -22,23 +22,31 @@
     {
       "id": "arami_course1_lesson_02",
       "number": 2,
-      "title": "پیتەکانی زمانی کوردی بە نووسینی کوردی و لاتینی",
+      "title": "بزوێنەکان",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
+      "content_status": "user_source_received_and_preserved; lesson_text_saved; no edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
       "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved",
       "audio_topic_label": "دەنگەکان",
-      "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2."
+      "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2.",
+      "content_file": "course_data/arami_course1_lesson_02_vowels_source.md",
+      "content_source": "user_supplied_immutable",
+      "source_note": "A separate earlier Lesson 2 text about letters and sounds was also received in conversation; this newly supplied Lesson 2 vowels text is stored separately and must not be merged without user direction."
     },
     {
       "id": "arami_course1_lesson_03",
       "number": 3,
       "status": "source_review_pending",
-      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; exact transcription and interaction extraction pending",
+      "content_status": "user_source_received_and_preserved; lesson_text_saved; no edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "title": "بۆچی ژمارەی پیتەکانی زمانی کوردی ٣٤ دانەیە بەاڵم ژمارەی دەنگەکان ٣٧ دانەیە؟"
+      "title": "یاسای بزوێنەکان",
+      "content_file": "course_data/arami_course1_lesson_03_vowel_rules_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "not_yet_implemented",
+      "assessment_status": "not_yet_implemented",
+      "audio_status": "not_assigned; awaiting explicit user mapping"
     },
     {
       "id": "arami_course1_lesson_04",
