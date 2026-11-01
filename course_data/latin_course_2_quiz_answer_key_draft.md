@@ -1,79 +1,75 @@
-# کلیل و ڕوونکردنەوەی کویزی پێش‌نووسی کۆرسی ٢
-Status: editorial answer-key draft — exact option text is aligned with the selected 12-lesson Course 2 draft and regression-tested; it is not runtime data.
+# Mifteya bersiv û ravekirina testa Kursa 2 — Bingehên Gramera Kurmancî
 
-ئەم کلیلە بە شێوەی وەڵامی ڕاست (نەک ژمارەی هەڵبژاردە) تۆمار کراوە، بۆ ئەوەی لە کاتی ڕێکخستنی شوێنی هەڵبژاردەکاندا هەڵەی index ڕوونەدات.
+**Rewş:** Mifteya redaksiyonê ye. Nivîsa bersivên rast bi vebijarkên dersên Kursa 2 re hatiye berawirdkirin. Ev belge daneyên runtime nîne.
 
-| وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست | ڕوونکردنەوە |
-|---:|---:|---|---|
-| 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | پێناسەی گرامەر لە سەرچاوەدا ئەمەیە. |
-| 1 | 2 | B | 4 | سەرچاوە چوار هێمای سەرەکیی زمان دیاری دەکات. |
-| 1 | 3 | A | nîşana nivîskî | تێپ نیشانەی نووسراوی دەنگە. |
-| 1 | 4 | B | bêje | `hesp` وشەیە. |
-| 1 | 5 | B | bi peyhevketina koman | قسەت لە پێکەوەهاتنی کۆمەڵەکان دروست دەبێت. |
-| 2 | 1 | B | kes/heywan/tişt | ناو ئەمانە دیاری دەکات. |
-| 2 | 2 | C | hevenav | `hesp` ناوی گشتییە. |
-| 2 | 3 | A | serenav | `Kurdistan` ناوی تایبەتە. |
-| 2 | 4 | B | serenav | `Zîn` ناوی کەسێکی دیاریکراوە. |
-| 2 | 5 | C | navê giştî | hevenav ناوی گشتیی پۆلێکە. |
-| 3 | 1 | B | 2 | لە سەرچاوەدا ڕەگەزی نێر و مێ هەن. |
-| 3 | 2 | C | nêr | کتێب `derî` لە لیستی نێردا دەهێنێت. |
-| 3 | 3 | A | nêr | کتێب `çem` لە لیستی نێردا دەهێنێت. |
-| 3 | 4 | B | mê | `dar` بە واتای ڕووەک/درەخت مێیە. |
-| 3 | 5 | C | zayenda rêzimanî | شتە بێ‌گیانەکانیش ڕەگەزی ڕێزمانییان هەیە. |
-| 4 | 1 | B | yek an gelek | mêjer ژمارەی ناو لە ڕستەدا دەردەخات. |
-| 4 | 2 | C | hespin | ئەمە شێوەی کۆی نموونەی وانەیە. |
-| 4 | 3 | A | yekjimar | `mehînek` لە نموونەدا تاکە. |
-| 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | ژمارە و tewang پەیوەندییان هەیە، بەڵام یەک نین. |
-| 4 | 5 | C | gelemjimar | `hespin` شێوەی کۆیە. |
-| 5 | 1 | B | guherîna forma peyvê | tewang شێوەی ناو بە پێی ڕۆڵی ڕێزمانی دەگۆڕێت. |
-| 5 | 2 | C | hespî | نموونەی tewang ـی ناوی نێرە. |
-| 5 | 3 | A | mehinê | نموونەی tewang ـی ناوی مێیە. |
-| 5 | 4 | B | forma gelemjimar a tewandî | `hespan` لە نموونەی کۆدا هاتووە. |
-| 5 | 5 | C | na | هەموو ناوەکان بە یەک شێوە ناگۆڕێن. |
-| 6 | 1 | B | navdêrê rave dike/taybet dike | bireser agahiy زیاتر بە ناوەکە دەدات. |
-| 6 | 2 | C | keçik | ناوی سەرەکیی `ev keçik` ئەوەیە. |
-| 6 | 3 | A | beza | لە `hespê beza` دا `beza` bireser ـە. |
-| 6 | 4 | B | pêşî an paşî navdêrê | bireser دەتوانێت لە هەردوو شوێن بێت. |
-| 6 | 5 | C | bireserê navdêrê | `xencera min` نموونەی bireser ـە. |
-| 7 | 1 | B | 3 | شێوەکان `ê, a, ên` ـن. |
-| 7 | 2 | C | nêr yekjimar | `-ê` بۆ نێر تاکە. |
-| 7 | 3 | A | mê yekjimar | `-a` بۆ مێ تاکە. |
-| 7 | 4 | B | gelemjara her du zayendan | `-ên` بۆ کۆیە. |
-| 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | `hespên Soro` نموونەیە. |
-| 8 | 1 | B | tiştekî hê nenaskirî | veqetandeka nebinavkirî ناو نادیار دەکات. |
-| 8 | 2 | C | bê bireser | `hespek hat` لەو بارودۆخەیە. |
-| 8 | 3 | A | -in | شێوەی کۆی ناوی نەناسراوە لە نموونەی سەرچاوەدا. |
-| 8 | 4 | B | -ekî | کاتێک bireser لە دوای ناوی نێر تاک دێت. |
-| 8 | 5 | C | na, erkên wan cuda ne | `-ên` و `-ine` دوو ئەرکی جیاوازن. |
-| 9 | 1 | B | min | خشتەی سەرچاوە: `ez/min`. |
-| 9 | 2 | C | te | خشتەی سەرچاوە: `tu/te`. |
-| 9 | 3 | A | wî | شێوەی kirarîی ew بۆ نێر. |
-| 9 | 4 | B | me | خشتەی سەرچاوە: `em/me`. |
-| 9 | 5 | A | hon | Pronavê kesê duyem gelemjar. |
-| 10 | 1 | B | min | یەکێکە لە pronavên bireser. |
-| 10 | 2 | C | wê | شێوەی مێی `ew` لە خشتەی kirarî/bi-reser. |
-| 10 | 3 | A | hev, êk | ئەمانە شێوەکانی سەرچاوەن. |
-| 10 | 4 | B | pronavên bireser | `wan` و `ew` لە ڕستەی نموونەدا بەکارهاتوون. |
-| 10 | 5 | B | du an zêdetir kes bi hev re | Pronavê berbihevîn têkiliya du an zêdetir kesan nîşan dide. |
-| 11 | 1 | B | ev/ew | دوو شێوەی îşarkî ên pî ve ne. |
-| 11 | 2 | C | yê/ya/yên | شێوەکانی îşarkî ên qerse ne. |
-| 11 | 3 | A | ko | relative pronoun ـی سەرچاوە بۆ هەردوو ڕەگەز و ژمارە. |
-| 11 | 4 | B | pirsiyarkî | `Kî hat?` پرسیاری کەسە. |
-| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | `kîjan` پرسیاری هەڵبژاردنە. |
+Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî awayî guhertina rêza vebijarkan nayê tevlihevkirin.
 
-## ئاگاداریی پێش runtime
-1. Before any future runtime integration, the JSON quiz options must be compared against this key and `correct_option_index` generated from the final option order. The current editorial key is tested against the selected lesson text; no runtime index is asserted here.
-2. لە وانەی ٤ و ٥دا پێویستە نموونەکانی تاک/کۆ و tewang لە دەقی سەرەکی و کویزدا بە وردی یەکسان بن؛ ئەگەر نموونەیەک لە ڕووی چاپ/OCR ناڕوون بێت، لاببرێت تا پشتڕاست دەبێتەوە.
-3. ئەم کلیلە پێش‌نووسە؛ هێشتا بە handler ـی بۆت نەبەستراوە و تاقیکردنەوەی runtimeی نەکراوە.
+| Ders | Pirs | Vebijarka rast | Bersiva rast | Ravekirin |
+|---:|---:|:---:|---|---|
+| 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | Gramer rêbazên rastaxaftinê û rastnivîsîna zimanê rêk dixe. |
+| 1 | 2 | B | 4 | Çar hêmanên bingehîn di pênaseya çavkaniyê de hatine diyarkirin. |
+| 1 | 3 | A | nîşana nivîskî | Tîp nîşana nivîskî ya dengekê ye. |
+| 1 | 4 | B | bêje | hesp bêjeyek e. |
+| 1 | 5 | B | bi peyhevketina koman | Gotin bi peyhevketina koman pêk tê. |
+| 2 | 1 | B | kes/heywan/tişt | Navdêr navê kes, heywan an tiştê dide. |
+| 2 | 2 | C | hevenav | hesp navê giştî ye; ji ber vê yekê hevenav e. |
+| 2 | 3 | A | serenav | Kurdistan navê taybet e; ji ber vê yekê serenav e. |
+| 2 | 4 | B | serenav | Zîn navê kesekî diyarkirî ye. |
+| 2 | 5 | C | navê giştî | Hevenav navê giştî yê komekê ye. |
+| 3 | 1 | B | 2 | Di vê rêzimanê de du zayendên rêzimanî hene: nêr û mê. |
+| 3 | 2 | C | nêr | Çavkaniyê derî di koma nêr de dide. |
+| 3 | 3 | A | nêr | Çavkaniyê çem di koma nêr de dide. |
+| 3 | 4 | B | mê | Dar di vê nimûneyê de navdêra mê ye. |
+| 3 | 5 | C | zayenda rêzimanî | Tiştên bêcan jî dikarin zayenda rêzimanî hebin. |
+| 4 | 1 | B | yek an gelek | Mêjer yekjimar an gelemjimar nîşan dide. |
+| 4 | 2 | C | hespin | hespin şêweya gelemjimar a nimûneyê ye. |
+| 4 | 3 | A | yekjimar | mehînek yekjimar e. |
+| 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Mêjer û tewang du pêvajoyên cuda yên rêzimanî ne. |
+| 4 | 5 | C | gelemjimar | hespin şêweya gelemjimar e. |
+| 5 | 1 | B | guherîna forma peyvê | Tewang guherîna forma peyvê li gorî erkê wê yê rêzimanî ye. |
+| 5 | 2 | C | hespî | hespî nimûneyeke tewanga navdêra nêr e. |
+| 5 | 3 | A | mehinê | mehinê nimûneyeke tewanga navdêra mê ye. |
+| 5 | 4 | B | forma gelemjimar a tewandî | hespan forma gelemjimar a tewandî ye. |
+| 5 | 5 | C | na | Na, hemû navdêr bi heman awayî natewin. |
+| 6 | 1 | B | navdêrê rave dike/taybet dike | Bireser agahiyê li ser navdêrê zêde dike an wê taybet dike. |
+| 6 | 2 | C | keçik | Di ev keçik de navdêra bingehîn keçik e. |
+| 6 | 3 | A | beza | Di hespê beza de beza biresera navdêrê ye. |
+| 6 | 4 | B | pêşî an paşî navdêrê | Bireser dikare berî an piştî navdêrê were. |
+| 6 | 5 | C | bireserê navdêrê | xencera min nimûneyeke biresera navdêrê ye. |
+| 7 | 1 | B | 3 | Di vê beşê de sê veqetandek hene: ê, a, ên. |
+| 7 | 2 | C | nêr yekjimar | -ê ji bo navdêra nêr a yekjimar e. |
+| 7 | 3 | A | mê yekjimar | -a ji bo navdêra mê a yekjimar e. |
+| 7 | 4 | B | gelemjara her du zayendan | -ên ji bo gelemjara her du zayendan e. |
+| 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | hespên Soro nimûneyeke veqetandeka binavkirî ya gelemjimar e. |
+| 8 | 1 | B | tiştekî hê nenaskirî | Veqetandeka nebinavkirî tiştekî hîn nenaskirî nîşan dide. |
+| 8 | 2 | C | bê bireser | hespek hat nimûneya hevokê bê bireser e. |
+| 8 | 3 | A | -in | -in di nimûneya çavkaniyê de şêweya gelemjimar e. |
+| 8 | 4 | B | -ekî | -ekî dema bireser piştî navdêra nêr a yekjimar were tê bikaranîn. |
+| 8 | 5 | C | na, erkên wan cuda ne | Na, -ên û -ine du erkên cuda hene. |
+| 9 | 1 | B | min | Di tabloya çavkaniyê de cot ez/min hatiye dayîn. |
+| 9 | 2 | C | te | Di tabloya çavkaniyê de cot tu/te hatiye dayîn. |
+| 9 | 3 | A | wî | wî forma kirarî ya ew ji bo nêr e. |
+| 9 | 4 | B | me | Di tabloya çavkaniyê de cot em/me hatiye dayîn. |
+| 9 | 5 | A | hon | hon pronavê kesê duyem ê gelemjar e. |
+| 10 | 1 | B | min | min yek ji pronavên bireser e. |
+| 10 | 2 | C | wê | wê forma mê ya ew e. |
+| 10 | 3 | A | hev, êk | hev û êk formên pronavên berbihevîn in. |
+| 10 | 4 | B | pronavên bireser | wan û ew di nimûneyên pronavên bireser de tên bikaranîn. |
+| 10 | 5 | B | du an zêdetir kes bi hev re | Pronavê berbihevîn têkiliya du an zêdetir kesan bi hev re nîşan dide. |
+| 11 | 1 | B | ev/ew | ev û ew du formên îşarkî yên pî ne. |
+| 11 | 2 | C | yê/ya/yên | yê, ya û yên formên îşarkî yên qerse ne. |
+| 11 | 3 | A | ko | ko di çavkaniyê de wek pronavê girêk tê bikaranîn. |
+| 11 | 4 | B | pirsiyarkî | Kî hat? pirsê li ser kesekî dike. |
+| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | kîjan ji bo hilbijartina kesek an tiştekî di nav gelek vebijarkan de tê bikaranîn. |
+| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Rengdêr taybetmendî an rewşa navdêrê rave dike. |
+| 12 | 2 | C | rengdêra wesfîn | mezin rengdêra wesfîn e. |
+| 12 | 3 | A | rengdêra jmarîn | sê rengdêra jmarîn e dema bi navdêrê ve girêdayî be. |
+| 12 | 4 | B | wek beşeke serbixwe | Çavkaniyê jmarnav wek beşeke serbixwe ji rengdêran cuda vedikole. |
+| 12 | 5 | C | nimûneyeke jmarnav | nîv di beşa jmarnavan de wek nimûne tê pêşkêşkirin. |
 
+## Têbînî berî runtime
 
-**نوێکاری:** کلیلە کۆنەکانی وانەی ١٢ لابراون؛ وانەکە بازنووسین کراوە و کلیلەی تایبەتیی نوێ لە `latin_course_2_lesson_12_answer_key.md` دایە.
-
-| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Rengdêr taybetmendî an taybetiya navdêrê rave dike. |
-| 12 | 2 | C | rengdêra wesfîn | `mezin` taybetmendiyê nîşan dide. |
-| 12 | 3 | A | rengdêra jmarîn | `sê` bi navdêrê `mal` ve girêdayî ye. |
-| 12 | 4 | B | wek beşeke serbixwe | Pirtûk jmarnav ji rengdêran cuda dike û wek beşeke serbixwe vedikole. |
-| 12 | 5 | C | nimûneyeke jmarnav | `nîv` di beşa jmarnavan de wek nimûne tê pêşkêşkirin. |
-
-
-**تێبینیی دوو پێش‌نووس:** ئەم ٥ ڕیزە کلیلەی وانەی ١٢ بۆ دەقی بنەڕەتیی `latin_course_2_source_aligned_lessons_01_12.md` دەپارێزن. بۆ دەقی فراوانکراوی جێگرەوە، کلیلەی جیاواز لە `latin_course_2_lesson_12_answer_key.md` دایە. پێش runtime دەبێت تەنیا یەکێک وەک وەشانی کۆتایی هەڵبژێردرێت؛ هەردوو دەقەکە بە ناوی یەک وانە لە بۆتدا پێکەوە بار مەکەن.
+1. Berî girêdana bi runtime, vebijarkên JSON divê bi vê mifteyê re werin berawirdkirin û indexa bersiva rast li gorî rêza dawî were diyarkirin.
+2. Di dersên 4 û 5 de, nimûneyên yekjimar, gelemjimar û tewangê divê di nivîsa dersê û kuizê de bi hev re li hev bên.
+3. Ev mifte hîn pêşnûse ye; bi handlerê botê re nehatiye girêdan û testa runtime nehatiye kirin.
+4. Ders 12 du pêşnûsên cuda hebûn. Di runtime de tenê yek nivîsa dawî û mifteya wê were bikaranîn; her du nivîs bi heman nasnameyê bar neke.
