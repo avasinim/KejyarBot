@@ -1,8 +1,7 @@
-# کلیلەی یەکگرتووی وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
+# Mifteya bersivên testa Kursa 1 — Bingehên Rastnivîsîna Kurmancî ya Latînî
 
-Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 are source-aligned editorial copies of the user's already supplied lesson texts; Lessons 8–9 use recovered original text with minimal corrections and the original option order is preserved.
+**Rewş:** Mifteya bersivan a pêşnûsê ye. Ev tablo bersivên 12 dersan dihewîne. Dersên 4–5 ji nivîsên ku bikarhêner berê şandine hatine guncandin; dersên 8–9 jî li gorî nivîsên vegerandî hatine sererastkirin.
 
-| وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
 | 1 | 1 | B | 31 |
 | 1 | 2 | C | 8 |
@@ -41,35 +40,35 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 | 7 | 5 | B | Du herfên cuda ne |
 | 8 | 1 | B | W |
 | 8 | 2 | B | V |
-| 8 | 3 | C | wêne |
+| 8 | 3 | C | wî |
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
-| 9 | 1 | B | Ç |
-| 9 | 2 | B | Ê |
-| 9 | 3 | B | Î |
-| 9 | 4 | B | Ş |
-| 9 | 5 | B | Û |
+| 9 | 1 | B | Ji nîveka qirikê |
+| 9 | 2 | B | Nîvdeng |
+| 9 | 3 | C | zozan |
+| 9 | 4 | B | xort |
+| 9 | 5 | B | Nîvdeng e |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê |
 | 10 | 4 | B | C û Ç |
 | 10 | 5 | A | Rêza herfan |
-| 11 | 1 | B | çav |
-| 11 | 2 | B | êvar |
-| 11 | 3 | B | îro |
-| 11 | 4 | B | Ş |
-| 11 | 5 | A | Rêza herfan |
-| 12 | 1 | C | 31 |
-| 12 | 2 | A | A, E, Ê, I, Î, O, U, Û |
-| 12 | 3 | B | çav |
-| 12 | 4 | B | 4 |
-| 12 | 5 | C | Nivîsandinê kontrol bikî |
+| 11 | 1 | B | Y, W, H |
+| 11 | 2 | B | gîyan |
+| 11 | 3 | C | rintir |
+| 11 | 4 | B | paşîv |
+| 11 | 5 | B | Li gorî rêbaza nivîsînê yek ji wan dikare neyê nivîsîn |
+| 12 | 1 | A | Beşa herî biçûk a peyvê ku dengdêrekê dihewîne |
+| 12 | 2 | B | bar + an |
+| 12 | 3 | C | Sê |
+| 12 | 4 | A | ba |
+| 12 | 5 | B | Hejmara dengdêran |
 
-## پشکنینی تایبەتی و سنووری بەڵگە
+## Têbînîyên kontrolê
 
-- وانەکانی ١–٣ و ٦: لە دەقی گەڕێنراوەوە وەرگیراون؛ کلیلەکە لەگەڵ هەڵبژاردەکانی دەقی وانەکان پشکنراوە.
-- وانەکانی ٤–٥: دەقی تەواوی ئەم دوو وانەیە لەلایەن بەکارهێنەرەوە پێشتر نێردراوە؛ ئەم کلیلە بۆ وەشانی سەرچاوە-هاوتاکراوی برانچی کارە و داوای ناردنەوەی دەقەکان ناکرێت.
-- وانەی ٧: کلیلەکە بۆ پێش‌نووسی چاککراوە.
-- وانەکانی ٨–٩: کلیلەکە بۆ پێش‌نووسە جێگرەوە چاککراوەکانە، نەک دەقی کۆنیان.
-- وانەکانی ١٠–١٢: کلیلەکان لەگەڵ پێش‌نووسە چاککراوەکان هاوتا کراون.
-- هەموو ٦٠ تۆماری وەڵام لەم خشتەیەدا دەبێت ناسنامەی پرسیاری تایبەتی خۆیان هەبێت؛ هیچ correct_option_index ـێک بۆ runtime زیاد نەکرێت تا پشکنینی جیاوازیی هەڵبژاردەکان و ڕێکخستنی runtime بە جیاوازی پەسەند نەکرێت.
+- Dersên 1–3 û 6: mifte li gorî vebijarkên nivîsa dersê hat kontrolkirin.
+- Dersên 4–5: nivîsên wan berê ji aliyê bikarhêner ve hatibûn şandin; mifte bi nivîsên sererastkirî re hat guncandin.
+- Ders 7: mifte bi pêşnûsa sererastkirî re hat guncandin.
+- Dersên 8–9: mifte li gorî nivîsên vegerandî û sererastkirî ye.
+- Dersên 10–12: bersiv bi vebijark û nivîsa nû re hatin kontrolkirin.
+- Her 60 bersiv xwedî nasnameya pirsê ya xwe ne. Berî girêdana bi runtime, rêza vebijarkan û bersiva rast divê careke din were testkirin.

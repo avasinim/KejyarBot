@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "status": "editorial_source_metadata_loaded_by_runtime_on_work_branch_only",
-  "source_volume": "Celadet Alî Bedir-Xan, Elfabêya kurdî & Bingehên gramera kurdmancî, Nefel, Stockholm, 2002",
+  "source_volume": "Du çavkaniyên cuda: Kursa 1 — Dr. Efrasîyab Şikofteh, Rê zimanê Kurmancî (Havîn 2010); Kursa 2 — Celadet Alî Bedir-Xan, Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002).",
   "courses": [
     {
       "id": "kurmanji_latin_orthography",
       "key": "course_kurmanji_latin_orthography",
       "order": 1,
-      "title": "Kursa 1: Bingehên Rastnivîsîna Kurdî ya Latînî",
-      "description": "12 dersên bingehên alfabeyê û rastnivîsîna kurdî ya latînî.",
-      "source_part": "Part I — Elfabêya kurdî, pp. 11–34",
+      "title": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
+      "description": "12 dersên alfabê, dengdar, bêdeng û bingehên rastnivîsîna Kurmancî ya Latînî.",
+      "source_part": "Part I — Dr. Efrasîyab Şikofteh — Rê zimanê Kurmancî (Havîn 2010), Ders 1 (rûpelên çapkirî 11–43) û Ders 2 (ji rûpela 44)",
       "status": "draft",
       "lesson_ids": [
         "kurmanji_latin_orthography_01",
@@ -32,7 +32,7 @@
       "order": 2,
       "title": "Kursa 2: Bingehên Gramera Kurmancî",
       "description": "12 dersên bingehên gramera kurmancî li gorî çavkaniya Celadet Alî Bedir-Xan.",
-      "source_part": "Part II — Bingehên gramera kurdmancî, pp. 37–100",
+      "source_part": "Part II — Celadet Alî Bedir-Xan — Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), Beşa II (rûpelên çapkirî 37–100)",
       "status": "draft",
       "lesson_ids": [
         "kurmanji_latin_grammar_01",

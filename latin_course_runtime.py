@@ -1,29 +1,30 @@
-"""Lossless runtime loader for the two source-aligned Kurmanji Latin courses.
+"""Lossless runtime loader for two source-separated Kurmanji Latin course drafts.
 
-The master Markdown remains the single source of truth for lesson prose. This
-module extracts each complete lesson body unchanged and parses the five MCQs
-without rewriting tables, examples, or exercise formatting.
+Each course reads its own dedicated lesson document and answer key. This loader
+checks structure and quiz consistency; it does not certify scientific source
+alignment. Lesson bodies are extracted without rewriting examples or formatting.
 """
 from pathlib import Path
 import re
 
 
 ROOT = Path(__file__).resolve().parent
-MASTER_PATH = ROOT / "course_data" / "latin_courses_master_draft.md"
+COURSE1_SOURCE_PATH = ROOT / "course_data" / "latin_course_1_source_aligned_lessons_01_12.md"
+COURSE2_SOURCE_PATH = ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md"
 COURSE1_KEY_PATH = ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md"
 COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md"
 
 COURSES = (
     {
         "id": "kurmanji_latin_orthography",
-        "source_part": "Part I — Elfabêya kurdî, pp. 11–34",
+        "source_part": "Part I — Dr. Efrasîyab Şikofteh — Rê zimanê Kurmancî (Havîn 2010), Ders 1 (rûpelên çapkirî 11–43) û Ders 2 (ji rûpela 44)",
         "first_heading": "## Ders 1:",
         "lesson_prefix": "kurmanji_latin_orthography",
         "key_path": COURSE1_KEY_PATH,
     },
     {
         "id": "kurmanji_latin_grammar",
-        "source_part": "Part II — Bingehên gramera kurdmancî, pp. 37–100",
+        "source_part": "Part II — Celadet Alî Bedir-Xan — Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), Beşa II (rûpelên çapkirî 37–100)",
         "first_heading": "## Ders 1 —",
         "lesson_prefix": "kurmanji_latin_grammar",
         "key_path": COURSE2_KEY_PATH,
@@ -49,7 +50,10 @@ def _split_master(master_text):
     blocks = []
     for position, (start, number, title) in enumerate(starts):
         end = starts[position + 1][0] if position + 1 < len(starts) else len(lines)
-        blocks.append((number, title, "\n".join(lines[start:end]).strip()))
+        body = "\n".join(lines[start:end]).strip()
+        # Editorial provenance notes belong in the source document, not in learner-facing lesson text.
+        body = re.sub(r"(?ms)^### Provenance[^\n]*\n.*?(?=^## Ders |\Z)", "", body).strip()
+        blocks.append((number, title, body))
     return blocks
 
 
@@ -114,6 +118,9 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
         current = None
 
     for line in lines[quiz_start + 1:]:
+        # The KejyarBot signature is lesson branding, never part of the final MCQ option.
+        if line.strip().startswith("**🤖 کەژیار — KejyarBot@**"):
+            break
         qmatch = QUESTION.match(line)
         if qmatch:
             finish()
@@ -166,27 +173,20 @@ def _strip_inline_options(text):
     return text[:match.start()].strip() if match else text.strip()
 
 
-def load_latin_courses(master_text=None):
+def load_latin_courses():
     """Return (lesson_data, quiz_data, course_records), validating all 24 lessons."""
-    master_text = _read(MASTER_PATH) if master_text is None else master_text
-    blocks = _split_master(master_text)
     lesson_data, quiz_data, course_records = {}, {}, []
     for course in COURSES:
-        selected = []
-        for number, title, body in blocks:
-            if course["id"] == "kurmanji_latin_orthography" and number <= 12 and body.startswith("## Ders"):
-                selected.append((number, title, body))
-            elif course["id"] == "kurmanji_latin_grammar" and number <= 12 and body.startswith("## Ders"):
-                # The second sequence begins after the first course's 12th lesson.
-                pass
-        if course["id"] == "kurmanji_latin_grammar":
-            all_course_blocks = [
-                item for item in blocks
-                if item[2].startswith("## Ders") and item[2].splitlines()[0].startswith("## Ders")
-            ]
-            selected = all_course_blocks[12:24]
-        else:
-            selected = selected[:12]
+        # Each Latin course reads only its own source section/document.
+        # Course 2 is never inferred as the second half of a combined master.
+        source_path = (
+            COURSE2_SOURCE_PATH
+            if course["id"] == "kurmanji_latin_grammar"
+            else COURSE1_SOURCE_PATH
+        )
+        source_text = _read(source_path)
+        selected = _split_master(source_text)
+        selected = [item for item in selected if item[2].startswith("## Ders")][:12]
         if len(selected) != 12:
             raise ValueError(f"{course['id']} must contain exactly 12 lessons; got {len(selected)}")
         answer_key = _read_answer_key(course["key_path"])

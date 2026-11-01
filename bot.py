@@ -543,8 +543,18 @@ def split_lesson_text(content, limit=3800):
     return chunks
 
 
+def add_kejyar_brand_signature(content):
+    """Give every lesson a consistent KejyarBot identity without altering its source."""
+    signature = "🤖 کەژیار — KejyarBot@"
+    content = content.rstrip()
+    if signature not in content:
+        content = f"{content}\n\n{signature}"
+    return content
+
+
 async def send_lesson_text(message, content, reply_markup=None):
-    """Send lesson drafts in Telegram-safe chunks without losing characters."""
+    """Send every lesson with the KejyarBot brand signature in Telegram-safe chunks."""
+    content = add_kejyar_brand_signature(content)
     chunks = split_lesson_text(content)
     for index, chunk in enumerate(chunks):
         await message.reply_text(
