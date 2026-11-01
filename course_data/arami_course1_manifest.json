@@ -73,10 +73,16 @@
     {
       "id": "arami_course1_lesson_06",
       "number": 6,
-      "title": "پیتی ت = T, t",
+      "title": "پیتەکان و دەنگەکان؛ جیاوازیی نێوان ژمارەی پیت و دەنگ",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_confirmed_two_sections_are_one_lesson; unified_and_preserved",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_file": "course_data/arami_course1_received_lesson_06_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "User confirmed the sections initially headed Lesson 1 and Lesson 3 form one lesson. Both sections are retained as parts of Lesson 6; only their headings were reframed."
     },
     {
       "id": "arami_course1_lesson_07",
