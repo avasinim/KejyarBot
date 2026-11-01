@@ -14,14 +14,14 @@ Ev nivîs pêşnûseyeke fêrkarî ye û şêwaza çavkaniyê diparêze. Li her 
 Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêmanên bingehîn ên pêkhateya ziman ji hev cuda bike: tîp, kît, bêje û komek.
 
 ### Naverok
-**Gramêr:** li gorî pirtûkê, tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e.
+**Gramêr:** li gorî rêbazê, tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e.
 
 **Zimanê kurdmancî:** zimanê gelê kurdmanc e; kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
 
 ### Hêmanên ziman
 Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de hêmanên bingehîn deng in; deng bi tîpan tên nîşankirin. Tîp ji bo çêkirina kîtan, kît ji bo çêkirina bêjeyan, û bêje ji bo çêkirina komekan tên bikaranîn.
 
-Pirtûk di rêzbendiya xwe ya çar hêmanên ziman de van dide:
+Çar hêmanên bingehîn ên ziman ev in:
 - **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
 - **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
 - **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
@@ -58,9 +58,9 @@ Nasîna navdêrên giştî û taybet.
 ### Naverok
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Navdêr dikarin li gorî giştî an taybetbûna navê xwe di du koman de bên dabeşkirin:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
 
-Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên çavkaniyê de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
+Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
 ### Xebat
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
@@ -97,7 +97,7 @@ Nimûneyên zayenda navdêran:
 
 ### Kuis — 5 pirs
 1. Di kurmancî de çend zayend hene? A) 3 B) 2 C) 4
-2. `derî` li gorî lîsteya pirtûkê nêr e an mê? A) mê B) bêzayend C) nêr
+2. `derî` li gorî lîsteya navdêran nêr e an mê? A) mê B) bêzayend C) nêr
 3. `çem` di pirtûkê de çi ye? A) nêr B) mê C) her du
 4. `dar` bi wateya riwekê çi ye? A) nêr B) mê C) bêzayend
 5. Zayenda navên tiştên bêcan çawa tê diyarkirin? A) tenê zayenda biyolojîk B) bi rengê wan C) zayenda rêzimanî
@@ -123,7 +123,7 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 
 Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
 
-**Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; çavkaniyê vê yekê bi taybetî diyar dike.
+**Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; ev yek jî bi taybetî tê nîşandan.
 
 ### Xebat
 1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehin e/Ev mehin in` de cuda bike.
@@ -147,17 +147,17 @@ Fêmkirina guherîna forma navdêrê li gorî erk û cihê wê di hevokê de.
 ### Naverok
 Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê xwe diguherin. Tewang ji mêjer cuda ye. Navdêr dema kirar be, gelek caran forma xwe ya bingehîn diparêze; dema bireser be, li gorî zayend, mêjer û dengên dawiyê dikare pêvek bistîne an dengên xwe biguherîne.
 
-**Nimûneyên bingehîn ên çavkaniyê:**
+**Nimûneyên bingehîn:**
 | Erk / rewş | Nêr yekjimar | Mê yekjimar | Gelemjimar |
 |---|---|---|---|
 | Kirar | `Hesp hat.` | `Mehin hat.` | `Hesp hatin.` / `Mehin hatin.` |
 | Bireser | `Ez hespî dibînim.` | `Ez mehinê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
 
-Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
+Bi gelemperî di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
 
 **Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêwîst e ku navdêr bi zayend û erkê wê re were fêrbûn, ne ku rêbazeke yekgirtî ji bo hemû peyvan were sepandin.
 
-**Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî nimûneya çavkaniyê).
+**Navên nêr ên bi `e` an `a`:** çavkaniyê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî vê nimûneyê).
 
 **Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehinin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
@@ -256,7 +256,7 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 - `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
 - `-ine` ji bo gelemjar: `mehinine delal hatin`.
 
-Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di çavkaniyê de di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
@@ -294,9 +294,9 @@ Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Di tabloya 
 
 Di hin hevokên rabirdû de forma kirarî tê bikaranîn; mînak: `Min got`, `Te xwar`, `Wî xist`, `Wê xwar`, `Me xwar`, `We got`, `Wan xist`.
 
-**Sê zayendên pronav:** çavkaniyê pronavên nêr, mê û nêtar cuda dike. `wî` forma nêr e û `wê` forma mê ye; formên din ên kesîn di rêzimanê de nêtar tên hesibandin. `ew` dikare li şûna navdêrên nêr û mê jî were, ji ber vê yekê di tabloyê de wek forma nêtar jî hatiye nîşandan.
+**Sê zayendên pronav:** rêziman pronavên nêr, mê û nêtar cuda dike. `wî` forma nêr e û `wê` forma mê ye; formên din ên kesîn di rêzimanê de nêtar tên hesibandin. `ew` dikare li şûna navdêrên nêr û mê jî were, ji ber vê yekê di tabloyê de wek forma nêtar jî hatiye nîşandan.
 
-**Nîşe ya dîrokî/ortografî:** pirtûka 2002 formê `hon` dinivîse. Di hin standardên nû de `hûn` tê dîtin. Di vê kursê de `hon` wek forma çavkaniyê diparêzin û `hûn` tenê wek variantê nû nîşan dikin; yek ji wan bê agahdarî nayê guhertin.
+**Nîşe ya dîrokî/ortografî:** forma kevneşopî formê `hon` dinivîse. Di hin standardên nû de `hûn` tê dîtin. Di vê kursê de `hon` wek forma kevneşopî diparêzin û `hûn` tenê wek variantê nû nîşan dikin; yek ji wan bê agahdarî nayê guhertin.
 
 ### Xebat
 Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan ew xwar`.
@@ -324,16 +324,16 @@ Mînak:
 - `Hespan ceh xwar.` → `Wan ew xwar.`
 - `Min qelem ji destê xwe xist.`
 
-Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Pirtûk `hev` û `êk` dide. Pirtûk di şîroveya xwe ya dîrokî de dibêje ku formên wek `hevdu`, `hev dû`, `êkdu` û `êk dû` li hin deveran di axaftina rojane de belav bûne; lê di nivîsa standard de forma bingehîn `hev` û `êk` diparêze. Ji ber vê yekê `hevdu` wek formeke herêmî/axaftinî nîşan dide, ne wek formeke nû ya standard.
+Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Forma `hev` û `êk` dide. Di şîroveya xwe ya dîrokî de dibêje ku formên wek `hevdu`, `hev dû`, `êkdu` û `êk dû` li hin deveran di axaftina rojane de belav bûne; lê di nivîsa standard de forma bingehîn `hev` û `êk` diparêze. Ji ber vê yekê `hevdu` wek formeke herêmî/axaftinî nîşan dide, ne wek formeke nû ya standard.
 
 ### Pronavên lihevxistî
-Pirtûk cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
+Cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
 - `jê` = `ji vî / ji wî / ji vê / ji wê`
 - `lê` = `li vî / li wê`
 - `pê` = `bi vî / bi wê`
 - `tê` = `di vî / di wê`
 
-Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de tên. Dema daçek di nav pronavê lihevxistî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
+Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di vê mijarê de tên. Dema daçek di nav pronavê lihevxistî de hebe, wê daçekê careke din pêşîya formê dubare neke: `pê ve` rast e, ne `bi wî pê ve`.
 
 ### Pronavê nêtar `xwe`
 `xwe` pronavê nêtar e û dikare ji bo her du zayendan û hejmaran were bikaranîn. Dema kirar û bireser di hevokê de heman kes bin, `xwe` li şûna dubarekirina pronavê bireser tê:
@@ -344,7 +344,7 @@ Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di çavkaniyê de t
 Ji ber vê yekê di hevoka wek `Ez xwe di neynikê de dibînim` de `xwe` ji heman kesê `ez` re vedigere. Di hin hevokên din de `xwe` dikare bi pronavên kesîn re bê bikaranîn; divê li gorî kes û mêjera hevokê were fêmkirin.
 
 ### Pronavê nêtar ê `ê`
-Pirtûk forma `ê` wek pronavê nêtar ê yekjimar nîşan dide. Ew dikare di hin rewşan de li şûna `vî`, `vê`, `wî` an `wê` were, lê ji bo gelemjimarê nayê bikaranîn:
+Forma `ê` wek pronavê nêtar ê yekjimar nîşan dide. Ew dikare di hin rewşan de li şûna `vî`, `vê`, `wî` an `wê` were, lê ji bo gelemjimarê nayê bikaranîn:
 - `Min da vî / vê / wî / wê` → `Min da ê`.
 - `Ezê bibim vî / vê / wî / wê` → `Ezê bibim ê`.
 
@@ -359,7 +359,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 ### Kuis — 5 pirs
 1. Kîjan yek ji pronavên bireser e? A) ez B) min C) tu
 2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
-3. Pirtûk ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
+3. Ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
 4. `Wan ew xwar` di çi de nimûne ye? A) pronavên îşarkî B) pronavên bireser C) rengdêr
 5. `hevdu` divê çawa were nîşandan? A) wek forma ku pirtûk tenê nas dike B) wek rengdêr C) wek variantê bikaranîna nû
 
@@ -371,7 +371,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 
 ### Naverok
-**Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Pirtûk her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
+**Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
 - `ev`: tişt/kesê nêzîk.
 - `ew`: tişt/kesê dûr an ku berê hatî gotin.
 - `yê, ya, yên`: formên îşarkî yên ku dikarin li şûna navdêrê werin.
@@ -380,10 +380,10 @@ Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinav
 
 **Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di pirtûkê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike; `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
 
-**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide. Pirtûk her wiha `kîjik` û `kîjan` wek formên pirsiyarkî, û `çend` û `kû` di pirsên hejmar û cihê de vedikole.
+**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide. Her wiha `kîjik` û `kîjan` wek formên pirsiyarkî, û `çend` û `kû` di pirsên hejmar û cihê de vedikole.
 
 ### Pronavên nebinavkirî
-Ev pronav li şûna navdêrên ku di gotinê de bi awayekî taybet nehatine destnîşankirin tên. Pirtûk nimûneyên wek `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt` û `gelek` dide. Forma wan li gorî erkê wan di hevokê de dikare biguhere.
+Ev pronav li şûna navdêrên ku di gotinê de bi awayekî taybet nehatine destnîşankirin tên. Nimûneyên wek `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt` û `gelek` dide. Forma wan li gorî erkê wan di hevokê de dikare biguhere.
 
 ### Pronavên îşarkî yên qerse: `yê`, `ya`, `yên`
 Ev sê form pronavên îşarkî ne ku kes, tişt an heywan nîşan didin, lê dûrî an nêzîkbûna wan diyar nakin. Di hevokê de her tim kirar in û bi tenê nayên bikaranîn; piştî wan pronavê girêkî `ko` tê:
@@ -403,7 +403,7 @@ Pronavên xwemalîn xwedîtiyê nîşan didin û ji du pronavan pêk tên: prona
 | Mê yekjimar | `ya min`, `ya te`, `ya wê` |
 | Gelemjimar | `yên min`, `yên te`, `yên wan` |
 
-Pirtûk ji bo kesên yekem û duyem carinan `xwe` jî di tabloyên xwemalî de nîşan dide. Di kesê sêyem de pronavên `vî/vê/van` nêzîkî û `wî/wê/wan` dûrbûnê diyar dikin. Nimûneyên çavkaniyê: `destmalên min — yên min` û `gopalê min — yê min`. Ev pronav ji rengdêrên xwemalîn ên wek `hespê min` cuda ne: li vir tevahiya komê li şûna navdêrê tê û wek pronav dixebite.
+Ji bo kesên yekem û duyem carinan `xwe` jî di tabloyên xwemalî de nîşan dide. Di kesê sêyem de pronavên `vî/vê/van` nêzîkî û `wî/wê/wan` dûrbûnê diyar dikin. Nimûneyên çavkaniyê: `destmalên min — yên min` û `gopalê min — yê min`. Ev pronav ji rengdêrên xwemalîn ên wek `hespê min` cuda ne: li vir tevahiya komê li şûna navdêrê tê û wek pronav dixebite.
 
 ### Xebat
 Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî hat?`, `Tu çi dixwazî?`, `Kîjan mirov?`.
@@ -415,7 +415,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 
 ### Kuis — 5 pirs
 1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
-2. Kîjan formên îşarkî yên din di çavkaniyê de tên? A) min/te/me B) ez/tu/em C) yê/ya/yên
+2. Kîjan formên îşarkî yên din di vê mijarê de tên? A) min/te/me B) ez/tu/em C) yê/ya/yên
 3. Forma girêkî ya ku pirtûka 2002 bikar tîne çi ye? A) ko B) ku C) kî
 4. `Kî hat?` çi cure pirs e? A) îşarkî B) pirsiyarkî C) bireser
 5. `kîjan` ji bo çi tê bikaranîn? A) nîşandana demê B) nîşandana zayendê C) hilbijartina kes/tişt di nav çend vebijarkan de
@@ -430,7 +430,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 ### Armanc
 Di dawiya dersê de xwendekar dikare:
 - Rengdêr ji navdêr û jmarnav cuda bike.
-- Şeş cureyên rengdêrên di çavkaniyê de nas bike.
+- Şeş cureyên rengdêrên di vê rêbazê de nas bike.
 - Dereceyên rengdêrên wesfîn nas bike.
 - Jmarnav wek beşeke cuda fêm bike û nimûneyên bingehîn nas bike.
 
@@ -582,7 +582,7 @@ A) rengdêra jmarîn
 B) rengdêra wesfîn
 C) daçek
 
-4. Li gorî çavkaniyê, jmarnav di çi awayî de tê pêşkêşkirin?
+4. Li gorî vê rêbazê, jmarnav di çi awayî de tê pêşkêşkirin?
 A) di bin pronav de
 B) wek beşeke serbixwe
 C) di bin lêker de
@@ -594,8 +594,5 @@ C) nimûneyeke jmarnav
 
 ### Xulasa
 Şeş cureyên rengdêr ev in: wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî û xwemalîn. Derece di bin rengdêrên wesfîn de tê fêrbûn. Jmarnav jî beşeke cuda ye, û tenê bi hejmarên yek, du û sê nayê kurtkirin.
-
-## Têbînîyên çavkaniyê
-Pirtûk bi xwe dibêje ku temam nîne û beşên lêker, hoker, daçek û hevoksaziyê tê de tune ne. Ji ber vê yekê ev kurs wek «bingehên gramera kurdmancî li gorî vê çavkaniyê» tê pêşkêşkirin, ne wek gramerêkî temam ê hemû kurmancî.
 
 **🤖 کەژیار — KejyarBot@**
