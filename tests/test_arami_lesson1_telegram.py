@@ -161,5 +161,57 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami1:menu", callbacks)
 
 
+
+class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
+    async def test_practice_requires_submission_then_advances_and_invalidates_old_message(self):
+        bank = {
+            "practice": [
+                {
+                    "id": "q1", "section_id": "lesson1_alphabet_count",
+                    "type": "recognize", "prompt": "پرسیاری یەکەم",
+                    "options": ["٣٤", "٣٣"], "answer_index": 0,
+                },
+                {
+                    "id": "q2", "section_id": "lesson1_vowel_count",
+                    "type": "recognize", "prompt": "پرسیاری دووەم",
+                    "options": ["٨", "٧"], "answer_index": 0,
+                },
+            ],
+        }
+        update, _query = make_update("practice")
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
+            await callback(update, context, "/unused")
+
+        first_message_id = context.user_data["arami_lesson1_message_id"]
+        update, query = make_update("submit", message_id=first_message_id)
+        await callback(update, context, "/unused")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["index"], 0)
+        self.assertEqual(len(context.user_data["arami_lesson1_session"]["answers"]), 0)
+        query.message.reply_text.assert_awaited_once_with("سەرەتا وەڵامێک هەڵبژێرە.")
+
+        update, _query = make_update("pick:0", message_id=first_message_id)
+        await callback(update, context, "/unused")
+        update, _query = make_update("submit", message_id=first_message_id)
+        await callback(update, context, "/unused")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["index"], 1)
+        self.assertEqual(len(context.user_data["arami_lesson1_session"]["answers"]), 1)
+
+        update, _query = make_update("next", message_id=first_message_id)
+        await callback(update, context, "/unused")
+        second_message_id = context.user_data["arami_lesson1_message_id"]
+        self.assertNotEqual(second_message_id, first_message_id)
+        self.assertEqual(second_message_id, first_message_id + 1)
+
+        update, stale_query = make_update("pick:1", message_id=first_message_id)
+        await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        stale_query.edit_message_reply_markup.assert_not_awaited()
+
+        update, _query = make_update("pick:0", message_id=second_message_id)
+        await callback(update, context, "/unused")
+        self.assertEqual(context.user_data["arami_lesson1_session"]["selected_index"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
