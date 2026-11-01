@@ -18,7 +18,9 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             "course_id": COURSE_ID,
             "safety": {"separate_from_latin_courses": True},
             "lessons": [
-                {"id": LESSON_1_ID, "content_status": "do_not_edit",
+                {"id": LESSON_1_ID,
+                 "content_source": "user_supplied_immutable",
+                 "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
                  "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
                  "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
                  "audio_status": "user_confirmed_asset_repository_root"},
@@ -109,7 +111,6 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             (Path(temp) / "دەنگەکانی ئەلفبێ.ogg").unlink()
             with self.assertRaises(AramiCourseError):
                 get_arami_lesson1_audio_path(temp)
-
 
     def test_loads_complete_source_lesson_with_eight_sections(self):
         with tempfile.TemporaryDirectory() as temp:
