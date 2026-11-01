@@ -36,6 +36,7 @@ from database import (
     refund_speech_quota,
 )
 from voice import get_voice
+from lesson_audio import LessonAudioError, resolve_lesson_audio_path
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
@@ -319,22 +320,11 @@ def lesson_keyboard(lesson):
 
 async def send_lesson_audio(message, lesson_data):
     """Send the lesson's own prerecorded audio; never substitute generic narration."""
-    asset = lesson_data.get("lesson_audio_asset") if isinstance(lesson_data, dict) else None
-    if not isinstance(asset, str) or not asset.strip():
-        await message.reply_text("🔊 دەنگی تایبەتی ئەم وانەیە هێشتا تۆمار و پەیوەست نەکراوە.")
-        return False
-
-    audio_path = (BASE_DIR / asset).resolve()
     try:
-        audio_path.relative_to(BASE_DIR.resolve())
-    except ValueError:
-        logger.warning("Rejected lesson audio path outside repository: %r", asset)
-        await message.reply_text("⚠️ بەستەری دەنگی وانەکە نادروستە.")
-        return False
-
-    if audio_path.suffix.lower() not in {".ogg", ".mp3"} or not audio_path.is_file():
-        logger.warning("Required lesson audio is unavailable: %r", asset)
-        await message.reply_text("⚠️ دەنگی تایبەتی ئەم وانەیە بەردەست نییە.")
+        audio_path = resolve_lesson_audio_path(BASE_DIR, lesson_data)
+    except LessonAudioError as exc:
+        logger.warning("Lesson audio is not ready: %s", exc)
+        await message.reply_text("⚠️ دەنگی تایبەتی ئەم وانەیە بەردەست نییە؛ وانەکە بێ دەنگ تەواو ناژمێردرێت.")
         return False
 
     try:
@@ -342,10 +332,9 @@ async def send_lesson_audio(message, lesson_data):
             await message.reply_voice(voice=audio)
         return True
     except Exception:
-        logger.exception("Could not send dedicated lesson audio %s", asset)
+        logger.exception("Could not send dedicated lesson audio %s", audio_path)
         await message.reply_text("⚠️ ناردنی دەنگی وانەکە سەرکەوتوو نەبوو.")
         return False
-
 
 async def send_voice(update, filename):
     path = get_voice(filename)
