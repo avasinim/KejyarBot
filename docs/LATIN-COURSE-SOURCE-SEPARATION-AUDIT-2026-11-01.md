@@ -112,3 +112,5 @@ Source:
 
 
 - Course 1 Lesson 8: checked V/W examples against Şikofteh printed p.60. Updated positive examples to forms listed by the source, including `vedan`, `vegerîn`, `kevir`, and `wî`. The contrast table now uses the source's pairs `dev/dew`, `vir/wîr`, `ava/awa`, and `evî/ewî`. The no-V example `xwarin` remains labelled as such; the `xw` cluster is still distinguished from W's semivowel function. Added regression assertions for the source pairs and example positions.
+
+- **Course 1, Lesson 8 W examples — follow-up source check:** rechecked the W word list against Şikofteh's source page containing the W examples (`wan`, `welat`, `wêran`, `wî`, `kew`, `war`, `wezîr`, `dew`, `mêwe`, and others). Replaced the unsupported-as-a-standalone-word `wê` in the lesson's W-position table and exercise with the directly listed word `wêran`. The phonetic sequence `wê` remains correctly described as a W+vowel combination. Added regression assertions for the table and exercise examples.
