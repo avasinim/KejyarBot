@@ -7,7 +7,7 @@
 **Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdar ji 23 bêdeng cuda bike.
 
 ### 1. Elfabeya kurmancî ya latînî
-Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê heye: mezin û biçûk.
+Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê hene: mezin û biçûk.
 
 | Mezin | Biçûk | Mezin | Biçûk | Mezin | Biçûk |
 |---|---|---|---|---|---|
