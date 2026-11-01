@@ -95,6 +95,16 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_orthography" for item in lessons.values()), 12)
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_grammar" for item in lessons.values()), 12)
 
+    def test_course_one_distinguishes_bedeng_inventory_from_semivowel_function(self):
+        lessons, _, _ = load_latin_courses()
+        alphabet_lesson = lessons["kurmanji_latin_orthography_03"]["content"]
+        vw_lesson = lessons["kurmanji_latin_orthography_08"]["content"]
+        self.assertIn("23 herfên din", alphabet_lesson)
+        self.assertIn("W û Y wek **nîvdeng**", alphabet_lesson)
+        self.assertIn("V bêdengeke kurmancî ye", vw_lesson)
+        self.assertIn("W` nîvdeng e", vw_lesson)
+        self.assertIn("Y` jî di heman komê de ye", vw_lesson)
+
     def test_course_two_runtime_uses_dedicated_source_aligned_document(self):
         lessons, _, _ = load_latin_courses()
         first = lessons["kurmanji_latin_grammar_01"]["content"]
