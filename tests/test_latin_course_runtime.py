@@ -109,6 +109,20 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("Y` jî di heman komê de ye", vw_lesson)
 
 
+
+    def test_course_one_i_ii_u_uu_examples_follow_shikofteh(self):
+        lessons, _, _ = load_latin_courses()
+        lesson6 = lessons["kurmanji_latin_orthography_06"]["content"]
+        lesson7 = lessons["kurmanji_latin_orthography_07"]["content"]
+        for word in ("bizin", "zivistan", "hêstir", "dîk", "dîwar", "îşev", "şîr"):
+            self.assertIn(f"| {word} |", lesson6)
+        for word in ("kur", "gur", "kum", "gul", "kul", "dûr", "bûk", "bûn", "kûr", "mû"):
+            self.assertIn(f"| {word} |", lesson7)
+        for unsupported in ("hilbijartin", "nivîs", "mîr", "nîv"):
+            self.assertNotIn(f"| {unsupported} |", lesson6)
+        for unsupported in ("kulîlk", "şûştin", "gund", "xurt"):
+            self.assertNotIn(unsupported, lesson7)
+
     def test_course_one_uses_consistent_kurmanci_vowel_and_consonant_terms(self):
         lessons, _, _ = load_latin_courses()
         lesson1 = lessons["kurmanji_latin_orthography_01"]["content"]
