@@ -1,13 +1,7 @@
-# Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
+# Kursa 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
 
-> Editorial master source for the two Latin courses. The isolated work branch loads these lessons through `latin_course_runtime.py`; production activation/deployment remains separate and has not been performed. Content remains subject to final text verification. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
-
-## Source and course separation
-- Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
-- Course 2: the same volume, *Bingehên gramera kurdmancî*, Part II, printed pp. 37–100.
-- The two courses remain separate in subject scope, lesson IDs, quizzes, answer keys and progression. No Sorani/Arabic-script course is included.
-
-## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
+Çavkanî: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Beşa I, rûپەڕە چاپکراوەکان 11–34.
+ئەم بەڵگەیە تەنها وانەکانی کۆرسی 1 لەخۆدەگرێت. دەقی وانەکان بە ڕیزبەندیی خۆیان پارێزراون؛ کلیلەی تاقیکردنەوەکەشی تەنها هی کۆرسی 1 ـە.
 
 ### Provenance — Course 1, Lesson 1
 Corrected pedagogical draft; 31-letter inventory and vowel classification checked.
