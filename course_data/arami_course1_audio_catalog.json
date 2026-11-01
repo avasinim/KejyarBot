@@ -1,0 +1,193 @@
+{
+  "course_id": "arami_orthography_foundations",
+  "purpose": "Inventory of user-uploaded prerecorded audio assets found in the 2026-11-01 KejyarBot GitHub commit history. This catalog does not assign an asset to a lesson or lesson section.",
+  "policy": {
+    "preserve_original_audio": true,
+    "do_not_synthesize_or_substitute": true,
+    "do_not_assign_by_filename_alone": true,
+    "lesson_and_section_mapping_requires_source_confirmation": true,
+    "dynamic_speech": false
+  },
+  "assets": [
+    {
+      "filename": "دەنگەکانی ئەلفبێ.ogg",
+      "commit_sha": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
+      "commit_title": "دەنگەکان",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/5642e5310cc856f7bfd8c821086a9f2febe419e6",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بزوێنی ی.ogg",
+      "commit_sha": "b3f44170d813b8ad18c28d89cd217d2c3e801d25",
+      "commit_title": "بزوێنی ی",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/b3f44170d813b8ad18c28d89cd217d2c3e801d25",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بزوێنی (و) کورت.ogg",
+      "commit_sha": "f75da8ab776fc6a1c7eadb7d57b958977af251d5",
+      "commit_title": "بزوێنی و",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/f75da8ab776fc6a1c7eadb7d57b958977af251d5",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "نەبزوێنی (و).ogg",
+      "commit_sha": "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
+      "commit_title": "نەبزوێنی و",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/7e595c37baf70cb63a7470e2cd32c9f89420aac9",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بزرۆکە.ogg",
+      "commit_sha": "6639c30ca85bdae4f64134e1368617b2e507fb6c",
+      "commit_title": "بزرۆکە",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6639c30ca85bdae4f64134e1368617b2e507fb6c",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بزرۆکەی ٢.ogg",
+      "commit_sha": "0c5c2893f7d2ce804cda467ead000d4c130d1264",
+      "commit_title": "بزرۆکەی ٢",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/0c5c2893f7d2ce804cda467ead000d4c130d1264",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بزرۆکەی ٣.ogg",
+      "commit_sha": "6d88fd20a8036b971d9af02a5cb4211e70454bb7",
+      "commit_title": "بزرۆکەی ٣",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6d88fd20a8036b971d9af02a5cb4211e70454bb7",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "دەنگی ڕ.ogg",
+      "commit_sha": "9c4fe5719fa9cfbd372880a746535b3fd3eb0dba",
+      "commit_title": "ڕ",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/9c4fe5719fa9cfbd372880a746535b3fd3eb0dba",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "دەنگی ر.ogg",
+      "commit_sha": "6bd06d446b1f9f8592ce57d20bb6203305ac4ba6",
+      "commit_title": "ر",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6bd06d446b1f9f8592ce57d20bb6203305ac4ba6",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "دەنگی ل.ogg",
+      "commit_sha": "1ade797d2e69308086293f7d2bfa499e22eef821",
+      "commit_title": "پیتی ل",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/1ade797d2e69308086293f7d2bfa499e22eef821",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "دەنگی ڵ.ogg",
+      "commit_sha": "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1",
+      "commit_title": "پیتی ڵ",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "دەنگ ڤ.ogg",
+      "commit_sha": "feb5293b322c1eb63d0481af02148cc9d1af64a8",
+      "commit_title": "پیتی ڤ",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/feb5293b322c1eb63d0481af02148cc9d1af64a8",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "ۆ.ogg",
+      "commit_sha": "d7cd548eb57b11efc764fb76225db252693b6977",
+      "commit_title": "پیتی ۆ",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/d7cd548eb57b11efc764fb76225db252693b6977",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "سەرە.ogg",
+      "commit_sha": "c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
+      "commit_title": "پیتی سەرە ١",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "سەرەی ٢.ogg",
+      "commit_sha": "6e386bb05d8b59f85383f481bbb5409e0d209ee6",
+      "commit_title": "سەرەوی ٢",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6e386bb05d8b59f85383f481bbb5409e0d209ee6",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "ێ.ogg",
+      "commit_sha": "1e4f6ecdba55c0f31a24397825ddb8797a972c7d",
+      "commit_title": "پیتی ێ",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/1e4f6ecdba55c0f31a24397825ddb8797a972c7d",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "ئا.ogg",
+      "commit_sha": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
+      "commit_title": "پیتی ئا",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    },
+    {
+      "filename": "بڕگە.ogg",
+      "commit_sha": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
+      "commit_title": "بڕگە",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
+      "verification_status": "file_name_verified_in_commit",
+      "lesson_id": null,
+      "section_id": null,
+      "assignment_status": "pending_source_mapping"
+    }
+  ]
+}
