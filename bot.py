@@ -218,6 +218,18 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+LATIN_COURSE_IDS = {
+    "kurmanji_latin_orthography",
+    "kurmanji_latin_grammar",
+}
+
+
+def quiz_requires_submission(lesson):
+    """Use select-then-submit only for Course 1 Lesson 3 and both Latin courses."""
+    course_id = LESSON_COURSE.get(lesson)
+    return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS
+
+
 def validate_activated_course_runtime():
     """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
@@ -261,6 +273,7 @@ def active_course_lessons():
 MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
+        ["ڕێنووسی لاتینی کوردیی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -420,19 +433,80 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "questions": questions,
         "score": 0,
         "question_message_id": None,
+        "selected_answer_index": None,
     }
     await send_question(query.message, context.user_data["quiz"])
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
+    quiz["selected_answer_index"] = None
+    callback_prefix = "select_answer_" if quiz_requires_submission(quiz["lesson"]) else "answer_"
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton(option, callback_data=f"answer_{index}")]
+        [InlineKeyboardButton(option, callback_data=f"{callback_prefix}{index}")]
         for index, option in enumerate(question["options"])
     ])
     sent = await message.reply_text("📝 " + question["question"], reply_markup=keyboard)
     quiz["question_message_id"] = sent.message_id
 
-async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Store a learner's choice and show an explicit submit button."""
+    query = update.callback_query
+    await query.answer()
+    quiz = context.user_data.get("quiz")
+    if not isinstance(quiz, dict) or not quiz_requires_submission(quiz.get("lesson")):
+        return
+    questions = quiz.get("questions")
+    index = quiz.get("index")
+    if (
+        not isinstance(questions, list)
+        or not isinstance(index, int)
+        or isinstance(index, bool)
+        or index < 0
+        or index >= len(questions)
+        or not isinstance(questions[index], dict)
+        or query.message.message_id != quiz.get("question_message_id")
+    ):
+        return
+    raw_index = query.data.removeprefix("select_answer_")
+    if not raw_index.isdigit():
+        return
+    choice_index = int(raw_index)
+    options = questions[index].get("options")
+    if not isinstance(options, list) or choice_index < 0 or choice_index >= len(options):
+        return
+
+    quiz["selected_answer_index"] = choice_index
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                ("☑️ " if option_index == choice_index else "▫️ ") + option,
+                callback_data=f"select_answer_{option_index}",
+            )
+        ]
+        for option_index, option in enumerate(options)
+    ])
+    keyboard.inline_keyboard.append([
+        InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="submit_answer")
+    ])
+    await query.edit_message_reply_markup(reply_markup=keyboard)
+
+
+async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Submit the currently selected answer; selection alone never scores it."""
+    quiz = context.user_data.get("quiz")
+    selected = quiz.get("selected_answer_index") if isinstance(quiz, dict) else None
+    if not isinstance(selected, int) or isinstance(selected, bool):
+        await update.callback_query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
+        return
+    await quiz_answer(update, context, selected_index=selected)
+
+
+async def quiz_answer(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    selected_index=None,
+):
     query = update.callback_query
     await query.answer()
     quiz = context.user_data.get("quiz")
@@ -484,15 +558,26 @@ async def quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     # Validate callback data before claiming the question. Malformed callbacks
     # must not leave question_message_id=None and strand the active quiz.
-    raw_index = query.data.removeprefix("answer_")
-    if not raw_index.isdigit():
-        return
-    choice_index = int(raw_index)
-    if choice_index < 0 or choice_index >= len(options):
+    if quiz_requires_submission(quiz.get("lesson")):
+        if selected_index is None:
+            return
+        choice_index = selected_index
+    else:
+        raw_index = query.data.removeprefix("answer_")
+        if not raw_index.isdigit():
+            return
+        choice_index = int(raw_index)
+    if (
+        not isinstance(choice_index, int)
+        or isinstance(choice_index, bool)
+        or choice_index < 0
+        or choice_index >= len(options)
+    ):
         return
     # Claim this question before the first await so duplicate callbacks cannot
     # both score an answer while the next question is being sent.
     quiz["question_message_id"] = None
+    quiz["selected_answer_index"] = None
     try:
         await query.edit_message_reply_markup(reply_markup=None)
     except Exception:
@@ -668,12 +753,28 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
+        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی",
+        "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
     }:
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
         context.user_data.pop("daily_chat_stage", None)
+
+    if text == "ڕێنووسی لاتینی کوردیی":
+        latin_courses = [
+            course for course in COURSES
+            if course.get("id") in LATIN_COURSE_IDS and course_is_active(course.get("id"))
+        ]
+        rows = [[InlineKeyboardButton(
+            course["title"],
+            callback_data=f"course_{course['id']}",
+        )] for course in latin_courses]
+        await update.message.reply_text(
+            "🔤 ڕێنووسی لاتینی کوردیی\n\nیەکێک لەم دوو کۆرسە جیاوازانە هەڵبژێرە:",
+            reply_markup=InlineKeyboardMarkup(rows),
+        )
+        return
 
     if text == "📚 وانەکان":
         completed = set(get_completed_lessons(user_id))
@@ -695,12 +796,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "📘 کۆرسەکان":
         keyboard_rows = []
         for course in COURSES:
+            if course.get("id") in LATIN_COURSE_IDS:
+                continue
             status = "🟢 چالاک" if course_is_active(course.get("id")) else "⚪ پلاندانراو"
             keyboard_rows.append([InlineKeyboardButton(
                 f"{status} · {course['title']}",
                 callback_data=f"course_{course['id']}",
             )])
-        active_count = sum(1 for course in COURSES if course_is_active(course.get("id")))
+        active_count = sum(
+            1 for course in COURSES
+            if course_is_active(course.get("id")) and course.get("id") not in LATIN_COURSE_IDS
+        )
         await update.message.reply_text(
             f"📚 کۆرسەکانی کەژیار\n\n{active_count} کۆرسی چالاک هەن.",
             reply_markup=InlineKeyboardMarkup(keyboard_rows),
@@ -795,6 +901,8 @@ def main():
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
+    app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))
+    app.add_handler(CallbackQueryHandler(submit_quiz_answer, pattern=r"^submit_answer$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
