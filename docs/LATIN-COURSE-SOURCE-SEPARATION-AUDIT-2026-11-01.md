@@ -76,3 +76,6 @@ Source:
 - **Course 2, Lesson 9:** Celadet Part II, printed pp. 71–73, distinguishes neuter personal pronouns from the agent forms. The personal-pronoun list includes neuter ew, but the agent-form table maps third-person singular to wî/wê; it does not provide a separate neuter agent form ew. The lesson table now leaves that cell unassigned (—) and explains the distinction rather than inventing ew → ew.
 - **Course 2, Lessons 10–11:** verified against Celadet Part II, printed pp. 77–84. The reciprocal forms hev/êk (with êk identified as Central Kurdish usage), the compound pronoun forms jê/lê/pê/tê and jev/jêk, lev/lêk, pev/pêk, tev/têk, the two demonstrative sets ev/ew and yê/ya/yên, and the distinction between relative-pronoun ko and conjunction ko are supported by the source.
 - Regression tests were added for the Course 1 vowel-contact terminology and the Course 2 neuter-agent distinction.
+
+- **Course 1, Lesson 8:** Şikofteh, printed p. 46, treats `W` and `Y` as semivowels, while `xw`, `kw` and `gw` are treated separately as `pevdeng` clusters. The lesson now explicitly distinguishes these categories and uses `xew` (where W is final) rather than `xwarin` (where W belongs to the `xw` cluster) as the W-position example.
+- A regression test now protects the distinction between the W semivowel and `pevdeng` clusters.
