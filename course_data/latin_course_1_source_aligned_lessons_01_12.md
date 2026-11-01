@@ -168,14 +168,14 @@ Hin herf di nivîsandinê de dişibin hev, lê ew ne heman herf in:
 
 | Herf | Peyv |
 |---|---|
-| C | can |
+| C | cêran |
 | Ç | çav |
 | E | ez |
 | Ê | êvar |
-| I | jin |
+| I | dil |
 | Î | îro |
 | S | sêv |
-| Ş | şev |
+| Ş | şîr |
 | U | gur |
 | Û | dûr |
 
