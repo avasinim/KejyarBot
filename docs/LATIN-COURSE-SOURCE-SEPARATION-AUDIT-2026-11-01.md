@@ -11,7 +11,7 @@ Source PDF present in the user's Library:
 - The preface explicitly says the book teaches reading and writing Kurmanji in the North Khorasan Kurmanji dialect.
 - The contents list Lesson 1, “Alfabê ya zimanê kurmancî” (printed p. 11) and Lesson 2, “Alfabê ya kurmancî bi dîtina dengnasînê” (contents list: printed p. 44).
 - The alphabet section states that the Kurmanji alphabet has 31 letters (printed p. 12). Its following pages provide letter-specific examples and sentences (e.g. printed pp. 13–28).
-- Printed p. 29 explicitly lists 8 vowel letters and 23 consonants, matching the 31-letter inventory. Printed pp. 45–46 divide vowels into 3 short (`E, I, U`) and 5 long (`A, Ê, Î, O, Û`), and identify `W` and `Y` as semivowels. Printed pp. 56–60 provide letter-specific phonetic descriptions and distributions.
+- Printed p. 29 explicitly lists 8 vowel letters and 23 consonants, matching the 31-letter inventory. It uses the course-specific terms `tîpên dengdar` for vowel letters and `tîpên bêdeng` for consonants; printed p. 46 identifies `W` and `Y` as semivowels (`nîvdeng`). Printed pp. 45–46 divide vowels into 3 short (`E, I, U`) and 5 long (`A, Ê, Î, O, Û`). Printed pp. 56–60 provide letter-specific phonetic descriptions and distributions.
 
 ### Course 2 — Bingehên Gramera Kurmancî
 Source:
@@ -34,6 +34,7 @@ Source:
 - Replaced the Lesson 1 example for `I` (`kin`) with `dil`, which appears in Şikofteh's I-letter examples (printed p. 18).
 - Removed three imported Bedir-Xan source notes from Course 1 Lessons 4, 6, and 7 and replaced them with Şikofteh references (printed pp. 45–46, 56–60). Course 1 no longer cites the Course 2 book inside its lesson bodies.
 - Corrected Course 1 Lesson 8 to distinguish `V` (consonant) from `W` and `Y` (semivowels), following Şikofteh's phonetic section (printed p. 46).
+- Changed Course 1's vowel/consonant terminology to match Şikofteh (`dengdar` for vowels, `bêdeng` for consonants, `nîvdeng` for semivowels). Course 2 retains its separate Celadet-based terminology; the two systems are not blended.
 - Şikofteh's alphabet pages give concrete dialect-specific words and sentences. The current Course 1 draft uses some examples not yet verified against those pages (for example, its I-vowel example `kin` is not among the examples visible on printed p. 18, where the source lists `bivir, bizin, dil, hêstir, hingiv, zivistan`). This is a source-alignment check to complete, not proof that `kin` is linguistically invalid.
 - Course 1 lesson sequence now has a working source map: Lessons 1–3 use the alphabet inventory and letter list (printed pp. 12–29); Lessons 4–7 use the short/long vowel classification and letter descriptions (pp. 45–60); Lessons 8–10 use the consonant/semivowel and sound-letter descriptions (pp. 46, 60); Lesson 11 uses the spelling rules for adjacent vowels and repeated letters (p. 61); Lesson 12 uses syllable division and examples (p. 62). Lessons still require a final human-level linguistic proofread for every dialect form and exercise.
 - The source has an internal numerical inconsistency: printed p. 46 says there are 32 consonants, while printed p. 29 gives the 8-vowel + 23-consonant inventory that totals 31 letters. The draft follows the internally consistent 31/8/23 count from p. 29 and does not repeat the apparent p. 46 error.
