@@ -76,7 +76,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
             await callback(update, context, "/unused")
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
-        self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("چەند پیت؟", query.message.reply_text.await_args.args[0])
 
@@ -147,7 +147,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         await callback(update, context, "/unused")
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
-        self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
 
     async def test_perfect_assessment_does_not_offer_retry(self):
         _context, result_query = await self._start_and_answer(1)
