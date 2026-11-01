@@ -140,10 +140,16 @@
     {
       "id": "arami_course1_lesson_11",
       "number": 11,
-      "title": "پیتی (و)",
+      "title": "پیتی «ی»",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_11_received_and_preserved",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_11_y_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "User explicitly designated this material as Lesson 11. Source preserved; only whitespace/Markdown layout normalized. No quiz questions were supplied."
     },
     {
       "id": "arami_course1_lesson_12",
