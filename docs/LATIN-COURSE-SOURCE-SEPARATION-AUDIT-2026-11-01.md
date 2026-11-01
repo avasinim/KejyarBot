@@ -31,6 +31,7 @@ Source:
 ## Source checks and remaining audit
 
 - The 31-letter alphabet count in Course 1 Lesson 1 agrees with Şikofteh (printed pp. 12, 29).
+- Course 1 Lesson 2's C, I and Ş examples were replaced with `cêran`, `dil` and `şîr`, which are directly attested in the designated book's alphabet examples (printed pp. 14 and 18).
 - Replaced the Lesson 1 example for `I` (`kin`) with `dil`, which appears in Şikofteh's I-letter examples (printed p. 18).
 - Removed three imported Bedir-Xan source notes from Course 1 Lessons 4, 6, and 7 and replaced them with source-based explanations based on the designated Şikofteh book (printed pp. 45–46, 56–60). Course 1 no longer cites the Course 2 book inside its lesson bodies.
 - Corrected Course 1 Lesson 8 to distinguish `V` (consonant) from `W` and `Y` (semivowels), following Şikofteh's phonetic section (printed p. 46).
