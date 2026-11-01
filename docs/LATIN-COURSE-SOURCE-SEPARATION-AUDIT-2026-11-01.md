@@ -1,11 +1,11 @@
-# KejyarBot — Latin course source separation audit
+# KejyarBot — Latin course source separation audit (provisional)
 Date: 2026-11-01
 Branch: audit/latin-course1-source-correction-2026-11-01
 
-## Verified distinct source books
+## Course 2 source verified; Course 1 source not yet confirmed
 
 ### Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
-Source PDF present in the user's Library:
+Candidate PDF present in the user's Library (not confirmed by the user as the designated Course 1 source):
 - Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*.
 - The title page gives the author and identifies the book as a Kurmanji grammar.
 - The preface explicitly says the book teaches reading and writing Kurmanji in the North Khorasan Kurmanji dialect.
@@ -19,10 +19,10 @@ Source:
 - Course 2 uses Part II, “Bingehên gramera kurdmancî” (printed p. 37 onward).
 - This source is not the source book for Course 1.
 
-## Corrections made on this isolated branch
+## Provisional corrections made on this isolated branch
 
-1. Corrected the Course 1 source attribution in `course_data/latin_course_1_source_aligned_lessons_01_12.md` to Şikofteh's *Rê zimanê Kurmancî*.
-2. Corrected the source separation section in `course_data/latin_courses_master_draft.md`.
+1. Marked the Course 1 source as provisional in `course_data/latin_course_1_source_aligned_lessons_01_12.md` to Şikofteh's *Rê zimanê Kurmancî*.
+2. Updated the source separation index in `course_data/latin_courses_master_draft.md`.
 3. Explicitly marked Course 1 as **not yet scientifically source-approved**. The corrected source identity does not imply that all 12 lesson bodies or quiz keys have already been checked against the book.
 4. Corrected the Course 1 source metadata in both `latin_course_runtime.py` and `courses.json`; the previous incorrect Celadet Part I / pp. 11–34 reference is no longer used for Course 1.
 5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
