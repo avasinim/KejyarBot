@@ -66,6 +66,19 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             with self.assertRaises(AramiCourseError):
                 load_arami_lesson1_interactions(root)
 
+    def test_rejects_unverified_chart_color_answer(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            source_bank = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_interactions.json"
+            target = root / "course_data" / source_bank.name
+            bank = json.loads(source_bank.read_text(encoding="utf-8"))
+            color = next(item for item in bank["practice"] if item["section_id"] == "lesson1_chart_categories")
+            color["options"][color["answer_index"]] = "سەوز"
+            target.write_text(json.dumps(bank, ensure_ascii=False), encoding="utf-8")
+            with self.assertRaises(AramiCourseError):
+                load_arami_lesson1_interactions(root)
+
     def test_resolves_only_confirmed_lesson1_audio(self):
         with tempfile.TemporaryDirectory() as temp:
             self.fixture(Path(temp))
