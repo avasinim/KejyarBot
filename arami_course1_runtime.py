@@ -2,6 +2,8 @@
 import json
 from pathlib import Path
 
+from arami_lesson1_interaction import validate_question_bank, InvalidQuestionBank
+
 COURSE_ID = "arami_orthography_foundations"
 LESSON_1_ID = "arami_course1_lesson_01"
 
@@ -55,3 +57,33 @@ def get_arami_lesson1_audio_path(base_dir, manifest=None):
     if audio.suffix.lower() != ".ogg" or not audio.is_file():
         raise AramiCourseError("confirmed Lesson 1 OGG recording is unavailable")
     return audio
+
+
+def load_arami_lesson1_interactions(base_dir):
+    """Load and validate only the explicitly approved Lesson 1 practice/assessment bank."""
+    root = Path(base_dir).resolve()
+    bank_path = root / "course_data" / "arami_course1_lesson_01_interactions.json"
+    try:
+        bank = json.loads(bank_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AramiCourseError("Arami Lesson 1 interaction bank could not be loaded") from exc
+    if bank.get("course_id") != COURSE_ID or bank.get("lesson_id") != LESSON_1_ID:
+        raise AramiCourseError("interaction bank belongs to a different course or lesson")
+    if bank.get("source_correction", {}).get("lesson_1_vowel_count") != 8:
+        raise AramiCourseError("Lesson 1 must preserve the user-confirmed count of eight vowels")
+    for mode in ("practice", "assessment"):
+        questions = bank.get(mode)
+        try:
+            validate_question_bank(questions)
+        except (InvalidQuestionBank, TypeError) as exc:
+            raise AramiCourseError(f"invalid Lesson 1 {mode} bank") from exc
+        vowel_items = [
+            item for item in questions
+            if item.get("section_id") == "lesson1_vowel_count"
+        ]
+        if len(vowel_items) != 1:
+            raise AramiCourseError(f"Lesson 1 {mode} must contain exactly one verified vowel-count item")
+        item = vowel_items[0]
+        if item["options"][item["answer_index"]] != "٨ بزوێن":
+            raise AramiCourseError(f"Lesson 1 {mode} vowel-count answer must be eight")
+    return bank
