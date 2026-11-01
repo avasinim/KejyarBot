@@ -50,7 +50,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         import re
 
         lessons, _, _ = load_latin_courses()
-        arabic_script = re.compile(r"[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]")
+        arabic_script = re.compile(r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]")
         signature = "🤖 کەژیار — KejyarBot@"
         for lesson in lessons.values():
             content = lesson["content"].replace(signature, "")
