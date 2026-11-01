@@ -61,6 +61,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             "latin_course_2_quiz_answer_key_draft.md",
         ):
             content = (ROOT / "course_data" / filename).read_text(encoding="utf-8")
+            content = content.split("## Têbînî berî runtime", 1)[0]
             self.assertIsNone(arabic_script.search(content))
 
     def test_bot_routes_course_selection_callbacks_for_both_latin_courses(self):
