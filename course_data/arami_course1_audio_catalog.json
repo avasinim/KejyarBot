@@ -116,10 +116,11 @@
       "commit_title": "پیتی ل",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/1ade797d2e69308086293f7d2bfa499e22eef821",
       "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "lesson_id": "arami_course1_lesson_14",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ل"
+      "assignment_status": "explicitly_mapped_to_lesson_14_in_user_supplied_conversation_archive; original recording preserved",
+      "audio_topic_label": "پیتی ل",
+      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 14"
     },
     {
       "filename": "دەنگی ڵ.ogg",
@@ -127,10 +128,11 @@
       "commit_title": "پیتی ڵ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1",
       "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "lesson_id": "arami_course1_lesson_14",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ڵ"
+      "assignment_status": "explicitly_mapped_to_lesson_14_in_user_supplied_conversation_archive; original recording preserved",
+      "audio_topic_label": "پیتی ڵ",
+      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 14"
     },
     {
       "filename": "دەنگ ڤ.ogg",
@@ -138,10 +140,11 @@
       "commit_title": "پیتی ڤ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/feb5293b322c1eb63d0481af02148cc9d1af64a8",
       "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "lesson_id": "arami_course1_lesson_15",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ڤ"
+      "assignment_status": "explicitly_mapped_to_lesson_15_in_user_supplied_conversation_archive; original recording preserved",
+      "audio_topic_label": "پیتی ڤ",
+      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 15"
     },
     {
       "filename": "ۆ.ogg",
