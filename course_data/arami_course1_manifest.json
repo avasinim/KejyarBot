@@ -222,17 +222,24 @@
     {
       "id": "arami_course1_lesson_15",
       "number": 15,
-      "title": "پیتی ڤ = V, v",
+      "title": "پیتی «ل» و «ڵ»",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
+      "content_status": "user_supplied_lesson_15_received_and_preserved; source_saved_without_semantic_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "audio_assets": [
         "دەنگ ڤ.ogg"
       ],
       "audio_commits": [
-        "feb5293b322c1eb63d0481af02148cc9d1af64a8"
+        "1ade797d2e69308086293f7d2bfa499e22eef821",
+        "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1"
       ],
-      "audio_status": "audio_asset_to_lesson_mapping_explicitly_confirmed_in_user_supplied_conversation_archive; original recordings preserved"
+      "audio_status": "user_explicitly_assigned_two_existing_recordings; runtime_playback_not_verified",
+      "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_assignment_note": "User explicitly maps 1ade797d2e69308086293f7d2bfa499e22eef821 to پیتی ل and 933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1 to پیتی ڵ for this supplied Lesson 15. Playback/runtime not yet verified.",
+      "source_note": "User's outer heading identifies this as Lesson 15. A copied trailing note calls the same L/ڵ material Lesson 14; numbering follows the explicit heading. Preserve content and examples as supplied."
     },
     {
       "id": "arami_course1_lesson_16",
