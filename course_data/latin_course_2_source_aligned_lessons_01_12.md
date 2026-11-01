@@ -153,7 +153,7 @@ Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê x
 | Kirar | `Hesp hat.` | `Mehin hat.` | `Hesp hatin.` / `Mehin hatin.` |
 | Bireser | `Ez hespî dibînim.` | `Ez mehinê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
 
-Bi gelemperî di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
+Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
 
 **Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêwîst e ku navdêr bi zayend û erkê wê re were fêrbûn, ne ku rêbazeke yekgirtî ji bo hemû peyvan were sepandin.
 
