@@ -108,6 +108,31 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("W` nîvdeng e", vw_lesson)
         self.assertIn("Y` jî di heman komê de ye", vw_lesson)
 
+
+    def test_course_one_uses_consistent_kurmanci_vowel_and_consonant_terms(self):
+        lessons, _, _ = load_latin_courses()
+        lesson1 = lessons["kurmanji_latin_orthography_01"]["content"]
+        lesson3 = lessons["kurmanji_latin_orthography_03"]["content"]
+        lesson4 = lessons["kurmanji_latin_orthography_04"]["content"]
+        lesson5 = lessons["kurmanji_latin_orthography_05"]["content"]
+        lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
+        lesson9 = lessons["kurmanji_latin_orthography_09"]["content"]
+        lesson11 = lessons["kurmanji_latin_orthography_11"]["content"]
+        lesson12 = lessons["kurmanji_latin_orthography_12"]["content"]
+        self.assertIn("8 dengdêr û 23 herfên din", lesson1)
+        self.assertNotIn("8 dengdar", lesson1)
+        self.assertIn("Dengdêr û dengdar", lesson3)
+        self.assertIn("Dengdarên din", lesson3)
+        self.assertNotIn("bêdeng", lesson3.lower())
+        self.assertIn("Dengdêrên kin", lesson4)
+        self.assertIn("Dengdêrên dirêj", lesson5)
+        self.assertIn("V` dengdareke kurmancî ye", lesson8)
+        self.assertIn("X dengdareke kurmancî ye", lesson9)
+        self.assertIn("Z dengdareke kurmancî ye", lesson9)
+        self.assertNotIn("C) Bêdeng", lesson9)
+        self.assertIn("Dengdêrek nû tê zêdekirin", lesson11)
+        self.assertIn("dengdêrekê dihewîne", lesson12)
+
     def test_course_one_lesson_eleven_treats_adjacent_vowels_not_consonants(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_11"]["content"]
