@@ -1,15 +1,15 @@
 """Lossless runtime loader for the two source-aligned Kurmanji Latin courses.
 
-The master Markdown remains the single source of truth for lesson prose. This
-module extracts each complete lesson body unchanged and parses the five MCQs
-without rewriting tables, examples, or exercise formatting.
+Each course reads its own dedicated source document and answer key. Lesson
+bodies are extracted unchanged and the five MCQs are parsed without rewriting
+tables, examples, or exercise formatting.
 """
 from pathlib import Path
 import re
 
 
 ROOT = Path(__file__).resolve().parent
-MASTER_PATH = ROOT / "course_data" / "latin_courses_master_draft.md"
+COURSE1_SOURCE_PATH = ROOT / "course_data" / "latin_course_1_source_aligned_lessons_01_12.md"
 COURSE2_SOURCE_PATH = ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md"
 COURSE1_KEY_PATH = ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md"
 COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md"
@@ -167,18 +167,18 @@ def _strip_inline_options(text):
     return text[:match.start()].strip() if match else text.strip()
 
 
-def load_latin_courses(master_text=None):
+def load_latin_courses():
     """Return (lesson_data, quiz_data, course_records), validating all 24 lessons."""
-    master_text = _read(MASTER_PATH) if master_text is None else master_text
     lesson_data, quiz_data, course_records = {}, {}, []
     for course in COURSES:
         # Each Latin course reads only its own source section/document.
         # Course 2 is never inferred as the second half of a combined master.
-        source_text = (
-            _read(COURSE2_SOURCE_PATH)
+        source_path = (
+            COURSE2_SOURCE_PATH
             if course["id"] == "kurmanji_latin_grammar"
-            else master_text
+            else COURSE1_SOURCE_PATH
         )
+        source_text = _read(source_path)
         selected = _split_master(source_text)
         selected = [item for item in selected if item[2].startswith("## Ders")][:12]
         if len(selected) != 12:
