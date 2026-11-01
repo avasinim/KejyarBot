@@ -477,7 +477,7 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         return
 
     quiz["selected_answer_index"] = choice_index
-    keyboard = InlineKeyboardMarkup([
+    rows = [
         [
             InlineKeyboardButton(
                 ("☑️ " if option_index == choice_index else "▫️ ") + option,
@@ -485,11 +485,11 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
             )
         ]
         for option_index, option in enumerate(options)
-    ])
-    keyboard.inline_keyboard.append([
+    ]
+    rows.append([
         InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="submit_answer")
     ])
-    await query.edit_message_reply_markup(reply_markup=keyboard)
+    await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
 
 
 async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -567,12 +567,9 @@ async def quiz_answer(
         if not raw_index.isdigit():
             return
         choice_index = int(raw_index)
-    if (
-        not isinstance(choice_index, int)
-        or isinstance(choice_index, bool)
-        or choice_index < 0
-        or choice_index >= len(options)
-    ):
+    if not isinstance(choice_index, int) or isinstance(choice_index, bool):
+        return
+    if choice_index < 0 or choice_index >= len(options):
         return
     # Claim this question before the first await so duplicate callbacks cannot
     # both score an answer while the next question is being sent.
