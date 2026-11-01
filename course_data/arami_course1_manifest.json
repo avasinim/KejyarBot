@@ -12,12 +12,12 @@
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
       "audio_status": "user_confirmed_asset_repository_root",
-      "practice_status": "verified_eight_vowels_and_chart_color_only; runtime_integration_pending",
-      "assessment_status": "verified_eight_vowels_and_chart_color_only; runtime_integration_pending",
-      "runtime_status": "not_registered",
+      "practice_status": "five_pdf_exercise_topics_verified; Telegram integration pending",
+      "assessment_status": "five_pdf_exercise_topics_verified; Telegram integration pending",
+      "runtime_status": "isolated_runtime_adapter_validates_five_source_exercises; Telegram registration pending",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
-      "presentation_status": "isolated_question_view_models_added; Telegram_navigation_and_media_integration_pending",
-      "source_caution": "Do not use chart-derived total-letter or consonant counts: the chart conflicts with the user's explicit lesson explanation of 8 vowels.",
+      "presentation_status": "isolated_question_view_models_added; Telegram navigation and lesson-content delivery pending",
+      "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
       "interaction_presentation": "arami_lesson1_presentation.py"
     },
     {
