@@ -41,9 +41,8 @@
       "id": "arami_course1_lesson_04",
       "number": 4,
       "status": "source_review_pending",
-      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; exact transcription and interaction extraction pending",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "title": "جیاوازیی پیتە هاوشێوەدەنگەکان لە فارسی و ڕێنووسی کوردیدا"
+      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; source heading is only 'وانەی ٤'; preserve that and do not invent a title",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
     },
     {
       "id": "arami_course1_lesson_05",
