@@ -88,8 +88,13 @@ def load_arami_lesson1_interactions(base_dir):
         if len(questions) != 5:
             raise AramiCourseError(f"Lesson 1 {mode} must contain the five source exercise topics")
         section_ids = [item.get("section_id") for item in questions]
-        if set(section_ids) != LESSON_1_SECTIONS or len(section_ids) != len(LESSON_1_SECTIONS):
+        if set(section_ids) != LESSON_1_SECTIONS:
             raise AramiCourseError(f"Lesson 1 {mode} must cover each of the four verified source sections")
+        if section_ids.count("lesson1_short_i") != 2 or any(
+            section_ids.count(section) != 1
+            for section in LESSON_1_SECTIONS - {"lesson1_short_i"}
+        ):
+            raise AramiCourseError(f"Lesson 1 {mode} must contain exactly five source-derived items")
         if any(not isinstance(item.get("source_evidence"), str) or not item["source_evidence"].strip() for item in questions):
             raise AramiCourseError(f"Lesson 1 {mode} questions require source evidence")
         expected_answers = {
