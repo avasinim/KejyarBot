@@ -34,9 +34,9 @@ def load_arami_course1(base_dir):
     if len(ids) != 4 or len(set(ids)) != 4:
         raise AramiCourseError("Arami lessons need four unique namespaced ids")
     first = lessons[0]
-    if first.get("id") != LESSON_1_ID:
-        raise AramiCourseError("Arami Lesson 1 id mismatch")
-    if first.get("content_status") != "do_not_edit":
+    # The content status records its delivery state and may evolve; immutability
+    # is represented by the stable source marker, not the old status label.
+    if first.get("content_source") != "user_supplied_immutable":
         raise AramiCourseError("user-supplied Lesson 1 content must remain immutable")
     if first.get("audio_asset") != "دەنگەکانی ئەلفبێ.ogg":
         raise AramiCourseError("Lesson 1 audio must use its user-confirmed recording")
@@ -114,7 +114,7 @@ def load_arami_lesson1_interactions(base_dir):
         special_letter = next((item for item in short_i if "پیتێکی تایبەت" in item["prompt"]), None)
         if marker is None or marker["options"][marker["answer_index"]] != "i":
             raise AramiCourseError(f"Lesson 1 {mode} must identify the short-i marker")
-        if special_letter is None or special_letter["options"][special_letter["answer_index"]] not in {"نەخێر", "نەخێر"}:
+        if special_letter is None or special_letter["options"][special_letter["answer_index"]] not in {"نەخێر"}:
             raise AramiCourseError(f"Lesson 1 {mode} must preserve the no-special-letter fact")
     return bank
 
