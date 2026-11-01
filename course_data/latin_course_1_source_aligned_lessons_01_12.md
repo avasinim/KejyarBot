@@ -900,7 +900,7 @@ Herfa `W` jî dikare di destpêk an dawîya peyvê de were:
 
 - `welat`
 - `wêne`
-- `law`
+- `kew`
 
 ### 5. Xebata Kêjyar
 
@@ -908,7 +908,7 @@ Alîkariya Kêjyar
 
 Peyvên jêrîn li gorî herfa wan kom bike:
 
-`av — welat — ve — wêne — nivîs — law — zivistan — wê`
+`av — welat — ve — wêne — nivîs — kew — zivistan — wê`
 
 - Koma yekem: peyvên bi `V`.
 - Koma duyem: peyvên bi `W`.
