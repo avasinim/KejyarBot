@@ -2,12 +2,12 @@
 
 **Çavkaniya bingehîn:** Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010), Ders 1: “Alfabê ya zimanê kurmancî” (rûpelên çapkirî 11–43) û Ders 2: “Alfabê ya Kurmancî bi dîtina dengnasînê” (ji rûpela çapkirî 44). Ev çavkaniya taybet a Kursa 1 e; bi çavkaniya Kursa 2 nayê tevlihevkirin.
 
-## Ders 1: Elfabeya Kurdî ya Latînî
+## Ders 1: Elfabeya Kurmancî ya Latînî
 
 **Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdar ji 23 bêdeng cuda bike.
 
-### 1. Elfabeya kurdî ya latînî
-Elfabeya kurdî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê heye: mezin û biçûk.
+### 1. Elfabeya kurmancî ya latînî
+Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê heye: mezin û biçûk.
 
 | Mezin | Biçûk | Mezin | Biçûk | Mezin | Biçûk |
 |---|---|---|---|---|---|
@@ -54,13 +54,13 @@ Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 3. Ji alfabeyê pênc dengdar û pênc bêdeng hilbijêre û bi wan peyvan çêke.
 
 ### 6. Testa Kejyar
-1. Elfabeya kurdî ya latînî ji çend herfan pêk tê?
+1. Elfabeya kurmancî ya latînî ji çend herfan pêk tê?
 A) 28
 B) 31
 C) 33
 D) 26
 
-2. Di kurdî de çend dengdar hene?
+2. Di kurmancî de çend dengdar hene?
 A) 5
 B) 6
 C) 8
@@ -85,7 +85,7 @@ C) ç
 D) z
 
 ### Xulasa
-Elfabeya kurdî ya latînî 31 herf heye: 8 dengdar û 23 bêdeng. Herfên mezin û biçûk du formên heman herf in.
+Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdar û 23 bêdeng. Herfên mezin û biçûk du formên heman herf in.
 
 **🤖 کەژیار — KejyarBot@**
 
@@ -99,16 +99,16 @@ Recovered from the user's source file; original lesson sequence retained.
 
 Di dawiya vê dersê de xwendekar dikare:
 
-- Rêza 31 herfên kurdî bi rêkûpêk bibêje.
+- Rêza 31 herfên kurmancî bi rêkûpêk bibêje.
 - Herfên ku di alfabeyên din de jî hene nas bike.
-- Herfên taybet ên kurdî yên wek Ç, Ê, Î, Ş û Û nas bike.
+- Herfên taybet ên kurmancî yên wek Ç, Ê, Î, Ş û Û nas bike.
 - Herfên mezin û biçûk rast bi kar bîne.
 
 ### 1. Rêza herfan
 
-Herfên kurdî li gorî rêzeke diyarkirî tên rêzkirin. Ev rêz ji bo xwendin, nivîsandin û dîtina peyvan di ferhengê de girîng e.
+Herfên kurmancî li gorî rêzeke diyarkirî tên rêzkirin. Ev rêz ji bo xwendin, nivîsandin û dîtina peyvan di ferhengê de girîng e.
 
-**Elfabeya Kurdî**
+**Elfabeya Kurmancî**
 
 | | |
 |---|---|
@@ -119,7 +119,7 @@ Herfên kurdî li gorî rêzeke diyarkirî tên rêzkirin. Ev rêz ji bo xwendin
 
 ### 2. Herfên taybet
 
-Di elfabeya kurdî ya latînî de hin herf hene ku bi nîşanên taybet têne nivîsandin:
+Di elfabeya kurmancî ya latînî de hin herf hene ku bi nîşanên taybet têne nivîsandin:
 
 | Herfa mezin | Herfa biçûk | Mînak |
 |---|---|---|
@@ -187,7 +187,7 @@ Hin herf di nivîsandinê de dişibin hev, lê ew ne heman herf in:
 
 ### 7. Testa dersê
 
-1. Elfabeya kurdî ji çend herfan pêk tê?
+1. Elfabeya kurmancî ji çend herfan pêk tê?
    - A) 29
    - B) 30
    - C) 31
@@ -234,13 +234,13 @@ Recovered from the user's source file; original lesson sequence retained.
 Di dawiya vê dersê de xwendekar dikare:
 
 - Dengdar û bêdeng ji hev cuda bike.
-- Heşt dengdarên kurdî nas bike.
+- Heşt dengdarên kurmancî nas bike.
 - Rola dengdaran di çêbûna peyvan de fêm bike.
 - Di peyvan de dengdar û bêdeng nîşan bike.
 
 ### 1. Dengdar çi ne?
 
-Dengdar ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng ji dev derbas bibe. Di nivîsîna kurdî ya latînî de dengdar bi van herfan tên nîşandan:
+Dengdar ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng ji dev derbas bibe. Di nivîsîna kurmancî ya latînî de dengdar bi van herfan tên nîşandan:
 
 **A — E — Ê — I — Î — O — U — Û**
 
@@ -250,7 +250,7 @@ Dengdar ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng j
 
 Bêdeng ew deng in ku dema derxistina wan de di rêça hewayê de astengî çêdibe, wek girtin, tengbûn an kêşana hewayê.
 
-**23 bêdengên kurdî ev in:**
+**23 bêdengên kurmancî ev in:**
 
 B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z
 
@@ -293,7 +293,7 @@ Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin.
 
 ### 7. Testa dersê
 
-1. Di elfabeya kurdî de çend herfên dengdar hene?
+1. Di elfabeya kurmancî de çend herfên dengdar hene?
    - A) 5
    - B) 6
    - C) 8
@@ -325,7 +325,7 @@ Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin.
 
 ### Xulasa
 
-Di vê dersê de me cudahiya dengdar û bêdeng, heşt dengdarên kurdî û rola wan di peyvan de fêr bûn.
+Di vê dersê de me cudahiya dengdar û bêdeng, heşt dengdarên kurmancî û rola wan di peyvan de fêr bûn.
 
 **Dersa bê:** Dengdarên kin — E, I, U.
 
@@ -343,11 +343,11 @@ Di dawiya vê dersê de xwendekar dikare:
 - Mînakên ku dengdara kin dihewînin bixwîne û binivîse.
 
 ### 1. Dengdarên kin çi ne?
-Di alfabeya kurdî ya latînî de sê herf di koma dengdarên kin de tên rêzkirin:
+Di alfabeya kurmancî ya latînî de sê herf di koma dengdarên kin de tên rêzkirin:
 
 E — I — U
 
-Li gorî raveya çavkaniya bingehîn, dengdarên kurdî li gorî dirêjî û kurtahiya dengê xwe dibin du kom: kin û dirêj. Ji ber vê yekê xwendekar divê E, I û U wek dengdarên kin nas bike û bi mînakên rast di peyvan de wan fêr bibe.
+Li gorî raveya çavkaniya bingehîn, dengdarên kurmancî li gorî dirêjî û kurtahiya dengê xwe dibin du kom: kin û dirêj. Ji ber vê yekê xwendekar divê E, I û U wek dengdarên kin nas bike û bi mînakên rast di peyvan de wan fêr bibe.
 
 **Têbînî:** Kurt û dirêj tenê navê du astên dirêjahiya dengê nînin. dengdarên kin û dirêj ji aliyê deng û cihê derxistinê ve jî ji hev cuda ne; ji ber vê yekê wan wek heman dengê ku tenê dirêj hatiye kişandin fêm neke.
 
@@ -486,7 +486,7 @@ Di rêzkirina bingehîn a dengdaran de pênc herf di koma dengdarên dirêj de t
 
 A — Ê — Î — O — Û
 
-Li gorî çavkaniya bingehîn, dengdarên kurdî li gorî dirêjî û kurtahiya dengê xwe tên dabeşkirin. A, Ê, Î, O û Û di koma dengdarên dirêj de ne. Xwendekar divê her herf bi dengê wê û bi mînakên peyvan nas bike.
+Li gorî çavkaniya bingehîn, dengdarên kurmancî li gorî dirêjî û kurtahiya dengê xwe tên dabeşkirin. A, Ê, Î, O û Û di koma dengdarên dirêj de ne. Xwendekar divê her herf bi dengê wê û bi mînakên peyvan nas bike.
 
 **Têbînî:** Dabeşkirina kin/dirêj tenê dirêjahiya heman dengî nayê watekirin. Cihê derxistina dengdarên kin û dirêj jî cuda ye; ji ber vê yekê her herf bi taybetmendiya dengê xwe fêr bibin.
 
@@ -962,7 +962,7 @@ Di vê dersê de me `V` wek bêdeng û `W` wek nîvdeng nas kirin. `Y` jî nîvd
 Recovered from Pasted markdown(3).md; Î/Û classification and exercise corrected; original quiz order retained.
 
 **🤖 کەژیار — KejyarBot@**
-## Ders 9: Herfên Taybet di Elfabeya Kurdî de
+## Ders 9: Herfên Taybet di Elfabeya Kurmancî de
 
 ### Armancên dersê
 
@@ -1035,7 +1035,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 6. Nîşanên herfan çima girîng in?
 
-Di elfabeya kurdî ya latînî de nîşanên `Ç, Ê, Î, Ş, Û` beşek ji nivîsandina herfan in.
+Di elfabeya kurmancî ya latînî de nîşanên `Ç, Ê, Î, Ş, Û` beşek ji nivîsandina herfan in.
 
 - `C` û `Ç` ne yek in.
 - `E` û `Ê` ne yek in.
