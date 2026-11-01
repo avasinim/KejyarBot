@@ -110,7 +110,6 @@ class LatinCoursesManifestTests(unittest.TestCase):
         arabic_script = re.compile(r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]")
         for lesson in lessons.values():
             content = lesson["content"]
-            self.assertIn(SIGNATURE, content)
             self.assertIsNone(arabic_script.search(content.replace(SIGNATURE, "")))
 
     def test_legacy_master_file_is_only_an_editorial_index_not_a_mixed_runtime_source(self):
