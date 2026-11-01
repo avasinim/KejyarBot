@@ -162,3 +162,26 @@ Base: `main` at `04a1b3e0ab9a515211ab3709513cdc1ec90d86ea`
 5. Complete integration and run focused plus full tests; report actual results.
 6. Stop before merge, deployment, production DB changes, or Botkeep live changes
    unless the user explicitly authorizes them.
+
+
+## Runtime adapter added (isolated; not wired into bot navigation)
+
+Added `arami_course1_runtime.py` and
+`tests/test_arami_course1_runtime.py`.
+
+The adapter:
+- Loads only `course_data/arami_course1_manifest.json`.
+- Enforces exactly four unique, namespaced Arami lesson IDs.
+- Requires the user-supplied Lesson 1 content to remain marked immutable.
+- Verifies the exact user-confirmed recording `دەنگەکانی ئەلفبێ.ogg`.
+- Resolves the recording from the repository root and rejects missing or unsafe paths.
+- Does not import or modify the Latin course loaders, `LESSON_DATA`, or shared quiz IDs.
+
+The adapter is intentionally not imported into `bot.py` yet. The main bot's current
+course navigation and shared lesson registry do not yet implement the user's
+two-top-level-course Arami structure. Wiring this prematurely could expose old
+Course 1 lesson data or collide with Latin lesson state. The adapter and tests
+are isolated preparatory work; they do not make the lesson active in Telegram.
+
+Focused tests were authored but have not been executed in this environment.
+No PR, merge, deployment, production DB change, or Botkeep update was performed.
