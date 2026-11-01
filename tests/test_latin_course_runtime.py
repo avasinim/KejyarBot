@@ -166,6 +166,19 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertNotIn("| xew | dawî |", lesson)
         self.assertNotIn("| law | dawî |", lesson)
         self.assertNotIn("| xwarin | navîn |", lesson)
+    def test_course_one_lessons_four_and_five_use_shikofteh_vowel_examples(self):
+        lessons, _, _ = load_latin_courses()
+        short = lessons["kurmanji_latin_orthography_04"]["content"]
+        for term in ("| ewr | E |", "| bizin | I |", "| dil | I |", "| gur | U |", "| kum | U |", "| kul | U |"):
+            self.assertIn(term, short)
+        for term in ("| nivîs | I |", "| hilbijartin | I |", "| gund | U |", "| xurt | U |", "| kulîlk | U |"):
+            self.assertNotIn(term, short)
+        long = lessons["kurmanji_latin_orthography_05"]["content"]
+        for term in ("| êzing | Ê |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
+            self.assertIn(term, long)
+        for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
+            self.assertNotIn(term, long)
+
     def test_course_one_i_ii_examples_and_w_examples_are_source_attested(self):
         lessons, _, _ = load_latin_courses()
         lesson6 = lessons["kurmanji_latin_orthography_06"]["content"]
