@@ -4,7 +4,7 @@ import logging
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, get_arami_lesson1_audio_path
 from arami_lesson1_interaction import (
-    create_session, current_question, select_answer, submit_answer, session_result,
+    create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
 
 logger = logging.getLogger(__name__)
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 def menu_keyboard():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🔊 دەنگی وانەی ١", callback_data="arami1:audio")],
-        [InlineKeyboardButton("🎯 ڕاهێرانی وانەی ١", callback_data="arami1:practice")],
+        [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
         [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
     ])
 
@@ -87,7 +87,7 @@ async def callback(update, context, base_dir):
         try:
             selected = select_answer(session, int(raw))
         except (ValueError, TypeError):
-            await query.answer("هەڵبژاردەکە دروست نییە.", show_alert=True)
+            await query.message.reply_text("⚠️ هەڵبژاردەکە دروست نییە؛ تکایە دووبارە هەڵبژێرە.")
             return
         question = current_question(session)
         rows = [
@@ -106,7 +106,7 @@ async def callback(update, context, base_dir):
         try:
             answer = submit_answer(session)
         except (ValueError, TypeError):
-            await query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
+            await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
         correct_option = question["options"][question["answer_index"]]
         feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct_option}"
@@ -116,7 +116,10 @@ async def callback(update, context, base_dir):
                 f"{feedback}\n\n🏁 کۆتایی هات\n"
                 f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
             )
-            rows = [[InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی ئارامی", callback_data="arami1:menu")]]
+            rows = []
+            if result["missed"]:
+                rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
+            rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی ئارامی", callback_data="arami1:menu")])
             await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(rows))
         else:
             await query.edit_message_text(
@@ -130,3 +133,16 @@ async def callback(update, context, base_dir):
     if action == "next":
         if not session.get("closed"):
             await send_question(query.message, context)
+        return
+
+    if action == "retry":
+        try:
+            retry_session = retry_missed(session)
+        except ValueError:
+            retry_session = None
+        if retry_session is None:
+            await query.message.reply_text("🌟 هیچ پرسیارێکی هەڵە نەماوە.")
+            return
+        context.user_data["arami_lesson1_session"] = retry_session
+        context.user_data["arami_lesson1_message_id"] = None
+        await send_question(query.message, context)
