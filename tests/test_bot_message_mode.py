@@ -1,3 +1,5 @@
+import html
+import re
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
@@ -79,7 +81,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("daily_chat_scenario", context.user_data)
         self.assertNotIn("daily_chat_stage", context.user_data)
         update.message.reply_text.assert_awaited_once()
-        self.assertEqual(update.message.reply_text.await_args.args[0], bot.add_kejyar_brand_signature(bot.LESSON_DATA[lesson]["content"]))
+        self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", update.message.reply_text.await_args.args[0])), bot.add_kejyar_brand_signature(bot.LESSON_DATA[lesson]["content"]))
+        self.assertEqual(update.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
 
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
@@ -193,7 +196,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(0 < len(chunk) <= 3800 for chunk in chunks))
         self.assertTrue(all(call.kwargs.get("reply_markup") is None for call in calls[:-1]))
         self.assertIs(calls[-1].kwargs["reply_markup"], completion_keyboard)
-        self.assertEqual("".join(chunks), bot.add_kejyar_brand_signature(content))
+        self.assertEqual("".join(html.unescape(re.sub(r"<[^>]+>", "", chunk)) for chunk in chunks), bot.add_kejyar_brand_signature(content))
+        self.assertTrue(all(call.kwargs.get("parse_mode") == "HTML" for call in calls))
 
     async def test_locked_lesson_callback_does_not_send_lesson_content(self):
         query = SimpleNamespace(
