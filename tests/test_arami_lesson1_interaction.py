@@ -93,7 +93,7 @@ class AramiLesson1InteractionTests(unittest.TestCase):
         retry = retry_missed(session)
         self.assertEqual(retry["mode"], "practice")
         self.assertEqual([q["id"] for q in retry["questions"]], ["q1"])
-        self.assertEqual(session["answers"], retry["answers"])
+        self.assertEqual(retry["answers"], [])
 
     def test_perfect_score_has_no_retry_session(self):
         session = create_session(BANK, "practice")
