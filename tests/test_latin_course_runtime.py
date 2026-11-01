@@ -214,6 +214,19 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("| zozan | Z |", lesson)
         self.assertNotIn("Herfên Taybet di Elfabeya Kurmancî de", lesson)
 
+    def test_course_two_lessons_four_and_five_separate_number_and_oblique_forms(self):
+        lessons, _, _ = load_latin_courses()
+        number = lessons["kurmanji_latin_grammar_04"]["content"]
+        self.assertIn("`hespek/hespin`", number)
+        self.assertIn("`mehînek/mehînin`", number)
+        self.assertIn("`hespan` û `mehînan`", number)
+        self.assertIn("bi tewangê ve girêdayî ne", number)
+        oblique = lessons["kurmanji_latin_grammar_05"]["content"]
+        self.assertIn("`hespan` û `mehînan` şêweyên tewandî ne", oblique)
+        self.assertIn("`hespin` û `mehînin`", oblique)
+        self.assertIn("Bi gelemperî, navdêrên nêr", oblique)
+        self.assertNotIn("Bi gelemperî di gelemperî de", oblique)
+
     def test_course_two_lesson_three_preserves_celadet_dar_gender_by_meaning(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_03"]["content"]
