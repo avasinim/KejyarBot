@@ -50,6 +50,7 @@ Pirtûk di rêzbendiya xwe ya çar hêmanên ziman de van dide:
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 2 — Navdêr: Hevenav û Serenav
 ### Armanc
 Nasîna navdêrên giştî û taybet.
@@ -73,6 +74,7 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 3 — Zayenda Navdêran
 ### Armanc
 Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
@@ -102,6 +104,7 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 4 — Mêjer
 ### Armanc
 Jimar û guherîna navdêrê di yekjimar û gelemjimar de nas bike.
@@ -136,6 +139,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 5 — Tewanga Navdêran
 ### Armanc
 Fêmkirina guherîna forma navdêrê li gorî erk û cihê wê di hevokê de.
@@ -171,6 +175,7 @@ Pirtûk diyar dike ku di gelemperî de navdêrên nêr di yekjimarê de bi `-î`
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 6 — Bireserê Navdêrê
 ### Armanc
 Nasîna hêmanên ku navdêrekê rave dikin an sînorê wî teng dikin.
@@ -198,6 +203,7 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 7 — Veqetandekên Binavkirî
 ### Armanc
 Nasîna veqetandekên ku navdêrê diyar û nasnamekirî dikin.
@@ -232,6 +238,7 @@ Veqetandeka rast hilbijêre:
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 8 — Veqetandekên Nebinavkirî
 ### Armanc
 Cudahîkirina navdêrên nebinavkirî û formên wan bi rêya veqetandekê.
@@ -267,6 +274,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 9 — Pronavên Kesîn û Kirar
 ### Armanc
 Cudahîkirina pronavên kesîn ji formên kirarî/agent.
@@ -302,6 +310,7 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 10 — Pronavên Bireser û Berbihevîn
 ### Armanc
 Nasîna pronavên bireser, berbihevîn, lihevxistî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
@@ -356,6 +365,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 11 — Pronavên Îşarkî, Girêkî û Pirsiyarkî
 ### Armanc
 Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
@@ -412,6 +422,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 
 ---
 
+**🤖 کەژیار — KejyarBot@**
 ## Ders 12 — Rengdêr û Jmarnav
 
 **Dîroka hilbijartinê:** Ev guhertoya firehkirî ya pêşnûseya jêgirtinê wek guhertoya bingehîn hilbijartî ye; pêşnûseya baseline ya berê li vir bi wê hatiye şûngirtin. Kileya masterê li gorî vebijarkên vê guhertoyê hatî nûkirin.
@@ -586,3 +597,5 @@ Bedir-Xan şeş cureyên rengdêr cuda dike: wesfîn, îşarkî, jmarîn, pirsiy
 
 ## Têbînîyên çavkaniyê
 Pirtûk bi xwe dibêje ku temam nîne û beşên lêker, hoker, daçek û hevoksaziyê tê de tune ne. Ji ber vê yekê ev kurs wek «bingehên gramera kurdmancî li gorî vê çavkaniyê» tê pêşkêşkirin, ne wek gramerêkî temam ê hemû kurmancî.
+
+**🤖 کەژیار — KejyarBot@**
