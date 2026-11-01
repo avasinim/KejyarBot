@@ -1,6 +1,7 @@
 # Kursa 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
 
-Çavkanî: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Beşa I, rûپەڕە چاپکراوەکان 11–34.
+Çavkanî ya destnîşankirî ji bo Kursa 1: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010), Ders 1: “Alfabê ya zimanê kurmancî” (ji rûpela çapkirî ya 11 dest pê dike); Ders 2: “Alfabê ya kurmancî bi dîtina dengnasînê” (li gorî فهرست, rûpela çapkirî ya 44).
+**ئاگاداریی پشکنین:** ئەم کتێبە لە کتێبی کۆرسی 2 جیاوازە. ئەم فایلە هێشتا بە تەواوی لەگەڵ هەموو بەشەکانی ئەم سەرچاوەیە هاوتا نەکراوە؛ بۆیە ناونیشانی فایلەکە بە مانای پەسەندکردنی زانستیی هەموو 12 وانە مەخوێنرێتەوە. هەموو نموونە، دەنگ، ڕێنووس و تاقیکردنەوەکان دەبێت لەگەڵ کتێبی Şikofteh بپشکنرێن.
 ئەم بەڵگەیە تەنها وانەکانی کۆرسی 1 لەخۆدەگرێت. دەقی وانەکان بە ڕیزبەندیی خۆیان پارێزراون؛ کلیلەی تاقیکردنەوەکەشی تەنها هی کۆرسی 1 ـە.
 
 ### Provenance — Course 1, Lesson 1
