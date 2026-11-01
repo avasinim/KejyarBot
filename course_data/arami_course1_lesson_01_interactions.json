@@ -3,7 +3,7 @@
   "lesson_id": "arami_course1_lesson_01",
   "content_policy": "Questions are limited to facts visibly printed in the user-supplied Lesson 1 alphabet chart. The supplied lesson text and chart are not edited.",
   "source_asset": "user-supplied Lesson 1 alphabet chart: kejyar_lesson1_alphabet_corrected_v2.png",
-  "source_note": "The chart visibly states 34 total letters, 28 consonants, and 6 vowels; it visually marks vowels in red. Do not extend these items beyond the chart.",
+  "source_note": "User explicitly clarified that Lesson 1 teaches 8 vowels. This user-supplied lesson statement overrides the earlier chart-only count interpretation. Do not use the chart's apparent 6-vowel count to quiz learners.",
   "practice": [
     {
       "id": "arami1_practice_01",
@@ -35,14 +35,14 @@
       "id": "arami1_practice_03",
       "type": "recognize",
       "section_id": "lesson1_chart_counts",
-      "prompt": "لە خشتەکەدا ژمارەی بزوێنەکان چەندە؟",
+      "prompt": "بەپێی ڕونکردنەوەی وانەی ١، ژمارەی بزوێنەکان چەندە؟",
       "options": [
-        "٦ پیت",
+        "٨ پیت",
         "٢٨ پیت",
         "٣٤ پیت"
       ],
       "answer_index": 0,
-      "source_evidence": "خشتە: بزوێنەکان ٦ پیت"
+      "source_evidence": "ڕونکردنەوەی مامۆستا لە وانەی ١: ٨ بزوێن"
     },
     {
       "id": "arami1_practice_04",
@@ -88,14 +88,14 @@
       "id": "arami1_assessment_03",
       "type": "recognize",
       "section_id": "lesson1_chart_counts",
-      "prompt": "ژمارەی بزوێنەکان لە خشتەکەدا چەندە؟",
+      "prompt": "لە ڕونکردنەوەی وانەی ١دا ژمارەی بزوێنەکان چەندە؟",
       "options": [
-        "٣٤ پیت",
+        "٨ پیت",
         "٢٨ پیت",
-        "٦ پیت"
+        "٣٤ پیت"
       ],
-      "answer_index": 2,
-      "source_evidence": "خشتە: بزوێنەکان ٦ پیت"
+      "answer_index": 0,
+      "source_evidence": "ڕونکردنەوەی مامۆستا لە وانەی ١: ٨ بزوێن"
     },
     {
       "id": "arami1_assessment_04",
@@ -113,7 +113,13 @@
   "not_yet_authored": [
     "sound-to-letter listening items",
     "letter-sequence completion",
-    "letter-name matching"
+    "letter-name matching",
+    "individual vowel recognition and listening items pending exact lesson/audio mapping"
   ],
-  "reason": "These require verified per-letter audio/lesson wording mappings. Do not infer them from audio filenames."
+  "reason": "These require verified per-letter audio/lesson wording mappings. Do not infer them from audio filenames.",
+  "source_correction": {
+    "lesson_1_vowel_count": 8,
+    "authority": "user clarification of the actual lesson explanation",
+    "supersedes": "earlier chart-only interpretation that counted 6 vowels"
+  }
 }
