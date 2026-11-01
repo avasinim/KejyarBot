@@ -75,3 +75,5 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 4. Ders 12 du pêşnûsên cuda hebûn. Di runtime de tenê yek nivîsa dawî û mifteya wê were bikaranîn; her du nivîs bi heman nasnameyê bar neke.
 5. Pirsên 4–12 bi kuizەکانی وانەی ئێستا بەراورد و کلیلیان نوێ کرایەوە؛ وانەکانی 1–3 بەهۆی نەبوونی دەقی تەواوی کویز هێشتا پشتڕاست نەکراونەتەوە.
 6. لە وانەی 11، پرسیاری 4 لەگەڵ دەقی پێش‌نووسەکە هاوتایە، بەڵام پێش runtime دەبێت جیاوازیی `ko` وەک pronavê girêkî و `ko` وەک girêder لەگەڵ سەرچاوەی Celadet ڕێکبخرێت.
+7. وانەی 6: ناونیشانی `Bireserê Navdêrê` لەگەڵ کویزی ئێستا ناهاوتایە؛ پرسیارەکان `ev/ew` و نیشاندانی نێزیکی/دووری دەگرنەوە. ئەم بابەتە دەبێت لەگەڵ بەشی `Bireserê navdêrê`ی سەرچاوە (لاپەڕەی 61) و وانەی 7ی veqetandekên binavkirî جیا بکرێتەوە.
+8. وانەی 11: لە کتێبی Celadetدا `ko` لە ڕستەی relative وەک pronavê girêkî دێت، بەڵام `ko`یەکی دیکەش وەک girêderی دوو ڕستە بەکاردێت؛ دەقی وانە و پرسیاری 4 پێویستیان بە چاکسازیی سەرچاوەیی هەیە.
