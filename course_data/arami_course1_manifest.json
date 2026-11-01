@@ -52,8 +52,15 @@
       "id": "arami_course1_lesson_04",
       "number": 4,
       "status": "source_review_pending",
-      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; source heading is only 'وانەی ٤'; preserve that and do not invent a title",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_source_received_and_preserved; saved_to_branch",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "title": "بزوێنەکان، نەبزوێنەکان و ئەرکی دووانەی (و) و (ی)",
+      "content_file": "course_data/arami_course1_lesson_04_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "not_yet_implemented",
+      "assessment_status": "not_yet_implemented",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Earlier sections are not inferred or reconstructed."
     },
     {
       "id": "arami_course1_lesson_05",
