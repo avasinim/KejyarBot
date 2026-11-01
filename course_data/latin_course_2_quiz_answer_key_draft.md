@@ -6,66 +6,66 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 
 | Ders | Pirs | Vebijarka rast | Bersiva rast | Ravekirin |
 |---:|---:|:---:|---|---|
-| 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | Gramer rêbazên rastaxaftinê û rastnivîsîna zimanê rêk dixe. |
-| 1 | 2 | B | 4 | Çar hêmanên bingehîn di pênaseya çavkaniyê de hatine diyarkirin. |
-| 1 | 3 | A | nîşana nivîskî | Tîp nîşana nivîskî ya dengekê ye. |
-| 1 | 4 | B | bêje | hesp bêjeyek e. |
-| 1 | 5 | B | bi peyhevketina koman | Gotin bi peyhevketina koman pêk tê. |
-| 2 | 1 | B | kes/heywan/tişt | Navdêr navê kes, heywan an tiştê dide. |
-| 2 | 2 | C | hevenav | hesp navê giştî ye; ji ber vê yekê hevenav e. |
-| 2 | 3 | A | serenav | Kurdistan navê taybet e; ji ber vê yekê serenav e. |
-| 2 | 4 | B | serenav | Zîn navê kesekî diyarkirî ye. |
-| 2 | 5 | C | navê giştî | Hevenav navê giştî yê komekê ye. |
-| 3 | 1 | B | 2 | Di vê rêzimanê de du zayendên rêzimanî hene: nêr û mê. |
-| 3 | 2 | C | nêr | Çavkaniyê derî di koma nêr de dide. |
-| 3 | 3 | A | nêr | Çavkaniyê çem di koma nêr de dide. |
-| 3 | 4 | B | mê | Dar di vê nimûneyê de navdêra mê ye. |
-| 3 | 5 | C | zayenda rêzimanî | Tiştên bêcan jî dikarin zayenda rêzimanî hebin. |
-| 4 | 1 | B | Yek an zêdetirbûna kes an tiştan | Mêjer jimara kes an tiştan nîşan dide. |
-| 4 | 2 | A | Behsa yek kes an tiştî dike | Yekejmar behsa yek kes an tiştî dike. |
-| 4 | 3 | B | Gelejmar | Di hevoka «Zarok dixwînin» de kiryar gelejmar e. |
-| 4 | 4 | C | Zarok dixwînin | Ev hevok gelejmar nîşan dide. |
-| 4 | 5 | B | Na, hin navdêr dikarin heman formê biparêzin | Hin navdêr di yekejmar û gelejmarê de heman formê diparêzin. |
-| 5 | 1 | A | Guherîna forma peyvê li gorî erkê wê di hevokê de | Tewang forma peyvê li gorî erk û têkiliya wê di hevokê de diguherîne. |
-| 5 | 2 | B | Erk û têkiliya peyvê di hevokê de | Tewang bi erk û têkiliya peyvê di hevokê de ve girêdayî ye. |
-| 5 | 3 | C | malê | Di hevoka «Ez ji malê têm» de «malê» cihê jêhatinê nîşan dide. |
-| 5 | 4 | B | kitêbê | Di hevoka «Ez kitêbê dixwînim» de «kitêbê» tiştê ku tê xwendin nîşan dide. |
-| 5 | 5 | B | Na, erkê peyvê dikare forma wê biguherîne | Erkê peyvê di hevokê de dikare forma wê biguherîne. |
-| 6 | 1 | B | navdêrê rave dike/taybet dike | Bireserê navdêrê navdêrê rave dike an taybet dike. |
-| 6 | 2 | C | keçik | Di koma «ev keçik» de «keçik» navdêr e; «ev» bireser e. |
-| 6 | 3 | A | beza | Di koma «hespê beza» de «beza» bireser e û navdêra «hesp» rave dike. |
-| 6 | 4 | B | pêşî an paşî navdêrê | Bireser dikare pêşî an paşî navdêrê were. |
-| 6 | 5 | C | bireserê navdêrê | «Xencera min» nimûneyeke bireserê navdêrê ye. |
-| 7 | 1 | B | Ku em behsa tiştekî an kesekî diyarkirî dikin | Binavkirin kes an tiştekî diyarkirî nîşan dide. |
-| 7 | 2 | A | Navdêr | Veqetandek bi navdêrê re têkildar e. |
-| 7 | 3 | B | Na, divê erk û rêzika wê were analîzkirin | Her guherîna dawiyê ne veqetandeka binavkirî ye. |
-| 7 | 4 | C | Zayend, mêjer û erkê navdêrê | Di analîza veqetandekê de zayend, mêjer û erk girîng in. |
-| 7 | 5 | A | Rêzikên rêzimanî | Veqetandekên binavkirî bi rêzikên rêzimanî ve girêdayî ne. |
-| 8 | 1 | B | Kes an tişt nehatine bi awayekî taybet nasandin | Nebinavkirin kes an tiştekî ku bi awayekî taybet nehatiye nasandin nîşan dide. |
-| 8 | 2 | A | -ek | Pêşnûsa dersê «-ek» wek paşgireke gelemperî ya nebinavkirî dide. |
-| 8 | 3 | B | pirtûkek | Forma nebinavkirî ya «pirtûk» di vê mînakê de «pirtûkek» e. |
-| 8 | 4 | B | Zarokek | Di hevoka «Zarokek hat» de navdêr «Zarokek» e. |
-| 8 | 5 | B | Na, li gorî zayend, mêjer û erkê navdêrê diguhere | Forma binavkirî li gorî zayend, mêjer û erkê navdêrê diguhere. |
-| 9 | 1 | A | Peyveke ku li şûna navdêrekî tê | Pronav dikare li şûna navdêrekî were bikaranîn. |
-| 9 | 2 | C | ez | «Ez» pronavê kesê yekem ê yekjimar e. |
-| 9 | 3 | A | hûn | «Hûn» pronavê kesê duyem ê gelemjimar e. |
-| 9 | 4 | B | Ew | Di hevoka «Ew dixwîne» de «Ew» pronav e. |
-| 9 | 5 | B | em | Di hevoka «Em dixebitin» de «em» kirar e. |
-| 10 | 1 | B | Kes an tişta ku kiryar li ser tê kirin | Bireser kes an tişta ku kiryar li ser tê kirin e. |
-| 10 | 2 | B | te | Di hevoka «Ez te dibînim» de «te» bireser e. |
-| 10 | 3 | B | wê | «Wê» forma pronavê bireser ji bo kesê sêyem ê mê yekjimar e. |
-| 10 | 4 | C | hev | «Hev» dikare têkiliya berbihevîn nîşan bide. |
-| 10 | 5 | A | Têkiliya di navbera kesan de | Di hevoka «Em hev nas dikin» de «hev» têkiliya di navbera kesan de nîşan dide. |
-| 11 | 1 | B | ev/ew | `ev` û `ew` pronavên îşarkî yên bingehîn in. |
-| 11 | 2 | C | yê/ya/yên | `yê`, `ya` û `yên` formên pronavên îşarkî yên qerse ne. |
-| 11 | 3 | A | ko | `ko` forma pronavê girêkî ya ku di vê pêşnûsê de hatiye parastin e. |
-| 11 | 4 | B | pirsiyarkî | `Kî hat?` pirs e û `kî` pronavê pirsiyarkî ye. |
-| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | `kîjan` ji bo hilbijartina kes an tiştekî di nav çend vebijarkan de tê. |
-| 12 | 1 | B | Taybetmendiya navdêrê rave dike | Rengdêr taybetmendiya navdêrê rave dike. |
-| 12 | 2 | C | nû | Di hevoka «Ev kitêb nû ye» de «nû» rengdêr e. |
-| 12 | 3 | C | Şeş | Şeş hejmareke bingehîn e ku jimara 6 nîşan dide. |
-| 12 | 4 | C | yekem | «Yekem» jmarnava rêzî ye û rêza tiştekî nîşan dide. |
-| 12 | 5 | C | sê | Di hevoka «Sê zarok hatin» de «sê» jmarnav e û hejmar nîşan dide. |
+| 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 2 | B | 4 | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 3 | A | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 4 | B | bêje | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 5 | B | bi peyhevketina koman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 2 | 1 | B | kes/heywan/tişt | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 2 | C | hevenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 3 | A | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 4 | B | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 5 | C | navê giştî | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 3 | 1 | B | 2 | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 3 | 2 | C | nêr | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 3 | 3 | A | nêr | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 3 | 4 | B | mê | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 3 | 5 | C | zayenda rêzimanî | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 4 | 1 | B | yek an gelek | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 4 | 2 | C | hespin | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 4 | 3 | A | yekjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 4 | 5 | C | gelemjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 2 | C | hespî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 3 | A | mehinê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 4 | B | forma gelemjimar a tewandî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 5 | C | na | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 6 | 1 | B | navdêrê rave dike/taybet dike | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 6 | 2 | C | keçik | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 6 | 3 | A | beza | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 6 | 4 | B | pêşî an paşî navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 6 | 5 | C | bireserê navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 7 | 1 | B | 3 | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 7 | 2 | C | nêr yekjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 7 | 3 | A | mê yekjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 7 | 4 | B | gelemjara her du zayendan | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 8 | 1 | B | tiştekî hê nenaskirî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 2 | C | bê bireser | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 3 | A | -in | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 4 | B | -ekî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 5 | C | na, erkên wan cuda ne | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 9 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 9 | 2 | C | te | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 9 | 3 | A | wî | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 9 | 4 | B | me | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 9 | 5 | A | hon | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 10 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 2 | C | wê | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 3 | A | hev, êk | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 4 | B | pronavên bireser | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 5 | B | du an zêdetir kes bi hev re | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 11 | 1 | B | ev/ew | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 11 | 2 | C | yê/ya/yên | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 11 | 3 | A | ko | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 11 | 4 | B | pirsiyarkî | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 2 | C | rengdêra wesfîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 3 | A | rengdêra jmarîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 4 | B | wek beşeke serbixwe | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 5 | C | nimûneyeke jmarnav | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 
 ## Têbînî berî runtime
 
