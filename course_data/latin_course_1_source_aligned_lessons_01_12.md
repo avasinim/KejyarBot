@@ -248,41 +248,40 @@ Dengdar ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng j
 
 ### 2. Bêdeng çi ne?
 
-Bêdeng ew deng in ku dema derxistina wan de di rêça hewayê de astengî çêdibe, wek girtin, tengbûn an kêşana hewayê.
-
-**23 bêdengên kurmancî ev in:**
+Di rêza alfabeyê de, 23 herfên din ên ku ne di koma 8 dengdar de ne, wek **bêdeng** tên rêzkirin:
 
 B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z
 
-### 3. Cudahiyên dengdar û bêdeng
+Lê di dengnasînê de hemû van herfan yek cure nînin. Çavkaniya bingehîn W û Y wek **nîvdeng** ji herfên bêdeng ên din cuda dike. Ji ber vê yekê, bêdeng li vir navê koma herfan e; nabe hemû 23 herf wek dengên bi astengiya hewayê bêne ravekirin.
 
-| Taybetmendî | Dengdar | Bêdeng |
-|---|---|---|
-| Rêça hewayê | Bi astengiyeke hindik derbas dibe | Astengî çêdibe |
-| Di peyvan de | Dikarin bingeha kîteyê ava bikin | Bi gelemperî bi dengdaran re tên xwendin |
-| Mînak | A, E, Î | B, M, R |
+### 3. Cudahiyên dengdar, bêdeng û nîvdeng
+
+| Taybetmendî | Dengdar | Bêdengên din | Nîvdeng |
+|---|---|---|---|
+| Taybetmendî | Bi serê xwe dikarin dengê xwe derxînin | Di derxistina dengê wan de alîkariya dengdarê pêwîst e | Di navbera dengdar û bêdeng de taybetmendiyên wan hene |
+| Mînak | A, E, Î | B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, X | W, Y |
 
 ### 4. Dengdar di peyvan de
 
-Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin.
+Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di tabloyê de W û Y wek nîvdeng tên nîşandan, ne wek bêdengên din.
 
-| Peyv | Dengdar | Bêdeng |
+| Peyv | Dengdar | Bêdengên din | Nîvdeng |
 |---|---|---|
-| bav | A | B, V |
-| mal | A | M, L |
-| jin | I | J, N |
-| roj | O | R, J |
-| kur | U | K, R |
-| şev | E | Ş, V |
-| çav | A | Ç, V |
-| dûr | Û | D, R |
+| bav | A | B, V | — |
+| mal | A | M, L | — |
+| jin | I | J, N | — |
+| roj | O | R, J | — |
+| kur | U | K, R | — |
+| şev | E | Ş, V | — |
+| çav | A | Ç, V | — |
+| dûr | Û | D, R | — |
 
 ### 5. Çend mînakên din
 
 - **av:** dengdar A ye; bêdeng V e.
 - **dar:** dengdar A ye; bêdeng D û R in.
 - **gund:** dengdar U ye; bêdeng G, N û D in.
-- **welat:** dengdar E û A ne; bêdeng W, L û T in.
+- **welat:** dengdar E û A ne; W nîvdeng e, L û T bêdengên din in.
 - **mirov:** dengdar I û O ne; bêdeng M, R û V in.
 
 ### 6. Xebata dersê
@@ -325,7 +324,7 @@ Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin.
 
 ### Xulasa
 
-Di vê dersê de me cudahiya dengdar û bêdeng, heşt dengdarên kurmancî û rola wan di peyvan de fêr bûn.
+Di vê dersê de me 8 dengdar, koma 23 herfên bêdeng û cudahiya fonetîkî ya nîvdengên W û Y nas kirin.
 
 **Dersa bê:** Dengdarên kin — E, I, U.
 
