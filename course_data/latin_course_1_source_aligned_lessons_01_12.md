@@ -40,13 +40,13 @@ Di vê alfabeyê de 8 dengdêr û 23 dengdar hene.
 | A | av |
 | E | ez |
 | Ê | êvar |
-| I | kin |
+| I | dil |
 | Î | îro |
 | O | roj |
 | U | gur |
 | Û | dûr |
 
-**Baldar be:** I û J du herfên cuda ne. Peyva `kin` bi K dest pê dike û I di nav xwe de dihewîne; peyva `jin` bi J dest pê dike û I jî di nav xwe de dihewîne. Ji bo nasîna I, `kin` mînakeke zelaltir e, ji ber ku herfa I di nav peyvê de xuya ye.
+**Baldar be:** I û J du herfên cuda ne. Peyva `dil` bi D dest pê dike û herfa I di nav xwe de dihewîne; peyva `jin` bi J dest pê dike û herfa I jî di nav xwe de dihewîne. `dil` rasterast di lîsteya mînakên dengdêra I ya çavkaniyê de hatiye nivîsîn.
 
 ### 4. Herfên mezin û biçûk
 Forma mezin bi gelemperî di destpêka hevokê û di destpêka navên taybet de tê bikaranîn. Forma biçûk di nav peyvan de tê bikaranîn.
@@ -54,7 +54,7 @@ Forma mezin bi gelemperî di destpêka hevokê û di destpêka navên taybet de 
 Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 
 ### 5. Xebata Kejyar
-1. Dengdêrên di van peyvan de bibîne: av — ez — êvar — kin — îro — roj — gur — dûr.
+1. Dengdêrên di van peyvan de bibîne: av — ez — êvar — dil — îro — roj — gur — dûr.
 2. Herfên mezin bi biçûk binivîse: A, Ê, Î, Ş, Û, W.
 3. Ji alfabeyê pênc dengdêr û pênc dengdar hilbijêre û bi wan peyvan çêke.
 
