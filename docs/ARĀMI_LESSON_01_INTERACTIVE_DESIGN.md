@@ -19,7 +19,7 @@ This work applies only to Lesson 1 of the Arami orthography course.
 3. Split the existing body into display sections only at boundaries already present in the supplied content. Sectioning must not change the body text or order.
 4. Keep the supplied alphabet chart attached to the lesson as its own media item. Do not redraw or regenerate the chart as part of this task.
 5. Use readable message lengths and a visible Continue action between sections. Include Back and Resume actions.
-6. Keep the original audio attached to its intended lesson/section and deliver it through the existing `get_voice` path. Do not synthesize replacement audio.
+6. **Every lesson must have its own prerecorded voice recording.** The lesson cannot be marked ready or activated if its dedicated recording is missing. Store an explicit audio asset key in that lesson's metadata, resolve it through the existing `get_voice` path, and deliver the recording with the lesson. Do not reuse an unrelated clip or synthesize replacement audio.
 7. At the end, show two distinct actions: “ڕاهێنان” and “تاقیکردنەوەی کۆتایی”.
 
 ## Practice sequence
@@ -92,6 +92,7 @@ Practice rules:
 ### Regression and safety
 - Existing Latin course IDs, lesson counts, lesson text, quiz content, and audio mappings remain unchanged.
 - Existing voice selection and prerecorded voice playback continue to work.
+- Arami Lesson 1 declares a dedicated audio asset; missing or unresolved recording blocks lesson readiness and is never silently skipped.
 - Dynamic speech remains disabled.
 - No production deployment or live database changes are part of this branch.
 
