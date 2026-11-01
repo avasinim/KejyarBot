@@ -296,7 +296,7 @@ Di hin hevokên rabirdû de forma kirarî tê bikaranîn; mînak: `Min got`, `Te
 
 **Sê zayendên pronav:** rêziman pronavên nêr, mê û nêtar cuda dike. `wî` forma nêr e û `wê` forma mê ye; formên din ên kesîn di rêzimanê de nêtar tên hesibandin. `ew` dikare li şûna navdêrên nêr û mê jî were, ji ber vê yekê di tabloyê de wek forma nêtar jî hatiye nîşandan.
 
-**Nîşe ya dîrokî/ortografî:** forma kevneşopî formê `hon` dinivîse. Di hin standardên nû de `hûn` tê dîtin. Di vê kursê de `hon` wek forma kevneşopî diparêzin û `hûn` tenê wek variantê nû nîşan dikin; yek ji wan bê agahdarî nayê guhertin.
+Di vê kursê de `hon` wek pronavê kesê duyem gelemjar tê bikaranîn.
 
 ### Xebat
 Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan ew xwar`.
@@ -306,7 +306,7 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 2. Forma kirarî ya `tu` çi ye? A) wî B) we C) te
 3. Forma kirarî ya `ew` nêr di nimûneyên rabirdû de çi ye? A) wî B) wê C) wan
 4. Forma kirarî ya `em` çi ye? A) we B) me C) min
-5. forma kevneşopî kîjan forma kesê duyem gelemjar dinivîse? A) hûn B) hun C) hon
+5. Pronavê kesê duyem gelemjar kîjan e? A) hon B) min C) wan
 
 ---
 
@@ -324,7 +324,7 @@ Mînak:
 - `Hespan ceh xwar.` → `Wan ew xwar.`
 - `Min qelem ji destê xwe xist.`
 
-Pronavên berbihevîn ji bo têkiliya du kes/tiştan bi hev re tên. Forma `hev` û `êk` dide. Di şîroveya xwe ya dîrokî de dibêje ku formên wek `hevdu`, `hev dû`, `êkdu` û `êk dû` li hin deveran di axaftina rojane de belav bûne; lê di nivîsa standard de forma bingehîn `hev` û `êk` diparêze. Ji ber vê yekê `hevdu` wek formeke herêmî/axaftinî nîşan dide, ne wek formeke nû ya standard.
+Pronavên berbihevîn ji bo nîşandana du an zêdetir kes/tiştan ku bi hev re têkildar in têne bikaranîn. Du formên bingehîn hene: `hev` û `êk`. Di hin şêwazên herêmî de `êk` bi taybetî tê bikaranîn. Ev pronav bi tenê yek kes nîşan nadin; têkiliya du an zêdetir kesan bi hev re nîşan didin.
 
 ### Pronavên lihevxistî
 Cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
@@ -361,7 +361,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
 3. Ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
 4. `Wan ew xwar` di çi de nimûne ye? A) pronavên îşarkî B) pronavên bireser C) rengdêr
-5. `hevdu` divê çawa were nîşandan? A) wek forma ku rêziman tenê nas dike B) wek rengdêr C) wek variantê bikaranîna nû
+5. Pronavên berbihevîn çi nîşan didin? A) yek kes B) du an zêdetir kes bi hev re C) tenê cih
 
 ---
 
