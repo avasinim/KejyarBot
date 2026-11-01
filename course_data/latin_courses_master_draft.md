@@ -5,7 +5,7 @@
 ## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
 
 - **Authoritative source:** Not yet confirmed by the user. A distinct Library PDF is available as a candidate only: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010). Do not treat it as the designated Course 1 book until the user confirms.
-- **Scope:** North Khorasan Kurmanji Latin orthography, alphabet, vowel/consonant distinctions, spelling rules and syllables.
+- **Scope:** Kurmanji Latin orthography, alphabet, vowel/consonant distinctions, spelling rules and syllables; exact dialect scope remains pending source confirmation.
 - **Canonical lessons:** `course_data/latin_course_1_source_aligned_lessons_01_12.md`
 - **Canonical quiz key:** `course_data/latin_course_1_quiz_answer_key_draft.md`
 - **Source review:** The candidate PDF has been inspected and used for provisional comparison only. The designated Course 1 source remains unresolved; all changes based on this candidate are provisional.
