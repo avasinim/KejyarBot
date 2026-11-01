@@ -959,7 +959,7 @@ D) Her du nîşan in
 
 ### Xulasa
 
-Di vê dersê de me `V` wek dengdar û `W` wek nîvdeng nas kirin. `Y` jî nîvdeng e. Ji bo rastnivîsînê divê ئەم جیاوازییەی پۆلێنکردن بپارێزرێت.
+Di vê dersê de me `V` wek dengdar û `W` wek nîvdeng nas kirin. `Y` jî nîvdeng e. Ji bo rastnivîsînê divê ev cudahiya polê were parastin.
 
 ---
 
