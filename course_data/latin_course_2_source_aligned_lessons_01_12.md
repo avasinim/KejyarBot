@@ -5,7 +5,7 @@ Ev nivîs pêşnûseyeke fêrkarî ye û şêwaza çavkaniyê diparêze. Li her 
 
 **Rewşa vegerandinê:** Dersên 4–12 li ser bingeha nivîsên vegerandî hatine pêdaçûn. Nivîsên orîjînal ên Dersên 1–3 di gotûbêja me de ji aliyê te ve hatine şandin; di vê pelê de naveroka wan wek pêşnûseya çavkaniyê tê rêxistin û li gorî pirtûkê tê pêdaçûn.
 
-**Sînora çavkaniyê:** Ev kurs tenê beşa duyem a pirtûka Celadet Alî Bedir-Xan bikar tîne. Çavkaniya Kursa 1 cuda ye: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*. Çavkanî, mînak û mijarên wan tevlihev neke.
+**Sînora çavkaniyê:** Ev kurs tenê beşa duyem a pirtûka Celadet Alî Bedir-Xan bikar tîne. Çavkaniya fermî ya Kursa 1 hîn nehatîye piştrastkirin; PDF ya Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*, tenê wekî çavkaniyeke muhtemel di Library de heye û hîn ji aliyê bikarhêner ve nehatiye pejirandin. Çavkanî, mînak û mijarên wan tevlihev neke.
 
 ---
 
