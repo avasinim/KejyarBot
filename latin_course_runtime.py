@@ -115,6 +115,9 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
         current = None
 
     for line in lines[quiz_start + 1:]:
+        # The KejyarBot signature is lesson branding, never part of the final MCQ option.
+        if line.strip().startswith("**🤖 کەژیار — KejyarBot@**"):
+            break
         qmatch = QUESTION.match(line)
         if qmatch:
             finish()
