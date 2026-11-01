@@ -6,6 +6,7 @@ from pathlib import Path
 from arami_course1_runtime import (
     AramiCourseError, COURSE_ID, LESSON_1_ID,
     load_arami_course1, get_arami_lesson1_audio_path,
+    load_arami_lesson1_interactions,
 )
 
 
@@ -38,6 +39,32 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             self.assertEqual(loaded["course_id"], COURSE_ID)
             self.assertEqual(loaded["lessons"][0]["id"], LESSON_1_ID)
             self.assertEqual(len(manifest["lessons"]), 4)
+
+    def test_loads_only_verified_eight_vowel_interactions(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            source_bank = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_interactions.json"
+            target = root / "course_data" / source_bank.name
+            target.write_text(source_bank.read_text(encoding="utf-8"), encoding="utf-8")
+            bank = load_arami_lesson1_interactions(root)
+            for mode in ("practice", "assessment"):
+                vowel = [item for item in bank[mode] if item["section_id"] == "lesson1_vowel_count"]
+                self.assertEqual(len(vowel), 1)
+                self.assertEqual(vowel[0]["options"][vowel[0]["answer_index"]], "٨ بزوێن")
+
+    def test_rejects_interaction_bank_with_wrong_vowel_answer(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            source_bank = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_interactions.json"
+            target = root / "course_data" / source_bank.name
+            bank = json.loads(source_bank.read_text(encoding="utf-8"))
+            vowel = next(item for item in bank["practice"] if item["section_id"] == "lesson1_vowel_count")
+            vowel["options"][vowel["answer_index"]] = "٦ بزوێن"
+            target.write_text(json.dumps(bank, ensure_ascii=False), encoding="utf-8")
+            with self.assertRaises(AramiCourseError):
+                load_arami_lesson1_interactions(root)
 
     def test_resolves_only_confirmed_lesson1_audio(self):
         with tempfile.TemporaryDirectory() as temp:
