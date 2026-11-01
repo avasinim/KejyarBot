@@ -5,7 +5,7 @@ Ev nivîs pêşnûseyeke fêrkarî ye û şêwaza çavkaniyê diparêze. Li her 
 
 **Rewşa vegerandinê:** Dersên 4–12 li ser bingeha nivîsên vegerandî hatine pêdaçûn. Nivîsên orîjînal ên Dersên 1–3 di gotûbêja me de ji aliyê te ve hatine şandin; di vê pelê de naveroka wan wek pêşnûseya çavkaniyê tê rêxistin û li gorî pirtûkê tê pêdaçûn.
 
-**Sînora çavkaniyê:** Ev kurs beşa duyem a pirtûka Celadet Alî Bedir-Xan bikar tîne; Kursa 1 beşa yekem bikar tîne. Çavkanî, mînak û mijarên wan tevlihev neke.
+**Sînora çavkaniyê:** Ev kurs tenê beşa duyem a pirtûka Celadet Alî Bedir-Xan bikar tîne. Kursa 1 سەرچاوەیەکی جیاوازی هەیە: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*. Çavkanî, مێژووچە، مînak û mijarên wan tevlihev neke.
 
 ---
 
