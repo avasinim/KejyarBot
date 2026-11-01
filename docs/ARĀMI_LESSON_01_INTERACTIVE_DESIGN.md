@@ -104,3 +104,61 @@ Practice rules:
 4. Add final assessment and scoring.
 5. Add automated tests for the acceptance criteria above.
 6. Run the complete test suite and report exact results before any release or deployment.
+
+
+## Confirmed Lesson 1 audio asset and handoff status
+
+The user explicitly identified commit `5642e5310cc856f7bfd8c821086a9f2febe419e6`
+(title: `دەنگەکان`) as the recording for Arami Course 1, Lesson 1.
+That commit adds the repository-root asset:
+
+- `دەنگەکانی ئەلفبێ.ogg`
+- Commit: https://github.com/avasinim/KejyarBot/commit/5642e5310cc856f7bfd8c821086a9f2febe419e6
+
+This is the only audio asset currently confirmed by the user for this lesson.
+Do not substitute `voices/lesson_start.mp3`, `voices/kejyar.mp3`, any other
+root-level Kurdish recording, or any Latin-course recording. Do not infer that
+other recordings belong to this lesson. The recording must remain attached to
+this exact Arami Lesson 1 entry.
+
+## Work completed on the isolated feature branch
+
+Branch: `feat/arami-lesson1-interactive-design-2026-11-01`
+Base: `main` at `04a1b3e0ab9a515211ab3709513cdc1ec90d86ea`
+
+- Added a content-agnostic practice/assessment state engine in
+  `arami_lesson1_interaction.py`.
+- Added automated unit tests for question-bank validation, answer selection
+  and submission, scoring, retrying missed items, and audio metadata checks.
+- Added `lesson_audio.py` to validate explicit lesson audio metadata and
+  prevent unsafe paths or unsupported/missing files.
+- Added a lesson playback hook in `bot.py` which sends a lesson-specific
+  recording when its metadata is present.
+- Added this design specification and its acceptance criteria.
+
+## Remaining integration work — do not treat as release-ready
+
+- The confirmed audio filename has not yet been added to an Arami Lesson 1
+  runtime metadata record. The playback hook therefore does not yet prove that
+  this recording is played for the correct lesson.
+- The bot's existing generic lesson registry still uses shared lesson keys;
+  the Arami lesson needs a dedicated namespaced runtime key before wiring the
+  audio or quiz into the live navigation.
+- The dedicated Arami Lesson 1 content, its supplied chart, and the actual
+  practice/assessment question bank have not been integrated. Do not reconstruct
+  or edit the user's lesson text.
+- The complete repository test suite has not yet been run for this branch.
+- No pull request, merge, deployment, production database change, or Botkeep
+  live update has been performed.
+
+## Restart checklist
+
+1. Resume from this feature branch, not `main`.
+2. Keep the Arami and Latin course registries, quiz state, lesson IDs, and audio
+   mappings isolated.
+3. Bind only `دەنگەکانی ئەلفبێ.ogg` to Arami Course 1 Lesson 1 after confirming
+   the namespaced lesson metadata and existing voice-resolver compatibility.
+4. Preserve the supplied Lesson 1 body byte-for-byte.
+5. Complete integration and run focused plus full tests; report actual results.
+6. Stop before merge, deployment, production DB changes, or Botkeep live changes
+   unless the user explicitly authorizes them.
