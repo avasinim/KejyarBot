@@ -125,7 +125,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_10"]["content"]
         self.assertIn("hev` û `êk", lesson)
-        self.assertIn("li bakurrojhilatê Kurdistanê", lesson)
+        self.assertIn("li nîvrohelatê Kurdistanê", lesson)
         self.assertNotIn("li Kurdistana navendî", lesson)
 
     def test_course_two_neuter_personal_pronoun_has_no_invented_agent_form(self):
