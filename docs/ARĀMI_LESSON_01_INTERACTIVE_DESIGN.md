@@ -121,6 +121,27 @@ root-level Kurdish recording, or any Latin-course recording. Do not infer that
 other recordings belong to this lesson. The recording must remain attached to
 this exact Arami Lesson 1 entry.
 
+
+## Source reconciliation — explicit Lesson 1 clarification
+
+The user explicitly clarified that Lesson 1 teaches **8 vowels**. This statement
+is authoritative for the lesson's practice and assessment. A supplied chart
+appears to show a different vowel count and a consonant count that cannot be
+safely reconciled with that explanation. Therefore:
+
+- Never quiz learners on the chart's apparent 6-vowel count.
+- Do not quiz the chart's 28-consonant count or 34-letter total until the
+  original lesson wording resolves the discrepancy.
+- The only count item currently approved in the interaction bank is **8 vowels**.
+- The chart's red vowel color key may be used as a visual recognition item,
+  but only as a separate chart observation, not as a correction to the lesson.
+- Do not silently change the user's lesson text or chart to make the counts fit.
+
+The current bank intentionally contains only the supported vowel-count item
+and the chart's color-key item in each mode. Listening, letter recognition,
+sequence completion, and matching remain unavailable until the exact supplied
+lesson/audio mapping is established.
+
 ## Work completed on the isolated feature branch
 
 Branch: `feat/arami-lesson1-interactive-design-2026-11-01`
