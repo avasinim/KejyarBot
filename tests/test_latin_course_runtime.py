@@ -173,6 +173,13 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertNotIn("rêzên pîr", lesson6)
         lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("| kew | dawî |", lesson8)
+        self.assertIn("| vedan | destpêk |", lesson8)
+        self.assertIn("| kevir | navîn |", lesson8)
+        self.assertIn("| wî | destpêk |", lesson8)
+        self.assertIn("| dev | dew |", lesson8)
+        self.assertIn("| vir | wîr |", lesson8)
+        self.assertIn("| ava | awa |", lesson8)
+        self.assertIn("| evî | ewî |", lesson8)
         self.assertIn("`kew`", lesson8)
         self.assertNotIn("`law`", lesson8)
         self.assertNotIn("| law | dawî |", lesson8)
