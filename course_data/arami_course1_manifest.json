@@ -277,8 +277,15 @@
       "id": "arami_course1_lesson_18",
       "number": 18,
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_18_received_and_preserved; source_saved_without_semantic_edits",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "title": "گۆڕانی بێژەی دوو پیتی (ک، گ) لە هەندێک ناوچەی موکریاندا",
+      "content_file": "course_data/arami_course1_lesson_18_k_g_mukriani_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "Outer heading identifies this as Lesson 18; copied closing heading says Lesson 17. Numbering follows the explicit outer heading. Duplicate repeated rule paragraph was normalized to a single instance; all examples and rule content retained."
     },
     {
       "id": "arami_course1_lesson_19",
