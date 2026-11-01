@@ -93,13 +93,13 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         import bot
 
         signature = "🤖 کەژیار — KejyarBot@"
-        self.assertEqual(bot.add_kejyar_brand_signature("Lesson body"), f"Lesson body\\n\\n{signature}")
-        self.assertEqual(bot.add_kejyar_brand_signature(f"Lesson body\\n\\n{signature}"), f"Lesson body\\n\\n{signature}")
+        self.assertEqual(bot.add_kejyar_brand_signature("Lesson body"), f"Lesson body\n\n{signature}")
+        self.assertEqual(bot.add_kejyar_brand_signature(f"Lesson body\n\n{signature}"), f"Lesson body\n\n{signature}")
         self.assertIn(signature, bot.add_kejyar_brand_signature("کۆرسی ٣"))
     def test_telegram_chunking_preserves_every_character_and_respects_limit(self):
         import bot
 
-        content = ("ئەڤە دەقی وانەیە.\\n" * 500) + ("x" * 4100) + "\\nکۆتایی."
+        content = ("ئەڤە دەقی وانەیە.\n" * 500) + ("x" * 4100) + "\nکۆتایی."
         chunks = bot.split_lesson_text(content, limit=3800)
         self.assertGreater(len(chunks), 1)
         self.assertTrue(all(len(chunk) <= 3800 for chunk in chunks))
