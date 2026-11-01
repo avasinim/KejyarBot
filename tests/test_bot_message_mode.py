@@ -84,7 +84,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
         label = "ڕێنووسی لاتینی کوردیی"
-        self.assertIn(label, [button for row in bot.MENU.keyboard for button in row])
+        self.assertIn(label, [button.text for row in bot.MENU.keyboard for button in row])
         update, context = self.make_update_context(label)
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
