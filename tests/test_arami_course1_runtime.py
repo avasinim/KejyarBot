@@ -6,7 +6,7 @@ from pathlib import Path
 from arami_course1_runtime import (
     AramiCourseError, COURSE_ID, LESSON_1_ID,
     load_arami_course1, get_arami_lesson1_audio_path,
-    load_arami_lesson1_interactions,
+    load_arami_lesson1_interactions, load_arami_lesson1_content,
 )
 
 
@@ -109,6 +109,33 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             (Path(temp) / "دەنگەکانی ئەلفبێ.ogg").unlink()
             with self.assertRaises(AramiCourseError):
                 get_arami_lesson1_audio_path(temp)
+
+
+    def test_loads_complete_source_lesson_with_eight_sections(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            source = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_content.json"
+            target = root / "course_data" / source.name
+            target.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+            lesson = load_arami_lesson1_content(root)
+            self.assertEqual(lesson["lesson_id"], LESSON_1_ID)
+            self.assertEqual(len(lesson["sections"]), 8)
+            self.assertEqual(len(lesson["objectives"]), 5)
+            self.assertIn("٣٤ پیت", lesson["sections"][0]["body"])
+            self.assertIn("٨", lesson["sections"][1]["body"])
+
+    def test_rejects_incomplete_source_lesson(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            target = root / "course_data" / "arami_course1_lesson_01_content.json"
+            target.write_text(json.dumps({
+                "course_id": COURSE_ID, "lesson_id": LESSON_1_ID,
+                "sections": [], "objectives": [], "conclusion": ""
+            }), encoding="utf-8")
+            with self.assertRaises(AramiCourseError):
+                load_arami_lesson1_content(root)
 
 
 if __name__ == "__main__":
