@@ -317,6 +317,36 @@ def lesson_keyboard(lesson):
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
 
+async def send_lesson_audio(message, lesson_data):
+    """Send the lesson's own prerecorded audio; never substitute generic narration."""
+    asset = lesson_data.get("lesson_audio_asset") if isinstance(lesson_data, dict) else None
+    if not isinstance(asset, str) or not asset.strip():
+        await message.reply_text("🔊 دەنگی تایبەتی ئەم وانەیە هێشتا تۆمار و پەیوەست نەکراوە.")
+        return False
+
+    audio_path = (BASE_DIR / asset).resolve()
+    try:
+        audio_path.relative_to(BASE_DIR.resolve())
+    except ValueError:
+        logger.warning("Rejected lesson audio path outside repository: %r", asset)
+        await message.reply_text("⚠️ بەستەری دەنگی وانەکە نادروستە.")
+        return False
+
+    if audio_path.suffix.lower() not in {".ogg", ".mp3"} or not audio_path.is_file():
+        logger.warning("Required lesson audio is unavailable: %r", asset)
+        await message.reply_text("⚠️ دەنگی تایبەتی ئەم وانەیە بەردەست نییە.")
+        return False
+
+    try:
+        with audio_path.open("rb") as audio:
+            await message.reply_voice(voice=audio)
+        return True
+    except Exception:
+        logger.exception("Could not send dedicated lesson audio %s", asset)
+        await message.reply_text("⚠️ ناردنی دەنگی وانەکە سەرکەوتوو نەبوو.")
+        return False
+
+
 async def send_voice(update, filename):
     path = get_voice(filename)
     if not path:
@@ -918,6 +948,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
+        await send_lesson_audio(update.message, data)
         await send_conversation_voice(
             update.message,
             f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
