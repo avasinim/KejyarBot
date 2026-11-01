@@ -4,7 +4,7 @@
 
 ## Ders 1: Elfabeya Kurmancî ya Latînî
 
-**Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdar ji 23 bêdeng cuda bike.
+**Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdêr ji 23 herfên din cuda bike.
 
 ### 1. Elfabeya kurmancî ya latînî
 Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê hene: mezin û biçûk.
@@ -23,14 +23,14 @@ Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîs
 | W | w | X | x | Y | y |
 | Z | z |  |  |  |  |
 
-### 2. Dengdar û bêdeng
+### 2. Dengdar û dengdar
 - **Dengdar:** A, E, Ê, I, Î, O, U, Û.
 - **Bêdeng:** B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, W, X, Y, Z.
 
-Di vê alfabeyê de 8 dengdar û 23 bêdeng hene.
+Di vê alfabeyê de 8 dengdêr û 23 herfên din hene.
 
-### 3. Mînakên dengdaran
-| Dengdar | Mînak |
+### 3. Mînakên dengdêran
+| Dengdêr | Mînak |
 |---|---|
 | A | av |
 | E | ez |
@@ -41,7 +41,7 @@ Di vê alfabeyê de 8 dengdar û 23 bêdeng hene.
 | U | gur |
 | Û | dûr |
 
-**Baldar be:** I û J du herfên cuda ne. Peyva `dil` bi D dest pê dike û herfa I di nav xwe de dihewîne; peyva `jin` bi J dest pê dike û herfa I jî di nav xwe de dihewîne. `dil` mînakeke zelal e ji bo nasîna dengdara I.
+**Baldar be:** I û J du herfên cuda ne. Peyva `dil` bi D dest pê dike û herfa I di nav xwe de dihewîne; peyva `jin` bi J dest pê dike û herfa I jî di nav xwe de dihewîne. `dil` mînakeke zelal e ji bo nasîna dengdêra I.
 
 ### 4. Herfên mezin û biçûk
 Forma mezin bi gelemperî di destpêka hevokê û di destpêka navên taybet de tê bikaranîn. Forma biçûk di nav peyvan de tê bikaranîn.
@@ -51,7 +51,7 @@ Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 ### 5. Xebata Kejyar
 1. Dengdarên di van peyvan de bibîne: av — ez — êvar — dil — îro — roj — gur — dûr.
 2. Herfên mezin bi biçûk binivîse: A, Ê, Î, Ş, Û, W.
-3. Ji alfabeyê pênc dengdar û pênc bêdeng hilbijêre û bi wan peyvan çêke.
+3. Ji alfabeyê pênc dengdêr û pênc herfên din hilbijêre û bi wan peyvan çêke.
 
 ### 6. Testa Kejyar
 1. Elfabeya kurmancî ya latînî ji çend herfan pêk tê?
@@ -60,19 +60,19 @@ B) 31
 C) 33
 D) 26
 
-2. Di kurmancî de çend dengdar hene?
+2. Di kurmancî de çend dengdêr hene?
 A) 5
 B) 6
 C) 8
 D) 10
 
-3. Kîjan kom tenê ji dengdarên kin pêk tê?
+3. Kîjan kom tenê ji dengdêrên kin pêk tê?
 A) A, Ê, Î
 B) E, I, U
 C) O, Û, A
 D) E, Ê, O
 
-4. Kîjan ji van herfan dengdar e?
+4. Kîjan ji van herfan dengdêr e?
 A) Ş
 B) Q
 C) Î
@@ -85,7 +85,7 @@ C) ç
 D) z
 
 ### Xulasa
-Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdar û 23 bêdeng. Herfên mezin û biçûk du formên heman herf in.
+Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdêr û 23 herfên din. Herfên mezin û biçûk du formên heman herf in.
 
 **🤖 کەژیار — KejyarBot@**
 
@@ -212,8 +212,8 @@ Hin herf di nivîsandinê de dişibin hev, lê ew ne heman herf in:
    - D) Ç / ç
 
 5. Kîjan herf di destpêka navê taybet de dikare mezin bê nivîsîn?
-   - A) Tenê dengdar
-   - B) Tenê bêdeng
+   - A) Tenê dengdêr
+   - B) Tenê dengdar
    - C) Herfa yekem a navê taybet
    - D) Hemû herfên navê
 
@@ -233,37 +233,37 @@ Recovered from the user's source file; original lesson sequence retained.
 
 Di dawiya vê dersê de xwendekar dikare:
 
-- Dengdar û bêdeng ji hev cuda bike.
-- Heşt dengdarên kurmancî nas bike.
-- Rola dengdaran di çêbûna peyvan de fêm bike.
-- Di peyvan de dengdar û bêdeng nîşan bike.
+- Dengdar û dengdar ji hev cuda bike.
+- Heşt dengdêrên kurmancî nas bike.
+- Rola dengdêran di çêbûna peyvan de fêm bike.
+- Di peyvan de dengdêr û dengdar nîşan bike.
 
 ### 1. Dengdar çi ne?
 
-Dengdar ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng ji dev derbas bibe. Di nivîsîna kurmancî ya latînî de dengdar bi van herfan tên nîşandan:
+Dengdêr ew deng in ku dema derxistina wan de hewa dikare bê astengiya girîng ji dev derbas bibe. Di nivîsîna kurmancî ya latînî de dengdêr bi van herfan tên nîşandan:
 
 **A — E — Ê — I — Î — O — U — Û**
 
-<text>Heşt herfên dengdar</text>
+<text>Heşt herfên dengdêr</text>
 
 ### 2. Bêdeng çi ne?
 
-Di rêza alfabeyê de, 23 herfên din ên ku ne di koma 8 dengdar de ne, wek **bêdeng** tên rêzkirin:
+Di rêza alfabeyê de, 23 herfên din ên ku ne di koma 8 dengdêr de ne, wek koma herfên din tên rêzkirin:
 
 B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z
 
-Lê di dengnasînê de hemû van herfan yek cure nînin. Çavkaniya bingehîn W û Y wek **nîvdeng** ji herfên bêdeng ên din cuda dike. Ji ber vê yekê, bêdeng li vir navê koma herfan e; nabe hemû 23 herf wek dengên bi astengiya hewayê bêne ravekirin.
+Lê di dengnasînê de hemû van herfan yek cure nînin. Çavkaniya bingehîn W û Y wek **nîvdeng** ji herfên dengdar ên din cuda dike. Ji ber vê yekê, dengdar li vir navê koma herfan e; nabe hemû 23 herf wek dengên bi astengiya hewayê bêne ravekirin.
 
-### 3. Cudahiyên dengdar, bêdeng û nîvdeng
+### 3. Cudahiyên dengdêr, dengdar û nîvdeng
 
 | Taybetmendî | Dengdar | Bêdengên din | Nîvdeng |
 |---|---|---|---|
-| Taybetmendî | Bi serê xwe dikarin dengê xwe derxînin | Di derxistina dengê wan de alîkariya dengdarê pêwîst e | Di navbera dengdar û bêdeng de taybetmendiyên wan hene |
+| Taybetmendî | Bi serê xwe dikarin dengê xwe derxînin | Di derxistina dengê wan de alîkariya dengdêrê pêwîst e | Di navbera dengdêr û dengdar de taybetmendiyên wan hene |
 | Mînak | A, E, Î | B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, X, Z | W, Y |
 
 ### 4. Dengdar di peyvan de
 
-Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di tabloyê de W û Y wek nîvdeng tên nîşandan, ne wek bêdengên din.
+Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di tabloyê de W û Y wek nîvdeng tên nîşandan, ne wek dengdarên din.
 
 | Peyv | Dengdar | Bêdengên din | Nîvdeng |
 |---|---|---|
@@ -278,45 +278,45 @@ Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di t
 
 ### 5. Çend mînakên din
 
-- **av:** dengdar A ye; bêdeng V e.
-- **dar:** dengdar A ye; bêdeng D û R in.
-- **gund:** dengdar U ye; bêdeng G, N û D in.
-- **welat:** dengdar E û A ne; W nîvdeng e, L û T bêdengên din in.
-- **mirov:** dengdar I û O ne; bêdeng M, R û V in.
+- **av:** dengdêr A ye; dengdar V e.
+- **dar:** dengdêr A ye; dengdar D û R in.
+- **gund:** dengdêr U ye; dengdar G, N û D in.
+- **welat:** dengdêr E û A ne; W nîvdeng e, L û T dengdarên din in.
+- **mirov:** dengdêr I û O ne; dengdar M, R û V in.
 
 ### 6. Xebata dersê
 
-1. Di peyvên jêrîn de dengdaran bibîne: **kitêb — çiya — heval — zarok — gund — şev**.
-2. Ji bo her peyvê dengdar û bêdeng cuda binivîse: **bav — dar — roj — mal — dûr**.
-3. Bi sê dengdar û sê bêdengên cuda peyvên nû çêke.
+1. Di peyvên jêrîn de dengdêran bibîne: **kitêb — çiya — heval — zarok — gund — şev**.
+2. Ji bo her peyvê dengdêr û dengdar cuda binivîse: **bav — dar — roj — mal — dûr**.
+3. Bi sê dengdêr û sê dengdarên cuda peyvên nû çêke.
 
 ### 7. Testa dersê
 
-1. Di elfabeya kurmancî de çend herfên dengdar hene?
+1. Di elfabeya kurmancî de çend herfên dengdêr hene?
    - A) 5
    - B) 6
    - C) 8
    - D) 10
 
-2. Kîjan ji van herfên dengdar e?
+2. Kîjan ji van herfên dengdêr e?
    - A) B
    - B) Ş
    - C) Î
    - D) R
 
-3. Di peyva «mal» de dengdar kîjan e?
+3. Di peyva «mal» de dengdêr kîjan e?
    - A) M
    - B) A
    - C) L
    - D) M û L
 
-4. Kîjan ji van komên bêdeng pêk tê?
+4. Kîjan ji van komên dengdar pêk tê?
    - A) A, E, Ê
    - B) B, M, R
    - C) I, Î, U
    - D) O, Û, A
 
-5. Di peyva «welat» de çend dengdar hene?
+5. Di peyva «welat» de çend dengdêr hene?
    - A) Yek
    - B) Du
    - C) Sê
@@ -324,7 +324,7 @@ Dengdar di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di t
 
 ### Xulasa
 
-Di vê dersê de me 8 dengdar, koma 23 herfên bêdeng û cudahiya fonetîkî ya nîvdengên W û Y nas kirin.
+Di vê dersê de me 8 dengdêr, koma 23 herfên din û cudahiya fonetîkî ya nîvdengên W û Y nas kirin.
 
 **Dersa bê:** Dengdarên kin — E, I, U.
 
@@ -336,19 +336,19 @@ User-provided lesson text confirmed in conversation; current branch copy is edit
 
 ### Armancên dersê
 Di dawiya vê dersê de xwendekar dikare:
-- Herfên dengdarên kin E, I, U nas bike.
-- Di peyvê de dengdara armanc bibîne.
+- Herfên dengdêrên kin E, I, U nas bike.
+- Di peyvê de dengdêra armanc bibîne.
 - I ji Î û U ji Û cuda bike.
-- Mînakên ku dengdara kin dihewînin bixwîne û binivîse.
+- Mînakên ku dengdêra kin dihewînin bixwîne û binivîse.
 
 ### 1. Dengdarên kin çi ne?
-Di alfabeya kurmancî ya latînî de sê herf di koma dengdarên kin de tên rêzkirin:
+Di alfabeya kurmancî ya latînî de sê herf di koma dengdêrên kin de tên rêzkirin:
 
 E — I — U
 
-Li gorî raveya çavkaniya bingehîn, dengdarên kurmancî li gorî dirêjî û kurtahiya dengê xwe dibin du kom: kin û dirêj. Ji ber vê yekê xwendekar divê E, I û U wek dengdarên kin nas bike û bi mînakên rast di peyvan de wan fêr bibe.
+Li gorî raveya çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtahiya dengê xwe dibin du kom: kin û dirêj. Ji ber vê yekê xwendekar divê E, I û U wek dengdêrên kin nas bike û bi mînakên rast di peyvan de wan fêr bibe.
 
-**Têbînî:** Kurt û dirêj tenê navê du astên dirêjahiya dengê nînin. dengdarên kin û dirêj ji aliyê deng û cihê derxistinê ve jî ji hev cuda ne; ji ber vê yekê wan wek heman dengê ku tenê dirêj hatiye kişandin fêm neke.
+**Têbînî:** Kurt û dirêj tenê navê du astên dirêjahiya dengê nînin. dengdêrên kin û dirêj ji aliyê deng û cihê derxistinê ve jî ji hev cuda ne; ji ber vê yekê wan wek heman dengê ku tenê dirêj hatiye kişandin fêm neke.
 
 ### 2. Dengdara E
 Dengdara E di van peyvan de tê dîtin:
@@ -398,7 +398,7 @@ Dengdara U di van peyvan de tê dîtin:
 | kurd | U |
 | kul | U |
 
-Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdara U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
+Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
 
 Herfa I bi gelemperî di destpêka peyvên Kurmancî de nayê û di dawiyê de jî, ji bilî hin daçekan wek `bi`, `ji`, `çi`, `di`, kêm tê. Herfa U jî bi gelemperî di destpêka peyvê de nayê û di dawiyê de bi sînor tê. Ev taybetmendiyên belavbûna deng in, ne rêgezeke bêistisna.
 
@@ -416,7 +416,7 @@ Nîşana li ser Ê, Î, Û xeml nîne; beşek ji herfê ye. Ji ber vê yekê U �
 
 ez — dil — gur — heval — kin — gund — şert — xurt
 
-**Xebata 2:** Peyvan li gorî dengdarê kom bike:
+**Xebata 2:** Peyvan li gorî dengdêrê kom bike:
 
 E: ez, ev, yek, kes
 
@@ -432,25 +432,25 @@ U: kur, gur, gund, xurt
 - k_n → I
 
 ### 7. Testa Kejyar
-1. Kîjan kom ji dengdarên kin pêk tê?
+1. Kîjan kom ji dengdêrên kin pêk tê?
 A) A, Ê, Î
 B) E, I, U
 C) O, Û, A
 D) E, Ê, O
 
-2. Di peyva dil de kîjan dengdar heye?
+2. Di peyva dil de kîjan dengdêr heye?
 A) E
 B) I
 C) Î
 D) U
 
-3. Kîjan peyv dengdara U dihewîne?
+3. Kîjan peyv dengdêra U dihewîne?
 A) gur
 B) pîr
 C) êvar
 D) şev
 
-4. Di peyva ev de kîjan dengdar heye?
+4. Di peyva ev de kîjan dengdêr heye?
 A) Î
 B) U
 C) E
@@ -459,11 +459,11 @@ D) Û
 5. I û Î çawa ne?
 A) Herfa yek in
 B) Du herfên cuda ne
-C) Her du bêdeng in
+C) Her du dengdar in
 D) Her du bê nîşan in
 
 ### Xulasa
-Dengdarên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de nas bike û bi dengdarên nîşankirî Ê, Î, Û re tevlihev neke.
+Dengdarên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de nas bike û bi dengdêrên nîşankirî Ê, Î, Û re tevlihev neke.
 
 ---
 
@@ -476,18 +476,18 @@ User-provided lesson text confirmed in conversation; current branch copy is edit
 ### Armancên dersê
 Di dawiya vê dersê de xwendekar dikare:
 - Pênc herfên vê komê nas bike: A, Ê, Î, O, Û.
-- Di peyvan de dengdara armanc bibîne.
+- Di peyvan de dengdêra armanc bibîne.
 - Herfên nîşankirî Ê, Î, Û bi nîşana xwe binivîse.
 - Cudahiyên vê komê ji koma E, I, U nas bike.
 
 ### 1. Dengdarên dirêj
-Di rêzkirina bingehîn a dengdaran de pênc herf di koma dengdarên dirêj de tên:
+Di rêzkirina bingehîn a dengdêran de pênc herf di koma dengdêrên dirêj de tên:
 
 A — Ê — Î — O — Û
 
-Li gorî çavkaniya bingehîn, dengdarên kurmancî li gorî dirêjî û kurtahiya dengê xwe tên dabeşkirin. A, Ê, Î, O û Û di koma dengdarên dirêj de ne. Xwendekar divê her herf bi dengê wê û bi mînakên peyvan nas bike.
+Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtahiya dengê xwe tên dabeşkirin. A, Ê, Î, O û Û di koma dengdêrên dirêj de ne. Xwendekar divê her herf bi dengê wê û bi mînakên peyvan nas bike.
 
-**Têbînî:** Dabeşkirina kin/dirêj tenê dirêjahiya heman dengî nayê watekirin. Cihê derxistina dengdarên kin û dirêj jî cuda ye; ji ber vê yekê her herf bi taybetmendiya dengê xwe fêr bibin.
+**Têbînî:** Dabeşkirina kin/dirêj tenê dirêjahiya heman dengî nayê watekirin. Cihê derxistina dengdêrên kin û dirêj jî cuda ye; ji ber vê yekê her herf bi taybetmendiya dengê xwe fêr bibin.
 
 ### 2. Dengdara A
 | Peyv | Dengdar |
@@ -570,7 +570,7 @@ Herfên nîşankirî divê bi nîşana xwe bên nivîsîn: Ê, Î, Û. Guhertina
 
 av — êvar — pîr — sor — bûk — çav — şîr — kor
 
-**Xebata 2:** Peyvan li gorî dengdara wan kom bike:
+**Xebata 2:** Peyvan li gorî dengdêra wan kom bike:
 
 - A: av, bav, mal
 - Ê: êvar, pênc, sê
@@ -581,38 +581,38 @@ av — êvar — pîr — sor — bûk — çav — şîr — kor
 **Xebata 3:** Cihê herfa nîşankirî bibîne û binivîse: pênc, îro, şîr, xwîn.
 
 ### 9. Testa Kejyar
-1. Kîjan kom ji dengdarên dirêj pêk tê?
+1. Kîjan kom ji dengdêrên dirêj pêk tê?
 A) E, I, U
 B) A, Ê, Î, O, Û
 C) B, C, D, F
 D) E, Ê, O
 
-2. Di peyva pênc de kîjan dengdar heye?
+2. Di peyva pênc de kîjan dengdêr heye?
 A) E
 B) Ê
 C) Î
 D) I
 
-3. Kîjan peyv dengdara Î dihewîne?
+3. Kîjan peyv dengdêra Î dihewîne?
 A) pîr
 B) kur
 C) sor
 D) gur
 
-4. Kîjan peyv dengdara O dihewîne?
+4. Kîjan peyv dengdêra O dihewîne?
 A) bûk
 B) sor
 C) şev
 D) dil
 
-5. Di peyva şûştin de kîjan dengdar heye?
+5. Di peyva şûştin de kîjan dengdêr heye?
 A) U
 B) O
 C) Û
 D) Î
 
 ### Xulasa
-Di vê dersê de pênc dengdarên koma dirêj nas kirin: A, Ê, Î, O, Û. Herfên nîşankirî divê bi nîşana xwe bên parastin û bi dengdarên din re neyên tevlihevkirin.
+Di vê dersê de pênc dengdêrên koma dirêj nas kirin: A, Ê, Î, O, Û. Herfên nîşankirî divê bi nîşana xwe bên parastin û bi dengdêrên din re neyên tevlihevkirin.
 
 ### Provenance — Course 1, Lesson 6
 Recovered from the user's source file; explanatory script cleanup only.
@@ -633,7 +633,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 1. Herfa I
 
-Herfa I yek ji dengdarên kurmancî ye.
+Herfa I yek ji dengdêrên kurmancî ye.
 
 | Peyv | Herfa I |
 |---|---|
@@ -647,7 +647,7 @@ Herfa I yek ji dengdarên kurmancî ye.
 
 ### 2. Herfa Î
 
-Herfa Î jî dengdarek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herfê ye.
+Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herfê ye.
 
 | Peyv | Herfa Î |
 |---|---|
@@ -683,7 +683,7 @@ I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan ten�
 
 **Rêberiya Kejyar**
 
-Kêşeyeke biçûk: her peyvê bixwîne û dengdara wê bibîne.
+Kêşeyeke biçûk: her peyvê bixwîne û dengdêra wê bibîne.
 
 jin — pîr — dil — şîr — pir — mîr — min — nîv
 
@@ -715,7 +715,7 @@ I — Î
    - C) îro
    - D) min
 
-4. Di peyva «şîr» de kîjan dengdar heye?
+4. Di peyva «şîr» de kîjan dengdêr heye?
    - A) I
    - B) Î
    - C) E
@@ -724,7 +724,7 @@ I — Î
 5. I û Î di nivîsandina kurmancî de çawa ne?
    - A) Herfa yek in
    - B) Du herfên cuda ne
-   - C) Her du bêdeng in
+   - C) Her du dengdar in
    - D) Her du bêwate ne
 
 ### Xulasa
@@ -739,12 +739,12 @@ Recovered and corrected draft; original lesson sequence retained.
 
 **Armancên dersê**
 - Herfên U û Û ji hev cuda bike.
-- Di peyvan de dengdara rast nas bike.
+- Di peyvan de dengdêra rast nas bike.
 - Nîşana li ser Û di nivîsandinê de biparêze.
 - Fêm bike ku cudahiya wan tenê dirêjî û kurtahî nîne; taybetmendiya deng û awayê derxistina wan jî girîng e.
 
 ### 1. Dengdara U
-U di koma dengdarên kin de ye. Di van peyvan de U heye:
+U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 
 | Peyv | Dengdar |
 |---|---|
@@ -755,7 +755,7 @@ U di koma dengdarên kin de ye. Di van peyvan de U heye:
 | kulîlk | U |
 
 ### 2. Dengdara Û
-Û di koma dengdarên dirêj de ye. Nîşana li ser wê beşek ji herfê ye.
+Û di koma dengdêrên dirêj de ye. Nîşana li ser wê beşek ji herfê ye.
 
 | Peyv | Dengdar |
 |---|---|
@@ -770,7 +770,7 @@ U di koma dengdarên kin de ye. Di van peyvan de U heye:
 U di koma dengên kurt û Û di koma dengên dirêj de ye. Di gotinê de jî awayê derxistina wan cuda ye; ji ber vê yekê U û Û divê wek du dengên cuda bên fêrbûn, ne wekî tenê guhertina dirêjî ya heman deng.
 
 ### 3. Cudahiyên U û Û
-U û Û du herfên cuda ne. Di rêzkirina dengdaran de U di koma kin û Û di koma dirêj de tê danîn; lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
+U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn; lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
 
 | U | Û |
 |---|---|
@@ -799,13 +799,13 @@ kulîlk — xwîn — dûr — gur — mû — gund
 **Xebata 3:** Bi U sê peyv û bi Û sê peyv binivîse.
 
 ### 6. Testa Kejyar
-1. Di peyva kur de kîjan dengdar heye?
+1. Di peyva kur de kîjan dengdêr heye?
 A) Û
 B) U
 C) I
 D) Î
 
-2. Di peyva dûr de kîjan dengdar heye?
+2. Di peyva dûr de kîjan dengdêr heye?
 A) U
 B) O
 C) Û
@@ -817,7 +817,7 @@ B) gur
 C) bûn
 D) kur
 
-4. Di peyva xurt de kîjan dengdar heye?
+4. Di peyva xurt de kîjan dengdêr heye?
 A) Û
 B) Ê
 C) U
@@ -826,11 +826,11 @@ D) Î
 5. U û Û di kurmancî de çawa ne?
 A) Herfa yek in
 B) Du herfên cuda ne
-C) Her du bêdeng in
+C) Her du dengdar in
 D) Her du bê nîşan in
 
 ### Xulasa
-U û Û du dengdarên cuda ne. U di koma dengdarên kin û Û di koma dengdarên dirêj de ye; lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
+U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêrên dirêj de ye; lê nasîna wan bi guhdarî û taybetmendiya dengê wan jî girîng e. Nîşana Û divê her dem were parastin.
 
 **🤖 کەژیار — KejyarBot@**
 
@@ -849,7 +849,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 1. Herfa V
 
-`V` bêdengeke kurmancî ye. Di peyvên jêrîn de tê dîtin:
+`V` dengdareke kurmancî ye. Di peyvên jêrîn de tê dîtin:
 
 | Peyv | Cihê V |
 |---|---|
@@ -862,7 +862,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 2. Herfa W
 
-`W` nîvdeng e. Herfa `Y` jî di heman komê de ye. `W` bi dengdaran re şêweyên wek `wa, we, wê, wi, wî` çêdike. Lê pêkhateyên `xw, kw, gw` di çavkaniyê de wek **pevdeng** (kombûna dengên bêdeng) tên ravekirin; divê ew ji erkê nîvdengî yê `W` cuda bên fêmkirin.
+`W` nîvdeng e. Herfa `Y` jî di heman komê de ye. `W` bi dengdêran re şêweyên wek `wa, we, wê, wi, wî` çêdike. Lê pêkhateyên `xw, kw, gw` di çavkaniyê de wek **pevdeng** (kombûna dengên dengdar) tên ravekirin; divê ew ji erkê nîvdengî yê `W` cuda bên fêmkirin.
 
 | Peyv | Cihê W |
 |---|---|
@@ -948,12 +948,12 @@ D) X
 5. V û W di kurmancî de çawa ne?
 A) Herfa yek in
 B) Du herfên cuda ne
-C) Her du dengdar in
+C) Her du dengdêr in
 D) Her du nîşan in
 
 ### Xulasa
 
-Di vê dersê de me `V` wek bêdeng û `W` wek nîvdeng nas kirin. `Y` jî nîvdeng e. Ji bo rastnivîsînê divê ev cudahiya polê were parastin.
+Di vê dersê de me `V` wek dengdar û `W` wek nîvdeng nas kirin. `Y` jî nîvdeng e. Ji bo rastnivîsînê divê ev cudahiya polê were parastin.
 
 ---
 
@@ -986,7 +986,7 @@ Dengê X ji nîveka qirikê derdikeve. Di van peyvan de X heye:
 
 ### 2. Herfa Y
 
-Y nîvdeng e. Di çavkaniyê de Y bi dengdaran re şêweyên wek ya, ye, yê, yi, yî çêdike. Di van peyvan de Y tê dîtin:
+Y nîvdeng e. Di çavkaniyê de Y bi dengdêran re şêweyên wek ya, ye, yê, yi, yî çêdike. Di van peyvan de Y tê dîtin:
 
 | Peyv | Herfa armanc |
 |---|---|
@@ -1015,9 +1015,9 @@ Dengê Z di navbera diranan de tê derxistin. Di van peyvan de Z heye:
 
 ### 4. Cudahiyên X, Y û Z
 
-- X bêdengeke kurmancî ye.
+- X dengdareke kurmancî ye.
 - Y nîvdeng e.
-- Z bêdengeke kurmancî ye.
+- Z dengdareke kurmancî ye.
 - Ev herf sê deng û erkên cuda nîşan didin; di nivîsandinê de divê li şûna hev neyên bikaranîn.
 
 ### 5. Xebata Kêjyar
@@ -1038,7 +1038,7 @@ D) Ji navbera diranan
 A) Dengdar
 B) Nîvdeng
 C) Bêdeng
-D) Nîşana nivîskî ya bêdeng
+D) Nîşana nivîskî ya dengdar
 
 3. Kîjan peyv mînaka herfa Z ye?
 A) xak
@@ -1060,7 +1060,7 @@ D) Nîşana dirêjiyê ye
 
 ### Xulasa
 
-X, Y û Z ji aliyê deng û erkê ve ji hev cuda ne. X û Z bêdeng in; Y nîvdeng e. Nasîna mînakên wan alîkariya xwendin û nivîsandina rast dike.
+X, Y û Z ji aliyê deng û erkê ve ji hev cuda ne. X û Z dengdar in; Y nîvdeng e. Nasîna mînakên wan alîkariya xwendin û nivîsandina rast dike.
 
 **🤖 کەژیار — KejyarBot@**
 
@@ -1261,12 +1261,12 @@ Di dawiya dersê de xwendekar dikare:
 - Peyvan bi dabeşkirina rast bixwîne.
 
 ### 1. Kîte çi ye?
-Kîte beşa herî biçûk a peyvê ye ku bi dengdarekê pêk tê. Kîte ji yek herfê tenê nayê dabeşkirin, ji ber ku divê dengdarek di nav wê de hebe.
+Kîte beşa herî biçûk a peyvê ye ku bi dengdêrekê pêk tê. Kîte ji yek herfê tenê nayê dabeşkirin, ji ber ku divê dengdêrek di nav wê de hebe.
 
 Mînak: karger dibe kar + ger. Her du beşên kar û ger kîte ne; em nikarin kar bibêjin k + a + r, ji ber ku k û r bi tenê kîte nînin.
 
 ### 2. Peyvên yek-kîtî
-Peyvên yek-kîtî tenê yek dengdar û yek kîte hene.
+Peyvên yek-kîtî tenê yek dengdêr û yek kîte hene.
 
 Mînak:
 - ba
@@ -1278,7 +1278,7 @@ Mînak:
 - deng
 
 ### 3. Peyvên du-kîtî
-Peyvên du-kîtî du dengdar û du kîte hene.
+Peyvên du-kîtî du dengdêr û du kîte hene.
 
 | Peyv | Dabeşkirin |
 |---|---|
@@ -1288,7 +1288,7 @@ Peyvên du-kîtî du dengdar û du kîte hene.
 | hacer | ha + cer |
 
 ### 4. Peyvên sê-kîtî
-Peyvên sê-kîtî sê dengdar û sê kîte hene.
+Peyvên sê-kîtî sê dengdêr û sê kîte hene.
 
 | Peyv | Dabeşkirin |
 |---|---|
@@ -1297,7 +1297,7 @@ Peyvên sê-kîtî sê dengdar û sê kîte hene.
 | raketin | ra + ket + in |
 
 ### 5. Peyvên çar-kîtî
-Peyvên çar-kîtî çar dengdar û çar kîte hene.
+Peyvên çar-kîtî çar dengdêr û çar kîte hene.
 
 | Peyv | Dabeşkirin |
 |---|---|
@@ -1305,16 +1305,16 @@ Peyvên çar-kîtî çar dengdar û çar kîte hene.
 | koçbarkirin | koç + bar + kir + in |
 
 ### 6. Rêbaza dîtina hejmara kîteyan
-Di gelek peyvan de hejmara dengdaran nîşan dide ka peyv çend kîte hene. Her kîte divê dengdarekê di xwe de hebe.
+Di gelek peyvan de hejmara dengdêran nîşan dide ka peyv çend kîte hene. Her kîte divê dengdêrekê di xwe de hebe.
 
 **Xebata Kejyar**
 1. Van peyvan li gorî kîteyan dabeş bike: baran, hêvî, hilkişîn, welatparêz.
-2. Ji bo her peyvê hejmara dengdaran bibêje: av, karwan, şorişger, koçbarkirin.
+2. Ji bo her peyvê hejmara dengdêran bibêje: av, karwan, şorişger, koçbarkirin.
 3. Sê peyvên nû binivîse û kîteyên wan ji hev cuda bike.
 
 ### 7. Testa Kejyar
 1. Kîte çi ye?
-A) Beşa herî biçûk a peyvê ku dengdarekê dihewîne
+A) Beşa herî biçûk a peyvê ku dengdêrekê dihewîne
 B) Herfa destpêka alfabeyê
 C) Nîşana xalê
 D) Paşgireke taybet
@@ -1338,13 +1338,13 @@ C) karwan
 D) hêvî
 
 5. Hejmara kîteyan di gelek peyvan de bi çi ve girêdayî ye?
-A) Hejmara bêdengan
-B) Hejmara dengdaran
+A) Hejmara dengdaran
+B) Hejmara dengdêran
 C) Hejmara tîpên mezin
 D) Hejmara nîşanên nivîsînê
 
 ### Xulasa
-Kîte beşeke bingehîn a peyvê ye û dengdarekê di xwe de dihewîne. Di gelek peyvan de hejmara dengdaran hejmara kîteyan diyar dike. Dabeşkirina rast alîkariya xwendina rast û nasîna avahiya peyvê dike.
+Kîte beşeke bingehîn a peyvê ye û dengdêrekê di xwe de dihewîne. Di gelek peyvan de hejmara dengdêran hejmara kîteyan diyar dike. Dabeşkirina rast alîkariya xwendina rast û nasîna avahiya peyvê dike.
 
 **12/12 Ders — Kursa 1 bi dawî hat.**
 
