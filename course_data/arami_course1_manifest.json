@@ -154,10 +154,16 @@
     {
       "id": "arami_course1_lesson_12",
       "number": 12,
-      "title": "پیتی بزرۆکە و هێشوو",
+      "title": "پیتی «ی»",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_12_received_and_preserved",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_12_y_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "User explicitly designated this material as Lesson 12. It is separately preserved from Lesson 11 although both cover the letter ی; only Markdown formatting was applied."
     },
     {
       "id": "arami_course1_lesson_13",
