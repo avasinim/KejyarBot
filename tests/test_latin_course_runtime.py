@@ -16,8 +16,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(len(quizzes), 24)
         self.assertEqual(courses[0]["id"], "kurmanji_latin_orthography")
         self.assertEqual(courses[1]["id"], "kurmanji_latin_grammar")
-        self.assertIn("Part I", courses[0]["source_part"])
-        self.assertIn("Part II", courses[1]["source_part"])
+        self.assertIn("Rê zimanê Kurmancî", courses[0]["source_part"])
+        self.assertIn("Beşa II", courses[1]["source_part"])
 
     def test_each_lesson_keeps_full_markdown_and_five_questions(self):
         lessons, quizzes, _ = load_latin_courses()
@@ -31,8 +31,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         import bot
 
         expected = {
-            "kurmanji_latin_orthography": "Part I",
-            "kurmanji_latin_grammar": "Part II",
+            "kurmanji_latin_orthography": "Rê zimanê Kurmancî",
+            "kurmanji_latin_grammar": "Beşa II",
         }
         for course_id, source_part in expected.items():
             self.assertTrue(bot.course_is_active(course_id))
@@ -44,6 +44,24 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             self.assertTrue(all(source_part in course["source_part"] for course in bot.COURSES if course["id"] == course_id))
         self.assertEqual(len(bot.COURSES), 6)
         self.assertEqual(len(bot.ORDER), 22)
+
+
+    def test_both_latin_courses_and_answer_keys_are_kurmanji_latin(self):
+        import re
+
+        lessons, _, _ = load_latin_courses()
+        arabic_script = re.compile(r"[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF]")
+        signature = "🤖 کەژیار — KejyarBot@"
+        for lesson in lessons.values():
+            content = lesson["content"].replace(signature, "")
+            self.assertIsNone(arabic_script.search(content))
+
+        for filename in (
+            "latin_course_1_quiz_answer_key_draft.md",
+            "latin_course_2_quiz_answer_key_draft.md",
+        ):
+            content = (ROOT / "course_data" / filename).read_text(encoding="utf-8")
+            self.assertIsNone(arabic_script.search(content))
 
     def test_bot_routes_course_selection_callbacks_for_both_latin_courses(self):
         bot_source = (ROOT / "bot.py").read_text(encoding="utf-8")
@@ -66,9 +84,12 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         course2_source = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         self.assertEqual(len([line for line in course1_source.splitlines() if line.startswith("## Ders ")]), 12)
         self.assertEqual(len([line for line in course2_source.splitlines() if line.startswith("## Ders ")]), 12)
-        self.assertIn("*Elfabêya kurdî*", course1_source)
+        self.assertIn("*Rê zimanê Kurmancî*", course1_source)
         self.assertNotIn("Bingehên gramera kurdmancî", course1_source)
+        self.assertNotIn("Celadet Alî Bedir-Xan", course1_source)
         self.assertIn("Bingehên gramera kurdmancî", course2_source)
+        self.assertIn("Celadet Alî Bedir-Xan", course2_source)
+        self.assertNotIn("Şikofteh", course2_source)
         self.assertNotIn("## Ders 1: Elfabeya Kurdî ya Latînî", course2_source)
         lessons, _, _ = load_latin_courses()
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_orthography" for item in lessons.values()), 12)
@@ -79,7 +100,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         first = lessons["kurmanji_latin_grammar_01"]["content"]
         last = lessons["kurmanji_latin_grammar_12"]["content"]
         self.assertIn("çar hêmanên bingehîn", first)
-        self.assertIn("Şeş cureyên rengdêrên di çavkaniyê de nas bike.", last)
+        self.assertIn("Şeş cureyên rengdêr ev in:", last)
         self.assertIn("jmarnavên binavkirî", last)
 
     def test_course_two_lesson_twelve_uses_selected_expanded_lesson(self):
