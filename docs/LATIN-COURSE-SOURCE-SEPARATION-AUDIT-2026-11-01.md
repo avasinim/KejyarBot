@@ -4,7 +4,7 @@ Branch: audit/latin-courses-source-review-2026-11-01
 
 ## The two designated source books are distinct
 
-### Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
+### Course 1 — Bingehên Rastnivîsîna Kurmancî ya Latînî
 Designated Course 1 source recovered in the user's Library:
 - Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*.
 - The title page gives the author and identifies the book as a Kurmanji grammar.
@@ -17,13 +17,13 @@ Designated Course 1 source recovered in the user's Library:
 Source:
 - Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002.
 - Course 2 uses Part II, “Bingehên gramera kurdmancî” (printed p. 37 onward).
-- This source is not the source book for Course 1.
+- Celadet's book is the designated source for Course 2 only; it is not used as the source for Course 1.
 
 ## Corrections made on this isolated branch
 
 1. Identified Course 1's distinct source as Dr. Efrasîyab Şikofteh's *Rê zimanê Kurmancî* (Havîn 2010), Ders 1 (printed pp. 11–43) and Ders 2 (from printed p. 44). This is a different book from Course 2's Celadet source.
 2. Updated the source separation index in `course_data/latin_courses_master_draft.md`.
-3. Updated Course 1 source metadata in the runtime and catalogue to Şikofteh's book. The book identity is established from the Library PDF; individual lesson examples and rules still require a full final linguistic proofread.
+3. Updated Course 1 source metadata in the runtime and catalogue to Şikofteh's book. The book identity is established from the Library PDF. Source checks and corrections are recorded below; a final human-level linguistic proofread of every dialect form and exercise remains outstanding.
 4. Removed the previous incorrect Celadet Part I attribution from Course 1 metadata. Course 2 remains exclusively attributed to Celadet's Part II.
 5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
 6. Fixed the runtime quiz parser so the KejyarBot footer is not appended to the final answer option in lessons where the quiz is the final section.
