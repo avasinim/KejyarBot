@@ -19,7 +19,7 @@ Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêman
 **Zimanê kurdmancî:** zimanê gelê kurdmanc e; kurdmanc bi wî diaxivin, dinivîsin û hest û fikirên xwe bi gotinan eşkere dikin.
 
 ### Hêmanên ziman
-Bedir-Xan pêşî cudahiya zimanê devkî û nivîskî ronî dike: di zimanê devkî de hêmanên bingehîn deng in; deng bi tîpan têne nîşankirin. Piştre tîp ji bo çêkirina kîtan, kît ji bo çêkirina bêjeyan, û bêje ji bo çêkirina komekan tên bikaranîn.
+Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de hêmanên bingehîn deng in; deng bi tîpan tên nîşankirin. Tîp ji bo çêkirina kîtan, kît ji bo çêkirina bêjeyan, û bêje ji bo çêkirina komekan tên bikaranîn.
 
 Pirtûk di rêzbendiya xwe ya çar hêmanên ziman de van dide:
 - **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
@@ -56,7 +56,7 @@ Pirtûk di rêzbendiya xwe ya çar hêmanên ziman de van dide:
 Nasîna navdêrên giştî û taybet.
 
 ### Naverok
-Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Bedir-Xan navdêran dike du kom:
+Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Navdêr dikarin li gorî giştî an taybetbûna navê xwe di du koman de bên dabeşkirin:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
 - **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên çavkaniyê `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
 
@@ -82,7 +82,7 @@ Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
 ### Naverok
 Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem bi zayenda rastîn a heywan an mirovê re yek nîne; tiştên bêcan jî dikarin zayenda rêzimanî ya xwe hebin.
 
-Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
+Nimûneyên zayenda navdêran:
 - **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
 - **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
@@ -110,7 +110,7 @@ Nimûneyên ku Bedir-Xan di lîsteya xwe ya zayendê de dide:
 Jimar û guherîna navdêrê di yekjimar û gelemjimar de nas bike.
 
 ### Naverok
-Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir nîşan dide. Bedir-Xan yekjimar û gelemjimar bi hev re dide û diyar dike ku guherîna mêjerê dikare bi guherîna forma navdêrê re were nîşandan.
+Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir nîşan dide. Yekjimar û gelemjimar du rewşên bingehîn in; guherîna mêjerê dikare bi guherîna forma navdêrê re were nîşandan.
 
 **Nimûneyên yekjimar û gelemjimar:**
 | Yekjimar | Gelemjimar |
@@ -145,7 +145,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 Fêmkirina guherîna forma navdêrê li gorî erk û cihê wê di hevokê de.
 
 ### Naverok
-Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê xwe diguherin. Bedir-Xan tewangê ji mêjerê cuda dike. Navdêr dema kirar be, gelek caran forma xwe ya bingehîn diparêze; dema bireser be, li gorî zayend, mêjer û dengên dawiyê dikare pêvek bistîne an dengên xwe biguherîne.
+Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê xwe diguherin. Tewang ji mêjer cuda ye. Navdêr dema kirar be, gelek caran forma xwe ya bingehîn diparêze; dema bireser be, li gorî zayend, mêjer û dengên dawiyê dikare pêvek bistîne an dengên xwe biguherîne.
 
 **Nimûneyên bingehîn ên çavkaniyê:**
 | Erk / rewş | Nêr yekjimar | Mê yekjimar | Gelemjimar |
@@ -209,7 +209,7 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 Nasîna veqetandekên ku navdêrê diyar û nasnamekirî dikin.
 
 ### Naverok
-Bedir-Xan sê veqetandekên binavkirî dide:
+Sê veqetandekên binavkirî hene:
 - `-ê`: bo navdêrên nêr ên yekjimar — `hespê Soro`, `deriyê malê`.
 - `-a`: bo navdêrên mê ên yekjimar — `mehîna Cemşîd`, `ava tenik`.
 - `-ên`: bo gelemjara her du zayendan — `hespên Soro`, `mehinên Cemşîd`.
@@ -244,7 +244,7 @@ Veqetandeka rast hilbijêre:
 Cudahîkirina navdêrên nebinavkirî û formên wan bi rêya veqetandekê.
 
 ### Naverok
-Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet nehatiye nasandin. Bedir-Xan du rewş cuda dike:
+Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet nehatiye nasandin. Di vê mijarê de du rewşên cuda hene:
 
 **1. Piştî navdêrê, bê bireser:**
 - `-ek` ji bo nêr yekjimar: `hespek hat`.
@@ -280,7 +280,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 Cudahîkirina pronavên kesîn ji formên kirarî/agent.
 
 ### Naverok
-Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Bedir-Xan di tabloya xwe de forma kesîn û forma kirarî bi hev re dide:
+Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Di tabloya jêrîn de forma kesîn û forma kirarî bi hev re tên dîtin:
 | Kes | Pronavê kesîn | Forma kirarî |
 |---|---|---|
 | yekem yekjimar | ez | min |
@@ -316,7 +316,7 @@ Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan 
 Nasîna pronavên bireser, berbihevîn, lihevxistî û vegerok; her wiha fêmkirina forma nêtar a `ê`.
 
 ### Naverok
-Pronavên bireser di cihê navdêrê de tên û di hin hevokên rabirdû de wek bireser xuya dibin. Formên ku Bedir-Xan dide:
+Pronavên bireser di cihê navdêrê de tên û di hin hevokên rabirdû de wek bireser xuya dibin. Formên bingehîn ev in:
 `min, te, wî, wê, me, we, wan`.
 
 Mînak:
@@ -435,7 +435,7 @@ Di dawiya dersê de xwendekar dikare:
 - Jmarnav wek beşeke cuda fêm bike û nimûneyên bingehîn nas bike.
 
 ### 1. Rengdêr çi ye?
-Rengdêr peyveke rêzimanî ye ku taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike. Di çavkaniya Bedir-Xan de rengdêr li gorî erkê xwe dibin şeş kom.
+Rengdêr peyveke rêzimanî ye ku taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike. Li gorî erkê xwe rengdêr dikarin di şeş koman de bên dabeşkirin.
 
 ### 2. Rengdêrên wesfîn
 Ev rengdêr taybetmendiya navdêrê rave dikin.
@@ -593,7 +593,7 @@ B) pronavê kesîn
 C) nimûneyeke jmarnav
 
 ### Xulasa
-Bedir-Xan şeş cureyên rengdêr cuda dike: wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî û xwemalîn. Derece di bin rengdêrên wesfîn de tê fêrbûn. Jmarnav jî di pirtûkê de beşeke cuda ye, û tenê bi hejmarên yek, du û sê nayê kurtkirin.
+Şeş cureyên rengdêr ev in: wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî û xwemalîn. Derece di bin rengdêrên wesfîn de tê fêrbûn. Jmarnav jî beşeke cuda ye, û tenê bi hejmarên yek, du û sê nayê kurtkirin.
 
 ## Têbînîyên çavkaniyê
 Pirtûk bi xwe dibêje ku temam nîne û beşên lêker, hoker, daçek û hevoksaziyê tê de tune ne. Ji ber vê yekê ev kurs wek «bingehên gramera kurdmancî li gorî vê çavkaniyê» tê pêşkêşkirin, ne wek gramerêkî temam ê hemû kurmancî.
