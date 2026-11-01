@@ -237,7 +237,8 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         await bot.select_quiz_answer(update, context)
         query.data = "submit_answer"
-        await bot.submit_quiz_answer(update, context)
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True):
+            await bot.submit_quiz_answer(update, context)
 
         feedback = [call.args[0] for call in query.message.reply_text.await_args_list]
         self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
