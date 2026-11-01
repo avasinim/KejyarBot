@@ -1,5 +1,6 @@
 import io
 import json
+import html
 from datetime import datetime, timezone
 import logging
 import os
@@ -631,24 +632,73 @@ async def quiz_answer(
     await query.message.reply_text(result)
     context.user_data.pop("quiz", None)
 
-def split_lesson_text(content, limit=3800):
-    """Split text without dropping whitespace at Telegram message boundaries."""
-    content = content.strip()
-    if not content:
-        return ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+def render_lesson_html_blocks(content):
+    """Apply a consistent academic Telegram layout without rewriting lesson text."""
+    blocks = []
+    for raw_line in content.splitlines():
+        line = raw_line.strip()
+        if not line:
+            blocks.append("")
+            continue
+
+        escaped = html.escape(line, quote=False)
+        if line.startswith("🤖 کەژیار — KejyarBot@"):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith(("📘 ", "💬 ")):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith("وانەی ") or line.startswith("## "):
+            blocks.append(f"<b>📖 {escaped}</b>")
+        elif line in {
+            "ئامانجەکانی فێربوون",
+            "خۆت تاقی بکەرەوە",
+            "ڕاهێنانی فێرخواز",
+            "نموونەی شیکردنەوە",
+            "نموونەی ڕاهێنان",
+            "هەڵەی باو",
+        } or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
+            blocks.append(f"<b>▎ {escaped}</b>")
+        elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:")):
+            blocks.append(f"<blockquote>{escaped}</blockquote>")
+        elif line.startswith(("• ", "- ")):
+            blocks.append(f"　{escaped}")
+        elif " • " in line and len(line) < 1200:
+            blocks.append(f"<blockquote>{escaped}</blockquote>")
+        else:
+            blocks.append(escaped)
+    return blocks
+
+
+def split_lesson_html(blocks, limit=3500):
+    """Pack complete HTML blocks into Telegram-safe messages."""
     chunks = []
-    start = 0
-    while start < len(content):
-        end = min(start + limit, len(content))
-        if end < len(content):
-            newline = content.rfind("\n", start, end)
-            space = content.rfind(" ", start, end)
-            boundary = max(newline, space)
-            if boundary > start + limit // 2:
-                end = boundary + (1 if content[boundary] == "\n" else 1)
-        chunks.append(content[start:end])
-        start = end
-    return chunks
+    current = []
+    current_length = 0
+    for block in blocks:
+        pieces = [block]
+        if len(block) > limit:
+            plain = re.sub(r"<[^>]+>", "", block)
+            pieces = []
+            while plain:
+                cut = min(limit - 32, len(plain))
+                if cut < len(plain):
+                    boundary = plain.rfind(" ", 0, cut)
+                    if boundary > cut // 2:
+                        cut = boundary
+                pieces.append(html.escape(plain[:cut], quote=False))
+                plain = plain[cut:].lstrip()
+        for piece in pieces:
+            extra = len(piece) + (1 if current else 0)
+            if current and current_length + extra > limit:
+                chunks.append("\n".join(current))
+                current = []
+                current_length = 0
+            current.append(piece)
+            current_length += len(piece) + (1 if len(current) > 1 else 0)
+    if current:
+        chunks.append("\n".join(current))
+    return chunks or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
 
 
 def add_kejyar_brand_signature(content):
@@ -661,12 +711,14 @@ def add_kejyar_brand_signature(content):
 
 
 async def send_lesson_text(message, content, reply_markup=None):
-    """Send every lesson with the KejyarBot brand signature in Telegram-safe chunks."""
+    """Send lessons in a consistent academic layout, preserving all lesson wording."""
     content = add_kejyar_brand_signature(content)
-    chunks = split_lesson_text(content)
+    chunks = split_lesson_html(render_lesson_html_blocks(content))
     for index, chunk in enumerate(chunks):
         await message.reply_text(
             chunk,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
             reply_markup=reply_markup if index == len(chunks) - 1 else None,
         )
 
