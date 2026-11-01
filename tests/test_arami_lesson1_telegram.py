@@ -76,7 +76,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
             await callback(update, context, "/unused")
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
-        self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("چەند پیت؟", query.message.reply_text.await_args.args[0])
 
@@ -141,10 +141,9 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertIn("arami1:retry", callbacks)
 
-        update, retry_query = make_update("retry", message_id=10)
-        # The completed result is edited in place, so its original message id remains valid.
-        update.callback_query.message.message_id = 10
-        context.user_data["arami_lesson1_message_id"] = 10
+        # The completed result is edited in place, retaining the question message id.
+        result_message_id = context.user_data["arami_lesson1_message_id"]
+        update, retry_query = make_update("retry", message_id=result_message_id)
         await callback(update, context, "/unused")
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
