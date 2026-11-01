@@ -33,15 +33,17 @@
       "id": "arami_course1_lesson_03",
       "number": 3,
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; exact transcription and interaction extraction pending",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "title": "بۆچی ژمارەی پیتەکانی زمانی کوردی ٣٤ دانەیە بەاڵم ژمارەی دەنگەکان ٣٧ دانەیە؟"
     },
     {
       "id": "arami_course1_lesson_04",
       "number": 4,
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "source_text_located_in_user_supplied_kەژیار_pdf; exact transcription and interaction extraction pending",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "title": "جیاوازیی پیتە هاوشێوەدەنگەکان لە فارسی و ڕێنووسی کوردیدا"
     },
     {
       "id": "arami_course1_lesson_05",
@@ -158,7 +160,11 @@
       "number": 19,
       "status": "source_review_pending",
       "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "audio_asset": "بڕگە.ogg",
+      "audio_commit": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
+      "audio_status": "lesson_19_audio_assignment_confirmed_in_user_supplied_conversation_archive; lesson body not present in archive",
+      "source_note": "The user-supplied archive explicitly identifies the recorded audio 'بڕگە' as Lesson 19. Do not infer or invent Lesson 19 body/title from the audio label."
     }
   ],
   "safety": {
@@ -171,5 +177,33 @@
     "source_text_immutable": true,
     "no_latin_course_changes": true
   },
-  "course_size": 19
+  "course_size": 19,
+  "source_audit": {
+    "archive_file": "کەژیار.pdf",
+    "audit_date": "2026-11-01",
+    "confirmed_lesson_titles": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17
+    ],
+    "gaps": [
+      13,
+      18,
+      19
+    ],
+    "note": "The supplied archive contains Lesson 1–12 and 14–17 lesson bodies; Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles."
+  }
 }
