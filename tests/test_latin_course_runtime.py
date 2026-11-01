@@ -89,6 +89,13 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("jmarnav", lesson)
         self.assertEqual(len(quizzes["kurmanji_latin_grammar_12"]), 5)
 
+    def test_every_delivered_lesson_gets_kejyar_brand_signature(self):
+        import bot
+
+        signature = "🤖 کەژیار — KejyarBot@"
+        self.assertEqual(bot.add_kejyar_brand_signature("Lesson body"), f"Lesson body\\n\\n{signature}")
+        self.assertEqual(bot.add_kejyar_brand_signature(f"Lesson body\\n\\n{signature}"), f"Lesson body\\n\\n{signature}")
+        self.assertIn(signature, bot.add_kejyar_brand_signature("کۆرسی ٣"))
     def test_telegram_chunking_preserves_every_character_and_respects_limit(self):
         import bot
 
