@@ -1,7 +1,7 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "فێرکاریی ڕێنووسی ئارامی",
-  "status": "lesson_01_integrated; lesson_08_source_registered; lessons_reordering_from_user_supplied_sources",
+  "status": "lesson_01_integrated; lessons_08_and_09_sources_registered; lessons_reordering_from_user_supplied_sources",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
@@ -115,10 +115,16 @@
     {
       "id": "arami_course1_lesson_09",
       "number": 9,
-      "title": "هەمزە (ئـ)",
+      "title": "ئا (الف)",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_09_received_and_preserved",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_09_alef_aa_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
+      "audio_status": "not_assigned; user referenced fb86aba958e03498234bdb26d8da7bae2462d0fd but no audio filename or asset was identified",
+      "source_note": "User explicitly designated this material as Lesson 9. Includes the mappings آ→ئا, اَ→ئە, اِ→ئێـ, اُ→ئۆ and additional words beginning with ئا. The referenced identifier fb86aba958e03498234bdb26d8da7bae2462d0fd has not been verified as an audio asset."
     },
     {
       "id": "arami_course1_lesson_10",
