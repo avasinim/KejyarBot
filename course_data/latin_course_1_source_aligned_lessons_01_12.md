@@ -89,7 +89,7 @@ Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdêr û 23 herfên din. Herf�
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 2
+### Provenance — Course 1, Lesson 1
 Recovered from the user's source file; original lesson sequence retained.
 ## Ders 2: Rêza Herfan û Taybetmendiyên Wan
 
@@ -223,7 +223,7 @@ Di vê dersê de me rêza herfan, herfên taybet û cudahiya herfên mezin û bi
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 3
+### Provenance — Course 1, Lesson 2
 Recovered from the user's source file; original lesson sequence retained.
 ## Ders 3: Dengdêr û Dengdar
 
@@ -330,7 +330,7 @@ Di vê dersê de me 8 dengdêr, koma 23 herfên din û cudahiya fonetîkî ya n�
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 4
+### Provenance — Course 1, Lesson 3
 User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
 ## Ders 4: Dengdêrên Kin — E, I, U
 
@@ -718,7 +718,7 @@ I — Î
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 7
+### Provenance — Course 1, Lesson 6
 Recovered and corrected draft; original lesson sequence retained.
 ## Ders 7: Cudahiyên Dengên U û Û
 
@@ -819,7 +819,7 @@ U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêr
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 8
+### Provenance — Course 1, Lesson 7
 Recovered from Pasted markdown(3).md; V position corrected and source contrast pairs added.
 ## Ders 8: Cudahiyên Dengên V û W
 
@@ -942,7 +942,7 @@ Di vê dersê de me `V` wek dengdar û `W` wek nîvdeng nas kirin. `Y` jî nîvd
 
 ---
 
-### Provenance — Course 1, Lesson 9
+### Provenance — Course 1, Lesson 8
 Recovered from Pasted markdown(3).md; Î/Û classification and exercise corrected; original quiz order retained.
 
 **🤖 کەژیار — KejyarBot@**
@@ -1049,7 +1049,7 @@ X, Y û Z ji aliyê deng û erkê ve ji hev cuda ne. X û Z dengdar in; Y nîvde
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 10
+### Provenance — Course 1, Lesson 9
 Recovered from Pasted markdown(3).md; ezafe and locative forms corrected; original quiz order retained.
 
 **🤖 کەژیار — KejyarBot@**
@@ -1144,7 +1144,7 @@ Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf 
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 11
+### Provenance — Course 1, Lesson 10
 Recovered and corrected draft.
 ## Ders 11: Rêbazên Nivîsîna Dengdêrên Lihev û Dubarebûna Herfan
 
@@ -1233,7 +1233,7 @@ Di vê dersê de me du rêbazên nivîsînê fêr bûn: veqetandina du dengdêra
 
 **🤖 کەژیار — KejyarBot@**
 
-### Provenance — Course 1, Lesson 12
+### Provenance — Course 1, Lesson 11
 Rebuilt against Şikofteh, printed p. 62; the generic spelling-practice draft was replaced with the book's syllable analysis and examples.
 
 ## Ders 12: Kîte û Dabeşkirina Bêjeyan
@@ -1332,5 +1332,8 @@ D) Hejmara nîşanên nivîsînê
 Kîte beşeke bingehîn a peyvê ye û dengdêrekê di xwe de dihewîne. Di gelek peyvan de hejmara dengdêran hejmara kîteyan diyar dike. Dabeşkirina rast alîkariya xwendina rast û nasîna avahiya peyvê dike.
 
 **12/12 Ders — Kursa 1 bi dawî hat.**
+
+### Provenance — Course 1, Lesson 12
+Recovered lesson body retained; examples and explanations remain subject to final source-by-source review.
 
 **🤖 کەژیار — KejyarBot@**
