@@ -24,6 +24,9 @@ Source:
 1. Corrected the Course 1 source attribution in `course_data/latin_course_1_source_aligned_lessons_01_12.md` to Şikofteh's *Rê zimanê Kurmancî*.
 2. Corrected the source separation section in `course_data/latin_courses_master_draft.md`.
 3. Explicitly marked Course 1 as **not yet scientifically source-approved**. The corrected source identity does not imply that all 12 lesson bodies or quiz keys have already been checked against the book.
+4. Corrected the Course 1 source metadata in both `latin_course_runtime.py` and `courses.json`; the previous incorrect Celadet Part I / pp. 11–34 reference is no longer used for Course 1.
+5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
+6. Fixed the runtime quiz parser so the KejyarBot footer is not appended to the final answer option in lessons where the quiz is the final section.
 
 ## Initial content checks / remaining audit
 
@@ -35,7 +38,8 @@ Source:
 - Course 1 Lesson 2–12 still need a full lesson-by-lesson mapping to the relevant Şikofteh sections. The source has an internal numerical inconsistency: printed p. 46 says there are 32 consonants, while printed p. 29 gives the 8-vowel + 23-consonant inventory that totals 31 letters. The draft follows the internally consistent 31/8/23 count from p. 29 and does not repeat the apparent p. 46 error.
 - KejyarBot footer branding (`🤖 کەژیار — KejyarBot@`) has now been standardized across all 12 lessons in both Latin course documents. The current lesson sequence may be pedagogically useful, but it must not be attributed to the book without a direct match.
 - Course 1's five-question answer key is an editorial draft; it must be reconciled with the final corrected lesson bodies and source examples.
-- Course 2 remains tied only to Celadet Alî Bedir-Xan. Its pronoun/adjective/numeral content and 60 quiz answers still need a separate source audit; no Course 1 material was imported into it.
+- Course 2 remains tied only to Celadet Alî Bedir-Xan. Its pronoun/adjective/numeral content still needs a separate scientific source audit; no Course 1 material was imported into it.
+- A static validation mirroring the runtime quiz parser checked all 24 lessons: 60 questions and 60 answer-key matches per course (120/120 total), with no option/key mismatches after the footer parsing fix. This was a content/parser simulation, not a GitHub Actions or local Python test run.
 
 ## Safety / release boundary
 
