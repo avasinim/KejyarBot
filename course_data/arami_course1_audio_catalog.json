@@ -204,10 +204,11 @@
       "commit_title": "بڕگە",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
       "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "lesson_id": "arami_course1_lesson_19",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بڕگە"
+      "assignment_status": "explicitly_mapped_to_lesson_19_in_user_supplied_conversation_archive; original recording preserved",
+      "audio_topic_label": "بڕگە",
+      "lesson_mapping_evidence": "کەژیار.pdf archive explicitly states: دەنگی وانەی ١٩ بە ناوی بڕگە"
     }
   ]
 }
