@@ -9,6 +9,8 @@ from arami_lesson1_interaction import (
     session_result,
     retry_missed,
     validate_question_bank,
+    validate_lesson_audio,
+    resolve_lesson_audio,
 )
 
 
@@ -126,3 +128,25 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AramiLessonAudioRequirementTests(unittest.TestCase):
+    def test_lesson_audio_is_mandatory_and_explicit(self):
+        with self.assertRaises(ValueError):
+            validate_lesson_audio({"title": "Lesson 1"})
+        self.assertEqual(
+            validate_lesson_audio({"lesson_audio_asset": "voices/arami_lesson_01.ogg"}),
+            "voices/arami_lesson_01.ogg",
+        )
+
+    def test_audio_uses_existing_voice_resolver(self):
+        metadata = {"lesson_audio_asset": "voices/arami_lesson_01.ogg"}
+        self.assertEqual(
+            resolve_lesson_audio(metadata, lambda name: f"/voice/{name}"),
+            "/voice/voices/arami_lesson_01.ogg",
+        )
+
+    def test_missing_prerecorded_audio_blocks_lesson_readiness(self):
+        metadata = {"lesson_audio_asset": "voices/missing.ogg"}
+        with self.assertRaises(FileNotFoundError):
+            resolve_lesson_audio(metadata, lambda _name: None)
