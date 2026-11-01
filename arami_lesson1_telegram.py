@@ -2,7 +2,7 @@
 import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-from arami_course1_runtime import load_arami_lesson1_interactions, get_arami_lesson1_audio_path
+from arami_course1_runtime import load_arami_lesson1_interactions, get_arami_lesson1_audio_path, load_arami_lesson1_content
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 def menu_keyboard():
     return InlineKeyboardMarkup([
+        [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
         [InlineKeyboardButton("🔊 دەنگی وانەی ١", callback_data="arami1:audio")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
         [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
@@ -47,6 +48,44 @@ async def callback(update, context, base_dir):
         await query.message.reply_text(
             "📕 کۆرسی ڕێنووسی ئارامی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
             "دەنگی ڕەسەن، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
+            reply_markup=menu_keyboard(),
+        )
+        return
+
+    if action == "lesson":
+        try:
+            lesson = load_arami_lesson1_content(base_dir)
+        except (OSError, ValueError):
+            logger.exception("Could not load Arami Lesson 1 source text")
+            await query.message.reply_text("⚠️ دەقی ڕەسەنی وانەی ١ ئامادە نییە.")
+            return
+        intro = f"📕 {lesson['title']}\n\n🎯 ئامانجی وانە\n" + "\n".join(
+            f"• {item}" for item in lesson["objectives"]
+        )
+        await query.message.reply_text(intro)
+        for section in lesson["sections"]:
+            parts = [f"📖 {section['title']}"]
+            if section.get("body"):
+                parts.append(section["body"])
+            if section.get("table"):
+                parts.append("\n".join(" | ".join(row) for row in section["table"]))
+            if section.get("note"):
+                parts.append(section["note"])
+            if section.get("questions"):
+                for question in section["questions"]:
+                    choices = "\n".join(
+                        f"{chr(65 + i)}) {option}"
+                        for i, option in enumerate(question["options"])
+                    )
+                    parts.append(question["prompt"] + "\n" + choices)
+            message_text = "\n\n".join(parts)
+            if len(message_text) > 4000:
+                logger.error("Arami Lesson 1 section exceeds Telegram message limit")
+                await query.message.reply_text("⚠️ بەشێک لە وانەکە درێژترە لە سنووری پەیامی Telegram.")
+                return
+            await query.message.reply_text(message_text)
+        await query.message.reply_text(
+            "⭐ کۆتایی وانە\n" + lesson["conclusion"],
             reply_markup=menu_keyboard(),
         )
         return
