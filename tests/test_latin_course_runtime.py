@@ -176,7 +176,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         long = lessons["kurmanji_latin_orthography_05"]["content"]
         for term in ("| êzing | Ê |", "| dîk | Î |", "| îşev | Î |", "| dîwar | Î |", "| ordek | O |", "| por | O |", "| bûk | Û |", "| mû | Û |"):
             self.assertIn(term, long)
-        self.assertIn("- A: av, bav, ard", long)\n        for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
+        self.assertIn("- A: av, bav, ard", long)
+        for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
             self.assertNotIn(term, long)
 
     def test_course_one_i_ii_examples_and_w_examples_are_source_attested(self):
