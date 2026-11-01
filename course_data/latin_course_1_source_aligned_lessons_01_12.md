@@ -868,7 +868,7 @@ Di dawiya dersê de xwendekar dikare:
 |---|---|
 | welat | destpêk |
 | wan | destpêk |
-| wê | destpêk |
+| wêran | destpêk |
 | wî | destpêk |
 | dew | dawî |
 | kew | dawî |
@@ -908,7 +908,7 @@ Alîkariya Kêjyar
 
 Peyvên jêrîn li gorî herfa wan kom bike:
 
-`av — welat — vedan — wî — kevir — kew — zivistan — wê`
+`av — welat — vedan — wî — kevir — kew — zivistan — wêran`
 
 - Koma yekem: peyvên bi `V`.
 - Koma duyem: peyvên bi `W`.
