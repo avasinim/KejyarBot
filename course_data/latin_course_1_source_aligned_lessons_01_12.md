@@ -1209,223 +1209,190 @@ Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf 
 
 ### Provenance — Course 1, Lesson 11
 Recovered and corrected draft.
-## Ders 11: Bingehên Nivîsandina Rast
+## Ders 11: Rêbazên Nivîsîna Dengdêrên Lihev û Dubarebûna Herfan
 
-### Armancên dersê
-Di dawiya dersê de xwendekar dikare peyvên kurmancî bi herfên rast binivîse, rêza herfan biparêze, herfên nîşankirî rast bikar bîne û nivîsa xwe kontrol bike.
+### Armanca dersê
+Di dawiya dersê de xwendekar dikare:
+- Rêbaza nivîsandina du dengdêrên ku li hev tên fêm bike.
+- Rola herfên y, w û h di veqetandina dengdêran de nas bike.
+- Hin formên peyvên pêkhatî li gorî rêbaza nivîsînê rast binivîse.
+- Rêbaza kêmkirina herfên dubare di hin peyvên pêkhatî de nas bike.
 
-### 1. Herfa rast hilbijêre
-Di rastnivîsîna kurmancî de divê herfa ku di peyva armanc de heye bi awayê rast were nivîsîn.
+### 1. Dengdêrên li pey hev
+Di rastnivîsîna Kurmancî de du dengdêr bi gelemperî rasterast li pey hev nayên nivîsîn, ne di nav peyvekê de û ne jî di nav peyv û paşgirê de. Di van rewşan de herfên y, w an h dikarin di navbera wan de werin. Herfa y di gelek nimûneyan de tê bikaranîn.
 
-| Forma rast a peyva armanc | Forma şaş a vê peyvê |
+| Bingeh û paşgir | Forma nivîskî |
 |---|---|
-| çav | cav |
-| şev | sev |
-| îro | iro |
-| pênc | penc |
-| dûr | dur |
+| gî + an | gîyan |
+| du + emîn | duwemîn |
+| dirêj + î | dirêjahî / dirêjayî |
+| çîya + ê | çîyayê |
+| kelegî + ekî | kelegîyekî |
 
-Ev berawirdkirin ji bo peyvên armanc ên vê dersê ye; formên li stûna rast divê bi herf û nîşana xwe bên parastin.
+**Baldar be:** Ev rêbaz bi gelemperî tê bikaranîn; di hin formên taybet ên lêkeran de guherînên din jî hene.
 
-### 2. Rêza herfan biparêze
-Her peyv ji rêzeke taybet a herfan pêk tê. Dema rêza herfan biguhere, forma peyvê jî diguhere an dibe rêzeke nepeyvî.
+### 2. Herfên dubare di peyvên pêkhatî de
+Di nivîsandina Kurmancî de, dema du beşên peyvê li hev tên û herfek an du dengên nêzîk dubare dibin, gelek caran yek ji wan nayê nivîsîn. Forma nivîskî li gorî rêbaza zimanê tê saz kirin.
 
-Mînak:
-- mal: M – A – L
-- mla: rêzeke din e û forma nivîskî ya mal nîne.
+| Beşên peyvê | Forma rast |
+|---|---|
+| paş + şîv | paşîv |
+| deng + gir | dengir |
+| derd + dar | derdar |
+| xurt + tir | xurtir |
+| rind + tir | rintir |
+| serok + komar | serokomar |
+| dewlemend + tir | dewlementir |
+| yêk + kîte | yêkîte |
 
-### 3. Dengdêr û dengdar nas bike
-**Dengdêr:** A, E, Ê, I, Î, O, U, Û.
+### 3. Xebata Kejyar
+**Xebata 1:** Formên rast binivîse:
+- gî + an
+- du + emîn
+- çîya + ê
+- rind + tir
 
-**Dengdar:** B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, W, X, Y, Z.
+**Xebata 2:** Di van formên pêkhatî de herfa dubare bibîne û forma rast binivîse:
+- paş + şîv
+- deng + gir
+- derd + dar
+- xurt + tir
 
-| Peyv | Dengdêr | Dengdar |
-|---|---|---|
-| mal | A | M, L |
-| jin | I | J, N |
-| çav | A | Ç, V |
-| roj | O | R, J |
-| şev | E | Ş, V |
+**Xebata 3:** Bi du mînakan nîşan bide ka herfa y çawa dikare du dengdêr ji hev cuda bike.
 
-### 4. Herfên nîşankirî biparêze
-Van herfan bi nîşana xwe binivîse:
+### 4. Testa Kejyar
+1. Kîjan herf dikare di navbera du dengdêran de were bikaranîn?
+A) B, D, Z
+B) Y, W, H
+C) Q, R, T
+D) C, Ç, J
 
-Ç — Ê — Î — Ş — Û
+2. Forma rast a gî + an kîjan e?
+A) gîan
+B) gîyan
+C) gîwan
+D) gîhan
 
-Mînak: çiya, êvar, îro, şev, dûr.
+3. Forma rast a rind + tir kîjan e?
+A) rindtîr
+B) rind-tir
+C) rintir
+D) rindtir
 
-Nîşanên van herfan xeml nînin; ew beşek ji nasnameya herfan in.
+4. Forma rast a paş + şîv kîjan e?
+A) paşşîv
+B) paşîv
+C) paşîşiv
+D) paşşiv
 
-### 5. Rêbaza kontrolkirina peyvê
-Dema peyvekê dinivîsî:
-1. Peyvê bixwîne û wateya armancê di bîra xwe de zelal bike.
-2. Herfên wê bi rêza rast binivîse.
-3. Herfên nîşankirî kontrol bike.
-4. Peyvê careke din bixwîne û bi mînaka rast re berawird bike.
-
-### 6. Xebata Kejyar
-**Xebata 1:** Peyvên jêrîn rast bike: cav, sev, iro, penc, dur.
-
-**Xebata 2:** Di peyvên mal, jin, çav, şev, îro, pênc, dûr de dengdêr û dengdar cuda bike.
-
-**Xebata 3:** Pênc peyvên ku herfên Ç, Ê, Î, Ş an Û dihewînin binivîse.
-
-### 7. Testa Kejyar
-1. Kîjan nivîsandin ji bo peyva armanc rast e?
-A) cav
-B) çav
-C) sav
-D) şav
-
-2. Kîjan peyv bi herfa Ê dest pê dike?
-A) ev
-B) êvar
-C) ez
-D) em
-
-3. Kîjan peyv rast hatiye nivîsîn?
-A) iro
-B) îro
-C) iroo
-D) îroo
-
-4. Kîjan herf di peyva şev de heye?
-A) S
-B) Ş
-C) C
-D) Ç
-
-5. Di nivîsandina peyvê de çi divê were parastin?
-A) Rêza herfan
-B) Tenê rengê herfan
-C) Mezinahiya herfan
-D) Cihê peyvê
+5. Di hin peyvên pêkhatî de dema herf an deng dubare dibe, çi dibe?
+A) Her du herf her tim tên nivîsîn
+B) Li gorî rêbaza nivîsînê yek ji wan dikare neyê nivîsîn
+C) Rêza herfan berevajî dibe
+D) Dengdêreke nû tê zêdekirin
 
 ### Xulasa
-Rastnivîsîn pêdivî bi hilbijartina herfa rast, parastina rêza herfan û nivîsandina rast a nîşanan heye. Her peyvê berî qedandina nivîsê careke din bixwîne û kontrol bike.
+Di vê dersê de me du rêbazên nivîsînê fêr bûn: veqetandina du dengdêrên li hev bi alîkariya herfên wek y, w, h û nivîsandina hin peyvên pêkhatî bê dubarekirina herfa pêşî. Ev rêbaz divê bi mînakên rast û bi baldarî bên fêrkirin.
 
 **🤖 کەژیار — KejyarBot@**
 
 ### Provenance — Course 1, Lesson 12
-Recovered from Pasted markdown(3).md; minimal grammar/inflection corrections.
-## Ders 12: Xwendin û Nivîsandina Pratîk
+Rebuilt against Şikofteh, printed p. 62; the generic spelling-practice draft was replaced with the book's syllable analysis and examples.
 
-### Armancên dersê
+## Ders 12: Kîte û Dabeşkirina Bêjeyan
 
+### Armanca dersê
 Di dawiya dersê de xwendekar dikare:
+- Kîte di nav peyvê de nas bike.
+- Peyvan li gorî hejmara kîteyan dabeş bike.
+- Bêje çend kîte di peyvekê de hene.
+- Peyvan bi dabeşkirina rast bixwîne.
 
-- Peyv û hevokên sade bixwîne.
-- Herfên alfabeya kurdî nas bike.
-- Peyvên rast binivîse.
-- Hevokên kurt ava bike.
-- Xeletiyên bingehîn ên nivîsandinê rast bike.
+### 1. Kîte çi ye?
+Kîte beşa herî biçûk a peyvê ye ku bi dengdêrekê pêk tê. Kîte ji yek herfê tenê nayê dabeşkirin, ji ber ku divê dengdêrek di nav wê de hebe.
 
-### 1. Dubarekirina alfabeyê
+Mînak: karger dibe kar + ger. Her du beşên kar û ger kîte ne; em nikarin kar bibêjin k + a + r, ji ber ku k û r bi tenê kîte nînin.
 
-Elfabeya Kurdî ya Latînî:
+### 2. Peyvên yek-kîtî
+Peyvên yek-kîtî tenê yek dengdêr û yek kîte hene.
 
-`A B C Ç D E Ê F G H I Î J K L M N O P Q R S Ş T U Û V W X Y Z`
+Mînak:
+- ba
+- av
+- bar
+- xak
+- yêk
+- bû
+- deng
 
-Di alfabeyê de 31 herf hene:
+### 3. Peyvên du-kîtî
+Peyvên du-kîtî du dengdêr û du kîte hene.
 
-- 8 dengdêr: `A E Ê I Î O U Û`
-- 23 dengdar: `B C Ç D F G H J K L M N P Q R S Ş T V W X Y Z`
-
-### 2. Peyvan bixwîne
-
-Peyvên jêrîn bi baldarî bixwîne:
-
-| Peyv | Peyv | Peyv |
-|---|---|---|
-| av | mal | dar |
-| jin | zarok | pirtûk |
-| çav | şev | roj |
-| çiya | çem | bajar |
-| heval | mamoste | dibistan |
-| pênc | sê | du |
-| îro | sibê | êvar |
-| dûr | nêzîk | baş |
-
-### 3. Hevokan bixwîne
-
-1. Ez kurmancî hîn dibim.
-2. Ev pirtûka min e.
-3. Zarok di dibistanê de dixwînin.
-4. Mamoste dersê vedibêje.
-5. Em her roj peyvên nû dinivîsin.
-
-### 4. Peyvên kêmkirî temam bike
-
-Di her peyvê de herfa kêmkirî bibîne û peyvê temam bike:
-
-| Peyva kêmkirî | Peyva temam |
+| Peyv | Dabeşkirin |
 |---|---|
-| `_av` | çav |
-| `_ev` | şev |
-| `_ro` | îro |
-| `p_nç` | pênc |
-| `d_r` | dûr |
-| `_iya` | çiya |
+| baran | bar + an |
+| hêvî | hê + vî |
+| karwan | kar + wan |
+| hacer | ha + cer |
 
-### 5. Hevokan temam bike
+### 4. Peyvên sê-kîtî
+Peyvên sê-kîtî sê dengdêr û sê kîte hene.
 
-Peyva guncaw ji navbera xişikên jêrîn hilbijêre:
+| Peyv | Dabeşkirin |
+|---|---|
+| hilkişîn | hil + ki + şîn |
+| şorişger | şo + riş + ger |
+| raketin | ra + ket + in |
 
-Peyv: `pirtûk — dibistanê — av — mamoste — heval`
+### 5. Peyvên çar-kîtî
+Peyvên çar-kîtî çar dengdêr û çar kîte hene.
 
-1. Ez ______ dixwînim.
-2. Zarok di ______ de ne.
-3. Ez ______ vedixwim.
-4. ______ dersê vedibêje.
-5. Ew ______ê min e.
+| Peyv | Dabeşkirin |
+|---|---|
+| welatparêz | we + lat + pa + rêz |
+| koçbarkirin | koç + bar + kir + in |
 
-### 6. Nivîsandina serbixwe
+### 6. Rêbaza dîtina hejmara kîteyan
+Di gelek peyvan de hejmara dengdêran nîşan dide ka peyv çend kîte hene. Her kîte divê dengdêrekê di xwe de hebe.
 
-Kêmtirîn pênc hevok binivîse. Di hevokên xwe de van peyvan bi kar bîne:
+**Xebata Kejyar**
+1. Van peyvan li gorî kîteyan dabeş bike: baran, hêvî, hilkişîn, welatparêz.
+2. Ji bo her peyvê hejmara dengdêran bibêje: av, karwan, şorişger, koçbarkirin.
+3. Sê peyvên nû binivîse û kîteyên wan ji hev cuda bike.
 
-- `mal`
-- `heval`
-- `dibistan`
-- `pirtûk`
-- `çiya`
+### 7. Testa Kejyar
+1. Kîte çi ye?
+A) Beşa herî biçûk a peyvê ku dengdêrekê dihewîne
+B) Herfa destpêka alfabeyê
+C) Nîşana xalê
+D) Paşgireke taybet
 
-Piştî nivîsandinê, herf, rêza peyvan û nîşanên taybet kontrol bike.
+2. Peyva baran çawa tê dabeşkirin?
+A) ba + ran
+B) bar + an
+C) b + aran
+D) baran bê dabeşkirin e
 
-### 7. Testa dawî ya korsa yekem
+3. Peyva hilkişîn çend kîte hene?
+A) Yek
+B) Du
+C) Sê
+D) Çar
 
-1. Çend herf di alfabeya kurdî ya latînî de hene?
-A) 28
-B) 29
-C) 31
-D) 32
+4. Kîjan peyv yek-kîtî ye?
+A) ba
+B) baran
+C) karwan
+D) hêvî
 
-2. Kîjan rêz tenê ji dengdêran pêk hatiye?
-A) A, E, Ê, I, Î, O, U, Û
-B) B, C, D, F
-C) A, B, C, Ç
-D) E, F, G, H
+5. Hejmara kîteyan di gelek peyvan de bi çi ve girêdayî ye?
+A) Hejmara dengdaran
+B) Hejmara dengdêran
+C) Hejmara tîpên mezin
+D) Hejmara nîşanên nivîsînê
 
-3. Kîjan peyv rast hatiye nivîsîn?
-A) cav
-B) çav
-C) sav
-D) şav
-
-4. Di hevoka «Ez kurmancî hîn dibim» de çend peyv hene?
-A) 3
-B) 4
-C) 5
-D) 6
-
-5. Piştî nivîsandina hevokê çi divê bikî?
-A) Herfan jê bibî
-B) Rêza peyvan biguherînî
-C) Nivîsandinê kontrol bikî
-D) Peyvan bêyî kontrol bihêlî
-
-### 8. Xulasa û qedandina kursê
-
-Di vê kursê de xwendekar bi alfabeya kurdî ya latînî, dengdêr û dengdar, cudahiya herfan, bingehên rastnivîsînê û pratîka xwendin û nivîsandina hevokan re nas bû.
+### Xulasa
+Kîte beşeke bingehîn a peyvê ye û dengdêrekê di xwe de dihewîne. Di gelek peyvan de hejmara dengdêran hejmara kîteyan diyar dike. Dabeşkirina rast alîkariya xwendina rast û nasîna avahiya peyvê dike.
 
 **12/12 Ders — Kursa 1 bi dawî hat.**
 
