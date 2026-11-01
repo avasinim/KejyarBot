@@ -291,12 +291,17 @@
       "id": "arami_course1_lesson_19",
       "number": 19,
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_status": "user_supplied_lesson_19_received_and_preserved; source_saved",
+      "source_policy": "Preserve user-supplied wording, examples, order and definitions; no scientific edits.",
       "audio_asset": "بڕگە.ogg",
       "audio_commit": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
-      "audio_status": "lesson_19_audio_assignment_confirmed_in_user_supplied_conversation_archive; lesson body not present in archive",
-      "source_note": "The user-supplied archive explicitly identifies the recorded audio 'بڕگە' as Lesson 19. Do not infer or invent Lesson 19 body/title from the audio label."
+      "audio_status": "not_assigned; user says no special audio assigned yet",
+      "source_note": "Outer heading identifies this as Lesson 19; copied organization heading says Lesson 18. Numbering follows the explicit outer heading. User explicitly notes a conceptual connection to Lesson 12 (بزۆکە); keep the two topics distinct. User says no special audio has been assigned for Lesson 18.",
+      "title": "هێشوو (Cluster)",
+      "content_file": "course_data/arami_course1_lesson_19_cluster_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented"
     }
   ],
   "safety": {
