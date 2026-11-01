@@ -33,7 +33,8 @@ def test_only_chart_supported_counts_and_color_are_tested():
     allowed_prompts = {
         "بەپێی خشتەی وانەی یەکەم، ژمارەی گشتیی پیتەکانی ئەلفبێ چەندە؟",
         "لە خشتەکەدا ژمارەی نەبزوێنەکان چەندە؟",
-        "لە خشتەکەدا ژمارەی بزوێنەکان چەندە؟",
+        "بەپێی ڕونکردنەوەی وانەی ١، ژمارەی بزوێنەکان چەندە؟",
+        "لە ڕونکردنەوەی وانەی ١دا ژمارەی بزوێنەکان چەندە؟",
         "لە خشتەی وانەکەدا بزوێنەکان بە کام ڕەنگە دیاریکراون؟",
         "ژمارەی گشتیی پیتەکانی ئەلفبێی نیشاندراو لە خشتەکەدا چەندە؟",
         "ژمارەی نەبزوێنەکان لە خشتەکەدا چەندە؟",
@@ -42,7 +43,9 @@ def test_only_chart_supported_counts_and_color_are_tested():
     }
     for mode in ("practice", "assessment"):
         assert all(q["prompt"] in allowed_prompts for q in bank[mode])
-    assert bank["not_yet_authored"] == [
+    assert bank["source_correction"]["lesson_1_vowel_count"] == 8
+    assert all("٦ پیت" not in q["options"] for mode in ("practice", "assessment") for q in bank[mode])
+    assert bank["not_yet_authored"][:3] == [
         "sound-to-letter listening items",
         "letter-sequence completion",
         "letter-name matching",
