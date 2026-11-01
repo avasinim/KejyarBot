@@ -16,8 +16,8 @@ class LessonPresentationTests(unittest.TestCase):
         )
         rendered = "\n".join(blocks)
         self.assertIn("<b>📘 Course title</b>", rendered)
-        self.assertIn("<b>📖 وانەی ١ — پیت و دەنگ</b>", rendered)
-        self.assertIn("<b>▎ ئامانجەکانی فێربوون</b>", rendered)
+        self.assertIn("<b>وانەی ١ — پیت و دەنگ</b>", rendered)
+        self.assertIn("<b>ئامانجەکانی فێربوون</b>", rendered)
         self.assertIn("<blockquote>نموونە: وشەی کورد</blockquote>", rendered)
         self.assertIn("کورتەی وانە: پیت نیشانەی نووسراوە.", rendered)
 
