@@ -63,9 +63,9 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | kîjan ji bo hilbijartina kesek an tiştekî di nav gelek vebijarkan de tê bikaranîn. |
 | 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Rengdêr taybetmendî an rewşa navdêrê rave dike. |
 | 12 | 2 | C | rengdêra wesfîn | mezin rengdêra wesfîn e. |
-| 12 | 3 | A | rengdêra jmarîn | sê rengdêra jmarîn e dema bi navdêrê ve girêdayî be. |
-| 12 | 4 | B | wek beşeke serbixwe | Çavkaniyê jmarnav wek beşeke serbixwe ji rengdêran cuda vedikole. |
-| 12 | 5 | C | nimûneyeke jmarnav | nîv di beşa jmarnavan de wek nimûne tê pêşkêşkirin. |
+| 12 | 3 | C | Şeş | Şeş hejmareke bingehîn e ku jimara 6 nîşan dide. |
+| 12 | 4 | C | yekem | yekem jmarnava rêzî ye û rêza tiştekî di rêzê de nîşan dide. |
+| 12 | 5 | C | sê | Di hevoka «Sê zarok hatin» de sê jmarnav e û hejmar nîşan dide. |
 
 ## Têbînî berî runtime
 
