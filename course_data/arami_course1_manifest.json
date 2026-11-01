@@ -87,10 +87,16 @@
     {
       "id": "arami_course1_lesson_07",
       "number": 7,
-      "title": "پیتی ز = Z, z",
+      "title": "یاسای نووسینی پیتە هاوشێوە دەنگەکان؛ پیتی س = S, s",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_source_received_and_preserved; saved_to_branch",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_07_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "source_contains_four_quiz_questions; runtime_integration_pending",
+      "assessment_status": "source_contains_four_quiz_questions; runtime_integration_pending",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "User labeled this as Lesson 7, while an embedded course heading says Lesson 5: س. Both labels/content preserved as supplied; lesson identity follows the user's outer Lesson 7 label pending further clarification."
     },
     {
       "id": "arami_course1_lesson_08",
