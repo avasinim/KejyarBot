@@ -355,33 +355,33 @@ Dengdêra E di van peyvan de tê dîtin:
 
 | Peyv | Dengdêr |
 |---|---|
-| ez | E |
-| ev | E |
-| yek | E |
-| deng | E |
-| kes | E |
-| heval | E |
-| mezin | E |
-| şert | E |
-| der | E |
-| şer | E |
-| ser | E |
+| ewr | E |
+| Ereb | E |
+| zewq | E |
+| evîn | E |
+| şeş | E |
+| ker | E |
+| zerî | E |
+| ewr | E |
+| Ereb | E |
+| evîn | E |
+| şeş | E |
 
 ### 3. Dengdêra I
 Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
 
 | Peyv | Dengdêr |
 |---|---|
-| kin | I |
+| bivir | I |
 | dil | I |
-| pir | I |
-| nivîs | I |
-| birîn | I |
-| hilbijartin | I |
-| kirin | I |
-| biçûk | I |
-| din | I |
-| bin | I |
+| bizin | I |
+| hêstir | I |
+| hingiv | I |
+| zivistan | I |
+| bivir | I |
+| bizin | I |
+| dil | I |
+| hêstir | I |
 
 Baldar be: I û Î du herfên cuda ne. Di dil de I heye; di pîr de Î heye. I û Î her du herfên cuda ne.
 
@@ -392,13 +392,13 @@ Dengdêra U di van peyvan de tê dîtin:
 |---|---|
 | kur | U |
 | gur | U |
-| gund | U |
-| xurt | U |
-| kulîlk | U |
-| kurd | U |
+| kum | U |
+| gul | U |
+| kul | U |
+| kum | U |
 | kul | U |
 
-Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
+Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `kum`, `gul` û `kul` bikar bîne.
 
 Herfa I bi gelemperî di destpêka peyvên Kurmancî de nayê û di dawiyê de jî, ji bilî hin daçekan wek `bi`, `ji`, `çi`, `di`, kêm tê. Herfa U jî bi gelemperî di destpêka peyvê de nayê û di dawiyê de bi sînor tê. Ev taybetmendiyên belavbûna deng in, ne rêgezeke bêistisna.
 
@@ -414,22 +414,22 @@ Nîşana li ser Ê, Î, Û xeml nîne; beşek ji herfê ye. Ji ber vê yekê U �
 ### 6. Xebata Kêjyar
 **Xebata 1:** Dengdêra armanc di peyvan de nîşan bike:
 
-ez — dil — gur — heval — kin — gund — şert — xurt
+ewr — dil — gur — bizin — ker — gul — şeş — kul
 
 **Xebata 2:** Peyvan li gorî dengdêrê kom bike:
 
-E: ez, ev, yek, kes
+E: ewr, Ereb, evîn, şeş
 
-I: kin, dil, pir, kirin
+I: bivir, bizin, dil, hêstir
 
-U: kur, gur, gund, xurt
+U: kur, gur, gul, kul
 
 **Xebata 3:** Herfa rast hilbijêre:
 
 - d_l → I
-- g_nd → U
-- _v → E
-- k_n → I
+- g_r → U
+- _wr → E
+- b_v_r → I
 
 ### 7. Testa Kejyar
 1. Kîjan kom ji dengdêrên kin pêk tê?
@@ -450,7 +450,7 @@ B) pîr
 C) êvar
 D) şev
 
-4. Di peyva ev de kîjan dengdêr heye?
+4. Di peyva ewr de kîjan dengdêr heye?
 A) Î
 B) U
 C) E
@@ -496,24 +496,24 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 | bav | A |
 | mal | A |
 | dar | A |
-| zarok | A |
-| bajar | A |
+| aş | A |
+| agahî | A |
 | çav | A |
-| sar | A |
+| avis | A |
 | bar | A |
 
 ### 3. Dengdêra Ê
 | Peyv | Dengdêr |
 |---|---|
 | êvar | Ê |
-| pênc | Ê |
-| sê | Ê |
-| mêrik | Ê |
-| hêvî | Ê |
-| çêkirin | Ê |
-| dêr | Ê |
-| şêr | Ê |
-| mêr | Ê |
+| êş | Ê |
+| êzing | Ê |
+| dirêj | Ê |
+| rê | Ê |
+| mêş | Ê |
+| zêr | Ê |
+| êvar | Ê |
+| êş | Ê |
 
 Ê ji E cuda ye. Di ez de E heye, di êvar de Ê heye.
 
@@ -523,23 +523,23 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 | îro | Î |
 | pîr | Î |
 | nîv | Î |
-| jîn | Î |
+| îşev | Î |
 | şîr | Î |
-| xwîn | Î |
-| tîr | Î |
-| zîv | Î |
-| şîv | Î |
+| îsal | Î |
+| tirî | Î |
+| kanî | Î |
+| dîwar | Î |
 
 Î ji I cuda ye. Di dil de I heye, di pîr de Î heye.
 
 ### 5. Dengdêra O
 | Peyv | Dengdêr |
 |---|---|
-| dor | O |
+| ordek | O |
 | sor | O |
-| kor | O |
-| roj | O |
-| kom | O |
+| otaq | O |
+| otomobîl | O |
+| por | O |
 
 Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 
@@ -549,11 +549,11 @@ Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 | dûr | Û |
 | bûk | Û |
 | bûn | Û |
-| dû | Û |
-| mû | Û |
-| şûştin | Û |
 | kûr | Û |
-| şûr | Û |
+| mû | Û |
+| mû | Û |
+| kûr | Û |
+| bûn | Û |
 
 Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn, ne bi U.
 
@@ -568,17 +568,17 @@ Herfên nîşankirî divê bi nîşana xwe bên nivîsîn: Ê, Î, Û. Guhertina
 ### 8. Xebata Kêjyar
 **Xebata 1:** Dengdêra di her peyvê de nîşan bike:
 
-av — êvar — pîr — sor — bûk — çav — şîr — kor
+av — êvar — pîr — sor — bûk — çav — şîr — por
 
 **Xebata 2:** Peyvan li gorî dengdêra wan kom bike:
 
 - A: av, bav, mal
-- Ê: êvar, pênc, sê
-- Î: îro, pîr, nîv
-- O: dor, sor, kor
-- Û: dûr, bûk, bûn
+- Ê: êvar, êş, êzing
+- Î: îro, îşev, îsal
+- O: ordek, otaq, por
+- Û: dûr, bûk, kûr
 
-**Xebata 3:** Cihê herfa nîşankirî bibîne û binivîse: pênc, îro, şîr, xwîn.
+**Xebata 3:** Cihê herfa nîşankirî bibîne û binivîse: êvar, îro, şîr, dîwar.
 
 ### 9. Testa Kejyar
 1. Kîjan kom ji dengdêrên dirêj pêk tê?
@@ -587,7 +587,7 @@ B) A, Ê, Î, O, Û
 C) B, C, D, F
 D) E, Ê, O
 
-2. Di peyva pênc de kîjan dengdêr heye?
+2. Di peyva êvar de kîjan dengdêr heye?
 A) E
 B) Ê
 C) Î
@@ -605,7 +605,7 @@ B) sor
 C) şev
 D) dil
 
-5. Di peyva şûştin de kîjan dengdêr heye?
+5. Di peyva bûn de kîjan dengdêr heye?
 A) U
 B) O
 C) Û
