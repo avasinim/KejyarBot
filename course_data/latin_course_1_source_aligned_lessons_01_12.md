@@ -892,14 +892,14 @@ Di dawiya dersê de xwendekar dikare:
 
 Herfa `V` dikare di destpêk, navîn an dawîya peyvê de were:
 
-- `ve`
-- `nivîs`
+- `vedan`
+- `kevir`
 - `av`
 
 Herfa `W` jî dikare di destpêk an dawîya peyvê de were:
 
 - `welat`
-- `wêne`
+- `wî`
 - `kew`
 
 ### 5. Xebata Kêjyar
