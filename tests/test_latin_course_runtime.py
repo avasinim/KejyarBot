@@ -131,6 +131,14 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("| zozan | Z |", lesson)
         self.assertNotIn("Herfên Taybet di Elfabeya Kurmancî de", lesson)
 
+    def test_course_two_lesson_twelve_preserves_celadet_adjective_and_numeral_classes(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_grammar_12"]["content"]
+        for term in ("wesfîn", "îşarkî", "jmarîn", "pirsiyarkî", "nebinavkirî", "xwemalîn"):
+            self.assertIn(term, lesson)
+        for term in ("bingehîn", "rêzîn", "birewîn", "komelîn"):
+            self.assertIn(term, lesson)
+
     def test_course_two_lesson_eleven_distinguishes_celadet_demonstrative_groups(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_11"]["content"]
