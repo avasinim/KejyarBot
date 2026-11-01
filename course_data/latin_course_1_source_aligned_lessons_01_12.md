@@ -656,7 +656,7 @@ Herfa Î jî dengdarek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herfê
 | mîr | Î |
 | nîv | Î |
 | şîr | Î |
-| rêzên pîr | Î |
+| îşev | Î |
 
 I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan tenê bi dirêjî nayê ravekirin; awayê derxistina her dengê jî cuda ye. Ji ber vê yekê I û Î divê wek du dengên cuda bên nasîn û nîşana nivîskî ya Î jî were parastin.
 
