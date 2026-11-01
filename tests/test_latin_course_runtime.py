@@ -264,10 +264,10 @@ class LatinCourseRuntimeTests(unittest.TestCase):
     def test_course_two_lesson_five_preserves_celadet_three_variant_examples(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_05"]["content"]
-        self.assertIn("Soro kevirî ta vêje", lesson)
-        self.assertIn("Soro kê vir ta vêje", lesson)
-        self.assertIn("Soro ke vir ta vêje", lesson)
-        self.assertNotIn("Soro kê virî ta vêje", lesson)
+        self.assertIn("Soro kevirî tavêje", lesson)
+        self.assertIn("Soro kê vir tavêje", lesson)
+        self.assertIn("Soro kevir tavêje", lesson)
+        self.assertNotIn("Soro kê virî tavêje", lesson)
 
     def test_course_two_reciprocal_e_k_region_matches_celadet_source(self):
         lessons, _, _ = load_latin_courses()
