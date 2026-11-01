@@ -230,6 +230,12 @@ def quiz_requires_submission(lesson):
     return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS
 
 
+def lesson_practice_callback(lesson):
+    """Build the existing source-aligned interactive practice callback."""
+    suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+    return f"quiz_{suffix}_start"
+
+
 def validate_activated_course_runtime():
     """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
@@ -363,7 +369,23 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
 
     next_lesson = next_course_lesson(lesson)
-    if next_lesson is None:
+    if next_lesson is not None and quiz_requires_submission(lesson) and QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+        next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton(
+                f"➡️ دەستپێکردنی {next_title}",
+                callback_data=f"next_lesson_{next_lesson}",
+            )],
+            [InlineKeyboardButton(
+                "🎯 ڕاهێنانی کرتەیی ئەم وانەیە",
+                callback_data=lesson_practice_callback(lesson),
+            )],
+        ])
+        await query.message.reply_text(
+            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}\n🎯 دەتوانیت ئێستا ڕاهێنانی کرتەیی ئەم وانەیەش بکەیت.",
+            reply_markup=keyboard,
+        )
+    elif next_lesson is None:
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
             quiz_suffix = last_lesson_number
@@ -372,12 +394,15 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             quiz_suffix = lesson
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "📝 تاقیکردنەوەی وانەی کۆتایی",
+                "🎯 ڕاهێنانی کرتەیی وانەی کۆتایی" if quiz_requires_submission(lesson) else "📝 تاقیکردنەوەی وانەی کۆتایی",
                 callback_data=f"quiz_{last_lesson_number}_start" if last_lesson_number is not None else f"quiz_{quiz_suffix}_start",
             )
         ]])
         if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
-            await query.message.reply_text(message_text + "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە.", reply_markup=keyboard)
+            await query.message.reply_text(
+                message_text + ("\n\n🎯 ئێستا ڕاهێنانی کرتەیی بکە." if quiz_requires_submission(lesson) else "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە."),
+                reply_markup=keyboard,
+            )
         elif QUIZ_DATA.get(lesson):
             await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەدایە.")
         else:
@@ -445,7 +470,8 @@ async def send_question(message, quiz):
         [InlineKeyboardButton(option, callback_data=f"{callback_prefix}{index}")]
         for index, option in enumerate(question["options"])
     ])
-    sent = await message.reply_text("📝 " + question["question"], reply_markup=keyboard)
+    prefix = "🎯 ڕاهێنان" if quiz_requires_submission(quiz["lesson"]) else "📝"
+    sent = await message.reply_text(prefix + " " + question["question"], reply_markup=keyboard)
     quiz["question_message_id"] = sent.message_id
 
 
@@ -752,7 +778,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text in LESSON_BUTTONS or text in {
         "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
-        "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان",
+        "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
@@ -829,20 +855,27 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_lesson_infographic(update.message, lesson)
         return
 
-    if text == "📝 تاقیکردنەوەکان":
+    if text in {"📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"}:
         completed = set(get_completed_lessons(user_id))
         buttons = []
         for lesson in active_course_lessons():
             if QUIZ_DATA.get(lesson) and lesson in completed:
                 suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+                is_practice = quiz_requires_submission(lesson)
+                if text == "🎯 ڕاهێنانی کرتەیی" and not is_practice:
+                    continue
+                if text == "📝 تاقیکردنەوەکان" and is_practice:
+                    continue
+                label = "🎯" if is_practice else "📝"
                 buttons.append([InlineKeyboardButton(
-                    f"📝 {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
+                    f"{label} {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
                     callback_data=f"quiz_{suffix}_start",
                 )])
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return
-        await update.message.reply_text("تاقیکردنەوە هەڵبژێرە 👇", reply_markup=InlineKeyboardMarkup(buttons))
+        prompt = "🎯 ڕاهێنانی کرتەیی هەڵبژێرە 👇" if text == "🎯 ڕاهێنانی کرتەیی" else "تاقیکردنەوە هەڵبژێرە 👇"
+        await update.message.reply_text(prompt, reply_markup=InlineKeyboardMarkup(buttons))
         return
 
     if text == "🎁 سەنوقی خەڵات":

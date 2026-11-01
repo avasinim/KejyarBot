@@ -412,7 +412,7 @@ class ContentConsistencyTests(unittest.TestCase):
 
     def test_quiz_menu_filters_to_completed_lessons(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
-        start = bot_source.index('if text == "📝 تاقیکردنەوەکان":')
+        start = bot_source.index('if text in {"📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"}:')
         end = bot_source.find("\n    if text ==", start + 1)
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
         self.assertIn("lesson in completed", handler)
