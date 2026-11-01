@@ -40,7 +40,7 @@
 | 7 | 5 | B | Du herfên cuda ne |
 | 8 | 1 | B | W |
 | 8 | 2 | B | V |
-| 8 | 3 | C | wêne |
+| 8 | 3 | C | wî |
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
 | 9 | 1 | B | Ji nîveka qirikê |
