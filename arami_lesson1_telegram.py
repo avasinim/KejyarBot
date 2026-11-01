@@ -27,7 +27,7 @@ async def send_question(message, context):
         return
     number = session["index"] + 1
     total = len(session["questions"])
-    heading = "🎯 ڕاهێران" if session["mode"] == "practice" else "📝 تاقیکردنەوە"
+    heading = "🎯 ڕاهێنان" if session["mode"] == "practice" else "📝 تاقیکردنەوە"
     rows = [
         [InlineKeyboardButton(option, callback_data=f"arami1:pick:{i}")]
         for i, option in enumerate(question["options"])
