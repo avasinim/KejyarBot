@@ -59,7 +59,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 11 | 1 | B | ev/ew | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 2 | C | yê/ya/yên | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 3 | A | ko | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
-| 11 | 4 | B | pirsiyarkî | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
+| 11 | 4 | B | gihanek | Di hevoka `Min got ko ez nayêm` de `ko` du hevok bi hev ve girêdide. |
 | 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 | 12 | 2 | C | rengdêra wesfîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
@@ -69,11 +69,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 
 ## Têbînî berî runtime
 
-1. Berî girêdana bi runtime, vebijarkên JSON divê bi vê mifteyê re werin berawirdkirin û indexa bersiva rast li gorî rêza dawî were diyarkirin.
-2. Di dersên 4 û 5 de, nimûneyên yekjimar, gelemjimar û tewangê divê di nivîsa dersê û kuizê de bi hev re li hev bên.
-3. Ev mifte hîn pêşnûse ye; bi handlerê botê re nehatiye girêdan û testa runtime nehatiye kirin.
-4. Ders 12 du pêşnûsên cuda hebûn. Di runtime de tenê yek nivîsa dawî û mifteya wê were bikaranîn; her du nivîs bi heman nasnameyê bar neke.
-5. Pirsên 4–12 bi kuizەکانی وانەی ئێستا بەراورد و کلیلیان نوێ کرایەوە؛ وانەکانی 1–3 بەهۆی نەبوونی دەقی تەواوی کویز هێشتا پشتڕاست نەکراونەتەوە.
-6. لە وانەی 11، پرسیاری 4 لەگەڵ دەقی پێش‌نووسەکە هاوتایە، بەڵام پێش runtime دەبێت جیاوازیی `ko` وەک pronavê girêkî و `ko` وەک girêder لەگەڵ سەرچاوەی Celadet ڕێکبخرێت.
-7. وانەی 6: ناونیشانی `Bireserê Navdêrê` لەگەڵ کویزی ئێستا ناهاوتایە؛ پرسیارەکان `ev/ew` و نیشاندانی نێزیکی/دووری دەگرنەوە. ئەم بابەتە دەبێت لەگەڵ بەشی `Bireserê navdêrê`ی سەرچاوە (لاپەڕەی 61) و وانەی 7ی veqetandekên binavkirî جیا بکرێتەوە.
-8. وانەی 11: لە کتێبی Celadetدا `ko` لە ڕستەی relative وەک pronavê girêkî دێت، بەڵام `ko`یەکی دیکەش وەک girêderی دوو ڕستە بەکاردێت؛ دەقی وانە و پرسیاری 4 پێویستیان بە چاکسازیی سەرچاوەیی هەیە.
+1. Her 60 ڕیزی مافتەی وەڵام لەگەڵ پێنج پرسیاری هەر 12 وانەکە بەراورد کرا؛ ژمارەی هەڵبژاردە و دەقی وەڵامی ڕاست لە کویزی ناو فایلەکەوە وەرگیرا.
+2. Ders 6, "Bireserê Navdêrê", bi beşa 59–60 ya çavkaniya Celadet re li hev e: bireser dikare pêşî an paşî navdêr were; nimûneyên "ev keçik", "hespê beza" û "xencera min" di çavkaniyê de hene.
+3. Ders 11 niha cudahiya her du karanînên "ko" di kuizê de jî diparêze: pirs 3 "ko" wek pronavê girêkî, pirs 4 "ko" wek gihanek di "Min got ko ez nayêm". Ev cudahî li beşên 99–100 yên çavkaniyê hatiye ravekirin.
+4. Ev mifte hîn pêşnûse ye; bi handlerê botê re nehatiye girêdan û testa runtime nehatiye kirin. Du nivîsên Ders 12 yên cuda jî divê di runtime de tenê bi guhertoya dawî bên bikaranîn.
