@@ -81,3 +81,5 @@ Source:
 - A regression test now protects the distinction between the W semivowel and `pevdeng` clusters.
 
 - **Course 2, Lesson 10:** corrected the regional note for reciprocal `êk`: Celadet's printed p. 78 describes the regional usage with the wording `li nîvrohelatê Kurdistanê`; the source wording is retained literally rather than imposing an uncertain English/Sorani directional translation. Added a regression test for this source-specific distinction.
+
+- **Course 1, Lesson 9:** the earlier general diacritic recap duplicated Lessons 2 and 10 and did not follow the source sequence. Rebuilt it around Şikofteh's printed p. 60 descriptions and examples for X, Y and Z: X from the middle of the throat, Y as a semivowel, and Z articulated between the teeth. Updated the five corresponding answer-key rows. This aligns the lesson with the book's letter-by-letter phonetic section.
