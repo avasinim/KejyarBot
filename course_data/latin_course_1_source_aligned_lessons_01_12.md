@@ -406,7 +406,7 @@ Dengdêra U di van peyvan de tê dîtin:
 
 Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `gund` û `xurt` bikar bîne.
 
-**Têbînîya çavkaniyê:** Li gorî Şikofteh, herfa I bi gelemperî di destpêka peyvên Kurmancî de nayê û di dawiyê de jî, ji bilî hin daçekan wek `bi`, `ji`, `çi`, `di`, kêm tê (r. 56). Herfa U jî bi gelemperî di destpêka peyvê de nayê û di dawiyê de bi sînor tê; mînakên çavkaniyê `kur`, `gur`, `kum`, `gul`, `tu`, `ku`, `du` ne (r. 59). Ev taybetmendiyên belavbûna deng in, ne rêgezeke bêistisna.
+Herfa I bi gelemperî di destpêka peyvên Kurmancî de nayê û di dawiyê de jî, ji bilî hin daçekan wek `bi`, `ji`, `çi`, `di`, kêm tê. Herfa U jî bi gelemperî di destpêka peyvê de nayê û di dawiyê de bi sînor tê. Ev taybetmendiyên belavbûna deng in, ne rêgezeke bêistisna.
 
 ### 5. Cudahiyên ku divê neyên tevlihevkirin
 | Dengdêrên kin | Dengdêrên cuda |
@@ -664,7 +664,7 @@ Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herf�
 | şîr | Î |
 | rêzên pîr | Î |
 
-**Têbînîya çavkaniyê:** Şikofteh `I` di koma dengên kurt û `Î` di koma dengên dirêj de dide (r. 45), lê di ravekirina dengnasînê de ji bo her yek taybetmendiyeke derxistinê jî diyar dike (rr. 56–57). Ji ber vê yekê cudahiya `I` û `Î` tenê bi dirêjî nas nakin; divê deng û nîşana nivîskî ya her yek ji hev cuda were fêrkirin.
+I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan tenê bi dirêjî nayê ravekirin; awayê derxistina her dengê jî cuda ye. Ji ber vê yekê I û Î divê wek du dengên cuda bên nasîn û nîşana nivîskî ya Î jî were parastin.
 
 ### 3. Cudahiyên I û Î
 
@@ -773,7 +773,7 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 
 **Têbînî:** `xwîn` bi Î tê nivîsîn; ji ber vê yekê ne mînaka U ye û ne mînaka Û ye.
 
-**Têbînîya çavkaniyê:** Şikofteh `U` di koma dengên kurt û `Û` di koma dengên dirêj de dide (rr. 45, 59–60). Ravekirina wî ji bo `U` dengê kurt û ji bo `Û` dengê domdar diyar dike; ji ber vê yekê ev du herf divê wek du dengên cuda bên fêrbûn, ne wekî tenê guhertina dirêjî ya heman deng.
+U di koma dengên kurt û Û di koma dengên dirêj de ye. Di gotinê de jî awayê derxistina wan cuda ye; ji ber vê yekê U û Û divê wek du dengên cuda bên fêrbûn, ne wekî tenê guhertina dirêjî ya heman deng.
 
 ### 3. Cudahiyên U û Û
 U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di koma dirêj de tê danîn; lê divê cudahiya wan tenê wek dirêjkirina heman dengê sade neyê fêmkirin. Awayê derxistina deng û taybetmendiya wî jî divê were guhdarkirin.
@@ -868,7 +868,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 2. Herfa W
 
-`W` ne dengdareke asayî ye; Şikofteh wê wekî herfa nîvdeng nas dike. Herfa `Y` jî di heman komê de ye. `W` bi dengdêran re şêweyên wek `wa, we, wê, wi, wî` çêdike û bi hin dengdaran re jî di komên `xw, kw, gw` de tê.
+`W` nîvdeng e. Herfa `Y` jî di heman komê de ye. `W` bi dengdêran re şêweyên wek `wa, we, wê, wi, wî` çêdike û bi hin dengdaran re jî di komên `xw, kw, gw` de tê.
 
 | Peyv | Cihê W |
 |---|---|
