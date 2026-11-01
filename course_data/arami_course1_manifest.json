@@ -1,7 +1,7 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "فێرکاریی ڕێنووسی ئارامی",
-  "status": "lesson_01_integrated; lessons_08_and_09_sources_registered; lessons_reordering_from_user_supplied_sources",
+  "status": "lessons_08_to_13_sources_registered_or_received; lesson_13_saved",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
@@ -169,8 +169,15 @@
       "id": "arami_course1_lesson_13",
       "number": 13,
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_supplied_lesson_13_received_and_preserved; source_saved_without_semantic_edits",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "title": "پیتی «و»",
+      "content_file": "course_data/arami_course1_lesson_13_w_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "no_quiz_questions_supplied",
+      "assessment_status": "not_implemented",
+      "audio_status": "not_assigned_for_lesson_13",
+      "source_note": "User explicitly designated this text as Lesson 13. Markdown headings and layout only; no scientific or semantic edits. The two commits 8359ae827572db507790da35ce0650ddd501eb40 (نەبزوێنی و) and 21e841f371bfbe4573867dd1c4e7522fe48c4015 (بزوێنی و) were explicitly assigned by the user to Lesson 11, not Lesson 13."
     },
     {
       "id": "arami_course1_lesson_14",
