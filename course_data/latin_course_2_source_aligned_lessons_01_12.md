@@ -157,7 +157,7 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 **Navên nêr ên bê dengên `e` û `a`:** gelek navên wek `kum`, `goşt`, `dil`, `hiş`, `mirov`, `mêr` û `gund` di hin rewşên ku divê tewandin were çaverêkirin de bê guhertin dimînin. Ji ber vê yekê pêwîst e ku navdêr bi zayend û erkê wê re were fêrbûn, ne ku rêbazeke yekgirtî ji bo hemû peyvan were sepandin.
 
-**Navên nêr ên bi `e` an `a`:** vê mijarê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê vir ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî vê nimûneyê).
+**Navên nêr ên bi `e` an `a`:** vê mijarê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî tavêje`, `Soro kê vir tavêje` û `Soro kevir tavêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî vê nimûneyê).
 
 **Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehînin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
