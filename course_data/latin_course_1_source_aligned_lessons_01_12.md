@@ -219,13 +219,13 @@ Hin herf di nivîsandinê de dişibin hev, lê ew ne heman herf in:
 
 ### Xulasa
 
-Di vê dersê de me rêza herfan, herfên taybet û cudahiya herfên mezin û biçûk fêr bûn. Di dersa bê de em ê dest bi Dengdar û Bêdeng bikin û cudahiya wan bi mînakên zêdetir rave bikin.
+Di vê dersê de me rêza herfan, herfên taybet û cudahiya herfên mezin û biçûk fêr bûn. Di dersa bê de em ê dest bi Dengdêr û Dengdar bikin û cudahiya wan bi mînakên zêdetir rave bikin.
 
 **🤖 کەژیار — KejyarBot@**
 
 ### Provenance — Course 1, Lesson 3
 Recovered from the user's source file; original lesson sequence retained.
-## Ders 3: Dengdar û Bêdeng
+## Ders 3: Dengdêr û Dengdar
 
 **Recovery status:** Recovered lesson body from the user's Library file `Pasted text(1).txt`, lines 500–approximately 620. The original teaching text and quiz option order are preserved; line breaks and table layout are formatted for Markdown. This is a draft, not runtime content.
 
@@ -233,7 +233,7 @@ Recovered from the user's source file; original lesson sequence retained.
 
 Di dawiya vê dersê de xwendekar dikare:
 
-- Dengdar û dengdar ji hev cuda bike.
+- Dengdêr û dengdar ji hev cuda bike.
 - Heşt dengdêrên kurmancî nas bike.
 - Rola dengdêran di çêbûna peyvan de fêm bike.
 - Di peyvan de dengdêr û dengdar nîşan bike.
@@ -332,7 +332,7 @@ Di vê dersê de me 8 dengdêr, koma 23 herfên din û cudahiya fonetîkî ya n�
 
 ### Provenance — Course 1, Lesson 4
 User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
-## Ders 4: Dengdarên Kin — E, I, U
+## Ders 4: Dengdêrên Kin — E, I, U
 
 ### Armancên dersê
 Di dawiya vê dersê de xwendekar dikare:
@@ -403,7 +403,7 @@ Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşki
 Herfa I bi gelemperî di destpêka peyvên Kurmancî de nayê û di dawiyê de jî, ji bilî hin daçekan wek `bi`, `ji`, `çi`, `di`, kêm tê. Herfa U jî bi gelemperî di destpêka peyvê de nayê û di dawiyê de bi sînor tê. Ev taybetmendiyên belavbûna deng in, ne rêgezeke bêistisna.
 
 ### 5. Cudahiyên ku divê neyên tevlihevkirin
-| Dengdêrên kin | Dengdarên cuda |
+| Dengdêrên kin | Dengdêrên cuda |
 |---|---|
 | E | Ê |
 | I | Î |
@@ -471,7 +471,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
 
 **🤖 کەژیار — KejyarBot@**
-## Ders 5: Dengdarên Dirêj — A, Ê, Î, O, Û
+## Ders 5: Dengdêrên Dirêj — A, Ê, Î, O, Û
 
 ### Armancên dersê
 Di dawiya vê dersê de xwendekar dikare:
