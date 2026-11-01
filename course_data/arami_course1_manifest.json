@@ -1,0 +1,42 @@
+{
+  "course_id": "arami_orthography_foundations",
+  "title": "فێرکاریی ڕێنووسی ئارامی",
+  "status": "isolated_integration_pending",
+  "lessons": [
+    {
+      "id": "arami_course1_lesson_01",
+      "number": 1,
+      "title": "ڕێنووسی سەرەتاییی ئارامی زمانی کوردی",
+      "content_source": "user_supplied_immutable",
+      "content_status": "do_not_edit",
+      "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
+      "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
+      "audio_status": "user_confirmed_asset_repository_root",
+      "practice_status": "interaction_engine_added_question_bank_pending",
+      "assessment_status": "engine_added_question_bank_pending",
+      "runtime_status": "not_registered"
+    },
+    {
+      "id": "arami_course1_lesson_02",
+      "number": 2,
+      "status": "not_started"
+    },
+    {
+      "id": "arami_course1_lesson_03",
+      "number": 3,
+      "status": "not_started"
+    },
+    {
+      "id": "arami_course1_lesson_04",
+      "number": 4,
+      "status": "postponed"
+    }
+  ],
+  "safety": {
+    "separate_from_latin_courses": true,
+    "no_lesson_body_edits": true,
+    "no_source_research": true,
+    "dynamic_speech": false,
+    "no_main_merge_or_deployment": true
+  }
+}
