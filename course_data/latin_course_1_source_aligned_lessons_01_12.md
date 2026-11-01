@@ -713,7 +713,7 @@ I — Î
    - A) jin
    - B) dil
    - C) îro
-   - D) min
+   - D) bizin
 
 4. Di peyva «şîr» de kîjan dengdêr heye?
    - A) I
@@ -751,7 +751,7 @@ U di koma dengdêrên kin de ye. Di van peyvan de U heye:
 | kur | U |
 | gur | U |
 | kum | U |
-| kul | U |
+| gul | U |
 | kul | U |
 
 ### 2. Dengdêra Û
@@ -776,8 +776,8 @@ U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di k
 |---|---|
 | kur | dûr |
 | gur | bûn |
-| gund | bûk |
-| xurt | şûştin |
+| kum | dûr |
+| gul | mû |
 
 ### 4. Rêbaza xwendin û nivîsandinê
 1. Herfa di peyvê de bi baldarî bibîne.
@@ -817,7 +817,7 @@ B) gur
 C) bûn
 D) kur
 
-4. Di peyva xurt de kîjan dengdêr heye?
+4. Di peyva kul de kîjan dengdêr heye?
 A) Û
 B) Ê
 C) U
