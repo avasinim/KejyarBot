@@ -1,48 +1,22 @@
 {
   "course_id": "arami_orthography_foundations",
   "lesson_id": "arami_course1_lesson_01",
-  "content_policy": "Questions are limited to facts visibly printed in the user-supplied Lesson 1 alphabet chart. The supplied lesson text and chart are not edited.",
-  "source_asset": "user-supplied Lesson 1 alphabet chart: kejyar_lesson1_alphabet_corrected_v2.png",
-  "source_note": "User explicitly clarified that Lesson 1 teaches 8 vowels. This user-supplied lesson statement overrides the earlier chart-only count interpretation. Do not use the chart's apparent 6-vowel count to quiz learners.",
+  "content_policy": "Questions use only facts verified from the user-supplied Lesson 1 material and explicit user clarification. The lesson text and chart remain unchanged. Do not derive vowel or consonant counts from the chart where it conflicts with the lesson explanation.",
+  "source_asset": "user-supplied Lesson 1 chart for visual color key; user clarification for the vowel count",
+  "source_note": "Lesson 1 explicitly teaches 8 vowels. The chart's apparent 6-vowel count conflicts with that explanation, so no question may assert 6 vowels. The chart's 28-consonant count is also not used because it conflicts with the confirmed 8-vowel count and the chart's total count.",
   "practice": [
-    {
-      "id": "arami1_practice_01",
-      "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "بەپێی خشتەی وانەی یەکەم، ژمارەی گشتیی پیتەکانی ئەلفبێ چەندە؟",
-      "options": [
-        "٢٨ پیت",
-        "٣٤ پیت",
-        "٦ پیت"
-      ],
-      "answer_index": 1,
-      "source_evidence": "خشتە: ئەلفبێی زمانی کوردی ٣٤ پیت"
-    },
-    {
-      "id": "arami1_practice_02",
-      "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "لە خشتەکەدا ژمارەی نەبزوێنەکان چەندە؟",
-      "options": [
-        "٦ پیت",
-        "٣٤ پیت",
-        "٢٨ پیت"
-      ],
-      "answer_index": 2,
-      "source_evidence": "خشتە: نەبزوێنەکان ٢٨ پیت"
-    },
     {
       "id": "arami1_practice_03",
       "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "بەپێی ڕونکردنەوەی وانەی ١، ژمارەی بزوێنەکان چەندە؟",
+      "section_id": "lesson1_vowel_count",
+      "prompt": "ژمارەی بزوێنەکانی وانەی ١ چەندە؟",
       "options": [
-        "٨ پیت",
-        "٢٨ پیت",
-        "٣٤ پیت"
+        "٨ بزوێن",
+        "٦ بزوێن",
+        "٢٨ بزوێن"
       ],
       "answer_index": 0,
-      "source_evidence": "ڕونکردنەوەی مامۆستا لە وانەی ١: ٨ بزوێن"
+      "source_evidence": "ڕونکردنەوەی مامۆستا: ٨ بزوێن"
     },
     {
       "id": "arami1_practice_04",
@@ -59,43 +33,17 @@
   ],
   "assessment": [
     {
-      "id": "arami1_assessment_01",
-      "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "ژمارەی گشتیی پیتەکانی ئەلفبێی نیشاندراو لە خشتەکەدا چەندە؟",
-      "options": [
-        "٦ پیت",
-        "٣٤ پیت",
-        "٢٨ پیت"
-      ],
-      "answer_index": 1,
-      "source_evidence": "خشتە: ئەلفبێی زمانی کوردی ٣٤ پیت"
-    },
-    {
-      "id": "arami1_assessment_02",
-      "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "ژمارەی نەبزوێنەکان لە خشتەکەدا چەندە؟",
-      "options": [
-        "٢٨ پیت",
-        "٦ پیت",
-        "٣٤ پیت"
-      ],
-      "answer_index": 0,
-      "source_evidence": "خشتە: نەبزوێنەکان ٢٨ پیت"
-    },
-    {
       "id": "arami1_assessment_03",
       "type": "recognize",
-      "section_id": "lesson1_chart_counts",
-      "prompt": "لە ڕونکردنەوەی وانەی ١دا ژمارەی بزوێنەکان چەندە؟",
+      "section_id": "lesson1_vowel_count",
+      "prompt": "بەپێی فێرکاریی وانەی ١، چەند بزوێن هەن؟",
       "options": [
-        "٨ پیت",
-        "٢٨ پیت",
-        "٣٤ پیت"
+        "٨ بزوێن",
+        "٦ بزوێن",
+        "٢٨ بزوێن"
       ],
       "answer_index": 0,
-      "source_evidence": "ڕونکردنەوەی مامۆستا لە وانەی ١: ٨ بزوێن"
+      "source_evidence": "ڕونکردنەوەی مامۆستا: ٨ بزوێن"
     },
     {
       "id": "arami1_assessment_04",
@@ -114,9 +62,10 @@
     "sound-to-letter listening items",
     "letter-sequence completion",
     "letter-name matching",
-    "individual vowel recognition and listening items pending exact lesson/audio mapping"
+    "individual vowel recognition and listening items pending exact lesson/audio mapping",
+    "total alphabet and consonant counts: chart conflicts with the user's confirmed eight-vowel explanation; awaiting exact lesson wording"
   ],
-  "reason": "These require verified per-letter audio/lesson wording mappings. Do not infer them from audio filenames.",
+  "reason": "Do not derive counts from a chart that conflicts with the user's explicit lesson explanation. Other item types require verified per-letter text/audio mappings.",
   "source_correction": {
     "lesson_1_vowel_count": 8,
     "authority": "user clarification of the actual lesson explanation",
