@@ -371,10 +371,11 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinavkirî û xwemalîn.
 
 ### Naverok
-**Pronavên îşarkî:** `ev` û `ew` tişt an kes nîşan didin. Her wiha formên `yê, ya, yên` jî di ravekirina veqetandekên binavkirî de girêk dide.
-- `ev`: tişt/kesê nêzîk.
-- `ew`: tişt/kesê dûr an ku berê hatî gotin.
-- `yê, ya, yên`: formên îşarkî yên ku dikarin li şûna navdêrê werin.
+**Pronavên îşarkî:** Li gorî Celadet, di Kurmancî de du komên pronavên îşarkî hene:
+- **Yên pî ve:** `ev`, `ew` — tişt an kesê nêzîk an dûr nîşan didin.
+- **Yên qerse:** `yê`, `ya`, `yên` — kes, tişt an heywan nîşan didin, bêyî ku nêzîkî an dûrbûna wan diyar bikin; di hevokê de kirar in û bi `ko`-ya girêkî re tên.
+
+`ev` ji bo tiştê nêzîk an navdêra ku di gotinê de nû hatiye; `ew` ji bo tiştê dûr an navdêra ku berê hatiye gotin tê bikaranîn.
 
 **Pronavên girêkî:** rêziman `ko` wek pronavê girêkî dide û dibêje ku ji bo her du mêjer û zayendan heman form e. Di vê kursê de forma vê mijarê `ko` tê parastin; `ku` di standardên din de dikare were dîtin, lê li vir bê agahdarî nayê şûngirtin.
 
