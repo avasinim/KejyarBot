@@ -647,7 +647,7 @@ def render_lesson_html_blocks(content):
         elif line.startswith(("📘 ", "💬 ")):
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith("وانەی ") or line.startswith("## "):
-            blocks.append(f"<b>📖 {escaped}</b>")
+            blocks.append(f"<b>{escaped}</b>")
         elif line in {
             "ئامانجەکانی فێربوون",
             "خۆت تاقی بکەرەوە",
@@ -656,13 +656,13 @@ def render_lesson_html_blocks(content):
             "نموونەی ڕاهێنان",
             "هەڵەی باو",
         } or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
-            blocks.append(f"<b>▎ {escaped}</b>")
+            blocks.append(f"<b>{escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:")):
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         elif line.startswith(("• ", "- ")):
-            blocks.append(f"　{escaped}")
+            blocks.append(f"<blockquote>{escaped}</blockquote>")
         elif " • " in line and len(line) < 1200:
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         else:
@@ -699,6 +699,26 @@ def split_lesson_html(blocks, limit=3500):
     if current:
         chunks.append("\n".join(current))
     return chunks or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+
+
+def split_lesson_text(content, limit=3800):
+    """Legacy plain-text splitter retained for callers and regression compatibility."""
+    content = content.strip()
+    if not content:
+        return ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+    chunks = []
+    start = 0
+    while start < len(content):
+        end = min(start + limit, len(content))
+        if end < len(content):
+            newline = content.rfind("\n", start, end)
+            space = content.rfind(" ", start, end)
+            boundary = max(newline, space)
+            if boundary > start + limit // 2:
+                end = boundary + (1 if content[boundary] == "\n" else 1)
+        chunks.append(content[start:end])
+        start = end
+    return chunks
 
 
 def add_kejyar_brand_signature(content):
