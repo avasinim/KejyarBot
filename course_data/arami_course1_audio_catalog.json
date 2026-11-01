@@ -1,12 +1,14 @@
 {
   "course_id": "arami_orthography_foundations",
-  "purpose": "Inventory of user-uploaded prerecorded audio assets found in the 2026-11-01 KejyarBot GitHub commit history. This catalog does not assign an asset to a lesson or lesson section.",
+  "purpose": "Inventory of user-uploaded prerecorded audio assets found in the 2026-11-01 KejyarBot GitHub commit history. Commit titles are retained as the exact audio-topic labels; they are not treated as complete lesson or section mappings.",
   "policy": {
     "preserve_original_audio": true,
     "do_not_synthesize_or_substitute": true,
     "do_not_assign_by_filename_alone": true,
     "lesson_and_section_mapping_requires_source_confirmation": true,
-    "dynamic_speech": false
+    "dynamic_speech": false,
+    "commit_title_is_preserved_as_audio_topic_label": true,
+    "lesson_order_and_lesson_id_require_explicit_lesson_source": true
   },
   "assets": [
     {
@@ -17,7 +19,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "دەنگەکان"
     },
     {
       "filename": "بزوێنی ی.ogg",
@@ -27,7 +30,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بزوێنی ی"
     },
     {
       "filename": "بزوێنی (و) کورت.ogg",
@@ -37,7 +41,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بزوێنی و"
     },
     {
       "filename": "نەبزوێنی (و).ogg",
@@ -47,7 +52,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "نەبزوێنی و"
     },
     {
       "filename": "بزرۆکە.ogg",
@@ -57,7 +63,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بزرۆکە"
     },
     {
       "filename": "بزرۆکەی ٢.ogg",
@@ -67,7 +74,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بزرۆکەی ٢"
     },
     {
       "filename": "بزرۆکەی ٣.ogg",
@@ -77,7 +85,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بزرۆکەی ٣"
     },
     {
       "filename": "دەنگی ڕ.ogg",
@@ -87,7 +96,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "ڕ"
     },
     {
       "filename": "دەنگی ر.ogg",
@@ -97,7 +107,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "ر"
     },
     {
       "filename": "دەنگی ل.ogg",
@@ -107,7 +118,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ل"
     },
     {
       "filename": "دەنگی ڵ.ogg",
@@ -117,7 +129,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ڵ"
     },
     {
       "filename": "دەنگ ڤ.ogg",
@@ -127,7 +140,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ڤ"
     },
     {
       "filename": "ۆ.ogg",
@@ -137,7 +151,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ۆ"
     },
     {
       "filename": "سەرە.ogg",
@@ -147,7 +162,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی سەرە ١"
     },
     {
       "filename": "سەرەی ٢.ogg",
@@ -157,7 +173,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "سەرەوی ٢"
     },
     {
       "filename": "ێ.ogg",
@@ -167,7 +184,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ێ"
     },
     {
       "filename": "ئا.ogg",
@@ -177,7 +195,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "پیتی ئا"
     },
     {
       "filename": "بڕگە.ogg",
@@ -187,7 +206,8 @@
       "verification_status": "file_name_verified_in_commit",
       "lesson_id": null,
       "section_id": null,
-      "assignment_status": "pending_source_mapping"
+      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
+      "audio_topic_label": "بڕگە"
     }
   ]
 }
