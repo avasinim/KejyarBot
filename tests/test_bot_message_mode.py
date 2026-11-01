@@ -73,6 +73,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user"),
             patch.object(bot, "can_open", return_value=True),
             patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+            patch.object(bot, "send_lesson_audio", new_callable=AsyncMock),
             patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock),
         ):
             await bot.message(update, context)
