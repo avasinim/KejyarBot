@@ -641,7 +641,7 @@ def render_lesson_html_blocks(content):
             blocks.append("")
             continue
 
-        escaped = html.escape(line, quote=False)
+        escaped = html.escape(raw_line, quote=False)
         if line.startswith("🤖 کەژیار — KejyarBot@"):
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith(("📘 ", "💬 ")):
