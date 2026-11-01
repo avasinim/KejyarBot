@@ -1,8 +1,8 @@
-"""Lossless runtime loader for the two source-aligned Kurmanji Latin courses.
+"""Lossless runtime loader for two source-separated Kurmanji Latin course drafts.
 
-Each course reads its own dedicated source document and answer key. Lesson
-bodies are extracted unchanged and the five MCQs are parsed without rewriting
-tables, examples, or exercise formatting.
+Each course reads its own dedicated lesson document and answer key. This loader
+checks structure and quiz consistency; it does not certify scientific source
+alignment. Lesson bodies are extracted without rewriting examples or formatting.
 """
 from pathlib import Path
 import re
