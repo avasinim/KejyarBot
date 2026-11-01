@@ -62,7 +62,7 @@ class LatinCoursesManifestTests(unittest.TestCase):
         first = COURSE1_SOURCE.read_text(encoding="utf-8")
         second = COURSE2_SOURCE.read_text(encoding="utf-8")
         first_numbers = [int(x) for x in re.findall(r"(?m)^## Ders (\d+)", first)]
-        second_numbers = [int(x) for x in re.findall(r"(?m)^## Ders (\d+)[:—-]", second)]
+        second_numbers = [int(x) for x in re.findall(r"(?m)^## Ders (\d+)", second)]
         self.assertEqual(first_numbers, list(range(1, 13)))
         self.assertEqual(second_numbers, list(range(1, 13)))
 
