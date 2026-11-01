@@ -1,7 +1,7 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "فێرکاریی ڕێنووسی ئارامی",
-  "status": "19_lesson_course_registered; lesson_01_integrated; lessons_02_to_19_source_review_pending",
+  "status": "lesson_01_integrated; lesson_08_source_registered; lessons_reordering_from_user_supplied_sources",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
@@ -101,10 +101,16 @@
     {
       "id": "arami_course1_lesson_08",
       "number": 8,
-      "title": "پیتی ئەلف (ا)",
+      "title": "پیتەکانی ت = T, t و ز = Z, z",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "content_status": "user_confirmed_lesson_08; two supplied letter sections combined as one lesson; source wording preserved",
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions; no scientific edits.",
+      "content_file": "course_data/arami_course1_lesson_08_t_z_combined_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "source_contains_eight_quiz_questions; runtime_integration_pending",
+      "assessment_status": "source_contains_eight_quiz_questions; runtime_integration_pending",
+      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "source_note": "User explicitly confirmed that the supplied T and Z material is Lesson 8 and that the lesson sequence will be rearranged from scratch. This replaces the previous placeholder Lesson 8 title (پیتی ئەلف)."
     },
     {
       "id": "arami_course1_lesson_09",
