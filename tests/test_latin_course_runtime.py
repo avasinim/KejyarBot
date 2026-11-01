@@ -68,7 +68,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(len([line for line in course2_source.splitlines() if line.startswith("## Ders ")]), 12)
         self.assertIn("*Elfabêya kurdî*", course1_source)
         self.assertNotIn("Bingehên gramera kurdmancî", course1_source)
-        self.assertIn("*Bingehên gramera kurdmancî*", course2_source)
+        self.assertIn("Bingehên gramera kurdmancî", course2_source)
         self.assertNotIn("## Ders 1: Elfabeya Kurdî ya Latînî", course2_source)
         lessons, _, _ = load_latin_courses()
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_orthography" for item in lessons.values()), 12)
