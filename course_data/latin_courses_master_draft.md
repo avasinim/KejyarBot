@@ -4,15 +4,15 @@
 
 ## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
 
-- **Authoritative source:** Not yet confirmed by the user. A distinct Library PDF is available as a candidate only: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010). Do not treat it as the designated Course 1 book until the user confirms.
-- **Scope:** Kurmanji Latin orthography, alphabet, vowel/consonant distinctions, spelling rules and syllables; exact dialect scope remains pending source confirmation.
+- **Çavkaniya taybet û bingehîn:** Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010). Ders 1, “Alfabê ya zimanê kurmancî”, rûpelên çapkirî 11–43; Ders 2, “Alfabê ya Kurmancî bi dîtina dengnasînê”, ji rûpela 44. Ev pirtûk tenê çavkaniya Kursa 1 e.
+- **Scope:** Alfabêya Kurmancî ya Latînî, 31 tîp, 8 dengdêr, 23 dengdar, taybetmendiyên dengnasînê û rastnivîsîn. Mînakên zimanî ji Kurmanciya Bakurê Xorasanê ne.
 - **Canonical lessons:** `course_data/latin_course_1_source_aligned_lessons_01_12.md`
 - **Canonical quiz key:** `course_data/latin_course_1_quiz_answer_key_draft.md`
-- **Source review:** The candidate PDF has been inspected and used for provisional comparison only. The designated Course 1 source remains unresolved; all changes based on this candidate are provisional.
+- **Source review:** Pirtûka Şikofteh wek çavkaniya Kursa 1 hat nasîn. Rûpelên 11–18 û 22–27 û beşa dengnasînê li rûpela 44 û دواتر پشکنین کراون. Pêdivî ye mînak û rêzikên her 12 dersan bi awayekî berfireh werin kontrolkirin.
 
 ## Course 2 — Bingehên Gramera Kurmancî
 
-- **Distinct source:** Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002; Part II, “Bingehên gramera kurdmancî”.
+- **Çavkaniya cuda û taybet:** Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî*, Nefel, Stockholm, 2002; Beşa II, “Bingehên gramera kurdmancî”. Ev pirtûk ji pirtûka Şikofteh a Kursa 1 cuda ye.
 - **Scope:** Kurmanji grammar. Keep its grammar terminology, forms, examples and dialect scope separate from Course 1.
 - **Canonical lessons:** `course_data/latin_course_2_source_aligned_lessons_01_12.md`
 - **Canonical quiz key:** `course_data/latin_course_2_quiz_answer_key_draft.md`
@@ -21,7 +21,7 @@
 ## Runtime and release boundary
 
 - Runtime loader: `latin_course_runtime.py`
-- Course 1 and Course 2 each have their own lesson file and 60-row answer key.
+- Course 1 and Course 2 each have their own book, lesson file, source examples, and 60-row answer key. No source or lesson text may be transferred between them.
 - The loader validates lesson sequence, quiz structure and answer-key consistency; it does not certify scientific source alignment.
 - Lessons carry the consistent signature **🤖 کەژیار — KejyarBot@**. Editorial provenance is excluded from learner-facing runtime lesson text.
 - Both course documents remain editorial review drafts until the remaining scientific review and actual test suite are completed.
