@@ -268,7 +268,7 @@ Dengdêr di avakirina deng û kîteyên peyvan de roleke bingehîn dilîzin. Di 
 | Peyv | Dengdêr | Dengdarên din | Nîvdeng |
 |---|---|---|
 | bav | A | B, V | — |
-| mal | A | M, L | — |
+| ard | A | M, L | — |
 | jin | I | J, N | — |
 | roj | O | R, J | — |
 | kur | U | K, R | — |
@@ -510,7 +510,7 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 |---|---|
 | îro | Î |
 | pîr | Î |
-| nîv | Î |
+| dîk | Î |
 | îşev | Î |
 | şîr | Î |
 | îsal | Î |
@@ -557,7 +557,7 @@ av — êvar — pîr — sor — bûk — çav — şîr — por
 
 **Xebata 2:** Peyvan li gorî dengdêra wan kom bike:
 
-- A: av, bav, mal
+- A: av, bav, ard
 - Ê: êvar, êş, êzing
 - Î: îro, îşev, îsal
 - O: ordek, otaq, por
