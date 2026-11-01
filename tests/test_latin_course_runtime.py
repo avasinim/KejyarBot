@@ -61,6 +61,19 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertFalse(can_open_lesson(first, [second[0]], first[1]))
         self.assertFalse(set(first).intersection(second))
 
+    def test_each_latin_course_uses_its_own_exclusive_source_document(self):
+        course1_source = (ROOT / "course_data" / "latin_course_1_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        course2_source = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+        self.assertEqual(len([line for line in course1_source.splitlines() if line.startswith("## Ders ")]), 12)
+        self.assertEqual(len([line for line in course2_source.splitlines() if line.startswith("## Ders ")]), 12)
+        self.assertIn("*Elfabêya kurdî*", course1_source)
+        self.assertNotIn("Bingehên gramera kurdmancî", course1_source)
+        self.assertIn("*Bingehên gramera kurdmancî*", course2_source)
+        self.assertNotIn("## Ders 1: Elfabeya Kurdî ya Latînî", course2_source)
+        lessons, _, _ = load_latin_courses()
+        self.assertEqual(sum(item["course_id"] == "kurmanji_latin_orthography" for item in lessons.values()), 12)
+        self.assertEqual(sum(item["course_id"] == "kurmanji_latin_grammar" for item in lessons.values()), 12)
+
     def test_course_two_runtime_uses_dedicated_source_aligned_document(self):
         lessons, _, _ = load_latin_courses()
         first = lessons["kurmanji_latin_grammar_01"]["content"]
