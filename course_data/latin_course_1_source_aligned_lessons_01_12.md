@@ -1,11 +1,6 @@
-# Kursa 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
+# Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî
 
-**سەرچاوەی کۆرسی ١ هێشتا پشتڕاست نەکراوەتەوە.** لە کتێبخانەی بەکارهێنەر PDF ـێک بە ناوی *Rê zimanê Kurmancî*، نووسەری Dr. Efrasîyab Şikofteh (Havîn 2010) هەیە؛ ئەمە تەنها سەرچاوەیەکی ئەگەرییە و تا بەکارهێنەر پشتڕاستی نەکاتەوە، نابێت وەک کتێبی فەرمیی کۆرسی ١ هەژمار بکرێت. بەشی ئەلفوبێی ئەم PDF ـە لە لاپەڕەی چاپکراوی ١١ دەست پێدەکات و بەشی دەنگناسی لە لاپەڕەی ٤٤.
-**ئاگاداریی پشکنین:** سەرچاوەی فەرمیی کۆرسی ١ هێشتا لەلایەن بەکارهێنەرەوە پشتڕاست نەکراوەتەوە. بۆیە هەموو چاکسازییەکانی ئەم فایلە کە لەسەر بنەمای PDF ـی Şikofteh کراون، پێش‌نووسی کاتیین؛ نە پەسەندکردنی سەرچاوە و نە پەسەندکردنی زانستیی هەموو ١٢ وانە.
-ئەم بەڵگەیە تەنها وانەکانی کۆرسی 1 لەخۆدەگرێت. دەقی وانەکان بە ڕیزبەندیی خۆیان پارێزراون؛ کلیلەی تاقیکردنەوەکەشی تەنها هی کۆرسی 1 ـە.
-
-### Provenance — Course 1, Lesson 1
-Corrected pedagogical draft; 31-letter inventory and vowel classification checked.
+**Çavkaniya bingehîn:** Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010), Ders 1: “Alfabê ya zimanê kurmancî” (rûpelên çapkirî 11–43) û Ders 2: “Alfabê ya Kurmancî bi dîtina dengnasînê” (ji rûpela çapkirî 44). Ev çavkaniya taybet a Kursa 1 e; bi çavkaniya Kursa 2 nayê tevlihevkirin.
 
 ## Ders 1: Elfabeya Kurdî ya Latînî
 
