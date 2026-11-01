@@ -870,8 +870,8 @@ Di dawiya dersê de xwendekar dikare:
 | wan | destpêk |
 | wê | destpêk |
 | wêne | destpêk |
-| law | dawî |
-| xew | dawî |
+| dew | dawî |
+| kew | dawî |
 
 ### 3. Cudahiyên V û W
 
@@ -884,7 +884,7 @@ Di dawiya dersê de xwendekar dikare:
 | ve | wê |
 | vê | wêne |
 | zivistan | welat |
-| av | law |
+| av | dew |
 
 Çavkaniya bingehîn ji bo nîşandana cudahiya V û W van cotên dengî jî dide: `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî`. Ev cot ji bo berawirdkirina deng û herfê ne; wateya wan wekhev nayê gotin.
 
