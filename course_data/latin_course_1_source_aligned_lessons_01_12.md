@@ -362,10 +362,6 @@ Dengdêra E di van peyvan de tê dîtin:
 | şeş | E |
 | ker | E |
 | zerî | E |
-| ewr | E |
-| Ereb | E |
-| evîn | E |
-| şeş | E |
 
 ### 3. Dengdêra I
 Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
@@ -378,10 +374,6 @@ Dengdêra I ji Î cuda ye. Di van peyvan de I heye:
 | hêstir | I |
 | hingiv | I |
 | zivistan | I |
-| bivir | I |
-| bizin | I |
-| dil | I |
-| hêstir | I |
 
 Baldar be: I û Î du herfên cuda ne. Di dil de I heye; di pîr de Î heye. I û Î her du herfên cuda ne.
 
@@ -394,8 +386,6 @@ Dengdêra U di van peyvan de tê dîtin:
 | gur | U |
 | kum | U |
 | gul | U |
-| kul | U |
-| kum | U |
 | kul | U |
 
 Di çavkaniya kursê de formên `tu` û `du` wek rewşên taybet têne nîqaşkirin. Ji bo destpêka nasîna dengdêra U, mînakên `kur`, `gur`, `kum`, `gul` û `kul` bikar bîne.
@@ -467,7 +457,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 
 ---
 
-### Provenance — Course 1, Lesson 5
+### Provenance — Course 1, Lesson 4
 User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
 
 **🤖 کەژیار — KejyarBot@**
@@ -512,8 +502,6 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 | rê | Ê |
 | mêş | Ê |
 | zêr | Ê |
-| êvar | Ê |
-| êş | Ê |
 
 Ê ji E cuda ye. Di ez de E heye, di êvar de Ê heye.
 
@@ -551,11 +539,8 @@ Di xwendinê de dengê O bi baldarî nas bike; wê bi U an Û re neguherîne.
 | bûn | Û |
 | kûr | Û |
 | mû | Û |
-| mû | Û |
-| kûr | Û |
-| bûn | Û |
 
-Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û şûştin bi Û tên nivîsîn, ne bi U.
+Nîşana li ser Û beşek ji herfê ye. Peyvên bûk û bûn bi Û tên nivîsîn, ne bi U.
 
 ### 7. Berawirdkirina herfan
 | Kom | Herf |
@@ -614,7 +599,7 @@ D) Î
 ### Xulasa
 Di vê dersê de pênc dengdêrên koma dirêj nas kirin: A, Ê, Î, O, Û. Herfên nîşankirî divê bi nîşana xwe bên parastin û bi dengdêrên din re neyên tevlihevkirin.
 
-### Provenance — Course 1, Lesson 6
+### Provenance — Course 1, Lesson 5
 Recovered from the user's source file; explanatory script cleanup only.
 
 **🤖 کەژیار — KejyarBot@**
