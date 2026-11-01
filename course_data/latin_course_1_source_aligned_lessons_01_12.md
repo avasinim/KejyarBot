@@ -49,7 +49,7 @@ Forma mezin bi gelemperî di destpêka hevokê û di destpêka navên taybet de 
 Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 
 ### 5. Xebata Kejyar
-1. Dengdarên di van peyvan de bibîne: av — ez — êvar — dil — îro — roj — gur — dûr.
+1. Dengdêran di van peyvan de bibîne: av — ez — êvar — dil — îro — roj — gur — dûr.
 2. Herfên mezin bi biçûk binivîse: A, Ê, Î, Ş, Û, W.
 3. Ji alfabeyê pênc dengdêr û pênc herfên din hilbijêre û bi wan peyvan çêke.
 
@@ -1037,7 +1037,7 @@ D) Ji navbera diranan
 2. Herfa Y di çavkaniya kursê de çawa tê dabeşkirin?
 A) Dengdar
 B) Nîvdeng
-C) Bêdeng
+C) Dengdêr
 D) Nîşana nivîskî ya dengdar
 
 3. Kîjan peyv mînaka herfa Z ye?
@@ -1053,7 +1053,7 @@ C) yazde
 D) çiya
 
 5. Di peyva çîya de Y çi erkekê heye?
-A) Bêdeng e
+A) Dengdar e
 B) Nîvdeng e
 C) Dengdêra sereke ye
 D) Nîşana dirêjiyê ye
@@ -1241,7 +1241,7 @@ D) paşşiv
 A) Her du herf her tim tên nivîsîn
 B) Li gorî rêbaza nivîsînê yek ji wan dikare neyê nivîsîn
 C) Rêza herfan berevajî dibe
-D) Dengdareke nû tê zêdekirin
+D) Dengdêrek nû tê zêdekirin
 
 ### Xulasa
 Di vê dersê de me du rêbazên nivîsînê fêr bûn: veqetandina du dengdêran li hev bi alîkariya herfên wek y, w, h û nivîsandina hin peyvên pêkhatî bê dubarekirina herfa pêşî. Ev rêbaz divê bi mînakên rast û bi baldarî bên fêrkirin.
