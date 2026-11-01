@@ -61,6 +61,14 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertFalse(can_open_lesson(first, [second[0]], first[1]))
         self.assertFalse(set(first).intersection(second))
 
+    def test_course_two_runtime_uses_dedicated_source_aligned_document(self):
+        lessons, _, _ = load_latin_courses()
+        first = lessons["kurmanji_latin_grammar_01"]["content"]
+        last = lessons["kurmanji_latin_grammar_12"]["content"]
+        self.assertIn("çar hêmanên bingehîn", first)
+        self.assertIn("Şeş cureyên rengdêrên di çavkaniyê de nas bike.", last)
+        self.assertIn("jmarnavên binavkirî", last)
+
     def test_course_two_lesson_twelve_uses_selected_expanded_lesson(self):
         lessons, quizzes, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_12"]["content"]
