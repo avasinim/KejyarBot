@@ -121,7 +121,7 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 | `Ez mehinê dibînim.` | `Ez mehînan dibînim.` |
 | `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
 
-Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehinik/mehinin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
+Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehînek/mehînin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
 
 **Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; ev yek jî bi taybetî tê nîşandan.
 
@@ -133,7 +133,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 ### Kuis — 5 pirs
 1. Mêjer çi nîşan dide? A) reng B) yek an gelek C) kes
 2. Forma gelemjimar a `hespek` di nimûneya dersê de çi ye? A) hespê B) hespa C) hespin
-3. `mehinik` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
+3. `mehînek` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
 4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku yek tişt in B) ji ber ku ew du pêvajoyên rêzimanî ne C) ji ber ku navdêr tune ne
 5. `hespin` çi nîşan dide? A) yekjimar B) serenav C) gelemjimar
 
@@ -159,7 +159,7 @@ Bi gelemperî di gelemperî de navdêrên nêr di yekjimarê de bi `-î`, navdê
 
 **Navên nêr ên bi `e` an `a`:** vê mijarê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî ta vêje`, `Soro kê virî ta vêje` û `Soro ke vir ta vêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî vê nimûneyê).
 
-**Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehinin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
+**Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehînin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
 ### Xebat
 1. Di `Hesp hat` û `Ez hespî dibînim` de erkên navdêrê cuda bike.
@@ -248,13 +248,13 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 
 **1. Piştî navdêrê, bê bireser:**
 - `-ek` ji bo nêr yekjimar: `hespek hat`.
-- `-ek` ji bo mê yekjimar: `mehinik hat`.
-- `-in` ji bo gelemjar: `hespin hatin`, `mehinin hatin`.
+- `-ek` ji bo mê yekjimar: `mehînek hat`.
+- `-in` ji bo gelemjar: `hespin hatin`, `mehînin hatin`.
 
 **2. Piştî navdêrê, dema bireser/rengdêr li pey were:**
 - `-ekî` ji bo nêr yekjimar: `hespekî delal hat`.
 - `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
-- `-ine` ji bo gelemjar: `mehinine delal hatin`.
+- `-ine` ji bo gelemjar: `mehînine delal hatin`.
 
 Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
