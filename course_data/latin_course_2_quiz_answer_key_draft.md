@@ -22,7 +22,7 @@ Status: editorial answer-key draft — exact option text is aligned with the sel
 | 3 | 5 | C | zayenda rêzimanî | شتە بێ‌گیانەکانیش ڕەگەزی ڕێزمانییان هەیە. |
 | 4 | 1 | B | yek an gelek | mêjer ژمارەی ناو لە ڕستەدا دەردەخات. |
 | 4 | 2 | C | hespin | ئەمە شێوەی کۆی نموونەی وانەیە. |
-| 4 | 3 | A | yekjimar | `mehinik` لە نموونەدا تاکە. |
+| 4 | 3 | A | yekjimar | `mehînek` لە نموونەدا تاکە. |
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | ژمارە و tewang پەیوەندییان هەیە، بەڵام یەک نین. |
 | 4 | 5 | C | gelemjimar | `hespin` شێوەی کۆیە. |
 | 5 | 1 | B | guherîna forma peyvê | tewang شێوەی ناو بە پێی ڕۆڵی ڕێزمانی دەگۆڕێت. |
