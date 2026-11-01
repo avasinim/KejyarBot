@@ -3,8 +3,10 @@
 > Editorial master source for the two Latin courses. The isolated work branch loads these lessons through `latin_course_runtime.py`; production activation/deployment remains separate and has not been performed. Content remains subject to final text verification. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
 
 ## Source and course separation
-- Course 1: Celadet Alî Bedir-Xan, *Elfabêya kurdî*, Part I, printed pp. 11–34.
-- Course 2: the same volume, *Bingehên gramera kurdmancî*, Part II, printed pp. 37–100.
+- Course 1: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010), especially Lesson 1, “Alfabê ya zimanê kurmancî” (printed p. 11 onward) and Lesson 2, “Alfabê ya kurmancî bi dîtina dengnasînê” (contents list gives printed p. 44). This is the distinct source PDF recovered in the user's Library.
+- Course 2: Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî*, Part II, “Bingehên gramera kurdmancî”, printed pp. 37–100.
+- The two courses use different books. Do not cite Course 2's Celadet book as Course 1's source, and do not use Şikofteh's book as Course 2's source.
+- **Course 1 source alignment is not yet approved:** the source identity is corrected, but all 12 lesson bodies, examples, terminology, dialect forms, and quiz answers still require comparison with Şikofteh's book. Do not describe this pack as scientifically source-aligned until that audit is complete.
 - The two courses remain separate in subject scope, lesson IDs, quizzes, answer keys and progression. No Sorani/Arabic-script course is included.
 
 ## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
