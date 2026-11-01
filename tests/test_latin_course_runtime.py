@@ -105,6 +105,22 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("W` nîvdeng e", vw_lesson)
         self.assertIn("Y` jî di heman komê de ye", vw_lesson)
 
+    def test_course_one_lesson_eleven_treats_adjacent_vowels_not_consonants(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_orthography_11"]["content"]
+        self.assertIn("Dengdêrên Lihev", lesson)
+        self.assertIn("du dengdêr", lesson)
+        self.assertIn("gî + an", lesson)
+        self.assertIn("gîyan", lesson)
+        self.assertNotIn("du dengdar", lesson)
+
+    def test_course_two_neuter_personal_pronoun_has_no_invented_agent_form(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_grammar_09"]["content"]
+        self.assertIn("| sêyem yekjimar nêtar | ew | — |", lesson)
+        self.assertIn("Celadet tenê `wî` û `wê` dide", lesson)
+        self.assertNotIn("| sêyem yekjimar nêtar | ew | ew |", lesson)
+
     def test_course_two_runtime_uses_dedicated_source_aligned_document(self):
         lessons, _, _ = load_latin_courses()
         first = lessons["kurmanji_latin_grammar_01"]["content"]
