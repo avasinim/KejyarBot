@@ -176,8 +176,31 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "not_assigned_for_lesson_13",
-      "source_note": "User explicitly designated this text as Lesson 13. Markdown headings and layout only; no scientific or semantic edits. The two commits 8359ae827572db507790da35ce0650ddd501eb40 (نەبزوێنی و) and 21e841f371bfbe4573867dd1c4e7522fe48c4015 (بزوێنی و) were explicitly assigned by the user to Lesson 11, not Lesson 13."
+      "audio_status": "assigned_by_user; runtime_playback_not_yet_verified",
+      "source_note": "User explicitly designated this text as Lesson 13. Markdown headings and layout only; no scientific or semantic edits. The two commits 8359ae827572db507790da35ce0650ddd501eb40 (نەبزوێنی و) and 21e841f371bfbe4573867dd1c4e7522fe48c4015 (بزوێنی و) were explicitly assigned by the user to Lesson 11, not Lesson 13.",
+      "audio_commits": [
+        "8359ae827572db507790da35ce0650ddd501eb40",
+        "21e841f371bfbe4573867dd1c4e7522fe48c4015",
+        "7e595c37baf70cb63a7470e2cd32c9f89420aac9"
+      ],
+      "audio_assets": [
+        {
+          "commit": "8359ae827572db507790da35ce0650ddd501eb40",
+          "label": "نەبزوێنی و",
+          "file_name": "not_verified_from_commit_metadata"
+        },
+        {
+          "commit": "21e841f371bfbe4573867dd1c4e7522fe48c4015",
+          "label": "بزوێنی و",
+          "file_name": "not_verified_from_commit_metadata"
+        },
+        {
+          "commit": "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
+          "label": "نەبزوێنی و",
+          "file_name": "نەبزوێنی (و).ogg"
+        }
+      ],
+      "audio_assignment_note": "User explicitly assigned all three referenced recordings to Lesson 13. Commit titles and the third commit's filename were verified; filenames for the first two commits are not exposed by the commit metadata fetched. Playback/runtime delivery has not yet been tested."
     },
     {
       "id": "arami_course1_lesson_14",
