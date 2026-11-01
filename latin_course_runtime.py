@@ -50,7 +50,10 @@ def _split_master(master_text):
     blocks = []
     for position, (start, number, title) in enumerate(starts):
         end = starts[position + 1][0] if position + 1 < len(starts) else len(lines)
-        blocks.append((number, title, "\n".join(lines[start:end]).strip()))
+        body = "\n".join(lines[start:end]).strip()
+        # Editorial provenance notes belong in the source document, not in learner-facing lesson text.
+        body = re.sub(r"(?ms)^### Provenance[^\n]*\n.*?(?=^## Ders |\\Z)", "", body).strip()
+        blocks.append((number, title, body))
     return blocks
 
 
