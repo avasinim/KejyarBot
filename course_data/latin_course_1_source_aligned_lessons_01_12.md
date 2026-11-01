@@ -915,7 +915,7 @@ Peyvên jêrîn li gorî herfa wan kom bike:
 
 Xebata 2: Di peyvên jêrîn de herfa `V` an `W` bibîne:
 
-`vegerîn — wan — av — wê — welat — veşartin`
+`vegerîn — wan — av — wêran — welat — veşartin`
 
 Xebata 3: Bi her yek ji herfên `V` û `W` sê peyv binivîse.
 
