@@ -109,3 +109,6 @@ Source:
 
 
 - Course 1 Lessons 6–7 example-source pass: rechecked the I/Î and U/Û sample tables against Şikofteh printed pp.56–60. Lesson 6 now uses source-listed I examples (`jin`, `dil`, `kirin`, `bizin`, `zivistan`, `hêstir`, `pir`) and Î examples (`îşev`, `îro`, `dîk`, `dîwar`, `şîr`, `pîr`). Removed unsupported/ambiguous sample-table entries `nivîs`, `hilbijartin`, `mîr`, and `nîv`; the quiz's I/Î distractor was also changed from `min` to `bizin`. Lesson 7 now uses the source's U examples (`kur`, `gur`, `kum`, `gul`, `kul`) and Û examples (`dûr`, `bûk`, `bûn`, `kûr`, `mû`), replacing the unsupported `kulîlk`, `şûştin`, `gund`, and `xurt` samples. Updated the U/Û contrast table and added regression checks against these source-listed forms. These are source-scope corrections, not claims that the removed words are invalid Kurmancî.
+
+
+- Course 1 Lesson 8: checked V/W examples against Şikofteh printed p.60. Updated positive examples to forms listed by the source, including `vedan`, `vegerîn`, `kevir`, and `wî`. The contrast table now uses the source's pairs `dev/dew`, `vir/wîr`, `ava/awa`, and `evî/ewî`. The no-V example `xwarin` remains labelled as such; the `xw` cluster is still distinguished from W's semivowel function. Added regression assertions for the source pairs and example positions.
