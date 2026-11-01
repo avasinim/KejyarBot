@@ -961,150 +961,108 @@ Di vê dersê de me `V` wek bêdeng û `W` wek nîvdeng nas kirin. `Y` jî nîvd
 Recovered from Pasted markdown(3).md; Î/Û classification and exercise corrected; original quiz order retained.
 
 **🤖 کەژیار — KejyarBot@**
-## Ders 9: Herfên Taybet di Elfabeya Kurmancî de
+## Ders 9: Dengên X, Y û Z
 
-### Armancên dersê
+### Armanca dersê
 
 Di dawiya dersê de xwendekar dikare:
+- Herfên X, Y û Z di peyvan de nas bike.
+- Cihê derxistina dengê X û Z bi awayekî bingehîn fêm bike.
+- Y wek nîvdeng nas bike.
+- Mînakên her sê herfan rast bixwîne û binivîse.
 
-- Herfên `Ç, Ê, Î, Ş, Û` nas bike.
-- Nîşanên li ser herfan bibîne û wan rast binivîse.
-- Cudahiyên wan ji herfên bê nîşan fêm bike.
-- Di peyvan de van herfan rast nas bike.
+### 1. Herfa X
 
-### 1. Herfa Ç
+Dengê X ji nîveka qirikê derdikeve. Di van peyvan de X heye:
 
-`Ç` herfeke cuda ye û di gelek peyvên kurmancî de tê dîtin.
-
-| Peyv | Herf |
+| Peyv | Herfa armanc |
 |---|---|
-| çav | Ç |
-| çiya | Ç |
-| çem | Ç |
-| biçûk | Ç |
-| keç | Ç |
+| xanî | X |
+| xizan | X |
+| xerab | X |
+| xezal | X |
+| xort | X |
+| xak | X |
 
-### 2. Herfa Ê
+### 2. Herfa Y
 
-`Ê` yek ji dengdarên kurmancî ye.
+Y nîvdeng e. Di çavkaniyê de Y bi dengdaran re şêweyên wek ya, ye, yê, yi, yî çêdike. Di van peyvan de Y tê dîtin:
 
-| Peyv | Herf |
+| Peyv | Herfa armanc |
 |---|---|
-| êvar | Ê |
-| pênc | Ê |
-| sê | Ê |
-| hêvî | Ê |
-| çêkirin | Ê |
+| yêk | Y |
+| yazde | Y |
+| çay | Y |
+| dinya | Y |
+| payîz | Y |
+| çîya | Y |
 
-### 3. Herfa Î
+### 3. Herfa Z
 
-`Î` dengdareke cuda ye û divê bi `I` neyê tevlihevkirin.
+Dengê Z di navbera diranan de tê derxistin. Di van peyvan de Z heye:
 
-| Peyv | Herf |
+| Peyv | Herfa armanc |
 |---|---|
-| îro | Î |
-| pîr | Î |
-| şîr | Î |
-| nîv | Î |
-| mîr | Î |
-| xwîn | Î |
+| zozan | Z |
+| zemîn | Z |
+| zor | Z |
+| zindan | Z |
+| zer | Z |
+| zîv | Z |
+| pez | Z |
+| derzî | Z |
+| zivistan | Z |
 
-### 4. Herfa Ş
+### 4. Cudahiyên X, Y û Z
 
-`Ş` bêdengeke cuda ye.
+- X bêdengeke kurmancî ye.
+- Y nîvdeng e.
+- Z bêdengeke kurmancî ye.
+- Ev herf sê deng û erkên cuda nîşan didin; di nivîsandinê de divê li şûna hev neyên bikaranîn.
 
-| Peyv | Herf |
-|---|---|
-| şev | Ş |
-| şêr | Ş |
-| şîr | Ş |
-| şûştin | Ş |
-| baş | Ş |
+### 5. Xebata Kêjyar
 
-### 5. Herfa Û
+1. Di peyvên xak, xort, yêk, çîya, zozan, zîv de herfa armanc nîşan bike.
+2. Peyvan li gorî herfê kom bike: X, Y an Z.
+3. Bi her yek ji X, Y û Z re du peyvên din binivîse.
 
-`Û` dengdareke cuda ye û ji `U` cuda ye.
+### 6. Testa Kejyar
 
-| Peyv | Herf |
-|---|---|
-| dûr | Û |
-| bûk | Û |
-| bûn | Û |
-| şûştin | Û |
+1. Dengê X li kîjan deverê ji devê derdikeve?
+A) Ji navbera lêvan
+B) Ji nîveka qirikê
+C) Ji serê ziman
+D) Ji navbera diranan
 
-### 6. Nîşanên herfan çima girîng in?
+2. Herfa Y di çavkaniya kursê de çawa tê dabeşkirin?
+A) Dengdar
+B) Nîvdeng
+C) Bêdeng
+D) Nîşana nivîskî ya bêdeng
 
-Di elfabeya kurmancî ya latînî de nîşanên `Ç, Ê, Î, Ş, Û` beşek ji nivîsandina herfan in.
+3. Kîjan peyv mînaka herfa Z ye?
+A) xak
+B) yêk
+C) zozan
+D) wêne
 
-- `C` û `Ç` ne yek in.
-- `E` û `Ê` ne yek in.
-- `I` û `Î` ne yek in.
-- `S` û `Ş` ne yek in.
-- `U` û `Û` ne yek in.
+4. Kîjan peyv herfa X dihewîne?
+A) zîv
+B) xort
+C) yazde
+D) çiya
 
-Ji ber vê yekê, di nivîsandinê de divê nîşanên van herfan bên parastin.
-
-### 7. Xebata Kêjyar
-
-Alîkariya Kêjyar
-
-Di peyvên jêrîn de herfa taybet bibîne:
-
-`çav — êvar — îro — şev — dûr — pênc — şêr — bûk`
-
-Paşê wan li gorî herfa taybet kom bike:
-
-- Ç
-- Ê
-- Î
-- Ş
-- Û
-
-Xebata 2: Herfa rast hilbijêre:
-
-- `C / Ç` — çav
-- `E / Ê` — êvar
-- `I / Î` — îro
-- `S / Ş` — şev
-- `U / Û` — dûr
-
-Xebata 3: Bi her yek ji van pênc herfan peyvek binivîse.
-
-### 8. Testa Kejyar
-
-1. Di peyva «çav» de kîjan herf heye?
-A) C
-B) Ç
-C) Ş
-D) S
-
-2. Di peyva «êvar» de kîjan herf heye?
-A) E
-B) Ê
-C) I
-D) Î
-
-3. Di peyva «îro» de kîjan herf heye?
-A) I
-B) Î
-C) U
-D) Û
-
-4. Di peyva «şev» de kîjan herf heye?
-A) S
-B) Ş
-C) C
-D) Ç
-
-5. Di peyva «dûr» de kîjan herf heye?
-A) U
-B) Û
-C) O
-D) Î
+5. Di peyva çîya de Y çi erkekê heye?
+A) Bêdeng e
+B) Nîvdeng e
+C) Dengdara sereke ye
+D) Nîşana dirêjiyê ye
 
 ### Xulasa
 
-Di vê dersê de me pênc herfên taybet nas kirin: `Ç, Ê, Î, Ş, Û`. Nîşanên wan beşek ji herfê ne û divê di nivîsandina peyvan de bên parastin.
+X, Y û Z ji aliyê deng û erkê ve ji hev cuda ne. X û Z bêdeng in; Y nîvdeng e. Nasîna mînakên wan alîkariya xwendin û nivîsandina rast dike.
+
+**🤖 کەژیار — KejyarBot@**
 
 ### Provenance — Course 1, Lesson 10
 Recovered from Pasted markdown(3).md; ezafe and locative forms corrected; original quiz order retained.
