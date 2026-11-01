@@ -620,7 +620,7 @@ Recovered from the user's source file; explanatory script cleanup only.
 **🤖 کەژیار — KejyarBot@**
 ## Ders 6: Cudahiyên Dengên I û Î
 
-**Recovery status:** Recovered from the user's Library file `Pasted text(1).txt`, lines 714–approximately 840. Line breaks and brand casing were normalized for the Kejyar identity; the lesson's examples, explanations, exercises, and quiz choices are otherwise retained as supplied. This is a draft, not runtime content.
+**Recovery status:** Recovered from the user's Library file `Pasted text(1).txt`, lines 714–approximately 840. Examples were checked against Şikofteh pp.56–58 and unsupported sample words were replaced with forms attested in the assigned source. Line breaks and brand casing were normalized for the Kejyar identity. This is a draft, not runtime content.
 
 ### Armancên dersê
 
@@ -776,7 +776,7 @@ U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di k
 |---|---|
 | kur | dûr |
 | gur | bûn |
-| kum | dûr |
+| kum | kûr |
 | gul | mû |
 
 ### 4. Rêbaza xwendin û nivîsandinê
