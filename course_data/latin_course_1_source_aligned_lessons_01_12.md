@@ -1203,17 +1203,17 @@ Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf 
 
 ### Provenance — Course 1, Lesson 11
 Recovered and corrected draft.
-## Ders 11: Rêbazên Nivîsîna Dengdarên Lihev û Dubarebûna Herfan
+## Ders 11: Rêbazên Nivîsîna Dengdêrên Lihev û Dubarebûna Herfan
 
 ### Armanca dersê
 Di dawiya dersê de xwendekar dikare:
-- Rêbaza nivîsandina du dengdarên ku li hev tên fêm bike.
-- Rola herfên y, w û h di veqetandina dengdaran de nas bike.
+- Rêbaza nivîsandina du dengdêran ku li hev tên fêm bike.
+- Rola herfên y, w û h di veqetandina dengdêran de nas bike.
 - Hin formên peyvên pêkhatî li gorî rêbaza nivîsînê rast binivîse.
 - Rêbaza kêmkirina herfên dubare di hin peyvên pêkhatî de nas bike.
 
-### 1. Dengdarên li pey hev
-Di rastnivîsîna Kurmancî de du dengdar bi gelemperî rasterast li pey hev nayên nivîsîn, ne di nav peyvekê de û ne jî di nav peyv û paşgirê de. Di van rewşan de herfên y, w an h dikarin di navbera wan de werin. Herfa y di gelek nimûneyan de tê bikaranîn.
+### 1. Dengdêrên li pey hev
+Di rastnivîsîna Kurmancî de du dengdêr bi gelemperî rasterast li pey hev nayên nivîsîn, ne di nav peyvekê de û ne jî di nav peyv û paşgirê de. Di van rewşan de herfên y, w an h dikarin di navbera wan de werin. Herfa y di gelek nimûneyan de tê bikaranîn.
 
 | Bingeh û paşgir | Forma nivîskî |
 |---|---|
@@ -1252,10 +1252,10 @@ Di nivîsandina Kurmancî de, dema du beşên peyvê li hev tên û herfek an du
 - derd + dar
 - xurt + tir
 
-**Xebata 3:** Bi du mînakan nîşan bide ka herfa y çawa dikare du dengdar ji hev cuda bike.
+**Xebata 3:** Bi du mînakan nîşan bide ka herfa y çawa dikare du dengdêr ji hev cuda bike.
 
 ### 4. Testa Kejyar
-1. Kîjan herf dikare di navbera du dengdaran de were bikaranîn?
+1. Kîjan herf dikare di navbera du dengdêran de were bikaranîn?
 A) B, D, Z
 B) Y, W, H
 C) Q, R, T
@@ -1286,7 +1286,7 @@ C) Rêza herfan berevajî dibe
 D) Dengdareke nû tê zêdekirin
 
 ### Xulasa
-Di vê dersê de me du rêbazên nivîsînê fêr bûn: veqetandina du dengdarên li hev bi alîkariya herfên wek y, w, h û nivîsandina hin peyvên pêkhatî bê dubarekirina herfa pêşî. Ev rêbaz divê bi mînakên rast û bi baldarî bên fêrkirin.
+Di vê dersê de me du rêbazên nivîsînê fêr bûn: veqetandina du dengdêran li hev bi alîkariya herfên wek y, w, h û nivîsandina hin peyvên pêkhatî bê dubarekirina herfa pêşî. Ev rêbaz divê bi mînakên rast û bi baldarî bên fêrkirin.
 
 **🤖 کەژیار — KejyarBot@**
 
