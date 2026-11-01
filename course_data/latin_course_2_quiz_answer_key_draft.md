@@ -22,7 +22,7 @@ Status: editorial answer-key draft — exact option text is aligned with the sel
 | 3 | 5 | C | zayenda rêzimanî | شتە بێ‌گیانەکانیش ڕەگەزی ڕێزمانییان هەیە. |
 | 4 | 1 | B | yek an gelek | mêjer ژمارەی ناو لە ڕستەدا دەردەخات. |
 | 4 | 2 | C | hespin | ئەمە شێوەی کۆی نموونەی وانەیە. |
-| 4 | 3 | A | yekjimar | `mehinik` لە نموونەدا تاکە. |
+| 4 | 3 | A | yekjimar | `mehînek` لە نموونەدا تاکە. |
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | ژمارە و tewang پەیوەندییان هەیە، بەڵام یەک نین. |
 | 4 | 5 | C | gelemjimar | `hespin` شێوەی کۆیە. |
 | 5 | 1 | B | guherîna forma peyvê | tewang شێوەی ناو بە پێی ڕۆڵی ڕێزمانی دەگۆڕێت. |
@@ -49,12 +49,12 @@ Status: editorial answer-key draft — exact option text is aligned with the sel
 | 9 | 2 | C | te | خشتەی سەرچاوە: `tu/te`. |
 | 9 | 3 | A | wî | شێوەی kirarîی ew بۆ نێر. |
 | 9 | 4 | B | me | خشتەی سەرچاوە: `em/me`. |
-| 9 | 5 | C | hon | شێوەی کتێبی 2002؛ `hûn` تەنیا وەک شێوەی نوێ تێبینی دەکرێت. |
+| 9 | 5 | A | hon | Pronavê kesê duyem gelemjar. |
 | 10 | 1 | B | min | یەکێکە لە pronavên bireser. |
 | 10 | 2 | C | wê | شێوەی مێی `ew` لە خشتەی kirarî/bi-reser. |
 | 10 | 3 | A | hev, êk | ئەمانە شێوەکانی سەرچاوەن. |
 | 10 | 4 | B | pronavên bireser | `wan` و `ew` لە ڕستەی نموونەدا بەکارهاتوون. |
-| 10 | 5 | C | wek variantê bikaranîna nû | کتێب شێوەکانی `hev`, `êk` و دواتر `hevdu`ی باس دەکات. |
+| 10 | 5 | B | du an zêdetir kes bi hev re | Pronavê berbihevîn têkiliya du an zêdetir kesan nîşan dide. |
 | 11 | 1 | B | ev/ew | دوو شێوەی îşarkî ên pî ve ne. |
 | 11 | 2 | C | yê/ya/yên | شێوەکانی îşarkî ên qerse ne. |
 | 11 | 3 | A | ko | relative pronoun ـی سەرچاوە بۆ هەردوو ڕەگەز و ژمارە. |
