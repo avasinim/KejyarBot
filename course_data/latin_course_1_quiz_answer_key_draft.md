@@ -58,11 +58,11 @@
 | 11 | 3 | C | rintir |
 | 11 | 4 | B | paşîv |
 | 11 | 5 | B | Li gorî rêbaza nivîsînê yek ji wan dikare neyê nivîsîn |
-| 12 | 1 | A | Beşa herî biçûk a peyvê ku dengdarekê dihewîne |
+| 12 | 1 | A | Beşa herî biçûk a peyvê ku dengdêrekê dihewîne |
 | 12 | 2 | B | bar + an |
 | 12 | 3 | C | Sê |
 | 12 | 4 | A | ba |
-| 12 | 5 | B | Hejmara dengdaran |
+| 12 | 5 | B | Hejmara dengdêran |
 
 ## Têbînîyên kontrolê
 
