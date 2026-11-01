@@ -23,8 +23,8 @@ Source:
 
 1. Marked the Course 1 source as provisional in `course_data/latin_course_1_source_aligned_lessons_01_12.md` to Şikofteh's *Rê zimanê Kurmancî*.
 2. Updated the source separation index in `course_data/latin_courses_master_draft.md`.
-3. Explicitly marked Course 1 as **not yet scientifically source-approved**. The corrected source identity does not imply that all 12 lesson bodies or quiz keys have already been checked against the book.
-4. Corrected the Course 1 source metadata in both `latin_course_runtime.py` and `courses.json`; the previous incorrect Celadet Part I / pp. 11–34 reference is no longer used for Course 1.
+3. Explicitly marked Course 1 as **not yet scientifically source-approved**. The candidate source identity is not a user-confirmed designation; the provisional content edits do not imply scientific approval of the 12 lesson bodies or quiz keys.
+4. Corrected the Course 1 source metadata in both `latin_course_runtime.py` and `courses.json` to **UNCONFIRMED**, with Şikofteh retained only as a Library candidate; the previous incorrect Celadet Part I / pp. 11–34 reference is no longer used for Course 1.
 5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
 6. Fixed the runtime quiz parser so the KejyarBot footer is not appended to the final answer option in lessons where the quiz is the final section.
 
