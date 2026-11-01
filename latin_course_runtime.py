@@ -10,6 +10,7 @@ import re
 
 ROOT = Path(__file__).resolve().parent
 MASTER_PATH = ROOT / "course_data" / "latin_courses_master_draft.md"
+COURSE2_SOURCE_PATH = ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md"
 COURSE1_KEY_PATH = ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md"
 COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md"
 
@@ -169,24 +170,17 @@ def _strip_inline_options(text):
 def load_latin_courses(master_text=None):
     """Return (lesson_data, quiz_data, course_records), validating all 24 lessons."""
     master_text = _read(MASTER_PATH) if master_text is None else master_text
-    blocks = _split_master(master_text)
     lesson_data, quiz_data, course_records = {}, {}, []
     for course in COURSES:
-        selected = []
-        for number, title, body in blocks:
-            if course["id"] == "kurmanji_latin_orthography" and number <= 12 and body.startswith("## Ders"):
-                selected.append((number, title, body))
-            elif course["id"] == "kurmanji_latin_grammar" and number <= 12 and body.startswith("## Ders"):
-                # The second sequence begins after the first course's 12th lesson.
-                pass
-        if course["id"] == "kurmanji_latin_grammar":
-            all_course_blocks = [
-                item for item in blocks
-                if item[2].startswith("## Ders") and item[2].splitlines()[0].startswith("## Ders")
-            ]
-            selected = all_course_blocks[12:24]
-        else:
-            selected = selected[:12]
+        # Each Latin course reads only its own source section/document.
+        # Course 2 is never inferred as the second half of a combined master.
+        source_text = (
+            _read(COURSE2_SOURCE_PATH)
+            if course["id"] == "kurmanji_latin_grammar"
+            else master_text
+        )
+        selected = _split_master(source_text)
+        selected = [item for item in selected if item[2].startswith("## Ders")][:12]
         if len(selected) != 12:
             raise ValueError(f"{course['id']} must contain exactly 12 lessons; got {len(selected)}")
         answer_key = _read_answer_key(course["key_path"])
