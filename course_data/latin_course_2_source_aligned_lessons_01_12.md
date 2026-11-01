@@ -418,7 +418,7 @@ Di van nimûneyan de pronavê guncaw bibîne: `Ev kitêb e.`, `Ew hat.`, `Kî ha
 1. Kîjan cot pronavên îşarkî yên bingehîn e? A) min/te B) ev/ew C) kî/çi
 2. Kîjan formên îşarkî yên din di vê mijarê de tên? A) min/te/me B) ez/tu/em C) yê/ya/yên
 3. Forma girêkî ya ku forma kevneşopî bikar tîne çi ye? A) ko B) ku C) kî
-4. `Kî hat?` çi cure pirs e? A) îşarkî B) pirsiyarkî C) bireser
+4. Di hevoka `Min got ko ez nayêm` de `ko` çi ye? A) pronavê girêkî B) gihanek C) pronavê pirsiyarkî
 5. `kîjan` ji bo çi tê bikaranîn? A) nîşandana demê B) nîşandana zayendê C) hilbijartina kes/tişt di nav çend vebijarkan de
 
 ---
