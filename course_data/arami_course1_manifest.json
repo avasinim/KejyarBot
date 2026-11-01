@@ -9,9 +9,6 @@
       "title": "ڕێنووسی سەرەتاییی ئارامی زمانی کوردی",
       "content_source": "user_supplied_immutable",
       "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
-      "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
-      "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
-      "audio_status": "user_confirmed_asset_repository_root",
       "practice_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
       "assessment_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
       "runtime_status": "isolated_Telegram_reading_audio_practice_assessment_routes_registered",
@@ -19,7 +16,8 @@
       "presentation_status": "lesson_text_delivered_in_source_sections; audio_practice_assessment_and_retry_wired",
       "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
       "interaction_presentation": "arami_lesson1_presentation.py",
-      "content_file": "course_data/arami_course1_lesson_01_content.json"
+      "content_file": "course_data/arami_course1_lesson_01_content.json",
+      "audio_assignment_note": "The previously listed alphabet recording has been reassigned to Lesson 2 at the user's explicit instruction; Lesson 1 audio is currently unassigned."
     },
     {
       "id": "arami_course1_lesson_02",
@@ -27,7 +25,12 @@
       "title": "پیتەکانی زمانی کوردی بە نووسینی کوردی و لاتینی",
       "status": "source_review_pending",
       "content_status": "not_yet_transcribed_or_verified",
-      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits."
+      "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
+      "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
+      "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
+      "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved",
+      "audio_topic_label": "دەنگەکان",
+      "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2."
     },
     {
       "id": "arami_course1_lesson_03",
