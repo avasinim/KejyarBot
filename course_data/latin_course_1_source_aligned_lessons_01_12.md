@@ -854,11 +854,11 @@ Di dawiya dersê de xwendekar dikare:
 | Peyv | Cihê V |
 |---|---|
 | av | dawî |
-| ve | destpêk |
+| vedan | destpêk |
 | zivistan | navîn |
-| nivîs | navîn |
+| kevir | navîn |
 | xwarin | di vê peyvê de tune ye |
-| vê | destpêk |
+| vegerîn | destpêk |
 
 ### 2. Herfa W
 
@@ -869,7 +869,7 @@ Di dawiya dersê de xwendekar dikare:
 | welat | destpêk |
 | wan | destpêk |
 | wê | destpêk |
-| wêne | destpêk |
+| wî | destpêk |
 | dew | dawî |
 | kew | dawî |
 
@@ -881,10 +881,10 @@ Di dawiya dersê de xwendekar dikare:
 
 | V | W |
 |---|---|
-| ve | wê |
-| vê | wêne |
-| zivistan | welat |
-| av | dew |
+| dev | dew |
+| vir | wîr |
+| ava | awa |
+| evî | ewî |
 
 Çavkaniya bingehîn ji bo nîşandana cudahiya V û W van cotên dengî jî dide: `dev/dew`, `vir/wîr`, `ava/awa`, `evî/ewî`. Ev cot ji bo berawirdkirina deng û herfê ne; wateya wan wekhev nayê gotin.
 
@@ -908,14 +908,14 @@ Alîkariya Kêjyar
 
 Peyvên jêrîn li gorî herfa wan kom bike:
 
-`av — welat — ve — wêne — nivîs — kew — zivistan — wê`
+`av — welat — vedan — wî — kevir — kew — zivistan — wê`
 
 - Koma yekem: peyvên bi `V`.
 - Koma duyem: peyvên bi `W`.
 
 Xebata 2: Di peyvên jêrîn de herfa `V` an `W` bibîne:
 
-`vê — wan — av — wê — welat — ve`
+`vegerîn — wan — av — wê — welat — veşartin`
 
 Xebata 3: Bi her yek ji herfên `V` û `W` sê peyv binivîse.
 
@@ -934,12 +934,12 @@ C) F
 D) B
 
 3. Kîjan peyv bi W dest pê dike?
-A) ve
-B) vê
-C) wêne
+A) vedan
+B) vegerîn
+C) wî
 D) av
 
-4. Di peyva «nivîs» de kîjan herf heye?
+4. Di peyva «kevir» de kîjan herf heye?
 A) W
 B) V
 C) Z
