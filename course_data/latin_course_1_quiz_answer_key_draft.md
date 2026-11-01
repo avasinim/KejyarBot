@@ -1,8 +1,7 @@
-# کلیلەی یەکگرتووی وەڵامەکانی کویزی کۆرسی ١ — ڕێنووسی سەرەتاییی لاتینی
+# Mifteya bersivên testa Kursa 1 — Bingehên Rastnivîsîna Kurmancî ya Latînî
 
-Status: editorial answer-key draft. This master table consolidates the selected answer keys for all 12 Course 1 lessons. Lessons 4–5 are source-aligned editorial copies of the user's already supplied lesson texts; Lessons 8–9 use recovered original text with minimal corrections and the original option order is preserved.
+**Rewş:** Mifteya bersivan a pêşnûsê ye. Ev tablo bersivên 12 dersan dihewîne. Dersên 4–5 ji nivîsên ku bikarhêner berê şandine hatine guncandin; dersên 8–9 jî li gorî nivîsên vegerandî hatine sererastkirin.
 
-| وانە | پرسیار | هەڵبژاردەی ڕاست | وەڵامی ڕاست |
 |---:|---:|:---:|---|
 | 1 | 1 | B | 31 |
 | 1 | 2 | C | 8 |
@@ -65,11 +64,11 @@ Status: editorial answer-key draft. This master table consolidates the selected 
 | 12 | 4 | A | ba |
 | 12 | 5 | B | Hejmara dengdaran |
 
-## پشکنینی تایبەتی و سنووری بەڵگە
+## Têbînîyên kontrolê
 
-- وانەکانی ١–٣ و ٦: لە دەقی گەڕێنراوەوە وەرگیراون؛ کلیلەکە لەگەڵ هەڵبژاردەکانی دەقی وانەکان پشکنراوە.
-- وانەکانی ٤–٥: دەقی تەواوی ئەم دوو وانەیە لەلایەن بەکارهێنەرەوە پێشتر نێردراوە؛ ئەم کلیلە بۆ وەشانی سەرچاوە-هاوتاکراوی برانچی کارە و داوای ناردنەوەی دەقەکان ناکرێت.
-- وانەی ٧: کلیلەکە بۆ پێش‌نووسی چاککراوە.
-- وانەکانی ٨–٩: کلیلەکە بۆ پێش‌نووسە جێگرەوە چاککراوەکانە، نەک دەقی کۆنیان.
-- وانەکانی ١٠: کلیلەکە لەگەڵ پێش‌نووسی چاککراو هاوتایە؛ وانەکانی ١١–١٢ دووبارە نووسراون بەپێی یاساکانی پەڕەکانی ٦١–٦٢ی سەرچاوە و کلیلەکانیان نوێ کراونەتەوە.
-- هەموو ٦٠ تۆماری وەڵام لەم خشتەیەدا دەبێت ناسنامەی پرسیاری تایبەتی خۆیان هەبێت؛ هیچ correct_option_index ـێک بۆ runtime زیاد نەکرێت تا پشکنینی جیاوازیی هەڵبژاردەکان و ڕێکخستنی runtime بە جیاوازی پەسەند نەکرێت.
+- Dersên 1–3 û 6: mifte li gorî vebijarkên nivîsa dersê hat kontrolkirin.
+- Dersên 4–5: nivîsên wan berê ji aliyê bikarhêner ve hatibûn şandin; mifte bi nivîsên sererastkirî re hat guncandin.
+- Ders 7: mifte bi pêşnûsa sererastkirî re hat guncandin.
+- Dersên 8–9: mifte li gorî nivîsên vegerandî û sererastkirî ye.
+- Dersên 10–12: bersiv bi vebijark û nivîsa nû re hatin kontrolkirin.
+- Her 60 bersiv xwedî nasnameya pirsê ya xwe ne. Berî girêdana bi runtime, rêza vebijarkan û bersiva rast divê careke din were testkirin.
