@@ -174,6 +174,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("| kew | dawî |", lesson8)
         self.assertIn("| vedan | destpêk |", lesson8)
+        self.assertIn("| çav | dawî |", lesson8)
+        self.assertIn("| dirav | navîn |", lesson8)
         self.assertIn("| kevir | navîn |", lesson8)
         self.assertIn("| wî | destpêk |", lesson8)
         self.assertIn("| wêran | destpêk |", lesson8)
