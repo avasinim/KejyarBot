@@ -42,7 +42,9 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(manifest["round"], 1)
         self.assertEqual(manifest["round_title"], "ڕێنووسی سەرەتاییی کوردی")
         self.assertEqual(manifest["course_total_lessons"], 21)
+        self.assertEqual(manifest["safety"]["course_total_lessons"], 21)
         self.assertEqual(len(manifest["lessons"]), 21)
+        self.assertEqual(manifest["lessons"][0]["title"], "پیتەکان و دەنگەکان")
         self.assertEqual(manifest["lessons"][-1]["number"], 21)
 
     def test_loads_four_isolated_namespaced_lessons(self):
