@@ -16,8 +16,9 @@
       "assessment_status": "verified_eight_vowels_and_chart_color_only; runtime_integration_pending",
       "runtime_status": "not_registered",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
-      "presentation_status": "existing_user_supplied_alphabet_chart_preserved_as_lesson_media; UI_integration_pending",
-      "source_caution": "Do not use chart-derived total-letter or consonant counts: the chart conflicts with the user's explicit lesson explanation of 8 vowels."
+      "presentation_status": "isolated_question_view_models_added; Telegram_navigation_and_media_integration_pending",
+      "source_caution": "Do not use chart-derived total-letter or consonant counts: the chart conflicts with the user's explicit lesson explanation of 8 vowels.",
+      "interaction_presentation": "arami_lesson1_presentation.py"
     },
     {
       "id": "arami_course1_lesson_02",
