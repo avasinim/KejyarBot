@@ -196,7 +196,13 @@
   "source_audit": {
     "archive_file": "کەژیار.pdf",
     "audit_date": "2026-11-01",
-    "confirmed_lesson_titles": [
+    "gaps": [
+      13,
+      18,
+      19
+    ],
+    "note": "The supplied archive contains lesson bodies for Lessons 1–12 and 14–17; Lesson 4's source heading is only 'وانەی ٤', so no title is inferred. Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles.",
+    "lesson_numbers_with_source_content": [
       1,
       2,
       3,
@@ -213,12 +219,6 @@
       15,
       16,
       17
-    ],
-    "gaps": [
-      13,
-      18,
-      19
-    ],
-    "note": "The supplied archive contains Lesson 1–12 and 14–17 lesson bodies; Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles."
+    ]
   }
 }
