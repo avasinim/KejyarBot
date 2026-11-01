@@ -43,6 +43,7 @@ from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
+from arami_lesson1_telegram import menu_keyboard as arami_lesson1_menu_keyboard, callback as arami_lesson1_callback
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -282,6 +283,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
         ["ڕێنووسی لاتینی کوردیی"],
+        ["📕 ڕێنووسی ئارامی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -853,6 +855,15 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
+    if text == "📕 ڕێنووسی ئارامی":
+        await update.message.reply_text(
+            "📕 کۆرسی ڕێنووسی ئارامی — وانەی ١\n"
+            "«پیتەکان و دەنگەکان»\n\n"
+            "دەنگی ڕەسەن، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
+            reply_markup=arami_lesson1_menu_keyboard(),
+        )
+        return
+
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -867,7 +878,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی",
+        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی ئارامی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -1019,6 +1030,10 @@ def main():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_lesson1_callback(update, context, BASE_DIR),
+        pattern=r"^arami1:",
+    ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
