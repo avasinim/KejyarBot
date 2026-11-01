@@ -1,8 +1,8 @@
-"""Lossless runtime loader for the two source-aligned Kurmanji Latin courses.
+"""Lossless runtime loader for two source-separated Kurmanji Latin course drafts.
 
-Each course reads its own dedicated source document and answer key. Lesson
-bodies are extracted unchanged and the five MCQs are parsed without rewriting
-tables, examples, or exercise formatting.
+Each course reads its own dedicated lesson document and answer key. This loader
+checks structure and quiz consistency; it does not certify scientific source
+alignment. Lesson bodies are extracted without rewriting examples or formatting.
 """
 from pathlib import Path
 import re
@@ -17,7 +17,7 @@ COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.
 COURSES = (
     {
         "id": "kurmanji_latin_orthography",
-        "source_part": "Part I — Elfabêya kurdî, pp. 11–34",
+        "source_part": "UNCONFIRMED — Course 1 source pending user confirmation; Library candidate only: Dr. Efrasîyab Şikofteh, Rê zimanê Kurmancî (Havîn 2010), pp. 11–60",
         "first_heading": "## Ders 1:",
         "lesson_prefix": "kurmanji_latin_orthography",
         "key_path": COURSE1_KEY_PATH,
@@ -50,7 +50,10 @@ def _split_master(master_text):
     blocks = []
     for position, (start, number, title) in enumerate(starts):
         end = starts[position + 1][0] if position + 1 < len(starts) else len(lines)
-        blocks.append((number, title, "\n".join(lines[start:end]).strip()))
+        body = "\n".join(lines[start:end]).strip()
+        # Editorial provenance notes belong in the source document, not in learner-facing lesson text.
+        body = re.sub(r"(?ms)^### Provenance[^\n]*\n.*?(?=^## Ders |\Z)", "", body).strip()
+        blocks.append((number, title, body))
     return blocks
 
 
@@ -115,6 +118,9 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
         current = None
 
     for line in lines[quiz_start + 1:]:
+        # The KejyarBot signature is lesson branding, never part of the final MCQ option.
+        if line.strip().startswith("**🤖 کەژیار — KejyarBot@**"):
+            break
         qmatch = QUESTION.match(line)
         if qmatch:
             finish()
