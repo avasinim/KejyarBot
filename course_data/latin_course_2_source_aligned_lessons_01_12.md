@@ -324,7 +324,7 @@ Mînak:
 - `Hespan ceh xwar.` → `Wan ew xwar.`
 - `Min qelem ji destê xwe xist.`
 
-Pronavên berbihevîn ji bo nîşandana du an zêdetir kes/tiştan ku bi hev re têkildar in têne bikaranîn. Du formên bingehîn hene: `hev` û `êk`. Forma `êk` bi taybetî li Kurdistana navendî tê gotin. Ev pronav bi tenê yek kes nîşan nadin; têkiliya du an zêdetir kesan bi hev re nîşan didin.
+Pronavên berbihevîn ji bo nîşandana du an zêdetir kes/tiştan ku bi hev re têkildar in têne bikaranîn. Du formên bingehîn hene: `hev` û `êk`. Forma `êk` bi taybetî li bakurrojhilatê Kurdistanê tê gotin. Ev pronav bi tenê yek kes nîşan nadin; têkiliya du an zêdetir kesan bi hev re nîşan didin.
 
 ### Pronavên lihevxistî
 Cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
