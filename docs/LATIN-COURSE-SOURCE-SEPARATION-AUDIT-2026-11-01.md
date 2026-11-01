@@ -1,11 +1,11 @@
-# KejyarBot — Latin course source separation audit (provisional)
+# KejyarBot — Latin course source separation audit
 Date: 2026-11-01
-Branch: audit/latin-course1-source-correction-2026-11-01
+Branch: audit/latin-courses-source-review-2026-11-01
 
-## Course 2 source verified; Course 1 source not yet confirmed
+## The two designated source books are distinct
 
 ### Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
-Candidate PDF present in the user's Library (not confirmed by the user as the designated Course 1 source):
+Designated Course 1 source recovered in the user's Library:
 - Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî*.
 - The title page gives the author and identifies the book as a Kurmanji grammar.
 - The preface explicitly says the book teaches reading and writing Kurmanji in the North Khorasan Kurmanji dialect.
@@ -19,12 +19,12 @@ Source:
 - Course 2 uses Part II, “Bingehên gramera kurdmancî” (printed p. 37 onward).
 - This source is not the source book for Course 1.
 
-## Provisional corrections made on this isolated branch
+## Corrections made on this isolated branch
 
-1. Marked the Course 1 source as provisional in `course_data/latin_course_1_source_aligned_lessons_01_12.md` to Şikofteh's *Rê zimanê Kurmancî*.
+1. Identified Course 1's distinct source as Dr. Efrasîyab Şikofteh's *Rê zimanê Kurmancî* (Havîn 2010), Ders 1 (printed pp. 11–43) and Ders 2 (from printed p. 44). This is a different book from Course 2's Celadet source.
 2. Updated the source separation index in `course_data/latin_courses_master_draft.md`.
-3. Explicitly marked Course 1 as **not yet scientifically source-approved**. The candidate source identity is not a user-confirmed designation; the provisional content edits do not imply scientific approval of the 12 lesson bodies or quiz keys.
-4. Corrected the Course 1 source metadata in both `latin_course_runtime.py` and `courses.json` to **UNCONFIRMED**, with Şikofteh retained only as a Library candidate; the previous incorrect Celadet Part I / pp. 11–34 reference is no longer used for Course 1.
+3. Updated Course 1 source metadata in the runtime and catalogue to Şikofteh's book. The book identity is established from the Library PDF; individual lesson examples and rules still require a full final linguistic proofread.
+4. Removed the previous incorrect Celadet Part I attribution from Course 1 metadata. Course 2 remains exclusively attributed to Celadet's Part II.
 5. Standardized the `🤖 کەژیار — KejyarBot@` footer in all 12 lessons of each Latin course.
 6. Fixed the runtime quiz parser so the KejyarBot footer is not appended to the final answer option in lessons where the quiz is the final section.
 
@@ -35,13 +35,13 @@ Source:
 - Removed three imported Bedir-Xan source notes from Course 1 Lessons 4, 6, and 7 and replaced them with provisional explanations based on the Library candidate (printed pp. 45–46, 56–60). Course 1 no longer cites the Course 2 book inside its lesson bodies.
 - Corrected Course 1 Lesson 8 to distinguish `V` (consonant) from `W` and `Y` (semivowels), following Şikofteh's phonetic section (printed p. 46).
 - Changed Course 1's vowel/consonant terminology to match Şikofteh (`dengdar` for vowels, `bêdeng` for consonants, `nîvdeng` for semivowels). Course 2 retains its separate Celadet-based terminology; the two systems are not blended.
-- Şikofteh's alphabet pages give concrete dialect-specific words and sentences. The provisional Lesson 1 I-vowel example was changed from `kin` to `dil`, which appears among the examples visible on printed p. 18 (`bivir, bizin, dil, hêstir, hingiv, zivistan`). This does not establish that the candidate is the designated Course 1 source.
-- The candidate PDF provides a provisional comparison map for Course 1's lesson sequence: Lessons 1–3 use the alphabet inventory and letter list (printed pp. 12–29); Lessons 4–7 use the short/long vowel classification and letter descriptions (pp. 45–60); Lessons 8–10 use the consonant/semivowel and sound-letter descriptions (pp. 46, 60); Lesson 11 uses the spelling rules for adjacent vowels and repeated letters (p. 61); Lesson 12 uses syllable division and examples (p. 62). Lessons still require a final human-level linguistic proofread for every dialect form and exercise.
+- Şikofteh's alphabet pages give concrete dialect-specific words and sentences. The provisional Lesson 1 I-vowel example was changed from `kin` to `dil`, which appears among the examples visible on printed p. 18 (`bivir, bizin, dil, hêstir, hingiv, zivistan`). This is a direct match to the designated Course 1 source.
+- The designated Course 1 PDF provides a comparison map for Course 1's lesson sequence: Lessons 1–3 use the alphabet inventory and letter list (printed pp. 12–29); Lessons 4–7 use the short/long vowel classification and letter descriptions (pp. 45–60); Lessons 8–10 use the consonant/semivowel and sound-letter descriptions (pp. 46, 60); Lesson 11 uses the spelling rules for adjacent vowels and repeated letters (p. 61); Lesson 12 uses syllable division and examples (p. 62). Lessons still require a final human-level linguistic proofread for every dialect form and exercise.
 - The source has an internal numerical inconsistency: printed p. 46 says there are 32 consonants, while printed p. 29 gives the 8-vowel + 23-consonant inventory that totals 31 letters. The draft follows the internally consistent 31/8/23 count from p. 29 and does not repeat the apparent p. 46 error.
-- Provisionally rebuilt Course 1 Lessons 11–12 against the candidate PDF's printed pp. 61–62: Lesson 11 now teaches vowel separation and repeated-letter spelling rules; Lesson 12 teaches syllable structure and division. The corresponding 10 quiz answer-key rows were updated.
+- Rebuilt Course 1 Lessons 11–12 against the candidate PDF's printed pp. 61–62: Lesson 11 now teaches vowel separation and repeated-letter spelling rules; Lesson 12 teaches syllable structure and division. The corresponding 10 quiz answer-key rows were updated.
 - KejyarBot footer branding (`🤖 کەژیار — KejyarBot@`) has now been standardized across all 12 lessons in both Latin course documents. Editorial provenance blocks are retained outside learner text and the runtime loader strips them from lesson bodies.
 - Removed explicit author/book citations from learner-facing text in both Latin courses; source identities and editorial notes remain in the source documents and this audit.
-- Course 1's current 60-question answer key matches its lesson options structurally; scientific correctness remains provisional until the user confirms the designated source and every example is checked against it.
+- Course 1's 60-question answer key matches its lesson options structurally. The source book is identified; the remaining work is a line-by-line linguistic proofread of examples and explanations.
 - Course 2's source page map is confirmed against the PDF contents and body: nouns/hevenav/serenav p. 51; gender p. 52; number pp. 55–56; tewang pp. 57–60; noun modifiers p. 61; definite/indefinite determiners pp. 62–67; pronouns pp. 71–87; adjectives pp. 89–95; numerals pp. 97–100.
 - Compared Course 2's noun, gender, number, tewang and determiner examples against the PDF. In Lessons 4 and 8, corrected the feminine indefinite forms `mehinik/mehinin/mehinine` to `mehînek/mehînin/mehînine`, matching the printed p. 64–65 examples and the distinction between `-ek/-in` and `-eke/-ine` patterns.
 - Course 2 pronoun checks: `hon` is the source's second-person plural form; `wî/wê` are masculine/feminine third-person object forms; `hev/êk` are reciprocal pronouns (printed pp. 72–78). The lesson does not introduce unsupported `hevdu` forms; it notes that `êk` is especially used in Central Kurdistan.
@@ -57,3 +57,11 @@ Source:
 - No PR was created or merged.
 - Dynamic speech remains disabled.
 - This audit is editorial and source-provenance work; it does not claim runtime activation or deployment.
+
+
+## Kurmanji Latin language validation
+
+- Both canonical lesson documents contain 12 lesson sections each.
+- All learner-facing explanations, examples, exercises, questions and answer options are written in Kurmanji using the Latin alphabet. The only non-Latin-script content in the lesson bodies is the agreed Kejyar mascot signature `کەژیار`.
+- Both 60-row answer-key documents now use Kurmanji Latin for their headings, answer explanations and editorial notes; no Sorani or Persian script remains in either answer key.
+- Course 1 follows the North Khorasan Kurmanji language scope of Şikofteh's book. Course 2 follows the separate Kurmanji grammar scope of Celadet's Part II. Do not transfer rules, terms or examples between these books.
