@@ -862,7 +862,7 @@ Di dawiya dersê de xwendekar dikare:
 
 ### 2. Herfa W
 
-`W` nîvdeng e. Herfa `Y` jî di heman komê de ye. `W` bi dengdaran re şêweyên wek `wa, we, wê, wi, wî` çêdike û bi hin bêdengan re jî di komên `xw, kw, gw` de tê.
+`W` nîvdeng e. Herfa `Y` jî di heman komê de ye. `W` bi dengdaran re şêweyên wek `wa, we, wê, wi, wî` çêdike. Lê pêkhateyên `xw, kw, gw` di çavkaniyê de wek **pevdeng** (kombûna dengên bêdeng) tên ravekirin; divê ew ji erkê nîvdengî yê `W` cuda bên fêmkirin.
 
 | Peyv | Cihê W |
 |---|---|
@@ -871,7 +871,7 @@ Di dawiya dersê de xwendekar dikare:
 | wê | destpêk |
 | wêne | destpêk |
 | law | dawî |
-| xwarin | navîn |
+| xew | dawî |
 
 ### 3. Cudahiyên V û W
 
