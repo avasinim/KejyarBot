@@ -17,14 +17,14 @@ COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.
 COURSES = (
     {
         "id": "kurmanji_latin_orthography",
-        "source_part": "Dr. Efrasîyab Şikofteh — Rê zimanê Kurmancî (Havîn 2010), Ders 1 (rûpelên çapkirî 11–43) û Ders 2 (ji rûpela 44)",
+        "source_part": "Part I — Dr. Efrasîyab Şikofteh — Rê zimanê Kurmancî (Havîn 2010), Ders 1 (rûpelên çapkirî 11–43) û Ders 2 (ji rûpela 44)",
         "first_heading": "## Ders 1:",
         "lesson_prefix": "kurmanji_latin_orthography",
         "key_path": COURSE1_KEY_PATH,
     },
     {
         "id": "kurmanji_latin_grammar",
-        "source_part": "Celadet Alî Bedir-Xan — Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), Beşa II (rûpelên çapkirî 37–100)",
+        "source_part": "Part II — Celadet Alî Bedir-Xan — Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), Beşa II (rûpelên çapkirî 37–100)",
         "first_heading": "## Ders 1 —",
         "lesson_prefix": "kurmanji_latin_grammar",
         "key_path": COURSE2_KEY_PATH,
