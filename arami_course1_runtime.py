@@ -28,12 +28,23 @@ def load_arami_course1(base_dir):
     if manifest.get("course_id") != COURSE_ID:
         raise AramiCourseError("unexpected Arami course id")
     lessons = manifest.get("lessons")
-    if not isinstance(lessons, list) or len(lessons) != 4:
-        raise AramiCourseError("Arami Course 1 must declare exactly four lessons")
+    declared_total = manifest.get("course_total_lessons", manifest.get("course_size"))
+    if (
+        not isinstance(lessons, list)
+        or not isinstance(declared_total, int)
+        or isinstance(declared_total, bool)
+        or declared_total < 1
+        or len(lessons) != declared_total
+    ):
+        raise AramiCourseError("Arami Course 1 lesson list must match its declared total")
     ids = [lesson.get("id") for lesson in lessons if isinstance(lesson, dict)]
-    if len(ids) != 4 or len(set(ids)) != 4:
-        raise AramiCourseError("Arami lessons need four unique namespaced ids")
-    first = lessons[0]
+    if len(ids) != declared_total or len(set(ids)) != declared_total:
+        raise AramiCourseError("Arami lessons need unique namespaced ids")
+    if manifest.get("round") == 1 and declared_total != 21:
+        raise AramiCourseError("Arami introductory orthography round must declare 21 lessons")
+    first = next((lesson for lesson in lessons if lesson.get("id") == LESSON_1_ID), None)
+    if first is None:
+        raise AramiCourseError("Arami Lesson 1 is missing")
     # The content status records its delivery state and may evolve; immutability
     # is represented by the stable source marker, not the old status label.
     if first.get("content_source") != "user_supplied_immutable":
