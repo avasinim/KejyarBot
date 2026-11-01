@@ -119,7 +119,10 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lesson = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("W` bi dengdaran re", lesson)
         self.assertIn("wek pevdeng", lesson)
-        self.assertIn("| xew | dawî |", lesson)
+        self.assertIn("| kew | dawî |", lesson)
+        self.assertIn("| dew | dawî |", lesson)
+        self.assertNotIn("| xew | dawî |", lesson)
+        self.assertNotIn("| law | dawî |", lesson)
         self.assertNotIn("| xwarin | navîn |", lesson)
     def test_course_one_lesson_nine_tracks_source_x_y_z_descriptions(self):
         lessons, _, _ = load_latin_courses()
