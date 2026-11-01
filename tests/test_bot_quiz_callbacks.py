@@ -187,7 +187,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(quiz["lesson"], lesson)
                 self.assertEqual(quiz["questions"], bot.QUIZ_DATA[lesson])
                 self.assertEqual(quiz["question_message_id"], 880)
-                self.assertEqual(query.message.reply_text.await_args.args[0], "📝 " + expected["question"])
+                self.assertEqual(query.message.reply_text.await_args.args[0], "🎯 ڕاهێنان " + expected["question"])
                 markup = query.message.reply_text.await_args.kwargs["reply_markup"]
                 self.assertEqual(
                     [row[0].callback_data for row in markup.inline_keyboard],
@@ -219,6 +219,90 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         reward.assert_called_once_with(12345, lesson)
         self.assertNotIn("quiz", context.user_data)
         self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+
+    async def test_wrong_submitted_answer_shows_incorrect_and_reveals_correct_answer(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        wrong_index = next(
+            index for index, option in enumerate(question["options"])
+            if option != question["answer"]
+        )
+        update, context, query = self.make_context(f"select_answer_{wrong_index}")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+        })
+        query.message.reply_text = AsyncMock()
+
+        await bot.select_quiz_answer(update, context)
+        query.data = "submit_answer"
+        await bot.submit_quiz_answer(update, context)
+
+        feedback = [call.args[0] for call in query.message.reply_text.await_args_list]
+        self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
+        self.assertNotIn("quiz", context.user_data)
+
+    async def test_lesson_completion_offers_clickable_practice_for_exact_target_lessons(self):
+        targets = [
+            "وانە_3",
+            bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][0],
+            bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0],
+        ]
+        for lesson in targets:
+            with self.subTest(lesson=lesson):
+                query = SimpleNamespace(
+                    data=f"finish_{lesson}",
+                    from_user=SimpleNamespace(id=12345),
+                    answer=AsyncMock(),
+                    message=SimpleNamespace(reply_text=AsyncMock()),
+                )
+                update = SimpleNamespace(callback_query=query)
+                context = SimpleNamespace(user_data={})
+                with (
+                    patch.object(bot, "can_open", return_value=True),
+                    patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+                    patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+                    patch.object(bot, "check_badges"),
+                    patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+                ):
+                    await bot.finish_lesson(update, context)
+
+                keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
+                callbacks = [
+                    button.callback_data
+                    for row in keyboard.inline_keyboard
+                    for button in row
+                ]
+                self.assertIn(bot.lesson_practice_callback(lesson), callbacks)
+
+    async def test_course_one_lesson_two_does_not_offer_clickable_practice(self):
+        lesson = "وانە_2"
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = [
+            button.callback_data
+            for row in keyboard.inline_keyboard
+            for button in row
+        ]
+        self.assertFalse(any(callback.startswith("quiz_") for callback in callbacks))
 
     def test_submission_mode_is_limited_to_course_one_lesson_three_and_both_latin_courses(self):
         self.assertFalse(bot.quiz_requires_submission("وانە_2"))
