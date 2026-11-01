@@ -100,8 +100,11 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         alphabet_lesson = lessons["kurmanji_latin_orthography_03"]["content"]
         vw_lesson = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("23 herfên din", alphabet_lesson)
+        self.assertIn("Dengdêr û dengdar", alphabet_lesson)
+        self.assertIn("Dengdêr ew deng in", alphabet_lesson)
+        self.assertNotIn("8 dengdar", alphabet_lesson)
         self.assertIn("W û Y wek **nîvdeng**", alphabet_lesson)
-        self.assertIn("V` bêdengeke kurmancî ye", vw_lesson)
+        self.assertIn("V` dengdareke kurmancî ye", vw_lesson)
         self.assertIn("W` nîvdeng e", vw_lesson)
         self.assertIn("Y` jî di heman komê de ye", vw_lesson)
 
@@ -117,7 +120,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
     def test_course_one_separates_w_semivowel_from_pevdeng_clusters(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_08"]["content"]
-        self.assertIn("W` bi dengdaran re", lesson)
+        self.assertIn("W` bi dengdêran re", lesson)
         self.assertIn("wek pevdeng", lesson)
         self.assertIn("| kew | dawî |", lesson)
         self.assertIn("| dew | dawî |", lesson)
@@ -142,6 +145,8 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("X ji nîveka qirikê", lesson)
         self.assertIn("Y nîvdeng e", lesson)
         self.assertIn("Z di navbera diranan de", lesson)
+        self.assertIn("X dengdareke kurmancî ye", lesson)
+        self.assertIn("Z dengdareke kurmancî ye", lesson)
         self.assertIn("| zozan | Z |", lesson)
         self.assertNotIn("Herfên Taybet di Elfabeya Kurmancî de", lesson)
 
