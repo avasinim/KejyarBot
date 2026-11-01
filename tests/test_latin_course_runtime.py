@@ -121,6 +121,13 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("wek pevdeng", lesson)
         self.assertIn("| xew | dawî |", lesson)
         self.assertNotIn("| xwarin | navîn |", lesson)
+    def test_course_two_reciprocal_e_k_region_matches_celadet_source(self):
+        lessons, _, _ = load_latin_courses()
+        lesson = lessons["kurmanji_latin_grammar_10"]["content"]
+        self.assertIn("hev` û `êk", lesson)
+        self.assertIn("li bakurrojhilatê Kurdistanê", lesson)
+        self.assertNotIn("li Kurdistana navendî", lesson)
+
     def test_course_two_neuter_personal_pronoun_has_no_invented_agent_form(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_grammar_09"]["content"]
