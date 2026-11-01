@@ -259,7 +259,7 @@ Lê di dengnasînê de hemû van herfan yek cure nînin. Çavkaniya bingehîn W 
 | Taybetmendî | Dengdar | Bêdengên din | Nîvdeng |
 |---|---|---|---|
 | Taybetmendî | Bi serê xwe dikarin dengê xwe derxînin | Di derxistina dengê wan de alîkariya dengdarê pêwîst e | Di navbera dengdar û bêdeng de taybetmendiyên wan hene |
-| Mînak | A, E, Î | B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, X | W, Y |
+| Mînak | A, E, Î | B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, X, Z | W, Y |
 
 ### 4. Dengdar di peyvan de
 
