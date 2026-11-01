@@ -1,6 +1,6 @@
 # Kejyar — Master Draft Pack: Two Kurmanji Latin Courses
 
-> Editorial master source for the two Latin courses. The isolated work branch loads these lessons through `latin_course_runtime.py`; production activation/deployment remains separate and has not been performed. Content remains subject to final text verification. The five user-supplied lesson texts are accounted for in the conversation; branch copies are editorially source-aligned and remain subject to final text verification.
+> Editorial master source for the two Latin courses. The isolated work branch loads these lessons through `latin_course_runtime.py`; production activation/deployment remains separate and has not been performed. Content remains subject to final text verification. The five user-supplied lesson texts are accounted for in the conversation; source alignment is pending, especially for Course 1 after correcting its distinct source book.
 
 ## Source and course separation
 - Course 1: Dr. Efrasîyab Şikofteh, *Rê zimanê Kurmancî* (Havîn 2010), especially Lesson 1, “Alfabê ya zimanê kurmancî” (printed p. 11 onward) and Lesson 2, “Alfabê ya kurmancî bi dîtina dengnasînê” (contents list gives printed p. 44). This is the distinct source PDF recovered in the user's Library.
