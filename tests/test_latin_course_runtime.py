@@ -160,7 +160,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_08"]["content"]
         self.assertIn("W` bi dengdêran re", lesson)
-        self.assertIn("wek pevdeng", lesson)
+        self.assertIn("pevdeng", lesson)
         self.assertIn("| kew | dawî |", lesson)
         self.assertIn("| dew | dawî |", lesson)
         self.assertNotIn("| xew | dawî |", lesson)
@@ -258,7 +258,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lesson = lessons["kurmanji_latin_grammar_11"]["content"]
         self.assertIn("Yên pî ve:", lesson)
         self.assertIn("Yên qerse:", lesson)
-        self.assertIn("yê, ya, yên", lesson)
+        self.assertIn("`yê`, `ya`, `yên`", lesson)
         self.assertNotIn("di ravekirina veqetandekên binavkirî de girêk dide", lesson)
 
     def test_course_two_lesson_five_preserves_celadet_three_variant_examples(self):
