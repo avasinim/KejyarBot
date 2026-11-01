@@ -1,6 +1,6 @@
 # KejyarBot — Latin Courses: Editorial Index
 
-**Status:** This file is an index only. It is not a runtime source and does not contain a combined lesson master. The runtime loader reads each course's dedicated lesson document and answer key separately. Do not restore or use the older combined draft because its Course 1 source attribution was incorrect and its lesson copies are outdated.
+**Rewş:** Ev pel tenê îndeksek e, ne çavkaniya runtime û ne jî belgeya hevbeş a dersan e. Runtime ji bo her kursê belgeya dersan û mifteya bersivan a cuda dixwîne. Belgeya kevn a hevbeş ji ber çavkaniya şaş a Kursa 1 û kopiyên kevn nayê bikaranîn.
 
 ## Course 1 — Bingehên Rastnivîsîna Kurdî ya Latînî
 
@@ -8,7 +8,7 @@
 - **Scope:** Alfabêya Kurmancî ya Latînî, 31 tîp, 8 dengdêr, 23 dengdar, taybetmendiyên dengnasînê û rastnivîsîn. Mînakên zimanî ji Kurmanciya Bakurê Xorasanê ne.
 - **Canonical lessons:** `course_data/latin_course_1_source_aligned_lessons_01_12.md`
 - **Canonical quiz key:** `course_data/latin_course_1_quiz_answer_key_draft.md`
-- **Source review:** Pirtûka Şikofteh wek çavkaniya Kursa 1 hat nasîn. Rûpelên 11–18 û 22–27 û beşa dengnasînê li rûpela 44 û دواتر پشکنین کراون. Pêdivî ye mînak û rêzikên her 12 dersan bi awayekî berfireh werin kontrolkirin.
+- **Source review:** Pirtûka Şikofteh wek çavkaniya Kursa 1 hat nasîn. Rûpelên 11–18 û 22–27 û beşa dengnasînê li rûpela 44 û paşê jî hatine pêdaçûn. Pêdivî ye mînak û rêzikên her 12 dersan bi awayekî berfireh werin kontrolkirin.
 
 ## Course 2 — Bingehên Gramera Kurmancî
 
