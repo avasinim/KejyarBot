@@ -227,6 +227,59 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
             self.assertTrue(bot.quiz_requires_submission(bot.COURSE_LESSON_ORDER[course_id][0]))
 
+    async def test_course_one_lesson_three_uses_select_then_submit_buttons(self):
+        lesson = "وانە_3"
+        query = SimpleNamespace(
+            data="quiz_3_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=883))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            await bot.start_quiz(update, context)
+
+        markup = query.message.reply_text.await_args.kwargs["reply_markup"]
+        self.assertTrue(all(
+            row[0].callback_data.startswith("select_answer_")
+            for row in markup.inline_keyboard
+        ))
+
+    async def test_course_one_lesson_two_keeps_immediate_answer_buttons(self):
+        query = SimpleNamespace(
+            data="quiz_2_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=882))
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=["وانە_2"]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            await bot.start_quiz(update, context)
+
+        markup = query.message.reply_text.await_args.kwargs["reply_markup"]
+        self.assertTrue(all(
+            row[0].callback_data.startswith("answer_")
+            for row in markup.inline_keyboard
+        ))
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
