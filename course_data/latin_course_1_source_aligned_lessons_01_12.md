@@ -653,8 +653,8 @@ Herfa Î jî dengdêrek e, lê ji I cuda ye. Nîşana li ser wê beşek ji herf�
 |---|---|
 | îro | Î |
 | pîr | Î |
-| mîr | Î |
-| nîv | Î |
+| dîk | Î |
+| dîwar | Î |
 | şîr | Î |
 | îşev | Î |
 
@@ -666,8 +666,8 @@ I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan ten�
 |---|---|
 | jin | pîr |
 | dil | şîr |
-| pir | mîr |
-| bizin | nîv |
+| pir | dîk |
+| bizin | dîwar |
 | kirin | îro |
 
 **Têbînî:** Ev tablo ji bo nasîna herfan e; cotên peyvan ne hemî ji aliyê wateyê ve wekhev in û ne hemî tenê di yek dengî de ji hev cuda ne.
@@ -685,11 +685,11 @@ I di koma dengên kurt û Î di koma dengên dirêj de ye. Lê cudahiya wan ten�
 
 Kêşeyeke biçûk: her peyvê bixwîne û dengdêra wê bibîne.
 
-jin — pîr — dil — şîr — pir — mîr — bizin — nîv
+jin — pîr — dil — şîr — pir — dîk — bizin — dîwar
 
 **Xebata 2:** Peyvên li jêr bi du koman veqetîne:
 
-îro — jin — pîr — dil — şîr — pir — nîv — bizin
+îro — jin — pîr — dil — şîr — pir — dîwar — bizin
 
 **Xebata 3:** Bi her yek ji van herfên jêrîn re du peyvên nû binivîse:
 
