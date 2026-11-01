@@ -38,7 +38,7 @@ def parse_embedded_quizzes(source_text):
                 if question_index + 1 < len(question_headers)
                 else len(quiz_text)
             )
-            question_text = quiz_text[question_header.end():question_end]
+            question_text = question_header.group(2) + "\n" + quiz_text[question_header.end():question_end]
             question_text = re.split(
                 r"\n\s*(?:### Xulasa|---|\*\*🤖)",
                 question_text,
@@ -111,8 +111,8 @@ class CourseTwoQuizAnswerKeyTests(unittest.TestCase):
         quizzes = parse_embedded_quizzes(COURSE_SOURCE.read_text(encoding="utf-8"))
         answer_key = parse_master_key(ANSWER_KEY.read_text(encoding="utf-8"))
 
-        self.assertIn("ko", quizzes[11][3]["A"])
-        self.assertEqual(answer_key[(11, 3)], ("A", "ko"))
+        self.assertIn("ko", quizzes[11][4]["B"])
+        self.assertEqual(answer_key[(11, 4)], ("B", "gihanek"))
         self.assertIn("gihanek", quizzes[11][4]["B"])
         self.assertEqual(answer_key[(11, 4)], ("B", "gihanek"))
 
