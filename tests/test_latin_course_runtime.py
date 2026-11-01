@@ -124,6 +124,17 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertNotIn("| xew | dawî |", lesson)
         self.assertNotIn("| law | dawî |", lesson)
         self.assertNotIn("| xwarin | navîn |", lesson)
+    def test_course_one_i_ii_examples_and_w_examples_are_source_attested(self):
+        lessons, _, _ = load_latin_courses()
+        lesson6 = lessons["kurmanji_latin_orthography_06"]["content"]
+        self.assertIn("| îşev | Î |", lesson6)
+        self.assertNotIn("rêzên pîr", lesson6)
+        lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
+        self.assertIn("| kew | dawî |", lesson8)
+        self.assertIn("`kew`", lesson8)
+        self.assertNotIn("`law`", lesson8)
+        self.assertNotIn("| law | dawî |", lesson8)
+
     def test_course_one_lesson_nine_tracks_source_x_y_z_descriptions(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_09"]["content"]
