@@ -111,8 +111,8 @@ class CourseTwoQuizAnswerKeyTests(unittest.TestCase):
         quizzes = parse_embedded_quizzes(COURSE_SOURCE.read_text(encoding="utf-8"))
         answer_key = parse_master_key(ANSWER_KEY.read_text(encoding="utf-8"))
 
-        self.assertIn("ko", quizzes[11][4]["B"])
-        self.assertEqual(answer_key[(11, 4)], ("B", "gihanek"))
+        self.assertIn("ko", quizzes[11][3]["A"])
+        self.assertEqual(answer_key[(11, 3)], ("A", "ko"))
         self.assertIn("gihanek", quizzes[11][4]["B"])
         self.assertEqual(answer_key[(11, 4)], ("B", "gihanek"))
 
