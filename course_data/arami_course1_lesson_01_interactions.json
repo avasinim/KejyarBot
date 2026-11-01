@@ -1,74 +1,144 @@
 {
   "course_id": "arami_orthography_foundations",
   "lesson_id": "arami_course1_lesson_01",
-  "content_policy": "Questions use only facts verified from the user-supplied Lesson 1 material and explicit user clarification. The lesson text and chart remain unchanged. Do not derive vowel or consonant counts from the chart where it conflicts with the lesson explanation.",
-  "source_asset": "user-supplied Lesson 1 chart for visual color key; user clarification for the vowel count",
-  "source_note": "Lesson 1 explicitly teaches 8 vowels. The chart's apparent 6-vowel count conflicts with that explanation, so no question may assert 6 vowels. The chart's 28-consonant count is also not used because it conflicts with the confirmed 8-vowel count and the chart's total count.",
+  "content_policy": "Questions use only facts explicitly stated in the user-supplied Lesson 1 PDF pages 1–4 and the user's confirmation that the lesson teaches eight vowels. The lesson text, examples, and chart remain unchanged.",
+  "source_asset": "کەژیار.pdf, pages 1–4; original Lesson 1 exercise, questions 1–5",
+  "source_note": "The source prose explicitly states 34 alphabet letters and 8 vowels. The chart's apparent vowel count conflicts with the prose, so the confirmed eight-vowel explanation is authoritative. No consonant total or total sound count is tested.",
   "practice": [
     {
-      "id": "arami1_practice_03",
+      "id": "arami1_practice_01",
+      "type": "recognize",
+      "section_id": "lesson1_alphabet_count",
+      "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+      "options": [
+        "٢٨ پیت",
+        "٣٤ پیت",
+        "٣٧ پیت"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+    },
+    {
+      "id": "arami1_practice_02",
       "type": "recognize",
       "section_id": "lesson1_vowel_count",
-      "prompt": "ژمارەی بزوێنەکانی وانەی ١ چەندە؟",
+      "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
       "options": [
-        "٨ بزوێن",
         "٦ بزوێن",
-        "٢٨ بزوێن"
+        "٧ بزوێن",
+        "٨ بزوێن"
+      ],
+      "answer_index": 2,
+      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+    },
+    {
+      "id": "arami1_practice_03",
+      "type": "classify",
+      "section_id": "lesson1_dual_letters",
+      "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+      "options": [
+        "(و) و (ی)",
+        "(ب) و (پ)",
+        "(ر) و (ڕ)"
       ],
       "answer_index": 0,
-      "source_evidence": "ڕونکردنەوەی مامۆستا: ٨ بزوێن"
+      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
     },
     {
       "id": "arami1_practice_04",
-      "type": "classify",
-      "section_id": "lesson1_chart_categories",
-      "prompt": "لە خشتەی وانەکەدا بزوێنەکان بە کام ڕەنگە دیاریکراون؟",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "دەنگی کورتِ بزرۆکە بە کام نیشانە دەنووسرێت؟",
       "options": [
-        "سوور",
-        "سەوز"
+        "u",
+        "i",
+        "o"
       ],
-      "answer_index": 0,
-      "source_evidence": "لە خشتەی وێنەیی‌دا خانەکانی بزوێن بە ڕەنگی سوور نیشان دراون"
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+    },
+    {
+      "id": "arami1_practice_05",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "ئایا بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+      "options": [
+        "بەڵێ",
+        "نەخێر"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
     }
   ],
   "assessment": [
     {
-      "id": "arami1_assessment_03",
+      "id": "arami1_assessment_01",
+      "type": "recognize",
+      "section_id": "lesson1_alphabet_count",
+      "prompt": "بەپێی وانەی ١، ئەلفبێی زمانی کوردی چەند پیتە؟",
+      "options": [
+        "٣٧ پیت",
+        "٣٤ پیت",
+        "٢٨ پیت"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+    },
+    {
+      "id": "arami1_assessment_02",
       "type": "recognize",
       "section_id": "lesson1_vowel_count",
-      "prompt": "بەپێی فێرکاریی وانەی ١، چەند بزوێن هەن؟",
+      "prompt": "ژمارەی بزوێنەکان لەم دابەشکردنەدا چەندە؟",
       "options": [
         "٨ بزوێن",
         "٦ بزوێن",
-        "٢٨ بزوێن"
+        "٧ بزوێن"
       ],
       "answer_index": 0,
-      "source_evidence": "ڕونکردنەوەی مامۆستا: ٨ بزوێن"
+      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+    },
+    {
+      "id": "arami1_assessment_03",
+      "type": "classify",
+      "section_id": "lesson1_dual_letters",
+      "prompt": "کام پیتانە هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+      "options": [
+        "(ب) و (پ)",
+        "(و) و (ی)",
+        "(ر) و (ڕ)"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
     },
     {
       "id": "arami1_assessment_04",
-      "type": "classify",
-      "section_id": "lesson1_chart_categories",
-      "prompt": "کام ڕەنگ لە خشتەکەدا بۆ نیشاندانی بزوێنەکان بەکارهاتووە؟",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "نیشانەی دەنگی کورتِ بزرۆکە کامەیە؟",
       "options": [
-        "سەوز",
-        "سوور"
+        "o",
+        "u",
+        "i"
       ],
-      "answer_index": 1,
-      "source_evidence": "لە خشتەی وێنەیی‌دا خانەکانی بزوێن بە ڕەنگی سوور نیشان دراون"
+      "answer_index": 2,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+    },
+    {
+      "id": "arami1_assessment_05",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "بۆ دەنگی بزرۆکە پیتێکی تایبەت هەیە؟",
+      "options": [
+        "نەخێر",
+        "بەڵێ"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
     }
   ],
-  "not_yet_authored": [
-    "sound-to-letter listening items",
-    "letter-sequence completion",
-    "letter-name matching",
-    "individual vowel recognition and listening items pending exact lesson/audio mapping",
-    "total alphabet and consonant counts: chart conflicts with the user's confirmed eight-vowel explanation; awaiting exact lesson wording"
-  ],
-  "reason": "Do not derive counts from a chart that conflicts with the user's explicit lesson explanation. Other item types require verified per-letter text/audio mappings.",
   "source_correction": {
     "lesson_1_vowel_count": 8,
-    "authority": "user clarification of the actual lesson explanation",
+    "authority": "explicit lesson prose and user's confirmation",
     "supersedes": "earlier chart-only interpretation that counted 6 vowels"
   }
 }
