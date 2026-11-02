@@ -20,6 +20,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(len(manifest["lessons"]), 21)
+        self.assertEqual(manifest["course_total_lessons"], 21)
+        self.assertEqual(manifest["course_size"], 21)
         self.assertEqual(
             [item["number"] for item in sorted(manifest["lessons"], key=lambda item: item["number"])],
             list(range(1, 22)),
