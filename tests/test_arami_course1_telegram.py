@@ -30,10 +30,10 @@ class AramiCourseTelegramTests(unittest.TestCase):
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         callbacks = {button.callback_data for button in buttons}
         read_callbacks = {item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")}
-        self.assertEqual(len(read_callbacks), 21)
+        self.assertEqual(len(read_callbacks), 20)
         self.assertEqual(
             read_callbacks,
-            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
+            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 21)},
         )
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
@@ -48,12 +48,13 @@ class AramiCourseTelegramTests(unittest.TestCase):
         banks = load_question_banks(ROOT)
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
+        self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 20)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 16)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 16)
         self.assertNotIn("aramiC:practice:11", callbacks)
         self.assertNotIn("aramiC:practice:14", callbacks)
-        self.assertNotIn("aramiC:practice:20", callbacks)
+        self.assertIn("aramiC:practice:20", callbacks)
+        self.assertIn("aramiC:assessment:20", callbacks)
         self.assertNotIn("aramiC:assessment:11", callbacks)
         self.assertIn("aramiC:practice:15", callbacks)
         self.assertIn("aramiC:assessment:15", callbacks)
