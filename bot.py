@@ -212,7 +212,8 @@ async def send_lesson_infographic(message, lesson_id):
     """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
 
-ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
+# Legacy 22-lesson Course 1 is retained only as archived source data.
+ORDER = COURSE_LESSON_ORDER.get("orthography_basic", [])
 COURSE_LESSON_ORDER = {
     course["id"]: visible_course_lessons(course, LESSON_DATA)
     for course in COURSES
