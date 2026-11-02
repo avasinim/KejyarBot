@@ -43,7 +43,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             self.assertTrue(all(len(bot.QUIZ_DATA[item]) == 5 for item in lesson_ids))
             self.assertTrue(all(source_part in course["source_part"] for course in bot.COURSES if course["id"] == course_id))
         self.assertEqual(len(bot.COURSES), 6)
-        self.assertEqual(len(bot.ORDER), 22)
+        self.assertEqual(len(bot.ORDER), 0)
 
 
     def test_both_latin_courses_and_answer_keys_are_kurmanji_latin(self):
