@@ -44,6 +44,7 @@ from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_ort
 from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import menu_keyboard as arami_lesson1_menu_keyboard, callback as arami_lesson1_callback
+from arami_lesson5_telegram import callback as arami_lesson5_callback
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -1033,6 +1034,10 @@ def main():
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson1_callback(update, context, BASE_DIR),
         pattern=r"^arami1:",
+    ))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_lesson5_callback(update, context, BASE_DIR),
+        pattern=r"^arami5:",
     ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
