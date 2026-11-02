@@ -1,4 +1,4 @@
-"""Regression tests for the replacement of legacy Course 1 by Arami's 20 lessons."""
+"""Regression tests for the replacement of legacy Course 1 by Arami's 21 lessons."""
 import json
 import unittest
 from pathlib import Path
@@ -25,13 +25,13 @@ class OrthographyCourseStructureTests(unittest.TestCase):
     def test_arami_course_one_is_the_only_active_course_one_with_20_lessons(self):
         manifest = load_manifest(ROOT)
         banks = load_question_banks(ROOT)
-        self.assertEqual(manifest["course_total_lessons"], 20)
-        self.assertEqual([x["number"] for x in manifest["lessons"]], list(range(1, 21)))
-        self.assertEqual(len(banks), 18)
+        self.assertEqual(manifest["course_total_lessons"], 21)
+        self.assertEqual([x["number"] for x in manifest["lessons"]], list(range(1, 22)))
+        self.assertEqual(len(banks), 19)
         keyboard = course_menu_keyboard(manifest, banks)
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         read = [b for b in buttons if b.callback_data.endswith(":lesson") or b.callback_data.startswith("aramiC:lesson:")]
-        self.assertEqual(len(read), 20)
+        self.assertEqual(len(read), 21)
 
     def test_course_two_three_and_latin_courses_are_unchanged_and_active(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))
