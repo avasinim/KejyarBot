@@ -54,7 +54,7 @@ def _plain_markdown(markdown):
     lines = []
     for raw in markdown.splitlines():
         line = raw.strip()
-        if not line or re.fullmatch(r"(?:---+|\\*{3,}|_{3,})", line):
+        if not line or re.fullmatch(r"(?:---+|\*{3,}|_{3,})", line):
             continue
         if line.startswith("|") and line.endswith("|"):
             cells = [cell.strip() for cell in line.strip("|").split("|")]
@@ -62,12 +62,12 @@ def _plain_markdown(markdown):
                 continue
             lines.append(" • ".join(cells))
             continue
-        line = re.sub(r"^#{1,6}\\s*", "", line)
-        line = line.replace("**", "").replace("__", "").replace("`", "")
+        line = re.sub(r"^#{1,6}\s*", "", line)
+        line = line.replace("**", "").replace("__", "").replace("\`", "")
         if line.startswith(">"):
             line = line[1:].strip()
         lines.append(line)
-    return "\\n".join(lines).strip()
+    return "\n".join(lines).strip()
 
 
 def load_lesson_source(base_dir, lesson_number):
@@ -101,11 +101,11 @@ async def _send_source(message, title, source):
     while rendered:
         end = min(3800, len(rendered))
         if end < len(rendered):
-            boundary = rendered.rfind("\\n", 0, end)
+            boundary = rendered.rfind("\n", 0, end)
             if boundary > 0:
                 end = boundary
         await message.reply_text(rendered[:end])
-        rendered = rendered[end:].lstrip("\\n")
+        rendered = rendered[end:].lstrip("\n")
 
 
 async def callback(update, context, base_dir):
@@ -120,7 +120,7 @@ async def callback(update, context, base_dir):
             await query.message.reply_text("⚠️ لیستی ٢١ وانەکە ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\\nوانەیەک هەڵبژێرە بۆ خوێندنەوە:",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\nوانەیەک هەڵبژێرە بۆ خوێندنەوە:",
             reply_markup=course_menu_keyboard(manifest),
         )
         return
