@@ -38,21 +38,21 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         (root / "بزوێنی ی.ogg").write_bytes(b"OGG test")
         return manifest
 
-    def test_repository_manifest_declares_20_lessons_in_round_one(self):
+    def test_repository_manifest_declares_21_lessons_in_round_one(self):
         repo_root = Path(__file__).resolve().parents[1]
         manifest = load_arami_course1(repo_root)
         self.assertEqual(manifest["round"], 1)
         self.assertEqual(manifest["round_title"], "ڕێنووسی سەرەتاییی کوردی")
-        self.assertEqual(manifest["course_total_lessons"], 20)
-        self.assertEqual(manifest["safety"]["course_total_lessons"], 20)
-        self.assertEqual(len(manifest["lessons"]), 20)
+        self.assertEqual(manifest["course_total_lessons"], 21)
+        self.assertEqual(manifest["safety"]["course_total_lessons"], 21)
+        self.assertEqual(len(manifest["lessons"]), 21)
         self.assertEqual(manifest["lessons"][0]["title"], "پیتەکان و دەنگەکان")
-        self.assertEqual(manifest["lessons"][-1]["number"], 20)
+        self.assertEqual(manifest["lessons"][-1]["number"], 21)
 
-    def test_source_audit_matches_all_20_existing_lesson_source_files(self):
+    def test_source_audit_matches_all_21_existing_lesson_source_files(self):
         repo_root = Path(__file__).resolve().parents[1]
         manifest = load_arami_course1(repo_root)
-        expected_numbers = list(range(1, 21))
+        expected_numbers = list(range(1, 22))
         self.assertEqual(
             manifest["source_audit"]["lesson_numbers_with_source_content"],
             expected_numbers,
