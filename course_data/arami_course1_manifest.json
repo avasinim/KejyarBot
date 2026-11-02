@@ -296,20 +296,21 @@
     {
       "id": "arami_course1_lesson_14",
       "number": 14,
-      "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_14_source_preserved",
+      "status": "source_received_preserved",
+      "content_status": "user_supplied_lesson_14_source_preserved; examples min, çil, dill, mirdim, xistin, kirdin, birdin retained",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "title": "پیتی بزرۆکە و هێشوو",
       "content_file": "course_data/arami_course1_lesson_14_bizroke_hishu_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "three_user_supplied_lesson_14_recordings_verified_in_repository",
-      "source_note": "The source file's own heading identifies Lesson 13 and covers the three uses of و (w, u, û). In the 21-lesson sequence, this source occupies the slot following Lesson 13 (ی). The older lesson14_bizroke_hishu file is not used as this lesson's source.",
+      "audio_status": "user_supplied_lesson_14_recording_commit_6639c30ca85bdae4f64134e1368617b2e507fb6c_verified; three_lesson14_recordings_mapped",
+      "source_note": "User-confirmed Lesson 14 source covers the hidden vowel (بزرۆکە), its Latin representation I/i, syllable-based recognition, and examples including min, çil, dill, mirdim, xistin, kirdin, birdin. Preserve this as Lesson 14; do not confuse it with Lesson 13 about و.",
       "audio_commits": [
         "8359ae827572db507790da35ce0650ddd501eb40",
         "21e841f371bfbe4573867dd1c4e7522fe48c4015",
-        "7e595c37baf70cb63a7470e2cd32c9f89420aac9"
+        "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
+        "6639c30ca85bdae4f64134e1368617b2e507fb6c"
       ],
       "audio_assets": [
         {
@@ -326,9 +327,14 @@
           "commit": "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
           "label": "نەبزوێنی و",
           "file_name": "نەبزوێنی (و).ogg"
+        },
+        {
+          "commit": "6639c30ca85bdae4f64134e1368617b2e507fb6c",
+          "label": "دەنگی وانەی بزرۆکە",
+          "file_name": "بزرۆکە.ogg"
         }
       ],
-      "audio_assignment_note": "User explicitly assigned all three referenced recordings to Lesson 13. Commit titles and the third commit's filename were verified; filenames for the first two commits are not exposed by the commit metadata fetched. Playback/runtime delivery has not yet been tested.",
+      "audio_assignment_note": "The recording from commit 6639c30ca85bdae4f64134e1368617b2e507fb6c is the verified file بزرۆکە.ogg and is assigned to Lesson 14 only. Other two Lesson 14 recordings remain separately mapped.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_heading_and_audio_commit_match_lesson_14",
       "audio_files": [
