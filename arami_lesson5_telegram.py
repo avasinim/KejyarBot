@@ -29,6 +29,7 @@ def menu_keyboard():
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ٥", callback_data="arami5:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ٥", callback_data="arami5:practice")],
         [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٥", callback_data="arami5:assessment")],
+        [InlineKeyboardButton("📚 هەموو ٢١ وانەی کۆرس ١", callback_data="aramiC:menu")],
     ])
 
 async def _send_question(message, context):
