@@ -49,9 +49,11 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "conclusion": "پوختە",
         }
         update, query = make_update("lesson")
-        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson):
+        manifest = {"lessons": [{"number": 1, "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
-        self.assertEqual(query.message.reply_text.await_count, 11)
+        send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
+        self.assertEqual(query.message.reply_text.await_count, 10)
         self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
         self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
         self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
