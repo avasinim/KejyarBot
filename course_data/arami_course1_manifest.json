@@ -28,8 +28,8 @@
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
       "interaction_mode": "dedicated",
-      "quiz_audit_status": "quiz_bank_entry_missing; no questions fabricated",
-      "quiz_audit_note": "Quiz bank audit: no dedicated practice/assessment bank entry exists for Lesson 1 in arami_course1_source_quiz_banks.json. The lesson has its own content JSON and confirmed audio «بزوێنی ی.ogg». Do not invent quiz items; add a bank only after checking the original source and receiving/confirming questions."
+      "quiz_audit_status": "dedicated_bank_verified_5_practice_5_assessment",
+      "quiz_audit_note": "Correction: Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions. It is loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are grounded in the user-supplied PDF pages 1–4 and confirmed eight-vowel explanation. The shared course bank file does not include this separately namespaced bank."
     },
     {
       "id": "arami_course1_lesson_02",
@@ -123,8 +123,8 @@
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "dedicated",
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "quiz_audit_status": "quiz_bank_entry_missing; no questions fabricated",
-      "quiz_audit_note": "Quiz bank audit: no dedicated practice/assessment bank entry exists for Lesson 5 in arami_course1_source_quiz_banks.json. The source covers Kurdish and Latin letter forms. Do not copy questions from another lesson or create unverified items; source-based quiz content remains pending."
+      "quiz_audit_status": "dedicated_bank_verified_6_practice_6_assessment",
+      "quiz_audit_note": "Correction: Lesson 5 has a separate bank at course_data/arami_course1_lesson_05_interactions.json with 6 practice and 6 assessment questions. It is loaded by load_arami_lesson5_interactions and delivered through arami_lesson5_telegram.py. The six items correspond to the six exercises explicitly present in the immutable Lesson 5 source. The shared course bank file does not include this separately namespaced bank."
     },
     {
       "id": "arami_course1_lesson_06",
