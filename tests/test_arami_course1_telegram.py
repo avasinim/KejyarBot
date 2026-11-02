@@ -58,7 +58,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 20)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 18)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 16)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 18)
         self.assertIn("aramiC:practice:11", callbacks)
         self.assertIn("aramiC:practice:14", callbacks)
         self.assertIn("aramiC:practice:20", callbacks)
