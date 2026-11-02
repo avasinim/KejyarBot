@@ -75,13 +75,19 @@
     {
       "id": "arami_course1_lesson_05",
       "number": 5,
-      "title": "پیتی س = S, s",
-      "status": "source_review_pending",
-      "content_status": "user_source_received_and_preserved; lesson_number_conflict_requires_user_resolution",
+      "title": "پیتەکانی زمانی کوردی بە نووسینی کوردی و لاتینی",
+      "status": "source_received_preserved; lesson_identity_confirmed_as_5",
+      "content_status": "user_confirmed_lesson_05; source_saved_without_content_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "design_status": "source_preserved; design_practice_assessment_pending",
-      "content_file": "course_data/arami_course1_lesson_05_received_source.md",
-      "source_note": "Saved source begins with Lesson 5 but its own heading asks to make it Lesson 2; source contains alphabet and Latin equivalents. Do not assign or activate it until lesson identity is resolved."
+      "design_status": "source_preserved; lesson_5_practice_assessment_bank_created; telegram_runtime_pending",
+      "content_file": "course_data/arami_course1_lesson_05_source.md",
+      "source_note": "User explicitly confirmed this alphabet-and-Latin-equivalents material is Lesson 5, not Lesson 2. Preserve source exactly; do not merge with Lesson 2 vowels. Source contains potentially ambiguous counts and Latin capitalization/transcription entries; do not extend beyond the six supplied questions or silently correct the tables.",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "six_source_questions_bank_created; runtime_integration_pending",
+      "assessment_status": "six_source_questions_bank_created; runtime_integration_pending",
+      "interaction_bank": "course_data/arami_course1_lesson_05_interactions.json",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_06",
