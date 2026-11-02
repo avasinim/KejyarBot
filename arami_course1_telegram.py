@@ -167,6 +167,47 @@ async def _send_source(message, title, source):
         rendered = rendered[end:].lstrip("\n")
 
 
+def load_lesson_audio_files(base_dir, lesson):
+    assets = lesson.get("audio_files", [])
+    if not isinstance(assets, list):
+        raise AramiCourseTelegramError("Lesson audio mapping must be a list")
+    root = Path(base_dir).resolve()
+    resolved = []
+    for item in assets:
+        if not isinstance(item, dict) or not isinstance(item.get("file"), str) or not isinstance(item.get("label"), str):
+            raise AramiCourseTelegramError("Invalid lesson audio entry")
+        path = (root / item["file"]).resolve()
+        try:
+            path.relative_to(root)
+        except ValueError as exc:
+            raise AramiCourseTelegramError("Lesson audio path escapes project directory") from exc
+        if path.suffix.lower() not in {".ogg", ".mp3"} or not path.is_file():
+            raise AramiCourseTelegramError("Lesson audio file is unavailable: " + item["file"])
+        resolved.append((path, item["label"]))
+    return resolved
+
+
+async def send_lesson_audio(message, base_dir, lesson):
+    try:
+        assets = load_lesson_audio_files(base_dir, lesson)
+    except AramiCourseTelegramError:
+        logger.exception("Invalid audio mapping for Arami Course 1 lesson %s", lesson.get("number"))
+        await message.reply_text("⚠️ دەنگی وانەکە لە فایلەکانی پڕۆژەدا بە دروستی پەیوەست نەکراوە.")
+        return False
+    if not assets:
+        await message.reply_text(f"⚠️ دەنگی تایبەتی وانەی {lesson.get('number', '')} هێشتا بە فایلێکی پشتڕاستکراوەوە نەبەستراوەتەوە.")
+        return False
+    for path, label in assets:
+        try:
+            with path.open("rb") as audio:
+                await message.reply_voice(voice=audio, caption=f"🔊 {label}")
+        except Exception:
+            logger.exception("Could not send Arami Course 1 lesson audio %s", path.name)
+            await message.reply_text(f"⚠️ ناردنی دەنگی «{label}» سەرکەوتوو نەبوو.")
+            return False
+    return True
+
+
 async def _send_question(message, context, lesson_number):
     active = context.user_data.get("arami_course1_active")
     sessions = context.user_data.get("arami_course1_sessions", {})
@@ -222,6 +263,7 @@ async def callback(update, context, base_dir):
         try:
             lesson, source = load_lesson_source(base_dir, number)
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
+            await send_lesson_audio(query.message, base_dir, lesson)
         except AramiCourseTelegramError:
             logger.exception("Could not deliver Arami Course 1 Lesson %s", number)
             await query.message.reply_text(
