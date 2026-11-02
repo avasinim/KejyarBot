@@ -96,6 +96,23 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("font-size", svg)
 
 
+
+    def test_lesson16_source_preserves_the_user_supplied_r_rr_rules_and_examples(self):
+        lesson, source = load_lesson_source(ROOT, 16)
+        self.assertEqual(lesson["title"], "پیتی «ر» و «ڕ»")
+        for example in ("ڕێگا", "ڕێبوار", "ڕامان", "پەڕۆ", "مەڕ", "دڕاو",
+                        "دار", "دیوار", "دەرگە", "کورد", "بڕا", "برا",
+                        "دڕاو", "دراو", "ئاور", "ئاوڕ", "بڕۆ", "برۆ",
+                        "فڕیو", "فریو"):
+            self.assertIn(example, source)
+
+    def test_r_and_rr_audio_assets_are_exclusively_assigned_to_lesson16(self):
+        manifest = load_manifest(ROOT)
+        lesson16 = next(item for item in manifest["lessons"] if item["number"] == 16)
+        self.assertEqual([item["file"] for item in lesson16["audio_files"]], ["دەنگی ڕ.ogg", "دەنگی ر.ogg"])
+        from arami_course1_telegram import load_lesson_audio_files
+        self.assertEqual(len(load_lesson_audio_files(ROOT, lesson16)), 2)
+
     def test_lesson16_r_and_rr_distinction_is_in_both_quiz_modes(self):
         banks = load_question_banks(ROOT)
         for mode in ("practice", "assessment"):
