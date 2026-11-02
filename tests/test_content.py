@@ -403,12 +403,9 @@ class ContentConsistencyTests(unittest.TestCase):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
         self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
         self.assertIn('LESSON_BUTTONS[course_lesson["title"]] = lesson_key', bot_source)
-        self.assertEqual(len(bot.ORDER), 22)
-        self.assertEqual(bot.ORDER, [f"وانە_{index}" for index in range(1, 23)])
-        self.assertEqual(set(bot.LESSON_BUTTONS.values()), set(bot.ORDER))
-        for lesson in bot.ORDER:
-            with self.subTest(lesson=lesson):
-                self.assertTrue(bot.LESSON_DATA[lesson]["title"].strip())
+        self.assertEqual(len(bot.ORDER), 0)
+        self.assertFalse(bot.course_is_active("orthography_basic"))
+        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_quiz_menu_filters_to_completed_lessons(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
@@ -428,13 +425,7 @@ class ContentConsistencyTests(unittest.TestCase):
         ):
             bot.check_badges(12345)
 
-        self.assertCountEqual(
-            add_badge.call_args_list,
-            [
-                unittest.mock.call(12345, "🏅 کۆرسی ڕێنووسی — وانەی 1"),
-                unittest.mock.call(12345, "🏅 کۆرسی ڕێنووسی — وانەی 22"),
-            ],
-        )
+        add_badge.assert_not_called()
 
     def test_quiz_lessons_exist(self):
         for lesson in self.quizzes:
