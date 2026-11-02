@@ -206,3 +206,40 @@ are isolated preparatory work; they do not make the lesson active in Telegram.
 
 Focused tests were authored but have not been executed in this environment.
 No PR, merge, deployment, production DB change, or Botkeep update was performed.
+
+## Round 1 — complete 20-lesson catalogue and interaction rollout
+
+The feature branch now exposes the complete **20-lesson Arami Course 1 / Round 1**
+catalogue from the bot's «📕 ڕێنووسی ئارامی» menu. This is separate from the
+legacy orthography course and from both Kurmanji Latin courses.
+
+- The catalogue has exactly 20 numbered lesson entries, each with its own
+  manifest-bound source file and source reader.
+- Lesson 1 and Lesson 5 retain their dedicated interaction flows.
+- Lessons 2–4 and 6–20 use their own lesson-scoped practice and assessment
+  banks. Question IDs and source evidence remain tied to their lesson.
+- The source reader sends the selected lesson text in bounded Telegram message
+  chunks; it does not merge lesson sources or alter the stored source files.
+- Verified lesson recordings are delivered only after the corresponding
+  lesson text. Audio is never borrowed from another lesson or synthesized.
+- The «ل / ڵ» additions in Lesson 15 are represented in both practice and
+  assessment banks, including the source contrasts چڵ/چل, پەڵە/پەلە and
+  گوڵ/گول.
+
+### Audio readiness is intentionally separate from reader/quiz activation
+
+All 20 lessons are reachable for reading and their approved practice and
+assessment paths are exposed. Ten lessons still lack an explicitly confirmed
+dedicated recording mapping: **3–8, 10, 17–19**. The catalogue marks those
+recordings as pending; it does not claim those lessons are audio-complete.
+The two unassigned recordings «دەنگی ر.ogg» and «دەنگی ڕ.ogg» remain unassigned
+until the owner confirms their lesson mapping. No guesswork or audio reuse.
+
+### Release boundary
+
+The catalogue and interactions are enabled on this feature branch and PR #49.
+This does not mean the live Telegram deployment has changed. Merge to main,
+Botkeep synchronization, production credentials, live Telegram testing, and
+deployment remain outside this change until explicitly authorized. Dynamic
+speech remains disabled.
+
