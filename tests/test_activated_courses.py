@@ -18,13 +18,25 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         return SimpleNamespace(callback_query=query), message, query
 
     def test_manifest_activates_courses_two_and_three_and_retires_legacy_course_one(self):
+        self.assertTrue(bot.course_is_active("arami_orthography_foundations"))
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
+        self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 20)
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
+
+    async def test_open_arami_course_from_generic_course_menu(self):
+        update, message, query = self.make_update("course_arami_orthography_foundations")
+        await bot.open_course(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        self.assertEqual(len(reads), 20)
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
