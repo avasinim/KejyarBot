@@ -22,7 +22,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
         self.assertEqual(bot.ORDER, [])
 
-    def test_arami_course_one_is_the_only_active_course_one_with_20_lessons(self):
+    def test_arami_course_one_is_the_only_active_course_one_with_21_lessons(self):
         manifest = load_manifest(ROOT)
         banks = load_question_banks(ROOT)
         self.assertEqual(manifest["course_total_lessons"], 21)
