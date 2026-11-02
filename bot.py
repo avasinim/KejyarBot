@@ -916,19 +916,16 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "📚 وانەکان":
-        completed = set(get_completed_lessons(user_id))
-        keyboard_rows = []
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA[lesson]["title"]
-            keyboard_rows.append([InlineKeyboardButton(
-                f"{status} {lesson}: {title}",
-                callback_data=f"open_lesson_{lesson}",
-            )])
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open the 20-lesson Arami Course 1 catalogue")
+            await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            return
         await update.message.reply_text(
-            ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
-            + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
-            reply_markup=InlineKeyboardMarkup(keyboard_rows),
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢٠ وانە؛ وانەی خۆت هەڵبژێرە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
 
