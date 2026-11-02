@@ -1843,13 +1843,13 @@
         }
       ]
     },
-    "21": {
+    "20": {
       "source_file": "course_data/arami_course1_lesson_21_syllable_cluster_source.md",
       "practice": [
         {
-          "id": "21p1",
+          "id": "20p1",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "بڕگە چییە؟",
           "options": [
             "یەک یان چەند پیت کە بە یەک هەناسە دەردەچێت",
@@ -1860,9 +1860,9 @@
           "source_evidence": "بەشی سەرەتا: بڕگە چییە؟"
         },
         {
-          "id": "21p2",
+          "id": "20p2",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "هەر بڕگەیەک دەبێت چییەکی تێدا بێت؟",
           "options": [
             "نەبزوێن",
@@ -1873,9 +1873,9 @@
           "source_evidence": "بەشی بڕگە: «هەر بڕگەیەی دەبێت بزوێنێکی تێدا بێت»"
         },
         {
-          "id": "21p3",
+          "id": "20p3",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "وشەیەک چەند بزوێنی تێدابێت، چەند بڕگەی دەبێت؟",
           "options": [
             "کەمتر",
@@ -1886,9 +1886,9 @@
           "source_evidence": "بەشی بڕگە: «وشەیەک چەند بزوێنی تێدابوو ئەوەندە بڕگەشە»"
         },
         {
-          "id": "21p4",
+          "id": "20p4",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "وشەی «سەرماوەز» بەپێی سەرچاوە چەند بڕگەیە؟",
           "options": [
             "یەک",
@@ -1901,9 +1901,9 @@
       ],
       "assessment": [
         {
-          "id": "21a1",
+          "id": "20a1",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "بڕگە چییە؟",
           "options": [
             "یەک یان چەند پیت کە بە یەک هەناسە دەردەچێت",
@@ -1914,9 +1914,9 @@
           "source_evidence": "بەشی سەرەتا: بڕگە چییە؟"
         },
         {
-          "id": "21a2",
+          "id": "20a2",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "هەر بڕگەیەک دەبێت چییەکی تێدا بێت؟",
           "options": [
             "نەبزوێن",
@@ -1927,9 +1927,9 @@
           "source_evidence": "بەشی بڕگە: «هەر بڕگەیەی دەبێت بزوێنێکی تێدا بێت»"
         },
         {
-          "id": "21a3",
+          "id": "20a3",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "وشەیەک چەند بزوێنی تێدابێت، چەند بڕگەی دەبێت؟",
           "options": [
             "کەمتر",
@@ -1940,9 +1940,9 @@
           "source_evidence": "بەشی بڕگە: «وشەیەک چەند بزوێنی تێدابوو ئەوەندە بڕگەشە»"
         },
         {
-          "id": "21a4",
+          "id": "20a4",
           "type": "recognize",
-          "section_id": "lesson21_source_exercises",
+          "section_id": "lesson20_source_exercises",
           "prompt": "وشەی «سەرماوەز» بەپێی سەرچاوە چەند بڕگەیە؟",
           "options": [
             "یەک",
