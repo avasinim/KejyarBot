@@ -499,8 +499,7 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_asset": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
-      "audio_status": "user_assigned_lesson_21_recording_verified_in_repository",
+      "audio_status": "user_supplied_lesson_21_recording_verified; dedicated_brrge_ogg_sent_after_lesson_text",
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course.",
       "design_status": "source_preserved; design_practice_assessment_pending",
@@ -511,7 +510,11 @@
           "file": "بڕگە.ogg",
           "label": "دەنگی بڕگە"
         }
-      ]
+      ],
+      "audio_commits": [
+        "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea"
+      ],
+      "audio_assignment_note": "The commit SHA is provenance metadata only; the learner-facing file is بڕگە.ogg."
     }
   ],
   "safety": {
