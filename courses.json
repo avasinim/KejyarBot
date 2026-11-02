@@ -5,7 +5,7 @@
       "key": "course_arami_orthography_foundations",
       "order": 1,
       "title": "کۆرسی ١: ڕێنووسی ئارامی",
-      "description": "٢٠ وانە؛ خوێندنەوە، ڕاهێنان و تاقیکردنەوەی تایبەت بە هەر وانە.",
+      "description": "٢١ وانە؛ خوێندنەوە، ڕاهێنان و تاقیکردنەوەی تایبەت بە هەر وانە.",
       "status": "active",
       "lesson_ids": [
         "arami_course1_lesson_01",
@@ -27,7 +27,8 @@
         "arami_course1_lesson_17",
         "arami_course1_lesson_18",
         "arami_course1_lesson_19",
-        "arami_course1_lesson_20"
+        "arami_course1_lesson_20",
+        "arami_course1_lesson_21"
       ]
     },
     {
