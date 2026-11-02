@@ -145,15 +145,13 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         call = update.message.reply_text.await_args
         keyboard = call.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), len(bot.ORDER))
-        self.assertEqual(len(bot.ORDER), 22)
-        self.assertIn(bot.ORTHOGRAPHY_COURSE["title"], call.args[0])
-        for lesson, button in zip(bot.ORDER, buttons):
-            with self.subTest(lesson=lesson):
-                self.assertIn(lesson, button.text)
-                self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
-                self.assertEqual(button.callback_data, f"open_lesson_{lesson}")
-                self.assertTrue(button.text.startswith("🔒"))
+        self.assertEqual(len(bot.ORDER), 0)
+        read_buttons = [
+            button for button in buttons
+            if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
+        ]
+        self.assertEqual(len(read_buttons), 20)
+        self.assertIn("ڕێنووسی ئارامی", call.args[0])
 
 
     async def test_quiz_selection_menu_shows_readable_lesson_titles(self):
@@ -170,6 +168,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         expected_lessons = [lesson for lesson in bot.ORDER if not bot.quiz_requires_submission(lesson)]
         self.assertEqual(len(buttons), len(expected_lessons))
+        self.assertEqual(expected_lessons, [])
         for lesson, button in zip(expected_lessons, buttons):
             with self.subTest(lesson=lesson):
                 self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
@@ -195,7 +194,6 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         expected = [
-            "وانە_3",
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
@@ -238,7 +236,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+        self.assertIn("نەناسراوە", query.message.reply_text.await_args.args[0])
         send_lesson.assert_not_awaited()
 
 
