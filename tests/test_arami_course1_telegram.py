@@ -55,8 +55,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertNotIn("aramiC:practice:14", callbacks)
         self.assertNotIn("aramiC:practice:20", callbacks)
         self.assertNotIn("aramiC:assessment:11", callbacks)
-        self.assertNotIn("aramiC:practice:15", callbacks)
-        self.assertNotIn("aramiC:assessment:15", callbacks)
+        self.assertIn("aramiC:practice:15", callbacks)
+        self.assertIn("aramiC:assessment:15", callbacks)
         self.assertIn("arami1:practice", callbacks)
         self.assertIn("arami1:assessment", callbacks)
         self.assertIn("arami5:practice", callbacks)
@@ -94,9 +94,9 @@ class AramiCourseTelegramTests(unittest.TestCase):
                 self.assertEqual(loaded["id"], lesson["id"])
                 self.assertTrue(source.strip())
 
-    def test_missing_lesson_15_source_is_never_replaced_with_another_lesson(self):
+    def test_missing_lesson_20_source_is_never_replaced_with_another_lesson(self):
         with self.assertRaises(AramiCourseTelegramError):
-            load_lesson_source(ROOT, 15)
+            load_lesson_source(ROOT, 20)
 
     def test_markdown_renderer_preserves_words_and_table_values(self):
         rendered = _plain_markdown(
