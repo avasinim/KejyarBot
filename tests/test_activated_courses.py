@@ -36,7 +36,13 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        practices = [button for button in buttons if ":practice" in button.callback_data]
+        assessments = [button for button in buttons if ":assessment" in button.callback_data]
         self.assertEqual(len(reads), 21)
+        self.assertEqual(len(practices), 21)
+        self.assertEqual(len(assessments), 21)
+        self.assertIn("arami1:practice", [button.callback_data for button in practices])
+        self.assertIn("arami5:practice", [button.callback_data for button in practices])
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
