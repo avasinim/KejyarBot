@@ -307,9 +307,9 @@
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "source_note": "User explicitly designated this material as Lesson 11. Source preserved; only whitespace/Markdown layout normalized. No quiz questions were supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained. Both user-supplied Lesson 11 Y recordings are now present in the PR branch and mapped here because the new vowels lesson occupies Lesson 11; the Y lesson is numbered 12 in the current 21-lesson manifest.",
+      "source_note": "The preserved source file heading still says Lesson 11 (پیتی ی). In the current course sequence this is Lesson 12 because a new Lesson 11 was inserted. Source text remains unchanged; manifest and audio catalog identify it as current Lesson 12.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_file_verified; embedded_heading_still_says_lesson_11; lesson_number_shifted_to_12_after_new_lesson_11_inserted",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_commits": [
         "040ee127789798a0333809b0c8c1bcc6d82ae4d9",
