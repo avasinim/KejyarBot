@@ -122,6 +122,28 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson5_session"]["index"], 1)
         self.assertEqual(context.user_data["arami_lesson5_message_id"], first_id + 1)
 
+    async def test_assessment_hides_correct_answers_until_final_score(self):
+        bank = sample_bank()
+        context = SimpleNamespace(user_data={})
+        update, _query = make_update("assessment")
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
+            await callback(update, context, "/unused")
+        for index in range(2):
+            message_id = context.user_data["arami_lesson5_message_id"]
+            update, _pick_query = make_update("pick:0", message_id=message_id)
+            await callback(update, context, "/unused")
+            update, submit_query = make_update("submit", message_id=message_id)
+            await callback(update, context, "/unused")
+            shown = submit_query.edit_message_text.await_args.args[0]
+            self.assertNotIn("وەڵامی ڕاست", shown)
+            if index == 0:
+                self.assertIn("وەڵامەکەت تۆمار کرا", shown)
+                update, _next_query = make_update("next", message_id=message_id)
+                await callback(update, context, "/unused")
+            else:
+                self.assertIn("ئەنجام", shown)
+                self.assertNotIn("دووبارەکردنەوەی پرسیارە هەڵەکان", str(submit_query.edit_message_text.await_args.kwargs["reply_markup"]))
+
     async def test_stale_lesson5_question_message_cannot_change_current_answer(self):
         context = SimpleNamespace(user_data={
             "arami_lesson5_session": {
