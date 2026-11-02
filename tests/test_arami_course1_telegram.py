@@ -74,7 +74,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
     def test_all_21_lessons_are_enabled_with_explicit_audio_readiness(self):
         manifest = load_manifest(ROOT)
-        self.assertEqual(manifest["runtime_status"], "arami_course1_catalogue_and_interactions_enabled_on_feature_branch")
+        self.assertEqual(manifest["runtime_status"], "arami_course1_21_lesson_catalogue_and_interactions_enabled_on_feature_branch")
         self.assertEqual(len(manifest["lessons"]), 21)
         pending = []
         for lesson in manifest["lessons"]:
