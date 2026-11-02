@@ -38,8 +38,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
-        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 21})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 5, 14: 4, 16: 4, 17: 3, 18: 4, 19: 4, 20: 4, 21: 4})
+        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 21})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 4, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 21: 4})
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
@@ -49,9 +49,11 @@ class AramiCourseTelegramTests(unittest.TestCase):
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 17)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 17)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 16)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 16)
         self.assertNotIn("aramiC:practice:11", callbacks)
+        self.assertNotIn("aramiC:practice:14", callbacks)
+        self.assertNotIn("aramiC:practice:20", callbacks)
         self.assertNotIn("aramiC:assessment:11", callbacks)
         self.assertNotIn("aramiC:practice:15", callbacks)
         self.assertNotIn("aramiC:assessment:15", callbacks)
@@ -60,20 +62,32 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("arami5:practice", callbacks)
         self.assertIn("arami5:assessment", callbacks)
 
-    def test_manifest_corrects_lesson14_source_and_keeps_lesson15_audio_unassigned(self):
+    def test_manifest_maps_audio_to_the_correct_lesson_sources(self):
         manifest = load_manifest(ROOT)
-        lesson14 = next(item for item in manifest["lessons"] if item["number"] == 14)
-        lesson15 = next(item for item in manifest["lessons"] if item["number"] == 15)
-        lesson16 = next(item for item in manifest["lessons"] if item["number"] == 16)
-        self.assertEqual(lesson14["content_file"], "course_data/arami_course1_lesson_13_w_source.md")
-        self.assertEqual(lesson15["title"], "ڕەنگ و ناوی شتە ڕۆژانەکان")
-        self.assertNotIn("audio_assets", lesson15)
-        self.assertEqual(lesson16["audio_assets"], ["دەنگی ل.ogg", "دەنگی ڵ.ogg"])
+        lessons = {item["number"]: item for item in manifest["lessons"]}
+        self.assertEqual(lessons[13]["content_file"], "course_data/arami_course1_lesson_13_w_source.md")
+        self.assertEqual(lessons[14]["content_file"], "course_data/arami_course1_lesson_14_bizroke_hishu_source.md")
+        self.assertEqual(lessons[15]["content_file"], "course_data/arami_course1_lesson_15_l_ll_source.md")
+        self.assertEqual(lessons[16]["content_file"], "course_data/arami_course1_lesson_16_v_source.md")
+        self.assertEqual([item["file"] for item in lessons[14]["audio_files"]], ["بزرۆکە.ogg", "بزرۆکەی ٢.ogg", "بزرۆکەی ٣.ogg"])
+        self.assertEqual([item["file"] for item in lessons[15]["audio_files"]], ["دەنگی ل.ogg", "دەنگی ڵ.ogg"])
+        self.assertEqual([item["file"] for item in lessons[16]["audio_files"]], ["دەنگ ڤ.ogg"])
+        self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
+
+    def test_every_manifest_audio_file_exists_and_stays_inside_project(self):
+        from arami_course1_telegram import load_lesson_audio_files
+        manifest = load_manifest(ROOT)
+        for lesson in manifest["lessons"]:
+            with self.subTest(lesson=lesson["number"]):
+                assets = load_lesson_audio_files(ROOT, lesson)
+                for path, label in assets:
+                    self.assertTrue(path.is_file())
+                    self.assertTrue(label)
 
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
         for lesson in manifest["lessons"]:
-            if lesson["number"] == 15:
+            if lesson["number"] == 20:
                 continue
             with self.subTest(lesson=lesson["number"]):
                 loaded, source = load_lesson_source(ROOT, lesson["number"])
