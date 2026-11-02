@@ -311,7 +311,15 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    return can_open_lesson(COURSE_LESSON_ORDER.get(course_id, []), completed, lesson)
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    if course_id == "unified_orthography":
+        # Course 3 must be completed as a strict prefix: a stale/non-contiguous
+        # progress record must never unlock later lessons out of sequence.
+        if lesson not in order:
+            return False
+        index = order.index(lesson)
+        return all(previous in completed for previous in order[:index])
+    return can_open_lesson(order, completed, lesson)
 
 def check_badges(user_id):
     completed = set(get_completed_lessons(user_id))
