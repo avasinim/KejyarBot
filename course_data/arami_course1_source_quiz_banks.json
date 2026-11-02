@@ -1320,9 +1320,9 @@
       "source_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
       "practice": [
         {
-          "id": "16p1",
+          "id": "15p1",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "لە زمانی کوردیدا چەند پیتی «ل» و «ڵ» هەیە؟",
           "options": [
             "یەک",
@@ -1333,9 +1333,9 @@
           "source_evidence": "سەردێڕ و بەشی سەرەتا: «دوو پیتی (ل - ڵ)مان هەیه»"
         },
         {
-          "id": "16p2",
+          "id": "15p2",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "پیتی «ڵ» چۆن بێژە دەکرێت؟",
           "options": [
             "ناسک",
@@ -1346,9 +1346,9 @@
           "source_evidence": "بەشی پیتی (ڵ)"
         },
         {
-          "id": "16p3",
+          "id": "15p3",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "هاوتای لاتینیی پیتی «ڵ» لە سەرچاوەدا چییە؟",
           "options": [
             "l",
@@ -1359,9 +1359,9 @@
           "source_evidence": "سەردێڕ: پیتی «ڵ» = ll"
         },
         {
-          "id": "16p4",
+          "id": "15p4",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "پیتی «ڵ» لە کوێی وشەدا دێت؟",
           "options": [
             "تەنها سەرەتا",
@@ -1374,9 +1374,9 @@
       ],
       "assessment": [
         {
-          "id": "16a1",
+          "id": "15a1",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "لە زمانی کوردیدا چەند پیتی «ل» و «ڵ» هەیە؟",
           "options": [
             "یەک",
@@ -1387,9 +1387,9 @@
           "source_evidence": "سەردێڕ و بەشی سەرەتا: «دوو پیتی (ل - ڵ)مان هەیه»"
         },
         {
-          "id": "16a2",
+          "id": "15a2",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "پیتی «ڵ» چۆن بێژە دەکرێت؟",
           "options": [
             "ناسک",
@@ -1400,9 +1400,9 @@
           "source_evidence": "بەشی پیتی (ڵ)"
         },
         {
-          "id": "16a3",
+          "id": "15a3",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "هاوتای لاتینیی پیتی «ڵ» لە سەرچاوەدا چییە؟",
           "options": [
             "l",
@@ -1413,9 +1413,9 @@
           "source_evidence": "سەردێڕ: پیتی «ڵ» = ll"
         },
         {
-          "id": "16a4",
+          "id": "15a4",
           "type": "recognize",
-          "section_id": "lesson16_source_exercises",
+          "section_id": "lesson15_source_content",
           "prompt": "پیتی «ڵ» لە کوێی وشەدا دێت؟",
           "options": [
             "تەنها سەرەتا",
