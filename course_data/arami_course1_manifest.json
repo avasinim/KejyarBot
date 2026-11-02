@@ -487,24 +487,6 @@
     {
       "id": "arami_course1_lesson_20",
       "number": 20,
-      "status": "source_review_pending",
-      "content_status": "source_not_registered; do_not_infer_or_reuse_adjacent_lesson",
-      "source_policy": "Preserve user-supplied wording, examples, order and definitions; no scientific edits.",
-      "audio_status": "no_verified_lesson_20_recording_assignment",
-      "source_note": "Outer heading identifies this as Lesson 19; copied organization heading says Lesson 18. Numbering follows the explicit outer heading. User explicitly notes a conceptual connection to Lesson 12 (بزۆکە); keep the two topics distinct. User says no special audio has been assigned for Lesson 18. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "title": "وانەی ٢٠ — سەرچاوەی ڕەسەن پێویستە",
-      "content_file": null,
-      "content_source": "user_supplied_immutable",
-      "practice_status": "no_quiz_questions_supplied",
-      "assessment_status": "not_implemented",
-      "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
-      "audio_files": []
-    },
-    {
-      "id": "arami_course1_lesson_21",
-      "number": 21,
       "title": "بڕگە و هێشوو (Cluster)",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_21_received_and_preserved",
@@ -515,7 +497,7 @@
       "assessment_status": "not_implemented",
       "audio_status": "user_supplied_lesson_21_recording_verified; dedicated_brrge_ogg_sent_after_lesson_text",
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
-      "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course.",
+      "source_note": "ئەمە وانەی ٢٠ و وانەی کۆتاییی دەورەی ١، کۆرسی ١یە. ناوەڕۆک، نموونەکان، چوار ڕێگای ناسینەوەی (و)، کۆدی دەنگ و لینکی پەیوەست پارێزراون. ئەم بابەتە لە هەمان کۆرسی ١ تۆمار دەکرێت؛ نابێت بگوازرێتەوە بۆ کۆرسی لاتینیی جیاواز.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_arami_lesson_reader_sends_manifest_audio_after_source",
@@ -528,7 +510,7 @@
       "audio_commits": [
         "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea"
       ],
-      "audio_assignment_note": "The commit SHA is provenance metadata only; the learner-facing file is بڕگە.ogg."
+      "audio_assignment_note": "The user-supplied final lesson recording remains assigned only to Lesson 20 after correcting the course total from 21 to 20."
     }
   ],
   "safety": {
@@ -537,18 +519,16 @@
     "no_source_research": true,
     "dynamic_speech": false,
     "no_main_merge_or_deployment": true,
-    "course_total_lessons": 21,
+    "course_total_lessons": 20,
     "source_text_immutable": true,
     "no_latin_course_changes": true
   },
-  "course_size": 21,
+  "course_size": 20,
   "source_audit": {
     "archive_file": "کەژیار.pdf",
     "audit_date": "2026-11-02",
-    "gaps": [
-      5
-    ],
-    "note": "Repository file audit: source files exist for Lessons 1–4, 5 (numbering conflict), and 6–21. This audit tracks source presence only. Lesson 5 must remain inactive until the source's internal Lesson 2 label is resolved. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
+    "gaps": [],
+    "note": "Repository file audit after user correction: Course 1 Round 1 contains exactly 20 lessons. The former empty Lesson 20 placeholder has been removed; the former final Lesson 21 (syllable and cluster) is now Lesson 20. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
@@ -568,7 +548,7 @@
       17
     ]
   },
-  "course_total_lessons": 21,
+  "course_total_lessons": 20,
   "program": {
     "title": "کۆرسی ١",
     "structure": "کۆرسی ١ لە چوار دەورە پێکدێت",
@@ -576,8 +556,8 @@
       {
         "number": 1,
         "title": "ڕێنووسی سەرەتاییی کوردی",
-        "lesson_count": 21,
-        "status": "21_lessons_registered; source_gaps_and_per_lesson_design_practice_assessment_pending"
+        "lesson_count": 20,
+        "status": "20_lessons_registered; source_gaps_and_per_lesson_design_practice_assessment_pending"
       },
       {
         "number": 2,
