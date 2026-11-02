@@ -249,7 +249,8 @@ async def send_lesson_audio(message, base_dir, lesson):
         await message.reply_text("⚠️ دەنگی وانەکە لە فایلەکانی پڕۆژەدا بە دروستی پەیوەست نەکراوە.")
         return False
     if not assets:
-        await message.reply_text(f"⚠️ دەنگی تایبەتی وانەی {lesson.get('number', '')} هێشتا بە فایلێکی پشتڕاستکراوەوە نەبەستراوەتەوە.")
+        # Audio is optional: only lessons with an explicitly supplied mapping
+        # should send a recording or display an audio-related warning.
         return False
     for path, label in assets:
         try:
