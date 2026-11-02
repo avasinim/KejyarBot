@@ -610,10 +610,14 @@
       10,
       11,
       12,
+      13,
       14,
       15,
       16,
-      17
+      17,
+      18,
+      19,
+      20
     ]
   },
   "course_total_lessons": 20,
@@ -625,7 +629,7 @@
         "number": 1,
         "title": "ڕێنووسی سەرەتاییی کوردی",
         "lesson_count": 20,
-        "status": "20_lessons_registered; source_gaps_and_per_lesson_design_practice_assessment_pending"
+        "status": "20_lessons_registered; all_source_files_present; reader_practice_assessment_enabled; 10_dedicated_audio_mappings_pending_user_confirmation"
       },
       {
         "number": 2,
