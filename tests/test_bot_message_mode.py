@@ -164,18 +164,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             await bot.message(update, context)
 
         update.message.reply_text.assert_awaited_once()
-        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        expected_lessons = [lesson for lesson in bot.ORDER if not bot.quiz_requires_submission(lesson)]
-        self.assertEqual(len(buttons), len(expected_lessons))
-        self.assertEqual(expected_lessons, [])
-        for lesson, button in zip(expected_lessons, buttons):
-            with self.subTest(lesson=lesson):
-                self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
-                self.assertEqual(
-                    button.callback_data,
-                    f"quiz_{lesson.split('_')[1]}_start",
-                )
+        call = update.message.reply_text.await_args
+        self.assertNotIn("reply_markup", call.kwargs)
+        self.assertIn("سەرەتا وانەیەک بکەرەوە", call.args[0])
+        self.assertEqual(bot.ORDER, [])
 
     async def test_clickable_practice_menu_lists_only_lesson_three_and_both_latin_courses(self):
         update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
