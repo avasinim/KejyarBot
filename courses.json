@@ -1,6 +1,36 @@
 {
   "courses": [
     {
+      "id": "arami_orthography_foundations",
+      "key": "course_arami_orthography_foundations",
+      "order": 1,
+      "title": "کۆرسی ١: ڕێنووسی ئارامی",
+      "description": "٢٠ وانە؛ خوێندنەوە، ڕاهێنان و تاقیکردنەوەی تایبەت بە هەر وانە.",
+      "status": "active",
+      "lesson_ids": [
+        "arami_course1_lesson_01",
+        "arami_course1_lesson_02",
+        "arami_course1_lesson_03",
+        "arami_course1_lesson_04",
+        "arami_course1_lesson_05",
+        "arami_course1_lesson_06",
+        "arami_course1_lesson_07",
+        "arami_course1_lesson_08",
+        "arami_course1_lesson_09",
+        "arami_course1_lesson_10",
+        "arami_course1_lesson_11",
+        "arami_course1_lesson_12",
+        "arami_course1_lesson_13",
+        "arami_course1_lesson_14",
+        "arami_course1_lesson_15",
+        "arami_course1_lesson_16",
+        "arami_course1_lesson_17",
+        "arami_course1_lesson_18",
+        "arami_course1_lesson_19",
+        "arami_course1_lesson_20"
+      ]
+    },
+    {
       "id": "orthography_basic",
       "key": "course_orthography_basic",
       "order": 1,
