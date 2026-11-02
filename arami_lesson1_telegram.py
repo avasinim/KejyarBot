@@ -3,6 +3,7 @@ import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
+from arami_course1_telegram import send_lesson_audio
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -85,6 +86,7 @@ async def callback(update, context, base_dir):
                 await query.message.reply_text("⚠️ بەشێک لە وانەکە درێژترە لە سنووری پەیامی Telegram.")
                 return
             await query.message.reply_text(message_text)
+        await send_lesson_audio(query.message, base_dir, {"number": 1, "audio_files": []})
         await query.message.reply_text(
             "⭐ کۆتایی وانە\n" + lesson["conclusion"],
             reply_markup=menu_keyboard(),
