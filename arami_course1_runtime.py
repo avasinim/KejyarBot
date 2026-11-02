@@ -55,6 +55,8 @@ def load_arami_course1(base_dir):
     # is represented by the stable source marker, not the old status label.
     if first.get("content_source") != "user_supplied_immutable":
         raise AramiCourseError("user-supplied Lesson 1 content must remain immutable")
+    if any(first.get(key) is not None for key in ("audio_asset", "audio_commit")):
+        raise AramiCourseError("Lesson 1 cannot use legacy audio assignment fields")
     if first.get("audio_files") != [{"file": LESSON_1_AUDIO_ASSET, "label": LESSON_1_AUDIO_LABEL}]:
         raise AramiCourseError("Lesson 1 must use only its own uploaded recording")
     second = next((lesson for lesson in lessons if lesson.get("id") == LESSON_2_ID), None)
