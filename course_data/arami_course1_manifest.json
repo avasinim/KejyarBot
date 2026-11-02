@@ -13,11 +13,11 @@
       "assessment_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
       "runtime_status": "isolated_Telegram_reading_audio_practice_assessment_routes_registered",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
-      "presentation_status": "lesson_text_delivered_in_source_sections; audio_unassigned; practice_and_assessment_wired",
+      "presentation_status": "source_text_delivered_in_sections; dedicated_lesson_1_audio_mapped; practice_and_assessment_wired",
       "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
       "interaction_presentation": "arami_lesson1_presentation.py",
       "content_file": "course_data/arami_course1_lesson_01_content.json",
-      "audio_assignment_note": "The previously listed alphabet recording has been reassigned to Lesson 2 at the user's explicit instruction; Lesson 1 audio is currently unassigned.",
+      "audio_assignment_note": "The dedicated recording بزوێنی ی.ogg belongs to Lesson 1 and is sent after its source text.",
       "design_status": "lesson1_interaction_flow_exists; shared_21_lesson_design_pending",
       "audio_files": [
         {
@@ -25,7 +25,7 @@
           "label": "دەنگی بزوێنی ی"
         }
       ],
-      "audio_status": "user_uploaded_lesson_1_reference; dedicated_file_linked_without_reuse"
+      "audio_status": "user_confirmed_lesson_1_recording; dedicated_file_verified_without_reuse"
     },
     {
       "id": "arami_course1_lesson_02",
@@ -92,15 +92,15 @@
       "status": "source_received_preserved; lesson_identity_confirmed_as_5",
       "content_status": "user_confirmed_lesson_05; source_saved_without_content_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "design_status": "source_preserved; lesson_5_practice_assessment_bank_created; telegram_runtime_pending",
+      "design_status": "source_preserved; six_source-derived_practice_and_assessment_items_integrated_in_telegram",
       "content_file": "course_data/arami_course1_lesson_05_source.md",
       "source_note": "User explicitly confirmed this alphabet-and-Latin-equivalents material is Lesson 5, not Lesson 2. Preserve source exactly; do not merge with Lesson 2 vowels. Source contains potentially ambiguous counts and Latin capitalization/transcription entries; do not extend beyond the six supplied questions or silently correct the tables.",
       "content_source": "user_supplied_immutable",
-      "practice_status": "six_source_questions_bank_created; runtime_integration_pending",
-      "assessment_status": "six_source_questions_bank_created; runtime_integration_pending",
+      "practice_status": "six_source_questions_bank_created_and_telegram_callback_flow_wired",
+      "assessment_status": "six_source_questions_bank_created_and_telegram_callback_flow_wired",
       "interaction_bank": "course_data/arami_course1_lesson_05_interactions.json",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "dedicated_lesson_5_source_practice_assessment_routes_registered"
     },
     {
       "id": "arami_course1_lesson_06",
@@ -504,7 +504,7 @@
       "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "runtime_design_status": "shared_arami_lesson_reader_sends_manifest_audio_after_source",
       "audio_files": [
         {
           "file": "بڕگە.ogg",
