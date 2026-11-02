@@ -42,7 +42,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
             self.assertTrue(all(bot.LESSON_COURSE[item] == course_id for item in lesson_ids))
             self.assertTrue(all(len(bot.QUIZ_DATA[item]) == 5 for item in lesson_ids))
             self.assertTrue(all(source_part in course["source_part"] for course in bot.COURSES if course["id"] == course_id))
-        self.assertEqual(len(bot.COURSES), 6)
+        self.assertEqual(len(bot.COURSES), 7)
         self.assertEqual(len(bot.ORDER), 0)
 
 
