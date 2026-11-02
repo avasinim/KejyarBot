@@ -38,7 +38,7 @@
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
+      "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved",
       "audio_topic_label": "دەنگەکان",
       "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2.",
       "content_file": "course_data/arami_course1_lesson_02_vowels_source.md",
