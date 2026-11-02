@@ -176,9 +176,9 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         catalog_by_file = {item["filename"]: item for item in catalog["assets"]}
         assigned = {}
         for lesson in manifest["lessons"]:
-            files = [item["file"] for item in lesson.get("audio_files", [])]
+            files = {item["file"] for item in lesson.get("audio_files", [])}
             if lesson.get("audio_asset"):
-                files.append(lesson["audio_asset"])
+                files.add(lesson["audio_asset"])
             for filename in files:
                 self.assertNotIn(filename, assigned, f"{filename} is reused across lessons")
                 assigned[filename] = lesson["id"]
