@@ -86,6 +86,26 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
 
 
+    async def test_arami_menu_opens_all_20_lessons_with_practice_and_assessment(self):
+        update, context = self.make_update_context("📕 ڕێنووسی ئارامی")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        call = update.message.reply_text.await_args
+        self.assertIn("٢٠ وانە", call.args[0])
+        keyboard = call.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        reads = [button.callback_data for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        practices = [button.callback_data for button in buttons if ":practice" in button.callback_data]
+        assessments = [button.callback_data for button in buttons if ":assessment" in button.callback_data]
+        self.assertEqual(len(reads), 20)
+        self.assertEqual(len(practices), 20)
+        self.assertEqual(len(assessments), 20)
+        self.assertIn("arami1:practice", practices)
+        self.assertIn("arami5:practice", practices)
+        self.assertIn("aramiC:practice:20", practices)
+
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
         label = "ڕێنووسی لاتینی کوردیی"
         self.assertIn(label, [button.text for row in bot.MENU.keyboard for button in row])
