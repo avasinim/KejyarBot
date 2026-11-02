@@ -213,11 +213,12 @@ async def send_lesson_infographic(message, lesson_id):
     return
 
 # Legacy 22-lesson Course 1 is retained only as archived source data.
-ORDER = COURSE_LESSON_ORDER.get("orthography_basic", [])
+ORDER = []
 COURSE_LESSON_ORDER = {
     course["id"]: visible_course_lessons(course, LESSON_DATA)
     for course in COURSES
 }
+ORDER = COURSE_LESSON_ORDER.get("orthography_basic", [])
 LESSON_COURSE = {
     lesson_id: course_id
     for course_id, lesson_ids in COURSE_LESSON_ORDER.items()
