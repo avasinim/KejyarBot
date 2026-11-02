@@ -16,6 +16,7 @@ def menu_keyboard():
         [InlineKeyboardButton("🔊 دەنگی وانەی ١", callback_data="arami1:audio")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
         [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
+        [InlineKeyboardButton("📚 وانەی ٥ — پیتەکان و هاوتای لاتینی", callback_data="arami5:menu")],
     ])
 
 
