@@ -45,6 +45,12 @@ from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
+from arami_course1_runtime import (
+    load_arami_lesson1_content,
+    load_arami_lesson1_interactions,
+    load_arami_lesson5_interactions,
+    load_arami_lesson5_source,
+)
 from arami_course1_telegram import (
     callback as arami_course1_callback,
     course_menu_keyboard as arami_course1_menu_keyboard,
@@ -249,13 +255,30 @@ def lesson_practice_callback(lesson):
 
 
 def validate_activated_course_runtime():
-    """Fail fast if activated courses are not fully loaded at startup."""
+    """Fail fast unless every activated course and its interactive lessons are ready."""
+    if not course_is_active("arami_orthography_foundations"):
+        raise RuntimeError("Required course arami_orthography_foundations is not active in courses.json")
     arami_manifest = load_arami_course1_manifest(BASE_DIR)
     arami_banks = load_arami_course1_question_banks(BASE_DIR)
     if len(arami_manifest.get("lessons", [])) != 21:
         raise RuntimeError("Arami Course 1 must load exactly 21 lessons")
-    if len(arami_banks) != 19:
-        raise RuntimeError("Arami Course 1 must load all 19 verified question banks")
+    expected_shared_banks = set(range(2, 5)) | set(range(6, 22))
+    if set(arami_banks) != expected_shared_banks:
+        raise RuntimeError("Arami Course 1 must load the 19 lesson-scoped shared question banks")
+    lesson1_content = load_arami_lesson1_content(BASE_DIR)
+    lesson1_bank = load_arami_lesson1_interactions(BASE_DIR)
+    lesson5_source = load_arami_lesson5_source(BASE_DIR)
+    lesson5_bank = load_arami_lesson5_interactions(BASE_DIR)
+    if not lesson1_content or not lesson5_source:
+        raise RuntimeError("Arami Course 1 dedicated Lesson 1 or Lesson 5 source is unavailable")
+    for lesson_number, bank in ((1, lesson1_bank), (5, lesson5_bank)):
+        for mode in ("practice", "assessment"):
+            if not bank.get(mode):
+                raise RuntimeError(f"Arami Course 1 Lesson {lesson_number} {mode} is unavailable")
+    logger.info(
+        "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
+        "arami_orthography_foundations",
+    )
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
