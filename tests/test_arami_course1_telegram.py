@@ -39,7 +39,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
         self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 11: 5, 12: 4, 13: 4, 14: 5, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 11: 5, 12: 4, 13: 4, 14: 5, 15: 10, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
         seen_ids = set()
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
@@ -71,6 +71,29 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("arami1:assessment", callbacks)
         self.assertIn("arami5:practice", callbacks)
         self.assertIn("arami5:assessment", callbacks)
+
+    def test_all_20_lessons_are_enabled_with_explicit_audio_readiness(self):
+        manifest = load_manifest(ROOT)
+        self.assertEqual(manifest["runtime_status"], "arami_course1_catalogue_and_interactions_enabled_on_feature_branch")
+        self.assertEqual(len(manifest["lessons"]), 20)
+        pending = []
+        for lesson in manifest["lessons"]:
+            self.assertEqual(lesson["runtime_status"], "enabled_in_arami_course1_catalogue")
+            self.assertIn("reader_practice_assessment", lesson["activation_status"])
+            if not lesson["audio_files"]:
+                pending.append(lesson["number"])
+                self.assertIn("audio_pending_user_mapping", lesson["activation_status"])
+        self.assertEqual(pending, [3, 4, 5, 6, 7, 8, 10, 17, 18, 19])
+
+    def test_lesson15_new_ll_and_l_contrasts_are_in_both_quiz_modes(self):
+        banks = load_question_banks(ROOT)
+        for mode in ("practice", "assessment"):
+            questions = banks[15][mode]
+            self.assertEqual(len(questions), 10)
+            prompts = [item["prompt"] for item in questions]
+            self.assertTrue(any("چڵ" in prompt for prompt in prompts))
+            self.assertTrue(any("پەڵە" in prompt for prompt in prompts))
+            self.assertTrue(all(item["source_evidence"] for item in questions))
 
     def test_manifest_maps_audio_to_the_correct_lesson_sources(self):
         manifest = load_manifest(ROOT)
