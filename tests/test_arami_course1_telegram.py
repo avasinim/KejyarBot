@@ -31,7 +31,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(len(buttons), 21)
         self.assertEqual(
             {button.callback_data for button in buttons},
-            {f"aramiC:lesson:{number}" for number in range(1, 22)},
+            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
         )
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
@@ -50,6 +50,10 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 5)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 5)
         self.assertNotIn("aramiC:practice:15", callbacks)
+        self.assertIn("arami1:practice", callbacks)
+        self.assertIn("arami1:assessment", callbacks)
+        self.assertIn("arami5:practice", callbacks)
+        self.assertIn("arami5:assessment", callbacks)
 
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
