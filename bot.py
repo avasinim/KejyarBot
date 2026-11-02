@@ -45,6 +45,7 @@ from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import menu_keyboard as arami_lesson1_menu_keyboard, callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
+from arami_course1_telegram import callback as arami_course1_callback
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -1034,6 +1035,10 @@ def main():
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson1_callback(update, context, BASE_DIR),
         pattern=r"^arami1:",
+    ))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_course1_callback(update, context, BASE_DIR),
+        pattern=r"^aramiC:",
     ))
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson5_callback(update, context, BASE_DIR),
