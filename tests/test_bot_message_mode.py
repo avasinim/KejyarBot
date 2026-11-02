@@ -73,6 +73,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user"),
             patch.object(bot, "can_open", return_value=True),
             patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+            patch.object(bot, "send_lesson_audio", new_callable=AsyncMock),
             patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock),
         ):
             await bot.message(update, context)
@@ -84,6 +85,26 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", update.message.reply_text.await_args.args[0])), bot.add_kejyar_brand_signature(bot.LESSON_DATA[lesson]["content"]))
         self.assertEqual(update.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
 
+
+    async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
+        update, context = self.make_update_context("📕 ڕێنووسی ئارامی")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        call = update.message.reply_text.await_args
+        self.assertIn("٢١ وانە", call.args[0])
+        keyboard = call.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        reads = [button.callback_data for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        practices = [button.callback_data for button in buttons if ":practice" in button.callback_data]
+        assessments = [button.callback_data for button in buttons if ":assessment" in button.callback_data]
+        self.assertEqual(len(reads), 21)
+        self.assertEqual(len(practices), 21)
+        self.assertEqual(len(assessments), 21)
+        self.assertIn("arami1:practice", practices)
+        self.assertIn("arami5:practice", practices)
+        self.assertIn("aramiC:practice:21", practices)
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
         label = "ڕێنووسی لاتینی کوردیی"
@@ -124,15 +145,13 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         call = update.message.reply_text.await_args
         keyboard = call.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), len(bot.ORDER))
-        self.assertEqual(len(bot.ORDER), 22)
-        self.assertIn(bot.ORTHOGRAPHY_COURSE["title"], call.args[0])
-        for lesson, button in zip(bot.ORDER, buttons):
-            with self.subTest(lesson=lesson):
-                self.assertIn(lesson, button.text)
-                self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
-                self.assertEqual(button.callback_data, f"open_lesson_{lesson}")
-                self.assertTrue(button.text.startswith("🔒"))
+        self.assertEqual(len(bot.ORDER), 0)
+        read_buttons = [
+            button for button in buttons
+            if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
+        ]
+        self.assertEqual(len(read_buttons), 21)
+        self.assertIn("ڕێنووسی ئارامی", call.args[0])
 
 
     async def test_quiz_selection_menu_shows_readable_lesson_titles(self):
@@ -145,17 +164,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             await bot.message(update, context)
 
         update.message.reply_text.assert_awaited_once()
-        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        expected_lessons = [lesson for lesson in bot.ORDER if not bot.quiz_requires_submission(lesson)]
-        self.assertEqual(len(buttons), len(expected_lessons))
-        for lesson, button in zip(expected_lessons, buttons):
-            with self.subTest(lesson=lesson):
-                self.assertIn(bot.LESSON_DATA[lesson]["title"], button.text)
-                self.assertEqual(
-                    button.callback_data,
-                    f"quiz_{lesson.split('_')[1]}_start",
-                )
+        call = update.message.reply_text.await_args
+        self.assertNotIn("reply_markup", call.kwargs)
+        self.assertIn("سەرەتا وانەیەک بکەرەوە", call.args[0])
+        self.assertEqual(bot.ORDER, [])
 
     async def test_clickable_practice_menu_lists_only_lesson_three_and_both_latin_courses(self):
         update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
@@ -174,7 +186,6 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         expected = [
-            "وانە_3",
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
@@ -217,7 +228,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
+        self.assertIn("نەناسراوە", query.message.reply_text.await_args.args[0])
         send_lesson.assert_not_awaited()
 
 

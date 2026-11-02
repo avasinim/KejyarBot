@@ -36,12 +36,21 @@ from database import (
     refund_speech_quota,
 )
 from voice import get_voice
+from lesson_audio import LessonAudioError, resolve_lesson_audio_path
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
+from arami_lesson1_telegram import callback as arami_lesson1_callback
+from arami_lesson5_telegram import callback as arami_lesson5_callback
+from arami_course1_telegram import (
+    callback as arami_course1_callback,
+    course_menu_keyboard as arami_course1_menu_keyboard,
+    load_manifest as load_arami_course1_manifest,
+    load_question_banks as load_arami_course1_question_banks,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -203,11 +212,13 @@ async def send_lesson_infographic(message, lesson_id):
     """Compatibility no-op: lessons are intentionally delivered as text only."""
     return
 
-ORDER = [lesson for lesson in LESSON_DATA if lesson.startswith("وانە_")]
+# Legacy 22-lesson Course 1 is retained only as archived source data.
+ORDER = []
 COURSE_LESSON_ORDER = {
     course["id"]: visible_course_lessons(course, LESSON_DATA)
     for course in COURSES
 }
+ORDER = COURSE_LESSON_ORDER.get("orthography_basic", [])
 LESSON_COURSE = {
     lesson_id: course_id
     for course_id, lesson_ids in COURSE_LESSON_ORDER.items()
@@ -238,7 +249,13 @@ def lesson_practice_callback(lesson):
 
 
 def validate_activated_course_runtime():
-    """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
+    """Fail fast if activated courses are not fully loaded at startup."""
+    arami_manifest = load_arami_course1_manifest(BASE_DIR)
+    arami_banks = load_arami_course1_question_banks(BASE_DIR)
+    if len(arami_manifest.get("lessons", [])) != 21:
+        raise RuntimeError("Arami Course 1 must load exactly 21 lessons")
+    if len(arami_banks) != 19:
+        raise RuntimeError("Arami Course 1 must load all 19 verified question banks")
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
@@ -281,6 +298,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
         ["ڕێنووسی لاتینی کوردیی"],
+        ["📕 ڕێنووسی ئارامی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -316,6 +334,24 @@ def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+async def send_lesson_audio(message, lesson_data):
+    """Send the lesson's own prerecorded audio; never substitute generic narration."""
+    try:
+        audio_path = resolve_lesson_audio_path(BASE_DIR, lesson_data)
+    except LessonAudioError as exc:
+        logger.warning("Lesson audio is not ready: %s", exc)
+        await message.reply_text("⚠️ دەنگی تایبەتی ئەم وانەیە بەردەست نییە؛ وانەکە بێ دەنگ تەواو ناژمێردرێت.")
+        return False
+
+    try:
+        with audio_path.open("rb") as audio:
+            await message.reply_voice(voice=audio)
+        return True
+    except Exception:
+        logger.exception("Could not send dedicated lesson audio %s", audio_path)
+        await message.reply_text("⚠️ ناردنی دەنگی وانەکە سەرکەوتوو نەبوو.")
+        return False
 
 async def send_voice(update, filename):
     path = get_voice(filename)
@@ -806,6 +842,19 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     course_id = query.data.removeprefix("course_")
+    if course_id == "arami_orthography_foundations":
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open Arami Course 1 from the generic course menu")
+            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئامادە نییە.")
+            return
+        await query.message.reply_text(
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+        )
+        return
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     if course is None:
         await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
@@ -834,6 +883,21 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
+    if text == "📕 ڕێنووسی ئارامی":
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            return
+        await update.message.reply_text(
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
+            "٢١ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+        )
+        return
+
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -848,7 +912,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی",
+        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی ئارامی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -872,19 +936,16 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "📚 وانەکان":
-        completed = set(get_completed_lessons(user_id))
-        keyboard_rows = []
-        for lesson in ORDER:
-            status = "✅" if lesson in completed else ("🔓" if can_open(user_id, lesson) else "🔒")
-            title = LESSON_DATA[lesson]["title"]
-            keyboard_rows.append([InlineKeyboardButton(
-                f"{status} {lesson}: {title}",
-                callback_data=f"open_lesson_{lesson}",
-            )])
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            return
         await update.message.reply_text(
-            ORTHOGRAPHY_COURSE["title"] + "\\n\\n"
-            + "⚠️ ناوەڕۆکی وانەکان پێش‌نووسن و پێویستیان بە پێداچوونەوەی سەرچاوەیی هەیە.",
-            reply_markup=InlineKeyboardMarkup(keyboard_rows),
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
 
@@ -918,6 +979,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
+        await send_lesson_audio(update.message, data)
         await send_conversation_voice(
             update.message,
             f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
@@ -999,8 +1061,20 @@ def main():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_lesson1_callback(update, context, BASE_DIR),
+        pattern=r"^arami1:",
+    ))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_course1_callback(update, context, BASE_DIR),
+        pattern=r"^aramiC:",
+    ))
+    app.add_handler(CallbackQueryHandler(
+        lambda update, context: arami_lesson5_callback(update, context, BASE_DIR),
+        pattern=r"^arami5:",
+    ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))

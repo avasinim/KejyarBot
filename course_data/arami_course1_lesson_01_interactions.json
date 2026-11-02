@@ -1,0 +1,144 @@
+{
+  "course_id": "arami_orthography_foundations",
+  "lesson_id": "arami_course1_lesson_01",
+  "content_policy": "Questions use only facts explicitly stated in the user-supplied Lesson 1 PDF pages 1–4 and the user's confirmation that the lesson teaches eight vowels. The lesson text, examples, and chart remain unchanged.",
+  "source_asset": "کەژیار.pdf, pages 1–4; original Lesson 1 exercise, questions 1–5",
+  "source_note": "The source prose explicitly states 34 alphabet letters and 8 vowels. The chart's apparent vowel count conflicts with the prose, so the confirmed eight-vowel explanation is authoritative. No consonant total or total sound count is tested.",
+  "practice": [
+    {
+      "id": "arami1_practice_01",
+      "type": "recognize",
+      "section_id": "lesson1_alphabet_count",
+      "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+      "options": [
+        "٢٨ پیت",
+        "٣٤ پیت",
+        "٣٧ پیت"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+    },
+    {
+      "id": "arami1_practice_02",
+      "type": "recognize",
+      "section_id": "lesson1_vowel_count",
+      "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
+      "options": [
+        "٦ بزوێن",
+        "٧ بزوێن",
+        "٨ بزوێن"
+      ],
+      "answer_index": 2,
+      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+    },
+    {
+      "id": "arami1_practice_03",
+      "type": "classify",
+      "section_id": "lesson1_dual_letters",
+      "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+      "options": [
+        "(و) و (ی)",
+        "(ب) و (پ)",
+        "(ر) و (ڕ)"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
+    },
+    {
+      "id": "arami1_practice_04",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "دەنگی کورتِ بزرۆکە بە کام نیشانە دەنووسرێت؟",
+      "options": [
+        "u",
+        "i",
+        "o"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+    },
+    {
+      "id": "arami1_practice_05",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "ئایا بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+      "options": [
+        "بەڵێ",
+        "نەخێر"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
+    }
+  ],
+  "assessment": [
+    {
+      "id": "arami1_assessment_01",
+      "type": "recognize",
+      "section_id": "lesson1_alphabet_count",
+      "prompt": "بەپێی وانەی ١، ئەلفبێی زمانی کوردی چەند پیتە؟",
+      "options": [
+        "٣٧ پیت",
+        "٣٤ پیت",
+        "٢٨ پیت"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+    },
+    {
+      "id": "arami1_assessment_02",
+      "type": "recognize",
+      "section_id": "lesson1_vowel_count",
+      "prompt": "ژمارەی بزوێنەکان لەم دابەشکردنەدا چەندە؟",
+      "options": [
+        "٨ بزوێن",
+        "٦ بزوێن",
+        "٧ بزوێن"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+    },
+    {
+      "id": "arami1_assessment_03",
+      "type": "classify",
+      "section_id": "lesson1_dual_letters",
+      "prompt": "کام پیتانە هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+      "options": [
+        "(ب) و (پ)",
+        "(و) و (ی)",
+        "(ر) و (ڕ)"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
+    },
+    {
+      "id": "arami1_assessment_04",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "نیشانەی دەنگی کورتِ بزرۆکە کامەیە؟",
+      "options": [
+        "o",
+        "u",
+        "i"
+      ],
+      "answer_index": 2,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+    },
+    {
+      "id": "arami1_assessment_05",
+      "type": "recognize",
+      "section_id": "lesson1_short_i",
+      "prompt": "بۆ دەنگی بزرۆکە پیتێکی تایبەت هەیە؟",
+      "options": [
+        "نەخێر",
+        "بەڵێ"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
+    }
+  ],
+  "source_correction": {
+    "lesson_1_vowel_count": 8,
+    "authority": "explicit lesson prose and user's confirmation",
+    "supersedes": "earlier chart-only interpretation that counted 6 vowels"
+  }
+}

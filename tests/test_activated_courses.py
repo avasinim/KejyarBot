@@ -17,26 +17,40 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), message, query
 
-    def test_manifest_activates_48_and_66_lessons_without_activating_course_four(self):
+    def test_manifest_activates_courses_two_and_three_and_retires_legacy_course_one(self):
+        self.assertTrue(bot.course_is_active("arami_orthography_foundations"))
+        self.assertFalse(bot.course_is_active("orthography_basic"))
+        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
+        self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 21)
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
+    async def test_open_arami_course_from_generic_course_menu(self):
+        update, message, query = self.make_update("course_arami_orthography_foundations")
+        await bot.open_course(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        self.assertEqual(len(reads), 21)
+
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
 
     def test_course_lesson_ids_are_unique_and_do_not_replace_course_one_ids(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 22)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 0)
         all_ids = [
             lesson
-            for course_id in ("orthography_basic", "daily_conversation", "unified_orthography")
+            for course_id in ("daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 136)
-        self.assertEqual(len(set(all_ids)), 136)
-        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"][0], "وانە_1")
+        self.assertEqual(len(all_ids), 114)
+        self.assertEqual(len(set(all_ids)), 114)
+        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
