@@ -576,7 +576,7 @@
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "The source heading identifies this as Lesson 20: هێشوو (Cluster). Four source-derived practice questions and four assessment questions are registered under Lesson 20 only.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_lesson_19; lesson_number_shifted_after_user_inserted_lesson_16",
+      "source_audit_status": "source_heading_matches_lesson_20; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [],
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
@@ -598,7 +598,7 @@
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "This is now Lesson 21, the final lesson of Course 1 Round 1, after inserting the user's new Lesson 16 on ر and ڕ. Original content and examples are preserved.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified_in_branch; lesson_number_shifted_after_user_inserted_lesson_16",
+      "source_audit_status": "source_file_and_lesson_21_heading_verified; final_lesson_after_insertion_of_r_rr_lesson",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
@@ -609,7 +609,7 @@
       "audio_commits": [
         "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea"
       ],
-      "audio_assignment_note": "The user-supplied final lesson recording remains assigned only to Lesson 20 after correcting the course total from 21 to 20.",
+      "audio_assignment_note": "The user-supplied final lesson recording is assigned to Lesson 21, the final lesson, after insertion of the new Lesson 16 on ر and ڕ. The original audio file is preserved.",
       "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
