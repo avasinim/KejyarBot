@@ -78,6 +78,17 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(len(lessons[11]["audio_files"]), 4)
         self.assertEqual(len(lessons[13]["audio_files"]), 2)
 
+    def test_lesson14_preserves_the_supplied_hidden_vowel_examples_and_audio(self):
+        manifest = load_manifest(ROOT)
+        lesson = next(item for item in manifest["lessons"] if item["number"] == 14)
+        _, source = load_lesson_source(ROOT, 14)
+        for example in ("min", "çil", "dill", "mirdim", "xistin", "kirdin", "birdin"):
+            self.assertIn(example, source)
+        self.assertIn("I i", source)
+        self.assertIn("6639c30ca85bdae4f64134e1368617b2e507fb6c", lesson["audio_commits"])
+        self.assertIn("بزرۆکە.ogg", [item["file"] for item in lesson["audio_files"]])
+        self.assertNotIn("6639c30ca85bdae4f64134e1368617b2e507fb6c", source)
+
     def test_every_manifest_audio_file_exists_and_stays_inside_project(self):
         from arami_course1_telegram import load_lesson_audio_files
         manifest = load_manifest(ROOT)
