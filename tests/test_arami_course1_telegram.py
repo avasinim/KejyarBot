@@ -179,6 +179,33 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(message.reply_voice.await_count, 3)
         message.reply_text.assert_not_awaited()
 
+    async def test_pending_lesson_audio_reports_missing_mapping_without_substitution(self):
+        from arami_course1_telegram import send_lesson_audio
+        message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
+        lesson3 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 3)
+        sent = await send_lesson_audio(message, ROOT, lesson3)
+        self.assertFalse(sent)
+        message.reply_voice.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("وانەی 3", message.reply_text.await_args.args[0])
+
+    async def test_lesson1_lesson2_and_lesson9_send_only_their_confirmed_audio(self):
+        from arami_course1_telegram import send_lesson_audio
+        manifest = load_manifest(ROOT)
+        expected = {
+            1: ["بزوێنی ی.ogg"],
+            2: ["دەنگەکانی ئەلفبێ.ogg"],
+            9: ["ئا.ogg"],
+        }
+        for number, filenames in expected.items():
+            with self.subTest(lesson=number):
+                message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
+                lesson = next(item for item in manifest["lessons"] if item["number"] == number)
+                sent = await send_lesson_audio(message, ROOT, lesson)
+                self.assertTrue(sent)
+                self.assertEqual(message.reply_voice.await_count, len(filenames))
+                message.reply_text.assert_not_awaited()
+
     def test_a_recording_is_never_reused_across_different_lessons(self):
         manifest = load_manifest(ROOT)
         owners = {}
