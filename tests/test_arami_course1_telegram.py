@@ -17,15 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AramiCourseTelegramTests(unittest.TestCase):
-    def test_manifest_has_exactly_21_numbered_lessons(self):
+    def test_manifest_has_exactly_20_numbered_lessons(self):
         manifest = load_manifest(ROOT)
-        self.assertEqual(len(manifest["lessons"]), 21)
+        self.assertEqual(len(manifest["lessons"]), 20)
         self.assertEqual(
             [item["number"] for item in sorted(manifest["lessons"], key=lambda item: item["number"])],
-            list(range(1, 22)),
+            list(range(1, 21)),
         )
 
-    def test_course_menu_exposes_all_21_lessons(self):
+    def test_course_menu_exposes_all_20_lessons(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         callbacks = {button.callback_data for button in buttons}
@@ -38,8 +38,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
-        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 21})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 4, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 21: 4})
+        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 4, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
@@ -72,7 +72,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual([item["file"] for item in lessons[14]["audio_files"]], ["بزرۆکە.ogg", "بزرۆکەی ٢.ogg", "بزرۆکەی ٣.ogg"])
         self.assertEqual([item["file"] for item in lessons[15]["audio_files"]], ["دەنگی ل.ogg", "دەنگی ڵ.ogg"])
         self.assertEqual([item["file"] for item in lessons[16]["audio_files"]], ["دەنگ ڤ.ogg"])
-        self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
+        self.assertEqual([item["file"] for item in lessons[20]["audio_files"]], ["بڕگە.ogg"])
         self.assertEqual([item["file"] for item in lessons[1]["audio_files"]], ["بزوێنی ی.ogg"])
         self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_11_y_source.md")
         self.assertEqual([item["file"] for item in lessons[12]["audio_files"]], ["ی.ogg", "پیتی دەنگی ٢.ogg"])
