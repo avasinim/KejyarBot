@@ -223,6 +223,30 @@
       "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
       "audio_topic_label": "بڕگە",
       "lesson_mapping_evidence": "user_confirmed_lesson_21_syllable_recording"
+    },
+    {
+      "filename": "ی.ogg",
+      "commit_sha": "040ee127789798a0333809b0c8c1bcc6d82ae4d9",
+      "commit_title": "پیتی ی",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/040ee127789798a0333809b0c8c1bcc6d82ae4d9",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_12",
+      "section_id": null,
+      "assignment_status": "user_confirmed_lesson_11_y_recording; shifted_to_lesson_12_after_new_lesson_11_inserted; original_recording_preserved",
+      "audio_topic_label": "دەنگی پیتی ی",
+      "lesson_mapping_evidence": "user_supplied_lesson_11_y_source_and_recording_commit"
+    },
+    {
+      "filename": "پیتی دەنگی ٢.ogg",
+      "commit_sha": "9ed9c927d718ad37b2fdf5af8afc3ba187bc9cfd",
+      "commit_title": "دەنگی یی",
+      "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/9ed9c927d718ad37b2fdf5af8afc3ba187bc9cfd",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_12",
+      "section_id": null,
+      "assignment_status": "user_confirmed_lesson_11_y_recording; shifted_to_lesson_12_after_new_lesson_11_inserted; original_recording_preserved",
+      "audio_topic_label": "دەنگی دووەمی پیتی ی",
+      "lesson_mapping_evidence": "user_supplied_lesson_11_y_source_and_recording_commit"
     }
   ]
 }
