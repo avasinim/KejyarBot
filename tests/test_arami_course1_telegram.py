@@ -38,8 +38,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
-        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 4, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
+        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 11: 5, 12: 4, 13: 4, 14: 5, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
         seen_ids = set()
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
@@ -57,13 +57,14 @@ class AramiCourseTelegramTests(unittest.TestCase):
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 20)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 16)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 18)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 16)
-        self.assertNotIn("aramiC:practice:11", callbacks)
-        self.assertNotIn("aramiC:practice:14", callbacks)
+        self.assertIn("aramiC:practice:11", callbacks)
+        self.assertIn("aramiC:practice:14", callbacks)
         self.assertIn("aramiC:practice:20", callbacks)
         self.assertIn("aramiC:assessment:20", callbacks)
-        self.assertNotIn("aramiC:assessment:11", callbacks)
+        self.assertIn("aramiC:assessment:11", callbacks)
+        self.assertIn("aramiC:assessment:14", callbacks)
         self.assertIn("aramiC:practice:15", callbacks)
         self.assertIn("aramiC:assessment:15", callbacks)
         self.assertIn("arami1:practice", callbacks)
