@@ -848,10 +848,10 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open Arami Course 1 from the generic course menu")
-            await query.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئامادە نییە.")
+            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢٠ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
@@ -889,11 +889,11 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
-            "٢٠ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
+            "٢١ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
             reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
@@ -941,10 +941,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢٠ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
