@@ -14,7 +14,7 @@ class Course1ReadmeCountTests(unittest.TestCase):
         manifest = load_manifest(ROOT)
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         normalized_readme = readme.translate(KURDISH_DIGITS)
-        expected = f"- کۆرسی ١: {manifest['course_size']} وانەی ڕێنووسی سەرەتاییی زمانی کوردی"
+        expected = f"- کۆرسی 1: {manifest['course_size']} وانەی ڕێنووسی سەرەتاییی زمانی کوردی"
         self.assertIn(expected, normalized_readme)
 
 
