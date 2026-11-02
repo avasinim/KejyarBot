@@ -528,10 +528,7 @@
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "audio_commits": [
-        "feb5293b322c1eb63d0481af02148cc9d1af64a8"
-      ],
-      "audio_assignment_note": "User explicitly associates commit feb5293b322c1eb63d0481af02148cc9d1af64a8 with the ڤ sound in this lesson. Playback/runtime not yet verified.",
+      "audio_assignment_note": "The commit feb5293b322c1eb63d0481af02148cc9d1af64a8 and file «دەنگ ڤ.ogg» are confirmed in the audio catalog for Lesson 17 (پیتی ڤ), not Lesson 18. No dedicated Lesson 18 recording is assigned; user confirmation is still pending.",
       "source_note": "The source heading identifies this as Lesson 18: distinction between هـ and ە. The source is preserved without changing the supplied examples.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_heading_matches_lesson_18; lesson_number_shifted_after_user_inserted_lesson_16",
