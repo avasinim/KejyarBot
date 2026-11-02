@@ -471,10 +471,8 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard
         )
-    # Keep dynamic speech disabled; use only the existing short Kejyar cues.
-    if LESSON_COURSE.get(lesson) == "unified_orthography":
-        await send_kejyar_course_cue(query.message, "lesson_done.mp3")
-        await send_kejyar_course_cue(query.message, "reward.mp3")
+    # Keep dynamic speech disabled. The legacy event MP3s are byte-identical,
+    # so do not replay them as separate completion/reward announcements.
 
     await send_conversation_voice(query.message, message_text, context.user_data, user_id)
 
