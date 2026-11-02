@@ -43,9 +43,14 @@ from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
-from arami_lesson1_telegram import menu_keyboard as arami_lesson1_menu_keyboard, callback as arami_lesson1_callback
+from arami_lesson1_telegram import callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
-from arami_course1_telegram import callback as arami_course1_callback
+from arami_course1_telegram import (
+    callback as arami_course1_callback,
+    course_menu_keyboard as arami_course1_menu_keyboard,
+    load_manifest as load_arami_course1_manifest,
+    load_question_banks as load_arami_course1_question_banks,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
@@ -858,11 +863,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     get_user(user_id)
 
     if text == "📕 ڕێنووسی ئارامی":
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open the 20-lesson Arami Course 1 catalogue")
+            await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            return
         await update.message.reply_text(
-            "📕 کۆرسی ڕێنووسی ئارامی — وانەی ١\n"
-            "«پیتەکان و دەنگەکان»\n\n"
-            "دەنگی ڕەسەن، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
-            reply_markup=arami_lesson1_menu_keyboard(),
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
+            "٢٠ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
         )
         return
 
