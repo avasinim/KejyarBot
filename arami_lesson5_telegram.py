@@ -18,11 +18,11 @@ def _plain_source(markdown):
                 continue
             lines.append(" • ".join(cells))
             continue
-        line = re.sub(r"^#{1,6}\\s*", "", line).replace("**", "").replace(chr(96), "")
+        line = re.sub(r"^#{1,6}\s*", "", line).replace("**", "").replace(chr(96), "")
         if line.startswith(">"):
             line = line[1:].strip()
         lines.append(line)
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 def menu_keyboard():
     return InlineKeyboardMarkup([
@@ -39,7 +39,7 @@ async def _send_question(message, context):
         return
     rows = [[InlineKeyboardButton(option, callback_data=f"arami5:pick:{i}")] for i, option in enumerate(question["options"])]
     sent = await message.reply_text(
-        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\\n\\n{question['prompt']}",
+        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows))
     context.user_data["arami_lesson5_message_id"] = sent.message_id
 
@@ -60,11 +60,11 @@ async def callback(update, context, base_dir):
         while source:
             end = min(3800, len(source))
             if end < len(source):
-                boundary = source.rfind("\\n", 0, end)
+                boundary = source.rfind("\n", 0, end)
                 if boundary > 0:
                     end = boundary
             await query.message.reply_text(source[:end])
-            source = source[end:].lstrip("\\n")
+            source = source[end:].lstrip("\n")
         await query.message.reply_text("⭐ کۆتایی وانەی ٥", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
@@ -109,7 +109,7 @@ async def callback(update, context, base_dir):
             if result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami5:retry")])
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ وانەی ٥", callback_data="arami5:menu")])
-            await query.edit_message_text(f"{feedback}\\n\\n🏁 کۆتایی هات\\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪", reply_markup=InlineKeyboardMarkup(rows))
+            await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪", reply_markup=InlineKeyboardMarkup(rows))
         else:
             await query.edit_message_text(feedback, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡️ پرسیاری دواتر", callback_data="arami5:next")]]))
         return
