@@ -252,10 +252,10 @@ def validate_activated_course_runtime():
     """Fail fast if activated courses are not fully loaded at startup."""
     arami_manifest = load_arami_course1_manifest(BASE_DIR)
     arami_banks = load_arami_course1_question_banks(BASE_DIR)
-    if len(arami_manifest.get("lessons", [])) != 20:
-        raise RuntimeError("Arami Course 1 must load exactly 20 lessons")
-    if len(arami_banks) != 18:
-        raise RuntimeError("Arami Course 1 must load all 18 verified question banks")
+    if len(arami_manifest.get("lessons", [])) != 21:
+        raise RuntimeError("Arami Course 1 must load exactly 21 lessons")
+    if len(arami_banks) != 19:
+        raise RuntimeError("Arami Course 1 must load all 19 verified question banks")
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
@@ -888,7 +888,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
-            logger.exception("Could not open the 20-lesson Arami Course 1 catalogue")
+            logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
             await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
