@@ -836,6 +836,19 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     course_id = query.data.removeprefix("course_")
+    if course_id == "arami_orthography_foundations":
+        try:
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_banks = load_arami_course1_question_banks(BASE_DIR)
+        except Exception:
+            logger.exception("Could not open Arami Course 1 from the generic course menu")
+            await query.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئامادە نییە.")
+            return
+        await query.message.reply_text(
+            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢٠ وانە؛ وانەی خۆت هەڵبژێرە.",
+            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+        )
+        return
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     if course is None:
         await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
@@ -1055,7 +1068,7 @@ def main():
         pattern=r"^arami5:",
     ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
-    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
+    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))
