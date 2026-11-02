@@ -153,3 +153,55 @@ def load_arami_lesson1_content(base_dir):
         if not any(key in section for key in ("body", "table", "questions")):
             raise AramiCourseError("empty Arami Lesson 1 source section")
     return content
+
+
+LESSON_5_ID = "arami_course1_lesson_05"
+
+
+def load_arami_lesson5_interactions(base_dir):
+    """Load the separately namespaced, source-derived Lesson 5 question bank."""
+    root = Path(base_dir).resolve()
+    manifest = load_arami_course1(root)
+    lesson = next((item for item in manifest["lessons"] if item.get("id") == LESSON_5_ID), None)
+    if lesson is None or lesson.get("content_source") != "user_supplied_immutable":
+        raise AramiCourseError("Arami Lesson 5 is missing or its source policy changed")
+    bank_path = root / "course_data" / "arami_course1_lesson_05_interactions.json"
+    try:
+        bank = json.loads(bank_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AramiCourseError("Arami Lesson 5 interaction bank could not be loaded") from exc
+    if bank.get("course_id") != COURSE_ID or bank.get("lesson_id") != LESSON_5_ID:
+        raise AramiCourseError("interaction bank belongs to a different course or lesson")
+    if lesson.get("interaction_bank") != "course_data/arami_course1_lesson_05_interactions.json":
+        raise AramiCourseError("Lesson 5 manifest does not point to its approved interaction bank")
+    for mode in ("practice", "assessment"):
+        questions = bank.get(mode)
+        try:
+            validate_question_bank(questions)
+        except (InvalidQuestionBank, TypeError) as exc:
+            raise AramiCourseError(f"invalid Lesson 5 {mode} bank") from exc
+        if len(questions) != 6:
+            raise AramiCourseError(f"Lesson 5 {mode} must contain its six supplied exercises")
+        if any(item.get("section_id") != "lesson5_source_exercises" for item in questions):
+            raise AramiCourseError(f"Lesson 5 {mode} contains an unapproved section")
+        if any(not isinstance(item.get("source_evidence"), str) or not item["source_evidence"].strip() for item in questions):
+            raise AramiCourseError(f"Lesson 5 {mode} questions require source evidence")
+    return bank
+
+
+def load_arami_lesson5_source(base_dir):
+    """Return the immutable Lesson 5 Markdown source without rewriting it."""
+    root = Path(base_dir).resolve()
+    manifest = load_arami_course1(root)
+    lesson = next((item for item in manifest["lessons"] if item.get("id") == LESSON_5_ID), None)
+    expected = "course_data/arami_course1_lesson_05_source.md"
+    if lesson is None or lesson.get("content_file") != expected:
+        raise AramiCourseError("Lesson 5 source path is not approved in the manifest")
+    path = root / expected
+    try:
+        content = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise AramiCourseError("Arami Lesson 5 source text could not be loaded") from exc
+    if "وانەی ٥" not in content or "پیتەکانی زمانی کوردی بە نووسینی کوردی و لاتینی" not in content:
+        raise AramiCourseError("Lesson 5 source identity does not match its manifest")
+    return content
