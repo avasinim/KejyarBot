@@ -86,7 +86,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(update.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
 
 
-    async def test_arami_menu_opens_all_20_lessons_with_practice_and_assessment(self):
+    async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
         update, context = self.make_update_context("📕 ڕێنووسی ئارامی")
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
@@ -99,7 +99,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         reads = [button.callback_data for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
         practices = [button.callback_data for button in buttons if ":practice" in button.callback_data]
         assessments = [button.callback_data for button in buttons if ":assessment" in button.callback_data]
-        self.assertEqual(len(reads), 20)
+        self.assertEqual(len(reads), 21)
         self.assertEqual(len(practices), 20)
         self.assertEqual(len(assessments), 20)
         self.assertIn("arami1:practice", practices)
@@ -150,7 +150,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             button for button in buttons
             if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
         ]
-        self.assertEqual(len(read_buttons), 20)
+        self.assertEqual(len(read_buttons), 21)
         self.assertIn("ڕێنووسی ئارامی", call.args[0])
 
 
