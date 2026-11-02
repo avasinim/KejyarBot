@@ -101,15 +101,18 @@ async def callback(update, context, base_dir):
         except (ValueError, TypeError):
             await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
-        correct = question["options"][question["answer_index"]]
-        feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"
+        if session["mode"] == "practice":
+            correct = question["options"][question["answer_index"]]
+            feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"
+        else:
+            feedback = "✅ وەڵامەکەت تۆمار کرا."
         if session["closed"]:
             result = session_result(session)
             rows = []
-            if result["missed"]:
+            if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami5:retry")])
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ وانەی ٥", callback_data="arami5:menu")])
-            await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪", reply_markup=InlineKeyboardMarkup(rows))
+            await query.edit_message_text(f"{feedback}\\n\\n🏁 کۆتایی هات\\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪", reply_markup=InlineKeyboardMarkup(rows))
         else:
             await query.edit_message_text(feedback, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡️ پرسیاری دواتر", callback_data="arami5:next")]]))
         return
