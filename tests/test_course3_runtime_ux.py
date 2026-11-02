@@ -52,7 +52,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
              patch.object(bot, "send_conversation_voice", new=AsyncMock()):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
         self.assertEqual(send_text.await_count, 1)
-        self.assertIn(next_lesson, send_text.await_args.args[1])
+        self.assertEqual(send_text.await_args.args[1], bot.LESSON_DATA[next_lesson]["content"])
         self.assertIn("lesson_start.mp3", [call.args[1] for call in cue.await_args_list])
 
 
