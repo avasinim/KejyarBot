@@ -18,7 +18,14 @@
       "interaction_presentation": "arami_lesson1_presentation.py",
       "content_file": "course_data/arami_course1_lesson_01_content.json",
       "audio_assignment_note": "The previously listed alphabet recording has been reassigned to Lesson 2 at the user's explicit instruction; Lesson 1 audio is currently unassigned.",
-      "design_status": "lesson1_interaction_flow_exists; shared_21_lesson_design_pending"
+      "design_status": "lesson1_interaction_flow_exists; shared_21_lesson_design_pending",
+      "audio_files": [
+        {
+          "file": "بزوێنی ی.ogg",
+          "label": "دەنگی بزوێنی ی"
+        }
+      ],
+      "audio_status": "user_uploaded_lesson_1_reference; dedicated_file_linked_without_reuse"
     },
     {
       "id": "arami_course1_lesson_02",
@@ -253,17 +260,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "repository_recording_matches_lesson_12_y_topic; user_mapping_to_be_verified",
+      "audio_status": "no_unique_lesson_12_audio_file_verified_in_current_branch",
       "source_note": "User explicitly designated this material as Lesson 11. Source preserved; only whitespace/Markdown layout normalized. No quiz questions were supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
-      "audio_files": [
-        {
-          "file": "بزوێنی ی.ogg",
-          "label": "دەنگی بزوێنی ی"
-        }
-      ]
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_13",
