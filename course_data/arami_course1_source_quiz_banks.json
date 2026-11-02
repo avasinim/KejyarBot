@@ -1209,9 +1209,9 @@
       "source_file": "course_data/arami_course1_lesson_13_w_source.md",
       "practice": [
         {
-          "id": "14p1",
+          "id": "13p1",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "لە سەرچاوەی وانەدا چەند شێوەی پیتی (و) باس کراوە؟",
           "options": [
             "دوو",
@@ -1222,9 +1222,9 @@
           "source_evidence": "سەردێڕ: «سێ پیتی (و=w ـ و=u ـ وو=û)مان هەیە»"
         },
         {
-          "id": "14p2",
+          "id": "13p2",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "کام وشە نموونەی پیتی (و=w) ـە؟",
           "options": [
             "چاو",
@@ -1235,9 +1235,9 @@
           "source_evidence": "بەشی پیتی «و=w»: نموونەکان"
         },
         {
-          "id": "14p3",
+          "id": "13p3",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "کام وشە نموونەی پیتی (و=u) ـە؟",
           "options": [
             "گوڵ",
@@ -1248,9 +1248,9 @@
           "source_evidence": "بەشی پیتی (و،u): نموونەکان"
         },
         {
-          "id": "14p4",
+          "id": "13p4",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "پیتی «وو=û» لە کام وشەدا نموونەی هاتووە؟",
           "options": [
             "دوو",
@@ -1263,9 +1263,9 @@
       ],
       "assessment": [
         {
-          "id": "14a1",
+          "id": "13a1",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "لە سەرچاوەی وانەدا چەند شێوەی پیتی (و) باس کراوە؟",
           "options": [
             "دوو",
@@ -1276,9 +1276,9 @@
           "source_evidence": "سەردێڕ: «سێ پیتی (و=w ـ و=u ـ وو=û)مان هەیە»"
         },
         {
-          "id": "14a2",
+          "id": "13a2",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "کام وشە نموونەی پیتی (و=w) ـە؟",
           "options": [
             "چاو",
@@ -1289,9 +1289,9 @@
           "source_evidence": "بەشی پیتی «و=w»: نموونەکان"
         },
         {
-          "id": "14a3",
+          "id": "13a3",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "کام وشە نموونەی پیتی (و=u) ـە؟",
           "options": [
             "گوڵ",
@@ -1302,9 +1302,9 @@
           "source_evidence": "بەشی پیتی (و،u): نموونەکان"
         },
         {
-          "id": "14a4",
+          "id": "13a4",
           "type": "recognize",
-          "section_id": "lesson14_source_exercises",
+          "section_id": "lesson13_source_exercises",
           "prompt": "پیتی «وو=û» لە کام وشەدا نموونەی هاتووە؟",
           "options": [
             "دوو",
@@ -1322,7 +1322,7 @@
         {
           "id": "15p1",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "لە زمانی کوردیدا چەند پیتی «ل» و «ڵ» هەیە؟",
           "options": [
             "یەک",
@@ -1335,7 +1335,7 @@
         {
           "id": "15p2",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "پیتی «ڵ» چۆن بێژە دەکرێت؟",
           "options": [
             "ناسک",
@@ -1348,7 +1348,7 @@
         {
           "id": "15p3",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "هاوتای لاتینیی پیتی «ڵ» لە سەرچاوەدا چییە؟",
           "options": [
             "l",
@@ -1361,7 +1361,7 @@
         {
           "id": "15p4",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "پیتی «ڵ» لە کوێی وشەدا دێت؟",
           "options": [
             "تەنها سەرەتا",
@@ -1376,7 +1376,7 @@
         {
           "id": "15a1",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "لە زمانی کوردیدا چەند پیتی «ل» و «ڵ» هەیە؟",
           "options": [
             "یەک",
@@ -1389,7 +1389,7 @@
         {
           "id": "15a2",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "پیتی «ڵ» چۆن بێژە دەکرێت؟",
           "options": [
             "ناسک",
@@ -1402,7 +1402,7 @@
         {
           "id": "15a3",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "هاوتای لاتینیی پیتی «ڵ» لە سەرچاوەدا چییە؟",
           "options": [
             "l",
@@ -1415,7 +1415,7 @@
         {
           "id": "15a4",
           "type": "recognize",
-          "section_id": "lesson15_source_content",
+          "section_id": "lesson15_source_exercises",
           "prompt": "پیتی «ڵ» لە کوێی وشەدا دێت؟",
           "options": [
             "تەنها سەرەتا",
@@ -1431,9 +1431,9 @@
       "source_file": "course_data/arami_course1_lesson_16_v_source.md",
       "practice": [
         {
-          "id": "17p1",
+          "id": "16p1",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "هاوتای لاتینیی پیتی «ڤ» کامەیە؟",
           "options": [
             "F, f",
@@ -1444,9 +1444,9 @@
           "source_evidence": "سەردێڕ: «پیتی ڤ = V, v»"
         },
         {
-          "id": "17p2",
+          "id": "16p2",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "پیتی «ڤ» لە زمانی فارسیدا هەیە؟",
           "options": [
             "بەڵێ",
@@ -1456,9 +1456,9 @@
           "source_evidence": "بەشی سەرەتا: «لە زمانی فارسیدا نییه»"
         },
         {
-          "id": "17p3",
+          "id": "16p3",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "بێژەی پیتی «ڤ» لە نێوان کام دوو پیتدایە؟",
           "options": [
             "ف و و",
@@ -1471,9 +1471,9 @@
       ],
       "assessment": [
         {
-          "id": "17a1",
+          "id": "16a1",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "هاوتای لاتینیی پیتی «ڤ» کامەیە؟",
           "options": [
             "F, f",
@@ -1484,9 +1484,9 @@
           "source_evidence": "سەردێڕ: «پیتی ڤ = V, v»"
         },
         {
-          "id": "17a2",
+          "id": "16a2",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "پیتی «ڤ» لە زمانی فارسیدا هەیە؟",
           "options": [
             "بەڵێ",
@@ -1496,9 +1496,9 @@
           "source_evidence": "بەشی سەرەتا: «لە زمانی فارسیدا نییه»"
         },
         {
-          "id": "17a3",
+          "id": "16a3",
           "type": "recognize",
-          "section_id": "lesson17_source_exercises",
+          "section_id": "lesson16_source_exercises",
           "prompt": "بێژەی پیتی «ڤ» لە نێوان کام دوو پیتدایە؟",
           "options": [
             "ف و و",
@@ -1514,9 +1514,9 @@
       "source_file": "course_data/arami_course1_lesson_17_he_e_source.md",
       "practice": [
         {
-          "id": "18p1",
+          "id": "17p1",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "هاوتای تەختەکلیلی پیتی (هـ) کامەیە؟",
           "options": [
             "H",
@@ -1527,9 +1527,9 @@
           "source_evidence": "سەردێڕ: پیتی (هـ) = H"
         },
         {
-          "id": "18p2",
+          "id": "17p2",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "پیتی (ە) لە سەرچاوەدا بە چی ناسێنراوە؟",
           "options": [
             "H",
@@ -1540,9 +1540,9 @@
           "source_evidence": "سەردێڕ: پیتی (ە) = سەرە، E"
         },
         {
-          "id": "18p3",
+          "id": "17p3",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "لە وشەی «فەرزانەب»دا پیتی دواتر چۆن دەبێت؟",
           "options": [
             "بە وشەکەوە نالکێت",
@@ -1553,9 +1553,9 @@
           "source_evidence": "بەشی نموونە: «فەرزانەب: پیتی دواتر بە وشەکەوە نالکێت»"
         },
         {
-          "id": "18p4",
+          "id": "17p4",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "لە وشەی «فەرزانهب»دا پیتی دواتر چۆن دەبێت؟",
           "options": [
             "بە وشەکەوە نالکێت",
@@ -1568,9 +1568,9 @@
       ],
       "assessment": [
         {
-          "id": "18a1",
+          "id": "17a1",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "هاوتای تەختەکلیلی پیتی (هـ) کامەیە؟",
           "options": [
             "H",
@@ -1581,9 +1581,9 @@
           "source_evidence": "سەردێڕ: پیتی (هـ) = H"
         },
         {
-          "id": "18a2",
+          "id": "17a2",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "پیتی (ە) لە سەرچاوەدا بە چی ناسێنراوە؟",
           "options": [
             "H",
@@ -1594,9 +1594,9 @@
           "source_evidence": "سەردێڕ: پیتی (ە) = سەرە، E"
         },
         {
-          "id": "18a3",
+          "id": "17a3",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "لە وشەی «فەرزانەب»دا پیتی دواتر چۆن دەبێت؟",
           "options": [
             "بە وشەکەوە نالکێت",
@@ -1607,9 +1607,9 @@
           "source_evidence": "بەشی نموونە: «فەرزانەب: پیتی دواتر بە وشەکەوە نالکێت»"
         },
         {
-          "id": "18a4",
+          "id": "17a4",
           "type": "recognize",
-          "section_id": "lesson18_source_exercises",
+          "section_id": "lesson17_source_exercises",
           "prompt": "لە وشەی «فەرزانهب»دا پیتی دواتر چۆن دەبێت؟",
           "options": [
             "بە وشەکەوە نالکێت",
@@ -1625,9 +1625,9 @@
       "source_file": "course_data/arami_course1_lesson_18_k_g_mukriani_source.md",
       "practice": [
         {
-          "id": "19p1",
+          "id": "18p1",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "یاسای وانەکە تایبەتە بە بێژەی کام ناوچە؟",
           "options": [
             "هەموو ناوچەکانی کوردستان",
@@ -1638,9 +1638,9 @@
           "source_evidence": "سەردێڕ و بەشی یاسای سەرەکی"
         },
         {
-          "id": "19p2",
+          "id": "18p2",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "کاتێک (ک، گ) لەپێش دەنگە دیاریکراوەکان دێن، بێژەیان بۆ کام پیتانە دەگۆڕدرێت؟",
           "options": [
             "(س، ش)",
@@ -1651,9 +1651,9 @@
           "source_evidence": "بەشی یاسای سەرەکی"
         },
         {
-          "id": "19p3",
+          "id": "18p3",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "لە نووسیندا پیتەکانی (ک، گ) دەبێت چۆن بنووسرێن؟",
           "options": [
             "بەپێی بێژە بگۆڕدرێن",
@@ -1664,9 +1664,9 @@
           "source_evidence": "بەشی یاسای سەرەکی و تێبینیی گرنگ"
         },
         {
-          "id": "19p4",
+          "id": "18p4",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "کامەیان لەو دەنگانەیە کە لە پێش (ک، گ)دا دەکرێت هۆکاری گۆڕانی بێژە بێت؟",
           "options": [
             "ئێـ",
@@ -1679,9 +1679,9 @@
       ],
       "assessment": [
         {
-          "id": "19a1",
+          "id": "18a1",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "یاسای وانەکە تایبەتە بە بێژەی کام ناوچە؟",
           "options": [
             "هەموو ناوچەکانی کوردستان",
@@ -1692,9 +1692,9 @@
           "source_evidence": "سەردێڕ و بەشی یاسای سەرەکی"
         },
         {
-          "id": "19a2",
+          "id": "18a2",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "کاتێک (ک، گ) لەپێش دەنگە دیاریکراوەکان دێن، بێژەیان بۆ کام پیتانە دەگۆڕدرێت؟",
           "options": [
             "(س، ش)",
@@ -1705,9 +1705,9 @@
           "source_evidence": "بەشی یاسای سەرەکی"
         },
         {
-          "id": "19a3",
+          "id": "18a3",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "لە نووسیندا پیتەکانی (ک، گ) دەبێت چۆن بنووسرێن؟",
           "options": [
             "بەپێی بێژە بگۆڕدرێن",
@@ -1718,9 +1718,9 @@
           "source_evidence": "بەشی یاسای سەرەکی و تێبینیی گرنگ"
         },
         {
-          "id": "19a4",
+          "id": "18a4",
           "type": "recognize",
-          "section_id": "lesson19_source_exercises",
+          "section_id": "lesson18_source_exercises",
           "prompt": "کامەیان لەو دەنگانەیە کە لە پێش (ک، گ)دا دەکرێت هۆکاری گۆڕانی بێژە بێت؟",
           "options": [
             "ئێـ",
@@ -1736,9 +1736,9 @@
       "source_file": "course_data/arami_course1_lesson_19_cluster_source.md",
       "practice": [
         {
-          "id": "20p1",
+          "id": "19p1",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "هێشوو چۆن دروست دەبێت؟",
           "options": [
             "دوو یان چەند فۆنیم بەبێ بزوێنێک لە نێوانیاندا دێن",
@@ -1749,9 +1749,9 @@
           "source_evidence": "بەشی ٢: هێشوو چییە؟"
         },
         {
-          "id": "20p2",
+          "id": "19p2",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "لە وشەی «دەست»دا کام دوو فۆنیم هێشوو دروست دەکەن؟",
           "options": [
             "د، ە",
@@ -1762,9 +1762,9 @@
           "source_evidence": "بەشی ٣: نموونەی وشەی دەست"
         },
         {
-          "id": "20p3",
+          "id": "19p3",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "وشەی «چوار» چەند بڕگەیە؟",
           "options": [
             "یەک",
@@ -1775,9 +1775,9 @@
           "source_evidence": "بەشی ٤: نموونەی وشەی چوار"
         },
         {
-          "id": "20p4",
+          "id": "19p4",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "لە وشەی «چوار»دا کام دوو فۆنیم هێشوو دروست دەکەن؟",
           "options": [
             "چ و و",
@@ -1790,9 +1790,9 @@
       ],
       "assessment": [
         {
-          "id": "20a1",
+          "id": "19a1",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "هێشوو چۆن دروست دەبێت؟",
           "options": [
             "دوو یان چەند فۆنیم بەبێ بزوێنێک لە نێوانیاندا دێن",
@@ -1803,9 +1803,9 @@
           "source_evidence": "بەشی ٢: هێشوو چییە؟"
         },
         {
-          "id": "20a2",
+          "id": "19a2",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "لە وشەی «دەست»دا کام دوو فۆنیم هێشوو دروست دەکەن؟",
           "options": [
             "د، ە",
@@ -1816,9 +1816,9 @@
           "source_evidence": "بەشی ٣: نموونەی وشەی دەست"
         },
         {
-          "id": "20a3",
+          "id": "19a3",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "وشەی «چوار» چەند بڕگەیە؟",
           "options": [
             "یەک",
@@ -1829,9 +1829,9 @@
           "source_evidence": "بەشی ٤: نموونەی وشەی چوار"
         },
         {
-          "id": "20a4",
+          "id": "19a4",
           "type": "recognize",
-          "section_id": "lesson20_source_exercises",
+          "section_id": "lesson19_source_exercises",
           "prompt": "لە وشەی «چوار»دا کام دوو فۆنیم هێشوو دروست دەکەن؟",
           "options": [
             "چ و و",
