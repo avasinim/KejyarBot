@@ -2,7 +2,9 @@
 import json
 import logging
 import re
+from io import BytesIO
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -167,6 +169,53 @@ async def _send_source(message, title, source):
         rendered = rendered[end:].lstrip("\n")
 
 
+
+def build_lesson_infographic_svg(lesson, source):
+    """Build a source-grounded Kurdish vector summary for one lesson."""
+    number = lesson["number"]
+    title = escape(str(lesson.get("title") or f"وانەی {number}"))
+    headings = []
+    for raw in source.splitlines():
+        line = raw.strip()
+        if line.startswith("#"):
+            heading = re.sub(r"^#{1,6}\s*", "", line).strip()
+            if heading and heading not in headings and heading != lesson.get("title"):
+                headings.append(heading)
+        if len(headings) == 3:
+            break
+    if not headings:
+        headings = ["خوێندنەوەی سەرچاوە", "تێگەیشتن لە بابەت", "ڕاهێنان و تاقیکردنەوە"]
+    cards = []
+    for index, heading in enumerate(headings[:3]):
+        y = 410 + index * 190
+        cards.append(
+            f'<rect x="110" y="{y}" width="980" height="145" rx="28" fill="#fffaf0" stroke="#b88a45" stroke-width="3"/>'
+            f'<circle cx="1030" cy="{y + 72}" r="34" fill="#254b3c"/>'
+            f'<text x="1030" y="{y + 84}" text-anchor="middle" font-size="32" fill="#ffffff">{index + 1}</text>'
+            f'<text x="970" y="{y + 84}" text-anchor="end" font-size="35" fill="#26332d">{escape(heading[:48])}</text>'
+        )
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1080" viewBox="0 0 1200 1080">
+<rect width="1200" height="1080" fill="#f4efe3"/>
+<rect x="45" y="45" width="1110" height="990" rx="42" fill="#fffdf8" stroke="#254b3c" stroke-width="8"/>
+<rect x="45" y="45" width="1110" height="260" rx="42" fill="#254b3c"/>
+<text x="600" y="125" text-anchor="middle" font-size="34" fill="#e7c78d">KejyarBot@ • ڕێنووسی ئارامی</text>
+<text x="600" y="225" text-anchor="middle" font-size="52" font-weight="700" fill="#ffffff">{title}</text>
+<text x="600" y="365" text-anchor="middle" font-size="30" fill="#6a5b45">پوختەی ڕێکخراوی بابەتەکانی وانە</text>
+{''.join(cards)}
+<text x="600" y="1000" text-anchor="middle" font-size="25" fill="#254b3c">کەژیار • فێربوون بە شێوەیەکی نوێ</text>
+</svg>'''
+    return svg.encode("utf-8")
+
+
+async def send_lesson_infographic(message, lesson, source):
+    document = BytesIO(build_lesson_infographic_svg(lesson, source))
+    document.name = f"kejyar-arami-lesson-{lesson['number']:02d}.svg"
+    await message.reply_document(
+        document=document,
+        caption=f"🖼️ پوختەی وێنەیی وانەی {lesson['number']} — {lesson.get('title', '')}",
+    )
+
+
 def load_lesson_audio_files(base_dir, lesson):
     assets = lesson.get("audio_files", [])
     if not isinstance(assets, list):
@@ -263,6 +312,7 @@ async def callback(update, context, base_dir):
         try:
             lesson, source = load_lesson_source(base_dir, number)
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
+            await send_lesson_infographic(query.message, lesson, source)
             await send_lesson_audio(query.message, base_dir, lesson)
         except AramiCourseTelegramError:
             logger.exception("Could not deliver Arami Course 1 Lesson %s", number)
