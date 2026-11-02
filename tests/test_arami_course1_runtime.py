@@ -61,6 +61,16 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             source_path = repo_root / lesson["content_file"]
             self.assertTrue(source_path.is_file(), f"missing source for lesson {lesson['number']}")
 
+    def test_rejects_course_size_that_disagrees_with_declared_total(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            manifest = self.fixture(root)
+            manifest["course_size"] = 3
+            path = root / "course_data" / "arami_course1_manifest.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(AramiCourseError):
+                load_arami_course1(root)
+
     def test_loads_four_isolated_namespaced_lessons(self):
         with tempfile.TemporaryDirectory() as temp:
             manifest = self.fixture(Path(temp))
