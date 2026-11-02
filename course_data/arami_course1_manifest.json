@@ -71,9 +71,11 @@
       "number": 5,
       "title": "پیتی س = S, s",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
+      "content_status": "user_source_received_and_preserved; lesson_number_conflict_requires_user_resolution",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "content_file": "course_data/arami_course1_lesson_05_received_source.md",
+      "source_note": "Saved source begins with Lesson 5 but its own heading asks to make it Lesson 2; source contains alphabet and Latin equivalents. Do not assign or activate it until lesson identity is resolved."
     },
     {
       "id": "arami_course1_lesson_06",
@@ -143,9 +145,11 @@
       "number": 10,
       "title": "پیتی (ی)",
       "status": "source_review_pending",
-      "content_status": "not_yet_transcribed_or_verified",
+      "content_status": "user_source_received_and_preserved; saved_source_verified",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "content_file": "course_data/arami_course1_lesson_10_hamza_source.md",
+      "source_note": "Hamza source is present in repository; preserve wording and examples, and keep review/design status separate from source availability."
     },
     {
       "id": "arami_course1_lesson_11",
@@ -220,15 +224,15 @@
       "id": "arami_course1_lesson_14",
       "number": 14,
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_13_received_and_preserved; source_saved_without_semantic_edits",
+      "content_status": "user_source_received_and_preserved; saved_source_verified",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "title": "پیتی «و»",
-      "content_file": "course_data/arami_course1_lesson_13_w_source.md",
+      "content_file": "course_data/arami_course1_lesson_14_bizroke_hishu_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
       "audio_status": "assigned_by_user; runtime_playback_not_yet_verified",
-      "source_note": "User explicitly designated this text as Lesson 13. Markdown headings and layout only; no scientific or semantic edits. The two commits 8359ae827572db507790da35ce0650ddd501eb40 (نەبزوێنی و) and 21e841f371bfbe4573867dd1c4e7522fe48c4015 (بزوێنی و) were explicitly assigned by the user to Lesson 11, not Lesson 13. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
+      "source_note": "Source file exists and includes lesson text, examples, and audio references; audio/runtime assignment remains unverified.",
       "audio_commits": [
         "8359ae827572db507790da35ce0650ddd501eb40",
         "21e841f371bfbe4573867dd1c4e7522fe48c4015",
@@ -392,13 +396,11 @@
   "course_size": 21,
   "source_audit": {
     "archive_file": "کەژیار.pdf",
-    "audit_date": "2026-11-01",
+    "audit_date": "2026-11-02",
     "gaps": [
-      13,
-      18,
-      19
+      5
     ],
-    "note": "The supplied archive contains lesson bodies for Lessons 1–12 and 14–17; Lesson 4's source heading is only 'وانەی ٤', so no title is inferred. Lesson 13 and 18–19 bodies/titles are not visible in this archive. The user independently confirmed the course total is 19 lessons. Lesson 19 audio 'بڕگە' is explicitly mapped in the archive. Do not infer missing lesson text or titles. This is a historical audit of the original archive numbering; on 2026-11-02 the user inserted a new Lesson 11, shifting former Lessons 11–19 to Lessons 12–20. No existing lesson was deleted. User subsequently confirmed Round 1, Course 1 ends with 21 lessons; Lesson 21 (syllable and cluster) was added as the final lesson.",
+    "note": "Repository check on 2026-11-02: source files exist for Lessons 1–4, 5 (identity conflict), 6–14, and 15–21. Lesson 5 source is preserved but conflicts internally: its outer label says Lesson 5 while its body asks to make it Lesson 2; do not activate until user resolves identity. Source availability does not mean lesson content has been scientifically reviewed, converted to runtime format, or wired with practice/assessment. The original archive audit below is historical only.",
     "lesson_numbers_with_source_content": [
       1,
       2,
