@@ -51,7 +51,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update("lesson")
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson):
             await callback(update, SimpleNamespace(user_data={}), "/unused")
-        self.assertEqual(query.message.reply_text.await_count, 10)
+        self.assertEqual(query.message.reply_text.await_count, 11)
         self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
         self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
         self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
