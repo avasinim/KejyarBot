@@ -122,16 +122,16 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
         for lesson in manifest["lessons"]:
-            if lesson["number"] == 20:
-                continue
             with self.subTest(lesson=lesson["number"]):
                 loaded, source = load_lesson_source(ROOT, lesson["number"])
                 self.assertEqual(loaded["id"], lesson["id"])
                 self.assertTrue(source.strip())
 
-    def test_missing_lesson_20_source_is_never_replaced_with_another_lesson(self):
-        with self.assertRaises(AramiCourseTelegramError):
-            load_lesson_source(ROOT, 20)
+    def test_final_lesson_20_source_is_loaded_from_its_own_manifest_path(self):
+        lesson, source = load_lesson_source(ROOT, 20)
+        self.assertEqual(lesson["id"], "arami_course1_lesson_20")
+        self.assertIn("بڕگە و هێشوو", source)
+        self.assertIn("بڕگە چییە؟", source)
 
     def test_markdown_renderer_preserves_words_and_table_values(self):
         rendered = _plain_markdown(
@@ -142,7 +142,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertNotIn("|---|", rendered)
 
     def test_invalid_lesson_numbers_are_rejected(self):
-        for value in (0, 22, True, "5"):
+        for value in (0, 21, True, "5"):
             with self.subTest(value=value):
                 with self.assertRaises(AramiCourseTelegramError):
                     load_lesson_source(ROOT, value)
