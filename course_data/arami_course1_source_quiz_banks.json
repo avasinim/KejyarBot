@@ -2,6 +2,363 @@
   "course_id": "arami_orthography_foundations",
   "policy": "Questions are transcribed from the explicitly supplied exercises in each lesson source. Practice and assessment share the supplied question set; assessment feedback is withheld until completion.",
   "lessons": {
+    "2": {
+      "source_file": "course_data/arami_course1_lesson_02_vowels_source.md",
+      "practice": [
+        {
+          "id": "2p1",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "بزوێن چییە؟",
+          "options": [
+            "پیتێکی نووسراو",
+            "دەنگێک",
+            "نیشانەی خاڵبەندی"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ١: بزوێن چییە؟ — «بزوێن دەنگێکە...»"
+        },
+        {
+          "id": "2p2",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "پیت و بزوێنی دەنگی هەمان شتن؟",
+          "options": [
+            "بەڵێ، هەمان شتن",
+            "نەخێر؛ پیت نیشانەی نووسراوە و بزوێن دەنگە",
+            "هەمیشە جێگۆڕکێیان پێدەکرێت"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٢: پیتی نووسراو و دەنگی بزوێن"
+        },
+        {
+          "id": "2p3",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "لە شیکردنەوەی وشەی نموونەدا کام کارە پێویستە؟",
+          "options": [
+            "تەنها ژمارەی پیتەکان بژمێرین",
+            "وشەکە بخوێنینەوە و دەنگەکان دیاری بکەین",
+            "وشەکە بگۆڕین بۆ زمانێکی تر"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٣: نموونە و ڕاهێنانی گوێگرتن"
+        },
+        {
+          "id": "2p4",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "کامەیان لە نموونەکانی وانەی ٢دا هاتووە؟",
+          "options": [
+            "خۆر",
+            "قەڵەم",
+            "ئاسمان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٣: نموونە و ڕاهێنانی گوێگرتن"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "2a1",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "بزوێن چییە؟",
+          "options": [
+            "پیتێکی نووسراو",
+            "دەنگێک",
+            "نیشانەی خاڵبەندی"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ١: بزوێن چییە؟ — «بزوێن دەنگێکە...»"
+        },
+        {
+          "id": "2a2",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "پیت و بزوێنی دەنگی هەمان شتن؟",
+          "options": [
+            "بەڵێ، هەمان شتن",
+            "نەخێر؛ پیت نیشانەی نووسراوە و بزوێن دەنگە",
+            "هەمیشە جێگۆڕکێیان پێدەکرێت"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٢: پیتی نووسراو و دەنگی بزوێن"
+        },
+        {
+          "id": "2a3",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "لە شیکردنەوەی وشەی نموونەدا کام کارە پێویستە؟",
+          "options": [
+            "تەنها ژمارەی پیتەکان بژمێرین",
+            "وشەکە بخوێنینەوە و دەنگەکان دیاری بکەین",
+            "وشەکە بگۆڕین بۆ زمانێکی تر"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٣: نموونە و ڕاهێنانی گوێگرتن"
+        },
+        {
+          "id": "2a4",
+          "type": "recognize",
+          "section_id": "lesson2_source_exercises",
+          "prompt": "کامەیان لە نموونەکانی وانەی ٢دا هاتووە؟",
+          "options": [
+            "خۆر",
+            "قەڵەم",
+            "ئاسمان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٣: نموونە و ڕاهێنانی گوێگرتن"
+        }
+      ]
+    },
+    "3": {
+      "source_file": "course_data/arami_course1_lesson_03_vowel_rules_source.md",
+      "practice": [
+        {
+          "id": "3p1",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "یاسای ڕێنووس چی دیاری دەکات؟",
+          "options": [
+            "وشە چۆن بنووسرێت",
+            "ڕەفتاری دەنگەکان",
+            "ژمارەی بڕگەکان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ١: یاسا چییە؟ — «لە ڕێنووسدا یاسا دەڵێت وشە چۆن بنووسرێت»"
+        },
+        {
+          "id": "3p2",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "یاسای دەنگناسی لە چی دەکۆڵێتەوە؟",
+          "options": [
+            "شێوەی پیتی گەورە و بچووک",
+            "ڕەفتاری دەنگەکان",
+            "ڕێکخستنی خشتە"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ١: یاسا چییە؟ — «لە دەنگناسیدا یاسا باس لە ڕەفتاری دەنگەکان دەکات»"
+        },
+        {
+          "id": "3p3",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "لە شیکردنەوەی وشەدا پیت و دەنگ چۆن تۆمار دەکرێن؟",
+          "options": [
+            "پێکەوە و وەک یەک شت",
+            "بە جیا",
+            "تەنها پیتەکان"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٢: چۆن بزوێنەکان لە وشەدا بپشکنین؟"
+        },
+        {
+          "id": "3p4",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "بەپێی وانەکە، هەڵەی باو چییە؟",
+          "options": [
+            "خوێندنەوەی وشە پێش شیکردنەوە",
+            "دانانی یەکسانی نێوان ژمارەی پیت و دەنگ بەبێ شیکردنەوە",
+            "جیاکردنەوەی پیت و دەنگ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٤: هەڵەی باو"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "3a1",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "یاسای ڕێنووس چی دیاری دەکات؟",
+          "options": [
+            "وشە چۆن بنووسرێت",
+            "ڕەفتاری دەنگەکان",
+            "ژمارەی بڕگەکان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ١: یاسا چییە؟ — «لە ڕێنووسدا یاسا دەڵێت وشە چۆن بنووسرێت»"
+        },
+        {
+          "id": "3a2",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "یاسای دەنگناسی لە چی دەکۆڵێتەوە؟",
+          "options": [
+            "شێوەی پیتی گەورە و بچووک",
+            "ڕەفتاری دەنگەکان",
+            "ڕێکخستنی خشتە"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ١: یاسا چییە؟ — «لە دەنگناسیدا یاسا باس لە ڕەفتاری دەنگەکان دەکات»"
+        },
+        {
+          "id": "3a3",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "لە شیکردنەوەی وشەدا پیت و دەنگ چۆن تۆمار دەکرێن؟",
+          "options": [
+            "پێکەوە و وەک یەک شت",
+            "بە جیا",
+            "تەنها پیتەکان"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٢: چۆن بزوێنەکان لە وشەدا بپشکنین؟"
+        },
+        {
+          "id": "3a4",
+          "type": "recognize",
+          "section_id": "lesson3_source_exercises",
+          "prompt": "بەپێی وانەکە، هەڵەی باو چییە؟",
+          "options": [
+            "خوێندنەوەی وشە پێش شیکردنەوە",
+            "دانانی یەکسانی نێوان ژمارەی پیت و دەنگ بەبێ شیکردنەوە",
+            "جیاکردنەوەی پیت و دەنگ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٤: هەڵەی باو"
+        }
+      ]
+    },
+    "4": {
+      "source_file": "course_data/arami_course1_lesson_04_source.md",
+      "practice": [
+        {
+          "id": "4p1",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+          "options": [
+            "٢٨",
+            "٣٤",
+            "٣٧"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ١"
+        },
+        {
+          "id": "4p2",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
+          "options": [
+            "٦",
+            "٧",
+            "٨"
+          ],
+          "answer_index": 2,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٢"
+        },
+        {
+          "id": "4p3",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+          "options": [
+            "(و) و (ی)",
+            "(ب) و (پ)",
+            "(ر) و (ڕ)"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٣"
+        },
+        {
+          "id": "4p4",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بزرۆکە بە کام نیشانە دەنووسرێت؟",
+          "options": [
+            "u",
+            "i",
+            "o"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٤"
+        },
+        {
+          "id": "4p5",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+          "options": [
+            "بەڵێ",
+            "نەخێر"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٥"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "4a1",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+          "options": [
+            "٢٨",
+            "٣٤",
+            "٣٧"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ١"
+        },
+        {
+          "id": "4a2",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
+          "options": [
+            "٦",
+            "٧",
+            "٨"
+          ],
+          "answer_index": 2,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٢"
+        },
+        {
+          "id": "4a3",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+          "options": [
+            "(و) و (ی)",
+            "(ب) و (پ)",
+            "(ر) و (ڕ)"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٣"
+        },
+        {
+          "id": "4a4",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بزرۆکە بە کام نیشانە دەنووسرێت؟",
+          "options": [
+            "u",
+            "i",
+            "o"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٤"
+        },
+        {
+          "id": "4a5",
+          "type": "recognize",
+          "section_id": "lesson4_source_exercises",
+          "prompt": "بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+          "options": [
+            "بەڵێ",
+            "نەخێر"
+          ],
+          "answer_index": 1,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٥"
+        }
+      ]
+    },
     "6": {
       "source_file": "course_data/arami_course1_received_lesson_06_source.md",
       "practice": [
@@ -597,6 +954,143 @@
           ],
           "answer_index": 0,
           "source_evidence": "بەشی ڕاهێنانی کەژیار، پرسیاری ٥"
+        }
+      ]
+    },
+    "10": {
+      "source_file": "course_data/arami_course1_lesson_10_hamza_source.md",
+      "practice": [
+        {
+          "id": "10p1",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "لە زمانی کوردیدا کام شێوازی هەمزە بەکاردێت؟",
+          "options": [
+            "ئـ",
+            "أ",
+            "ؤ"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ١"
+        },
+        {
+          "id": "10p2",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "هەمزە لە زمانی کوردیدا بۆ چی بەکاردێت؟",
+          "options": [
+            "ڕێگرتن لە نووسینی دوو بزوێن بەدوای یەکتردا",
+            "زیادکردنی پیتێکی نوێ بۆ کۆتایی وشە",
+            "گۆڕینی هەموو نەبزوێنەکان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٢"
+        },
+        {
+          "id": "10p3",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "کام وشە بەپێی یاسای قرتاندنی هەمزە نووسراوە؟",
+          "options": [
+            "ڕۆژاوا",
+            "ڕۆژئاوا",
+            "ڕۆژئاوە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٣"
+        },
+        {
+          "id": "10p4",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "شێوەی دروستی نووسینی «ترش + ئاو» کامەیە؟",
+          "options": [
+            "ترشاو",
+            "ترشئاو",
+            "ترشئاوە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٤"
+        },
+        {
+          "id": "10p5",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "ناوی «ئاوەڵبزوێن» لە وانەکەدا بۆ چی بەکارهاتووە؟",
+          "options": [
+            "هەمزە",
+            "نەبزوێن",
+            "بزرۆکە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٥"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "10a1",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "لە زمانی کوردیدا کام شێوازی هەمزە بەکاردێت؟",
+          "options": [
+            "ئـ",
+            "أ",
+            "ؤ"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ١"
+        },
+        {
+          "id": "10a2",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "هەمزە لە زمانی کوردیدا بۆ چی بەکاردێت؟",
+          "options": [
+            "ڕێگرتن لە نووسینی دوو بزوێن بەدوای یەکتردا",
+            "زیادکردنی پیتێکی نوێ بۆ کۆتایی وشە",
+            "گۆڕینی هەموو نەبزوێنەکان"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٢"
+        },
+        {
+          "id": "10a3",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "کام وشە بەپێی یاسای قرتاندنی هەمزە نووسراوە؟",
+          "options": [
+            "ڕۆژاوا",
+            "ڕۆژئاوا",
+            "ڕۆژئاوە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٣"
+        },
+        {
+          "id": "10a4",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "شێوەی دروستی نووسینی «ترش + ئاو» کامەیە؟",
+          "options": [
+            "ترشاو",
+            "ترشئاو",
+            "ترشئاوە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٤"
+        },
+        {
+          "id": "10a5",
+          "type": "recognize",
+          "section_id": "lesson10_source_exercises",
+          "prompt": "ناوی «ئاوەڵبزوێن» لە وانەکەدا بۆ چی بەکارهاتووە؟",
+          "options": [
+            "هەمزە",
+            "نەبزوێن",
+            "بزرۆکە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "بەشی ٨، ڕاهێنانی کەژیار، پرسیاری ٥"
         }
       ]
     },
