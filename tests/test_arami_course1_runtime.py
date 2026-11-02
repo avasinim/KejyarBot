@@ -21,6 +21,7 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             "lessons": [
                 {"id": LESSON_1_ID,
                  "content_source": "user_supplied_immutable",
+                 "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}],
                  "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved"},
                 {"id": "arami_course1_lesson_02",
                  "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
@@ -34,6 +35,7 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             json.dumps(manifest, ensure_ascii=False), encoding="utf-8"
         )
         (root / "دەنگەکانی ئەلفبێ.ogg").write_bytes(b"OGG test")
+        (root / "بزوێنی ی.ogg").write_bytes(b"OGG test")
         return manifest
 
     def test_repository_manifest_declares_21_lessons_in_round_one(self):
@@ -98,6 +100,13 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             self.fixture(Path(temp))
             path = get_arami_lesson2_audio_path(temp)
             self.assertEqual(path.name, "دەنگەکانی ئەلفبێ.ogg")
+
+    def test_lesson1_uses_its_own_uploaded_recording(self):
+        with tempfile.TemporaryDirectory() as temp:
+            manifest = self.fixture(Path(temp))
+            self.assertEqual(manifest["lessons"][0]["audio_files"], [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}])
+            loaded = load_arami_course1(temp)
+            self.assertEqual(loaded["lessons"][0]["audio_files"][0]["file"], "بزوێنی ی.ogg")
 
     def test_lesson1_cannot_claim_the_lesson2_recording(self):
         with tempfile.TemporaryDirectory() as temp:
