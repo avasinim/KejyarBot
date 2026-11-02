@@ -249,7 +249,13 @@ def lesson_practice_callback(lesson):
 
 
 def validate_activated_course_runtime():
-    """Fail fast if activated Courses 2/3 are not fully loaded at startup."""
+    """Fail fast if activated courses are not fully loaded at startup."""
+    arami_manifest = load_arami_course1_manifest(BASE_DIR)
+    arami_banks = load_arami_course1_question_banks(BASE_DIR)
+    if len(arami_manifest.get("lessons", [])) != 20:
+        raise RuntimeError("Arami Course 1 must load exactly 20 lessons")
+    if len(arami_banks) != 18:
+        raise RuntimeError("Arami Course 1 must load all 18 verified question banks")
     expected_counts = {"daily_conversation": 48, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
