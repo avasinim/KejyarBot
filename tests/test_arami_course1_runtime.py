@@ -49,6 +49,18 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(manifest["lessons"][0]["title"], "پیتەکان و دەنگەکان")
         self.assertEqual(manifest["lessons"][-1]["number"], 20)
 
+    def test_source_audit_matches_all_20_existing_lesson_source_files(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        manifest = load_arami_course1(repo_root)
+        expected_numbers = list(range(1, 21))
+        self.assertEqual(
+            manifest["source_audit"]["lesson_numbers_with_source_content"],
+            expected_numbers,
+        )
+        for lesson in manifest["lessons"]:
+            source_path = repo_root / lesson["content_file"]
+            self.assertTrue(source_path.is_file(), f"missing source for lesson {lesson['number']}")
+
     def test_loads_four_isolated_namespaced_lessons(self):
         with tempfile.TemporaryDirectory() as temp:
             manifest = self.fixture(Path(temp))
