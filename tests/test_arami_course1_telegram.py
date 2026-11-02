@@ -195,15 +195,14 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(message.reply_voice.await_count, 3)
         message.reply_text.assert_not_awaited()
 
-    async def test_pending_lesson_audio_reports_missing_mapping_without_substitution(self):
+    async def test_lesson_without_supplied_audio_stays_silent(self):
         from arami_course1_telegram import send_lesson_audio
         message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
         lesson3 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 3)
         sent = await send_lesson_audio(message, ROOT, lesson3)
         self.assertFalse(sent)
         message.reply_voice.assert_not_awaited()
-        message.reply_text.assert_awaited_once()
-        self.assertIn("وانەی 3", message.reply_text.await_args.args[0])
+        message.reply_text.assert_not_awaited()
 
     async def test_lesson1_lesson2_and_lesson9_send_only_their_confirmed_audio(self):
         from arami_course1_telegram import send_lesson_audio
