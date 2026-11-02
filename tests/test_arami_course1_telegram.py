@@ -33,7 +33,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(len(read_callbacks), 21)
         self.assertEqual(
             read_callbacks,
-            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 21)},
+            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
         )
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
@@ -75,7 +75,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_all_21_lessons_are_enabled_with_explicit_audio_readiness(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(manifest["runtime_status"], "arami_course1_catalogue_and_interactions_enabled_on_feature_branch")
-        self.assertEqual(len(manifest["lessons"]), 20)
+        self.assertEqual(len(manifest["lessons"]), 21)
         pending = []
         for lesson in manifest["lessons"]:
             self.assertEqual(lesson["runtime_status"], "enabled_in_arami_course1_catalogue")
