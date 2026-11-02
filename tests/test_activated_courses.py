@@ -17,7 +17,9 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), message, query
 
-    def test_manifest_activates_48_and_66_lessons_without_activating_course_four(self):
+    def test_manifest_activates_courses_two_and_three_and_retires_legacy_course_one(self):
+        self.assertFalse(bot.course_is_active("orthography_basic"))
+        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
@@ -28,15 +30,15 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         bot.validate_activated_course_runtime()
 
     def test_course_lesson_ids_are_unique_and_do_not_replace_course_one_ids(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 22)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 0)
         all_ids = [
             lesson
-            for course_id in ("orthography_basic", "daily_conversation", "unified_orthography")
+            for course_id in ("daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 136)
+        self.assertEqual(len(all_ids), 114)
         self.assertEqual(len(set(all_ids)), 136)
-        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"][0], "وانە_1")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
