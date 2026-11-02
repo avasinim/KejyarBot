@@ -97,6 +97,15 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual(message.reply_voice.await_count, 3)
         message.reply_text.assert_not_awaited()
 
+    def test_a_recording_is_never_reused_across_different_lessons(self):
+        manifest = load_manifest(ROOT)
+        owners = {}
+        for lesson in manifest["lessons"]:
+            for asset in lesson.get("audio_files", []):
+                filename = asset["file"]
+                self.assertNotIn(filename, owners, f"{filename} reused by Lessons {owners.get(filename)} and {lesson['number']}")
+                owners[filename] = lesson["number"]
+
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
         for lesson in manifest["lessons"]:
