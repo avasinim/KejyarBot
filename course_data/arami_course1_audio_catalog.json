@@ -248,5 +248,34 @@
       "audio_topic_label": "دەنگی دووەمی پیتی ی",
       "lesson_mapping_evidence": "user_supplied_lesson_11_y_source_and_recording_commit"
     }
-  ]
+  ],
+  "runtime_reconciliation": {
+    "audit_status": "repository_tree_and_manifest_cross_check_completed",
+    "audit_scope": "Course 1 Round 1 audio assets only; voice prompts and other course audio excluded",
+    "verified_asset_count": 20,
+    "unique_asset_count": 20,
+    "manifest_assignment_count": 21,
+    "unique_manifest_asset_count": 20,
+    "orphaned_catalog_assets": [],
+    "manifest_assets_missing_from_catalog": [],
+    "duplicate_physical_assets": [],
+    "pending_lesson_audio_mapping": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      18,
+      19,
+      20
+    ],
+    "notes": [
+      "All 20 unique audio assets in this catalog are present in the repository tree and assigned to a Course 1 lesson in the manifest.",
+      "Lesson 2's «دەنگەکانی ئەلفبێ.ogg» appears in both audio_files and the legacy audio_asset field for compatibility with its dedicated runtime validation. This is one physical asset and one lesson assignment, not a duplicate recording.",
+      "Lesson 1's «بزوێنی ی.ogg» and Lesson 2's «دەنگەکانی ئەلفبێ.ogg» are both confirmed and mapped; the first 2026-11-02 audit pass had overlooked these earlier assignments.",
+      "No asset was assigned to an unconfirmed lesson based on filename or topic alone. Pending lesson mappings remain pending."
+    ]
+  }
 }
