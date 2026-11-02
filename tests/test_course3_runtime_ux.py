@@ -12,6 +12,15 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.quiz_requires_submission(lesson))
         self.assertEqual(len(bot.QUIZ_DATA[lesson]), 3)
 
+    def test_course3_requires_every_prior_lesson_before_unlocking_a_later_one(self):
+        lessons = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        with patch.object(bot, "get_completed_lessons", return_value=[lessons[0], lessons[2]]):
+            self.assertFalse(bot.can_open(90003, lessons[3]))
+            self.assertFalse(bot.can_open(90003, lessons[2]))
+            self.assertTrue(bot.can_open(90003, lessons[1]))
+        with patch.object(bot, "get_completed_lessons", return_value=lessons[:3]):
+            self.assertTrue(bot.can_open(90003, lessons[3]))
+
     async def test_opening_course3_lesson_sends_existing_kejyar_start_cue(self):
         lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
         message = SimpleNamespace(reply_text=AsyncMock(), reply_voice=AsyncMock())
