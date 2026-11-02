@@ -85,6 +85,16 @@ class AramiCourseTelegramTests(unittest.TestCase):
                 self.assertIn("audio_pending_user_mapping", lesson["activation_status"])
         self.assertEqual(pending, [3, 4, 5, 6, 7, 8, 10, 17, 18, 19])
 
+    def test_lesson_infographic_is_valid_source_grounded_kurdish_svg(self):
+        from arami_course1_telegram import build_lesson_infographic_svg
+        lesson, source = load_lesson_source(ROOT, 15)
+        svg = build_lesson_infographic_svg(lesson, source).decode("utf-8")
+        self.assertIn("<svg", svg)
+        self.assertIn("KejyarBot@", svg)
+        self.assertIn("پیتی «ل» و «ڵ»", svg)
+        self.assertIn("کەژیار", svg)
+        self.assertIn("font-size", svg)
+
     def test_lesson15_new_ll_and_l_contrasts_are_in_both_quiz_modes(self):
         banks = load_question_banks(ROOT)
         for mode in ("practice", "assessment"):
