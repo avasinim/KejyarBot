@@ -73,6 +73,9 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual([item["file"] for item in lessons[15]["audio_files"]], ["دەنگی ل.ogg", "دەنگی ڵ.ogg"])
         self.assertEqual([item["file"] for item in lessons[16]["audio_files"]], ["دەنگ ڤ.ogg"])
         self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
+        self.assertEqual([item["file"] for item in lessons[12]["audio_files"]], ["بزوێنی ی.ogg"])
+        self.assertEqual(len(lessons[11]["audio_files"]), 4)
+        self.assertEqual(len(lessons[13]["audio_files"]), 2)
 
     def test_every_manifest_audio_file_exists_and_stays_inside_project(self):
         from arami_course1_telegram import load_lesson_audio_files
@@ -83,6 +86,15 @@ class AramiCourseTelegramTests(unittest.TestCase):
                 for path, label in assets:
                     self.assertTrue(path.is_file())
                     self.assertTrue(label)
+
+    async def test_lesson_audio_delivery_sends_each_mapped_recording(self):
+        from arami_course1_telegram import send_lesson_audio
+        message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
+        lesson14 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 14)
+        sent = await send_lesson_audio(message, ROOT, lesson14)
+        self.assertTrue(sent)
+        self.assertEqual(message.reply_voice.await_count, 3)
+        message.reply_text.assert_not_awaited()
 
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
