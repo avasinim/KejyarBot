@@ -35,7 +35,9 @@
       "content_file": "course_data/arami_course1_lesson_02_vowels_source.md",
       "content_source": "user_supplied_immutable",
       "source_note": "A separate earlier Lesson 2 text about letters and sounds was also received in conversation; this newly supplied Lesson 2 vowels text is stored separately and must not be merged without user direction.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_03",
@@ -49,13 +51,15 @@
       "practice_status": "not_yet_implemented",
       "assessment_status": "not_yet_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_04",
       "number": 4,
       "status": "source_review_pending",
-      "content_status": "user_source_received_and_preserved; saved_to_branch",
+      "content_status": "user_source_received_and_preserved; lesson_text_saved; no edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "title": "بزوێنەکان، نەبزوێنەکان و ئەرکی دووانەی (و) و (ی)",
       "content_file": "course_data/arami_course1_lesson_04_source.md",
@@ -64,7 +68,9 @@
       "assessment_status": "not_yet_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Earlier sections are not inferred or reconstructed.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_05",
@@ -90,7 +96,9 @@
       "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "User confirmed the sections initially headed Lesson 1 and Lesson 3 form one lesson. Both sections are retained as parts of Lesson 6; only their headings were reframed.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_07",
@@ -105,7 +113,9 @@
       "assessment_status": "source_contains_four_quiz_questions; runtime_integration_pending",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "User labeled this as Lesson 7, while an embedded course heading says Lesson 5: س. Both labels/content preserved as supplied; lesson identity follows the user's outer Lesson 7 label pending further clarification.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_08",
@@ -120,7 +130,9 @@
       "assessment_status": "source_contains_eight_quiz_questions; runtime_integration_pending",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "User explicitly confirmed that the supplied T and Z material is Lesson 8 and that the lesson sequence will be rearranged from scratch. This replaces the previous placeholder Lesson 8 title (پیتی ئەلف).",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_09",
@@ -138,7 +150,9 @@
       "audio_file": "ئا.ogg",
       "audio_source_commit": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
       "audio_source_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_10",
@@ -188,7 +202,9 @@
         }
       ],
       "source_note": "Inserted as new Lesson 11 at the user's request. The supplied final ellipsis indicates omitted source material; no missing content was inferred. Existing lessons 11–19 were shifted to 12–20 without deleting or rewriting their source files.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_12",
@@ -203,7 +219,9 @@
       "assessment_status": "not_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "User explicitly designated this material as Lesson 11. Source preserved; only whitespace/Markdown layout normalized. No quiz questions were supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_13",
@@ -218,7 +236,9 @@
       "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "User explicitly designated this material as Lesson 12. It is separately preserved from Lesson 11 although both cover the letter ی; only Markdown formatting was applied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_14",
@@ -274,7 +294,9 @@
         "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1"
       ],
       "audio_status": "audio_asset_to_lesson_mapping_explicitly_confirmed_in_user_supplied_conversation_archive; original recordings preserved",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_16",
@@ -297,7 +319,9 @@
       "assessment_status": "not_implemented",
       "audio_assignment_note": "User explicitly maps 1ade797d2e69308086293f7d2bfa499e22eef821 to پیتی ل and 933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1 to پیتی ڵ for this supplied Lesson 15. Playback/runtime not yet verified.",
       "source_note": "User's outer heading identifies this as Lesson 15. A copied trailing note calls the same L/ڵ material Lesson 14; numbering follows the explicit heading. Preserve content and examples as supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_17",
@@ -316,7 +340,9 @@
       ],
       "audio_assignment_note": "User explicitly associates commit feb5293b322c1eb63d0481af02148cc9d1af64a8 with the ڤ sound in this lesson. Playback/runtime not yet verified.",
       "source_note": "Outer heading identifies this as Lesson 16; a copied closing heading says Lesson 15. Numbering follows the explicit outer heading. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_18",
@@ -331,7 +357,9 @@
       "assessment_status": "not_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "Outer heading identifies this as Lesson 17; copied closing text calls it Lesson 16. Numbering follows the explicit outer heading. User supplied examples FERZANE/FERZANH and the attachment contrast فەرزانەب/فەرزانهب. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_19",
@@ -346,7 +374,9 @@
       "assessment_status": "not_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "Outer heading identifies this as Lesson 18; copied closing heading says Lesson 17. Numbering follows the explicit outer heading. Duplicate repeated rule paragraph was normalized to a single instance; all examples and rule content retained. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_20",
@@ -363,7 +393,9 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_21",
@@ -380,7 +412,9 @@
       "audio_status": "user_explicitly_assigned_existing_audio_commit; runtime_playback_not_verified",
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course.",
-      "design_status": "source_preserved; design_practice_assessment_pending"
+      "design_status": "source_preserved; design_practice_assessment_pending",
+      "source_audit_status": "source_file_verified_in_branch",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     }
   ],
   "safety": {
@@ -400,7 +434,7 @@
     "gaps": [
       5
     ],
-    "note": "Repository check on 2026-11-02: source files exist for Lessons 1–4, 5 (identity conflict), 6–14, and 15–21. Lesson 5 source is preserved but conflicts internally: its outer label says Lesson 5 while its body asks to make it Lesson 2; do not activate until user resolves identity. Source availability does not mean lesson content has been scientifically reviewed, converted to runtime format, or wired with practice/assessment. The original archive audit below is historical only.",
+    "note": "Repository file audit: source files exist for Lessons 1–4, 5 (numbering conflict), and 6–21. This audit tracks source presence only. Lesson 5 must remain inactive until the source's internal Lesson 2 label is resolved. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
