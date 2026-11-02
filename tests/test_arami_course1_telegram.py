@@ -169,6 +169,20 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), query
 
+    async def test_every_registered_lesson_bank_opens_its_own_practice_and_assessment(self):
+        from arami_course1_telegram import callback
+        banks = load_question_banks(ROOT)
+        for number, bank in banks.items():
+            for mode in ("practice", "assessment"):
+                with self.subTest(lesson=number, mode=mode):
+                    context = SimpleNamespace(user_data={})
+                    update, _ = self.make_update(f"{mode}:{number}")
+                    await callback(update, context, ROOT)
+                    session = context.user_data["arami_course1_sessions"][str(number)]
+                    self.assertEqual(session["mode"], mode)
+                    self.assertEqual(len(session["questions"]), len(bank[mode]))
+                    self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
+
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
