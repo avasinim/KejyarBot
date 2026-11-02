@@ -35,6 +35,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami1:lesson",
             "arami1:practice", "arami1:assessment",
             "arami5:menu",
+            "aramiC:menu",
         ])
 
     async def test_lesson_callback_sends_intro_all_sections_and_conclusion(self):
