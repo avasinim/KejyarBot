@@ -37,7 +37,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
         self.assertEqual(len(all_ids), 114)
-        self.assertEqual(len(set(all_ids)), 136)
+        self.assertEqual(len(set(all_ids)), 114)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_course_two_and_three_progression_is_independent(self):
