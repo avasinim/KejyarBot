@@ -2,7 +2,10 @@
 import json
 from pathlib import Path
 
-from arami_lesson1_interaction import validate_question_bank
+from arami_lesson1_interaction import (
+    create_session, current_question, select_answer, submit_answer,
+    session_result, validate_question_bank,
+)
 
 BANK_PATH = Path(__file__).resolve().parents[1] / "course_data" / "arami_course1_lesson_01_interactions.json"
 
@@ -42,3 +45,55 @@ def test_only_five_pdf_exercise_topics_are_tested():
         assert sum(q["section_id"] == "lesson1_short_i" for q in bank[mode]) == 2
         assert all(q["source_evidence"] for q in bank[mode])
     assert bank["source_correction"]["lesson_1_vowel_count"] == 8
+
+
+
+def test_selection_does_not_count_as_an_answer_until_submission():
+    bank = load_bank()["practice"]
+    session = create_session(bank, "practice")
+
+    select_answer(session, 0)
+
+    assert session["answers"] == []
+    assert session["index"] == 0
+    assert current_question(session)["id"] == bank[0]["id"]
+
+
+def test_submitted_question_cannot_be_submitted_twice():
+    bank = load_bank()["practice"]
+    session = create_session(bank[:1], "practice")
+    select_answer(session, bank[0]["answer_index"])
+
+    recorded = submit_answer(session)
+
+    assert recorded["correct"] is True
+    assert len(session["answers"]) == 1
+    assert session["closed"] is True
+    try:
+        submit_answer(session)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("a completed question must not be recorded twice")
+    assert len(session["answers"]) == 1
+    assert session_result(session)["correct"] == 1
+
+
+def test_retry_attempt_is_a_new_session_and_does_not_change_original_answers():
+    bank = load_bank()["practice"]
+    session = create_session(bank[:2], "practice")
+    select_answer(session, (bank[0]["answer_index"] + 1) % len(bank[0]["options"]))
+    submit_answer(session)
+    select_answer(session, bank[1]["answer_index"])
+    submit_answer(session)
+
+    original_answers = list(session["answers"])
+    assert session_result(session)["incorrect"] == 1
+    from arami_lesson1_interaction import retry_missed
+    retry = retry_missed(session)
+
+    assert retry is not None
+    assert retry["mode"] == "practice"
+    assert len(retry["questions"]) == 1
+    assert session["answers"] == original_answers
+    assert retry["answers"] == []
