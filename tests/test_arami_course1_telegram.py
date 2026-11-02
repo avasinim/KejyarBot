@@ -38,8 +38,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
-        self.assertEqual(set(banks), {6, 7, 8, 9, 13})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {6: 5, 7: 4, 8: 8, 9: 5, 13: 5})
+        self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 13})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 13: 5})
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
@@ -49,8 +49,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 5)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 5)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 9)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 9)
         self.assertNotIn("aramiC:practice:15", callbacks)
         self.assertIn("arami1:practice", callbacks)
         self.assertIn("arami1:assessment", callbacks)
