@@ -27,66 +27,72 @@
       "commit_sha": "b3f44170d813b8ad18c28d89cd217d2c3e801d25",
       "commit_title": "بزوێنی ی",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/b3f44170d813b8ad18c28d89cd217d2c3e801d25",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_01",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بزوێنی ی"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "بزوێنی ی",
+      "lesson_mapping_evidence": "user_confirmed_lesson_01_recording"
     },
     {
       "filename": "بزوێنی (و) کورت.ogg",
       "commit_sha": "f75da8ab776fc6a1c7eadb7d57b958977af251d5",
       "commit_title": "بزوێنی و",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/f75da8ab776fc6a1c7eadb7d57b958977af251d5",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_13",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بزوێنی و"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "بزوێنی و",
+      "lesson_mapping_evidence": "user_confirmed_lesson_13_source_topic_w_short_vowel"
     },
     {
       "filename": "نەبزوێنی (و).ogg",
       "commit_sha": "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
       "commit_title": "نەبزوێنی و",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/7e595c37baf70cb63a7470e2cd32c9f89420aac9",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_13",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "نەبزوێنی و"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "نەبزوێنی و",
+      "lesson_mapping_evidence": "user_confirmed_lesson_13_source_topic_w_consonant"
     },
     {
       "filename": "بزرۆکە.ogg",
       "commit_sha": "6639c30ca85bdae4f64134e1368617b2e507fb6c",
       "commit_title": "بزرۆکە",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6639c30ca85bdae4f64134e1368617b2e507fb6c",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_14",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بزرۆکە"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "بزرۆکە",
+      "lesson_mapping_evidence": "user_confirmed_lesson_14_source_topic_bizroke"
     },
     {
       "filename": "بزرۆکەی ٢.ogg",
       "commit_sha": "0c5c2893f7d2ce804cda467ead000d4c130d1264",
       "commit_title": "بزرۆکەی ٢",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/0c5c2893f7d2ce804cda467ead000d4c130d1264",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_14",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بزرۆکەی ٢"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "بزرۆکەی ٢",
+      "lesson_mapping_evidence": "user_confirmed_lesson_14_source_topic_bizroke"
     },
     {
       "filename": "بزرۆکەی ٣.ogg",
       "commit_sha": "6d88fd20a8036b971d9af02a5cb4211e70454bb7",
       "commit_title": "بزرۆکەی ٣",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6d88fd20a8036b971d9af02a5cb4211e70454bb7",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_14",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "بزرۆکەی ٣"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "بزرۆکەی ٣",
+      "lesson_mapping_evidence": "user_confirmed_lesson_14_source_topic_bizroke"
     },
     {
       "filename": "دەنگی ڕ.ogg",
@@ -115,103 +121,108 @@
       "commit_sha": "1ade797d2e69308086293f7d2bfa499e22eef821",
       "commit_title": "پیتی ل",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/1ade797d2e69308086293f7d2bfa499e22eef821",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": "arami_course1_lesson_14",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_15",
       "section_id": null,
-      "assignment_status": "explicitly_mapped_to_lesson_14_in_user_supplied_conversation_archive; original recording preserved",
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
       "audio_topic_label": "پیتی ل",
-      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 14"
+      "lesson_mapping_evidence": "user_explicit_correction_2026_11_02_l_ll_recording_belongs_to_lesson_15"
     },
     {
       "filename": "دەنگی ڵ.ogg",
       "commit_sha": "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1",
       "commit_title": "پیتی ڵ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": "arami_course1_lesson_14",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_15",
       "section_id": null,
-      "assignment_status": "explicitly_mapped_to_lesson_14_in_user_supplied_conversation_archive; original recording preserved",
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
       "audio_topic_label": "پیتی ڵ",
-      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 14"
+      "lesson_mapping_evidence": "user_explicit_correction_2026_11_02_l_ll_recording_belongs_to_lesson_15"
     },
     {
       "filename": "دەنگ ڤ.ogg",
       "commit_sha": "feb5293b322c1eb63d0481af02148cc9d1af64a8",
       "commit_title": "پیتی ڤ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/feb5293b322c1eb63d0481af02148cc9d1af64a8",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": "arami_course1_lesson_15",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_16",
       "section_id": null,
-      "assignment_status": "explicitly_mapped_to_lesson_15_in_user_supplied_conversation_archive; original recording preserved",
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
       "audio_topic_label": "پیتی ڤ",
-      "lesson_mapping_evidence": "کەژیار.pdf explicitly lists this audio under Lesson 15"
+      "lesson_mapping_evidence": "user_supplied_lesson_16_source_topic_v"
     },
     {
       "filename": "ۆ.ogg",
       "commit_sha": "d7cd548eb57b11efc764fb76225db252693b6977",
       "commit_title": "پیتی ۆ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/d7cd548eb57b11efc764fb76225db252693b6977",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_11",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ۆ"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "پیتی ۆ",
+      "lesson_mapping_evidence": "user_confirmed_lesson_11_vowel_recordings"
     },
     {
       "filename": "سەرە.ogg",
       "commit_sha": "c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
       "commit_title": "پیتی سەرە ١",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_11",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی سەرە ١"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "پیتی سەرە ١",
+      "lesson_mapping_evidence": "user_confirmed_lesson_11_vowel_recordings"
     },
     {
       "filename": "سەرەی ٢.ogg",
       "commit_sha": "6e386bb05d8b59f85383f481bbb5409e0d209ee6",
       "commit_title": "سەرەوی ٢",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/6e386bb05d8b59f85383f481bbb5409e0d209ee6",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_11",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "سەرەوی ٢"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "سەرەوی ٢",
+      "lesson_mapping_evidence": "user_confirmed_lesson_11_vowel_recordings"
     },
     {
       "filename": "ێ.ogg",
       "commit_sha": "1e4f6ecdba55c0f31a24397825ddb8797a972c7d",
       "commit_title": "پیتی ێ",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/1e4f6ecdba55c0f31a24397825ddb8797a972c7d",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_11",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ێ"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "پیتی ێ",
+      "lesson_mapping_evidence": "user_confirmed_lesson_11_vowel_recordings"
     },
     {
       "filename": "ئا.ogg",
       "commit_sha": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
       "commit_title": "پیتی ئا",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": null,
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_09",
       "section_id": null,
-      "assignment_status": "audio_asset_and_commit_topic_verified; lesson_order_mapping_pending",
-      "audio_topic_label": "پیتی ئا"
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
+      "audio_topic_label": "پیتی ئا",
+      "lesson_mapping_evidence": "user_confirmed_lesson_09_aa_recording"
     },
     {
       "filename": "بڕگە.ogg",
       "commit_sha": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
       "commit_title": "بڕگە",
       "github_commit_url": "https://github.com/avasinim/KejyarBot/commit/04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
-      "verification_status": "file_name_verified_in_commit",
-      "lesson_id": "arami_course1_lesson_19",
+      "verification_status": "file_name_and_commit_verified; lesson_mapping_confirmed",
+      "lesson_id": "arami_course1_lesson_21",
       "section_id": null,
-      "assignment_status": "explicitly_mapped_to_lesson_19_in_user_supplied_conversation_archive; original recording preserved",
+      "assignment_status": "mapped_to_confirmed_lesson; original_recording_preserved",
       "audio_topic_label": "بڕگە",
-      "lesson_mapping_evidence": "کەژیار.pdf archive explicitly states: دەنگی وانەی ١٩ بە ناوی بڕگە"
+      "lesson_mapping_evidence": "user_confirmed_lesson_21_syllable_recording"
     }
   ]
 }
