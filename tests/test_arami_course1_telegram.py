@@ -74,7 +74,8 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual([item["file"] for item in lessons[16]["audio_files"]], ["دەنگ ڤ.ogg"])
         self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
         self.assertEqual([item["file"] for item in lessons[1]["audio_files"]], ["بزوێنی ی.ogg"])
-        self.assertEqual(lessons[12].get("audio_files", []), [])
+        self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_11_y_source.md")
+        self.assertEqual([item["file"] for item in lessons[12]["audio_files"]], ["ی.ogg", "پیتی دەنگی ٢.ogg"])
         self.assertEqual(len(lessons[11]["audio_files"]), 4)
         self.assertEqual(len(lessons[13]["audio_files"]), 2)
 
