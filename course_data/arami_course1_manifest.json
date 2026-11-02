@@ -29,7 +29,7 @@
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
       "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
-      "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved",
+      "audio_status": "user_confirmed_lesson_2_recording",
       "audio_topic_label": "دەنگەکان",
       "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2.",
       "content_file": "course_data/arami_course1_lesson_02_vowels_source.md",
@@ -37,7 +37,13 @@
       "source_note": "A separate earlier Lesson 2 text about letters and sounds was also received in conversation; this newly supplied Lesson 2 vowels text is stored separately and must not be merged without user direction.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "دەنگەکانی ئەلفبێ.ogg",
+          "label": "دەنگەکانی ئەلفبێ"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_03",
@@ -151,14 +157,20 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
       "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
-      "audio_status": "assigned",
+      "audio_status": "user_assigned_lesson_9_recording_verified_in_repository",
       "source_note": "User explicitly designated this material as Lesson 9. Includes the mappings آ→ئا, اَ→ئە, اِ→ئێـ, اُ→ئۆ and additional words beginning with ئا. The referenced identifier fb86aba958e03498234bdb26d8da7bae2462d0fd has not been verified as an audio asset. Audio asset verified in the referenced GitHub commit: ئا.ogg (commit title: پیتی ئا); assigned to Lesson 9 as requested.",
       "audio_file": "ئا.ogg",
       "audio_source_commit": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
       "audio_source_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "ئا.ogg",
+          "label": "دەنگی پیتی ئا"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_10",
@@ -182,7 +194,7 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "three_user_supplied_audio_commit_references_assigned; runtime_playback_not_verified",
+      "audio_status": "four_user_supplied_lesson_11_recordings_verified_in_repository",
       "audio_commits": [
         "d7cd548eb57b11efc764fb76225db252693b6977",
         "c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
@@ -210,7 +222,25 @@
       "source_note": "Inserted as new Lesson 11 at the user's request. The supplied final ellipsis indicates omitted source material; no missing content was inferred. Existing lessons 11–19 were shifted to 12–20 without deleting or rewriting their source files.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "ۆ.ogg",
+          "label": "دەنگی پیتی ۆ"
+        },
+        {
+          "file": "سەرە.ogg",
+          "label": "دەنگی پیتی سەرە"
+        },
+        {
+          "file": "سەرەی ٢.ogg",
+          "label": "دەنگی نموونەی سەرە"
+        },
+        {
+          "file": "ێ.ogg",
+          "label": "دەنگی پیتی ێ"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_12",
@@ -223,41 +253,57 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "audio_status": "repository_recording_matches_lesson_12_y_topic; user_mapping_to_be_verified",
       "source_note": "User explicitly designated this material as Lesson 11. Source preserved; only whitespace/Markdown layout normalized. No quiz questions were supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "بزوێنی ی.ogg",
+          "label": "دەنگی بزوێنی ی"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_13",
       "number": 13,
-      "title": "پیتی «ی»",
+      "title": "پیتی «و»",
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_12_received_and_preserved",
+      "content_status": "user_supplied_lesson_13_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "content_file": "course_data/arami_course1_lesson_12_y_source.md",
+      "content_file": "course_data/arami_course1_lesson_13_w_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "source_contains_five_quiz_questions; runtime_integration_pending",
       "assessment_status": "source_contains_five_quiz_questions; runtime_integration_pending",
-      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "audio_status": "user_assigned_three_commit_references; two_distinct_repository_audio_files_verified",
       "source_note": "User explicitly designated this material as Lesson 12. It is separately preserved from Lesson 11 although both cover the letter ی; only Markdown formatting was applied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "source_audit_status": "source_heading_matches_user_confirmed_lesson_number",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "بزوێنی (و) کورت.ogg",
+          "label": "بزوێنی و"
+        },
+        {
+          "file": "نەبزوێنی (و).ogg",
+          "label": "نەبزوێنی و"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_14",
       "number": 14,
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_13_source_preserved; manifest_path_corrected_to_match_source_heading",
+      "content_status": "user_supplied_lesson_14_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "title": "پیتی «و»",
-      "content_file": "course_data/arami_course1_lesson_13_w_source.md",
+      "title": "پیتی بزرۆکە و هێشوو",
+      "content_file": "course_data/arami_course1_lesson_14_bizroke_hishu_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "assigned_by_user; runtime_playback_not_yet_verified",
+      "audio_status": "three_user_supplied_lesson_14_recordings_verified_in_repository",
       "source_note": "The source file's own heading identifies Lesson 13 and covers the three uses of و (w, u, û). In the 21-lesson sequence, this source occupies the slot following Lesson 13 (ی). The older lesson14_bizroke_hishu file is not used as this lesson's source.",
       "audio_commits": [
         "8359ae827572db507790da35ce0650ddd501eb40",
@@ -283,28 +329,54 @@
       ],
       "audio_assignment_note": "User explicitly assigned all three referenced recordings to Lesson 13. Commit titles and the third commit's filename were verified; filenames for the first two commits are not exposed by the commit metadata fetched. Playback/runtime delivery has not yet been tested.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_heading_and_content_file_match"
+      "source_audit_status": "source_heading_and_audio_commit_match_lesson_14",
+      "audio_files": [
+        {
+          "file": "بزرۆکە.ogg",
+          "label": "دەنگی بزرۆکە"
+        },
+        {
+          "file": "بزرۆکەی ٢.ogg",
+          "label": "نموونەی دووەمی بزرۆکە"
+        },
+        {
+          "file": "بزرۆکەی ٣.ogg",
+          "label": "نموونەی سێیەمی بزرۆکە"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_15",
       "number": 15,
-      "title": "ڕەنگ و ناوی شتە ڕۆژانەکان",
+      "title": "پیتی «ل» و «ڵ»",
       "status": "source_review_pending",
-      "content_status": "topic_title_recovered_from_prior_user_context; original_source_text_not_recovered",
+      "content_status": "user_supplied_lesson_15_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "design_status": "source_recovery_required",
-      "source_audit_status": "title_only; source_text_missing",
+      "source_audit_status": "source_heading_and_both_audio_commit_references_match_lesson_15",
       "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
       "source_note": "Only the topic title is recoverable from prior context. The original lesson text, examples, and questions are not present in the repository or retrieved conversation material. Do not substitute another lesson's source.",
       "practice_status": "not_implemented_source_missing",
-      "assessment_status": "not_implemented_source_missing"
+      "assessment_status": "not_implemented_source_missing",
+      "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
+      "audio_files": [
+        {
+          "file": "دەنگی ل.ogg",
+          "label": "دەنگی پیتی ل"
+        },
+        {
+          "file": "دەنگی ڵ.ogg",
+          "label": "دەنگی پیتی ڵ"
+        }
+      ],
+      "audio_status": "two_user_supplied_lesson_15_recordings_verified_in_repository"
     },
     {
       "id": "arami_course1_lesson_16",
       "number": 16,
-      "title": "پیتی «ل» و «ڵ»",
+      "title": "پیتی «ڤ»",
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_15_received_and_preserved; source_saved_without_semantic_edits",
+      "content_status": "user_supplied_lesson_16_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
       "audio_assets": [
         "دەنگی ل.ogg",
@@ -314,25 +386,31 @@
         "1ade797d2e69308086293f7d2bfa499e22eef821",
         "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1"
       ],
-      "audio_status": "user_explicitly_assigned_two_existing_recordings; runtime_playback_not_verified",
-      "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
+      "audio_status": "user_supplied_lesson_16_recording_verified_in_repository",
+      "content_file": "course_data/arami_course1_lesson_16_v_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
       "audio_assignment_note": "The two confirmed recordings belong to this L/ڵ lesson: 1ade797d2e69308086293f7d2bfa499e22eef821 for ل and 933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1 for ڵ. The prior ڤ filename entry was a metadata mismatch and has been removed.",
       "source_note": "User's outer heading identifies this as Lesson 15. A copied trailing note calls the same L/ڵ material Lesson 14; numbering follows the explicit heading. Preserve content and examples as supplied. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "source_audit_status": "source_heading_and_audio_commit_match_lesson_16",
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "دەنگ ڤ.ogg",
+          "label": "دەنگی پیتی ڤ"
+        }
+      ]
     },
     {
       "id": "arami_course1_lesson_17",
       "number": 17,
-      "title": "پیتی «ڤ» = V, v",
+      "title": "جیاوازیی نێوان پیتی (هـ) و (ە)",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_16_received_and_preserved; source_saved_without_semantic_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "content_file": "course_data/arami_course1_lesson_16_v_source.md",
+      "content_file": "course_data/arami_course1_lesson_17_he_e_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
@@ -343,24 +421,24 @@
       "audio_assignment_note": "User explicitly associates commit feb5293b322c1eb63d0481af02148cc9d1af64a8 with the ڤ sound in this lesson. Playback/runtime not yet verified.",
       "source_note": "Outer heading identifies this as Lesson 16; a copied closing heading says Lesson 15. Numbering follows the explicit outer heading. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_heading_matches_lesson_17",
       "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_18",
       "number": 18,
-      "title": "جیاوازیی نێوان پیتی (هـ) و (ە)",
+      "title": "گۆڕانی بێژەی دوو پیتی (ک، گ) لە هەندێک ناوچەی موکریاندا",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_17_received_and_preserved; source_saved_without_semantic_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "content_file": "course_data/arami_course1_lesson_17_he_e_source.md",
+      "content_file": "course_data/arami_course1_lesson_18_k_g_mukriani_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "source_contains_keyboard_attachment_examples; runtime_interaction_pending",
       "assessment_status": "not_implemented",
       "audio_status": "not_assigned; awaiting explicit user mapping",
       "source_note": "Outer heading identifies this as Lesson 17; copied closing text calls it Lesson 16. Numbering follows the explicit outer heading. User supplied examples FERZANE/FERZANH and the attachment contrast فەرزانەب/فەرزانهب. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_heading_matches_lesson_18",
       "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
@@ -369,35 +447,36 @@
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_18_received_and_preserved; source_saved_without_semantic_edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "title": "گۆڕانی بێژەی دوو پیتی (ک، گ) لە هەندێک ناوچەی موکریاندا",
-      "content_file": "course_data/arami_course1_lesson_18_k_g_mukriani_source.md",
+      "title": "هێشوو (Cluster)",
+      "content_file": "course_data/arami_course1_lesson_19_cluster_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
-      "audio_status": "not_assigned; awaiting explicit user mapping",
+      "audio_status": "source_explicitly_says_no_dedicated_recording_assigned",
       "source_note": "Outer heading identifies this as Lesson 18; copied closing heading says Lesson 17. Numbering follows the explicit outer heading. Duplicate repeated rule paragraph was normalized to a single instance; all examples and rule content retained. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
       "design_status": "source_preserved; design_practice_assessment_pending",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_heading_matches_lesson_19",
       "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
     },
     {
       "id": "arami_course1_lesson_20",
       "number": 20,
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_19_received_and_preserved; source_saved",
+      "content_status": "source_not_registered; do_not_infer_or_reuse_adjacent_lesson",
       "source_policy": "Preserve user-supplied wording, examples, order and definitions; no scientific edits.",
       "audio_asset": "بڕگە.ogg",
       "audio_commit": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
-      "audio_status": "not_assigned; user says no special audio assigned yet",
+      "audio_status": "no_verified_lesson_20_recording_assignment",
       "source_note": "Outer heading identifies this as Lesson 19; copied organization heading says Lesson 18. Numbering follows the explicit outer heading. User explicitly notes a conceptual connection to Lesson 12 (بزۆکە); keep the two topics distinct. User says no special audio has been assigned for Lesson 18. Lesson numbering shifted by one when a new Lesson 11 was inserted; source content and audio mappings were retained.",
-      "title": "هێشوو (Cluster)",
-      "content_file": "course_data/arami_course1_lesson_19_cluster_source.md",
+      "title": "وانەی ٢٠ — سەرچاوەی ڕەسەن پێویستە",
+      "content_file": null,
       "content_source": "user_supplied_immutable",
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": []
     },
     {
       "id": "arami_course1_lesson_21",
@@ -411,12 +490,18 @@
       "practice_status": "no_quiz_questions_supplied",
       "assessment_status": "not_implemented",
       "audio_asset": "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea",
-      "audio_status": "user_explicitly_assigned_existing_audio_commit; runtime_playback_not_verified",
+      "audio_status": "user_assigned_lesson_21_recording_verified_in_repository",
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "User clarified this is the final Lesson 21 of Round 1, Course 1. It remains in the same Course 1 and must not be moved to the separate Latin orthography course.",
       "design_status": "source_preserved; design_practice_assessment_pending",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram"
+      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
+      "audio_files": [
+        {
+          "file": "بڕگە.ogg",
+          "label": "دەنگی بڕگە"
+        }
+      ]
     }
   ],
   "safety": {
