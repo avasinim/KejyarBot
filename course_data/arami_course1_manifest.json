@@ -664,8 +664,8 @@
       {
         "number": 1,
         "title": "ڕێنووسی سەرەتاییی کوردی",
-        "lesson_count": 20,
-        "status": "20_lessons_registered; all_source_files_present; reader_practice_assessment_enabled; 10_dedicated_audio_mappings_pending_user_confirmation"
+        "lesson_count": 21,
+        "status": "21_lessons_registered; all_source_files_present; reader_practice_assessment_enabled; 10_dedicated_audio_mappings_pending_user_confirmation"
       },
       {
         "number": 2,
@@ -695,7 +695,7 @@
   "round": 1,
   "round_title": "ڕێنووسی سەرەتاییی کوردی",
   "runtime_status": "arami_course1_21_lesson_catalogue_and_interactions_enabled_on_feature_branch",
-  "design_status": "all_20_lessons_have_source_reader_and_practice_assessment_path",
+  "design_status": "all_21_lessons_have_source_reader_and_practice_assessment_path",
   "audio_readiness": {
     "mapped_lessons": [
       1,
@@ -707,7 +707,8 @@
       14,
       15,
       16,
-      20
+      17,
+      21
     ],
     "pending_lessons": [
       3,
@@ -717,9 +718,9 @@
       7,
       8,
       10,
-      17,
       18,
-      19
+      19,
+      20
     ],
     "policy": "Do not invent or reuse recordings. Reader and source-based interactions remain accessible while audio mapping is pending."
   }
