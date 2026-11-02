@@ -60,6 +60,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami5:lesson",
             "arami5:practice",
             "arami5:assessment",
+            "aramiC:menu",
         ])
 
     async def test_lesson_callback_reads_its_own_source_and_returns_to_lesson5_menu(self):
