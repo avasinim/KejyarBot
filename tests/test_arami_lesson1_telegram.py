@@ -32,8 +32,9 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             for button in row
         ]
         self.assertEqual(callbacks, [
-            "arami1:lesson", "arami1:audio",
+            "arami1:lesson",
             "arami1:practice", "arami1:assessment",
+            "arami5:menu",
         ])
 
     async def test_lesson_callback_sends_intro_all_sections_and_conclusion(self):
@@ -54,14 +55,11 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
         self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
 
-    async def test_audio_callback_sends_only_confirmed_asset_path(self):
+    async def test_audio_callback_does_not_misroute_lesson2_recording(self):
         update, query = make_update("audio")
-        with tempfile.TemporaryDirectory() as directory:
-            audio = Path(directory) / "دەنگەکانی ئەلفبێ.ogg"
-            audio.write_bytes(b"OggS-test")
-            with patch("arami_lesson1_telegram.get_arami_lesson1_audio_path", return_value=audio):
-                await callback(update, SimpleNamespace(user_data={}), directory)
-        query.message.reply_voice.assert_awaited_once()
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        query.message.reply_voice.assert_not_awaited()
+        self.assertIn("وانەی ٢", query.message.reply_text.await_args.args[0])
 
     async def test_practice_callback_starts_question_session(self):
         bank = {

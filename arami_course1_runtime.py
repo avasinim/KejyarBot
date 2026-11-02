@@ -6,6 +6,9 @@ from arami_lesson1_interaction import validate_question_bank, InvalidQuestionBan
 
 COURSE_ID = "arami_orthography_foundations"
 LESSON_1_ID = "arami_course1_lesson_01"
+LESSON_2_ID = "arami_course1_lesson_02"
+LESSON_2_AUDIO_ASSET = "دەنگەکانی ئەلفبێ.ogg"
+LESSON_2_AUDIO_COMMIT = "5642e5310cc856f7bfd8c821086a9f2febe419e6"
 LESSON_1_SECTIONS = {
     "lesson1_alphabet_count",
     "lesson1_vowel_count",
@@ -49,32 +52,43 @@ def load_arami_course1(base_dir):
     # is represented by the stable source marker, not the old status label.
     if first.get("content_source") != "user_supplied_immutable":
         raise AramiCourseError("user-supplied Lesson 1 content must remain immutable")
-    if first.get("audio_asset") != "دەنگەکانی ئەلفبێ.ogg":
-        raise AramiCourseError("Lesson 1 audio must use its user-confirmed recording")
-    if first.get("audio_commit") != "5642e5310cc856f7bfd8c821086a9f2febe419e6":
-        raise AramiCourseError("Lesson 1 audio commit does not match the user-confirmed recording")
+    if any(first.get(key) is not None for key in ("audio_asset", "audio_commit", "audio_status")):
+        raise AramiCourseError("Lesson 1 must remain without an assigned audio recording")
+    second = next((lesson for lesson in lessons if lesson.get("id") == LESSON_2_ID), None)
+    if second is None:
+        raise AramiCourseError("Arami Lesson 2 is missing")
+    if (
+        second.get("audio_asset") != LESSON_2_AUDIO_ASSET
+        or second.get("audio_commit") != LESSON_2_AUDIO_COMMIT
+        or second.get("audio_status") != "user_confirmed_asset_repository_root"
+    ):
+        raise AramiCourseError("Lesson 2 audio must use its user-confirmed recording")
     if manifest.get("safety", {}).get("separate_from_latin_courses") is not True:
         raise AramiCourseError("Arami and Latin courses must remain isolated")
     return manifest
 
 
-def get_arami_lesson1_audio_path(base_dir, manifest=None):
-    """Return only the explicitly assigned Arami Lesson 1 recording path."""
+def get_arami_lesson2_audio_path(base_dir, manifest=None):
+    """Return only the explicitly assigned Arami Lesson 2 recording path."""
     manifest = manifest or load_arami_course1(base_dir)
     lessons = manifest.get("lessons", [])
-    lesson = next((item for item in lessons if item.get("id") == LESSON_1_ID), None)
+    lesson = next((item for item in lessons if item.get("id") == LESSON_2_ID), None)
     if lesson is None:
-        raise AramiCourseError("Arami Lesson 1 is missing")
-    if lesson.get("audio_status") != "user_confirmed_asset_repository_root":
-        raise AramiCourseError("Arami Lesson 1 audio assignment is not confirmed")
+        raise AramiCourseError("Arami Lesson 2 is missing")
+    if (
+        lesson.get("audio_asset") != LESSON_2_AUDIO_ASSET
+        or lesson.get("audio_commit") != LESSON_2_AUDIO_COMMIT
+        or lesson.get("audio_status") != "user_confirmed_asset_repository_root"
+    ):
+        raise AramiCourseError("Arami Lesson 2 audio assignment is not confirmed")
     root = Path(base_dir).resolve()
     audio = (root / lesson["audio_asset"]).resolve()
     try:
         audio.relative_to(root)
     except ValueError as exc:
-        raise AramiCourseError("Lesson 1 audio path escapes project root") from exc
+        raise AramiCourseError("Lesson 2 audio path escapes project root") from exc
     if audio.suffix.lower() != ".ogg" or not audio.is_file():
-        raise AramiCourseError("confirmed Lesson 1 OGG recording is unavailable")
+        raise AramiCourseError("confirmed Lesson 2 OGG recording is unavailable")
     return audio
 
 

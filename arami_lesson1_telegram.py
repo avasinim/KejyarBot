@@ -2,7 +2,7 @@
 import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-from arami_course1_runtime import load_arami_lesson1_interactions, get_arami_lesson1_audio_path, load_arami_lesson1_content
+from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 def menu_keyboard():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
-        [InlineKeyboardButton("🔊 دەنگی وانەی ١", callback_data="arami1:audio")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
         [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
         [InlineKeyboardButton("📚 وانەی ٥ — پیتەکان و هاوتای لاتینی", callback_data="arami5:menu")],
@@ -92,13 +91,9 @@ async def callback(update, context, base_dir):
         return
 
     if action == "audio":
-        try:
-            path = get_arami_lesson1_audio_path(base_dir)
-            with path.open("rb") as audio:
-                await query.message.reply_voice(voice=audio)
-        except (OSError, ValueError) as exc:
-            logger.warning("Arami Lesson 1 audio unavailable: %s", exc)
-            await query.message.reply_text("⚠️ دەنگی ڕەسەنی وانەی ١ ئێستا بەردەست نییە.")
+        await query.message.reply_text(
+            "ℹ️ دەنگی پشتڕاستکراو بۆ وانەی ٢ تۆمار کراوە؛ وانەی ١ دەنگی تایبەتی نییە."
+        )
         return
 
     if action in {"practice", "assessment"}:

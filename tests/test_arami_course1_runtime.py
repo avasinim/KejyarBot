@@ -5,7 +5,7 @@ from pathlib import Path
 
 from arami_course1_runtime import (
     AramiCourseError, COURSE_ID, LESSON_1_ID,
-    load_arami_course1, get_arami_lesson1_audio_path,
+    load_arami_course1, get_arami_lesson2_audio_path,
     load_arami_lesson1_interactions, load_arami_lesson1_content,
 )
 
@@ -21,11 +21,11 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             "lessons": [
                 {"id": LESSON_1_ID,
                  "content_source": "user_supplied_immutable",
-                 "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
+                 "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved"},
+                {"id": "arami_course1_lesson_02",
                  "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
                  "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
                  "audio_status": "user_confirmed_asset_repository_root"},
-                {"id": "arami_course1_lesson_02"},
                 {"id": "arami_course1_lesson_03"},
                 {"id": "arami_course1_lesson_04"},
             ],
@@ -93,16 +93,25 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             with self.assertRaises(AramiCourseError):
                 load_arami_lesson1_interactions(root)
 
-    def test_resolves_only_confirmed_lesson1_audio(self):
+    def test_resolves_only_confirmed_lesson2_audio(self):
         with tempfile.TemporaryDirectory() as temp:
             self.fixture(Path(temp))
-            path = get_arami_lesson1_audio_path(temp)
+            path = get_arami_lesson2_audio_path(temp)
             self.assertEqual(path.name, "دەنگەکانی ئەلفبێ.ogg")
+
+    def test_lesson1_cannot_claim_the_lesson2_recording(self):
+        with tempfile.TemporaryDirectory() as temp:
+            manifest = self.fixture(Path(temp))
+            manifest["lessons"][0]["audio_asset"] = "دەنگەکانی ئەلفبێ.ogg"
+            path = Path(temp) / "course_data" / "arami_course1_manifest.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(AramiCourseError):
+                load_arami_course1(temp)
 
     def test_rejects_wrong_audio_assignment(self):
         with tempfile.TemporaryDirectory() as temp:
             manifest = self.fixture(Path(temp))
-            manifest["lessons"][0]["audio_asset"] = "voices/lesson_start.mp3"
+            manifest["lessons"][1]["audio_asset"] = "voices/lesson_start.mp3"
             path = Path(temp) / "course_data" / "arami_course1_manifest.json"
             path.write_text(json.dumps(manifest), encoding="utf-8")
             with self.assertRaises(AramiCourseError):
@@ -122,7 +131,7 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             self.fixture(Path(temp))
             (Path(temp) / "دەنگەکانی ئەلفبێ.ogg").unlink()
             with self.assertRaises(AramiCourseError):
-                get_arami_lesson1_audio_path(temp)
+                get_arami_lesson2_audio_path(temp)
 
     def test_loads_complete_source_lesson_with_eight_sections(self):
         with tempfile.TemporaryDirectory() as temp:
