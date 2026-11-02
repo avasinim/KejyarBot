@@ -1206,143 +1206,6 @@
       ]
     },
     "13": {
-      "source_file": "course_data/arami_course1_lesson_12_y_source.md",
-      "practice": [
-        {
-          "id": "13p1",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "لە زمانی کوردیدا چەند جۆری پیتی «ی» هەیە؟",
-          "options": [
-            "دوو جۆر",
-            "یەک جۆر",
-            "سێ جۆر"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ١"
-        },
-        {
-          "id": "13p2",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "هاوتای لاتینیی «ی»ی ساکار کامەیە؟",
-          "options": [
-            "y",
-            "î",
-            "û"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٢"
-        },
-        {
-          "id": "13p3",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "پیتی «ی» لە وشەی «یار»دا چ جۆرێکە؟",
-          "options": [
-            "نەبزوێن",
-            "بزوێن",
-            "بزوێنی درێژ"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٣"
-        },
-        {
-          "id": "13p4",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "پیتی «ی» لە وشەی «تیر»دا چ جۆرێکە؟",
-          "options": [
-            "بزوێن",
-            "نەبزوێن",
-            "ساکار"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٤"
-        },
-        {
-          "id": "13p5",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "کام ڕێگایەک بۆ جیاکردنەوەی بزوێن و نەبزوێنی «ی» لە وانەکەدا باس کراوە؟",
-          "options": [
-            "بڕگەبڕگەکردنی وشە",
-            "ژماردنی پیتەکان تەنیا",
-            "گۆڕینی وشە بۆ زمانی تر"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٥"
-        }
-      ],
-      "assessment": [
-        {
-          "id": "13a1",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "لە زمانی کوردیدا چەند جۆری پیتی «ی» هەیە؟",
-          "options": [
-            "دوو جۆر",
-            "یەک جۆر",
-            "سێ جۆر"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ١"
-        },
-        {
-          "id": "13a2",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "هاوتای لاتینیی «ی»ی ساکار کامەیە؟",
-          "options": [
-            "y",
-            "î",
-            "û"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٢"
-        },
-        {
-          "id": "13a3",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "پیتی «ی» لە وشەی «یار»دا چ جۆرێکە؟",
-          "options": [
-            "نەبزوێن",
-            "بزوێن",
-            "بزوێنی درێژ"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٣"
-        },
-        {
-          "id": "13a4",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "پیتی «ی» لە وشەی «تیر»دا چ جۆرێکە؟",
-          "options": [
-            "بزوێن",
-            "نەبزوێن",
-            "ساکار"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٤"
-        },
-        {
-          "id": "13a5",
-          "type": "recognize",
-          "section_id": "lesson13_source_exercises",
-          "prompt": "کام ڕێگایەک بۆ جیاکردنەوەی بزوێن و نەبزوێنی «ی» لە وانەکەدا باس کراوە؟",
-          "options": [
-            "بڕگەبڕگەکردنی وشە",
-            "ژماردنی پیتەکان تەنیا",
-            "گۆڕینی وشە بۆ زمانی تر"
-          ],
-          "answer_index": 0,
-          "source_evidence": "بەشی ٧، ڕاهێنانی کەژیار، پرسیاری ٥"
-        }
-      ]
-    },
-    "14": {
       "source_file": "course_data/arami_course1_lesson_13_w_source.md",
       "practice": [
         {
@@ -1453,7 +1316,7 @@
         }
       ]
     },
-    "16": {
+    "15": {
       "source_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
       "practice": [
         {
@@ -1564,7 +1427,7 @@
         }
       ]
     },
-    "17": {
+    "16": {
       "source_file": "course_data/arami_course1_lesson_16_v_source.md",
       "practice": [
         {
@@ -1647,7 +1510,7 @@
         }
       ]
     },
-    "18": {
+    "17": {
       "source_file": "course_data/arami_course1_lesson_17_he_e_source.md",
       "practice": [
         {
@@ -1758,7 +1621,7 @@
         }
       ]
     },
-    "19": {
+    "18": {
       "source_file": "course_data/arami_course1_lesson_18_k_g_mukriani_source.md",
       "practice": [
         {
@@ -1869,7 +1732,7 @@
         }
       ]
     },
-    "20": {
+    "19": {
       "source_file": "course_data/arami_course1_lesson_19_cluster_source.md",
       "practice": [
         {
