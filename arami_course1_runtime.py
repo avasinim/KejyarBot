@@ -46,8 +46,8 @@ def load_arami_course1(base_dir):
     ids = [lesson.get("id") for lesson in lessons if isinstance(lesson, dict)]
     if len(ids) != declared_total or len(set(ids)) != declared_total:
         raise AramiCourseError("Arami lessons need unique namespaced ids")
-    if manifest.get("round") == 1 and declared_total != 21:
-        raise AramiCourseError("Arami introductory orthography round must declare 21 lessons")
+    if manifest.get("round") == 1 and declared_total != 20:
+        raise AramiCourseError("Arami introductory orthography round must declare 20 lessons")
     first = next((lesson for lesson in lessons if lesson.get("id") == LESSON_1_ID), None)
     if first is None:
         raise AramiCourseError("Arami Lesson 1 is missing")
