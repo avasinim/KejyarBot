@@ -1,5 +1,7 @@
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import AsyncMock
 
 from arami_course1_telegram import (
     AramiCourseTelegramError,
@@ -7,6 +9,7 @@ from arami_course1_telegram import (
     course_menu_keyboard,
     load_lesson_source,
     load_manifest,
+    load_question_banks,
 )
 
 
@@ -30,6 +33,23 @@ class AramiCourseTelegramTests(unittest.TestCase):
             {button.callback_data for button in buttons},
             {f"aramiC:lesson:{number}" for number in range(1, 22)},
         )
+
+    def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
+        banks = load_question_banks(ROOT)
+        self.assertEqual(set(banks), {6, 7, 8, 9, 13})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {6: 5, 7: 4, 8: 8, 9: 5, 13: 5})
+        for number, bank in banks.items():
+            self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
+            self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
+
+    def test_menu_exposes_practice_and_assessment_only_for_verified_question_banks(self):
+        banks = load_question_banks(ROOT)
+        keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:lesson:")]), 21)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 5)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 5)
+        self.assertNotIn("aramiC:practice:15", callbacks)
 
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
@@ -58,6 +78,48 @@ class AramiCourseTelegramTests(unittest.TestCase):
             with self.subTest(value=value):
                 with self.assertRaises(AramiCourseTelegramError):
                     load_lesson_source(ROOT, value)
+
+
+class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
+    def make_update(self, action, message_id=10):
+        message = SimpleNamespace(
+            message_id=message_id,
+            reply_text=AsyncMock(return_value=SimpleNamespace(message_id=message_id + 1)),
+        )
+        query = SimpleNamespace(
+            data=f"aramiC:{action}", message=message, answer=AsyncMock(),
+            edit_message_reply_markup=AsyncMock(), edit_message_text=AsyncMock(),
+        )
+        return SimpleNamespace(callback_query=query), query
+
+    async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:6")
+        await callback(update, context, ROOT)
+        practice = context.user_data["arami_course1_sessions"]["6"]
+        self.assertEqual(practice["mode"], "practice")
+        question_id = context.user_data["arami_course1_active"]["message_id"]
+
+        update, _ = self.make_update("pick:6:0", message_id=question_id)
+        await callback(update, context, ROOT)
+        update, submit_query = self.make_update("submit:6", message_id=question_id)
+        await callback(update, context, ROOT)
+        self.assertIn("وەڵامی ڕاست", submit_query.edit_message_text.await_args.args[0])
+
+        update, _ = self.make_update("assessment:6")
+        await callback(update, context, ROOT)
+        assessment = context.user_data["arami_course1_sessions"]["6"]
+        self.assertEqual(assessment["mode"], "assessment")
+        self.assertIsNot(assessment, practice)
+
+        assessment_message_id = context.user_data["arami_course1_active"]["message_id"]
+        update, _ = self.make_update("pick:6:0", message_id=assessment_message_id)
+        await callback(update, context, ROOT)
+        update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
+        await callback(update, context, ROOT)
+        self.assertIn("وەڵامەکەت تۆمار کرا", assessment_query.edit_message_text.await_args.args[0])
+        self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
 
 if __name__ == "__main__":
