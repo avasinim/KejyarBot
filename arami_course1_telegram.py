@@ -21,7 +21,7 @@ from arami_lesson1_interaction import (
 
 logger = logging.getLogger(__name__)
 COURSE_ID = "arami_orthography_foundations"
-LESSON_COUNT = 20
+LESSON_COUNT = 21
 QUESTION_BANK_FILE = "course_data/arami_course1_source_quiz_banks.json"
 
 
