@@ -10,6 +10,8 @@ LESSON_2_ID = "arami_course1_lesson_02"
 LESSON_2_AUDIO_ASSET = "دەنگەکانی ئەلفبێ.ogg"
 LESSON_2_AUDIO_COMMIT = "5642e5310cc856f7bfd8c821086a9f2febe419e6"
 LESSON_2_AUDIO_STATUS = "user_confirmed_asset_repository_root; original_recording_preserved"
+LESSON_1_AUDIO_ASSET = "بزوێنی ی.ogg"
+LESSON_1_AUDIO_LABEL = "دەنگی بزوێنی ی"
 LESSON_1_SECTIONS = {
     "lesson1_alphabet_count",
     "lesson1_vowel_count",
@@ -53,8 +55,8 @@ def load_arami_course1(base_dir):
     # is represented by the stable source marker, not the old status label.
     if first.get("content_source") != "user_supplied_immutable":
         raise AramiCourseError("user-supplied Lesson 1 content must remain immutable")
-    if any(first.get(key) is not None for key in ("audio_asset", "audio_commit", "audio_status")):
-        raise AramiCourseError("Lesson 1 must remain without an assigned audio recording")
+    if first.get("audio_files") != [{"file": LESSON_1_AUDIO_ASSET, "label": LESSON_1_AUDIO_LABEL}]:
+        raise AramiCourseError("Lesson 1 must use only its own uploaded recording")
     second = next((lesson for lesson in lessons if lesson.get("id") == LESSON_2_ID), None)
     if second is None:
         raise AramiCourseError("Arami Lesson 2 is missing")
