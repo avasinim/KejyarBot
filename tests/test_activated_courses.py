@@ -21,7 +21,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("arami_orthography_foundations"))
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
-        self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 20)
+        self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 21)
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
@@ -36,7 +36,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
-        self.assertEqual(len(reads), 20)
+        self.assertEqual(len(reads), 21)
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
