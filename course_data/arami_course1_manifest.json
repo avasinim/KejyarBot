@@ -27,7 +27,9 @@
       ],
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
-      "interaction_mode": "dedicated"
+      "interaction_mode": "dedicated",
+      "quiz_audit_status": "quiz_bank_entry_missing; no questions fabricated",
+      "quiz_audit_note": "Quiz bank audit: no dedicated practice/assessment bank entry exists for Lesson 1 in arami_course1_source_quiz_banks.json. The lesson has its own content JSON and confirmed audio «بزوێنی ی.ogg». Do not invent quiz items; add a bank only after checking the original source and receiving/confirming questions."
     },
     {
       "id": "arami_course1_lesson_02",
@@ -120,7 +122,9 @@
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "dedicated",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping"
+      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
+      "quiz_audit_status": "quiz_bank_entry_missing; no questions fabricated",
+      "quiz_audit_note": "Quiz bank audit: no dedicated practice/assessment bank entry exists for Lesson 5 in arami_course1_source_quiz_banks.json. The source covers Kurdish and Latin letter forms. Do not copy questions from another lesson or create unverified items; source-based quiz content remains pending."
     },
     {
       "id": "arami_course1_lesson_06",
