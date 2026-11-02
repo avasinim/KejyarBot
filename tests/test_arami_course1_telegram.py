@@ -131,7 +131,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         lesson, source = load_lesson_source(ROOT, 20)
         self.assertEqual(lesson["id"], "arami_course1_lesson_20")
         self.assertIn("بڕگە و هێشوو", source)
-        self.assertIn("بڕگە چییە؟", source)
+        self.assertIn("## بڕگە (بخش، هجا) چییە؟", source)
 
     def test_markdown_renderer_preserves_words_and_table_values(self):
         rendered = _plain_markdown(
