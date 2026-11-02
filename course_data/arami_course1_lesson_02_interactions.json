@@ -1,0 +1,140 @@
+{
+  "course_id": "arami_orthography_foundations",
+  "lesson_id": "arami_course1_lesson_02",
+  "content_policy": "Questions derived only from the saved user-provided Lesson 2 source. No edits to lesson text. No audio questions because no confirmed audio assignment.",
+  "source_asset": "course_data/arami_course1_lesson_02_vowels_source.md",
+  "practice": [
+    {
+      "id": "arami2_practice_01",
+      "type": "recognize",
+      "section_id": "lesson2_vowel_definition",
+      "prompt": "بزوێن چییە؟",
+      "options": [
+        "دەنگێک کە هەوا بەبێ داخستنی تەواوی ڕێگای دەنگ دەڕوات",
+        "نیشانەیەکی نووسراو کە تەنها پیتە",
+        "پیتێک کە هەمیشە نەبزوێنە"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ١: «بزوێن دەنگێکە ... هەوا بەبێ داخستنی تەواوی ڕێگای دەنگ لە دەمدا دەڕوات»."
+    },
+    {
+      "id": "arami2_practice_02",
+      "type": "classify",
+      "section_id": "lesson2_letter_sound",
+      "prompt": "پیت چییە؟",
+      "options": [
+        "دەنگی بیستراو",
+        "نیشانەیەکی نووسراو",
+        "بڕگەیەکی دەنگی"
+      ],
+      "answer_index": 1,
+      "source_evidence": "بەشی ٢: «پیت نیشانەیەکی نووسراوە، بەڵام بزوێن دەنگە»."
+    },
+    {
+      "id": "arami2_practice_03",
+      "type": "recognize",
+      "section_id": "lesson2_examples",
+      "prompt": "کام وشە لە نموونەکانی وانەی ٢دا هاتووە؟",
+      "options": [
+        "سەر",
+        "بەرز",
+        "ڕۆژ"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ٣: لیستی نموونەکان «سەر، گەرما، هێمن، خۆر، کورد، گیان»."
+    },
+    {
+      "id": "arami2_practice_04",
+      "type": "recognize",
+      "section_id": "lesson2_analysis_steps",
+      "prompt": "لە هەنگاوی یەکەمی شیکردنەوەدا چی دەکەین؟",
+      "options": [
+        "وشەکە بە دەنگی بەرز دەخوێنینەوە",
+        "پیتە نووسراوەکان بە ڕیز دەنووسین",
+        "بزوێنەکان لە دەنگدا دیاری دەکەین"
+      ],
+      "answer_index": 1,
+      "source_evidence": "بەشی ٣، هەنگاوی ١: «پیتە نووسراوەکان بە ڕیز بنووسە»."
+    },
+    {
+      "id": "arami2_practice_05",
+      "type": "recognize",
+      "section_id": "lesson2_letter_sound",
+      "prompt": "لە وانەکانی دواتردا کام دوو پیت بە وردی شیکاری دەکرێن؟",
+      "options": [
+        "«ب» و «پ»",
+        "«و» و «ی»",
+        "«ک» و «گ»"
+      ],
+      "answer_index": 1,
+      "source_evidence": "بەشی ٢: «لە وانەکانی دواتردا بە تایبەتی پیتەکانی «و» و «ی» بە وردی شیکاری دەکەین»."
+    }
+  ],
+  "assessment": [
+    {
+      "id": "arami2_assessment_01",
+      "type": "recognize",
+      "section_id": "lesson2_vowel_definition",
+      "prompt": "بزوێن لە پێناسەی وانەی ٢دا چییە؟",
+      "options": [
+        "دەنگێک",
+        "پیتی نووسراو",
+        "بڕگەیەک"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ١: بزوێن دەنگێکە و هەوا بەبێ داخستنی تەواوی ڕێگای دەنگ دەڕوات."
+    },
+    {
+      "id": "arami2_assessment_02",
+      "type": "classify",
+      "section_id": "lesson2_letter_sound",
+      "prompt": "کام ڕستە جیاوازیی پیت و بزوێن ڕوون دەکاتەوە؟",
+      "options": [
+        "پیت نیشانەی نووسراوە، بزوێن دەنگە",
+        "پیت و بزوێن هەمیشە یەک شتن",
+        "بزوێن تەنها نیشانەی نووسراوە"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ٢: «پیت نیشانەیەکی نووسراوە، بەڵام بزوێن دەنگە»."
+    },
+    {
+      "id": "arami2_assessment_03",
+      "type": "recognize",
+      "section_id": "lesson2_examples",
+      "prompt": "کام وشە لە لیستی نموونەکانی وانەی ٢دایە؟",
+      "options": [
+        "گیان",
+        "بازار",
+        "ڕەنگ"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ٣: لیستی نموونەکان «سەر، گەرما، هێمن، خۆر، کورد، گیان»."
+    },
+    {
+      "id": "arami2_assessment_04",
+      "type": "recognize",
+      "section_id": "lesson2_analysis_steps",
+      "prompt": "دوای نووسینی پیتەکان بە ڕیز، هەنگاوی داهاتوو چییە؟",
+      "options": [
+        "وشەکە بە دەنگی بەرز بخوێنەوە",
+        "یاسایەکی گشتی دروست بکە",
+        "تەنها ژمارەی پیتەکان بنووسە"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ٣، هەنگاوی ٢: «وشەکە بە دەنگی بەرز بخوێنەوە»."
+    },
+    {
+      "id": "arami2_assessment_05",
+      "type": "recognize",
+      "section_id": "lesson2_letter_sound",
+      "prompt": "بۆچی پیتەکانی «و» و «ی» لە وانەکانی دواتردا شیکاری دەکرێن؟",
+      "options": [
+        "چونکە کارکردی دەنگی جیاوازییان هەیە بە پێی وشە و شوێن",
+        "چونکە هیچ دەنگێکیان نییە",
+        "چونکە هەمیشە نەبزوێنن"
+      ],
+      "answer_index": 0,
+      "source_evidence": "بەشی ٢: پیتێک بە پێی وشە و شوێن دەتوانێت کارکردی دەنگی جیاوازی هەبێت؛ «و» و «ی» بە وردی شیکاری دەکرێن."
+    }
+  ]
+}
