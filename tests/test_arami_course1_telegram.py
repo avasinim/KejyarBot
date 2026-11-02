@@ -40,9 +40,17 @@ class AramiCourseTelegramTests(unittest.TestCase):
         banks = load_question_banks(ROOT)
         self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20})
         self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 12: 4, 13: 4, 15: 4, 16: 3, 17: 4, 18: 4, 19: 4, 20: 4})
+        seen_ids = set()
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
+            for mode in ("practice", "assessment"):
+                prefix = "p" if mode == "practice" else "a"
+                for index, item in enumerate(bank[mode], start=1):
+                    self.assertEqual(item["id"], f"{number}{prefix}{index}")
+                    self.assertEqual(item["section_id"], f"lesson{number}_source_exercises")
+                    self.assertNotIn(item["id"], seen_ids)
+                    seen_ids.add(item["id"])
 
     def test_menu_exposes_practice_and_assessment_only_for_verified_question_banks(self):
         banks = load_question_banks(ROOT)
