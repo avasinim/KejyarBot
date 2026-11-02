@@ -19,7 +19,7 @@ from arami_lesson1_interaction import (
 
 logger = logging.getLogger(__name__)
 COURSE_ID = "arami_orthography_foundations"
-LESSON_COUNT = 21
+LESSON_COUNT = 20
 QUESTION_BANK_FILE = "course_data/arami_course1_source_quiz_banks.json"
 
 
@@ -37,7 +37,7 @@ def load_manifest(base_dir):
     if manifest.get("course_id") != COURSE_ID or manifest.get("round") != 1:
         raise AramiCourseTelegramError("Unexpected Arami Course 1 manifest")
     if manifest.get("course_total_lessons") != LESSON_COUNT or not isinstance(lessons, list) or len(lessons) != LESSON_COUNT:
-        raise AramiCourseTelegramError("Course 1 must contain exactly 21 registered lessons")
+        raise AramiCourseTelegramError("Course 1 must contain exactly 20 registered lessons")
     numbers = [item.get("number") for item in lessons if isinstance(item, dict)]
     if sorted(numbers) != list(range(1, LESSON_COUNT + 1)):
         raise AramiCourseTelegramError("Course 1 lesson numbering is incomplete or duplicated")
