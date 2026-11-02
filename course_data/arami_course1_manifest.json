@@ -356,15 +356,15 @@
       "id": "arami_course1_lesson_15",
       "number": 15,
       "title": "پیتی «ل» و «ڵ»",
-      "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_15_source_preserved",
+      "status": "source_received_preserved",
+      "content_status": "user_supplied_lesson_15_source_preserved; L_and_LL_examples_and_contrasts_retained",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "design_status": "source_recovery_required",
-      "source_audit_status": "source_heading_and_both_audio_commit_references_match_lesson_15",
-      "runtime_design_status": "not_yet_wired_for_per_lesson_telegram",
-      "source_note": "Only the topic title is recoverable from prior context. The original lesson text, examples, and questions are not present in the repository or retrieved conversation material. Do not substitute another lesson's source.",
-      "practice_status": "not_implemented_source_missing",
-      "assessment_status": "not_implemented_source_missing",
+      "design_status": "source_preserved; four source-derived practice and four assessment questions available",
+      "source_audit_status": "lesson_15_source_and_two_dedicated_recordings_verified",
+      "runtime_design_status": "shared_arami_lesson_reader_sends_manifest_audio_after_source",
+      "source_note": "Lesson 15 source supplied by user. Preserve wording and examples exactly, including L/l and ll, گوڵ، کڵاو، گول، گۆل، گوڵ، گۆڵ، لێو، لیوان، مەل، دەلال، جل، لەیلا، گوڵاڵە، چڵی دار، خەڵات، باڵ.",
+      "practice_status": "four_source_derived_questions_available_in_shared_bank",
+      "assessment_status": "four_source_derived_questions_available_in_shared_bank",
       "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
       "audio_files": [
         {
@@ -376,7 +376,12 @@
           "label": "دەنگی پیتی ڵ"
         }
       ],
-      "audio_status": "two_user_supplied_lesson_15_recordings_verified_in_repository"
+      "audio_status": "two_user_supplied_lesson_15_recordings_verified_and_mapped; send_both_after_lesson_text",
+      "audio_commits": [
+        "1ade797d2e69308086293f7d2bfa499e22eef821",
+        "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1"
+      ],
+      "audio_assignment_note": "Both recordings belong exclusively to Lesson 15. The mention of Lesson 14 in the user's previous message was a typo; do not send these recordings with Lesson 14."
     },
     {
       "id": "arami_course1_lesson_16",
