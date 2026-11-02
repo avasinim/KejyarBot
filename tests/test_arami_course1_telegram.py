@@ -1,3 +1,5 @@
+import json
+import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -26,6 +28,18 @@ class AramiCourseTelegramTests(unittest.TestCase):
             [item["number"] for item in sorted(manifest["lessons"], key=lambda item: item["number"])],
             list(range(1, 22)),
         )
+
+    def test_manifest_rejects_course_size_mismatch(self):
+        manifest = json.loads((ROOT / "course_data" / "arami_course1_manifest.json").read_text(encoding="utf-8"))
+        manifest["course_size"] = 20
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "course_data").mkdir()
+            (root / "course_data" / "arami_course1_manifest.json").write_text(
+                json.dumps(manifest, ensure_ascii=False), encoding="utf-8"
+            )
+            with self.assertRaises(AramiCourseTelegramError):
+                load_manifest(root)
 
     def test_course_menu_exposes_all_21_lessons(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))

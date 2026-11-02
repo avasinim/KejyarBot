@@ -35,14 +35,20 @@ def load_arami_course1(base_dir):
         raise AramiCourseError("unexpected Arami course id")
     lessons = manifest.get("lessons")
     declared_total = manifest.get("course_total_lessons", manifest.get("course_size"))
+    course_size = manifest.get("course_size")
     if (
         not isinstance(lessons, list)
         or not isinstance(declared_total, int)
         or isinstance(declared_total, bool)
         or declared_total < 1
         or len(lessons) != declared_total
+        or (course_size is not None and (
+            not isinstance(course_size, int)
+            or isinstance(course_size, bool)
+            or course_size != declared_total
+        ))
     ):
-        raise AramiCourseError("Arami Course 1 lesson list must match its declared total")
+        raise AramiCourseError("Arami Course 1 lesson list and declared counts must agree")
     ids = [lesson.get("id") for lesson in lessons if isinstance(lesson, dict)]
     if len(ids) != declared_total or len(set(ids)) != declared_total:
         raise AramiCourseError("Arami lessons need unique namespaced ids")
