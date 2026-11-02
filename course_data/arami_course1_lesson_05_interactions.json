@@ -1,0 +1,166 @@
+{
+  "course_id": "arami_orthography_foundations",
+  "lesson_id": "arami_course1_lesson_05",
+  "content_policy": "Only the six multiple-choice exercises explicitly supplied in the user's Lesson 5 source are represented. No source table values or counts were independently altered.",
+  "source_asset": "course_data/arami_course1_lesson_05_source.md",
+  "practice": [
+    {
+      "id": "arami5_practice_01",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (چ) کامەیە؟",
+      "options": [
+        "ş",
+        "ç",
+        "j"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پرسیاری ١ی ڕاهێنانی سەرچاوە."
+    },
+    {
+      "id": "arami5_practice_02",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (ژ) کامەیە؟",
+      "options": [
+        "j",
+        "z",
+        "ş"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پرسیاری ٢ی ڕاهێنانی سەرچاوە."
+    },
+    {
+      "id": "arami5_practice_03",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "پیتی (وو) بە لاتینی چۆن دەنووسرێت؟",
+      "options": [
+        "u",
+        "û",
+        "î"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پرسیاری ٣ی ڕاهێنانی سەرچاوە."
+    },
+    {
+      "id": "arami5_practice_04",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (ێ) کامەیە؟",
+      "options": [
+        "ê",
+        "î",
+        "e"
+      ],
+      "answer_index": 0,
+      "source_evidence": "پرسیاری ٤ی ڕاهێنانی سەرچاوە."
+    },
+    {
+      "id": "arami5_practice_05",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "بزرۆکە بە کام پیتی لاتینی دەنووسرێت؟",
+      "options": [
+        "u",
+        "i",
+        "o"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پرسیاری ٥ی ڕاهێنانی سەرچاوە."
+    },
+    {
+      "id": "arami5_practice_06",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "بەپێی ئەم وانەیە، چەند پیتی بێدەنگمان هەیە؟",
+      "options": [
+        "٢٨",
+        "٢٩",
+        "٣٧"
+      ],
+      "answer_index": 1,
+      "source_evidence": "پرسیاری ٦ی ڕاهێنانی سەرچاوە."
+    }
+  ],
+  "assessment": [
+    {
+      "id": "arami5_assessment_01",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (چ) کامەیە؟",
+      "options": [
+        "ş",
+        "ç",
+        "j"
+      ],
+      "answer_index": 1,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    },
+    {
+      "id": "arami5_assessment_02",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (ژ) کامەیە؟",
+      "options": [
+        "j",
+        "z",
+        "ş"
+      ],
+      "answer_index": 0,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    },
+    {
+      "id": "arami5_assessment_03",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "پیتی (وو) بە لاتینی چۆن دەنووسرێت؟",
+      "options": [
+        "u",
+        "û",
+        "î"
+      ],
+      "answer_index": 1,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    },
+    {
+      "id": "arami5_assessment_04",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "هاوتای لاتینیی پیتی (ێ) کامەیە؟",
+      "options": [
+        "ê",
+        "î",
+        "e"
+      ],
+      "answer_index": 0,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    },
+    {
+      "id": "arami5_assessment_05",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "بزرۆکە بە کام پیتی لاتینی دەنووسرێت؟",
+      "options": [
+        "u",
+        "i",
+        "o"
+      ],
+      "answer_index": 1,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    },
+    {
+      "id": "arami5_assessment_06",
+      "type": "recognize",
+      "section_id": "lesson5_source_exercises",
+      "prompt": "بەپێی ئەم وانەیە، چەند پیتی بێدەنگمان هەیە؟",
+      "options": [
+        "٢٨",
+        "٢٩",
+        "٣٧"
+      ],
+      "answer_index": 1,
+      "source_evidence": "وەڵام لە خشتە یان ژمارەی ڕاستەوخۆی سەرچاوەی وانەی ٥ پشتگیری دەکرێت."
+    }
+  ]
+}
