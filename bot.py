@@ -940,7 +940,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
-            logger.exception("Could not open the 20-lesson Arami Course 1 catalogue")
+            logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
             await update.message.reply_text("⚠️ لیستی ٢٠ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
