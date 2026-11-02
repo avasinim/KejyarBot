@@ -1094,6 +1094,143 @@
         }
       ]
     },
+    "11": {
+      "source_file": "course_data/arami_course1_lesson_11_vowels_bore_sara_zhera_source.md",
+      "practice": [
+        {
+          "id": "11p1",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "پیتی بۆرە لە سەرەتای وشەدا چۆن دەنووسرێت؟",
+          "options": [
+            "بە تەنیا ۆ",
+            "لەگەڵ هەمزە",
+            "بە شێوەی ـۆ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«ئەگەر لە سەرەتادا هات لەگەڵ هەمزە دەنووسرێت»"
+        },
+        {
+          "id": "11p2",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "پیتی بۆرە لە نێوەڕاستی وشەدا بە کام شێوە دەردەکەوێت؟",
+          "options": [
+            "ـۆ",
+            "ۆ",
+            "ئۆ"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«لە نێوەڕاست (ـۆ) و کۆتاییدا (ۆ)»"
+        },
+        {
+          "id": "11p3",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "پیتی سەرە چەند شێوەی نووسینی هەیە؟",
+          "options": [
+            "دوو شێوە",
+            "سێ شێوە",
+            "چوار شێوە"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«پیتی بزوێنی سەرە: بە سێ شێوە خۆی دەنوێنێت ئە، ە، ــە»"
+        },
+        {
+          "id": "11p4",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "پیتی ژێرە لە سەرەتای وشەدا بە کام شێوە دێت؟",
+          "options": [
+            "ئێـ",
+            "ـێـ",
+            "ێ"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«ئ + ێ = ئێـ ـێـ ێ»"
+        },
+        {
+          "id": "11p5",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "کامەیان لە نموونەکانی پیتی ژێرەی وانەکەیە؟",
+          "options": [
+            "ئۆقرە",
+            "ئێمە",
+            "بۆن"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«ئێرە، ئێمە، ئێوە، سێو، هێمن، شێر...»"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "11a1",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "کام شێوە بۆ پیتی بۆرە لە کۆتایی وشەدا بەکاردێت؟",
+          "options": [
+            "ـۆ",
+            "ۆ",
+            "ئۆ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«لە نێوەڕاست (ـۆ) و کۆتاییدا (ۆ)»"
+        },
+        {
+          "id": "11a2",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "کامەیان نموونەی پیتی بزوێنی سەرەیە؟",
+          "options": [
+            "شەوە",
+            "شێر",
+            "ئێرە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«شَوَ = شەوە»"
+        },
+        {
+          "id": "11a3",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "بزوێنی سەرە لە سەرەتای وشەدا لەگەڵ چی دێت؟",
+          "options": [
+            "هەمزە",
+            "پیتی ل",
+            "هێشوو"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«لە سەرەتادا چونکە بزوێنە لەگەڵ هەمزە دێت»"
+        },
+        {
+          "id": "11a4",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "کام شێوەی نووسین بۆ پیتی ژێرە لە نێوەڕاستی وشەدا بەکاردێت؟",
+          "options": [
+            "ئێـ",
+            "ـێـ",
+            "ێ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«ئ + ێ = ئێـ ـێـ ێ»"
+        },
+        {
+          "id": "11a5",
+          "type": "recognize",
+          "section_id": "lesson11_source_exercises",
+          "prompt": "کامەیان لە نموونەکانی ژێرەدا هاتووە؟",
+          "options": [
+            "سێبەر",
+            "سۆبە",
+            "شاهۆ"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«ئێوارە، سێو، دێ، ئێرە، سێبەر...»"
+        }
+      ]
+    },
     "12": {
       "source_file": "course_data/arami_course1_lesson_11_y_source.md",
       "practice": [
@@ -1313,6 +1450,143 @@
           ],
           "answer_index": 0,
           "source_evidence": "بەشی پیتی «وو=û»: نموونەکان"
+        }
+      ]
+    },
+    "14": {
+      "source_file": "course_data/arami_course1_lesson_14_bizroke_hishu_source.md",
+      "practice": [
+        {
+          "id": "14p1",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "پیتی بزرۆکە لە ڕێنووسی ئارامیدا چۆن نیشان دەدرێت؟",
+          "options": [
+            "بە I i",
+            "بە هیچ هێما و نیگارێکی تایبەت نانووسرێت",
+            "بە ێ"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«لە ڕێنووسی ئارامیدا هیچ هێما و نیگارەیەکی بۆ دانەندراوە»"
+        },
+        {
+          "id": "14p2",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "پیتی بزرۆکە لە ڕێنووسی لاتینیدا بە چی دەنووسرێت؟",
+          "options": [
+            "I i",
+            "A a",
+            "U u"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«لە ڕێنووسی لاتینیدا I i بەم شێوەیە دەنووسرێت»"
+        },
+        {
+          "id": "14p3",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "بزرۆکە لە کۆتایی وشەدا دێت؟",
+          "options": [
+            "بەڵێ، هەمیشە",
+            "نەخێر، هیچ کات نایێتە کۆتاییی وشە",
+            "تەنیا لە وشەی دوو بڕگەییدا"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«لە نێوەڕاستی وشەشدا دێت بەڵام هیچ کات نایێتە کۆتاییی وشە»"
+        },
+        {
+          "id": "14p4",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "بۆ ناسینەوەی بزرۆکە، یەکەم هەنگاوی پێشنیارکراو لە وانەکەدا چییە؟",
+          "options": [
+            "وشەکە بە پیتە لاتینییەکان بنووسین",
+            "وشەکە بڕگەبڕگە بکەین",
+            "کۆتایی وشەکە بسڕینەوە"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«سەرەتا دێم بڕگەبڕگەی دەکەم»"
+        },
+        {
+          "id": "14p5",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "کامەیان لە نموونەکانی بزرۆکەی وانەکەیە؟",
+          "options": [
+            "min",
+            "mûn",
+            "mên"
+          ],
+          "answer_index": 0,
+          "source_evidence": "خشتەی «وشە / ڕێنووسی لاتینی»: «من | min»"
+        }
+      ],
+      "assessment": [
+        {
+          "id": "14a1",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "بەپێی وانەکە، بزرۆکە چ جۆرە پیتێکە؟",
+          "options": [
+            "بزوێن",
+            "نەبزوێن",
+            "هەمزە"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«پیتی بزرۆکە، پیتێکی بزوێنە»"
+        },
+        {
+          "id": "14a2",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "دەنگی بزرۆکە لە بەراورد بە بێژەی ژێرە چەندە؟",
+          "options": [
+            "نیوەی ژێرە",
+            "یەک لە چواری ژێرە",
+            "دوو هێندەی ژێرە"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«یەک لە چواری بێژەی پیتی ژێرەیە»"
+        },
+        {
+          "id": "14a3",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "بزرۆکە لە کوێی وشەدا دەتوانێت بێت؟",
+          "options": [
+            "تەنیا لە کۆتایی",
+            "لە سەرەتا و نێوەڕاست، نەک کۆتایی",
+            "تەنیا لە سەرەتا"
+          ],
+          "answer_index": 1,
+          "source_evidence": "«لە سەرەتادا لەگەڵ ئاوەڵبزوێن دێت. لە نێوەڕاستی وشەشدا دێت بەڵام هیچ کات نایێتە کۆتاییی وشە»"
+        },
+        {
+          "id": "14a4",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "ئەگەر لە بڕگەبڕگەکردندا هیچ کام لە پیتە بزوێنە نووسراوەکان نەهات، بەپێی وانەکە چی دەردەکەوێت؟",
+          "options": [
+            "بزرۆکە هاتووە و خۆی شاردووەتەوە",
+            "وشەکە بێ دەنگە",
+            "وشەکە نابێت بڕگەی هەبێت"
+          ],
+          "answer_index": 0,
+          "source_evidence": "«ئەگەر هیچ یەک لەم پیتە بزوێنانە نەهاتبوون بزانن کە بزرۆکە هاتووە و خۆی شاردووەتەوە»"
+        },
+        {
+          "id": "14a5",
+          "type": "recognize",
+          "section_id": "lesson14_source_exercises",
+          "prompt": "کامەیان نموونەی نووسینی لاتینیی «چل» لە سەرچاوەکەدایە؟",
+          "options": [
+            "çil",
+            "chil",
+            "çel"
+          ],
+          "answer_index": 0,
+          "source_evidence": "خشتەی «وشە / ڕێنووسی لاتینی»: «چل | çil»"
         }
       ]
     },
