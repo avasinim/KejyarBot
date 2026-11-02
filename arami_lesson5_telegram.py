@@ -3,7 +3,7 @@ import logging
 import re
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson5_interactions, load_arami_lesson5_source
-from arami_course1_telegram import send_lesson_audio
+from arami_course1_telegram import load_manifest, send_lesson_audio
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
@@ -67,7 +67,9 @@ async def callback(update, context, base_dir):
                     end = boundary
             await query.message.reply_text(source[:end])
             source = source[end:].lstrip("\n")
-        await send_lesson_audio(query.message, base_dir, {"number": 5, "audio_files": []})
+        manifest = load_manifest(base_dir)
+        lesson_audio = next(item for item in manifest["lessons"] if item["number"] == 5)
+        await send_lesson_audio(query.message, base_dir, lesson_audio)
         await query.message.reply_text("⭐ کۆتایی وانەی ٥", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
