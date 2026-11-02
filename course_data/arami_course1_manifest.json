@@ -1,7 +1,7 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "ڕێنووسی سەرەتاییی کوردی",
-  "status": "20_lessons_reader_practice_assessment_enabled; 10_lessons_still_need_user_confirmed_dedicated_audio",
+  "status": "21_lessons_reader_practice_assessment_enabled; 10_existing_lessons_still_need_user_confirmed_dedicated_audio",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
@@ -459,6 +459,40 @@
     {
       "id": "arami_course1_lesson_16",
       "number": 16,
+      "title": "پیتی «ر» و «ڕ»",
+      "status": "user_supplied_source_received_and_preserved",
+      "content_status": "user_supplied_lesson_16_text_preserved; phonemic_contrasts_and_examples_retained",
+      "source_policy": "Preserve the user's distinction, examples and statements. Do not conflate ر and ڕ or assign either recording elsewhere.",
+      "content_file": "course_data/arami_course1_lesson_16_r_rr_source.md",
+      "content_source": "user_supplied_immutable",
+      "practice_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
+      "assessment_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
+      "audio_status": "two_user_confirmed_prerecorded_recordings_mapped_and_sent_after_lesson_text",
+      "audio_commits": [
+        "9c4fe5719fa9cfbd372880a746535b3fd3eb0dba",
+        "6bd06d446b1f9f8592ce57d20bb6203305ac4ba6"
+      ],
+      "audio_files": [
+        {
+          "file": "دەنگی ڕ.ogg",
+          "label": "دەنگی پیتی ڕ"
+        },
+        {
+          "file": "دەنگی ر.ogg",
+          "label": "دەنگی پیتی ر"
+        }
+      ],
+      "audio_assignment_note": "The user explicitly assigned both existing recordings to the newly inserted Lesson 16 on ر and ڕ.",
+      "design_status": "shared_source_reader_practice_assessment_and_lesson_infographic_integrated",
+      "source_audit_status": "user_source_and_both_audio_commit_topics_confirmed",
+      "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
+      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "runtime_status": "enabled_in_arami_course1_catalogue",
+      "interaction_mode": "shared_source_question_bank"
+    },
+    {
+      "id": "arami_course1_lesson_17",
+      "number": 17,
       "title": "پیتی «ڤ»",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_16_v_source_preserved",
@@ -470,7 +504,7 @@
       "assessment_status": "3_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "source_note": "User-supplied Lesson 16 source about پیتی ڤ is preserved. The dedicated file «دەنگ ڤ.ogg» belongs only to this lesson.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_and_audio_commit_match_lesson_16",
+      "source_audit_status": "source_heading_and_audio_commit_match_lesson_16; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
@@ -483,8 +517,8 @@
       "interaction_mode": "shared_source_question_bank"
     },
     {
-      "id": "arami_course1_lesson_17",
-      "number": 17,
+      "id": "arami_course1_lesson_18",
+      "number": 18,
       "title": "جیاوازیی نێوان پیتی (هـ) و (ە)",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_17_he_e_source_preserved",
@@ -500,7 +534,7 @@
       "audio_assignment_note": "User explicitly associates commit feb5293b322c1eb63d0481af02148cc9d1af64a8 with the ڤ sound in this lesson. Playback/runtime not yet verified.",
       "source_note": "The source heading identifies this as Lesson 17: distinction between هـ and ە. The source is preserved without changing the supplied examples.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_lesson_17",
+      "source_audit_status": "source_heading_matches_lesson_17; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [],
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
@@ -508,8 +542,8 @@
       "interaction_mode": "shared_source_question_bank"
     },
     {
-      "id": "arami_course1_lesson_18",
-      "number": 18,
+      "id": "arami_course1_lesson_19",
+      "number": 19,
       "title": "گۆڕانی بێژەی دوو پیتی (ک، گ) لە هەندێک ناوچەی موکریاندا",
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_18_k_g_mukriani_source_preserved",
@@ -521,7 +555,7 @@
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "The source heading identifies this as Lesson 18: regional pronunciation variation of ک and گ in Mukriani speech. The orthographic distinction and supplied examples are preserved.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_lesson_18",
+      "source_audit_status": "source_heading_matches_lesson_18; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [],
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
@@ -529,8 +563,8 @@
       "interaction_mode": "shared_source_question_bank"
     },
     {
-      "id": "arami_course1_lesson_19",
-      "number": 19,
+      "id": "arami_course1_lesson_20",
+      "number": 20,
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_19_cluster_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
@@ -542,7 +576,7 @@
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "The source heading identifies this as Lesson 19: هێشوو (Cluster). Four source-derived practice questions and four assessment questions are registered under Lesson 19 only.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_lesson_19",
+      "source_audit_status": "source_heading_matches_lesson_19; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [],
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
@@ -550,8 +584,8 @@
       "interaction_mode": "shared_source_question_bank"
     },
     {
-      "id": "arami_course1_lesson_20",
-      "number": 20,
+      "id": "arami_course1_lesson_21",
+      "number": 21,
       "title": "بڕگە و هێشوو (Cluster)",
       "status": "source_review_pending",
       "content_status": "user_supplied_final_lesson_received_and_preserved",
@@ -564,7 +598,7 @@
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "ئەمە وانەی ٢٠ و وانەی کۆتاییی دەورەی ١، کۆرسی ١یە. ناوەڕۆک، نموونەکان، چوار ڕێگای ناسینەوەی (و)، کۆدی دەنگ و لینکی پەیوەست پارێزراون. ئەم بابەتە لە هەمان کۆرسی ١ تۆمار دەکرێت؛ نابێت بگوازرێتەوە بۆ کۆرسی لاتینیی جیاواز.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_file_verified_in_branch; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
@@ -587,7 +621,7 @@
     "no_source_research": true,
     "dynamic_speech": false,
     "no_main_merge_or_deployment": true,
-    "course_total_lessons": 20,
+    "course_total_lessons": 21,
     "source_text_immutable": true,
     "no_latin_course_changes": true
   },
@@ -596,7 +630,7 @@
     "archive_file": "کەژیار.pdf",
     "audit_date": "2026-11-02",
     "gaps": [],
-    "note": "Repository file audit after user correction: Course 1 Round 1 contains exactly 20 lessons. The former empty Lesson 20 placeholder has been removed; the former final Lesson 21 (syllable and cluster) is now Lesson 20. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
+    "note": "Repository file audit after user insertion: Course 1 Round 1 contains exactly 21 lessons. The new Lesson 16 covers ر and ڕ, followed by the existing lessons shifted to 17–21. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
@@ -617,10 +651,11 @@
       17,
       18,
       19,
-      20
+      20,
+      21
     ]
   },
-  "course_total_lessons": 20,
+  "course_total_lessons": 21,
   "program": {
     "title": "کۆرسی ١",
     "structure": "کۆرسی ١ لە چوار دەورە پێکدێت",
@@ -658,7 +693,7 @@
   },
   "round": 1,
   "round_title": "ڕێنووسی سەرەتاییی کوردی",
-  "runtime_status": "arami_course1_catalogue_and_interactions_enabled_on_feature_branch",
+  "runtime_status": "arami_course1_21_lesson_catalogue_and_interactions_enabled_on_feature_branch",
   "design_status": "all_20_lessons_have_source_reader_and_practice_assessment_path",
   "audio_readiness": {
     "mapped_lessons": [
