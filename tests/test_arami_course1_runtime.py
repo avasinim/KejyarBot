@@ -169,5 +169,34 @@ class AramiCourseRuntimeTests(unittest.TestCase):
                 load_arami_lesson1_content(root)
 
 
+    def test_audio_catalog_lesson_assignments_match_manifest_without_reuse(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        manifest = json.loads((repo_root / "course_data" / "arami_course1_manifest.json").read_text(encoding="utf-8"))
+        catalog = json.loads((repo_root / "course_data" / "arami_course1_audio_catalog.json").read_text(encoding="utf-8"))
+        catalog_by_file = {item["filename"]: item for item in catalog["assets"]}
+        assigned = {}
+        for lesson in manifest["lessons"]:
+            files = [item["file"] for item in lesson.get("audio_files", [])]
+            if lesson.get("audio_asset"):
+                files.append(lesson["audio_asset"])
+            for filename in files:
+                self.assertNotIn(filename, assigned, f"{filename} is reused across lessons")
+                assigned[filename] = lesson["id"]
+                self.assertIn(filename, catalog_by_file)
+                self.assertEqual(catalog_by_file[filename]["lesson_id"], lesson["id"])
+
+    def test_l_and_ll_recordings_belong_only_to_lesson_15(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        manifest = json.loads((repo_root / "course_data" / "arami_course1_manifest.json").read_text(encoding="utf-8"))
+        lesson15 = next(item for item in manifest["lessons"] if item["number"] == 15)
+        self.assertEqual(
+            [item["file"] for item in lesson15["audio_files"]],
+            ["دەنگی ل.ogg", "دەنگی ڵ.ogg"],
+        )
+        catalog = json.loads((repo_root / "course_data" / "arami_course1_audio_catalog.json").read_text(encoding="utf-8"))
+        for filename in ("دەنگی ل.ogg", "دەنگی ڵ.ogg"):
+            asset = next(item for item in catalog["assets"] if item["filename"] == filename)
+            self.assertEqual(asset["lesson_id"], "arami_course1_lesson_15")
+
 if __name__ == "__main__":
     unittest.main()
