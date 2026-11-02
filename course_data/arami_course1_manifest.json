@@ -204,8 +204,8 @@
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions; no scientific edits.",
       "content_file": "course_data/arami_course1_lesson_11_vowels_bore_sara_zhera_source.md",
       "content_source": "user_supplied_immutable",
-      "practice_status": "not_registered_no_user_supplied_question_set",
-      "assessment_status": "not_registered_no_user_supplied_question_set",
+      "practice_status": "five_source_derived_questions_added_to_shared_bank; Telegram_practice_callback_available",
+      "assessment_status": "five_source_derived_questions_added_to_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "four_user_supplied_lesson_11_recordings_verified_in_repository",
       "audio_commits": [
         "d7cd548eb57b11efc764fb76225db252693b6977",
@@ -232,9 +232,9 @@
         }
       ],
       "source_note": "Inserted as new Lesson 11 at the user's request. The supplied final ellipsis indicates omitted source material; no missing content was inferred. Existing lessons 11–19 were shifted to 12–20 without deleting or rewriting their source files.",
-      "design_status": "source_preserved; design_practice_assessment_pending",
+      "design_status": "source_preserved; source_derived_practice_and_assessment_registered",
       "source_audit_status": "source_file_verified_in_branch",
-      "runtime_design_status": "lesson_reader_and_dedicated_audio_delivery_available; no_practice_assessment_bank",
+      "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
           "file": "ۆ.ogg",
@@ -321,8 +321,8 @@
       "title": "پیتی بزرۆکە و هێشوو",
       "content_file": "course_data/arami_course1_lesson_14_bizroke_hishu_source.md",
       "content_source": "user_supplied_immutable",
-      "practice_status": "not_registered_no_user_supplied_question_set",
-      "assessment_status": "not_registered_no_user_supplied_question_set",
+      "practice_status": "five_source_derived_questions_added_to_shared_bank; Telegram_practice_callback_available",
+      "assessment_status": "five_source_derived_questions_added_to_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "user_supplied_lesson_14_recording_commit_6639c30ca85bdae4f64134e1368617b2e507fb6c_verified; three_lesson14_recordings_mapped",
       "source_note": "User-confirmed Lesson 14 source covers the hidden vowel (بزرۆکە), its Latin representation I/i, syllable-based recognition, and examples including min, çil, dill, mirdim, xistin, kirdin, birdin. Preserve this as Lesson 14; do not confuse it with Lesson 13 about و.",
       "audio_commits": [
@@ -354,7 +354,7 @@
         }
       ],
       "audio_assignment_note": "The recording from commit 6639c30ca85bdae4f64134e1368617b2e507fb6c is the verified file بزرۆکە.ogg and is assigned to Lesson 14 only. Other two Lesson 14 recordings remain separately mapped.",
-      "design_status": "source_preserved; design_practice_assessment_pending",
+      "design_status": "source_preserved; source_derived_practice_and_assessment_registered",
       "source_audit_status": "source_heading_and_audio_commit_match_lesson_14",
       "audio_files": [
         {
@@ -370,7 +370,7 @@
           "label": "نموونەی سێیەمی بزرۆکە"
         }
       ],
-      "runtime_design_status": "lesson_reader_and_dedicated_audio_delivery_available; no_practice_assessment_bank"
+      "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered"
     },
     {
       "id": "arami_course1_lesson_15",
