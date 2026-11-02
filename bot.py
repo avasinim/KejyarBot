@@ -237,9 +237,9 @@ LATIN_COURSE_IDS = {
 
 
 def quiz_requires_submission(lesson):
-    """Use select-then-submit only for Course 1 Lesson 3 and both Latin courses."""
+    """Use explicit select-then-submit controls for interactive learning courses."""
     course_id = LESSON_COURSE.get(lesson)
-    return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS
+    return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS or course_id == "unified_orthography"
 
 
 def lesson_practice_callback(lesson):
@@ -334,6 +334,21 @@ def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+async def send_kejyar_course_cue(message, filename):
+    """Send an existing short Kejyar voice cue; never substitute it for lesson narration."""
+    path = get_voice(filename)
+    if not path:
+        logger.warning("Prerecorded Kejyar cue is missing: %s", filename)
+        return False
+    try:
+        with open(path, "rb") as audio:
+            await message.reply_voice(voice=audio)
+        return True
+    except Exception:
+        logger.exception("Could not send prerecorded Kejyar cue %s", filename)
+        return False
+
 
 async def send_lesson_audio(message, lesson_data):
     """Send the lesson's own prerecorded audio; never substitute generic narration."""
@@ -456,10 +471,19 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard
         )
-    # Generate event-specific narration in the configured Kejyar voice.
-    # The repository's legacy event MP3s are byte-identical, so do not replay
-    # the welcome clip as if it were a lesson-completion announcement.
+    # Keep dynamic speech disabled. The legacy event MP3s are byte-identical,
+    # so do not replay them as separate completion/reward announcements.
+
     await send_conversation_voice(query.message, message_text, context.user_data, user_id)
+
+    # Course 3 advances automatically after a successful completion. The next
+    # lesson remains protected by can_open(), and its own completion button is
+    # required before another lesson can be unlocked.
+    if LESSON_COURSE.get(lesson) == "unified_orthography" and next_lesson is not None:
+        next_data = LESSON_DATA.get(next_lesson)
+        if next_data and can_open(user_id, next_lesson):
+            await send_lesson_text(query.message, next_data["content"], lesson_keyboard(next_lesson))
+            await send_kejyar_course_cue(query.message, "lesson_start.mp3")
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -795,6 +819,8 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    if LESSON_COURSE.get(lesson) == "unified_orthography":
+        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
     await send_lesson_infographic(query.message, lesson)
 
 
@@ -811,6 +837,8 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    if LESSON_COURSE.get(lesson) == "unified_orthography":
+        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
     await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):

@@ -35,7 +35,7 @@ class Course3BookCoverageTests(unittest.TestCase):
         for marker in ("/", "ر", "[]", "#", "*", "=", "&", "_", "{}"):
             self.assertIn(marker, content)
         self.assertEqual(lesson["source"]["book"], "پوختەی ڕێنووس و خاڵبەندی")
-        self.assertEqual(lesson["source"]["author"], "دیاکۆ هاشمی")
+        self.assertNotIn("author", lesson["source"])
         self.assertEqual(lesson["source"]["edition"], 4)
         self.assertEqual(lesson["source"]["pages"], "٨٣–٨٤")
         self.assertIn("پەڕە ٨٣–٨٤", lesson["source"]["source_policy"])

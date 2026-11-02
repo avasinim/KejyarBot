@@ -65,7 +65,7 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
             with self.subTest(lesson=number):
                 source = self.lessons[number - 1]["source"]
                 self.assertEqual(source["book"], "پوختەی ڕێنووس و خاڵبەندی")
-                self.assertEqual(source["author"], "دیاکۆ هاشمی")
+                self.assertNotIn("author", source)
                 self.assertEqual(source["edition"], 4)
 
 
