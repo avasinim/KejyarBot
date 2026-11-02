@@ -9,6 +9,7 @@ LESSON_1_ID = "arami_course1_lesson_01"
 LESSON_2_ID = "arami_course1_lesson_02"
 LESSON_2_AUDIO_ASSET = "دەنگەکانی ئەلفبێ.ogg"
 LESSON_2_AUDIO_COMMIT = "5642e5310cc856f7bfd8c821086a9f2febe419e6"
+LESSON_2_AUDIO_STATUS = "user_confirmed_asset_repository_root; original_recording_preserved"
 LESSON_1_SECTIONS = {
     "lesson1_alphabet_count",
     "lesson1_vowel_count",
@@ -60,7 +61,7 @@ def load_arami_course1(base_dir):
     if (
         second.get("audio_asset") != LESSON_2_AUDIO_ASSET
         or second.get("audio_commit") != LESSON_2_AUDIO_COMMIT
-        or second.get("audio_status") != "user_confirmed_asset_repository_root"
+        or second.get("audio_status") != LESSON_2_AUDIO_STATUS
     ):
         raise AramiCourseError("Lesson 2 audio must use its user-confirmed recording")
     if manifest.get("safety", {}).get("separate_from_latin_courses") is not True:
@@ -78,7 +79,7 @@ def get_arami_lesson2_audio_path(base_dir, manifest=None):
     if (
         lesson.get("audio_asset") != LESSON_2_AUDIO_ASSET
         or lesson.get("audio_commit") != LESSON_2_AUDIO_COMMIT
-        or lesson.get("audio_status") != "user_confirmed_asset_repository_root"
+        or lesson.get("audio_status") != LESSON_2_AUDIO_STATUS
     ):
         raise AramiCourseError("Arami Lesson 2 audio assignment is not confirmed")
     root = Path(base_dir).resolve()
