@@ -88,8 +88,19 @@ def course_menu_keyboard(manifest, interactive_lessons=()):
         label = f"{number}. {title}"
         if len(label) > 40:
             label = f"{number}. {title[:34]}…"
-        row = [InlineKeyboardButton(f"📖 {label}", callback_data=f"aramiC:lesson:{number}")]
-        if number in interactive_lessons:
+        read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
+        row = [InlineKeyboardButton(f"📖 {label}", callback_data=read_callback)]
+        if number == 1:
+            row.extend([
+                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
+                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"),
+            ])
+        elif number == 5:
+            row.extend([
+                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"),
+                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"),
+            ])
+        elif number in interactive_lessons:
             row.extend([
                 InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"),
                 InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"),
