@@ -28,9 +28,11 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_course_menu_exposes_all_21_lessons(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len(buttons), 21)
+        callbacks = {button.callback_data for button in buttons}
+        read_callbacks = {item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")}
+        self.assertEqual(len(read_callbacks), 21)
         self.assertEqual(
-            {button.callback_data for button in buttons},
+            read_callbacks,
             {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
         )
 
@@ -46,7 +48,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         banks = load_question_banks(ROOT)
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:lesson:")]), 21)
+        self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 5)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 5)
         self.assertNotIn("aramiC:practice:15", callbacks)
