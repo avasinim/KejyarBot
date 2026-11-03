@@ -62,28 +62,22 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         )
         update.message.reply_text.assert_awaited_once()
 
-    async def test_lesson_menu_button_exits_daily_chat_mode(self):
-        lesson_button = next(iter(bot.LESSON_BUTTONS))
-        lesson = bot.LESSON_BUTTONS[lesson_button]
+    async def test_course_menu_button_exits_daily_chat_mode(self):
         update, context = self.make_update_context(
-            lesson_button,
+            "📘 کۆرسەکان",
             {"daily_chat_mode": True, "daily_chat_scenario": "market", "daily_chat_stage": 2},
         )
-        with (
-            patch.object(bot, "get_user"),
-            patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
-            patch.object(bot, "send_lesson_audio", new_callable=AsyncMock),
-            patch.object(bot, "send_lesson_infographic", new_callable=AsyncMock),
-        ):
+        with patch.object(bot, "get_user"):
             await bot.message(update, context)
 
         self.assertFalse(context.user_data["daily_chat_mode"])
         self.assertNotIn("daily_chat_scenario", context.user_data)
         self.assertNotIn("daily_chat_stage", context.user_data)
         update.message.reply_text.assert_awaited_once()
-        self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", update.message.reply_text.await_args.args[0])), bot.add_kejyar_brand_signature(bot.LESSON_DATA[lesson]["content"]))
-        self.assertEqual(update.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
+        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertIn("course_arami_orthography_foundations", callbacks)
+        self.assertNotIn("course_orthography_basic", callbacks)
 
 
     async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
