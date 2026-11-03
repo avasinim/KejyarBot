@@ -197,6 +197,17 @@ COURSE_LESSON_ORDER = {
     course["id"]: visible_course_lessons(course, LESSON_DATA)
     for course in COURSES
 }
+# Arami lessons are delivered by their dedicated source reader rather than
+# LESSON_DATA, but still participate in the shared learner-progress ledger.
+ARMI_MANIFEST = load_arami_course1_manifest(BASE_DIR)
+ARMI_LESSON_IDS = [item["id"] for item in sorted(ARMI_MANIFEST["lessons"], key=lambda item: item["number"])]
+ARMI_COURSE_RECORD = next(
+    (course for course in COURSES if course.get("id") == "arami_orthography_foundations"),
+    None,
+)
+if ARMI_COURSE_RECORD is None or ARMI_COURSE_RECORD.get("lesson_ids") != ARMI_LESSON_IDS:
+    raise RuntimeError("Arami Course 1 manifest and registered progress lesson IDs do not match")
+COURSE_LESSON_ORDER["arami_orthography_foundations"] = ARMI_LESSON_IDS
 ORDER = COURSE_LESSON_ORDER.get("orthography_basic", [])
 LESSON_COURSE = {
     lesson_id: course_id
@@ -330,6 +341,9 @@ def check_badges(user_id):
                 add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
             continue
         lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
+        if lesson_number is None and course_id == "arami_orthography_foundations":
+            suffix = lesson.rsplit("_", 1)[-1]
+            lesson_number = int(suffix) if suffix.isdigit() else None
         course = courses_by_id.get(course_id, {})
         if isinstance(lesson_number, int) and lesson_number > 0:
             add_badge(user_id, f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}")
