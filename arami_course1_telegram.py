@@ -172,19 +172,75 @@ def load_lesson_source(base_dir, lesson_number):
     return lesson, source
 
 
+def _render_source_html(source):
+    """Render the supplied lesson source as readable Telegram HTML blocks."""
+    blocks = []
+    lines = source.splitlines()
+    index = 0
+    section_titles = {"ئامانجەکانی فێربوون", "کورتەی وانە", "کورتەی وانە:"}
+    while index < len(lines):
+        line = lines[index].strip()
+        if not line or re.fullmatch(r"(?:---+|\\*{3,}|_{3,})", line):
+            index += 1
+            continue
+        if line.count("|") >= 2:
+            rows = []
+            while index < len(lines) and lines[index].strip().count("|") >= 2:
+                cells = [cell.strip() for cell in lines[index].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    rows.append(cells)
+                index += 1
+            if rows:
+                headers = rows[0]
+                for row in rows[1:]:
+                    parts = []
+                    for cell_index, value in enumerate(row):
+                        label = headers[cell_index] if cell_index < len(headers) else f"خانەی {cell_index + 1}"
+                        parts.append(f"<b>{escape(label)}</b>: {escape(value)}")
+                    blocks.append(" • ".join(parts))
+            continue
+        heading = re.match(r"^(#{1,6})\\s*(.+)$", line)
+        if heading:
+            text = heading.group(2).strip()
+            blocks.append(f"<b>📖 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
+        elif line in section_titles or re.match(r"^\\d+[.)-]\\s+", line):
+            blocks.append(f"<b>{escape(line)}</b>")
+        else:
+            text = escape(line)
+            text = re.sub(r"\\*\\*(.+?)\\*\\*", r"<b>\\1</b>", text)
+            blocks.append(text)
+        index += 1
+    return blocks
+
+
+def _split_source_html(blocks, limit=3500):
+    chunks = []
+    current = []
+    size = 0
+    for block in blocks:
+        addition = len(block) + (1 if current else 0)
+        if current and size + addition > limit:
+            chunks.append("\\n".join(current))
+            current = []
+            size = 0
+        current.append(block)
+        size += len(block) + (1 if len(current) > 1 else 0)
+    if current:
+        chunks.append("\\n\\n".join(current))
+    return chunks
+
+
 async def _send_source(message, title, source):
-    rendered = _plain_markdown(source)
-    if not rendered:
+    blocks = _render_source_html(source)
+    if not blocks:
         raise AramiCourseTelegramError("Lesson source has no readable text")
-    await message.reply_text(f"📖 {title}")
-    while rendered:
-        end = min(3800, len(rendered))
-        if end < len(rendered):
-            boundary = rendered.rfind("\n", 0, end)
-            if boundary > 0:
-                end = boundary
-        await message.reply_text(rendered[:end])
-        rendered = rendered[end:].lstrip("\n")
+    chunks = _split_source_html([f"<b>📘 {escape(title)}</b>", *blocks])
+    for chunk in chunks:
+        await message.reply_text(
+            chunk,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
 
 
 
