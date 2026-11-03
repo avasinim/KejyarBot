@@ -513,7 +513,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         next_data = LESSON_DATA.get(next_lesson)
         if next_data and can_open(user_id, next_lesson):
             await send_lesson_text(query.message, next_data["content"], lesson_keyboard(next_lesson))
-            await send_kejyar_course_cue(query.message, "lesson_start.mp3")
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -904,7 +903,6 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
     if LESSON_COURSE.get(lesson) == "unified_orthography":
-        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
     await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):
