@@ -14,6 +14,7 @@ def make_update(action, message_id=10):
     query = SimpleNamespace(
         data=f"arami5:{action}",
         message=message,
+        from_user=SimpleNamespace(id=123),
         answer=AsyncMock(),
         edit_message_reply_markup=AsyncMock(),
         edit_message_text=AsyncMock(),
@@ -65,7 +66,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_lesson_callback_reads_its_own_source_and_returns_to_lesson5_menu(self):
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 5, "audio_files": []}]}
+        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05", "audio_files": []}]}
         with patch(
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی سەرچاوەی وانەی پێنج.",
@@ -78,9 +79,28 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         first_text = query.message.reply_text.await_args_list[0].args[0]
         self.assertIn("وانەی ٥", first_text)
         self.assertIn("دەقی سەرچاوەی وانەی پێنج", first_text)
-        final_call = query.message.reply_text.await_args_list[-1]
-        self.assertIn("کۆتایی وانەی ٥", final_call.args[0])
-        self.assertIsNotNone(final_call.kwargs.get("reply_markup"))
+        completion_calls = [
+            call for call in query.message.reply_text.await_args_list
+            if call.kwargs.get("reply_markup") is not None
+            and any(
+                button.callback_data == "finish_arami_course1_lesson_05"
+                for row in call.kwargs["reply_markup"].inline_keyboard
+                for button in row
+            )
+        ]
+        self.assertEqual(len(completion_calls), 1)
+        self.assertIn("کۆتایی وانەی ٥", completion_calls[0].args[0])
+
+    async def test_lesson_reader_refuses_locked_lesson5(self):
+        update, query = make_update("lesson")
+        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05", "audio_files": []}]}
+        with patch(
+            "arami_lesson5_telegram.load_arami_lesson5_source",
+            return_value="# وانەی ٥\n\nدەقی وانە.",
+        ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest):
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
     async def test_practice_and_assessment_use_lesson5_scoped_sessions(self):
         bank = sample_bank()
