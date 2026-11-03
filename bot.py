@@ -1180,13 +1180,18 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
 
+async def log_polling_start(application):
+    """Log readiness only after python-telegram-bot has initialized successfully."""
+    logger.info("KejyarBot Telegram initialization succeeded; polling is starting")
+
+
 def main():
     validate_activated_course_runtime()
     init_db()
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
-    app = Application.builder().token(token).build()
+    app = Application.builder().token(token).post_init(log_polling_start).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson1_callback(
@@ -1221,7 +1226,6 @@ def main():
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
-    logger.info("KejyarBot is running")
     app.run_polling()
 
 if __name__ == "__main__":

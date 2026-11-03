@@ -250,7 +250,7 @@
     }
   ],
   "runtime_reconciliation": {
-    "audit_status": "repository_tree_and_manifest_cross_check_completed",
+    "audit_status": "historical_git_commit_inventory_verified; current_main_tree_checked_2026-11-03",
     "audit_scope": "Course 1 Round 1 audio assets only; voice prompts and other course audio excluded",
     "verified_asset_count": 20,
     "unique_asset_count": 20,
@@ -272,10 +272,13 @@
       20
     ],
     "notes": [
-      "All 20 unique audio assets in this catalog are present in the repository tree and assigned to a Course 1 lesson in the manifest.",
+      "The 20 unique assets in this catalog were verified from earlier Git commit history, but none of the .ogg/.mp3 files is present in the current main branch tree checked on 2026-11-03. This catalog records historical assignments, not proof that audio files are currently packaged or deployed.",
       "Lesson 2's «دەنگەکانی ئەلفبێ.ogg» appears in both audio_files and the legacy audio_asset field for compatibility with its dedicated runtime validation. This is one physical asset and one lesson assignment, not a duplicate recording.",
       "Lesson 1's «بزوێنی ی.ogg» and Lesson 2's «دەنگەکانی ئەلفبێ.ogg» are both confirmed and mapped; the first 2026-11-02 audit pass had overlooked these earlier assignments.",
-      "No asset was assigned to an unconfirmed lesson based on filename or topic alone. Pending lesson mappings remain pending."
-    ]
+      "No asset was assigned to an unconfirmed lesson based on filename or topic alone. Pending lesson mappings remain pending.",
+      "The runtime treats lesson audio as optional and silently skips unavailable files; verify the Botkeep project filesystem separately before claiming that any recording is currently available."
+    ],
+    "current_main_tree_audio_file_count": 0,
+    "deployment_filesystem_status": "not_verified; Botkeep may retain separately managed files when Merge files is used"
   }
 }
