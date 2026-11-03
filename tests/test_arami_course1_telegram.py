@@ -24,13 +24,13 @@ ROOT = Path(__file__).resolve().parents[1]
 class AramiCourseTelegramTests(unittest.TestCase):
     def test_course1_source_formatter_styles_headings_and_plain_pipe_tables(self):
         blocks = _render_source_html(
-            "# پیتەکان و دەنگەکان\\n"
-            "ئامانجەکانی فێربوون\\n"
-            "ژمارە | پیت/نیشانە | ناو\\n"
-            "١ | ا | ئەلف\\n"
+            "# پیتەکان و دەنگەکان\n"
+            "ئامانجەکانی فێربوون\n"
+            "ژمارە | پیت/نیشانە | ناو\n"
+            "١ | ا | ئەلف\n"
             "٢ | ب | بێ"
         )
-        rendered = "\\n".join(blocks)
+        rendered = "\n".join(blocks)
         self.assertIn("<b>📖 پیتەکان و دەنگەکان</b>", rendered)
         self.assertIn("<b>ئامانجەکانی فێربوون</b>", rendered)
         self.assertIn("<b>ژمارە:</b> ١", rendered)
@@ -43,7 +43,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         asyncio.run(_send_source(
             message,
             "وانەی ١ — پیت و دەنگ",
-            "# پیت و دەنگ\\nئامانجەکانی فێربوون\\nئەمە دەقی وانەیە."
+            "# پیت و دەنگ\nئامانجەکانی فێربوون\nئەمە دەقی وانەیە."
         ))
         message.reply_text.assert_awaited_once()
         args, kwargs = message.reply_text.await_args
