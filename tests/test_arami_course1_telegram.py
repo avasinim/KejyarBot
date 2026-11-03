@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 
 from arami_course1_telegram import (
     AramiCourseTelegramError,
@@ -375,7 +375,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             reply_text=AsyncMock(return_value=SimpleNamespace(message_id=message_id + 1)),
         )
         query = SimpleNamespace(
-            data=f"aramiC:{action}", message=message, answer=AsyncMock(),
+            data=f"aramiC:{action}", message=message, from_user=SimpleNamespace(id=123), answer=AsyncMock(),
             edit_message_reply_markup=AsyncMock(), edit_message_text=AsyncMock(),
         )
         return SimpleNamespace(callback_query=query), query
@@ -393,6 +393,27 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
                     self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
+
+    async def test_assessment_completion_awards_once_for_its_lesson(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        award = Mock(return_value=True)
+        update, _ = self.make_update("assessment:6")
+        await callback(update, context, ROOT, award_assessment=award)
+
+        bank = load_question_banks(ROOT)[6]["assessment"]
+        for index, question in enumerate(bank):
+            message_id = context.user_data["arami_course1_active"]["message_id"]
+            update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            update, submit_query = self.make_update(f"submit:6", message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            if index < len(bank) - 1:
+                update, _ = self.make_update("next:6", message_id)
+                await callback(update, context, ROOT, award_assessment=award)
+
+        award.assert_called_once_with(123, "arami_course1_lesson_06")
+        self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
 
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
