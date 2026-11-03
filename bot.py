@@ -327,25 +327,41 @@ def can_open(user_id, lesson):
         return all(previous in completed for previous in order[:index])
     return can_open_lesson(order, completed, lesson)
 
-def check_badges(user_id):
+BADGE_COURSE_TITLES = {
+    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی ئارامی",
+    "daily_conversation": "کۆرسی ٢: وتووێژ",
+    "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
+    "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
+    "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+}
+
+
+def current_progress_badges(user_id):
+    """Build visible badges from current active lesson IDs, never stale stored labels."""
     completed = set(get_completed_lessons(user_id))
-    courses_by_id = {course.get("id"): course for course in COURSES}
-    for lesson in completed:
-        course_id = LESSON_COURSE.get(lesson)
-        if course_id is None or not course_is_active(course_id):
+    visible = []
+    for course in COURSES:
+        course_id = course.get("id")
+        if not course_is_active(course_id):
             continue
-        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
-            number = int(lesson.removeprefix("وانە_"))
-            if 1 <= number <= len(ORDER):
-                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        title = BADGE_COURSE_TITLES.get(course_id)
+        if not title:
             continue
-        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
-        if lesson_number is None and course_id == "arami_orthography_foundations":
-            suffix = lesson.rsplit("_", 1)[-1]
-            lesson_number = int(suffix) if suffix.isdigit() else None
-        course = courses_by_id.get(course_id, {})
-        if isinstance(lesson_number, int) and lesson_number > 0:
-            add_badge(user_id, f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}")
+        for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
+            if lesson_id in completed:
+                visible.append(f"🏅 {title} — وانەی {number}")
+    return visible
+
+
+def check_badges(user_id):
+    """Keep the legacy badge ledger compatible; progress display uses canonical labels."""
+    completed = set(get_completed_lessons(user_id))
+    for course_id, title in BADGE_COURSE_TITLES.items():
+        if not course_is_active(course_id):
+            continue
+        for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
+            if lesson_id in completed:
+                add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -813,6 +829,12 @@ def add_kejyar_brand_signature(content):
 
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lessons in a consistent academic layout, preserving all lesson wording."""
+    # Suppress obsolete audio-link diagnostics from lesson text; audio is optional.
+    content = re.sub(
+        r"(?im)^\\s*⚠️?\\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*?$",
+        "",
+        content,
+    )
     content = add_kejyar_brand_signature(content)
     chunks = split_lesson_html(render_lesson_html_blocks(content))
     for index, chunk in enumerate(chunks):
@@ -840,8 +862,6 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    if LESSON_COURSE.get(lesson) == "unified_orthography":
-        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
     await send_lesson_infographic(query.message, lesson)
 
 
@@ -1094,7 +1114,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "👤 پێشکەوتنم":
         user = get_user(user_id)
-        badges = get_badges(user_id)
+        badges = current_progress_badges(user_id)
         await update.message.reply_text(
             f"👤 پێشکەوتنم\n\n⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
             f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n🏅 نیشانەکان:\n" +
