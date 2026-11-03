@@ -100,6 +100,23 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami5:practice", practices)
         self.assertIn("aramiC:practice:21", practices)
 
+    async def test_learning_path_reports_all_21_arami_lessons_and_progress(self):
+        update, context = self.make_update_context("🧭 ڕێگای فێربوون")
+        completed = ["arami_course1_lesson_01", "arami_course1_lesson_02"]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "can_open", side_effect=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_03"),
+        ):
+            await bot.message(update, context)
+
+        update.message.reply_text.assert_awaited_once()
+        output = update.message.reply_text.await_args.args[0]
+        self.assertIn("پێشکەوتن: 2/21 وانە", output)
+        self.assertIn("✅ تەواو کراوە — وانەی ١:", output)
+        self.assertIn("🔓 ئامادەیە — وانەی ٣:", output)
+        self.assertIn("🔒 داخراوە — وانەی ٤:", output)
+        self.assertEqual(sum(" — وانەی " in line for line in output.splitlines()), 21)
+
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
         label = "ڕێنووسی لاتینی کوردیی"
         self.assertIn(label, [button.text for row in bot.MENU.keyboard for button in row])
