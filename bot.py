@@ -122,39 +122,12 @@ def format_lesson_draft(markdown):
         index += 1
     return "\n".join(lines).strip()
 
-# Course 1 is the 22-lesson orthography course. Keep database keys stable
-# (lesson IDs are stored as "وانە_N") while routing content from the new drafts.
-ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")
-ORTHOGRAPHY_QUIZ_DRAFT = load_json("course_data/orthography_foundations_quiz_draft.json")
+# The retired 22-lesson Course 1 remains in course_data for historical audit only.
+# It is intentionally not loaded into runtime; the active 21-lesson Arami course
+# uses isolated, namespaced lesson IDs and interaction banks.
 LESSON_DATA = {}
 QUIZ_DATA = {}
 LESSON_BUTTONS = {}
-for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", []):
-    number = course_lesson["number"]
-    lesson_key = f"وانە_{number}"
-    draft_path = BASE_DIR / "course_data" / f"orthography_lesson_{number:02d}_draft.md"
-    draft_content = format_lesson_draft(draft_path.read_text(encoding="utf-8")) if draft_path.is_file() else (
-        "⚠️ ناوەڕۆکی ئەم وانەیە هێشتا ئامادە نییە."
-    )
-    LESSON_DATA[lesson_key] = {
-        "title": course_lesson["title"],
-        "content": f"📘 {ORTHOGRAPHY_COURSE['title']}\n\n{draft_content}",
-    }
-    LESSON_BUTTONS[course_lesson["title"]] = lesson_key
-    QUIZ_DATA[lesson_key] = []
-
-for quiz_lesson in ORTHOGRAPHY_QUIZ_DRAFT.get("quizzes", []):
-    number = quiz_lesson.get("lesson_number")
-    lesson_key = f"وانە_{number}"
-    for question in quiz_lesson.get("questions", []):
-        options = question.get("options", [])
-        correct_index = question.get("correct_option_index", -1)
-        if 0 <= correct_index < len(options):
-            QUIZ_DATA.setdefault(lesson_key, []).append({
-                "question": question["question"],
-                "options": options,
-                "answer": options[correct_index],
-            })
 
 
 # Courses 2 and 3 are activated by the project owner. Editorial review
@@ -1012,6 +985,9 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         keyboard_rows = []
         for course in COURSES:
             if course.get("id") in LATIN_COURSE_IDS:
+                continue
+            # Retired courses are archived, not presented as planned or selectable.
+            if course.get("status") in {"retired", "retired_replaced_by_arami_course1"}:
                 continue
             status = "🟢 چالاک" if course_is_active(course.get("id")) else "⚪ پلاندانراو"
             keyboard_rows.append([InlineKeyboardButton(
