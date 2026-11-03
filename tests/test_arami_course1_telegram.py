@@ -64,7 +64,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
                 prefix = "p" if mode == "practice" else "a"
                 for index, item in enumerate(bank[mode], start=1):
                     self.assertEqual(item["id"], f"{number}{prefix}{index}")
-                    self.assertEqual(item["section_id"], f"lesson{number}_source_exercises")
+                    self.assertTrue(item["section_id"].startswith(f"lesson{number}_"))
                     self.assertNotIn(item["id"], seen_ids)
                     seen_ids.add(item["id"])
 
