@@ -93,7 +93,7 @@
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Earlier sections are not inferred or reconstructed.",
+      "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Sections 1–2 are not present in the repository copy; do not infer or reconstruct them from books, external sources, or other courses. Request only these missing original sections if needed for full semantic audit.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
@@ -629,8 +629,17 @@
   "course_size": 21,
   "source_audit": {
     "audit_date": "2026-11-03",
-    "gaps": [],
-    "note": "Repository file audit: Course 1 Round 1 contains exactly 21 user-supplied lesson texts. Source-file presence does not by itself imply semantic verification, practice/assessment alignment, audio assignment, or Telegram runtime integration.",
+    "gaps": [
+      {
+        "lesson_number": 4,
+        "source_file": "course_data/arami_course1_lesson_04_source.md",
+        "missing_sections": "1–2",
+        "available_sections": "3–8",
+        "status": "partial_source_received",
+        "action": "Do not reconstruct from books, external sources, or other courses; request only the missing original user-supplied sections if full semantic audit is required."
+      }
+    ],
+    "note": "All 21 lesson source-file paths exist in the repository, but this does not mean all 21 source texts are complete: Lesson 4 currently contains only supplied sections 3–8; sections 1–2 are not present. Source-file presence does not by itself imply semantic verification, practice/assessment alignment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
