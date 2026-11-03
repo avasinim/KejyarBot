@@ -180,7 +180,7 @@ def _render_source_html(source):
     section_titles = {"ئامانجەکانی فێربوون", "کورتەی وانە", "کورتەی وانە:"}
     while index < len(lines):
         line = lines[index].strip()
-        if not line or re.fullmatch(r"(?:---+|\\*{3,}|_{3,})", line):
+        if not line or re.fullmatch(r"(?:---+|\*{3,}|_{3,})", line):
             index += 1
             continue
         if line.count("|") >= 2:
@@ -199,15 +199,15 @@ def _render_source_html(source):
                         parts.append(f"<b>{escape(label)}</b>: {escape(value)}")
                     blocks.append(" • ".join(parts))
             continue
-        heading = re.match(r"^(#{1,6})\\s*(.+)$", line)
+        heading = re.match(r"^(#{1,6})\s*(.+)$", line)
         if heading:
             text = heading.group(2).strip()
             blocks.append(f"<b>📖 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
-        elif line in section_titles or re.match(r"^\\d+[.)-]\\s+", line):
+        elif line in section_titles or re.match(r"^\d+[.)-]\s+", line):
             blocks.append(f"<b>{escape(line)}</b>")
         else:
             text = escape(line)
-            text = re.sub(r"\\*\\*(.+?)\\*\\*", r"<b>\\1</b>", text)
+            text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
             blocks.append(text)
         index += 1
     return blocks
@@ -220,13 +220,13 @@ def _split_source_html(blocks, limit=3500):
     for block in blocks:
         addition = len(block) + (1 if current else 0)
         if current and size + addition > limit:
-            chunks.append("\\n".join(current))
+            chunks.append("\n".join(current))
             current = []
             size = 0
         current.append(block)
         size += len(block) + (1 if len(current) > 1 else 0)
     if current:
-        chunks.append("\\n\\n".join(current))
+        chunks.append("\n\n".join(current))
     return chunks
 
 
