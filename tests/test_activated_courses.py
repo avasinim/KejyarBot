@@ -65,6 +65,14 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami1:practice", [button.callback_data for button in practices])
         self.assertIn("arami5:practice", [button.callback_data for button in practices])
 
+    def test_arami_assessment_reward_uses_unique_lesson_key_and_twenty_xp(self):
+        with patch.object(bot, "complete_quiz_with_rewards", side_effect=[True, False]) as reward:
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+            self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+        self.assertEqual(reward.call_count, 2)
+        self.assertEqual(reward.call_args_list[0].args, (12345, "arami_assessment:arami_course1_lesson_01"))
+        self.assertEqual(reward.call_args_list[0].kwargs, {"points": 20})
+
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
 
