@@ -123,6 +123,18 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_session"], lesson1_session)
         self.assertIsNot(assessment, practice)
 
+    async def test_locked_lesson5_practice_and_assessment_are_not_started(self):
+        for action in ("practice", "assessment"):
+            update, query = make_update(action)
+            context = SimpleNamespace(user_data={})
+            with patch("arami_lesson5_telegram.load_manifest", return_value={
+                "lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]
+            }):
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False)
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
+            self.assertNotIn("arami_lesson5_session", context.user_data)
+
     async def test_practice_answer_is_submitted_and_progresses_to_next_question(self):
         bank = sample_bank()
         context = SimpleNamespace(user_data={})
