@@ -33,10 +33,10 @@ class AramiCourseTelegramTests(unittest.TestCase):
         rendered = "\n".join(blocks)
         self.assertIn("<b>📖 پیتەکان و دەنگەکان</b>", rendered)
         self.assertIn("<b>ئامانجەکانی فێربوون</b>", rendered)
-        self.assertIn("<b>ژمارە:</b> ١", rendered)
-        self.assertIn("<b>پیت/نیشانە:</b> ا", rendered)
-        self.assertIn("<b>ناو:</b> ئەلف", rendered)
-        self.assertIn("<b>ژمارە:</b> ٢", rendered)
+        self.assertIn("<b>ژمارە</b>: ١", rendered)
+        self.assertIn("<b>پیت/نیشانە</b>: ا", rendered)
+        self.assertIn("<b>ناو</b>: ئەلف", rendered)
+        self.assertIn("<b>ژمارە</b>: ٢", rendered)
 
     def test_course1_source_is_sent_as_formatted_html(self):
         message = SimpleNamespace(reply_text=AsyncMock())
