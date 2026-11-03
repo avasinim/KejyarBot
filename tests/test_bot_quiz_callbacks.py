@@ -28,6 +28,16 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
             self.assertTrue(bot.can_open(12345, lesson_ids[1]))
             self.assertFalse(bot.can_open(12345, lesson_ids[2]))
 
+    def test_noncontiguous_saved_progress_does_not_skip_course1_lessons(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        # Even if stale/corrupt progress says lesson 3 is complete, lesson 4
+        # remains locked while lesson 2 is missing.
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[lesson_ids[0], lesson_ids[2]]
+        ):
+            self.assertFalse(bot.can_open(12345, lesson_ids[3]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[4]))
+
     def test_inactive_course_cannot_open_any_lesson(self):
         with patch.object(bot, "course_is_active", return_value=False), patch.object(
             bot, "get_completed_lessons", return_value=[]
