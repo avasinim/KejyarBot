@@ -3,7 +3,7 @@ import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
-from arami_course1_telegram import load_manifest, send_lesson_audio
+from arami_course1_telegram import load_manifest, send_lesson_audio, _send_source
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -41,6 +41,25 @@ async def send_question(message, context):
     context.user_data["arami_lesson1_message_id"] = sent.message_id
 
 
+def _lesson_source_markdown(lesson):
+    """Adapt Lesson 1's structured source without changing its wording."""
+    lines = ['# ' + lesson['title'], '', '## ئامانجەکانی فێربوون']
+    lines.extend('- ' + item for item in lesson['objectives'])
+    for section in lesson['sections']:
+        lines.extend(['', '## ' + section['title']])
+        if section.get('body'):
+            lines.extend(['', section['body']])
+        if section.get('table'):
+            lines.append('')
+            lines.extend('| ' + ' | '.join(str(cell) for cell in row) + ' |' for row in section['table'])
+        if section.get('note'):
+            lines.extend(['', 'تێبینی: ' + section['note']])
+        for question in section.get('questions', []):
+            lines.extend(['', question['prompt']])
+            lines.extend(str(i + 1) + ') ' + option for i, option in enumerate(question['options']))
+    return '\n'.join(lines)
+
+
 async def callback(update, context, base_dir, can_open=None):
     query = update.callback_query
     await query.answer()
@@ -66,31 +85,11 @@ async def callback(update, context, base_dir, can_open=None):
         if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
             await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
             return
-        intro = f"📕 {lesson['title']}\n\n🎯 ئامانجی وانە\n" + "\n".join(
-            f"• {item}" for item in lesson["objectives"]
+        await _send_source(
+            query.message,
+            'وانەی ١ — ' + lesson['title'],
+            _lesson_source_markdown(lesson),
         )
-        await query.message.reply_text(intro)
-        for section in lesson["sections"]:
-            parts = [f"📖 {section['title']}"]
-            if section.get("body"):
-                parts.append(section["body"])
-            if section.get("table"):
-                parts.append("\n".join(" | ".join(row) for row in section["table"]))
-            if section.get("note"):
-                parts.append(section["note"])
-            if section.get("questions"):
-                for question in section["questions"]:
-                    choices = "\n".join(
-                        f"{chr(65 + i)}) {option}"
-                        for i, option in enumerate(question["options"])
-                    )
-                    parts.append(question["prompt"] + "\n" + choices)
-            message_text = "\n\n".join(parts)
-            if len(message_text) > 4000:
-                logger.error("Arami Lesson 1 section exceeds Telegram message limit")
-                await query.message.reply_text("⚠️ بەشێک لە وانەکە درێژترە لە سنووری پەیامی Telegram.")
-                return
-            await query.message.reply_text(message_text)
         lesson_audio = lesson_record
         await send_lesson_audio(query.message, base_dir, lesson_audio)
         await query.message.reply_text(
