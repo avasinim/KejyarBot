@@ -345,9 +345,9 @@
       "practice_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "source_note": "User-supplied Lesson 13 source about the three written/pronounced forms of و (w, u, û) is preserved. Its four practice and four assessment questions are registered under Lesson 13 only. Its two dedicated recordings remain assigned only to Lesson 13.",
+      "source_note": "The user-supplied Lesson 13 text is preserved unchanged. Headings 3 and 4 have no heading labels after the dash, but explanatory paragraphs do follow each heading; they are not missing lesson sections. The four practice and four assessment questions remain scoped to Lesson 13. Two dedicated recordings remain assigned only to this lesson.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_user_confirmed_lesson_number",
+      "source_audit_status": "source_heading_matches_user_confirmed_lesson_number; headings_3_and_4_have_unlabelled_but_nonempty_explanatory_content; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
