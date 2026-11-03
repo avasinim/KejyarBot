@@ -11,6 +11,7 @@ from arami_course1_telegram import (
     _plain_markdown,
     _render_source_html,
     _send_source,
+    callback as arami_course1_callback,
     build_lesson_infographic_svg,
     _split_source_html,
     course_menu_keyboard,
@@ -98,6 +99,41 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("<code>کەژیار — KejyarBot@</code>", args[0])
         self.assertEqual(kwargs.get("parse_mode"), "HTML")
         self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", args[0])
+
+    async def test_returning_to_course_menu_preserves_completed_open_and_locked_states(self):
+        manifest = load_manifest(ROOT)
+        first_id = manifest["lessons"][0]["id"]
+        second_id = manifest["lessons"][1]["id"]
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(
+            data="aramiC:menu",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        can_open = Mock(side_effect=lambda user_id, lesson_id: lesson_id in {first_id, second_id})
+        get_completed = Mock(return_value=[first_id])
+
+        await arami_course1_callback(
+            update,
+            SimpleNamespace(user_data={}),
+            ROOT,
+            can_open=can_open,
+            get_completed_lessons=get_completed,
+        )
+
+        get_completed.assert_called_once_with(24680)
+        self.assertTrue(all(call.args[0] == 24680 for call in can_open.call_args_list))
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
+        buttons = {
+            button.callback_data: button
+            for row in keyboard.inline_keyboard
+            for button in row
+        }
+        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
 
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
