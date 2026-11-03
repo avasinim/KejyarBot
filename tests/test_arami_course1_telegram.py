@@ -71,6 +71,20 @@ class AramiCourseTelegramTests(unittest.TestCase):
             blocks,
         )
 
+    def test_all_shared_reader_lessons_render_into_telegram_safe_classroom_chunks(self):
+        manifest = load_manifest(ROOT)
+        for lesson in manifest["lessons"]:
+            if lesson["number"] in {1, 5}:
+                continue  # Dedicated structured readers use the same shared renderer.
+            _, source = load_lesson_source(ROOT, lesson["number"])
+            blocks = _render_source_html(source)
+            self.assertTrue(blocks, f"Lesson {lesson['number']} rendered no content")
+            chunks = _split_source_html(["<b>📘 وانە</b>", *blocks])
+            self.assertTrue(
+                all(len(chunk) <= 3500 for chunk in chunks),
+                f"Lesson {lesson['number']} exceeds the safe Telegram chunk size",
+            )
+
     def test_course1_source_is_sent_as_formatted_html(self):
         message = SimpleNamespace(reply_text=AsyncMock())
         asyncio.run(_send_source(
