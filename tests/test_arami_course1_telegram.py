@@ -74,7 +74,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("<b>📘 وانەی ١ — پیت و دەنگ</b>", args[0])
         self.assertIn("<code>کەژیار — KejyarBot@</code>", args[0])
         self.assertEqual(kwargs.get("parse_mode"), "HTML")
-        self.assertIn("<b>ئامانجەکانی فێربوون</b>", args[0])
+        self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", args[0])
 
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
