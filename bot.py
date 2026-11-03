@@ -915,8 +915,8 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
-                completed_lessons=get_completed_lessons(user_id),
-                can_open=lambda lesson_id: can_open(user_id, lesson_id),
+                completed_lessons=get_completed_lessons(query.from_user.id),
+                can_open=lambda lesson_id: can_open(query.from_user.id, lesson_id),
             ),
         )
         return
