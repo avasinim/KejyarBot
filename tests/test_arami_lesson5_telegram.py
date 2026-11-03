@@ -75,10 +75,13 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         ) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
-        self.assertGreaterEqual(query.message.reply_text.await_count, 2)
-        first_text = query.message.reply_text.await_args_list[0].args[0]
-        self.assertIn("وانەی ٥", first_text)
+        self.assertGreaterEqual(query.message.reply_text.await_count, 3)
+        first_call = query.message.reply_text.await_args_list[0]
+        first_text = first_call.args[0]
+        self.assertIn("<b>📘 وانەی ٥ — پیتەکان و هاوتای لاتینی</b>", first_text)
+        self.assertIn("<code>کەژیار — KejyarBot@</code>", first_text)
         self.assertIn("دەقی سەرچاوەی وانەی پێنج", first_text)
+        self.assertEqual(first_call.kwargs.get("parse_mode"), "HTML")
         completion_calls = [
             call for call in query.message.reply_text.await_args_list
             if call.kwargs.get("reply_markup") is not None
