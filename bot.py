@@ -328,7 +328,7 @@ def can_open(user_id, lesson):
     return can_open_lesson(order, completed, lesson)
 
 BADGE_COURSE_TITLES = {
-    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی ئارامی",
+    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی",
     "daily_conversation": "کۆرسی ٢: وتووێژ",
     "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
     "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
