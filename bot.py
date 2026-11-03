@@ -743,10 +743,34 @@ def render_lesson_html_blocks(content):
         "🧠 پرسیارەکانی تێگەیشتن",
         "🛠️ کاری پڕاکتیکی",
     }
-    for raw_line in content.splitlines():
-        line = raw_line.strip()
+    source_lines = content.splitlines()
+    index = 0
+    while index < len(source_lines):
+        line = source_lines[index].strip()
+        if line.startswith("|") and line.endswith("|"):
+            table_lines = []
+            while index < len(source_lines):
+                candidate = source_lines[index].strip()
+                if not (candidate.startswith("|") and candidate.endswith("|")):
+                    break
+                cells = [cell.strip() for cell in candidate.strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    table_lines.append(cells)
+                index += 1
+            if table_lines:
+                headers = table_lines[0]
+                for row in table_lines[1:]:
+                    pairs = [
+                        f"<b>{html.escape(headers[i], quote=False)}:</b> {html.escape(value, quote=False)}"
+                        for i, value in enumerate(row)
+                        if i < len(headers) and value
+                    ]
+                    if pairs:
+                        blocks.append("<blockquote>" + "  •  ".join(pairs) + "</blockquote>")
+            continue
         if not line:
             blocks.append("")
+            index += 1
             continue
 
         escaped = html.escape(line, quote=False)
@@ -765,6 +789,7 @@ def render_lesson_html_blocks(content):
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         else:
             blocks.append(escaped)
+        index += 1
     return blocks
 
 def split_lesson_html(blocks, limit=3500):
