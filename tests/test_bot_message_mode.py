@@ -104,6 +104,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         update, context = self.make_update_context("🧭 ڕێگای فێربوون")
         completed = ["arami_course1_lesson_01", "arami_course1_lesson_02"]
         with (
+            patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=completed),
             patch.object(bot, "can_open", side_effect=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_03"),
         ):
