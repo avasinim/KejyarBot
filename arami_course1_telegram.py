@@ -172,11 +172,25 @@ def load_lesson_source(base_dir, lesson_number):
 
 
 def _render_source_html(source):
-    """Render the supplied lesson source as readable Telegram HTML blocks."""
+    """Render immutable lesson text with a consistent, classroom-style Telegram layout."""
     blocks = []
     lines = source.splitlines()
     index = 0
-    section_titles = {"ئامانجەکانی فێربوون", "کورتەی وانە", "کورتەی وانە:"}
+    section_icons = {
+        "ئامانجەکانی فێربوون": "🎯",
+        "کورتەی وانە": "🧠",
+        "کورتەی وانە:": "🧠",
+        "پرسیارەکان": "✍️",
+        "ڕاهێنان": "🧩",
+        "تاقیکردنەوە": "📝",
+    }
+    callouts = {
+        "نموونە": "🧩",
+        "تێبینی": "💡",
+        "گرنگ": "⭐",
+        "ئاگاداری": "⚠️",
+        "پێناسە": "📌",
+    }
     while index < len(lines):
         line = lines[index].strip()
         if not line or re.fullmatch(r"(?:---+|\*{3,}|_{3,})", line):
@@ -196,21 +210,32 @@ def _render_source_html(source):
                     for cell_index, value in enumerate(row):
                         label = headers[cell_index] if cell_index < len(headers) else f"خانەی {cell_index + 1}"
                         parts.append(f"<b>{escape(label)}</b>: {escape(value)}")
-                    blocks.append(" • ".join(parts))
+                    blocks.append("<blockquote>" + "\n".join(parts) + "</blockquote>")
             continue
         heading = re.match(r"^(#{1,6})\s*(.+)$", line)
         if heading:
             text = heading.group(2).strip()
-            blocks.append(f"<b>📖 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
-        elif line in section_titles or re.match(r"^\d+[.)-]\s+", line):
-            blocks.append(f"<b>{escape(line)}</b>")
+            blocks.append(f"<b>📚 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
+        elif line in section_icons:
+            blocks.append(f"<b>{section_icons[line]} {escape(line.rstrip(':'))}</b>")
+        elif re.match(r"^\d+[.)-]\s+", line):
+            blocks.append(f"<b>🔹 {escape(line)}</b>")
         else:
-            text = escape(line)
-            text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
-            blocks.append(text)
+            label_match = re.match(r"^(نموونە|تێبینی|گرنگ|ئاگاداری|پێناسە)\s*[:：]\s*(.*)$", line)
+            if label_match:
+                label, body = label_match.groups()
+                content = f"<b>{callouts[label]} {escape(label)}</b>"
+                if body:
+                    content += "\n" + escape(body)
+                blocks.append(f"<blockquote>{content}</blockquote>")
+            elif re.match(r"^(?:[-•])\s+", line):
+                blocks.append("▫️ " + escape(re.sub(r"^(?:[-•])\s+", "", line)))
+            else:
+                text = escape(line)
+                text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
+                blocks.append(text)
         index += 1
     return blocks
-
 
 def _split_source_html(blocks, limit=3500):
     """Split formatted blocks without letting separators push chunks over the limit."""
@@ -236,7 +261,8 @@ async def _send_source(message, title, source):
     blocks = _render_source_html(source)
     if not blocks:
         raise AramiCourseTelegramError("Lesson source has no readable text")
-    chunks = _split_source_html([f"<b>📘 {escape(title)}</b>", *blocks])
+    masthead = f"<b>📘 {escape(title)}</b>\n<code>کەژیار — KejyarBot@</code>"
+    chunks = _split_source_html([masthead, *blocks])
     for chunk in chunks:
         await message.reply_text(
             chunk,
