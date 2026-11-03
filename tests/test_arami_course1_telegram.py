@@ -45,7 +45,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertGreater(len(chunks), 1)
         self.assertTrue(all(len(chunk) <= 3500 for chunk in chunks))
         self.assertEqual(
-            [part for chunk in chunks for part in chunk.split("\\n\\n")],
+            [part for chunk in chunks for part in chunk.split("\n\n")],
             blocks,
         )
 
