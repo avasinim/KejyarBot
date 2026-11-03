@@ -92,8 +92,13 @@ async def callback(update, context, base_dir, can_open=None):
         )
         lesson_audio = lesson_record
         await send_lesson_audio(query.message, base_dir, lesson_audio)
+        await _send_source(
+            query.message,
+            'پوختەی وانەی ١',
+            '## کورتەی وانە\n\n' + lesson['conclusion'],
+        )
         await query.message.reply_text(
-            "⭐ کۆتایی وانە\n" + lesson["conclusion"],
+            '⭐ وانەکە تەواو بوو؛ بۆ تۆمارکردنی پێشکەوتنت دوگمەی خوارەوە هەڵبژێرە.',
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
             ]]),
