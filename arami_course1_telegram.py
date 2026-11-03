@@ -282,12 +282,12 @@ def build_lesson_infographic_svg(lesson, source):
 
 
 async def send_lesson_infographic(message, lesson, source):
-    document = BytesIO(build_lesson_infographic_svg(lesson, source))
-    document.name = f"kejyar-arami-lesson-{lesson['number']:02d}.svg"
-    await message.reply_document(
-        document=document,
-        caption=f"🖼️ پوختەی وێنەیی وانەی {lesson['number']} — {lesson.get('title', '')}",
-    )
+    """Keep the lesson reader clean; SVG summaries are not sent as file attachments.
+
+    Telegram displays SVG as a downloadable document rather than an inline lesson
+    visual. The formatted source reader remains the primary lesson presentation.
+    """
+    return
 
 
 def load_lesson_audio_files(base_dir, lesson):
