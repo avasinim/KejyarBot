@@ -88,6 +88,45 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=course_three[:-1]):
             self.assertTrue(bot.can_open(12345, course_three[-1]))
 
+    async def test_finishing_arami_lesson_one_records_progress_and_unlocks_lesson_two(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_called_once_with(12345, lesson_id)
+        self.assertEqual(message.reply_text.await_count, 1)
+        self.assertIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
+        self.assertEqual(
+            keyboard.inline_keyboard[0][0].callback_data,
+            "aramiC:lesson:2",
+        )
+
+    async def test_repeated_arami_completion_does_not_grant_rewards_again(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "get_user_level", return_value=1),
+            patch.object(bot, "check_badges") as badges,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_called_once_with(12345, lesson_id)
+        badges.assert_not_called()
+        voice.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
+
     async def test_open_course_two_shows_all_48_lesson_buttons(self):
         update, message, query = self.make_update("course_daily_conversation")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
