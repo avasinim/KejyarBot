@@ -39,6 +39,13 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:menu",
         ])
 
+    async def test_lesson1_menu_uses_the_current_course_title(self):
+        update, query = make_update("menu")
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        shown = query.message.reply_text.await_args.args[0]
+        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی", shown)
+        self.assertNotIn("ڕێنووسی ئارامی", shown)
+
     async def test_lesson_callback_sends_intro_all_sections_and_conclusion(self):
         lesson = {
             "title": "وانەی ١",
