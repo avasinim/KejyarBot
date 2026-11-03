@@ -776,8 +776,10 @@ def render_lesson_html_blocks(content):
 
         escaped = html.escape(line, quote=False)
         if line.startswith("🤖 کەژیار — KejyarBot@"):
-            blocks.append(f"<b>✦ {escaped} ✦</b>")
-        elif line.startswith(("📘 ", "💬 ", "📖 ", "وانەی ", "## ")):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith("📘 "):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith(("💬 ", "📖 ", "وانەی ", "## ")):
             title = line.removeprefix("## ").strip()
             blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
         elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
