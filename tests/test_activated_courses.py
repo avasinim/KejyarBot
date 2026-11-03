@@ -46,7 +46,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_open_arami_course_from_generic_course_menu(self):
         update, message, query = self.make_update("course_arami_orthography_foundations")
-        await bot.open_course(update, SimpleNamespace())
+        with patch.object(bot, "get_completed_lessons", return_value=[]), patch.object(
+            bot, "can_open", return_value=True
+        ):
+            await bot.open_course(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
