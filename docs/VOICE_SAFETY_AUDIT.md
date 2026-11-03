@@ -39,3 +39,12 @@ CI success validates code/tests only; it does not certify the sound, speaker ide
 - Generation or delivery failures refund the reserved slot. If the user ID is missing, dynamic speech fails closed and no provider request is made.
 - Regression tests cover the daily cap, per-user/date isolation, concurrent reservations, refund behavior, delivery failure, missing user ID, and persistence independent of `context.user_data`.
 - The schema is created idempotently by the existing `init_db()` startup routine. No production database was accessed or modified; deployment has not been performed.
+
+
+## Reconciliation — 2026-11-03
+
+- The four MP3 files described in the original audit were present in the historical Git commit checked at that time; that statement is historical, not a claim about the current release.
+- The current `main` tree (commit `a09f5f1816ed24cbedd45205405e63eebd354285`) contains no `.mp3` or `.ogg` files. The four short cues under `voices/` are therefore not packaged in the current GitHub source tree.
+- The owner separately removed the four short MP3 cues from the Botkeep `/voices` directory. The Botkeep project filesystem has not been inspected after the latest GitHub sync; files outside the Git-tracked source may still differ because Botkeep uses the `Merge files` import mode.
+- Course 1 lesson recordings are optional. The runtime skips missing files silently and does not block lesson reading, practice, or assessment.
+- Dynamic speech remains disabled by default in code. The effective Botkeep environment value has not been independently verified; do not enable dynamic speech until the approved voice identity and Kurdish output are checked.
