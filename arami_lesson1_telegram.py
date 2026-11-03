@@ -53,10 +53,10 @@ def _lesson_source_markdown(lesson):
             lines.append('')
             lines.extend('| ' + ' | '.join(str(cell) for cell in row) + ' |' for row in section['table'])
         if section.get('note'):
-            lines.extend(['', 'تێبینی: ' + section['note']])
+            lines.extend(['', section['note']])
         for question in section.get('questions', []):
             lines.extend(['', question['prompt']])
-            lines.extend(str(i + 1) + ') ' + option for i, option in enumerate(question['options']))
+            lines.extend(chr(65 + i) + ') ' + option for i, option in enumerate(question['options']))
     return '\n'.join(lines)
 
 
