@@ -4,7 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
-from arami_lesson1_telegram import callback, menu_keyboard
+from arami_lesson1_telegram import callback, menu_keyboard, _lesson_source_markdown
 
 
 def make_update(action, message_id=10):
@@ -25,6 +25,22 @@ def make_update(action, message_id=10):
 
 
 class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
+    def test_lesson1_adapter_preserves_all_structured_source_parts_in_order(self):
+        lesson = {
+            'title': 'سەردێڕ', 'objectives': ['ئامانج'],
+            'sections': [{
+                'title': 'بەشی یەک', 'body': 'دەقی ڕەسەن',
+                'table': [['پیت', 'ناو'], ['ا', 'ئەلف']],
+                'note': 'تێبینیی ڕەسەن',
+                'questions': [{'prompt': 'پرسیاری ڕەسەن', 'options': ['هەڵبژاردەی A', 'هەڵبژاردەی B']}],
+            }],
+        }
+        rendered_source = _lesson_source_markdown(lesson)
+        expected = ['سەردێڕ', 'ئامانج', 'بەشی یەک', 'دەقی ڕەسەن', 'پیت', 'ئەلف', 'تێبینیی ڕەسەن', 'پرسیاری ڕەسەن', 'A) هەڵبژاردەی A', 'B) هەڵبژاردەی B']
+        positions = [rendered_source.index(value) for value in expected]
+        self.assertEqual(positions, sorted(positions))
+        self.assertNotIn('تێبینی: تێبینیی ڕەسەن', rendered_source)
+
     def test_menu_exposes_only_lesson1_actions(self):
         keyboard = menu_keyboard()
         callbacks = [
