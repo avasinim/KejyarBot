@@ -61,11 +61,16 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
-        self.assertEqual(query.message.reply_text.await_count, 11)
-        self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
-        self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
-        self.assertIn("پوختە", query.message.reply_text.await_args_list[9].args[0])
-        completion_markup = query.message.reply_text.await_args_list[9].kwargs["reply_markup"]
+        self.assertEqual(query.message.reply_text.await_count, 4)
+        lesson_html = query.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("وانەی ١", lesson_html)
+        self.assertIn("کەژیار — KejyarBot@", lesson_html)
+        self.assertIn("ئامانج", lesson_html)
+        self.assertIn("بەشی 8", lesson_html)
+        self.assertEqual(query.message.reply_text.await_args_list[0].kwargs["parse_mode"], "HTML")
+        self.assertIn("پوختە", query.message.reply_text.await_args_list[1].args[0])
+        self.assertEqual(query.message.reply_text.await_args_list[1].kwargs["parse_mode"], "HTML")
+        completion_markup = query.message.reply_text.await_args_list[2].kwargs["reply_markup"]
         self.assertEqual(completion_markup.inline_keyboard[0][0].callback_data, "finish_arami_course1_lesson_01")
 
     async def test_lesson_reader_refuses_locked_lesson1(self):
