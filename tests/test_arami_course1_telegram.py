@@ -41,16 +41,16 @@ class AramiCourseTelegramTests(unittest.TestCase):
 
 
     def test_classroom_callouts_and_sections_have_distinct_visual_treatment(self):
-        rendered = "\\n".join(_render_source_html(
-            "ئامانجەکانی فێربوون\\n"
-            "١. جیاوازیی پیت و دەنگ\\n"
-            "نموونە: پیت نیشانەیەکی نووسراوە.\\n"
+        rendered = "\n".join(_render_source_html(
+            "ئامانجەکانی فێربوون\n"
+            "١. جیاوازیی پیت و دەنگ\n"
+            "نموونە: پیت نیشانەیەکی نووسراوە.\n"
             "تێبینی: ئەم جیاوازییە گرنگە."
         ))
         self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", rendered)
         self.assertIn("<b>🔹 ١. جیاوازیی پیت و دەنگ</b>", rendered)
-        self.assertIn("<blockquote><b>🧩 نموونە</b>\\nپیت نیشانەیەکی نووسراوە.</blockquote>", rendered)
-        self.assertIn("<blockquote><b>💡 تێبینی</b>\\nئەم جیاوازییە گرنگە.</blockquote>", rendered)
+        self.assertIn("<blockquote><b>🧩 نموونە</b>\nپیت نیشانەیەکی نووسراوە.</blockquote>", rendered)
+        self.assertIn("<blockquote><b>💡 تێبینی</b>\nئەم جیاوازییە گرنگە.</blockquote>", rendered)
 
     def test_source_chunks_count_the_actual_blank_line_separator(self):
         blocks = [f"بلاک {index} " + ("دەق " * 12) for index in range(300)]
