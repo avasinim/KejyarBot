@@ -319,8 +319,8 @@ def can_open(user_id, lesson):
         return False
     completed = set(get_completed_lessons(user_id))
     order = COURSE_LESSON_ORDER.get(course_id, [])
-    if course_id == "unified_orthography":
-        # Course 3 must be completed as a strict prefix: a stale/non-contiguous
+    if course_id in {"unified_orthography", "arami_orthography_foundations"}:
+        # These courses must be completed as a strict prefix: a stale/non-contiguous
         # progress record must never unlock later lessons out of sequence.
         if lesson not in order:
             return False
