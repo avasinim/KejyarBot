@@ -549,27 +549,16 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         )
         query.answer.assert_awaited_once()
 
-    async def test_lesson_22_quiz_answer_records_completion_and_clears_state(self):
-        question = bot.QUIZ_DATA["وانە_22"][0]
-        update, context, query = self.make_context("answer_0", message_id=77)
-        context.user_data["quiz"].update({
-            "lesson": "وانە_22",
-            "questions": [question],
-            "score": 0,
-        })
+    async def test_retired_legacy_lesson_22_quiz_cannot_be_started(self):
+        update, context, query = self.make_context("quiz_22_start", message_id=77)
         query.message.reply_text = AsyncMock()
 
-        correct_index = question["options"].index(question["answer"])
-        query.data = f"answer_{correct_index}"
-        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
-            await bot.quiz_answer(update, context)
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_22"]):
+            await bot.start_quiz(update, context)
 
-        reward.assert_called_once_with(12345, "وانە_22")
         self.assertNotIn("quiz", context.user_data)
-        self.assertTrue(any("تاقیکردنەوە تەواو بوو" in call.args[0]
-                            for call in query.message.reply_text.await_args_list))
-        self.assertTrue(any("1/1" in call.args[0]
-                            for call in query.message.reply_text.await_args_list))
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("لە ڕێڕەوی فێربووندا نیە", query.message.reply_text.await_args.args[0])
 
 
 if __name__ == "__main__":
