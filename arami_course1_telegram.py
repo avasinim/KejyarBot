@@ -390,7 +390,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir, can_open=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("aramiC:")
@@ -503,6 +503,11 @@ async def callback(update, context, base_dir, can_open=None):
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
+            reward_note = ""
+            if session["mode"] == "assessment" and award_assessment is not None:
+                lesson_id = f"arami_course1_lesson_{number:02d}"
+                if award_assessment(query.from_user.id, lesson_id):
+                    reward_note = "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             rows = []
             if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
