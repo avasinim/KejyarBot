@@ -179,7 +179,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             reward_note = ""
             if session["mode"] == "assessment" and award_assessment is not None:
                 if award_assessment(query.from_user.id, "arami_course1_lesson_01"):
-                    reward_note = "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             text = (
                 f"{feedback}\n\n🏁 کۆتایی هات\n"
                 f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
