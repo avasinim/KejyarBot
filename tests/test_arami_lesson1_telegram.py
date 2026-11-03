@@ -178,6 +178,12 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
         self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
 
+    async def test_assessment_does_not_reveal_correct_answer_after_each_response(self):
+        _context, result_query = await self._start_and_answer(0)
+        shown = result_query.edit_message_text.await_args.args[0]
+        self.assertIn("وەڵامەکەت وەرگیرا", shown)
+        self.assertNotIn("وەڵامی ڕاست", shown)
+
     async def test_perfect_assessment_does_not_offer_retry(self):
         _context, result_query = await self._start_and_answer(1)
         markup = result_query.edit_message_text.await_args.kwargs["reply_markup"]
