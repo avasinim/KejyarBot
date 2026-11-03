@@ -441,6 +441,20 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}\n🎯 دەتوانیت ئێستا ڕاهێنانی کرتەیی ئەم وانەیەش بکەیت.",
             reply_markup=keyboard,
         )
+    elif next_lesson is not None and LESSON_COURSE.get(lesson) == "arami_orthography_foundations":
+        next_number = int(next_lesson.rsplit("_", 1)[1])
+        arami_manifest = load_arami_course1_manifest(BASE_DIR)
+        next_title = next(item["title"] for item in arami_manifest["lessons"] if item["number"] == next_number)
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                f"➡️ دەستپێکردنی وانەی {next_number}",
+                callback_data=f"aramiC:lesson:{next_number}",
+            )
+        ]])
+        await query.message.reply_text(
+            message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
+            reply_markup=keyboard,
+        )
     elif next_lesson is None:
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
@@ -1101,7 +1115,10 @@ def main():
         pattern=r"^arami1:",
     ))
     app.add_handler(CallbackQueryHandler(
-        lambda update, context: arami_course1_callback(update, context, BASE_DIR),
+        lambda update, context: arami_course1_callback(
+            update, context, BASE_DIR,
+            can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+        ),
         pattern=r"^aramiC:",
     ))
     app.add_handler(CallbackQueryHandler(
