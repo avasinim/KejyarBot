@@ -311,7 +311,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         await callback(update, context, ROOT)
         update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
         await callback(update, context, ROOT)
-        self.assertIn("وەڵامەکەت تۆمار کرا", assessment_query.edit_message_text.await_args.args[0])
+        self.assertIn("وەڵامەکەت وەرگیرا", assessment_query.edit_message_text.await_args.args[0])
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
 
