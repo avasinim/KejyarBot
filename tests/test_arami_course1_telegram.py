@@ -335,12 +335,16 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01")
         self.assertTrue(query.message.reply_document.await_count)
         self.assertEqual(query.message.reply_voice.await_count, 1)
-        completion_message = query.message.reply_text.await_args_list[-1]
-        self.assertIn("finish_arami_course1_lesson_01", [
-            button.callback_data
-            for row in completion_message.kwargs["reply_markup"].inline_keyboard
-            for button in row
-        ])
+        completion_messages = [
+            call for call in query.message.reply_text.await_args_list
+            if call.kwargs.get("reply_markup") is not None
+            and any(
+                button.callback_data == "finish_arami_course1_lesson_01"
+                for row in call.kwargs["reply_markup"].inline_keyboard
+                for button in row
+            )
+        ]
+        self.assertEqual(len(completion_messages), 1)
 
 if __name__ == "__main__":
     unittest.main()
