@@ -74,6 +74,18 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(set(all_ids)), 114)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
+    def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
+        order = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        self.assertEqual(len(order), 21)
+        self.assertEqual(order[0], "arami_course1_lesson_01")
+        self.assertEqual(order[-1], "arami_course1_lesson_21")
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, order[0]))
+            self.assertFalse(bot.can_open(12345, order[1]))
+        with patch.object(bot, "get_completed_lessons", return_value=[order[0]]):
+            self.assertTrue(bot.can_open(12345, order[1]))
+            self.assertFalse(bot.can_open(12345, order[2]))
+
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
         course_three = bot.COURSE_LESSON_ORDER["unified_orthography"]
