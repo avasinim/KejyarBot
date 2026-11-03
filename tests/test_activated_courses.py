@@ -22,6 +22,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
         self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 21)
+        arami_course = next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")
+        self.assertEqual(arami_course["title"], "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی")
         self.assertFalse(any(key.startswith("وانە_") for key in bot.LESSON_DATA))
         self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
