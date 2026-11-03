@@ -126,6 +126,40 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:lesson:2",
         )
 
+    async def test_finishing_arami_course_final_lesson_shows_course_completion(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][-1]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+            patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_called_once_with(12345, lesson_id)
+        message.reply_text.assert_awaited_once()
+        self.assertIn("🎓 ئەم کۆرسە تەواو بوو.", message.reply_text.await_args.args[0])
+        self.assertNotIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
+        self.assertIsNone(message.reply_text.await_args.kwargs.get("reply_markup"))
+
+    async def test_uncompleted_previous_lesson_blocks_arami_reward_claim(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][1]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_not_called()
+        voice.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
     async def test_repeated_arami_completion_does_not_grant_rewards_again(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
         update, message, query = self.make_update(f"finish_{lesson_id}")
