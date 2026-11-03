@@ -346,5 +346,16 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(len(completion_messages), 1)
 
+    async def test_locked_lesson_practice_and_assessment_are_not_started(self):
+        from arami_course1_telegram import callback
+        for action in ("practice:2", "assessment:2"):
+            update, query = self.make_update(action)
+            query.from_user = SimpleNamespace(id=123)
+            context = SimpleNamespace(user_data={})
+            await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
+            self.assertEqual(context.user_data, {})
+
 if __name__ == "__main__":
     unittest.main()
