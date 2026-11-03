@@ -81,7 +81,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
-        update, context = self.make_update_context("📕 ڕێنووسی ئارامی")
+        update, context = self.make_update_context("📕 ڕێنووسی سەرەتاییی کوردی")
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=[]),
@@ -167,7 +167,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
         ]
         self.assertEqual(len(read_buttons), 21)
-        self.assertIn("ڕێنووسی ئارامی", call.args[0])
+        self.assertIn("ڕێنووسی سەرەتاییی کوردی", call.args[0])
 
 
     async def test_quiz_selection_menu_shows_readable_lesson_titles(self):
