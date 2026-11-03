@@ -1,3 +1,4 @@
+import asyncio
 import json
 import tempfile
 import unittest
@@ -209,11 +210,11 @@ class AramiCourseTelegramTests(unittest.TestCase):
                     self.assertIn(path.suffix.lower(), {".ogg", ".mp3"})
                     self.assertTrue(item["label"])
 
-    async def test_missing_mapped_audio_is_silent_and_does_not_block_lessons(self):
+    def test_missing_mapped_audio_is_silent_and_does_not_block_lessons(self):
         from arami_course1_telegram import send_lesson_audio
         message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
         lesson14 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 14)
-        sent = await send_lesson_audio(message, ROOT, lesson14)
+        sent = asyncio.run(send_lesson_audio(message, ROOT, lesson14))
         self.assertFalse(sent)
         message.reply_voice.assert_not_awaited()
         message.reply_text.assert_not_awaited()
