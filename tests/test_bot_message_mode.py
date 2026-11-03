@@ -82,7 +82,11 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
         update, context = self.make_update_context("📕 ڕێنووسی ئارامی")
-        with patch.object(bot, "get_user"):
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "can_open", return_value=True),
+        ):
             await bot.message(update, context)
 
         update.message.reply_text.assert_awaited_once()
