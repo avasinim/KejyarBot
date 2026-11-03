@@ -26,7 +26,7 @@ async def _send_question(message, context):
         reply_markup=InlineKeyboardMarkup(rows))
     context.user_data["arami_lesson5_message_id"] = sent.message_id
 
-async def callback(update, context, base_dir, can_open=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("arami5:")
@@ -110,6 +110,10 @@ async def callback(update, context, base_dir, can_open=None):
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
+            reward_note = ""
+            if session["mode"] == "assessment" and award_assessment is not None:
+                if award_assessment(query.from_user.id, "arami_course1_lesson_05"):
+                    reward_note = "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             rows = []
             if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami5:retry")])
