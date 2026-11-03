@@ -165,8 +165,11 @@ async def callback(update, context, base_dir, can_open=None):
         except (ValueError, TypeError):
             await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
-        correct_option = question["options"][question["answer_index"]]
-        feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct_option}"
+        if session["mode"] == "practice":
+            correct_option = question["options"][question["answer_index"]]
+            feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct_option}"
+        else:
+            feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
             text = (
