@@ -36,7 +36,6 @@ from database import (
     refund_speech_quota,
 )
 from voice import get_voice
-from lesson_audio import LessonAudioError, resolve_lesson_audio_path
 from daily_chat import PROMPTS, reply_to_daily_message
 from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
@@ -368,23 +367,6 @@ async def send_kejyar_course_cue(message, filename):
         return False
 
 
-async def send_lesson_audio(message, lesson_data):
-    """Send the lesson's own prerecorded audio; never substitute generic narration."""
-    try:
-        audio_path = resolve_lesson_audio_path(BASE_DIR, lesson_data)
-    except LessonAudioError as exc:
-        logger.warning("Lesson audio is not ready: %s", exc)
-        await message.reply_text("⚠️ دەنگی تایبەتی ئەم وانەیە بەردەست نییە؛ وانەکە بێ دەنگ تەواو ناژمێردرێت.")
-        return False
-
-    try:
-        with audio_path.open("rb") as audio:
-            await message.reply_voice(voice=audio)
-        return True
-    except Exception:
-        logger.exception("Could not send dedicated lesson audio %s", audio_path)
-        await message.reply_text("⚠️ ناردنی دەنگی وانەکە سەرکەوتوو نەبوو.")
-        return False
 
 async def send_voice(update, filename):
     path = get_voice(filename)
@@ -725,42 +707,49 @@ async def quiz_answer(
     context.user_data.pop("quiz", None)
 
 def render_lesson_html_blocks(content):
-    """Apply a consistent academic Telegram layout without rewriting lesson text."""
+    """Render lesson text in a clean, consistent academic Telegram layout."""
     blocks = []
+    section_titles = {
+        "ئامانجەکانی فێربوون",
+        "خۆت تاقی بکەرەوە",
+        "ڕاهێنانی فێرخواز",
+        "نموونەی شیکردنەوە",
+        "نموونەی ڕاهێنان",
+        "هەڵەی باو",
+        "🎯 ئامانج",
+        "🗣️ گفتوگۆ",
+        "📚 وشە و دەستەواژە",
+        "✍️ ڕاهێنان",
+        "🧠 تێگەیشتن",
+        "🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان",
+        "✍️ نموونەکان",
+        "🧩 ڕاهێنان",
+        "🧠 پرسیارەکانی تێگەیشتن",
+        "🛠️ کاری پڕاکتیکی",
+    }
     for raw_line in content.splitlines():
         line = raw_line.strip()
         if not line:
             blocks.append("")
             continue
 
-        escaped = html.escape(raw_line, quote=False)
+        escaped = html.escape(line, quote=False)
         if line.startswith("🤖 کەژیار — KejyarBot@"):
-            blocks.append(f"<b>{escaped}</b>")
-        elif line.startswith(("📘 ", "💬 ")):
-            blocks.append(f"<b>{escaped}</b>")
-        elif line.startswith("وانەی ") or line.startswith("## "):
-            blocks.append(f"<b>{escaped}</b>")
-        elif line in {
-            "ئامانجەکانی فێربوون",
-            "خۆت تاقی بکەرەوە",
-            "ڕاهێنانی فێرخواز",
-            "نموونەی شیکردنەوە",
-            "نموونەی ڕاهێنان",
-            "هەڵەی باو",
-        } or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
-            blocks.append(f"<b>{escaped}</b>")
+            blocks.append(f"<b>✦ {escaped} ✦</b>")
+        elif line.startswith(("📘 ", "💬 ", "📖 ", "وانەی ", "## ")):
+            title = line.removeprefix("## ").strip()
+            blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
+        elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
+            blocks.append(f"<b>◆ {escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
             blocks.append(f"<b>{escaped}</b>")
-        elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:")):
-            blocks.append(f"<blockquote>{escaped}</blockquote>")
-        elif line.startswith(("• ", "- ")):
+        elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:", "• ", "- ")):
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         elif " • " in line and len(line) < 1200:
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         else:
             blocks.append(escaped)
     return blocks
-
 
 def split_lesson_html(blocks, limit=3500):
     """Pack complete HTML blocks into Telegram-safe messages."""
@@ -1057,7 +1046,6 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
-        await send_lesson_audio(update.message, data)
         await send_conversation_voice(
             update.message,
             f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
