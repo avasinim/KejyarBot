@@ -60,7 +60,7 @@ def _lesson_source_markdown(lesson):
     return '\n'.join(lines)
 
 
-async def callback(update, context, base_dir, can_open=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("arami1:")
@@ -176,9 +176,13 @@ async def callback(update, context, base_dir, can_open=None):
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
+            reward_note = ""
+            if session["mode"] == "assessment" and award_assessment is not None:
+                if award_assessment(query.from_user.id, "arami_course1_lesson_01"):
+                    reward_note = "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             text = (
                 f"{feedback}\n\n🏁 کۆتایی هات\n"
-                f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
+                f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
             )
             rows = []
             if result["missed"]:
