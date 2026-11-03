@@ -1,3 +1,4 @@
+import asyncio
 """Regression tests for owner-activated Courses 2 and 3."""
 import unittest
 from types import SimpleNamespace
@@ -246,6 +247,29 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
                 bot.LESSON_DATA[lesson_id]["review_status"],
                 "draft_editorial_review",
             )
+
+    def test_main_registers_startup_log_after_telegram_initialization(self):
+        builder = unittest.mock.Mock()
+        application = unittest.mock.Mock()
+        builder.token.return_value = builder
+        builder.post_init.return_value = builder
+        builder.build.return_value = application
+        with (
+            patch.object(bot, "validate_activated_course_runtime"),
+            patch.object(bot, "init_db"),
+            patch.object(bot.Application, "builder", return_value=builder),
+            patch.dict("os.environ", {"TELEGRAM_BOT_TOKEN": "safe-test-token"}),
+        ):
+            bot.main()
+
+        callback = builder.post_init.call_args.args[0]
+        self.assertTrue(asyncio.iscoroutinefunction(callback))
+        with patch.object(bot.logger, "info") as log_info:
+            asyncio.run(callback(application))
+        log_info.assert_called_once_with(
+            "KejyarBot Telegram initialization succeeded; polling is starting"
+        )
+        application.run_polling.assert_called_once_with()
 
 
 if __name__ == "__main__":
