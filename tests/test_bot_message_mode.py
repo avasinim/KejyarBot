@@ -113,9 +113,9 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         update.message.reply_text.assert_awaited_once()
         output = update.message.reply_text.await_args.args[0]
         self.assertIn("پێشکەوتن: 2/21 وانە", output)
-        self.assertIn("✅ تەواو کراوە — وانەی ١:", output)
-        self.assertIn("🔓 ئامادەیە — وانەی ٣:", output)
-        self.assertIn("🔒 داخراوە — وانەی ٤:", output)
+        self.assertIn("✅ تەواو کراوە — وانەی 1:", output)
+        self.assertIn("🔓 ئامادەیە — وانەی 3:", output)
+        self.assertIn("🔒 داخراوە — وانەی 4:", output)
         self.assertEqual(sum(" — وانەی " in line for line in output.splitlines()), 21)
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
