@@ -31,7 +31,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
-        message = SimpleNamespace(reply_text=AsyncMock())
+        message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
         update = SimpleNamespace(
             message=message,
             effective_user=SimpleNamespace(id=12345),
