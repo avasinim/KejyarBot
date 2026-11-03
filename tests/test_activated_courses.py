@@ -1,8 +1,8 @@
-import asyncio
 """Regression tests for owner-activated Courses 2 and 3."""
+import asyncio
 import unittest
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, Mock, patch
 
 import bot
 
@@ -249,8 +249,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             )
 
     def test_main_registers_startup_log_after_telegram_initialization(self):
-        builder = unittest.mock.Mock()
-        application = unittest.mock.Mock()
+        builder = Mock()
+        application = Mock()
         builder.token.return_value = builder
         builder.post_init.return_value = builder
         builder.build.return_value = application
