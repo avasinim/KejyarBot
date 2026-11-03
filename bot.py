@@ -304,7 +304,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
         ["ڕێنووسی لاتینی کوردیی"],
-        ["📕 ڕێنووسی ئارامی"],
+        ["📕 ڕێنووسی سەرەتاییی کوردی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -943,10 +943,10 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open Arami Course 1 from the generic course menu")
-            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئامادە نییە.")
+            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -983,13 +983,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
-    if text == "📕 ڕێنووسی ئارامی":
+    if text == "📕 ڕێنووسی سەرەتاییی کوردی":
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
@@ -1017,7 +1017,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی ئارامی",
+        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -1046,10 +1046,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -1151,7 +1151,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         manifest = load_arami_course1_manifest(BASE_DIR)
-        lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی ئارامی"]
+        lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی"]
         completed_count = 0
         for item in sorted(manifest["lessons"], key=lambda lesson: lesson["number"]):
             lesson_id = item["id"]
