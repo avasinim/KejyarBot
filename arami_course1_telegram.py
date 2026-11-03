@@ -293,7 +293,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir):
+async def callback(update, context, base_dir, can_open=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("aramiC:")
@@ -317,9 +317,18 @@ async def callback(update, context, base_dir):
         number = int(raw)
         try:
             lesson, source = load_lesson_source(base_dir, number)
+            if can_open is not None and not can_open(query.from_user.id, lesson["id"]):
+                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
+                return
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
             await send_lesson_infographic(query.message, lesson, source)
             await send_lesson_audio(query.message, base_dir, lesson)
+            await query.message.reply_text(
+                f"✅ کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
+                reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson['id']}")
+                ]]),
+            )
         except AramiCourseTelegramError:
             logger.exception("Could not deliver Arami Course 1 Lesson %s", number)
             await query.message.reply_text(
