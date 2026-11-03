@@ -892,7 +892,6 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    await send_lesson_infographic(query.message, lesson)
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -908,7 +907,6 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):
     """Send generated speech with an atomic, persistent per-user UTC daily cap."""
