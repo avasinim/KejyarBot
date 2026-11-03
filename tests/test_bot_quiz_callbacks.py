@@ -552,6 +552,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_retired_legacy_lesson_22_quiz_cannot_be_started(self):
         update, context, query = self.make_context("quiz_22_start", message_id=77)
+        context.user_data.clear()
         query.message.reply_text = AsyncMock()
 
         with patch.object(bot, "get_completed_lessons", return_value=["وانە_22"]):
