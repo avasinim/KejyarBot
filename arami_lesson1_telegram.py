@@ -1,4 +1,4 @@
-"""Telegram handlers for the isolated Arami Course 1 Lesson 1 flow."""
+"""Telegram handlers for the isolated Course 1 Lesson 1 flow."""
 import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
@@ -48,7 +48,7 @@ async def callback(update, context, base_dir, can_open=None):
 
     if action == "menu":
         await query.message.reply_text(
-            "📕 کۆرسی ڕێنووسی ئارامی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
+            "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
             "دەنگی ڕەسەن، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
             reply_markup=menu_keyboard(),
         )
@@ -132,7 +132,7 @@ async def callback(update, context, base_dir, can_open=None):
 
     session = context.user_data.get("arami_lesson1_session")
     if not isinstance(session, dict):
-        await query.message.reply_text("ℹ️ هیچ ڕاهێنانێکی ئارامی چالاک نییە.")
+        await query.message.reply_text("ℹ️ هیچ ڕاهێنانێکی وانەی ١ چالاک نییە.")
         return
     if query.message.message_id != context.user_data.get("arami_lesson1_message_id"):
         return
@@ -179,7 +179,7 @@ async def callback(update, context, base_dir, can_open=None):
             rows = []
             if result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
-            rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی ئارامی", callback_data="arami1:menu")])
+            rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
             await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(rows))
         else:
             await query.edit_message_text(
