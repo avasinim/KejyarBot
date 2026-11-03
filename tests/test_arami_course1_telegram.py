@@ -9,6 +9,8 @@ from unittest.mock import AsyncMock
 from arami_course1_telegram import (
     AramiCourseTelegramError,
     _plain_markdown,
+    _render_source_html,
+    _send_source,
     course_menu_keyboard,
     load_lesson_source,
     load_manifest,
@@ -20,6 +22,35 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AramiCourseTelegramTests(unittest.TestCase):
+    def test_course1_source_formatter_styles_headings_and_plain_pipe_tables(self):
+        blocks = _render_source_html(
+            "# پیتەکان و دەنگەکان\\n"
+            "ئامانجەکانی فێربوون\\n"
+            "ژمارە | پیت/نیشانە | ناو\\n"
+            "١ | ا | ئەلف\\n"
+            "٢ | ب | بێ"
+        )
+        rendered = "\\n".join(blocks)
+        self.assertIn("<b>📖 پیتەکان و دەنگەکان</b>", rendered)
+        self.assertIn("<b>ئامانجەکانی فێربوون</b>", rendered)
+        self.assertIn("<b>ژمارە:</b> ١", rendered)
+        self.assertIn("<b>پیت/نیشانە:</b> ا", rendered)
+        self.assertIn("<b>ناو:</b> ئەلف", rendered)
+        self.assertIn("<b>ژمارە:</b> ٢", rendered)
+
+    def test_course1_source_is_sent_as_formatted_html(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        asyncio.run(_send_source(
+            message,
+            "وانەی ١ — پیت و دەنگ",
+            "# پیت و دەنگ\\nئامانجەکانی فێربوون\\nئەمە دەقی وانەیە."
+        ))
+        message.reply_text.assert_awaited_once()
+        args, kwargs = message.reply_text.await_args
+        self.assertIn("<b>📘 وانەی ١ — پیت و دەنگ</b>", args[0])
+        self.assertEqual(kwargs.get("parse_mode"), "HTML")
+        self.assertIn("<b>ئامانجەکانی فێربوون</b>", args[0])
+
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(len(manifest["lessons"]), 21)
