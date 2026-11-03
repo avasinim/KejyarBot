@@ -88,7 +88,7 @@
       "id": "arami5_assessment_01",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "هاوتای لاتینیی پیتی (چ) کامەیە؟",
+      "prompt": "ئەگەر پیتی کوردی «چ» ببینیت، لە خشتەی وانەکەدا کام نیشانەی لاتینی هاوتایەتییەتی؟",
       "options": [
         "ş",
         "ç",
@@ -101,7 +101,7 @@
       "id": "arami5_assessment_02",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "هاوتای لاتینیی پیتی (ژ) کامەیە؟",
+      "prompt": "پیتی «ژ» لە سیستەمی لاتینیی ئەم وانەیەدا بە کام پیت نوێنەرایەتی دەکرێت؟",
       "options": [
         "j",
         "z",
@@ -114,7 +114,7 @@
       "id": "arami5_assessment_03",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "پیتی (وو) بە لاتینی چۆن دەنووسرێت؟",
+      "prompt": "بۆ نووسینی پیتی کوردی «وو»، وانەکە کام پیتی لاتینیی درێژ بەکاردەهێنێت؟",
       "options": [
         "u",
         "û",
@@ -127,7 +127,7 @@
       "id": "arami5_assessment_04",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "هاوتای لاتینیی پیتی (ێ) کامەیە؟",
+      "prompt": "لە خشتەی وانەکەدا، نیشانەی لاتینیی پیتی کوردی «ێ» کامەیە؟",
       "options": [
         "ê",
         "î",
@@ -140,7 +140,7 @@
       "id": "arami5_assessment_05",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "بزرۆکە بە کام پیتی لاتینی دەنووسرێت؟",
+      "prompt": "دەنگی بزرۆکە لە نووسینی لاتینیدا بە کام نیشانە دەردەکەوێت؟",
       "options": [
         "u",
         "i",
@@ -153,7 +153,7 @@
       "id": "arami5_assessment_06",
       "type": "recognize",
       "section_id": "lesson5_source_exercises",
-      "prompt": "بەپێی ئەم وانەیە، چەند پیتی بێدەنگمان هەیە؟",
+      "prompt": "ژمارەی پیتە بێدەنگەکان کە لە پوختەی وانەکەدا تۆمار کراوە چەندە؟",
       "options": [
         "٢٨",
         "٢٩",
@@ -162,5 +162,6 @@
       "answer_index": 1,
       "source_evidence": "دەقی وانەی ٥، بەشی ١ و پوختە: کۆی پیتە بێدەنگەکان ٢٩ دانەیە."
     }
-  ]
+  ],
+  "source_note": "Only the six multiple-choice exercises explicitly supplied in the user's Lesson 5 source are represented. Assessment prompts are rephrased for retrieval practice while preserving the same source facts, options, and answer keys; no source table values or counts were independently altered. Ambiguous or inconsistent source-table entries remain unchanged and are not expanded into additional questions."
 }
