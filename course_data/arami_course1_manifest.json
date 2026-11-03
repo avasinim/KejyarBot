@@ -273,9 +273,9 @@
           "label": "دەنگی پیتی ژێرە"
         }
       ],
-      "source_note": "Inserted as new Lesson 11 at the user's request. The supplied final ellipsis indicates omitted source material; no missing content was inferred. Existing lessons 11–19 were shifted to 12–20 without deleting or rewriting their source files.",
+      "source_note": "The supplied Lesson 11 source contains three sections: پیتی بۆرە, پیتی بزوێنی سەرە, and پیتی ژێرە, with their supplied forms, examples, and audio-asset commit references. The five practice and five assessment questions are drawn from those sections. Preserve the source text exactly; no associated book or PDF is used.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_file_and_three_supplied_sections_verified; quiz_items_aligned_to_source_examples",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
