@@ -219,21 +219,14 @@ def _split_source_html(blocks, limit=3500):
     size = 0
     separator = "\n\n"
     for block in blocks:
-        block = str(block)
         addition = len(block) + (len(separator) if current else 0)
         if current and size + addition > limit:
             chunks.append(separator.join(current))
             current = []
             size = 0
             addition = len(block)
-        if len(block) > limit:
-            # Keep Telegram messages within the configured limit even for a single
-            # unusually long source line; this preserves every character.
-            while len(block) > limit:
-                chunks.append(block[:limit])
-                block = block[limit:]
         current.append(block)
-        size += len(block) + (len(separator) if len(current) > 1 else 0)
+        size += addition
     if current:
         chunks.append(separator.join(current))
     return chunks
