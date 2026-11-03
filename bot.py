@@ -61,6 +61,13 @@ BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+def award_arami_assessment(user_id, lesson_id):
+    """Grant 20 XP once for a Course 1 assessment, never for practice or retries."""
+    return complete_quiz_with_rewards(
+        user_id, f"arami_assessment:{lesson_id}", points=20
+    )
+
 # Load .env without requiring an extra dependency. Environment variables already
 # set by the host always take precedence.
 ENV_FILE = BASE_DIR / ".env"
@@ -304,7 +311,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📚 وانەکان", "📘 کۆرسەکان"],
         ["ڕێنووسی لاتینی کوردیی"],
-        ["📕 ڕێنووسی ئارامی"],
+        ["📕 ڕێنووسی سەرەتاییی کوردی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -327,25 +334,41 @@ def can_open(user_id, lesson):
         return all(previous in completed for previous in order[:index])
     return can_open_lesson(order, completed, lesson)
 
-def check_badges(user_id):
+BADGE_COURSE_TITLES = {
+    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی",
+    "daily_conversation": "کۆرسی ٢: وتووێژ",
+    "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
+    "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
+    "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+}
+
+
+def current_progress_badges(user_id):
+    """Build visible badges from current active lesson IDs, never stale stored labels."""
     completed = set(get_completed_lessons(user_id))
-    courses_by_id = {course.get("id"): course for course in COURSES}
-    for lesson in completed:
-        course_id = LESSON_COURSE.get(lesson)
-        if course_id is None or not course_is_active(course_id):
+    visible = []
+    for course in COURSES:
+        course_id = course.get("id")
+        if not course_is_active(course_id):
             continue
-        if lesson.startswith("وانە_") and lesson.removeprefix("وانە_").isdigit():
-            number = int(lesson.removeprefix("وانە_"))
-            if 1 <= number <= len(ORDER):
-                add_badge(user_id, f"🏅 کۆرسی ڕێنووسی — وانەی {number}")
+        title = BADGE_COURSE_TITLES.get(course_id)
+        if not title:
             continue
-        lesson_number = LESSON_DATA.get(lesson, {}).get("source_number")
-        if lesson_number is None and course_id == "arami_orthography_foundations":
-            suffix = lesson.rsplit("_", 1)[-1]
-            lesson_number = int(suffix) if suffix.isdigit() else None
-        course = courses_by_id.get(course_id, {})
-        if isinstance(lesson_number, int) and lesson_number > 0:
-            add_badge(user_id, f"🏅 {course.get('title', course_id)} — وانەی {lesson_number}")
+        for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
+            if lesson_id in completed:
+                visible.append(f"🏅 {title} — وانەی {number}")
+    return visible
+
+
+def check_badges(user_id):
+    """Keep the legacy badge ledger compatible; progress display uses canonical labels."""
+    completed = set(get_completed_lessons(user_id))
+    for course_id, title in BADGE_COURSE_TITLES.items():
+        if not course_is_active(course_id):
+            continue
+        for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
+            if lesson_id in completed:
+                add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -497,7 +520,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         next_data = LESSON_DATA.get(next_lesson)
         if next_data and can_open(user_id, next_lesson):
             await send_lesson_text(query.message, next_data["content"], lesson_keyboard(next_lesson))
-            await send_kejyar_course_cue(query.message, "lesson_start.mp3")
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -727,20 +749,50 @@ def render_lesson_html_blocks(content):
         "🧠 پرسیارەکانی تێگەیشتن",
         "🛠️ کاری پڕاکتیکی",
     }
-    for raw_line in content.splitlines():
-        line = raw_line.strip()
+    source_lines = content.splitlines()
+    index = 0
+    while index < len(source_lines):
+        line = source_lines[index].strip()
+        # Accept both Markdown tables (| a | b |) and the plain pipe tables
+        # used in the supplied lessons (a | b | c), without requiring edge pipes.
+        if line.count("|") >= 2:
+            table_lines = []
+            while index < len(source_lines):
+                candidate = source_lines[index].strip()
+                if candidate.count("|") < 2:
+                    break
+                cells = [cell.strip() for cell in candidate.strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    table_lines.append(cells)
+                index += 1
+            if table_lines:
+                headers = table_lines[0]
+                for row in table_lines[1:]:
+                    pairs = [
+                        f"<b>{html.escape(headers[i], quote=False)}:</b> {html.escape(value, quote=False)}"
+                        for i, value in enumerate(row)
+                        if i < len(headers) and value
+                    ]
+                    if pairs:
+                        blocks.append("<blockquote>" + "  •  ".join(pairs) + "</blockquote>")
+            continue
         if not line:
             blocks.append("")
+            index += 1
             continue
 
         escaped = html.escape(line, quote=False)
         if line.startswith("🤖 کەژیار — KejyarBot@"):
-            blocks.append(f"<b>✦ {escaped} ✦</b>")
-        elif line.startswith(("📘 ", "💬 ", "📖 ", "وانەی ", "## ")):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith("📘 "):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith("وانەی "):
+            blocks.append(f"<b>{escaped}</b>")
+        elif line.startswith(("💬 ", "📖 ", "## ")):
             title = line.removeprefix("## ").strip()
             blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
         elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
-            blocks.append(f"<b>◆ {escaped}</b>")
+            blocks.append(f"<b>{escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:", "• ", "- ")):
@@ -749,6 +801,7 @@ def render_lesson_html_blocks(content):
             blocks.append(f"<blockquote>{escaped}</blockquote>")
         else:
             blocks.append(escaped)
+        index += 1
     return blocks
 
 def split_lesson_html(blocks, limit=3500):
@@ -813,6 +866,12 @@ def add_kejyar_brand_signature(content):
 
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lessons in a consistent academic layout, preserving all lesson wording."""
+    # Suppress obsolete audio-link diagnostics from lesson text; audio is optional.
+    content = re.sub(
+        r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
+        "",
+        content,
+    )
     content = add_kejyar_brand_signature(content)
     chunks = split_lesson_html(render_lesson_html_blocks(content))
     for index, chunk in enumerate(chunks):
@@ -840,9 +899,6 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    if LESSON_COURSE.get(lesson) == "unified_orthography":
-        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
-    await send_lesson_infographic(query.message, lesson)
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -858,9 +914,6 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    if LESSON_COURSE.get(lesson) == "unified_orthography":
-        await send_kejyar_course_cue(query.message, "lesson_start.mp3")
-    await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):
     """Send generated speech with an atomic, persistent per-user UTC daily cap."""
@@ -897,10 +950,10 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open Arami Course 1 from the generic course menu")
-            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئامادە نییە.")
+            await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -937,13 +990,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     get_user(user_id)
 
-    if text == "📕 ڕێنووسی ئارامی":
+    if text == "📕 ڕێنووسی سەرەتاییی کوردی":
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
@@ -971,7 +1024,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی ئارامی",
+        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -1000,10 +1053,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی ئارامی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -1094,7 +1147,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "👤 پێشکەوتنم":
         user = get_user(user_id)
-        badges = get_badges(user_id)
+        badges = current_progress_badges(user_id)
         await update.message.reply_text(
             f"👤 پێشکەوتنم\n\n⭐ خاڵ: {user[1]}\n🔥 XP: {user[2]}\n🎓 ئاست: {user[3]}\n"
             f"🪙 Coin: {user[8]}\n🎁 سەنوق: {user[9]}\n\n🏅 نیشانەکان:\n" +
@@ -1105,7 +1158,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
         manifest = load_arami_course1_manifest(BASE_DIR)
-        lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی ئارامی"]
+        lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی"]
         completed_count = 0
         for item in sorted(manifest["lessons"], key=lambda lesson: lesson["number"]):
             lesson_id = item["id"]
@@ -1139,6 +1192,7 @@ def main():
         lambda update, context: arami_lesson1_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^arami1:",
     ))
@@ -1146,6 +1200,7 @@ def main():
         lambda update, context: arami_course1_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^aramiC:",
     ))
@@ -1153,6 +1208,7 @@ def main():
         lambda update, context: arami_lesson5_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^arami5:",
     ))

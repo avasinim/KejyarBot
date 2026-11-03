@@ -4,7 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
-from arami_lesson1_telegram import callback, menu_keyboard
+from arami_lesson1_telegram import callback, menu_keyboard, _lesson_source_markdown
 
 
 def make_update(action, message_id=10):
@@ -25,6 +25,22 @@ def make_update(action, message_id=10):
 
 
 class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
+    def test_lesson1_adapter_preserves_all_structured_source_parts_in_order(self):
+        lesson = {
+            'title': 'سەردێڕ', 'objectives': ['ئامانج'],
+            'sections': [{
+                'title': 'بەشی یەک', 'body': 'دەقی ڕەسەن',
+                'table': [['پیت', 'ناو'], ['ا', 'ئەلف']],
+                'note': 'تێبینیی ڕەسەن',
+                'questions': [{'prompt': 'پرسیاری ڕەسەن', 'options': ['هەڵبژاردەی A', 'هەڵبژاردەی B']}],
+            }],
+        }
+        rendered_source = _lesson_source_markdown(lesson)
+        expected = ['سەردێڕ', 'ئامانج', 'بەشی یەک', 'دەقی ڕەسەن', 'پیت', 'ئەلف', 'تێبینیی ڕەسەن', 'پرسیاری ڕەسەن', 'A) هەڵبژاردەی A', 'B) هەڵبژاردەی B']
+        positions = [rendered_source.index(value) for value in expected]
+        self.assertEqual(positions, sorted(positions))
+        self.assertNotIn('تێبینی: تێبینیی ڕەسەن', rendered_source)
+
     def test_menu_exposes_only_lesson1_actions(self):
         keyboard = menu_keyboard()
         callbacks = [
@@ -38,6 +54,13 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami5:menu",
             "aramiC:menu",
         ])
+
+    async def test_lesson1_menu_uses_the_current_course_title(self):
+        update, query = make_update("menu")
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        shown = query.message.reply_text.await_args.args[0]
+        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی", shown)
+        self.assertNotIn("ڕێنووسی ئارامی", shown)
 
     async def test_lesson_callback_sends_intro_all_sections_and_conclusion(self):
         lesson = {
@@ -54,11 +77,16 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
-        self.assertEqual(query.message.reply_text.await_count, 11)
-        self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
-        self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
-        self.assertIn("پوختە", query.message.reply_text.await_args_list[9].args[0])
-        completion_markup = query.message.reply_text.await_args_list[9].kwargs["reply_markup"]
+        self.assertEqual(query.message.reply_text.await_count, 4)
+        lesson_html = query.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("وانەی ١", lesson_html)
+        self.assertIn("کەژیار — KejyarBot@", lesson_html)
+        self.assertIn("ئامانج", lesson_html)
+        self.assertIn("بەشی 8", lesson_html)
+        self.assertEqual(query.message.reply_text.await_args_list[0].kwargs["parse_mode"], "HTML")
+        self.assertIn("پوختە", query.message.reply_text.await_args_list[1].args[0])
+        self.assertEqual(query.message.reply_text.await_args_list[1].kwargs["parse_mode"], "HTML")
+        completion_markup = query.message.reply_text.await_args_list[2].kwargs["reply_markup"]
         self.assertEqual(completion_markup.inline_keyboard[0][0].callback_data, "finish_arami_course1_lesson_01")
 
     async def test_lesson_reader_refuses_locked_lesson1(self):

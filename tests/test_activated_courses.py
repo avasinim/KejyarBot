@@ -22,6 +22,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
         self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 21)
+        arami_course = next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")
+        self.assertEqual(arami_course["title"], "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی")
         self.assertFalse(any(key.startswith("وانە_") for key in bot.LESSON_DATA))
         self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
@@ -62,6 +64,14 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(assessments), 21)
         self.assertIn("arami1:practice", [button.callback_data for button in practices])
         self.assertIn("arami5:practice", [button.callback_data for button in practices])
+
+    def test_arami_assessment_reward_uses_unique_lesson_key_and_twenty_xp(self):
+        with patch.object(bot, "complete_quiz_with_rewards", side_effect=[True, False]) as reward:
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+            self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+        self.assertEqual(reward.call_count, 2)
+        self.assertEqual(reward.call_args_list[0].args, (12345, "arami_assessment:arami_course1_lesson_01"))
+        self.assertEqual(reward.call_args_list[0].kwargs, {"points": 20})
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
@@ -124,6 +134,40 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:lesson:2",
         )
 
+    async def test_finishing_arami_course_final_lesson_shows_course_completion(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][-1]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
+            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+            patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_called_once_with(12345, lesson_id)
+        message.reply_text.assert_awaited_once()
+        self.assertIn("🎓 ئەم کۆرسە تەواو بوو.", message.reply_text.await_args.args[0])
+        self.assertNotIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
+        self.assertIsNone(message.reply_text.await_args.kwargs.get("reply_markup"))
+
+    async def test_uncompleted_previous_lesson_blocks_arami_reward_claim(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][1]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_not_called()
+        voice.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
     async def test_repeated_arami_completion_does_not_grant_rewards_again(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
         update, message, query = self.make_update(f"finish_{lesson_id}")
@@ -165,6 +209,31 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             keyboard[0][0].callback_data,
             "open_lesson_unified_orthography_01",
         )
+
+    def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
+        arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        unified = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        completed = [arami[0], daily[0], unified[-1]]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(
+                bot,
+                "course_is_active",
+                side_effect=lambda course_id: course_id in {
+                    "arami_orthography_foundations",
+                    "daily_conversation",
+                    "unified_orthography",
+                },
+            ),
+        ):
+            badges = bot.current_progress_badges(12345)
+
+        self.assertEqual(len(badges), 3)
+        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1", badges[0])
+        self.assertIn("کۆرسی ٢: وتووێژ — وانەی 1", badges[1])
+        self.assertIn("کۆرسی ٣: ڕێنووسی یەکگرتوو — وانەی 66", badges[2])
+        self.assertFalse(any("Diyako" in badge for badge in badges))
 
     def test_lesson_editorial_review_notes_do_not_deactivate_courses(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))

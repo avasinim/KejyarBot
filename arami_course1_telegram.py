@@ -2,7 +2,6 @@
 import json
 import logging
 import re
-from io import BytesIO
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -172,19 +171,104 @@ def load_lesson_source(base_dir, lesson_number):
     return lesson, source
 
 
+def _render_source_html(source):
+    """Render immutable lesson text with a consistent, classroom-style Telegram layout."""
+    blocks = []
+    lines = source.splitlines()
+    index = 0
+    section_icons = {
+        "ئامانجەکانی فێربوون": "🎯",
+        "کورتەی وانە": "🧠",
+        "کورتەی وانە:": "🧠",
+        "پرسیارەکان": "✍️",
+        "ڕاهێنان": "🧩",
+        "تاقیکردنەوە": "📝",
+    }
+    callouts = {
+        "نموونە": "🧩",
+        "تێبینی": "💡",
+        "گرنگ": "⭐",
+        "ئاگاداری": "⚠️",
+        "پێناسە": "📌",
+    }
+    while index < len(lines):
+        line = lines[index].strip()
+        if not line or re.fullmatch(r"(?:---+|\*{3,}|_{3,})", line):
+            index += 1
+            continue
+        if line.count("|") >= 2:
+            rows = []
+            while index < len(lines) and lines[index].strip().count("|") >= 2:
+                cells = [cell.strip() for cell in lines[index].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
+                    rows.append(cells)
+                index += 1
+            if rows:
+                headers = rows[0]
+                for row in rows[1:]:
+                    parts = []
+                    for cell_index, value in enumerate(row):
+                        label = headers[cell_index] if cell_index < len(headers) else f"خانەی {cell_index + 1}"
+                        parts.append(f"<b>{escape(label)}</b>: {escape(value)}")
+                    blocks.append("<blockquote>" + "\n".join(parts) + "</blockquote>")
+            continue
+        heading = re.match(r"^(#{1,6})\s*(.+)$", line)
+        if heading:
+            text = heading.group(2).strip()
+            blocks.append(f"<b>📚 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
+        elif line in section_icons:
+            blocks.append(f"<b>{section_icons[line]} {escape(line.rstrip(':'))}</b>")
+        elif re.match(r"^\d+[.)-]\s+", line):
+            blocks.append(f"<b>🔹 {escape(line)}</b>")
+        else:
+            label_match = re.match(r"^(نموونە|تێبینی|گرنگ|ئاگاداری|پێناسە)\s*[:：]\s*(.*)$", line)
+            if label_match:
+                label, body = label_match.groups()
+                content = f"<b>{callouts[label]} {escape(label)}</b>"
+                if body:
+                    content += "\n" + escape(body)
+                blocks.append(f"<blockquote>{content}</blockquote>")
+            elif re.match(r"^(?:[-•])\s+", line):
+                blocks.append("▫️ " + escape(re.sub(r"^(?:[-•])\s+", "", line)))
+            else:
+                text = escape(line)
+                text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
+                blocks.append(text)
+        index += 1
+    return blocks
+
+def _split_source_html(blocks, limit=3500):
+    """Split formatted blocks without letting separators push chunks over the limit."""
+    chunks = []
+    current = []
+    size = 0
+    separator = "\n\n"
+    for block in blocks:
+        addition = len(block) + (len(separator) if current else 0)
+        if current and size + addition > limit:
+            chunks.append(separator.join(current))
+            current = []
+            size = 0
+            addition = len(block)
+        current.append(block)
+        size += addition
+    if current:
+        chunks.append(separator.join(current))
+    return chunks
+
+
 async def _send_source(message, title, source):
-    rendered = _plain_markdown(source)
-    if not rendered:
+    blocks = _render_source_html(source)
+    if not blocks:
         raise AramiCourseTelegramError("Lesson source has no readable text")
-    await message.reply_text(f"📖 {title}")
-    while rendered:
-        end = min(3800, len(rendered))
-        if end < len(rendered):
-            boundary = rendered.rfind("\n", 0, end)
-            if boundary > 0:
-                end = boundary
-        await message.reply_text(rendered[:end])
-        rendered = rendered[end:].lstrip("\n")
+    masthead = f"<b>📘 {escape(title)}</b>\n<code>کەژیار — KejyarBot@</code>"
+    chunks = _split_source_html([masthead, *blocks])
+    for chunk in chunks:
+        await message.reply_text(
+            chunk,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
 
 
 
@@ -216,7 +300,7 @@ def build_lesson_infographic_svg(lesson, source):
 <rect width="1200" height="1080" fill="#f4efe3"/>
 <rect x="45" y="45" width="1110" height="990" rx="42" fill="#fffdf8" stroke="#254b3c" stroke-width="8"/>
 <rect x="45" y="45" width="1110" height="260" rx="42" fill="#254b3c"/>
-<text x="600" y="125" text-anchor="middle" font-size="34" fill="#e7c78d">KejyarBot@ • ڕێنووسی ئارامی</text>
+<text x="600" y="125" text-anchor="middle" font-size="34" fill="#e7c78d">KejyarBot@ • ڕێنووسی سەرەتاییی کوردی</text>
 <text x="600" y="225" text-anchor="middle" font-size="52" font-weight="700" fill="#ffffff">{title}</text>
 <text x="600" y="365" text-anchor="middle" font-size="30" fill="#6a5b45">پوختەی ڕێکخراوی بابەتەکانی وانە</text>
 {''.join(cards)}
@@ -226,12 +310,12 @@ def build_lesson_infographic_svg(lesson, source):
 
 
 async def send_lesson_infographic(message, lesson, source):
-    document = BytesIO(build_lesson_infographic_svg(lesson, source))
-    document.name = f"kejyar-arami-lesson-{lesson['number']:02d}.svg"
-    await message.reply_document(
-        document=document,
-        caption=f"🖼️ پوختەی وێنەیی وانەی {lesson['number']} — {lesson.get('title', '')}",
-    )
+    """Keep the lesson reader clean; SVG summaries are not sent as file attachments.
+
+    Telegram displays SVG as a downloadable document rather than an inline lesson
+    visual. The formatted source reader remains the primary lesson presentation.
+    """
+    return
 
 
 def load_lesson_audio_files(base_dir, lesson):
@@ -258,8 +342,8 @@ async def send_lesson_audio(message, base_dir, lesson):
     try:
         assets = load_lesson_audio_files(base_dir, lesson)
     except AramiCourseTelegramError:
-        logger.exception("Invalid audio mapping for Arami Course 1 lesson %s", lesson.get("number"))
-        await message.reply_text("⚠️ دەنگی وانەکە لە فایلەکانی پڕۆژەدا بە دروستی پەیوەست نەکراوە.")
+        # Lesson audio is optional; a missing recording must never interrupt reading.
+        logger.info("Optional audio is unavailable for Arami Course 1 lesson %s", lesson.get("number"))
         return False
     if not assets:
         # Audio is optional: only lessons with an explicitly supplied mapping
@@ -271,7 +355,7 @@ async def send_lesson_audio(message, base_dir, lesson):
                 await message.reply_voice(voice=audio, caption=f"🔊 {label}")
         except Exception:
             logger.exception("Could not send Arami Course 1 lesson audio %s", path.name)
-            await message.reply_text(f"⚠️ ناردنی دەنگی «{label}» سەرکەوتوو نەبوو.")
+            # Keep audio delivery failures out of the learner-facing lesson flow.
             return False
     return True
 
@@ -306,7 +390,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir, can_open=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("aramiC:")
@@ -419,12 +503,17 @@ async def callback(update, context, base_dir, can_open=None):
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
+            reward_note = ""
+            if session["mode"] == "assessment" and award_assessment is not None:
+                lesson_id = f"arami_course1_lesson_{number:02d}"
+                if award_assessment(query.from_user.id, lesson_id):
+                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             rows = []
             if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
             rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
             await query.edit_message_text(
-                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪",
+                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}",
                 reply_markup=InlineKeyboardMarkup(rows),
             )
         else:
