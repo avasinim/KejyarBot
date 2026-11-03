@@ -1119,7 +1119,10 @@ def main():
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(
-        lambda update, context: arami_lesson1_callback(update, context, BASE_DIR),
+        lambda update, context: arami_lesson1_callback(
+            update, context, BASE_DIR,
+            can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+        ),
         pattern=r"^arami1:",
     ))
     app.add_handler(CallbackQueryHandler(
@@ -1130,7 +1133,10 @@ def main():
         pattern=r"^aramiC:",
     ))
     app.add_handler(CallbackQueryHandler(
-        lambda update, context: arami_lesson5_callback(update, context, BASE_DIR),
+        lambda update, context: arami_lesson5_callback(
+            update, context, BASE_DIR,
+            can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+        ),
         pattern=r"^arami5:",
     ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
