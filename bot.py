@@ -904,7 +904,6 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-    if LESSON_COURSE.get(lesson) == "unified_orthography":
     await send_lesson_infographic(query.message, lesson)
 
 async def send_conversation_voice(message, text, user_state=None, user_id=None):
