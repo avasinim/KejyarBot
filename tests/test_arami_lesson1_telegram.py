@@ -16,6 +16,7 @@ def make_update(action, message_id=10):
     query = SimpleNamespace(
         data=f"arami1:{action}",
         message=message,
+        from_user=SimpleNamespace(id=123),
         answer=AsyncMock(),
         edit_message_reply_markup=AsyncMock(),
         edit_message_text=AsyncMock(),
@@ -49,14 +50,29 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "conclusion": "پوختە",
         }
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 1, "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
-        self.assertEqual(query.message.reply_text.await_count, 10)
+        self.assertEqual(query.message.reply_text.await_count, 11)
         self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
         self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
-        self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
+        self.assertIn("پوختە", query.message.reply_text.await_args_list[9].args[0])
+        completion_markup = query.message.reply_text.await_args_list[9].kwargs["reply_markup"]
+        self.assertEqual(completion_markup.inline_keyboard[0][0].callback_data, "finish_arami_course1_lesson_01")
+
+    async def test_lesson_reader_refuses_locked_lesson1(self):
+        update, query = make_update("lesson")
+        lesson = {
+            "title": "وانەی ١", "objectives": [], "sections": [], "conclusion": "پوختە",
+        }
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": []}]}
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
+            "arami_lesson1_telegram.load_manifest", return_value=manifest
+        ):
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
     async def test_audio_callback_does_not_misroute_lesson2_recording(self):
         update, query = make_update("audio")
