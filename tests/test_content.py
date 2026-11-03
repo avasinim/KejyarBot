@@ -401,8 +401,9 @@ class ContentConsistencyTests(unittest.TestCase):
         import bot
 
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
-        self.assertIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
-        self.assertIn('LESSON_BUTTONS[course_lesson["title"]] = lesson_key', bot_source)
+        self.assertNotIn('ORTHOGRAPHY_COURSE = load_json("course_data/orthography_foundations.json")', bot_source)
+        self.assertNotIn('for course_lesson in ORTHOGRAPHY_COURSE.get("lessons", [])', bot_source)
+        self.assertEqual(len(bot.LESSON_BUTTONS), 0)
         self.assertEqual(len(bot.ORDER), 0)
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
