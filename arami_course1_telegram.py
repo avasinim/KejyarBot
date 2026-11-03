@@ -2,7 +2,6 @@
 import json
 import logging
 import re
-from io import BytesIO
 from pathlib import Path
 from xml.sax.saxutils import escape
 
