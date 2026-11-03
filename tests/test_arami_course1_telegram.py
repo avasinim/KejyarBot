@@ -163,6 +163,11 @@ class AramiCourseTelegramTests(unittest.TestCase):
         seen_ids = set()
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
+            practice_prompts = [item["prompt"].strip().casefold() for item in bank["practice"]]
+            assessment_prompts = [item["prompt"].strip().casefold() for item in bank["assessment"]]
+            self.assertEqual(len(practice_prompts), len(set(practice_prompts)))
+            self.assertEqual(len(assessment_prompts), len(set(assessment_prompts)))
+            self.assertFalse(set(practice_prompts) & set(assessment_prompts))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
             for mode in ("practice", "assessment"):
                 prefix = "p" if mode == "practice" else "a"
