@@ -300,7 +300,7 @@ def build_lesson_infographic_svg(lesson, source):
 <rect width="1200" height="1080" fill="#f4efe3"/>
 <rect x="45" y="45" width="1110" height="990" rx="42" fill="#fffdf8" stroke="#254b3c" stroke-width="8"/>
 <rect x="45" y="45" width="1110" height="260" rx="42" fill="#254b3c"/>
-<text x="600" y="125" text-anchor="middle" font-size="34" fill="#e7c78d">KejyarBot@ • ڕێنووسی ئارامی</text>
+<text x="600" y="125" text-anchor="middle" font-size="34" fill="#e7c78d">KejyarBot@ • ڕێنووسی سەرەتاییی کوردی</text>
 <text x="600" y="225" text-anchor="middle" font-size="52" font-weight="700" fill="#ffffff">{title}</text>
 <text x="600" y="365" text-anchor="middle" font-size="30" fill="#6a5b45">پوختەی ڕێکخراوی بابەتەکانی وانە</text>
 {''.join(cards)}
