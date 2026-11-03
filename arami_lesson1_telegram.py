@@ -41,7 +41,7 @@ async def send_question(message, context):
     context.user_data["arami_lesson1_message_id"] = sent.message_id
 
 
-async def callback(update, context, base_dir):
+async def callback(update, context, base_dir, can_open=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("arami1:")
@@ -57,9 +57,14 @@ async def callback(update, context, base_dir):
     if action == "lesson":
         try:
             lesson = load_arami_lesson1_content(base_dir)
-        except (OSError, ValueError):
+            manifest = load_manifest(base_dir)
+            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 1)
+        except (OSError, ValueError, StopIteration):
             logger.exception("Could not load Arami Lesson 1 source text")
             await query.message.reply_text("⚠️ دەقی ڕەسەنی وانەی ١ ئامادە نییە.")
+            return
+        if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
+            await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
             return
         intro = f"📕 {lesson['title']}\n\n🎯 ئامانجی وانە\n" + "\n".join(
             f"• {item}" for item in lesson["objectives"]
@@ -86,13 +91,15 @@ async def callback(update, context, base_dir):
                 await query.message.reply_text("⚠️ بەشێک لە وانەکە درێژترە لە سنووری پەیامی Telegram.")
                 return
             await query.message.reply_text(message_text)
-        manifest = load_manifest(base_dir)
-        lesson_audio = next(item for item in manifest["lessons"] if item["number"] == 1)
+        lesson_audio = lesson_record
         await send_lesson_audio(query.message, base_dir, lesson_audio)
         await query.message.reply_text(
             "⭐ کۆتایی وانە\n" + lesson["conclusion"],
-            reply_markup=menu_keyboard(),
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
+            ]]),
         )
+        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
         return
 
     if action == "audio":
