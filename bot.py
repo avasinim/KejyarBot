@@ -785,7 +785,7 @@ def render_lesson_html_blocks(content):
             title = line.removeprefix("## ").strip()
             blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
         elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
-            blocks.append(f"<b>◆ {escaped}</b>")
+            blocks.append(f"<b>{escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith(("نموونە:", "**نموونە:**", "هەڵە:", "ڕێگای دروست:", "• ", "- ")):
