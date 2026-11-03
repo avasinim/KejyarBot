@@ -8,13 +8,13 @@
       "number": 1,
       "title": "پیتەکان و دەنگەکان",
       "content_source": "user_supplied_immutable",
-      "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
-      "practice_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
-      "assessment_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
+      "content_status": "user_supplied_lesson_text_preserved_and_structured_for_Telegram_reading",
+      "practice_status": "five_questions_checked_against_user_supplied_lesson_text; Telegram_callback_flow_wired",
+      "assessment_status": "five_questions_checked_against_user_supplied_lesson_text; Telegram_callback_flow_wired",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
       "presentation_status": "source_text_delivered_in_sections; dedicated_lesson_1_audio_mapped; practice_and_assessment_wired",
-      "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
+      "source_caution": "Use only the user's supplied Lesson 1 text. The text explicitly states 34 alphabet letters and 8 vowels; the user's confirmed eight-vowel explanation remains authoritative. Do not introduce an external book or PDF source.",
       "interaction_presentation": "arami_lesson1_presentation.py",
       "content_file": "course_data/arami_course1_lesson_01_content.json",
       "audio_assignment_note": "The dedicated recording بزوێنی ی.ogg belongs to Lesson 1 and is sent after its source text.",
@@ -29,7 +29,7 @@
       "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
       "interaction_mode": "dedicated",
       "quiz_audit_status": "dedicated_bank_verified_5_practice_5_assessment",
-      "quiz_audit_note": "Correction: Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions. It is loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are grounded in the user-supplied PDF pages 1–4 and confirmed eight-vowel explanation. The shared course bank file does not include this separately namespaced bank."
+      "quiz_audit_note": "Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions, loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are checked against the user-supplied lesson text. The shared course bank file does not include this separately namespaced bank."
     },
     {
       "id": "arami_course1_lesson_02",
@@ -628,10 +628,9 @@
   },
   "course_size": 21,
   "source_audit": {
-    "archive_file": "کەژیار.pdf",
-    "audit_date": "2026-11-02",
+    "audit_date": "2026-11-03",
     "gaps": [],
-    "note": "Repository file audit after user insertion: Course 1 Round 1 contains exactly 21 lessons. The new Lesson 16 covers ر and ڕ, followed by the existing lessons shifted to 17–21. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
+    "note": "Repository file audit: Course 1 Round 1 contains exactly 21 user-supplied lesson texts. Source-file presence does not by itself imply semantic verification, practice/assessment alignment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
@@ -654,7 +653,8 @@
       19,
       20,
       21
-    ]
+    ],
+    "source_policy": "The user's supplied lesson texts are the sole source of truth. No book or PDF is associated with this course."
   },
   "course_total_lessons": 21,
   "program": {
