@@ -11,6 +11,7 @@ from arami_course1_telegram import (
     _plain_markdown,
     _render_source_html,
     _send_source,
+    build_lesson_infographic_svg,
     _split_source_html,
     course_menu_keyboard,
     load_lesson_source,
@@ -23,6 +24,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AramiCourseTelegramTests(unittest.TestCase):
+    def test_infographic_uses_the_current_course_title(self):
+        svg = build_lesson_infographic_svg(
+            {"number": 1, "title": "پیتەکان و دەنگەکان"},
+            "# وانەی ١\n## پیتەکان\n## دەنگەکان",
+        ).decode("utf-8")
+        self.assertIn("ڕێنووسی سەرەتاییی کوردی", svg)
+        self.assertNotIn("ڕێنووسی ئارامی", svg)
+
     def test_course1_source_formatter_styles_headings_and_plain_pipe_tables(self):
         blocks = _render_source_html(
             "# پیتەکان و دەنگەکان\n"
