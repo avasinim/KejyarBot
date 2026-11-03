@@ -258,8 +258,8 @@ async def send_lesson_audio(message, base_dir, lesson):
     try:
         assets = load_lesson_audio_files(base_dir, lesson)
     except AramiCourseTelegramError:
-        logger.exception("Invalid audio mapping for Arami Course 1 lesson %s", lesson.get("number"))
-        await message.reply_text("⚠️ دەنگی وانەکە لە فایلەکانی پڕۆژەدا بە دروستی پەیوەست نەکراوە.")
+        # Lesson audio is optional; a missing recording must never interrupt reading.
+        logger.info("Optional audio is unavailable for Arami Course 1 lesson %s", lesson.get("number"))
         return False
     if not assets:
         # Audio is optional: only lessons with an explicitly supplied mapping
@@ -271,7 +271,7 @@ async def send_lesson_audio(message, base_dir, lesson):
                 await message.reply_voice(voice=audio, caption=f"🔊 {label}")
         except Exception:
             logger.exception("Could not send Arami Course 1 lesson audio %s", path.name)
-            await message.reply_text(f"⚠️ ناردنی دەنگی «{label}» سەرکەوتوو نەبوو.")
+            # Keep audio delivery failures out of the learner-facing lesson flow.
             return False
     return True
 
