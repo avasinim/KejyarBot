@@ -55,14 +55,20 @@ class AramiCourseTelegramTests(unittest.TestCase):
     def test_course_menu_displays_completed_available_and_locked_states(self):
         manifest = load_manifest(ROOT)
         first_id = manifest["lessons"][0]["id"]
+        second_id = manifest["lessons"][1]["id"]
         keyboard = course_menu_keyboard(
             manifest,
             completed_lessons={first_id},
-            can_open=lambda lesson_id: lesson_id == first_id,
+            can_open=lambda lesson_id: lesson_id in {first_id, second_id},
         )
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        self.assertTrue(buttons[0].text.startswith("✅"))
-        self.assertTrue(buttons[1].text.startswith("🔒"))
+        buttons = {
+            button.callback_data: button
+            for row in keyboard.inline_keyboard
+            for button in row
+        }
+        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
 
     def test_course_menu_marks_all_lessons_available_without_progress_guard(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
