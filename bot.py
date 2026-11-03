@@ -912,7 +912,12 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
         await query.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
-            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+            reply_markup=arami_course1_menu_keyboard(
+                arami_manifest,
+                arami_banks,
+                completed_lessons=get_completed_lessons(user_id),
+                can_open=lambda lesson_id: can_open(user_id, lesson_id),
+            ),
         )
         return
     course = next((item for item in COURSES if item.get("id") == course_id), None)
@@ -954,7 +959,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
             "٢١ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
-            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+            reply_markup=arami_course1_menu_keyboard(
+                arami_manifest,
+                arami_banks,
+                completed_lessons=get_completed_lessons(user_id),
+                can_open=lambda lesson_id: can_open(user_id, lesson_id),
+            ),
         )
         return
 
@@ -1005,7 +1015,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
         await update.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی ئارامی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
-            reply_markup=arami_course1_menu_keyboard(arami_manifest, arami_banks),
+            reply_markup=arami_course1_menu_keyboard(
+                arami_manifest,
+                arami_banks,
+                completed_lessons=get_completed_lessons(user_id),
+                can_open=lambda lesson_id: can_open(user_id, lesson_id),
+            ),
         )
         return
 
