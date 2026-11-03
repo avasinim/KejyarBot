@@ -27,6 +27,18 @@ class LessonPresentationTests(unittest.TestCase):
         recovered = html.unescape(re.sub(r"<[^>]+>", "", "\n".join(blocks)))
         self.assertEqual(recovered, source)
 
+    def test_plain_pipe_tables_without_edge_pipes_are_rendered(self):
+        blocks = render_lesson_html_blocks(
+            "ژمارە | پیت/نیشانە | ناو\n"
+            "١ | ا | ئەلف\n"
+            "٢ | ب | بێ"
+        )
+        rendered = "\n".join(blocks)
+        self.assertIn("<b>ژمارە:</b> ١", rendered)
+        self.assertIn("<b>پیت/نیشانە:</b> ا", rendered)
+        self.assertIn("<b>ناو:</b> ئەلف", rendered)
+        self.assertIn("<b>ژمارە:</b> ٢", rendered)
+
     def test_long_lessons_are_split_into_telegram_safe_chunks(self):
         blocks = render_lesson_html_blocks("دەقی وانە\n" + ("وشەی فێرکاری " * 700))
         chunks = split_lesson_html(blocks)
