@@ -97,6 +97,18 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("چەند پیت؟", query.message.reply_text.await_args.args[0])
 
+    async def test_locked_lesson1_practice_and_assessment_are_not_started(self):
+        for action in ("practice", "assessment"):
+            update, query = make_update(action)
+            context = SimpleNamespace(user_data={})
+            with patch("arami_lesson1_telegram.load_manifest", return_value={
+                "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
+            }):
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False)
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
+            self.assertNotIn("arami_lesson1_session", context.user_data)
+
     async def test_stale_question_message_cannot_change_current_answer(self):
         context = SimpleNamespace(user_data={
             "arami_lesson1_session": {
