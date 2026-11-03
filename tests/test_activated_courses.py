@@ -22,11 +22,27 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(bot.course_is_active("orthography_basic"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
         self.assertEqual(len(next(c for c in bot.COURSES if c["id"] == "arami_orthography_foundations")["lesson_ids"]), 21)
+        self.assertFalse(any(key.startswith("وانە_") for key in bot.LESSON_DATA))
+        self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
+
+    async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        with patch.object(bot, "get_user"), patch.object(bot, "get_completed_lessons", return_value=[]):
+            await bot.message(update, SimpleNamespace(user_data={}))
+        self.assertEqual(message.reply_text.await_count, 1)
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        callbacks = [button.callback_data for row in keyboard for button in row]
+        self.assertNotIn("course_orthography_basic", callbacks)
+        self.assertIn("course_arami_orthography_foundations", callbacks)
 
     async def test_open_arami_course_from_generic_course_menu(self):
         update, message, query = self.make_update("course_arami_orthography_foundations")
