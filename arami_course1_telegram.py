@@ -213,19 +213,29 @@ def _render_source_html(source):
 
 
 def _split_source_html(blocks, limit=3500):
+    """Split formatted blocks without letting separators push chunks over the limit."""
     chunks = []
     current = []
     size = 0
+    separator = "\n\n"
     for block in blocks:
-        addition = len(block) + (1 if current else 0)
+        block = str(block)
+        addition = len(block) + (len(separator) if current else 0)
         if current and size + addition > limit:
-            chunks.append("\n".join(current))
+            chunks.append(separator.join(current))
             current = []
             size = 0
+            addition = len(block)
+        if len(block) > limit:
+            # Keep Telegram messages within the configured limit even for a single
+            # unusually long source line; this preserves every character.
+            while len(block) > limit:
+                chunks.append(block[:limit])
+                block = block[limit:]
         current.append(block)
-        size += len(block) + (1 if len(current) > 1 else 0)
+        size += len(block) + (len(separator) if len(current) > 1 else 0)
     if current:
-        chunks.append("\n\n".join(current))
+        chunks.append(separator.join(current))
     return chunks
 
 
