@@ -507,13 +507,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if session["mode"] == "assessment" and award_assessment is not None:
                 lesson_id = f"arami_course1_lesson_{number:02d}"
                 if award_assessment(query.from_user.id, lesson_id):
-                    reward_note = "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             rows = []
             if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
             rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
             await query.edit_message_text(
-                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪",
+                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}",
                 reply_markup=InlineKeyboardMarkup(rows),
             )
         else:
