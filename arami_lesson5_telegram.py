@@ -82,6 +82,16 @@ async def callback(update, context, base_dir, can_open=None):
         await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
+        if can_open is not None:
+            try:
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+            except (OSError, ValueError, StopIteration):
+                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+                return
+            if not can_open(query.from_user.id, lesson_record["id"]):
+                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
         try:
             bank = load_arami_lesson5_interactions(base_dir)
             context.user_data["arami_lesson5_session"] = create_session(bank[action], action)
