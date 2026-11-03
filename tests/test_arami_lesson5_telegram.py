@@ -174,7 +174,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             shown = submit_query.edit_message_text.await_args.args[0]
             self.assertNotIn("وەڵامی ڕاست", shown)
             if index == 0:
-                self.assertIn("وەڵامەکەت تۆمار کرا", shown)
+                self.assertIn("وەڵامەکەت وەرگیرا", shown)
                 update, _next_query = make_update("next", message_id=message_id)
                 await callback(update, context, "/unused")
             else:
