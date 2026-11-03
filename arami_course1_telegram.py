@@ -86,17 +86,30 @@ def load_question_banks(base_dir):
     return banks
 
 
-def course_menu_keyboard(manifest, interactive_lessons=()):
+def course_menu_keyboard(
+    manifest,
+    interactive_lessons=(),
+    completed_lessons=(),
+    can_open=None,
+):
     interactive_lessons = set(interactive_lessons)
+    completed_lessons = set(completed_lessons)
     rows = []
     for lesson in sorted(manifest["lessons"], key=lambda item: item["number"]):
         number = lesson["number"]
+        lesson_id = lesson.get("id")
         title = str(lesson.get("title") or "وانە")
         label = f"{number}. {title}"
         if len(label) > 40:
             label = f"{number}. {title[:34]}…"
         read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
-        row = [InlineKeyboardButton(f"📖 {label}", callback_data=read_callback)]
+        if lesson_id in completed_lessons:
+            status = "✅"
+        elif can_open is not None and not can_open(lesson_id):
+            status = "🔒"
+        else:
+            status = "🔓"
+        row = [InlineKeyboardButton(f"{status} 📖 {label}", callback_data=read_callback)]
         if number == 1:
             row.extend([
                 InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
