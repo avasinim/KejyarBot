@@ -315,5 +315,32 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
 
+    async def test_reader_refuses_a_locked_lesson_when_progress_guard_is_supplied(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("lesson:2")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
+        self.assertEqual(query.message.reply_text.await_args.kwargs.get("reply_markup"), None)
+
+    async def test_reader_offers_database_completion_callback_for_the_exact_lesson(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("lesson:1")
+        query.from_user = SimpleNamespace(id=123)
+        query.message.reply_document = AsyncMock()
+        query.message.reply_voice = AsyncMock()
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01")
+        self.assertTrue(query.message.reply_document.await_count)
+        self.assertEqual(query.message.reply_voice.await_count, 1)
+        completion_message = query.message.reply_text.await_args_list[-1]
+        self.assertIn("finish_arami_course1_lesson_01", [
+            button.callback_data
+            for row in completion_message.kwargs["reply_markup"].inline_keyboard
+            for button in row
+        ])
+
 if __name__ == "__main__":
     unittest.main()
