@@ -135,6 +135,52 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
 
+    async def test_returning_from_lesson_reader_keeps_the_users_progress_states(self):
+        manifest = load_manifest(ROOT)
+        first_id = manifest["lessons"][0]["id"]
+        second_id = manifest["lessons"][1]["id"]
+        message = SimpleNamespace(
+            message_id=10,
+            reply_text=AsyncMock(return_value=SimpleNamespace(message_id=11)),
+            reply_voice=AsyncMock(),
+        )
+        query = SimpleNamespace(
+            data="aramiC:lesson:2",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        can_open = Mock(side_effect=lambda user_id, lesson_id: lesson_id in {first_id, second_id})
+        get_completed = Mock(return_value=[first_id])
+
+        await arami_course1_callback(
+            update,
+            SimpleNamespace(user_data={}),
+            ROOT,
+            can_open=can_open,
+            get_completed_lessons=get_completed,
+        )
+
+        get_completed.assert_called_once_with(24680)
+        menu_call = next(
+            call for call in reversed(message.reply_text.await_args_list)
+            if call.kwargs.get("reply_markup") is not None
+            and any(
+                button.callback_data == "aramiC:lesson:3"
+                for row in call.kwargs["reply_markup"].inline_keyboard
+                for button in row
+            )
+        )
+        buttons = {
+            button.callback_data: button
+            for row in menu_call.kwargs["reply_markup"].inline_keyboard
+            for button in row
+        }
+        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(len(manifest["lessons"]), 21)
