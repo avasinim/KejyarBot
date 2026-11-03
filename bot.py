@@ -61,6 +61,13 @@ BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+def award_arami_assessment(user_id, lesson_id):
+    """Grant 20 XP once for a Course 1 assessment, never for practice or retries."""
+    return complete_quiz_with_rewards(
+        user_id, f"arami_assessment:{lesson_id}", points=20
+    )
+
 # Load .env without requiring an extra dependency. Environment variables already
 # set by the host always take precedence.
 ENV_FILE = BASE_DIR / ".env"
@@ -1185,6 +1192,7 @@ def main():
         lambda update, context: arami_lesson1_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^arami1:",
     ))
@@ -1192,6 +1200,7 @@ def main():
         lambda update, context: arami_course1_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^aramiC:",
     ))
@@ -1199,6 +1208,7 @@ def main():
         lambda update, context: arami_lesson5_callback(
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
+            award_assessment=award_arami_assessment,
         ),
         pattern=r"^arami5:",
     ))
