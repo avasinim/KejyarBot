@@ -3,6 +3,7 @@ name: Orthography course structure tests
 on:
   push:
     branches:
+      - main
       - fix/kejyarbot-stability-2026-10-25
   pull_request:
     branches:
