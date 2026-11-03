@@ -389,7 +389,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_document = AsyncMock()
         query.message.reply_voice = AsyncMock()
         await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01")
-        self.assertTrue(query.message.reply_document.await_count)
+        self.assertEqual(query.message.reply_document.await_count, 0)
         self.assertEqual(query.message.reply_voice.await_count, 0)
         self.assertFalse(any("دەنگی وانەکە" in call.args[0] for call in query.message.reply_text.await_args_list))
         completion_messages = [
