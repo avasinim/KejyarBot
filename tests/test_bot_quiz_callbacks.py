@@ -5,6 +5,36 @@ from unittest.mock import AsyncMock, patch
 import bot
 
 
+class AramiCourse1ProgressionTests(unittest.TestCase):
+    def test_all_21_lessons_form_one_ordered_sequence_with_terminal_lesson(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        self.assertEqual(len(lesson_ids), 21)
+        for index, lesson_id in enumerate(lesson_ids[:-1]):
+            self.assertEqual(bot.next_course_lesson(lesson_id), lesson_ids[index + 1])
+        self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
+
+    def test_lesson_unlocking_requires_the_immediate_predecessor(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[]
+        ):
+            self.assertTrue(bot.can_open(12345, lesson_ids[0]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[1]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[-1]))
+
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[lesson_ids[0]]
+        ):
+            self.assertTrue(bot.can_open(12345, lesson_ids[1]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[2]))
+
+    def test_inactive_course_cannot_open_any_lesson(self):
+        with patch.object(bot, "course_is_active", return_value=False), patch.object(
+            bot, "get_completed_lessons", return_value=[]
+        ):
+            self.assertFalse(bot.can_open(12345, bot.ARMI_LESSON_IDS[0]))
+
+
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
     def make_context(self, callback_data, message_id=77):
         query = SimpleNamespace(
