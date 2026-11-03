@@ -1087,10 +1087,18 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "🧭 ڕێگای فێربوون":
         completed = set(get_completed_lessons(user_id))
-        lines = []
-        for lesson in ORDER:
-            status = "✅ تەواو کراوە" if lesson in completed else ("🔓 ئامادەیە" if can_open(user_id, lesson) else "🔒 داخراوە")
-            lines.append(f"{status} — {lesson}: {LESSON_DATA.get(lesson, {}).get('title', lesson)}")
+        manifest = load_arami_course1_manifest(BASE_DIR)
+        lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی ئارامی"]
+        completed_count = 0
+        for item in sorted(manifest["lessons"], key=lambda lesson: lesson["number"]):
+            lesson_id = item["id"]
+            if lesson_id in completed:
+                status = "✅ تەواو کراوە"
+                completed_count += 1
+            else:
+                status = "🔓 ئامادەیە" if can_open(user_id, lesson_id) else "🔒 داخراوە"
+            lines.append(f"{status} — وانەی {item['number']}: {item['title']}")
+        lines.insert(1, f"پێشکەوتن: {completed_count}/{len(manifest['lessons'])} وانە")
         await update.message.reply_text("\n".join(lines))
         return
 
