@@ -746,11 +746,13 @@ def render_lesson_html_blocks(content):
     index = 0
     while index < len(source_lines):
         line = source_lines[index].strip()
-        if line.startswith("|") and line.endswith("|"):
+        # Accept both Markdown tables (| a | b |) and the plain pipe tables
+        # used in the supplied lessons (a | b | c), without requiring edge pipes.
+        if line.count("|") >= 2:
             table_lines = []
             while index < len(source_lines):
                 candidate = source_lines[index].strip()
-                if not (candidate.startswith("|") and candidate.endswith("|")):
+                if candidate.count("|") < 2:
                     break
                 cells = [cell.strip() for cell in candidate.strip("|").split("|")]
                 if not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells):
