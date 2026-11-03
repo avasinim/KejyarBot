@@ -129,7 +129,7 @@ async def callback(update, context, base_dir, can_open=None):
             correct = question["options"][question["answer_index"]]
             feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"
         else:
-            feedback = "✅ وەڵامەکەت تۆمار کرا."
+            feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
             rows = []
