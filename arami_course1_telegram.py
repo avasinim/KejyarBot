@@ -348,6 +348,15 @@ async def callback(update, context, base_dir, can_open=None):
         if not raw.isdigit():
             return
         number = int(raw)
+        if can_open is not None:
+            try:
+                lesson_record, _ = load_lesson_source(base_dir, number)
+            except AramiCourseTelegramError:
+                await query.message.reply_text(f"⚠️ سەرچاوەی وانەی {number} ئامادە نییە.")
+                return
+            if not can_open(query.from_user.id, lesson_record["id"]):
+                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
         try:
             banks = load_question_banks(base_dir)
             bank = banks[number]
