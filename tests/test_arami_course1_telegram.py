@@ -23,7 +23,7 @@ from arami_course1_telegram import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class AramiCourseTelegramTests(unittest.TestCase):
+class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
     def test_infographic_uses_the_current_course_title(self):
         svg = build_lesson_infographic_svg(
             {"number": 1, "title": "پیتەکان و دەنگەکان"},
