@@ -11,6 +11,7 @@ from arami_course1_telegram import (
     _plain_markdown,
     _render_source_html,
     _send_source,
+    _split_source_html,
     course_menu_keyboard,
     load_lesson_source,
     load_manifest,
@@ -37,6 +38,16 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("<b>پیت/نیشانە</b>: ا", rendered)
         self.assertIn("<b>ناو</b>: ئەلف", rendered)
         self.assertIn("<b>ژمارە</b>: ٢", rendered)
+
+    def test_source_chunks_count_the_actual_blank_line_separator(self):
+        blocks = [f"بلاک {index} " + ("دەق " * 12) for index in range(300)]
+        chunks = _split_source_html(blocks, limit=3500)
+        self.assertGreater(len(chunks), 1)
+        self.assertTrue(all(len(chunk) <= 3500 for chunk in chunks))
+        self.assertEqual(
+            [part for chunk in chunks for part in chunk.split("\\n\\n")],
+            blocks,
+        )
 
     def test_course1_source_is_sent_as_formatted_html(self):
         message = SimpleNamespace(reply_text=AsyncMock())
