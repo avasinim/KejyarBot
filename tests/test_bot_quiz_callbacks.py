@@ -10,6 +10,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query = SimpleNamespace(
             data=callback_data,
             message=SimpleNamespace(message_id=message_id),
+            from_user=SimpleNamespace(id=12345),
             answer=AsyncMock(),
             edit_message_reply_markup=AsyncMock(),
         )
