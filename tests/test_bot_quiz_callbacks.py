@@ -285,7 +285,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
         self.assertNotIn("quiz", context.user_data)
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_lesson_completion_offers_clickable_practice_for_exact_target_lessons(self):
         targets = [
             "وانە_3",
@@ -320,7 +320,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 ]
                 self.assertIn(bot.lesson_practice_callback(lesson), callbacks)
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_two_does_not_offer_clickable_practice(self):
         lesson = "وانە_2"
         query = SimpleNamespace(
@@ -355,7 +355,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
             self.assertTrue(bot.quiz_requires_submission(bot.COURSE_LESSON_ORDER[course_id][0]))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_three_uses_select_then_submit_buttons(self):
         lesson = "وانە_3"
         query = SimpleNamespace(
@@ -383,7 +383,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             for row in markup.inline_keyboard
         ))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_two_keeps_immediate_answer_buttons(self):
         query = SimpleNamespace(
             data="quiz_2_start",
@@ -410,7 +410,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             for row in markup.inline_keyboard
         ))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
@@ -434,7 +434,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_completed_lesson_can_start_its_quiz(self):
         from unittest.mock import patch
 
@@ -462,7 +462,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     def test_lesson_lock_requires_previous_lesson_completion(self):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             self.assertTrue(bot.can_open(12345, "وانە_1"))
@@ -474,7 +474,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, "وانە_2"))
             self.assertFalse(bot.can_open(12345, "وانە_3"))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_first_lesson_completion_offers_only_the_next_lesson(self):
         query = SimpleNamespace(
             data="finish_وانە_1",
@@ -503,7 +503,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         button = keyboard.inline_keyboard[0][0]
         self.assertEqual(button.callback_data, "next_lesson_وانە_2")
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_repeated_lesson_completion_does_not_offer_next_lesson_again(self):
         query = SimpleNamespace(
             data="finish_وانە_1",
@@ -530,7 +530,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێشتر تەواو کراوە", query.message.reply_text.await_args.args[0])
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_final_lesson_completion_offers_final_lesson_quiz(self):
         final_lesson = bot.ORDER[-1]
         query = SimpleNamespace(
@@ -558,7 +558,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تاقیکردنەوە", button.text)
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_lesson_22_quiz_start_maps_to_its_real_draft_question(self):
         query = SimpleNamespace(
             data="quiz_22_start",
