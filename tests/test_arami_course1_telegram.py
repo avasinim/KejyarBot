@@ -52,6 +52,24 @@ class AramiCourseTelegramTests(unittest.TestCase):
             {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
         )
 
+    def test_course_menu_displays_completed_available_and_locked_states(self):
+        manifest = load_manifest(ROOT)
+        first_id = manifest["lessons"][0]["id"]
+        keyboard = course_menu_keyboard(
+            manifest,
+            completed_lessons={first_id},
+            can_open=lambda lesson_id: lesson_id == first_id,
+        )
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        self.assertTrue(buttons[0].text.startswith("✅"))
+        self.assertTrue(buttons[1].text.startswith("🔒"))
+
+    def test_course_menu_marks_all_lessons_available_without_progress_guard(self):
+        keyboard = course_menu_keyboard(load_manifest(ROOT))
+        buttons = [row[0] for row in keyboard.inline_keyboard]
+        self.assertEqual(len(buttons), 21)
+        self.assertTrue(all(button.text.startswith("🔓") for button in buttons))
+
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
         self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21})
