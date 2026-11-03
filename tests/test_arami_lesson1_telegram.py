@@ -4,7 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
-from arami_lesson1_telegram import callback, menu_keyboard
+from arami_lesson1_telegram import callback, menu_keyboard, _lesson_source_markdown
 
 
 def make_update(action, message_id=10):
@@ -16,6 +16,7 @@ def make_update(action, message_id=10):
     query = SimpleNamespace(
         data=f"arami1:{action}",
         message=message,
+        from_user=SimpleNamespace(id=123),
         answer=AsyncMock(),
         edit_message_reply_markup=AsyncMock(),
         edit_message_text=AsyncMock(),
@@ -24,6 +25,22 @@ def make_update(action, message_id=10):
 
 
 class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
+    def test_lesson1_adapter_preserves_all_structured_source_parts_in_order(self):
+        lesson = {
+            'title': 'سەردێڕ', 'objectives': ['ئامانج'],
+            'sections': [{
+                'title': 'بەشی یەک', 'body': 'دەقی ڕەسەن',
+                'table': [['پیت', 'ناو'], ['ا', 'ئەلف']],
+                'note': 'تێبینیی ڕەسەن',
+                'questions': [{'prompt': 'پرسیاری ڕەسەن', 'options': ['هەڵبژاردەی A', 'هەڵبژاردەی B']}],
+            }],
+        }
+        rendered_source = _lesson_source_markdown(lesson)
+        expected = ['سەردێڕ', 'ئامانج', 'بەشی یەک', 'دەقی ڕەسەن', 'پیت', 'ئەلف', 'تێبینیی ڕەسەن', 'پرسیاری ڕەسەن', 'A) هەڵبژاردەی A', 'B) هەڵبژاردەی B']
+        positions = [rendered_source.index(value) for value in expected]
+        self.assertEqual(positions, sorted(positions))
+        self.assertNotIn('تێبینی: تێبینیی ڕەسەن', rendered_source)
+
     def test_menu_exposes_only_lesson1_actions(self):
         keyboard = menu_keyboard()
         callbacks = [
@@ -38,6 +55,13 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:menu",
         ])
 
+    async def test_lesson1_menu_uses_the_current_course_title(self):
+        update, query = make_update("menu")
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        shown = query.message.reply_text.await_args.args[0]
+        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی", shown)
+        self.assertNotIn("ڕێنووسی ئارامی", shown)
+
     async def test_lesson_callback_sends_intro_all_sections_and_conclusion(self):
         lesson = {
             "title": "وانەی ١",
@@ -49,14 +73,34 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "conclusion": "پوختە",
         }
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 1, "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
         send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
-        self.assertEqual(query.message.reply_text.await_count, 10)
-        self.assertIn("وانەی ١", query.message.reply_text.await_args_list[0].args[0])
-        self.assertIn("بەشی 8", query.message.reply_text.await_args_list[8].args[0])
-        self.assertIn("پوختە", query.message.reply_text.await_args_list[-1].args[0])
+        self.assertEqual(query.message.reply_text.await_count, 4)
+        lesson_html = query.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("وانەی ١", lesson_html)
+        self.assertIn("کەژیار — KejyarBot@", lesson_html)
+        self.assertIn("ئامانج", lesson_html)
+        self.assertIn("بەشی 8", lesson_html)
+        self.assertEqual(query.message.reply_text.await_args_list[0].kwargs["parse_mode"], "HTML")
+        self.assertIn("پوختە", query.message.reply_text.await_args_list[1].args[0])
+        self.assertEqual(query.message.reply_text.await_args_list[1].kwargs["parse_mode"], "HTML")
+        completion_markup = query.message.reply_text.await_args_list[2].kwargs["reply_markup"]
+        self.assertEqual(completion_markup.inline_keyboard[0][0].callback_data, "finish_arami_course1_lesson_01")
+
+    async def test_lesson_reader_refuses_locked_lesson1(self):
+        update, query = make_update("lesson")
+        lesson = {
+            "title": "وانەی ١", "objectives": [], "sections": [], "conclusion": "پوختە",
+        }
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": []}]}
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
+            "arami_lesson1_telegram.load_manifest", return_value=manifest
+        ):
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
     async def test_audio_callback_does_not_misroute_lesson2_recording(self):
         update, query = make_update("audio")
@@ -80,6 +124,18 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("چەند پیت؟", query.message.reply_text.await_args.args[0])
+
+    async def test_locked_lesson1_practice_and_assessment_are_not_started(self):
+        for action in ("practice", "assessment"):
+            update, query = make_update(action)
+            context = SimpleNamespace(user_data={})
+            with patch("arami_lesson1_telegram.load_manifest", return_value={
+                "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
+            }):
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False)
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
+            self.assertNotIn("arami_lesson1_session", context.user_data)
 
     async def test_stale_question_message_cannot_change_current_answer(self):
         context = SimpleNamespace(user_data={
@@ -149,6 +205,12 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
         self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
+
+    async def test_assessment_does_not_reveal_correct_answer_after_each_response(self):
+        _context, result_query = await self._start_and_answer(0)
+        shown = result_query.edit_message_text.await_args.args[0]
+        self.assertIn("وەڵامەکەت وەرگیرا", shown)
+        self.assertNotIn("وەڵامی ڕاست", shown)
 
     async def test_perfect_assessment_does_not_offer_retry(self):
         _context, result_query = await self._start_and_answer(1)

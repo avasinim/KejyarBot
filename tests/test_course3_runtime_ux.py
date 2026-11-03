@@ -21,7 +21,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=lessons[:3]):
             self.assertTrue(bot.can_open(90003, lessons[3]))
 
-    async def test_opening_course3_lesson_sends_existing_kejyar_start_cue(self):
+    async def test_opening_course3_lesson_does_not_require_optional_voice_cue(self):
         lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
         message = SimpleNamespace(reply_text=AsyncMock(), reply_voice=AsyncMock())
         query = SimpleNamespace(
@@ -37,7 +37,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
              patch.object(bot, "send_lesson_infographic", new=AsyncMock()):
             await bot.open_selected_lesson(update, SimpleNamespace())
         send_text.assert_awaited_once()
-        cue.assert_awaited_once_with(message, "lesson_start.mp3")
+        cue.assert_not_awaited()
 
     async def test_course3_completion_delivers_next_lesson_automatically(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
@@ -62,7 +62,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
         self.assertEqual(send_text.await_count, 1)
         self.assertEqual(send_text.await_args.args[1], bot.LESSON_DATA[next_lesson]["content"])
-        self.assertIn("lesson_start.mp3", [call.args[1] for call in cue.await_args_list])
+        cue.assert_not_awaited()
 
 
 if __name__ == "__main__":

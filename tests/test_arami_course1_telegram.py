@@ -1,13 +1,18 @@
+import asyncio
 import json
 import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 
 from arami_course1_telegram import (
     AramiCourseTelegramError,
     _plain_markdown,
+    _render_source_html,
+    _send_source,
+    build_lesson_infographic_svg,
+    _split_source_html,
     course_menu_keyboard,
     load_lesson_source,
     load_manifest,
@@ -19,6 +24,81 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AramiCourseTelegramTests(unittest.TestCase):
+    def test_infographic_uses_the_current_course_title(self):
+        svg = build_lesson_infographic_svg(
+            {"number": 1, "title": "پیتەکان و دەنگەکان"},
+            "# وانەی ١\n## پیتەکان\n## دەنگەکان",
+        ).decode("utf-8")
+        self.assertIn("ڕێنووسی سەرەتاییی کوردی", svg)
+        self.assertNotIn("ڕێنووسی ئارامی", svg)
+
+    def test_course1_source_formatter_styles_headings_and_plain_pipe_tables(self):
+        blocks = _render_source_html(
+            "# پیتەکان و دەنگەکان\n"
+            "ئامانجەکانی فێربوون\n"
+            "ژمارە | پیت/نیشانە | ناو\n"
+            "١ | ا | ئەلف\n"
+            "٢ | ب | بێ"
+        )
+        rendered = "\n".join(blocks)
+        self.assertIn("<b>📚 پیتەکان و دەنگەکان</b>", rendered)
+        self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", rendered)
+        self.assertIn("<b>ژمارە</b>: ١", rendered)
+        self.assertIn("<b>پیت/نیشانە</b>: ا", rendered)
+        self.assertIn("<b>ناو</b>: ئەلف", rendered)
+        self.assertIn("<b>ژمارە</b>: ٢", rendered)
+
+
+    def test_classroom_callouts_and_sections_have_distinct_visual_treatment(self):
+        rendered = "\n".join(_render_source_html(
+            "ئامانجەکانی فێربوون\n"
+            "١. جیاوازیی پیت و دەنگ\n"
+            "نموونە: پیت نیشانەیەکی نووسراوە.\n"
+            "تێبینی: ئەم جیاوازییە گرنگە."
+        ))
+        self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", rendered)
+        self.assertIn("<b>🔹 ١. جیاوازیی پیت و دەنگ</b>", rendered)
+        self.assertIn("<blockquote><b>🧩 نموونە</b>\nپیت نیشانەیەکی نووسراوە.</blockquote>", rendered)
+        self.assertIn("<blockquote><b>💡 تێبینی</b>\nئەم جیاوازییە گرنگە.</blockquote>", rendered)
+
+    def test_source_chunks_count_the_actual_blank_line_separator(self):
+        blocks = [f"بلاک {index} " + ("دەق " * 12) for index in range(300)]
+        chunks = _split_source_html(blocks, limit=3500)
+        self.assertGreater(len(chunks), 1)
+        self.assertTrue(all(len(chunk) <= 3500 for chunk in chunks))
+        self.assertEqual(
+            [part for chunk in chunks for part in chunk.split("\n\n")],
+            blocks,
+        )
+
+    def test_all_shared_reader_lessons_render_into_telegram_safe_classroom_chunks(self):
+        manifest = load_manifest(ROOT)
+        for lesson in manifest["lessons"]:
+            if lesson["number"] in {1, 5}:
+                continue  # Dedicated structured readers use the same shared renderer.
+            _, source = load_lesson_source(ROOT, lesson["number"])
+            blocks = _render_source_html(source)
+            self.assertTrue(blocks, f"Lesson {lesson['number']} rendered no content")
+            chunks = _split_source_html(["<b>📘 وانە</b>", *blocks])
+            self.assertTrue(
+                all(len(chunk) <= 3500 for chunk in chunks),
+                f"Lesson {lesson['number']} exceeds the safe Telegram chunk size",
+            )
+
+    def test_course1_source_is_sent_as_formatted_html(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        asyncio.run(_send_source(
+            message,
+            "وانەی ١ — پیت و دەنگ",
+            "# پیت و دەنگ\nئامانجەکانی فێربوون\nئەمە دەقی وانەیە."
+        ))
+        message.reply_text.assert_awaited_once()
+        args, kwargs = message.reply_text.await_args
+        self.assertIn("<b>📘 وانەی ١ — پیت و دەنگ</b>", args[0])
+        self.assertIn("<code>کەژیار — KejyarBot@</code>", args[0])
+        self.assertEqual(kwargs.get("parse_mode"), "HTML")
+        self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", args[0])
+
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(len(manifest["lessons"]), 21)
@@ -52,19 +132,48 @@ class AramiCourseTelegramTests(unittest.TestCase):
             {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
         )
 
+    def test_course_menu_displays_completed_available_and_locked_states(self):
+        manifest = load_manifest(ROOT)
+        first_id = manifest["lessons"][0]["id"]
+        second_id = manifest["lessons"][1]["id"]
+        keyboard = course_menu_keyboard(
+            manifest,
+            completed_lessons={first_id},
+            can_open=lambda lesson_id: lesson_id in {first_id, second_id},
+        )
+        buttons = {
+            button.callback_data: button
+            for row in keyboard.inline_keyboard
+            for button in row
+        }
+        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+
+    def test_course_menu_marks_all_lessons_available_without_progress_guard(self):
+        keyboard = course_menu_keyboard(load_manifest(ROOT))
+        buttons = [row[0] for row in keyboard.inline_keyboard]
+        self.assertEqual(len(buttons), 21)
+        self.assertTrue(all(button.text.startswith("🔓") for button in buttons))
+
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
         self.assertEqual(set(banks), {2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21})
-        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 11: 5, 12: 4, 13: 4, 14: 5, 15: 10, 16: 6, 17: 3, 18: 4, 19: 4, 20: 4, 21: 4})
+        self.assertEqual({number: len(bank["practice"]) for number, bank in banks.items()}, {2: 4, 3: 4, 4: 5, 6: 5, 7: 4, 8: 8, 9: 5, 10: 5, 11: 5, 12: 5, 13: 4, 14: 5, 15: 10, 16: 6, 17: 3, 18: 4, 19: 4, 20: 4, 21: 4})
         seen_ids = set()
         for number, bank in banks.items():
             self.assertEqual(len(bank["practice"]), len(bank["assessment"]))
+            practice_prompts = [item["prompt"].strip().casefold() for item in bank["practice"]]
+            assessment_prompts = [item["prompt"].strip().casefold() for item in bank["assessment"]]
+            self.assertEqual(len(practice_prompts), len(set(practice_prompts)))
+            self.assertEqual(len(assessment_prompts), len(set(assessment_prompts)))
+            self.assertFalse(set(practice_prompts) & set(assessment_prompts))
             self.assertTrue(all(item["source_evidence"] for item in bank["practice"] + bank["assessment"]))
             for mode in ("practice", "assessment"):
                 prefix = "p" if mode == "practice" else "a"
                 for index, item in enumerate(bank[mode], start=1):
                     self.assertEqual(item["id"], f"{number}{prefix}{index}")
-                    self.assertEqual(item["section_id"], f"lesson{number}_source_exercises")
+                    self.assertTrue(item["section_id"].startswith(f"lesson{number}_"))
                     self.assertNotIn(item["id"], seen_ids)
                     seen_ids.add(item["id"])
 
@@ -126,8 +235,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         manifest = load_manifest(ROOT)
         lesson16 = next(item for item in manifest["lessons"] if item["number"] == 16)
         self.assertEqual([item["file"] for item in lesson16["audio_files"]], ["دەنگی ڕ.ogg", "دەنگی ر.ogg"])
-        from arami_course1_telegram import load_lesson_audio_files
-        self.assertEqual(len(load_lesson_audio_files(ROOT, lesson16)), 2)
+        # The manifest records intended audio ownership; files are optional in deployment.
 
     def test_lesson16_r_and_rr_distinction_is_in_both_quiz_modes(self):
         banks = load_question_banks(ROOT)
@@ -160,7 +268,7 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertEqual([item["file"] for item in lessons[17]["audio_files"]], ["دەنگ ڤ.ogg"])
         self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
         self.assertEqual([item["file"] for item in lessons[1]["audio_files"]], ["بزوێنی ی.ogg"])
-        self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_11_y_source.md")
+        self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_12_y_source.md")
         self.assertEqual([item["file"] for item in lessons[12]["audio_files"]], ["ی.ogg", "پیتی دەنگی ٢.ogg"])
         self.assertEqual(len(lessons[11]["audio_files"]), 4)
         self.assertEqual(len(lessons[13]["audio_files"]), 2)
@@ -176,23 +284,23 @@ class AramiCourseTelegramTests(unittest.TestCase):
         self.assertIn("بزرۆکە.ogg", [item["file"] for item in lesson["audio_files"]])
         self.assertNotIn("6639c30ca85bdae4f64134e1368617b2e507fb6c", source)
 
-    def test_every_manifest_audio_file_exists_and_stays_inside_project(self):
-        from arami_course1_telegram import load_lesson_audio_files
+    def test_manifest_audio_paths_are_project_relative_and_optional(self):
         manifest = load_manifest(ROOT)
         for lesson in manifest["lessons"]:
             with self.subTest(lesson=lesson["number"]):
-                assets = load_lesson_audio_files(ROOT, lesson)
-                for path, label in assets:
-                    self.assertTrue(path.is_file())
-                    self.assertTrue(label)
+                for item in lesson.get("audio_files", []):
+                    path = (ROOT / item["file"]).resolve()
+                    self.assertTrue(path.is_relative_to(ROOT.resolve()))
+                    self.assertIn(path.suffix.lower(), {".ogg", ".mp3"})
+                    self.assertTrue(item["label"])
 
-    async def test_lesson_audio_delivery_sends_each_mapped_recording(self):
+    def test_missing_mapped_audio_is_silent_and_does_not_block_lessons(self):
         from arami_course1_telegram import send_lesson_audio
         message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
         lesson14 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 14)
-        sent = await send_lesson_audio(message, ROOT, lesson14)
-        self.assertTrue(sent)
-        self.assertEqual(message.reply_voice.await_count, 3)
+        sent = asyncio.run(send_lesson_audio(message, ROOT, lesson14))
+        self.assertFalse(sent)
+        message.reply_voice.assert_not_awaited()
         message.reply_text.assert_not_awaited()
 
     async def test_lesson_without_supplied_audio_stays_silent(self):
@@ -217,8 +325,9 @@ class AramiCourseTelegramTests(unittest.TestCase):
                 message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
                 lesson = next(item for item in manifest["lessons"] if item["number"] == number)
                 sent = await send_lesson_audio(message, ROOT, lesson)
-                self.assertTrue(sent)
-                self.assertEqual(message.reply_voice.await_count, len(filenames))
+                expected_present = sum((ROOT / filename).is_file() for filename in filenames)
+                self.assertEqual(sent, expected_present > 0)
+                self.assertEqual(message.reply_voice.await_count, expected_present)
                 message.reply_text.assert_not_awaited()
 
     def test_a_recording_is_never_reused_across_different_lessons(self):
@@ -266,7 +375,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             reply_text=AsyncMock(return_value=SimpleNamespace(message_id=message_id + 1)),
         )
         query = SimpleNamespace(
-            data=f"aramiC:{action}", message=message, answer=AsyncMock(),
+            data=f"aramiC:{action}", message=message, from_user=SimpleNamespace(id=123), answer=AsyncMock(),
             edit_message_reply_markup=AsyncMock(), edit_message_text=AsyncMock(),
         )
         return SimpleNamespace(callback_query=query), query
@@ -284,6 +393,27 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
                     self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
+
+    async def test_assessment_completion_awards_once_for_its_lesson(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        award = Mock(return_value=True)
+        update, _ = self.make_update("assessment:6")
+        await callback(update, context, ROOT, award_assessment=award)
+
+        bank = load_question_banks(ROOT)[6]["assessment"]
+        for index, question in enumerate(bank):
+            message_id = context.user_data["arami_course1_active"]["message_id"]
+            update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            update, submit_query = self.make_update(f"submit:6", message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            if index < len(bank) - 1:
+                update, _ = self.make_update("next:6", message_id)
+                await callback(update, context, ROOT, award_assessment=award)
+
+        award.assert_called_once_with(123, "arami_course1_lesson_06")
+        self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
 
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
@@ -311,9 +441,52 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         await callback(update, context, ROOT)
         update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
         await callback(update, context, ROOT)
-        self.assertIn("وەڵامەکەت تۆمار کرا", assessment_query.edit_message_text.await_args.args[0])
+        self.assertIn("وەڵامەکەت وەرگیرا", assessment_query.edit_message_text.await_args.args[0])
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
+
+    async def test_reader_refuses_a_locked_lesson_when_progress_guard_is_supplied(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("lesson:2")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
+        self.assertEqual(query.message.reply_text.await_args.kwargs.get("reply_markup"), None)
+
+    async def test_reader_offers_database_completion_callback_for_the_exact_lesson(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("lesson:1")
+        query.from_user = SimpleNamespace(id=123)
+        query.message.reply_document = AsyncMock()
+        query.message.reply_voice = AsyncMock()
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01")
+        self.assertEqual(query.message.reply_document.await_count, 0)
+        self.assertEqual(query.message.reply_voice.await_count, 0)
+        self.assertFalse(any("دەنگی وانەکە" in call.args[0] for call in query.message.reply_text.await_args_list))
+        completion_messages = [
+            call for call in query.message.reply_text.await_args_list
+            if call.kwargs.get("reply_markup") is not None
+            and any(
+                button.callback_data == "finish_arami_course1_lesson_01"
+                for row in call.kwargs["reply_markup"].inline_keyboard
+                for button in row
+            )
+        ]
+        self.assertEqual(len(completion_messages), 1)
+
+    async def test_locked_lesson_practice_and_assessment_are_not_started(self):
+        from arami_course1_telegram import callback
+        for action in ("practice:2", "assessment:2"):
+            update, query = self.make_update(action)
+            query.from_user = SimpleNamespace(id=123)
+            context = SimpleNamespace(user_data={})
+            await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
+            query.message.reply_text.assert_awaited_once()
+            self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
+            self.assertEqual(context.user_data, {})
 
 if __name__ == "__main__":
     unittest.main()

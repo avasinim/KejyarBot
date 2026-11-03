@@ -5,11 +5,52 @@ from unittest.mock import AsyncMock, patch
 import bot
 
 
+class AramiCourse1ProgressionTests(unittest.TestCase):
+    def test_all_21_lessons_form_one_ordered_sequence_with_terminal_lesson(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        self.assertEqual(len(lesson_ids), 21)
+        for index, lesson_id in enumerate(lesson_ids[:-1]):
+            self.assertEqual(bot.next_course_lesson(lesson_id), lesson_ids[index + 1])
+        self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
+
+    def test_lesson_unlocking_requires_the_immediate_predecessor(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[]
+        ):
+            self.assertTrue(bot.can_open(12345, lesson_ids[0]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[1]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[-1]))
+
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[lesson_ids[0]]
+        ):
+            self.assertTrue(bot.can_open(12345, lesson_ids[1]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[2]))
+
+    def test_noncontiguous_saved_progress_does_not_skip_course1_lessons(self):
+        lesson_ids = bot.ARMI_LESSON_IDS
+        # Even if stale/corrupt progress says lesson 3 is complete, lesson 4
+        # remains locked while lesson 2 is missing.
+        with patch.object(bot, "course_is_active", return_value=True), patch.object(
+            bot, "get_completed_lessons", return_value=[lesson_ids[0], lesson_ids[2]]
+        ):
+            self.assertFalse(bot.can_open(12345, lesson_ids[3]))
+            self.assertFalse(bot.can_open(12345, lesson_ids[4]))
+
+    def test_inactive_course_cannot_open_any_lesson(self):
+        with patch.object(bot, "course_is_active", return_value=False), patch.object(
+            bot, "get_completed_lessons", return_value=[]
+        ):
+            self.assertFalse(bot.can_open(12345, bot.ARMI_LESSON_IDS[0]))
+
+
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
     def make_context(self, callback_data, message_id=77):
         query = SimpleNamespace(
             data=callback_data,
             message=SimpleNamespace(message_id=message_id),
+            from_user=SimpleNamespace(id=12345),
             answer=AsyncMock(),
             edit_message_reply_markup=AsyncMock(),
         )
@@ -244,7 +285,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
         self.assertNotIn("quiz", context.user_data)
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_lesson_completion_offers_clickable_practice_for_exact_target_lessons(self):
         targets = [
             "وانە_3",
@@ -279,7 +320,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 ]
                 self.assertIn(bot.lesson_practice_callback(lesson), callbacks)
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_two_does_not_offer_clickable_practice(self):
         lesson = "وانە_2"
         query = SimpleNamespace(
@@ -314,7 +355,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
             self.assertTrue(bot.quiz_requires_submission(bot.COURSE_LESSON_ORDER[course_id][0]))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_three_uses_select_then_submit_buttons(self):
         lesson = "وانە_3"
         query = SimpleNamespace(
@@ -342,7 +383,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             for row in markup.inline_keyboard
         ))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_course_one_lesson_two_keeps_immediate_answer_buttons(self):
         query = SimpleNamespace(
             data="quiz_2_start",
@@ -369,7 +410,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             for row in markup.inline_keyboard
         ))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
@@ -393,7 +434,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("تەواو بکە", query.message.reply_text.await_args.args[0])
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_completed_lesson_can_start_its_quiz(self):
         from unittest.mock import patch
 
@@ -421,7 +462,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     def test_lesson_lock_requires_previous_lesson_completion(self):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             self.assertTrue(bot.can_open(12345, "وانە_1"))
@@ -433,7 +474,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, "وانە_2"))
             self.assertFalse(bot.can_open(12345, "وانە_3"))
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_first_lesson_completion_offers_only_the_next_lesson(self):
         query = SimpleNamespace(
             data="finish_وانە_1",
@@ -462,7 +503,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         button = keyboard.inline_keyboard[0][0]
         self.assertEqual(button.callback_data, "next_lesson_وانە_2")
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_repeated_lesson_completion_does_not_offer_next_lesson_again(self):
         query = SimpleNamespace(
             data="finish_وانە_1",
@@ -489,7 +530,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێشتر تەواو کراوە", query.message.reply_text.await_args.args[0])
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_final_lesson_completion_offers_final_lesson_quiz(self):
         final_lesson = bot.ORDER[-1]
         query = SimpleNamespace(
@@ -517,7 +558,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تاقیکردنەوە", button.text)
 
 
-    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 20-lesson interaction tests cover the replacement.")
+    @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
     async def test_lesson_22_quiz_start_maps_to_its_real_draft_question(self):
         query = SimpleNamespace(
             data="quiz_22_start",
@@ -549,27 +590,17 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         )
         query.answer.assert_awaited_once()
 
-    async def test_lesson_22_quiz_answer_records_completion_and_clears_state(self):
-        question = bot.QUIZ_DATA["وانە_22"][0]
-        update, context, query = self.make_context("answer_0", message_id=77)
-        context.user_data["quiz"].update({
-            "lesson": "وانە_22",
-            "questions": [question],
-            "score": 0,
-        })
+    async def test_retired_legacy_lesson_22_quiz_cannot_be_started(self):
+        update, context, query = self.make_context("quiz_22_start", message_id=77)
+        context.user_data.clear()
         query.message.reply_text = AsyncMock()
 
-        correct_index = question["options"].index(question["answer"])
-        query.data = f"answer_{correct_index}"
-        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
-            await bot.quiz_answer(update, context)
+        with patch.object(bot, "get_completed_lessons", return_value=["وانە_22"]):
+            await bot.start_quiz(update, context)
 
-        reward.assert_called_once_with(12345, "وانە_22")
         self.assertNotIn("quiz", context.user_data)
-        self.assertTrue(any("تاقیکردنەوە تەواو بوو" in call.args[0]
-                            for call in query.message.reply_text.await_args_list))
-        self.assertTrue(any("1/1" in call.args[0]
-                            for call in query.message.reply_text.await_args_list))
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("لە ڕێڕەوی فێربووندا نیە", query.message.reply_text.await_args.args[0])
 
 
 if __name__ == "__main__":

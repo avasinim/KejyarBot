@@ -1,9 +1,9 @@
 {
   "course_id": "arami_orthography_foundations",
   "lesson_id": "arami_course1_lesson_01",
-  "content_policy": "Questions use only facts explicitly stated in the user-supplied Lesson 1 PDF pages 1–4 and the user's confirmation that the lesson teaches eight vowels. The lesson text, examples, and chart remain unchanged.",
-  "source_asset": "کەژیار.pdf, pages 1–4; original Lesson 1 exercise, questions 1–5",
-  "source_note": "The source prose explicitly states 34 alphabet letters and 8 vowels. The chart's apparent vowel count conflicts with the prose, so the confirmed eight-vowel explanation is authoritative. No consonant total or total sound count is tested.",
+  "content_policy": "Questions are checked only against the user's supplied Lesson 1 text and the user's confirmation that the lesson teaches eight vowels. No external book or PDF is used.",
+  "source_asset": "دەقی ناردراوی بەکارهێنەر؛ ڕاهێنانی هەمان وانە",
+  "source_note": "The supplied lesson text explicitly states 34 alphabet letters and 8 vowels. The user's confirmed eight-vowel explanation is authoritative. No external book or PDF is associated with this lesson.",
   "practice": [
     {
       "id": "arami1_practice_01",
@@ -16,7 +16,7 @@
         "٣٧ پیت"
       ],
       "answer_index": 1,
-      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+      "source_evidence": "دەقی وانەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
     },
     {
       "id": "arami1_practice_02",
@@ -29,7 +29,7 @@
         "٨ بزوێن"
       ],
       "answer_index": 2,
-      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+      "source_evidence": "دەقی وانەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
     },
     {
       "id": "arami1_practice_03",
@@ -42,7 +42,7 @@
         "(ر) و (ڕ)"
       ],
       "answer_index": 0,
-      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
+      "source_evidence": "دەقی وانەی ١، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
     },
     {
       "id": "arami1_practice_04",
@@ -55,7 +55,7 @@
         "o"
       ],
       "answer_index": 1,
-      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+      "source_evidence": "دەقی وانەی ١، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
     },
     {
       "id": "arami1_practice_05",
@@ -67,7 +67,7 @@
         "نەخێر"
       ],
       "answer_index": 1,
-      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
+      "source_evidence": "دەقی وانەی ١، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
     }
   ],
   "assessment": [
@@ -82,7 +82,7 @@
         "٢٨ پیت"
       ],
       "answer_index": 1,
-      "source_evidence": "پەڕەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
+      "source_evidence": "دەقی وانەی ١: «پیتەکانی ئەلفبێی زمانی کوردی ٣٤ پیتن»."
     },
     {
       "id": "arami1_assessment_02",
@@ -95,7 +95,7 @@
         "٧ بزوێن"
       ],
       "answer_index": 0,
-      "source_evidence": "پەڕەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
+      "source_evidence": "دەقی وانەی ١: «لە دابەشکردنی ئەم وانەیەدا، ٨ بزوێنمان هەیە»."
     },
     {
       "id": "arami1_assessment_03",
@@ -108,7 +108,7 @@
         "(ر) و (ڕ)"
       ],
       "answer_index": 1,
-      "source_evidence": "پەڕەی ٢، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
+      "source_evidence": "دەقی وانەی ١، بەشەکانی ٤ و ٥: پیتەکانی (و) و (ی) هەردوو ئەرکی بزوێن و نەبزوێن دەگێڕن."
     },
     {
       "id": "arami1_assessment_04",
@@ -121,7 +121,7 @@
         "i"
       ],
       "answer_index": 2,
-      "source_evidence": "پەڕەی ٢، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
+      "source_evidence": "دەقی وانەی ١، بەشی ٦: دەنگی کورت (i) پێی دەوترێت بزرۆکە."
     },
     {
       "id": "arami1_assessment_05",
@@ -133,7 +133,7 @@
         "بەڵێ"
       ],
       "answer_index": 0,
-      "source_evidence": "پەڕەی ٢، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
+      "source_evidence": "دەقی وانەی ١، بەشی ٦: «هیچ پیتێکی تایبەتی بۆ دانەنراوە»."
     }
   ],
   "source_correction": {

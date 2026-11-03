@@ -1,29 +1,10 @@
 """Telegram delivery for Arami Course 1 Lesson 5; isolated from Lesson 1."""
 import logging
-import re
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson5_interactions, load_arami_lesson5_source
-from arami_course1_telegram import load_manifest, send_lesson_audio
+from arami_course1_telegram import load_manifest, send_lesson_audio, _send_source
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
-
-def _plain_source(markdown):
-    lines = []
-    for raw in markdown.splitlines():
-        line = raw.strip()
-        if not line or line.startswith("---"):
-            continue
-        if line.startswith("|") and line.endswith("|"):
-            cells = [cell.strip() for cell in line.strip("|").split("|")]
-            if all(re.fullmatch(r":?-{3,}:?", c.replace(" ", "")) for c in cells):
-                continue
-            lines.append(" • ".join(cells))
-            continue
-        line = re.sub(r"^#{1,6}\s*", "", line).replace("**", "").replace(chr(96), "")
-        if line.startswith(">"):
-            line = line[1:].strip()
-        lines.append(line)
-    return "\n".join(lines)
 
 def menu_keyboard():
     return InlineKeyboardMarkup([
@@ -45,7 +26,7 @@ async def _send_question(message, context):
         reply_markup=InlineKeyboardMarkup(rows))
     context.user_data["arami_lesson5_message_id"] = sent.message_id
 
-async def callback(update, context, base_dir):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("arami5:")
@@ -54,25 +35,41 @@ async def callback(update, context, base_dir):
         return
     if action == "lesson":
         try:
-            source = _plain_source(load_arami_lesson5_source(base_dir))
-        except (OSError, ValueError):
+            source = load_arami_lesson5_source(base_dir)
+            manifest = load_manifest(base_dir)
+            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+        except (OSError, ValueError, StopIteration):
             logger.exception("Could not load Arami Lesson 5 source")
             await query.message.reply_text("⚠️ دەقی ڕەسەنی وانەی ٥ ئامادە نییە.")
             return
-        while source:
-            end = min(3800, len(source))
-            if end < len(source):
-                boundary = source.rfind("\n", 0, end)
-                if boundary > 0:
-                    end = boundary
-            await query.message.reply_text(source[:end])
-            source = source[end:].lstrip("\n")
-        manifest = load_manifest(base_dir)
-        lesson_audio = next(item for item in manifest["lessons"] if item["number"] == 5)
-        await send_lesson_audio(query.message, base_dir, lesson_audio)
-        await query.message.reply_text("⭐ کۆتایی وانەی ٥", reply_markup=menu_keyboard())
+        if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
+            await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
+            return
+        await _send_source(
+            query.message,
+            f"وانەی ٥ — {lesson_record.get('title', 'پیتەکان و هاوتای لاتینی')}",
+            source,
+        )
+        await send_lesson_audio(query.message, base_dir, lesson_record)
+        await query.message.reply_text(
+            "⭐ کۆتایی وانەی ٥",
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
+            ]]),
+        )
+        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
+        if can_open is not None:
+            try:
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+            except (OSError, ValueError, StopIteration):
+                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+                return
+            if not can_open(query.from_user.id, lesson_record["id"]):
+                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
         try:
             bank = load_arami_lesson5_interactions(base_dir)
             context.user_data["arami_lesson5_session"] = create_session(bank[action], action)
@@ -110,14 +107,18 @@ async def callback(update, context, base_dir):
             correct = question["options"][question["answer_index"]]
             feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"
         else:
-            feedback = "✅ وەڵامەکەت تۆمار کرا."
+            feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
+            reward_note = ""
+            if session["mode"] == "assessment" and award_assessment is not None:
+                if award_assessment(query.from_user.id, "arami_course1_lesson_05"):
+                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
             rows = []
             if session["mode"] == "practice" and result["missed"]:
                 rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami5:retry")])
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ وانەی ٥", callback_data="arami5:menu")])
-            await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪", reply_markup=InlineKeyboardMarkup(rows))
+            await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}", reply_markup=InlineKeyboardMarkup(rows))
         else:
             await query.edit_message_text(feedback, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡️ پرسیاری دواتر", callback_data="arami5:next")]]))
         return

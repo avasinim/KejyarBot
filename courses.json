@@ -4,8 +4,8 @@
       "id": "arami_orthography_foundations",
       "key": "course_arami_orthography_foundations",
       "order": 1,
-      "title": "کۆرسی ١: ڕێنووسی ئارامی",
-      "description": "٢١ وانە؛ خوێندنەوە، ڕاهێنان و تاقیکردنەوەی تایبەت بە هەر وانە.",
+      "title": "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی",
+      "description": "٢١ وانەی ڕێنووسی سەرەتاییی کوردی؛ خوێندنەوە، ڕاهێنان و تاقیکردنەوەی تایبەت بە هەر وانە.",
       "status": "active",
       "lesson_ids": [
         "arami_course1_lesson_01",
@@ -36,7 +36,7 @@
       "key": "course_orthography_basic",
       "order": 1,
       "title": "کۆرسی ١: ڕێنووسی سەرەتاییی زمانی کوردی",
-      "description": "وەشانی کۆنی ٢٢ وانەیی لە ڕێڕەوی چالاکی دەرکراوە؛ جێگرەوەی چالاک: کۆرسی ڕێنووسی ئارامی، ٢٠ وانە.",
+      "description": "وەشانی کۆنی ٢٢ وانەیی لە ڕێڕەوی چالاک دەرکراوە؛ جێگرەوەی چالاک: کۆرسی ٢١ وانەیی ڕێنووسی سەرەتاییی کوردی.",
       "status": "retired_replaced_by_arami_course1",
       "lesson_ids": []
     },

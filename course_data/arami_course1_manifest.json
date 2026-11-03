@@ -8,13 +8,13 @@
       "number": 1,
       "title": "پیتەکان و دەنگەکان",
       "content_source": "user_supplied_immutable",
-      "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved",
-      "practice_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
-      "assessment_status": "five_pdf_exercise_topics_verified_and_telegram_callback_flow_wired",
+      "content_status": "user_supplied_lesson_text_preserved_and_structured_for_Telegram_reading",
+      "practice_status": "five_questions_checked_against_user_supplied_lesson_text; Telegram_callback_flow_wired",
+      "assessment_status": "five_questions_checked_against_user_supplied_lesson_text; Telegram_callback_flow_wired",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
       "presentation_status": "source_text_delivered_in_sections; dedicated_lesson_1_audio_mapped; practice_and_assessment_wired",
-      "source_caution": "Use the explicit prose and the five original Lesson 1 exercises on PDF pages 1–4. The chart's apparent vowel count conflicts with the explicit eight-vowel explanation; do not derive vowel or consonant totals from the chart.",
+      "source_caution": "Use only the user's supplied Lesson 1 text. The text explicitly states 34 alphabet letters and 8 vowels; the user's confirmed eight-vowel explanation remains authoritative. Do not introduce an external book or PDF source.",
       "interaction_presentation": "arami_lesson1_presentation.py",
       "content_file": "course_data/arami_course1_lesson_01_content.json",
       "audio_assignment_note": "The dedicated recording بزوێنی ی.ogg belongs to Lesson 1 and is sent after its source text.",
@@ -29,7 +29,7 @@
       "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
       "interaction_mode": "dedicated",
       "quiz_audit_status": "dedicated_bank_verified_5_practice_5_assessment",
-      "quiz_audit_note": "Correction: Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions. It is loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are grounded in the user-supplied PDF pages 1–4 and confirmed eight-vowel explanation. The shared course bank file does not include this separately namespaced bank."
+      "quiz_audit_note": "Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions, loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are checked against the user-supplied lesson text. The shared course bank file does not include this separately namespaced bank."
     },
     {
       "id": "arami_course1_lesson_02",
@@ -93,7 +93,7 @@
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Earlier sections are not inferred or reconstructed.",
+      "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Sections 1–2 are not present in the repository copy; do not infer or reconstruct them from books, external sources, or other courses. Request only these missing original sections if needed for full semantic audit.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
@@ -159,9 +159,9 @@
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "source_note": "The supplied source begins with a general comparison of Persian/Kurdish orthography and later contains a subsection explicitly labeled Lesson 5: پیتی س. The user designated this file as current Lesson 7. Both original labels and all source wording remain preserved; current course identity follows the user's outer Lesson 7 designation pending clarification.",
+      "source_note": "The supplied Lesson 7 file begins with a general comparison of Persian and Kurdish orthography, followed by the subsection on پیتی س. The file's outer heading and embedded course heading both identify Lesson 7; all supplied wording and examples remain preserved. No associated book or PDF is used.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified; outer_user_label_lesson_7; embedded_legacy_label_lesson_5; preserve_both_labels_pending_user_clarification",
+      "source_audit_status": "outer_heading_and_embedded_course_heading_match_lesson_7; introductory_comparison_and_s_subsection_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [],
       "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
@@ -273,9 +273,9 @@
           "label": "دەنگی پیتی ژێرە"
         }
       ],
-      "source_note": "Inserted as new Lesson 11 at the user's request. The supplied final ellipsis indicates omitted source material; no missing content was inferred. Existing lessons 11–19 were shifted to 12–20 without deleting or rewriting their source files.",
+      "source_note": "The supplied Lesson 11 source contains three sections: پیتی بۆرە, پیتی بزوێنی سەرە, and پیتی ژێرە, with their supplied forms, examples, and audio-asset commit references. The five practice and five assessment questions are drawn from those sections. Preserve the source text exactly; no associated book or PDF is used.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified_in_branch",
+      "source_audit_status": "source_file_and_three_supplied_sections_verified; quiz_items_aligned_to_source_examples",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
@@ -304,16 +304,16 @@
       "number": 12,
       "title": "پیتی «ی»",
       "status": "source_review_pending",
-      "content_status": "user_supplied_lesson_11_received_and_preserved",
+      "content_status": "user_supplied_lesson_12_source_verified_and_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "content_file": "course_data/arami_course1_lesson_11_y_source.md",
+      "content_file": "course_data/arami_course1_lesson_12_y_source.md",
       "content_source": "user_supplied_immutable",
-      "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
-      "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
+      "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
+      "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "source_note": "The preserved source file heading still says Lesson 11 (پیتی ی). In the current course sequence this is Lesson 12 because a new Lesson 11 was inserted. Source text remains unchanged; manifest and audio catalog identify it as current Lesson 12.",
+      "source_note": "The canonical supplied source file for Lesson 12 is course_data/arami_course1_lesson_12_y_source.md; its embedded heading correctly says Lesson 12. The older lesson_11_y_source.md is not the manifest source. No book or PDF is associated with this course.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_file_verified; embedded_heading_still_says_lesson_11; lesson_number_shifted_to_12_after_new_lesson_11_inserted",
+      "source_audit_status": "canonical_source_file_verified; embedded_heading_matches_lesson_12; source_text_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_commits": [
         "040ee127789798a0333809b0c8c1bcc6d82ae4d9",
@@ -345,9 +345,9 @@
       "practice_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "source_note": "User-supplied Lesson 13 source about the three written/pronounced forms of و (w, u, û) is preserved. Its four practice and four assessment questions are registered under Lesson 13 only. Its two dedicated recordings remain assigned only to Lesson 13.",
+      "source_note": "The user-supplied Lesson 13 text is preserved unchanged. Headings 3 and 4 have no heading labels after the dash, but explanatory paragraphs do follow each heading; they are not missing lesson sections. The four practice and four assessment questions remain scoped to Lesson 13. Two dedicated recordings remain assigned only to this lesson.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
-      "source_audit_status": "source_heading_matches_user_confirmed_lesson_number",
+      "source_audit_status": "source_heading_matches_user_confirmed_lesson_number; headings_3_and_4_have_unlabelled_but_nonempty_explanatory_content; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "audio_files": [
         {
@@ -628,10 +628,18 @@
   },
   "course_size": 21,
   "source_audit": {
-    "archive_file": "کەژیار.pdf",
-    "audit_date": "2026-11-02",
-    "gaps": [],
-    "note": "Repository file audit after user insertion: Course 1 Round 1 contains exactly 21 lessons. The new Lesson 16 covers ر and ڕ, followed by the existing lessons shifted to 17–21. Source presence does not imply verified content, practice/assessment, audio assignment, or Telegram runtime integration.",
+    "audit_date": "2026-11-03",
+    "gaps": [
+      {
+        "lesson_number": 4,
+        "source_file": "course_data/arami_course1_lesson_04_source.md",
+        "missing_sections": "1–2",
+        "available_sections": "3–8",
+        "status": "partial_source_received",
+        "action": "Do not reconstruct from books, external sources, or other courses; request only the missing original user-supplied sections if full semantic audit is required."
+      }
+    ],
+    "note": "All 21 lesson source-file paths exist in the repository, but this does not mean all 21 source texts are complete: Lesson 4 currently contains only supplied sections 3–8; sections 1–2 are not present. Source-file presence does not by itself imply semantic verification, practice/assessment alignment, audio assignment, or Telegram runtime integration.",
     "lesson_numbers_with_source_content": [
       1,
       2,
@@ -654,7 +662,8 @@
       19,
       20,
       21
-    ]
+    ],
+    "source_policy": "The user's supplied lesson texts are the sole source of truth. No book or PDF is associated with this course."
   },
   "course_total_lessons": 21,
   "program": {
