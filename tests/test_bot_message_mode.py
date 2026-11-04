@@ -322,5 +322,37 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پرسیاری تاقیکردنەوە نادروست", query.message.reply_text.await_args.args[0])
 
 
+    async def test_dictionary_section_has_clean_single_heading_and_real_line_breaks(self):
+        update, context = self.make_update_context("📖 وشەنامەی کوردی")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        output = update.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
+        self.assertNotIn(r"\n", output)
+        self.assertEqual(output.count("📚 <b>کتێبخانەی وشەنامەی کوردی</b>"), 1)
+        self.assertNotIn("📖 <b>وشەنامەی کوردی</b>", output)
+
+    async def test_keyboard_section_has_clean_single_heading_and_real_line_breaks(self):
+        update, context = self.make_update_context("⌨️ تەختەکلیلی کوردی")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        output = update.message.reply_text.await_args_list[0].args[0]
+        self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
+        self.assertNotIn(r"\n", output)
+        self.assertEqual(output.count("⌨️ <b>ناوەندی تەختەکلیلی کوردی</b>"), 1)
+        self.assertNotIn("⌨️ <b>تەختەکلیلی کوردی</b>", output)
+
+    async def test_months_menu_heading_uses_real_line_breaks(self):
+        update, context = self.make_update_context("🗓️ مانگەکانی ساڵ لەناو کورداندا")
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+
+        output = update.message.reply_text.await_args.args[0]
+        self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
+        self.assertNotIn(r"\n", output)
+
+
 if __name__ == "__main__":
     unittest.main()
