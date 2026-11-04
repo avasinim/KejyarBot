@@ -544,12 +544,14 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "score": 0,
         "question_message_id": None,
         "selected_answer_index": None,
+        "answer_in_progress": False,
     }
     await send_question(query.message, context.user_data["quiz"])
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
     quiz["selected_answer_index"] = None
+    quiz["answer_in_progress"] = False
     callback_prefix = "select_answer_" if quiz_requires_submission(quiz["lesson"]) else "answer_"
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton(option, callback_data=f"{callback_prefix}{index}")]
@@ -619,10 +621,16 @@ async def quiz_answer(
     selected_index=None,
 ):
     query = update.callback_query
-    await query.answer()
     quiz = context.user_data.get("quiz")
     if not quiz:
+        await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
+        return
+    # Claim the answer synchronously before acknowledging the callback. Telegram
+    # can deliver duplicate submit callbacks while query.answer() is awaiting;
+    # the flag prevents both handlers from scoring the same question.
+    if quiz.get("answer_in_progress"):
+        await query.answer()
         return
 
     # Treat corrupted/stale in-memory quiz state as recoverable, not as an
@@ -638,6 +646,7 @@ async def quiz_answer(
         or index >= len(questions)
         or not isinstance(questions[index], dict)
     ):
+        await query.answer()
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
             "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
@@ -658,6 +667,7 @@ async def quiz_answer(
         or isinstance(quiz.get("score"), bool)
         or quiz.get("score") < 0
     ):
+        await query.answer()
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
             "⚠️ پرسیاری تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
@@ -666,25 +676,32 @@ async def quiz_answer(
 
     # Ignore stale/double-clicked buttons from an earlier question.
     if query.message.message_id != quiz.get("question_message_id"):
+        await query.answer()
         return
     # Validate callback data before claiming the question. Malformed callbacks
     # must not leave question_message_id=None and strand the active quiz.
     if quiz_requires_submission(quiz.get("lesson")):
         if selected_index is None:
+            await query.answer()
             return
         choice_index = selected_index
     else:
         raw_index = query.data.removeprefix("answer_")
         if not raw_index.isdigit():
+            await query.answer()
             return
         choice_index = int(raw_index)
     if not isinstance(choice_index, int) or isinstance(choice_index, bool):
+        await query.answer()
         return
     if choice_index < 0 or choice_index >= len(options):
+        await query.answer()
         return
-    # Claim this question before the first await so duplicate callbacks cannot
-    # both score an answer while the next question is being sent.
+    # No await may occur between claiming and setting this flag. Duplicate
+    # callbacks then observe the claim and cannot score the same answer twice.
+    quiz["answer_in_progress"] = True
     quiz["question_message_id"] = None
+    await query.answer()
     quiz["selected_answer_index"] = None
     try:
         await query.edit_message_reply_markup(reply_markup=None)
