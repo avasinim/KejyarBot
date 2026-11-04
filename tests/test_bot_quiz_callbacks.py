@@ -184,6 +184,19 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(query.message.reply_text.await_count, 2)
 
 
+    async def test_invalid_lesson_completion_acknowledges_callback(self):
+        query = SimpleNamespace(
+            data="finish_unknown_lesson",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once_with("❌ ئەم وانەیە نەناسراوە.")
+
     async def test_successful_lesson_completion_acknowledges_callback(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][0]
         next_lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][1]
