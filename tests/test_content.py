@@ -369,7 +369,9 @@ class ContentConsistencyTests(unittest.TestCase):
             handler.index("if lesson not in ORDER:"),
             handler.index("questions = QUIZ_DATA.get(lesson)"),
         )
-        self.assertIn("if lesson not in get_completed_lessons(user_id):", handler)
+        self.assertIn("completed_lessons = set(get_completed_lessons(user_id))", handler)
+        self.assertIn("if lesson not in completed_lessons:", handler)
+        self.assertIn("if not can_open(user_id, lesson):", handler)
 
     def test_lesson_menu_references_only_existing_runtime_lessons(self):
         import bot
