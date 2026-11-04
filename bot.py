@@ -493,7 +493,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         ]])
         await query.message.reply_text(
-            message_text + "\\n\\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
+            message_text + "\n\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
             reply_markup=keyboard,
         )
     elif next_lesson is None:
