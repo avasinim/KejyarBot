@@ -349,8 +349,9 @@ def current_progress_badges(user_id):
         if not title:
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id in completed:
-                visible.append(f"🏅 {title} — وانەی {number}")
+            if lesson_id not in completed:
+                break
+            visible.append(f"🏅 {title} — وانەی {number}")
     return visible
 
 
@@ -361,8 +362,9 @@ def check_badges(user_id):
         if not course_is_active(course_id):
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id in completed:
-                add_badge(user_id, f"🏅 {title} — وانەی {number}")
+            if lesson_id not in completed:
+                break
+            add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
 def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
@@ -1200,7 +1202,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         completed = set(get_completed_lessons(user_id))
         buttons = []
         for lesson in active_course_lessons():
-            if QUIZ_DATA.get(lesson) and lesson in completed:
+            if QUIZ_DATA.get(lesson) and lesson in completed and can_open(user_id, lesson):
                 suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
                 is_practice = quiz_requires_submission(lesson)
                 if text == "🎯 ڕاهێنانی کرتەیی" and not is_practice:
@@ -1219,7 +1221,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
             for item in sorted(arami_manifest["lessons"], key=lambda lesson: lesson["number"]):
-                if item["id"] not in completed:
+                if item["id"] not in completed or not can_open(user_id, item["id"]):
                     continue
                 number = item["number"]
                 if number == 1:
