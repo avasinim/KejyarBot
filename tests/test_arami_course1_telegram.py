@@ -566,7 +566,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, _ = self.make_update("practice:1")
         await callback(update, context, ROOT)
-        session = context.user_data["arami_course1_sessions"]["1"]
+        session = context.user_data["arami_course1_sessions"]["2"]
         message_id = context.user_data["arami_course1_active"]["message_id"]
 
         update, pick_query = self.make_update("pick:1:0", message_id=message_id)
