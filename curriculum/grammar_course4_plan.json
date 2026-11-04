@@ -381,7 +381,9 @@
         {
           "id": "grammar_09",
           "title": "جێناوی کەسی: کەس و ژمارە",
-          "focus": "پۆلی جێناوی کەسی، کەسی یەکەم و دووەم و سێیەم، تاک و کۆ، بە نموونەی سەرچاوە؛ پەڕە ١٠–١١."
+          "focus": "پۆلی جێناوی کەسی، کەسی یەکەم و دووەم و سێیەم، تاک و کۆ، بە نموونەی سەرچاوە؛ پەڕە ١٠–١١.",
+          "draft_path": "docs/course4-drafts/grammar_09_personal_pronouns_person_number.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_10",
