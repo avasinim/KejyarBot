@@ -789,5 +789,31 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(callbacks, set())
 
 
+
+class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
+    async def test_lesson_completion_rewards_use_real_line_breaks(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            await bot.finish_lesson(update, context)
+
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("\\n", message)
+        self.assertNotIn("\\\\n", message)
+
+
 if __name__ == "__main__":
     unittest.main()
