@@ -25,9 +25,9 @@ MONTH_DIALECTS = {
         "title": "کورمانجی",
         "months": [
             ("نیسان", None), ("گوڵان", None), ("حۆزەیران", None),
-            ("تیرمە", None), ("تەباخ", None), ("ئیلون", None),
+            ("تیرمە", None), ("تەباخ", None), ("ئيلون", None),
             ("جوتمە", None), ("مژدار", None), ("کانوون", None),
-            ("چلە", None), ("سبات (شوبات)", None), ("ئادار", None),
+            ("چلە", None), ("سبات(شوبات)", None), ("ئادار", None),
         ],
     },
     "kalhuri": {
@@ -85,6 +85,9 @@ def months_menu_keyboard():
     return InlineKeyboardMarkup(rows)
 
 
+PERSIAN_DIGITS = str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹")
+
+
 def get_months_lesson(dialect):
     """Build a compact academic-style lesson without inventing cross-dialect matches."""
     record = MONTH_DIALECTS.get(dialect)
@@ -101,9 +104,9 @@ def get_months_lesson(dialect):
     ]
     for number, (name, equivalent) in enumerate(record["months"], 1):
         if equivalent:
-            lines.append(f"{number:02d}. {name}  —  {equivalent}")
+            lines.append(f"{number:02d}".translate(PERSIAN_DIGITS) + f". {name}  —  {equivalent}")
         else:
-            lines.append(f"{number:02d}. {name}")
+            lines.append(f"{number:02d}".translate(PERSIAN_DIGITS) + f". {name}")
 
     lines.extend([
         "",
