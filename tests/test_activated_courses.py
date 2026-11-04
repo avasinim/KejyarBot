@@ -207,7 +207,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 48)
+        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_daily_conversation_01",
@@ -218,11 +219,24 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 66)
+        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(keyboard[-1][0].callback_data, "coursepage:unified_orthography:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_unified_orthography_01",
         )
+
+    async def test_course_menu_pagination_opens_the_requested_next_page(self):
+        update, message, query = self.make_update("coursepage:daily_conversation:1")
+        await bot.open_course_page(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(
+            keyboard[0][0].callback_data,
+            "open_lesson_daily_conversation_13",
+        )
+        self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:0")
 
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
