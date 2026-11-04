@@ -102,24 +102,27 @@ def course_menu_keyboard(
         if len(label) > 40:
             label = f"{number}. {title[:34]}…"
         read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
+        lesson_is_open = can_open is None or can_open(lesson_id)
         if lesson_id in completed_lessons:
             status = "✅"
-        elif can_open is not None and not can_open(lesson_id):
+        elif not lesson_is_open:
             status = "🔒"
         else:
             status = "🔓"
         row = [InlineKeyboardButton(f"{status} 📖 {label}", callback_data=read_callback)]
-        if number == 1:
+        # Do not advertise practice or assessment actions for a locked lesson.
+        # The callback handlers still enforce the same server-side guard.
+        if lesson_is_open and number == 1:
             row.extend([
                 InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
                 InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"),
             ])
-        elif number == 5:
+        elif lesson_is_open and number == 5:
             row.extend([
                 InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"),
                 InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"),
             ])
-        elif number in interactive_lessons:
+        elif lesson_is_open and number in interactive_lessons:
             row.extend([
                 InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"),
                 InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"),
