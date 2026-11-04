@@ -374,10 +374,11 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
                 sent = await send_lesson_infographic(
                     message, {"number": number}, base_dir=root
                 )
-                self.assertEqual(sent, number <= 7)
+                expected = number in {1, 2, 3, 4, 6, 7}
+                self.assertEqual(sent, expected)
                 path = lesson_infographic_path(root, {"number": number})
-                self.assertEqual(path is not None, number <= 7)
-            self.assertEqual(message.reply_photo.await_count, 7)
+                self.assertEqual(path is not None, expected)
+            self.assertEqual(message.reply_photo.await_count, 6)
 
     async def test_missing_course1_infographic_does_not_interrupt_lesson_delivery(self):
         from arami_course1_telegram import send_lesson_infographic
