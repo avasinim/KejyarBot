@@ -327,9 +327,10 @@ def lesson_infographic_path(base_dir, lesson):
     return path if path.is_file() else None
 
 
-async def send_lesson_infographic(message, lesson, source=None):
+async def send_lesson_infographic(message, lesson, source=None, base_dir=None):
     """Send the pre-approved PNG for Lessons 1–7; later lessons stay text-only."""
-    path = lesson_infographic_path(Path(__file__).resolve().parent, lesson)
+    root = Path(base_dir).resolve() if base_dir is not None else Path(__file__).resolve().parent
+    path = lesson_infographic_path(root, lesson)
     if path is None:
         logger.debug("No Course 1 infographic assigned to lesson %s", lesson.get("number") if isinstance(lesson, dict) else None)
         return False
@@ -445,7 +446,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
                 return
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
-            await send_lesson_infographic(query.message, lesson, source)
+            await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
             await send_lesson_audio(query.message, base_dir, lesson)
             await query.message.reply_text(
                 f"✅ کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
