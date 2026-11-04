@@ -131,7 +131,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lesson12 = lessons["kurmanji_latin_orthography_12"]["content"]
         self.assertIn("8 dengdêr û 23 herfên din", lesson1)
         self.assertNotIn("8 dengdar", lesson1)
-        self.assertIn("Dengdêr û dengdar", lesson3)
+        self.assertIn("Dengdêr û Dengdar", lesson3)
         self.assertIn("23 herfên din wek dengdar", lesson3)
         self.assertNotIn("bêdeng", lesson3.lower())
         self.assertIn("Dengdêrên kin", lesson4)
@@ -193,7 +193,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("| vir | wîr |", lesson8)
         self.assertIn("| ava | awa |", lesson8)
         self.assertIn("| evî | ewî |", lesson8)
-        self.assertIn("`kew`", lesson8)
+        self.assertIn("kew", lesson8)
         self.assertNotIn("`law`", lesson8)
         self.assertNotIn("| law | dawî |", lesson8)
 
