@@ -92,6 +92,11 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
             raise ValueError(f"Empty question {lesson_number}.{current['number']}")
         if len(current["options"]) < 2:
             raise ValueError(f"Too few options in {lesson_number}.{current['number']}")
+        normalized_options = [value.strip().casefold() for _, value in current["options"]]
+        if len(normalized_options) != len(set(normalized_options)):
+            raise ValueError(
+                f"Duplicate quiz options in {lesson_number}.{current['number']}"
+            )
         expected_letters = [chr(ord("A") + i) for i in range(len(current["options"]))]
         actual_letters = [letter for letter, _ in current["options"]]
         if actual_letters != expected_letters:
@@ -109,6 +114,8 @@ def _parse_quiz(lesson_body, lesson_number, answer_key):
                 f"Answer key mismatch at {key}: {answer_letter}={answer_text!r}; "
                 f"source option={option_map.get(answer_letter)!r}"
             )
+        if sum(value == answer_text for value in option_map.values()) != 1:
+            raise ValueError(f"Correct answer must occur exactly once at {key}")
         questions.append({
             "question": current["question"].strip(),
             "options": [text for _, text in current["options"]],
