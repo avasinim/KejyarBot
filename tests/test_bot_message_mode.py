@@ -344,6 +344,24 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(output.count("⌨️ <b>ناوەندی تەختەکلیلی کوردی</b>"), 1)
         self.assertNotIn("⌨️ <b>تەختەکلیلی کوردی</b>", output)
 
+    async def test_kurmanji_months_callback_preserves_bold_html_tags(self):
+        query = SimpleNamespace(
+            data="months:kurmanji",
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        await bot.open_kurdish_months(update, SimpleNamespace(user_data={}))
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        output = query.message.reply_text.await_args
+        self.assertIn("<b>مانگەکانی کورمانجی</b>", output.args[0])
+        self.assertNotIn("&lt;b&gt;", output.args[0])
+        self.assertNotIn("&lt;/b&gt;", output.args[0])
+        self.assertEqual(output.kwargs["parse_mode"], "HTML")
+        self.assertIsNotNone(output.kwargs["reply_markup"])
+
     async def test_months_menu_heading_uses_real_line_breaks(self):
         update, context = self.make_update_context("🗓️ مانگەکانی ساڵ لەناو کورداندا")
         with patch.object(bot, "get_user"):
