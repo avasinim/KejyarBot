@@ -78,6 +78,15 @@ class KurdishMonthsTests(unittest.TestCase):
         self.assertIn("۰۱. پەنجە", lesson)
         self.assertIn("۱۲. مانگ لیە", lesson)
 
+    def test_each_dialect_lesson_has_clean_heading_and_real_line_breaks(self):
+        for dialect in self.EXPECTED:
+            with self.subTest(dialect=dialect):
+                lesson = get_months_lesson(dialect)
+                self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\\n", lesson)
+                self.assertIn("╰━━━━━━━━━━━━━━━━━━━━╯\\n", lesson)
+                self.assertNotIn(r"\\n", lesson)
+                self.assertEqual(lesson.count("📅 <b>مانگەکانی "), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
