@@ -546,7 +546,9 @@
         {
           "id": "grammar_30",
           "title": "ئەرێ و نەرێ؛ پێکهاتە و شیکردنەوەی کردار",
-          "focus": "ئەرێ و نەرێ، کردارە سادە و ناسادە (دابڕژراو و لێکدراو)، شیکردنەوەی ڕەگ و قەد و پێشگر و پاشگر و هەموو تایبەتمەندییەکانی کردار لە نموونەی ڕاستەقینەدا."
+          "focus": "ئەرێ و نەرێ، کردارە سادە و ناسادە (دابڕژراو و لێکدراو)، شیکردنەوەی ڕەگ و قەد و پێشگر و پاشگر و هەموو تایبەتمەندییەکانی کردار لە نموونەی ڕاستەقینەدا.",
+          "draft_path": "docs/course4-drafts/grammar_30_affirmative_negative_simple_compound_verbs.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         }
       ]
     }
@@ -717,8 +719,8 @@
     "content_status": "bibliographic_structure_verified; source_pdf_text_not_yet_extracted"
   },
   "progress": {
-    "draft_count": 29,
+    "draft_count": 30,
     "total_lessons": 30,
-    "completion_percent": 96.7
+    "completion_percent": 100
   }
 }
