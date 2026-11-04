@@ -1,6 +1,6 @@
 # Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî
 
-**Çavkaniya bingehîn:** Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî* (Nefel, Stockholm, 2002), Beşa I: “Elfabêya kurdî” (rûpelên çapkirî 11–36). Kursa 1 tenê li ser beşa alfabeyê ye; Kursa 2 ji Beşa II ya heman pirtûkê (rûpelên 37–100) sûd werdigire.
+**Çavkaniya bingehîn:** Celadet Alî Bedir-Xan, *Elfabêya Kurdî & Bingehên gramera kurdmancî* (Nefel, Stockholm, 2002), Beşa I: “Elfabêya kurdî” (rûpelên çapkirî 11–36). Kursa 1 tenê li ser beşa alfabeyê ye.
 
 ## Ders 1: Elfabeya Kurmancî ya Latînî
 
