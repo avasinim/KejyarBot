@@ -366,66 +366,67 @@
         {
           "id": "6p1",
           "type": "recognize",
-          "section_id": "lesson6_source_exercises",
-          "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+          "section_id": "lesson6_source_section2",
+          "prompt": "لە نموونەی «مەی (mey)»دا، پیتی (ی) چ ئەرکێک دەگێڕێت؟",
           "options": [
-            "٢٨",
-            "٣٤",
-            "٣٧"
+            "بزوێن",
+            "نەبزوێن",
+            "نیشانەی خاڵبەندی"
           ],
           "answer_index": 1,
-          "source_evidence": "بەشی یەکەم، ڕاهێنانی کەژیار، پرسیاری ١"
+          "source_evidence": "بەشی دووەم، بەشی ٣: ئەرکی دووانەی پیتی (ی) — نموونەی مەی / mey؛ (ی) لێرەدا دەنگی y و نەبزوێنە."
         },
         {
           "id": "6p2",
           "type": "recognize",
-          "section_id": "lesson6_source_exercises",
-          "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
+          "section_id": "lesson6_source_section2",
+          "prompt": "لە نموونەی «میر (mîr)»دا، پیتی (ی) چ ئەرکێک دەگێڕێت؟",
           "options": [
-            "٦",
-            "٧",
-            "٨"
+            "نەبزوێن",
+            "بزوێن",
+            "پیتی بێدەنگ"
           ],
-          "answer_index": 2,
-          "source_evidence": "بەشی یەکەم، ڕاهێنانی کەژیار، پرسیاری ٢"
+          "answer_index": 1,
+          "source_evidence": "بەشی یەکەم، بەشی ٥: ئەرکی دووانەی پیتی (ی) — نموونەی میر / mîr؛ (ی) دەنگی î و بزوێنە."
         },
         {
           "id": "6p3",
           "type": "recognize",
-          "section_id": "lesson6_source_exercises",
-          "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+          "section_id": "lesson6_source_section2",
+          "prompt": "لە نموونەی «کەژیار (Kejyar)»دا، پیتی (ی) چ ئەرکێک دەگێڕێت؟",
           "options": [
-            "(و) و (ی)",
-            "(ب) و (پ)",
-            "(ر) و (ڕ)"
+            "بزوێن",
+            "نەبزوێن",
+            "نیشانەی خاڵبەندی"
           ],
-          "answer_index": 0,
-          "source_evidence": "بەشی یەکەم، ڕاهێنانی کەژیار، پرسیاری ٣"
+          "answer_index": 1,
+          "source_evidence": "بەشی دووەم، بەشی ٣: ئەرکی دووانەی پیتی (ی) — خشتەی نموونەکان: کەژیار / Kejyar؛ (ی) نەبزوێنە."
         },
         {
           "id": "6p4",
           "type": "recognize",
-          "section_id": "lesson6_source_exercises",
-          "prompt": "بزرۆکە بە کام نیشانە دەنووسرێت؟",
+          "section_id": "lesson6_source_section2",
+          "prompt": "دەنگی فرەکورتی (i)، واتە بزرۆکە، چ پەیوەندییەکی بە پیتەوە هەیە؟",
           "options": [
-            "u",
-            "i",
-            "o"
+            "پیتێکی تایبەتی بۆ دانراوە",
+            "بە پیتی (و) دەنووسرێت",
+            "هیچ پیتێکی تایبەتی بۆ دانەنراوە"
           ],
-          "answer_index": 1,
-          "source_evidence": "بەشی یەکەم، ڕاهێنانی کەژیار، پرسیاری ٤"
+          "answer_index": 2,
+          "source_evidence": "بەشی دووەم: دەقی «دەنگی فرەکورتی (i)ش کە پێی دەکوترێت بزرۆکە هیچ پێتێکی بۆ دانەنراوە»."
         },
         {
           "id": "6p5",
           "type": "recognize",
-          "section_id": "lesson6_source_exercises",
-          "prompt": "بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+          "section_id": "lesson6_source_section2",
+          "prompt": "پیتەکانی (و) و (ی) لە کۆی خۆیان چەند دەنگی جیاواز نیشان دەدەن؟",
           "options": [
-            "بەڵێ",
-            "نەخێر"
+            "دوو دەنگ",
+            "سێ دەنگ",
+            "چوار دەنگ"
           ],
-          "answer_index": 1,
-          "source_evidence": "بەشی یەکەم، ڕاهێنانی کەژیار، پرسیاری ٥"
+          "answer_index": 2,
+          "source_evidence": "بەشی دووەم: بۆ چوار دەنگی (w, u, y, î) دوو پیتی (و، ی) بەکارهاتوون."
         }
       ],
       "assessment": [
