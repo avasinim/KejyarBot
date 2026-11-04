@@ -314,7 +314,7 @@ COURSE1_INFOGRAPHIC_LESSONS = frozenset({1, 2, 3, 4, 6, 7})
 
 
 def lesson_infographic_path(base_dir, lesson):
-    """Return the approved Course 1 infographic path for Lessons 1–7 only."""
+    """Return an approved Course 1 infographic path; Lesson 5 stays text-only."""
     number = lesson.get("number") if isinstance(lesson, dict) else None
     if not isinstance(number, int) or isinstance(number, bool) or number not in COURSE1_INFOGRAPHIC_LESSONS:
         return None
@@ -328,7 +328,7 @@ def lesson_infographic_path(base_dir, lesson):
 
 
 async def send_lesson_infographic(message, lesson, source=None, base_dir=None):
-    """Send the pre-approved PNG for Lessons 1–7; later lessons stay text-only."""
+    """Send approved PNGs for Lessons 1–4 and 6–7; all others stay text-only."""
     root = Path(base_dir).resolve() if base_dir is not None else Path(__file__).resolve().parent
     path = lesson_infographic_path(root, lesson)
     if path is None:
