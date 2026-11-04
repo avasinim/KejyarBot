@@ -477,7 +477,9 @@
         {
           "id": "grammar_21",
           "title": "ژمارەی پەلەیی، کەرتی و دایەش",
-          "focus": "واتای ڕیز و پلە لە ژمارەی پەلەیی؛ دروستبوونی فۆرمەکان و نیشانەکان؛ ژمارەی کەرتی و شێوەکانی دەربڕینی بەش؛ جیاکردنەوەی ژمارەی دایەش."
+          "focus": "واتای ڕیز و پلە لە ژمارەی پەلەیی؛ دروستبوونی فۆرمەکان و نیشانەکان؛ ژمارەی کەرتی و شێوەکانی دەربڕینی بەش؛ جیاکردنەوەی ژمارەی دایەش.",
+          "draft_path": "docs/course4-drafts/grammar_21_ordinal_fractional_distributive_numerals.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_22",
