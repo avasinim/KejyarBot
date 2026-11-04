@@ -74,8 +74,9 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         }
         update, query = make_update("lesson")
         manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
-        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest):
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_infographic", new_callable=AsyncMock) as send_infographic:
             await callback(update, SimpleNamespace(user_data={}), "/unused")
+        send_infographic.assert_awaited_once_with(query.message, manifest["lessons"][0], base_dir="/unused")
         query.message.reply_voice.assert_not_awaited()
         self.assertEqual(query.message.reply_text.await_count, 4)
         lesson_html = query.message.reply_text.await_args_list[0].args[0]
