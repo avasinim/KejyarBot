@@ -22,7 +22,7 @@ def randomized_question_copy(questions, rng=None):
             raise ValueError(f"question {position} needs at least two options")
         if any(not isinstance(option, str) or not option.strip() for option in options):
             raise ValueError(f"question {position} has an empty or invalid option")
-        normalized_options = [option.strip().casefold() for option in options]
+        normalized_options = [option.strip() for option in options]
         if len(normalized_options) != len(set(normalized_options)):
             raise ValueError(f"question {position} has duplicate options")
 
