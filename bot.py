@@ -394,6 +394,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
     if lesson not in LESSON_COURSE:
+        await query.answer()
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
