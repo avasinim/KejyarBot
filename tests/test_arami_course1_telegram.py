@@ -561,5 +561,26 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertEqual(context.user_data, {})
 
+    async def test_pick_and_submit_state_are_committed_before_callback_acknowledgement(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:2")
+        await callback(update, context, ROOT)
+        session = context.user_data["arami_course1_sessions"]["2"]
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+
+        update, pick_query = self.make_update("pick:2:0", message_id=message_id)
+        async def assert_pick_committed():
+            self.assertEqual(session["selected_index"], 0)
+        pick_query.answer.side_effect = assert_pick_committed
+        await callback(update, context, ROOT)
+
+        update, submit_query = self.make_update("submit:2", message_id=message_id)
+        async def assert_submit_committed():
+            self.assertEqual(session["index"], 1)
+            self.assertEqual(len(session["answers"]), 1)
+        submit_query.answer.side_effect = assert_submit_committed
+        await callback(update, context, ROOT)
+
 if __name__ == "__main__":
     unittest.main()

@@ -397,8 +397,10 @@ def _active_session(context, query, lesson_number):
 
 async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
-    await query.answer()
     action = query.data.removeprefix("aramiC:")
+    defer_ack = action.startswith(("pick:", "submit:"))
+    if not defer_ack:
+        await query.answer()
     if action == "menu":
         try:
             manifest = load_manifest(base_dir)
@@ -491,17 +493,25 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     parts = action.split(":")
     if len(parts) < 2 or not parts[1].isdigit():
+        await query.answer()
         return
     kind, raw_number = parts[0], parts[1]
     number = int(raw_number)
     session = _active_session(context, query, number)
     if not isinstance(session, dict):
+        if defer_ack:
+            await query.answer()
         return
-    if kind == "pick" and len(parts) == 3 and parts[2].isdigit():
+    if kind == "pick":
+        if len(parts) != 3 or not parts[2].isdigit():
+            await query.answer()
+            return
         try:
             selected = select_answer(session, int(parts[2]))
         except (ValueError, TypeError):
+            await query.answer()
             return
+        await query.answer()
         question = current_question(session)
         rows = [
             [InlineKeyboardButton(("☑️ " if i == selected else "▫️ ") + option,
@@ -516,8 +526,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         try:
             answer = submit_answer(session)
         except (ValueError, TypeError):
+            await query.answer()
             await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
+        await query.answer()
         if session["mode"] == "practice":
             correct = question["options"][question["answer_index"]]
             feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"

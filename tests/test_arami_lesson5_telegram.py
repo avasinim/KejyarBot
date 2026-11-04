@@ -207,5 +207,27 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.edit_message_reply_markup.assert_not_awaited()
 
 
+    async def test_pick_and_submit_state_are_committed_before_callback_acknowledgement(self):
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
+            update, _ = make_update("practice")
+            await callback(update, context, "/unused")
+            message_id = context.user_data["arami_lesson5_message_id"]
+            session = context.user_data["arami_lesson5_session"]
+
+            update, pick_query = make_update("pick:0", message_id=message_id)
+            async def assert_pick_committed():
+                self.assertEqual(session["selected_index"], 0)
+            pick_query.answer.side_effect = assert_pick_committed
+            await callback(update, context, "/unused")
+
+            update, submit_query = make_update("submit", message_id=message_id)
+            async def assert_submit_committed():
+                self.assertEqual(session["index"], 1)
+                self.assertEqual(len(session["answers"]), 1)
+            submit_query.answer.side_effect = assert_submit_committed
+            await callback(update, context, "/unused")
+
+
 if __name__ == "__main__":
     unittest.main()

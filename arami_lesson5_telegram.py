@@ -28,8 +28,10 @@ async def _send_question(message, context):
 
 async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
-    await query.answer()
     action = query.data.removeprefix("arami5:")
+    defer_ack = action.startswith("pick:") or action == "submit"
+    if not defer_ack:
+        await query.answer()
     if action == "menu":
         await query.message.reply_text("وانەی ٥ — هەڵبژاردنی خوێندنەوە یان تاقیکردنەوە:", reply_markup=menu_keyboard())
         return
@@ -81,15 +83,20 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     session = context.user_data.get("arami_lesson5_session")
     if not isinstance(session, dict) or query.message.message_id != context.user_data.get("arami_lesson5_message_id"):
+        if defer_ack:
+            await query.answer()
         return
     if action.startswith("pick:"):
         raw = action.removeprefix("pick:")
         if not raw.isdigit():
+            await query.answer()
             return
         try:
             selected = select_answer(session, int(raw))
         except (ValueError, TypeError):
+            await query.answer()
             return
+        await query.answer()
         question = current_question(session)
         rows = [[InlineKeyboardButton(("☑️ " if i == selected else "▫️ ") + option, callback_data=f"arami5:pick:{i}")] for i, option in enumerate(question["options"])]
         rows.append([InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="arami5:submit")])
@@ -100,8 +107,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         try:
             answer = submit_answer(session)
         except (ValueError, TypeError):
+            await query.answer()
             await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
+        await query.answer()
         if session["mode"] == "practice":
             correct = question["options"][question["answer_index"]]
             feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct}"

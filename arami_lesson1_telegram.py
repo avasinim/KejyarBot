@@ -62,8 +62,10 @@ def _lesson_source_markdown(lesson):
 
 async def callback(update, context, base_dir, can_open=None, award_assessment=None):
     query = update.callback_query
-    await query.answer()
     action = query.data.removeprefix("arami1:")
+    defer_ack = action.startswith("pick:") or action == "submit"
+    if not defer_ack:
+        await query.answer()
 
     if action == "menu":
         await query.message.reply_text(
@@ -128,9 +130,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
 
     session = context.user_data.get("arami_lesson1_session")
     if not isinstance(session, dict):
+        if defer_ack:
+            await query.answer()
         await query.message.reply_text("ℹ️ هیچ ڕاهێنانێکی وانەی ١ چالاک نییە.")
         return
     if query.message.message_id != context.user_data.get("arami_lesson1_message_id"):
+        if defer_ack:
+            await query.answer()
         return
 
     if action.startswith("pick:"):
@@ -159,8 +165,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         try:
             answer = submit_answer(session)
         except (ValueError, TypeError):
+            await query.answer()
             await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
+        await query.answer()
         if session["mode"] == "practice":
             correct_option = question["options"][question["answer_index"]]
             feedback = "✅ وەڵامت ڕاستە." if answer["correct"] else f"❌ وەڵامت هەڵەیە. وەڵامی ڕاست: {correct_option}"
