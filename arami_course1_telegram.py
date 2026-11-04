@@ -309,13 +309,40 @@ def build_lesson_infographic_svg(lesson, source):
     return svg.encode("utf-8")
 
 
-async def send_lesson_infographic(message, lesson, source):
-    """Keep the lesson reader clean; SVG summaries are not sent as file attachments.
+COURSE1_INFOGRAPHIC_DIR = "assets/course1_infographics"
+COURSE1_INFOGRAPHIC_LESSONS = frozenset(range(1, 8))
 
-    Telegram displays SVG as a downloadable document rather than an inline lesson
-    visual. The formatted source reader remains the primary lesson presentation.
-    """
-    return
+
+def lesson_infographic_path(base_dir, lesson):
+    """Return the approved Course 1 infographic path for Lessons 1–7 only."""
+    number = lesson.get("number") if isinstance(lesson, dict) else None
+    if not isinstance(number, int) or isinstance(number, bool) or number not in COURSE1_INFOGRAPHIC_LESSONS:
+        return None
+    root = Path(base_dir).resolve()
+    path = (root / COURSE1_INFOGRAPHIC_DIR / f"lesson_{number:02d}.png").resolve()
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return None
+    return path if path.is_file() else None
+
+
+async def send_lesson_infographic(message, lesson, source=None):
+    """Send the pre-approved PNG for Lessons 1–7; later lessons stay text-only."""
+    path = lesson_infographic_path(Path(__file__).resolve().parent, lesson)
+    if path is None:
+        logger.debug("No Course 1 infographic assigned to lesson %s", lesson.get("number") if isinstance(lesson, dict) else None)
+        return False
+    try:
+        with path.open("rb") as image:
+            await message.reply_photo(
+                photo=image,
+                caption=f"🖼️ وێنەی فێرکاری — وانەی {lesson['number']}",
+            )
+    except Exception:
+        logger.exception("Could not send Course 1 infographic for lesson %s", lesson["number"])
+        return False
+    return True
 
 
 def load_lesson_audio_files(base_dir, lesson):
