@@ -850,7 +850,6 @@ def add_kejyar_brand_signature(content):
 
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lessons in a consistent academic layout, preserving all lesson wording."""
-    # Suppress obsolete audio-link diagnostics from lesson text; audio is optional.
     content = re.sub(
         r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
         "",
