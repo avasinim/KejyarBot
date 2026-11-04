@@ -3,7 +3,7 @@ import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
-from arami_course1_telegram import load_manifest, _send_source
+from arami_course1_telegram import load_manifest, _send_source, send_lesson_infographic
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -97,6 +97,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             'پوختەی وانەی ١',
             '## کورتەی وانە\n\n' + lesson['conclusion'],
         )
+        # Lesson 1 uses this dedicated reader, so it must explicitly send
+        # its approved PNG just like lessons routed through the shared reader.
+        await send_lesson_infographic(query.message, lesson_record, base_dir=base_dir)
         await query.message.reply_text(
             '⭐ وانەکە تەواو بوو؛ بۆ تۆمارکردنی پێشکەوتنت دوگمەی خوارەوە هەڵبژێرە.',
             reply_markup=InlineKeyboardMarkup([[
