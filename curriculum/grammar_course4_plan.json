@@ -354,6 +354,14 @@
           30
         ]
       }
-    ]
+    ],
+    "additional_catalogued_copy": {
+      "title": "ڕێزمانی کوردی بەرگی یەکەم (وشەسازی)",
+      "author": "د. ئەوڕەحمانی حاجی مارف",
+      "catalog_page": "https://kurdcollect.com/index.php/ڕێزمانی_کوردی_بەرگی_01",
+      "file_page": "https://kurdcollect.com/index.php/پەڕگە:ڕێزمانی_کوردی_بەرگی_01.pdf",
+      "file_size_bytes": 24426929,
+      "access_status": "file_is_listed_but_download_not_retrieved_in_this_session"
+    }
   }
 }
