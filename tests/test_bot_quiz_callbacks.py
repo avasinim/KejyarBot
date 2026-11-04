@@ -514,7 +514,6 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
             patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
             patch.object(bot, "check_badges") as badges,
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
         ):
             await bot.finish_lesson(update, context)
 
@@ -612,7 +611,6 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
             patch.object(bot, "get_user_level") as level,
             patch.object(bot, "check_badges") as badges,
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
         ):
             await bot.finish_lesson(update, context)
 
