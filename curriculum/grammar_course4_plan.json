@@ -4,7 +4,7 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "source_parts_1_2_3_4_5_scans_located; part_2_pages_3_15_reviewed; part_3_pages_3_125_reviewed; parts_1_4_5_partial_text_inspected",
+  "content_status": "source_parts_1_2_3_4_5_scans_located; part_2_pages_3_15_reviewed; part_3_pages_3_139_reviewed_and_bibliography_140_150_checked; parts_1_4_5_partial_text_inspected",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
@@ -130,7 +130,7 @@
       ],
       "direct_reader": "https://www.kurdipedia.org/docviewer.aspx?book=20230726094619509587&lng=1",
       "scan_page_count": 154,
-      "scan_inspection_status": "Printed pages 3–125 inspected at intervals; main chapters and detailed examples verified. Full 154-page scan not yet reviewed page by page.",
+      "scan_inspection_status": "Scanned book checked through printed page 139; bibliography/reference list appears on printed pages 140–150; final English title/cover leaves follow. Not every page has been transcribed line by line.",
       "verified_observations": [
         {
           "topic": "مناقشەی پۆلێنکردنی ئاوەڵناو",
@@ -196,6 +196,41 @@
           "topic": "دروستکردنی وشەی ئاڵۆز و پێکهاتەی ناو+ئاوەڵناو",
           "pages": "125",
           "evidence": "Examples analyze compounds and derived forms involving nouns and adjectives; continue reviewing subsequent pages before asserting full taxonomy."
+        },
+        {
+          "topic": "ئاوەڵناو لە دەربڕین و ڕستەدا",
+          "pages": "126–127",
+          "evidence": "Examples in Kurdish prose and poetry show adjective-like forms in context, including predicative/attributive uses and the author's discussion of identifying the word class by syntactic role."
+        },
+        {
+          "topic": "جیاکردنەوەی ئاوەڵناو لە ناو و ئەرکی وەسف",
+          "pages": "128–131",
+          "evidence": "The author contrasts noun and adjective, describes how the noun identifies the entity while adjective expresses a property, and outlines semantic and syntactic criteria; three broad adjective classes are discussed."
+        },
+        {
+          "topic": "ئاوەڵناوی چۆنیەتی، نسبی و گرنگ/دیاریکەر",
+          "pages": "130–132",
+          "evidence": "The text distinguishes qualitative, relative and important/limiting adjective functions and explains how they combine with noun phrases."
+        },
+        {
+          "topic": "ئاوەڵناوی سادە و لێکدراو",
+          "pages": "131–133",
+          "evidence": "Discusses simple and compound adjective structures and derivational formation, including adjective formation from roots, nouns and verbs."
+        },
+        {
+          "topic": "پلەی ئاوەڵناو و شێوەسازیی بەراورد",
+          "pages": "132–134",
+          "evidence": "Further detailed discussion of positive, comparative and superlative degrees; compares morphological and analytic strategies across Kurdish dialects and related languages."
+        },
+        {
+          "topic": "ڕێککەوتنی ئاوەڵناو و پێکهاتەی پەیوەست",
+          "pages": "134–139",
+          "evidence": "Continues detailed treatment of adjective agreement, suffixation and phrase structure; distinguishes adjectival forms and their syntactic environments."
+        },
+        {
+          "topic": "سەرچاوە و کتێبنامە",
+          "pages": "140–150",
+          "evidence": "Bibliographic references and edition record; not instructional chapter content."
         }
       ]
     },
@@ -324,33 +359,33 @@
       "lessons": [
         {
           "id": "grammar_13",
-          "title": "ئاوەڵناو: پێناسە، سنوور و جۆرە سەرەکییەکان",
-          "focus": "پێناسە و سنووری ئاوەڵناو، پۆلێنکردنی نووسەر و جیاوازیی ئاوەڵناوی چۆنیەتی و نسبی؛ پەڕە ٣–١٧ و ٥٠–٥٥."
+          "title": "ئاوەڵناو: پێناسە و جیاکردنەوە لە ناو",
+          "focus": "پێناسەی ئاوەڵناو، پەیوەندی بە ناوەوە، جیاوازیی ئەرکی ناو و ئاوەڵناو و پێوەرە واتایی و ڕستەسازییەکان؛ پەڕە ٣–١٧ و ١٢٨–١٣١."
         },
         {
           "id": "grammar_14",
-          "title": "ڕەگەز، ژمارە و گۆڕانی فۆرمی ئاوەڵناو",
-          "focus": "شیکردنەوەی جیاوازیی فۆرم و ڕێککەوتنی ئاوەڵناو لە ڕووی ژمارە و ڕەگەز/جۆرەوە، لەگەڵ جیاوازیی دیالێکتی؛ پەڕە ٦٠–٧٠."
+          "title": "جۆرەکانی ئاوەڵناو و پێکهاتەی سادە و لێکدراو",
+          "focus": "ئاوەڵناوی چۆنیەتی، نسبی و ئەرکی دیاریکەر؛ هەروەها پێکهاتەی سادە و لێکدراو و دروستبوون لە ڕەگ، ناو و کردار؛ پەڕە ٥٠–٥٥ و ١٣٠–١٣٣."
         },
         {
           "id": "grammar_15",
           "title": "پلەکانی ئاوەڵناو و سیستەمی بەراورد",
-          "focus": "پلەی ئاسایی، بەراوردی و باڵاترین پلە؛ gradus positivus، gradus comparativus، gradus superlativus و شێوەسازیی کوردی و پاشگرەکان؛ پەڕە ٩٠–١٠٠."
+          "focus": "پلەی ئاسایی، بەراوردی و باڵاترین پلە؛ gradus positivus، gradus comparativus، gradus superlativus؛ ڕێگای مۆرفۆلۆژی و شیکاری لە دیالێکتەکاندا؛ پەڕە ٩٠–١٠٠ و ١٣٢–١٣٤."
         },
         {
           "id": "grammar_16",
-          "title": "دروستبوون و پاشگرەکانی ئاوەڵناو",
-          "focus": "شیکردنەوەی پاشگر و نیشانە مۆرفۆلۆژییەکان، دروستکردنی ئاوەڵناو لە ڕەگ و بنەڕەت و گۆڕانی فۆرم؛ پەڕە ١٠٠–١١٠ و ١٢٠–١٢٥."
+          "title": "دروستبوون، پاشگر و ڕێککەوتنی ئاوەڵناو",
+          "focus": "نیشانە و پاشگرەکان، دروستبوونی ئاوەڵناو لە ڕەگ و ناو و کردار، ڕێککەوتنی فۆرم و پێکهاتەی پەیوەست؛ پەڕە ١٠٠–١١٠ و ١٣٤–١٣٩."
         },
         {
           "id": "grammar_17",
-          "title": "ئاوەڵناوی نادیار، دیاریکەر و بەکارهێنانی وەک ناو",
-          "focus": "ئاوەڵناوی نادیار و فۆرمە دیاریکەرەکان، و ئەو شوێنانەی ئاوەڵناو لە ڕستەدا ئەرکی ناو وەردەگرێت؛ پەڕە ١١٥–١٢٠."
+          "title": "ئاوەڵناو لە دەربڕین و ڕستەدا",
+          "focus": "جیاکردنەوەی بەکارهێنانی وەسفی و پێشبینی، ئەرکی ئاوەڵناو لە ناوگرووپ و ڕستە، و ناسینەوەی پۆلی وشە لە کۆنتێکستدا؛ پەڕە ١٢٦–١٣١."
         },
         {
           "id": "grammar_18",
-          "title": "ئاوەڵناوی کردار و شیکردنەوەی پێکهاتە",
-          "focus": "ئاوەڵناوە دروستکراوەکان لە کردار و ڕەگ، پێکهاتەی ناو+ئاوەڵناو و شیکردنەوەی مۆرفۆلۆژی و ڕستەسازی؛ پەڕە ١٢٠–١٢٥، بە پشکنینی لاپەڕەکانی دواتر بۆ تەواوکردن."
+          "title": "شیکردنەوە و هەڵسەنگاندنی پۆلی ئاوەڵناو",
+          "focus": "شیکردنەوەی مۆرفۆلۆژی و ڕستەسازیی نموونەکان؛ جیاکردنەوەی جۆر، پێکهاتە و پلەی ئاوەڵناو و بەراوردی فۆرمەکان بە پشتبەستن بە لاپەڕە پشکنراوەکان."
         }
       ]
     },
