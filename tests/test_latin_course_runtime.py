@@ -19,6 +19,24 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("Part I", courses[0]["source_part"])
         self.assertIn("Part II", courses[1]["source_part"])
 
+    def test_all_latin_quizzes_have_unique_options_and_one_correct_answer(self):
+        _, quizzes, _ = load_latin_courses()
+        self.assertEqual(sum(len(items) for items in quizzes.values()), 120)
+        for lesson_id, questions in quizzes.items():
+            for index, question in enumerate(questions, 1):
+                options = question["options"]
+                normalized = [option.strip().casefold() for option in options]
+                self.assertEqual(
+                    len(normalized),
+                    len(set(normalized)),
+                    f"Duplicate options in {lesson_id} question {index}",
+                )
+                self.assertEqual(
+                    sum(option == question["answer"] for option in options),
+                    1,
+                    f"Correct answer must occur exactly once in {lesson_id} question {index}",
+                )
+
     def test_each_lesson_keeps_full_markdown_and_five_questions(self):
         lessons, quizzes, _ = load_latin_courses()
         for lesson_id, lesson in lessons.items():
