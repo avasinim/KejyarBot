@@ -532,7 +532,9 @@
         {
           "id": "grammar_28",
           "title": "تێپەڕی و ناتێپەڕی: پەیوەندی بە بەکار",
-          "focus": "پێناسەی کردارە تێپەڕ و ناتێپەڕەکان، پەیوەندی بە بەکار و ئەرکی ڕستەسازی؛ جیاوازیی نێوان فۆرمی یەک وشە و دوو وشەی جیاواز؛ سنووری پێوەرە واتاییەکان. پەڕەی 66–72."
+          "focus": "پێناسەی کردارە تێپەڕ و ناتێپەڕەکان، پەیوەندی بە بەکار و ئەرکی ڕستەسازی؛ جیاوازیی نێوان فۆرمی یەک وشە و دوو وشەی جیاواز؛ سنووری پێوەرە واتاییەکان. پەڕەی 66–72.",
+          "draft_path": "docs/course4-drafts/grammar_28_transitive_intransitive_object_relation.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_29",
