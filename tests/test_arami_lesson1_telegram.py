@@ -280,5 +280,28 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_session"]["selected_index"], 0)
 
 
+    async def test_pick_and_submit_state_are_committed_before_callback_acknowledgement(self):
+        from pathlib import Path
+        base_dir = str(Path(__file__).resolve().parents[1])
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        await callback(update, context, base_dir)
+        message_id = context.user_data["arami_lesson1_message_id"]
+        session = context.user_data["arami_lesson1_session"]
+
+        update, pick_query = make_update("pick:0", message_id=message_id)
+        async def assert_pick_committed():
+            self.assertEqual(session["selected_index"], 0)
+        pick_query.answer.side_effect = assert_pick_committed
+        await callback(update, context, base_dir)
+
+        update, submit_query = make_update("submit", message_id=message_id)
+        async def assert_submit_committed():
+            self.assertEqual(session["index"], 1)
+            self.assertEqual(len(session["answers"]), 1)
+        submit_query.answer.side_effect = assert_submit_committed
+        await callback(update, context, base_dir)
+
+
 if __name__ == "__main__":
     unittest.main()
