@@ -374,7 +374,9 @@
         {
           "id": "grammar_08",
           "title": "جێناو لە ڕووی واتا و ڕستەسازییەوە",
-          "focus": "شیکردنەوەی تایبەتمەندییە واتایی و ڕستەسازییەکان و جیاوازیی نێوان جێناو و وشە هاوشێوەکان؛ پەڕە ٦–١٠."
+          "focus": "شیکردنەوەی تایبەتمەندییە واتایی و ڕستەسازییەکان و جیاوازیی نێوان جێناو و وشە هاوشێوەکان؛ پەڕە ٦–١٠.",
+          "draft_path": "docs/course4-drafts/grammar_08_pronoun_semantics_syntax.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_09",
