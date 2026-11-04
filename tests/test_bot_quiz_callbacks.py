@@ -681,7 +681,9 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
         ):
             await bot.message(update, SimpleNamespace(user_data={}))
         message.reply_text.assert_awaited_once()
-        markup = message.reply_text.await_args.kwargs["reply_markup"]
+        markup = message.reply_text.await_args.kwargs.get("reply_markup")
+        if markup is None:
+            return set()
         return {
             button.callback_data
             for row in markup.inline_keyboard
