@@ -1002,6 +1002,73 @@ async def open_course_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await send_course_page(query.message, course_id, query.from_user.id, int(raw_page))
 
 
+QUIZ_MENU_PAGE_SIZE = 12
+
+def quiz_menu_items(user_id, mode):
+    completed = set(get_completed_lessons(user_id))
+    items = []
+    for lesson in active_course_lessons():
+        if not QUIZ_DATA.get(lesson) or lesson not in completed or not can_open(user_id, lesson):
+            continue
+        practice = quiz_requires_submission(lesson)
+        if (mode == "practice") != practice:
+            continue
+        suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
+        prefix = "🎯" if practice else "📝"
+        items.append((f"{prefix} {LESSON_DATA.get(lesson, {}).get('title', lesson)}", f"quiz_{suffix}_start"))
+    if course_is_active("arami_orthography_foundations"):
+        manifest = load_arami_course1_manifest(BASE_DIR)
+        for item in sorted(manifest["lessons"], key=lambda x: x["number"]):
+            lesson_id = item["id"]
+            if lesson_id not in completed or not can_open(user_id, lesson_id):
+                continue
+            n = item["number"]
+            callback_mode = "practice" if mode == "practice" else "assessment"
+            callback = f"arami1:{callback_mode}" if n == 1 else (f"arami5:{callback_mode}" if n == 5 else f"aramiC:{callback_mode}:{n}")
+            prefix = "🎯" if mode == "practice" else "📝"
+            items.append((f"{prefix} وانەی {n} — {item['title']}", callback))
+    return items
+
+def quiz_menu_keyboard(items, page, mode):
+    count = max(1, (len(items) + QUIZ_MENU_PAGE_SIZE - 1) // QUIZ_MENU_PAGE_SIZE)
+    if not isinstance(page, int) or isinstance(page, bool) or page < 0 or page >= count:
+        raise ValueError("invalid quiz menu page")
+    rows = [[InlineKeyboardButton(label, callback_data=callback)] for label, callback in items[page * QUIZ_MENU_PAGE_SIZE:(page + 1) * QUIZ_MENU_PAGE_SIZE]]
+    nav = []
+    if page:
+        nav.append(InlineKeyboardButton("⬅️ پێشوو", callback_data=f"quizmenu:{mode}:{page - 1}"))
+    if page + 1 < count:
+        nav.append(InlineKeyboardButton("➡️ دواتر", callback_data=f"quizmenu:{mode}:{page + 1}"))
+    if nav:
+        rows.append(nav)
+    return InlineKeyboardMarkup(rows), count
+
+async def send_quiz_menu(message, user_id, mode, page=0):
+    items = quiz_menu_items(user_id, mode)
+    if not items:
+        await message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        return
+    try:
+        keyboard, count = quiz_menu_keyboard(items, page, mode)
+    except ValueError:
+        await message.reply_text("⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نیە.")
+        return
+    title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
+    first = page * QUIZ_MENU_PAGE_SIZE + 1
+    last = min(first + QUIZ_MENU_PAGE_SIZE - 1, len(items))
+    await message.reply_text(f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {page + 1}/{count})", reply_markup=keyboard)
+
+async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    prefix, sep, rest = query.data.partition(":")
+    mode, sep2, raw_page = rest.partition(":")
+    if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdigit():
+        await query.message.reply_text("⚠️ داواکاریی لاپەڕەی تاقیکردنەوە نادروستە.")
+        return
+    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -1255,50 +1322,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text in {"📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"}:
-        completed = set(get_completed_lessons(user_id))
-        buttons = []
-        for lesson in active_course_lessons():
-            if QUIZ_DATA.get(lesson) and lesson in completed and can_open(user_id, lesson):
-                suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
-                is_practice = quiz_requires_submission(lesson)
-                if text == "🎯 ڕاهێنانی کرتەیی" and not is_practice:
-                    continue
-                if text == "📝 تاقیکردنەوەکان" and is_practice:
-                    continue
-                label = "🎯" if is_practice else "📝"
-                buttons.append([InlineKeyboardButton(
-                    f"{label} {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
-                    callback_data=f"quiz_{suffix}_start",
-                )])
-
-        # Arami Course 1 uses dedicated lesson readers and quiz callbacks, so
-        # include its completed lessons explicitly in the global quiz shortcuts.
-        if course_is_active("arami_orthography_foundations"):
-            arami_manifest = load_arami_course1_manifest(BASE_DIR)
-            arami_mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
-            arami_sequence_open = True
-            for item in sorted(arami_manifest["lessons"], key=lambda lesson: lesson["number"]):
-                if not arami_sequence_open or item["id"] not in completed:
-                    arami_sequence_open = False
-                    break
-                number = item["number"]
-                if number == 1:
-                    callback_data = f"arami1:{arami_mode}"
-                elif number == 5:
-                    callback_data = f"arami5:{arami_mode}"
-                else:
-                    callback_data = f"aramiC:{arami_mode}:{number}"
-                label = "🎯" if arami_mode == "practice" else "📝"
-                buttons.append([InlineKeyboardButton(
-                    f"{label} وانەی {number} — {item['title']}",
-                    callback_data=callback_data,
-                )])
-
-        if not buttons:
-            await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
-            return
-        prompt = "🎯 ڕاهێنانی کرتەیی هەڵبژێرە 👇" if text == "🎯 ڕاهێنانی کرتەیی" else "تاقیکردنەوە هەڵبژێرە 👇"
-        await update.message.reply_text(prompt, reply_markup=InlineKeyboardMarkup(buttons))
+        mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
+        await send_quiz_menu(update.message, user_id, mode, 0)
         return
 
     if text == "🎁 سەنوقی خەڵات":
@@ -1396,6 +1421,7 @@ def main():
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(open_course_page, pattern=r"^coursepage:"))
+    app.add_handler(CallbackQueryHandler(open_quiz_menu_page, pattern=r"^quizmenu:"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))

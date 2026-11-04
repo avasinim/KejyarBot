@@ -255,6 +255,36 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:0")
 
+    def test_global_quiz_menus_are_paginated_for_all_completed_courses(self):
+        all_lessons = [
+            lesson_id
+            for course_id, lesson_ids in bot.COURSE_LESSON_ORDER.items()
+            if bot.course_is_active(course_id)
+            for lesson_id in lesson_ids
+        ]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=all_lessons),
+            patch.object(bot, "can_open", return_value=True),
+        ):
+            for mode in ("practice", "assessment"):
+                items = bot.quiz_menu_items(12345, mode)
+                self.assertGreater(len(items), bot.QUIZ_MENU_PAGE_SIZE)
+                keyboard, page_count = bot.quiz_menu_keyboard(items, 0, mode)
+                self.assertLessEqual(len(keyboard.inline_keyboard), bot.QUIZ_MENU_PAGE_SIZE + 1)
+                self.assertEqual(keyboard.inline_keyboard[-1][0].callback_data, f"quizmenu:{mode}:1")
+                last_page, _ = bot.quiz_menu_keyboard(items, page_count - 1, mode)
+                self.assertLessEqual(len(last_page.inline_keyboard), bot.QUIZ_MENU_PAGE_SIZE + 1)
+
+    async def test_quiz_menu_page_callback_renders_requested_page(self):
+        update, message, query = self.make_update("quizmenu:assessment:1")
+        items = [(f"Lesson {i}", f"quiz_lesson_{i}_start") for i in range(25)]
+        with patch.object(bot, "quiz_menu_items", return_value=items):
+            await bot.open_quiz_menu_page(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(keyboard[0][0].callback_data, "quiz_lesson_12_start")
+        self.assertEqual(keyboard[-1][0].callback_data, "quizmenu:assessment:0")
+
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]

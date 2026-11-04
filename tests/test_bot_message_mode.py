@@ -203,10 +203,15 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
+        lesson_callbacks = [
+            button.callback_data for button in buttons
+            if button.callback_data.startswith("quiz_")
+        ]
         self.assertEqual(
-            [button.callback_data for button in buttons],
-            [bot.lesson_practice_callback(lesson) for lesson in expected],
+            lesson_callbacks,
+            [bot.lesson_practice_callback(lesson) for lesson in expected[:bot.QUIZ_MENU_PAGE_SIZE]],
         )
+        self.assertEqual(buttons[-1].callback_data, "quizmenu:practice:1")
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
