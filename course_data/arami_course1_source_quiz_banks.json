@@ -231,7 +231,7 @@
           "id": "4p1",
           "type": "recognize",
           "section_id": "lesson4_source_exercises",
-          "prompt": "ئەلفبێی زمانی کوردی چەند پیتی هەیە؟",
+          "prompt": "لە وانەی ٤دا، کام پیت لە گرووپی نەبزوێنەکاندا هاتووە؟",
           "options": [
             "٢٨",
             "٣٤",
@@ -244,7 +244,7 @@
           "id": "4p2",
           "type": "recognize",
           "section_id": "lesson4_source_exercises",
-          "prompt": "بزوێنەکان لەم دابەشکردنەدا چەند دانەن؟",
+          "prompt": "لە وشەی «کورد (Kurd)»دا، پیتی (و) دەنگی کامە؟",
           "options": [
             "٦",
             "٧",
@@ -257,7 +257,7 @@
           "id": "4p3",
           "type": "recognize",
           "section_id": "lesson4_source_exercises",
-          "prompt": "کام دوو پیت هەردوو ئەرکی بزوێن و نەبزوێنیان هەیە؟",
+          "prompt": "لە وشەی «مەی (mey)»دا، پیتی (ی) دەنگی کامە؟",
           "options": [
             "(و) و (ی)",
             "(ب) و (پ)",
@@ -270,7 +270,7 @@
           "id": "4p4",
           "type": "recognize",
           "section_id": "lesson4_source_exercises",
-          "prompt": "بزرۆکە بە کام نیشانە دەنووسرێت؟",
+          "prompt": "لە وشەی «بردن (birdin)»دا، دەنگی (i) چۆن ناسێنراوە؟",
           "options": [
             "u",
             "i",
@@ -283,7 +283,7 @@
           "id": "4p5",
           "type": "recognize",
           "section_id": "lesson4_source_exercises",
-          "prompt": "بۆ بزرۆکە پیتێکی تایبەت دانراوە؟",
+          "prompt": "پوختەی وانەی ٤ کۆی دەنگەکانی زمانی کوردی چەند دیاری دەکات؟",
           "options": [
             "بەڵێ",
             "نەخێر"
