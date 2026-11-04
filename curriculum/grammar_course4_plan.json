@@ -4,7 +4,7 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "source_parts_1_2_4_5_text_inspected_in_part; part_2_pages_3_15_verified; part_3_full_text_pending",
+  "content_status": "source_parts_1_2_3_4_5_scans_located; part_2_pages_3_15_reviewed; part_3_preface_pages_3_10_reviewed; parts_1_4_5_partial_text_inspected",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
@@ -118,13 +118,29 @@
       "additional_mirrors": [
         "https://vk.com/doc336548236_481490805",
         "https://drive.google.com/file/d/1UHfQibdBrdMyz80IbJno1wgZxirDCoP0/view?usp=sharing",
-        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-3.pdf"
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-3.pdf",
+        "https://www.kurdipedia.org/default.aspx?lng=1&q=20230726094619509587"
       ],
       "bibliographic_pages": "151 pages in 1992 Zheen catalogue; 304 pages in 2018 blog mirror. Different editions or scans; pagination must be verified against the exact file.",
       "verified_references": [
         {
           "topic": "ئاوەڵناو",
           "evidence": "A peer-reviewed Kurdish linguistics article cites the 1992 source in its bibliography; no detailed chapter contents or page references have yet been verified."
+        }
+      ],
+      "direct_reader": "https://www.kurdipedia.org/docviewer.aspx?book=20230726094619509587&lng=1",
+      "scan_page_count": 154,
+      "scan_inspection_status": "PDF opened in Kurdipedia docviewer; cover and printed pages 3–10 visually inspected. This is not yet full text review.",
+      "verified_observations": [
+        {
+          "topic": "مناقشەی پۆلێنکردنی ئاوەڵناو",
+          "pages": "3–10",
+          "evidence": "The author's preface reviews and questions previous classifications, discusses adjective-like words and their grammatical/syntactic function, and cites earlier Kurdish and Russian linguistic works. These are preface observations, not a full chapter outline."
+        },
+        {
+          "topic": "نیشانە و شێوەی ئاوەڵناو لە کوردیدا",
+          "pages": "8–10",
+          "evidence": "Preface examples discuss adjective markers/forms and contrasts in their use. Do not generalize them into a complete taxonomy until the main chapters are reviewed."
         }
       ]
     },
