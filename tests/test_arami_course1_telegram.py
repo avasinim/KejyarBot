@@ -361,13 +361,13 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("چ • ç", rendered)
         self.assertNotIn("|---|", rendered)
 
-    async def test_only_lessons_1_to_7_send_their_assigned_png_infographic(self):
+    async def test_only_approved_lessons_except_lesson_5_send_png_infographics(self):
         from arami_course1_telegram import send_lesson_infographic, lesson_infographic_path
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             asset_dir = root / "assets" / "course1_infographics"
             asset_dir.mkdir(parents=True)
-            for number in range(1, 8):
+            for number in (1, 2, 3, 4, 6, 7):
                 (asset_dir / f"lesson_{number:02d}.png").write_bytes(b"approved-png")
             message = SimpleNamespace(reply_photo=AsyncMock())
             for number in range(1, 22):
