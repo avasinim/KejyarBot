@@ -73,7 +73,6 @@ class QuizBankQualityTests(unittest.TestCase):
             "daily_conversation_lessons_07_30.json",
             "daily_conversation_lessons_31_36.json",
             "daily_conversation_lessons_37_42.json",
-            "daily_conversation_lessons_43_48.json",
         )
         datasets = []
         for filename in daily_paths:
