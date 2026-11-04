@@ -470,7 +470,9 @@
         {
           "id": "grammar_20",
           "title": "ژمارەی بنجی و تایبەتمەندییە مۆرفۆسینتاکسییەکان",
-          "focus": "واتای چەندێتی، شوێنی ژمارە لە ناوگرووپ، کاریگەری لەسەر تاک/کۆی ناو، و فرەئەرکیی وشەی «یەک»؛ نموونە و جیاوازییە دیالێکتییەکان."
+          "focus": "واتای چەندێتی، شوێنی ژمارە لە ناوگرووپ، کاریگەری لەسەر تاک/کۆی ناو، و فرەئەرکیی وشەی «یەک»؛ نموونە و جیاوازییە دیالێکتییەکان.",
+          "draft_path": "docs/course4-drafts/grammar_20_cardinal_numerals_morphosyntax.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_21",
