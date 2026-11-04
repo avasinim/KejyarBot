@@ -9,7 +9,7 @@ Status: production specification only; no lesson text, runtime code, database, d
 - Master reference: follow the user's supplied dashboard image for its warm cream canvas, deep forest-green structure, restrained gold accents, clear cards, balanced whitespace, and academic/educational hierarchy.
 - Exclude the top course-label/header panel that says **«ڕێنووسی سەرەتایی»** in the reference. Do not reproduce it as a repeated lesson-identity banner.
 - Keep a compact lesson-specific title and lesson number in the content area; do not add a second course banner.
-- Kurdish text must be editable real text, not AI-rendered lettering. Use a Kurdish-capable font with correct Arabic-script shaping, RTL paragraph direction, correct punctuation placement, and careful glyph/diacritic proofing.
+- Kurdish text must be editable real text, not AI-rendered lettering. Use a Kurdish-capable font with correct Arabic-script shaping, RTL paragraph direction, correct punctuation placement, and careful glyph/diacritic proofing. For visually confusable Kurdish-specific glyphs, verify the actual rendered shape rather than trusting the font-family name; the letter **پ** must visibly retain its three dots below. In the approved Lesson 1 draft, use the Noto Kufi Arabic glyph fallback specifically for **پ** because the initial Noto Sans Arabic rendering did not show the expected dot structure.
 - AI-generated decorative art may support a lesson, but may not supply Kurdish words, alter the mascot, or introduce unverified linguistic claims.
 - Use exact lesson source wording, examples, letter inventory, and scope. Never invent examples to fill visual space. Where a source is incomplete or ambiguous, mark the visual draft for review rather than filling the gap.
 
@@ -54,6 +54,7 @@ Status: production specification only; no lesson text, runtime code, database, d
 - [ ] KejyarBot@ and Kejyar name are present; no unrelated brand.
 - [ ] The removed «ڕێنووسی سەرەتایی» course-banner panel is absent.
 - [ ] Every Kurdish string is editable text, RTL-shaped, and proofread against the source.
+- [ ] Kurdish-specific glyphs are visually checked after rendering; **پ** has three dots below, and no font fallback changes a letter's identity.
 - [ ] All lesson examples and letter forms match the exact lesson source.
 - [ ] No AI-generated Kurdish text or unverified linguistic claims.
 - [ ] Lesson-specific visual treatment is clear at mobile size.
