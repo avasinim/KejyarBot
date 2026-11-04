@@ -43,7 +43,7 @@
 | 8 | 3 | C | wî |
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
-| 9 | 1 | A | X — herfa dengdar |
+| 9 | 1 | A | X |
 | 9 | 2 | A | Dengdar |
 | 9 | 3 | C | zozan |
 | 9 | 4 | B | xort |
