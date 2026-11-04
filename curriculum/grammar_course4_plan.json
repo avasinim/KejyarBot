@@ -326,7 +326,9 @@
         {
           "id": "grammar_02",
           "title": "پۆلێنکردنی ناو لە ڕووی ناوەڕۆکەوە",
-          "focus": "ناوی تایبەتی و ناوی گشتی؛ ناوی کۆمەڵ و جیاوازیی ناوی دیاریکراو لە ناوی گشتی؛ گۆڕینی ناوی گشتی بۆ تایبەتی و پێچەوانەکەی. بە نموونە و دەقی سەرچاوە."
+          "focus": "ناوی تایبەتی و ناوی گشتی؛ ناوی کۆمەڵ و جیاوازیی ناوی دیاریکراو لە ناوی گشتی؛ گۆڕینی ناوی گشتی بۆ تایبەتی و پێچەوانەکەی. بە نموونە و دەقی سەرچاوە.",
+          "draft_path": "docs/course4-drafts/grammar_02_noun_semantic_classification.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_03",
