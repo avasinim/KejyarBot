@@ -389,7 +389,7 @@ class ContentConsistencyTests(unittest.TestCase):
         start = bot_source.index("def quiz_menu_items(user_id, mode):")
         end = bot_source.index("\ndef quiz_menu_keyboard", start)
         helper = bot_source[start:end]
-        self.assertIn("lesson in completed", helper)
+        self.assertIn("lesson not in completed", helper)
         self.assertIn("QUIZ_DATA.get(lesson)", helper)
     def test_completed_lessons_receive_dynamic_badges_within_runtime_order(self):
         import bot
