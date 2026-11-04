@@ -318,7 +318,7 @@
       "lessons": [
         {
           "id": "grammar_01",
-          "title": "ناو: پێناسە و شوێنی لە سیستەمی زماندا",
+          "title": "پێزمان، مۆرفۆلۆژی و سینتاکس؛ پێوەرەکانی پۆلێنکردنی وشە",
           "focus": "ڕێزمان و دوو ئاستی مۆرفۆلۆژی/سینتاکس؛ ناو وەک یەکەی مۆرفۆلۆژی؛ جیاوازیی ناو لە کردار لە ڕووی دەنگ، وشەڕۆنان، وشەسازی و ڕستەسازی. بنەمای ئەم بابەتانە لە پێشەکی و دەستپێکی بەشی ناو هاتووە.",
           "draft_path": "docs/course4-drafts/grammar_01_morphology_and_syntax.md",
           "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
