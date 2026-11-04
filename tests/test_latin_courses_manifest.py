@@ -92,8 +92,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         lesson11 = lessons["kurmanji_latin_orthography_11"]["content"]
         lesson12 = lessons["kurmanji_latin_orthography_12"]["content"]
         self.assertIn("Nisbeta Herfên Kurdî", lesson11)
-        self.assertIn("٢٢٠٠", lesson11)
-        self.assertIn("٤١٧", lesson11)
+        self.assertIn("2200", lesson11)
+        self.assertIn("417", lesson11)
         self.assertIn("Pêdaçûna Giştî", lesson12)
         self.assertIn("31 herf", lesson12)
         self.assertEqual(len(quizzes["kurmanji_latin_orthography_11"]), 5)
