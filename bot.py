@@ -547,7 +547,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if (
         isinstance(active_quiz, dict)
         and active_quiz.get("lesson") == lesson
-        and active_quiz.get("start_message_id") == query.message.message_id
+        and active_quiz.get("start_message_id") == getattr(query.message, "message_id", None)
     ):
         # Ignore duplicate callbacks from the same launch button.
         await query.answer()
@@ -559,7 +559,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "questions": randomized_question_copy(source_questions),
         "score": 0,
         "question_message_id": None,
-        "start_message_id": query.message.message_id,
+        "start_message_id": getattr(query.message, "message_id", None),
         "selected_answer_index": None,
         "answer_in_progress": False,
     }
