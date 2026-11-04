@@ -9,7 +9,7 @@ import bot
 
 class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
     def make_update(self, callback_data, user_id=12345):
-        message = SimpleNamespace(reply_text=AsyncMock(), message_id=77)
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock(), message_id=77)
         query = SimpleNamespace(
             data=callback_data,
             from_user=SimpleNamespace(id=user_id),
@@ -247,7 +247,12 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        message.reply_text.assert_not_awaited()
+        message.edit_text.assert_awaited_once()
+        rendered = message.edit_text.await_args.args[0]
+        self.assertIn("کۆرسی ٢: وتووێژ", rendered)
+        self.assertIn("وانەکانی 13–24 لە کۆی 48 — لاپەڕەی 2/4", rendered)
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(len(keyboard), 13)
         self.assertEqual(
             keyboard[0][0].callback_data,
