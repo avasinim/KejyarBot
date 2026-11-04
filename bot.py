@@ -324,13 +324,8 @@ def can_open(user_id, lesson):
         return False
     completed = set(get_completed_lessons(user_id))
     order = COURSE_LESSON_ORDER.get(course_id, [])
-    if course_id in {"unified_orthography", "arami_orthography_foundations"}:
-        # These courses must be completed as a strict prefix: a stale/non-contiguous
-        # progress record must never unlock later lessons out of sequence.
-        if lesson not in order:
-            return False
-        index = order.index(lesson)
-        return all(previous in completed for previous in order[:index])
+    # Every course follows one consistent sequential path. A stale or
+    # non-contiguous progress record must never unlock a later lesson.
     return can_open_lesson(order, completed, lesson)
 
 BADGE_COURSE_TITLES = {
@@ -530,8 +525,8 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not questions:
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
-    if lesson not in get_completed_lessons(user_id):
-        await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
+    if lesson not in get_completed_lessons(user_id) or not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەکە و هەموو وانەکانی پێشوتری لە ڕیزەکەدا تەواو بکە.")
         return
     context.user_data["quiz"] = {
         "index": 0,
@@ -1199,7 +1194,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         completed = set(get_completed_lessons(user_id))
         buttons = []
         for lesson in active_course_lessons():
-            if QUIZ_DATA.get(lesson) and lesson in completed:
+            if QUIZ_DATA.get(lesson) and lesson in completed and can_open(user_id, lesson):
                 suffix = lesson.removeprefix("وانە_") if lesson.startswith("وانە_") else lesson
                 is_practice = quiz_requires_submission(lesson)
                 if text == "🎯 ڕاهێنانی کرتەیی" and not is_practice:
@@ -1218,7 +1213,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
             for item in sorted(arami_manifest["lessons"], key=lambda lesson: lesson["number"]):
-                if item["id"] not in completed:
+                if item["id"] not in completed or not can_open(user_id, item["id"]):
                     continue
                 number = item["number"]
                 if number == 1:
