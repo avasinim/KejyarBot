@@ -415,7 +415,9 @@
         {
           "id": "grammar_13",
           "title": "ئاوەڵناو: پێناسە و جیاکردنەوە لە ناو",
-          "focus": "پێناسەی ئاوەڵناو، پەیوەندی بە ناوەوە، جیاوازیی ئەرکی ناو و ئاوەڵناو و پێوەرە واتایی و ڕستەسازییەکان؛ پەڕە ٣–١٧ و ١٢٨–١٣١."
+          "focus": "پێناسەی ئاوەڵناو، پەیوەندی بە ناوەوە، جیاوازیی ئەرکی ناو و ئاوەڵناو و پێوەرە واتایی و ڕستەسازییەکان؛ پەڕە ٣–١٧ و ١٢٨–١٣١.",
+          "draft_path": "docs/course4-drafts/grammar_13_adjective_definition_and_noun_distinction.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_14",
