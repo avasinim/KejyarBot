@@ -758,13 +758,13 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
     async def test_global_assessment_menu_includes_completed_arami_lessons(self):
         completed = [
             bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[1],
             bot.ARMI_LESSON_IDS[4],
-            bot.ARMI_LESSON_IDS[5],
         ]
         callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
         self.assertEqual(
             callbacks,
-            {"arami1:assessment", "arami5:assessment", "aramiC:assessment:6"},
+            {"arami1:assessment", "aramiC:assessment:2"},
         )
 
     async def test_global_practice_menu_includes_completed_arami_lessons(self):
@@ -776,7 +776,7 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
         callbacks = await self._open_global_menu("🎯 ڕاهێنانی کرتەیی", completed)
         self.assertEqual(
             callbacks,
-            {"arami1:practice", "arami5:practice", "aramiC:practice:6"},
+            {"arami1:practice", "aramiC:practice:2"},
         )
 
     async def test_global_quiz_menu_does_not_list_uncompleted_arami_lessons(self):
