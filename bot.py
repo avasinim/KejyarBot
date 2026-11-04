@@ -1158,7 +1158,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "╭━━━━━━━━━━━━━━━━━━━━╮\n"
             "       📅 <b>ساڵنامەی کوردی</b>\n"
             "╰━━━━━━━━━━━━━━━━━━━━╯\n\n"
-            "🌿 ناوی مانگەکان لە شێوەزارە جیاوازەکاندا\\n"
+            "🌿 ناوی مانگەکان لە شێوەزارە جیاوازەکاندا\n"
             "شێوەزارێک هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە.",
             parse_mode="HTML",
             reply_markup=months_menu_keyboard(),
