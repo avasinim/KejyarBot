@@ -354,7 +354,9 @@
         {
           "id": "grammar_06",
           "title": "شیکردنەوە و هەڵسەنگاندنی بەشی ناو",
-          "focus": "شیکردنەوەی ناو لە دەق: پۆل، واتا، پێکهاتە، ڕەگەز، ژمارە و ناسیاوی؛ جیاکردنەوەی پێناسە، بەڵگە و ڕەخنەی نووسەر."
+          "focus": "شیکردنەوەی ناو لە دەق: پۆل، واتا، پێکهاتە، ڕەگەز، ژمارە و ناسیاوی؛ جیاکردنەوەی پێناسە، بەڵگە و ڕەخنەی نووسەر.",
+          "draft_path": "docs/course4-drafts/grammar_06_noun_analysis_review.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         }
       ]
     },
