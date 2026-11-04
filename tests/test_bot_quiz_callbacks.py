@@ -184,6 +184,30 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(query.message.reply_text.await_count, 2)
 
 
+    async def test_successful_lesson_completion_acknowledges_callback(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][0]
+        next_lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][1]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "quiz_requires_submission", return_value=False),
+            patch.object(bot, "next_course_lesson", return_value=next_lesson),
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+
     async def test_latin_lesson_completion_offers_next_lesson_in_same_course(self):
         for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
             with self.subTest(course_id=course_id):
