@@ -178,6 +178,11 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
             await callback(update, context, "/unused")
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "assessment")
         question_message_id = context.user_data["arami_lesson1_message_id"]
+        if selected_index == "correct":
+            selected_index = context.user_data["arami_lesson1_session"]["questions"][0]["answer_index"]
+        elif selected_index == "wrong":
+            question = context.user_data["arami_lesson1_session"]["questions"][0]
+            selected_index = (question["answer_index"] + 1) % len(question["options"])
 
         update, query = make_update(f"pick:{selected_index}", message_id=question_message_id)
         await callback(update, context, "/unused")
@@ -186,7 +191,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         return context, query
 
     async def test_assessment_wrong_answer_offers_retry_and_retry_starts_practice(self):
-        context, result_query = await self._start_and_answer(0)
+        context, result_query = await self._start_and_answer("wrong")
         self.assertTrue(context.user_data["arami_lesson1_session"]["closed"])
         result_query.edit_message_text.assert_awaited_once()
         markup = result_query.edit_message_text.await_args.kwargs["reply_markup"]
@@ -206,13 +211,13 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
 
     async def test_assessment_does_not_reveal_correct_answer_after_each_response(self):
-        _context, result_query = await self._start_and_answer(0)
+        _context, result_query = await self._start_and_answer("wrong")
         shown = result_query.edit_message_text.await_args.args[0]
         self.assertIn("وەڵامەکەت وەرگیرا", shown)
         self.assertNotIn("وەڵامی ڕاست", shown)
 
     async def test_perfect_assessment_does_not_offer_retry(self):
-        _context, result_query = await self._start_and_answer(1)
+        _context, result_query = await self._start_and_answer("correct")
         markup = result_query.edit_message_text.await_args.kwargs["reply_markup"]
         callbacks = [
             button.callback_data
