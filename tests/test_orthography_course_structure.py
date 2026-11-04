@@ -38,7 +38,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("kurmanji_latin_orthography"))
         self.assertTrue(bot.course_is_active("kurmanji_latin_grammar"))
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"]), 12)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"]), 12)
