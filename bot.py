@@ -484,6 +484,18 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard,
         )
+    elif next_lesson is None and LESSON_COURSE.get(lesson) == "arami_orthography_foundations":
+        final_number = int(lesson.rsplit("_", 1)[1])
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی کۆتایی کۆرسی ١",
+                callback_data=f"aramiC:assessment:{final_number}",
+            )
+        ]])
+        await query.message.reply_text(
+            message_text + "\n\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
+            reply_markup=keyboard,
+        )
     elif next_lesson is None:
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
@@ -1270,6 +1282,28 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     f"{label} {LESSON_DATA.get(lesson, {}).get('title', lesson)}",
                     callback_data=f"quiz_{suffix}_start",
                 )])
+
+        # Arami Course 1 uses dedicated lesson readers and quiz callbacks, so
+        # include its completed lessons explicitly in the global quiz shortcuts.
+        if course_is_active("arami_orthography_foundations"):
+            arami_manifest = load_arami_course1_manifest(BASE_DIR)
+            arami_mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
+            for item in sorted(arami_manifest["lessons"], key=lambda lesson: lesson["number"]):
+                if item["id"] not in completed:
+                    continue
+                number = item["number"]
+                if number == 1:
+                    callback_data = f"arami1:{arami_mode}"
+                elif number == 5:
+                    callback_data = f"arami5:{arami_mode}"
+                else:
+                    callback_data = f"aramiC:{arami_mode}:{number}"
+                label = "🎯" if arami_mode == "practice" else "📝"
+                buttons.append([InlineKeyboardButton(
+                    f"{label} وانەی {number} — {item['title']}",
+                    callback_data=callback_data,
+                )])
+
         if not buttons:
             await update.message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
             return

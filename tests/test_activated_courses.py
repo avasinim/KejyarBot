@@ -150,9 +150,13 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
         complete.assert_called_once_with(12345, lesson_id)
         message.reply_text.assert_awaited_once()
-        self.assertIn("🎓 ئەم کۆرسە تەواو بوو.", message.reply_text.await_args.args[0])
+        self.assertIn("کۆرسی ١ تەواو بوو", message.reply_text.await_args.args[0])
         self.assertNotIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
-        self.assertIsNone(message.reply_text.await_args.kwargs.get("reply_markup"))
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
+        self.assertEqual(
+            keyboard.inline_keyboard[0][0].callback_data,
+            "aramiC:assessment:21",
+        )
 
     async def test_uncompleted_previous_lesson_blocks_arami_reward_claim(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][1]

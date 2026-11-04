@@ -638,6 +638,34 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(buttons, ["aramiC:lesson:2"])
 
+    async def test_final_course1_lesson_offers_its_dedicated_assessment(self):
+        lesson = bot.ARMI_LESSON_IDS[-1]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1", "A1.1"]),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        reply = query.message.reply_text.await_args
+        buttons = [
+            button.callback_data
+            for row in reply.kwargs["reply_markup"].inline_keyboard
+            for button in row
+        ]
+        self.assertEqual(buttons, ["aramiC:assessment:21"])
+        self.assertIn("کۆرسی ١ تەواو بوو", reply.args[0])
+
     async def test_completion_of_lesson_four_routes_to_dedicated_lesson_five_reader(self):
         lesson = bot.ARMI_LESSON_IDS[3]
         query = SimpleNamespace(
@@ -664,6 +692,59 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
             for button in row
         ]
         self.assertEqual(buttons, ["arami5:lesson"])
+
+
+class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
+    async def _open_global_menu(self, menu_text, completed):
+        message = SimpleNamespace(text=menu_text, reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=24680),
+        )
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "active_course_lessons", return_value=[]),
+            patch.object(bot, "course_is_active", return_value=True),
+        ):
+            await bot.message(update, SimpleNamespace(user_data={}))
+        message.reply_text.assert_awaited_once()
+        markup = message.reply_text.await_args.kwargs.get("reply_markup")
+        if markup is None:
+            return set()
+        return {
+            button.callback_data
+            for row in markup.inline_keyboard
+            for button in row
+        }
+
+    async def test_global_assessment_menu_includes_completed_arami_lessons(self):
+        completed = [
+            bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[4],
+            bot.ARMI_LESSON_IDS[5],
+        ]
+        callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
+        self.assertEqual(
+            callbacks,
+            {"arami1:assessment", "arami5:assessment", "aramiC:assessment:6"},
+        )
+
+    async def test_global_practice_menu_includes_completed_arami_lessons(self):
+        completed = [
+            bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[4],
+            bot.ARMI_LESSON_IDS[5],
+        ]
+        callbacks = await self._open_global_menu("🎯 ڕاهێنانی کرتەیی", completed)
+        self.assertEqual(
+            callbacks,
+            {"arami1:practice", "arami5:practice", "aramiC:practice:6"},
+        )
+
+    async def test_global_quiz_menu_does_not_list_uncompleted_arami_lessons(self):
+        callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", [])
+        self.assertEqual(callbacks, set())
 
 
 if __name__ == "__main__":
