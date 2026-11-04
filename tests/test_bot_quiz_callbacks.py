@@ -811,8 +811,8 @@ class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
             await bot.finish_lesson(update, context)
 
         message = query.message.reply_text.await_args.args[0]
-        self.assertIn("\\n", message)
-        self.assertNotIn("\\\\n", message)
+        self.assertIn("\n", message)
+        self.assertNotIn("\\n", message)
 
 
 if __name__ == "__main__":
