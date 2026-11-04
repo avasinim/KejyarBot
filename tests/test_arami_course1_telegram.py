@@ -47,14 +47,14 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
 
 
     def test_reader_uses_a_three_level_classroom_heading_hierarchy(self):
-        rendered = "\\n".join(_render_source_html(
-            "# ناونیشانی وانە\\n"
-            "## بەشی یەکەم\\n"
-            "### خاڵی ورد\\n"
+        rendered = "\n".join(_render_source_html(
+            "# ناونیشانی وانە\n"
+            "## بەشی یەکەم\n"
+            "### خاڵی ورد\n"
             "دەقی ڕەسەن"
         ))
         self.assertIn("<b>📘 ناونیشانی وانە</b>", rendered)
-        self.assertIn("━━━━━━━━━━━━━━━━━━\\n<b>🎓 بەشی یەکەم</b>\\n━━━━━━━━━━━━━━━━━━", rendered)
+        self.assertIn("━━━━━━━━━━━━━━━━━━\n<b>🎓 بەشی یەکەم</b>\n━━━━━━━━━━━━━━━━━━", rendered)
         self.assertIn("<b>▪️ خاڵی ورد</b>", rendered)
         self.assertIn("دەقی ڕەسەن", rendered)
         self.assertIn("<b>ژمارە</b>: ١", rendered)
