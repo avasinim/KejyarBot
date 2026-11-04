@@ -4,7 +4,7 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "outline_only_source_files_not_yet_read",
+  "content_status": "catalogue_verified_and_search_index_excerpts_found_full_pdf_text_extraction_pending",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
@@ -362,6 +362,24 @@
       "file_page": "https://kurdcollect.com/index.php/پەڕگە:ڕێزمانی_کوردی_بەرگی_01.pdf",
       "file_size_bytes": 24426929,
       "access_status": "file_is_listed_but_download_not_retrieved_in_this_session"
+    },
+    "additional_mirror": {
+      "provider": "Kurdshop",
+      "catalog_urls": [
+        "https://kurdshop.net/ku/library/3451",
+        "https://kurdshop.net/ku/library/3452",
+        "https://kurdshop.net/ku/library/3453",
+        "https://kurdshop.net/ku/library/3454",
+        "https://kurdshop.net/ku/library/3455"
+      ],
+      "direct_pdf_files": [
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-1.pdf",
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-2.pdf",
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-3.pdf",
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-4.pdf",
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-5.pdf"
+      ],
+      "access_note": "Search indexing confirms direct PDF copies for parts 1, 4, and 5, and catalog download pages for all five parts. The indexed text from the verb and numeral/adverb PDFs exposes original passages; these mirrors should be preferred for further retrieval. Full local PDF extraction remains pending."
     }
   },
   "source_catalog": {
