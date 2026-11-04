@@ -1034,7 +1034,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 🤖 <b>Android</b>
 🔹 <a href="https://play.google.com/store/apps/details?id=com.app.jayesh.customkeyboard">Hawrami Keyboard — هەورامی، سۆرانی، کورمانجی و کوردیی خوارین</a>
-🔹 <a href="https://support.google.com/gboard/answer/7068494?hl=en">ڕێنمایی Gboard بۆ زیادکردنی زمان و تەختەکلیل</a>
+🔹 <a href="https://support.google.com/gboard/answer/7068494">ڕێنمایی Gboard بۆ زیادکردنی زمان و تەختەکلیل</a>
 🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">Keyman — سۆرانی / کوردیی ناوەندی</a>
 🔹 <a href="https://keyman.com/keyboards/sorani_behdini_arab_qwerty">Keyman — سۆرانی و بادینی</a>
 🔹 <a href="https://keyman.com/keyboards/horami">Keyman — هەورامی</a>
@@ -1052,6 +1052,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">سۆرانی — Keyman بۆ هەموو سیستەمەکان</a>
 🔹 <a href="https://keyman.com/keyboards/horami">هەورامی — Keyman بۆ هەموو سیستەمەکان</a>
 🔹 <a href="https://keyman.com/en/">Keyman — گەڕان بۆ تەختەکلیلەکانی تر</a>
+🔹 <a href="https://kurdi.sh/en/keyboard">تەختەکلیل و ڕێنمایی ئۆنلاین بۆ ئامێرە جیاوازەکان</a>
+🔹 <a href="https://kurdisch-akademie.de/tastatur">تەختەکلیلی ئۆنلاین سۆرانی</a>
 
 📌 <b>تێبینی گرنگ</b>
 هەموو ئەم تەختەکلیلانە بۆ هەموو شێوەزارەکان یەکسان نین. هەورامی و کوردیی خوارین لە هەندێک ئەپدا پشتگیری دەکرێن؛ بەڵام بۆ کەڵهوڕی و هەندێک شێوەزاری ناوچەیی، تەختەکلیلی تایبەتی و پشتڕاستکراوەمان نەدۆزیوەتەوە. پێش دامەزراندن، ناوی زمان و شێوەزاری پشتگیریکراو لە لاپەڕەی ئەپەکەدا بپشکنە.
