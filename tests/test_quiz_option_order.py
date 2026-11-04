@@ -98,6 +98,28 @@ class QuizOptionOrderTests(unittest.TestCase):
                     )
                 self.assertEqual(source, snapshot, f"source bank mutated: lesson {lesson_number} {mode}")
 
+    def test_duplicate_options_are_rejected_case_and_whitespace_insensitively(self):
+        for options in (["A", "A"], ["Correct", " correct "], ["yes", "YES"]):
+            with self.subTest(options=options):
+                with self.assertRaisesRegex(ValueError, "duplicate options"):
+                    randomized_question_copy(
+                        [{"options": options, "answer": options[0]}]
+                    )
+
+    def test_correct_answer_must_appear_exactly_once(self):
+        with self.assertRaisesRegex(ValueError, "exactly once"):
+            randomized_question_copy(
+                [{"options": ["same", "same"], "answer": "same"}]
+            )
+
+    def test_empty_and_non_text_options_are_rejected(self):
+        for options in (["A", " "], ["A", None]):
+            with self.subTest(options=options):
+                with self.assertRaisesRegex(ValueError, "empty or invalid option"):
+                    randomized_question_copy(
+                        [{"options": options, "answer": "A"}]
+                    )
+
     def test_invalid_answer_is_rejected(self):
         with self.assertRaises(ValueError):
             randomized_question_copy([{"options": ["A", "B"], "answer": "missing"}])
