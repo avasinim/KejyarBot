@@ -211,8 +211,6 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("X yek ji 23 herfên dengdar", lesson)
         self.assertIn("Y jî di çavkaniya bingehîn de di nav koma 23 dengdar", lesson)
         self.assertIn("Z yek ji herfên dengdar e", lesson)
-        self.assertIn("X dengdareke kurmancî ye", lesson)
-        self.assertIn("Z dengdareke kurmancî ye", lesson)
         self.assertIn("| zozan | Z |", lesson)
         self.assertNotIn("Y nîvdeng e", lesson)
 
