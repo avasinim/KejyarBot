@@ -436,17 +436,18 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
-    old_level = get_user_level(user_id)
     first_completion = complete_lesson_with_rewards(user_id, lesson)
-    if not first_completion:
-        await query.message.reply_text("✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت.")
-        return
-
-    check_badges(user_id)
-    new_level = get_user_level(user_id)
-    message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
-    if old_level != new_level:
-        message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
+    if first_completion:
+        old_level = get_user_level(user_id)
+        check_badges(user_id)
+        new_level = get_user_level(user_id)
+        message_text = "✅ وانەکە تەواو بوو!\\n\\n🔥 +10 XP\\n🪙 +5 Coin\\n🎁 +1 سەنوقی خەڵات"
+        if old_level != new_level:
+            message_text += f"\\n\\n🎉 بەرزبوویتەوە بۆ: {new_level}"
+    else:
+        # Idempotent completion must still help a learner resume the sequence.
+        # Rewards and badges are never repeated.
+        message_text = "✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت."
 
     next_lesson = next_course_lesson(lesson)
     if next_lesson is not None and quiz_requires_submission(lesson) and QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
@@ -469,10 +470,14 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         next_number = int(next_lesson.rsplit("_", 1)[1])
         arami_manifest = load_arami_course1_manifest(BASE_DIR)
         next_title = next(item["title"] for item in arami_manifest["lessons"] if item["number"] == next_number)
+        next_callback = (
+            "arami5:lesson" if next_number == 5
+            else f"aramiC:lesson:{next_number}"
+        )
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
                 f"➡️ دەستپێکردنی وانەی {next_number}",
-                callback_data=f"aramiC:lesson:{next_number}",
+                callback_data=next_callback,
             )
         ]])
         await query.message.reply_text(
@@ -516,12 +521,13 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Keep dynamic speech disabled. The legacy event MP3s are byte-identical,
     # so do not replay them as separate completion/reward announcements.
 
-    await send_conversation_voice(query.message, message_text, context.user_data, user_id)
+    if first_completion:
+        await send_conversation_voice(query.message, message_text, context.user_data, user_id)
 
     # Course 3 advances automatically after a successful completion. The next
     # lesson remains protected by can_open(), and its own completion button is
     # required before another lesson can be unlocked.
-    if LESSON_COURSE.get(lesson) == "unified_orthography" and next_lesson is not None:
+    if first_completion and LESSON_COURSE.get(lesson) == "unified_orthography" and next_lesson is not None:
         next_data = LESSON_DATA.get(next_lesson)
         if next_data and can_open(user_id, next_lesson):
             await send_lesson_text(query.message, next_data["content"], lesson_keyboard(next_lesson))
