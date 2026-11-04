@@ -2,7 +2,7 @@
 import logging
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson5_interactions, load_arami_lesson5_source
-from arami_course1_telegram import load_manifest, send_lesson_audio, _send_source
+from arami_course1_telegram import load_manifest, send_lesson_audio, send_lesson_infographic, _send_source
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
@@ -50,6 +50,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             f"وانەی ٥ — {lesson_record.get('title', 'پیتەکان و هاوتای لاتینی')}",
             source,
         )
+        await send_lesson_infographic(query.message, lesson_record, base_dir=base_dir)
         await send_lesson_audio(query.message, base_dir, lesson_record)
         await query.message.reply_text(
             "⭐ کۆتایی وانەی ٥",
