@@ -231,16 +231,16 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         rendered = message.reply_text.await_args.args[0]
-        self.assertIn("\\n", rendered)
-        self.assertNotIn("\\\\n", rendered)
+        self.assertIn("\n", rendered)
+        self.assertNotIn("\\n", rendered)
 
     async def test_arami_course_menu_description_uses_real_line_break(self):
         update, message, query = self.make_update("course_arami_orthography_foundations")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         rendered = message.reply_text.await_args.args[0]
-        self.assertIn("\\n", rendered)
-        self.assertNotIn("\\\\n", rendered)
+        self.assertIn("\n", rendered)
+        self.assertNotIn("\\n", rendered)
 
     async def test_course_menu_pagination_opens_the_requested_next_page(self):
         update, message, query = self.make_update("coursepage:daily_conversation:1")
