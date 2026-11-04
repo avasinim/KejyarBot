@@ -502,7 +502,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
-    if kind == "pick" and len(parts) == 3 and parts[2].isdigit():
+    if kind == "pick":
+        if len(parts) != 3 or not parts[2].isdigit():
+            await query.answer()
+            return
         try:
             selected = select_answer(session, int(parts[2]))
         except (ValueError, TypeError):
