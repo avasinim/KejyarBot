@@ -17,7 +17,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(courses[0]["id"], "kurmanji_latin_orthography")
         self.assertEqual(courses[1]["id"], "kurmanji_latin_grammar")
         self.assertIn("Part I", courses[0]["source_part"])
-        self.assertIn("Beşa II", courses[1]["source_part"])
+        self.assertIn("Part II", courses[1]["source_part"])
 
     def test_each_lesson_keeps_full_markdown_and_five_questions(self):
         lessons, quizzes, _ = load_latin_courses()
@@ -32,7 +32,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
 
         expected = {
             "kurmanji_latin_orthography": "Part I",
-            "kurmanji_latin_grammar": "Beşa II",
+            "kurmanji_latin_grammar": "Part II",
         }
         for course_id, source_part in expected.items():
             self.assertTrue(bot.course_is_active(course_id))
