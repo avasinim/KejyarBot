@@ -1012,7 +1012,7 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
     description = course.get("description", "")
     text = (
-        f"{course['title']}\\n{description}\\n\\n"
+        f"{course['title']}\n{description}\n\n"
         f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}"
     )
     if edit:
