@@ -56,7 +56,8 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertNotIn("Part II", first)
         self.assertIn("Celadet Alî Bedir-Xan", second)
         self.assertIn("Nefel, Stockholm, 2002", second)
-        self.assertIn("Part II", second)
+        self.assertIn("Celadet Alî Bedir-Xan", second)
+        self.assertIn("Bingehên gramera kurdmancî", second)
 
     def test_both_canonical_documents_have_twelve_ordered_lesson_headings(self):
         first = COURSE1_SOURCE.read_text(encoding="utf-8")
