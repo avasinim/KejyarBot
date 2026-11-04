@@ -214,8 +214,18 @@ def _render_source_html(source):
             continue
         heading = re.match(r"^(#{1,6})\s*(.+)$", line)
         if heading:
-            text = heading.group(2).strip()
-            blocks.append(f"<b>📚 {escape(text)}</b>" if len(heading.group(1)) <= 2 else f"<b>{escape(text)}</b>")
+            level = len(heading.group(1))
+            heading_text = escape(heading.group(2).strip())
+            if level == 1:
+                blocks.append(f"<b>📘 {heading_text}</b>")
+            elif level == 2:
+                blocks.append(
+                    "━━━━━━━━━━━━━━━━━━\\n"
+                    f"<b>🎓 {heading_text}</b>\\n"
+                    "━━━━━━━━━━━━━━━━━━"
+                )
+            else:
+                blocks.append(f"<b>▪️ {heading_text}</b>")
         elif line in section_icons:
             blocks.append(f"<b>{section_icons[line]} {escape(line.rstrip(':'))}</b>")
         elif re.match(r"^\d+[.)-]\s+", line):
