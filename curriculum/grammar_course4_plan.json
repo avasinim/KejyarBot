@@ -340,7 +340,9 @@
         {
           "id": "grammar_04",
           "title": "پێکهاتەی ناو و ڕۆڵی ڕەگەز",
-          "focus": "ناوی سادە و ناسادە؛ پۆلێنکردنی ناو بە پێی پێکهاتە؛ ڕەگەزی ناو و نیشانەکانی؛ تەنها بەو شێوەیەی بەشی ناو پشتگیری دەکات."
+          "focus": "ناوی سادە و ناسادە؛ پۆلێنکردنی ناو بە پێی پێکهاتە؛ ڕەگەزی ناو و نیشانەکانی؛ تەنها بەو شێوەیەی بەشی ناو پشتگیری دەکات.",
+          "draft_path": "docs/course4-drafts/grammar_04_noun_structure_gender.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_05",
