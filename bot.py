@@ -391,13 +391,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
     user_id = query.from_user.id
     lesson = query.data.removeprefix("finish_")
     if lesson not in LESSON_COURSE:
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
     if not can_open(user_id, lesson):
+        await query.answer()
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
@@ -505,47 +505,65 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
     if suffix.isdigit():
         lesson = f"وانە_{suffix}"
         if lesson not in ORDER:
+            await query.answer()
             await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
             return
     else:
         lesson = suffix
         if lesson not in LESSON_COURSE:
+            await query.answer()
             await query.message.reply_text("⚠️ ئەم وانەیە لە ڕێڕەوی فێربووندا نیە.")
             return
     if not course_is_active(LESSON_COURSE[lesson]):
+        await query.answer()
         await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
     if not quiz_is_available(lesson):
+        await query.answer()
         await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
     source_questions = QUIZ_DATA.get(lesson)
     if not source_questions:
+        await query.answer()
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
     completed_lessons = set(get_completed_lessons(user_id))
     if lesson not in completed_lessons:
+        await query.answer()
         await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
         return
     # A stale or non-contiguous completion record must not bypass the course
     # sequence when a learner opens a quiz through an old Telegram button.
     if not can_open(user_id, lesson):
+        await query.answer()
         await query.message.reply_text("🔒 ڕێڕەوی وانەکان بە پێی ڕیزبەندی پێویستە؛ سەرەتا وانەکانی پێشوو تەواو بکە.")
         return
+    active_quiz = context.user_data.get("quiz")
+    if (
+        isinstance(active_quiz, dict)
+        and active_quiz.get("lesson") == lesson
+        and active_quiz.get("start_message_id") == getattr(query.message, "message_id", None)
+    ):
+        # Ignore duplicate callbacks from the same launch button.
+        await query.answer()
+        return
+
     context.user_data["quiz"] = {
         "index": 0,
         "lesson": lesson,
         "questions": randomized_question_copy(source_questions),
         "score": 0,
         "question_message_id": None,
+        "start_message_id": getattr(query.message, "message_id", None),
         "selected_answer_index": None,
         "answer_in_progress": False,
     }
+    await query.answer()
     await send_question(query.message, context.user_data["quiz"])
 
 async def send_question(message, quiz):

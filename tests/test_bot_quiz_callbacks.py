@@ -1,4 +1,5 @@
 import asyncio
+import asyncio
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
@@ -299,6 +300,51 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("quiz", context.user_data)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
+
+    async def test_duplicate_quiz_start_callback_does_not_replace_inflight_quiz(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=500,
+                reply_text=AsyncMock(return_value=SimpleNamespace(message_id=880)),
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+        acknowledgement_gate = asyncio.Event()
+
+        async def delayed_acknowledgement():
+            await acknowledgement_gate.wait()
+
+        query.answer = AsyncMock(side_effect=delayed_acknowledgement)
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            first = asyncio.create_task(bot.start_quiz(update, context))
+            await asyncio.sleep(0)
+            first_quiz = context.user_data["quiz"]
+            first_questions = first_quiz["questions"]
+
+            query.answer = AsyncMock()
+            await bot.start_quiz(update, context)
+
+            self.assertIs(context.user_data["quiz"], first_quiz)
+            self.assertIs(context.user_data["quiz"]["questions"], first_questions)
+            query.message.reply_text.assert_not_awaited()
+
+            acknowledgement_gate.set()
+            await first
+
+        query.message.reply_text.assert_awaited_once()
+        self.assertEqual(context.user_data["quiz"]["question_message_id"], 880)
 
     async def test_latin_quiz_answer_requires_selection_then_submit(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
