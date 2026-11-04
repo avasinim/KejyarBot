@@ -188,6 +188,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             message_id=10,
             reply_text=AsyncMock(return_value=SimpleNamespace(message_id=11)),
             reply_voice=AsyncMock(),
+            reply_photo=AsyncMock(),
         )
         query = SimpleNamespace(
             data="aramiC:lesson:2",
