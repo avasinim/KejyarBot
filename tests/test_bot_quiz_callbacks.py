@@ -132,6 +132,18 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.edit_message_reply_markup.assert_not_awaited()
 
 
+    async def test_duplicate_callback_during_answer_processing_is_ignored(self):
+        update, context, query = self.make_context("answer_0")
+        context.user_data["quiz"]["answer_in_progress"] = True
+
+        await bot.quiz_answer(update, context)
+
+        self.assertEqual(context.user_data["quiz"]["index"], 0)
+        self.assertEqual(context.user_data["quiz"]["score"], 0)
+        self.assertEqual(context.user_data["quiz"]["question_message_id"], 77)
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_valid_final_answer_completes_quiz_and_claims_reward_once(self):
         from unittest.mock import patch
 
