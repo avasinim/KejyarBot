@@ -6,7 +6,7 @@ the lesson's approved data file; this module only validates and tracks attempts.
 from copy import deepcopy
 
 ALLOWED_MODES = {"practice", "assessment"}
-ALLOWED_TYPES = {"recognize", "classify", "match", "listen", "complete"}
+ALLOWED_TYPES = {"recognize", "classify", "match", "complete"}
 
 
 class InvalidQuestionBank(ValueError):
@@ -53,10 +53,6 @@ def validate_question_bank(question_bank):
             or answer_index >= len(options)
         ):
             raise InvalidQuestionBank(f"question {question_id} has an invalid answer index")
-        if kind == "listen" and not item.get("audio_asset"):
-            raise InvalidQuestionBank(
-                f"listening question {question_id} must reference a verified audio asset"
-            )
     return True
 
 
@@ -181,22 +177,3 @@ def _validate_session(session):
         raise ValueError("invalid session completion state")
 
 
-def validate_lesson_audio(lesson_metadata):
-    """Every lesson must declare its own prerecorded voice asset explicitly."""
-    if not isinstance(lesson_metadata, dict):
-        raise ValueError("lesson metadata must be an object")
-    asset = lesson_metadata.get("lesson_audio_asset")
-    if not isinstance(asset, str) or not asset.strip():
-        raise ValueError("this lesson is not ready: its required voice recording is missing")
-    return asset
-
-
-def resolve_lesson_audio(lesson_metadata, voice_resolver):
-    """Resolve the declared recording through the bot's existing get_voice helper."""
-    asset = validate_lesson_audio(lesson_metadata)
-    if not callable(voice_resolver):
-        raise TypeError("voice_resolver must be the existing get_voice function")
-    resolved = voice_resolver(asset)
-    if not resolved:
-        raise FileNotFoundError(f"required lesson voice recording is unavailable: {asset}")
-    return resolved
