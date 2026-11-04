@@ -72,16 +72,17 @@ MONTH_DIALECTS = {
 def months_menu_keyboard():
     """Return the five dialect choices for the Kurdish months learning section."""
     labels = [
-        ("سۆرانی", "sorani"),
-        ("کورمانجی", "kurmanji"),
-        ("کەلهوڕی", "kalhuri"),
-        ("هەورامی", "hawrami"),
-        ("لەکی", "laki"),
+        ("🌱 سۆرانی", "sorani"),
+        ("🏔️ کورمانجی", "kurmanji"),
+        ("🌾 کەلهوڕی", "kalhuri"),
+        ("🌿 هەورامی", "hawrami"),
+        ("🍃 لەکی", "laki"),
     ]
-    rows = [
-        [InlineKeyboardButton(label, callback_data=f"months:{key}")]
+    buttons = [
+        InlineKeyboardButton(label, callback_data=f"months:{key}")
         for label, key in labels
     ]
+    rows = [buttons[index:index + 2] for index in range(0, len(buttons), 2)]
     return InlineKeyboardMarkup(rows)
 
 
@@ -95,18 +96,23 @@ def get_months_lesson(dialect):
         return None
 
     lines = [
-        f"📘 زانیاریی زانستی — مانگەکانی ساڵ بە شێوەزاری {record['title']}",
+        "╭━━━━━━━━━━━━━━━━━━━━╮",
+        f"       📅 <b>مانگەکانی {record['title']}</b>",
+        "╰━━━━━━━━━━━━━━━━━━━━╯",
         "",
-        "🎯 ئامانجی فێربوون",
+        "🎯 <b>ئامانجی فێربوون</b>",
         "ناسینەوە و خوێندنەوەی ناوی ١٢ مانگی ساڵ لەم شێوەزارەدا.",
         "",
-        "📚 لیستی مانگەکان",
+        "📚 <b>ڕیزبەندی مانگەکان</b>",
+        "┌────────────────────",
     ]
     for number, (name, equivalent) in enumerate(record["months"], 1):
+        month_number = f"{number:02d}".translate(PERSIAN_DIGITS)
         if equivalent:
-            lines.append(f"{number:02d}".translate(PERSIAN_DIGITS) + f". {name}  —  {equivalent}")
+            lines.append(f"│  {month_number}. {name}  —  {equivalent}")
         else:
-            lines.append(f"{number:02d}".translate(PERSIAN_DIGITS) + f". {name}")
+            lines.append(f"│  {month_number}. {name}")
+    lines.append("└────────────────────")
 
     lines.extend([
         "",

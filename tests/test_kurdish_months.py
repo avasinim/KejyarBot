@@ -63,7 +63,11 @@ class KurdishMonthsTests(unittest.TestCase):
 
     def test_dialect_keyboard_has_all_five_callback_routes(self):
         keyboard = months_menu_keyboard()
-        callback_data = [row[0].callback_data for row in keyboard.inline_keyboard]
+        callback_data = [
+            button.callback_data
+            for row in keyboard.inline_keyboard
+            for button in row
+        ]
         self.assertEqual(
             callback_data,
             ["months:sorani", "months:kurmanji", "months:kalhuri", "months:hawrami", "months:laki"],

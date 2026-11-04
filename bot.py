@@ -295,6 +295,20 @@ def next_course_lesson(lesson):
     index = order.index(lesson)
     return order[index + 1] if index + 1 < len(order) else None
 
+def resource_link_keyboard(message_html):
+    """Build compact, tappable resource links without changing their destinations."""
+    links = re.findall(r'<a href="([^"]+)">([^<]+)</a>', message_html)
+    buttons = [
+        InlineKeyboardButton(
+            (label.strip()[:48] + ("…" if len(label.strip()) > 48 else "")),
+            url=url,
+        )
+        for url, label in links
+    ]
+    rows = [buttons[index:index + 2] for index in range(0, len(buttons), 2)]
+    return InlineKeyboardMarkup(rows) if rows else None
+
+
 def active_course_lessons():
     return [
         lesson
@@ -1141,7 +1155,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "🗓️ مانگەکانی ساڵ لەناو کورداندا":
         await update.message.reply_text(
-            "📘 مانگەکانی ساڵ لەناو کورداندا\n\nشێوەزارەکەت هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە:",
+            "╭━━━━━━━━━━━━━━━━━━━━╮\\n"
+            "       📅 <b>ساڵنامەی کوردی</b>\\n"
+            "╰━━━━━━━━━━━━━━━━━━━━╯\\n\\n"
+            "🌿 ناوی مانگەکان لە شێوەزارە جیاوازەکاندا\\n"
+            "شێوەزارێک هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە.",
+            parse_mode="HTML",
             reply_markup=months_menu_keyboard(),
         )
         return
@@ -1194,12 +1213,27 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 ⚠️ <b>تێبینی</b>
 هەموو فەرهەنگێک هەموو شێوەزارەکان ناگرێتەوە. کەڵهوڕی، گەڕووسی و لەکی هەندێک جار لە ژێر ناونیشانی کوردیی باشووری یان زاراوە ناوچەییەکاندا دێن؛ جیاوازییەکانیان لەبەرچاو بگرە. واتای وشە لە فەرهەنگێکەوە بۆ فەرهەنگێکی تر دەکرێت جیاواز بێت."""
+        dictionary_help = (
+            "╭━━━━━━━━━━━━━━━━━━━━╮\\n"
+            "       📚 <b>کتێبخانەی وشەنامەی کوردی</b>\\n"
+            "╰━━━━━━━━━━━━━━━━━━━━╯\\n"
+            "🔎 سەرچاوەی فەرهەنگی، وشەسازی و زاراوەناسی\\n"
+            "بەشەکان بەپێی شێوەزار و جۆری فەرهەنگ ڕێکخراون.\\n\\n"
+            + dictionary_help.replace("📖 <b>وشەنامەی کوردی</b>\\n", "")
+        )
         await update.message.reply_text(
             dictionary_help,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=MENU,
         )
+        dictionary_links = resource_link_keyboard(dictionary_help)
+        if dictionary_links:
+            await update.message.reply_text(
+                "🔗 <b>بەستەرەکانی وشەنامە</b> — بۆ کردنەوە کرتە لەسەر ناوی سەرچاوەکە بکە:",
+                parse_mode="HTML",
+                reply_markup=dictionary_links,
+            )
         return
 
     if text == "⌨️ تەختەکلیلی کوردی":
@@ -1239,12 +1273,27 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 📌 <b>تێبینی گرنگ</b>
 هەموو ئەم تەختەکلیلانە بۆ هەموو شێوەزارەکان یەکسان نین. هەورامی و کوردیی خوارین لە هەندێک ئەپدا پشتگیری دەکرێن؛ بەڵام بۆ کەڵهوڕی و هەندێک شێوەزاری ناوچەیی، تەختەکلیلی تایبەتی و پشتڕاستکراوەمان نەدۆزیوەتەوە. پێش دامەزراندن، ناوی زمان و شێوەزاری پشتگیریکراو لە لاپەڕەی ئەپەکەدا بپشکنە.
 ⚠️ تەختەکلیلی Unicode بەکاربهێنە؛ فۆنت و تەختەکلیلە کۆنەکانی Ali-font دەتوانن دەقەکە لە ئامێری تر تێکبدەن."""
+        keyboard_help = (
+            "╭━━━━━━━━━━━━━━━━━━━━╮\\n"
+            "       ⌨️ <b>ناوەندی تەختەکلیلی کوردی</b>\\n"
+            "╰━━━━━━━━━━━━━━━━━━━━╯\\n"
+            "📱 ڕێنمایی و سەرچاوە بەپێی ئامێر و شێوەزاری کوردی\\n"
+            "ئامێرەکەت بدۆزەرەوە و تەختەکلیلی گونجاو هەڵبژێرە.\\n\\n"
+            + keyboard_help.replace("⌨️ <b>تەختەکلیلی کوردی</b>\\n", "")
+        )
         await update.message.reply_text(
             keyboard_help,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=MENU,
         )
+        keyboard_links = resource_link_keyboard(keyboard_help)
+        if keyboard_links:
+            await update.message.reply_text(
+                "🔗 <b>بەستەرەکانی دامەزراندن</b> — بۆ کردنەوە کرتە لەسەر ناوی سەرچاوەکە بکە:",
+                parse_mode="HTML",
+                reply_markup=keyboard_links,
+            )
         return
 
     if text == "🌐 گۆڕینی زمانی تەلەگرام":
