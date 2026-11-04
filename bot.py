@@ -505,7 +505,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
     if suffix.isdigit():
@@ -541,6 +540,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # A stale or non-contiguous completion record must not bypass the course
     # sequence when a learner opens a quiz through an old Telegram button.
     if not can_open(user_id, lesson):
+        await query.answer()
         await query.message.reply_text("🔒 ڕێڕەوی وانەکان بە پێی ڕیزبەندی پێویستە؛ سەرەتا وانەکانی پێشوو تەواو بکە.")
         return
     active_quiz = context.user_data.get("quiz")
