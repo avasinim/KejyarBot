@@ -429,7 +429,9 @@
         {
           "id": "grammar_15",
           "title": "پلەکانی ئاوەڵناو و سیستەمی بەراورد",
-          "focus": "پلەی ئاسایی، بەراوردی و باڵاترین پلە؛ gradus positivus، gradus comparativus، gradus superlativus؛ ڕێگای مۆرفۆلۆژی و شیکاری لە دیالێکتەکاندا؛ پەڕە ٩٠–١٠٠ و ١٣٢–١٣٤."
+          "focus": "پلەی ئاسایی، بەراوردی و باڵاترین پلە؛ gradus positivus، gradus comparativus، gradus superlativus؛ ڕێگای مۆرفۆلۆژی و شیکاری لە دیالێکتەکاندا؛ پەڕە ٩٠–١٠٠ و ١٣٢–١٣٤.",
+          "draft_path": "docs/course4-drafts/grammar_15_adjective_degrees_of_comparison.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_16",
