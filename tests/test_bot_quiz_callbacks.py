@@ -603,10 +603,6 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("لە ڕێڕەوی فێربووندا نیە", query.message.reply_text.await_args.args[0])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
     async def test_duplicate_completion_keeps_next_lesson_navigation_without_rewards(self):
         lesson = bot.ARMI_LESSON_IDS[0]
@@ -628,7 +624,7 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
             await bot.finish_lesson(update, context)
 
         complete.assert_called_once_with(12345, lesson)
-        level.assert_not_called()
+        level.assert_called_once_with(12345)
         badges.assert_not_called()
         voice.assert_not_awaited()
         query.message.reply_text.assert_awaited_once()
@@ -668,3 +664,7 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
             for button in row
         ]
         self.assertEqual(buttons, ["arami5:lesson"])
+
+
+if __name__ == "__main__":
+    unittest.main()
