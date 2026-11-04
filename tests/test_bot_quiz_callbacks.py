@@ -324,6 +324,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer = AsyncMock(side_effect=delayed_acknowledgement)
         with (
+            patch.object(bot, "course_is_active", return_value=True),
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
             patch.object(bot, "quiz_is_available", return_value=True),
         ):
