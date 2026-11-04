@@ -66,15 +66,13 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_lesson_callback_reads_its_own_source_and_returns_to_lesson5_menu(self):
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05", "audio_files": []}]}
+        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]}
         with patch(
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی سەرچاوەی وانەی پێنج.",
-        ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest), patch(
-            "arami_lesson5_telegram.send_lesson_audio", new_callable=AsyncMock
-        ) as send_audio:
+        ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest):
             await callback(update, SimpleNamespace(user_data={}), "/unused")
-        send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
+        query.message.reply_voice.assert_not_awaited()
         self.assertGreaterEqual(query.message.reply_text.await_count, 3)
         first_call = query.message.reply_text.await_args_list[0]
         first_text = first_call.args[0]
