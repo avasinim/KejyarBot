@@ -666,5 +666,56 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(buttons, ["arami5:lesson"])
 
 
+class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
+    async def _open_global_menu(self, menu_text, completed):
+        message = SimpleNamespace(text=menu_text, reply_text=AsyncMock())
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=24680),
+        )
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "active_course_lessons", return_value=[]),
+            patch.object(bot, "course_is_active", return_value=True),
+        ):
+            await bot.message(update, SimpleNamespace(user_data={}))
+        message.reply_text.assert_awaited_once()
+        markup = message.reply_text.await_args.kwargs["reply_markup"]
+        return {
+            button.callback_data
+            for row in markup.inline_keyboard
+            for button in row
+        }
+
+    async def test_global_assessment_menu_includes_completed_arami_lessons(self):
+        completed = [
+            bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[4],
+            bot.ARMI_LESSON_IDS[5],
+        ]
+        callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
+        self.assertEqual(
+            callbacks,
+            {"arami1:assessment", "arami5:assessment", "aramiC:assessment:6"},
+        )
+
+    async def test_global_practice_menu_includes_completed_arami_lessons(self):
+        completed = [
+            bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[4],
+            bot.ARMI_LESSON_IDS[5],
+        ]
+        callbacks = await self._open_global_menu("🎯 ڕاهێنانی کرتەیی", completed)
+        self.assertEqual(
+            callbacks,
+            {"arami1:practice", "arami5:practice", "aramiC:practice:6"},
+        )
+
+    async def test_global_quiz_menu_does_not_list_uncompleted_arami_lessons(self):
+        callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", [])
+        self.assertEqual(callbacks, set())
+
+
 if __name__ == "__main__":
     unittest.main()
