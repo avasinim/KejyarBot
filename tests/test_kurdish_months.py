@@ -82,9 +82,9 @@ class KurdishMonthsTests(unittest.TestCase):
         for dialect in self.EXPECTED:
             with self.subTest(dialect=dialect):
                 lesson = get_months_lesson(dialect)
-                self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\\n", lesson)
-                self.assertIn("╰━━━━━━━━━━━━━━━━━━━━╯\\n", lesson)
-                self.assertNotIn(r"\\n", lesson)
+                self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", lesson)
+                self.assertIn("╰━━━━━━━━━━━━━━━━━━━━╯\n", lesson)
+                self.assertNotIn(r"\n", lesson)
                 self.assertEqual(lesson.count("📅 <b>مانگەکانی "), 1)
 
 
