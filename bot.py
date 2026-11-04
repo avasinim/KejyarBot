@@ -403,6 +403,8 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     old_level = get_user_level(user_id)
     first_completion = complete_lesson_with_rewards(user_id, lesson)
+    # Acknowledge only after the idempotent database claim has completed.
+    await query.answer()
     if first_completion:
         check_badges(user_id)
         new_level = get_user_level(user_id)
