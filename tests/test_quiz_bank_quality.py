@@ -45,6 +45,28 @@ class QuizBankQualityTests(unittest.TestCase):
                     self.assertGreaterEqual(answer_index, 0)
                     self.assertLess(answer_index, len(options))
 
+    def test_course1_lessons_4_and_6_practice_keys_match_their_source_facts(self):
+        banks = load_question_banks(ROOT)
+        lesson4 = banks[4]["practice"]
+        lesson6 = banks[6]["practice"]
+
+        expected_lesson4 = [
+            (["ب", "ۆ", "وو"], 0),
+            (["w", "u", "i"], 1),
+            (["î", "y", "i"], 1),
+            (["پیتێکی تایبەتی هەیە", "دەنگی کورت (i) ـ بزرۆکەیە و پیتێکی تایبەتی بۆی دانەنراوە", "دەنگی نەبزوێنەیە"], 1),
+            (["٣٤", "٣٦", "٣٧"], 2),
+        ]
+        expected_lesson6 = [
+            (["بزوێن", "نەبزوێن", "نیشانەی خاڵبەندی"], 1),
+            (["نەبزوێن", "بزوێن", "پیتی بێدەنگ"], 1),
+            (["بزوێن", "نەبزوێن", "نیشانەی خاڵبەندی"], 1),
+            (["پیتێکی تایبەتی بۆ دانراوە", "بە پیتی (و) دەنووسرێت", "هیچ پیتێکی تایبەتی بۆ دانەنراوە"], 2),
+            (["دوو دەنگ", "سێ دەنگ", "چوار دەنگ"], 2),
+        ]
+        self.assertEqual([(q["options"], q["answer_index"]) for q in lesson4], expected_lesson4)
+        self.assertEqual([(q["options"], q["answer_index"]) for q in lesson6], expected_lesson6)
+
     def test_active_daily_and_unified_orthography_quizzes_have_valid_distinct_options(self):
         daily_paths = (
             "daily_conversation_lessons_01_06.json",
