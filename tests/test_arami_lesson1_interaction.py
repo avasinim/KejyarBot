@@ -38,7 +38,9 @@ class AramiLesson1InteractionTests(unittest.TestCase):
         self.assertTrue(validate_question_bank(BANK))
         session = create_session(BANK, "practice")
         self.assertEqual(BANK, original)
-        self.assertEqual(session["questions"], BANK)
+        for original, randomized in zip(BANK, session["questions"]):
+            self.assertEqual(set(randomized["options"]), set(original["options"]))
+            self.assertEqual(randomized["options"][randomized["answer_index"]], original["options"][original["answer_index"]])
 
     def test_selection_does_not_submit_or_score(self):
         session = create_session(BANK, "practice")
@@ -49,7 +51,7 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
     def test_submit_records_correctness_and_advances_once(self):
         session = create_session(BANK, "assessment")
-        select_answer(session, 1)
+        select_answer(session, current_question(session)["answer_index"])
         first = submit_answer(session)
         self.assertTrue(first["correct"])
         self.assertEqual(session["index"], 1)
@@ -58,7 +60,7 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
     def test_double_submit_is_rejected(self):
         session = create_session(BANK, "assessment")
-        select_answer(session, 1)
+        select_answer(session, current_question(session)["answer_index"])
         submit_answer(session)
         with self.assertRaises(ValueError):
             submit_answer(session)
@@ -66,9 +68,11 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
     def test_final_result_has_score_percentage_and_section_links(self):
         session = create_session(BANK, "assessment")
-        select_answer(session, 0)
+        first = current_question(session)
+        select_answer(session, (first["answer_index"] + 1) % len(first["options"]))
         submit_answer(session)
-        select_answer(session, 0)
+        second = current_question(session)
+        select_answer(session, second["answer_index"])
         submit_answer(session)
         self.assertEqual(
             session_result(session),
@@ -84,9 +88,11 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
     def test_retry_missed_creates_separate_practice_session(self):
         session = create_session(BANK, "assessment")
-        select_answer(session, 0)
+        first = current_question(session)
+        select_answer(session, (first["answer_index"] + 1) % len(first["options"]))
         submit_answer(session)
-        select_answer(session, 0)
+        second = current_question(session)
+        select_answer(session, second["answer_index"])
         submit_answer(session)
         retry = retry_missed(session)
         self.assertEqual(retry["mode"], "practice")
@@ -95,8 +101,8 @@ class AramiLesson1InteractionTests(unittest.TestCase):
 
     def test_perfect_score_has_no_retry_session(self):
         session = create_session(BANK, "practice")
-        for answer in (1, 0):
-            select_answer(session, answer)
+        while current_question(session) is not None:
+            select_answer(session, current_question(session)["answer_index"])
             submit_answer(session)
         self.assertIsNone(retry_missed(session))
 
