@@ -997,7 +997,7 @@ def course_menu_keyboard(course_id, user_id, page=0):
     return InlineKeyboardMarkup(rows), page_count
 
 
-async def send_course_page(message, course_id, user_id, page=0):
+async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     if course is None or not course_is_active(course_id):
         await message.reply_text("⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە.")
@@ -1011,11 +1011,14 @@ async def send_course_page(message, course_id, user_id, page=0):
     first = page * COURSE_MENU_PAGE_SIZE + 1
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
     description = course.get("description", "")
-    await message.reply_text(
+    text = (
         f"{course['title']}\n{description}\n\n"
-        f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}",
-        reply_markup=keyboard,
+        f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}"
     )
+    if edit:
+        await message.edit_text(text, reply_markup=keyboard)
+    else:
+        await message.reply_text(text, reply_markup=keyboard)
 
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1058,7 +1061,7 @@ async def open_course_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if prefix != "coursepage" or not separator or not raw_page.isdigit():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی وانەکان نادروستە.")
         return
-    await send_course_page(query.message, course_id, query.from_user.id, int(raw_page))
+    await send_course_page(query.message, course_id, query.from_user.id, int(raw_page), edit=True)
 
 
 QUIZ_MENU_PAGE_SIZE = 12
