@@ -94,7 +94,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_lesson_reader_refuses_locked_lesson5(self):
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05", "audio_files": []}]}
+        manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]}
         with patch(
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی وانە.",
