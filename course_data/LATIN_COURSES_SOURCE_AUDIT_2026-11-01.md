@@ -4,9 +4,9 @@
 
 ## Scope and safety
 - This audit is limited to the two Latin Kurdish courses in the KejyarBot repository.
-- Course 1 remains grounded in its own *Rê zimanê Kurmancî* source.
+- **Correction (2026-11-04):** Course 1 is grounded in Celadet Alî Bedir-Xan, Part I, *Elfabêya kurdî* (printed pages 11–36). The earlier *Rê zimanê Kurmancî* attribution is withdrawn; see `docs/LATIN-COURSE1-SOURCE-CORRECTION-2026-11-04.md`.
 - Course 2 remains grounded only in Part II, *Bingehên gramera kurdmancî*, by Celadet Alî Bedir-Xan.
-- The two source books, lesson examples, language scope, and orthographic conventions must not be mixed.
+- Course 1 and Course 2 use separate parts of the same Celadet volume; their lesson examples, language scope, and orthographic conventions must not be mixed.
 - No changes were made to `main`, production credentials, the live bot, Botkeep, production databases, or deployment configuration.
 
 ## Course 2 source review
@@ -54,4 +54,8 @@ The source was cross-checked against the 2002 Nefel digital edition, not a later
 - **Lesson 10, §§77, 86, 90–93 (printed pages 72–80):** confirmed the object-pronoun forms `min, te, wî, wê, me, we, wan`, the reciprocal pronouns `hev, êk`, and the source's regional note for `êk`.
 - **Lesson 11, §§99–102 (printed pages 83–84):** confirmed the relative-pronoun `ko`, its distinct conjunction homonym, and the interrogative forms `kî/kê` and `çi/çî`.
 
-The Lesson 5 correction does not alter Course 1 or its Shikofta source.
+The Lesson 5 correction concerns Course 2 only. Course 1's source attribution and Part I alignment were corrected on 2026-11-04.
+
+
+## Course 1 source correction — 2026-11-04
+The prior Course 1 source attribution in this audit was incorrect. The correct source is Celadet Alî Bedir-Xan, Part I, printed pages 11–36. Course 1 Lessons 3, 8 and 9 were corrected to classify W, X, Y and Z as consonant letters in the source's alphabet inventory; Lesson 11 now covers the source's letter-frequency tables (pp. 33–34), and Lesson 12 is a cumulative review of Part I. The runtime source metadata and Course 1 answer-key rows were updated. The earlier Shikofteh attribution is withdrawn.

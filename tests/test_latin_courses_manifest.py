@@ -38,11 +38,11 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(len(all_ids), 24)
         self.assertEqual(len(all_ids), len(set(all_ids)))
 
-    def test_source_metadata_names_the_two_distinct_books_and_parts(self):
+    def test_source_metadata_names_the_two_distinct_parts_of_the_same_book(self):
         first, second = self.manifest["courses"]
         self.assertIn("Part I", first["source_part"])
-        self.assertIn("Şikofteh", first["source_part"])
-        self.assertIn("Rê zimanê Kurmancî", first["source_part"])
+        self.assertIn("Celadet Alî Bedir-Xan", first["source_part"])
+        self.assertIn("Part I", first["source_part"])
         self.assertIn("Part II", second["source_part"])
         self.assertIn("Celadet Alî Bedir-Xan", second["source_part"])
         self.assertIn("Nefel, Stockholm, 2002", second["source_part"])
@@ -51,12 +51,13 @@ class LatinCoursesManifestTests(unittest.TestCase):
     def test_course_one_and_course_two_documents_never_mix_book_sources(self):
         first = COURSE1_SOURCE.read_text(encoding="utf-8")
         second = COURSE2_SOURCE.read_text(encoding="utf-8")
-        self.assertIn("Şikofteh", first)
-        self.assertNotIn("Celadet Alî Bedir-Xan", first)
-        self.assertNotIn("Bingehên gramera kurdmancî", first)
+        self.assertIn("Celadet Alî Bedir-Xan", first)
+        self.assertIn("Part I", first)
+        self.assertNotIn("Part II", first)
         self.assertIn("Celadet Alî Bedir-Xan", second)
         self.assertIn("Nefel, Stockholm, 2002", second)
-        self.assertNotIn("Şikofteh", second)
+        self.assertIn("Celadet Alî Bedir-Xan", second)
+        self.assertIn("Bingehên gramera kurdmancî", second)
 
     def test_both_canonical_documents_have_twelve_ordered_lesson_headings(self):
         first = COURSE1_SOURCE.read_text(encoding="utf-8")
@@ -86,6 +87,18 @@ class LatinCoursesManifestTests(unittest.TestCase):
         for lesson_ids in (course["lesson_ids"] for course in courses):
             self.assertEqual(len(lesson_ids), 12)
             self.assertTrue(all(len(quizzes[lesson_id]) == 5 for lesson_id in lesson_ids))
+
+    def test_course_one_lessons_eleven_and_twelve_use_part_one_material(self):
+        lessons, quizzes, _ = load_latin_courses()
+        lesson11 = lessons["kurmanji_latin_orthography_11"]["content"]
+        lesson12 = lessons["kurmanji_latin_orthography_12"]["content"]
+        self.assertIn("Nisbeta Herfên Kurdî", lesson11)
+        self.assertIn("2200", lesson11)
+        self.assertIn("417", lesson11)
+        self.assertIn("Pêdaçûna Giştî", lesson12)
+        self.assertIn("31 herf", lesson12)
+        self.assertEqual(len(quizzes["kurmanji_latin_orthography_11"]), 5)
+        self.assertEqual(len(quizzes["kurmanji_latin_orthography_12"]), 5)
 
     def test_course_two_lesson_five_preserves_the_three_source_variants(self):
         lessons, _, _ = load_latin_courses()
