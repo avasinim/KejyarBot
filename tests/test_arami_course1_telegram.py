@@ -11,6 +11,8 @@ from arami_course1_telegram import (
     _plain_markdown,
     _render_source_html,
     _send_source,
+    lesson_infographic_path,
+    send_lesson_infographic,
     callback as arami_course1_callback,
     build_lesson_infographic_svg,
     _split_source_html,
@@ -25,6 +27,32 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
+    async def test_only_the_six_approved_course1_lessons_send_png_infographics(self):
+        message = SimpleNamespace(reply_photo=AsyncMock())
+        approved = (1, 2, 3, 4, 6, 7)
+        for number in approved:
+            path = lesson_infographic_path(ROOT, {"number": number})
+            self.assertIsNotNone(path, f"Missing infographic for lesson {number}")
+            self.assertTrue(path.is_file())
+            self.assertTrue(await send_lesson_infographic(
+                message, {"number": number}, base_dir=ROOT
+            ))
+        self.assertIsNone(lesson_infographic_path(ROOT, {"number": 5}))
+        self.assertFalse(await send_lesson_infographic(
+            message, {"number": 5}, base_dir=ROOT
+        ))
+        self.assertEqual(message.reply_photo.await_count, 6)
+        self.assertFalse((ROOT / "assets" / "course1_infographics" / "lesson_05.png").exists())
+
+    async def test_missing_course1_infographic_does_not_interrupt_lesson_delivery(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            message = SimpleNamespace(reply_photo=AsyncMock())
+            sent = await send_lesson_infographic(
+                message, {"number": 1}, base_dir=temporary
+            )
+        self.assertFalse(sent)
+        message.reply_photo.assert_not_awaited()
+
     def test_infographic_uses_the_current_course_title(self):
         svg = build_lesson_infographic_svg(
             {"number": 1, "title": "پیتەکان و دەنگەکان"},
