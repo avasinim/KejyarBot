@@ -539,7 +539,9 @@
         {
           "id": "grammar_29",
           "title": "گۆڕینی تێپەڕی، کارا دیار و کارا بڕزی",
-          "focus": "کاریگەریی پاشگری (-اندن) لە گۆڕینی هەندێ کردار؛ نموونەکانی مردن/مراندن و شکان/شکاندن؛ جیاوازیی کارا دیار و کارا بڕزی لە ڕووی فۆرم و ڕستەسازی. پەڕەی 66–72."
+          "focus": "کاریگەریی پاشگری (-اندن) لە گۆڕینی هەندێ کردار؛ نموونەکانی مردن/مراندن و شکان/شکاندن؛ جیاوازیی کارا دیار و کارا بڕزی لە ڕووی فۆرم و ڕستەسازی. پەڕەی 66–72.",
+          "draft_path": "docs/course4-drafts/grammar_29_transitivity_alternation_active_passive.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_30",
@@ -713,5 +715,10 @@
     "important_edition_note": "The five section page counts above belong to separate editions/catalog records and must not be added or treated as the pagination of the 850-page 1401 combined edition. Zheen's 2001 combined record lists 376 pages for the collected volume but gives legacy internal section page references; verify against the actual 2001/1401 copy before citing page numbers.",
     "download_status": "Kurdipedia lists downloadable PDFs; browser fetch for the 23.30 MB noun PDF was rejected because the content exceeds the web fetch limit, and direct download did not complete in this environment. Google Drive links are publicly listed in a 2024 Telegram post but are not accessible to the current web fetcher.",
     "content_status": "bibliographic_structure_verified; source_pdf_text_not_yet_extracted"
+  },
+  "progress": {
+    "draft_count": 29,
+    "total_lessons": 30,
+    "completion_percent": 96.7
   }
 }
