@@ -228,7 +228,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_course_menu_pagination_opens_the_requested_next_page(self):
         update, message, query = self.make_update("coursepage:daily_conversation:1")
-        await bot.open_course_page(update, SimpleNamespace())
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            await bot.open_course_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(len(keyboard), 13)
