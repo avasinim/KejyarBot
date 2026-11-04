@@ -45,7 +45,7 @@
       "key": "course_daily_conversation",
       "order": 2,
       "title": "کۆرسی ٢: وتووێژ",
-      "description": "٤٨ وانەی وتووێژ؛ کۆرسەکە چالاکە و وانەکان بە ڕێڕەوی پێشکەوتنی تایبەتی خۆیان دەکرێنەوە.",
+      "description": "٤٢ وانەی وتووێژ؛ کۆرسەکە چالاکە و وانەکان بە ڕێڕەوی پێشکەوتنی تایبەتی خۆیان دەکرێنەوە.",
       "status": "active",
       "lesson_ids": [
         "daily_conversation_01",
@@ -89,13 +89,7 @@
         "daily_conversation_39",
         "daily_conversation_40",
         "daily_conversation_41",
-        "daily_conversation_42",
-        "daily_conversation_43",
-        "daily_conversation_44",
-        "daily_conversation_45",
-        "daily_conversation_46",
-        "daily_conversation_47",
-        "daily_conversation_48"
+        "daily_conversation_42"
       ]
     },
     {

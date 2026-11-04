@@ -30,7 +30,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertFalse(bot.course_is_active("grammar"))
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
@@ -84,8 +84,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for course_id in ("daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 114)
-        self.assertEqual(len(set(all_ids)), 114)
+        self.assertEqual(len(all_ids), 108)
+        self.assertEqual(len(set(all_ids)), 108)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
@@ -200,7 +200,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.reply_text.assert_awaited_once()
         self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
 
-    async def test_open_course_two_shows_all_48_lesson_buttons(self):
+    async def test_open_course_two_shows_first_12_of_42_lesson_buttons(self):
         update, message, query = self.make_update("course_daily_conversation")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
@@ -251,7 +251,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertIn("کۆرسی ٢: وتووێژ", rendered)
-        self.assertIn("وانەکانی 13–24 لە کۆی 48 — لاپەڕەی 2/4", rendered)
+        self.assertIn("وانەکانی 13–24 لە کۆی 42 — لاپەڕەی 2/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(len(keyboard), 13)
         self.assertEqual(
@@ -260,7 +260,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:0")
 
-    async def test_course_two_last_page_keeps_all_48_lessons_and_edits_same_message(self):
+    async def test_course_two_last_page_keeps_lessons_37_to_42_and_edits_same_message(self):
         update, message, query = self.make_update("coursepage:daily_conversation:3")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course_page(update, SimpleNamespace())
@@ -268,12 +268,19 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertEqual(rendered.count("کۆرسی ٢: وتووێژ"), 1)
-        self.assertEqual(rendered.count("٤٨ وانەی وتووێژ"), 1)
-        self.assertIn("وانەکانی 37–48 لە کۆی 48 — لاپەڕەی 4/4", rendered)
+        self.assertEqual(rendered.count("٤٢ وانەی وتووێژ"), 1)
+        self.assertIn("وانەکانی 37–42 لە کۆی 42 — لاپەڕەی 4/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_daily_conversation_37")
-        self.assertEqual(keyboard[11][0].callback_data, "open_lesson_daily_conversation_48")
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
+        lesson_buttons = [row[0].callback_data for row in keyboard if row and row[0].callback_data.startswith("open_lesson_")]
+        self.assertEqual(lesson_buttons, [
+            "open_lesson_daily_conversation_37",
+            "open_lesson_daily_conversation_38",
+            "open_lesson_daily_conversation_39",
+            "open_lesson_daily_conversation_40",
+            "open_lesson_daily_conversation_41",
+            "open_lesson_daily_conversation_42",
+        ])
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
 
     def test_global_quiz_menus_are_paginated_for_all_completed_courses(self):
         all_lessons = [
