@@ -4,7 +4,7 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "partial_source_text_verified_parts_1_4_5; parts_2_3_full_text_pending",
+  "content_status": "source_parts_1_4_5_text_inspected; parts_2_3_scan_links_verified_but_full_text_not_retrieved",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
@@ -50,6 +50,19 @@
         10,
         11,
         12
+      ],
+      "additional_mirrors": [
+        "https://vk.com/doc336548236_481489431",
+        "https://drive.google.com/file/d/1COIeMQJY6JHGzOPRk7AtDDolkNHEN26w/view?usp=sharing",
+        "https://kurdcollect.com/index.php/ڕێزمانی_کوردی_بەرگی_02"
+      ],
+      "bibliographic_pages": "305 pages in 1987 Zheen catalogue; 320 pages in 2018 blog mirror. Do not mix editions.",
+      "verified_page_evidence": [
+        {
+          "topic": "جێناوی نەریتی و جێناوی چەندیتی",
+          "pages": "276–277; 281–282",
+          "evidence": "A later Kurmanji grammar cites these exact pages of the 1987 Sorani source; use only as confirmation that those topics occur, not as a complete chapter outline."
+        }
       ]
     },
     {
@@ -63,6 +76,18 @@
         16,
         17,
         18
+      ],
+      "additional_mirrors": [
+        "https://vk.com/doc336548236_481490805",
+        "https://drive.google.com/file/d/1UHfQibdBrdMyz80IbJno1wgZxirDCoP0/view?usp=sharing",
+        "https://kurdshop.net/content/upload/1/books/rezmani-kurdi-3.pdf"
+      ],
+      "bibliographic_pages": "151 pages in 1992 Zheen catalogue; 304 pages in 2018 blog mirror. Different editions or scans; pagination must be verified against the exact file.",
+      "verified_references": [
+        {
+          "topic": "ئاوەڵناو",
+          "evidence": "A peer-reviewed Kurdish linguistics article cites the 1992 source in its bibliography; no detailed chapter contents or page references have yet been verified."
+        }
       ]
     },
     {
