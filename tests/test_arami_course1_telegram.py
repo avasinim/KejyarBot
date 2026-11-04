@@ -495,7 +495,9 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(practice["mode"], "practice")
         question_id = context.user_data["arami_course1_active"]["message_id"]
 
-        update, _ = self.make_update("pick:6:0", message_id=question_id)
+        practice_question = practice["questions"][0]
+        wrong_index = (practice_question["answer_index"] + 1) % len(practice_question["options"])
+        update, _ = self.make_update(f"pick:6:{wrong_index}", message_id=question_id)
         await callback(update, context, ROOT)
         update, submit_query = self.make_update("submit:6", message_id=question_id)
         await callback(update, context, ROOT)
