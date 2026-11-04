@@ -23,14 +23,13 @@ def lesson_key(course_id, number):
 
 
 def can_open_lesson(lesson_ids, completed_ids, lesson_id):
-    """Unlock only the first lesson or a lesson whose predecessor is complete."""
+    """Unlock only the next lesson after every earlier lesson is complete."""
     ordered = list(lesson_ids)
     if lesson_id not in ordered:
         return False
     index = ordered.index(lesson_id)
-    if index == 0:
-        return True
-    return ordered[index - 1] in set(completed_ids)
+    completed = set(completed_ids)
+    return all(previous in completed for previous in ordered[:index])
 
 
 def visible_course_lessons(course, lesson_data):
