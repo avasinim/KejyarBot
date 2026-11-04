@@ -324,13 +324,8 @@ def can_open(user_id, lesson):
         return False
     completed = set(get_completed_lessons(user_id))
     order = COURSE_LESSON_ORDER.get(course_id, [])
-    if course_id in {"unified_orthography", "arami_orthography_foundations"}:
-        # These courses must be completed as a strict prefix: a stale/non-contiguous
-        # progress record must never unlock later lessons out of sequence.
-        if lesson not in order:
-            return False
-        index = order.index(lesson)
-        return all(previous in completed for previous in order[:index])
+    # Every course follows one strict sequence. A stale/non-contiguous progress
+    # record must never unlock a later lesson while any earlier lesson is missing.
     return can_open_lesson(order, completed, lesson)
 
 BADGE_COURSE_TITLES = {
