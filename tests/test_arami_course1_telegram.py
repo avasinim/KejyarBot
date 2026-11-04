@@ -175,6 +175,10 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
         self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+        self.assertIn("aramiC:practice:2", buttons)
+        self.assertIn("aramiC:assessment:2", buttons)
+        self.assertNotIn("aramiC:practice:3", buttons)
+        self.assertNotIn("aramiC:assessment:3", buttons)
 
     async def test_returning_from_lesson_reader_keeps_the_users_progress_states(self):
         manifest = load_manifest(ROOT)
