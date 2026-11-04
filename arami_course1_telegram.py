@@ -390,7 +390,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
     await query.answer()
     action = query.data.removeprefix("aramiC:")
@@ -402,9 +402,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             logger.exception("Could not load Arami Course 1 catalogue")
             await query.message.reply_text("⚠️ لیستی وانەکانی کۆرسی ١ ئامادە نییە.")
             return
+        user_id = query.from_user.id
+        completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
+        can_open_for_user = (
+            (lambda lesson_id: can_open(user_id, lesson_id))
+            if can_open is not None else None
+        )
         await query.message.reply_text(
             "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\nوانەیەک هەڵبژێرە:",
-            reply_markup=course_menu_keyboard(manifest, banks),
+            reply_markup=course_menu_keyboard(
+                manifest, banks, completed_lessons=completed,
+                can_open=can_open_for_user,
+            ),
         )
         return
     if action.startswith("lesson:"):
@@ -435,9 +444,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             return
         manifest = load_manifest(base_dir)
         banks = load_question_banks(base_dir)
+        user_id = query.from_user.id
+        completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
+        can_open_for_user = (
+            (lambda lesson_id: can_open(user_id, lesson_id))
+            if can_open is not None else None
+        )
         await query.message.reply_text(
             f"⭐ کۆتایی خوێندنەوەی وانەی {number}.",
-            reply_markup=course_menu_keyboard(manifest, banks),
+            reply_markup=course_menu_keyboard(
+                manifest, banks, completed_lessons=completed,
+                can_open=can_open_for_user,
+            ),
         )
         return
     if action.startswith(("practice:", "assessment:")):

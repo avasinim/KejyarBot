@@ -1358,6 +1358,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            get_completed_lessons=get_completed_lessons,
         ),
         pattern=r"^aramiC:",
     ))
