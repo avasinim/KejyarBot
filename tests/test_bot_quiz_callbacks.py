@@ -1,3 +1,4 @@
+import asyncio
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
@@ -324,6 +325,32 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         reward.assert_called_once_with(12345, lesson)
         self.assertNotIn("quiz", context.user_data)
         self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+
+    async def test_selection_is_recorded_before_callback_acknowledgement(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        correct_index = question["options"].index(question["answer"])
+        update, context, query = self.make_context(f"select_answer_{correct_index}")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+        })
+        acknowledgement_gate = asyncio.Event()
+
+        async def delayed_acknowledgement():
+            await acknowledgement_gate.wait()
+
+        query.answer = AsyncMock(side_effect=delayed_acknowledgement)
+        task = asyncio.create_task(bot.select_quiz_answer(update, context))
+        await asyncio.sleep(0)
+
+        self.assertEqual(
+            context.user_data["quiz"]["selected_answer_index"], correct_index
+        )
+        acknowledgement_gate.set()
+        await task
+        query.edit_message_reply_markup.assert_awaited_once()
 
     async def test_wrong_submitted_answer_shows_incorrect_and_reveals_correct_answer(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
