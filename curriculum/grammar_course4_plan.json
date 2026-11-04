@@ -436,7 +436,9 @@
         {
           "id": "grammar_16",
           "title": "دروستبوون، پاشگر و ڕێککەوتنی ئاوەڵناو",
-          "focus": "نیشانە و پاشگرەکان، دروستبوونی ئاوەڵناو لە ڕەگ و ناو و کردار، ڕێککەوتنی فۆرم و پێکهاتەی پەیوەست؛ پەڕە ١٠٠–١١٠ و ١٣٤–١٣٩."
+          "focus": "نیشانە و پاشگرەکان، دروستبوونی ئاوەڵناو لە ڕەگ و ناو و کردار، ڕێککەوتنی فۆرم و پێکهاتەی پەیوەست؛ پەڕە ١٠٠–١١٠ و ١٣٤–١٣٩.",
+          "draft_path": "docs/course4-drafts/grammar_16_adjective_formation_suffixes_agreement.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_17",
