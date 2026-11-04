@@ -16,7 +16,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(len(quizzes), 24)
         self.assertEqual(courses[0]["id"], "kurmanji_latin_orthography")
         self.assertEqual(courses[1]["id"], "kurmanji_latin_grammar")
-        self.assertIn("Rê zimanê Kurmancî", courses[0]["source_part"])
+        self.assertIn("Part I", courses[0]["source_part"])
         self.assertIn("Beşa II", courses[1]["source_part"])
 
     def test_each_lesson_keeps_full_markdown_and_five_questions(self):
@@ -31,7 +31,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         import bot
 
         expected = {
-            "kurmanji_latin_orthography": "Rê zimanê Kurmancî",
+            "kurmanji_latin_orthography": "Part I",
             "kurmanji_latin_grammar": "Beşa II",
         }
         for course_id, source_part in expected.items():
@@ -85,9 +85,9 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         course2_source = (ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
         self.assertEqual(len([line for line in course1_source.splitlines() if line.startswith("## Ders ")]), 12)
         self.assertEqual(len([line for line in course2_source.splitlines() if line.startswith("## Ders ")]), 12)
-        self.assertIn("*Rê zimanê Kurmancî*", course1_source)
-        self.assertNotIn("Bingehên gramera kurdmancî", course1_source)
-        self.assertNotIn("Celadet Alî Bedir-Xan", course1_source)
+        self.assertIn("Celadet Alî Bedir-Xan", course1_source)
+        self.assertNotIn("Part II", course1_source)
+        self.assertIn("Beşa I", course1_source)
         self.assertIn("Bingehên gramera kurdmancî", course2_source)
         self.assertIn("Celadet Alî Bedir-Xan", course2_source)
         self.assertNotIn("Şikofteh", course2_source)
@@ -208,13 +208,23 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_09"]["content"]
         self.assertIn("Dengên X, Y û Z", lesson)
-        self.assertIn("X ji nîveka qirikê", lesson)
-        self.assertIn("Y nîvdeng e", lesson)
-        self.assertIn("Z di navbera diranan de", lesson)
+        self.assertIn("X yek ji 23 herfên dengdar", lesson)
+        self.assertIn("Y jî di çavkaniya bingehîn de di nav koma 23 dengdar", lesson)
+        self.assertIn("Z yek ji herfên dengdar e", lesson)
         self.assertIn("X dengdareke kurmancî ye", lesson)
         self.assertIn("Z dengdareke kurmancî ye", lesson)
         self.assertIn("| zozan | Z |", lesson)
-        self.assertNotIn("Herfên Taybet di Elfabeya Kurmancî de", lesson)
+        self.assertNotIn("Y nîvdeng e", lesson)
+
+    def test_course_one_y_is_a_consonant_letter_in_the_source_classification(self):
+        lessons, _, _ = load_latin_courses()
+        lesson3 = lessons["kurmanji_latin_orthography_03"]["content"]
+        lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
+        lesson9 = lessons["kurmanji_latin_orthography_09"]["content"]
+        self.assertIn("W û Y jî di nav koma 23 dengdar de ne", lesson3)
+        self.assertIn("W jî yek ji herfên dengdar", lesson8)
+        self.assertIn("Y jî di çavkaniya bingehîn de di nav koma 23 dengdar", lesson9)
+        self.assertNotIn("Y nîvdeng e", lesson3 + lesson8 + lesson9)
 
     def test_course_two_lessons_four_and_five_separate_number_and_oblique_forms(self):
         lessons, _, _ = load_latin_courses()
