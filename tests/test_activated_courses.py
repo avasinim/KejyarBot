@@ -280,7 +280,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "open_lesson_daily_conversation_41",
             "open_lesson_daily_conversation_42",
         ])
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
 
     def test_global_quiz_menus_are_paginated_for_all_completed_courses(self):
         all_lessons = [
