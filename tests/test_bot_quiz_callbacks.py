@@ -182,6 +182,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 )
                 update = SimpleNamespace(callback_query=query)
                 context = SimpleNamespace(user_data={})
+                source_snapshot = [dict(item, options=list(item["options"])) for item in bot.QUIZ_DATA[lesson]]
                 with (
                     patch.object(bot, "can_open", return_value=True),
                     patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
@@ -253,7 +254,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 for randomized, source in zip(quiz["questions"], bot.QUIZ_DATA[lesson]):
                     self.assertEqual(set(randomized["options"]), set(source["options"]))
                     self.assertEqual(randomized["options"][randomized["options"].index(source["answer"])], source["answer"])
-                self.assertEqual(bot.QUIZ_DATA[lesson], bot.QUIZ_DATA[lesson])
+                self.assertEqual(bot.QUIZ_DATA[lesson], source_snapshot)
                 self.assertEqual(quiz["question_message_id"], 880)
                 self.assertEqual(query.message.reply_text.await_args.args[0], "🎯 ڕاهێنان " + expected["question"])
                 markup = query.message.reply_text.await_args.kwargs["reply_markup"]
