@@ -1,6 +1,6 @@
 import unittest
 
-from arami_lesson1_interaction import create_session, select_answer, submit_answer
+from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer
 from arami_lesson1_presentation import (
     answer_feedback,
     lesson_action_payload,
@@ -41,26 +41,28 @@ class AramiLesson1PresentationTests(unittest.TestCase):
         session = create_session(BANK, "practice")
         view = question_view(session)
         self.assertEqual(view["prompt"], BANK[0]["prompt"])
-        self.assertEqual(view["options"], BANK[0]["options"])
+        self.assertEqual(set(view["options"]), set(BANK[0]["options"]))
         self.assertNotIn("answer_index", view)
         self.assertFalse(view["submitted"])
 
     def test_feedback_requires_matching_submitted_record(self):
         session = create_session(BANK, "practice")
-        question = BANK[0]
-        select_answer(session, 0)
+        question = current_question(session)
+        select_answer(session, question["answer_index"])
         record = submit_answer(session)
         feedback = answer_feedback(question, record)
         self.assertTrue(feedback["correct"])
-        self.assertEqual(feedback["correct_index"], 0)
+        self.assertEqual(feedback["correct_index"], question["answer_index"])
         with self.assertRaises(ValueError):
             answer_feedback(BANK[1], record)
 
     def test_result_view_reports_score_and_missed_section(self):
         session = create_session(BANK, "assessment")
-        select_answer(session, 1)
+        first = current_question(session)
+        select_answer(session, (first["answer_index"] + 1) % len(first["options"]))
         submit_answer(session)
-        select_answer(session, 0)
+        second = current_question(session)
+        select_answer(session, second["answer_index"])
         submit_answer(session)
         view = result_view(session)
         self.assertEqual(view["score"], "1/2")

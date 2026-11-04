@@ -5,6 +5,8 @@ the lesson's approved data file; this module only validates and tracks attempts.
 """
 from copy import deepcopy
 
+from quiz_option_order import randomized_question_copy
+
 ALLOWED_MODES = {"practice", "assessment"}
 ALLOWED_TYPES = {"recognize", "classify", "match", "complete"}
 
@@ -63,7 +65,7 @@ def create_session(question_bank, mode):
     validate_question_bank(question_bank)
     return {
         "mode": mode,
-        "questions": deepcopy(question_bank),
+        "questions": randomized_question_copy(question_bank),
         "index": 0,
         "selected_index": None,
         "answers": [],

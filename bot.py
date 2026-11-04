@@ -33,6 +33,7 @@ from database import (
 )
 from daily_chat import PROMPTS, reply_to_daily_message
 from course_runtime import can_open_lesson, visible_course_lessons
+from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 from latin_course_runtime import load_latin_courses
@@ -523,8 +524,8 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not quiz_is_available(lesson):
         await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
-    questions = QUIZ_DATA.get(lesson)
-    if not questions:
+    source_questions = QUIZ_DATA.get(lesson)
+    if not source_questions:
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
     completed_lessons = set(get_completed_lessons(user_id))
@@ -539,7 +540,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["quiz"] = {
         "index": 0,
         "lesson": lesson,
-        "questions": questions,
+        "questions": randomized_question_copy(source_questions),
         "score": 0,
         "question_message_id": None,
         "selected_answer_index": None,
