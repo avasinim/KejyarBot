@@ -406,9 +406,9 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if first_completion:
         check_badges(user_id)
         new_level = get_user_level(user_id)
-        message_text = "✅ وانەکە تەواو بوو!\\n\\n🔥 +10 XP\\n🪙 +5 Coin\\n🎁 +1 سەنوقی خەڵات"
+        message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
         if old_level != new_level:
-            message_text += f"\\n\\n🎉 بەرزبوویتەوە بۆ: {new_level}"
+            message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
     else:
         # Idempotent completion must still help a learner resume the sequence.
         # Rewards and badges are never repeated.
