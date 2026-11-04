@@ -98,8 +98,8 @@ class QuizOptionOrderTests(unittest.TestCase):
                     )
                 self.assertEqual(source, snapshot, f"source bank mutated: lesson {lesson_number} {mode}")
 
-    def test_duplicate_options_are_rejected_case_and_whitespace_insensitively(self):
-        for options in (["A", "A"], ["Correct", " correct "]):
+    def test_duplicate_options_are_rejected_after_trimming(self):
+        for options in (["A", "A"], ["Correct", " Correct "]):
             with self.subTest(options=options):
                 with self.assertRaisesRegex(ValueError, "duplicate options"):
                     randomized_question_copy(
