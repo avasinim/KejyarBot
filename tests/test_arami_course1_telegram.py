@@ -361,6 +361,34 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("چ • ç", rendered)
         self.assertNotIn("|---|", rendered)
 
+    async def test_only_lessons_1_to_7_send_their_assigned_png_infographic(self):
+        from arami_course1_telegram import send_lesson_infographic, lesson_infographic_path
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            asset_dir = root / "assets" / "course1_infographics"
+            asset_dir.mkdir(parents=True)
+            for number in range(1, 8):
+                (asset_dir / f"lesson_{number:02d}.png").write_bytes(b"approved-png")
+            message = SimpleNamespace(reply_photo=AsyncMock())
+            for number in range(1, 22):
+                sent = await send_lesson_infographic(
+                    message, {"number": number}, base_dir=root
+                )
+                self.assertEqual(sent, number <= 7)
+                path = lesson_infographic_path(root, {"number": number})
+                self.assertEqual(path is not None, number <= 7)
+            self.assertEqual(message.reply_photo.await_count, 7)
+
+    async def test_missing_course1_infographic_does_not_interrupt_lesson_delivery(self):
+        from arami_course1_telegram import send_lesson_infographic
+        with tempfile.TemporaryDirectory() as temp:
+            message = SimpleNamespace(reply_photo=AsyncMock())
+            sent = await send_lesson_infographic(
+                message, {"number": 1}, base_dir=Path(temp)
+            )
+            self.assertFalse(sent)
+            message.reply_photo.assert_not_awaited()
+
     def test_invalid_lesson_numbers_are_rejected(self):
         for value in (0, 22, True, "5"):
             with self.subTest(value=value):
