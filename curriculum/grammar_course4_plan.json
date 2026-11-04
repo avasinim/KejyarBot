@@ -4,21 +4,24 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "curriculum_outline_ready_source_alignment_pending",
+  "content_status": "outline_only_source_files_not_yet_read",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
   "primary_work": "ڕێزمانی کوردی",
   "edition": {
     "publisher": "چاپەمەنیی ڕێگا",
-    "edition": "یەکەم، ١٤٠١",
+    "edition": "چاپی یەکەم، ١٤٠١",
     "pages": 850,
-    "format": "یەک بەرگ کۆکراوە لە پێنج بەش"
+    "format": "وەشانی کۆکراوە؛ هەر پێنج بەش لە یەک بەرگدا",
+    "catalog_url": "https://regapub.com/product/%DA%A9%D8%AA%DB%8E%D8%A8%DB%8C-%DA%95%DB%8E%D8%B2%D9%85%D8%A7%D9%86%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/"
   },
   "source_parts": [
     {
       "part": 1,
       "title": "ناو",
+      "reported_pages": 304,
+      "url": "https://vk.com/doc336548236_481489262",
       "lessons": [
         1,
         2,
@@ -26,12 +29,13 @@
         4,
         5,
         6
-      ],
-      "pdf": "https://drive.google.com/file/d/1JH6Trx_NtY5nEWW-gEK5dUH5_PqpWF6a/view?usp=sharing"
+      ]
     },
     {
       "part": 2,
       "title": "جێناو",
+      "reported_pages": 320,
+      "url": "https://vk.com/doc336548236_481489431",
       "lessons": [
         7,
         8,
@@ -39,12 +43,13 @@
         10,
         11,
         12
-      ],
-      "pdf": "https://drive.google.com/file/d/1COIeMQJY6JHGzOPRk7AtDDolkNHEN26w/view?usp=sharing"
+      ]
     },
     {
       "part": 3,
       "title": "ئاوەڵناو",
+      "reported_pages": 304,
+      "url": "https://vk.com/doc336548236_481490805",
       "lessons": [
         13,
         14,
@@ -52,12 +57,13 @@
         16,
         17,
         18
-      ],
-      "pdf": "https://drive.google.com/file/d/1UHfQibdBrdMyz80IbJno1wgZxirDCoP0/view?usp=sharing"
+      ]
     },
     {
       "part": 4,
       "title": "ژمارە و ئاوەڵکردار",
+      "reported_pages": 187,
+      "url": "https://vk.com/doc336548236_481489534",
       "lessons": [
         19,
         20,
@@ -65,12 +71,13 @@
         22,
         23,
         24
-      ],
-      "pdf": "https://drive.google.com/file/d/1HyzcT7ewj5k4O3lY0szigxzeApkEAYmA/view?usp=sharing"
+      ]
     },
     {
       "part": 5,
       "title": "کردار",
+      "reported_pages": 385,
+      "url": "https://vk.com/doc336548236_481489694",
       "lessons": [
         25,
         26,
@@ -78,8 +85,7 @@
         28,
         29,
         30
-      ],
-      "pdf": "https://drive.google.com/file/d/1E3sJXDr5DYKjHD-uH2e_9Yuj0cLWB4cu/view?usp=sharing"
+      ]
     }
   ],
   "units": [
@@ -282,5 +288,42 @@
     "ئەگەر ڕوونکردنەوەی فێرکاری زیاد بکرێت، لە سەرچاوەی نووسەر جیا دەکرێتەوە و وەک ڕوونکردنەوەی ئامادەکەر نیشان دەدرێت.",
     "هیچ زاراوە یان شێوەزارییەک بەبێ بەڵگە یەکسان ناکرێت.",
     "ئەم پلانە پێشنیاری ڕێکخستنی وانەکانە، نەک بانگەشەی ئەوەی ناونیشان و پۆلێنەکان هەمان دابەشکردنی لاپەڕەکانی کتێبن."
-  ]
+  ],
+  "digital_scan_source": {
+    "status": "links_listed_but_not_content_verified",
+    "discovery_page": "https://rezmanikurde.blogspot.com/2018/11/blog-post_10.html",
+    "note": "پەڕەی ماڵپەڕی ڕێزمانی کوردی پێنج لینکی فایل و ژمارەی لاپەڕەی هەر بەشێک دەخاتەڕوو. لینکەکان بۆ VK دەچن؛ لەم پشکنینەدا ناوەڕۆکی فایلەکان نەکرایەوە، بۆیە هیچ وانەیەک نابێت بە پشتبەستن بە ناونیشانەکان بەسەرچاوەوە بگونجێندرێت تا فایلەکان بخوێندرێنەوە.",
+    "source_parts": [
+      {
+        "part": 1,
+        "title": "ناو",
+        "reported_pages": 304,
+        "url": "https://vk.com/doc336548236_481489262"
+      },
+      {
+        "part": 2,
+        "title": "جێناو",
+        "reported_pages": 320,
+        "url": "https://vk.com/doc336548236_481489431"
+      },
+      {
+        "part": 3,
+        "title": "ئاوەڵناو",
+        "reported_pages": 304,
+        "url": "https://vk.com/doc336548236_481490805"
+      },
+      {
+        "part": 4,
+        "title": "ژمارە و ئاوەڵکردار",
+        "reported_pages": 187,
+        "url": "https://vk.com/doc336548236_481489534"
+      },
+      {
+        "part": 5,
+        "title": "کردار",
+        "reported_pages": 385,
+        "url": "https://vk.com/doc336548236_481489694"
+      }
+    ]
+  }
 }
