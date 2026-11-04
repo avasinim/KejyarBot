@@ -44,25 +44,25 @@
 | 8 | 4 | B | V |
 | 8 | 5 | B | Du herfên cuda ne |
 | 9 | 1 | B | Ji nîveka qirikê |
-| 9 | 2 | B | Nîvdeng |
+| 9 | 2 | A | Dengdar |
 | 9 | 3 | C | zozan |
 | 9 | 4 | B | xort |
-| 9 | 5 | B | Nîvdeng e |
+| 9 | 5 | A | Dengdar e |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê |
 | 10 | 4 | B | C û Ç |
 | 10 | 5 | A | Rêza herfan |
-| 11 | 1 | B | Y, W, H |
-| 11 | 2 | B | gîyan |
-| 11 | 3 | C | rintir |
-| 11 | 4 | B | paşîv |
-| 11 | 5 | B | Li gorî rêbaza nivîsînê yek ji wan dikare neyê nivîsîn |
-| 12 | 1 | A | Beşa herî biçûk a peyvê ku dengdêrekê dihewîne |
-| 12 | 2 | B | bar + an |
-| 12 | 3 | C | Sê |
-| 12 | 4 | A | ba |
-| 12 | 5 | B | Hejmara dengdêran |
+| 11 | 1 | A | e (٢٢٠٠) |
+| 11 | 2 | B | i (١٨٠٠) |
+| 11 | 3 | C | u (٠) |
+| 11 | 4 | A | k (٤١٧) |
+| 11 | 5 | D | Nisbeta herfan di zaravayên cuda de |
+| 12 | 1 | B | ٣١ |
+| 12 | 2 | C | ٨ |
+| 12 | 3 | A | ٢٣ |
+| 12 | 4 | B | E, I, U |
+| 12 | 5 | C | dev / dew |
 
 ## Têbînîyên kontrolê
 
