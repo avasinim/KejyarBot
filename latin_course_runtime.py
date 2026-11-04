@@ -24,7 +24,7 @@ COURSES = (
     },
     {
         "id": "kurmanji_latin_grammar",
-        "source_part": "Part II — Celadet Alî Bedir-Xan — Elfabêya Kurdî & Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), Beşa II (rûpelên çapkirî 37–100)",
+        "source_part": "Part II — Celadet Alî Bedir-Xan — Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), printed pages 37–100.",
         "first_heading": "## Ders 1 —",
         "lesson_prefix": "kurmanji_latin_grammar",
         "key_path": COURSE2_KEY_PATH,
