@@ -530,8 +530,14 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not questions:
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
-    if lesson not in get_completed_lessons(user_id):
+    completed_lessons = set(get_completed_lessons(user_id))
+    if lesson not in completed_lessons:
         await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
+        return
+    # A stale or non-contiguous completion record must not bypass the course
+    # sequence when a learner opens a quiz through an old Telegram button.
+    if not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 ڕێڕەوی وانەکان بە پێی ڕیزبەندی پێویستە؛ سەرەتا وانەکانی پێشوو تەواو بکە.")
         return
     context.user_data["quiz"] = {
         "index": 0,

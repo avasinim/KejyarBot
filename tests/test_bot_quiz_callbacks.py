@@ -233,6 +233,30 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     [f"select_answer_{i}" for i in range(len(expected["options"]))],
                 )
 
+    async def test_stale_completed_latin_lesson_cannot_bypass_course_sequence(self):
+        course = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"]
+        lesson = course[1]
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "can_open", return_value=False),
+        ):
+            await bot.start_quiz(update, context)
+        self.assertNotIn("quiz", context.user_data)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
+
     async def test_latin_quiz_answer_requires_selection_then_submit(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
