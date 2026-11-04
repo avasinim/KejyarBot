@@ -324,18 +324,13 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami5:practice", callbacks)
         self.assertIn("arami5:assessment", callbacks)
 
-    def test_all_21_lessons_are_enabled_with_explicit_audio_readiness(self):
+    def test_all_21_lessons_are_enabled_as_text_only_readers(self):
         manifest = load_manifest(ROOT)
-        self.assertEqual(manifest["runtime_status"], "arami_course1_21_lesson_catalogue_and_interactions_enabled_on_feature_branch")
         self.assertEqual(len(manifest["lessons"]), 21)
-        pending = []
         for lesson in manifest["lessons"]:
             self.assertEqual(lesson["runtime_status"], "enabled_in_arami_course1_catalogue")
             self.assertIn("reader_practice_assessment", lesson["activation_status"])
-            if not lesson["audio_files"]:
-                pending.append(lesson["number"])
-                self.assertIn("audio_pending_user_mapping", lesson["activation_status"])
-        self.assertEqual(pending, [3, 4, 5, 6, 7, 8, 10, 18, 19, 20])
+            self.assertFalse(any("audio" in key.lower() for key in lesson))
 
     def test_lesson_infographic_is_valid_source_grounded_kurdish_svg(self):
         from arami_course1_telegram import build_lesson_infographic_svg
@@ -358,12 +353,6 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
                         "فڕیو", "فریو"):
             self.assertIn(example, source)
 
-    def test_r_and_rr_audio_assets_are_exclusively_assigned_to_lesson16(self):
-        manifest = load_manifest(ROOT)
-        lesson16 = next(item for item in manifest["lessons"] if item["number"] == 16)
-        self.assertEqual([item["file"] for item in lesson16["audio_files"]], ["دەنگی ڕ.ogg", "دەنگی ر.ogg"])
-        # The manifest records intended audio ownership; files are optional in deployment.
-
     def test_lesson16_r_and_rr_distinction_is_in_both_quiz_modes(self):
         banks = load_question_banks(ROOT)
         for mode in ("practice", "assessment"):
@@ -381,7 +370,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(any("پەڵە" in prompt for prompt in prompts))
             self.assertTrue(all(item["source_evidence"] for item in questions))
 
-    def test_manifest_maps_audio_to_the_correct_lesson_sources(self):
+    def test_manifest_keeps_course1_source_paths_without_audio_assignments(self):
         manifest = load_manifest(ROOT)
         lessons = {item["number"]: item for item in manifest["lessons"]}
         self.assertEqual(lessons[13]["content_file"], "course_data/arami_course1_lesson_13_w_source.md")
@@ -389,82 +378,14 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(lessons[15]["content_file"], "course_data/arami_course1_lesson_15_l_ll_source.md")
         self.assertEqual(lessons[16]["content_file"], "course_data/arami_course1_lesson_16_r_rr_source.md")
         self.assertEqual(lessons[17]["content_file"], "course_data/arami_course1_lesson_16_v_source.md")
-        self.assertEqual([item["file"] for item in lessons[16]["audio_files"]], ["دەنگی ڕ.ogg", "دەنگی ر.ogg"])
-        self.assertEqual([item["file"] for item in lessons[14]["audio_files"]], ["بزرۆکە.ogg", "بزرۆکەی ٢.ogg", "بزرۆکەی ٣.ogg"])
-        self.assertEqual([item["file"] for item in lessons[15]["audio_files"]], ["دەنگی ل.ogg", "دەنگی ڵ.ogg"])
-        self.assertEqual([item["file"] for item in lessons[17]["audio_files"]], ["دەنگ ڤ.ogg"])
-        self.assertEqual([item["file"] for item in lessons[21]["audio_files"]], ["بڕگە.ogg"])
-        self.assertEqual([item["file"] for item in lessons[1]["audio_files"]], ["بزوێنی ی.ogg"])
         self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_12_y_source.md")
-        self.assertEqual([item["file"] for item in lessons[12]["audio_files"]], ["ی.ogg", "پیتی دەنگی ٢.ogg"])
-        self.assertEqual(len(lessons[11]["audio_files"]), 4)
-        self.assertEqual(len(lessons[13]["audio_files"]), 2)
+        self.assertTrue(all(not any("audio" in key.lower() for key in lesson) for lesson in lessons.values()))
 
-    def test_lesson14_preserves_the_supplied_hidden_vowel_examples_and_audio(self):
-        manifest = load_manifest(ROOT)
-        lesson = next(item for item in manifest["lessons"] if item["number"] == 14)
+    def test_lesson14_preserves_the_supplied_hidden_vowel_examples(self):
         _, source = load_lesson_source(ROOT, 14)
         for example in ("min", "çil", "dill", "mirdim", "xistin", "kirdin", "birdin"):
             self.assertIn(example, source)
         self.assertIn("I i", source)
-        self.assertIn("6639c30ca85bdae4f64134e1368617b2e507fb6c", lesson["audio_commits"])
-        self.assertIn("بزرۆکە.ogg", [item["file"] for item in lesson["audio_files"]])
-        self.assertNotIn("6639c30ca85bdae4f64134e1368617b2e507fb6c", source)
-
-    def test_manifest_audio_paths_are_project_relative_and_optional(self):
-        manifest = load_manifest(ROOT)
-        for lesson in manifest["lessons"]:
-            with self.subTest(lesson=lesson["number"]):
-                for item in lesson.get("audio_files", []):
-                    path = (ROOT / item["file"]).resolve()
-                    self.assertTrue(path.is_relative_to(ROOT.resolve()))
-                    self.assertIn(path.suffix.lower(), {".ogg", ".mp3"})
-                    self.assertTrue(item["label"])
-
-    def test_missing_mapped_audio_is_silent_and_does_not_block_lessons(self):
-        from arami_course1_telegram import send_lesson_audio
-        message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
-        lesson14 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 14)
-        sent = asyncio.run(send_lesson_audio(message, ROOT, lesson14))
-        self.assertFalse(sent)
-        message.reply_voice.assert_not_awaited()
-        message.reply_text.assert_not_awaited()
-
-    async def test_lesson_without_supplied_audio_stays_silent(self):
-        from arami_course1_telegram import send_lesson_audio
-        message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
-        lesson3 = next(item for item in load_manifest(ROOT)["lessons"] if item["number"] == 3)
-        sent = await send_lesson_audio(message, ROOT, lesson3)
-        self.assertFalse(sent)
-        message.reply_voice.assert_not_awaited()
-        message.reply_text.assert_not_awaited()
-
-    async def test_lesson1_lesson2_and_lesson9_send_only_their_confirmed_audio(self):
-        from arami_course1_telegram import send_lesson_audio
-        manifest = load_manifest(ROOT)
-        expected = {
-            1: ["بزوێنی ی.ogg"],
-            2: ["دەنگەکانی ئەلفبێ.ogg"],
-            9: ["ئا.ogg"],
-        }
-        for number, filenames in expected.items():
-            with self.subTest(lesson=number):
-                message = SimpleNamespace(reply_voice=AsyncMock(), reply_text=AsyncMock())
-                lesson = next(item for item in manifest["lessons"] if item["number"] == number)
-                sent = await send_lesson_audio(message, ROOT, lesson)
-                expected_present = sum((ROOT / filename).is_file() for filename in filenames)
-                self.assertEqual(sent, expected_present > 0)
-                self.assertEqual(message.reply_voice.await_count, expected_present)
-                message.reply_text.assert_not_awaited()
-
-    def test_a_recording_is_never_reused_across_different_lessons(self):
-        manifest = load_manifest(ROOT)
-        owners = {}
-        for lesson in manifest["lessons"]:
-            for asset in lesson.get("audio_files", []):
-                filename = asset["file"]
-                self.assertNotIn(filename, owners, f"{filename} reused by Lessons {owners.get(filename)} and {lesson['number']}")
-                owners[filename] = lesson["number"]
 
     def test_every_registered_source_is_read_from_its_manifest_path(self):
         manifest = load_manifest(ROOT)
