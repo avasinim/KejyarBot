@@ -20,6 +20,11 @@ def randomized_question_copy(questions, rng=None):
         options = question.get("options")
         if not isinstance(options, list) or len(options) < 2:
             raise ValueError(f"question {position} needs at least two options")
+        if any(not isinstance(option, str) or not option.strip() for option in options):
+            raise ValueError(f"question {position} has an empty or invalid option")
+        normalized_options = [option.strip().casefold() for option in options]
+        if len(normalized_options) != len(set(normalized_options)):
+            raise ValueError(f"question {position} has duplicate options")
 
         if "answer_index" in question:
             correct_index = question["answer_index"]
@@ -41,8 +46,13 @@ def randomized_question_copy(questions, rng=None):
             question["answer"] = correct_answer
         else:
             correct_answer = question.get("answer")
-            if not isinstance(correct_answer, str) or correct_answer not in options:
-                raise ValueError(f"question {position} has no matching correct answer")
+            if (
+                not isinstance(correct_answer, str)
+                or sum(option == correct_answer for option in options) != 1
+            ):
+                raise ValueError(
+                    f"question {position} must contain its correct answer exactly once"
+                )
             shuffle(options)
             question["answer"] = correct_answer
 
