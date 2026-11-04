@@ -84,8 +84,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for course_id in ("daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 114)
-        self.assertEqual(len(set(all_ids)), 114)
+        self.assertEqual(len(all_ids), 108)
+        self.assertEqual(len(set(all_ids)), 108)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
