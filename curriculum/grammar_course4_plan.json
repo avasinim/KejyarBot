@@ -463,7 +463,9 @@
         {
           "id": "grammar_19",
           "title": "ژمارە لە ڕێزماندا: پێناسە و پۆلێنکردن",
-          "focus": "جیاکردنەوەی ژمارەی بنجی، پەلەیی، کەرتی و دایەش؛ پۆلێنکردنی ژمارە لە ڕێزمان بەرامبەر بە ژمارە لە حیساب؛ هەڵسەنگاندنی بۆچوونە جیاوازەکان."
+          "focus": "جیاکردنەوەی ژمارەی بنجی، پەلەیی، کەرتی و دایەش؛ پۆلێنکردنی ژمارە لە ڕێزمان بەرامبەر بە ژمارە لە حیساب؛ هەڵسەنگاندنی بۆچوونە جیاوازەکان.",
+          "draft_path": "docs/course4-drafts/grammar_19_numerals_definition_classification.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_20",
