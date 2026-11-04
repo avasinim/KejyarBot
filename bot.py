@@ -315,6 +315,7 @@ MENU = ReplyKeyboardMarkup(
         ["📕 ڕێنووسی سەرەتاییی کوردی"],
         ["🗓️ مانگەکانی ساڵ لەناو کورداندا"],
         ["🌐 گۆڕینی زمانی تەلەگرام"],
+        ["⌨️ تەختەکلیلی کوردی"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -1020,6 +1021,46 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    if text == "⌨️ تەختەکلیلی کوردی":
+        keyboard_help = (
+            "⌨️ <b>تەختەکلیلی کوردی</b>\\n"
+            "بەستەری تەختەکلیل و ڕێنمایی دامەزراندن بەپێی ئامێر و شێوەزاری کوردی.\\n\\n"
+            "🪟 <b>Windows</b>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">کوردیی ناوەندی / سۆرانی — Central Kurdish Basic</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/sorani_behdini_arab_qwerty">سۆرانی و بادینی — Sorani Behdini QWERTY</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/horami">هەورامی / گۆرانی — Horami</a>\\n"
+            "🔹 <a href="https://github.com/Kurdish-Tech/kurdish-kurmanci-keyboard-layout">کورمانجی بە پیتی لاتینی — Windows</a>\\n"
+            "🔹 <a href="https://support.microsoft.com/en-us/windows/hardware/input-devices/manage-the-language-and-keyboard-input-layout-settings-in-windows">ڕێنمایی فەرمی زیادکردنی تەختەکلیل لە Windows</a>\\n\\n"
+            "🤖 <b>Android</b>\\n"
+            "🔹 <a href="https://play.google.com/store/apps/details?id=com.app.jayesh.customkeyboard">Hawrami Keyboard — هەورامی، سۆرانی، کورمانجی و کوردیی خوارین</a>\\n"
+            "🔹 <a href="https://support.google.com/gboard/answer/7068494?hl=en">ڕێنمایی Gboard بۆ زیادکردنی زمان و تەختەکلیل</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">Keyman — سۆرانی / کوردیی ناوەندی</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/sorani_behdini_arab_qwerty">Keyman — سۆرانی و بادینی</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/horami">Keyman — هەورامی</a>\\n\\n"
+            "🍎 <b>iPhone و iPad</b>\\n"
+            "🔹 <a href="https://apps.apple.com/de/app/kurdtype/id6823184454">KurdType — سۆرانی</a>\\n"
+            "🔹 <a href="https://apps.apple.com/de/app/kurd-keyboard-%DA%A9%DB%8C%D8%A8%DB%86%D8%B1%D8%AF%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/id6792407069">Kurd Keyboard — سۆرانی و بادینی</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">Keyman — سۆرانی / کوردیی ناوەندی</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/sorani_behdini_arab_qwerty">Keyman — سۆرانی و بادینی</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/horami">Keyman — هەورامی</a>\\n"
+            "🔹 <a href="https://support.apple.com/en-us/guide/iphone/iph73b71eb/ios">ڕێنمایی فەرمی Apple بۆ زیادکردنی تەختەکلیل</a>\\n\\n"
+            "💻 <b>macOS و Linux</b>\\n"
+            "🔹 <a href="https://github.com/Kurdish-Tech/kurdish-kurmanci-keyboard-layout">کورمانجی لاتینی — Windows / macOS / Linux</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/basic_kbdkurd">سۆرانی — Keyman بۆ هەموو سیستەمەکان</a>\\n"
+            "🔹 <a href="https://keyman.com/keyboards/horami">هەورامی — Keyman بۆ هەموو سیستەمەکان</a>\\n"
+            "🔹 <a href="https://keyman.com/en/">Keyman — گەڕان بۆ تەختەکلیلەکانی تر</a>\\n\\n"
+            "📌 <b>تێبینی گرنگ</b>\\n"
+            "هەموو ئەم تەختەکلیلانە بۆ هەموو شێوەزارەکان یەکسان نین. هەورامی و کوردیی خوارین لە هەندێک ئەپدا پشتگیری دەکرێن؛ بەڵام بۆ کەڵهوڕی و هەندێک شێوەزاری ناوچەیی، تەختەکلیلی تایبەتی و پشتڕاستکراوەمان نەدۆزیوەتەوە. پێش دامەزراندن، ناوی زمان و شێوەزاری پشتگیریکراو لە لاپەڕەی ئەپەکەدا بپشکنە.\\n"
+            "⚠️ تەختەکلیلی Unicode بەکاربهێنە؛ فۆنت و تەختەکلیلە کۆنەکانی Ali-font دەتوانن دەقەکە لە ئامێری تر تێکبدەن."
+        )
+        await update.message.reply_text(
+            keyboard_help,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=MENU,
+        )
+        return
+
     if text == "🌐 گۆڕینی زمانی تەلەگرام":
         language_help = (
             "🔴 <b>زمانی کوردی بۆ تەلەگرام</b>\n\n"
@@ -1060,6 +1101,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
+        "⌨️ تەختەکلیلی کوردی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
