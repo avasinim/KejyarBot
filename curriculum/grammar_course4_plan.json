@@ -347,7 +347,9 @@
         {
           "id": "grammar_05",
           "title": "ژمارەی ناو و نیشانەکانی ناسیاوی",
-          "focus": "تاک و کۆ، نیشانە و گۆڕانە فۆرمییەکان؛ ناسیاوی و نەناسیاوی؛ پشکنینی نموونەکان و تێبینییە ڕەخنەییەکانی نووسەر."
+          "focus": "تاک و کۆ، نیشانە و گۆڕانە فۆرمییەکان؛ ناسیاوی و نەناسیاوی؛ پشکنینی نموونەکان و تێبینییە ڕەخنەییەکانی نووسەر.",
+          "draft_path": "docs/course4-drafts/grammar_05_noun_number_definiteness.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_06",
