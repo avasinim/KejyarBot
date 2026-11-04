@@ -50,6 +50,7 @@ from arami_course1_runtime import (
     load_arami_lesson5_interactions,
     load_arami_lesson5_source,
 )
+from kurdish_months import months_menu_keyboard, get_months_lesson
 from arami_course1_telegram import (
     callback as arami_course1_callback,
     course_menu_keyboard as arami_course1_menu_keyboard,
@@ -312,6 +313,7 @@ MENU = ReplyKeyboardMarkup(
         ["📚 وانەکان", "📘 کۆرسەکان"],
         ["ڕێنووسی لاتینی کوردیی"],
         ["📕 ڕێنووسی سەرەتاییی کوردی"],
+        ["🗓️ مانگەکانی ساڵ لەناو کورداندا"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -1010,6 +1012,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    if text == "🗓️ مانگەکانی ساڵ لەناو کورداندا":
+        await update.message.reply_text(
+            "📘 مانگەکانی ساڵ لەناو کورداندا\\n\\nشێوەزارەکەت هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە:",
+            reply_markup=months_menu_keyboard(),
+        )
+        return
+
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -1025,6 +1034,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
         "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
+        "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -1180,6 +1190,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
 
+async def open_kurdish_months(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    dialect = query.data.partition(":")[2]
+    lesson = get_months_lesson(dialect)
+    if lesson is None:
+        await query.message.reply_text("⚠️ ئەم شێوەزارە نەناسراوە.")
+        return
+    await send_lesson_text(query.message, lesson, months_menu_keyboard())
+
+
 async def log_polling_start(application):
     """Log readiness only after python-telegram-bot has initialized successfully."""
     logger.info("KejyarBot Telegram initialization succeeded; polling is starting")
@@ -1193,6 +1214,7 @@ def main():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).post_init(log_polling_start).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(open_kurdish_months, pattern=r"^months:(sorani|kurmanji|kalhuri|hawrami|laki)$"))
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson1_callback(
             update, context, BASE_DIR,
