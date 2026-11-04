@@ -94,7 +94,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         lesson = {
             "title": "وانەی ١", "objectives": [], "sections": [], "conclusion": "پوختە",
         }
-        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": []}]}
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
             "arami_lesson1_telegram.load_manifest", return_value=manifest
         ):
