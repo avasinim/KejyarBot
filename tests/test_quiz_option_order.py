@@ -40,6 +40,24 @@ class QuizOptionOrderTests(unittest.TestCase):
         self.assertIsNot(first[0]["options"], second[0]["options"])
         self.assertEqual(source[0]["options"], ["A", "B"])
 
+
+    def test_all_active_course_quiz_banks_keep_their_correct_answers(self):
+        import bot
+
+        for lesson_id, questions in bot.QUIZ_DATA.items():
+            randomized = randomized_question_copy(questions, rng=ReverseRng())
+            self.assertEqual(len(randomized), len(questions), lesson_id)
+            for shown, source in zip(randomized, questions):
+                self.assertEqual(set(shown["options"]), set(source["options"]), lesson_id)
+                if "answer_index" in shown:
+                    self.assertEqual(
+                        shown["options"][shown["answer_index"]],
+                        source["options"][source["answer_index"]],
+                        lesson_id,
+                    )
+                else:
+                    self.assertIn(shown["answer"], shown["options"], lesson_id)
+
     def test_invalid_answer_is_rejected(self):
         with self.assertRaises(ValueError):
             randomized_question_copy([{"options": ["A", "B"], "answer": "missing"}])
