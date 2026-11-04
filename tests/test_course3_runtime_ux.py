@@ -41,7 +41,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
     async def test_course3_completion_delivers_next_lesson_automatically(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
         lesson, next_lesson = lesson_ids[0], lesson_ids[1]
-        message = SimpleNamespace(reply_text=AsyncMock(), reply_voice=AsyncMock(), message_id=77)
+        message = SimpleNamespace(reply_text=AsyncMock(), message_id=77)
         query = SimpleNamespace(
             data=f"finish_{lesson}",
             from_user=SimpleNamespace(id=90002),
@@ -56,12 +56,10 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
              patch.object(bot, "next_course_lesson", return_value=next_lesson), \
              patch.object(bot, "quiz_is_available", return_value=True), \
              patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text, \
-             patch.object(bot, "send_kejyar_course_cue", new=AsyncMock(return_value=True)) as cue, \
-:
+             patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text:
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
         self.assertEqual(send_text.await_count, 1)
         self.assertEqual(send_text.await_args.args[1], bot.LESSON_DATA[next_lesson]["content"])
-        cue.assert_not_awaited()
 
 
 if __name__ == "__main__":
