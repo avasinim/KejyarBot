@@ -901,6 +901,64 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
 
+COURSE_MENU_PAGE_SIZE = 12
+
+
+def course_menu_keyboard(course_id, user_id, page=0):
+    """Build a compact, progress-aware page of one course's lesson catalogue."""
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    page_count = max(1, (len(order) + COURSE_MENU_PAGE_SIZE - 1) // COURSE_MENU_PAGE_SIZE)
+    if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
+        raise ValueError("invalid course menu page")
+    completed = set(get_completed_lessons(user_id))
+    start_index = page * COURSE_MENU_PAGE_SIZE
+    rows = []
+    for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
+        is_open = can_open(user_id, lesson)
+        status = "🔒" if not is_open else ("✅" if lesson in completed else "🔓")
+        title = LESSON_DATA[lesson]["title"]
+        label = title if len(title) <= 38 else title[:35] + "…"
+        rows.append([InlineKeyboardButton(
+            f"{status} {label}",
+            callback_data=f"open_lesson_{lesson}",
+        )])
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton(
+            "⬅️ پێشوو",
+            callback_data=f"coursepage:{course_id}:{page - 1}",
+        ))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton(
+            "➡️ وانەکانی دواتر",
+            callback_data=f"coursepage:{course_id}:{page + 1}",
+        ))
+    if navigation:
+        rows.append(navigation)
+    return InlineKeyboardMarkup(rows), page_count
+
+
+async def send_course_page(message, course_id, user_id, page=0):
+    course = next((item for item in COURSES if item.get("id") == course_id), None)
+    if course is None or not course_is_active(course_id):
+        await message.reply_text("⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە.")
+        return
+    try:
+        keyboard, page_count = course_menu_keyboard(course_id, user_id, page)
+    except ValueError:
+        await message.reply_text("⚠️ ئەم لاپەڕەیە لە لیستی وانەکاندا نییە.")
+        return
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    first = page * COURSE_MENU_PAGE_SIZE + 1
+    last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
+    description = course.get("description", "")
+    await message.reply_text(
+        f"{course['title']}\\n{description}\\n\\n"
+        f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}",
+        reply_markup=keyboard,
+    )
+
+
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -914,7 +972,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -928,22 +986,20 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
         return
     if not course_is_active(course_id):
-        await query.message.reply_text(f"{course['title']}\n\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
+        await query.message.reply_text(f"{course['title']}\\n\\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
         return
-    lesson_ids = COURSE_LESSON_ORDER.get(course_id, [])
-    completed = set(get_completed_lessons(query.from_user.id))
-    rows = []
-    for lesson in lesson_ids:
-        status = "✅" if lesson in completed else ("🔓" if can_open(query.from_user.id, lesson) else "🔒")
-        title = LESSON_DATA[lesson]["title"]
-        rows.append([InlineKeyboardButton(
-            f"{status} {title}",
-            callback_data=f"open_lesson_{lesson}",
-        )])
-    await query.message.reply_text(
-        f"{course['title']}\n\n{course.get('description', '')}",
-        reply_markup=InlineKeyboardMarkup(rows),
-    )
+    await send_course_page(query.message, course_id, query.from_user.id, 0)
+
+
+async def open_course_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    prefix, _, remainder = query.data.partition(":")
+    course_id, separator, raw_page = remainder.rpartition(":")
+    if prefix != "coursepage" or not separator or not raw_page.isdigit():
+        await query.message.reply_text("⚠️ داواکاریی لاپەڕەی وانەکان نادروستە.")
+        return
+    await send_course_page(query.message, course_id, query.from_user.id, int(raw_page))
 
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1337,6 +1393,7 @@ def main():
     ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
+    app.add_handler(CallbackQueryHandler(open_course_page, pattern=r"^coursepage:"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))
