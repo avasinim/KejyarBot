@@ -220,8 +220,8 @@ def _render_source_html(source):
                 blocks.append(f"<b>📘 {heading_text}</b>")
             elif level == 2:
                 blocks.append(
-                    "━━━━━━━━━━━━━━━━━━\\n"
-                    f"<b>🎓 {heading_text}</b>\\n"
+                    "━━━━━━━━━━━━━━━━━━\n"
+                    f"<b>🎓 {heading_text}</b>\n"
                     "━━━━━━━━━━━━━━━━━━"
                 )
             else:
