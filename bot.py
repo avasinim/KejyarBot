@@ -1220,9 +1220,11 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if course_is_active("arami_orthography_foundations"):
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_mode = "practice" if text == "🎯 ڕاهێنانی کرتەیی" else "assessment"
+            arami_sequence_open = True
             for item in sorted(arami_manifest["lessons"], key=lambda lesson: lesson["number"]):
-                if item["id"] not in completed or not can_open(user_id, item["id"]):
-                    continue
+                if not arami_sequence_open or item["id"] not in completed:
+                    arami_sequence_open = False
+                    break
                 number = item["number"]
                 if number == 1:
                     callback_data = f"arami1:{arami_mode}"
