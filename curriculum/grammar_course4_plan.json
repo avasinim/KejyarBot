@@ -484,7 +484,9 @@
         {
           "id": "grammar_22",
           "title": "ئاوەڵکردار: پێناسە و جێگای لە پۆلەکانی وشەدا",
-          "focus": "پێناسە و ئەرکی ئاوەڵکردار؛ بۆچوونی جیاوازی زمانناسان لەسەر پۆلی سەربەخۆ یان پەیوەندیی بە پۆلەکانی تر؛ پێوەرە واتایی و ڕستەسازییەکان."
+          "focus": "پێناسە و ئەرکی ئاوەڵکردار؛ بۆچوونی جیاوازی زمانناسان لەسەر پۆلی سەربەخۆ یان پەیوەندیی بە پۆلەکانی تر؛ پێوەرە واتایی و ڕستەسازییەکان.",
+          "draft_path": "docs/course4-drafts/grammar_22_adverb_definition_word_classes.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_23",
