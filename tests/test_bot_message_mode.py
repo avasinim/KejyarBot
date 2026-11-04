@@ -34,7 +34,6 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         })
         with (
             patch.object(bot, "get_user"),
-            patch.object(bot, "send_voice", new_callable=AsyncMock),
         ):
             await bot.start(update, context)
 
@@ -52,7 +51,6 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "reply_to_daily_message", return_value="وەڵامی گفتوگۆ") as reply,
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
         ):
             await bot.message(update, context)
 
