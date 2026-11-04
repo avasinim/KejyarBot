@@ -395,7 +395,9 @@
         {
           "id": "grammar_11",
           "title": "جێناوی نیشانە و بەکارهێنانی",
-          "focus": "پۆلی جێناوی نیشانە، فۆرم و بەکارهێنانی لە ناو دەربڕین و ڕستەدا؛ پەڕە ١٢–١٣."
+          "focus": "پۆلی جێناوی نیشانە، فۆرم و بەکارهێنانی لە ناو دەربڕین و ڕستەدا؛ پەڕە ١٢–١٣.",
+          "draft_path": "docs/course4-drafts/grammar_11_demonstrative_pronouns.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_12",
