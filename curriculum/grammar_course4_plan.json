@@ -388,7 +388,9 @@
         {
           "id": "grammar_10",
           "title": "جێناوی پرسیاری و جێناوی نەفی",
-          "focus": "دوو پۆلی جێناو کە لە سەرچاوەدا بە جیا باس کراون، فۆرم و ئەرکیان لە پرسیار و نەفیکردندا؛ پەڕە ١١–١٢."
+          "focus": "دوو پۆلی جێناو کە لە سەرچاوەدا بە جیا باس کراون، فۆرم و ئەرکیان لە پرسیار و نەفیکردندا؛ پەڕە ١١–١٢.",
+          "draft_path": "docs/course4-drafts/grammar_10_interrogative_negative_pronouns.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_11",
