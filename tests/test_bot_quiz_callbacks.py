@@ -182,7 +182,6 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 )
                 update = SimpleNamespace(callback_query=query)
                 context = SimpleNamespace(user_data={})
-                source_snapshot = [dict(item, options=list(item["options"])) for item in bot.QUIZ_DATA[lesson]]
                 with (
                     patch.object(bot, "can_open", return_value=True),
                     patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
@@ -241,6 +240,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     effective_user=SimpleNamespace(id=12345),
                 )
                 context = SimpleNamespace(user_data={})
+                source_snapshot = [dict(item, options=list(item["options"])) for item in bot.QUIZ_DATA[lesson]]
                 with (
                     patch.object(bot, "get_completed_lessons", return_value=[lesson]),
                     patch.object(bot, "quiz_is_available", return_value=True),
