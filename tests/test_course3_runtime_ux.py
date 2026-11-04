@@ -1,4 +1,4 @@
-"""Regression tests for Course 3 lesson UX: quizzes, voice cues and sequential access."""
+"""Regression tests for Course 3 text-only lesson UX and sequential access."""
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
@@ -23,7 +23,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_opening_course3_lesson_does_not_require_optional_voice_cue(self):
         lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
-        message = SimpleNamespace(reply_text=AsyncMock(), reply_voice=AsyncMock())
+        message = SimpleNamespace(reply_text=AsyncMock())
         query = SimpleNamespace(
             data=f"open_lesson_{lesson}",
             from_user=SimpleNamespace(id=90001),
@@ -33,11 +33,10 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
         update = SimpleNamespace(callback_query=query)
         with patch.object(bot, "can_open", return_value=True), \
              patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text, \
-             patch.object(bot, "send_kejyar_course_cue", new=AsyncMock(return_value=True)) as cue, \
              patch.object(bot, "send_lesson_infographic", new=AsyncMock()):
             await bot.open_selected_lesson(update, SimpleNamespace())
+        self.assertFalse(hasattr(bot, "send_kejyar_course_cue"))
         send_text.assert_awaited_once()
-        cue.assert_not_awaited()
 
     async def test_course3_completion_delivers_next_lesson_automatically(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
@@ -58,7 +57,7 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
              patch.object(bot, "quiz_is_available", return_value=True), \
              patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text, \
              patch.object(bot, "send_kejyar_course_cue", new=AsyncMock(return_value=True)) as cue, \
-             patch.object(bot, "send_conversation_voice", new=AsyncMock()):
+:
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
         self.assertEqual(send_text.await_count, 1)
         self.assertEqual(send_text.await_args.args[1], bot.LESSON_DATA[next_lesson]["content"])
