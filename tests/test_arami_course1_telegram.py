@@ -584,6 +584,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
+        from arami_course1_telegram import callback
         session = {
             "mode": "practice",
             "questions": [{
