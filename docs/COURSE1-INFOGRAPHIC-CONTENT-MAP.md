@@ -48,6 +48,12 @@ Status: production specification only; no lesson text, runtime code, database, d
 | 20 | هێشوو (Cluster) | Cluster structure diagram with letter sequence segmentation and exact source examples; distinguish a cluster from a syllable if source does. | Use lesson 19 source; do not invent phonotactic rules. |
 | 21 | بڕگە و هێشوو (Cluster) | Combined syllable/cluster segmentation: layered blocks showing boundaries and the exact source examples. | Use lesson 20 source; preserve the source's own segmentation and definitions. |
 
+## Draft production status
+
+- Lesson 1: first visual draft prepared locally; user identified a Kurdish glyph rendering issue for **پ**. The rendering QA rule now requires visual confirmation that its three dots are below the letter.
+- Lesson 2: first visual draft prepared from `course_data/arami_course1_lesson_02_vowels_source.md`. It uses the exact six source examples: سەر، گەرما، هێمن، خۆر، کورد، گیان. The diagram illustrates the source definition of vowel airflow and distinguishes written letter from heard vowel sound. This is a review draft, not a final approved asset.
+- No image has been added to the live runtime or deployed. Review and approval are required before wiring assets into Telegram delivery.
+
 ## Production QA gate for every infographic
 
 - [ ] Original Kejyar mascot portrait is used unchanged wherever the mascot appears.
