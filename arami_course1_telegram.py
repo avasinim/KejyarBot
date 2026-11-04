@@ -319,13 +319,47 @@ def build_lesson_infographic_svg(lesson, source):
     return svg.encode("utf-8")
 
 
-async def send_lesson_infographic(message, lesson, source):
-    """Keep the lesson reader clean; SVG summaries are not sent as file attachments.
+COURSE1_INFOGRAPHIC_DIR = "assets/course1_infographics"
+COURSE1_INFOGRAPHIC_LESSONS = frozenset({1, 2, 3, 4, 6, 7})
 
-    Telegram displays SVG as a downloadable document rather than an inline lesson
-    visual. The formatted source reader remains the primary lesson presentation.
-    """
-    return
+
+def lesson_infographic_path(base_dir, lesson):
+    """Return an approved Course 1 infographic path; Lesson 5 stays text-only."""
+    number = lesson.get("number") if isinstance(lesson, dict) else None
+    if not isinstance(number, int) or isinstance(number, bool) or number not in COURSE1_INFOGRAPHIC_LESSONS:
+        return None
+    root = Path(base_dir).resolve()
+    path = (root / COURSE1_INFOGRAPHIC_DIR / f"lesson_{number:02d}.png").resolve()
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return None
+    return path if path.is_file() else None
+
+
+async def send_lesson_infographic(message, lesson, source=None, base_dir=None):
+    """Send the six approved PNGs; Lesson 5 and all other lessons stay text-only."""
+    root = Path(base_dir).resolve() if base_dir is not None else Path(__file__).resolve().parent
+    path = lesson_infographic_path(root, lesson)
+    if path is None:
+        logger.debug(
+            "No Course 1 infographic assigned to lesson %s",
+            lesson.get("number") if isinstance(lesson, dict) else None,
+        )
+        return False
+    try:
+        with path.open("rb") as image:
+            await message.reply_photo(
+                photo=image,
+                caption=f"🖼️ وێنەی فێرکاری — وانەی {lesson['number']}",
+            )
+    except Exception:
+        logger.exception(
+            "Could not send Course 1 infographic for lesson %s",
+            lesson["number"],
+        )
+        return False
+    return True
 
 
 def load_lesson_audio_files(base_dir, lesson):
@@ -437,7 +471,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
                 return
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
-            await send_lesson_infographic(query.message, lesson, source)
+            await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
             await send_lesson_audio(query.message, base_dir, lesson)
             await query.message.reply_text(
                 f"✅ کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
