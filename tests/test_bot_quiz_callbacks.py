@@ -770,8 +770,8 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
     async def test_global_practice_menu_includes_completed_arami_lessons(self):
         completed = [
             bot.ARMI_LESSON_IDS[0],
+            bot.ARMI_LESSON_IDS[1],
             bot.ARMI_LESSON_IDS[4],
-            bot.ARMI_LESSON_IDS[5],
         ]
         callbacks = await self._open_global_menu("🎯 ڕاهێنانی کرتەیی", completed)
         self.assertEqual(
