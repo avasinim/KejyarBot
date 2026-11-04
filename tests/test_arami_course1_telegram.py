@@ -369,6 +369,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             asset_dir.mkdir(parents=True)
             for number in (1, 2, 3, 4, 6, 7):
                 (asset_dir / f"lesson_{number:02d}.png").write_bytes(b"approved-png")
+            self.assertFalse((asset_dir / "lesson_05.png").exists())
             message = SimpleNamespace(reply_photo=AsyncMock())
             for number in range(1, 22):
                 sent = await send_lesson_infographic(
