@@ -1470,7 +1470,15 @@ async def open_kurdish_months(update: Update, context: ContextTypes.DEFAULT_TYPE
     if lesson is None:
         await query.message.reply_text("⚠️ ئەم شێوەزارە نەناسراوە.")
         return
-    await send_lesson_text(query.message, lesson, months_menu_keyboard())
+    # This lesson already contains intentional Telegram HTML tags. The generic
+    # lesson renderer escapes source markup, so send this trusted generated
+    # month lesson directly to preserve its bold headings.
+    await query.message.reply_text(
+        lesson,
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+        reply_markup=months_menu_keyboard(),
+    )
 
 
 async def log_polling_start(application):
