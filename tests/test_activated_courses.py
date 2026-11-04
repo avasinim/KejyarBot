@@ -243,11 +243,21 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         ):
             badges = bot.current_progress_badges(12345)
 
-        self.assertEqual(len(badges), 3)
+        self.assertEqual(len(badges), 2)
         self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1", badges[0])
         self.assertIn("کۆرسی ٢: وتووێژ — وانەی 1", badges[1])
-        self.assertIn("کۆرسی ٣: ڕێنووسی یەکگرتوو — وانەی 66", badges[2])
+        self.assertFalse(any("کۆرسی ٣" in badge for badge in badges))
         self.assertFalse(any("Diyako" in badge for badge in badges))
+
+    def test_progress_badges_hide_stale_later_completions(self):
+        daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
+        with patch.object(bot, "get_completed_lessons", return_value=[daily[0], daily[2]]):
+            badges = bot.current_progress_badges(12345)
+        self.assertEqual(
+            badges.count("🏅 کۆرسی ٢: وتووێژ — وانەی 1"),
+            1,
+        )
+        self.assertFalse(any("کۆرسی ٢: وتووێژ — وانەی 3" in badge for badge in badges))
 
     def test_lesson_editorial_review_notes_do_not_deactivate_courses(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))

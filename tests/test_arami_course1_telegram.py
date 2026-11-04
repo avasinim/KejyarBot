@@ -278,6 +278,27 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
 
+    def test_stale_completed_lesson_is_displayed_as_locked(self):
+        manifest = load_manifest(ROOT)
+        first_id = manifest["lessons"][0]["id"]
+        third_id = manifest["lessons"][2]["id"]
+        keyboard = course_menu_keyboard(
+            manifest,
+            completed_lessons={first_id, third_id},
+            can_open=lambda lesson_id: lesson_id == first_id,
+        )
+        buttons = {
+            button.callback_data: button
+            for row in keyboard.inline_keyboard
+            for button in row
+        }
+        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+        self.assertFalse(any(
+            button.callback_data in {"aramiC:practice:3", "aramiC:assessment:3"}
+            for button in buttons.values()
+        ))
+
     def test_course_menu_marks_all_lessons_available_without_progress_guard(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
         buttons = [row[0] for row in keyboard.inline_keyboard]
