@@ -953,7 +953,7 @@ async def send_course_page(message, course_id, user_id, page=0):
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
     description = course.get("description", "")
     await message.reply_text(
-        f"{course['title']}\\n{description}\\n\\n"
+        f"{course['title']}\n{description}\n\n"
         f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}",
         reply_markup=keyboard,
     )
@@ -972,7 +972,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -986,7 +986,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ئەم کۆرسە نەدۆزرایەوە.")
         return
     if not course_is_active(course_id):
-        await query.message.reply_text(f"{course['title']}\\n\\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
+        await query.message.reply_text(f"{course['title']}\n\n📌 ئەم کۆرسە هێشتا چالاک نییە.")
         return
     await send_course_page(query.message, course_id, query.from_user.id, 0)
 
