@@ -484,6 +484,18 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard,
         )
+    elif next_lesson is None and LESSON_COURSE.get(lesson) == "arami_orthography_foundations":
+        final_number = int(lesson.rsplit("_", 1)[1])
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                "📝 تاقیکردنەوەی کۆتایی کۆرسی ١",
+                callback_data=f"aramiC:assessment:{final_number}",
+            )
+        ]])
+        await query.message.reply_text(
+            message_text + "\\n\\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
+            reply_markup=keyboard,
+        )
     elif next_lesson is None:
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
