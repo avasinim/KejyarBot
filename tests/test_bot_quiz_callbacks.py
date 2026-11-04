@@ -638,6 +638,34 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(buttons, ["aramiC:lesson:2"])
 
+    async def test_final_course1_lesson_offers_its_dedicated_assessment(self):
+        lesson = bot.ARMI_LESSON_IDS[-1]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=["A1.1", "A1.1"]),
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
+        ):
+            await bot.finish_lesson(update, context)
+
+        reply = query.message.reply_text.await_args
+        buttons = [
+            button.callback_data
+            for row in reply.kwargs["reply_markup"].inline_keyboard
+            for button in row
+        ]
+        self.assertEqual(buttons, ["aramiC:assessment:21"])
+        self.assertIn("کۆرسی ١ تەواو بوو", reply.args[0])
+
     async def test_completion_of_lesson_four_routes_to_dedicated_lesson_five_reader(self):
         lesson = bot.ARMI_LESSON_IDS[3]
         query = SimpleNamespace(
