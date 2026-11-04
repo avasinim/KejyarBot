@@ -103,10 +103,10 @@ def course_menu_keyboard(
             label = f"{number}. {title[:34]}…"
         read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
         lesson_is_open = can_open is None or can_open(lesson_id)
-        if lesson_id in completed_lessons:
-            status = "✅"
-        elif not lesson_is_open:
+        if not lesson_is_open:
             status = "🔒"
+        elif lesson_id in completed_lessons:
+            status = "✅"
         else:
             status = "🔓"
         row = [InlineKeyboardButton(f"{status} 📖 {label}", callback_data=read_callback)]
