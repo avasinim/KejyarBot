@@ -422,6 +422,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         message = SimpleNamespace(
             message_id=message_id,
             reply_text=AsyncMock(return_value=SimpleNamespace(message_id=message_id + 1)),
+            reply_photo=AsyncMock(),
         )
         query = SimpleNamespace(
             data=f"aramiC:{action}", message=message, from_user=SimpleNamespace(id=123), answer=AsyncMock(),

@@ -114,6 +114,21 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=course_three[:-1]):
             self.assertTrue(bot.can_open(12345, course_three[-1]))
 
+    def test_all_course_types_unlock_only_a_contiguous_prefix(self):
+        course_ids = (
+            "arami_orthography_foundations",
+            "daily_conversation",
+            "unified_orthography",
+            "kurmanji_latin_orthography",
+            "kurmanji_latin_grammar",
+        )
+        for course_id in course_ids:
+            order = bot.COURSE_LESSON_ORDER[course_id]
+            with self.subTest(course_id=course_id), patch.object(
+                bot, "get_completed_lessons", return_value=[order[0], order[2]]
+            ):
+                self.assertFalse(bot.can_open(12345, order[3]))
+
     async def test_finishing_arami_lesson_one_records_progress_and_unlocks_lesson_two(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
         update, message, query = self.make_update(f"finish_{lesson_id}")

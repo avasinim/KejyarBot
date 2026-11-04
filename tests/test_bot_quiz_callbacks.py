@@ -13,7 +13,7 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
             self.assertEqual(bot.next_course_lesson(lesson_id), lesson_ids[index + 1])
         self.assertIsNone(bot.next_course_lesson(lesson_ids[-1]))
 
-    def test_lesson_unlocking_requires_the_immediate_predecessor(self):
+    def test_lesson_unlocking_requires_every_previous_lesson(self):
         lesson_ids = bot.ARMI_LESSON_IDS
         with patch.object(bot, "course_is_active", return_value=True), patch.object(
             bot, "get_completed_lessons", return_value=[]
@@ -37,6 +37,31 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
         ):
             self.assertFalse(bot.can_open(12345, lesson_ids[3]))
             self.assertFalse(bot.can_open(12345, lesson_ids[4]))
+
+    def test_all_courses_reject_noncontiguous_progress(self):
+        course_ids = (
+            "arami_orthography_foundations",
+            "daily_conversation",
+            "unified_orthography",
+            "kurmanji_latin_orthography",
+            "kurmanji_latin_grammar",
+        )
+        with patch.object(bot, "course_is_active", return_value=True):
+            for course_id in course_ids:
+                order = bot.COURSE_LESSON_ORDER[course_id]
+                with self.subTest(course_id=course_id):
+                    # A stale record for lesson 3 must not unlock lesson 4
+                    # while lesson 2 remains incomplete.
+                    with patch.object(
+                        bot, "get_completed_lessons",
+                        return_value=[order[0], order[2]],
+                    ):
+                        self.assertFalse(bot.can_open(12345, order[3]))
+                    with patch.object(
+                        bot, "get_completed_lessons",
+                        return_value=order[:3],
+                    ):
+                        self.assertTrue(bot.can_open(12345, order[3]))
 
     def test_inactive_course_cannot_open_any_lesson(self):
         with patch.object(bot, "course_is_active", return_value=False), patch.object(
