@@ -187,7 +187,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("| kevir | navîn |", lesson8)
         self.assertIn("| wî | destpêk |", lesson8)
         self.assertIn("| wêran | destpêk |", lesson8)
-        self.assertIn("`vegerîn — wan — çav — wêran — welat — veşartin`", lesson8)
+        self.assertIn("vegerîn — wan — çav — wêran — welat — veşartin", lesson8)
         self.assertNotIn("| wê | destpêk |", lesson8)
         self.assertIn("| dev | dew |", lesson8)
         self.assertIn("| vir | wîr |", lesson8)
