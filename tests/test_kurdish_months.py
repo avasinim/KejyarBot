@@ -71,8 +71,8 @@ class KurdishMonthsTests(unittest.TestCase):
 
     def test_lesson_numbers_use_kurdish_digits(self):
         lesson = get_months_lesson("laki")
-        self.assertIn("٠١. پەنجە", lesson)
-        self.assertIn("١٢. مانگ لیە", lesson)
+        self.assertIn("۰۱. پەنجە", lesson)
+        self.assertIn("۱۲. مانگ لیە", lesson)
 
 
 if __name__ == "__main__":
