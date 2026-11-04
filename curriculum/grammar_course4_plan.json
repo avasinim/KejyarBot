@@ -422,7 +422,9 @@
         {
           "id": "grammar_14",
           "title": "جۆرەکانی ئاوەڵناو و پێکهاتەی سادە و لێکدراو",
-          "focus": "ئاوەڵناوی چۆنیەتی، نسبی و ئەرکی دیاریکەر؛ هەروەها پێکهاتەی سادە و لێکدراو و دروستبوون لە ڕەگ، ناو و کردار؛ پەڕە ٥٠–٥٥ و ١٣٠–١٣٣."
+          "focus": "ئاوەڵناوی چۆنیەتی، نسبی و ئەرکی دیاریکەر؛ هەروەها پێکهاتەی سادە و لێکدراو و دروستبوون لە ڕەگ، ناو و کردار؛ پەڕە ٥٠–٥٥ و ١٣٠–١٣٣.",
+          "draft_path": "docs/course4-drafts/grammar_14_adjective_types_and_structure.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_15",
