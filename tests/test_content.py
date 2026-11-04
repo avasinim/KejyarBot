@@ -5,8 +5,6 @@ from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-import speech
-
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -301,35 +299,11 @@ class ContentConsistencyTests(unittest.TestCase):
                     self.assertEqual(node.attrib.get("direction"), "rtl")
                     self.assertEqual(node.attrib.get("unicode-bidi"), "plaintext")
 
-    def test_dynamic_speech_requires_explicit_enablement_and_matching_approved_voice(self):
-        with patch.dict("os.environ", {}, clear=True):
-            self.assertFalse(speech.speech_is_configured())
-            self.assertIsNone(speech._generate_speech("سڵاو"))
-
-        with patch.dict("os.environ", {
-            "ELEVENLABS_API_KEY": "test-key",
-            "KEJYAR_VOICE_ID": "voice-a",
-            "KEJYAR_APPROVED_VOICE_ID": "voice-a",
-        }, clear=True):
-            self.assertFalse(speech.speech_is_configured())
-            self.assertIsNone(speech._generate_speech("سڵاو"))
-
-        with patch.dict("os.environ", {
-            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
-            "ELEVENLABS_API_KEY": "test-key",
-            "KEJYAR_VOICE_ID": "voice-a",
-            "KEJYAR_APPROVED_VOICE_ID": "voice-b",
-        }, clear=True):
-            self.assertFalse(speech.speech_is_configured())
-            self.assertIsNone(speech._generate_speech("سڵاو"))
-
-        with patch.dict("os.environ", {
-            "KEJYAR_ENABLE_DYNAMIC_SPEECH": "true",
-            "ELEVENLABS_API_KEY": "test-key",
-            "KEJYAR_VOICE_ID": "voice-a",
-            "KEJYAR_APPROVED_VOICE_ID": "voice-a",
-        }, clear=True):
-            self.assertTrue(speech.speech_is_configured())
+    def test_active_bot_is_text_only_and_has_no_audio_provider_hooks(self):
+        bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
+        for forbidden in ("reply_voice", "send_voice(", "send_conversation_voice", "generate_speech", "speech_is_configured", "get_voice("):
+            with self.subTest(forbidden=forbidden):
+                self.assertNotIn(forbidden, bot_source)
 
     def test_kejyarbot_orthography_policy_keeps_avasin_separate(self):
         policy_path = BASE_DIR / "docs" / "ORTHOGRAPHY_POLICY.md"

@@ -122,7 +122,6 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
             patch.object(bot, "get_user_level", side_effect=[1, 1]),
             patch.object(bot, "check_badges"),
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
 
@@ -143,7 +142,6 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
             patch.object(bot, "get_user_level", side_effect=[1, 1]),
             patch.object(bot, "check_badges"),
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock),
             patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
@@ -164,12 +162,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with (
             patch.object(bot, "can_open", return_value=False),
             patch.object(bot, "complete_lesson_with_rewards") as complete,
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
 
         complete.assert_not_called()
-        voice.assert_not_awaited()
         message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
 
@@ -181,13 +177,11 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
             patch.object(bot, "get_user_level", return_value=1),
             patch.object(bot, "check_badges") as badges,
-            patch.object(bot, "send_conversation_voice", new_callable=AsyncMock) as voice,
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
 
         complete.assert_called_once_with(12345, lesson_id)
         badges.assert_not_called()
-        voice.assert_not_awaited()
         message.reply_text.assert_awaited_once()
         self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
 

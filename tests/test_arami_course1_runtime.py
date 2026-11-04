@@ -5,7 +5,7 @@ from pathlib import Path
 
 from arami_course1_runtime import (
     AramiCourseError, COURSE_ID, LESSON_1_ID,
-    load_arami_course1, get_arami_lesson2_audio_path,
+    load_arami_course1,
     load_arami_lesson1_interactions, load_arami_lesson1_content,
 )
 
@@ -21,12 +21,9 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             "lessons": [
                 {"id": LESSON_1_ID,
                  "content_source": "user_supplied_immutable",
-                 "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}],
                  "content_status": "source_pages_1_to_4_structured_for_Telegram_reading; original wording preserved"},
                 {"id": "arami_course1_lesson_02",
-                 "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
-                 "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
-                 "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved"},
+},
                 {"id": "arami_course1_lesson_03"},
                 {"id": "arami_course1_lesson_04"},
             ],
@@ -34,8 +31,6 @@ class AramiCourseRuntimeTests(unittest.TestCase):
         (course_dir / "arami_course1_manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False), encoding="utf-8"
         )
-        (root / "دەنگەکانی ئەلفبێ.ogg").write_bytes(b"OGG test")
-        (root / "بزوێنی ی.ogg").write_bytes(b"OGG test")
         return manifest
 
     def test_repository_manifest_declares_21_lessons_in_round_one(self):
@@ -117,37 +112,6 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             with self.assertRaises(AramiCourseError):
                 load_arami_lesson1_interactions(root)
 
-    def test_resolves_only_confirmed_lesson2_audio(self):
-        with tempfile.TemporaryDirectory() as temp:
-            self.fixture(Path(temp))
-            path = get_arami_lesson2_audio_path(temp)
-            self.assertEqual(path.name, "دەنگەکانی ئەلفبێ.ogg")
-
-    def test_lesson1_uses_its_own_uploaded_recording(self):
-        with tempfile.TemporaryDirectory() as temp:
-            manifest = self.fixture(Path(temp))
-            self.assertEqual(manifest["lessons"][0]["audio_files"], [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}])
-            loaded = load_arami_course1(temp)
-            self.assertEqual(loaded["lessons"][0]["audio_files"][0]["file"], "بزوێنی ی.ogg")
-
-    def test_lesson1_cannot_claim_the_lesson2_recording(self):
-        with tempfile.TemporaryDirectory() as temp:
-            manifest = self.fixture(Path(temp))
-            manifest["lessons"][0]["audio_asset"] = "دەنگەکانی ئەلفبێ.ogg"
-            path = Path(temp) / "course_data" / "arami_course1_manifest.json"
-            path.write_text(json.dumps(manifest), encoding="utf-8")
-            with self.assertRaises(AramiCourseError):
-                load_arami_course1(temp)
-
-    def test_rejects_wrong_audio_assignment(self):
-        with tempfile.TemporaryDirectory() as temp:
-            manifest = self.fixture(Path(temp))
-            manifest["lessons"][1]["audio_asset"] = "voices/lesson_start.mp3"
-            path = Path(temp) / "course_data" / "arami_course1_manifest.json"
-            path.write_text(json.dumps(manifest), encoding="utf-8")
-            with self.assertRaises(AramiCourseError):
-                load_arami_course1(temp)
-
     def test_rejects_course_overlap_or_wrong_count(self):
         with tempfile.TemporaryDirectory() as temp:
             manifest = self.fixture(Path(temp))
@@ -156,13 +120,6 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             path.write_text(json.dumps(manifest), encoding="utf-8")
             with self.assertRaises(AramiCourseError):
                 load_arami_course1(temp)
-
-    def test_missing_audio_is_not_silently_substituted(self):
-        with tempfile.TemporaryDirectory() as temp:
-            self.fixture(Path(temp))
-            (Path(temp) / "دەنگەکانی ئەلفبێ.ogg").unlink()
-            with self.assertRaises(AramiCourseError):
-                get_arami_lesson2_audio_path(temp)
 
     def test_loads_complete_source_lesson_with_eight_sections(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -190,33 +147,6 @@ class AramiCourseRuntimeTests(unittest.TestCase):
             with self.assertRaises(AramiCourseError):
                 load_arami_lesson1_content(root)
 
-
-    def test_audio_catalog_lesson_assignments_match_manifest_without_reuse(self):
-        repo_root = Path(__file__).resolve().parents[1]
-        manifest = json.loads((repo_root / "course_data" / "arami_course1_manifest.json").read_text(encoding="utf-8"))
-        catalog = json.loads((repo_root / "course_data" / "arami_course1_audio_catalog.json").read_text(encoding="utf-8"))
-        catalog_by_file = {item["filename"]: item for item in catalog["assets"]}
-        assigned = {}
-        for lesson in manifest["lessons"]:
-            files = {item["file"] for item in lesson.get("audio_files", [])}
-            for filename in files:
-                self.assertNotIn(filename, assigned, f"{filename} is reused across lessons")
-                assigned[filename] = lesson["id"]
-                self.assertIn(filename, catalog_by_file)
-                self.assertEqual(catalog_by_file[filename]["lesson_id"], lesson["id"])
-
-    def test_l_and_ll_recordings_belong_only_to_lesson_15(self):
-        repo_root = Path(__file__).resolve().parents[1]
-        manifest = json.loads((repo_root / "course_data" / "arami_course1_manifest.json").read_text(encoding="utf-8"))
-        lesson15 = next(item for item in manifest["lessons"] if item["number"] == 15)
-        self.assertEqual(
-            [item["file"] for item in lesson15["audio_files"]],
-            ["دەنگی ل.ogg", "دەنگی ڵ.ogg"],
-        )
-        catalog = json.loads((repo_root / "course_data" / "arami_course1_audio_catalog.json").read_text(encoding="utf-8"))
-        for filename in ("دەنگی ل.ogg", "دەنگی ڵ.ogg"):
-            asset = next(item for item in catalog["assets"] if item["filename"] == filename)
-            self.assertEqual(asset["lesson_id"], "arami_course1_lesson_15")
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,7 +3,7 @@ import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
-from arami_course1_telegram import load_manifest, send_lesson_audio, _send_source
+from arami_course1_telegram import load_manifest, _send_source
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -68,7 +68,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if action == "menu":
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
-            "دەنگی ڕەسەن، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
+            "خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
             reply_markup=menu_keyboard(),
         )
         return
@@ -90,8 +90,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             'وانەی ١ — ' + lesson['title'],
             _lesson_source_markdown(lesson),
         )
-        lesson_audio = lesson_record
-        await send_lesson_audio(query.message, base_dir, lesson_audio)
         await _send_source(
             query.message,
             'پوختەی وانەی ١',
@@ -104,12 +102,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             ]]),
         )
         await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
-        return
-
-    if action == "audio":
-        await query.message.reply_text(
-            "ℹ️ دەنگی پشتڕاستکراو بۆ وانەی ٢ تۆمار کراوە؛ وانەی ١ دەنگی تایبەتی نییە."
-        )
         return
 
     if action in {"practice", "assessment"}:

@@ -365,48 +365,6 @@ async def send_lesson_infographic(message, lesson, source=None, base_dir=None):
     return True
 
 
-def load_lesson_audio_files(base_dir, lesson):
-    assets = lesson.get("audio_files", [])
-    if not isinstance(assets, list):
-        raise AramiCourseTelegramError("Lesson audio mapping must be a list")
-    root = Path(base_dir).resolve()
-    resolved = []
-    for item in assets:
-        if not isinstance(item, dict) or not isinstance(item.get("file"), str) or not isinstance(item.get("label"), str):
-            raise AramiCourseTelegramError("Invalid lesson audio entry")
-        path = (root / item["file"]).resolve()
-        try:
-            path.relative_to(root)
-        except ValueError as exc:
-            raise AramiCourseTelegramError("Lesson audio path escapes project directory") from exc
-        if path.suffix.lower() not in {".ogg", ".mp3"} or not path.is_file():
-            raise AramiCourseTelegramError("Lesson audio file is unavailable: " + item["file"])
-        resolved.append((path, item["label"]))
-    return resolved
-
-
-async def send_lesson_audio(message, base_dir, lesson):
-    try:
-        assets = load_lesson_audio_files(base_dir, lesson)
-    except AramiCourseTelegramError:
-        # Lesson audio is optional; a missing recording must never interrupt reading.
-        logger.info("Optional audio is unavailable for Arami Course 1 lesson %s", lesson.get("number"))
-        return False
-    if not assets:
-        # Audio is optional: only lessons with an explicitly supplied mapping
-        # should send a recording or display an audio-related warning.
-        return False
-    for path, label in assets:
-        try:
-            with path.open("rb") as audio:
-                await message.reply_voice(voice=audio, caption=f"🔊 {label}")
-        except Exception:
-            logger.exception("Could not send Arami Course 1 lesson audio %s", path.name)
-            # Keep audio delivery failures out of the learner-facing lesson flow.
-            return False
-    return True
-
-
 async def _send_question(message, context, lesson_number):
     active = context.user_data.get("arami_course1_active")
     sessions = context.user_data.get("arami_course1_sessions", {})
@@ -475,7 +433,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 return
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
             await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
-            await send_lesson_audio(query.message, base_dir, lesson)
             await query.message.reply_text(
                 f"✅ کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
                 reply_markup=InlineKeyboardMarkup([[

@@ -73,10 +73,10 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "conclusion": "پوختە",
         }
         update, query = make_update("lesson")
-        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": [{"file": "بزوێنی ی.ogg", "label": "دەنگی بزوێنی ی"}]}]}
-        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_audio", new_callable=AsyncMock) as send_audio:
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest):
             await callback(update, SimpleNamespace(user_data={}), "/unused")
-        send_audio.assert_awaited_once_with(query.message, "/unused", manifest["lessons"][0])
+        query.message.reply_voice.assert_not_awaited()
         self.assertEqual(query.message.reply_text.await_count, 4)
         lesson_html = query.message.reply_text.await_args_list[0].args[0]
         self.assertIn("وانەی ١", lesson_html)
@@ -94,7 +94,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         lesson = {
             "title": "وانەی ١", "objectives": [], "sections": [], "conclusion": "پوختە",
         }
-        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01", "audio_files": []}]}
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
             "arami_lesson1_telegram.load_manifest", return_value=manifest
         ):
@@ -102,11 +102,10 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
-    async def test_audio_callback_does_not_misroute_lesson2_recording(self):
+    async def test_legacy_audio_callback_never_sends_voice(self):
         update, query = make_update("audio")
         await callback(update, SimpleNamespace(user_data={}), "/unused")
         query.message.reply_voice.assert_not_awaited()
-        self.assertIn("وانەی ٢", query.message.reply_text.await_args.args[0])
 
     async def test_practice_callback_starts_question_session(self):
         bank = {

@@ -1,7 +1,5 @@
-import io
 import json
 import html
-from datetime import datetime, timezone
 import logging
 import os
 import re
@@ -32,12 +30,8 @@ from database import (
     get_user_level,
     open_chest,
     complete_quiz_with_rewards,
-    reserve_speech_quota,
-    refund_speech_quota,
 )
-from voice import get_voice
 from daily_chat import PROMPTS, reply_to_daily_message
-from speech import generate_speech, speech_is_configured
 from course_runtime import can_open_lesson, visible_course_lessons
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
@@ -380,32 +374,6 @@ def lesson_keyboard(lesson):
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
 
-async def send_kejyar_course_cue(message, filename):
-    """Send an existing short Kejyar voice cue; never substitute it for lesson narration."""
-    path = get_voice(filename)
-    if not path:
-        logger.warning("Prerecorded Kejyar cue is missing: %s", filename)
-        return False
-    try:
-        with open(path, "rb") as audio:
-            await message.reply_voice(voice=audio)
-        return True
-    except Exception:
-        logger.exception("Could not send prerecorded Kejyar cue %s", filename)
-        return False
-
-
-
-async def send_voice(update, filename):
-    path = get_voice(filename)
-    if not path:
-        return
-    try:
-        with open(path, "rb") as audio:
-            await update.message.reply_voice(voice=audio)
-    except Exception:
-        logger.exception("Could not send voice file %s", filename)
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
     context.user_data.pop("daily_chat_scenario", None)
@@ -422,7 +390,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 ئامادەیت دەست پێ بکەیت؟ 🌱"""
     await update.message.reply_text(welcome, reply_markup=MENU)
-    await send_voice(update, "kejyar.mp3")
 
 async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -530,12 +497,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard
         )
-    # Keep dynamic speech disabled. The legacy event MP3s are byte-identical,
-    # so do not replay them as separate completion/reward announcements.
-
-    if first_completion:
-        await send_conversation_voice(query.message, message_text, context.user_data, user_id)
-
     # Course 3 advances automatically after a successful completion. The next
     # lesson remains protected by can_open(), and its own completion button is
     # required before another lesson can be unlocked.
@@ -889,7 +850,6 @@ def add_kejyar_brand_signature(content):
 
 async def send_lesson_text(message, content, reply_markup=None):
     """Send lessons in a consistent academic layout, preserving all lesson wording."""
-    # Suppress obsolete audio-link diagnostics from lesson text; audio is optional.
     content = re.sub(
         r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
         "",
@@ -937,31 +897,6 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
-
-async def send_conversation_voice(message, text, user_state=None, user_id=None):
-    """Send generated speech with an atomic, persistent per-user UTC daily cap."""
-    if not speech_is_configured():
-        return
-    # Persist the quota in SQLite so a process restart cannot reset the cap.
-    if user_id is None:
-        logger.warning("Skipping dynamic speech because user ID is unavailable")
-        return
-    quota_date = datetime.now(timezone.utc).date().isoformat()
-    if not reserve_speech_quota(user_id, quota_date, limit=20):
-        logger.info("Daily speech cap reached; continuing with text only")
-        return
-    try:
-        audio_bytes = await generate_speech(text)
-        if not audio_bytes:
-            refund_speech_quota(user_id, quota_date)
-            logger.warning("Speech generation was unavailable for a daily-chat reply")
-            return
-        audio = io.BytesIO(audio_bytes)
-        audio.name = "kejyar-reply.mp3"
-        await message.reply_voice(voice=audio)
-    except Exception:
-        refund_speech_quota(user_id, quota_date)
-        logger.exception("Could not generate or send generated daily-chat voice")
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -1257,12 +1192,6 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
         await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
-        await send_conversation_voice(
-            update.message,
-            f"بەخێربێیت بۆ وانەی {data.get('title', lesson)}. با دەست پێ بکەین.",
-            context.user_data,
-            user_id,
-        )
         await send_lesson_infographic(update.message, lesson)
         return
 
@@ -1315,12 +1244,6 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reward = open_chest(user_id)
         if reward:
             await update.message.reply_text(f"🎁 سەنوق کراوەتەوە!\n🪙 {reward} Coin وەرگرت.")
-            await send_conversation_voice(
-                update.message,
-                f"پیرۆزە! {reward} کۆین وەرگرت. بەردەوام بە و وانەکانی دواتر تەواو بکە.",
-                context.user_data,
-                user_id,
-            )
         else:
             await update.message.reply_text("📦 سەنوقێکت نیە؛ وانە تەواو بکە بۆ وەرگرتنی سەنوق.")
         return
@@ -1355,7 +1278,6 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if context.user_data.get("daily_chat_mode"):
         reply = reply_to_daily_message(text, context.user_data)
         await update.message.reply_text(reply, reply_markup=MENU)
-        await send_conversation_voice(update.message, reply, context.user_data, user_id)
         return
 
     await update.message.reply_text("لە منووی کەژیار هەڵبژێرە 👇", reply_markup=MENU)
