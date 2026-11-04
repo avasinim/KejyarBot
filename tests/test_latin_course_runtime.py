@@ -96,22 +96,17 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_orthography" for item in lessons.values()), 12)
         self.assertEqual(sum(item["course_id"] == "kurmanji_latin_grammar" for item in lessons.values()), 12)
 
-    def test_course_one_distinguishes_bedeng_inventory_from_semivowel_function(self):
+    def test_course_one_uses_the_celadet_consonant_letter_inventory(self):
         lessons, _, _ = load_latin_courses()
-        alphabet_lesson = lessons["kurmanji_latin_orthography_03"]["content"]
-        vw_lesson = lessons["kurmanji_latin_orthography_08"]["content"]
-        self.assertIn("23 herfên din", alphabet_lesson)
-        self.assertIn("Dengdêr û dengdar", alphabet_lesson)
-        self.assertIn("Dengdêr ew deng in", alphabet_lesson)
-        self.assertNotIn("8 dengdar", alphabet_lesson)
-        self.assertIn("W û Y wek **nîvdeng**", alphabet_lesson)
-        self.assertIn("V` dengdareke kurmancî ye", vw_lesson)
-        self.assertIn("W` nîvdeng e", vw_lesson)
-        self.assertIn("Y` jî di heman komê de ye", vw_lesson)
-
-
-
-    def test_course_one_i_ii_u_uu_examples_follow_shikofteh(self):
+        lesson3 = lessons["kurmanji_latin_orthography_03"]["content"]
+        lesson8 = lessons["kurmanji_latin_orthography_08"]["content"]
+        lesson9 = lessons["kurmanji_latin_orthography_09"]["content"]
+        self.assertIn("23 herfên din wek dengdar", lesson3)
+        self.assertIn("W û Y jî di nav koma 23 dengdar de ne", lesson3)
+        self.assertIn("W jî yek ji herfên dengdar", lesson8)
+        self.assertIn("Y jî di çavkaniya bingehîn de di nav koma 23 dengdar", lesson9)
+        self.assertNotIn("nîvdeng", lesson3 + lesson8 + lesson9)
+    def test_course_one_i_ii_u_uu_examples_are_present(self):
         lessons, _, _ = load_latin_courses()
         lesson6 = lessons["kurmanji_latin_orthography_06"]["content"]
         lesson7 = lessons["kurmanji_latin_orthography_07"]["content"]
@@ -137,7 +132,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("8 dengdêr û 23 herfên din", lesson1)
         self.assertNotIn("8 dengdar", lesson1)
         self.assertIn("Dengdêr û dengdar", lesson3)
-        self.assertIn("Dengdarên din", lesson3)
+        self.assertIn("23 herfên din wek dengdar", lesson3)
         self.assertNotIn("bêdeng", lesson3.lower())
         self.assertIn("Dengdêrên kin", lesson4)
         self.assertIn("Dengdêrên dirêj", lesson5)
@@ -145,29 +140,27 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("X dengdareke kurmancî ye", lesson9)
         self.assertIn("Z dengdareke kurmancî ye", lesson9)
         self.assertNotIn("C) Bêdeng", lesson9)
-        self.assertIn("Dengdêrek nû tê zêdekirin", lesson11)
-        self.assertIn("dengdêrekê dihewîne", lesson12)
+        self.assertIn("Nisbeta Herfên Kurdî", lesson11)
+        self.assertIn("31 herf", lesson12)
 
-    def test_course_one_lesson_eleven_treats_adjacent_vowels_not_consonants(self):
+    def test_course_one_lesson_eleven_uses_the_source_frequency_tables(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_11"]["content"]
-        self.assertIn("Dengdêrên Lihev", lesson)
-        self.assertIn("du dengdêr", lesson)
-        self.assertIn("gî + an", lesson)
-        self.assertIn("gîyan", lesson)
-        self.assertNotIn("du dengdar", lesson)
-
-    def test_course_one_separates_w_semivowel_from_pevdeng_clusters(self):
+        self.assertIn("Nisbeta Herfên Kurdî", lesson)
+        self.assertIn("e | 2200", lesson)
+        self.assertIn("i | 1800", lesson)
+        self.assertIn("k: 417", lesson)
+        self.assertIn("u: 0", lesson)
+    def test_course_one_distinguishes_v_and_w_consonant_letters(self):
         lessons, _, _ = load_latin_courses()
         lesson = lessons["kurmanji_latin_orthography_08"]["content"]
-        self.assertIn("W` bi dengdêran re", lesson)
-        self.assertIn("pevdeng", lesson)
-        self.assertIn("| kew | dawî |", lesson)
-        self.assertIn("| dew | dawî |", lesson)
-        self.assertNotIn("| xew | dawî |", lesson)
-        self.assertNotIn("| law | dawî |", lesson)
-        self.assertNotIn("| xwarin | navîn |", lesson)
-    def test_course_one_lessons_four_and_five_use_shikofteh_vowel_examples(self):
+        self.assertIn("W jî yek ji herfên dengdar", lesson)
+        self.assertIn("V û W du herf û du dengên cuda ne", lesson)
+        self.assertIn("| dev | dew |", lesson)
+        self.assertIn("| ava | awa |", lesson)
+        self.assertNotIn("nîvdeng", lesson)
+        self.assertNotIn("pevdeng", lesson)
+    def test_course_one_lessons_four_and_five_use_their_vowel_examples(self):
         lessons, _, _ = load_latin_courses()
         short = lessons["kurmanji_latin_orthography_04"]["content"]
         for term in ("| ewr | E |", "| bizin | I |", "| dil | I |", "| gur | U |", "| kum | U |", "| kul | U |"):
@@ -181,7 +174,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         for term in ("| şûştin | Û |", "| jîn | Î |", "| çêkirin | Ê |"):
             self.assertNotIn(term, long)
 
-    def test_course_one_i_ii_examples_and_w_examples_are_source_attested(self):
+    def test_course_one_i_ii_and_vw_examples_are_present(self):
         lessons, _, _ = load_latin_courses()
         lesson6 = lessons["kurmanji_latin_orthography_06"]["content"]
         self.assertIn("| îşev | Î |", lesson6)
