@@ -1014,7 +1014,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if text == "🗓️ مانگەکانی ساڵ لەناو کورداندا":
         await update.message.reply_text(
-            "📘 مانگەکانی ساڵ لەناو کورداندا\\n\\nشێوەزارەکەت هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە:",
+            "📘 مانگەکانی ساڵ لەناو کورداندا\n\nشێوەزارەکەت هەڵبژێرە بۆ بینینی لیستی ١٢ مانگەکە:",
             reply_markup=months_menu_keyboard(),
         )
         return
