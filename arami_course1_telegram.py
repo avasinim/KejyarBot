@@ -310,7 +310,7 @@ def build_lesson_infographic_svg(lesson, source):
 
 
 COURSE1_INFOGRAPHIC_DIR = "assets/course1_infographics"
-COURSE1_INFOGRAPHIC_LESSONS = frozenset(range(1, 8))
+COURSE1_INFOGRAPHIC_LESSONS = frozenset({1, 2, 3, 4, 6, 7})
 
 
 def lesson_infographic_path(base_dir, lesson):
