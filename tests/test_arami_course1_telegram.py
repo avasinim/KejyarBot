@@ -582,5 +582,41 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         submit_query.answer.side_effect = assert_submit_committed
         await callback(update, context, ROOT)
 
+    async def test_duplicate_next_callback_sends_only_one_question(self):
+        import asyncio
+        from arami_course1_telegram import callback
+        session = {
+            "mode": "practice",
+            "questions": [{
+                "id": "q1", "section_id": "course1", "type": "recognize",
+                "prompt": "پرسیار", "options": ["A", "B"], "answer_index": 0,
+            }],
+            "index": 0, "selected_index": None, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_course1_sessions": {"2": session},
+            "arami_course1_active": {"lesson": 2, "message_id": 10},
+        })
+        started, release = asyncio.Event(), asyncio.Event()
+        async def slow_reply(*args, **kwargs):
+            started.set()
+            await release.wait()
+            return SimpleNamespace(message_id=11)
+
+        first_update, first_query = self.make_update("next:2", message_id=10)
+        first_query.message.reply_text.side_effect = slow_reply
+        task = asyncio.create_task(callback(first_update, context, ROOT))
+        await started.wait()
+
+        second_update, second_query = self.make_update("next:2", message_id=10)
+        await callback(second_update, context, ROOT)
+        second_query.message.reply_text.assert_not_awaited()
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+
+        release.set()
+        await task
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
+
+
 if __name__ == "__main__":
     unittest.main()

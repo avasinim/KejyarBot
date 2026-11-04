@@ -229,5 +229,40 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             await callback(update, context, "/unused")
 
 
+    async def test_duplicate_next_callback_sends_only_one_question(self):
+        import asyncio
+        session = {
+            "mode": "practice",
+            "questions": [{
+                "id": "q1", "section_id": "lesson5", "type": "recognize",
+                "prompt": "پرسیار", "options": ["A", "B"], "answer_index": 0,
+            }],
+            "index": 0, "selected_index": None, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_lesson5_session": session,
+            "arami_lesson5_message_id": 10,
+        })
+        started, release = asyncio.Event(), asyncio.Event()
+        async def slow_reply(*args, **kwargs):
+            started.set()
+            await release.wait()
+            return SimpleNamespace(message_id=11)
+
+        first_update, first_query = make_update("next", message_id=10)
+        first_query.message.reply_text.side_effect = slow_reply
+        task = asyncio.create_task(callback(first_update, context, "/unused"))
+        await started.wait()
+
+        second_update, second_query = make_update("next", message_id=10)
+        await callback(second_update, context, "/unused")
+        second_query.message.reply_text.assert_not_awaited()
+        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
+
+        release.set()
+        await task
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 11)
+
+
 if __name__ == "__main__":
     unittest.main()
