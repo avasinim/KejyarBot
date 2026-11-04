@@ -224,7 +224,7 @@ class LatinCourseRuntimeTests(unittest.TestCase):
         self.assertIn("W û Y jî di nav koma 23 dengdar de ne", lesson3)
         self.assertIn("W jî yek ji herfên dengdar", lesson8)
         self.assertIn("Y jî di çavkaniya bingehîn de di nav koma 23 dengdar", lesson9)
-        self.assertNotIn("Y nîvdeng e", lesson3 + lesson8 + lesson9)
+        self.assertNotIn("nîvdeng", lesson3 + lesson8 + lesson9)
 
     def test_course_two_lessons_four_and_five_separate_number_and_oblique_forms(self):
         lessons, _, _ = load_latin_courses()
