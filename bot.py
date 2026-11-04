@@ -563,11 +563,11 @@ async def send_question(message, quiz):
 
 
 async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Store a learner's choice and show an explicit submit button."""
+    """Store a learner's choice before awaiting Telegram callback acknowledgement."""
     query = update.callback_query
-    await query.answer()
     quiz = context.user_data.get("quiz")
     if not isinstance(quiz, dict) or not quiz_requires_submission(quiz.get("lesson")):
+        await query.answer()
         return
     questions = quiz.get("questions")
     index = quiz.get("index")
@@ -580,16 +580,22 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         or not isinstance(questions[index], dict)
         or query.message.message_id != quiz.get("question_message_id")
     ):
+        await query.answer()
         return
     raw_index = query.data.removeprefix("select_answer_")
     if not raw_index.isdigit():
+        await query.answer()
         return
     choice_index = int(raw_index)
     options = questions[index].get("options")
     if not isinstance(options, list) or choice_index < 0 or choice_index >= len(options):
+        await query.answer()
         return
 
+    # Commit the selection before the first await. If the learner presses
+    # submit immediately, submit_quiz_answer must see this selected index.
     quiz["selected_answer_index"] = choice_index
+    await query.answer()
     rows = [
         [
             InlineKeyboardButton(
