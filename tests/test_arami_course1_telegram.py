@@ -44,6 +44,10 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         rendered = "\n".join(blocks)
         self.assertIn("<b>📘 پیتەکان و دەنگەکان</b>", rendered)
         self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", rendered)
+        self.assertIn("<b>ژمارە</b>: ١", rendered)
+        self.assertIn("<b>پیت/نیشانە</b>: ا", rendered)
+        self.assertIn("<b>ناو</b>: ئەلف", rendered)
+        self.assertIn("<b>ژمارە</b>: ٢", rendered)
 
 
     def test_reader_uses_a_three_level_classroom_heading_hierarchy(self):
@@ -57,10 +61,6 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("━━━━━━━━━━━━━━━━━━\n<b>🎓 بەشی یەکەم</b>\n━━━━━━━━━━━━━━━━━━", rendered)
         self.assertIn("<b>▪️ خاڵی ورد</b>", rendered)
         self.assertIn("دەقی ڕەسەن", rendered)
-        self.assertIn("<b>ژمارە</b>: ١", rendered)
-        self.assertIn("<b>پیت/نیشانە</b>: ا", rendered)
-        self.assertIn("<b>ناو</b>: ئەلف", rendered)
-        self.assertIn("<b>ژمارە</b>: ٢", rendered)
 
 
     def test_classroom_callouts_and_sections_have_distinct_visual_treatment(self):
