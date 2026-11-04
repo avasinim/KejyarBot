@@ -314,6 +314,7 @@ MENU = ReplyKeyboardMarkup(
         ["ڕێنووسی لاتینی کوردیی"],
         ["📕 ڕێنووسی سەرەتاییی کوردی"],
         ["🗓️ مانگەکانی ساڵ لەناو کورداندا"],
+        ["🌐 گۆڕینی زمانی تەلەگرام"],
         ["💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
@@ -1019,6 +1020,29 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    if text == "🌐 گۆڕینی زمانی تەلەگرام":
+        language_help = (
+            "🔴 <b>زمانی کوردی بۆ تەلەگرام</b>\n\n"
+            "⚙ <b>زبان تلگرامتان را به کوردی تغییر دهید</b>\n\n"
+            "⚙ <b>بەو لینکانەی خوارەوە بەدڵی خۆتان شێوەزارێک بۆ زمانی تەلەگرامەکانتان هەڵبژێرن</b>\n\n"
+            "⚙ <b>پی لینکاو واریە، زمانو تەلەگرامی بەدڵو وێتا هۆرچندێ:</b>\n\n"
+            "🔻 <b>کوردیی سۆرانی</b>\n"
+            '① <a href="https://t.me/setlanguage/1kurdish">https://t.me/setlanguage/1kurdish</a>\n\n'
+            "🔻 <b>کوردیی هەورامی</b>\n"
+            '① <a href="https://t.me/setlanguage/horami">https://t.me/setlanguage/horami</a>\n\n'
+            "🔻 <b>کوردیی کورمانجی</b>\n"
+            '① <a href="https://t.me/setlanguage/kurmanji">https://t.me/setlanguage/kurmanji</a>\n\n'
+            "🔻 <b>کوردیی کەڵهوڕی</b>\n"
+            '① <a href="https://t.me/setlanguage/kurdish-kalhori">https://t.me/setlanguage/kurdish-kalhori</a>'
+        )
+        await update.message.reply_text(
+            language_help,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=MENU,
+        )
+        return
+
     if text == "💬 گفتوگۆی ڕۆژانە":
         context.user_data["daily_chat_mode"] = True
         context.user_data.pop("daily_chat_scenario", None)
@@ -1035,6 +1059,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text in LESSON_BUTTONS or text in {
         "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
+        "🌐 گۆڕینی زمانی تەلەگرام",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
