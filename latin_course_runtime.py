@@ -17,7 +17,7 @@ COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.
 COURSES = (
     {
         "id": "kurmanji_latin_orthography",
-        "source_part": "Part I — Dr. Efrasîyab Şikofteh — Rê zimanê Kurmancî (Havîn 2010), Ders 1 (rûpelên çapkirî 11–43) û Ders 2 (ji rûpela 44)",
+        "source_part": "Part I — Celadet Alî Bedir-Xan — Elfabêya kurdî (Nefel, Stockholm, 2002), printed pages 11–36",
         "first_heading": "## Ders 1:",
         "lesson_prefix": "kurmanji_latin_orthography",
         "key_path": COURSE1_KEY_PATH,
