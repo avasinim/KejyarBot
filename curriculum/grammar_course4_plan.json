@@ -367,7 +367,9 @@
         {
           "id": "grammar_07",
           "title": "جێناو: پێناسە، سنوور و پەیوەندی بە ناوەوە",
-          "focus": "پێناسەی جێناو، جیاکردنەوەی لە ناو و باسکردنی ئەرکی جێگرتنەوە و ئاماژەکردن بە پشتبەستن بە پەڕە ٣–٥ی سەرچاوە."
+          "focus": "پێناسەی جێناو، جیاکردنەوەی لە ناو و باسکردنی ئەرکی جێگرتنەوە و ئاماژەکردن بە پشتبەستن بە پەڕە ٣–٥ی سەرچاوە.",
+          "draft_path": "docs/course4-drafts/grammar_07_pronoun_definition_scope.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_08",
