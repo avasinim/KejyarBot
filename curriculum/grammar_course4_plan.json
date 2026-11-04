@@ -4,7 +4,7 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمانی زمانی کوردی",
   "status": "planned",
-  "content_status": "source_parts_1_4_5_text_inspected; parts_2_3_scan_links_verified_but_full_text_not_retrieved",
+  "content_status": "source_parts_1_2_4_5_text_inspected_in_part; part_2_pages_3_15_verified; part_3_full_text_pending",
   "language": "ckb",
   "dialect_scope": "سۆرانی؛ جیاوازیی زاراوەیی و شێوەزارەکان بە جیاوازی و بە بەڵگە تۆمار دەکرێن، نەک بە یەکسانکردنی ناڕەوا",
   "author": "د. ئەوڕەحمانی حاجی مارف",
@@ -62,6 +62,44 @@
           "topic": "جێناوی نەریتی و جێناوی چەندیتی",
           "pages": "276–277; 281–282",
           "evidence": "A later Kurmanji grammar cites these exact pages of the 1987 Sorani source; use only as confirmation that those topics occur, not as a complete chapter outline."
+        }
+      ],
+      "text_inspected_pages": "Scanned PDF: printed pages 3–15 inspected (PDF page indices 3–15 approximately; cover and preliminary pages included). Full 305-page text still not systematically reviewed.",
+      "verified_topics": [
+        {
+          "topic": "پێناسە و پەیوەندی جێناو بە ناو",
+          "pages": "3–5",
+          "evidence": "Introduction explains pronoun as a word category associated with noun, its referential/substitution role, and discusses boundaries between noun and pronoun."
+        },
+        {
+          "topic": "جێناو لە ڕووی واتاوە و ڕستەسازییەوە",
+          "pages": "6–10",
+          "evidence": "Discusses semantic and syntactic properties, use in sentence context, and distinctions between pronoun and noun/adverb-like forms."
+        },
+        {
+          "topic": "جێناوی کەسی",
+          "pages": "10–11",
+          "evidence": "A distinct section on personal pronouns, with person and number distinctions."
+        },
+        {
+          "topic": "جێناوی پرسیاری",
+          "pages": "11–12",
+          "evidence": "A distinct section on interrogative pronouns, with forms/examples."
+        },
+        {
+          "topic": "جێناوی نەفی",
+          "pages": "12",
+          "evidence": "A distinct section on negative pronouns and examples."
+        },
+        {
+          "topic": "جێناوی نیشانە",
+          "pages": "12–13",
+          "evidence": "A distinct section on demonstrative pronouns and examples."
+        },
+        {
+          "topic": "تایبەتمەندی جێناو لە ڕووی ڕستەسازییەوە",
+          "pages": "13–15",
+          "evidence": "Discusses syntactic behavior, forms/position and their relation to noun phrases."
         }
       ]
     },
@@ -179,33 +217,33 @@
       "lessons": [
         {
           "id": "grammar_07",
-          "title": "جێناو: پێناسە و ئەرک",
-          "focus": "جیاکردنەوەی جێناو لە ناو و ئەرکی لە ڕستەدا"
+          "title": "جێناو: پێناسە، سنوور و پەیوەندی بە ناوەوە",
+          "focus": "پێناسەی جێناو، جیاکردنەوەی لە ناو و باسکردنی ئەرکی جێگرتنەوە و ئاماژەکردن بە پشتبەستن بە پەڕە ٣–٥ی سەرچاوە."
         },
         {
           "id": "grammar_08",
-          "title": "جێناوی کەسی",
-          "focus": "کەسی یەکەم، دووەم و سێیەم؛ تاک و کۆ"
+          "title": "جێناو لە ڕووی واتا و ڕستەسازییەوە",
+          "focus": "شیکردنەوەی تایبەتمەندییە واتایی و ڕستەسازییەکان و جیاوازیی نێوان جێناو و وشە هاوشێوەکان؛ پەڕە ٦–١٠."
         },
         {
           "id": "grammar_09",
-          "title": "جێناوی خاوەنداری و پەیوەست",
-          "focus": "شێوە و بەکارهێنانی جێناوە پەیوەستەکان بە نموونە"
+          "title": "جێناوی کەسی: کەس و ژمارە",
+          "focus": "پۆلی جێناوی کەسی، کەسی یەکەم و دووەم و سێیەم، تاک و کۆ، بە نموونەی سەرچاوە؛ پەڕە ١٠–١١."
         },
         {
           "id": "grammar_10",
-          "title": "جێناوی ئاماژە و پرسیار",
-          "focus": "ئاماژەکردن و دروستکردنی پرسیار بە جێناو"
+          "title": "جێناوی پرسیاری و جێناوی نەفی",
+          "focus": "دوو پۆلی جێناو کە لە سەرچاوەدا بە جیا باس کراون، فۆرم و ئەرکیان لە پرسیار و نەفیکردندا؛ پەڕە ١١–١٢."
         },
         {
           "id": "grammar_11",
-          "title": "جۆرەکانی تری جێناو",
-          "focus": "ئەو جۆرانەی لە سەرچاوەدا هاتوون و جیاوازییەکانیان"
+          "title": "جێناوی نیشانە و بەکارهێنانی",
+          "focus": "پۆلی جێناوی نیشانە، فۆرم و بەکارهێنانی لە ناو دەربڕین و ڕستەدا؛ پەڕە ١٢–١٣."
         },
         {
           "id": "grammar_12",
-          "title": "ڕاهێنان و هەڵسەنگاندنی بەشی جێناو",
-          "focus": "دیاریکردنی جێناو و ئەرکەکانی لە دەق و ڕستەدا"
+          "title": "جێناو لە ڕووی ڕستەسازییەوە و شیکردنەوە",
+          "focus": "پەیوەندی جێناو بە پێکهاتەی ڕستە و ناوگرووپ، بە شیکردنەوەی نموونە؛ پەڕە ١٣–١٥."
         }
       ]
     },
