@@ -132,6 +132,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if action == "next":
         if not session.get("closed"):
+            # Claim this next-question action before the first await so a
+            # duplicate tap on the same feedback message cannot send twice.
+            context.user_data["arami_lesson5_message_id"] = None
             await _send_question(query.message, context)
         return
     if action == "retry":
