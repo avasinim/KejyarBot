@@ -100,6 +100,21 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, order[1]))
             self.assertFalse(bot.can_open(12345, order[2]))
 
+    def test_all_active_courses_reject_noncontiguous_saved_progress(self):
+        course_ids = (
+            "arami_orthography_foundations",
+            "daily_conversation",
+            "unified_orthography",
+            "kurmanji_latin_orthography",
+            "kurmanji_latin_grammar",
+        )
+        for course_id in course_ids:
+            order = bot.COURSE_LESSON_ORDER[course_id]
+            with self.subTest(course=course_id), patch.object(
+                bot, "get_completed_lessons", return_value=[order[0], order[2]]
+            ):
+                self.assertFalse(bot.can_open(12345, order[3]))
+
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
         course_three = bot.COURSE_LESSON_ORDER["unified_orthography"]
