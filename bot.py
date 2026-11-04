@@ -436,9 +436,9 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
+    old_level = get_user_level(user_id)
     first_completion = complete_lesson_with_rewards(user_id, lesson)
     if first_completion:
-        old_level = get_user_level(user_id)
         check_badges(user_id)
         new_level = get_user_level(user_id)
         message_text = "✅ وانەکە تەواو بوو!\\n\\n🔥 +10 XP\\n🪙 +5 Coin\\n🎁 +1 سەنوقی خەڵات"
