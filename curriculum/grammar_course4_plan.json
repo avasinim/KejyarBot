@@ -333,7 +333,9 @@
         {
           "id": "grammar_03",
           "title": "ناو لە ڕووی هەبوون و واتاوە",
-          "focus": "ناوی مادی و ناوی مەعنەوی؛ پەیوەندیی واتای لێکسیکی و هاوبەشییە ڕێزمانییەکان؛ سنووری نێوان واتای تایبەت و واتای گشتی."
+          "focus": "ناوی مادی و ناوی مەعنەوی؛ پەیوەندیی واتای لێکسیکی و هاوبەشییە ڕێزمانییەکان؛ سنووری نێوان واتای تایبەت و واتای گشتی.",
+          "draft_path": "docs/course4-drafts/grammar_03_noun_concrete_abstract.md",
+          "content_status": "draft_written_source_aligned_pending_page_image_review_and_quiz"
         },
         {
           "id": "grammar_04",
