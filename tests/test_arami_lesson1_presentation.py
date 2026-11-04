@@ -1,6 +1,6 @@
 import unittest
 
-from arami_lesson1_interaction import create_session, select_answer, submit_answer
+from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer
 from arami_lesson1_presentation import (
     answer_feedback,
     lesson_action_payload,
