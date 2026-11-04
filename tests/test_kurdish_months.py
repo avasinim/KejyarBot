@@ -1,6 +1,6 @@
 import unittest
 
-from kurdish_months import MONTH_DIALECTS, get_months_lesson
+from kurdish_months import MONTH_DIALECTS, get_months_lesson, months_menu_keyboard
 
 
 class KurdishMonthsTests(unittest.TestCase):
@@ -60,6 +60,19 @@ class KurdishMonthsTests(unittest.TestCase):
 
     def test_lesson_uses_kejyar_brand_signature(self):
         self.assertIn("🤖 کەژیار — KejyarBot@", get_months_lesson("hawrami"))
+
+    def test_dialect_keyboard_has_all_five_callback_routes(self):
+        keyboard = months_menu_keyboard()
+        callback_data = [row[0].callback_data for row in keyboard.inline_keyboard]
+        self.assertEqual(
+            callback_data,
+            ["months:sorani", "months:kurmanji", "months:kalhuri", "months:hawrami", "months:laki"],
+        )
+
+    def test_lesson_numbers_use_kurdish_digits(self):
+        lesson = get_months_lesson("laki")
+        self.assertIn("٠١. پەنجە", lesson)
+        self.assertIn("١٢. مانگ لیە", lesson)
 
 
 if __name__ == "__main__":
