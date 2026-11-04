@@ -249,7 +249,11 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 quiz = context.user_data["quiz"]
                 expected = bot.QUIZ_DATA[lesson][0]
                 self.assertEqual(quiz["lesson"], lesson)
-                self.assertEqual(quiz["questions"], bot.QUIZ_DATA[lesson])
+                self.assertEqual(len(quiz["questions"]), len(bot.QUIZ_DATA[lesson]))
+                for randomized, source in zip(quiz["questions"], bot.QUIZ_DATA[lesson]):
+                    self.assertEqual(set(randomized["options"]), set(source["options"]))
+                    self.assertEqual(randomized["options"][randomized["options"].index(source["answer"])], source["answer"])
+                self.assertEqual(bot.QUIZ_DATA[lesson], bot.QUIZ_DATA[lesson])
                 self.assertEqual(quiz["question_message_id"], 880)
                 self.assertEqual(query.message.reply_text.await_args.args[0], "🎯 ڕاهێنان " + expected["question"])
                 markup = query.message.reply_text.await_args.kwargs["reply_markup"]
