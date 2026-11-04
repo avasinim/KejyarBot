@@ -407,6 +407,31 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         ))
 
     @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
+    async def test_quiz_cannot_start_for_a_completed_but_out_of_sequence_lesson(self):
+        lesson = bot.COURSE_LESSON_ORDER["daily_conversation"][2]
+        completed = [
+            bot.COURSE_LESSON_ORDER["daily_conversation"][0],
+            lesson,
+        ]
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "get_completed_lessons", return_value=completed):
+            await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("هەموو وانەکانی پێشوتری", query.message.reply_text.await_args.args[0])
+
     async def test_quiz_cannot_start_before_lesson_is_completed(self):
         from unittest.mock import patch
 
@@ -708,9 +733,7 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_global_assessment_menu_includes_completed_arami_lessons(self):
         completed = [
-            bot.ARMI_LESSON_IDS[0],
-            bot.ARMI_LESSON_IDS[4],
-            bot.ARMI_LESSON_IDS[5],
+            *bot.ARMI_LESSON_IDS[:6],
         ]
         callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
         self.assertEqual(
