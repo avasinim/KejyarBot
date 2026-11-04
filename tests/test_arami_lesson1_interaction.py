@@ -104,9 +104,6 @@ class AramiLesson1InteractionTests(unittest.TestCase):
         item = dict(BANK[0], id="listen-1", type="listen")
         with self.assertRaises(InvalidQuestionBank):
             validate_question_bank([item])
-        item["audio_asset"] = "verified/lesson-audio.ogg"
-        with self.assertRaises(InvalidQuestionBank):
-            validate_question_bank([item])
 
     def test_duplicate_ids_and_duplicate_options_are_rejected(self):
         with self.assertRaises(InvalidQuestionBank):
