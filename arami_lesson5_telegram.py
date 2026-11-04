@@ -107,7 +107,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         try:
             answer = submit_answer(session)
         except (ValueError, TypeError):
-            await query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
+            await query.answer()
+            await query.message.reply_text("سەرەتا وەڵامێک هەڵبژێرە.")
             return
         await query.answer()
         if session["mode"] == "practice":
