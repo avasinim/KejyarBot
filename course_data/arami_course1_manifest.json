@@ -1,7 +1,7 @@
 {
   "course_id": "arami_orthography_foundations",
   "title": "ڕێنووسی سەرەتاییی کوردی",
-  "status": "21_lessons_reader_practice_assessment_enabled; 10_existing_lessons_still_need_user_confirmed_dedicated_audio",
+  "status": "21_lessons_reader_practice_assessment_enabled_text_only",
   "lessons": [
     {
       "id": "arami_course1_lesson_01",
@@ -13,20 +13,12 @@
       "assessment_status": "five_questions_checked_against_user_supplied_lesson_text; Telegram_callback_flow_wired",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_bank": "course_data/arami_course1_lesson_01_interactions.json",
-      "presentation_status": "source_text_delivered_in_sections; dedicated_lesson_1_audio_mapped; practice_and_assessment_wired",
+      "presentation_status": "source_text_delivered_in_sections; practice_and_assessment_wired",
       "source_caution": "Use only the user's supplied Lesson 1 text. The text explicitly states 34 alphabet letters and 8 vowels; the user's confirmed eight-vowel explanation remains authoritative. Do not introduce an external book or PDF source.",
       "interaction_presentation": "arami_lesson1_presentation.py",
       "content_file": "course_data/arami_course1_lesson_01_content.json",
-      "audio_assignment_note": "The dedicated recording بزوێنی ی.ogg belongs to Lesson 1 and is sent after its source text.",
       "design_status": "dedicated_lesson1_presentation_practice_assessment_integrated",
-      "audio_files": [
-        {
-          "file": "بزوێنی ی.ogg",
-          "label": "دەنگی بزوێنی ی"
-        }
-      ],
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "interaction_mode": "dedicated",
       "quiz_audit_status": "dedicated_bank_verified_5_practice_5_assessment",
       "quiz_audit_note": "Lesson 1 has a separate bank at course_data/arami_course1_lesson_01_interactions.json with 5 practice and 5 assessment questions, loaded by load_arami_lesson1_interactions and delivered through the dedicated Lesson 1 interaction flow. Questions are checked against the user-supplied lesson text. The shared course bank file does not include this separately namespaced bank."
@@ -38,26 +30,15 @@
       "status": "source_review_pending",
       "content_status": "user_source_received_and_preserved; lesson_text_saved; no edits",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "audio_asset": "دەنگەکانی ئەلفبێ.ogg",
-      "audio_commit": "5642e5310cc856f7bfd8c821086a9f2febe419e6",
-      "audio_status": "user_confirmed_asset_repository_root; original_recording_preserved",
-      "audio_topic_label": "دەنگەکان",
-      "audio_assignment_note": "User explicitly confirmed this recording should be sent with Lesson 2.",
       "content_file": "course_data/arami_course1_lesson_02_vowels_source.md",
       "content_source": "user_supplied_immutable",
       "source_note": "A separate earlier Lesson 2 text about letters and sounds was also received in conversation; this newly supplied Lesson 2 vowels text is stored separately and must not be merged without user direction.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "دەنگەکانی ئەلفبێ.ogg",
-          "label": "دەنگەکانی ئەلفبێ"
-        }
-      ],
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -72,12 +53,10 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -92,13 +71,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "Only the supplied sections 3–8 were received for Lesson 4. Sections 1–2 are not present in the repository copy; do not infer or reconstruct them from books, external sources, or other courses. Request only these missing original sections if needed for full semantic audit.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -118,11 +95,9 @@
       "interaction_bank": "course_data/arami_course1_lesson_05_interactions.json",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "dedicated_lesson_5_source_practice_assessment_routes_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "dedicated",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "quiz_audit_status": "dedicated_bank_verified_6_practice_6_assessment",
       "quiz_audit_note": "Correction: Lesson 5 has a separate bank at course_data/arami_course1_lesson_05_interactions.json with 6 practice and 6 assessment questions. It is loaded by load_arami_lesson5_interactions and delivered through arami_lesson5_telegram.py. The six items correspond to the six exercises explicitly present in the immutable Lesson 5 source. The shared course bank file does not include this separately namespaced bank."
     },
@@ -137,13 +112,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "User confirmed the sections initially headed Lesson 1 and Lesson 3 form one lesson. Both sections are retained as parts of Lesson 6; only their headings were reframed.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -158,13 +131,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "The supplied Lesson 7 file begins with a general comparison of Persian and Kurdish orthography, followed by the subsection on پیتی س. The file's outer heading and embedded course heading both identify Lesson 7; all supplied wording and examples remain preserved. No associated book or PDF is used.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "outer_heading_and_embedded_course_heading_match_lesson_7; introductory_comparison_and_s_subsection_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -179,13 +150,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "8_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "8_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "User explicitly confirmed that the supplied T and Z material is Lesson 8 and that the lesson sequence will be rearranged from scratch. This replaces the previous placeholder Lesson 8 title (پیتی ئەلف).",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -200,21 +169,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "source_note": "User designated this material as Lesson 9. The source includes mappings آ→ئا، اَ→ئە، اِ→ئێـ، اُ→ئۆ and additional words beginning with ئا. The audio catalog verifies «ئا.ogg» as the Lesson 9 recording; the asset and its original commit are retained and mapped to Lesson 9.",
-      "audio_file": "ئا.ogg",
-      "audio_source_commit": "fb86aba958e03498234bdb26d8da7bae2462d0fd",
-      "audio_source_url": "https://github.com/avasinim/KejyarBot/commit/fb86aba958e03498234bdb26d8da7bae2462d0fd",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified_in_branch",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "ئا.ogg",
-          "label": "دەنگی پیتی ئا"
-        }
-      ],
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -231,11 +190,9 @@
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping"
+      "interaction_mode": "shared_source_question_bank"
     },
     {
       "id": "arami_course1_lesson_11",
@@ -248,54 +205,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "five_source_derived_questions_added_to_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "five_source_derived_questions_added_to_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "audio_commits": [
-        "d7cd548eb57b11efc764fb76225db252693b6977",
-        "c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
-        "6e386bb05d8b59f85383f481bbb5409e0d209ee6",
-        "1e4f6ecdba55c0f31a24397825ddb8797a972c7d"
-      ],
-      "audio_assets": [
-        {
-          "commit": "d7cd548eb57b11efc764fb76225db252693b6977",
-          "label": "دەنگی پیتی بۆرە"
-        },
-        {
-          "commit": "c9110684f8ab70cc2c03d4f9b241a8de3ca0b2d5",
-          "label": "دەنگی پیتی بزوێنی سەرە"
-        },
-        {
-          "commit": "6e386bb05d8b59f85383f481bbb5409e0d209ee6",
-          "label": "دەنگی نموونەکانی نووسینی فارسی بۆ کوردی"
-        },
-        {
-          "commit": "1e4f6ecdba55c0f31a24397825ddb8797a972c7d",
-          "label": "دەنگی پیتی ژێرە"
-        }
-      ],
       "source_note": "The supplied Lesson 11 source contains three sections: پیتی بۆرە, پیتی بزوێنی سەرە, and پیتی ژێرە, with their supplied forms, examples, and audio-asset commit references. The five practice and five assessment questions are drawn from those sections. Preserve the source text exactly; no associated book or PDF is used.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_and_three_supplied_sections_verified; quiz_items_aligned_to_source_examples",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "ۆ.ogg",
-          "label": "دەنگی پیتی ۆ"
-        },
-        {
-          "file": "سەرە.ogg",
-          "label": "دەنگی پیتی سەرە"
-        },
-        {
-          "file": "سەرەی ٢.ogg",
-          "label": "دەنگی نموونەی سەرە"
-        },
-        {
-          "file": "ێ.ogg",
-          "label": "دەنگی پیتی ێ"
-        }
-      ],
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -310,26 +224,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "5_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "source_note": "The canonical supplied source file for Lesson 12 is course_data/arami_course1_lesson_12_y_source.md; its embedded heading correctly says Lesson 12. The older lesson_11_y_source.md is not the manifest source. No book or PDF is associated with this course.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "canonical_source_file_verified; embedded_heading_matches_lesson_12; source_text_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_commits": [
-        "040ee127789798a0333809b0c8c1bcc6d82ae4d9",
-        "9ed9c927d718ad37b2fdf5af8afc3ba187bc9cfd"
-      ],
-      "audio_files": [
-        {
-          "file": "ی.ogg",
-          "label": "دەنگی پیتی ی"
-        },
-        {
-          "file": "پیتی دەنگی ٢.ogg",
-          "label": "دەنگی دووەمی پیتی ی"
-        }
-      ],
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -344,22 +243,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "four_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "source_note": "The user-supplied Lesson 13 text is preserved unchanged. Headings 3 and 4 have no heading labels after the dash, but explanatory paragraphs do follow each heading; they are not missing lesson sections. The four practice and four assessment questions remain scoped to Lesson 13. Two dedicated recordings remain assigned only to this lesson.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_heading_matches_user_confirmed_lesson_number; headings_3_and_4_have_unlabelled_but_nonempty_explanatory_content; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "بزوێنی (و) کورت.ogg",
-          "label": "بزوێنی و"
-        },
-        {
-          "file": "نەبزوێنی (و).ogg",
-          "label": "نەبزوێنی و"
-        }
-      ],
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -374,55 +262,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "five_source_derived_questions_added_to_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "five_source_derived_questions_added_to_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "source_note": "User-confirmed Lesson 14 source covers the hidden vowel (بزرۆکە), its Latin representation I/i, syllable-based recognition, and examples including min, çil, dill, mirdim, xistin, kirdin, birdin. Preserve this as Lesson 14; do not confuse it with Lesson 13 about و.",
-      "audio_commits": [
-        "8359ae827572db507790da35ce0650ddd501eb40",
-        "21e841f371bfbe4573867dd1c4e7522fe48c4015",
-        "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
-        "6639c30ca85bdae4f64134e1368617b2e507fb6c"
-      ],
-      "audio_assets": [
-        {
-          "commit": "8359ae827572db507790da35ce0650ddd501eb40",
-          "label": "نەبزوێنی و",
-          "file_name": "not_verified_from_commit_metadata"
-        },
-        {
-          "commit": "21e841f371bfbe4573867dd1c4e7522fe48c4015",
-          "label": "بزوێنی و",
-          "file_name": "not_verified_from_commit_metadata"
-        },
-        {
-          "commit": "7e595c37baf70cb63a7470e2cd32c9f89420aac9",
-          "label": "نەبزوێنی و",
-          "file_name": "نەبزوێنی (و).ogg"
-        },
-        {
-          "commit": "6639c30ca85bdae4f64134e1368617b2e507fb6c",
-          "label": "دەنگی وانەی بزرۆکە",
-          "file_name": "بزرۆکە.ogg"
-        }
-      ],
-      "audio_assignment_note": "The recording from commit 6639c30ca85bdae4f64134e1368617b2e507fb6c is the verified file بزرۆکە.ogg and is assigned to Lesson 14 only. Other two Lesson 14 recordings remain separately mapped.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_heading_and_audio_commit_match_lesson_14",
-      "audio_files": [
-        {
-          "file": "بزرۆکە.ogg",
-          "label": "دەنگی بزرۆکە"
-        },
-        {
-          "file": "بزرۆکەی ٢.ogg",
-          "label": "نموونەی دووەمی بزرۆکە"
-        },
-        {
-          "file": "بزرۆکەی ٣.ogg",
-          "label": "نموونەی سێیەمی بزرۆکە"
-        }
-      ],
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -440,23 +284,7 @@
       "practice_status": "10_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "10_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
       "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
-      "audio_files": [
-        {
-          "file": "دەنگی ل.ogg",
-          "label": "دەنگی پیتی ل"
-        },
-        {
-          "file": "دەنگی ڵ.ogg",
-          "label": "دەنگی پیتی ڵ"
-        }
-      ],
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
-      "audio_commits": [
-        "1ade797d2e69308086293f7d2bfa499e22eef821",
-        "933103dbb1091e1bbe5ba5f4b25d0b7b5996ebb1"
-      ],
-      "audio_assignment_note": "Both recordings belong exclusively to Lesson 15. The mention of Lesson 14 in the user's previous message was a typo; do not send these recordings with Lesson 14.",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -471,26 +299,10 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "two_user_confirmed_prerecorded_recordings_mapped_and_sent_after_lesson_text",
-      "audio_commits": [
-        "9c4fe5719fa9cfbd372880a746535b3fd3eb0dba",
-        "6bd06d446b1f9f8592ce57d20bb6203305ac4ba6"
-      ],
-      "audio_files": [
-        {
-          "file": "دەنگی ڕ.ogg",
-          "label": "دەنگی پیتی ڕ"
-        },
-        {
-          "file": "دەنگی ر.ogg",
-          "label": "دەنگی پیتی ر"
-        }
-      ],
-      "audio_assignment_note": "The user explicitly assigned both existing recordings to the newly inserted Lesson 16 on ر and ڕ.",
       "design_status": "shared_source_reader_practice_assessment_and_lesson_infographic_integrated",
       "source_audit_status": "user_source_and_both_audio_commit_topics_confirmed",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -501,7 +313,6 @@
       "status": "source_review_pending",
       "content_status": "user_supplied_lesson_17_v_source_preserved",
       "source_policy": "Preserve user-supplied source wording, examples, order and definitions exactly; no scientific edits.",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "content_file": "course_data/arami_course1_lesson_16_v_source.md",
       "content_source": "user_supplied_immutable",
       "practice_status": "3_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
@@ -510,13 +321,7 @@
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_heading_matches_lesson_17; lesson_number_shifted_after_user_inserted_lesson_16",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "دەنگ ڤ.ogg",
-          "label": "دەنگی پیتی ڤ"
-        }
-      ],
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -531,14 +336,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
-      "audio_assignment_note": "The commit feb5293b322c1eb63d0481af02148cc9d1af64a8 and file «دەنگ ڤ.ogg» are confirmed in the audio catalog for Lesson 17 (پیتی ڤ), not Lesson 18. No dedicated Lesson 18 recording is assigned; user confirmation is still pending.",
       "source_note": "Source heading identifies current Lesson 18. The source also contains an internal editing note with conflicting historical numbering (it says the earlier heading was Lesson 17, then mentions Lesson 16). Preserve the source unchanged; current sequence identity follows the top-level heading and manifest. Audio not yet mapped.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified; internal_numbering_or_scientific_review_note_recorded; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -553,13 +355,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "Source heading identifies current Lesson 19. Its internal editing note contains conflicting historical numbering (it says the earlier heading was Lesson 18, then mentions Lesson 17). Preserve the source unchanged; current sequence identity follows the top-level heading and manifest. The regional scope is explicitly limited to some Mukriani areas; do not generalize it to all Kurdish varieties. Audio not yet mapped.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified; internal_numbering_or_scientific_review_note_recorded; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -574,13 +374,11 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "pending_user_confirmed_lesson_audio_mapping",
       "source_note": "Source heading identifies current Lesson 20. The body includes an unexplained sentence referring to Lesson 18 audio; no dedicated audio has been confirmed for this lesson, and no asset is assigned based on that sentence. Preserve source wording pending clarification.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified; internal_numbering_or_scientific_review_note_recorded; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [],
-      "activation_status": "reader_practice_assessment_enabled; dedicated_audio_pending_user_mapping",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     },
@@ -595,23 +393,12 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "4_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "audio_status": "verified_prerecorded_audio_mapped_and_sent_after_lesson_text",
       "external_attachment_url": "https://taqikari.de/lkeneribeyan/attach.php?id=Mjkx",
       "source_note": "Source heading identifies current Lesson 21. Source includes four heuristics for identifying the role of و; some formulations may be overgeneralized and require scholarly review before being taught as universal rules. Preserve source wording and examples; do not silently revise. Audio بڕگە.ogg is mapped.",
       "design_status": "shared_source_reader_practice_assessment_integrated",
       "source_audit_status": "source_file_verified; internal_numbering_or_scientific_review_note_recorded; source_preserved",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
-      "audio_files": [
-        {
-          "file": "بڕگە.ogg",
-          "label": "دەنگی بڕگە"
-        }
-      ],
-      "audio_commits": [
-        "04a1b3e0ab9a515211ab3709513cdc1ec90d86ea"
-      ],
-      "audio_assignment_note": "The user-supplied final lesson recording is assigned to Lesson 21, the final lesson, after insertion of the new Lesson 16 on ر and ڕ. The original audio file is preserved.",
-      "activation_status": "reader_practice_assessment_and_verified_audio_enabled",
+      "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
       "interaction_mode": "shared_source_question_bank"
     }
@@ -620,7 +407,6 @@
     "separate_from_latin_courses": true,
     "no_lesson_body_edits": true,
     "no_source_research": true,
-    "dynamic_speech": false,
     "no_main_merge_or_deployment": true,
     "course_total_lessons": 21,
     "source_text_immutable": true,
@@ -674,7 +460,7 @@
         "number": 1,
         "title": "ڕێنووسی سەرەتاییی کوردی",
         "lesson_count": 21,
-        "status": "21_lessons_registered; all_source_files_present; reader_practice_assessment_enabled; 10_dedicated_audio_mappings_pending_user_confirmation"
+        "status": "21_lessons_reader_practice_assessment_enabled_text_only"
       },
       {
         "number": 2,
@@ -704,33 +490,5 @@
   "round": 1,
   "round_title": "ڕێنووسی سەرەتاییی کوردی",
   "runtime_status": "arami_course1_21_lesson_catalogue_and_interactions_enabled_on_feature_branch",
-  "design_status": "all_21_lessons_have_source_reader_and_practice_assessment_path",
-  "audio_readiness": {
-    "mapped_lessons": [
-      1,
-      2,
-      9,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      21
-    ],
-    "pending_lessons": [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      10,
-      18,
-      19,
-      20
-    ],
-    "policy": "Do not invent or reuse recordings. Reader and source-based interactions remain accessible while audio mapping is pending."
-  }
+  "design_status": "all_21_lessons_have_source_reader_and_practice_assessment_path"
 }
