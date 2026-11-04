@@ -386,11 +386,11 @@ class ContentConsistencyTests(unittest.TestCase):
 
     def test_quiz_menu_filters_to_completed_lessons(self):
         bot_source = (BASE_DIR / "bot.py").read_text(encoding="utf-8")
-        start = bot_source.index('if text in {"📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"}:')
-        end = bot_source.find("\n    if text ==", start + 1)
-        handler = bot_source[start:end if end >= 0 else len(bot_source)]
-        self.assertIn("lesson in completed", handler)
-        self.assertIn("QUIZ_DATA.get(lesson)", handler)
+        start = bot_source.index("def quiz_menu_items(user_id, mode):")
+        end = bot_source.index("\ndef quiz_menu_keyboard", start)
+        helper = bot_source[start:end]
+        self.assertIn("lesson in completed", helper)
+        self.assertIn("QUIZ_DATA.get(lesson)", helper)
     def test_completed_lessons_receive_dynamic_badges_within_runtime_order(self):
         import bot
 
