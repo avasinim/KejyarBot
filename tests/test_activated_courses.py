@@ -260,6 +260,21 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:0")
 
+    async def test_course_two_last_page_keeps_all_48_lessons_and_edits_same_message(self):
+        update, message, query = self.make_update("coursepage:daily_conversation:3")
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            await bot.open_course_page(update, SimpleNamespace())
+        message.reply_text.assert_not_awaited()
+        message.edit_text.assert_awaited_once()
+        rendered = message.edit_text.await_args.args[0]
+        self.assertEqual(rendered.count("کۆرسی ٢: وتووێژ"), 1)
+        self.assertEqual(rendered.count("٤٨ وانەی وتووێژ"), 1)
+        self.assertIn("وانەکانی 37–48 لە کۆی 48 — لاپەڕەی 4/4", rendered)
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(keyboard[0][0].callback_data, "open_lesson_daily_conversation_37")
+        self.assertEqual(keyboard[11][0].callback_data, "open_lesson_daily_conversation_48")
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 48)
+
     def test_global_quiz_menus_are_paginated_for_all_completed_courses(self):
         all_lessons = [
             lesson_id
