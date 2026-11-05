@@ -123,3 +123,22 @@ The enlarged p.93 image supports the following limited transcriptions:
    - **کەڕان → کەڕاندن**
 
 These forms are transcribed as printed in the enlarged crop, without normalization. The upper four-column table and remaining rows in the middle table are not promoted to verified transcription in this pass.
+
+
+## p.94–95 — second enlarged-crop pass
+
+### p.94 headings (correction to provisional label)
+
+The enlarged page image supports the three headings, read right-to-left, as **فرمانی تێنەپەر / ڕەگی فرمان / فرمانی تێپەڕ**. This replaces the earlier provisional transcription of the right heading as «فرمانی تێنەدەرە». The example rows themselves are not transcribed here because several letters remain insufficiently distinct at this resolution.
+
+### p.95 table
+
+The three headings read right-to-left: **چاوگ / کاری تێنەپەر / کاری تێپەڕ**. The following rows are visually legible:
+
+| چاوگ | کاری تێنەپەر | کاری تێپەڕ |
+|---|---|---|
+| چوون | چوو | چواندن |
+| تەخش | تەخشان | تەخشاندن |
+| خەڵ | خەڵان | خەڵاندن |
+
+The forms above are recorded as printed. The surrounding explanatory prose and subsequent example lists are separate from this table and are not merged into it.
