@@ -1243,3 +1243,16 @@ The earlier audit note claiming that p.398 reads **جێناو** was incorrect an
 ## Enlarged-crop completion: verb table p.106 (2026-11-05)
 
 The 17 numbered entries on PDF p.106 have now been visually transcribed from the full-page enlargement and separate row crops. The table headings are **تێنەپەر** (right) and **تێپەڕ** (left). The full row-by-row diplomatic transcription, including parenthetical and alternative forms, is recorded in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`. This is a transcription milestone only: it does not validate the author's classifications, establish productivity, or approve any lesson content. The separate note below the table remains outside that transcription.
+
+
+## Reconciliation: latest verb-page crop records (2026-11-05)
+
+The page-specific crop-review record `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` is the controlling transcription source for pp.93–95 and 106–120 where it contains a later, sharper-crop correction. In particular:
+
+- p.93's two four-column blocks are separate tables; preserve the group, intransitive form, root, and transitive form columns. The latest full row transcription supersedes earlier partial summaries.
+- p.94 headings are **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**. The second upper-table left example remains unreadable; do not repeat the guessed **منداڵەکەم خوارد**.
+- p.95 heading is **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**. Examples after **وەک** are not available in the crop and remain untranscribed.
+- p.106's heading transcription must follow the crop-review record; do not propagate older inconsistent spellings in this audit's historical note.
+- These are diplomatic transcription updates only, not linguistic validation or lesson approval.
+
+Older page notes in this file remain as audit history where they differ. The latest crop-review record governs current use. Course 4 remains planned/inactive with zero lessons.
