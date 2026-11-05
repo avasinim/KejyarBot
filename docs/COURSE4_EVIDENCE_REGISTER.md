@@ -208,3 +208,14 @@ These are transcription-status statements, not endorsements of the source's ling
 ## p.119–120 crop-status correction (2026-11-05)
 
 The latest crop review now confirms the four paired rows on p.119 with their printed physical orientation (right column **دەبژێرم، دەژمێرم، دەسپێرم، دەشارمەوە**; left column **بژێردرام، ژمێردرام، سپێردرام، شاردرامەوە**). The parenthetical list beneath **٥- چاوکی دالی** is mostly legible, but **خڕین** remains provisional. On p.120 the opening attribution to مامۆستا مەسعود explicitly includes **(شاراندنەوە)**; the three paired forms remain provisional and the full attributed prose is not transcribed. These updates supersede older evidence-register summaries that described the p.119 paired rows as wholly unverified. See the latest controlling crop-review record for exact scope and uncertainty. No lesson-ready approval is implied.
+
+
+## Primary source asset and extraction evidence (2026-11-05)
+
+The primary source `Rezmany_axawtny_kurdy.pdf` is available in the repository. Its extraction workflow completed successfully on the isolated branch `reset/grammar-course4-content` (GitHub Actions run `41994304338`; head `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`). Downloaded artifact: `course4-source-text`, artifact ID `13398729502`.
+
+The artifact's extraction report records:
+- Primary PDF: 400 pages; 397 embedded-text pages; 3 OCR pages explicitly marked unverified; 0 unreadable pages reported.
+- Separate `ڕێزمانی ڕاناوی لكاو.pdf`: 32 pages; 1 embedded-text page and 31 OCR pages. **Excluded** from Course 4.
+
+Evidence boundary: extraction report and extracted text establish asset availability and page/extraction counts only. OCR and extracted text do not replace visual inspection of the original page images. No new lesson-ready transcription or independent linguistic validation follows from this artifact recovery. Course 4 remains planned/inactive with zero lessons.
