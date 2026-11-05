@@ -26,8 +26,13 @@ Source: `Rezmany_axawtny_kurdy.pdf`. All eight original page images (PDF pp.228�
 2. The source explicitly distinguishes **چاوگی سادە** and **چاوگی ناسادە** on p.230. Keep these labels source-faithful.
 3. The pages contain multiple numbered subgroups, definitions, and example lists. They are not safe to merge into one list of forms.
 4. The examples and paradigms need character-level transcription before they can be used in lessons. This visual pass does not approve any complete inventory or rule.
-5. The contents-page entry on p.398 reads **جێناو**, while the chapter opening at p.222 is recorded as **چاوگ**. This remains a documented source discrepancy; see `COURSE4_SOURCE_DISCREPANCY_P222_P398.md`. Pages 228–235 are clearly continuing the chapter whose opening heading is چاوگ, but do not resolve why the contents page uses جێناو.
+5. **Superseded:** the old claim that p.398 reads **جێناو** is withdrawn. Direct image reinspection confirmed **چاوگ** on both p.222 and p.398; there is no verified discrepancy.
 
 ## Status
 
 Sequential visual review of pp.228–235 is complete. No lesson text or quiz was drafted, no category was normalized, and no course metadata/runtime was changed. Course 4 remains planned with zero lessons.
+
+
+## Crop-level continuation — p.234 (2026-11-05)
+
+A separate crop review is recorded in `COURSE4_CROP_REVIEW_CHAWG_P234.md`. Page 234 continues the constructional explanation and contains a multi-column example table. Individual table cells are not certified as a diplomatic transcription; their alignment must be retained and checked cell by cell. Page 235 continues the same discussion, and p.236 begins **ئاوەڵکار**. The uncertain third subtype heading from p.232 is not resolved by p.234. No linguistic rule or normalized paradigm is approved.
