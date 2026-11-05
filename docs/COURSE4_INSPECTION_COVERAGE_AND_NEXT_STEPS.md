@@ -600,3 +600,10 @@ Exact paradigms, dialect examples, and the five numbered uses remain pending cro
 Individual page previews pp.193–198 were extracted from the Actions artifact and inspected separately. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_193_198.md`. Page 193 completes the prohibitive discussion and opens **شەشەم — کار لە ڕووی فۆرمەوە**, distinguishing **کاری سادە** and **کاری ناسادە**. Pages 194–196 continue the definitions, types, and five numbered notes. Pages 197–198 open **پێشگر و پاشگری کار** and show prefix-list items 1–10.
 
 Exact wording, examples, and the hierarchy of the non-simple verb types remain pending crop-level transcription. The separate suffix inventory, if any, must be followed into subsequent pages. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.199–204 (2026-11-05)
+
+Individual previews pp.199–204 were extracted from the Actions artifact and inspected separately. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_199_204.md`. Page 199 completes prefix item 11 and explicitly opens **پاشگر**. Page 200 presents a numbered suffix/form list with examples; p.201 continues with two notes and paradigms. Page 202 introduces **ناوی کار** and visibly lists six bilingual nominal categories, including **ناوی کارا (اسم الفاعل)**, **ناوی بەکار (اسم المفعول)**, **ناوی چاوک (اسم المصدر)**, **ناوی جێگا (اسم المکان)**, **ناوی کات (اسم الزمان)**, and **ناوی ناسادە (الاسم المرکب)**. Pages 203–204 continue the derivation rules, examples, and explanatory subsections.
+
+Exact suffix labels, aligned forms, and the complete rule wording remain pending crop-level transcription. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
