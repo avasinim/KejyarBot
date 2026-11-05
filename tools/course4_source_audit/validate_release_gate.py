@@ -9,11 +9,6 @@ import sys
 from pathlib import Path
 
 EXPECTED_LESSONS = set(range(1, 31))
-REQUIRED_LESSON_FIELDS = (
-    "source_commit", "source_blob_sha", "pdf_page_start", "pdf_page_end",
-    "printed_page_start", "printed_page_end", "evidence_excerpt",
-    "reviewer", "reviewed_at",
-)
 
 
 def validate(data: dict, release: bool = False) -> list[str]:
@@ -37,25 +32,64 @@ def validate(data: dict, release: bool = False) -> list[str]:
             errors.append(f"lesson {lesson_id}: invalid status")
         if item.get("source_part") != ((lesson_id - 1) // 6 + 1):
             errors.append(f"lesson {lesson_id}: incorrect source part")
-        if release:
-            for field in REQUIRED_LESSON_FIELDS:
-                value = item.get(field)
-                if value is None or value == "":
-                    errors.append(f"lesson {lesson_id}: missing {field}")
-            for field in ("pdf_page_start", "pdf_page_end", "printed_page_start", "printed_page_end"):
-                if not isinstance(item.get(field), int) or item[field] < 1:
-                    errors.append(f"lesson {lesson_id}: {field} must be a positive integer")
-            if item.get("status") != "approved":
-                errors.append(f"lesson {lesson_id}: not approved")
-            for field in ("source_commit", "source_blob_sha"):
-                if not re.fullmatch(r"[0-9a-f]{40}", str(item.get(field, ""))):
-                    errors.append(f"lesson {lesson_id}: invalid {field}")
-            for field in ("author_terms", "author_examples"):
-                if not item.get(field):
-                    errors.append(f"lesson {lesson_id}: {field} is empty")
-            for field in ("draft_claims_checked", "dialect_scope_checked", "quiz_reviewed"):
-                if item.get(field) is not True:
-                    errors.append(f"lesson {lesson_id}: {field} is not true")
+        if not release:
+            continue
+
+        required = ("source_edition", "source_commit", "source_blob_sha", "reviewer", "reviewed_at")
+        for field in required:
+            if not item.get(field):
+                errors.append(f"lesson {lesson_id}: missing {field}")
+        for field in ("source_commit", "source_blob_sha"):
+            if not re.fullmatch(r"[0-9a-f]{40}", str(item.get(field, ""))):
+                errors.append(f"lesson {lesson_id}: invalid {field}")
+        if item.get("status") != "approved":
+            errors.append(f"lesson {lesson_id}: not approved")
+
+        claims = item.get("claims")
+        if not isinstance(claims, list) or not claims:
+            errors.append(f"lesson {lesson_id}: no claim-level evidence ledger")
+        else:
+            for index, claim in enumerate(claims, start=1):
+                prefix = f"lesson {lesson_id}, claim {index}"
+                if not isinstance(claim, dict):
+                    errors.append(f"{prefix}: malformed claim")
+                    continue
+                if not claim.get("claim_text") or not claim.get("source_quote"):
+                    errors.append(f"{prefix}: missing claim text or source quote")
+                if not isinstance(claim.get("pdf_page"), int) or claim["pdf_page"] < 1:
+                    errors.append(f"{prefix}: invalid PDF page")
+                if not isinstance(claim.get("printed_page"), int) or claim["printed_page"] < 1:
+                    errors.append(f"{prefix}: invalid printed page")
+                kind, label = claim.get("claim_type"), claim.get("evidence_label")
+                if kind not in {"author", "editor", "external"}:
+                    errors.append(f"{prefix}: invalid claim_type")
+                if label not in {"A", "C", "D"}:
+                    errors.append(f"{prefix}: evidence must be A, C or D; OCR-only/U evidence cannot pass")
+                if kind == "author" and label != "A":
+                    errors.append(f"{prefix}: author-attributed claim requires direct visual evidence A")
+                if kind == "editor" and label != "C":
+                    errors.append(f"{prefix}: editor explanation must be labelled C")
+                if kind == "external" and label != "D":
+                    errors.append(f"{prefix}: external comparison must be labelled D")
+                if claim.get("review_status") != "approved":
+                    errors.append(f"{prefix}: not independently approved")
+
+        quizzes = item.get("quiz_evidence")
+        if not isinstance(quizzes, list) or not quizzes:
+            errors.append(f"lesson {lesson_id}: quiz evidence ledger is empty")
+        else:
+            for index, quiz in enumerate(quizzes, start=1):
+                if not isinstance(quiz, dict) or not quiz.get("question_id"):
+                    errors.append(f"lesson {lesson_id}, quiz {index}: malformed item")
+                    continue
+                if not quiz.get("source_claim_ids") or not quiz.get("answer_evidence"):
+                    errors.append(f"lesson {lesson_id}, quiz {index}: missing evidence mapping")
+                if quiz.get("review_status") != "approved":
+                    errors.append(f"lesson {lesson_id}, quiz {index}: not approved")
+
+        for field in ("draft_claims_checked", "dialect_scope_checked", "quiz_reviewed"):
+            if item.get(field) is not True:
+                errors.append(f"lesson {lesson_id}: {field} is not true")
 
     if release:
         for field in ("runtime_tests_passed", "regression_tests_passed", "all_quizzes_reviewed"):
