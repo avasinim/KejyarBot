@@ -1,9 +1,8 @@
 name: Course 4 source PDF audit
 
 on:
-  push:
-    branches:
-      - audit/course4-source-pdf-extraction
+  # Full-book OCR is deliberately manual until the extraction is split into
+  # bounded page-range jobs. A push must not launch another 1,348-page scan.
   workflow_dispatch:
 
 permissions:
