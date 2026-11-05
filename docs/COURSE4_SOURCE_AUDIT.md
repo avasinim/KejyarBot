@@ -48,8 +48,8 @@ Independent linguistic publications may still be consulted strictly to verify or
 ## Inspection progress
 
 Visually inspected directly from page images:
-- PDF pp. 3–15 (title/publication pages, introduction, and opening noun section).
-- The first noun pages (pp. 11–15) are only a preliminary sample, not a completed audit of the noun chapter.
+- PDF pp. 3–25 (title/publication pages, introduction, noun section, and the opening of the pronoun chapter).
+- The noun chapter has been visually followed from its opening on p. 11 to the transition into pronouns on p. 25; this is a structural pass only, not a complete rule-by-rule audit.
 - Next source-review task: locate the book's actual contents/section structure after the introduction and systematically map the chapter boundaries and printed page numbers. Do not assume the book has a conventional contents page; none appeared in pp. 3–10.
 
 ### Continued visual review: PDF pp. 16–20
@@ -59,7 +59,10 @@ Visually inspected directly from page images:
 - PDF p. 19: continues the noun discussion with further groupings/examples and a comparative table. The page includes terminology and forms that need exact transcription before any instructional reuse.
 - PDF p. 20: begins a discussion of material/concrete and abstract/meaning-related noun groupings, with definitions and examples. This is still part of the noun chapter, not a new chapter.
 - **Important methodological caution:** pp. 16–20 visibly bring together more than one grammatical classification tradition/terminology set (including Persian and English labels). These must not be collapsed into one supposedly universal taxonomy. Each category needs its own definition, source context, scope, and independent linguistic validation. The book's presentation alone does not establish that all labels map one-to-one across Kurdish, Persian, and English grammatical traditions.
-- At this stage, only the presence and broad structure of these discussions are recorded. The individual category definitions and examples have **not** been fully transcribed or approved for lessons.
+- PDF pp. 21–22: the noun discussion continues with further explanations and examples. The wording and examples require exact transcription; this review does not certify their theoretical accuracy.
+- PDF pp. 23–24: the book discusses compound nouns and shows formation patterns/examples. These examples must be checked for orthographic and morphological consistency before reuse.
+- PDF p. 25: a new numbered chapter begins, titled **ڕاناو - ضمیر** (pronoun). This establishes the visible transition from the noun chapter (beginning at p. 11) to the pronoun chapter at p. 25.
+- At this stage, only the presence and broad structure of these discussions are recorded. The individual category definitions, compound-formation rules, pronoun definitions, and examples have **not** been fully transcribed or approved for lessons.
 
 ## Extraction reliability
 
