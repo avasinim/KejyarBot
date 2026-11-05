@@ -430,3 +430,10 @@ Two transcription ledgers now record selective source readings for the adjective
 - `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_069_073.md` — Adjective/Adverb discussion, adjective-form classifications, the simple/derived comparison table, and compound/participial adjective discussion on pp.69–73.
 
 These are partial diplomatic transcriptions based on enlarged original page images. Dense prose, uncertain spellings, examples, suffix boundaries, attributions, and table cells remain open. Do not treat the records as complete transcription or independent linguistic validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — adjective pp.74–79 (2026-11-05)
+
+Original individual page images for pp.74–79 were inspected sequentially. The pages continue adjective classifications attributed to different grammarians; p.75 includes demonstrative and quantitative classes; p.76 includes numerical and indefinite forms; p.77 includes interrogative, verbal, and degree/grade adjective material plus a three-column comparison table; pp.78–79 continue comparative/superlative discussion and close the adjective section. Detailed page notes are recorded in `docs/COURSE4_VISUAL_REVIEW_ADJECTIVE_074_079.md`.
+
+This completes visual coverage of the planned adjective range pp.66–79, but does not complete diplomatic transcription or linguistic verification. In particular, p.77's three-column table and the dense explanatory prose on pp.77–79 require careful transcription. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
