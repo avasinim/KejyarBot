@@ -1207,3 +1207,8 @@ Enlarged rendered page crops were used to resolve source readings; details are r
 - p.317: item 16 prints **(تەنجا)**; earlier tentative reading «نەخا» is superseded.
 
 These are source-faithful visual readings only. No normalization or linguistic status is inferred. Course 4 remains planned with zero lessons.
+
+
+## Additional visual evidence: attributed affix/particle accounts, pp.374–379
+
+A focused visual pass of the original page images and enlarged crops is recorded in `docs/COURSE4_VISUAL_REVIEW_374_379.md`. The pages juxtapose separate accounts attributed to مامۆستا سەعید سەدقی (pp.374–375), مامۆستا توفیق وەهبی (p.376), مامۆستا کوردیف (pp.376–377), نووری عەلی ئەمین (pp.377–379), and مامۆستا جەگرخۆین (p.379). Their lists and category schemes must not be combined. The review confirms section structure and visible headings, but does not certify dense inventories for lesson transcription. This is visual evidence only; no dialectal or normative status is inferred. Course 4 remains planned with zero lessons.
