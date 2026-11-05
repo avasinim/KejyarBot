@@ -624,3 +624,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Kurdish explanatory prose uses **عەتف**, not **عطف**. The Arabic letter **ط** must not be introduced into Kurdish terminology.
 - This is a sequential structural review, not a complete transcription. Exact wording of all examples, some technical subgroup labels, and full cited bibliographic details require crop-level transcription before lesson drafting. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 332.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 332–337 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 332:** continues the author's own descriptive analysis of **هەر**. It begins numbered functional groups, including **(١) هەر دەردەخەم و نایەکێم، هەر دەخەم و تێر نابم** (the exact label is retained only as a visual reading; verify the heading crop before quoting), followed by a second numbered group. The author contrasts **هەر** in different sentence constructions and provides examples.
+- **PDF p. 333:** continues group 2, with examples and commentary distinguishing the connective/relational use of **هەر** from other constructions. The author explicitly cautions that forms that look similar need not have the same function; examples and syntax are central to the analysis.
+- **PDF p. 334:** continues the discussion and then cites multiple Kurdish grammarians, including مامۆستا توفیق وەهبی and نووری عەلی ئەمین. A further numbered analysis of **هەر** follows; cited opinions and the author's own classification must remain separate.
+- **PDF p. 335:** continues the author's functional subgroups, including labelled cases **ب**, **ج**, and **د**. The discussion addresses uses with verbal and nominal/adjectival constructions, emphasis, and examples. Exact technical wording of each subgroup needs crop-level transcription before it is used as a lesson heading.
+- **PDF p. 336:** continues the numbered analysis, including groups **3** and **4**, and compares **هەر** with other forms in clause and phrase contexts. The author distinguishes uses that may be limiting, descriptive, or related to the construction as a whole; avoid assigning one fixed part-of-speech label to every occurrence.
+- **PDF p. 337:** continues group 4 and opens group **5**, where the author discusses **هەرە** in a superlative/intensifying construction (the page includes the English label *Superlative*). It then begins group **6**, a note referring to examples by مامۆستا وەهبی. The analysis remains unfinished at the bottom of this page and continues beyond p. 337.
+
+### Findings and limits
+- Pages 332–337 continue the author's own detailed description of **هەر**, following the literature survey and initial analysis on pp. 329–331.
+- The author subdivides the uses into numbered functional groups and subgroups; the distinctions depend on sentence construction and co-occurring forms. The numbering and source terminology should be transcribed in full before any course outline is designed.
+- Page 337 explicitly introduces a **Superlative** comparison in the discussion of **هەرە**. Do not infer that every use of هەر/هەرە is superlative or that the English label fully captures the Kurdish construction.
+- Several subgroup labels are visually readable only in context and should be rechecked in enlarged crops before quotation. This is a structural visual review, not a complete transcription.
+- Kurdish explanatory prose continues to use **عەتف**, not **عطف**. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 338.
