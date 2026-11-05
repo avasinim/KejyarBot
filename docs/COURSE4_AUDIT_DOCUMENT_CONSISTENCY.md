@@ -94,3 +94,14 @@ These are transcription statuses, not independent linguistic validation or lesso
 A read-only comparison of `reset/grammar-course4-content` against `main` reports the branches as **diverged**: the audit branch is 453 commits ahead and 9 commits behind the current `main` comparison point (merge base `bdd08e66af5d1ad74b935b2899053e922dea3f52`; main head observed as `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423`). The compare lists the Course 4 source, extraction workflow/scripts, curriculum plan, and audit documents as branch additions, plus a `courses.json` change. The branch copy of `courses.json` retains Course 4 as `planned` with an empty `lesson_ids` list; `curriculum/grammar_course4_plan.json` records `status: planned`, `lesson_count: 0`, and `lessons: []`, while its `source` object now identifies **ڕێزمانی ئاخافتنی کوردی** (`Rezmany_axawtny_kurdy.pdf`) as the sole curriculum source selected under audit. The earlier `source: null` state is historical and superseded.
 
 This divergence is a release/integration risk, not authorization to merge, rebase, cherry-pick, or synchronize. Do not merge this branch, update `main`, deploy, or change Botkeep/runtime state as part of Course 4 audit work. Any future integration requires a separate explicit user decision and a fresh review against the then-current main branch, especially for the changed course registry and any intervening course/runtime changes. This check itself made no changes to `main`, production, course runtime, or Botkeep.
+
+
+## Read-only comparison with current `main` — 2026-11-05
+
+A fresh read-only check against the current `main` head observed as `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423` found:
+
+- `courses.json` on `main` (blob `0d7b51e969754e56d3158b377171627571455f66`) has no course entry with `id: "grammar"`.
+- `curriculum/grammar_course4_plan.json` is absent from `main` (GitHub returned 404).
+- On the isolated audit branch, Course 4 remains present only as a planned entry with `lesson_ids: []`; its plan has `lesson_count: 0`, `lessons: []`, and the sole source selected under audit.
+
+This is an integration difference, not a request to restore Course 4 to the catalogue. Do not cherry-pick, merge, rebase, or synchronize these files into `main` without explicit user approval. The isolated branch is an audit workspace, not a release candidate. Any future decision must first establish whether Course 4 is still intended to appear in the live catalogue, then review current course/runtime compatibility and the existing branch divergence. No main-branch or Botkeep change was made.
