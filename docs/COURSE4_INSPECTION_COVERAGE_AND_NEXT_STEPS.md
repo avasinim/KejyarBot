@@ -465,3 +465,10 @@ A direct review of the original individual page images identified provisional mi
 The verb section begins on p.80. Original individual page previews pp.80–85 were inspected sequentially. The pages record Kurdish terminology for the verb, attributed definitions (including the English grammar quotation on p.81), numbered verb functions/classifications, and the distinction between **Transitive / Intransitive** and **لازم / متعدی**. Page-level notes are in `docs/COURSE4_VISUAL_REVIEW_VERB_080_085.md`.
 
 This is visual coverage only. Attributed definitions, examples, and the separate classifications remain to be transcribed and checked. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.86–91 (2026-11-05)
+
+Original individual page images pp.86–91 were inspected sequentially. The pages continue discussion of **ناوی فاعیل / ناوی مەفعول**, introduce a subsection read provisionally as **کاری تێنەبەر**, give examples and explanatory notes, show side-by-side form lists on p.88 and a three-column comparison on p.89, then discuss a subsection read provisionally as **کاری تێپەڕ** with examples on pp.90–91. Page-level observations and unresolved readings are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_086_091.md`.
+
+This is visual coverage only; tables and dense prose remain to be transcribed and verified from line-level crops. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
