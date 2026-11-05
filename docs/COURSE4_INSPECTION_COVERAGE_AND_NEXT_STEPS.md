@@ -481,3 +481,10 @@ The recovered `course4-source-text` artifact was downloaded again and the origin
 Original page previews pp.92 and 96–97 were also reopened; pp.93–95 were reconciled against the existing crop-review record. Page-level observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_092_097.md`. p.92 contains a note, an attributed passage, and a separate numbered discussion. pp.96–97 continue attributed accounts and include a vertically aligned example list. These are separate evidence blocks, not one unified rule.
 
 **Current next task:** transcribe p.92's note and attributed passages, then pp.96–97's attributed prose and example list line by line, preserving attribution and uncertainty. Keep the outstanding p.119/p.120 items open as listed in the crop-recheck record. No new claim of complete transcription or independent linguistic validation is made. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.98–103 (2026-11-05)
+
+Original individual page previews pp.98–103 from the recovered `course4-source-text` artifact were inspected in sequence. Page-level structure and unresolved transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_098_103.md`. These pages continue the discussion of verb forms, include a quotation attributed to **مامۆستا سادق**, a subsection on **ڕۆیشتن**, a subsection marked **کاری (فڕین)**, aligned form groups, and numbered explanatory notes. Attributions, examples, notes, and tables must remain separate evidence units.
+
+This is visual mapping only, not complete diplomatic transcription or independent linguistic validation. The next transcription pass should cover pp.98–103 line by line, beginning with the attributed quotation and the examples under **ڕۆیشتن**, then preserve the aligned groups and numbered notes on pp.100–103. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
