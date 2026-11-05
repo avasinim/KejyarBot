@@ -169,15 +169,6 @@
       ]
     },
     {
-      "id": "grammar",
-      "key": "course_grammar",
-      "order": 4,
-      "title": "کۆرسی ٤: ڕێزمان",
-      "description": "لە پلانداناندا؛ وانەکان دوای ئامادەکردنی ناوەڕۆک زیاد دەکرێن.",
-      "status": "planned",
-      "lesson_ids": []
-    },
-    {
       "id": "kurmanji_latin_orthography",
       "key": "course_kurmanji_latin_orthography",
       "order": 5,
