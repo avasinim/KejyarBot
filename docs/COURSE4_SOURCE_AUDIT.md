@@ -1,5 +1,18 @@
 # Course 4 — Source Audit (Preliminary)
 
+## Current controlling status — 2026-11-05
+
+- This is an isolated source-audit record, not a live course definition or release instruction.
+- Sole curriculum source: **ڕێزمانی ئاخافتنی کوردی** (`Rezmany_axawtny_kurdy.pdf`); the separate **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded.
+- Source inspection and selected transcriptions remain incomplete; the proposed outline is **not approved**.
+- Course 4 has **zero lessons** and is not authorized for drafting, quiz creation, activation, or runtime changes.
+- The current `main` branch intentionally has no `grammar` course catalogue entry (removed by commit `e691feb6`). The planned entry on this audit branch is branch-local only; do not restore it to `main` without explicit approval.
+- Branch `reset/grammar-course4-content` is divergent from `main` (latest recorded comparison: 466 commits ahead, 9 behind; 36 changed paths). It is an audit workspace, not a release candidate. No merge/rebase/cherry-pick/deploy/Botkeep operation is authorized.
+
+For current page-level confidence, use the latest controlling queue in `COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md` and the latest reconciliation in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`. Older entries below remain chronological history and must not override these controls.
+
+---
+
 Status: **single-source curriculum decision adopted; source inspection in progress; no lesson content approved**
 
 This audit belongs to the isolated branch `reset/grammar-course4-content`. It does not activate Course 4, alter other courses, or deploy anything.
