@@ -392,3 +392,8 @@ A separate ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_041_044.md`, recor
 ## Initial diplomatic transcription — ڕاناو, PDF pp.45–48 (2026-11-05)
 
 The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_045_048.md` records selective readings from the original page previews. It captures the continuation of the taxonomy on p.45 and the attributed discussion by د. نەسرین فەخری; paired examples and the third-person singular heading on p.46; the continuation of the third-person singular discussion on p.47; and the remaining heading/example inventory on p.48. Dense paragraphs and paired examples remain open for crop-level transcription. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
+
+
+## Initial diplomatic transcription — ڕاناو, PDF pp.49–52 (2026-11-05)
+
+The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_049_052.md` records selective readings from the original individual page images. It captures the continuation of the personal-pronoun discussion on p.49, the attributed discussion and opening of **ڕاناوی لکدەر (Relative, اسم الموصول)** on p.50, terminology and separately attributed descriptions on p.51, and example constructions plus the extended explanatory passage on p.52. Dense prose, exact suffix forms, and examples remain open for sharper crop verification. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
