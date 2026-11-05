@@ -192,3 +192,9 @@ A second enlarged-crop reread resolves the previously withheld first row. The co
 - p.94: corrected the rightmost heading in both tables to **فرمانی تێنەپەڕ** (supersedes earlier **فرمانی تێنەبەر**). Upper table's root forms **(کلا + اند)، (خو + اند)، (وەر + اند)** are clear; example columns are provisional. Lower table's root strings **وەر + ین** and **شک + ین** need a better crop for full rows.
 - p.95: verified the prose heading **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** and opening **یەکەم - ئەو کارە رابردوانەی کە کۆتاییان بە (ا) دێت، وەک:**; subsequent examples are clipped and remain untranscribed.
 - No course content, lesson state, quiz state, or runtime state changed.
+
+
+### p.93 table-level transcription and p.95 crop-boundary note (2026-11-05)
+
+- p.93 upper four-column table now transcribed as four rows in two groups: **نووسستن / نوو / نواندن**, **بڕاووتن / بڕوو / بڕواندن**, **چەقین / چەق / چەقتاندن**, **لەوەرین / لەوەر / لەوەراندن**. Lower four-column block transcribed as **کەوتن / کەو / خستن**, **هاتن / [printed root cell blank] / هێنان**, **مردن / مر / مراندن**, **کەمایین / کە / کەیاندن**, **ڕۆیین / ڕۆ / ناردن**. Retain source spellings; details and layout are in crop-review file.
+- p.95 paragraph opening confirmed: **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** then **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. Examples clipped at crop edge; no guessing.
