@@ -10,14 +10,15 @@ This audit belongs to the isolated branch `reset/grammar-course4-content`. It do
    - Source commit: `f7f5236d861aaa5f9f26e81b0d7a25ceb992914e`
    - Blob: `e144eac2937c4f13a4f852fc403c17cc0fee3671`
    - Visible title page (PDF p. 3): **ڕێزمانی ئاخافتنی کوردی**
-   - The copyright/publication page (PDF p. 4) indicates an original publication in 1990 and a second printing in 2011. The author/editor attribution still needs careful confirmation from the full title/copyright pages.
+   - The copyright/publication page (PDF p. 4) indicates an original publication in 1990 and a second printing in 2011. The author/editor attribution remains to be transcribed carefully from the title/copyright pages.
    - PDF length: 400 pages.
 
 2. `ڕێزمانی ڕاناوی لكاو.pdf`
    - Source commit: `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423`
    - Blob: `68da93bc3cb9e37f492b13f346a2c7961b9639dc`
    - Visible title page (PDF p. 3): **ڕێزمانی ڕاناوی لکاو**
-   - Visible author name: **ڕیا عومەر ئەمین** (transcription should be checked against the title page before final bibliography).
+   - Visible author name: **ڕیا عومەر ئەمین**.
+   - The same title page identifies the Kurdish Department, University of Baghdad.
    - PDF length: 32 pages.
 
 ## Direct visual observations
@@ -33,7 +34,7 @@ This audit belongs to the isolated branch `reset/grammar-course4-content`. It do
 
 ### Source 2 — enclitic pronouns
 
-- PDF p. 3: title page identifies **ڕێزمانی ڕاناوی لکاو** and shows the author's name.
+- PDF p. 3: title page identifies **ڕێزمانی ڕاناوی لکاو**, the author's name, and the Kurdish Department, University of Baghdad.
 - PDF p. 6: references **W. O. Amin (1976), “Some Fundamental Rules of Kurdish Syntax Structure”**.
 - PDF p. 7: explicitly mentions transformational grammar; therefore the author's theoretical analysis must be distinguished from the forms/examples being described.
 - PDF pp. 8–11: contain diagrams/tables and discussion of forms and their behavior in sentence structure. These pages require page-by-page transcription and analysis; the OCR output is not reliable.
