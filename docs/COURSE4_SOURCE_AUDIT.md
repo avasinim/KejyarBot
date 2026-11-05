@@ -1256,3 +1256,15 @@ The page-specific crop-review record `COURSE4_CROP_REVIEW_VERB_093_095_106_112_1
 - These are diplomatic transcription updates only, not linguistic validation or lesson approval.
 
 Older page notes in this file remain as audit history where they differ. The latest crop-review record governs current use. Course 4 remains planned/inactive with zero lessons.
+
+
+## Latest crop reconciliation — p.119 and p.120 (2026-11-05)
+
+The latest enlarged-crop findings in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` supersede older status summaries in this file:
+
+- p.119's four-row paired table is visually transcribed with physical right/left orientation: **دەبژێرم / بژێردرام**, **دەژمێرم / ژمێردرام**, **دەسپێرم / سپێردرام**, **دەشارمەوە / شاردرامەوە**. No column labels are inferred.
+- p.119's parenthetical infinitive list is transcribed as **بژاردن، بوارن، خوارن، خڕین، ژمارن، سپاردن، شاراندنەوە، کردن، ناردن، هاوردن، هەڵپەساردن، وشاردن**; **خڕین** remains provisional.
+- p.120's attribution opening is legible as **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...**. The three pairs **بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا** remain provisional, and the full attributed passage is not transcribed.
+- This is source-image transcription status only, not independent validation. Preserve the author attribution and do not merge the passage into the preceding examples.
+
+Where older paragraphs in this audit say p.119 rows remain unverified, treat those statements as historical checkpoints; the latest crop-review record governs current status. Course 4 remains planned/inactive with zero lessons.
