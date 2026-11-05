@@ -702,3 +702,37 @@
 - ئەم snapshot ـە تۆماری ڕێنمایی و گەڕانەوەیە، نەک ڕەزامەندی بۆ گۆڕینی دۆخی کۆرس یان بڵاوکردنەوە.
 - Backup و checkpoint دوو ئامرازی جیاوازن؛ working branch بۆ بەردەوامیی کارە و checkpoint بۆ گەڕانەوەی بێ‌گۆڕانکاری.
 - پێش هەر کارێکی نوێ، سەرەتا branch و SHA و compareی backup بخوێنەوە؛ ئەگەر جیاوازی هەبوو، بەبێ پشکنین لەسەر هیچ branch ـێک overwrite مەکە.
+
+
+---
+
+# Snapshot ـی نوێی پاراستن — 2026-11-06 00:19 (هەڵگرتنی نوێ)
+
+ئەم بەشە زانیاریی snapshotی کۆنی سەرەوە نوێ دەکاتەوە. ئەگەر SHA یان checkpointی کۆن لەگەڵ ئەم بەشەدا جیاواز بوو، **ئەم snapshotە نوێیە پێشینەیە**.
+
+## دۆخی Git پشتڕاستکراو
+
+- Repository: `avasinim/KejyarBot`
+- Working branch: `reset/grammar-course4-content`
+- SHAی working branch پێش ئەم نوێکردنەوەی handoff: `4716e7a6de48fc021f1bd85aba39e6e38e95bcf4`
+- Checkpointی پێش ئەم نوێکردنەوە: `checkpoint/course4-2026-11-06-0019`
+- SHAی ئەو checkpointە: `4716e7a6de48fc021f1bd85aba39e6e38e95bcf4`
+- Backupی پارێزراو: `backup/grammar-course4-2026-11-05`
+- Compareی live لە backup بەرامبەر checkpoint: `ahead 530 / behind 0`، کۆی 530 کۆمیت؛ 265 فایل لە compare ـەکەدا.
+- Working branch و checkpointی 0019 لە کاتی پشتڕاستکردنەوەدا هەمان SHAیان هەبوو.
+
+## دوا شوێنی پشکنینی سەرچاوە
+
+- پەڕەی 312: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P312.md`
+- پەڕەی 313: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P313.md`
+- پەڕەی 314: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P314.md`
+- پەڕەی 314 خاڵی 14ی ئامرازی عەتف و پێنج نموونەی هەیە؛ فۆڕمەکانی «نەکەرنا / نەکینا» تەنها خوێندنەوەی کاتین و ستاندارد نەکراون.
+- خاڵی 15 لە کۆتایی پەڕەی 314 دەست پێدەکات؛ خوێندنەوەی سەردێڕی کاتییە و پێویستی بە بەراورد لەگەڵ پەڕەی 315 هەیە.
+- هەنگاوی داهاتوو: پشکنینی سەرچاوەی پەڕەی 315، بە وێنەی تەواو و کراپی گەورەکراو؛ خاڵی 15 بەبێ یەکسانکردنی فۆڕمە نادڵنیاکان بەردەوام بکرێت.
+
+## سنووری پاراستن
+
+- Course 4 هەروا `planned` ـە؛ `lesson_count=0` و `lessons=[]`.
+- هیچ وانە، کوییز، چالاککردن، deployment، merge یان گۆڕانکاریی production نەکراوە.
+- `main`، Courses 1–3، production DB، runtime و Botkeep دەستکاری نەکراون.
+- پێش بەردەوامی، HEADی working branch بخوێنەوە و compareی نوێ بە backup بکە؛ پاش هەر کۆمیتێک checkpointی نوێ لەسەر SHAی ڕاستەقینە دروست و پشتڕاست بکەوە.
