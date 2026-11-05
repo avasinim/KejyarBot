@@ -143,3 +143,8 @@ Sequential inspection now extends through p.120. p.118 continues separate exampl
 ### Targeted table crops: p.112, pp.115–119 (2026-11-05)
 
 Selected legible rows and table headings have now been transcribed from the enlarged crops. p.112's opening table headings are **بنای معلوم / ڕەگ / بنای مجهول**; pp.115–118 include multiple two-column **چاوگ / ڕابردووی کارابەرز** tables under distinct numbered patterns and separate explanations. A few readings (including p.112's final visible row, p.116's final pair, and the subsection headings on pp.115–119) remain provisional or explicitly unresolved. p.119's paired list is not yet transcribed. Do not merge the separate tables or treat these source forms as validated productive rules. See the crop-review document for the limited transcription and uncertainties.
+
+
+### p.119–120 follow-up crop pass (2026-11-05)
+
+p.119's fifth numbered heading is read as **٥- چاوکی دالی**; the paragraph/list below it is distinct from the preceding present-form table, whose individual rows remain unverified. p.120 contains a separate numbered pattern with three provisional pairs (**بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا**) and then a separately attributed discussion by مامۆستا مەسعود محەمەد. The p.120 table heading and detailed prose are still outstanding. See crop-review notes; do not use provisional readings as settled lesson examples.
