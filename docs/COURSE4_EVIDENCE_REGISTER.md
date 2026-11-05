@@ -13,8 +13,8 @@ The sole curriculum source remains **ڕێزمانی ئاخافتنی کوردی*
 | ناو | 11–24 | Noun chapter structure, simple/compound distinctions and multiple classification traditions; examples/tables not fully transcribed | Structural only |
 | ڕاناو | 25–65 | Pronoun chapter and personal-pronoun subsection; several classification traditions | Paradigms and variety validation needed |
 | ئاوەڵناو | 66–79 | Chapter boundary confirmed by contents; detailed rule audit incomplete | Not lesson-ready |
-| کار | 80–111 | Definitions attributed to multiple sources; inflected forms and transitivity examples; selective inspection pp.81, 88, 93 | Paradigms and argument-structure validation needed |
-| کاری کاردار و کاری کاربێژ | 112–221 | Active/passive discussion begins p.112; selective page inspection only | Not lesson-ready |
+| کار | 80–111 | Sequential visual review pp.80–120; focused crop transcriptions on pp.93–95 and 106, plus selected tables pp.112–120; p.106's 17 numbered rows transcribed, separate note below remains outstanding | Remaining tables/prose need diplomatic transcription and independent variety-aware validation |
+| کاری کاردار و کاری کاربێژ | 112–221 | Sequential visual review pp.112–221; selected tables transcribed on pp.112 and 115–118; pp.119–120 have limited crop readings; pp.161–221 have page-level sequential review | Dense paradigms, p.120 attributed passage, and dialect/source distinctions still need transcription and validation |
 | چاوگ | 222–235 | Printed heading confirmed; simple, compound and derived subdivisions noted | Examples and paradigms need transcription |
 | ئاوەڵکار | 236–253 | Definition and multiple classifications; category counts/boundaries vary; a Central Kurdish distinction is explicitly scoped | Taxonomy reconciliation needed |
 | پریپۆزیشن | 254–272 | Printed heading and contents agree; English/Persian comparisons and Kurdish contextual examples | Context-by-context transcription needed |
