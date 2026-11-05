@@ -366,3 +366,39 @@ The next lines contain the source's explanation and examples, but several connec
 The original image is not sharp enough to settle the medial characters in the three paired rows beyond doubt. Retain the earlier crop-based readings (**بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا**) as provisional and flag all three rows for a dedicated character-level check; do not replace them on the basis of this raster.
 
 This record is intentionally conservative: it confirms page structure and the attribution's opening phrase, but does not claim a complete transcription of the passage or definitive resolution of the paired forms.
+
+
+## pp.93–95 — reinspection of the original page rasters and enlarged table crops (2026-11-05)
+
+### p.93 — table structure and confirmed rows
+
+The original page image and a 4× enlargement confirm the first table's right-to-left headings as **کۆمەڵ / فعلی لازم / ڕەگ / فعلی متعدی**. A second table repeats the same four-column structure. A third, shorter table has two columns headed **فعلی لازم** (right) and **فعلی متعدی** (left).
+
+The following examples in the third table are clear enough to record:
+
+| فعلی لازم (right) | فعلی متعدی (left) |
+|---|---|
+| سووتان | سووتاندن |
+| قڵیشان | قڵیشاندن |
+| کەڕان | کەڕاندن |
+
+In the second four-column table, the row **کەوتن → خستن** is visually clear; the next lines include **هاتن → هێنان** and **مردن → مراندن**. These are recorded as row-level readings only; the root column and the remaining entries need a separate enlarged check. The top table's less familiar spellings are not fully transcribed here.
+
+### p.94 — headings and structure
+
+The first two three-column tables are confirmed right-to-left as **فرمانی تێنەبەر / ڕەگی فرمان / فرمانی تێپەڕ**. The first table contains three example rows and the second contains two; the enlarged raster resolves the column headings, but several inflected example strings remain too small or blurred for diplomatic transcription. Do not silently rewrite them into modern spellings.
+
+The page then shifts to separately numbered author/source notes (including a reference to Kurdish grammar and a discussion of **ئامرازی (ئاند)**). These prose notes are not part of the preceding paradigms and must retain their own attribution/context.
+
+### p.95 — table headings and clear examples
+
+The original page and enlarged crop confirm the table headings right-to-left as **چاوگ / کاری تێنەبەر / کاری تێپەڕ**. Two example rows are visually legible:
+
+| چاوگ (right) | کاری تێنەبەر (middle) | کاری تێپەڕ (left) |
+|---|---|---|
+| نەخش | نەخشان | نەخشاندن |
+| خمل | خملان | خملاندن |
+
+The first row in the table appears to concern **چوون** and related forms, but the leftmost form is not sufficiently clear in this raster to certify; it remains untranscribed. The prose below the table begins a distinct explanation of verbs formed through **پێوەڵکاندن (اندن)**; preserve this as the following subsection rather than merging it into the table.
+
+These are crop-level readings from the original PDF page images. They do not validate the author's grammatical analysis and are not lesson-ready content until the remaining rows and prose are checked.
