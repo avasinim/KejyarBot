@@ -128,3 +128,8 @@ A fresh compare of `main` against `reset/grammar-course4-content` reports **dive
 ## Current source-review boundary — 2026-11-05
 
 The repository documents currently agree on the controlling Course 4 boundary: the sole curriculum source is `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded; the proposed outline is not approved; and Course 4 remains planned with zero lessons. The outstanding image-led queue remains p.106's note, p.95's clipped examples after **وەک**, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table. No new page transcription is asserted by this consistency update. Do not draft lessons, quizzes, or activate the course before explicit outline approval.
+
+
+## Outline approval reconciliation — 2026-11-05
+
+The user explicitly approved the nine-part Course 4 outline on 2026-11-05. This supersedes the earlier final-status paragraph above that says the outline is not approved and says not to draft anything before outline approval. The approved outline is recorded in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`; the plan metadata records `outline_approved_source_transcription_and_validation_pending`. The next authorized work is source transcription and claim-level validation against the primary PDF, not lesson drafting from uncertain readings. Course 4 remains planned/inactive with zero lessons. This approval does not authorize restoring the catalogue entry to `main`, merging/rebasing, changing runtime/production, or syncing/deploying to Botkeep.
