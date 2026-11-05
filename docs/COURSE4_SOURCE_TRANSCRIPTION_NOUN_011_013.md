@@ -405,3 +405,149 @@ The beginning of the definition of **لێکدراو** is visible at the foot of 
 - Complete the p.15 affix/formation paragraph and the continuation of the **لێکدراو** definition on p.16.
 
 **Evidence boundary:** the observations above come from enlarged original page images, but several individual readings remain uncertain. No linguistic validation or lesson approval is claimed. Course 4 remains planned/inactive with zero lessons.
+
+
+## Crop verification and correction — PDF pp.16–24 (2026-11-05)
+
+The original individual-page images for pp.16–24 were enlarged and rechecked. This section is the controlling crop-level correction where it differs from the earlier selective page notes above. It does not claim a complete word-for-word transcription of every paragraph.
+
+### p.16 — derived noun and semantic classification
+
+The continuation of the examples at the top visibly reads: **دەشاد، کەومار، ڕووباک، شەولەبان، گۆڵەکەنم، شەکرسێو، باکردن** [the exact spelling of the first and fourth forms should still be confirmed at character level].
+
+The heading and definition read:
+
+> ب- دایزراو: ئەو ناوە ناسادەیە کە تەنیا وشەیەکی واتاداری تێدا بیت، وەک:
+
+The examples printed below are **داسۆکە، پیاوەتی، مڵوانکە، هەڵکەوت، داهات**.
+
+The explanatory paragraph says that the derived noun contains one meaningful word/element and is formed through addition/formation; the whole paragraph is not yet transcribed diplomatically. The next main heading is **دووەم — ناو لە ڕووی واتاوە**. The page gives the two labels attributed to مامۆستا سەعید سەدقی: **أ- ناوی عام** and **ب- ناوی خاص**. A separate classification is attributed to مەردۆخ and begins with **ناوی شەخسی، ناوی جەمع، ناوی نەوع، ناوی جنس، ناوی زەمان، ناوی مەکان**. These remain separate taxonomies.
+
+### p.17 — correction of the numbered list and further attributions
+
+The visible continuation of مەردۆخ's numbered list reads:
+
+- **٧- ناوی سەوت، بارە**
+- **٨- ناوی لەون، سوور**
+- **٩- ناوی عەدەد، چوار**
+- **١٠- ئیسیمی صەفە، پانی**
+- **١١- ئیسیمی طەعم، تاڵی**
+- **١٢- ئیسیمی مەحسوس، بوون، چوون**
+- **١٣- ئیسیمی فاعل، بێر، بکوژ**
+- **١٤- ئیسیمی مەفعول، فرۆشیاک**
+- **١٥- صیغەی مبالغە، کرێنۆک**
+- **١٦- صیغەی مشبە، دەڕێژ، کۆتا**
+- **١٧- ئیسیمی معنی، هۆش**
+- **١٨- ئیسیمی ضمیر، تێمە**
+- **١٩- ئیسیمی ئیشارە، ئەم**
+- **٢٠- ئیسیمی کتابە، (فڵان، فیسا...)**
+
+The examples/labels above are what the crop visibly supports; some lexical forms (notably items 13–16 and the parenthetical at item 20) still need a sharper character-level check before quotation as certified spellings.
+
+The next attribution reads **ج- مامۆستا خال، لە فەرهەنگەکەیدا ناو دەکاتە دوو بەشەوە** and lists:
+
+1. **عام (تێکرا)** — examples **دار، بەرد، پیاو**.
+2. **خاص (تایبەتی)** — examples **نەریمان، کرماشان**.
+
+A separate attribution reads **د- نووری عەلی لە ڕێزمانەکەیدا (بەرگی دووەم)، ناو لە ڕووی مەعنایەوە دەکاتە شەش بەشەوە**. Its visible categories/examples are **ناوی تایبەتی: شاسوار؛ ناوی کەشتی: شار؛ ناوی مادی: دەکاک، زێڕ؛ ناوی مەعنەوی: نازانی، بەختیاری؛ ناوی تاک: منداڵ؛ ناوی کۆ: مەڕان (ئەگەر مەڕانە)**. The final example/parenthesis needs a further crop check; keep the source attribution and sequence.
+
+### p.18 — exact comparative lists and Kurdish display
+
+The Persian grammar attribution lists six forms:
+
+1. **اسمی عام**
+2. **اسمی خاص**
+3. **اسمی ذات**
+4. **اسمی معنی**
+5. **اسمی مفرد**
+6. **اسمی جمع**
+
+The English grammar comparison is printed as:
+
+1. **الاسم العام — Common Noun**
+2. **الاسم المعنوی — Abstract Noun**
+3. **الاسم المادی — Concrete Noun**
+4. **اسم العلم — Proper Noun**
+5. **اسم الجمع — Collective Noun**
+
+The following Kurdish classification is introduced as **پاش نمایش و بەراوردکردنیان لەگەڵ زمانی کوردیدا، ناو کرا بە سێ بەشەوە**. The visible examples are grouped under **ناوی کەشتی (عام)**, **ناوی تایبەتی (خاص، علم)**, and **ناوی کۆمەڵ (اسم الجمع)**. The source's examples include **مار، کۆر، شار** under the first group; **مەڵبەجە، ناسرین، تاتەجەرۆ** under the second [spellings need further verification]; and **لەشکر، پۆل، کەڵ** under the third [last example uncertain]. A footnote on the same page explicitly discusses **وشەی (نایەند)** and the English word **Sex**; retain the note separately and do not fold it into the category definitions.
+
+### p.19 — verified gender-related headings and table structure
+
+The headings read:
+
+- **أ- ناوی نێرینە**
+- **ب- ناوی مێیینە**
+- **ج- ناوی دوو لایەن (دوو ڕەگەز)**
+- **د- ناوی بێ لایەن (بێ ڕەگەز)**
+
+The examples under the first two headings are separate lists. The third category's prose states that the noun can be used for both male and female; its examples include **کەو، کێسک، وەستا، شاکرد، کاوێ، بەڕکەڕوو، دەوست، دۆژمن** [several forms need exact spelling verification].
+
+The three-column table must be read right-to-left and kept aligned. Its headings are **ناوی دوو لایەن** (right), **بۆ نێرینە** (middle), and **بۆ مێیینە** (left). Three rows are visible; the first-column/paired strings are not all sufficiently clear to certify, so do not reproduce them as complete forms until a higher-resolution crop is available.
+
+The fourth heading reads **د- ناوی بێ لایەن (بێ ڕەگەز)**; examples follow in the source. A **تێبینی** paragraph discusses differences of usage across varieties/regions and provides examples; it remains to be transcribed line by line.
+
+### p.20 — material noun
+
+The heading reads **٣- ناو لە ڕووی سەربەخۆیی هەبوونەوە** and says it is divided into two parts. The first is **١- ناوی مادی**. The page separately cites Kurdish grammar, Persian grammar, and English grammar accounts. The English grammar passage explicitly describes material nouns as nouns for things that can be perceived/touched; examples visible in the different attributed lists include **دار، بەرد، ئاو، هەوا، تەهران، پەنیر، شیر، زێڕ، ناسین** [examples belong to their respective attributed passages and some need exact verification]. The author's summary then provides its own longer list, which must not be conflated with the cited lists.
+
+The next heading is **٢- ناوی مەعنەوی (گۆزارە)**. Footnotes at the bottom are marked **(١)** and **(٢)**; their visible text reads **قوتابخانەکان**. The exact relationship of each footnote marker to the text should be preserved in a full transcription.
+
+### p.21 — abstract-noun attributions and explanation
+
+The page continues the attributed descriptions of material nouns at the top, then gives separate descriptions for abstract nouns. A visible attribution to **مەردۆخ** includes examples **هۆش، زانست، جەنگ، پرستی** [last form uncertain]. Another attribution to English grammar defines abstract nouns as names for qualities/conditions that cannot be touched, and gives examples including **ڕەشایی، تاریکی، بەختیاری، نەخۆشی، پیاوەتی، هێز**. A Persian grammar attribution follows with examples including **هۆش، ڕەشایی، سەنگەم، خام، نەخۆشی، دەستکەوتنی** [some spellings need verification].
+
+The authorial passage below says the author has gathered the definitions and gives a working description of abstract nouns; it is followed by a long bracketed **[ڕوونکردنەوە]** section. This explanation remains only partially legible and requires full line-by-line transcription before any rule is abstracted.
+
+### p.22 — continuation and abstract-noun subtypes
+
+The explanatory paragraph continues from p.21. It discusses the distinction between material and abstract nouns and gives examples including **(بین، ڕەنگ)**. A further paragraph describes the way a material noun is identified/understood through the senses and contrasts this with abstract-noun meaning; do not paraphrase this as an independently validated modern definition.
+
+The next heading reads **ناوی گۆزارە لە بنەڕەتدا دوو جۆری هەیە**. The first item is:
+
+> ١- بنجی: ئەو ناوانە دەگرێتەوە کە هەر لە بنچینەدا بۆ گۆزارە دانراون، وەک: باوەڕ، جەنگ، هۆش، زانین، ترس، مەڕک.
+
+The final example's exact reading needs a character-level check. The next subtype continues on p.23.
+
+### p.23 — source examples for derived noun formation and form classification
+
+The heading reads **٢- دروستکراو**. The page says these are nouns that have been formed/derived and gives two visibly separate groups. Preserve the source's plus-sign equations as printed:
+
+**أ- دروستکردنی لە ناوەوە:**
+- **کورد + ایەتی = کوردایەتی**
+- **پیاو + یەتی = پیاوەتی**
+- **کور + ینی = کورینی**
+
+**ب- دروستکردنی لە ئاوەڵناوەوە:**
+- **جوان + ی = جوانی**
+- **ڕەش + ی = ڕەشی**
+- **ڕەش + ایی = ڕەشایی**
+- **دوست + ی = دوستی**
+- **دوست + ایەتی = دوستایەتی**
+- **خراب + ة = خرابە**
+
+These are diplomatic readings of the source's examples, not normalized Kurdish spellings or a general morphological rule. The page then starts **یەکەم — ناو لە ڕووی فۆرمەوە** and lists **أ- ناوی سادە** and **ب- ناوی ناسادە**; under the latter it prints **١- لێکدراو** and **٢- دایزراو (دروستکراو)**. The next axis begins at the bottom and continues onto p.24.
+
+### p.24 — continuation of classification and explanatory paragraph
+
+The list continues with:
+
+- **٤- ناوی نێر**
+- **٥- ناوی مێ**
+- **٦- ناوی دوو لایەن**
+- **٧- ناوی بێ لایەن**
+- **٨- ناوی مادی (مستقل)**
+- **٩- ناوی گۆزارە** with **أ- بنجی** and **ب- دروستکراو**.
+
+A bracketed **[ڕوونکردنەوە]** paragraph follows. It explains that the classification of nouns by concept/meaning may be represented through labels and that some classifications are not the same as the form-based division; the complete wording remains to be transcribed. Keep the page's two numbered classification axes distinct.
+
+## Updated open queue after pp.11–24 crop pass
+
+1. Complete the full explanatory paragraphs on pp.11, 14–16, 19–22, and 24; the current record is still selective.
+2. Recheck the uncertain example spellings on pp.11, 13–14, 16–18, 19–22, and the last example on p.22.
+3. Obtain a higher-resolution full-width crop of the p.19 three-column table and transcribe every cell in right-to-left order.
+4. Link p.20 footnote markers to their exact text and transcribe all attributed lists separately.
+5. Continue p.23–24 into p.25 only after preserving the noun/pronoun section boundary.
+6. Complete diplomatic transcription before independent linguistic validation; do not normalize source spellings or infer missing text.
+
+**Control status:** these crop-level additions supersede earlier tentative readings where stated. They are still partial source notes, not a complete pp.11–24 transcript or a validated lesson. Course 4 remains planned/inactive with zero lessons.
