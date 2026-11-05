@@ -128,3 +128,8 @@ A full enlarged-page recheck resolves item 8; restore **سڕانەوە / سڕی�
 ### p.106 — all 17 numbered rows visually transcribed (2026-11-05)
 
 A row-by-row enlarged crop pass now makes all 17 numbered entries legible. Items 6–7 and 10–17 have been added to the diplomatic transcription; item 11's parenthetical **(سوون)** and the two variants each at items 14–15 are retained. This supersedes the previous status that items 6–7 and 10–17 were pending. The separate note below the table is still not transcribed. See the crop-review document for the complete row table.
+
+
+### p.112–117 renewed subsection inspection (2026-11-05)
+
+Sequential page images confirm separate attributed accounts, terminology, numbered subsections, and tables throughout the Active/Passive material. p.112 opens the subsection and contains a three-column comparison table; pp.113–114 continue separately attributed treatments; pp.115–117 continue numbered formation patterns, notes, and example tables, with p.117 opening a further subsection visually read as **چاوگی تانی**. Structural review is complete for these pages, but table/example transcription is not. Do not combine the authors' accounts into a single rule. See the crop-review document.
