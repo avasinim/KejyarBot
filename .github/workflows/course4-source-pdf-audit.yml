@@ -1,6 +1,9 @@
 name: Course 4 source PDF audit
 
 on:
+  push:
+    branches:
+      - audit/course4-source-pdf-extraction
   workflow_dispatch:
 
 permissions:
