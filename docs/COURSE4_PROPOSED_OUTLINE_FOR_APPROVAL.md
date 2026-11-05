@@ -16,7 +16,7 @@ The outline follows the book's own order and visible contents page (PDF p.398). 
 | 2 | ڕاناو (ضمیر) | 25–65 | Do not merge the source's later **چاوگ** chapter into this unit. |
 | 3 | ئاوەڵناو (الصفة) | 66–79 | Transcribe examples and preserve source-specific terminology. |
 | 4 | کار (فعل) | 80–221 | Treat **کاری کاردار و کاری کاربێژ** (beginning p.112) as a major subsection within the verb unit unless a detailed review supports a different structure. |
-| 5 | چاوگ | 222–235 | Preserve the contents-page/section heading **چاوگ**; do not replace it with جێناو. |
+| 5 | چاوگ | 222–235 | The contents page (p.398) and chapter opening (p.222) both read **چاوگ**; the earlier audit claim of جێناو at p.398 was an error and is withdrawn. |
 | 6 | ئاوەڵکار | 236–253 | Keep semantic/function classifications distinct from structural/formational classifications. |
 | 7 | پێوەندینیش / پریپۆزیشن | 254–272 | Contents-page wording and chapter heading differ; retain both source labels and explain their locations rather than silently standardizing. |
 | 8 | هاوەڵ / ئامرازی عەتف (Conjunction) | 273–348 | Preserve the chapter's own grouping and numbered entries; crop-verified spellings take precedence over OCR. |
