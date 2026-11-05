@@ -109,7 +109,7 @@ PDF p. 398 is a contents page headed **پێڕست**. Its visible chapter map is:
 | 222 | 5 — جێناو |
 | 236 | 6 — ئاوەڵکار |
 | 254 | 7 — پێوەندینیش |
-| 273 | 8 — هاوەڵ (عطف / Conjunction) |
+| 273 | 8 — هاوەڵ (عەتف / Conjunction) |
 | 349 | 9 — ئامرازی (تعجب) |
 | 388 | وشەی سەرنجخۆ و وشەی بەستراو |
 | 392 | یەکەم — کۆمەک |
@@ -280,7 +280,7 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 ### Direct page-image observations
 - **PDF p. 309:** the page opens numbered subsection **10** under the conjunction material (the printed Kurdish subtype label is not yet safely transcribed). The text explicitly discusses how the cited authors/grammars treat this conjunction form, compares their analyses, and supplies Kurdish examples. The source itself therefore reports differing descriptions; its cited authorities must not be collapsed into a single uncontested rule.
 - **PDF p. 314:** begins numbered subsection **14** within the same conjunction discussion. It provides a definition/explanation and multiple numbered examples. The precise subtype label should be transcribed again from a higher-resolution crop before it is used as a lesson heading.
-- **PDF p. 326:** begins numbered subsection **20**, visibly headed **ئامرازی (هەر)ی عطف** (conjunction particle/form هەر). It distinguishes uses and gives examples; among its English glosses for the discussed quantifying/related forms are **any, every, each**. These are source-specific descriptions and need contextual transcription and independent validation before teaching.
+- **PDF p. 326:** begins numbered subsection **20**, visibly headed **ئامرازی (هەر)ی عەتف** (conjunction particle/form هەر). It distinguishes uses and gives examples; among its English glosses for the discussed quantifying/related forms are **any, every, each**. These are source-specific descriptions and need contextual transcription and independent validation before teaching.
 - **PDF p. 348:** the prose is a transition/introductory discussion immediately before the next section. It discusses an exclamatory category and includes the English term **Interjection**, consistent with the clear section heading on p. 349. The exact examples and definition still need manual transcription.
 
 ### Method and limitation
@@ -428,13 +428,13 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - **PDF p. 270:** continues the numbered inventory of prepositional forms and examples. Visible entries include **بە** and **تا** in separate numbered subsections, with sentence examples. The author also inserts a note about how a form's function is determined in context, and a further subsection begins with **(تا)**.
 - **PDF p. 271:** continues that subsection and introduces further numbered forms, visibly including **(وەک)** and **(بە)**, each with example sentences and an explanatory note. A further item **(بێ)** begins near the bottom and continues on the next page.
 - **PDF p. 272:** completes the discussion of **(بێ)** with example sentences, then gives a short explanatory paragraph about the grammatical status/function of the forms under discussion. This page contains no new chapter heading.
-- **PDF p. 273:** a new chapter begins with the printed heading **ئامرازی «عطف - Conjunction»**. This is the clear boundary after the preposition discussion.
+- **PDF p. 273:** a new chapter begins with the printed heading **ئامرازی «عەتف - Conjunction»**. This is the clear boundary after the preposition discussion.
 
 ### Findings and limits
 - The preposition discussion extends through PDF p. 272; the next chapter begins at p. 273. Do not end the chapter at p. 258, 264, or 269.
 - The pages show a sequence of individual forms (including بە، تا، وەک، بێ) treated with sentence examples. These must be taught through their constructions and contextual functions, not as a bare list detached from syntax.
 - The contents page p. 398 labels the p. 254 chapter **پێوەندینیش**, while the actual printed heading at p. 254 is **پریپۆزیشن / A Preposition**. The mismatch remains unresolved as a source-internal discrepancy; preserve both readings in the audit.
-- The next chapter's printed heading at p. 273 is **ئامرازی عطف - Conjunction**, whereas the contents page uses **هاوەڵ (عطف / Conjunction)**. Record this as another difference in wording between contents and printed heading; do not silently harmonize.
+- The next chapter's printed heading at p. 273 is **ئامرازی عەتف - Conjunction**, whereas the contents page uses **هاوەڵ (عەتف / Conjunction)**. Record this as another difference in wording between contents and printed heading; do not silently harmonize.
 - This is a structural visual review, not a full transcription. Before drafting lessons, transcribe the definitions, numbered form labels, examples, and final explanatory paragraph from high-resolution crops. The primary book remains the sole lesson source. Course 4 remains planned and inactive.
 - Next: begin sequential review of the conjunction chapter from PDF p. 273 onward, keeping the author's analysis distinct from the accounts attributed to other grammarians.
 
@@ -442,18 +442,18 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 ## Sequential visual review: conjunction chapter PDF pp. 273–278 (2026-11-05)
 
 ### Page-by-page observations
-- **PDF p. 273:** printed chapter heading **ئامرازی «عطف - Conjunction»**. The page begins a numbered survey of Kurdish grammarians' descriptions (items 1–7), with references to works and page numbers. These are attributed accounts, not a single unified definition endorsed by the author. The contents page p. 398 calls the chapter **هاوەڵ (عطف / Conjunction)**; preserve the wording difference.
-- **PDF p. 274:** continues the survey (items 8–10), including Arabic, Persian and English grammatical descriptions. The author adds a note that the terms **عطف** and **Conjunction** are not necessarily identical in every grammatical tradition and points to differences in how Kurdish grammarians have treated them. A second section begins, presenting the author's own discussion/definition; the page visibly distinguishes two broad patterns: connecting word(s) and connecting sentence(s). Examples and terminology need full transcription.
+- **PDF p. 273:** printed chapter heading **ئامرازی «عەتف - Conjunction»**. The page begins a numbered survey of Kurdish grammarians' descriptions (items 1–7), with references to works and page numbers. These are attributed accounts, not a single unified definition endorsed by the author. The contents page p. 398 calls the chapter **هاوەڵ (عەتف / Conjunction)**; preserve the wording difference.
+- **PDF p. 274:** continues the survey (items 8–10), including Arabic, Persian and English grammatical descriptions. The author adds a note that the terms **عەتف** and **Conjunction** are not necessarily identical in every grammatical tradition and points to differences in how Kurdish grammarians have treated them. A second section begins, presenting the author's own discussion/definition; the page visibly distinguishes two broad patterns: connecting word(s) and connecting sentence(s). Examples and terminology need full transcription.
 - **PDF p. 275:** continues the author's discussion with example sentences and a further account attributed to **نووری عەلی ئەمین** (name and bibliographic details require close transcription). The examples distinguish linking two words/phrases from linking larger sentence units. The source then quotes another account (item 4) and gives a long list of forms/examples; do not extract these as a definitive particle list until fully transcribed.
 - **PDF p. 276:** continues the list of forms and examples, then gives further author-attributed grammatical accounts (items 5–7). The text continues to compare different descriptions and definitions; keep citations and each scholar's classification separate.
 - **PDF p. 277:** begins item 8, citing a Persian grammar reference, and then item 9, explicitly naming *An English Grammar Book* by **Evan C. Penglis**. It prints the English definition: “A Conjunction Joins One Word to Another Word, or One Sentence to Another Sentence” and distinguishes **Co-ordinating** and **Subordinating** conjunctions. This is an English-language reference point, not automatically a complete Kurdish classification.
-- **PDF p. 278:** the author critically discusses the relationship between **ئامرازی عطف** and **ئامرازی پێوەندی/پێوەندی** (the exact form in the text should be crop-verified before quoting as a technical label). The discussion notes that some forms can appear to perform linking functions while their grammatical classification depends on construction and use. The author challenges the uncritical transfer of English/Persian labels and argues for examining Kurdish structures and their actual relations. This page continues the methodological discussion; no new chapter heading appears.
+- **PDF p. 278:** the author critically discusses the relationship between **ئامرازی عەتف** and **ئامرازی پێوەندی/پێوەندی** (the exact form in the text should be crop-verified before quoting as a technical label). The discussion notes that some forms can appear to perform linking functions while their grammatical classification depends on construction and use. The author challenges the uncritical transfer of English/Persian labels and argues for examining Kurdish structures and their actual relations. This page continues the methodological discussion; no new chapter heading appears.
 
 ### Findings and limits
 - The conjunction chapter begins at p. 273, but its opening pages are largely a survey of previous Kurdish, Arabic, Persian and English grammatical descriptions. A future course must clearly separate quoted/attributed positions from the book author's own analysis.
-- The source itself warns against treating **عطف / Conjunction** as an automatically uniform category across languages and grammatical traditions. Do not simply import the English coordinating/subordinating distinction as the full Kurdish system.
+- The source itself warns against treating **عەتف / Conjunction** as an automatically uniform category across languages and grammatical traditions. Do not simply import the English coordinating/subordinating distinction as the full Kurdish system.
 - The distinction between linking words/phrases and linking clauses/sentences is visible in the author's exposition, but the precise labels, examples and criteria require full transcription before becoming lesson content.
-- The contents heading **هاوەڵ** and printed heading **ئامرازی عطف** differ. Preserve both in the audit; do not silently harmonize.
+- The contents heading **هاوەڵ** and printed heading **ئامرازی عەتف** differ. Preserve both in the audit; do not silently harmonize.
 - This is a sequential structural review, not a full transcription. Exact scholar names, titles, page references, Kurdish technical terms and all example forms need high-resolution verification before drafting. The primary book remains the sole lesson source; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 279 onward, tracking the author's own analysis separately from the literature survey.
 
