@@ -203,3 +203,8 @@ For pp.93–95 and 106–120, use `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.
 - p.119–120: selected rows and lists only; column headings and the full attributed p.120 passage remain outstanding.
 
 These are transcription-status statements, not endorsements of the source's linguistic analysis. No lesson or quiz is authorized by this register.
+
+
+## p.119–120 crop-status correction (2026-11-05)
+
+The latest crop review now confirms the four paired rows on p.119 with their printed physical orientation (right column **دەبژێرم، دەژمێرم، دەسپێرم، دەشارمەوە**; left column **بژێردرام، ژمێردرام، سپێردرام، شاردرامەوە**). The parenthetical list beneath **٥- چاوکی دالی** is mostly legible, but **خڕین** remains provisional. On p.120 the opening attribution to مامۆستا مەسعود explicitly includes **(شاراندنەوە)**; the three paired forms remain provisional and the full attributed prose is not transcribed. These updates supersede older evidence-register summaries that described the p.119 paired rows as wholly unverified. See the latest controlling crop-review record for exact scope and uncertainty. No lesson-ready approval is implied.
