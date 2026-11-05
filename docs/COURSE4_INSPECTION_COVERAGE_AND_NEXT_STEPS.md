@@ -437,3 +437,10 @@ These are partial diplomatic transcriptions based on enlarged original page imag
 Original individual page images for pp.74–79 were inspected sequentially. The pages continue adjective classifications attributed to different grammarians; p.75 includes demonstrative and quantitative classes; p.76 includes numerical and indefinite forms; p.77 includes interrogative, verbal, and degree/grade adjective material plus a three-column comparison table; pp.78–79 continue comparative/superlative discussion and close the adjective section. Detailed page notes are recorded in `docs/COURSE4_VISUAL_REVIEW_ADJECTIVE_074_079.md`.
 
 This completes visual coverage of the planned adjective range pp.66–79, but does not complete diplomatic transcription or linguistic verification. In particular, p.77's three-column table and the dense explanatory prose on pp.77–79 require careful transcription. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Crop-level verification — adjective pp.77–79 (2026-11-05)
+
+The original page images were enlarged for a second pass. The three-column table on p.77 is now recorded in right-to-left source order as **پەلی چەسپیوو / پەلی بەراورد / پەلی باڵا**, with rows **گەورە / گەورەتر / گەورەترین** and **تازە / تازەتر / تازەترین**. The numbered discussion also distinguishes **ئاوەڵناوی کاری** into **ئاوەڵناوی بکەر** and **ئاوەڵناوی کراو**. The p.78 text explicitly prints **Superlative** and gives comparative/superlative examples; p.79 closes the adjective discussion with the labels **صفة** and **فعل**. See the crop-verification addendum in `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_069_073.md`.
+
+The dense explanatory paragraphs remain incomplete; this crop pass is not a full diplomatic transcription. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
