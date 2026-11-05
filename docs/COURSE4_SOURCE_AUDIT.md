@@ -166,3 +166,15 @@ These works are not additional curriculum books. They are independent checks to 
 
 ### Next review target
 - Continue individual-page inspection through PDF pp. 121–160, with priority to headings, paradigm tables, and examples; then review pp. 161–221 before reaching the next chapter boundary at p. 222.
+
+### Additional individual-page inspection: PDF pp. 130, 140, 150, 160
+
+- **PDF p. 130:** the page discusses verbal constructions and examples involving forms such as **توانین** (ability/can) and related forms. Treat these as possible modal/auxiliary constructions for analysis; do not assume that the book's own label maps exactly to a modern modal category.
+- **PDF p. 140:** the visible discussion includes verb forms and paradigms, with a distinction between forms that appear to be inflectional patterns and the source's grouping of them. The examples need full context before any rule is transcribed.
+- **PDF p. 150:** the section is explicitly concerned with negative forms/negation; examples visibly contrast forms with and without a negative marker, including **نە-**. This gives a clear candidate topic for a later lesson, but the distribution and interaction with tense/aspect still need independent validation.
+- **PDF p. 160:** continues the negative-verb discussion and contrasts forms with a negative prefix and forms treated as positive. The page includes paradigmatic examples; their exact person/tense values must be checked against the preceding pages and dialect.
+
+### Updated coverage statement
+- Individual-page images now directly inspected in this review block: PDF pp. 81, 88, 93, 112, 113, 120, 130, 140, 150, and 160. These are spot checks across the 81–160 range, not exhaustive reading of all 80 pages.
+- Topics now identified in the source for later detailed study: verb definitions, inflection/paradigms, infinitive and imperative forms, transitivity labels, active/passive voice, auxiliary/modal-like constructions, and negation.
+- No complete lesson, final grammar rule, or teaching sequence has been written from this block. Exact source wording and examples still need systematic transcription, then independent checking.
