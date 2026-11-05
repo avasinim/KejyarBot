@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render review contact sheets for Course 4 PDFs without altering sources."""
+"""Render review contact sheets and readable page images for Course 4 PDFs."""
 from pathlib import Path
 import json
 import fitz
@@ -7,7 +7,15 @@ from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "source-extract" / "course4" / "previews"
+PAGE_OUT = OUT / "individual_pages"
 OUT.mkdir(parents=True, exist_ok=True)
+PAGE_OUT.mkdir(parents=True, exist_ok=True)
+
+def render_page(doc, page_no, output):
+    page = doc[page_no - 1]
+    pix = page.get_pixmap(matrix=fitz.Matrix(1.35, 1.35), alpha=False)
+    img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+    img.save(output, format="JPEG", quality=91, optimize=True)
 
 def sheet(pdf_name, pages, prefix):
     doc = fitz.open(ROOT / pdf_name)
@@ -32,10 +40,25 @@ def sheet(pdf_name, pages, prefix):
         canvas.save(path, quality=88, optimize=True)
 
 def main():
-    sheet("ڕێزمانی ڕاناوی لكاو.pdf", list(range(1, 33)), "suffix_pronouns")
-    sheet("Rezmany_axawtny_kurdy.pdf", list(range(1, 33)) + list(range(380, 401)), "main_grammar")
+    suffix_name = "ڕێزمانی ڕاناوی لكاو.pdf"
+    main_name = "Rezmany_axawtny_kurdy.pdf"
+    suffix_pages = list(range(1, 33))
+    main_pages = list(range(1, 33)) + list(range(380, 401))
+    sheet(suffix_name, suffix_pages, "suffix_pronouns")
+    sheet(main_name, main_pages, "main_grammar")
+
+    # Full readable page renders: every page of the short source, plus the
+    # opening and closing sections of the main grammar for manual inspection.
+    for pdf_name, pages, prefix in (
+        (suffix_name, suffix_pages, "suffix"),
+        (main_name, main_pages, "main"),
+    ):
+        doc = fitz.open(ROOT / pdf_name)
+        for page_no in pages:
+            render_page(doc, page_no, PAGE_OUT / f"{prefix}_page_{page_no:03d}.jpg")
+
     report = {}
-    for name in ("Rezmany_axawtny_kurdy.pdf", "ڕێزمانی ڕاناوی لكاو.pdf"):
+    for name in (main_name, suffix_name):
         doc = fitz.open(ROOT / name)
         report[name] = {
             "pages": len(doc),
@@ -48,7 +71,7 @@ def main():
     (OUT / "pdf_diagnostics.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print("Rendered visual review sheets and PDF font diagnostics.")
+    print("Rendered contact sheets, individual review pages, and PDF diagnostics.")
 
 if __name__ == "__main__":
     main()
