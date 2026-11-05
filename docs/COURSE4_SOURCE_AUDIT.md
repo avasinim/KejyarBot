@@ -818,3 +818,50 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The visual review of the main source book is now complete through PDF p. 400. This does not mean every dense form-list has been fully transcribed: those still require enlarged, character-by-character verification before any form is copied into a lesson.
 - No Course 4 lesson content has been drafted or activated. The course remains planned and inactive; no other course, main branch, production database, or Botkeep deployment was changed.
 - Next: consolidate the source audit into a source map and a list of unresolved crop-level readings; do not create or activate lessons until the user approves the course structure.
+
+
+## Consolidated source map and unresolved verification register (2026-11-05)
+
+### Source map — printed structure, not a proposed lesson sequence
+
+| PDF pages | Printed topic / scope | Audit status |
+|---|---|---|
+| 3–10 | Title, publication data, introductory/foreword material | Visually reviewed; bibliographic attribution and some introductory wording still need exact transcription |
+| 11–24 | **ناو**; noun definitions, simple/compound forms and multiple classification traditions | Structural pass completed; examples and taxonomies need line-by-line transcription and validation |
+| 25–65 | **ڕاناو**; personal pronoun subsection begins p. 30; subsequent pronoun material | Broad structure inspected; paradigms and classifications require detailed verification |
+| 66–79 | **ئاوەڵناو** | Contents boundary verified; detailed rule/example audit still needed |
+| 80–111 | **کار** | Verb chapter; broad sample inspected, but full paradigm and subsection mapping remains incomplete |
+| 112–221 | **کاری کاردار و کاری کاربێژ** and extended verb material | Active/passive section boundary confirmed; samples of modal-like forms, negation, imperative and verb paradigms inspected; full transcription/validation remains incomplete |
+| 222–235 | Printed heading **چاوگ**; contents p. 398 says **جێناو** | Material heading discrepancy unresolved; preserve both readings; no lesson label until resolved |
+| 236–253 | **ئاوەڵکار** | Structural review completed; taxonomy and examples need exact transcription and validation |
+| 254–272 | Printed heading **پریپۆزیشن / A Preposition**; contents says **پێوەندینیش** | Heading discrepancy unresolved; source's comparisons and context-sensitive examples need detailed validation |
+| 273–348 | **ئامرازی عەتف / Conjunction**; attributed grammarians and author's own functional analysis | Sequential visual review completed; dense lists and uncertain particle headings require enlarged crops |
+| 349–387 | **ئامرازی تعجب / Interjection**, then numbered forms and comparisons | Sequential visual review completed; exact forms in dense lists require crop-level transcription |
+| 388–397 | **وشەی سەربەخۆ و وشەی بەستراو**, bound elements, **پێشگر** and related forms | Sequential visual review completed; exact bound-form terminology and inventories require crop-level transcription |
+| 398 | **پێڕست** | Contents page visually reviewed; contains at least two internal heading/page discrepancies |
+| 399–400 | Blank/end pages | Visually reviewed; no further grammatical content observed |
+
+### Priority unresolved items before lesson drafting
+
+1. **Chapter title/page discrepancy at p. 222:** contents says **جێناو**, while the page's printed heading reads **چاوگ**. Reinspect a high-resolution crop of p. 222 and the contents entry on p. 398; if the scan remains ambiguous, mark it unresolved rather than infer.
+2. **Chapter title/page discrepancy at p. 254:** contents says **پێوەندینیش**, while the printed heading reads **پریپۆزیشن / A Preposition**. Verify both exact glyph sequences from enlarged crops and retain the discrepancy in the audit.
+3. **Source-internal category grouping:** p. 347 presents **کار** and **چاوگ** separately, while pp. 373 and 389 group them in a parenthetical construction. The source's differing presentations must be taught as a documented inconsistency, not silently harmonized.
+4. **Terminology on pp. 392–395:** the bound-word diagram and the terms transcribed provisionally as **کیرەک / کیریۆک** need enlarged character-by-character verification. Do not pick one spelling by guess.
+5. **Dense conjunction inventories, pp. 279–348:** several numbered particle headings remain uncertain in the existing page notes, particularly p. 306 and pp. 314–318, plus detailed subgroups on pp. 332–337. Crop and transcribe before using any as lesson headings.
+6. **Dense Interjection inventories, pp. 354–373:** some forms/headings are not yet securely legible; exact spellings and numbered boundaries need crop-level review.
+7. **Prefix/suffix inventories, pp. 377–397:** many lists are legible structurally but not yet fully transcribed. Do not copy long lists into course content before high-resolution checking.
+8. **Noun/pronoun/adjective/verb paradigms, pp. 11–221:** the structural scan is not a complete content audit. Prioritize exact tables, person/number forms, and source-specific labels if those topics are selected for the course.
+9. **Bibliographic metadata:** transcribe the title/publication page and the editorial signature on p. 10 carefully; do not infer author/editor attribution from incomplete marks.
+10. **Dialect/register scope:** the book's title explicitly concerns spoken Kurdish. Identify the actual variety/register represented by each paradigm and example; do not generalize across Kurdish varieties without evidence.
+
+### Source integrity and curriculum gate
+- The only curriculum-content book remains **ڕێزمانی ئاخافتنی کوردی**.
+- **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded from Course 4 lesson content.
+- Independent linguistic literature may be used only as a separate validation layer. A validation result must cite the external work and identify whether it confirms, qualifies, or challenges a claim in the primary source.
+- No course outline, lesson title list, lesson text, quiz, infographic, or runtime content is approved by this audit. The user must review and approve the proposed structure before lesson drafting.
+- Course 4 remains planned, with zero lessons. Do not activate it, alter other courses, merge branches, modify production data, or deploy to Botkeep without explicit authorization.
+
+### Recommended next work sequence
+1. Perform enlarged-crop verification for the priority unresolved items above, beginning with the two chapter-heading discrepancies and bound-word terminology.
+2. Produce a concise evidence table for each candidate topic: exact source page, exact printed heading, representative source examples, author vs attributed scholar, dialect/register scope, unresolved readings.
+3. Only after that, propose a course structure for user approval. Do not pre-empt approval by writing lessons.
