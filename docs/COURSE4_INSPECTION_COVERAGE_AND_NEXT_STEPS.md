@@ -159,7 +159,7 @@ This section is the current source of truth where older dated notes above descri
 - **pp.80–120:** sequential visual page review is complete, as recorded in `COURSE4_VISUAL_REVIEW_080_120.md`.
 - **pp.93–95:** selected headings and a limited set of rows have been transcribed. Other table rows remain outstanding.
 - **p.106:** all 17 numbered rows have been visually transcribed in the crop-review record. The separate note beneath the table remains untranscribed. This is source transcription, not linguistic validation or lesson approval.
-- **pp.112–120:** structural review is complete. Selected rows from tables on pp.112 and 115–118 have been transcribed; p.119's paired forms remain unverified, and p.120's three pairs and table heading remain provisional. The attributed prose by مامۆستا مەسعود محەمەد has not been transcribed.
-- **Next focused task:** resolve p.119's table rows and p.120's table heading from sharper original crops; then transcribe the separately attributed p.120 passage without merging it with the preceding examples.
+- **pp.112–120:** structural review is complete. Selected rows from tables on pp.112 and 115–118 have been transcribed. On p.119, the heading **٥- چاوکی دالی** is visually confirmed, but its paired-form tables remain untranscribed. On p.120, the three pairs **بوتێرا / بوتێردرا**, **بوورا / بووردرا**, and **ژمێرا / ژمێردرا** are visually clearer; the column headings remain unavailable in the crop. The separately attributed prose by مامۆستا مەسعود محەمەد has not been diplomatically transcribed.
+- **Next focused task:** transcribe p.119's paired tables from a sharper source, then capture the p.120 table headings and diplomatically transcribe the attributed passage without merging it with the preceding examples.
 
 Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activation, or runtime/deployment changes are authorized by this audit work.
