@@ -509,3 +509,10 @@ This is visual structure review only. Dense prose and all compact tables/example
 Original page previews pp.116–120 were inspected individually. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_116_120.md`. These pages continue the numbered infinitive patterns and passive-past comparisons, including **چاوگی تەڵفی**, **چاوگی یانی**, **چاوگی تانی**, and **چاوگی دالی**. p.120 includes a separate numbered section and an attributed passage by **مامۆستا مەسعود** concerning **شاراندنەوە**.
 
 This remains visual review rather than complete diplomatic transcription. Long infinitive inventories, aligned examples, and the attributed passage require line-by-line crop verification. Compare p.119–120 readings against the earlier crop-recheck record and resolve discrepancies only from source images. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.121–126 (2026-11-05)
+
+Original individual page previews pp.121–126 from the recovered `course4-source-text` artifact were reopened and inspected in sequence. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_121_126.md`. The pages continue the passive-form discussion, including **(اندن)** derivations, passive imperative forms, and then open a new topic **کاری یاریدەر — Auxiliary Verbs**. p.126 includes attributed discussion by **مامۆستا تۆفیق وەهبی**, the labels **کارەدانی لازم / کارەدانی متعدی**, and example sentences.
+
+This is visual review only, not complete diplomatic transcription or independent validation. Preserve each numbered derivation, comparison table, attribution, and example list as separate evidence units. Next, transcribe pp.121–126 line by line, then continue the auxiliary-verb discussion on p.127. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
