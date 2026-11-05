@@ -129,7 +129,7 @@ Workflow ـی workflow_dispatch لە شاخه‌ی audit هەیە، بەڵام G
 | بەرگی ٥.pdf | 23,582,335 bytes | بەشی ٥ (کردار)، 376 لاپەڕە؛ کوردیپێدیا 22.49 MB / 376 لاپەڕە | هاوتاییی قەبارە و ژمارەی لاپەڕە بەهێزە |
 
 سەرچاوەی کاتەلۆگی زیادە:
-- پەڕەی کتێبی ڕێزمانی کوردی لە ماڵپەڕی ڕێزمانی کوردی، بە قەبارە و ژمارەی لاپەڕەی بەشەکانی ١ تا ٥: https://rezmanikurde.blogspot.com/2018/11/blog-post.html
+- پەڕەی کتێبی ڕێزمانی کوردی لە ماڵپەڕی ڕێزمانی کوردی، بە قەبارە و ژمارەی لاپەڕەی بەشەکانی ١ تا ٥: https://rezmanikurde.blogspot.com/2018/11/blog-post_10.html
 - تۆماری بەشی سێیەم لە ژینلیبرەری، 154 لاپەڕە و 4.41 MB: https://www.zheenlibrary.com/opac/index.php?id=9305&lvl=SubjHead_see
 - تۆماری کوردیپێدیا بۆ بەشی چوارەم و پێنجەم، بە قەبارە و ژمارەی لاپەڕە: https://www.kurdipedia.org/default.aspx?lng=1&q=2013072221294289509 و https://www.kurdipedia.org/default.aspx?lng=1&q=2013072522403591588
 
