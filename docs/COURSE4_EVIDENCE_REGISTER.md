@@ -10,6 +10,14 @@ In particular: p.106's 17 numbered rows are transcribed (only the note below rem
 
 These are transcription-status corrections only. No claim is thereby independently validated or approved for teaching. Course 4 remains planned with zero lessons pending explicit approval of the proposed outline.
 
+## Current controlling release boundary — 2026-11-05
+
+This evidence register and its proposed curriculum records exist only on `reset/grammar-course4-content`. The current `main` branch intentionally has no Course 4 catalogue entry; commit `e691feb6` removed the prior planned entry. Any `planned` Course 4 metadata described in this branch is branch-local audit metadata, not live runtime state. Do not infer that Course 4 should be restored to the live catalogue. Explicit user approval and a separate compatibility review are required before any such change. The audit branch is divergent from `main` and is not a release candidate.
+
+## p.94 current crop correction
+
+The controlling crop record confirms both table headings right-to-left as **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**. In the upper table, the roots and first/third example pairs are recorded; for the second row only the right example **منداڵەکە خەوت** is certified. The corresponding left example is not certified. Do not use **منداڵەکەم خوارد** or any guessed replacement. See the final reconciliation in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`.
+
 ## Adopted source boundary
 The sole curriculum source remains **ڕێزمانی ئاخافتنی کوردی** (400-page PDF). **ڕێزمانی ڕاناوی لکاو.pdf** is excluded from lesson content. Independent linguistic publications may validate or challenge claims, but must remain a separate validation layer.
 
