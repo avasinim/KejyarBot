@@ -1284,3 +1284,26 @@ This corrects any earlier working note that described the primary PDF as unavail
 The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
 
 The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
+
+
+## Current extraction and coverage correction — 2026-11-05
+
+This section supersedes the earlier **Extraction reliability** paragraph above where it conflicts with the recovered primary-source extraction artifact. The primary PDF is present in the repository and a successful extraction run on this isolated branch is recorded:
+
+- Workflow run: `41994304338`
+- Workflow head: `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`
+- Artifact: `course4-source-text` (ID `13398729502`)
+- Primary PDF: 400 pages; extraction report records 397 embedded-text pages, 3 OCR pages (PDF pp.2, 399, 400), and 0 unreadable pages reported.
+- The three OCR-designated pages remain marked unverified in the extraction report. Their page previews were checked and appear blank apart from page/scan marks; this does not reclassify the extraction report.
+- The separate 32-page `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded from Course 4.
+
+Extraction-method counts do not establish page-by-page visual review, exact transcription, or linguistic validation. The TXT output remains a navigation aid; original page images govern all transcription.
+
+### Updated page-level coverage
+
+- pp.80–120: sequential visual page review completed; focused crop transcriptions exist for selected parts of pp.93–95, p.106, and pp.112–120.
+- pp.112–221: sequential visual review recorded; selected table rows and paradigms only have crop-level transcription.
+- Remaining p.106 note, p.95 examples beyond **وەک**, and the complete attributed p.120 passage remain outstanding.
+- See `COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md` and `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` for controlling current detail.
+
+No extraction count is treated as evidence that a page's grammar claims are correct. Course 4 remains planned/inactive with zero lessons; no lesson, quiz, activation, or runtime/deployment change is authorized by this audit.
