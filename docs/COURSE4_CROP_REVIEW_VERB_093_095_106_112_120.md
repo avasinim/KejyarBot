@@ -110,3 +110,16 @@ A closer inspection of the row crops requires a correction to the previous parti
 - **Item 9** is now readable with high visual confidence as **پچڕان** in the right-hand **تێنەبەر** column and **پچڕین** in the left-hand **تێپەڕ** column.
 
 Accordingly, the current high-confidence partial list is items 1 (**کەوتن / خستن**), 3 (**چوون / بردن**), and 9 (**پچڕان / پچڕین**). Item 8 remains explicitly unresolved. No other row from this crop pass is promoted to verified transcription.
+
+
+## p.93 — verified readings from enlarged table crops
+
+The enlarged p.93 image supports the following limited transcriptions:
+
+1. In the middle three-column table, the first row is legible as **فعلی لازم: کەوتن / ڕەگ: کەو / فعلی متعدی: خستن**. This is a verified row only; the other rows in this table remain pending character-level confirmation.
+2. In the lower two-column table, the column headings are **فعلی لازم** (right) and **فعلی متعدی** (left). The three visible pairs read:
+   - **سووتان → سووتاندن**
+   - **قڵیشان → قڵیشاندن**
+   - **کەڕان → کەڕاندن**
+
+These forms are transcribed as printed in the enlarged crop, without normalization. The upper four-column table and remaining rows in the middle table are not promoted to verified transcription in this pass.
