@@ -1122,3 +1122,38 @@ The user explicitly corrected the source reading to **گیرەک**. This spellin
 The unresolved-verification register has also been cleaned up: the alleged p. 222 and p. 254 contents/page-heading discrepancies were already disproved by enlarged inspection and are no longer listed as open issues. The remaining p. 392–395 task is semantic and structural transcription of the author's account, not deciding the spelling. The genuine source-internal grouping difference for **کار / چاوگ** remains open for careful explanation.
 
 Editorial terminology for this chapter follows the user's preference **سەرسووڕمان**; retain the source's original wording only when a diplomatic quotation is necessary. Course 4 remains planned, with zero lessons; no course content, quizzes, activation, deployment, or changes to other courses were made.
+
+
+## Enlarged visual review: گیرەک, PDF pp. 392–395 (2026-11-05)
+
+The original page images for pp. 392, 393, 394 and 395 were reopened and enlarged. The user's corrected spelling **گیرەک** is confirmed throughout. This review adds structural observations; it is not a complete diplomatic transcription of every tightly printed example.
+
+### PDF p. 392 — word hierarchy and definition
+- The diagram places **وشە** at the top and divides it into **سەربەخۆ** and **بەستراو**.
+- The **بەستراو** branch is divided into **ئامراز، گیرەک، نیشانە**. Preserve these three as the author's own subdivisions of bound forms.
+- The prose introduces a definition of **ئامراز** and then discusses **گیرەک** separately. Do not collapse the three branches into synonyms.
+- The source explicitly distinguishes two positional types of گیرەک: one that occurs **before the word** and one that occurs **after the word**. This is the secure structural core of the page.
+- The paragraph immediately below begins a source-attributed explanation/example sequence. Its bibliographic line and full quotation should be transcribed separately before being cited.
+
+### PDF p. 393 — examples and authorial analysis
+- The page continues the discussion of **گیرەک** with prose about Kurdish usage and examples. It then presents numbered examples/constructions, beginning with three entries.
+- The visible examples include forms headed **بواردن**, **بزووتن**, and **پشکوتن** (retain as provisional visual readings until checked against the full sentence context and source spelling). The source gives each a construction and explanatory sentence; do not treat these as a simple list of detachable affixes.
+- The author discusses limitations in transferring examples from other grammatical descriptions into Kurdish; the examples must remain tied to the author's stated context.
+
+### PDF p. 394 — continuation of numbered examples
+- The numbered sequence continues with items **4–9**. The page presents further examples and short contextual comments.
+- Several item labels and forms are compact and visually ambiguous even in the enlarged preview. They are deliberately not normalized or copied into a teaching inventory here.
+- The lower paragraph turns from the examples to a methodological observation about the usefulness/limits of the cited examples for Kurdish grammar. Preserve this qualification with the preceding inventory.
+
+### PDF p. 395 — terminology in other Kurdish grammars and prefix/suffix distinction
+- The page cites **دراسات لغات** and **مسعود محمد**. This is an attributed reference and must not be conflated with the main book's own unmarked voice.
+- The text reports that Kurdish grammarians have used multiple labels for additions before and after a word. For additions before the word it lists variants including **پێشگر** and other competing terms; for additions after the word it lists **پاشگر** and other competing terms. The variants are evidence of terminological plurality in the cited tradition, not necessarily exact synonyms in every author's framework.
+- The page explicitly mentions **Infix** in its discussion of internal insertion/placement. This is a comparative grammatical term appearing in the author's explanation; do not infer that the source has established a productive Kurdish infix paradigm without examining the examples.
+- A following section begins **١ ـ پێشگر** and offers a definition. The definition and subsequent inventory continue beyond p. 395.
+
+### Evidence limits and teaching implications
+1. Securely supported: the author's diagram of independent/bound word classes; the three bound subclasses; the two positional subtypes of **گیرەک**; and the distinction between additions before and after a word in the later terminology discussion.
+2. Not yet secure for lesson copying: every item in the numbered example inventories on pp. 393–394, all variant terms reported on p. 395, and a complete account of the author's use of **Infix**.
+3. Do not equate **گیرەک** automatically with a single modern morpheme category. Any such mapping needs a separate linguistic analysis and should be labelled as analysis, not source transcription.
+4. Keep the citation to **مسعود محمد / دراسات لغات** attributed and bibliographically distinct from the main source book.
+5. Course 4 remains planned and inactive, with zero lessons. This review does not draft lessons, quizzes, or runtime changes.
