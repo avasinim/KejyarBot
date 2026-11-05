@@ -492,3 +492,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Pages 288–289 cite individual Kurdish grammarians and works. Their views must be kept separate and accurately attributed; bibliographic names/titles and quotations need close crop-by-crop verification.
 - This is a sequential structural review, not a complete transcription. Exact forms in the headings, the note on p. 286, the examples, and the bibliographic references remain to be transcribed from high-resolution crops before lesson drafting. Course 4 remains planned and inactive; no lesson content has been created or activated.
 - Next: continue sequentially from PDF p. 291 onward.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 291–296 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 291:** continues the author's analysis of **(ش)** with two numbered construction/example groups, then moves to a separate heading for **(و)**. The examples are sentence-based and the text discusses how the forms connect elements in context.
+- **PDF p. 292:** continues the section on **(و)** with paired examples and a note distinguishing constructions. A new heading then introduces **(کە)**, followed by three numbered examples. The author comments on whether the form is functioning as a connective in the cited sentences.
+- **PDF p. 293:** continues the **(کە)** examples and authorial discussion, then introduces a separate subsection on **(بەڵام)**. The page includes several sentence examples and a further subsection on another form; the exact heading/particle in the latter requires a high-resolution crop before transcription.
+- **PDF p. 294:** continues the preceding analysis, then introduces further numbered sections, including visible forms **(نە)** and **(نەک)**. The prose explicitly considers the functions of these forms in the sentence and gives examples. The exact numbering and full wording should be transcribed before being used in a lesson.
+- **PDF p. 295:** continues the **(نەک)** discussion with examples and a note comparing forms/uses, then introduces a separate subsection on **(تا)** with four numbered examples. The author comments on the role of **(تا)** in the constructions rather than merely listing it.
+- **PDF p. 296:** introduces a subsection on **(کەی)** with two examples, then another on **(چونکە)** with eight numbered examples. The author follows these with a paragraph on how the form operates in Kurdish sentences. This is still within the conjunction chapter.
+
+### Findings and limits
+- These pages give concrete evidence that the source's author analyzes individual forms (including **(ش)، (و)، (کە)، (بەڵام)، (نە)، (نەک)، (تا)، (کەی)، (چونکە)**) through numbered sentence examples and construction-specific commentary.
+- The same visible form may be discussed according to its function in a particular construction; it is not safe to treat every occurrence as an automatic instance of the same grammatical class. Preserve the source's examples and qualifications.
+- The particle headings above are a cautious reading of the page images, not a complete diplomatic transcription. In particular, the subheading on p. 293 after **(بەڵام)** and exact numbering/wording on pp. 293–295 require high-resolution crops. Do not create lesson text or a final taxonomy from this summary alone.
+- The book's Kurdish spelling convention is followed in this audit: write **عەتف**, never **عطف**, in Kurdish prose. Preserve Arabic-script quotations only when quoting the source verbatim and explicitly marking them as such.
+- This is a sequential structural review, not a complete transcription. Course 4 remains planned and inactive; no lessons have been drafted or activated.
+- Next: continue sequentially from PDF p. 297 onward.
