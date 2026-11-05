@@ -1318,3 +1318,17 @@ This note is the controlling status for the p.254 chapter label and supersedes a
 - The two printed locations agree. The older reading **پێوەندینیش** for contents item 7 was an audit/transcription error and is withdrawn; it must not be repeated as a source-internal discrepancy.
 
 The separate p.222 / p.398 heading check is likewise resolved as **چاوگ** at both locations, as recorded in the later enlarged-image reconciliation above. These corrections establish only what the two printed headings say; they do not establish theoretical equivalence or approve the proposed course outline. Course 4 remains planned/inactive with zero lessons pending explicit user approval.
+
+
+## Controlling verb-page transcription status — 2026-11-05
+
+Use this reconciliation together with the final page-specific note in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`. It supersedes older summaries in this long audit wherever they conflict:
+
+- **p.93:** two separate four-column tables have been transcribed row by row. Keep group, intransitive form, root, and transitive form aligned; the root cell for **هاتن** is blank in the printed source. Do not flatten these into two-column pairs.
+- **p.94:** both table headings and lower-table example pairs are transcribed. The second upper-table left example remains unresolved; **منداڵەکەم خوارد** is a withdrawn guess, not source evidence.
+- **p.95:** all three table rows and the heading/opening of the following **(اندن)** rule are transcribed. Examples after **وەک** remain clipped and unavailable.
+- **p.106:** all 17 numbered rows are transcribed. The note immediately below the table remains open.
+- **p.119:** four aligned right/left rows and the parenthetical infinitive list are transcribed. **خڕین** remains provisional; the preceding table remains unresolved; do not invent grammatical column labels.
+- **p.120:** the three pairs remain provisional; headings are not known; the full attributed passage by مامۆستا مەسعود محەمەد remains untranscribed.
+
+The remaining source-image queue is therefore: p.106 note; p.95 examples after **وەک**; p.120 full-width table and attributed passage; unresolved cells on pp.93–94; and the separate preceding table on p.119. Continue only from accessible original page images/crops. The extraction text is navigation aid only. These transcriptions are not independent linguistic validation and do not approve lesson use. Course 4 remains planned/inactive with zero lessons; no lesson, quiz, activation, or runtime/deployment change is authorized.
