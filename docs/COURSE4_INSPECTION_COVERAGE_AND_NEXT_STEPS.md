@@ -530,3 +530,10 @@ This is visual structure review, not complete diplomatic transcription or indepe
 The original individual page previews pp.133–138 were extracted from the recovered Actions artifact and inspected one by one. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_133_138.md`. These pages continue the auxiliary/verb discussion with numbered items and attributed accounts, then move into tense/form classifications and open **پێنجەم — کاری لە ڕووی دارشتنەوە (صیغە)** on p.138, including aligned paradigms.
 
 The exact p.133 heading for section **چوارەم** and one label on p.135 remain provisional. Keep the attributions to **مامۆستا سەعید سەقفی، مامۆستا تۆفیق وەهبی، مامۆستا سادق، مامۆستا مەزار، مامۆستا عەلی تەمیم، مەسعود،** and **نەسرین فەخری** distinct. This is visual review only, not full transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.139–144 (2026-11-05)
+
+Pages 139–144 were extracted from the verified `course4-source-text` Actions artifact and inspected individually at original preview resolution. Structural observations and transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_139_144.md`. These pages continue the paradigms from p.138, include the numbered groups 449–451 and attributed remarks, present six form/category labels (**ئێنجاری، التزامی، ئەمری، شرطی، مصدری، وصفی**), distinguish **کاری ڕابردوو** into two printed types, and open **یەکەم — کاری ڕابردووی ڕەها (مطلق)** on p.144 with separate upper/lower Kurmanji treatments.
+
+The p.139 heading for group 449 and several compact paradigm forms remain provisional pending crop-level reading. This is visual structure review only, not full diplomatic transcription or independent grammatical validation. Preserve the original column order, dialect labels, footnotes, and speaker attributions. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
