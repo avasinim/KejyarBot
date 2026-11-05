@@ -472,3 +472,12 @@ This is visual coverage only. Attributed definitions, examples, and the separate
 Original individual page images pp.86–91 were inspected sequentially. The pages continue discussion of **ناوی فاعیل / ناوی مەفعول**, introduce a subsection read provisionally as **کاری تێنەبەر**, give examples and explanatory notes, show side-by-side form lists on p.88 and a three-column comparison on p.89, then discuss a subsection read provisionally as **کاری تێپەڕ** with examples on pp.90–91. Page-level observations and unresolved readings are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_086_091.md`.
 
 This is visual coverage only; tables and dense prose remain to be transcribed and verified from line-level crops. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Renewed original-image check and verb page review — pp.92–97 (2026-11-05)
+
+The recovered `course4-source-text` artifact was downloaded again and the original individual page previews for pp.119–120 were reopened. A crop-level recheck is recorded in `docs/COURSE4_CROP_RECHECK_VERB_119_120.md`. The four aligned p.119 rows and their right/left orientation remain visually confirmed; **خڕین** remains provisional in the separate parenthetical list. The p.120 three paired rows remain provisional and have no confirmed column labels. The attributed passage begins **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...**; the full passage is still not diplomatically transcribed.
+
+Original page previews pp.92 and 96–97 were also reopened; pp.93–95 were reconciled against the existing crop-review record. Page-level observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_092_097.md`. p.92 contains a note, an attributed passage, and a separate numbered discussion. pp.96–97 continue attributed accounts and include a vertically aligned example list. These are separate evidence blocks, not one unified rule.
+
+**Current next task:** transcribe p.92's note and attributed passages, then pp.96–97's attributed prose and example list line by line, preserving attribution and uncertainty. Keep the outstanding p.119/p.120 items open as listed in the crop-recheck record. No new claim of complete transcription or independent linguistic validation is made. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
