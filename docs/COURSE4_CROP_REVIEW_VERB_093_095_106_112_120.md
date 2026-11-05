@@ -469,3 +469,27 @@ The dash for **هاتن** means the root cell is blank in the printed table; it 
 ## p.95 — paragraph crop boundary
 
 The lower prose crop confirms the heading **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** and the opening sentence **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples continue beyond the left edge of the supplied crop, so no example is transcribed from this partial image. The word **ڕابردووانە** is recorded as seen in this crop; retain the original orthography.
+
+
+## p.94 and p.95 — second-pass corrections from the supplied sharper crops (2026-11-05)
+
+### p.94 — table headings and examples
+
+The sharp crop confirms the headings right-to-left in both blocks as **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**. The upper table's root column reads:
+
+1. **(کلا + اند)** — right example **سوارەکە کلا**; left example **سوارەکەم کلاند**.
+2. **(خو + اند)** — right example **منداڵەکە خەوت**; left example's final verb is not sharp enough to certify; do not retain the earlier guessed **خوارد/خۆراند** as a settled reading.
+3. **(وەر + اند)** — right example **کەلاگە وەری**; left example **کەلاگەم وەراند**.
+
+The lower table's root column reads **وەر + ین** and **شک + ین**. The corresponding example columns visually read:
+
+- Right: **سەکەکە نەوەرێ**; left: **سەکەکەم نەوەرێنم**.
+- Right: **شووشەکە نەشکێ**; left: **شووشەکەم نەشکێنم**.
+
+These are transcribed as seen in the crop, without normalization. If a later full-page/high-resolution check yields a different character reading, append a correction rather than silently overwriting the source record.
+
+### p.95 — heading correction
+
+The sharp lower crop shows the heading as **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**. This supersedes the earlier transcription **بە کتایی کارەوە**; the first word after **بە** is **کۆتایی**, not **کتایی**.
+
+The opening rule reads **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples following **وەک** are still clipped by the crop boundary and remain untranscribed.
