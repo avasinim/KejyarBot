@@ -1095,3 +1095,23 @@ Use **سەرسووڕمان** as the Kurdish explanatory label in our notes and a
 3. The headings on pp. 364–365 and some forms in the inventories need close crops before exact quotation. The present record intentionally marks uncertain readings as provisional.
 4. Keep **سەرسووڕمان** as the Kurdish term in our editorial voice. Preserve source quotations as printed when necessary, with a Kurdish explanation.
 5. Course 4 remains planned and inactive. This review does not create lessons, quizzes, or runtime changes.
+
+
+## Sequential visual review: Interjection chapter close, PDF pp. 368–373 (2026-11-05)
+
+In editorial Kurdish prose, use **سەرسووڕمان** as requested by the user. The Arabic-script source label may be quoted diplomatically only when necessary.
+
+### Page-by-page verification
+- **PDF p. 368:** closes the preceding entry's examples, then starts **18 ـ ئامرازی (پەکوو ـ پەک)**. The author surveys treatments by سەعید سەدقی، توفیق وەهبی، نووری عەلی ئەمین، and جەگرخۆین, citing different grammar works and page numbers. These are attributed positions, not one unified definition. The author's examples and comments continue onto p. 369.
+- **PDF p. 369:** continues examples and discussion for item 18, then starts **19 ـ ئامرازی (دەک، تەک، هەک)**. It presents examples and attributed descriptions from توفیق وەهبی، نووری عەلی ئەمین، and جەگرخۆین. The three forms are grouped in this entry by the source, but do not assume identical distribution without checking each example.
+- **PDF p. 370:** continues item 19 with a further attributed account, then begins **20 ـ ئامرازی (پەچ، پەچا)**. The page gives several source-attributed interpretations and contextual examples. Keep the author names, cited works, and page references attached to the claims they support.
+- **PDF p. 371:** begins **21 ـ ئامرازی (پیاچ، پێچ)** and then **22 ـ ئامرازی (حەست)**. The latter includes discussion attributed to نووری عەلی ئەمین and further author commentary. At the bottom begins **23 ـ ئامرازی (چش)**; its explanation continues onto p. 372.
+- **PDF p. 372:** completes item 23 with examples and commentary, then begins **24 ـ ئامرازی (هەو)** and **25 ـ ئامرازی (عیو)**. The item 25 section includes examples and an attributed treatment by جەگرخۆین. Preserve the exact source spelling **عیو** in transcription; do not silently substitute another form.
+- **PDF p. 373:** begins **26 ـ ئامرازی (تەح، تەحا)** and gives two attributed accounts, including توفیق وەهبی and سەعید سەدقی, followed by examples. The page then closes the chapter with an eight-part classification list: **ناو، ڕاناو، ئاوەڵناو، (کار ـ چاوگ)، ئاوەڵکار، ئامرازی پریپۆزیشن، ئامرازی عەتف، ئامرازی نیدا و سەرسووڕمان**. The fourth category visibly groups **کار ـ چاوگ** here, which should be compared with p. 347 where they were listed separately.
+
+### Corrected structural finding for pp. 354–373
+- The numbered sequence on pp. 368–373 reaches **item 26**. Do not describe this as an inventory of 32 sequentially numbered items: the earlier p. 354 list's 1–23 numbering and later page headings do not form a simple continuous sequence. p. 355 also introduces a separate list attributed to other Kurdish writers. Keep the source's page-level numbering and attribution instead of forcing a reconstructed 1–32 sequence.
+- The forms **پەکوو ـ پەک، دەک ـ تەک ـ هەک، پەچ ـ پەچا، پیاچ ـ پێچ، حەست، چش، هەو، عیو، تەح ـ تەحا** are headings/entries that must remain individually distinguishable in any later teaching material.
+- This chapter's ending list of eight categories is the author's summary, not proof that every cited grammarian accepts the same taxonomy. The contrast between p. 347 and p. 373 (whether **کار** and **چاوگ** are grouped) is a source-internal difference worth preserving.
+- Exact bibliography and some individual glyphs in the dense examples still need crop-level checking before quoting. This pass records page structure and clearly legible headings, not a complete diplomatic transcription of every example.
+- Course 4 remains planned and inactive; no lessons, quizzes, or runtime changes were made.
