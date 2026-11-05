@@ -42,7 +42,7 @@ This is a page-by-page visual structure review and selective diplomatic transcri
   - **ناوی جنس**
   - **ناوی زمان**
   - **ناوی مەکان**
-- p.17 continues the list with labels including **ناوی سەروەت/سەروەت؟** (needs crop verification), **ناوی لەون/لەون؟** (needs crop verification), **ناوی عەدەدی**, and several grammatical/semantic descriptions such as **ناوی فاعل، ناوی مەفعول، صیغەی مبالغە، صیغەی مشبە، ناوی معنی، ناوی ضمیر، ناوی ئیشارە**. These uncertain readings must not be copied into teaching content until checked at higher resolution.
+- p.17's visible numbered continuation is a list numbered 7–20. The readable headings include **ناوی عەدەدی** (item 9), then forms labelled **صیغەی فاعل** (13), **صیغەی مەفعول** (14), **صیغەی مبالغە** (15), **صیغەی مشبە** (16), **صیغەی معنی** (17), **صیغەی ضمیر** (18), **صیغەی ئیشارە** (19), and **صیغەی کنایە** (20). Items 7–8 and the examples/qualifiers in several other rows remain too uncertain for a diplomatic reading at this preview size. Do not reproduce the earlier tentative readings **ناوی سەروەت/ناوی لەون** as verified labels; retain them only as unresolved visual readings until enlarged crops are checked.
 - p.17 also introduces a separate classification by نووری عەلی ئەمین and another by a Persian grammar source; they are separate accounts, not a single unified list.
 - p.18 explicitly attributes a six-part taxonomy to a Persian grammar:
   1. **اسمی عام**
@@ -62,10 +62,10 @@ This is a page-by-page visual structure review and selective diplomatic transcri
 ### PDF pp.19–22 — semantic subclasses and examples
 
 - These pages continue the semantic classification and its definitions/examples.
-- p.19 includes a three-column comparison table for examples of noun types; the exact column headings and forms need a dedicated crop before transcription.
-- p.20 clearly introduces **ناوی ماددی** and **ناوی معنوی (گۆنراوە)** as separate headings in the running discussion. The text contains definitions and examples; the examples should be checked individually before lesson use.
+- p.19's comparison table headings are legible: **ناوی دوو لاین** (right), **بۆ نێرینە** (middle), **بۆ مێینە** (left). The table contains aligned forms/examples; individual spellings still need crop-level checking before being used as teaching examples. The prose immediately above separately discusses **ناوی نێرینە**, **ناوی مێیینە**, and **ناوی دوو لاین (دوو ڕەگەز)**.
+- p.20 introduces a third axis with the heading **٣- ناو لە ڕووی سەربەخۆیی هەبوونەوە** and explicitly divides it into **١- ناوی ماددی** and **٢- ناوی مەعنەوی (گۆنراوە)**. The page contains attributed definitions and examples under each; individual examples should be checked before lesson use.
 - pp.21–22 continue the explanatory discussion, with examples and qualifications. The author distinguishes material/physical reference from abstract or mentally conceived reference; do not reduce the discussion to an oversimplified binary without transcribing its qualifications.
-- p.22 begins a further classification described as **ناوی گوزارە لە ڕووی جۆری هەیە** (exact phrase needs a sharper crop). It starts a numbered list.
+- p.22 continues the discussion of material and abstract nouns, then visibly introduces **ناوی گوزارە لە ڕووی جۆری هەیە:** and starts a numbered list with **١- بەنجی**. The exact definition and examples continue across the page turn and should be transcribed together.
 
 ### PDF pp.23–24 — continuation and close of noun chapter
 
@@ -80,7 +80,7 @@ This is a page-by-page visual structure review and selective diplomatic transcri
   2. **ناوی تایبەتی**
   3. **ناوی کۆمەڵ**
   The printed labels and parenthetical notes need crop verification before teaching.
-- p.24 continues a numbered list of semantic/gender/number categories. Clearly visible labels include **ناوی نێر**, **ناوی مێ**, **ناوی دوو دیان** (provisional reading), **ناوی لاین** (provisional reading), **ناوی ماددی سادە (مستقل)**, and **ناوی گوزارە** with subtypes **بەنجی** and **دروستکراو** (some terms require a high-resolution crop).
+- p.24 continues the list. The visible labels read **٤- ناوی نێر**, **٥- ناوی مێ**, **٦- ناوی دوو دیان** (the final word remains uncertain), **٧- ناوی بی لاوەن** (provisional reading), **٨- ناوی ماددی (مستقل)**, and **٩- ناوی گوزارە** with subtypes **أ- بەنجی** and **ب- دروستکراو**. Keep the uncertain wording in brackets in working notes until enlarged crops confirm it.
 - p.24 closes with a separate explanatory passage on **ڕاناو**. Do not confuse this chapter's **ناو** with the next chapter's **ڕاناو** beginning at p.25.
 
 ## Controlled findings for curriculum planning
@@ -97,3 +97,17 @@ This is a page-by-page visual structure review and selective diplomatic transcri
 - Complete diplomatic transcription of the definition passages and all cited accounts on pp.11–18 before writing a lesson.
 - Independently validate each claim and example while preserving author attribution, variety, and register.
 - Keep Course 4 `planned`, `lesson_count=0`, and `lessons=[]` until the lesson content is separately reviewed. No catalogue restoration, activation, merge, production, or Botkeep operation is authorized here.
+
+
+## Crop-review reconciliation — 2026-11-05
+
+The original preview images for pp.17, 19, 20, 22, 23 and 24 were reopened and visually rechecked at full preview resolution. The following corrections supersede the tentative wording above:
+
+- p.17: do not treat the earlier guesses **ناوی سەروەت** and **ناوی لەون** as verified. Readable later headings include **صیغەی فاعل، صیغەی مەفعول، صیغەی مبالغە، صیغەی مشبە، صیغەی معنی، صیغەی ضمیر، صیغەی ئیشارە، صیغەی کنایە**. Several numbered examples/qualifiers still require enlarged crops.
+- p.19: the three column headings are **ناوی دوو لاین / بۆ نێرینە / بۆ مێینە**; aligned examples remain unverified.
+- p.20: the heading is **٣- ناو لە ڕووی سەربەخۆیی هەبوونەوە**, with **ناوی ماددی** and **ناوی مەعنەوی (گۆنراوە)**.
+- p.22: the next list is introduced by **ناوی گوزارە لە ڕووی جۆری هەیە:** and begins **١- بەنجی**.
+- p.23: the visible formation examples distinguish **دروستکردنی ناوەوە** and **دروستکردنی ناوەڵناوەوە**; preserve the printed combinations as source data, not as normalized morphology. The structural recap reads **ناوی سادە** and **ناوی ناسادە** (subtypes **لێکدراو** and **دایزراو (دروستکراو)**). The next axis is **دووەم — لە ڕووی کۆکردنەوە** with the printed labels **ناوی کەشتی، ناوی تایبەتی، ناوی کۆمەڵ**; exact meaning of the first label needs contextual validation.
+- p.24: readable labels include **ناوی نێر، ناوی مێ، ناوی دوو دیان** (uncertain final word), **ناوی بی لاوەن** (uncertain), **ناوی ماددی (مستقل)**, and **ناوی گوزارە** with **بەنجی / دروستکراو**.
+
+This crop-review pass improves the page map but is still not a full diplomatic transcription. No lesson wording should be built from unresolved labels or unchecked example rows.
