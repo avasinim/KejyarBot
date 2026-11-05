@@ -586,3 +586,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Kurdish explanatory prose continues to use **عەتف**, not **عطف**. Do not use the Arabic letter **ط** in Kurdish terminology.
 - This remains a sequential structural review, not a complete transcription. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
 - Next: continue from PDF p. 320.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 320–325 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 320:** continues section **17 ـ ئامرازی (بەڵکو)ی عەتف**. The author describes more than one function/context for the form and gives sentence examples. The page enumerates distinctions including **عەتف (ڕبط)** and **احتمال**; a further label in the list needs close transcription before it is quoted as a technical term. The examples demonstrate that the same written form must be read in its sentence context.
+- **PDF p. 321:** clearly opens **١٨ ـ ئامرازی (بەشکو)ی عەتف**. It surveys accounts by Kurdish grammarians, including مامۆستا سەعید سەدقی، مامۆستا توفیق وەهبی، and نووری عەلی ئەمین, then gives the author's own examples and discussion. The heading's visible reading is **بەشکو**; preserve it as printed pending any further independent confirmation, and do not silently replace it with a more familiar form.
+- **PDF p. 322:** continues section 18 with further examples and contexts, then clearly opens **١٩ ـ ئامرازی (جگە)ی عەتف**. The discussion cites نووری عەلی ئەمین and مامۆستا توفیق وەهبی and includes English glosses such as *different, separate*, *in addition, besides*, *separately*, *apart from*, and *except*. These glosses belong to the cited comparison and should not be treated as interchangeable definitions.
+- **PDF p. 323:** continues section 19, including a cited account from a Kurdish grammar work and the author's examples. It explicitly analyses different sentence environments for **جگە**, with several numbered examples and contrasts.
+- **PDF p. 324:** continues the detailed analysis of **جگە**, identifying several exceptional/contrastive environments and giving notes on the constructions. The author's comments distinguish the form's role across examples; do not teach it as a simple one-word equivalent of English *except*.
+- **PDF p. 325:** continues the discussion and examples of **جگە**, then begins a comparison with other connective forms, including **(ش)** and **(هەر)** in sentence contexts. The page gives further attributed statements and examples; preserve the distinction between the author's analysis and cited grammatical descriptions.
+
+### Findings and limits
+- Section **17 (بەڵکو)** continues through p. 320.
+- Section **18 (بەشکو)** is legible as printed on p. 321. Keep this source spelling and do not normalize it without evidence.
+- Section **19 (جگە)** begins on p. 322 and continues through at least p. 325. Its uses are construction-sensitive and include contrast/exception and other relations discussed by the author; exact taxonomy and every example require detailed transcription before lesson drafting.
+- Kurdish explanatory prose uses **عەتف**, not **عطف**. The Arabic letter **ط** must not be introduced into Kurdish terminology.
+- This is a sequential structural review, not a complete transcription. No lessons have been drafted or activated; Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 326.
