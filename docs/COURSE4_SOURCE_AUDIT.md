@@ -115,7 +115,7 @@ PDF p. 398 is a contents page headed **پێڕست**. Its visible chapter map is:
 | 392 | یەکەم — کۆمەک |
 | 395 | 1 — پێشگر |
 
-The contents page shows the book's own chapter organization; it does **not** establish that the labels are theoretically equivalent to contemporary linguistic categories. In particular, the distinction between **ڕاناو** (p. 25) and **جێناو** (p. 222) must be investigated rather than silently merged or translated as one category. The two verb-related sections at pp. 80 and 112 also need separate inspection. The table above is a structural transcription from PDF p. 398, not a lesson plan or endorsement of the book's classifications.
+The contents page shows the book's own chapter organization; it does **not** establish that the labels are theoretically equivalent to contemporary linguistic categories. The contents page (p. 398) lists Unit 5 as **چاوگ**, and the chapter opening (p. 222) is also headed **چاوگ**. The two inspected locations agree on the printed heading; no p.398/p.222 discrepancy is supported by the original page images. The two verb-related sections at pp. 80 and 112 still need separate inspection. The table above is a structural transcription from PDF p. 398, not a lesson plan or endorsement of the book's classifications.
 
 ## Independent linguistic cross-checks located (validation only)
 
@@ -130,7 +130,7 @@ These works are not additional curriculum books. They are independent checks to 
 
 - The book's noun classification needs to be checked against independently described noun states and nominal marking, not merely repeated as a list of semantic labels.
 - Its pronoun and person-marker material requires special care: the independent clitic study shows that direct/oblique markers do not fit a simple affix-versus-clitic dichotomy.
-- The contents page's two distinct headings **ڕاناو** and **جێناو** are a high-priority investigation item. Do not infer that they are synonyms or separate modern syntactic categories until the source's definitions and examples have been transcribed and compared.
+- The contents page lists **ڕاناو** at p. 25 and **چاوگ** at p. 222. The latter matches the chapter-opening heading on p. 222. Do not infer modern category equivalence from source labels alone.
 - The verb section must be checked for tense/aspect, transitivity, person indexing, and split alignment, with attention to variety and register. Any mismatch with independent research must be documented.
 - No claim has yet been promoted to “verified for teaching.” The references above establish a validation path, not approval of any individual rule in the primary book.
 
@@ -1229,3 +1229,12 @@ All eight individual page images for pp.228–235 were inspected sequentially. T
 - The contents-page reading **جێناو** (p.398) versus chapter-opening heading **چاوگ** (p.222) remains unresolved. The continuation through p.235 supports that these pages belong to the chapter opened on p.222, but does not explain the contents-page wording.
 
 This is sequential visual review, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
+
+
+## Resolution of p.398 / p.222 contents-heading check (2026-11-05)
+
+The original rendered images were reopened at enlarged size and compared directly:
+- PDF p.398 contents entry 5 visibly reads **چاوگ** (page reference 222).
+- PDF p.222 chapter-opening heading visibly reads **چاوگ**.
+
+The earlier audit note claiming that p.398 reads **جێناو** was incorrect and is withdrawn. The p.398/p.222 discrepancy is **not supported** by the original page images. The corrected transcription is **5 — چاوگ**. This correction does not establish any broader theoretical equivalence; it only records the printed heading. See the corrected discrepancy note for the visual evidence and audit trail.
