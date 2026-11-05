@@ -607,3 +607,10 @@ Exact wording, examples, and the hierarchy of the non-simple verb types remain p
 Individual previews pp.199–204 were extracted from the Actions artifact and inspected separately. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_199_204.md`. Page 199 completes prefix item 11 and explicitly opens **پاشگر**. Page 200 presents a numbered suffix/form list with examples; p.201 continues with two notes and paradigms. Page 202 introduces **ناوی کار** and visibly lists six bilingual nominal categories, including **ناوی کارا (اسم الفاعل)**, **ناوی بەکار (اسم المفعول)**, **ناوی چاوک (اسم المصدر)**, **ناوی جێگا (اسم المکان)**, **ناوی کات (اسم الزمان)**, and **ناوی ناسادە (الاسم المرکب)**. Pages 203–204 continue the derivation rules, examples, and explanatory subsections.
 
 Exact suffix labels, aligned forms, and the complete rule wording remain pending crop-level transcription. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.205–210 (2026-11-05)
+
+Original individual page previews pp.205–210 were extracted from the recovered `course4-source-text` Actions artifact and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_205_210.md`. Page 205 continues the **ناوی کارا** formation discussion; p.206 continues its numbered points (2–6). Page 207 opens **ناوی بەکار (اسم المفعول)**, with its continuation and notes on p.208. Page 209 visibly begins a subsection whose printed heading includes **المبني للمجهول**; p.210 continues the discussion and examples.
+
+The exact wording of the p.209 heading, numbered rule hierarchy, compact paradigms, and examples across pp.205–210 remain queued for crop-level diplomatic transcription. Preserve all source spellings, dialect distinctions, row/column alignment, and notes. This is sequential visual structure review only, not complete transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
