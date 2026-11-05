@@ -98,3 +98,8 @@ The crop review is still visual evidence, not full diplomatic transcription or i
 ### Enlarged crop pass (2026-11-05)
 
 The table regions on pp.93–95 and the p.106 inventory were enlarged. The exact right-to-left table structures and the p.106 two-column 1–17 layout are now documented in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`. This confirms page structure and headings, **not** a complete verified transcription of the forms. The p.106 inventory must remain untranscribed for lesson use until each of its 34 forms is verified at glyph level; the small examples on pp.93–95 need the same care.
+
+
+### p.106 partial transcription checkpoint (2026-11-05)
+
+Enlarged row crops support only three high-confidence pairs at present: **کەوتن → خستن** (item 1), **چوون → بردن** (item 3), and **سڕانەوە → سڕینەوە** (item 8), with the right-hand **تێنەبەر** and left-hand **تێپەڕ** columns preserved. This is explicitly a partial reading; the other 14 pairs remain untranscribed. See `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`.
