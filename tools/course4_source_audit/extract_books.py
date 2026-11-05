@@ -32,22 +32,22 @@ def verify_git_blob(data, expected):
     return actual
 
 def render_page(page):
-    pix = page.get_pixmap(matrix=fitz.Matrix(1.15, 1.15), alpha=False)
+    pix = page.get_pixmap(matrix=fitz.Matrix(0.9, 0.9), alpha=False)
     return Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
 
 def ocr_image(image):
     try:
         raw = pytesseract.image_to_string(
-            image, lang="ara+eng", config="--psm 6", timeout=25
+            image, lang="ara+eng", config="--psm 6", timeout=12
         )
     except (pytesseract.TesseractError, RuntimeError):
         try:
             raw = pytesseract.image_to_string(
-                image, lang="ara", config="--psm 6", timeout=20
+                image, lang="ara", config="--psm 6", timeout=8
             )
         except (pytesseract.TesseractError, RuntimeError):
             return ""
-    return re.sub(r"\\s+", " ", raw).strip()
+    return re.sub(r"\s+", " ", raw).strip()
 
 def short_excerpt(text, terms, limit=28):
     words = text.split()
@@ -75,7 +75,7 @@ def main():
         extracted = []
         embedded_count = 0
         ocr_count = 0
-        with ThreadPoolExecutor(max_workers=2) as pool:
+        with ThreadPoolExecutor(max_workers=4) as pool:
             pages = list(pdf)
             for batch_start in range(0, len(pages), 4):
                 batch = pages[batch_start:batch_start + 4]
@@ -90,7 +90,6 @@ def main():
                     else:
                         images.append(render_page(page))
                         batch_meta.append((index, None, "ocr-ara"))
-                image_iter = iter(images)
                 ocr_images = list(images)
                 if ocr_images:
                     ocr_texts = list(pool.map(ocr_image, ocr_images))
