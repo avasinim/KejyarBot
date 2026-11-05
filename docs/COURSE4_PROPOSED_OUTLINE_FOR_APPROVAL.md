@@ -36,6 +36,10 @@ The outline follows the book's own order and visible contents page (PDF p.398). 
 7. Complete exact transcription and independent linguistic validation for each lesson's selected examples before drafting lesson text. Unresolved or contradictory claims are excluded or clearly qualified.
 8. The separate PDF **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded from Course 4 content.
 
+## Catalogue and release boundary
+
+This proposal is kept only in the isolated audit branch. The current `main` branch intentionally has no Course 4 catalogue entry; commit `e691feb6` removed the earlier planned entry. This proposal does not reverse that decision, add Course 4 to the live catalogue, or authorize a release. The outline must be explicitly approved before any lesson drafting, and any later catalogue restoration requires a separate explicit decision and compatibility review.
+
 ## User approval gate
 
 This document is only a proposed outline for review. No lesson text, quiz, lesson count, runtime content, or course activation has been created or changed. Wait for the user's explicit approval or requested corrections before drafting any lesson.
