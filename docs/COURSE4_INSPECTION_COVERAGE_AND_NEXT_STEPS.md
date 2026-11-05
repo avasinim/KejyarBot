@@ -414,3 +414,10 @@ The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_057_060.md` records select
 The original individual page previews for pp.61–65 were inspected in sequence, closing the page-level visual review of the full **ڕاناو** section (pp.25–65). The review records the interrogative-pronoun discussion and comparison table on p.61, interrogative/exclamatory examples on p.62, the opening of **ڕاناوی نادیار** on p.63, attributed taxonomies and summary list on p.64, and continuation of the explanatory passage on p.65. This is page-level visual coverage only; dense tables, examples, and prose remain to be diplomatically transcribed and validated. Selective notes are in `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_061_065.md`.
 
 The complete p.25–65 page-viewing pass does not imply that every page has been fully transcribed. Continue with crop-level transcription of unresolved tables and paragraphs before extracting teaching rules. Course 4 remains planned/inactive with zero lessons.
+
+
+## Sequential visual review begun — ئاوەڵناو, PDF pp.66–73 (2026-11-05)
+
+The original individual page previews for pp.66–73 were inspected sequentially. Page 66 opens the **ئاوەڵناو "الصفة"** section; pp.66–68 contain separately attributed definitions and examples; p.69 includes the explicit **Adjective / Adverb** distinction; p.70 continues the dense discussion; p.71 presents a two-form classification; p.72 contains a **سادە / داراو** comparison table; and p.73 continues the compound-adjective discussion. Page-level notes are recorded in `docs/COURSE4_VISUAL_REVIEW_ADJECTIVE_066_073.md`.
+
+This is visual coverage only. Attributions, paragraphs, examples, and the comparison table remain to be diplomatically transcribed and independently checked. Do not merge attributed definitions or convert this visual review into lesson content. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
