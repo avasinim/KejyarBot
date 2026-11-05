@@ -444,3 +444,12 @@ This completes visual coverage of the planned adjective range pp.66–79, but do
 The original page images were enlarged for a second pass. The three-column table on p.77 is now recorded in right-to-left source order as **پەلی چەسپیوو / پەلی بەراورد / پەلی باڵا**, with rows **گەورە / گەورەتر / گەورەترین** and **تازە / تازەتر / تازەترین**. The numbered discussion also distinguishes **ئاوەڵناوی کاری** into **ئاوەڵناوی بکەر** and **ئاوەڵناوی کراو**. The p.78 text explicitly prints **Superlative** and gives comparative/superlative examples; p.79 closes the adjective discussion with the labels **صفة** and **فعل**. See the crop-verification addendum in `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_069_073.md`.
 
 The dense explanatory paragraphs remain incomplete; this crop pass is not a full diplomatic transcription. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Selective diplomatic transcription — adjective pp.74–79 (2026-11-05)
+
+Selective transcription ledgers have been added:
+- `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_074_076.md`
+- `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_077_079.md`
+
+They preserve legible headings, author-attributed classifications, examples, and the three-column degree table. Uncertain spellings and dense paragraphs remain explicitly open. These records do not constitute complete transcription or independent linguistic validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
