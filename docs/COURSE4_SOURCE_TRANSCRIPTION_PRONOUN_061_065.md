@@ -155,3 +155,25 @@ The bracketed closing note is visually legible as **[دەمرساستی لێژن
 6. Only after the diplomatic text is complete, perform independent linguistic validation. No lesson drafting or activation follows automatically.
 
 **Control status unchanged:** Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`. This crop pass does not constitute full transcription, linguistic validation, or lesson approval.
+
+
+## Second crop pass — additional legible details (2026-11-05)
+
+### p.63 — table entries now readable
+
+The enlarged lower-half crop makes the following **right-column (بەناوی موهبەمی ڕووت)** entries readable in printed order:
+
+- کەس، کام، پیاو
+- چی، هیچ، کابرا، یەک
+- فڵان، کێ، هەموو
+- هێن، زۆر، کەم
+
+The left column is headed **بەناوی موهبەمی لێکدراو**. Some entries can be read as **کەسێ، هیچ کەس، هەر کەسێ، هەچ ...** and subsequent compound forms, but the exact row-by-row spellings remain uncertain. These are therefore not promoted to certified transcription. The prose immediately before the table gives examples in parentheses **(کەس، هێن، هێندێ، هێن)**; retain the source's spelling pending further checking.
+
+### p.61 — numbered examples
+
+The lower crop confirms that numbered examples 2 and 3 continue after the comparison table. Example 2 discusses interrogative forms used with a noun and provides examples including **ج چوانێکەت پێ خۆشە؟ (ج)**, **لە کام شارەوە هاتوویت؟ (کام)**, **بە چ شاخێکدا هەڵدەکەریت؟ (ج)**, and **چەند کەسێت دیوە؟ (چەند)**. Some initial characters/diacritics are visually ambiguous, so these are recorded as crop readings rather than fully certified diplomatic text. Example 3 begins with **ئەو وشانەی جێی ناوەڵکاری (ظرف) دەگرنەوە...** and discusses interrogative adverbial use; full prose remains open.
+
+### p.65 — closing note
+
+The bottom crop confirms the final bracketed note as **[دەمرساستی لێژنە]** (reading visible, but the lexical form itself is unusual and is preserved without interpretation). The preceding example line ends with **کەس هەیە بووێری دەنگ بکات؟**; the exact punctuation is not normalized.
