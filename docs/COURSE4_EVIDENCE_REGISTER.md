@@ -247,3 +247,8 @@ The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded
 ## Outline approval reconciliation — 2026-11-05
 
 The user explicitly approved the nine-part outline on 2026-11-05, delegating the structural decision to the assistant. See `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md` and `curriculum/grammar_course4_plan.json`. This approval supersedes older sentences in this register that say the outline is awaiting approval. It does **not** approve individual lesson rules, examples, quizzes, or runtime activation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`; complete source transcription and independent claim-level validation before lesson drafting. The sole curriculum source remains `Rezmany_axawtny_kurdy.pdf`; the separate clitic-pronoun PDF remains excluded.
+
+
+## Visual review — noun chapter, PDF pp.11–24 (2026-11-05)
+
+The original-page preview images for PDF pp.11–24 were directly inspected. A selective page-by-page structure review is recorded in `COURSE4_VISUAL_REVIEW_011_024.md`. This confirms the chapter opening **ناو**, the explicit structural and semantic classification axes, the simple/non-simple discussion, and multiple separately attributed taxonomies. Persian and English taxonomies are kept attributed; the book's varying definitions are not merged into a single consensus. Dense lists/examples and several p.17/p.22–24 readings remain provisional and require enlarged crops. This is visual review, not complete diplomatic transcription or claim-level linguistic validation. No lessons or quizzes were created; Course 4 remains planned with zero lessons.
