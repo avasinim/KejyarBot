@@ -744,3 +744,24 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source cites multiple Kurdish grammarians on these entries. Preserve the difference between attributed views, the book author's own explanation, and independent linguistic validation.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 368.
+
+
+## Sequential visual review: Interjection chapter, entries 18–26 and chapter summary, PDF pp. 368–373 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 368:** continues the preceding entry **نەدی** with two numbered contexts/examples, then clearly begins **١٨ ـ ئامرازی (بەکوو ـ پەکوو)**. The page surveys descriptions by مامۆستا سەعید سەدقی، مامۆستا توفیق وەهبی، نووری عەلی ئەمین, and جەگرخۆین, each with separate source/page references. Preserve the variants and attribution as printed; do not silently normalize the form.
+- **PDF p. 369:** continues entry 18 with contextual examples, then begins **١٩ ـ ئامرازی (دەک، تەک، هەک)** (the exact orthographic details of the grouped forms should be confirmed from an enlarged crop before direct quotation). The page gives separate descriptions/examples attributed to مامۆستا توفیق وەهبی، نووری عەلی ئەمین, and جەگرخۆین.
+- **PDF p. 370:** continues the entry 19 analysis and examples, then clearly opens **٢٠ ـ ئامرازی (پەچ، پەچا)**. Several grammarians' accounts are cited separately, including مامۆستا سەعید سەدقی، مامۆستا توفیق وەهبی، نووری عەلی ئەمین, جەگرخۆین, and the source author. The form is discussed through sentence examples, not just as a dictionary item.
+- **PDF p. 371:** continues entry 20, then opens **٢١ ـ ئامرازی (پیاچ، پێچ)** (the printed paired forms require crop-level verification before exact transcription). It then clearly begins **٢٢ ـ ئامرازی (حەست)** and **٢٣ ـ ئامرازی (چش)**. The author gives contextual examples and attributes views to named Kurdish grammarians.
+- **PDF p. 372:** continues entry 23 and opens **٢٤ ـ ئامرازی (هەو)** and **٢٥ ـ ئامرازی (عیو)**. The page gives cited definitions and examples, including examples from Kurdish literary usage. The author's comments distinguish the exclamatory use from other possible contextual functions.
+- **PDF p. 373:** opens **٢٦ ـ ئامرازی (تەح، تەحا)** (exact second form/diacritic requires enlarged crop verification), with attributed descriptions and sentence examples. A closing separator (*******) follows, then the author restates a list of eight word/speech categories: **ناو، ڕاناو، ئاوەڵناو، (کار ـ چاوگ)، ئاوەڵکار، ئامرازی پریپۆزیشن (تەعلق)، ئامرازی عەتف، ئامرازی نیدا و تەعەجوب**. The page's final sentence says the detailed explanation of these categories will follow in the next sections/pages.
+
+### Findings and limits
+- Pages 368–373 continue the Interjection chapter's numbered inventory through entry 26. The chapter uses many short particles/expressions and contextual examples; their spellings and functions must be verified individually before lesson reuse.
+- The source contains multiple named grammarians' descriptions, often with distinct page references. Keep citations and positions separate; do not attribute a scholar's example or definition to the book author.
+- The paired/clustered forms in entries 19, 21, and 26 are not all sufficiently clear at the current preview resolution. They are provisional reading notes only, not approved orthographic transcriptions.
+- On p. 373 the author's concluding list groups **کار ـ چاوگ** together in one numbered item, while p. 347 earlier listed **کار** and **چاوگ** separately. Record this as a source-internal difference in presentation, not a reason to erase either statement. Further context is needed before drawing a theoretical conclusion.
+- The p. 373 list also uses **ئامرازی نیدا و تەعەجوب** as a category label; preserve this wording and do not reduce it to a generic "exclamation" without examining the following pages.
+- The author indicates that detailed treatment of the listed categories continues in subsequent sections. Therefore, p. 373 is not necessarily the end of the book's grammar discussion or of material relevant to the source audit.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 374.
