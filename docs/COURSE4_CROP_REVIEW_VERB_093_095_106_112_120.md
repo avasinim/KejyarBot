@@ -179,3 +179,17 @@ The newly enlarged crop covering items 6–17 makes the remaining rows legible. 
 | 17 | هەڵستان | هەڵگرتن |
 
 Together with the previously verified items 1–5, 8–9, this completes the visual transcription of all 17 numbered rows at the current image resolution. Item 11's parenthetical alternative **(سوون)** is retained exactly as printed. Item 14–15 retain both left-column variants. These are source readings only; do not infer that every form is a productive or standard paradigm, and do not silently regularize spelling. The note below the table remains a separate source passage and has not been transcribed in this row table.
+
+
+## p.112–117 — renewed sequential inspection of the active/passive subsection
+
+The original page images were re-opened in sequence after completing p.106. The following structural observations are now confirmed:
+
+- **p.112** opens the separately listed subsection **کاری کاردار و کاری کاربێژ** and prints the English labels *Active* and *Passive* alongside Arabic grammatical labels. It begins with attributed accounts, including مامۆستا سەعید سەدقی (with a page reference to p.43) and مامۆستا توفیق وەهبی (with a page reference to p.22). A three-column comparison table is present; its headings distinguish the basis/form of the معلوم, the root, and the مجهول form. A further set of examples follows below.
+- **p.113** continues the attributed accounts, including a section attributed to نووری عەلی ئەمین (page reference p.156), followed by further numbered treatments and examples. The page also records an account attributed to مامۆستا کوردیف (page reference p.16). These attributions must remain separate; they are not one unified authorial rule.
+- **p.114** continues with another numbered account and then begins a separately headed discussion of **زاراوەی کارداریا و کاربێژ**. It contains English *Passive* and *Active* labels and examples, followed by another attributed treatment.
+- **p.115** continues the attributed discussion and introduces **چۆنیەتی دروستنی کاری کاربەرز** with numbered subsections and two-column example tables.
+- **p.116** continues the numbered patterns and includes a distinct **تێبینی** paragraph before subsequent subsections and tables.
+- **p.117** continues the pattern discussion, includes another **تێبینی**, then introduces **٤- چاوگی تانی** (heading as visually read) with a prose list and further example table.
+
+This pass is structural, not a diplomatic transcription of every example. The tables on pp.112 and 115–117 still require dedicated high-resolution crops before any individual forms are copied into a lesson. Preserve author attributions, printed terminology, and each numbered subsection as separate evidence units. Do not merge the accounts into one rule.
