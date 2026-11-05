@@ -403,3 +403,20 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source's own terminology and the cited grammarians' terminology must remain distinct. Do not turn an author's reported position into the book author's final rule without checking the surrounding text.
 - This is a sequential visual review, not a full transcription. Before drafting lessons, transcribe all labels, cited author names, examples, and the analysis of the forms from high-resolution crops. The primary book remains the sole lesson source; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 265, and identify the actual end of this discussion before treating the next section as a new topic.
+
+
+## Sequential visual review: preposition discussion PDF pp. 265–269 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 265:** continues analysis of constructions where a form may appear alongside verbal material and other sentence elements. The page includes examples and a discussion of the role of the form within the whole construction; it is not merely identifying a fixed preposition word list.
+- **PDF p. 266:** continues the same analysis and then explicitly introduces a section on **تەواوکردنی پریپۆزیشن** (the printed heading is visible as a preposition-completion/complement discussion; exact orthographic form should be crop-checked before use). It gives paired examples showing how the following expression completes the construction.
+- **PDF p. 267:** cites additional grammarians' views and introduces a further set of preposition examples. The page distinguishes the author's discussion from the named scholars' descriptions; keep attribution intact.
+- **PDF p. 268:** begins a numbered presentation of forms, visibly including **(بۆ)** and **(لە)**, with sentence examples. The next numbered item begins at the bottom and continues beyond this page.
+- **PDF p. 269:** continues the numbered examples and subgroups, with multiple sentence examples. The same short forms are illustrated in different sentence contexts; exact example transcription remains necessary before reuse.
+
+### Findings and limits
+- The preposition discussion extends at least through p. 269; do not mark the chapter boundary at p. 258 or p. 264.
+- From p. 266 onward the source addresses not only the form itself but also what completes the construction. This reinforces the need to teach the phrase/construction and its complement together, not as isolated particles.
+- The source continues to report other grammarians' accounts alongside its own examples. Do not collapse those attributed views into one taxonomy.
+- This remains a visual structural audit, not a full transcription. Exact heading spelling, cited author names, individual particles and example sentences require close transcription before lesson drafting. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 270 until the source clearly starts the next chapter/section.
