@@ -1238,3 +1238,8 @@ The original rendered images were reopened at enlarged size and compared directl
 - PDF p.222 chapter-opening heading visibly reads **چاوگ**.
 
 The earlier audit note claiming that p.398 reads **جێناو** was incorrect and is withdrawn. The p.398/p.222 discrepancy is **not supported** by the original page images. The corrected transcription is **5 — چاوگ**. This correction does not establish any broader theoretical equivalence; it only records the printed heading. See the corrected discrepancy note for the visual evidence and audit trail.
+
+
+## Enlarged-crop completion: verb table p.106 (2026-11-05)
+
+The 17 numbered entries on PDF p.106 have now been visually transcribed from the full-page enlargement and separate row crops. The table headings are **تێنەپەر** (right) and **تێپەڕ** (left). The full row-by-row diplomatic transcription, including parenthetical and alternative forms, is recorded in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`. This is a transcription milestone only: it does not validate the author's classifications, establish productivity, or approve any lesson content. The separate note below the table remains outside that transcription.
