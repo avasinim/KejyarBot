@@ -407,3 +407,10 @@ The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_053_056.md` records select
 ## Initial diplomatic transcription — ڕاناو, PDF pp.57–60 (2026-11-05)
 
 The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_057_060.md` records selective readings from the original individual page images. It covers the continuation of the reflexive-pronoun discussion on p.57, the opening of **ڕاناوی هەیی** on p.58, possessive-pronoun discussion and English comparisons on p.59, and the opening inventory and attributed explanations for **ڕاناوی پرسیاری** on p.60. Dense prose, suffix boundaries, and the full question-word table remain open for crop-level verification. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
+
+
+## Sequential visual review completed — PDF pp.25–65 (2026-11-05)
+
+The original individual page previews for pp.61–65 were inspected in sequence, closing the page-level visual review of the full **ڕاناو** section (pp.25–65). The review records the interrogative-pronoun discussion and comparison table on p.61, interrogative/exclamatory examples on p.62, the opening of **ڕاناوی نادیار** on p.63, attributed taxonomies and summary list on p.64, and continuation of the explanatory passage on p.65. This is page-level visual coverage only; dense tables, examples, and prose remain to be diplomatically transcribed and validated. Selective notes are in `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_061_065.md`.
+
+The complete p.25–65 page-viewing pass does not imply that every page has been fully transcribed. Continue with crop-level transcription of unresolved tables and paragraphs before extracting teaching rules. Course 4 remains planned/inactive with zero lessons.
