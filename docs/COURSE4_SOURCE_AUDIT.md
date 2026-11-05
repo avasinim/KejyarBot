@@ -1307,3 +1307,14 @@ Extraction-method counts do not establish page-by-page visual review, exact tran
 - See `COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md` and `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` for controlling current detail.
 
 No extraction count is treated as evidence that a page's grammar claims are correct. Course 4 remains planned/inactive with zero lessons; no lesson, quiz, activation, or runtime/deployment change is authorized by this audit.
+
+
+## Final contents-heading reconciliation — p.254 / p.398 (2026-11-05)
+
+This note is the controlling status for the p.254 chapter label and supersedes all earlier paragraphs in this audit that describe a **پێوەندینیش** versus **پریپۆزیشن** mismatch or list it as unresolved:
+
+- PDF p.254 printed chapter heading: **پریپۆزیشن / A Preposition**.
+- PDF p.398 contents item 7 (page reference 254): **پریپۆزیشن**.
+- The two printed locations agree. The older reading **پێوەندینیش** for contents item 7 was an audit/transcription error and is withdrawn; it must not be repeated as a source-internal discrepancy.
+
+The separate p.222 / p.398 heading check is likewise resolved as **چاوگ** at both locations, as recorded in the later enlarged-image reconciliation above. These corrections establish only what the two printed headings say; they do not establish theoretical equivalence or approve the proposed course outline. Course 4 remains planned/inactive with zero lessons pending explicit user approval.
