@@ -1,0 +1,41 @@
+name: Extract Course 4 source PDFs
+
+on:
+  push:
+    branches:
+      - reset/grammar-course4-content
+    paths:
+      - "Rezmany_axawtny_kurdy.pdf"
+      - "ڕێزمانی ڕاناوی لكاو.pdf"
+      - "scripts/extract_course4_sources.py"
+      - ".github/workflows/extract-course4-sources.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out isolated course branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PDF and OCR dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng
+          python -m pip install --upgrade pip
+          python -m pip install pymupdf pillow pytesseract
+      - name: Extract source text without rewriting it
+        run: python scripts/extract_course4_sources.py
+      - name: Upload extracted source text for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: course4-source-text
+          path: source-extract/course4/
+          if-no-files-found: error
+          retention-days: 14
