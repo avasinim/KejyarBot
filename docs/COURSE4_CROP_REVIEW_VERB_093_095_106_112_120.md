@@ -100,3 +100,13 @@ The p.106 inventory was split into enlarged row crops. The following entries can
 Important: the table is right-to-left, and the numbered verb is in the right-hand **تێنەبەر** column; its corresponding left-hand **تێپەڕ** form must remain on the same row. These three pairs are a partial reading only, not a complete transcription of the 17-item inventory.
 
 Rows 2, 4–7, and 9–17 are not transcribed here. Even where a likely reading suggests itself, it is not promoted to a verified form without a sufficiently clear original glyph image. Do not use guessed completions or normalize forms from dialect expectation.
+
+
+## Second row-crop pass on p.106 — correction and one additional pair
+
+A closer inspection of the row crops requires a correction to the previous partial reading:
+
+- **Item 8 is withdrawn from the high-confidence list.** The right-column form appears to include an additional medial/final character sequence (visually closer to **سڕانتەوە** than the previously recorded **سڕانەوە**). The crop is not clear enough to settle the exact printed form, so neither reading is approved.
+- **Item 9** is now readable with high visual confidence as **پچڕان** in the right-hand **تێنەبەر** column and **پچڕین** in the left-hand **تێپەڕ** column.
+
+Accordingly, the current high-confidence partial list is items 1 (**کەوتن / خستن**), 3 (**چوون / بردن**), and 9 (**پچڕان / پچڕین**). Item 8 remains explicitly unresolved. No other row from this crop pass is promoted to verified transcription.
