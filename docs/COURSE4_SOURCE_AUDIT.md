@@ -1277,3 +1277,10 @@ The 400-page primary source `Rezmany_axawtny_kurdy.pdf` is present in the reposi
 The report records **400 pages** for the primary PDF: **397** embedded-text pages, **3** OCR pages marked `OCR-ara+eng-UNVERIFIED`, and **0** unreadable pages. OCR remains unverified; extracted text is a navigation aid only and does not supersede the source page images for diplomatic transcription. The separate 32-page `ڕێزمانی ڕاناوی لكاو.pdf` appears in the same artifact but remains excluded from Course 4.
 
 This corrects any earlier working note that described the primary PDF as unavailable. It does not imply a new page-by-page visual audit, a completed transcription, independent linguistic validation, or lesson approval. Course 4 remains planned/inactive with zero lessons.
+
+
+### OCR-page pinpointing and preview check (2026-11-05)
+
+The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
+
+The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
