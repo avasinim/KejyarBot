@@ -351,3 +351,18 @@ The newly reopened full-width crop makes most of the parenthetical infinitive li
 The fourth item is visually closest to **خڕین**, but its internal marks are less crisp than the surrounding entries; retain it as a provisional reading pending inspection of the original printed page at higher resolution. The list is introduced in the source as examples associated with the subsection; it is not a paradigm table. No forms have been modernized or normalized.
 
 The immediately following explanation states that, in the source's Sulaymaniyah variety account, these verbs are also used in the cited form/pattern, then gives the four aligned pairs already recorded above. The right-hand column is visually the **دەبژێرم، دەژمێرم، دەسپێرم، دەشارمەوە** series; the left-hand column is **بژێردرام، ژمێردرام، سپێردرام، شاردرامەوە**. The exact technical wording of the explanatory sentence should be checked against a higher-resolution page before quoting it verbatim.
+
+
+## p.120 — inspection of the original full-page raster (2026-11-05)
+
+The original page image (not only the earlier enlarged excerpt) was reopened. It establishes that p.120 contains two numbered blocks before the attributed discussion: **١-** a block of examples/remarks, followed by **٢-** a three-row paired-form block. The prose attributed to مامۆستا مەسعود follows block 2 and is a separate discussion.
+
+The opening of that attribution is now legible on the original-page crop as:
+
+> ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...
+
+The next lines contain the source's explanation and examples, but several connected letters and punctuation marks remain insufficiently sharp for a responsible full diplomatic transcription. Therefore the passage is **not** transcribed continuously here. Do not silently replace the source's explicit parenthetical **(شاراندنەوە)** with another term or infer a synonym such as **کاری شاراوە**; earlier notes that paraphrased the topic that way are superseded by this more precise opening-line reading.
+
+The original image also makes the three pairs in block 2 easier to compare: the visible rows read **بووتێرا / بووتێردرا**, **بووررا / بووردرا**, **ژمێردرا / ژمێردرا** only provisionally; because the previous crop-based record gave different first/second spellings (**بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا**) and the raster's small glyphs do not settle every medial character beyond doubt, retain the earlier crop readings as provisional and flag all three rows for a dedicated character-level check rather than replacing them on this pass.
+
+This record is intentionally conservative: it confirms page structure and the attribution's opening phrase, but does not claim a complete transcription of the passage or definitive resolution of the paired forms.
