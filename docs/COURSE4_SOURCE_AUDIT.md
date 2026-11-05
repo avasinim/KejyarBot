@@ -1217,3 +1217,15 @@ A focused visual pass of the original page images and enlarged crops is recorded
 ## Additional visual evidence: independent/bound word framework, pp.386–391
 
 The focused visual review is recorded in `docs/COURSE4_VISUAL_REVIEW_386_391.md`. Pages 386–387 cite Evan C. Penglis's `AN ENGLISH GRAMMAR BOOK` as comparative material and raise the categories Prefix, Suffix, and Infix; the source explicitly poses whether Infix exists in Kurdish, without establishing an affirmative productive category. Pages 388–389 introduce `وشەی سەربەخۆ و وشەی بەستراو`, list five independent classes and eight bound classes, and print `کار (چاوگ)` as a grouped class. This contrasts with p.347's separate `کار` and `چاوگ` entries; preserve this source-internal variation. Pages 390–391 continue contextual and structural examples, but dense segmentations are not yet approved for transcription. Course 4 remains planned with zero lessons.
+
+
+## Sequential visual review: PDF pp.228–235 (2026-11-05)
+
+All eight individual page images for pp.228–235 were inspected sequentially. The review is recorded in `docs/COURSE4_VISUAL_REVIEW_228_235.md`.
+
+- p.230 explicitly distinguishes **چاوگی سادە** and **چاوگی ناسادە**; pp.231–235 continue the associated subgroups, explanations, and examples.
+- The chapter continues through p.235; p.236 begins the next contents-listed chapter, **ئاوەڵکار**.
+- Numbered lists, paired examples, and paradigms must remain attached to their source headings; they are not approved as lesson-ready inventories.
+- The contents-page reading **جێناو** (p.398) versus chapter-opening heading **چاوگ** (p.222) remains unresolved. The continuation through p.235 supports that these pages belong to the chapter opened on p.222, but does not explain the contents-page wording.
+
+This is sequential visual review, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
