@@ -1385,3 +1385,22 @@ This section supersedes earlier source-policy or contents-page statements in thi
 - Course 4 remains `planned`, `lesson_ids: []`, `lesson_count: 0`. The proposed outline has not been approved; no lesson or quiz may be drafted or activated without the user's explicit approval.
 
 The older sections above are retained as historical checkpoints where their statements have been superseded; read them under this controlling note and the latest audit reconciliation.
+
+
+## Controlling source-map corrections — 2026-11-05
+
+This section supersedes the conflicting rows and statements in the earlier **Consolidated source map** above. That table is retained as an historical checkpoint, not as the current page map.
+
+| PDF pages | Current controlling scope | Correction / boundary |
+|---|---|---|
+| 222–235 | **چاوگ** | p.222 and contents entry 5 on p.398 both read **چاوگ**. The older p.398 reading **جێناو** is withdrawn. |
+| 254–272 | **پریپۆزیشن / A Preposition** | The printed heading on p.254 and contents entry 7 on p.398 both read **پریپۆزیشن**. The older **پێوەندینیش** reading is withdrawn. |
+| 349–373 | **ئامرازی سەرسووڕمان** (source heading wording is retained only when directly quoted) | This is the proposed Unit 9 span. Use **سەرسووڕمان** in explanatory Kurdish prose. |
+| 374–387 | Separately attributed particle/affix accounts and comparative material | This range is not part of Unit 9 and is not one unified Kurdish inventory. Preserve each attribution and comparative source separately; it remains supplementary source material, not an approved unit. |
+| 388–391 | **وشەی سەربەخۆ و وشەی بەستراو** | A distinct framework; do not merge with the separately attributed accounts on pp.374–387. |
+| 392–394 | Diagram, bound-word classes, and **گیرەک** | Preserve the source's printed technical form **گیرەک**. |
+| 395–397 | **پێشگر** and related prefix discussion | Keep the separately attributed discussion and the **سادە / ناسادە** form distinction in their own source context. |
+
+The latest controlling evidence is recorded in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`, `COURSE4_VISUAL_REVIEW_374_379.md`, `COURSE4_CROP_REVIEW_380_385.md`, `COURSE4_VISUAL_REVIEW_386_391.md`, and `COURSE4_VISUAL_REVIEW_392_397.md`. This correction updates the source map only; it does not approve the proposal or any lesson.
+
+Course 4 remains planned/inactive with zero lessons. The sole curriculum source remains `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded. No lesson drafting, activation, catalogue restoration, merge, production change, or Botkeep deployment is authorized by this documentation update.
