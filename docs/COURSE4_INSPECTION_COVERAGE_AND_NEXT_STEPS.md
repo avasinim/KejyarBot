@@ -4,6 +4,21 @@
 
 # Course 4 — source inspection coverage and next-work register
 
+## Current controlling snapshot — 2026-11-05
+
+Use this section and the final queue at the end of this file as the current status. Older matrix cells and intermediate “Next focused task” / “Next source-audit action” paragraphs below are chronological checkpoints; where they conflict with the controlling queue, they are superseded and must not be treated as active work instructions.
+
+- **p.106:** the 17 numbered rows are transcribed; only the note immediately below remains open.
+- **p.95:** heading and opening rule are transcribed; examples after **وەک** remain clipped and untranscribed.
+- **p.119:** four aligned rows and the parenthetical infinitive list are transcribed; **خڕین** is provisional, the grammatical labels are unknown, and the preceding table is a separate unresolved block.
+- **p.120:** three paired readings remain provisional; table headings and the complete attributed passage by مامۆستا مەسعود محەمەد remain outstanding.
+- **pp.93–94:** use the final reconciliation in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`; on p.94 the second upper-table left example is uncertified. The guess **منداڵەکەم خوارد** is withdrawn.
+
+No new image inspection or transcription is claimed by this status note. Only original page images/crops can close the open items. Course 4 remains inactive with zero lessons; this register does not authorize lesson drafting, quizzes, catalogue restoration, or runtime changes.
+
+---
+
+
 Date: 2026-11-05  
 Branch: `reset/grammar-course4-content`  
 Purpose: distinguish pages structurally mapped, visually sampled, sequentially reviewed, and fully transcribed. A page-viewing pass is not a full transcription.
