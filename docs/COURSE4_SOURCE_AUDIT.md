@@ -843,10 +843,8 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 
 ### Priority unresolved items before lesson drafting
 
-1. **Chapter title/page discrepancy at p. 222:** contents says **جێناو**, while the page's printed heading reads **چاوگ**. Reinspect a high-resolution crop of p. 222 and the contents entry on p. 398; if the scan remains ambiguous, mark it unresolved rather than infer.
-2. **Chapter title/page discrepancy at p. 254:** contents says **پێوەندینیش**, while the printed heading reads **پریپۆزیشن / A Preposition**. Verify both exact glyph sequences from enlarged crops and retain the discrepancy in the audit.
-3. **Source-internal category grouping:** p. 347 presents **کار** and **چاوگ** separately, while pp. 373 and 389 group them in a parenthetical construction. The source's differing presentations must be taught as a documented inconsistency, not silently harmonized.
-4. **Terminology on pp. 392–395:** the bound-word diagram and the terms transcribed provisionally as **گیرەک / گیرەک** need enlarged character-by-character verification. Do not pick one spelling by guess.
+1. **Source-internal category grouping:** p. 347 presents **کار** and **چاوگ** separately, while pp. 373 and 389 group them in a parenthetical construction. The source's differing presentations must be documented, not silently harmonized.
+2. **Terminology on pp. 392–395:** the printed form is verified as **گیرەک**. The remaining work is full transcription and analysis of its definition, subtypes, distribution, and examples—not spelling verification.
 5. **Dense conjunction inventories, pp. 279–348:** several numbered particle headings remain uncertain in the existing page notes, particularly p. 306 and pp. 314–318, plus detailed subgroups on pp. 332–337. Crop and transcribe before using any as lesson headings.
 6. **Dense Interjection inventories, pp. 354–373:** some forms/headings are not yet securely legible; exact spellings and numbered boundaries need crop-level review.
 7. **Prefix/suffix inventories, pp. 377–397:** many lists are legible structurally but not yet fully transcribed. Do not copy long lists into course content before high-resolution checking.
@@ -1115,3 +1113,12 @@ In editorial Kurdish prose, use **سەرسووڕمان** as requested by the use
 - This chapter's ending list of eight categories is the author's summary, not proof that every cited grammarian accepts the same taxonomy. The contrast between p. 347 and p. 373 (whether **کار** and **چاوگ** are grouped) is a source-internal difference worth preserving.
 - Exact bibliography and some individual glyphs in the dense examples still need crop-level checking before quoting. This pass records page structure and clearly legible headings, not a complete diplomatic transcription of every example.
 - Course 4 remains planned and inactive; no lessons, quizzes, or runtime changes were made.
+
+
+## Final terminology correction and audit-register cleanup: گیرەک (2026-11-05)
+
+The user explicitly corrected the source reading to **گیرەک**. This spelling, with initial **گ**, is the sole accepted transcription for PDF pp. 392–395. All earlier variants that differ in the initial consonant are transcription errors and must not be retained as alternatives. The diagram on p. 392 and the repeated heading/body forms on pp. 393–395 support **گیرەک**.
+
+The unresolved-verification register has also been cleaned up: the alleged p. 222 and p. 254 contents/page-heading discrepancies were already disproved by enlarged inspection and are no longer listed as open issues. The remaining p. 392–395 task is semantic and structural transcription of the author's account, not deciding the spelling. The genuine source-internal grouping difference for **کار / چاوگ** remains open for careful explanation.
+
+Editorial terminology for this chapter follows the user's preference **سەرسووڕمان**; retain the source's original wording only when a diplomatic quotation is necessary. Course 4 remains planned, with zero lessons; no course content, quizzes, activation, deployment, or changes to other courses were made.
