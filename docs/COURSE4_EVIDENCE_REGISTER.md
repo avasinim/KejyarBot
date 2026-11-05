@@ -159,3 +159,16 @@ See `docs/COURSE4_VISUAL_REVIEW_374_379.md`.
 - Long inventories remain untranscribed pending character-level checking. These are multiple attributed frameworks, not one unified taxonomy.
 
 Visual review only, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
+
+
+## Focused visual review — independent and bound words, pp.386–391 (2026-11-05)
+
+See `docs/COURSE4_VISUAL_REVIEW_386_391.md`.
+
+- pp.386–387 cite **AN ENGLISH GRAMMAR BOOK BY Evan C. Penglis** as comparative material and raise Prefix, Suffix, and Infix; p.387 explicitly asks whether Infix exists in Kurdish. This is a question, not evidence for a productive Kurdish infix category.
+- p.388 begins **وشەی سەربەخۆ و وشەی بەستراو** and lists five independent classes, with **کار (چاوگ)** grouped parenthetically.
+- p.389 completes the eight bound classes with preposition, conjunction, and nida particles, then begins the bound-word discussion.
+- pp.390–391 continue contextual/structural discussion and examples; dense segmentations remain untranscribed pending character-level checking.
+- The grouping **کار (چاوگ)** on p.388 contrasts with p.347's separate entries. Preserve the source-internal variation.
+
+Visual review only, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
