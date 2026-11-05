@@ -171,3 +171,11 @@ Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activa
 - p.119 four aligned rows and right/left column orientation remain visually confirmed as recorded in the crop-review file.
 - p.120 original full-page raster confirms two numbered blocks (١ and ٢) before a separate attributed discussion. The attribution opening is **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...**. Full prose transcription and the exact internal letters of the three paired rows remain pending; do not substitute a paraphrase for the source's explicit **(شاراندنەوە)**.
 - Next: obtain/inspect a higher-resolution original of p.120 for a diplomatic transcription; then return to the still-unresolved p.119 preceding table and pp.93–95 dense tables. No lesson content or runtime state has changed.
+
+
+### pp.93–95 original-image pass (2026-11-05)
+
+- p.93: verified right-to-left headings for the four-column tables (**کۆمەڵ / فعلی لازم / ڕەگ / فعلی متعدی**) and two-column table (**فعلی لازم / فعلی متعدی**). Third-table pairs clear: **سووتان/سووتاندن، قڵیشان/قڵیشاندن، کەڕان/کەڕاندن**. In the second four-column table, **کەوتن → خستن، هاتن → هێنان، مردن → مراندن** are clear row readings; other entries and roots remain pending.
+- p.94: right-to-left headings verified as **فرمانی تێنەبەر / ڕەگی فرمان / فرمانی تێپەڕ** in two separate tables; example forms need character-level transcription. Prose notes below are separate from the tables.
+- p.95: right-to-left headings verified as **چاوگ / کاری تێنەبەر / کاری تێپەڕ**. Clear rows **نەخش / نەخشان / نەخشاندن** and **خمل / خملان / خملاندن**. First row and following prose still require close reading.
+- See the crop-review record for the evidence and explicit unresolved items. No lessons, quizzes, activation, or runtime changes were made.
