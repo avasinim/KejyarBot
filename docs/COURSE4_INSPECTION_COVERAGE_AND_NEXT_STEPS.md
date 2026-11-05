@@ -81,3 +81,15 @@ This closes the previously recorded sequential-coverage gap for pp.80–120 at t
 2. Crop and transcribe paradigms on pp.93–95 and 112–120, maintaining row/column alignment.
 3. Verify the dense p.106 inventory item by item.
 4. Continue diplomatic transcription of selected verb examples, keeping every source attribution and dialect label.
+
+
+## Focused crop review of verb paradigms (2026-11-05)
+
+A focused visual pass of original page images is recorded in `docs/COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`.
+
+- pp.93–95: aligned comparisons and source-specific column labels are visible; keep each table and its prose/attribution as separate blocks.
+- p.106: a numbered, aligned 17-item inventory is visible; no full transcription is approved because individual forms need character/diacritic verification.
+- p.112: bilingual Active and Passive heading and Kurdish subsection heading **کاری کاردار و کاری کاربێژ** are visible.
+- pp.113–120: continuation of the same internal subsection, with changing local groups and examples; do not flatten into one paradigm.
+
+The crop review is still visual evidence, not full diplomatic transcription or independent linguistic validation. The next work is to produce enlarged crops and transcribe selected tables cell by cell, beginning with p.106 and p.93.
