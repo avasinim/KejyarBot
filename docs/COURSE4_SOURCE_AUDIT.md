@@ -325,3 +325,20 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source uses labels such as **چاوگی سادە / چاوگی ناسادە** and further subtypes. These labels must be preserved verbatim in source notes until their definitions are manually transcribed and independently validated. Do not substitute labels such as transitive/intransitive, simple/compound verb, or infinitive without evidence.
 - The contents-page entry **جێناو** for p. 222 remains inconsistent with the actual chapter heading **چاوگ** and the continuation through p. 235. The discrepancy remains open; this review does not resolve the table-of-contents error.
 - This is a visual sequential review of pp. 228–235, not a complete transcription. Before drafting any lesson, transcribe the definitions, each subtype heading, and representative examples from high-resolution crops, then validate the analysis against independent Sorani/Central Kurdish linguistic research. The primary book remains the sole lesson source.
+
+
+## Sequential visual review: adverb chapter PDF pp. 236–241 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 236:** the chapter heading is **ئاوەڵکار**. The opening paragraph discusses the term's meaning and presents at least two semantic groupings using the source's labels **اسمی زمان** and **اسمی مکان**, with examples of time and place expressions. It then begins a numbered survey of definitions/analyses by Kurdish grammarians.
+- **PDF p. 237:** continues the cited grammarians' accounts and lists several ways they divide or define the category. The source is reporting other grammarians' approaches, not necessarily endorsing every definition as its own final analysis.
+- **PDF p. 238:** continues that literature survey with additional author-attributed definitions and examples. These should be attributed to the cited scholar/source when transcribed, rather than merged into one definition.
+- **PDF p. 239:** continues the list of adverb subgroups, then introduces an explicit **تێبینی**. The note compares the treatment of the category in Kurdish grammatical works and points to a difference between the way a form is classified in one account and its function/usage in context. This is an important warning against classifying forms by their surface appearance alone.
+- **PDF p. 240:** prints an English definition: “An adverb is a word which modifies meaning of a verb, an adjective or another adverb.” The Kurdish discussion immediately following questions/qualifies the adequacy of applying a borrowed definition and discusses the need to examine the actual Kurdish usage and grammatical function. This English sentence must not be presented as an uncontested complete definition of Kurdish **ئاوەڵکار**.
+- **PDF p. 241:** continues with four numbered example groups and a set of standalone Kurdish example sentences, followed by a further **تێبینی**. The note emphasizes that words such as those listed may function as adverbs in context; their category is not established by memorizing an isolated word list.
+
+### Findings and limits
+- The first six pages of the **ئاوەڵکار** chapter show a source that surveys multiple Kurdish grammatical accounts, reports differences among them, and explicitly cautions about context-sensitive classification. A future lesson must distinguish the book author's own explanation from definitions quoted or attributed to other grammarians.
+- The English adverb definition on p. 240 is a quoted/printed general definition and cannot by itself settle the analysis of Central Kurdish forms. Validate each claim and example independently, without importing another book's lesson content.
+- The pages contain lists and examples whose exact spellings and attribution should be manually transcribed from high-resolution crops before use. This checkpoint records the structure and methodological cautions, not a complete transcription or final classification.
+- Next: continue sequentially through pp. 242–253, then inspect the transition and terminology on pp. 254–255 in context. The p. 254 contents-page mismatch (**پێوەندینیش** vs. printed **پریپۆزیشن**) remains open.
