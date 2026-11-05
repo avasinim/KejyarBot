@@ -190,3 +190,16 @@ This is a synthesis of existing visual evidence, not a complete transcription. C
 ## Corrected contents-page heading — pp.222 and 398 (2026-11-05)
 
 Direct enlarged comparison of the original rendered images confirms that p.398 entry 5 reads **چاوگ**, matching the chapter-opening heading on p.222. The former **جێناو** reading for p.398 is withdrawn as an audit transcription error. See `COURSE4_SOURCE_DISCREPANCY_P222_P398.md` and `COURSE4_AUDIT_DOCUMENT_CONSISTENCY.md`.
+
+
+## Current controlling record for verb-page crop transcriptions (2026-11-05)
+
+For pp.93–95 and 106–120, use `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` as the page-specific evidence register whenever it contains a later crop correction. This prevents historical summaries from being mistaken for final readings. Latest reconciled points:
+
+- p.93: two distinct four-column tables; preserve all columns and the printed blank root cell for **هاتن**.
+- p.94: right-to-left headings **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**; second upper-table left example unresolved.
+- p.95: heading **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**; examples after **وەک** remain outside the available crop.
+- p.106: 17 rows transcribed, separate note beneath the table still outstanding.
+- p.119–120: selected rows and lists only; column headings and the full attributed p.120 passage remain outstanding.
+
+These are transcription-status statements, not endorsements of the source's linguistic analysis. No lesson or quiz is authorized by this register.
