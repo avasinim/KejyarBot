@@ -14,7 +14,7 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 | pp.80–160 | Verb chapter spot-checked at multiple points (including 81, 88, 93, 112–114, 120, 130, 140, 150, 160) | Sequential review and transcription of paradigms, tense/aspect, negation, voice, transitivity, and modal-like constructions |
 | pp.161–221 | Sequential page-image review recorded | Still requires rule/example transcription and independent validation; sequential viewing alone is not content approval |
 | pp.222–227 | Direct visual review | Review remaining pages 228–235; preserve exact opening heading **چاوگ** |
-| pp.228–235 | No complete sequential review recorded | Sequential review; capture the chapter's full scope and transition |
+| pp.228–235 | Sequential visual review completed; see `COURSE4_VISUAL_REVIEW_228_235.md` | Exact transcription of selected examples and paradigms; independent validation |
 | p.236 | Boundary page visually checked | Confirm chapter transition in context |
 | pp.241–253 | Sequential visual review recorded | Convert selected rules/examples to exact transcription and validate; resolve p.243 variety label by crop |
 | pp.254–272 | Sequential visual review recorded | Exact transcription of selected examples; resolve p.269 heading only from verified crop |
@@ -30,11 +30,10 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 ## Priority order for the next source work
 
 1. **Resolve p.222 / p.398 discrepancy:** re-open both original page images side by side; confirm the printed strings and surrounding headings. Do not decide whether they are synonyms or distinct categories without contextual evidence.
-2. **Complete the missing sequential range pp.228–235:** this is the clearest unreviewed gap inside a mapped chapter.
-3. **Review pp.31–79 sequentially:** complete the pronoun and adjective chapter maps, then select exact passages for transcription.
-4. **Continue the verb chapter:** prioritize the portions not yet reviewed sequentially and transcribe representative paradigms before independent comparison.
-5. **Transcribe candidate material from already-reviewed chapters:** visual coverage is not enough; create exact, page-linked transcriptions before lesson planning.
-6. **Independent validation:** compare each candidate claim against relevant Sorani/Central Kurdish scholarship, recording variety, register, and disagreements separately.
+2. **Review pp.31–79 sequentially:** complete the pronoun and adjective chapter maps, then select exact passages for transcription.
+3. **Continue the verb chapter:** prioritize the portions not yet reviewed sequentially and transcribe representative paradigms before independent comparison.
+4. **Transcribe candidate material from already-reviewed chapters:** visual coverage is not enough; create exact, page-linked transcriptions before lesson planning.
+5. **Independent validation:** compare each candidate claim against relevant Sorani/Central Kurdish scholarship, recording variety, register, and disagreements separately.
 
 ## Status definitions
 
