@@ -31,7 +31,7 @@ def verify_git_blob(data, expected):
     return actual
 
 def ocr_page(page):
-    pix = page.get_pixmap(matrix=fitz.Matrix(1.8, 1.8), alpha=False)
+    pix = page.get_pixmap(matrix=fitz.Matrix(1.3, 1.3), alpha=False)
     image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
     try:
         raw = pytesseract.image_to_string(image, lang="ara+eng", config="--psm 6")
@@ -66,6 +66,8 @@ def main():
         embedded_count = 0
         ocr_count = 0
         for index, page in enumerate(pdf, start=1):
+            if index == 1 or index % 25 == 0 or index == len(pdf):
+                print(f"Volume {number}: OCR progress {index}/{len(pdf)} pages", flush=True)
             text = " ".join(page.get_text("text").split())
             method = "embedded-text"
             if len(text) < 70:
@@ -104,7 +106,7 @@ def main():
         writer.writeheader()
         writer.writerows(lesson_rows)
     print(json.dumps(manifests,ensure_ascii=False,indent=2))
-    print("OCR complete. Full book text was not written to the artifact.")
+    print("OCR complete. Full book text was not written to the artifact.", flush=True)
 
 if __name__ == "__main__":
     main()
