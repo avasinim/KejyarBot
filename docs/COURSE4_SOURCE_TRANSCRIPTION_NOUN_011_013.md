@@ -291,3 +291,117 @@ The page continues the numbered classification with visible entries **٤- ناو
 7. Only after diplomatic transcription is complete, run a separate claim-level validation. No modern category or normalized term may be silently substituted for the printed source form.
 
 **Control status:** this addition records selective enlarged-image readings only. It does not claim pp.11–24 are fully transcribed or validated. Course 4 remains planned/inactive with zero lessons.
+
+
+---
+
+## Crop-level verification pass — PDF pp.11–15 (2026-11-05)
+
+Original individual-page images for pp.11–15 were reopened and enlarged from the recovered artifact. This pass corrects several earlier tentative readings and records additional directly visible text. It remains a partial diplomatic transcription: illegible words and dense prose are explicitly left open.
+
+### p.11 — opening definition and classification
+
+The page headings are **بەشەکانی ئاخاوتن**, **١**, and **ناو**. The opening definition is legible as:
+
+> ناو وشەیەکی سەربەخۆ و واتایەک دەگەیەنێت کە بە کاتەوە نەبەستراوە، وەک:
+
+The following example line visibly includes **کاوە، ساڵ، بەرد، پیاوەتی، هەولێر، ڕۆیشتن، گۆڵ، پەپوولە، فرۆک، بەستەڵەک، هەڵپەرکی، تی هەڵکێشان**. Some final example segmentation/spelling needs another crop check; do not silently normalize it.
+
+The paragraph under **[تێبینی و ڕوونکردنەوە]** explicitly contrasts the noun with **کار (فعل)** and refers to the noun not being tied to time. It also includes the Arabic grammatical phrase **(غير مقترن بالازمنة الثلاثة)** and a reference to **(اقتران)**. The full sentence sequence is still not safe to quote continuously from this image; retain the paragraph as partially transcribed pending a line-by-line pass.
+
+The page then states:
+
+> ناو لە دوو ڕووەوە باس دەکرێت:
+> ١- لە ڕووی پێکهاتنەوە.
+> ٢- لە ڕووی واتاوە.
+
+And:
+
+> یەکەم- ناو لە ڕووی پێکهاتنەوە دەکرێت بە دوو بەشەوە:
+> ١- سادە
+> ٢- ناسادە
+
+### p.12 — exact visible taxonomy and simple-noun attributions
+
+The top continuation reads:
+
+> ناسادەش دەبێتە دوو بەش:
+> أ- لێکدراو
+> ب- دایزراو
+
+The heading **١- ناوی سادە** is followed by the line:
+
+> هەتا ئێستا بۆ ئەم زاراوەیە ئەم وشانە بەکار هێنراون.
+
+The nine attributions are separately listed in the source. Clearly visible forms include:
+
+1. **سەعید سەدقی (تەنیا)** — the text says he uses this term.
+2. **توفیق وەهبی (سادە)** — used in his dictionary.
+3. **مەردۆخ (سادە)** — used in his dictionary.
+4. **شێخ محەمەدی خال (سادە)** — used in his dictionary.
+5. **کوردۆیف (ناسان)** — used in his grammar.
+6. **ڕەشیدی کورد (خۆری)** — used in his grammar.
+7. **جەگرخوێن (سادە)** — used in his grammar.
+8. **نووری عەلی ئەمین (پەتی)** — used in his grammar.
+9. **هەژار (ساکار)** — the line says he recommends using this word.
+
+The heading **پێناسینی (تعریف) ناوی سادە** follows. The paragraph introduces separate attributed definitions. The visible first attribution begins **سەعید سەدقی دەڵێت: ...** and includes the examples **(عالی، مراد، شار، بازار)**. A later attribution begins **مەردۆخ دەڵێت: ناوی سادە ...** and includes examples **(کیو، قورسی، بلبڵ)** [the final two example spellings should be rechecked at higher magnification]. These are separate attributed statements, not one unified definition. The remaining paragraph continues onto p.13.
+
+### p.13 — simple-noun example line and non-simple terminology list
+
+The continuation at the top completes the preceding discussion and then gives the sentence:
+
+> ناوی سادە ئەو ناویە کە لە تەنیا وشەیەک پێک هاتبێت، وەک:
+
+The clearly visible examples read **بەرد، با، مرۆڤ، دەشت، ڕەگ، مە؟، گۆشت**. The item after **ڕەگ** is still uncertain and must not be guessed.
+
+The next heading reads **٢- ناسادە**. The source says that several terms have been used for it, then gives a numbered list. The currently visible attributions and parenthetical labels are:
+
+1. **سەعید سەدقی (تێکەل)** [label needs a sharper crop].
+2. **توفیق وەهبی (لێکدراو)** [reading provisional].
+3. **مەردۆخ (پەیوەست)** [reading provisional].
+4. **کوردۆیف (پارکران)** [reading provisional].
+5. **نووری عەلی ئەمین (ناوێتە)** [reading provisional].
+6. **ڕەشیدی کورد (لێکدانی)** [reading provisional].
+
+These parenthetical labels must be checked character by character before being treated as exact terminology. The page continues to p.14.
+
+### p.14 — attributed definitions of non-simple noun; source's own recap
+
+The top line completes the numbered list with **٧- جەگرخوێن (پەڕەچم)** [the parenthetical label is visible; its intended meaning is not inferred]. The heading reads **پێناسینی ناوی ناسادە**.
+
+Separate attributed definitions follow for **سەعید سەدقی، مەردۆخ، کوردۆیف، نووری عەلی ئەمین** and a Persian grammar source. Their individual wording and examples must remain separate. Visible example strings include **(عالی مراد، شارپازتر)** in the first passage; **خدا، باخان، خۆردەتاو، کۆڵا** in the passage attributed to مەردۆخ; and **میزەکسوور، مارماسی، بەرداش** in the passage attributed to نووری عەلی ئەمین. Some of these spellings are provisional and need high-resolution verification.
+
+The authorial recap near the bottom says the writer has collected the preceding views and divides nouns into **١- سادە، ٢- ناسادە**; it then says non-simple nouns are divided into **١- لێکدراو، ٢- دایزراو**. The final line starts another classification by form and continues onto p.15. Do not confuse the attributed definitions above with the author's recap.
+
+### p.15 — classification reconciliation and detailed non-simple-noun section
+
+The top of the page continues the preceding list with **٢- لێکدراو، ٣- دایزراو**. A following summary attributes a three-way classification to **د. نەسرین فەخری و نووری عەلی ئەمین**:
+
+> ١- سادە، ٢- لێکدراو، ٣- دایزراو — دروستکراو
+
+The source then separately refers to **مەسعود محەمەد، هەژار و سادق بەهائەدین** and gives a two-way classification **١- سادە، ٢- ناسادە**, with **١- لێکدراو، ٢- دایزراو** under the latter. A further passage says the writer has adopted a classification found in the grammarians' writing; the exact sentence needs full transcription.
+
+The heading **٢- ناوی ناسادە** is followed by the statement that it has been defined as the opposite of the simple noun, and then:
+
+> ئەو ناویە لە وشەیەک و زیادەیەکە وشە بیت یا ناڕەزا یا پێشکە یا پاشکە یا هەر شتێکی تر.
+
+[The exact segmentation and some affix terminology require a sharper crop; preserve the source wording rather than imposing modern labels.]
+
+A following line says grammarians call all compound and derived forms non-simple nouns and gives examples visibly including **مارماسی، بەردەنۆژ، بن بەردەقیلە** [the first example requires spelling verification]. The page then introduces two types:
+
+> ئەوەجا ناوی ناسادەش دوو جۆرە:
+> أ- لێکدراو
+> ب- دایزراو
+
+The beginning of the definition of **لێکدراو** is visible at the foot of the page and continues beyond p.15. Preserve that page-turn continuation.
+
+## Remaining work for pp.11–15
+
+- Complete the p.11 explanatory paragraph word-for-word and verify the last examples in its opening list.
+- Transcribe the full separate definitions on p.12 and the continuation at the top of p.13; verify the two example lists.
+- Recheck every parenthetical label in the p.13–14 terminology lists; several are still provisional.
+- Transcribe the p.14 attributions completely and verify their examples.
+- Complete the p.15 affix/formation paragraph and the continuation of the **لێکدراو** definition on p.16.
+
+**Evidence boundary:** the observations above come from enlarged original page images, but several individual readings remain uncertain. No linguistic validation or lesson approval is claimed. Course 4 remains planned/inactive with zero lessons.
