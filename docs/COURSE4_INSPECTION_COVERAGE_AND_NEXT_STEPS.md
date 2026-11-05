@@ -488,3 +488,10 @@ Original page previews pp.92 and 96–97 were also reopened; pp.93–95 were rec
 Original individual page previews pp.98–103 from the recovered `course4-source-text` artifact were inspected in sequence. Page-level structure and unresolved transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_098_103.md`. These pages continue the discussion of verb forms, include a quotation attributed to **مامۆستا سادق**, a subsection on **ڕۆیشتن**, a subsection marked **کاری (فڕین)**, aligned form groups, and numbered explanatory notes. Attributions, examples, notes, and tables must remain separate evidence units.
 
 This is visual mapping only, not complete diplomatic transcription or independent linguistic validation. The next transcription pass should cover pp.98–103 line by line, beginning with the attributed quotation and the examples under **ڕۆیشتن**, then preserve the aligned groups and numbered notes on pp.100–103. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.104–109 (2026-11-05)
+
+Original individual page previews pp.104–109 from the recovered source-text artifact were inspected separately. Structural observations and the next transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_104_109.md`. The pages include a continuation of an attributed discussion, the numbered subsection **پێنجەم**, distinct statements attributed to **مامۆستا مەسعود** and **مامۆستا سادق**, a two-column 17-item list on p.106, explanatory blocks on p.107, numbered arguments on p.108, and a four-column comparison on p.109.
+
+This is visual mapping only. The p.107 heading remains provisional and the p.106–109 dense forms require enlarged crop verification before diplomatic transcription. Preserve all attribution boundaries, printed row alignment, and numbered sequence. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
