@@ -1056,3 +1056,22 @@ The explanatory prose immediately following begins with **خۆزگە** and gives
 - For **بەڵکو**, examples include statements and questions. The author explicitly comments on how its role can be distinguished in context; do not collapse **بەڵکو** and **بەشکو** into one spelling without checking the individual examples.
 - The heading numbered **5 ـ نەری** on p. 356 does not align transparently with the numbered inventory on p. 354, where **نەری** appears as item 8 (while item 5 is a different form). This is a genuine numbering/order issue to record, not silently repair. Check intervening pages and the source's numbering logic before making a lesson sequence.
 - p. 356 continues the explanatory treatment and ends with examples under **نەری**. Full transcription of the examples is still pending.
+
+
+## Terminology preference: سەرسووڕمان (2026-11-05)
+
+For Kurdish explanatory prose and any future Course 4 headings, use **ئامرازی سەرسووڕمان**. Do not use **تعەجوب** as the Kurdish label. Where the source's original Arabic-script chapter heading is being quoted diplomatically, retain its printed form **تعجب** in quotation marks and explain it as **سەرسووڕمان**; this preserves the primary source while following the user's terminology preference. English gloss in the source: *Interjection*.
+
+## Sequential visual review: Interjection chapter, PDF pp. 357–361
+
+- **PDF p. 357:** continues the contextual examples under the earlier numbered items, then introduces **٦ ـ ئامرازی (نەی)** near the bottom. The page also includes a substantial prose explanation about how the form functions in the example constructions. Do not reduce this to a bare translation.
+- **PDF p. 358:** continues examples and commentary for item 6. The author explicitly warns that some examples presented as uses of the particle are not all the same grammatical construction; the discussion distinguishes direct use from a form embedded in a larger phrase. Preserve the examples and the author's qualification together.
+- **PDF p. 359:** begins **٧ ـ ئامرازی (هە)** and gives a sequence of short utterances/questions, followed by five numbered observations about its use. The page's final paragraph explicitly discusses its contextual function; it should be taught through those contrasts, not merely as an emotional sound.
+- **PDF p. 360:** continues the detailed explanation of item 7, then begins **٨ ـ ئامرازی (ژ)**. The examples under item 8 include short phrases and a sentence; the author comments that the form is not used in every context in the same way. Exact glyphs in the item-8 heading and examples should be crop-checked before quotation.
+- **PDF p. 361:** begins **٩ ـ ئامرازی (هی)** and then **١٠ ـ ئامرازی (هۆ)**. The item-10 section is notably comparative: the author reports treatments by named Kurdish grammarians, with page references and examples. These are attributed opinions, not automatically the present author's own definition. The visible attributions include سەعید سەدقی، نووری عەلی ئەمین، توفیق وەهبی، جەگرخۆین; preserve attribution and pagination when transcribing.
+
+### Methodological findings for pp. 357–361
+1. The numbered forms are explained across several pages; headings, examples, and commentary must be kept together.
+2. The author distinguishes usage by sentence context and construction. The same visible form may occur in different functions; classification by spelling alone is unsafe.
+3. The chapter includes both the author's own discussion and summaries of other grammarians. Attribute each position explicitly.
+4. This is a source audit only. No Course 4 lessons or quizzes have been created or activated.
