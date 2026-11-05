@@ -7,6 +7,8 @@ Primary source: `Rezmany_axawtny_kurdy.pdf` (400-page scan). This document synth
 ## 1. Closing pages and structure
 
 - **pp.374–379:** Several separately attributed accounts discuss particles, prefixes, suffixes, beginnings, and relations. The accounts attributed to مامۆستا سەعید سەدقی, مامۆستا توفیق وەهبی, مامۆستا کوردیف, نووری عەلی ئەمین, and مامۆستا جەگرخۆین remain distinct. See `COURSE4_VISUAL_REVIEW_374_379.md`.
+- **pp.380–385:** Separate numbered/attributed lists, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. See `COURSE4_CROP_REVIEW_380_385.md`; do not treat these as one unified taxonomy.
+- **Outline boundary:** the proposed **ئامرازی سەرسووڕمان** unit is limited to pp.349–373. Pages 374–387 remain separate source material and are not folded into that unit; see `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`.
 - **pp.380–385:** The source juxtaposes a numbered list, a separate account attributed to جەگرخۆین, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. These are not one Kurdish inventory. See `COURSE4_CROP_REVIEW_380_385.md`.
 - **pp.386–391:** Evan C. Penglis is cited as comparative material; the source raises Prefix, Suffix, and Infix, then introduces **وشەی سەربەخۆ و وشەی بەستراو**. Five independent classes and eight bound classes are listed. See `COURSE4_VISUAL_REVIEW_386_391.md`.
 - **pp.392–397:** The diagram divides **وشە** into **سەربەخۆ / بەستراو**, with the bound branch divided into **ئامراز، گیرەک، نیشانە**. A separately attributed account by مەسعود محەمەد and a later **پێشگر** section follow. The prefix section distinguishes **سادە / ناسادە** by form. See `COURSE4_VISUAL_REVIEW_392_397.md`.
@@ -43,6 +45,13 @@ Course 4 metadata remains:
 - `id=grammar`, `key=course_grammar`, `order=4`
 - `title=کۆرسی ٤: ڕێزمان`
 - `status=planned`, `lesson_ids=[]`
-- `lesson_count=0`, `lessons=[]`, `source=null`
+- `lesson_count=0`, `lessons=[]`
+- `source={title: ڕێزمانی ئاخافتنی کوردی, file: Rezmany_axawtny_kurdy.pdf, role: sole_curriculum_source, status: selected_under_audit}`
+- The separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded.
 
 No lessons or quizzes have been drafted or activated. No other course metadata/content was changed. No merge to `main`, production database edit, Botkeep sync, or deployment was performed. This work is documentation-only on `reset/grammar-course4-content`.
+
+
+## Status reconciliation — 2026-11-05
+
+This synthesis previously stated `source=null`, which no longer matches the branch-local plan record. The current `curriculum/grammar_course4_plan.json` explicitly selects `Rezmany_axawtny_kurdy.pdf` as the sole source under audit, while keeping `lesson_count=0` and `lessons=[]`. The separate clitic-pronoun PDF remains excluded. This correction reconciles metadata only; it does not approve the outline or authorize lesson drafting/activation. The proposed Unit 9 span is pp.349–373; pp.374–387 are separately recorded material, not an extension of that unit.
