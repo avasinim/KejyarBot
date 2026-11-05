@@ -372,3 +372,8 @@ Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`. This review does
 A separate source ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_025_030.md`, now records selective crop-based transcription from the original page images for pp.25–30. This begins the second approved unit's transcription, but does not complete it. Category labels, examples, attributions, and numbering are preserved as printed where legible; uncertain words and dense passages remain explicitly open. In particular, the p.28 English-grammar list visibly jumps in numbering from 3 to 6; do not silently renumber it.
 
 The transcription ledger does not establish independent linguistic validation and does not create lesson content. Continue by completing the open items in that ledger, then proceed sequentially from p.31. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Initial diplomatic transcription — ڕاناو, PDF pp.31–36 (2026-11-05)
+
+A separate ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_031_036.md`, records selective transcription from the original individual page previews for pp.31–36. It captures the personal-pronoun discussion on p.31, uncertain paradigm headings and paired forms on pp.32–33, connected-pronoun terminology and paradigms on pp.33–35, and the two printed three-column tables on p.36. All uncertain forms remain marked for crop-level verification; table cells and examples are not treated as fully certified. This ledger does not establish linguistic validation or create lesson content. Continue by checking the open cells/paragraphs in this ledger before proceeding beyond p.36. Course 4 remains planned with zero lessons.
