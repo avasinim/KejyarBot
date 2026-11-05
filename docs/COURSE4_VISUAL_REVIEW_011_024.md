@@ -111,3 +111,21 @@ The original preview images for pp.17, 19, 20, 22, 23 and 24 were reopened and v
 - p.24: readable labels include **ناوی نێر، ناوی مێ، ناوی دوو دیان** (uncertain final word), **ناوی بی لاوەن** (uncertain), **ناوی ماددی (مستقل)**, and **ناوی گوزارە** with **بەنجی / دروستکراو**.
 
 This crop-review pass improves the page map but is still not a full diplomatic transcription. No lesson wording should be built from unresolved labels or unchecked example rows.
+
+
+## Additional page-by-page verification — pp.11–16 and 18, 21 (2026-11-05)
+
+After reopening the original page previews, the following more precise observations were added:
+
+- **p.11:** the page title is **بەشەکانی ئاخاوتن**, followed by section **١ — ناو**. The opening text describes the noun as an independent word not bound to time and gives examples. It then explicitly says nouns are classified in two ways: **لە ڕووی پێکهاتنەوە** and **لە ڕووی واتاوە**. The structural split shown at the foot of the page is **سادە / ناسادە**.
+- **p.12:** the page lists separately attributed views under **ناوی سادە**. The visible numbered attributions include سعید صدیقی، توفیق وەهبی، مەردۆخ، شێخ محەمەدی خال، کوردۆیف، ڕەشیدی کورد، جەگرخۆین، نووری عەلی ئەمین، and هەژار. The exact quotation/example wording belongs in a later diplomatic transcription; this is not one unified authorial definition.
+- **p.13:** a separate section **٢- ناسادە** lists attributed definitions/views, visibly including سعید صدیقی، توفیق وەهبی، مەردۆخ، کوردۆیف، نووری عەلی ئەمین، and ڕەشیدی کورد. The wording and parenthetical glosses differ by author.
+- **p.14:** the discussion continues with another attributed view (including جەگرخۆین) and a recap of **سادە / ناسادە**, with **لێکدراو / دایزراو** as subtypes of the latter. It also shows a further distinction by the way the noun is formed. Do not combine these overlapping presentations into a single taxonomy without preserving their source attribution.
+- **p.15:** the page continues the attributed structural analysis. It describes compound and derived nouns and gives further criteria/examples; the lower section begins **٢- ناوی ناسادە** and describes **لێکدراو**. Full examples and segmentation still need transcription.
+- **p.16:** the second major axis is explicitly **دووەم — ناو لە ڕووی واتاوە**. One attributed account divides nouns into **ناوی عام / ناوی خاص**; another enumerates **ناوی شەخسی، ناوی جامع، ناوی نوع، ناوی جنس، ناوی زمان، ناوی مەکان**.
+- **p.18:** a Persian grammar source is explicitly introduced and its six labels are **اسمی عام، اسمی خاص، اسمی ذات، اسمی معنوی، اسمی مفرد، اسمی جمع**. A separate comparative taxonomy on the same page gives **Common Noun, Abstract Noun, Concrete Noun, Proper Noun, Collective Noun** with Persian equivalents. The following Kurdish exposition is a distinct part of the page and must not be attributed to either comparative list.
+- **p.21:** the page continues the separate attributed explanations of **ناوی مەعنەوی (مجرد)** and material/abstract nouns. It contains further definitions and examples from multiple grammarians; these passages need full transcription before being turned into lesson rules.
+
+### Status of the initial noun-unit review
+
+All original page previews for pp.11–24 have now been viewed directly at page level. This completes the initial visual page-viewing pass for the approved **ناو** section. It does **not** complete a full diplomatic transcription, crop-level reading of every dense example, or independent linguistic validation. The next stage is to transcribe the definition/attribution passages and example tables systematically, then validate each source claim. Course 4 remains planned and inactive.
