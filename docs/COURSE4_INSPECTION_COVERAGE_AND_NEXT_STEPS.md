@@ -163,3 +163,11 @@ This section is the current source of truth where older dated notes above descri
 - **Next focused task:** verify p.119's four provisional lower-table pairs and transcribe its preceding table/list from sharper source crops, then capture the p.120 table headings and diplomatically transcribe the attributed passage without merging it with the preceding examples.
 
 Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activation, or runtime/deployment changes are authorized by this audit work.
+
+
+### Latest p.119–120 pass (2026-11-05)
+
+- p.119 subsection 5 parenthetical infinitive list has now been read from a sharper full-width crop in printed right-to-left order: **بژاردن، بوارن، خوارن، خڕین، ژمارن، سپاردن، شاراندنەوە، کردن، ناردن، هاوردن، هەڵپەساردن، وشاردن**. **خڕین** remains a provisional glyph reading.
+- p.119 four aligned rows and right/left column orientation remain visually confirmed as recorded in the crop-review file.
+- p.120 original full-page raster confirms two numbered blocks (١ and ٢) before a separate attributed discussion. The attribution opening is **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...**. Full prose transcription and the exact internal letters of the three paired rows remain pending; do not substitute a paraphrase for the source's explicit **(شاراندنەوە)**.
+- Next: obtain/inspect a higher-resolution original of p.120 for a diplomatic transcription; then return to the still-unresolved p.119 preceding table and pp.93–95 dense tables. No lesson content or runtime state has changed.
