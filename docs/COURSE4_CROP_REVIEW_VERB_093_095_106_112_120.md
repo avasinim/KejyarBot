@@ -202,3 +202,68 @@ This pass is structural, not a diplomatic transcription of every example. The ta
 - **p.120** continues with numbered explanatory sections and extended prose examples. It discusses distinctions in how forms are produced/used and includes an attributed passage to مامۆستا مەسعود محەمەد. This attribution and its surrounding examples must remain separate from the preceding anonymous explanation.
 
 The sequential visual review of pp.112–120 is now complete at the structural level. It is not a full transcription of the examples, nor does it validate the source's analyses. The next safe step is targeted crops of pp.112 and 115–120 tables and the attributed passage on p.120, recording only clear forms and preserving each subsection's source context.
+
+
+## p.112 and pp.115–119 — targeted table-crop findings (2026-11-05)
+
+### p.112 — opening comparison table
+
+The table headings, read right-to-left, are **بنای معلوم / ڕەگ / بنای مجهول**. The first visible entries in the table are legible as:
+- **فرۆشتن / فرۆش / فرۆشران**
+- **پۆشین / پۆش / پۆشران**
+- **دروون / دروو / درووان**
+- **لەوەڕاندن / لەوەڕین / لەوەڕێنرا؟** — not transcribed as verified; final form needs a sharper crop.
+
+A separate lower list on the same page is introduced as another set of examples; it is not part of the three-column table and must remain separate.
+
+### p.115 — first numbered formation pattern
+
+The heading is **چۆنیەتی دروستنی کاری کارابەرز**. The first numbered subsection is **١- چاوکی ڕاوی** (heading as visibly read; retain as provisional until a tighter heading crop). Its two-column table headings are **چاوگ** (right) and **ڕابردووی کاری کارابەرز (الماضي المبني للمجهول)** (left). The visible examples include the pairs:
+- **دروون → دروورا**
+- **کرون → کرورا**
+- **فەرموون → فەرموورا**
+- **هەنوون → هەنورا** (with a parenthetical dialect/variant note)
+- **سوون → سوورا**
+
+A short rule and a separate three-line example list follow at the foot of the page; they are not part of the table above.
+
+### p.116 — next pattern
+
+The next numbered heading reads **٢- چاوکی تەلفی** (provisional visual reading). Its table has the same two-column structure, with **چاوگ** on the right and **ڕابردووی کاری کارابەرز** on the left. Four visible pairs are:
+- **کێلان → کێڵرا**
+- **شێلان → شێڵرا**
+- **پێوان → پێورا**
+- **لێدان → لێدرایەت** (last form requires further confirmation; do not treat as verified)
+
+The following lettered rule and its bracketed pattern strings are separate from this table. The next numbered subsection begins lower on the page.
+
+### p.117 — additional examples and a further pattern
+
+The upper continuation includes three visible pairs:
+- **کرین → کردرا (ک - د - را)**
+- **برین → بردرا (ب - د - را)**
+- **کڕین → کڕدرا (کڕ - د - را)**
+
+The subsequent two-row table reads:
+- **نووسرام → دەنووسرێم (دە - نووس - ڕێ - م)**
+- **چنرام → دەچنرێم (دە - چن - ڕێ - م)**
+
+The following heading is **٤- چاوکی تانی**. The long prose list beneath it is an independent source list, not part of the two-row table.
+
+### p.118 — paired tables under separate explanations
+
+The first table headings are **چاوگ** (right) and **ڕابردووی کارابەرز** (left). Clearly legible rows:
+- **خستن → خسترا، خرا**
+- **کرتن → کڕترا، کڕا، کرا**
+- **هاویشتن → هاویشترا، هاوێژرا**
+
+A separate second table follows a new explanatory sentence and must not be merged with the first. Its visible rows are:
+- **کوتن → کوترا**
+- **کڵۆفتن → کڵۆفترا**
+- **پەستن → پەسترا**
+
+### p.119 — further subsection
+
+The heading is visually read as **٥- چاوکی دالی**; retain as provisional pending a tighter heading crop. A two-column list below the introductory text contains several paired forms, but no full row is promoted here because some glyphs and endings need more detailed inspection. The subsequent heading/list beginning lower on the page is a distinct subsection and remains structurally separate.
+
+All transcriptions above are visual source readings, not claims that the patterns are standard, productive, or applicable outside the source's own scope. Uncertain readings are explicitly marked and must not be copied into lessons as settled forms.
