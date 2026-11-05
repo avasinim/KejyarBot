@@ -7,11 +7,11 @@ Primary source: `Rezmany_axawtny_kurdy.pdf` (400-page scan). This document synth
 ## 1. Closing pages and structure
 
 - **pp.374–379:** Several separately attributed accounts discuss particles, prefixes, suffixes, beginnings, and relations. The accounts attributed to مامۆستا سەعید سەدقی, مامۆستا توفیق وەهبی, مامۆستا کوردیف, نووری عەلی ئەمین, and مامۆستا جەگرخۆین remain distinct. See `COURSE4_VISUAL_REVIEW_374_379.md`.
-- **pp.380–385:** Separate numbered/attributed lists, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. See `COURSE4_CROP_REVIEW_380_385.md`; do not treat these as one unified taxonomy.
+- **pp.380–385:** Separate numbered/attributed lists, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. See `COURSE4_APPENDIX_VISUAL_REVIEW_380_385.md` and `COURSE4_APPENDIX_COVERAGE_380_385.md`; do not treat these as one unified taxonomy. The earlier crop-review filename is not the controlling record in the current appendix sequence.
 - **Outline boundary:** the proposed **ئامرازی سەرسووڕمان** unit is limited to pp.349–373. Pages 374–387 remain separate source material and are not folded into that unit; see `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`.
-- **pp.380–385:** The source juxtaposes a numbered list, a separate account attributed to جەگرخۆین, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. These are not one Kurdish inventory. See `COURSE4_CROP_REVIEW_380_385.md`.
+- **pp.380–385:** The source juxtaposes a numbered list, a separate account attributed to جەگرخۆین, French comparative material, Kurdish suffix/prefix examples, and a Persian prefix inventory. These are not one Kurdish inventory. See `COURSE4_APPENDIX_VISUAL_REVIEW_380_385.md`.
 - **pp.386–391:** Evan C. Penglis is cited as comparative material; the source raises Prefix, Suffix, and Infix, then introduces **وشەی سەربەخۆ و وشەی بەستراو**. Five independent classes and eight bound classes are listed. See `COURSE4_VISUAL_REVIEW_386_391.md`.
-- **pp.392–397:** The diagram divides **وشە** into **سەربەخۆ / بەستراو**, with the bound branch divided into **ئامراز، گیرەک، نیشانە**. A separately attributed account by مەسعود محەمەد and a later **پێشگر** section follow. The prefix section distinguishes **سادە / ناسادە** by form. See `COURSE4_VISUAL_REVIEW_392_397.md`.
+- **pp.392–397:** The diagram divides **وشە** into **سەربەخۆ / بەستراو**, with the bound branch divided into **ئامراز، گیرەک، نیشانە**. A separately attributed account by مەسعود محەمەد and a later **پێشگر** section follow. The prefix section distinguishes **سادە / ناسادە** by form. See `APPENDIX_VISUAL_REVIEW_P392_397.md` and `APPENDIX_VISUAL_COVERAGE_P392_397.md`.
 - **p.398:** Contents page.
 - **pp.399–400:** Blank pages apart from page numbers. The substantive grammatical discussion ends on p.397.
 
@@ -37,7 +37,7 @@ Primary source: `Rezmany_axawtny_kurdy.pdf` (400-page scan). This document synth
 - The original page images are the visual authority; OCR is navigational only.
 - A visual review confirms page structure and visible wording, but is not equivalent to a full diplomatic transcription or independent linguistic validation.
 - Preserve author attributions, dialect/variety labels, examples, and contradictions. Do not combine separate accounts or infer standardness, archaic status, or typographical error without evidence.
-- Before lesson drafting, finish character-level transcription of any examples intended for teaching, then conduct independent linguistic validation. A proposed course outline must be presented for user approval first.
+- The user approved the nine-part course outline on 2026-11-05. Before lesson drafting, finish character-level transcription of any examples intended for teaching, then conduct independent claim-level linguistic validation. Outline approval is not approval of individual lesson texts, quizzes, activation, or release.
 
 ## 5. Course status and safety boundary
 
@@ -54,4 +54,4 @@ No lessons or quizzes have been drafted or activated. No other course metadata/c
 
 ## Status reconciliation — 2026-11-05
 
-This synthesis previously stated `source=null`, which no longer matches the branch-local plan record. The current `curriculum/grammar_course4_plan.json` explicitly selects `Rezmany_axawtny_kurdy.pdf` as the sole source under audit, while keeping `lesson_count=0` and `lessons=[]`. The separate clitic-pronoun PDF remains excluded. This correction reconciles metadata only; it does not approve the outline or authorize lesson drafting/activation. The proposed Unit 9 span is pp.349–373; pp.374–387 are separately recorded material, not an extension of that unit.
+This synthesis previously stated `source=null`, which no longer matches the branch-local plan record. The current `curriculum/grammar_course4_plan.json` explicitly selects `Rezmany_axawtny_kurdy.pdf` as the sole source under audit, while keeping `lesson_count=0` and `lessons=[]`. The separate clitic-pronoun PDF remains excluded. This correction reconciles metadata only; it does not approve individual lesson content or authorize activation. The proposed Unit 9 span is pp.349–373; pp.374–387 are separately recorded material, not an extension of that unit.
