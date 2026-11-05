@@ -365,3 +365,10 @@ The original page-preview images for every PDF page from 25 through 65 in the re
 - The next transcription task is to begin at p.25 and proceed sequentially, keeping definitions, source attributions, lists, paradigms, and page-turn continuations as separate evidence blocks.
 
 Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`. This review does not authorize lesson activation, catalogue restoration, merge/rebase, deployment, production changes, Botkeep sync, or edits to Courses 1–3.
+
+
+## Initial diplomatic transcription started — ڕاناو, PDF pp.25–30 (2026-11-05)
+
+A separate source ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_025_030.md`, now records selective crop-based transcription from the original page images for pp.25–30. This begins the second approved unit's transcription, but does not complete it. Category labels, examples, attributions, and numbering are preserved as printed where legible; uncertain words and dense passages remain explicitly open. In particular, the p.28 English-grammar list visibly jumps in numbering from 3 to 6; do not silently renumber it.
+
+The transcription ledger does not establish independent linguistic validation and does not create lesson content. Continue by completing the open items in that ledger, then proceed sequentially from p.31. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
