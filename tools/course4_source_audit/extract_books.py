@@ -67,9 +67,10 @@ def short_excerpt(text, terms, limit=28):
 
 def main():
     raise RuntimeError(
-        "Unsafe source mapping: Volume 1 cover is Part 2 (Pronoun), not Part 1 (Noun). "
-        "Do not run lesson-page matching until all five printed covers are verified "
-        "and SOURCES lesson mappings are corrected. Use extract_covers.py only."
+        "Provisional source mapping only: Volume 1 is cover-verified as Part 2 (Pronoun); "
+        "catalogue and Git blob-size evidence provisionally maps Volume 2 to Part 1 (Noun). "
+        "Do not run lesson-page matching until printed covers and contents of Volumes 2, 4, and 5 "
+        "are visually verified. Use extract_covers.py only."
     )
     out = Path("audit-output")
     out.mkdir(exist_ok=True)
