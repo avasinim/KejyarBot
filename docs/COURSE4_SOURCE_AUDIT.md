@@ -549,3 +549,21 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The audit continues to use **عەتف** in Kurdish prose, not **عطف**. Any direct quotation in another language must be clearly marked as a quotation and must not replace Kurdish orthography in our explanatory text.
 - This is a sequential structural review, not a complete transcription. Course 4 remains planned and inactive; no lesson content has been drafted or activated.
 - Next: continue sequentially from PDF p. 309 onward.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 309–313 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 309:** clearly opens **١٠ ـ ئامرازی (تا)ی عەتف**. The author surveys several Kurdish grammatical descriptions (including مامۆستا توفیق وەهبی، مامۆستا سەعید سەدقی، کوردیف و ڕەشیدی کورد, and نووری عەلی ئەمین) and gives examples. The author notes that some cited treatments classify the form differently, including as a conjunction or a preposition; this disagreement must be preserved rather than silently resolved.
+- **PDF p. 310:** continues examples attributed to different authors and gives the author's own discussion of **(تا)** in sentence constructions. The text distinguishes its connective function between clauses/sentences from uses where it appears within a single construction. It provides multiple example groups; exact wording should be transcribed from crops before quoting.
+- **PDF p. 311:** opens **١١ ـ ئامرازی (کەی)ی عەتف** with short examples and a discussion of two-sentence constructions. It then opens **١٢ ـ ئامرازی (چۆن)ی عەتف**, giving examples and a note on whether the form functions as a conjunction in the examples. The author explicitly questions treating every occurrence of **چۆن** as a conjunction.
+- **PDF p. 312:** continues the **(چۆن)** section with further examples and context-sensitive commentary. It then clearly opens **١٣ ـ ئامرازی (نەک)ی عەتف**, surveys treatments by Kurdish grammarians and provides examples. Preserve the distinction between this numbered section and the earlier section on **نەک** (section 9) unless the author explicitly equates them.
+- **PDF p. 313:** continues the survey of Kurdish grammatical sources for **(نەک)** and cites an English grammar, *An English Grammar Book*, attributed on the page to Evan C. Penglis. It then gives the author's own sentence examples and discusses uses of **(نەک)** in constructions. The page uses both the Kurdish discussion and a cited English reference; do not treat the English account as the source's Kurdish analysis.
+
+### Findings and limits
+- The sequence now explicitly includes sections **10 (تا)**, **11 (کەی)**, **12 (چۆن)**, and **13 (نەک)**. Section 10 demonstrates disagreement among cited Kurdish grammarians about the classification of **تا**; that disagreement is part of the source and must be taught as such if relevant.
+- Section 12 is especially context-sensitive: the author questions whether every occurrence of **چۆن** should be treated as a conjunction. Do not infer class membership from the isolated word form.
+- Section 13 **(نەک)** has its own literature review and authorial examples. Keep it distinct from the earlier section 9 until the source's relation between them is fully transcribed.
+- The audit uses **عەتف** in Kurdish prose. The original source page 313 includes an Arabic-script parenthetical **(عطف)** in a quoted/technical context; do not reproduce that spelling in Kurdish explanatory prose.
+- This is a sequential structural review, not a complete transcription. The exact cited titles, names, page references, all example sentences, and the author's final distinctions need crop-by-crop transcription before lesson drafting. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 314 onward.
