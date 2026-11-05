@@ -1075,3 +1075,23 @@ For Kurdish explanatory prose and any future Course 4 headings, use **ئامرا
 2. The author distinguishes usage by sentence context and construction. The same visible form may occur in different functions; classification by spelling alone is unsafe.
 3. The chapter includes both the author's own discussion and summaries of other grammarians. Attribute each position explicitly.
 4. This is a source audit only. No Course 4 lessons or quizzes have been created or activated.
+
+
+## Sequential visual review: Interjection chapter, PDF pp. 362–367 (2026-11-05)
+
+Use **سەرسووڕمان** as the Kurdish explanatory label in our notes and any future lesson headings, following the user's correction. When quoting the source's Arabic-script heading or its historical terminology, retain the printed form in quotation marks and gloss it as سەرسووڕمان.
+
+### Page-by-page observations
+- **PDF p. 362:** closes the discussion of item **10 ـ ئامرازی (هۆ)** with several contextual examples and a numbered set of observations about its use. The author distinguishes multiple constructions and comments on the form's function in the sentence. The page closes with a note that its examples are not all interchangeable; preserve that qualification with the examples.
+- **PDF p. 363:** completes the preceding commentary, then begins **11 ـ ئامرازی (کە)**. The text attributes a particular account to **مامۆستا توفیق وەهبی** and discusses the particle's use in a question/answer-like construction. Near the foot of the page begins **12 ـ ئامرازی (یا)**.
+- **PDF p. 364:** continues item 12, comparing treatments by **توفیق وەهبی**, **نووری عەلی ئەمین**, and **جەگرخۆین** with cited page references. The author's own examples follow. The page then begins **13 ـ ئامرازی (تافیرین) و هەڵاکانی** (heading reading is provisional; the second word and exact form require a close crop). The page's examples include several short emotive/response forms; do not normalize their spellings.
+- **PDF p. 365:** continues item 13 and its examples, then begins **14 ـ ئامرازی (شکاندنەوە ـ تعنیف ـ توپیخ)**. The prose explicitly discusses reproach/rebuke-like force and gives dialogue-style examples. Later the page begins **15 ـ ئامرازی (ڕووبەڕوکردنەوە)** (reading provisional); its examples continue onto p. 366.
+- **PDF p. 366:** continues item 15 with several utterances, then begins **16 ـ ئامرازی تەساف و کەسەر (بژاردە)**. The section surveys attributed treatments by **سەعید سەدقی**, **توفیق وەهبی**, **نووری عەلی ئەمین**, and **جەگرخۆین**. These citations include references to different grammar works and pages; keep each writer's list and interpretation separate. The printed heading's final parenthetical label is retained as **(بژاردە)** pending a finer crop.
+- **PDF p. 367:** finishes item 16 with examples and contextual comments, then begins **17 ـ ئامرازی (نەدی)**. The author attributes the discussion to earlier grammarians, including **توفیق وەهبی**, and distinguishes several functions/usages with numbered observations and examples. The final numbered examples continue beyond this page.
+
+### Findings and cautions
+1. Items 10–17 are not simple equivalents of one generic emotional particle. The author differentiates question-like, response-like, reproach, regret/astonishment, and other pragmatic functions through sentence examples.
+2. Several entries are explicitly comparative summaries of named Kurdish grammarians. Do not present their descriptions as a single unanimous rule or as the author's own conclusion without attribution.
+3. The headings on pp. 364–365 and some forms in the inventories need close crops before exact quotation. The present record intentionally marks uncertain readings as provisional.
+4. Keep **سەرسووڕمان** as the Kurdish term in our editorial voice. Preserve source quotations as printed when necessary, with a Kurdish explanation.
+5. Course 4 remains planned and inactive. This review does not create lessons, quizzes, or runtime changes.
