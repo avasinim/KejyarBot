@@ -8,15 +8,12 @@
 - برانچی کار: `reset/grammar-course4-content`
 - برانچی پاشەکەوتی سەرەتایی/پارێزراو: `backup/grammar-course4-2026-11-05`
 - SHAی خاڵی پاشەکەوتی سەرەتایی: `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`
-- SHAی خاڵی پاراستنی پێشوو: `7cf67608a5f51631c7a2ad96ccb87d522c12f2ad`.
-- SHAی دوا کۆمیتی کار پێش نوێکردنەوەی ئەم بەڵگەنامەیە: `7677a44591dafbef0d9f52c97172bd3aac973097`.
-- SHAی checkpointی پێشوو: `11ddc19d3a8aa24cf0a4c837738d06760520ddcd`.
+- SHAی کۆمیتی پێشوو و checkpointە کۆنەکان لە تۆماری مێژووییە؛ بۆ دەستپێکردنی نوێ، تەنها SHAی برانچی کار و checkpoint لە GitHub بە ڕاستەوخۆ بخوێنەوە.
 - دوای پشکنینی ٣٧٤–٣٧٩، دوو بەڵگەنامەی پاشکۆ زیاد کراون: `COURSE4_APPENDIX_VISUAL_REVIEW_374_379.md` و `COURSE4_APPENDIX_COVERAGE_374_379.md`.
 - پشکنینی بینراوی ٣٨٦–٣٩١ لە `COURSE4_VISUAL_REVIEW_386_391.md` هەیە؛ تۆماری پۆششی ئەم لاپەڕانەش لە `COURSE4_APPENDIX_COVERAGE_386_391.md` زیاد کرا.
 - لە کاتی نوێکردنەوەی ئەم بەڵگەنامەیەدا compareی ڕاستەوخۆی backup بەرامبەر working branch: `ahead 299 / behind 0` پێش ئەم کۆمیتەی نوێیە.
-- SHAی خاڵی پاراستنی نوێ: `deb6f7d23e520e94bc4703d0d97eca453e61276b`.
-- برانچی checkpoint: `checkpoint/course4-2026-11-05-1425`؛ لە هەمان SHA دروست کراوە.
-- دۆخی بەراورد: `ahead 298 / behind 0` بەرامبەر `backup/grammar-course4-2026-11-05`؛ SHAی بنەڕەت `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`.
+- checkpointی کۆتایی ئەم قۆناغە: `checkpoint/course4-2026-11-05-1948`؛ SHAی برانچ لە GitHub بخوێنەوە، چونکە نوێکردنەوەی handoff خۆی کۆمیتێکی نوێ دروست دەکات.
+- ژمارەی ahead/behind دەبێت هەر جار بە compareی ڕاستەوخۆ بەرامبەر `backup/grammar-course4-2026-11-05` پشتڕاست بکرێتەوە؛ ژمارەی کۆن وەک دۆخی ئێستا بەکارمەهێنە. SHAی بنەڕەت `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`.
 - برانچی کار لە کاتی پشکنینی دواوەدا `protected=false` بوو؛ برانچی پاشەکەوتی سەرەتایی مەگۆڕە.
 
 ## ٢. سەرچاوە و سنووری کۆرس
