@@ -306,3 +306,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Accordingly, **چاوگ** is now the verified source spelling on pp. 222, 223 and 388. The previous erratum's correction is confirmed against multiple original page images, not merely accepted from a user correction or OCR.
 - The contents page p. 398 still appears to list **جێناو** at p. 222. This is now a distinct source-internal discrepancy: the actual chapter heading and internal cross-reference say **چاوگ**, while the contents list says **جێناو**. Do not silently rewrite the contents entry, and do not treat **چاوگ** as a synonym for **جێناو**. Record the contents discrepancy until the original print edition or an authoritative erratum resolves it.
 - Quality-control rule reinforced: every course-critical Kurdish term must be visually verified on at least two relevant source-page images when available, including a high-resolution crop of the first occurrence; OCR is never sufficient for spelling decisions.
+
+
+## Sequential visual review: primary book PDF pp. 228–235 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 228:** continues the **چاوگ** chapter with numbered divisions and paired examples. The page visibly includes a heading that appears to read **وەربین**; exact reading and its technical status require a closer crop before treating it as a formal subtype label. The body repeatedly uses **چاوگ**.
+- **PDF p. 229:** continues numbered divisions and examples; the page includes a bracketed explanatory note and a further numbered group. Do not extract individual forms without checking their full context and spelling.
+- **PDF p. 230:** explicitly introduces a **تێبینی** (note) and discusses how a form behaves in relation to its complement/argument; it then lists further examples and introduces a distinction between **چاوگی سادە** and **چاوگی ناسادە**. These are the source's own terms; their exact definitions and boundaries need transcription before they are taught.
+- **PDF p. 231:** continues the simple/complex distinction and introduces numbered subtypes within the latter discussion. The visible prose and examples are not enough to equate these labels with modern transitivity, valency, or another standard category without a full analysis.
+- **PDF p. 232:** presents a further three-part classification, with visible headings **چاوگی دایزراو (درۆست کراو)**, **چاوگی لێکدراو**, and **چاوگی ناوەتە** (last reading requires confirmation from a close crop). The page gives long paradigmatic/example lists and explanatory notes. Do not modernize these labels or infer equivalence from their apparent form.
+- **PDF p. 233:** continues the same section with more examples and prose discussing forms and usage. The page's examples are context-dependent and need exact transcription.
+- **PDF p. 234:** continues a discussion of the same category and provides comparative/paired forms. The prose refers to grammatical/structural properties; no independent conclusion is drawn here.
+- **PDF p. 235:** continues the explanation and examples, including forms with negative morphology. It appears to close the **چاوگ** section immediately before the next section opening at p. 236 (**ئاوەڵکار**).
+
+### Findings and limits
+- This sequential pass confirms that pp. 228–235 are not a personal-pronoun paradigm: they continue a detailed, internally subdivided **چاوگ** discussion, with examples and source-specific subtype terminology.
+- The source uses labels such as **چاوگی سادە / چاوگی ناسادە** and further subtypes. These labels must be preserved verbatim in source notes until their definitions are manually transcribed and independently validated. Do not substitute labels such as transitive/intransitive, simple/compound verb, or infinitive without evidence.
+- The contents-page entry **جێناو** for p. 222 remains inconsistent with the actual chapter heading **چاوگ** and the continuation through p. 235. The discrepancy remains open; this review does not resolve the table-of-contents error.
+- This is a visual sequential review of pp. 228–235, not a complete transcription. Before drafting any lesson, transcribe the definitions, each subtype heading, and representative examples from high-resolution crops, then validate the analysis against independent Sorani/Central Kurdish linguistic research. The primary book remains the sole lesson source.
