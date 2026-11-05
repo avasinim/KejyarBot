@@ -119,3 +119,16 @@ Enlarged crops from rendered page images resolve several previously tentative re
 - p.317 item 16 heading reads **ئامرازی (تەنجا)ی عەتف**. This replaces the earlier tentative «نەخا» reading; preserve **تەنجا** as printed.
 
 All are visual readings only; no dialectal, historical, standardness, or typographical status is inferred. Course 4 remains planned with zero lessons.
+
+
+## Focused visual review — bound forms and prefixes, pp.392–397 (2026-11-05)
+
+See `docs/COURSE4_VISUAL_REVIEW_392_397.md`.
+
+- p.392 diagram: **وشە** → **سەربەخۆ / بەستراو**; the bound branch → **ئامراز، گیرەک، نیشانە**. The printed technical form is **گیرەک**.
+- pp.393–394 continue numbered examples and explanations; dense spellings are not yet transcribed.
+- p.395 contains a separately attributed discussion associated with **مەسعود محەمەد**, distinguishing forms before and after a word; it also mentions **Infix** comparatively. Do not merge this account with the author's other classifications or claim a productive Kurdish infix category from this passage.
+- pp.395–397 continue the distinct section **پێشگر**. p.397 explicitly divides prefixes by form into **سادە** and **ناسادە**.
+- Long lists on pp.393–396 still require character-level crops before transcription.
+
+Visual review only, not full transcription or independent validation. Course 4 remains planned with zero lessons.
