@@ -964,7 +964,7 @@ The page images for pp. 374–385 were reopened individually at readable resolut
 
 ## User correction and verified terminology: PDF pp. 392–395 (2026-11-05)
 
-The user correctly identified that the term is **گیرەک**, not **کیرەک**. Reinspection of the original page image confirms the initial consonant is **گ**. The diagram on p. 392 labels the bound-word branch **گیرەک**, and the body text repeats **گیرەک** in the heading and explanation. This correction supersedes every earlier reading in this audit that used **کیرەک** or **کیریۆک**.
+The user correctly identified that the term is **گیرەک**, not **گیرەک**. Reinspection of the original page image confirms the initial consonant is **گ**. The diagram on p. 392 labels the bound-word branch **گیرەک**, and the body text repeats **گیرەک** in the heading and explanation. This correction supersedes every earlier reading in this audit that used **گیرەک** or **گیرەک**.
 
 - Correct printed term: **گیرەک**.
 - PDF p. 392: diagram category and explanatory subsection use **گیرەک**.
@@ -973,3 +973,16 @@ The user correctly identified that the term is **گیرەک**, not **کیرەک*
 - Future source maps, evidence tables, and lesson drafts must use **گیرەک** exactly.
 
 The audit text above has been corrected to use **گیرەک** consistently. This is a source-transcription correction only; it does not create or activate lessons.
+
+
+## User correction: printed term is گیرەک (2026-11-05)
+
+The user correctly corrected the reading: the term is **گیرەک**, not **کیرەک**. I re-opened PDF p. 392 at full-page resolution and checked the diagram label, subsection heading, and repeated forms in the explanatory paragraph. The initial consonant is **گ**. This correction supersedes my previous incorrect statement.
+
+- Diagram category and subsection on p. 392: **گیرەک**.
+- Pages 393–395 continue the discussion; detailed examples still need a separate transcription pass.
+- Earlier readings **کیرەک** and **کیریۆک** are errors, not alternate variants. The audit text has been corrected to **گیرەک**.
+- Do not equate this source term with a modern linguistic label unless independently demonstrated.
+
+## Next inspection checkpoint
+The next block is the Interjection inventory. PDF p. 354 visibly presents a numbered list through item 23. Each item will be transcribed from enlarged crops, keeping the author's explanation distinct from attributed grammarians. No lesson content is approved by this review.
