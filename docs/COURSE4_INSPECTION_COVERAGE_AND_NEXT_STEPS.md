@@ -523,3 +523,10 @@ This is visual review only, not complete diplomatic transcription or independent
 Pages 127–132 were extracted from the recovered `course4-source-text` Actions artifact and inspected individually at original preview resolution. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_127_132.md`. These pages continue the auxiliary-verb topic: p.127 is explanatory prose; p.128 contains numbered statements, an attributed discussion, examples, a note, and a separate explanation; p.129 discusses **کردن** and aligned examples; pp.130–131 continue a numbered classification; p.132 contains a long attributed passage marked **[مەسعود محەممەد]**.
 
 This is visual structure review, not complete diplomatic transcription or independent linguistic validation. The final item in the p.130 list remains uncertain and must be checked in a crop. Preserve all attribution boundaries and do not assume every use of **کردن** has the same grammatical function. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.133–138 (2026-11-05)
+
+The original individual page previews pp.133–138 were extracted from the recovered Actions artifact and inspected one by one. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_133_138.md`. These pages continue the auxiliary/verb discussion with numbered items and attributed accounts, then move into tense/form classifications and open **پێنجەم — کاری لە ڕووی دارشتنەوە (صیغە)** on p.138, including aligned paradigms.
+
+The exact p.133 heading for section **چوارەم** and one label on p.135 remain provisional. Keep the attributions to **مامۆستا سەعید سەقفی، مامۆستا تۆفیق وەهبی، مامۆستا سادق، مامۆستا مەزار، مامۆستا عەلی تەمیم، مەسعود،** and **نەسرین فەخری** distinct. This is visual review only, not full transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
