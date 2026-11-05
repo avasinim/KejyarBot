@@ -790,3 +790,31 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Numerous lists on pp. 377–385 contain tightly printed Kurdish forms. The present page previews support the structural outline, but exact transcription of every form requires enlarged crops and character-by-character verification.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 386 and verify the final pages and contents references.
+
+
+## Final visual review of the main grammar book, PDF pp. 386–400 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 386:** continues the treatment of attached forms and word formation. It includes an excerpt/attributed discussion from *An English Grammar Book* by Evan C. Penglis and asks introductory questions about **ئامراز** and **Affix**. Keep the English grammar reference distinct from the Kurdish author's own account.
+- **PDF p. 387:** continues the introductory questions, explicitly distinguishing **پێشگر (Prefix)** and **پاشگر (Suffix)**, and asks about **Affix** and **نیشانە**. The page then distinguishes two broad types of words in the author's discussion. Exact terminology in the explanatory paragraph should be transcribed from an enlarged crop before direct quotation.
+- **PDF p. 388:** opens a new section headed **وشەی سەربەخۆ و وشەی بەستراو**. The author discusses the difficulty of describing Kurdish grammatical categories through frameworks imported from other languages and begins explaining the independent word.
+- **PDF p. 389:** continues the independent/bound-word distinction and restates the eight categories in the author's scheme: **ناو، ڕاناو، ئاوەڵناو، (کار ـ چاوگ)، ئاوەڵکار، ئامرازی پریپۆزیشن، ئامرازی عەتف، ئامرازی نیدا**. It then opens the treatment of **وشەی بەستراو** and starts its functional subdivisions. Preserve the source's grouping and do not silently harmonize it with earlier lists.
+- **PDF p. 390:** gives sentence and word examples to distinguish independent words from bound forms. The author explicitly warns that a form's written shape alone is not enough to determine whether it functions independently or as an attached element.
+- **PDF p. 391:** continues the examples and develops two kinds of bound-word behaviour, with examples of forms attached to different hosts. The long lists are examples for contextual analysis, not a ready-made universal inventory.
+- **PDF p. 392:** provides a diagram dividing **وشە** into **سەربەخۆ** and **بەستراو**, then subdivides the bound branch into **ئامراز، کیرەک، نیشانە** (as visibly printed). It begins a detailed discussion of **کیرەک** and gives two functional subtypes. Verify the exact technical spelling and examples from a crop before using them as lesson terminology.
+- **PDF p. 393:** continues the **کیرەک** discussion and provides numbered verb-related examples and transformations. The examples are tied to the author's analysis and should not be generalized beyond the constructions actually shown.
+- **PDF p. 394:** continues the numbered inventory (items 4–9) with examples and contextual comments. Some headings/forms are tightly printed; do not quote them verbatim without enlarged verification.
+- **PDF p. 395:** cites **دراسات لغات** and **مسعود محمد** in a discussion of prefix-like and suffix-like forms, then begins a treatment of **پێشگر**. The citation and the author's comments must remain distinct.
+- **PDF p. 396:** continues the prefix discussion, including forms attached before a word and examples of their effect on the resulting construction. A long form inventory appears at the bottom; retain it as source evidence only until each form is crop-verified.
+- **PDF p. 397:** continues the list, distinguishes simple and non-simple forms in the source's account, and closes the main grammatical discussion with the author's concluding remarks and a dated/signature-like line. The exact bibliographic meaning of that closing line requires verification before citation.
+- **PDF p. 398:** contents page. It lists the book's section headings and page references, including the discrepancy already recorded: contents gives **جێناو** at p. 222 while the printed chapter heading at p. 222 is **چاوگ**. It also lists **پێوەندینیش** at p. 254 while the printed heading there is **پریپۆزیشن**. Preserve both readings as source-internal discrepancies.
+- **PDF pp. 399–400:** blank pages apart from printed page numbers; no further grammatical content is visible.
+
+### End-of-book findings
+- The main grammatical discussion continues after the numbered Interjection inventory: pp. 388–397 treat independent and bound words, bound elements, and prefixes. The source audit must therefore not treat p. 373 or p. 385 as the end of the book's grammatical material.
+- The author's eight-category scheme appears in more than one place, but the grouping of **کار** and **چاوگ** is not consistent throughout the book. Preserve the separate list at p. 347 and the grouped presentation at pp. 373 and 389 as a source-internal difference.
+- The diagram on p. 392 presents a hierarchy of word types and bound-word subtypes. This is a useful source structure for later lesson design, but it must be explained as the author's model rather than assumed to be a universal linguistic taxonomy.
+- The book's final contents page confirms the broad page map but itself contains at least the already-recorded heading/page discrepancies. Do not use the contents page alone to infer the actual printed chapter title.
+- The visual review of the main source book is now complete through PDF p. 400. This does not mean every dense form-list has been fully transcribed: those still require enlarged, character-by-character verification before any form is copied into a lesson.
+- No Course 4 lesson content has been drafted or activated. The course remains planned and inactive; no other course, main branch, production database, or Botkeep deployment was changed.
+- Next: consolidate the source audit into a source map and a list of unresolved crop-level readings; do not create or activate lessons until the user approves the course structure.
