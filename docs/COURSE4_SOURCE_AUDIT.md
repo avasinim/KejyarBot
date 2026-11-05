@@ -884,3 +884,79 @@ This addendum supersedes earlier audit statements that described the entries at 
 - The source-internal difference in how **کار** and **چاوگ** are grouped remains a genuine issue to document: p. 347 lists them separately, whereas pp. 373 and 389 group them parenthetically.
 - The exact technical form **کیرەک** is now visually supported on p. 392 and corroborated on pp. 393–395. What remains unresolved is its full definition, distribution, and relation to other categories in the author's model—not its basic printed spelling.
 - Future source maps and any proposed course structure must use these corrected readings. This addendum takes precedence over earlier contradictory transcription notes in this audit.
+
+
+## Focused page-by-page review: affix, prefix and suffix discussion, PDF pp. 374–385 (2026-11-05)
+
+The page images for pp. 374–385 were reopened individually at readable resolution. This is a structural and attribution audit; the long form inventories are not yet approved for direct lesson copying.
+
+### PDF p. 374
+- The page continues a discussion of forms attached to words, then explicitly attributes the next numbered account to **مامۆستا سەعید سەدقی**, citing **صرف و نحوی کوردی**, p. 51.
+- The visible list begins with functional groupings including **ئاوای مکان** (locative/place-related), **ئاوای نیسبەت** (relation/attribution), **ئاوای تشبیه و لیاقت** (simile/qualification), and **ئاوای تفضیل** (comparison/superiority).
+- Each group is followed by examples. The examples are source evidence for Sedqi's attributed account, not automatically the main author's own classification.
+- The first group and several examples need a finer crop before verbatim transcription; retain the headings as provisional readings.
+
+### PDF p. 375
+- Continues the same attributed list with groups 5–10, visibly including **ئاوای محافظە**, **ئاوای فعل**, **ئاوای ظرفیەت**, and groups associated with forms **(دە)**, **(کە)**, and **(وە)**.
+- The examples show that the cited scholar's inventory is functional and construction-sensitive; do not treat every listed form as a single invariant suffix.
+- The list ends on p. 375. Any lesson using this material must identify it explicitly as the classification attributed to مامۆستا سەعید سەدقی.
+
+### PDF p. 376
+- Opens a separate attributed account by **مامۆستا توفیق وەهبی**, citing **دەستوری زمانی کوردی**.
+- The discussion distinguishes prefix and suffix-like forms and describes how they attach to words; it also refers to examples of **(ئ)** and **(ی)** and discusses multiple uses/functions.
+- The page then introduces another attributed account, associated with **مامۆستا کوردیف** and **گرامێکانی زمانی کوردی** (the exact bibliographic title/attribution requires a crop-level check).
+- Keep each scholar's analysis separate. Do not merge these lists into one composite inventory.
+
+### PDF p. 377
+- Continues the account attributed to **نووری عەلی ئەمین**, citing **ڕێزمانی کوردی** (the exact edition/page reference needs verification).
+- The page presents separate sections for **پاشگر (Suffix)** and **پێشگر (Prefix)**, each with extensive examples.
+- The long lists include many forms whose exact segmentation and spelling cannot safely be copied from a page-level view. They require enlarged crops and a check of the host word/construction.
+- The bottom of the page begins another attributed account, identified as **مامۆستا کەمال بادلی**; the cited work and date/page should be transcribed before bibliographic use.
+
+### PDF p. 378
+- Continues the discussion of attached elements and distinguishes the Arabic-derived labels **السابقه** and **اللاحقه**, alongside **الابتداء** and **ربط**. Preserve the printed terms as the source uses them; do not assume they map one-to-one to current morphological terminology.
+- The page then begins a numbered section on **پێشگر** and separately a section on **پاشگر**, with example lists.
+- It also begins a third section headed **دەست پێکردن** (the visible phrase; exact technical scope needs contextual verification).
+
+### PDF p. 379
+- Continues the third section and introduces a fourth section, **پەیوەندی (ربط)**.
+- The page gives a numbered set of functions/examples for this relational category, then introduces an attributed classification by **مامۆستا جەگرخۆین**, citing **ئاوای دەستوری زمانی کوردی**, p. 87.
+- The attributed classification begins with seven labelled functions. The visible headings include **ئالافی بانکی**, **ئالافی خۆشی و نەخۆشی**, **ئالافی هەیفی و خۆری**, **ئالافی تەعەجب**, **ئالافی گومان**, **ئالافی مەریبەند**, and **ئالافی گەشتی** (some forms require exact crop verification; do not use these uncertain readings as lesson headings).
+- This demonstrates another source layer: the book is reviewing named Kurdish grammarians' classifications, not presenting every list as its own unified system.
+
+### PDF p. 380
+- Continues the attributed list to item 27. The visible English/Arabic glosses and parenthetical labels indicate multiple semantic/pragmatic functions (including prohibition, warning, investigation, uncertainty, negation, and exclamation), but the exact Kurdish labels need crop-level transcription.
+- The page then begins another discussion attributed to **جەگرخۆین**, referring to **کاری ناسادە** and a further division into types.
+- Preserve the distinction between the cited scholar's inventory and the author's commentary; do not flatten these into a single taxonomy.
+
+### PDF p. 381
+- Presents a French-language grammatical description of prefixes and suffixes, followed by Kurdish explanation and examples. The French text discusses prefixes as preposed elements and suffixes as postposed elements, with examples.
+- The page also cites **ڕەشیدی کورد** and **ڕێزمانی زمانی کوردی کرمانجی** (bibliographic details need exact transcription).
+- This is comparative/attributed material. It does not establish that every listed Kurdish form behaves identically to the French description.
+
+### PDF p. 382
+- Continues the French description, including a statement that some elements derive from verbal roots and others from nominal roots.
+- The Kurdish text then begins another numbered inventory of **پێشگر و پاشگری (کار)** and displays a table aligning a verbal form with a root/related form.
+- Several numbered suffix examples are visible, but their segmentation and glosses must be checked in context. Do not infer a productive rule from the table alone.
+
+### PDF p. 383
+- Continues numbered suffix examples (items 12–18) and then begins a distinct subsection on **پێشگری فرمان** (verbal/imperative prefix, provisional translation only).
+- The page provides constructions contrasting forms with and without the prefix and gives example pairs. The author explicitly comments on the function of the prefix in command-like forms.
+- This page marks a shift from general prefix/suffix discussion to verbal morphology; preserve the boundary in any later outline.
+
+### PDF p. 384
+- Continues the verbal-prefix discussion with a long inventory and example sentences, and cites **دستور زمانی فارسی** by **دانانی ر. زالونر** (bibliographic spelling/identity uncertain; do not normalize without verification).
+- The source compares Kurdish verbal prefixes and forms with Persian examples. This is a comparative citation, not proof that the systems are equivalent.
+- The page's numbered forms are dense and need crop-level verification before quotation or teaching.
+
+### PDF p. 385
+- Continues the prefix inventory and then discusses forms which may have more than one function depending on context, with examples.
+- The author cautions, in effect, that forms cannot be classified solely by their shape; their role in the construction matters.
+- This contextual caution is important for later pedagogy: teach a form through its construction and function, not as a one-to-one list of isolated affixes.
+
+### Findings from this block
+1. Pages 374–385 do not present one single authorial affix taxonomy. They move among attributed classifications by named Kurdish grammarians, comparative French/English/Persian material, and the author's own discussion.
+2. The book uses the labels **پێشگر**, **پاشگر**, **دەست پێکردن**, and **پەیوەندی** in connected but not necessarily synonymous ways. Their definitions and boundaries need to be reconstructed from the full argument before lesson design.
+3. The long lists on pp. 375, 377, 380, 382–385 are not yet safe for direct reuse. Exact forms, segmentation, examples, and attribution need enlarged crops.
+4. The explicit context-sensitive discussion on p. 385 supports a methodological rule for Course 4: classify forms by their use in the attested construction, not by surface spelling alone.
+5. Course 4 remains planned and inactive. This review creates no lessons, quizzes, graphics, runtime changes, or deployment actions.
