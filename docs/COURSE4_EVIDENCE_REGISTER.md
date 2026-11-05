@@ -47,3 +47,14 @@ Priority work:
 3. Return to early pronoun and verb paradigms; the structural review is not a rule-by-rule audit.
 4. Verify author/editor and closing signature bibliographically; do not infer identity from the signature alone.
 5. Only after evidence is complete, prepare a proposed outline for explicit user approval.
+
+
+## New visual evidence — 2026-11-05
+
+Selected conjunction pages **306, 314–318, and 332–337** have now been visually inspected from the rendered source-PDF artifact (Actions run `41991306060`, artifact `13397947371`). See `docs/COURSE4_VISUAL_REVIEW_CONJUNCTION_306_314_337.md`.
+
+Newly confirmed methodological cautions:
+- p.306 continues the contextual discussion of `یا` and starts item 8, `ئامرازی نەی عەتف`.
+- pp.314–318 contain separate numbered entries, nested examples, and accounts attributed to توفیق وەهبی، نووری عەلی ئەمین، جەگرخۆین، and مەسعود محەمەد. Keep these accounts and their numbering separate; exact heading spellings on pp.314 and 317 remain crop-check items.
+- pp.332–337 extend the multi-function analysis of `هەر`; do not reduce it to one invariant conjunction gloss.
+- Complete transcription and independent claim-level validation remain outstanding. Course 4 remains planned with zero lessons.
