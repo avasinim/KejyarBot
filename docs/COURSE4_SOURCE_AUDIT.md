@@ -296,3 +296,13 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The earlier uncertainty caused by the mistaken reading **جاوک** is withdrawn. The remaining task is to verify the precise definitions, subdivisions, and examples of **چاوگ** directly against the relevant page images and independent linguistic research; do not infer a full grammatical analysis from the corrected label alone.
 - The source's contents-page entry **جێناو** for p. 222 still needs to be reconciled with the actual section heading **چاوگ** and the chapter's content. Do not equate **چاوگ** with **جێناو** or silently change either term.
 - Going forward, every technical term must be checked character by character against a readable source-page image and cross-checked before it is used in course material. No OCR-only transcription is acceptable for lesson headings or core terminology.
+
+
+## High-resolution terminology verification: چاوگ (2026-11-05)
+
+- Re-opened the original page images at readable resolution and enlarged the heading on PDF p. 222. The heading is **چاوگ**; the initial consonant is **چ** (three dots), not **ج**. The earlier reading **جاوک** was a visual transcription error.
+- PDF p. 223 independently confirms the subsection heading **جۆرەکانی چاوگ** and uses **چاوگ** repeatedly in the body text. Its examples and explanation are directly associated with this term.
+- PDF p. 388 independently prints the parenthetical term **(چاوگ)** in its list: **کار (چاوگ)**. This confirms the same corrected spelling in a separate part of the book.
+- Accordingly, **چاوگ** is now the verified source spelling on pp. 222, 223 and 388. The previous erratum's correction is confirmed against multiple original page images, not merely accepted from a user correction or OCR.
+- The contents page p. 398 still appears to list **جێناو** at p. 222. This is now a distinct source-internal discrepancy: the actual chapter heading and internal cross-reference say **چاوگ**, while the contents list says **جێناو**. Do not silently rewrite the contents entry, and do not treat **چاوگ** as a synonym for **جێناو**. Record the contents discrepancy until the original print edition or an authoritative erratum resolves it.
+- Quality-control rule reinforced: every course-critical Kurdish term must be visually verified on at least two relevant source-page images when available, including a high-resolution crop of the first occurrence; OCR is never sufficient for spelling decisions.
