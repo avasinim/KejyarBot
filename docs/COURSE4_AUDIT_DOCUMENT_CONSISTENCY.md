@@ -43,3 +43,15 @@ Visual coverage is not equivalent to diplomatic transcription or independent lin
 ## Reconciliation note (2026-11-05)
 
 The current crop-review record supersedes the earlier statement above that p.106's 17 pairs were not fully transcribed: all 17 numbered rows are now visually transcribed. This does not include the separate note below the table and does not constitute independent linguistic validation. The p.398/p.222 heading issue remains resolved as stated in section 1. For the current detailed page-by-page state, use `COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md` and the crop-review record; older checkpoint statements are historical.
+
+
+## Latest crop-record reconciliation — pp.119–120 (2026-11-05)
+
+The current controlling crop-review record now contains a later enlarged-crop verification that supersedes this document's earlier statement that p.119's paired rows were unverified:
+
+- **p.119 four-row table:** the enlarged lower crop confirms the printed right-to-left columns as right **دەبژێرم، دەژمێرم، دەسپێرم، دەشارمەوە** and left **بژێردرام، ژمێردرام، سپێردرام، شاردرامەوە**. No grammatical column labels are assigned because none are legible in the crop.
+- **p.119 parenthetical list:** the current provisional reading is **بژاردن، بوارن، خوارن، خڕین، ژمارن، سپاردن، شاراندنەوە، کردن، ناردن، هاوردن، هەڵپەساردن، وشاردن**; **خڕین** remains explicitly provisional.
+- **p.120:** the attribution opening is recorded as **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە) ئەوەیە کە ئەم کارە ...**. The three paired rows (**بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا**) remain provisional; the full attributed passage is not transcribed.
+- These later page-specific findings supersede the older p.119 status in section 3 above. They do not amount to independent linguistic validation or lesson approval.
+
+The latest p.94/p.95 reconciliation also remains controlling: p.94's second upper-table left example is unresolved, and the examples after **وەک** in the p.95 prose crop remain outside the available image. Do not infer them from other records.
