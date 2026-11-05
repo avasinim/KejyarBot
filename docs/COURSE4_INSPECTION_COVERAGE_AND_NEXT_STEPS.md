@@ -118,3 +118,8 @@ Verified: the middle table's first row reads **کەوتن / کەو / خستن** 
 ### p.94–95 enlarged-crop verification (2026-11-05)
 
 p.94 headings are corrected to **فرمانی تێنەپەر / ڕەگی فرمان / فرمانی تێپەڕ** (right-to-left); the example rows remain unverified. p.95 headings are **چاوگ / کاری تێنەپەر / کاری تێپەڕ**, with three legible rows: **چوون / چوو / چواندن**, **تەخش / تەخشان / تەخشاندن**, and **خەڵ / خەڵان / خەڵاندن**. See crop-review document; do not generalize beyond these rows.
+
+
+### Final p.106 full-crop correction (2026-11-05)
+
+A full enlarged-page recheck resolves item 8; restore **سڕانەوە / سڕینەوە** to the partial verified list. The current legible entries are items 1, 2, 3, 4, 5, 8, and 9. Item 2's left-column forms are recorded as **هێنان، هاتن** exactly as printed. Items 6–7 and 10–17 remain pending. This supersedes the immediately preceding note that item 8 was unresolved.
