@@ -209,3 +209,27 @@ The following individual page images were inspected at readable resolution in th
 - Individual-page visual inspections now recorded across the verb chapter include pp. 81, 88, 93, 112–114, 120, 130, 140, 150, 160, 180, 200, and 221. This remains selective sampling, not exhaustive line-by-line inspection of every page from 81 to 221.
 - The next step is to inspect the verb chapter's intervening paradigms and examples where a specific claim needs to be evaluated, then inspect PDF p. 222 and the **جێناو** chapter independently. Do not draft a curriculum or lessons until the source's structure, exact examples, and independent validation have been reconciled.
 - Course 4 remains planned and inactive. No other course, `main`, production database, Botkeep runtime, merge, or deployment has been changed.
+
+
+## Visual review checkpoint: primary book PDF pp. 222–227 (2026-11-05)
+
+### Artifact and coverage
+- The preview workflow triggered by commit `ab5cc7412cd1a0723232aa00eaa0b0cc08cf4d10` completed successfully: run `41984446777`.
+- Artifact `course4-source-text`, ID `13395033327`, was downloaded and unpacked. It contains individual page images through PDF p. 300; artifact expires 2026-11-19.
+- Individual images for PDF pp. 222–227 were inspected at readable resolution.
+
+### Direct observations (not yet approved teaching claims)
+- **PDF p. 222:** a section-opening heading is visibly printed as **جاوک** (visual transcription; retain the source glyphs pending expert reading). The opening prose discusses this category and refers to forms including Present Case and Infinitive. The contents page (PDF p. 398) labels p. 222 as **5 — جێناو**. This is a material heading/contents discrepancy or a possible terminology/reading issue; do not silently “correct” either reading. Reinspect the original scan and verify the exact term before curriculum mapping.
+- **PDF p. 223:** subsection heading appears as **جۆرەکانی جاوک**. It classifies forms and explicitly includes the term **Consonant**. Examples include Kurdish verbal forms such as کردن، بردن، مردن، خوێندن، خواردن، ناردن، ژماردن، سووتاندن، بڕاندن، خنکاندن، لەوەڕاندن. This page appears to discuss verb-related forms rather than personal pronouns, but the heading terminology must first be resolved.
+- **PDF p. 224:** continues the same classification with further forms/examples and explanatory notes.
+- **PDF p. 225:** continues the classification and examples; a further subcategory is introduced.
+- **PDF p. 226:** provides additional examples and explanatory discussion; the visible content continues the same grammatical category.
+- **PDF p. 227:** introduces further lettered subdivisions and examples. The page continues the same topic rather than clearly beginning a personal-pronoun paradigm.
+
+### Important audit finding
+There is an unresolved inconsistency between the contents-page label **جێناو** for p. 222 and the visibly printed chapter/subsection headings **جاوک / جۆرەکانی جاوک** on pp. 222–223, while the examples and discussion appear verb-related. Possible explanations include an unusual source term, print/scan reading ambiguity, or an error in the contents page. No interpretation is selected yet. Do not rename the chapter, treat it as a pronoun chapter, or map its content into lessons until the original heading and intended grammatical concept are independently confirmed.
+
+### Next review step
+- Continue inspecting pp. 228–254 and compare the page headings with the contents map, especially the transition into p. 236 (listed as **ئاوەڵکار**) and p. 254 (listed as **پێوەندینیش**).
+- Independently cross-check any identified category against reliable Central Kurdish/Sorani linguistic publications, but keep the agreed single-source rule: only **ڕێزمانی ئاخافتنی کوردی** supplies Course 4 lesson content.
+- No lesson has been drafted, approved, or activated. Course 4 remains planned/inactive; no other course, main branch, production database, Botkeep runtime, merge, or deployment was changed.
