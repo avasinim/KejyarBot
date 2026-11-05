@@ -252,7 +252,7 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 ### Direct observations (not yet approved teaching claims)
 - **PDF p. 349:** begins section 9, printed as **ئامرازی «تعجب»**, with the English gloss **Interjection**. The prose describes an exclamatory/interjection category and gives examples. This supports the contents-page entry for p. 349 and provides a clear category boundary.
 - **PDF p. 388:** heading is **وشەی سەرنجخۆ و وشەی بەستراو**. The discussion compares two broad types of words and states that the source distinguishes the following five word classes in its analysis: **ناو، ڕاناو، ئاوەڵناو، کار (چاوگ)، ئاوەڵکار**. The printed term in parentheses beside **کار** appears as **چاوگ**, consistent with the unresolved heading seen on pp. 222–227. Do not silently replace it with a modern label or assume it means pronoun.
-- **PDF p. 392:** a tree diagram divides **وشە** into **سەربەخۆ** and **بەستراو**; the latter is further divided into **ئامراز، کیریۆک، نیشانە** (visual readings; exact technical spelling should be checked against surrounding pages). The page then discusses the classification and gives an explanation of **کیریۆک**. This is source-specific terminology and requires careful transcription before lesson use.
+- **PDF p. 392:** a tree diagram divides **وشە** into **سەربەخۆ** and **بەستراو**; the latter is further divided into **ئامراز، گیرەک، نیشانە** (visual readings; exact technical spelling should be checked against surrounding pages). The page then discusses the classification and gives an explanation of **گیرەک**. This is source-specific terminology and requires careful transcription before lesson use.
 - **PDF p. 395:** continues the discussion of bound forms and describes two groups of forms/markers, including forms appearing before and after a word; the examples and terminology require full transcription and cross-checking. This is not sufficient by itself to assert a general linguistic classification.
 - **PDF p. 398:** contents page reconfirms the chapter map: p. 349 **ئامرازی تعجب**; p. 388 **وشەی سەرنجخۆ و وشەی بەستراو**; p. 392 **یەکەم — کۆمەک**; p. 395 **پێشگر**. The page map is consistent with the inspected boundaries, but the p. 222 and p. 254 terminology discrepancies recorded above remain unresolved.
 - **PDF p. 400:** visually appears blank apart from the printed page number; no additional chapter content is visible on this page.
@@ -801,8 +801,8 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - **PDF p. 389:** continues the independent/bound-word distinction and restates the eight categories in the author's scheme: **ناو، ڕاناو، ئاوەڵناو، (کار ـ چاوگ)، ئاوەڵکار، ئامرازی پریپۆزیشن، ئامرازی عەتف، ئامرازی نیدا**. It then opens the treatment of **وشەی بەستراو** and starts its functional subdivisions. Preserve the source's grouping and do not silently harmonize it with earlier lists.
 - **PDF p. 390:** gives sentence and word examples to distinguish independent words from bound forms. The author explicitly warns that a form's written shape alone is not enough to determine whether it functions independently or as an attached element.
 - **PDF p. 391:** continues the examples and develops two kinds of bound-word behaviour, with examples of forms attached to different hosts. The long lists are examples for contextual analysis, not a ready-made universal inventory.
-- **PDF p. 392:** provides a diagram dividing **وشە** into **سەربەخۆ** and **بەستراو**, then subdivides the bound branch into **ئامراز، کیرەک، نیشانە** (as visibly printed). It begins a detailed discussion of **کیرەک** and gives two functional subtypes. Verify the exact technical spelling and examples from a crop before using them as lesson terminology.
-- **PDF p. 393:** continues the **کیرەک** discussion and provides numbered verb-related examples and transformations. The examples are tied to the author's analysis and should not be generalized beyond the constructions actually shown.
+- **PDF p. 392:** provides a diagram dividing **وشە** into **سەربەخۆ** and **بەستراو**, then subdivides the bound branch into **ئامراز، گیرەک، نیشانە** (as visibly printed). It begins a detailed discussion of **گیرەک** and gives two functional subtypes. Verify the exact technical spelling and examples from a crop before using them as lesson terminology.
+- **PDF p. 393:** continues the **گیرەک** discussion and provides numbered verb-related examples and transformations. The examples are tied to the author's analysis and should not be generalized beyond the constructions actually shown.
 - **PDF p. 394:** continues the numbered inventory (items 4–9) with examples and contextual comments. Some headings/forms are tightly printed; do not quote them verbatim without enlarged verification.
 - **PDF p. 395:** cites **دراسات لغات** and **مسعود محمد** in a discussion of prefix-like and suffix-like forms, then begins a treatment of **پێشگر**. The citation and the author's comments must remain distinct.
 - **PDF p. 396:** continues the prefix discussion, including forms attached before a word and examples of their effect on the resulting construction. A long form inventory appears at the bottom; retain it as source evidence only until each form is crop-verified.
@@ -846,7 +846,7 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 1. **Chapter title/page discrepancy at p. 222:** contents says **جێناو**, while the page's printed heading reads **چاوگ**. Reinspect a high-resolution crop of p. 222 and the contents entry on p. 398; if the scan remains ambiguous, mark it unresolved rather than infer.
 2. **Chapter title/page discrepancy at p. 254:** contents says **پێوەندینیش**, while the printed heading reads **پریپۆزیشن / A Preposition**. Verify both exact glyph sequences from enlarged crops and retain the discrepancy in the audit.
 3. **Source-internal category grouping:** p. 347 presents **کار** and **چاوگ** separately, while pp. 373 and 389 group them in a parenthetical construction. The source's differing presentations must be taught as a documented inconsistency, not silently harmonized.
-4. **Terminology on pp. 392–395:** the bound-word diagram and the terms transcribed provisionally as **کیرەک / کیریۆک** need enlarged character-by-character verification. Do not pick one spelling by guess.
+4. **Terminology on pp. 392–395:** the bound-word diagram and the terms transcribed provisionally as **گیرەک / گیرەک** need enlarged character-by-character verification. Do not pick one spelling by guess.
 5. **Dense conjunction inventories, pp. 279–348:** several numbered particle headings remain uncertain in the existing page notes, particularly p. 306 and pp. 314–318, plus detailed subgroups on pp. 332–337. Crop and transcribe before using any as lesson headings.
 6. **Dense Interjection inventories, pp. 354–373:** some forms/headings are not yet securely legible; exact spellings and numbered boundaries need crop-level review.
 7. **Prefix/suffix inventories, pp. 377–397:** many lists are legible structurally but not yet fully transcribed. Do not copy long lists into course content before high-resolution checking.
@@ -875,14 +875,14 @@ This addendum supersedes earlier audit statements that described the entries at 
 
 - **PDF p. 222 and PDF p. 398, item 5:** the printed chapter heading and the contents entry show the same word. The scan's Kurdish-script glyphs are consistent across both locations; the earlier reading of the contents entry as **جێناو** was incorrect. Record the term as **چاوگ** (provisional Latin-script rendering is not needed; preserve the printed Kurdish form). The chapter-heading discrepancy is therefore **not present**.
 - **PDF p. 254 and PDF p. 398, item 7:** both the chapter page and contents entry read **پریپۆزیشن**. The earlier claim that the contents entry reads **پێوەندینیش** was incorrect. There is **no heading/contents discrepancy** here.
-- **PDF p. 392:** enlarged inspection of the diagram and repeated forms in the body text supports the printed technical term **کیرەک**. The earlier variant **کیریۆک** was an inaccurate preliminary reading. Retain **کیرەک** as the page's visible form; do not normalize it or infer an equivalent modern morpheme label without separate analysis.
-- **PDF pp. 393–395:** the term **کیرەک** recurs in the explanatory prose and examples. The pages show several numbered constructions, but their forms and functions still need a complete transcription before instructional use.
+- **PDF p. 392:** enlarged inspection of the diagram and repeated forms in the body text supports the printed technical term **گیرەک**. The earlier variant **گیرەک** was an inaccurate preliminary reading. Retain **گیرەک** as the page's visible form; do not normalize it or infer an equivalent modern morpheme label without separate analysis.
+- **PDF pp. 393–395:** the term **گیرەک** recurs in the explanatory prose and examples. The pages show several numbered constructions, but their forms and functions still need a complete transcription before instructional use.
 
 ### Updated audit status
 
 - Remove the two supposed discrepancies (p. 222 / p. 398 and p. 254 / p. 398) from the unresolved-issue list. The contents page and printed headings agree on both.
 - The source-internal difference in how **کار** and **چاوگ** are grouped remains a genuine issue to document: p. 347 lists them separately, whereas pp. 373 and 389 group them parenthetically.
-- The exact technical form **کیرەک** is now visually supported on p. 392 and corroborated on pp. 393–395. What remains unresolved is its full definition, distribution, and relation to other categories in the author's model—not its basic printed spelling.
+- The exact technical form **گیرەک** is now visually supported on p. 392 and corroborated on pp. 393–395. What remains unresolved is its full definition, distribution, and relation to other categories in the author's model—not its basic printed spelling.
 - Future source maps and any proposed course structure must use these corrected readings. This addendum takes precedence over earlier contradictory transcription notes in this audit.
 
 
@@ -960,3 +960,16 @@ The page images for pp. 374–385 were reopened individually at readable resolut
 3. The long lists on pp. 375, 377, 380, 382–385 are not yet safe for direct reuse. Exact forms, segmentation, examples, and attribution need enlarged crops.
 4. The explicit context-sensitive discussion on p. 385 supports a methodological rule for Course 4: classify forms by their use in the attested construction, not by surface spelling alone.
 5. Course 4 remains planned and inactive. This review creates no lessons, quizzes, graphics, runtime changes, or deployment actions.
+
+
+## User correction and verified terminology: PDF pp. 392–395 (2026-11-05)
+
+The user correctly identified that the term is **گیرەک**, not **کیرەک**. Reinspection of the original page image confirms the initial consonant is **گ**. The diagram on p. 392 labels the bound-word branch **گیرەک**, and the body text repeats **گیرەک** in the heading and explanation. This correction supersedes every earlier reading in this audit that used **کیرەک** or **کیریۆک**.
+
+- Correct printed term: **گیرەک**.
+- PDF p. 392: diagram category and explanatory subsection use **گیرەک**.
+- PDF pp. 393–395: continue the discussion and examples; their full forms and functional analysis still require careful transcription.
+- Do not translate or equate **گیرەک** with a modern morpheme category without a separate, explicit linguistic analysis.
+- Future source maps, evidence tables, and lesson drafts must use **گیرەک** exactly.
+
+The audit text above has been corrected to use **گیرەک** consistently. This is a source-transcription correction only; it does not create or activate lessons.
