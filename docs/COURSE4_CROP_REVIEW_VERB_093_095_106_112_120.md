@@ -159,3 +159,23 @@ The full enlarged table and separate row crops provide a clearer reading than th
 | 9 | پچڕان | پچڕین |
 
 **Correction:** item 8 is restored to the partial verified list as **سڕانەوە / سڕینەوە**. The earlier withdrawal was caused by insufficient clarity in the smaller crop; the full enlarged page and row crop resolve the reading. Items 6–7 and 10–17 are deliberately not transcribed in this pass because at least one glyph or form variant remains uncertain. Item 2's two forms in the left column are retained exactly as visible; no editorial choice is made between them.
+
+
+## p.106 — completed row-by-row visual pass (items 6–7 and 10–17)
+
+The newly enlarged crop covering items 6–17 makes the remaining rows legible. The following is a diplomatic visual transcription, not a correction or normalization. Column order remains **تێنەپەر** (right) and **تێپەڕ** (left):
+
+| Item | تێنەپەر (right) | تێپەڕ (left) |
+|---:|---|---|
+| 6 | کوژران | کوژرین |
+| 7 | کەڕان | کڕان |
+| 10 | بڕۆوتن | بڕاوتن |
+| 11 | سوان | سوین (سوون) |
+| 12 | قەڵشتن | قەڵاشتەن |
+| 13 | قڵیشان | قەڵاشتەن |
+| 14 | مانەوە | هێشتنەوە، هێڵانەوە |
+| 15 | مان | هێشتن، هێڵان |
+| 16 | کشانەوە | کشاندنەوە |
+| 17 | هەڵستان | هەڵگرتن |
+
+Together with the previously verified items 1–5, 8–9, this completes the visual transcription of all 17 numbered rows at the current image resolution. Item 11's parenthetical alternative **(سوون)** is retained exactly as printed. Item 14–15 retain both left-column variants. These are source readings only; do not infer that every form is a productive or standard paradigm, and do not silently regularize spelling. The note below the table remains a separate source passage and has not been transcribed in this row table.
