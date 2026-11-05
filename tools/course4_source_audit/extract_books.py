@@ -4,6 +4,7 @@ import json
 import re
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import fitz
@@ -30,13 +31,22 @@ def verify_git_blob(data, expected):
         raise RuntimeError("Git blob SHA mismatch: " + actual)
     return actual
 
-def ocr_page(page):
-    pix = page.get_pixmap(matrix=fitz.Matrix(1.3, 1.3), alpha=False)
-    image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+def render_page(page):
+    pix = page.get_pixmap(matrix=fitz.Matrix(1.15, 1.15), alpha=False)
+    return Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+
+def ocr_image(image):
     try:
-        raw = pytesseract.image_to_string(image, lang="ara+eng", config="--psm 6")
-    except pytesseract.TesseractError:
-        raw = pytesseract.image_to_string(image, lang="ara", config="--psm 6")
+        raw = pytesseract.image_to_string(
+            image, lang="ara+eng", config="--psm 6", timeout=25
+        )
+    except (pytesseract.TesseractError, RuntimeError):
+        try:
+            raw = pytesseract.image_to_string(
+                image, lang="ara", config="--psm 6", timeout=20
+            )
+        except (pytesseract.TesseractError, RuntimeError):
+            return ""
     return re.sub(r"\\s+", " ", raw).strip()
 
 def short_excerpt(text, terms, limit=28):
@@ -65,20 +75,39 @@ def main():
         extracted = []
         embedded_count = 0
         ocr_count = 0
-        for index, page in enumerate(pdf, start=1):
-            if index == 1 or index % 25 == 0 or index == len(pdf):
-                print(f"Volume {number}: OCR progress {index}/{len(pdf)} pages", flush=True)
-            text = " ".join(page.get_text("text").split())
-            method = "embedded-text"
-            if len(text) < 70:
-                text = ocr_page(page)
-                method = "ocr-ara"
-                ocr_count += 1
-            else:
-                embedded_count += 1
-            extracted.append(text)
-            page_rows.append({"volume":number,"pdf_page":index,"characters":len(text),
-                              "method":method,"needs_visual_check":"yes" if len(text)<70 else "no"})
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            pages = list(pdf)
+            for batch_start in range(0, len(pages), 4):
+                batch = pages[batch_start:batch_start + 4]
+                batch_meta = []
+                images = []
+                for offset, page in enumerate(batch):
+                    index = batch_start + offset + 1
+                    text = " ".join(page.get_text("text").split())
+                    if len(text) >= 70:
+                        batch_meta.append((index, text, "embedded-text"))
+                        embedded_count += 1
+                    else:
+                        images.append(render_page(page))
+                        batch_meta.append((index, None, "ocr-ara"))
+                image_iter = iter(images)
+                ocr_images = list(images)
+                if ocr_images:
+                    ocr_texts = list(pool.map(ocr_image, ocr_images))
+                    text_iter = iter(ocr_texts)
+                    rebuilt = []
+                    for index, text, method in batch_meta:
+                        if method == "ocr-ara":
+                            text = next(text_iter)
+                            ocr_count += 1
+                        rebuilt.append((index, text, method))
+                    batch_meta = rebuilt
+                for index, text, method in batch_meta:
+                    extracted.append(text)
+                    page_rows.append({"volume":number,"pdf_page":index,"characters":len(text),
+                                      "method":method,"needs_visual_check":"yes" if len(text)<70 else "no"})
+                    if index == 1 or index % 10 == 0 or index == len(pdf):
+                        print(f"Volume {number}: OCR progress {index}/{len(pdf)} pages", flush=True)
         for lesson, terms in lessons.items():
             scored = []
             for page_no, text in enumerate(extracted, start=1):
