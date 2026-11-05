@@ -14,7 +14,7 @@ Use this section and the final queue at the end of this file as the current stat
 - **p.120:** three paired readings remain provisional; table headings and the complete attributed passage by مامۆستا مەسعود محەمەد remain outstanding.
 - **pp.93–94:** use the final reconciliation in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`; on p.94 the second upper-table left example is uncertified. The guess **منداڵەکەم خوارد** is withdrawn.
 
-No new image inspection or transcription is claimed by this status note. Only original page images/crops can close the open items. Course 4 remains inactive with zero lessons; this register does not authorize lesson drafting, quizzes, catalogue restoration, or runtime changes.
+No new image inspection or transcription is claimed by this status note. Only original page images/crops can close the open items. Course 4 remains planned/inactive with zero lessons. The outline is approved; this register authorizes continued source transcription and validation only, not unverified lesson drafting, quizzes, catalogue restoration, or runtime changes.
 
 ---
 
@@ -290,7 +290,7 @@ This queue supersedes earlier “Next focused task” and “Next source-audit a
 4. **pp.93–94:** revisit only the remaining unresolved dense-table cells and p.94's second upper-table left example if a sharper original is available. Preserve the withdrawn guess **منداڵەکەم خوارد** as withdrawn; do not reinstate it.
 5. **p.119 preceding table:** inspect the separate table before subsection 5 only if a source crop is available; its status is distinct from the four transcribed rows and parenthetical list.
 
-No new page transcription is claimed by this queue update. It is a reconciliation of what is already documented versus what still needs source imagery. Continue to use only the primary 400-page book; exclude the separate 32-page PDF. Course 4 remains planned/inactive with zero lessons and awaits explicit outline approval before any drafting.
+No new page transcription is claimed by this queue update. It is a reconciliation of what is already documented versus what still needs source imagery. Continue to use only the primary 400-page book; exclude the separate 32-page PDF. The outline was approved on 2026-11-05; Course 4 remains planned/inactive with zero lessons while source transcription and claim-level validation continue.
 
 
 ## Current controlling queue — 2026-11-05
@@ -311,6 +311,11 @@ The older priority lists above are historical checkpoints. The current verified 
 1. Obtain a sufficiently sharp original crop for p.106's note and p.95's examples after **وەک**, if those source images are available.
 2. Obtain a full-width, high-resolution p.120 image to read its table headings, paired forms, and attributed passage together.
 3. Resolve p.119's preceding table and the remaining dense cells on pp.93–94 only from original page images.
-4. Continue diplomatic transcription and independent, variety-aware validation of other chapters before any lesson outline is submitted for approval.
+4. Continue diplomatic transcription and independent, variety-aware validation of the approved outline's topics before drafting individual lesson texts. Unresolved readings remain excluded.
 
 Do not claim new image inspection unless the original page image is actually available. Course 4 remains `planned`, with zero lessons; no quiz, activation, merge, production change, or Botkeep deployment is authorized.
+
+
+## Outline approval reconciliation — 2026-11-05
+
+The user approved the nine-part outline on 2026-11-05. Older instructions in this file to wait for outline approval or submit a new outline are superseded. The active work is now source-faithful transcription and independent claim-level validation within the approved structure. This does not approve individual lessons or authorize quizzes, catalogue restoration, runtime activation, merge, deployment, or Botkeep changes. Keep `lesson_count=0` and `lessons=[]` until a later, separately reviewed content implementation decision.
