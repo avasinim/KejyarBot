@@ -142,3 +142,20 @@ The three headings read right-to-left: **چاوگ / کاری تێنەپەر / ک
 | خەڵ | خەڵان | خەڵاندن |
 
 The forms above are recorded as printed. The surrounding explanatory prose and subsequent example lists are separate from this table and are not merged into it.
+
+
+## p.106 — full enlarged-table recheck; item 8 restored
+
+The full enlarged table and separate row crops provide a clearer reading than the earlier partial crop. The column headings are **تێنەپەر** (right) and **تێپەڕ** (left). The following entries are now visually legible enough to record as a partial transcription:
+
+| Item | تێنەپەر (right) | تێپەڕ (left) |
+|---:|---|---|
+| 1 | کەوتن | خستن |
+| 2 | هاتن | هێنان، هاتن |
+| 3 | چوون | بردن |
+| 4 | ڕۆیشتن | ناردن |
+| 5 | ڕژان | ڕشتن |
+| 8 | سڕانەوە | سڕینەوە |
+| 9 | پچڕان | پچڕین |
+
+**Correction:** item 8 is restored to the partial verified list as **سڕانەوە / سڕینەوە**. The earlier withdrawal was caused by insufficient clarity in the smaller crop; the full enlarged page and row crop resolve the reading. Items 6–7 and 10–17 are deliberately not transcribed in this pass because at least one glyph or form variant remains uncertain. Item 2's two forms in the left column are retained exactly as visible; no editorial choice is made between them.
