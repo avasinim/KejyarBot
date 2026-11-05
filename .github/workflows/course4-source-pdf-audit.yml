@@ -26,7 +26,7 @@ jobs:
         run: python -m pip install --upgrade pymupdf pillow pytesseract
       - name: Validate provisional lesson-to-volume map
         run: python tools/course4_source_audit/validate_mapping.py
-      - name: Verify source PDFs and inspect first five pages only
+      - name: Validate Course 4 evidence register structure\n        run: python tools/course4_source_audit/validate_release_gate.py\n      - name: Verify source PDFs and inspect first five pages only
         run: python tools/course4_source_audit/extract_covers.py
       - name: Upload cover images and OCR text
         uses: actions/upload-artifact@v4
