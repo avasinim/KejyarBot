@@ -16,8 +16,8 @@ This correction concerns the exact printed headings only. It does **not** erase 
 
 - This is an isolated source-audit record, not a live course definition or release instruction.
 - Sole curriculum source: **ڕێزمانی ئاخافتنی کوردی** (`Rezmany_axawtny_kurdy.pdf`); the separate **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded.
-- Source inspection and selected transcriptions remain incomplete; the proposed outline is **not approved**.
-- Course 4 has **zero lessons** and is not authorized for drafting, quiz creation, activation, or runtime changes.
+- Source inspection and selected transcriptions remain incomplete; the nine-part outline was **approved by the user on 2026-11-05**. Individual lesson content is not yet approved.
+- Course 4 has **zero lessons**. The approved outline authorizes continued source transcription and validation, not unverified lesson drafting, quiz creation, activation, or runtime changes.
 - The current `main` branch intentionally has no `grammar` course catalogue entry (removed by commit `e691feb6`). The planned entry on this audit branch is branch-local only; do not restore it to `main` without explicit approval.
 - Branch `reset/grammar-course4-content` is divergent from `main` (latest recorded comparison: 466 commits ahead, 9 behind; 36 changed paths). It is an audit workspace, not a release candidate. No merge/rebase/cherry-pick/deploy/Botkeep operation is authorized.
 
@@ -25,7 +25,7 @@ For current page-level confidence, use the latest controlling queue in `COURSE4_
 
 ---
 
-Status: **single-source curriculum decision adopted; source inspection in progress; no lesson content approved**
+Status: **single-source curriculum decision adopted; outline approved; source inspection and claim-level validation in progress; no lesson content approved**
 
 This audit belongs to the isolated branch `reset/grammar-course4-content`. It does not activate Course 4, alter other courses, or deploy anything.
 
@@ -1404,3 +1404,8 @@ This section supersedes the conflicting rows and statements in the earlier **Con
 The latest controlling evidence is recorded in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`, `COURSE4_VISUAL_REVIEW_374_379.md`, `COURSE4_CROP_REVIEW_380_385.md`, `COURSE4_VISUAL_REVIEW_386_391.md`, and `COURSE4_VISUAL_REVIEW_392_397.md`. This correction updates the source map only; it does not approve the proposal or any lesson.
 
 Course 4 remains planned/inactive with zero lessons. The sole curriculum source remains `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded. No lesson drafting, activation, catalogue restoration, merge, production change, or Botkeep deployment is authorized by this documentation update.
+
+
+## Outline approval reconciliation — 2026-11-05
+
+The user explicitly approved the nine-part Course 4 outline on 2026-11-05, delegating the structural decision to the assistant. This supersedes earlier chronological statements in this file that the outline was not approved or that no drafting could begin until outline approval. The approved outline is recorded in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`. Approval authorizes continued source transcription and claim-level validation within that structure; it does not make uncertain readings lesson-ready or approve individual lesson texts/quizzes. Keep Course 4 at zero lessons and planned/inactive until content review and a separate release decision. The branch-local catalogue entry must not be restored to `main` without a separate compatibility review and explicit authorization.
