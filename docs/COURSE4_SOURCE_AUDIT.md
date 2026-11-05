@@ -1268,3 +1268,12 @@ The latest enlarged-crop findings in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_1
 - This is source-image transcription status only, not independent validation. Preserve the author attribution and do not merge the passage into the preceding examples.
 
 Where older paragraphs in this audit say p.119 rows remain unverified, treat those statements as historical checkpoints; the latest crop-review record governs current status. Course 4 remains planned/inactive with zero lessons.
+
+
+## Primary source extraction artifact recovered (2026-11-05)
+
+The 400-page primary source `Rezmany_axawtny_kurdy.pdf` is present in the repository. The GitHub Actions workflow **Extract Course 4 source PDFs** completed successfully on branch `reset/grammar-course4-content` (run `41994304338`, workflow head `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`). The downloaded artifact `course4-source-text` (ID `13398729502`) contains extracted text, page previews, and `extraction_report.json`.
+
+The report records **400 pages** for the primary PDF: **397** embedded-text pages, **3** OCR pages marked `OCR-ara+eng-UNVERIFIED`, and **0** unreadable pages. OCR remains unverified; extracted text is a navigation aid only and does not supersede the source page images for diplomatic transcription. The separate 32-page `ڕێزمانی ڕاناوی لكاو.pdf` appears in the same artifact but remains excluded from Course 4.
+
+This corrects any earlier working note that described the primary PDF as unavailable. It does not imply a new page-by-page visual audit, a completed transcription, independent linguistic validation, or lesson approval. Course 4 remains planned/inactive with zero lessons.
