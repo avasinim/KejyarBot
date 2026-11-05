@@ -132,3 +132,16 @@ See `docs/COURSE4_VISUAL_REVIEW_392_397.md`.
 - Long lists on pp.393–396 still require character-level crops before transcription.
 
 Visual review only, not full transcription or independent validation. Course 4 remains planned with zero lessons.
+
+
+## Crop-level review — pp.380–385 (2026-11-05)
+
+See `docs/COURSE4_CROP_REVIEW_380_385.md`.
+
+- p.380's visible numbered list (items 8–27) is followed by a separately introduced account attributed to **جەگرخۆین**; do not combine the two.
+- p.381 contains a comparative French passage about prefixes/suffixes, alongside a citation to ڕەشیدی کورد; do not treat the French description as direct Central Kurdish evidence.
+- pp.382–383 contain a separately headed **پاشگری فرمان** list and then **پێشگری فرمان**; preserve the boundary and pair examples with their forms.
+- pp.384–385 present a Persian comparative prefix inventory and subsequent discussion; do not copy it into a Kurdish inventory.
+- Dense forms remain pending exact transcription.
+
+Visual review only. Course 4 remains planned with zero lessons.
