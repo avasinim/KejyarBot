@@ -179,3 +179,8 @@ Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activa
 - p.94: right-to-left headings verified as **فرمانی تێنەبەر / ڕەگی فرمان / فرمانی تێپەڕ** in two separate tables; example forms need character-level transcription. Prose notes below are separate from the tables.
 - p.95: right-to-left headings verified as **چاوگ / کاری تێنەبەر / کاری تێپەڕ**. Clear rows **نەخش / نەخشان / نەخشاندن** and **خمل / خملان / خملاندن**. First row and following prose still require close reading.
 - See the crop-review record for the evidence and explicit unresolved items. No lessons, quizzes, activation, or runtime changes were made.
+
+
+### p.95 first-row confirmation (2026-11-05)
+
+A second enlarged-crop reread resolves the previously withheld first row. The complete three-row table is now recorded as **چوون / چوو / چواندن**, **نەخش / نەخشان / نەخشاندن**, **خمل / خملان / خملاندن** under the headings **چاوگ / کاری تێنەبەر / کاری تێپەڕ**. See the crop-review record; the prose following the table remains untranscribed.
