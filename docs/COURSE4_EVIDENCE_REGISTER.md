@@ -94,3 +94,16 @@ Confirmed:
 - p.243 includes a variety/dialect-specific discussion; exact label needs crop-level verification before quotation.
 
 Methodological conclusion: the source's semantic and structural classifications are distinct, and sentence function matters. This is page-level review, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
+
+
+## Focused visual confirmation — preposition pages 261–272 (2026-11-05)
+
+The rendered originals for pp.261–272 were inspected individually. See `docs/COURSE4_VISUAL_REVIEW_261_272.md`.
+
+- pp.261–265 continue contextual analysis of prepositional constructions and warn against assigning a grammatical role from surface form alone.
+- p.266 contains the distinct heading **تەواوکردنی پریپۆزیشن**.
+- p.267 contains the separate section **دووری پریپۆزیشن لە ئاخاوتندا**, with attributed accounts and examples.
+- pp.268–272 treat individual forms, visibly including **بۆ، لە، بە، تا، وەک، بێ**; this is a verified subset, not a claim of completeness.
+- p.269 has a functional subheading whose exact reading remains crop-verification-only.
+
+Methodological point: retain the book's contextual and construction-sensitive analysis; do not turn form lists into invariant one-to-one grammatical labels. This is visual review, not full transcription or independent validation. Course 4 remains planned with zero lessons.
