@@ -567,3 +567,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The audit uses **عەتف** in Kurdish prose. The original source page 313 includes an Arabic-script parenthetical **(عطف)** in a quoted/technical context; do not reproduce that spelling in Kurdish explanatory prose.
 - This is a sequential structural review, not a complete transcription. The exact cited titles, names, page references, all example sentences, and the author's final distinctions need crop-by-crop transcription before lesson drafting. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 314 onward.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 314–319 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 314:** opens numbered section **14**. The heading contains a paired/variant particle expression followed by **ی عەتف**. The enlarged heading crop confirms the letters are not sufficiently unambiguous for a safe exact transcription; therefore the particle name is intentionally left unresolved. The page cites multiple Kurdish grammarians and gives examples. Do not infer the heading from the following English glosses or examples.
+- **PDF p. 315:** continues section 14 and lists English glossed expressions including **only**, **unless**, **except**, **do you mean to say**, and **then in that case**. These are reference glosses/examples in the author's discussion, not evidence that all such English expressions map one-to-one onto a single Kurdish particle or category. The page then opens numbered section **15**, whose particle heading also requires close transcription before use.
+- **PDF p. 316:** continues section 15 with a numbered list of five example environments and sentence examples. The author's discussion explicitly compares forms that may appear similar but differ by sentence construction; preserve the examples and their syntactic environments rather than teaching a bare word list.
+- **PDF p. 317:** continues the preceding analysis, then clearly opens numbered section **16**. The heading appears to name a Kurdish particle, but exact reading should be checked in a larger crop before transcribing. The page gives a substantial list of forms and two attributed discussions; keep the cited grammarians' statements distinct from the author's analysis.
+- **PDF p. 318:** continues section 16 with further attributed analysis and examples, then discusses another form and its use in sentence contexts. The page contains contrasts among forms and explicit example sentences; exact particle spellings require crop-level transcription.
+- **PDF p. 319:** clearly opens numbered section **17 ـ ئامرازی (بەڵکو)ی عەتف**. It cites several Kurdish grammatical descriptions, including مامۆستا سەعید سەدقی، مامۆستا توفیق وەهبی، نووری عەلی ئەمین, and a Kurdish grammar reference, and provides sentence examples. An English gloss **but rather, perhaps** appears in the discussion; do not collapse the source's different cited analyses into one definition.
+
+### Findings and limits
+- The conjunction chapter has now been visually reviewed sequentially through PDF p. 319. Sections 14–16 contain particle headings that need enlarged, character-by-character verification before exact transcription; their names are intentionally not guessed.
+- Section 17 **(بەڵکو)** is legible and is explicitly presented as an instrument of conjunction in this source. Its actual function still needs to be taught through the author's sentence examples and not by relying on the English gloss alone.
+- Pages 314–319 continue to distinguish cited grammarians' opinions from the author's own analysis. Preserve attribution and disagreement.
+- Kurdish explanatory prose continues to use **عەتف**, not **عطف**. Do not use the Arabic letter **ط** in Kurdish terminology.
+- This remains a sequential structural review, not a complete transcription. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
+- Next: continue from PDF p. 320.
