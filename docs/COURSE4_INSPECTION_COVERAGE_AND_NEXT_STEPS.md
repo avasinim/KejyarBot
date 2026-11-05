@@ -382,3 +382,8 @@ A separate ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_031_036.md`, recor
 ## Initial diplomatic transcription — ڕاناو, PDF pp.37–40 (2026-11-05)
 
 The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_037_040.md` records selective readings from the original page images. It captures the continuation of connected-pronoun tables on p.37, an attributed discussion and paired forms on p.38, the Kurdish/Latin aligned forms (including **Ez im, Tu yi, Ew e, Em in, Hun in, Ew in**) on p.39, and the continuation of aligned forms and dialect footnotes on p.40. Dense paradigms, exact suffix boundaries, and footnote wording remain open for sharper crop verification. This is not a complete transcription or linguistic validation. Course 4 remains planned/inactive with zero lessons.
+
+
+## Initial diplomatic transcription — ڕاناو, PDF pp.41–44 (2026-11-05)
+
+A separate ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_041_044.md`, records selective source readings from the original page images. It covers the continued aligned person/number forms and past-tense examples on p.41, the request/volition forms and an attributed passage on p.42, the attributed connected-pronoun discussion on p.43, and the four-part pronoun list with its footnote on p.44. Dense paragraphs, table rows, and unclear forms remain open for sharper crop verification. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
