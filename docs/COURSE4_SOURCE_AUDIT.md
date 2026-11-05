@@ -2,6 +2,18 @@
 
 ## Current controlling status — 2026-11-05
 
+## Later heading reconciliation — controlling correction (2026-11-05)
+
+The older chronological entries and tables below that describe either of the following as an **open contents/heading discrepancy** are superseded historical checkpoints, not current findings:
+
+- **PDF pp.222 / 398, item 5:** both original page images read **چاوگ**. The earlier **جێناو** transcription for p.398 was an audit-document error and is withdrawn. There is no supported heading mismatch between these two locations.
+- **PDF pp.254 / 398, item 7:** both original page images read **پریپۆزیشن**. The earlier **پێوەندینیش** transcription for p.398 was an audit-document error and is withdrawn. There is no supported heading mismatch between these two locations.
+
+This correction concerns the exact printed headings only. It does **not** erase the book's separately recorded differences in how it groups **کار** and **چاوگ** in other classifications; those are distinct source-internal analytical observations and remain to be interpreted cautiously. Likewise, **ڕاناو** at p.25 remains a separate printed heading. For current contents-page readings, follow this reconciliation and `COURSE4_SOURCE_DISCREPANCY_P222_P398.md`; do not reuse the older unresolved-discrepancy statements later in this chronological log.
+
+---
+
+
 - This is an isolated source-audit record, not a live course definition or release instruction.
 - Sole curriculum source: **ڕێزمانی ئاخافتنی کوردی** (`Rezmany_axawtny_kurdy.pdf`); the separate **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded.
 - Source inspection and selected transcriptions remain incomplete; the proposed outline is **not approved**.
