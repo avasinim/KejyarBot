@@ -1046,3 +1046,13 @@ The explanatory prose immediately following begins with **خۆزگە** and gives
 - Several spellings are unusual and some glyphs are too close at this crop size for confident quotation. The table is a working reading, not a final normalized vocabulary list.
 - Keep the book's own terminology and spellings, including **گیرەک** from pp. 392–395; do not reintroduce the previously mistaken reading.
 - Course 4 remains planned/inactive; this source review has not created or activated lessons.
+
+
+## Follow-up check: PDF p. 356 (Interjection examples)
+
+- The page gives detailed examples under numbered headings **2 ـ کاشکی**, **3 ـ بریا**, **4 ـ بەڵکو**, and **5 ـ نەری**.
+- For **کاشکی**, the examples show wish/regret-like uses in complete utterances; the text includes more than one construction, so the item should be taught through its sentence context rather than by a one-word gloss.
+- For **بریا**, the page gives multiple utterances, including a form followed by a clause; preserve the printed examples before inferring its exact pragmatic range.
+- For **بەڵکو**, examples include statements and questions. The author explicitly comments on how its role can be distinguished in context; do not collapse **بەڵکو** and **بەشکو** into one spelling without checking the individual examples.
+- The heading numbered **5 ـ نەری** on p. 356 does not align transparently with the numbered inventory on p. 354, where **نەری** appears as item 8 (while item 5 is a different form). This is a genuine numbering/order issue to record, not silently repair. Check intervening pages and the source's numbering logic before making a lesson sequence.
+- p. 356 continues the explanatory treatment and ends with examples under **نەری**. Full transcription of the examples is still pending.
