@@ -219,3 +219,10 @@ The artifact's extraction report records:
 - Separate `ڕێزمانی ڕاناوی لكاو.pdf`: 32 pages; 1 embedded-text page and 31 OCR pages. **Excluded** from Course 4.
 
 Evidence boundary: extraction report and extracted text establish asset availability and page/extraction counts only. OCR and extracted text do not replace visual inspection of the original page images. No new lesson-ready transcription or independent linguistic validation follows from this artifact recovery. Course 4 remains planned/inactive with zero lessons.
+
+
+### OCR-page pinpointing and preview check (2026-11-05)
+
+The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
+
+The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
