@@ -684,3 +684,23 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Exact transcription of the lists on pp. 345–346 and the literary examples still needs enlarged crop-level review before they are used in lessons.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 350.
+
+
+## Sequential visual review: Interjection chapter PDF pp. 350–355 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 350:** continues the source's survey/examples for **ئامرازی تعجب (Interjection)**, including material attributed to Kurdish grammarians and literary examples. It contains several grouped forms and quoted/example passages. These attributions and examples must remain distinct; the page is not a clean, unified list of the author's own categories.
+- **PDF p. 351:** continues the discussion of expressions used in exclamatory/emotive contexts and gives contextual sentence examples. It then starts a numbered discussion of types/uses, with the first section visibly headed **لە ناوی تاکا** (exact technical interpretation should be checked against the preceding paragraph and a close crop before using as a lesson heading). The page distinguishes the form of an expression from its function in a sentence.
+- **PDF p. 352:** presents a three-column comparison/table of forms and examples; the column headings and some entries need crop-level transcription before quoting. It then discusses forms used in vocative/exclamatory contexts, gives examples from Kurdish verse, and cites **دستور پارسی** and **AN ENGLISH GRAMMAR BOOK** by Evan C. Penglis. The author compares **Interjection** with other grammatical categories and does not simply equate every emotive expression with one word class.
+- **PDF p. 353:** continues comparative references, including **جامع الدروس العربية** by مصطفى الغلاييني, and lists Arabic interjection/exclamation forms under source categories. It then returns to Kurdish grammar and gives the author's discussion of how **Interjection** is treated in Kurdish grammar. The text cites Kurdish grammarians, including مامۆستا توفیق وەهبی, and comments on whether certain expressions are treated as independent grammatical material or as part of sentence construction. Keep each reference attributed.
+- **PDF p. 354:** clearly begins a numbered inventory of Kurdish expressions associated with **ئامرازی تعجب**. The visible list runs from 1 to 23. Examples/forms include **خۆزگە، کاشکی، بڕیا، بەڵکو، نەی، هەو، کە، نەری، نەی، نای، نەی، یا، توف/تۆف، ها، دەی، تا دەی، وەی، توخەی، هەو، حەست، داخ**, and further entries. Some forms and diacritics are visually ambiguous at this page resolution; do not treat this provisional reading as a verified transcription.
+- **PDF p. 355:** continues the inventory with entries 24–32, including clearly visible **چش (دەچش?)**, **نەفرین**, **بە بە**, **هەی (هەی هەی)**, **پەچ**, **بەکوو/بەکوو؟**, **وای (وای وای)**, **حەیف**, and **داد**; several spellings require close crop verification. The text then introduces a description of how Kurdish writers use these expressions and begins a detailed example section with **خۆزگە**. It provides several sentence examples to illustrate contextual usage.
+
+### Findings and limits
+- The Interjection chapter is not merely a short list of exclamations: the author surveys Kurdish and non-Kurdish grammatical treatments, compares categories, and then gives Kurdish contextual examples.
+- Pages 350–353 include literature review and comparative methodology. Do not combine the cited positions of Kurdish, Persian, Arabic, and English grammarians into a single unattributed theory.
+- The list on pp. 354–355 is a source inventory of forms; current visual resolution is insufficient for reliable character-by-character transcription of all entries. No uncertain spelling should be promoted to a lesson title or definitive example until enlarged crop review.
+- Page 355 starts a contextual examination of how Kurdish writers use these expressions, beginning with **خۆزگە**. This suggests the chapter continues beyond the bare inventory into usage examples.
+- The source uses Arabic-script labels in its headings; Kurdish explanatory prose elsewhere continues to use **عەتف**, not **عطف**.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 356.
