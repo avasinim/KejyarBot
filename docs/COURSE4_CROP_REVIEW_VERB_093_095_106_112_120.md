@@ -402,3 +402,16 @@ The original page and enlarged crop confirm the table headings right-to-left as 
 The first row in the table appears to concern **چوون** and related forms, but the leftmost form is not sufficiently clear in this raster to certify; it remains untranscribed. The prose below the table begins a distinct explanation of verbs formed through **پێوەڵکاندن (اندن)**; preserve this as the following subsection rather than merging it into the table.
 
 These are crop-level readings from the original PDF page images. They do not validate the author's grammatical analysis and are not lesson-ready content until the remaining rows and prose are checked.
+
+
+## p.95 — correction after direct enlarged-crop reread (2026-11-05)
+
+A second close reading of the p.95 crop resolves the first row that was previously withheld. The three rows in the table, read right-to-left under **چاوگ / کاری تێنەبەر / کاری تێپەڕ**, are:
+
+| چاوگ | کاری تێنەبەر | کاری تێپەڕ |
+|---|---|---|
+| چوون | چوو | چواندن |
+| نەخش | نەخشان | نەخشاندن |
+| خمل | خملان | خملاندن |
+
+This supersedes the earlier note that the first row was too unclear to certify. The heading and all three rows are visually legible in the enlarged crop. The explanatory prose immediately below is a separate discussion of verbs formed with **(اندن)**; it remains to be transcribed line by line.
