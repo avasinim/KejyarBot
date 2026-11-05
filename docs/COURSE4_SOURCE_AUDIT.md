@@ -1212,3 +1212,8 @@ These are source-faithful visual readings only. No normalization or linguistic s
 ## Additional visual evidence: attributed affix/particle accounts, pp.374–379
 
 A focused visual pass of the original page images and enlarged crops is recorded in `docs/COURSE4_VISUAL_REVIEW_374_379.md`. The pages juxtapose separate accounts attributed to مامۆستا سەعید سەدقی (pp.374–375), مامۆستا توفیق وەهبی (p.376), مامۆستا کوردیف (pp.376–377), نووری عەلی ئەمین (pp.377–379), and مامۆستا جەگرخۆین (p.379). Their lists and category schemes must not be combined. The review confirms section structure and visible headings, but does not certify dense inventories for lesson transcription. This is visual evidence only; no dialectal or normative status is inferred. Course 4 remains planned with zero lessons.
+
+
+## Additional visual evidence: independent/bound word framework, pp.386–391
+
+The focused visual review is recorded in `docs/COURSE4_VISUAL_REVIEW_386_391.md`. Pages 386–387 cite Evan C. Penglis's `AN ENGLISH GRAMMAR BOOK` as comparative material and raise the categories Prefix, Suffix, and Infix; the source explicitly poses whether Infix exists in Kurdish, without establishing an affirmative productive category. Pages 388–389 introduce `وشەی سەربەخۆ و وشەی بەستراو`, list five independent classes and eight bound classes, and print `کار (چاوگ)` as a grouped class. This contrasts with p.347's separate `کار` and `چاوگ` entries; preserve this source-internal variation. Pages 390–391 continue contextual and structural examples, but dense segmentations are not yet approved for transcription. Course 4 remains planned with zero lessons.
