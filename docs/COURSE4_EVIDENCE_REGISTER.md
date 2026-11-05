@@ -79,3 +79,18 @@ Confirmed:
 - pp.237–240 continue the adverb chapter's opening definition/classification.
 
 This is page-level visual review, not complete transcription. Uncertain readings are not promoted to lesson headings. Course 4 remains planned with zero lessons.
+
+
+## New visual evidence — ئاوەڵکار, pp.241–253 (2026-11-05)
+
+Pages 241–253 have now been checked sequentially from rendered source images. See `docs/COURSE4_VISUAL_REVIEW_241_253.md`.
+
+Confirmed:
+- pp.241–245 continue example-based discussion of adverbial function; forms from different lexical classes may function adverbially according to sentence context.
+- p.246 shows a numbered semantic/functional classification through nine items; pp.247–248 continue it and visibly include items 10 and 11.
+- p.249 gives a separate comparative discussion involving Persian grammatical descriptions; do not merge it uncritically with the earlier numbered taxonomy.
+- pp.250–251 distinguish structural/formational categories, including simple, non-simple, derived, and compound adverbs. Keep these separate from semantic/function types.
+- p.252 lists six broad word classes: `ناو، ڕاناو، ئاوەڵناو، کار، چاوگ، ئاوەڵکار`.
+- p.243 includes a variety/dialect-specific discussion; exact label needs crop-level verification before quotation.
+
+Methodological conclusion: the source's semantic and structural classifications are distinct, and sentence function matters. This is page-level review, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
