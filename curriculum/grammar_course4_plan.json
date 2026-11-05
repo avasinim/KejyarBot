@@ -4,10 +4,15 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "planned",
-  "replacement_state": "waiting_for_new_source_book",
+  "replacement_state": "source_selected_under_audit_waiting_for_outline_approval",
   "language": "ckb",
   "lesson_count": 0,
   "lessons": [],
-  "source": null,
-  "note": "هەموو ٣٠ وانەی پێشووی کۆرسی ڕێزمان و ناوەڕۆکی وانەکان لەم بڕانشەدا لابراون. کۆرس و ناسنامەی کۆرس پارێزراون. هیچ کتێبێکی نوێ یان ناوەڕۆکی وانە تا دیاریکردنی سەرچاوەی نوێ زیاد ناکرێت."
+  "source": {
+    "title": "ڕێزمانی ئاخافتنی کوردی",
+    "file": "Rezmany_axawtny_kurdy.pdf",
+    "role": "sole_curriculum_source",
+    "status": "selected_under_audit"
+  },
+  "note": "کتێبی «ڕێزمانی ئاخافتنی کوردی» وەک تاکە سەرچاوەی ناوەڕۆکی کۆرسی ٤ دیاریکراوە و پشکنینی بەڵگە و ترانسکریپشن بەردەوامە. کتێبی «ڕێزمانی ڕاناوی لکاو» بە تەواوی لە ناوەڕۆکی وانەکاندا دەرەوەیە. هێشتا پلانی وانە پەسەند نەکراوە؛ کۆرس planned ـە، ژمارەی وانە سفرە و هیچ وانەیەک دروست یان چالاک نەکراوە."
 }
