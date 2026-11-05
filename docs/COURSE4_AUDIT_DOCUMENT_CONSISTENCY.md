@@ -105,3 +105,8 @@ A fresh read-only check against the current `main` head observed as `bde4b44ddf5
 - On the isolated audit branch, Course 4 remains present only as a planned entry with `lesson_ids: []`; its plan has `lesson_count: 0`, `lessons: []`, and the sole source selected under audit.
 
 This is an integration difference, not a request to restore Course 4 to the catalogue. Do not cherry-pick, merge, rebase, or synchronize these files into `main` without explicit user approval. The isolated branch is an audit workspace, not a release candidate. Any future decision must first establish whether Course 4 is still intended to appear in the live catalogue, then review current course/runtime compatibility and the existing branch divergence. No main-branch or Botkeep change was made.
+
+
+## Provenance of Course 4 absence from `main` — 2026-11-05
+
+The current `main` catalogue omission is explained by an explicit earlier commit, not an unexplained sync failure: commit `e691feb6e3aa0ba4237bbf7736f35220ec16c761` (“Remove planned Course 4 grammar from course catalogue”, 2026-11-05) removes exactly the planned `grammar` entry from `courses.json` (id `grammar`, key `course_grammar`, order 4, status `planned`, empty `lesson_ids`). The commit diff shows no lesson content or runtime change in that commit. Therefore the audit branch's reintroduced planned catalogue entry is a branch-local planning artifact and must not be restored to `main` by assumption. Keep it isolated until the user explicitly decides whether Course 4 should return to the live catalogue; any such restoration needs a separate compatibility review and explicit approval.
