@@ -565,3 +565,10 @@ The full headings on pp.159 and 162 and compact paradigm cells remain pending cr
 Original individual page previews pp.163–168 were extracted from the recovered Actions artifact and inspected. Structural observations and crop-level verification tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_163_168.md`. Pages 163–166 continue the near-past and reported/distant-past forms with upper/lower Kurmanji paradigms and positive/negative contrasts. Page 167 opens **کاری ئایندە** and introduces three formation patterns; p.168 continues the future-tense discussion and includes a footnote attributed to **مامۆستا تۆفیق وەهبی**.
 
 Some long headings, the printed year range on p.166, compact paradigms, and the p.168 footnote remain pending crop-level verification. This is visual structural review only, not complete diplomatic transcription or independent grammatical validation. Preserve source spelling, dialect divisions, positive/negative contrasts, and footnote apparatus. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.169–174 (2026-11-05)
+
+The original individual page previews pp.169–174 were extracted from Actions artifact `course4-source-text` and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_169_174.md`. These pages continue the future-tense discussion with several **چاوگ / ڕابردوو / ئایندە** paradigms, explanatory notes, a continuing lexical/example list, and numbered point **٦** beginning on p.174 with a table that continues beyond the page break.
+
+Compact table cells, technical forms, and the complete p.171–172 list remain queued for crop-level transcription. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve table boundaries, source order, and original forms. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
