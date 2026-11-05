@@ -586,3 +586,10 @@ Some point headings, the subsection label on p.178, and compact example groups r
 Original individual page previews pp.181–186 were extracted from the Actions artifact and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_181_186.md`. Pages 181–182 continue the imperative/command-form material and introduce **کاری فرمان** with a four-part verb classification completed on p.183, including **فعلی ئەمر**. Pages 183–186 discuss definitions and cited grammar sources, then present numbered observations and two imperative types with aligned forms and explanatory notes.
 
 Exact wording of the p.185 type headings, compact paradigms, and bibliographic details on p.183 remain pending crop-level verification. This is visual structural review only, not complete diplomatic transcription or independent grammatical validation. Preserve the cited sources, numbering, person distinctions, and original forms. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.187–192 (2026-11-05)
+
+Individual page previews pp.187–192 were extracted from the Actions artifact and inspected separately. Structural notes are in `docs/COURSE4_VISUAL_REVIEW_VERB_187_192.md`. Pages 187–190 continue the two imperative **دەستوری** rules and their examples/notes. Page 191 opens **نەهی کاری فرمان**, distinguishing **نەهی سەرڕاست** and **نەهی ناڕاست**, with a five-part sequence of uses. Page 192 continues the examples and contains two notes, including the English phrase **neither … nor**.
+
+Exact paradigms, dialect examples, and the five numbered uses remain pending crop-level transcription. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
