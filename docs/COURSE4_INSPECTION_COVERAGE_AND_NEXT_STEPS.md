@@ -108,3 +108,8 @@ Enlarged row crops support only three high-confidence pairs at present: **کەو
 ### Correction after second p.106 crop pass (2026-11-05)
 
 The earlier partial list entry for item 8 (**سڕانەوە / سڕینەوە**) is withdrawn: the right-column spelling is not sufficiently clear in the crop and may instead contain an additional character sequence. Item 9 is now read with high visual confidence as **پچڕان / پچڕین**. The current partial high-confidence list is therefore items 1, 3, and 9 only; item 8 is unresolved. See the crop-review document for the correction and rationale.
+
+
+### p.93 enlarged-table crop verification (2026-11-05)
+
+Verified: the middle table's first row reads **کەوتن / کەو / خستن** (لازم / ڕەگ / متعدی); the lower table reads **سووتان → سووتاندن**, **قڵیشان → قڵیشاندن**, and **کەڕان → کەڕاندن**. Other rows in the middle table and the upper four-column table remain unverified. See the crop-review document for column direction and exact limits.
