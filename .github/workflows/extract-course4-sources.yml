@@ -32,6 +32,8 @@ jobs:
           python -m pip install pymupdf pillow pytesseract
       - name: Extract source text without rewriting it
         run: python scripts/extract_course4_sources.py
+      - name: Render source pages for visual review
+        run: python scripts/render_course4_source_previews.py
       - name: Upload extracted source text for review
         uses: actions/upload-artifact@v4
         with:
