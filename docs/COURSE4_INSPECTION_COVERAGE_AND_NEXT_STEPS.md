@@ -421,3 +421,12 @@ The complete p.25–65 page-viewing pass does not imply that every page has been
 The original individual page previews for pp.66–73 were inspected sequentially. Page 66 opens the **ئاوەڵناو "الصفة"** section; pp.66–68 contain separately attributed definitions and examples; p.69 includes the explicit **Adjective / Adverb** distinction; p.70 continues the dense discussion; p.71 presents a two-form classification; p.72 contains a **سادە / داراو** comparison table; and p.73 continues the compound-adjective discussion. Page-level notes are recorded in `docs/COURSE4_VISUAL_REVIEW_ADJECTIVE_066_073.md`.
 
 This is visual coverage only. Attributions, paragraphs, examples, and the comparison table remain to be diplomatically transcribed and independently checked. Do not merge attributed definitions or convert this visual review into lesson content. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Selective diplomatic transcription begun — ئاوەڵناو, PDF pp.66–73 (2026-11-05)
+
+Two transcription ledgers now record selective source readings for the adjective section:
+- `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_066_068.md` — heading, terminology inventory, and separate attributed definitions on pp.66–68.
+- `docs/COURSE4_SOURCE_TRANSCRIPTION_ADJECTIVE_069_073.md` — Adjective/Adverb discussion, adjective-form classifications, the simple/derived comparison table, and compound/participial adjective discussion on pp.69–73.
+
+These are partial diplomatic transcriptions based on enlarged original page images. Dense prose, uncertain spellings, examples, suffix boundaries, attributions, and table cells remain open. Do not treat the records as complete transcription or independent linguistic validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
