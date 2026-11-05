@@ -61,3 +61,23 @@ The verb chapter's pp.80–120 also remain a sequential-review gap: existing cov
 4. Only after image verification, reconcile the contents table, discrepancy log, evidence register, and proposed outline.
 
 No lesson, quiz, course activation, or runtime/deployment change is authorized by this audit checkpoint.
+
+
+## Sequential visual review completed: verb chapter pp.80–120 (2026-11-05)
+
+The rendered original page images for every PDF page pp.80–120 were reviewed in numerical order. The page map is recorded in `docs/COURSE4_VISUAL_REVIEW_080_120.md`.
+
+- p.80 opens chapter 4 **کار «فعل»**.
+- pp.80–111 contain attributed definitions, explanations, examples, and verb-form groupings.
+- p.112 begins the distinct subsection **کاری کاردار و کاری کاربێژ**; pp.113–120 continue it.
+- Dense tables/forms on pp.93–95, 103, 106, and 112–120 still require crop-level transcription and character verification.
+- This is sequential page-image review, not full transcription or independent linguistic validation. The visual pass used enlarged contact sheets plus selected individual page inspections.
+
+This closes the previously recorded sequential-coverage gap for pp.80–120 at the page-map level only. It does not upgrade these pages to lesson-ready content.
+
+### Revised next priorities
+
+1. Resolve the p.398 contents-page string by reopening its original image beside p.222; repository documents currently conflict.
+2. Crop and transcribe paradigms on pp.93–95 and 112–120, maintaining row/column alignment.
+3. Verify the dense p.106 inventory item by item.
+4. Continue diplomatic transcription of selected verb examples, keeping every source attribution and dialect label.
