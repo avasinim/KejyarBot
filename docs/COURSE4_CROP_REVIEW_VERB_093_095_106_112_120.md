@@ -267,3 +267,21 @@ A separate second table follows a new explanatory sentence and must not be merge
 The heading is visually read as **٥- چاوکی دالی**; retain as provisional pending a tighter heading crop. A two-column list below the introductory text contains several paired forms, but no full row is promoted here because some glyphs and endings need more detailed inspection. The subsequent heading/list beginning lower on the page is a distinct subsection and remains structurally separate.
 
 All transcriptions above are visual source readings, not claims that the patterns are standard, productive, or applicable outside the source's own scope. Uncertain readings are explicitly marked and must not be copied into lessons as settled forms.
+
+
+## p.119–120 — follow-up crop inspection
+
+### p.119 — subsection 5
+
+The numbered heading is visually legible as **٥- چاوکی دالی**. The introductory parenthetical list immediately below it is a prose/list of infinitive forms, not a two-column paradigm. The following explanation explicitly says that the forms are used in the source's account to form the past of **کاری کارابەرز**. The paired table above this heading is a separate present-form discussion; its individual glyphs are not clear enough in the current crop to certify a row-by-row transcription.
+
+### p.120 — subsection 2 and attributed discussion
+
+The page continues the numbered formation discussion with **٢-** and a separate group of three paired examples. The visible forms are read provisionally as:
+- **بوتێرا / بوتێردرا**
+- **بوورا / بووردرا**
+- **ژمێرا / ژمێردرا**
+
+The crop's column alignment indicates the shorter form and the form containing **-ردرا** are paired, but the table headings are outside this crop. Therefore the pairs are recorded as provisional source readings, not assigned a grammatical label here. A separate prose discussion attributed to **مامۆستا مەسعود محەمەد** follows; it is not part of the example list. Its wording has not been transcribed.
+
+No general rule is inferred from these forms. The exact table heading and p.120 examples require checking against the full page and a sharper crop before use in instructional material.
