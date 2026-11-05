@@ -94,3 +94,99 @@ A numbered list follows. The parenthetical terminology is not sufficiently clear
 5. Only after transcription is complete, independently validate the grammatical claims and decide which source-specific variants can be taught with attribution.
 
 **Curriculum guardrail:** This ledger is source evidence only. It does not create lesson content, quizzes, or an approved lesson count. Course 4 remains `planned`, `lesson_count=0`, `lessons=[]`; no activation, catalogue restoration, merge, deployment, production DB, migration, Botkeep sync, or changes to Courses 1–3 are authorized.
+
+
+---
+
+## PDF p.14 — attributed definitions and recap of structural classes
+
+### Continuation of the numbered attributions
+
+The top line continues the numbered list:
+
+- **٧- جەگرخوێن (پەڕەچم).** [The parenthetical source label is visually readable as **پەڕەچم**, but its function/meaning is not yet established.]
+
+### Heading and attributed discussion
+
+- **پێناسینی ناوی ناسادە:**
+
+This page presents several attributed definitions/discussions. The visible names include **سەعید سەدقی، مەردۆخ، کوردۆیف، نووری عەلی ئەمین** and a later reference to **زمانی فارسی**. The prose is dense and some characters remain ambiguous even after enlargement; it is therefore not reproduced as a continuous quotation here. Key readable phrases include:
+
+- **ناوی لێکدراو**
+- **دوو وشە**
+- **ناوی لێکدراو ...**
+- **ناوی دوو پارچە بیت**
+- **ناوی لێکدراو ئەو ناوەیە ...**
+
+These are reading anchors, not a substitute for the full attributed passages. In particular, do not merge the different explanations into a single definition.
+
+### Authorial recap near the foot of p.14
+
+The page then gives a recap:
+
+> ناو ... لە ڕووی فۆرمەوە بکرێ بە سێ بەشەوە:
+
+The visible list begins:
+
+1. **سادە**
+2. **ناسادە**
+
+It then states:
+
+> ناوە ناسادە بکرێتەوە بە:
+> ١- **لێکدراو**
+> ٢- **دایزراو**
+
+The sentence introducing the three-way classification and the third item continue across the page turn; the missing third item must not be inferred from this partial passage.
+
+## PDF p.15 — continuation of the classification and beginning of the detailed non-simple noun section
+
+### Continuation at the top of the page
+
+The top of p.15 continues the previous list:
+
+2. **لێکدراو**
+3. **دایزراو**
+
+A following paragraph says that the writer has gathered the preceding views and classifies the noun into two broad classes. The clearly readable summary line is:
+
+> ١- سادە، ٢- ناسادە؛ بێ ئەوەی ناوی ناسادە دابەش بکرێتەوە بۆ: (لێکدراو، دایزراو).
+
+A separate attributed view follows, naming **د. نەسرین فەخری** and **نووری عەلی ئەمین**. Its concluding three-way list is visibly:
+
+> ١- سادە، ٢- لێکدراو، ٣- دایزراو — دروستکراو — بێ ئەوەی ناوی ناسادە پێتە ناوەوە.
+
+The precise syntax around the final clause needs a closer crop; preserve the list as printed and do not resolve the clause by conjecture.
+
+Another paragraph refers to **مەسعود محەمەد، هەژار و سادق بەهائەدین** and repeats a two-way split, then lists **لێکدراو** and **دایزراو**. The full sentence requires further line-by-line transcription.
+
+### Heading: detailed treatment of non-simple nouns
+
+- **٢- ناوی ناسادە:**
+- **پێناسەی ناوی سادە:** [The printed heading appears to read this, although it occurs immediately under the non-simple noun heading; verify whether this is a typographical/source inconsistency before interpreting.]
+
+The paragraph below describes a noun as made up of more than one word/part. The visible wording includes:
+
+> ئەو ناوەیە لە وشەیەک و زیادەی پێک هاتبێت ...
+
+The remainder includes a list of ways of joining/formation, but needs a closer crop for safe verbatim transcription.
+
+The page then says that grammarians have described all compound and derived forms as **ناوی ناسادە**, with visible examples:
+
+> مارماسی، بەردەنۆژ، بن بەردەقیلە.
+
+[The first two example spellings need verification at higher magnification.]
+
+The page begins the subtype:
+
+> ئەوەجا ناوی ناسادەش دوو جۆرە:
+> **أ- لێکدراو:** ...
+
+The definition continues beyond the bottom of p.15 and must be carried forward to p.16.
+
+## Visual transcription status after pp.14–15
+
+- Page images p.14 and p.15 were enlarged and inspected directly.
+- Headings, classification recap, and the beginning of the detailed non-simple noun discussion have been recorded.
+- Attributed definition paragraphs on p.14 and the denser prose on p.15 are still only partially transcribed; do not present them as verbatim-complete.
+- Uncertain readings are retained as uncertainty, not silently corrected.
