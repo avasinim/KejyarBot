@@ -579,3 +579,10 @@ Compact table cells, technical forms, and the complete p.171–172 list remain q
 Original individual page previews pp.175–180 were extracted from the Actions artifact and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_175_180.md`. The pages continue the future-tense explanation, develop numbered points **٧** and **٨** with example lists and separately labelled notes, then present a labelled explanatory subsection and two procedures (**دەستوری یەکەم** and **دەستوری دووەم**) beginning on p.180.
 
 Some point headings, the subsection label on p.178, and compact example groups remain queued for crop-level verification. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve source sequence, labelled notes, and the distinction between the two procedures. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.181–186 (2026-11-05)
+
+Original individual page previews pp.181–186 were extracted from the Actions artifact and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_181_186.md`. Pages 181–182 continue the imperative/command-form material and introduce **کاری فرمان** with a four-part verb classification completed on p.183, including **فعلی ئەمر**. Pages 183–186 discuss definitions and cited grammar sources, then present numbered observations and two imperative types with aligned forms and explanatory notes.
+
+Exact wording of the p.185 type headings, compact paradigms, and bibliographic details on p.183 remain pending crop-level verification. This is visual structural review only, not complete diplomatic transcription or independent grammatical validation. Preserve the cited sources, numbering, person distinctions, and original forms. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
