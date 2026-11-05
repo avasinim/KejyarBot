@@ -320,3 +320,23 @@ A sharper crop of the lower half of p.119 makes subsection 5's local structure c
 - The final short sentence below the four rows is visible, but is not transcribed because the crop does not resolve every character confidently.
 
 Do not assign grammatical labels to the two columns yet: the p.119 crop does not include a sufficiently clear column heading. These are visual readings of the source, not normalized forms or independently validated grammatical claims.
+
+
+## p.119–120 — second visual verification and orientation correction (2026-11-05)
+
+The enlarged p.119 lower crop was reopened and read directly. It resolves the four rows more clearly and also shows their physical column orientation. Read the table **right-to-left** as printed:
+
+| Right column (printed) | Left column (printed) |
+|---|---|
+| دەبژێرم | بژێردرام |
+| دەژمێرم | ژمێردرام |
+| دەسپێرم | سپێردرام |
+| دەشارمەوە | شاردرامەوە |
+
+This confirms the four provisional surface readings recorded above; the earlier row-pair listing did not explicitly state the physical column orientation. The text immediately above the table says these forms are given as examples in a simple pattern; the short sentence beneath the table says there are other examples of this kind. No grammatical column labels are assigned because none are legible in this crop.
+
+The parenthetical list under **٥- چاوکی دالی** is visibly a separate list of infinitive examples, not the four-row table. Its full diplomatic transcription is still withheld because some letters in the raster remain uncertain.
+
+On p.120, the first line of the separate attributed passage is legible as **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە)**. The passage is a distinct account concerning **کاری شاراندنەوە** and must remain attributed to مامۆستا مەسعود; it must not be merged with the three pairs printed above it. Full line-by-line transcription remains pending, especially where dots/diacritics and joined glyphs are indistinct.
+
+This is a visual reading of the source image only. No spellings have been normalized and no grammatical claims independently validated.
