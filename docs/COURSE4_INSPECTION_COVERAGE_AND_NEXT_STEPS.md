@@ -45,3 +45,19 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 - **Validated:** independently checked and approved for teaching.
 
 No page range in this matrix is being represented as fully transcribed or validated unless explicitly marked so. No lessons or quizzes are created by this register. Course 4 remains planned and inactive.
+
+
+## Documentation consistency checkpoint (2026-11-05)
+
+A cross-document check found that the p.398 contents entry is inconsistent inside the audit set: the contents table in `COURSE4_SOURCE_AUDIT.md` currently says **چاوگ**, while its later discussion and `COURSE4_SOURCE_DISCREPANCY_P222_P398.md` say **جێناو**. This has **not** been resolved from the original page image. See `COURSE4_AUDIT_DOCUMENT_CONSISTENCY.md`; retain both readings as unresolved until p.398 is reopened and checked directly.
+
+The verb chapter's pp.80–120 also remain a sequential-review gap: existing coverage there is spot-check only, while the detailed sequential note begins at p.121. Do not describe pp.80–221 as uniformly sequentially reviewed.
+
+### Revised immediate priorities
+
+1. Recheck original PDF pp.398 and 222 side by side; resolve the printed contents-page string only from the page image.
+2. Retrieve/render pp.80–120 and inspect every page sequentially; document this range separately.
+3. Continue diplomatic transcription of selected verb paradigms with dialect labels and attributions.
+4. Only after image verification, reconcile the contents table, discrepancy log, evidence register, and proposed outline.
+
+No lesson, quiz, course activation, or runtime/deployment change is authorized by this audit checkpoint.
