@@ -138,3 +138,8 @@ Sequential page images confirm separate attributed accounts, terminology, number
 ### p.118–120 structural review complete (2026-11-05)
 
 Sequential inspection now extends through p.120. p.118 continues separate example tables; p.119 adds a further numbered subsection (heading requires crop-level spelling verification); p.120 continues numbered discussion and includes a separately attributed passage by مامۆستا مەسعود محەمەد. The pp.112–120 structural pass is complete, while detailed transcription of tables and examples remains outstanding. See the crop-review document.
+
+
+### Targeted table crops: p.112, pp.115–119 (2026-11-05)
+
+Selected legible rows and table headings have now been transcribed from the enlarged crops. p.112's opening table headings are **بنای معلوم / ڕەگ / بنای مجهول**; pp.115–118 include multiple two-column **چاوگ / ڕابردووی کارابەرز** tables under distinct numbered patterns and separate explanations. A few readings (including p.112's final visible row, p.116's final pair, and the subsection headings on pp.115–119) remain provisional or explicitly unresolved. p.119's paired list is not yet transcribed. Do not merge the separate tables or treat these source forms as validated productive rules. See the crop-review document for the limited transcription and uncertainties.
