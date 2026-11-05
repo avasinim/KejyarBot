@@ -605,3 +605,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Kurdish explanatory prose uses **عەتف**, not **عطف**. The Arabic letter **ط** must not be introduced into Kurdish terminology.
 - This is a sequential structural review, not a complete transcription. No lessons have been drafted or activated; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 326.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 326–331 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 326:** clearly opens **٢٠ ـ ئامرازی (هەر)ی عەتف**. The author cites Kurdish grammatical treatments, including works by مامۆستا جەگرخۆین and مامۆستا توفیق وەهبی, and distinguishes uses of **هەر**. The page separates at least two broad functions: an adverbial/limiting use glossed with English *Only* and a distributive/quantifying use glossed with *any, every, each*. The English glosses are aids in the discussion, not exact one-to-one definitions.
+- **PDF p. 327:** continues the analysis of **هەر** with several numbered syntactic/semantic environments and English glosses including *how, however many, however much, although, ever often*, *whoever, whatever, any*, and *howsoever, whatever kind of, however*. The page then cites a Persian grammar and begins a further attributed Kurdish account by نووری عەلی ئەمین. Keep these gloss groups and attributions separate.
+- **PDF p. 328:** continues نووری عەلی ئەمین's analysis, arranging examples into numbered groups according to the type of construction and the role of **هەر**. Examples include uses with nouns, pronouns, adjectives, adverbs, and verbal constructions; do not flatten them into a single category.
+- **PDF p. 329:** continues the numbered analysis through further groups, including forms where **هەر** occurs with other particles and constructions. The page then opens the author's own section **٧ ـ وەسفی ئامرازی عەتف** (author's descriptive account of conjunction particles) and begins a numbered discussion of **وشەی (هەر)**. Preserve this as the author's own analysis, distinct from the preceding literature review.
+- **PDF p. 330:** continues the author's description of **هەر** with numbered subgroups and sentence examples, including an explicitly labelled exception use **(استثناء)**. It then begins a further discussion of the use of **هەر** in constructions with other particles and clauses. Context and sentence structure determine the function.
+- **PDF p. 331:** continues the author's numbered examples of **هەر** in different sentence environments. A concluding paragraph compares the author's analysis with the accounts of مامۆستا توفیق وەهبی and نووری عەلی ئەمین, noting differences in how the forms/functions are classified. Preserve these as distinct analyses and do not force a single taxonomy.
+
+### Findings and limits
+- Section **20 (هەر)** begins on p. 326 and continues through at least p. 331. It is treated extensively, with multiple semantic and syntactic functions and examples.
+- The source distinguishes multiple uses of **هەر**: limiting/emphatic, distributive/quantifying, and context-dependent uses in clauses and constructions. These are provisional descriptive groupings from the reviewed pages, not a finalized linguistic taxonomy.
+- Pages 329–331 distinguish the author's own descriptive analysis from earlier cited grammarians. Keep the attribution boundary visible in any future lesson.
+- Kurdish explanatory prose uses **عەتف**, not **عطف**. The Arabic letter **ط** must not be introduced into Kurdish terminology.
+- This is a sequential structural review, not a complete transcription. Exact wording of all examples, some technical subgroup labels, and full cited bibliographic details require crop-level transcription before lesson drafting. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 332.
