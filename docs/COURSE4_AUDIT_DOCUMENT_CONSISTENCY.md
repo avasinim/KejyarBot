@@ -73,3 +73,17 @@ The next audit work remains page-image-led transcription of outstanding material
 A cross-check against the later controlling entries in `COURSE4_SOURCE_AUDIT.md` confirms that the printed chapter heading on PDF p.254 is **پریپۆزیشن / A Preposition**, and contents item 7 on PDF p.398 also reads **پریپۆزیشن**. The older source-audit checkpoints claiming **پێوەندینیش** in the contents are historical errors and are explicitly withdrawn by the later source-audit reconciliation. The proposed outline has now been corrected to use **پریپۆزیشن (A Preposition)** and to record that the two locations agree. This is a documentation correction only; it does not approve the outline or any lesson content.
 
 The other current transcription statuses remain controlled by the latest crop-review reconciliation and the coverage queue: p.106's 17 rows are transcribed but its note remains open; p.95's examples after **وەک** remain outside the available crop; p.119's four rows and infinitive list are transcribed (with **خڕین** provisional) while its preceding table remains unresolved; and p.120's pairs remain provisional with the attributed passage incomplete.
+
+
+## Current controlling status — verb-page crop review (2026-11-05)
+
+This section supersedes conflicting historical status statements in sections 3–4 above. For page-level transcription, the final reconciliation at the end of `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` and the current task queue in `COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md` control:
+
+- **p.93:** both distinct four-column tables have row-level transcriptions. Preserve the group and root columns, including the printed blank root cell for **هاتن**. Do not collapse the paradigms into simple pairs.
+- **p.94:** headings and the two lower-table example pairs are transcribed. The second upper-table left example remains unreadable and untranscribed; the guessed **منداڵەکەم خوارد** is withdrawn.
+- **p.95:** the three-row table, heading **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**, and opening rule are transcribed. Only examples after **وەک** remain outside the supplied crop.
+- **p.106:** all 17 numbered rows are transcribed; only the separate note immediately below the table remains open.
+- **p.119:** four right/left rows and the parenthetical infinitive list are transcribed. **خڕین** remains provisional; the preceding table is unresolved; no grammatical column labels are inferred for the four-row table.
+- **p.120:** three paired readings remain provisional; table headings are unknown and the attributed passage by مامۆستا مەسعود محەمەد is incomplete.
+
+These are transcription statuses, not independent linguistic validation or lesson approval. The current open queue is p.106's note, p.95's clipped examples, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table if its original crop is available. Do not claim new page-image inspection unless the original page image is actually accessible. Course 4 remains planned/inactive with zero lessons.
