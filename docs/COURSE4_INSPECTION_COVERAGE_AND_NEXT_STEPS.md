@@ -113,3 +113,8 @@ The earlier partial list entry for item 8 (**سڕانەوە / سڕینەوە**) 
 ### p.93 enlarged-table crop verification (2026-11-05)
 
 Verified: the middle table's first row reads **کەوتن / کەو / خستن** (لازم / ڕەگ / متعدی); the lower table reads **سووتان → سووتاندن**, **قڵیشان → قڵیشاندن**, and **کەڕان → کەڕاندن**. Other rows in the middle table and the upper four-column table remain unverified. See the crop-review document for column direction and exact limits.
+
+
+### p.94–95 enlarged-crop verification (2026-11-05)
+
+p.94 headings are corrected to **فرمانی تێنەپەر / ڕەگی فرمان / فرمانی تێپەڕ** (right-to-left); the example rows remain unverified. p.95 headings are **چاوگ / کاری تێنەپەر / کاری تێپەڕ**, with three legible rows: **چوون / چوو / چواندن**, **تەخش / تەخشان / تەخشاندن**, and **خەڵ / خەڵان / خەڵاندن**. See crop-review document; do not generalize beyond these rows.
