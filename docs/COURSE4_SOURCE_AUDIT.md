@@ -385,3 +385,21 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The author surveys different Kurdish grammarians and debates classification by grammatical function/context. Keep each account attributed, and do not merge competing positions into one artificial consensus.
 - This is a sequential visual review, not a complete transcription. Exact cited names, Kurdish technical labels, examples and the final argument need high-resolution transcription before any lesson is drafted. The primary book remains the sole lesson source; independent publications may validate claims but must not be blended into the lesson as another source book.
 - Next: continue the same sequential review from PDF p. 259 onward, preserving the distinction between the source's own analysis and cited grammarians' positions.
+
+
+## Sequential visual review: preposition discussion PDF pp. 259–264 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 259:** continues a numbered, author-attributed survey of Kurdish grammatical treatments. It then gives a further grouping/list of forms discussed as prepositional material and starts simple example sentences. The visible list contains short forms and combinations; exact spellings and grouping boundaries must be transcribed from crops before teaching.
+- **PDF p. 260:** continues the simple examples and adds a **تێبینی** comparing the forms' use in Kurdish with how similar forms may be treated in Persian grammatical description. The author explicitly warns against assuming the two languages' categories map one-to-one.
+- **PDF p. 261:** gives more sentence examples and continues the discussion of how the forms work in actual constructions. It distinguishes a form's position/association in a phrase from its function in the complete sentence; the note at the bottom again cautions about classification by form alone.
+- **PDF p. 262:** analyzes examples in which the same or similar surface forms appear in different constructions. The discussion distinguishes cases where a form is functioning as a prepositional element from cases where the corresponding string belongs to another construction (including verbal material). This is a strong reason not to teach a bare list of forms without sentence-level analysis.
+- **PDF p. 263:** continues the author's analysis of forms and constructions, including discussion of **انتقال** (the source's term in the visible passage) and example sentences. A later cited account is introduced; its precise technical interpretation needs full transcription.
+- **PDF p. 264:** continues that cited discussion with further examples and analysis. The page is still within the preposition discussion; no new chapter heading is visible.
+
+### Findings and limits
+- The p. 254–264 sequence is not a simple vocabulary list. The author compares multiple Kurdish grammatical accounts, questions direct transfer from English/Persian categories, and repeatedly uses sentence context and constructional function to distinguish forms.
+- Some short forms recur in more than one grammatical environment. Their classification cannot be settled from spelling or isolated examples alone; the complete construction and function must be considered.
+- The source's own terminology and the cited grammarians' terminology must remain distinct. Do not turn an author's reported position into the book author's final rule without checking the surrounding text.
+- This is a sequential visual review, not a full transcription. Before drafting lessons, transcribe all labels, cited author names, examples, and the analysis of the forms from high-resolution crops. The primary book remains the sole lesson source; Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 265, and identify the actual end of this discussion before treating the next section as a new topic.
