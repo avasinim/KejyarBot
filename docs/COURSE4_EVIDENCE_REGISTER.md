@@ -2,6 +2,14 @@
 
 Status: evidence/navigation document only; not an approved curriculum outline. This file belongs to the isolated branch reset/grammar-course4-content.
 
+## Reading precedence (2026-11-05)
+
+This is a chronological evidence/navigation register, not a lesson approval record. Later controlling crop corrections supersede earlier summaries in this file. For current transcription status, use `docs/COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` and the final “Current controlling queue” in `docs/COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md`.
+
+In particular: p.106's 17 numbered rows are transcribed (only the note below remains open); p.119's four aligned rows and parenthetical list are transcribed (with **خڕین** provisional, and the separate preceding table unresolved); p.95's examples after **وەک** remain clipped; p.120's paired forms remain provisional and its headings/full attributed passage remain unresolved. The resolved contents headings are **چاوگ** at pp.222 and 398 item 5, and **پریپۆزیشن** at pp.254 and 398 item 7.
+
+These are transcription-status corrections only. No claim is thereby independently validated or approved for teaching. Course 4 remains planned with zero lessons pending explicit approval of the proposed outline.
+
 ## Adopted source boundary
 The sole curriculum source remains **ڕێزمانی ئاخافتنی کوردی** (400-page PDF). **ڕێزمانی ڕاناوی لکاو.pdf** is excluded from lesson content. Independent linguistic publications may validate or challenge claims, but must remain a separate validation layer.
 
