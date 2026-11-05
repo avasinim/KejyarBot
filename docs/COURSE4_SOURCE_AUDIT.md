@@ -765,3 +765,28 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The author indicates that detailed treatment of the listed categories continues in subsequent sections. Therefore, p. 373 is not necessarily the end of the book's grammar discussion or of material relevant to the source audit.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 374.
+
+
+## Sequential visual review: post-interjection categories and affixes, PDF pp. 374–385 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 374:** continues the author's review of a grammatical account attributed to مامۆستا سەعید سەدقی, citing *صرف و نحوی کوردی*, p. 51. The page lists numbered functional groups (including locative, relational, simile/qualification, specification, preservation, verbal, and ظرفیەت-related uses). The precise heading above the list and some examples should be crop-checked before exact quotation.
+- **PDF p. 375:** continues the same attributed inventory, numbered through 10, with groups involving forms glossed/identified in the source as (دە), (کە), and (وە). Preserve these as the cited scholar's classification, not automatically the present author's final taxonomy.
+- **PDF p. 376:** begins another attributed discussion, citing مامۆستا توفیق وەهبی and *دەستوری زمانی کوردی*. It discusses forms attached to words and contrasts grammatical functions; examples include forms analysed as پاشگر (suffix) and پێشگر (prefix). The page also refers to the author's own explanatory framework. Keep the scholar's account distinct from the book author's.
+- **PDF p. 377:** continues the review of prefix/suffix inventories, including lists of forms and examples attributed to نووری عەلی ئەمین and another grammar reference. It explicitly presents **پێشگر** and **پاشگر** as separate structural categories in this discussion. Exact long form-lists require enlarged crops before transcription.
+- **PDF p. 378:** continues discussion of word formation/attached elements and distinguishes **پێشگر (السابقه)**, **پاشگر (اللاحقه)**, **دەستپێکردن (الابتداء)**, and **پەیوەندی (ربط)**. It begins a numbered treatment of prefix and suffix types; do not merge these four labels into one category.
+- **PDF p. 379:** continues a numbered list of suffix/affix types and then develops the section **چاوگ ـ پەیوەندی (ربط)** with a sequence of functional relations. The page then introduces a further attributed classification by مامۆستا جەگرخۆین from *ئاوای دەستور زمانی کوردی*, p. 87, with seven listed types. Some item labels and forms need crop-level verification.
+- **PDF p. 380:** continues the seven-type inventory and adds a long numbered list (up to 27) of forms/functions. It then begins a separate discussion of forms presented as non-simple/compound (ناسادە) and starts another numbered analysis. The full labels and examples should not be copied into lessons until enlarged crops have been checked.
+- **PDF p. 381:** continues the preceding analysis and cites a French-language grammatical description of prefixes, including a statement that prefixes are often prepositions employed before constructions with pronouns/adjectives/adverbs. The page also introduces suffixes and quotes French explanatory text. Treat the French passage as a cited source, not as the Kurdish author's own unqualified rule.
+- **PDF p. 382:** presents another attributed account (مامۆستا ...; attribution line should be enlarged before exact citation) of verbal prefixes/suffixes and provides a two-column set of command/root and derived forms, followed by a numbered list of suffixes. Preserve the original examples and do not infer productive rules from the abbreviated list alone.
+- **PDF p. 383:** continues the suffix list (numbered items) and begins a distinct section on **پێشگری فرمان** (verbal/imperative prefix), with examples showing a prefix before a verb form. The page explicitly comments on the role of these forms in the verb construction.
+- **PDF p. 384:** continues the verbal-prefix inventory and examples, citing a Danish grammar reference in the opening lines. It provides a long sequence of forms and glosses; several are dialect- or context-sensitive and should be verified individually.
+- **PDF p. 385:** continues the list of forms and examples, then discusses forms with more than one possible function or analysis. The author cautions against treating the written shape alone as enough to decide the grammatical function; sentence context and use are relevant.
+
+### Findings and limits
+- Pages 374–377 primarily review and compare classifications by named Kurdish grammarians; the source's authorial voice and cited positions must remain distinct.
+- Pages 378–385 move into structural/functional treatment of **پێشگر**, **پاشگر**, and **پەیوەندی**, including verb-related formations. This is a new relevant block beyond the numbered Interjection inventory.
+- The source uses several overlapping labels and taxonomies. Do not flatten them into one universal classification or silently reconcile disagreements.
+- Numerous lists on pp. 377–385 contain tightly printed Kurdish forms. The present page previews support the structural outline, but exact transcription of every form requires enlarged crops and character-by-character verification.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 386 and verify the final pages and contents references.
