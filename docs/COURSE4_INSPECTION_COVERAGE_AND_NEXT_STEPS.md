@@ -329,3 +329,8 @@ The user approved the nine-part outline on 2026-11-05. Older instructions in thi
 - **pp.23–24:** directly visually reviewed; formation and further classification lists recorded. Several labels/forms remain provisional and require crops.
 
 Detailed observations: `COURSE4_VISUAL_REVIEW_011_024.md`. This closes the initial page-viewing pass for the approved **ناو** section only; it does not close full transcription or linguistic validation. Do not draft teaching text from provisional readings. Continue with enlarged crops and diplomatic transcription. Course 4 remains planned/inactive, zero lessons.
+
+
+## Updated review checkpoint — 2026-11-05
+
+The original preview images for all pages pp.11–24 have now been viewed directly. This closes the initial visual pass for Unit 1 (**ناو**) only. The next required stage is diplomatic transcription of the definitions, separately attributed grammarian accounts, example tables, and the continuation across page turns, followed by independent validation. The detailed page record is `COURSE4_VISUAL_REVIEW_011_024.md`; its crop-review reconciliation supersedes tentative readings. Do not treat visual coverage as transcription completion. Course 4 remains planned, inactive, zero lessons.
