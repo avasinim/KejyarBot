@@ -36,3 +36,8 @@ Sequential visual review of pp.228–235 is complete. No lesson text or quiz was
 ## Crop-level continuation — p.234 (2026-11-05)
 
 A separate crop review is recorded in `COURSE4_CROP_REVIEW_CHAWG_P234.md`. Page 234 continues the constructional explanation and contains a multi-column example table. Individual table cells are not certified as a diplomatic transcription; their alignment must be retained and checked cell by cell. Page 235 continues the same discussion, and p.236 begins **ئاوەڵکار**. The uncertain third subtype heading from p.232 is not resolved by p.234. No linguistic rule or normalized paradigm is approved.
+
+
+## Crop-level closeout — p.235 (2026-11-05)
+
+The enlarged crop review is recorded in `COURSE4_CROP_REVIEW_CHAWG_P235.md`. The page contains two-column example groups and a closing explanatory paragraph. Some individual forms and the exact alignment of paired columns remain uncertain; they are not certified as a full transcription. The review of pp.222–235 is now structurally closed: p.235 ends the چاوگ section and p.236 begins ئاوەڵکار. The unresolved subtype heading on p.232 remains explicitly unresolved.
