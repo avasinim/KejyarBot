@@ -397,3 +397,8 @@ The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_045_048.md` records select
 ## Initial diplomatic transcription — ڕاناو, PDF pp.49–52 (2026-11-05)
 
 The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_049_052.md` records selective readings from the original individual page images. It captures the continuation of the personal-pronoun discussion on p.49, the attributed discussion and opening of **ڕاناوی لکدەر (Relative, اسم الموصول)** on p.50, terminology and separately attributed descriptions on p.51, and example constructions plus the extended explanatory passage on p.52. Dense prose, exact suffix forms, and examples remain open for sharper crop verification. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
+
+
+## Initial diplomatic transcription — ڕاناو, PDF pp.53–56 (2026-11-05)
+
+The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_053_056.md` records selective readings from the original individual page images. It captures the continuation of the relative-pronoun explanation on pp.53–54, including comparative English forms in their source context, and the opening of **ڕاناوی خۆیی — Reflexive** on p.55 with its continuation on p.56. Long prose, footnote (1), and exact examples remain open for sharper crop verification. This is not a complete transcript or independent linguistic validation. Course 4 remains planned/inactive with zero lessons.
