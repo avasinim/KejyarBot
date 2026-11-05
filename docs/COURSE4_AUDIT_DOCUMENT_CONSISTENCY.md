@@ -87,3 +87,10 @@ This section supersedes conflicting historical status statements in sections 3�
 - **p.120:** three paired readings remain provisional; table headings are unknown and the attributed passage by مامۆستا مەسعود محەمەد is incomplete.
 
 These are transcription statuses, not independent linguistic validation or lesson approval. The current open queue is p.106's note, p.95's clipped examples, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table if its original crop is available. Do not claim new page-image inspection unless the original page image is actually accessible. Course 4 remains planned/inactive with zero lessons.
+
+
+## Isolated-branch release boundary check (2026-11-05)
+
+A read-only comparison of `reset/grammar-course4-content` against `main` reports the branches as **diverged**: the audit branch is 453 commits ahead and 9 commits behind the current `main` comparison point (merge base `bdd08e66af5d1ad74b935b2899053e922dea3f52`; main head observed as `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423`). The compare lists the Course 4 source, extraction workflow/scripts, curriculum plan, and audit documents as branch additions, plus a `courses.json` change. The branch copy of `courses.json` retains Course 4 as `planned` with an empty `lesson_ids` list; `curriculum/grammar_course4_plan.json` likewise records `lesson_count: 0`, `lessons: []`, and `source: null`.
+
+This divergence is a release/integration risk, not authorization to merge, rebase, cherry-pick, or synchronize. Do not merge this branch, update `main`, deploy, or change Botkeep/runtime state as part of Course 4 audit work. Any future integration requires a separate explicit user decision and a fresh review against the then-current main branch, especially for the changed course registry and any intervening course/runtime changes. This check itself made no changes to `main`, production, course runtime, or Botkeep.
