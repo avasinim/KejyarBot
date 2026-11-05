@@ -198,3 +198,9 @@ A second enlarged-crop reread resolves the previously withheld first row. The co
 
 - p.93 upper four-column table now transcribed as four rows in two groups: **نووسستن / نوو / نواندن**, **بڕاووتن / بڕوو / بڕواندن**, **چەقین / چەق / چەقتاندن**, **لەوەرین / لەوەر / لەوەراندن**. Lower four-column block transcribed as **کەوتن / کەو / خستن**, **هاتن / [printed root cell blank] / هێنان**, **مردن / مر / مراندن**, **کەمایین / کە / کەیاندن**, **ڕۆیین / ڕۆ / ناردن**. Retain source spellings; details and layout are in crop-review file.
 - p.95 paragraph opening confirmed: **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** then **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. Examples clipped at crop edge; no guessing.
+
+
+### p.94–95 second-pass crop corrections (2026-11-05)
+
+- p.94: sharp crop confirms both table headings right-to-left **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**. Upper roots and clear example pairs are recorded in the crop-review file; the second left-column verb remains unreadable with confidence and is not guessed. Lower roots **وەر + ین** and **شک + ین**, with their visible example pairs, are now transcribed.
+- p.95: heading corrected to **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**; this supersedes earlier **بە کتایی کارەوە**. Opening rule is **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. Examples after **وەک** remain clipped.
