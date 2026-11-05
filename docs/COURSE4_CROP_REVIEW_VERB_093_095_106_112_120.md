@@ -85,3 +85,18 @@ The enlarged p.106 crop makes the alignment and most letter shapes clearer, but 
 ### Next verification step
 
 Obtain or generate higher-resolution crops for the 17 pairs on p.106 and the compact examples on pp.93–95. Verify each form against the page image, then compare with the surrounding prose and attributed sources. Until that is complete, cite these pages as evidence for the source's classification and table structure, not as a ready-to-import vocabulary list.
+
+
+## Partial diplomatic reading of p.106 — high-confidence entries only (2026-11-05)
+
+The p.106 inventory was split into enlarged row crops. The following entries can be read with reasonable visual confidence from the available render; all other rows remain withheld pending a better scan or further glyph-level inspection.
+
+| No. | Right column: تێنەبەر | Left column: تێپەڕ | Reading status |
+|---:|---|---|---|
+| 1 | کەوتن | خستن | High visual confidence |
+| 3 | چوون | بردن | High visual confidence |
+| 8 | سڕانەوە | سڕینەوە | High visual confidence |
+
+Important: the table is right-to-left, and the numbered verb is in the right-hand **تێنەبەر** column; its corresponding left-hand **تێپەڕ** form must remain on the same row. These three pairs are a partial reading only, not a complete transcription of the 17-item inventory.
+
+Rows 2, 4–7, and 9–17 are not transcribed here. Even where a likely reading suggests itself, it is not promoted to a verified form without a sufficiently clear original glyph image. Do not use guessed completions or normalize forms from dialect expectation.
