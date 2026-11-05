@@ -474,3 +474,21 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source's own critical discussion should not be reduced to a memorized list of particles. A future lesson should explain the evidence and sentence-level criteria used by the author, and preserve the differences among the cited grammarians.
 - This is a sequential structural review, not a complete transcription. The 27 Kurdish list items, their variant spellings, the Persian/Arabic examples, all lettered subgroup labels, and example sentences need close crop-by-crop transcription before any lesson is drafted. The primary book remains the sole lesson source; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 285 onward, keeping Kurdish forms separate from comparative Persian/Arabic material.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 285–290 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 285:** continues the lettered analysis begun on pp. 281–284. It presents further sentence examples and compares uses of connective forms in different constructions. The page remains within the author's discussion; no new chapter heading is visible.
+- **PDF p. 286:** continues examples and includes a substantial **تێبینی**. The note discusses the use of forms described as conjunctions in actual sentence contexts and warns against treating the label as sufficient evidence by itself. The precise wording and all examples require close transcription.
+- **PDF p. 287:** continues the note, then visibly starts a numbered subsection **٢ ـ (وە)** and a further numbered subsection **٣ ـ (هەم)**. The author discusses their use in connecting words/phrases and sentence units, with examples. Do not assume these labels define universal categories outside this source.
+- **PDF p. 288:** continues subsection (هەم), gives three numbered example patterns, then opens subsection **٤ ـ (ش، پێش، ژێر ژێ)** (the exact reading of the final listed form needs a high-resolution crop). It cites named Kurdish grammatical works/authors, including **مامۆستا سەعید سەدقی** and **نووری عەلی ئەمین**; bibliographic details and quoted terminology need verification before reuse.
+- **PDF p. 289:** continues the cited literature and examples, with further named authors/works and a footnote. The page also presents a subheading on the use/function of **(ش)** and example sentences. Keep each cited author's account attributed; do not merge them into one authorial rule.
+- **PDF p. 290:** continues the discussion of **(ش)** and begins subsection **٣** with a further lettered subdivision **أ** and sentence examples. The author is still examining forms in their syntactic environments; no chapter boundary appears.
+
+### Findings and limits
+- The conjunction chapter now contains an extended authorial analysis organized by numbered and lettered subsections, with sentence examples and critical notes. It is not simply a dictionary-style inventory.
+- Pages 285–290 continue the source's emphasis on how connective forms function in context. A lesson based on this section must preserve the examples and the source's own distinctions rather than generalize from the visible labels.
+- Pages 288–289 cite individual Kurdish grammarians and works. Their views must be kept separate and accurately attributed; bibliographic names/titles and quotations need close crop-by-crop verification.
+- This is a sequential structural review, not a complete transcription. Exact forms in the headings, the note on p. 286, the examples, and the bibliographic references remain to be transcribed from high-resolution crops before lesson drafting. Course 4 remains planned and inactive; no lesson content has been created or activated.
+- Next: continue sequentially from PDF p. 291 onward.
