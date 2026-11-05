@@ -9,7 +9,7 @@ This gate prevents unsupported grammar claims, invented examples, wrong page ref
 
 1. **Lock the source identity.** Record the exact source-part number, immutable Git commit SHA, PDF blob SHA, and the exact PDF edition/scan. Never infer a part from a filename alone.
 2. **Inspect the page image.** Record both PDF page index and printed page number. OCR is a search aid only; confirm wording, diacritics, suffixes, examples and tables visually.
-3. **Build a claim ledger.** Split the lesson into individual factual claims. For each claim, record the exact page span and a short source excerpt or faithful transcription. Mark the claim as direct author content, editor explanation, or external comparison.
+3. **Build a claim ledger.** Split the lesson into individual factual claims. Record each individual claim in the manifest: exact PDF page and printed page, source quotation, claim type (author/editor/external), evidence label (A/C/D), and independent approval. Do not group unrelated claims under one general citation.
 4. **Preserve terminology.** Copy the author's term and spelling exactly. Any modern equivalent or clarification must be explicitly labelled as editor explanation, never attributed to the author.
 5. **Audit examples.** Separate author examples from editor-created examples. Do not alter author forms to fit a preferred standard. Explain dialect/edition limits where relevant.
 6. **Audit the lesson draft.** Every definition, classification, suffix, paradigm, rule and example must map to evidence. Unsupported claims are removed or visibly marked as unresolved; they are not silently completed from general knowledge.
@@ -27,7 +27,7 @@ This gate prevents unsupported grammar claims, invented examples, wrong page ref
 Only A evidence can substantiate a claim attributed to the book's author. C and D may supplement it with clear labels. B and U block publication of the affected claim.
 
 ## Release decision
-The machine-readable register is `course4_release_gate.json`. It starts with all 30 lessons blocked. Fill the evidence fields only after checking the exact page images. The validator has two modes:
+The machine-readable register is `course4_release_gate.json`. Each lesson must contain a claim-by-claim evidence ledger and a separate quiz-to-evidence ledger; an empty ledger blocks release. It starts with all 30 lessons blocked. Fill the evidence fields only after checking the exact page images. The validator has two modes:
 
 - `python tools/course4_source_audit/validate_release_gate.py` checks manifest structure and reports current blockers without pretending the course is approved.
 - `python tools/course4_source_audit/validate_release_gate.py --release` fails unless all 30 lessons and all course-level checks are approved.
