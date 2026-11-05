@@ -238,3 +238,23 @@ The artifact includes extracted text and page previews. Extracted text/OCR is a 
 The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
 
 The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
+
+
+## Latest controlling task queue after reconciliation (2026-11-05)
+
+This queue supersedes earlier “Next focused task” and “Next source-audit action” paragraphs above where they conflict with later crop-review findings.
+
+### Closed / no longer queued as unverified
+- p.119 four aligned right/left rows: visually transcribed in the later enlarged-crop pass; do not list these rows as still wholly unverified. The grammatical column labels remain unknown.
+- p.119 parenthetical infinitive list: transcribed in the later full-width crop; **خڕین** remains provisional.
+- p.398/p.222 heading: resolved as **چاوگ** on both pages.
+- Primary source asset availability: resolved; the 400-page PDF and extraction artifact are available on the isolated branch. The three OCR pages are pp.2, 399, and 400; OCR status remains recorded as unverified.
+
+### Open tasks, in priority order
+1. **p.106:** inspect a full-width/high-resolution original crop of the note immediately below the 17-row table and transcribe it diplomatically. The 17 numbered rows themselves are already transcribed.
+2. **p.95:** obtain a crop extending beyond **وەک** far enough to include the examples. The paragraph heading and opening rule are transcribed; the examples are not.
+3. **p.120:** obtain a sharp full-width image including table headings and the complete attributed passage by مامۆستا مەسعود محەمەد. Keep the three paired readings provisional until the letters and headings are legible; do not paraphrase the attributed passage as a transcription.
+4. **pp.93–94:** revisit only the remaining unresolved dense-table cells and p.94's second upper-table left example if a sharper original is available. Preserve the withdrawn guess **منداڵەکەم خوارد** as withdrawn; do not reinstate it.
+5. **p.119 preceding table:** inspect the separate table before subsection 5 only if a source crop is available; its status is distinct from the four transcribed rows and parenthetical list.
+
+No new page transcription is claimed by this queue update. It is a reconciliation of what is already documented versus what still needs source imagery. Continue to use only the primary 400-page book; exclude the separate 32-page PDF. Course 4 remains planned/inactive with zero lessons and awaits explicit outline approval before any drafting.
