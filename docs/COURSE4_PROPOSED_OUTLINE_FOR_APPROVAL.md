@@ -20,8 +20,9 @@ The outline follows the book's own order and visible contents page (PDF p.398). 
 | 6 | ئاوەڵکار | 236–253 | Keep semantic/function classifications distinct from structural/formational classifications. |
 | 7 | پریپۆزیشن (A Preposition) | 254–272 | The printed heading on p.254 and the contents entry on p.398 both read **پریپۆزیشن**. The earlier claim that the contents entry reads **پێوەندینیش** was an audit error and is withdrawn. |
 | 8 | هاوەڵ / ئامرازی عەتف (Conjunction) | 273–348 | Preserve the chapter's own grouping and numbered entries; crop-verified spellings take precedence over OCR. |
-| 9 | ئامرازی (تعجب) | 349–387 | In explanatory Kurdish prose use **سەرسووڕمان**; retain Arabic-derived wording only when quoting the source. |
+| 9 | ئامرازی (تعجب) | 349–373 | In explanatory Kurdish prose use **سەرسووڕمان**; retain Arabic-derived wording only when quoting the source. The proposed span ends at p.373; do not extend this unit into the separately attributed material beginning on p.374. |
 | Supplement A | وشەی سەربەخۆ و وشەی بەستراو | 388–391 | Keep this as a distinct framework, not a replacement for the preceding attributed affix/particle accounts. |
+| Supplement — unstructured source material | 374–387 | Several separately attributed particle/affix accounts and comparative material; retain each attribution and framework separately. This range is not assigned to Unit 9 and is not yet organized as a course unit. |
 | Supplement B | کۆمەك | 392–394 | Source's separate closing section; dense examples still need character-level transcription. |
 | Supplement C | پێشگر | 395–397 | Preserve the source's attributed discussion and its **سادە / ناسادە** distinction; do not generalize it to all bound forms. |
 
@@ -45,3 +46,8 @@ This proposal is kept only in the isolated audit branch. The current `main` bran
 This document is only a proposed outline for review. No lesson text, quiz, lesson count, runtime content, or course activation has been created or changed. Wait for the user's explicit approval or requested corrections before drafting any lesson.
 
 Branch-local proposal metadata only: `id=grammar`, `key=course_grammar`, `order=4`, `status=planned`, `lesson_ids=[]`. This is not the current `main` catalogue or live runtime state; `main` intentionally has no Course 4 entry.
+
+
+## Page-span correction — 2026-11-05
+
+The earlier proposed Unit 9 span **349–387** was too broad. The evidence register maps the **ئامرازی سەرسووڕمان** discussion to pp.349–373, while the focused visual review identifies pp.374–379 as several separately attributed accounts and the closing review treats pp.374–385 as distinct affix/particle and comparative material. Therefore Unit 9 is now provisionally limited to **pp.349–373**. Pages **374–387** are shown separately as unstructured source material pending further source-led organization; this does not create a new lesson unit or assert a definitive chapter title. This is a correction to the proposal only, not approval of the outline.
