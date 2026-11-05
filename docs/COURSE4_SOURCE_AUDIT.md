@@ -511,3 +511,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The book's Kurdish spelling convention is followed in this audit: write **عەتف**, never **عطف**, in Kurdish prose. Preserve Arabic-script quotations only when quoting the source verbatim and explicitly marking them as such.
 - This is a sequential structural review, not a complete transcription. Course 4 remains planned and inactive; no lessons have been drafted or activated.
 - Next: continue sequentially from PDF p. 297 onward.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 297–302 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 297:** continues the numbered catalogue with subsection **٢٢** (the heading appears to describe a negative/denial form; exact technical label needs a crop). Four numbered examples follow. The author comments on the form's role in constructions and contrasts it with related forms. A new subsection **٢٣** follows, with another form and four examples; its exact heading is also to be verified before transcription.
+- **PDF p. 298:** completes the preceding examples, then opens subsection **٢٤** (the printed form appears to be **(بەشکەو)**; exact reading needs close crop). Three examples are followed by commentary on the form's use and its variants in Kurdish descriptions. A further subsection **٢٥** begins, with three numbered examples and an explanatory paragraph.
+- **PDF p. 299:** continues subsection ٢٥ and includes a footnote distinguishing **پاراستن: ڕستەی تابع** from **شارستن: ڕستەی ڕێکخستن** (these readings should be verified against a crop before quoting as formal terminology). It then opens subsection **٢٦**, whose heading appears to include **(هەن ـ من ژی)**; five examples follow. A new subsection **٢٧** appears below, with three examples and authorial commentary.
+- **PDF p. 300:** completes subsection ٢٧ and opens subsection **٢٨**, whose heading appears to be **(کەچی)**. Several sentence examples follow. The author then discusses how the form operates in the sentence and contrasts its connective function with other uses. Exact technical explanation needs transcription.
+- **PDF p. 301:** continues a separate numbered discussion of **(بەڵام)**, including attributed observations from Kurdish grammatical sources and examples. The page names **مامۆستا توفیق وەهبی** and **نووری عەلی ئەمین**; bibliographic references and exact wording should be verified from close crops. Further references to *زمان و تەندروستی کوردی* and a Persian grammar appear. Preserve attribution and source-language distinctions.
+- **PDF p. 302:** finishes the preceding discussion with numbered examples, then opens a new section clearly headed **٦ ـ ئامرازی کەی عەتف**. The author states that this form is used in two ways and begins the first group, describing a simple conjunction function between two sentences, followed by sentence examples. The second numbered group begins a further use in temporal constructions. This is a significant shift from the earlier numbered form catalogue to an explicit discussion of functions/uses.
+
+### Findings and limits
+- Pages 297–300 continue the catalogue with numbered entries and examples; exact technical headings for several entries are not sufficiently clear at this page scale and must be checked in enlarged crops before being used as lesson terminology.
+- Page 301 gives attributed treatments of **(بەڵام)**. The author cites distinct Kurdish and Persian grammatical sources; these should remain separate rather than be blended into a single rule.
+- Page 302 explicitly introduces **ئامرازی کەی عەتف** and says it has two uses, starting with a simple sentence-connecting use and a temporal use. This distinction is important and should be preserved in later transcription.
+- Continue using the Kurdish spelling **عەتف** in Kurdish prose, not **عطف**. The spelling **بەڵام** is retained as it appears in the Kurdish source.
+- This is a sequential structural review, not a complete transcription. The exact headings of entries 22–28, all examples, the footnote terminology on p. 299, and references on p. 301 need enlarged crop transcription before lesson drafting. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 303 onward.
