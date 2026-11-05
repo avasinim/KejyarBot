@@ -55,3 +55,14 @@ The current controlling crop-review record now contains a later enlarged-crop ve
 - These later page-specific findings supersede the older p.119 status in section 3 above. They do not amount to independent linguistic validation or lesson approval.
 
 The latest p.94/p.95 reconciliation also remains controlling: p.94's second upper-table left example is unresolved, and the examples after **وەک** in the p.95 prose crop remain outside the available image. Do not infer them from other records.
+
+
+## Cross-document checkpoint after primary-source artifact recovery (2026-11-05)
+
+The following older statements in this document are historical checkpoints and must not be read as current status:
+
+- Section 3's earlier statement that p.119's paired rows were unverified is superseded by the later p.119–120 crop reconciliation in this document and the controlling crop-review file. The four right/left pairs are transcribed; their grammatical column labels are not inferred. The p.119 parenthetical list is mostly transcribed, with **خڕین** provisional. The p.120 paired forms remain provisional and its attributed prose remains incomplete.
+- The p.398/p.222 heading issue is resolved: both read **چاوگ**. No discrepancy remains.
+- The 400-page primary PDF is available in the repository, and its successful extraction artifact is recorded in the inspection coverage, source audit, and evidence register. The extraction report says 397 embedded-text pages and 3 OCR pages (pp.2, 399, 400), with zero unreadable pages reported. These are extraction-method counts, not a claim that all 400 pages have undergone visual verification.
+
+The next audit work remains page-image-led transcription of outstanding material, especially the p.106 note below its 17-row table, the p.95 examples beyond **وەک**, and the incomplete p.120 attributed passage. Preserve uncertainty and source attribution. The separate 32-page **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded. Course 4 remains planned/inactive with zero lessons; no runtime, other-course, production, merge, or deployment changes are authorized.
