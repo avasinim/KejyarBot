@@ -1172,3 +1172,15 @@ The original page images for pp. 396–397 were inspected individually after the
 - The prefix inventory on pp. 395–397 and the example inventory on pp. 393–394 remain candidates for later structured transcription, not approved lesson-ready lists.
 - The book's final classification and methodological comments should be retained as the author's own framework. They do not resolve the earlier source-internal difference in grouping **کار** and **چاوگ** on pp. 347 versus 373/389.
 - Course 4 remains planned and inactive with zero lessons. No lesson, quiz, course activation, production edit, or Botkeep deployment was made.
+
+
+## Latest sequential visual review — adverb chapter pp.241–253 (2026-11-05)
+
+- The rendered source images for PDF pp.241–253 were inspected sequentially; the review is recorded in `docs/COURSE4_VISUAL_REVIEW_241_253.md`.
+- The source's semantic/functional adverb taxonomy reaches items 10 and 11 (pp.247–248), beyond the nine items visible on p.246.
+- The semantic taxonomy (pp.246–249) must remain distinct from the structural/formational classification (pp.250–251: simple, non-simple, derived, compound).
+- p.252 separately lists six broad word classes, including **چاوگ** and **ئاوەڵکار**.
+- Examples on pp.241–245 reinforce that sentence function, not surface form alone, determines adverbial use.
+- A variety/dialect label on p.243 remains a crop-verification item and is not promoted to a general rule.
+
+The extraction/render workflow succeeded for run `41992877908`; artifact `13399485121` supplied the page images. This remains a page-level visual audit, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
