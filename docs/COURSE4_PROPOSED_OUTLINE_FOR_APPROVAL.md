@@ -44,4 +44,4 @@ This proposal is kept only in the isolated audit branch. The current `main` bran
 
 This document is only a proposed outline for review. No lesson text, quiz, lesson count, runtime content, or course activation has been created or changed. Wait for the user's explicit approval or requested corrections before drafting any lesson.
 
-Course metadata remains `id=grammar`, `key=course_grammar`, `order=4`, `status=planned`, `lesson_ids=[]`.
+Branch-local proposal metadata only: `id=grammar`, `key=course_grammar`, `order=4`, `status=planned`, `lesson_ids=[]`. This is not the current `main` catalogue or live runtime state; `main` intentionally has no Course 4 entry.
