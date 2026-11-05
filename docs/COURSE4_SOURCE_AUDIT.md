@@ -663,3 +663,24 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Kurdish explanatory prose uses **عەتف**, not **عطف**. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
 - This remains a sequential structural review, not a complete transcription. Exact wording of examples, technical subgroup labels, and full references need crop-level transcription before lesson drafting.
 - Next: continue sequentially from PDF p. 344.
+
+
+## Sequential visual review: conjunction chapter close and Interjection opening, PDF pp. 344–349 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 344:** continues section 23, **چونکە**, with further analysis of the relationship between **چون** and **کە** and their combination in sentence constructions. The author gives multiple numbered interpretations/usages and paired examples. The page cautions against treating the combined form as automatically equivalent in every context; sentence construction and meaning matter. The lower portion continues a comparison of similar forms and their pronunciation/usage.
+- **PDF p. 345:** gives a structural grouping of conjunction particles into **سادە** and **ناسادە**, then lists forms under each. The list includes familiar forms discussed earlier (e.g. و، ش، هەم، بەڵام، یا، نە، تا، کەی، کە, and others). Preserve the author's own spelling and list membership; some entries need a higher-resolution crop before exact transcription.
+- **PDF p. 346:** continues the list of non-simple forms, including **بەشکو، بەڵکو، جگە، هەر، هەرکە، کەچی**, and other entries. A note then introduces examples from named writers/poets, including حاجی قادر دڵی and شاعیری فارس دڵی. The cited literary examples are evidence/examples in the source, not a new grammatical classification.
+- **PDF p. 347:** opens a new authorial explanatory section headed **ڕوونکردنەوەیەکی پێویست**. The author presents a list of eight speech-part categories: **ناو، ڕاناو، ئاوەڵناو، کار، چاوگ، ئاوەڵکار، ئامرازی پریپۆزیشن، ئامرازی عەتف (پەیوەندی)**. The text discusses how grammarians have treated **Interjection** and questions whether it should be treated as a regular word class in the same way. It also references **AN ENGLISH GRAMMAR BOOK** by Evan C. Penglis when comparing English grammatical treatment.
+- **PDF p. 348:** continues the explanatory discussion, comparing Kurdish and English treatments of **Interjection** and its relation to sentence structure and other word classes. The author argues for a contextual/functional analysis rather than mechanically importing a foreign classification. This is the author's position and must be attributed as such.
+- **PDF p. 349:** clearly begins chapter **9 — ئامرازی «تعجب»** and introduces the English term **Interjection**. The page starts a survey of Kurdish grammarians' definitions and examples, including attributed material from سەعید سەدقی and نووری عەلی ئەمین. Keep the Arabic-script label as it appears in the source title; use Kurdish explanatory spelling **عەتف** elsewhere.
+
+### Findings and limits
+- Section 23 **چونکە** continues through p. 344; do not treat **چون** and **کە** as interchangeable standalone conjunctions solely because they occur together in this form.
+- The source explicitly divides conjunction forms into **سادە / ناسادە** on p. 345. This is a source-specific structural grouping; do not assume it is identical to the earlier semantic/functional subgroups.
+- Pages 347–348 are an authorial methodological clarification and critique of the treatment of **Interjection**. They are important context for interpreting the next chapter and the author's approach to word classes.
+- The list on p. 347 contains both **کار** and **چاوگ** as separate entries. Preserve this distinction; do not collapse them into synonyms.
+- Chapter 9, **ئامرازی «تعجب» / Interjection**, begins on p. 349. The conjunction chapter's main discussion and closing clarification have therefore reached their boundary.
+- Exact transcription of the lists on pp. 345–346 and the literary examples still needs enlarged crop-level review before they are used in lessons.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 350.
