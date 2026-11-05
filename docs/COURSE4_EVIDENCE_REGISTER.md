@@ -26,7 +26,7 @@ The sole curriculum source remains **ڕێزمانی ئاخافتنی کوردی*
 
 ## Cross-topic cautions
 
-1. **ڕاناو** (p.25) and **جێناو** (p.222) are distinct printed headings in the contents map. Do not merge them or assign modern equivalents until definitions and examples are fully compared.
+1. **ڕاناو** (p.25) and **چاوگ** (p.222) are distinct printed chapter headings. The p.398 contents entry 5 and p.222 chapter opening both read **چاوگ**; the earlier audit reading **جێناو** for p.398 was an error, now corrected.
 2. **کار** and **چاوگ** are separate on p.347 but grouped parenthetically on pp.373 and 389. Preserve this source-internal difference.
 3. Attribute cited scholars' definitions and lists to those scholars; do not present them as the main author's own claims.
 4. The title frames the book as spoken Kurdish. Identify the local variety/register for each example; leave it unspecified when evidence is absent.
@@ -185,3 +185,8 @@ The closing review synthesizing pp.374–397 and the book's end pages is recorde
 - Dense lists remain unapproved for lesson transcription until character-level verification; independent linguistic validation is still required.
 
 This is a synthesis of existing visual evidence, not a complete transcription. Course 4 remains planned with zero lessons and awaits user approval of a proposed outline before any lesson drafting.
+
+
+## Corrected contents-page heading — pp.222 and 398 (2026-11-05)
+
+Direct enlarged comparison of the original rendered images confirms that p.398 entry 5 reads **چاوگ**, matching the chapter-opening heading on p.222. The former **جێناو** reading for p.398 is withdrawn as an audit transcription error. See `COURSE4_SOURCE_DISCREPANCY_P222_P398.md` and `COURSE4_AUDIT_DOCUMENT_CONSISTENCY.md`.
