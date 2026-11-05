@@ -516,3 +516,10 @@ This remains visual review rather than complete diplomatic transcription. Long i
 Original individual page previews pp.121–126 from the recovered `course4-source-text` artifact were reopened and inspected in sequence. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_121_126.md`. The pages continue the passive-form discussion, including **(اندن)** derivations, passive imperative forms, and then open a new topic **کاری یاریدەر — Auxiliary Verbs**. p.126 includes attributed discussion by **مامۆستا تۆفیق وەهبی**, the labels **کارەدانی لازم / کارەدانی متعدی**, and example sentences.
 
 This is visual review only, not complete diplomatic transcription or independent validation. Preserve each numbered derivation, comparison table, attribution, and example list as separate evidence units. Next, transcribe pp.121–126 line by line, then continue the auxiliary-verb discussion on p.127. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.127–132 (2026-11-05)
+
+Pages 127–132 were extracted from the recovered `course4-source-text` Actions artifact and inspected individually at original preview resolution. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_127_132.md`. These pages continue the auxiliary-verb topic: p.127 is explanatory prose; p.128 contains numbered statements, an attributed discussion, examples, a note, and a separate explanation; p.129 discusses **کردن** and aligned examples; pp.130–131 continue a numbered classification; p.132 contains a long attributed passage marked **[مەسعود محەممەد]**.
+
+This is visual structure review, not complete diplomatic transcription or independent linguistic validation. The final item in the p.130 list remains uncertain and must be checked in a crop. Preserve all attribution boundaries and do not assume every use of **کردن** has the same grammatical function. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
