@@ -1,14 +1,14 @@
 # Course 4 — Evidence Register (2026-11-05)
 
-Status: evidence/navigation document only; not an approved curriculum outline. This file belongs to the isolated branch reset/grammar-course4-content.
+Status: evidence/navigation document only; it is not a lesson-content approval record. The separate Course 4 outline was approved by the user on 2026-11-05. This file belongs to the isolated branch reset/grammar-course4-content.
 
 ## Reading precedence (2026-11-05)
 
-This is a chronological evidence/navigation register, not a lesson approval record. Later controlling crop corrections supersede earlier summaries in this file. For current transcription status, use `docs/COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` and the final “Current controlling queue” in `docs/COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md`.
+This is a chronological evidence/navigation register, not a lesson-content approval record. The course outline is approved; individual lesson rules/examples remain subject to transcription and validation. Later controlling crop corrections supersede earlier summaries in this file. For current transcription status, use `docs/COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` and the final “Current controlling queue” in `docs/COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md`.
 
 In particular: p.106's 17 numbered rows are transcribed (only the note below remains open); p.119's four aligned rows and parenthetical list are transcribed (with **خڕین** provisional, and the separate preceding table unresolved); p.95's examples after **وەک** remain clipped; p.120's paired forms remain provisional and its headings/full attributed passage remain unresolved. The resolved contents headings are **چاوگ** at pp.222 and 398 item 5, and **پریپۆزیشن** at pp.254 and 398 item 7.
 
-These are transcription-status corrections only. No claim is thereby independently validated or approved for teaching. Course 4 remains planned with zero lessons pending explicit approval of the proposed outline.
+These are transcription-status corrections only. No claim is thereby independently validated or approved for teaching. Course 4 remains planned with zero lessons; the outline is approved, while lesson content remains pending source transcription and validation.
 
 ## Current controlling release boundary — 2026-11-05
 
@@ -53,7 +53,7 @@ The sole curriculum source remains **ڕێزمانی ئاخافتنی کوردی*
 
 - Source map: substantially mapped, but dense inventories remain to be transcribed.
 - Claim-level evidence: partial. No rule is approved as verified-for-teaching by this register.
-- Course sequence and lesson count: not drafted or approved.
+- Course sequence: approved in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`; lesson count remains unset pending evidence review.
 - Course 4 remains planned, order 4, with zero lessons.
 - No lessons, quizzes, activation, merge, production database changes, or Botkeep deployment.
 
@@ -62,7 +62,7 @@ Priority work:
 2. Transcribe prefix/suffix forms (pp.395–397) and numbered examples (pp.393–394).
 3. Return to early pronoun and verb paradigms; the structural review is not a rule-by-rule audit.
 4. Verify author/editor and closing signature bibliographically; do not infer identity from the signature alone.
-5. Only after evidence is complete, prepare a proposed outline for explicit user approval.
+5. Complete source-faithful transcription and claim-level validation against the approved outline before drafting individual lesson texts. Keep unresolved readings out of lesson content.
 
 
 ## New visual evidence — 2026-11-05
@@ -242,3 +242,8 @@ Evidence boundary: extraction report and extracted text establish asset availabi
 The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
 
 The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
+
+
+## Outline approval reconciliation — 2026-11-05
+
+The user explicitly approved the nine-part outline on 2026-11-05, delegating the structural decision to the assistant. See `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md` and `curriculum/grammar_course4_plan.json`. This approval supersedes older sentences in this register that say the outline is awaiting approval. It does **not** approve individual lesson rules, examples, quizzes, or runtime activation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`; complete source transcription and independent claim-level validation before lesson drafting. The sole curriculum source remains `Rezmany_axawtny_kurdy.pdf`; the separate clitic-pronoun PDF remains excluded.
