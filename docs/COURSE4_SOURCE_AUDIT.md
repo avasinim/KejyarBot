@@ -367,3 +367,21 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - PDF p. 252 provides an important internal confirmation that **چاوگ** is a separate category from **کار** and **ئاوەڵکار** in the book's own list. Preserve the exact six labels and do not collapse them into modern categories without evidence.
 - The p. 253 heading remains unresolved pending a close crop. The following p. 254 heading is visibly **پریپۆزیشن** / **A Preposition**, while the contents page lists **پێوەندینیش**; that discrepancy remains open.
 - This is a sequential visual review, not a full transcription. Before drafting lessons, transcribe definitions, subtype labels and examples from high-resolution crops and validate claims against independent Sorani/Central Kurdish research. The primary book remains the sole lesson source; Course 4 remains planned and inactive.
+
+
+
+## Sequential visual review: preposition discussion PDF pp. 254–258 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 254:** the printed heading is visibly **پریپۆزیشن** and the English heading is **A Preposition**. The page attributes a definition to *An English Grammar Book* by Evan (the author name/initials need a close crop before citation): “A Preposition is a word placed before a noun or its equivalent to show its relation to another word.” It lists English examples (to, in, at, on, of, by, into, with, over, for, from, under, etc.). The Kurdish discussion immediately notes overlap/possible confusion with **Adverb** and **Conjunction** and says their function must be considered. The printed chapter label is therefore not **پێوەندینیش**, despite that wording in the contents page p. 398.
+- **PDF p. 255:** continues with notes and a numbered survey of Kurdish grammarians' treatments, including quoted definitions/examples and differences in how they identify the relevant forms. It does not provide grounds for treating the English definition as a settled, complete Kurdish definition.
+- **PDF p. 256:** continues the author-attributed survey and discusses forms/functions related to the grammatical category. It distinguishes types/examples and includes an explicit caution that a particular form should not automatically be assigned the same grammatical status in every context. Exact subtype wording should be transcribed from crops before reuse.
+- **PDF p. 257:** continues the critical comparison of Kurdish grammar descriptions and lists further cited grammarians. The author questions the adequacy of simply transferring the English/Farsi grammatical category and terminology to Kurdish without examining Kurdish forms and usage.
+- **PDF p. 258:** continues the discussion with two numbered considerations/examples and a **تێبینی**. The note again cautions against equating the English label **Preposition** mechanically with Kurdish forms/classes; the author points to the need to inspect the actual Kurdish construction and the role of the form in it.
+
+### Findings and limits
+- The contents page p. 398 lists **پێوەندینیش** at p. 254, but the actual printed heading on p. 254 is **پریپۆزیشن / A Preposition**. This is a source-internal discrepancy and must remain explicitly documented; do not silently rename the chapter or assume the two labels are exact synonyms.
+- The English definition and list of English prepositions on p. 254 are presented as an external reference point. The surrounding Kurdish discussion and following pages qualify the transfer of this category to Kurdish. A future lesson must not teach the English definition as an uncontested rule for Kurdish.
+- The author surveys different Kurdish grammarians and debates classification by grammatical function/context. Keep each account attributed, and do not merge competing positions into one artificial consensus.
+- This is a sequential visual review, not a complete transcription. Exact cited names, Kurdish technical labels, examples and the final argument need high-resolution transcription before any lesson is drafted. The primary book remains the sole lesson source; independent publications may validate claims but must not be blended into the lesson as another source book.
+- Next: continue the same sequential review from PDF p. 259 onward, preserving the distinction between the source's own analysis and cited grammarians' positions.
