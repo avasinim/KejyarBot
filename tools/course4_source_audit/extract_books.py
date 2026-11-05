@@ -62,6 +62,11 @@ def short_excerpt(text, terms, limit=28):
     return " ".join(words[:limit])
 
 def main():
+    raise RuntimeError(
+        "Unsafe source mapping: Volume 1 cover is Part 2 (Pronoun), not Part 1 (Noun). "
+        "Do not run lesson-page matching until all five printed covers are verified "
+        "and SOURCES lesson mappings are corrected. Use extract_covers.py only."
+    )
     out = Path("audit-output")
     out.mkdir(exist_ok=True)
     manifests, page_rows, lesson_rows = [], [], []
