@@ -334,3 +334,34 @@ Detailed observations: `COURSE4_VISUAL_REVIEW_011_024.md`. This closes the initi
 ## Updated review checkpoint — 2026-11-05
 
 The original preview images for all pages pp.11–24 have now been viewed directly. This closes the initial visual pass for Unit 1 (**ناو**) only. The next required stage is diplomatic transcription of the definitions, separately attributed grammarian accounts, example tables, and the continuation across page turns, followed by independent validation. The detailed page record is `COURSE4_VISUAL_REVIEW_011_024.md`; its crop-review reconciliation supersedes tentative readings. Do not treat visual coverage as transcription completion. Course 4 remains planned, inactive, zero lessons.
+
+
+## Sequential page-image review — PDF pp.25–65 (2026-11-05)
+
+The original page-preview images for every PDF page from 25 through 65 in the recovered `course4-source-text` artifact were opened and reviewed in numerical order. This records page-level visual coverage only; it is not a diplomatic transcription, crop-level character verification, or independent linguistic validation.
+
+| PDF page(s) | Page-level structure observed | Remaining work |
+|---|---|---|
+| 25 | Opens section **٢ — ڕاناو - ضمیر**; introductory explanation and initial attributed classification; introduces connected and separate pronoun forms. | Transcribe the definition, attributions, and first examples exactly. |
+| 26–28 | Continue the initial taxonomy and numbered subtypes with many examples; p.28 includes explanatory notes and another list. | Verify every subtype label and example; retain source sequence and attributions. |
+| 29–30 | Dense explanatory prose and further attributed terminology; p.30 presents a numbered subdivision and explanatory continuation. | Full paragraph transcription; check technical labels and cross-page continuity. |
+| 31–33 | Continue numbered pronoun groupings and examples; p.33 includes another attributed classification and a section marker for a Kurdish grammatical treatment. | Transcribe each list and example without collapsing distinct categories. |
+| 34–35 | Continue prose and examples; p.34 visibly includes the English label **Preposition** in a comparative/explanatory passage; p.35 continues the discussion and attribution. | Verify the role of the comparative passage from full context; do not treat the English word as a new Course 4 unit. |
+| 36–38 | Paradigm-like tables and aligned forms appear on p.36; p.37 continues tabular/numbered material; p.38 contains further explanation and forms. | Crop tables at full width and transcribe cell by cell, preserving right-to-left alignment. |
+| 39–41 | Further lists and comparative forms; p.39 visibly contains Latin-script examples (including **Ez im**, **Tu yi**, **Ew e**, **Em in**, **Hun in**, **Ew in**); pp.40–41 continue paradigms and aligned columns. | Preserve source spelling, language labels, and column alignment; validate only after transcription. |
+| 42–44 | Explanatory prose and grouped examples continue; p.42 includes a bracketed/aligned set of forms, while pp.43–44 are dense prose pages. | Full transcription and paragraph boundary review. |
+| 45–49 | Continue dense explanatory/attributed discussion and examples; p.45 contains a numbered continuation, pp.46–48 long prose, and p.49 continues the argument. | Transcribe source attributions, technical terms, and examples; avoid summarizing as a single rule. |
+| 50–54 | p.50 visibly opens **ڕاناوی لکدەر** and gives the English gloss **Relative Pronoun**; pp.51–54 continue its examples and explanatory discussion. | Transcribe definition and all examples; preserve the source's own terminology and distinctions. |
+| 55–58 | p.55 visibly opens **ڕاناوی خۆیی (Reflexive)**; pp.56–58 continue the discussion and examples. | Transcribe the complete definition, paradigms, and examples with page references. |
+| 59–60 | Continue explanatory prose and examples; p.60 includes an aligned form table and further discussion. | Verify the table cells and identify the next subsection only from a sharper crop. |
+| 61–65 | Further numbered categories, definitions, examples, and attributed discussions; p.61 contains an aligned comparison table; p.64 shows a numbered list of pronoun types; p.65 closes the section's visible discussion. | Transcribe lists and tables in full; confirm the exact heading hierarchy and section boundary against p.66. |
+
+### Controlling notes
+
+- The page sequence pp.25–65 is now visually reviewed at page level. This does not mean all 41 pages have been transcribed.
+- The printed heading at p.25 is **ڕاناو - ضمیر**. Do not conflate this Course 4 section with the separate book **ڕێزمانی ڕاناوی لکاو.pdf**, which remains excluded as a curriculum source.
+- p.50's **ڕاناوی لکدەر (Relative Pronoun)** and p.55's **ڕاناوی خۆیی (Reflexive)** are page-visible headings; their definitions and examples remain to be transcribed and validated.
+- The page-level review does not certify every reading in tables, lists, or dense prose. Where text is unclear, retain uncertainty and return to a full-resolution crop.
+- The next transcription task is to begin at p.25 and proceed sequentially, keeping definitions, source attributions, lists, paradigms, and page-turn continuations as separate evidence blocks.
+
+Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`. This review does not authorize lesson activation, catalogue restoration, merge/rebase, deployment, production changes, Botkeep sync, or edits to Courses 1–3.
