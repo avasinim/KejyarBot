@@ -572,3 +572,10 @@ Some long headings, the printed year range on p.166, compact paradigms, and the 
 The original individual page previews pp.169–174 were extracted from Actions artifact `course4-source-text` and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_169_174.md`. These pages continue the future-tense discussion with several **چاوگ / ڕابردوو / ئایندە** paradigms, explanatory notes, a continuing lexical/example list, and numbered point **٦** beginning on p.174 with a table that continues beyond the page break.
 
 Compact table cells, technical forms, and the complete p.171–172 list remain queued for crop-level transcription. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve table boundaries, source order, and original forms. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.175–180 (2026-11-05)
+
+Original individual page previews pp.175–180 were extracted from the Actions artifact and inspected separately. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_175_180.md`. The pages continue the future-tense explanation, develop numbered points **٧** and **٨** with example lists and separately labelled notes, then present a labelled explanatory subsection and two procedures (**دەستوری یەکەم** and **دەستوری دووەم**) beginning on p.180.
+
+Some point headings, the subsection label on p.178, and compact example groups remain queued for crop-level verification. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve source sequence, labelled notes, and the distinction between the two procedures. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
