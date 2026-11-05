@@ -1,5 +1,10 @@
 # Course 4 — sequential visual review: PDF pp.228–235 (چاوگ chapter)
 
+> **تێبینیی ڕاستکردنەوەی دواتر — 2026-11-05:** لە بەشی «Structural conclusions»ی خوارەوە، خاڵی ٥ تەنها تۆمارێکی مێژوویی و پێشترە و ئێستا هەڵەیە. پشکنینی ڕاستەوخۆی پەڕەی ٣٩٨ و سەرەتای بەشی پەڕەی ٢٢٢ پشتڕاستی کردووەتەوە کە هەردووکیان **چاوگ** دەخوێندرێنەوە؛ خوێندنەوەی کۆنی **جێناو** لە پەڕەی ٣٩٨ هەڵەی تۆمارکردن بووە و هەڵوەشێنراوەتەوە. هیچ ناکۆکییەکی پشتڕاستکراو لەنێوان پەڕەکانی ٢٢٢ و ٣٩٨دا نامێنێت. بۆ دۆخی ئێستا، تەنها ئەم ڕاستکردنەوەیە و تۆماری کۆنترۆڵکەری `COURSE4_SOURCE_AUDIT.md` پەیڕەو بکە. ئەم ڕاستکردنەوەیە ناونیشانی بەشی چاوگ دەسڕێتەوە؛ جیاوازیی ناونیشانی **ڕاناو** لە پەڕەی ٢٥ بە جیاوازی دەمێنێتەوە.
+
+---
+
+
 Date: 2026-11-05  
 Branch: `reset/grammar-course4-content`  
 Source: `Rezmany_axawtny_kurdy.pdf`. All eight original page images (PDF pp.228–235) were inspected individually at readable resolution. This is a structural/visual review, not a full diplomatic transcription.
