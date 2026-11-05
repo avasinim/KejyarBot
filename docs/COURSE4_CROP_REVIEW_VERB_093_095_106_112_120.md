@@ -193,3 +193,12 @@ The original page images were re-opened in sequence after completing p.106. The 
 - **p.117** continues the pattern discussion, includes another **تێبینی**, then introduces **٤- چاوگی تانی** (heading as visually read) with a prose list and further example table.
 
 This pass is structural, not a diplomatic transcription of every example. The tables on pp.112 and 115–117 still require dedicated high-resolution crops before any individual forms are copied into a lesson. Preserve author attributions, printed terminology, and each numbered subsection as separate evidence units. Do not merge the accounts into one rule.
+
+
+## p.118–120 — completion of sequential structural pass
+
+- **p.118** continues the verb-form pattern section with paired examples and two further tables under separate explanatory paragraphs. The source distinguishes the form-building operation in each paragraph; the tables must remain attached to their own lead-in rather than be combined.
+- **p.119** continues paired forms, then introduces a numbered subsection visually read as **٥- چاوکی دالی**. It contains a prose list of examples and a further two-column table of forms. The exact heading spelling should be checked against a high-resolution crop before reuse.
+- **p.120** continues with numbered explanatory sections and extended prose examples. It discusses distinctions in how forms are produced/used and includes an attributed passage to مامۆستا مەسعود محەمەد. This attribution and its surrounding examples must remain separate from the preceding anonymous explanation.
+
+The sequential visual review of pp.112–120 is now complete at the structural level. It is not a full transcription of the examples, nor does it validate the source's analyses. The next safe step is targeted crops of pp.112 and 115–120 tables and the attributed passage on p.120, recording only clear forms and preserving each subsection's source context.
