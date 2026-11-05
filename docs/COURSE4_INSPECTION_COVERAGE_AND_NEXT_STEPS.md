@@ -103,3 +103,8 @@ The table regions on pp.93–95 and the p.106 inventory were enlarged. The exact
 ### p.106 partial transcription checkpoint (2026-11-05)
 
 Enlarged row crops support only three high-confidence pairs at present: **کەوتن → خستن** (item 1), **چوون → بردن** (item 3), and **سڕانەوە → سڕینەوە** (item 8), with the right-hand **تێنەبەر** and left-hand **تێپەڕ** columns preserved. This is explicitly a partial reading; the other 14 pairs remain untranscribed. See `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`.
+
+
+### Correction after second p.106 crop pass (2026-11-05)
+
+The earlier partial list entry for item 8 (**سڕانەوە / سڕینەوە**) is withdrawn: the right-column spelling is not sufficiently clear in the crop and may instead contain an additional character sequence. Item 9 is now read with high visual confidence as **پچڕان / پچڕین**. The current partial high-confidence list is therefore items 1, 3, and 9 only; item 8 is unresolved. See the crop-review document for the correction and rationale.
