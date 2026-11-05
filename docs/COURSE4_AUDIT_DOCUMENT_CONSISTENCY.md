@@ -119,3 +119,12 @@ A new read-only compare after the latest audit-document commits reports `reset/g
 ## Fresh branch-divergence measurement — 2026-11-05 (pre-commit snapshot)
 
 The read-only comparison was captured immediately before this note was committed. It reports `reset/grammar-course4-content` and `main` remain **diverged**: the audit branch is **471 commits ahead** and **9 behind**, with merge base `bdd08e66af5d1ad74b935b2899053e922dea3f52`. The compare endpoint lists **36 changed paths**; the ahead/behind values count commits, not files. The base branch head observed remains `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423`. This is a branch-distance measurement only, not release readiness or a recommendation to merge. The Course 4 PDF, extraction workflow, audit records, curriculum plan, and branch-local catalogue entry remain among the differences. No merge, rebase, cherry-pick, push to `main`, deployment, or Botkeep operation was performed.
+
+
+## Latest read-only branch comparison — 2026-11-05 (pre-documentation-commit)
+
+A fresh compare of `main` against `reset/grammar-course4-content` reports **diverged**: **476 commits ahead** and **9 behind**, with merge base `bdd08e66af5d1ad74b935b2899053e922dea3f52`. The observed `main` head is `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423`. The compare lists **36 changed paths**; this is a path count, not a file count equal to the ahead distance. The audit branch is an isolated review workspace, not a release candidate. This snapshot was taken immediately before this documentation update, so the resulting documentation commit itself adds one commit to the branch distance; do not quote 476 as the post-commit live count without another compare. No merge, rebase, cherry-pick, push to `main`, deployment, or Botkeep operation was performed.
+
+## Current source-review boundary — 2026-11-05
+
+The repository documents currently agree on the controlling Course 4 boundary: the sole curriculum source is `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded; the proposed outline is not approved; and Course 4 remains planned with zero lessons. The outstanding image-led queue remains p.106's note, p.95's clipped examples after **وەک**, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table. No new page transcription is asserted by this consistency update. Do not draft lessons, quizzes, or activate the course before explicit outline approval.
