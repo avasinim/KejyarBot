@@ -1,19 +1,26 @@
-# Source discrepancy log — contents page vs chapter opening (Course 4)
+# Source heading verification — PDF pp.222 and 398 (Course 4)
 
 Date: 2026-11-05  
 Primary source: `Rezmany_axawtny_kurdy.pdf`
 
-## PDF p.398 and p.222
+## Direct comparison of original page images
 
-The contents transcription currently records the p.398 entry as **5 — جێناو**. The directly reviewed chapter-opening page p.222 is headed **چاوگ**.
+The original rendered images for PDF p.398 (contents page) and PDF p.222 (chapter opening) were reopened at enlarged size and compared directly.
 
-These readings must be preserved as a source discrepancy, not silently harmonized. The proposed outline names Unit 5 **چاوگ** because that is the visible chapter-opening heading, while noting that the contents page prints **جێناو**. The intended relation between the terms remains unresolved until the original images are rechecked side by side and the intervening context is examined.
+- **PDF p.398:** contents entry 5, with page reference 222, visibly reads **چاوگ**.
+- **PDF p.222:** the chapter-opening heading visibly reads **چاوگ**.
+
+## Finding
+
+The two printed headings agree. The previous audit transcription that recorded **جێناو** at p.398 was an error in the audit documentation and is withdrawn. There is no supported p.398/p.222 heading discrepancy.
+
+The corrected contents-page entry is **5 — چاوگ**. The distinct earlier chapter heading **ڕاناو** at p.25 remains as printed; this correction does not merge the two chapters or make any claim about modern grammatical equivalence.
 
 ## Editorial rule
 
-- Contents-page transcription: retain **جێناو** as printed.
-- Chapter-opening transcription: retain **چاوگ** as printed.
-- Do not replace one with the other or claim they are synonyms.
-- Do not derive a modern linguistic distinction from the labels alone.
+- Record p.398 entry 5 as **چاوگ**.
+- Record p.222 chapter heading as **چاوگ**.
+- Do not retain the former **جێناو** reading for p.398.
+- Do not infer a modern linguistic category from the heading alone.
 
-This discrepancy is an audit item, not a lesson claim.
+This is a correction to the audit transcription, not a lesson claim. Course 4 remains planned/inactive, with zero lessons.
