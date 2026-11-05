@@ -145,3 +145,17 @@ See `docs/COURSE4_CROP_REVIEW_380_385.md`.
 - Dense forms remain pending exact transcription.
 
 Visual review only. Course 4 remains planned with zero lessons.
+
+
+## Focused visual review — attributed affix/particle accounts, pp.374–379 (2026-11-05)
+
+See `docs/COURSE4_VISUAL_REVIEW_374_379.md`.
+
+- pp.374–375 contain a ten-item account attributed to **مامۆستا سەعید سەدقی**, citing `صرف و نحوی کوردی`, p.51; keep its headings and examples together.
+- p.376 begins a distinct account attributed to **مامۆستا توفیق وەهبی**, citing `دستوری زمانی کوردی`; the page foot introduces a separate account attributed to **مامۆستا کوردیف**.
+- p.377 continues کوردیف's separate suffix/prefix lists, then begins another account attributed to **نووری عەلی ئەمین**, citing `ڕێزمانی کوردی`.
+- pp.378–379 continue نووری عەلی ئەمین's four-part scheme: prefix, suffix, beginning, and relation/linking; p.379 gives six relation-types.
+- p.379 then begins a separate account attributed to **مامۆستا جەگرخۆین**, citing `ئاوای دەستوری زمانی کوردی`, p.87, with seven listed categories.
+- Long inventories remain untranscribed pending character-level checking. These are multiple attributed frameworks, not one unified taxonomy.
+
+Visual review only, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
