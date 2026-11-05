@@ -58,3 +58,10 @@ Newly confirmed methodological cautions:
 - pp.314–318 contain separate numbered entries, nested examples, and accounts attributed to توفیق وەهبی، نووری عەلی ئەمین، جەگرخۆین، and مەسعود محەمەد. Keep these accounts and their numbering separate; exact heading spellings on pp.314 and 317 remain crop-check items.
 - pp.332–337 extend the multi-function analysis of `هەر`; do not reduce it to one invariant conjunction gloss.
 - Complete transcription and independent claim-level validation remain outstanding. Course 4 remains planned with zero lessons.
+
+
+## New visual evidence — verb chapter pp.161–221 (2026-11-05)
+
+All 61 printed page images from pp.161–221 were checked sequentially in the rendered source-PDF artifact (Actions run `41992196756`, artifact `13398428636`). See `docs/COURSE4_VISUAL_REVIEW_161_221.md`.
+
+This extends page-level visual coverage through p.221, immediately before the **چاوگ** chapter begins at p.222. The reviewed range continues the verb chapter's discussion of verbal constructions, negative forms, parallel paradigms, and comparisons. The note deliberately does not claim full transcription or validation of individual forms: dialect labels, source attributions, and dense paradigms still require enlarged crop-level checking. Course 4 remains planned with zero lessons.
