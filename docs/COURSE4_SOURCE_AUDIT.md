@@ -265,3 +265,11 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 ### Next review step
 - Continue with a systematic pass over the full verb-related section and the intervening pages 301–348, then manually transcribe the p. 388–397 discussion and compare it with independent Central Kurdish linguistic research strictly for validation.
 - Do not draft or activate lessons from OCR snippets or the contents page alone. Course 4 remains planned/inactive with zero lessons; no other course, main branch, production database, Botkeep runtime, merge, or deployment was changed.
+
+
+## Follow-on visual sample: primary book PDF pp. 301–348 (2026-11-05)
+
+- The expanded artifact from run `41984870708` was used to inspect page images at PDF pp. 301, 310, 320, 330, 340 and 348.
+- These sampled pages visually continue the conjunction-related material following the section opening at p. 273; no new major chapter boundary is apparent in these sampled points before the interjection heading at p. 349.
+- The pages contain continued explanatory prose, examples and subdivisions. This is only a spaced sample, not a complete reading or transcription of pp. 301–348; do not treat it as evidence that every subsection or claim in the range has been checked.
+- Next step remains a sequential review of the intervening pages and manual transcription of source examples before any teaching content is proposed.
