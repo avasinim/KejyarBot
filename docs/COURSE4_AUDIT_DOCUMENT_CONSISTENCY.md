@@ -66,3 +66,10 @@ The following older statements in this document are historical checkpoints and m
 - The 400-page primary PDF is available in the repository, and its successful extraction artifact is recorded in the inspection coverage, source audit, and evidence register. The extraction report says 397 embedded-text pages and 3 OCR pages (pp.2, 399, 400), with zero unreadable pages reported. These are extraction-method counts, not a claim that all 400 pages have undergone visual verification.
 
 The next audit work remains page-image-led transcription of outstanding material, especially the p.106 note below its 17-row table, the p.95 examples beyond **وەک**, and the incomplete p.120 attributed passage. Preserve uncertainty and source attribution. The separate 32-page **ڕێزمانی ڕاناوی لکاو.pdf** remains excluded. Course 4 remains planned/inactive with zero lessons; no runtime, other-course, production, merge, or deployment changes are authorized.
+
+
+## Proposed-outline correction — p.254 / p.398 (2026-11-05)
+
+A cross-check against the later controlling entries in `COURSE4_SOURCE_AUDIT.md` confirms that the printed chapter heading on PDF p.254 is **پریپۆزیشن / A Preposition**, and contents item 7 on PDF p.398 also reads **پریپۆزیشن**. The older source-audit checkpoints claiming **پێوەندینیش** in the contents are historical errors and are explicitly withdrawn by the later source-audit reconciliation. The proposed outline has now been corrected to use **پریپۆزیشن (A Preposition)** and to record that the two locations agree. This is a documentation correction only; it does not approve the outline or any lesson content.
+
+The other current transcription statuses remain controlled by the latest crop-review reconciliation and the coverage queue: p.106's 17 rows are transcribed but its note remains open; p.95's examples after **وەک** remain outside the available crop; p.119's four rows and infinitive list are transcribed (with **خڕین** provisional) while its preceding table remains unresolved; and p.120's pairs remain provisional with the attributed passage incomplete.
