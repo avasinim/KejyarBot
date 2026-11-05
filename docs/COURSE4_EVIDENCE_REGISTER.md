@@ -107,3 +107,15 @@ The rendered originals for pp.261–272 were inspected individually. See `docs/C
 - p.269 has a functional subheading whose exact reading remains crop-verification-only.
 
 Methodological point: retain the book's contextual and construction-sensitive analysis; do not turn form lists into invariant one-to-one grammatical labels. This is visual review, not full transcription or independent validation. Course 4 remains planned with zero lessons.
+
+
+## Crop-level verification — pp.269, 306, 314, 317 (2026-11-05)
+
+Enlarged crops from rendered page images resolve several previously tentative readings. See `docs/COURSE4_CROP_VERIFICATION_269_306_314_317.md`.
+
+- p.269 heading visibly reads **دیارخستنی واسیتە، وەک:**; preserve the printed wording rather than silently normalizing it.
+- p.306 distinguishes item **٧ ـ ئامرازی (یا)ی عەتف** from item **٨ ـ ئامرازی (نە)ی عەتف**.
+- p.314 item 14 visibly prints **تەکەرنا ـ تەکینا**; item 15 begins **مەکەر، مەری**. These are recorded as printed, without asserting normalized interpretation.
+- p.317 item 16 heading reads **ئامرازی (تەنجا)ی عەتف**. This replaces the earlier tentative «نەخا» reading; preserve **تەنجا** as printed.
+
+All are visual readings only; no dialectal, historical, standardness, or typographical status is inferred. Course 4 remains planned with zero lessons.
