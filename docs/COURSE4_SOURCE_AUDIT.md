@@ -41,7 +41,7 @@ Current resolved heading readings: PDF pp.222 and 398 item 5 both read **چاو�
 
 Current verb-page crop queue: p.106 note below the 17 rows; p.95 examples after **وەک**; p.120 full-width table headings and complete attributed passage; remaining uncertain cells on pp.93–94; and the separate preceding table on p.119. The 17 rows on p.106 and the transcribed p.119 four-row block/list are not themselves still wholly unverified. Consult the controlling queue and crop-review file for exact confidence limits.
 
-This reconciliation changes documentation precedence only. It does not claim new page-image inspection, complete transcription, independent linguistic validation, or lesson approval. Course 4 remains planned with zero lessons and awaits explicit outline approval.
+This reconciliation changes documentation precedence only. It does not claim new page-image inspection, complete transcription, independent linguistic validation, or individual lesson approval. The outline was approved on 2026-11-05; Course 4 remains planned with zero lessons while source transcription and claim-level validation continue.
 
 ## Adopted source policy
 
