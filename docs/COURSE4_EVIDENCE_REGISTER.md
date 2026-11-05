@@ -252,3 +252,8 @@ The user explicitly approved the nine-part outline on 2026-11-05, delegating the
 ## Visual review — noun chapter, PDF pp.11–24 (2026-11-05)
 
 The original-page preview images for PDF pp.11–24 were directly inspected. A selective page-by-page structure review is recorded in `COURSE4_VISUAL_REVIEW_011_024.md`. This confirms the chapter opening **ناو**, the explicit structural and semantic classification axes, the simple/non-simple discussion, and multiple separately attributed taxonomies. Persian and English taxonomies are kept attributed; the book's varying definitions are not merged into a single consensus. Dense lists/examples and several p.17/p.22–24 readings remain provisional and require enlarged crops. This is visual review, not complete diplomatic transcription or claim-level linguistic validation. No lessons or quizzes were created; Course 4 remains planned with zero lessons.
+
+
+### Expanded visual review — approved unit 1 (PDF pp.11–24)
+
+The direct page-level visual pass now covers every page pp.11–24. See `COURSE4_VISUAL_REVIEW_011_024.md` for page-specific observations and corrections. Confirmed source structure: p.11 opens **ناو** and gives structural/semantic axes; pp.12–15 preserve multiple attributed definitions of simple/non-simple nouns; pp.16–18 report semantic taxonomies including separately attributed Persian/English classifications; pp.19–24 continue gender/number, material/abstract and formation categories. p.19 table headings are **ناوی دوو لاین / بۆ نێرینە / بۆ مێینە**. Several labels and example rows remain provisional. Page-level visual coverage is not equivalent to complete transcription or validation; no lesson may be drafted from unresolved readings.
