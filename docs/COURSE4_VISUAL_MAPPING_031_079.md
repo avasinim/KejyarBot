@@ -22,7 +22,7 @@ All page images from PDF pp.31–79 were reviewed in overview contact sheets. Re
 - p.66 opens a new numbered chapter headed **ئاوەڵناو «الصفة»**. It lists several attributed accounts/definitions before the chapter's own explanatory treatment.
 - p.67 continues the attributed definitions and discusses the chapter's descriptive scope. The authors' wording and attributions must remain separate.
 - pp.68–71 continue the explanation and examples.
-- p.72 contains a visible classification with contrasting columns labelled **سادە** and **داراژ** (the printed heading must be rechecked against a close crop before exact transcription); examples are aligned under the two headings. Do not silently normalize the label.
+- p.72 contains a visible classification with contrasting columns labelled **سادە** and **داراژ**. A magnified crop was checked; the second heading visually reads **داراژ**. Preserve this printed form provisionally and do not silently normalize it. Examples are aligned under the two headings.
 - pp.73–78 continue the adjective discussion, with prose, example groups, and further distinctions.
 - p.79 is a short concluding page for the adjective chapter; the next chapter begins at p.80 according to the contents map.
 
@@ -30,7 +30,7 @@ All page images from PDF pp.31–79 were reviewed in overview contact sheets. Re
 
 1. The pronoun pages contain paradigms and forms whose small marks/letters matter. No table from pp.36–45 or pp.61–65 is approved for direct lesson use without crop transcription.
 2. The book includes multiple attributed definitions. Do not combine them or attribute a general statement to the book's unnamed author.
-3. The p.72 second column heading appears as **داراژ** in the current view, but needs a high-resolution crop check before quoting or using it as a category name.
+3. The p.72 second column heading was checked in a magnified crop and visually reads **داراژ**. Treat this as a source-faithful provisional reading; independent validation is still needed before assigning a modern category label.
 4. No dialect or grammatical category is normalized against modern terminology in this mapping.
 5. This document records visual mapping only; independent linguistic validation and full diplomatic transcription remain outstanding.
 
