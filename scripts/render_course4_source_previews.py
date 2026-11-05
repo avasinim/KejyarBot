@@ -43,9 +43,9 @@ def main():
     suffix_name = "ڕێزمانی ڕاناوی لكاو.pdf"
     main_name = "Rezmany_axawtny_kurdy.pdf"
     suffix_pages = list(range(1, 33))
-    # Render the opening 80 pages in readable form for systematic manual review,
-    # plus the closing pages for publication/appendix checks.
-    main_pages = list(range(1, 81)) + list(range(380, 401))
+    # Render the opening pages, the next systematic review block, and closing pages.
+    # Continue in bounded blocks so artifacts remain practical to inspect.
+    main_pages = list(range(1, 81)) + list(range(81, 161)) + list(range(380, 401))
     sheet(suffix_name, suffix_pages, "suffix_pronouns")
     sheet(main_name, main_pages, "main_grammar")
     for pdf_name, pages, prefix in (
