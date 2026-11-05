@@ -262,3 +262,8 @@ The direct page-level visual pass now covers every page pp.11–24. See `COURSE4
 ## First diplomatic transcription batch — PDF pp.11–13 (2026-11-05)
 
 A new working transcription ledger, `COURSE4_SOURCE_TRANSCRIPTION_NOUN_011_013.md`, records the visible headings, structural outline, opening noun definition (partial), attributed terminology list for simple nouns, and selected examples. Uncertain readings are bracketed or left unresolved; the full prose passages and examples are not yet complete. This is not lesson-ready content and does not authorize drafting. The original page-level review remains in `COURSE4_VISUAL_REVIEW_011_024.md`.
+
+
+## Second diplomatic transcription batch — PDF pp.14–15 (2026-11-05)
+
+The noun transcription ledger `COURSE4_SOURCE_TRANSCRIPTION_NOUN_011_013.md` has been extended with page 14's attributed non-simple noun discussion and structural recap, and page 15's continuation of the classification and start of the detailed non-simple noun section. Several dense attributed passages and example spellings remain unresolved; the ledger explicitly marks these as partial rather than complete quotations. The heading appearing as `پێناسەی ناوی سادە` under the `ناوی ناسادە` discussion on p.15 is recorded as a source-level inconsistency requiring verification, not silently corrected.
