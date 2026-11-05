@@ -502,3 +502,10 @@ This is visual mapping only. The p.107 heading remains provisional and the p.106
 The original individual page previews pp.110–115 were reopened from the recovered `course4-source-text` artifact. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_110_115.md`. These pages continue the passive-construction discussion, introduce the bilingual heading **فعل مبنی للمعلوم و مبنی للمجهول / Active and Passive**, include attributions to **مامۆستا سەعید سەقفی** and **مامۆستا تۆفیق وەهبی**, and develop the book's own terminology **کارادار / کارابێزر**. Page 115 opens a separate section on composing the passive construction, including an infinitive/passive-past comparison.
 
 This is visual structure review only. Dense prose and all compact tables/examples still require crop-level diplomatic transcription. Keep attributed accounts, numbered subsections, and comparison tables separate; do not normalize the book's terminology. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.116–120 (2026-11-05)
+
+Original page previews pp.116–120 were inspected individually. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_116_120.md`. These pages continue the numbered infinitive patterns and passive-past comparisons, including **چاوگی تەڵفی**, **چاوگی یانی**, **چاوگی تانی**, and **چاوگی دالی**. p.120 includes a separate numbered section and an attributed passage by **مامۆستا مەسعود** concerning **شاراندنەوە**.
+
+This remains visual review rather than complete diplomatic transcription. Long infinitive inventories, aligned examples, and the attributed passage require line-by-line crop verification. Compare p.119–120 readings against the earlier crop-recheck record and resolve discrepancies only from source images. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
