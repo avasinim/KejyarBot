@@ -4,6 +4,20 @@ Status: **single-source curriculum decision adopted; source inspection in progre
 
 This audit belongs to the isolated branch `reset/grammar-course4-content`. It does not activate Course 4, alter other courses, or deploy anything.
 
+## Reading order and supersession rule (2026-11-05)
+
+This file is a chronological audit log. Earlier dated observations and “next task” paragraphs are historical checkpoints, not necessarily the current state. Where entries conflict, use this precedence:
+
+1. The latest controlling status in this file (near the end), together with `docs/COURSE4_INSPECTION_COVERAGE_AND_NEXT_STEPS.md`.
+2. The latest page-specific reconciliation in `docs/COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md`.
+3. Earlier visual-review paragraphs only as audit history; do not revive readings explicitly withdrawn by later corrections.
+
+Current resolved heading readings: PDF pp.222 and 398 item 5 both read **چاوگ**; pp.254 and 398 item 7 both read **پریپۆزیشن**. Earlier claims of **جێناو** at p.398 item 5 and **پێوەندینیش** at item 7 are withdrawn audit errors, not open source discrepancies.
+
+Current verb-page crop queue: p.106 note below the 17 rows; p.95 examples after **وەک**; p.120 full-width table headings and complete attributed passage; remaining uncertain cells on pp.93–94; and the separate preceding table on p.119. The 17 rows on p.106 and the transcribed p.119 four-row block/list are not themselves still wholly unverified. Consult the controlling queue and crop-review file for exact confidence limits.
+
+This reconciliation changes documentation precedence only. It does not claim new page-image inspection, complete transcription, independent linguistic validation, or lesson approval. Course 4 remains planned with zero lessons and awaits explicit outline approval.
+
 ## Adopted source policy
 
 The user has chosen to build Course 4 using only **ڕێزمانی ئاخافتنی کوردی** as its curriculum's primary and sole course-content book.
