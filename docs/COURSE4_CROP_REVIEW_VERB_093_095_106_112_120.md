@@ -304,3 +304,19 @@ The original rendered page images (804 × 1137) were reopened from the source-te
 - The prose beginning **ڕای مامۆستا مەسعود...** is a separately attributed account, not an extension of the three-row table. It discusses the source's account of the distinction and formation of **کاری شاراوە** and provides additional examples. The full passage has not yet been diplomatically transcribed; retain it as a distinct attributed block.
 
 These observations refine the previous p.119–120 note: p.119's heading is now visually confirmed, while its paired-form tables remain untranscribed. The p.120 three pairs are clearer at crop level, but their column labels remain unavailable in the crop. None of these readings is an independent validation or lesson approval.
+
+
+## Additional p.119 lower-block crop reading (2026-11-05)
+
+A sharper crop of the lower half of p.119 makes subsection 5's local structure clearer:
+
+- Heading: **٥- چاوکی دالی**.
+- The parenthetical infinitive list is a separate example list under that heading; its individual entries are not transcribed here because several internal letters are still ambiguous.
+- A prose transition introduces a set of four aligned forms. The visually readable surface forms appear as the following right-to-left pairs (retained as provisional diplomatic readings pending a second independent crop check):
+  1. **دەبژێرم / بژێردرام**
+  2. **دەژمێرم / ژمێردرام**
+  3. **دەسپێرم / سپێردرام**
+  4. **دەشارمەوە / شاردرامەوە**
+- The final short sentence below the four rows is visible, but is not transcribed because the crop does not resolve every character confidently.
+
+Do not assign grammatical labels to the two columns yet: the p.119 crop does not include a sufficiently clear column heading. These are visual readings of the source, not normalized forms or independently validated grammatical claims.
