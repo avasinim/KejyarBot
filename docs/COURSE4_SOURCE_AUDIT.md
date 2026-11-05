@@ -233,3 +233,10 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Continue inspecting pp. 228–254 and compare the page headings with the contents map, especially the transition into p. 236 (listed as **ئاوەڵکار**) and p. 254 (listed as **پێوەندینیش**).
 - Independently cross-check any identified category against reliable Central Kurdish/Sorani linguistic publications, but keep the agreed single-source rule: only **ڕێزمانی ئاخافتنی کوردی** supplies Course 4 lesson content.
 - No lesson has been drafted, approved, or activated. Course 4 remains planned/inactive; no other course, main branch, production database, Botkeep runtime, merge, or deployment was changed.
+
+
+### Boundary checks from the same artifact (additional direct inspection)
+- **PDF p. 236:** the printed section heading is visibly **ئاوەڵکار**. The opening text explicitly discusses adverbs and gives examples including expressions of time and place. This agrees with the contents-page entry for p. 236.
+- **PDF p. 254:** the printed section heading is visibly **پریپۆزیشن**; the page also prints the English term **A Preposition** and gives its English definition and examples (to, in, at, on, of, by, into, with, over, for, from, under, etc.). The contents page instead lists p. 254 as **پێوەندینیش**. This is a second heading/contents terminology discrepancy to resolve, not a license to rename or reinterpret the section.
+- **PDF p. 255:** continues the preposition discussion with Kurdish examples and a comparison to other grammatical categories. It explicitly cautions about overlap/usage with adverb and conjunction categories; the distinctions need full contextual transcription before teaching.
+- These page-boundary checks reinforce the need to preserve the book's printed terminology and record contents-page discrepancies rather than silently harmonizing them.
