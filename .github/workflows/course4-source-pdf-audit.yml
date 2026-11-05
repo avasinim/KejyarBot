@@ -1,17 +1,16 @@
-name: Course 4 source PDF audit
+name: Course 4 source PDF cover audit
 
 on:
-  # Full-book OCR is deliberately manual until the extraction is split into
-  # bounded page-range jobs. A push must not launch another 1,348-page scan.
+  # Manual only: inspect the first five pages of each immutable source PDF.
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  extract:
+  cover-audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 15
     steps:
       - name: Checkout isolated audit branch
         uses: actions/checkout@v4
@@ -23,13 +22,13 @@ jobs:
           python-version: "3.12"
       - name: Install Arabic OCR engine
         run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-ara
-      - name: Install PDF and OCR libraries
+      - name: Install bounded PDF tools
         run: python -m pip install --upgrade pymupdf pillow pytesseract
-      - name: Download, verify, and OCR the five source volumes
-        run: python tools/course4_source_audit/extract_books.py
-      - name: Upload page index and short lesson excerpts
+      - name: Verify source PDFs and inspect first five pages only
+        run: python tools/course4_source_audit/extract_covers.py
+      - name: Upload cover images and OCR text
         uses: actions/upload-artifact@v4
         with:
-          name: course4-source-pdf-audit
-          path: audit-output/
+          name: course4-source-cover-audit
+          path: cover-audit/
           retention-days: 7
