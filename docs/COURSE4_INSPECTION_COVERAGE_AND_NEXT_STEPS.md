@@ -319,3 +319,13 @@ Do not claim new image inspection unless the original page image is actually ava
 ## Outline approval reconciliation — 2026-11-05
 
 The user approved the nine-part outline on 2026-11-05. Older instructions in this file to wait for outline approval or submit a new outline are superseded. The active work is now source-faithful transcription and independent claim-level validation within the approved structure. This does not approve individual lessons or authorize quizzes, catalogue restoration, runtime activation, merge, deployment, or Botkeep changes. Keep `lesson_count=0` and `lessons=[]` until a later, separately reviewed content implementation decision.
+
+
+## New sequential review coverage — PDF pp.11–24 (2026-11-05)
+
+- **pp.11–15:** directly visually reviewed; chapter opening and structural classification recorded. Attributed accounts and simple/non-simple discussion remain to be fully transcribed.
+- **pp.16–18:** directly visually reviewed; semantic classification and separate attributed taxonomies recorded. Several dense labels on p.17 require crop verification.
+- **pp.19–22:** directly visually reviewed; semantic definitions and example discussion recorded. p.19 table headings/forms and p.22 subsection heading need enlarged crops.
+- **pp.23–24:** directly visually reviewed; formation and further classification lists recorded. Several labels/forms remain provisional and require crops.
+
+Detailed observations: `COURSE4_VISUAL_REVIEW_011_024.md`. This closes the initial page-viewing pass for the approved **ناو** section only; it does not close full transcription or linguistic validation. Do not draft teaching text from provisional readings. Continue with enlarged crops and diplomatic transcription. Course 4 remains planned/inactive, zero lessons.
