@@ -257,3 +257,8 @@ The original-page preview images for PDF pp.11–24 were directly inspected. A s
 ### Expanded visual review — approved unit 1 (PDF pp.11–24)
 
 The direct page-level visual pass now covers every page pp.11–24. See `COURSE4_VISUAL_REVIEW_011_024.md` for page-specific observations and corrections. Confirmed source structure: p.11 opens **ناو** and gives structural/semantic axes; pp.12–15 preserve multiple attributed definitions of simple/non-simple nouns; pp.16–18 report semantic taxonomies including separately attributed Persian/English classifications; pp.19–24 continue gender/number, material/abstract and formation categories. p.19 table headings are **ناوی دوو لاین / بۆ نێرینە / بۆ مێینە**. Several labels and example rows remain provisional. Page-level visual coverage is not equivalent to complete transcription or validation; no lesson may be drafted from unresolved readings.
+
+
+## First diplomatic transcription batch — PDF pp.11–13 (2026-11-05)
+
+A new working transcription ledger, `COURSE4_SOURCE_TRANSCRIPTION_NOUN_011_013.md`, records the visible headings, structural outline, opening noun definition (partial), attributed terminology list for simple nouns, and selected examples. Uncertain readings are bracketed or left unresolved; the full prose passages and examples are not yet complete. This is not lesson-ready content and does not authorize drafting. The original page-level review remains in `COURSE4_VISUAL_REVIEW_011_024.md`.
