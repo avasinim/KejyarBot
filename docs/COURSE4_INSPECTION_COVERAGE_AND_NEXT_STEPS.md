@@ -30,7 +30,7 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 ## Priority order for the next source work
 
 1. **Resolve p.222 / p.398 discrepancy:** re-open both original page images side by side; confirm the printed strings and surrounding headings. Do not decide whether they are synonyms or distinct categories without contextual evidence.
-2. **Review pp.31–79 sequentially:** complete the pronoun and adjective chapter maps, then select exact passages for transcription.
+2. **Verify p.72's adjective classification heading by high-resolution crop**, then transcribe selected examples with page references.
 3. **Continue the verb chapter:** prioritize the portions not yet reviewed sequentially and transcribe representative paradigms before independent comparison.
 4. **Transcribe candidate material from already-reviewed chapters:** visual coverage is not enough; create exact, page-linked transcriptions before lesson planning.
 5. **Independent validation:** compare each candidate claim against relevant Sorani/Central Kurdish scholarship, recording variety, register, and disagreements separately.
