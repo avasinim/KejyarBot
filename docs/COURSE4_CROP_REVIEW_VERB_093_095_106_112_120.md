@@ -65,3 +65,23 @@ The original rendered page images were opened individually for pp.93, 94, 95, 10
 ## Status and guardrails
 
 This note is a focused visual verification, not complete transcription or independent validation. It does not claim that the listed paradigms are normatively valid for all Kurdish varieties. The sole Course 4 curriculum source remains **ڕێزمانی ئاخافتنی کوردی**; **ڕێزمانی ڕاناوی لکاو** remains excluded. Course 4 remains planned/inactive with zero lessons. No lesson, quiz, activation, course metadata, other-course data, production database, Botkeep runtime, merge, or deployment was changed.
+
+
+## Enlarged crop pass — 2026-11-05
+
+The table areas on pp.93–95 and the full inventory area on p.106 were enlarged from the original rendered page images. This improves confirmation of layout and headings, but some Kurdish glyphs remain too close in print to approve a full transcription without a higher-resolution scan.
+
+### Confirmed layout details
+
+- **p.93:** the upper comparison is a four-column table, right-to-left: **کۆمەڵ / فعلی لازم / ڕەگ / فعلی متعدی**. A second comparison follows with the same general structure. The prose below begins a separately attributed discussion (numbered 3); it is not part of the table.
+- **p.94:** the upper groups use three columns, right-to-left: **فرمانی تێنە... / ڕەگی فرمان / فرمانی تێپەڕ** (the full first heading is preserved in the image; transcribe only from the source crop, not OCR). The page has more than one example group and then numbered source discussions; keep these blocks separate.
+- **p.95:** a three-column comparison appears, right-to-left: **چاوگ / کاری تێنە... / کاری تێپەڕ**. The page then gives a separately headed discussion of how intransitive verbs are made transitive, with its own example pairs. The lower paragraph begins a second numbered discussion about verbs that cannot be made transitive.
+- **p.106:** the numbered inventory is indeed 1–17, with two aligned columns. The headings are visibly **تێنەبەر** (right) and **تێپەڕ** (left). Above the inventory are two short lines of forms and a prose lead-in; below it is a distinct **تێبینی** note. These must not be absorbed into the 17 numbered pairs.
+
+### Limits on exact forms
+
+The enlarged p.106 crop makes the alignment and most letter shapes clearer, but it does not justify publishing all 34 forms as a checked transcription: several entries contain visually similar letters/diacritics, and some forms may be dialectal or source-specific. The same caution applies to the small forms in the p.93–95 tables. No uncertain spelling has been silently corrected or modernized. A higher-resolution original scan or further individual glyph crops is required before these forms are used in lesson content.
+
+### Next verification step
+
+Obtain or generate higher-resolution crops for the 17 pairs on p.106 and the compact examples on pp.93–95. Verify each form against the page image, then compare with the surrounding prose and attributed sources. Until that is complete, cite these pages as evidence for the source's classification and table structure, not as a ready-to-import vocabulary list.
