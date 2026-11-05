@@ -1157,3 +1157,18 @@ The original page images for pp. 392, 393, 394 and 395 were reopened and enlarge
 3. Do not equate **گیرەک** automatically with a single modern morpheme category. Any such mapping needs a separate linguistic analysis and should be labelled as analysis, not source transcription.
 4. Keep the citation to **مسعود محمد / دراسات لغات** attributed and bibliographically distinct from the main source book.
 5. Course 4 remains planned and inactive, with zero lessons. This review does not draft lessons, quizzes, or runtime changes.
+
+
+## Closing prefix discussion: enlarged review of PDF pp. 396–397 (2026-11-05)
+
+The original page images for pp. 396–397 were inspected individually after the close review of pp. 392–395.
+
+- **PDF p. 396:** continues the definition and examples for **پێشگر** from p. 395. The prose discusses the relation of a prefix to the word it attaches to and gives examples, followed by a long inventory of forms attributed to Kurdish grammatical usage. The inventory is dense and includes many similar-looking forms; it is not safe to reproduce as a clean list without further character-by-character crop verification.
+- **PDF p. 397:** completes the inventory and then distinguishes two types in the source's account: **سادە** and **ناسادە**. The author proceeds to a concluding discussion about how bound forms and word classes are treated in Kurdish grammar, including the author's comments on the use of grammatical terminology and syntactic analysis. Keep these as the author's own closing argument, not a universal consensus statement.
+- The final lines include a date-like entry **١٨ ـ ١٢ ـ ١٩٧٦** and institutional/authorial lines. Their exact bibliographic function and the identity represented by the final line should be checked against the title/publication page before being used as publication metadata. Do not infer the author's name from this closing signature block alone.
+
+### End-of-book status
+- The main book's substantive grammatical discussion ends on p. 397; p. 398 is the contents page, and pp. 399–400 are blank apart from page numbers, as already recorded.
+- The prefix inventory on pp. 395–397 and the example inventory on pp. 393–394 remain candidates for later structured transcription, not approved lesson-ready lists.
+- The book's final classification and methodological comments should be retained as the author's own framework. They do not resolve the earlier source-internal difference in grouping **کار** and **چاوگ** on pp. 347 versus 373/389.
+- Course 4 remains planned and inactive with zero lessons. No lesson, quiz, course activation, production edit, or Botkeep deployment was made.
