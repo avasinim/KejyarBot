@@ -1195,3 +1195,15 @@ The extraction/render workflow succeeded for run `41992877908`; artifact `133994
 - One functional heading on p.269 remains unresolved pending crop-level verification.
 
 Detailed notes: `docs/COURSE4_VISUAL_REVIEW_261_272.md`. The pass is visual review, not full transcription or independent validation. Course 4 remains planned with zero lessons.
+
+
+## Crop-level source readings — pp.269, 306, 314, 317 (2026-11-05)
+
+Enlarged rendered page crops were used to resolve source readings; details are recorded in `docs/COURSE4_CROP_VERIFICATION_269_306_314_317.md`.
+
+- p.269 printed heading: **دیارخستنی واسیتە، وەک:**.
+- p.306: item 7 **(یا)** and item 8 **(نە)** are separate numbered conjunction entries.
+- p.314: item 14 prints **تەکەرنا ـ تەکینا**; item 15 begins **مەکەر، مەری**. Their normalized interpretation remains open.
+- p.317: item 16 prints **(تەنجا)**; earlier tentative reading «نەخا» is superseded.
+
+These are source-faithful visual readings only. No normalization or linguistic status is inferred. Course 4 remains planned with zero lessons.
