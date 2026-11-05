@@ -1184,3 +1184,14 @@ The original page images for pp. 396–397 were inspected individually after the
 - A variety/dialect label on p.243 remains a crop-verification item and is not promoted to a general rule.
 
 The extraction/render workflow succeeded for run `41992877908`; artifact `13399485121` supplied the page images. This remains a page-level visual audit, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
+
+
+## Focused visual confirmation — preposition pages 261–272 (2026-11-05)
+
+- Rendered page images from Actions run `41993300272`, artifact `13399017968`, were inspected individually for PDF pp.261–272.
+- p.266 confirms a distinct section titled **تەواوکردنی پریپۆزیشن**; p.267 separately begins **دووری پریپۆزیشن لە ئاخاوتندا**.
+- pp.268–272 give form-specific treatment and examples for **بۆ، لە، بە، تا، وەک، بێ**. This is only the verified set in this page interval, not a complete inventory.
+- The pages repeatedly analyze prepositional status through phrase/sentence function and attributed grammatical accounts; surface form alone is insufficient.
+- One functional heading on p.269 remains unresolved pending crop-level verification.
+
+Detailed notes: `docs/COURSE4_VISUAL_REVIEW_261_272.md`. The pass is visual review, not full transcription or independent validation. Course 4 remains planned with zero lessons.
