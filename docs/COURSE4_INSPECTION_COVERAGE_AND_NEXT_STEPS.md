@@ -184,3 +184,11 @@ Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activa
 ### p.95 first-row confirmation (2026-11-05)
 
 A second enlarged-crop reread resolves the previously withheld first row. The complete three-row table is now recorded as **چوون / چوو / چواندن**, **نەخش / نەخشان / نەخشاندن**, **خمل / خملان / خملاندن** under the headings **چاوگ / کاری تێنەبەر / کاری تێپەڕ**. See the crop-review record; the prose following the table remains untranscribed.
+
+
+### High-resolution correction pass for pp.93–95 (2026-11-05)
+
+- p.93: separated the upper two-group four-column table from the lower four-column table. Several lower rows are legible only provisionally; preserve the printed root column and do not reduce the table to simple infinitive pairs. Full details and confidence notes are in the crop-review file.
+- p.94: corrected the rightmost heading in both tables to **فرمانی تێنەپەڕ** (supersedes earlier **فرمانی تێنەبەر**). Upper table's root forms **(کلا + اند)، (خو + اند)، (وەر + اند)** are clear; example columns are provisional. Lower table's root strings **وەر + ین** and **شک + ین** need a better crop for full rows.
+- p.95: verified the prose heading **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** and opening **یەکەم - ئەو کارە رابردوانەی کە کۆتاییان بە (ا) دێت، وەک:**; subsequent examples are clipped and remain untranscribed.
+- No course content, lesson state, quiz state, or runtime state changed.
