@@ -240,6 +240,20 @@ The extraction report's page-method array identifies the primary PDF's three OCR
 The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
 
 
+
+
+### Coverage matrix reconciliation — latest controlling detail (2026-11-05)
+
+The matrix above is a high-level coverage summary. Apply these more specific current statuses when planning the next pass:
+
+- **p.106:** the 17 numbered rows have a row-by-row visual transcription in the crop-review record. Only the separate note immediately below the table remains open; do not describe the 17 rows as awaiting transcription.
+- **p.95:** the three-row table and the heading/opening rule below it are transcribed. Only the examples after **وەک** remain open because the available crop ends before them.
+- **p.119:** the four aligned rows and parenthetical infinitive list are transcribed; **خڕین** remains provisional. The preceding table is a separate unresolved block, and no grammatical labels are assigned to the four-row table.
+- **p.120:** page structure and the opening attribution phrase are recorded. The three paired rows remain provisional, their column labels are unknown, and the attributed passage is not fully transcribed.
+- **pp.93–94:** the latest controlling crop-review reconciliation supersedes older partial-status notes. Do not restore withdrawn readings or flatten multi-column tables into pairs.
+
+The above are transcription statuses only. None of these blocks is independently validated or approved for teaching.
+
 ## Latest controlling task queue after reconciliation (2026-11-05)
 
 This queue supersedes earlier “Next focused task” and “Next source-audit action” paragraphs above where they conflict with later crop-review findings.
