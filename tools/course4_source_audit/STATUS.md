@@ -1,0 +1,1 @@
+The manual source index job is configured on this isolated branch. It fetches the five immutable PDF revisions and verifies each Git blob SHA before indexing page text availability. No course runtime files are changed.
