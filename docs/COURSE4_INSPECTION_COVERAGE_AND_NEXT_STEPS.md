@@ -218,3 +218,16 @@ Next source-audit action: obtain a full-width, high-resolution crop of p.95 incl
 A fresh Library inventory/search was performed before continuing page-level transcription. The named 400-page source PDF **ڕێزمانی ئاخافتنی کوردی** / `Rezmany_axawtny_kurdy.pdf` and the previously referenced p.93–120 original zoom images are not currently available as readable Library assets in this session. The newly listed PDF `بەرگی ٣.pdf` is a 154-page file whose visible page 2 is an Iqra cultural-forum cover/contact page; it is not evidence of the 400-page Course 4 source. Two other newly listed files `بەرگی ١ حا.pdf` and `بەرگی ١ حا(1).pdf` currently report zero readable pages. These files therefore cannot be substituted for the Course 4 source.
 
 Accordingly, no new character-level transcription is claimed in this pass. The last verified crop readings remain as recorded in the controlling crop-review file. To continue beyond those readings, the original `Rezmany_axawtny_kurdy.pdf` or clear full-width page images for the outstanding pages must be present; do not infer missing examples from other books or from OCR fragments. The separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded from Course 4.
+
+
+### Correction: primary source extraction artifact recovered (2026-11-05)
+
+This section **supersedes** the earlier “Source-asset availability check” above, which incorrectly concluded that the 400-page primary PDF was unavailable. The PDF is present in the repository as `Rezmany_axawtny_kurdy.pdf` (added by the repository commit titled **ڕێزمانی**); the GitHub Actions workflow **Extract Course 4 source PDFs** completed successfully on branch `reset/grammar-course4-content` (run `41994304338`, head `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`). Its artifact `course4-source-text` (ID `13398729502`) was downloaded and inspected.
+
+The extraction report records:
+- `Rezmany_axawtny_kurdy.pdf`: **400 pages**; **397** pages with embedded text; **3** pages extracted through OCR and explicitly marked `OCR-ara+eng-UNVERIFIED`; **0** unreadable pages reported.
+- `ڕێزمانی ڕاناوی لكاو.pdf`: **32 pages**; 1 embedded-text page and 31 OCR pages. This is a separate publication and remains **excluded** from Course 4.
+
+The artifact includes extracted text and page previews. Extracted text/OCR is a navigation and comparison aid, not a substitute for the original page image. In particular, the three OCR pages remain unverified. This recovery changes source availability status only; it does **not** upgrade any page to transcribed, validated, or lesson-ready. The earlier statement that no new character-level transcription was claimed remains accurate for that pass.
+
+**Next:** use the recovered page previews/original repository PDF to resume image-led checking, starting with outstanding crop targets already listed above. Do not use the excluded 32-page publication as Course 4 source material. Course 4 remains planned/inactive with zero lessons; no lesson drafting, quizzes, activation, or runtime/deployment changes are authorized.
