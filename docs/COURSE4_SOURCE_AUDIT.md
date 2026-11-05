@@ -865,3 +865,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 1. Perform enlarged-crop verification for the priority unresolved items above, beginning with the two chapter-heading discrepancies and bound-word terminology.
 2. Produce a concise evidence table for each candidate topic: exact source page, exact printed heading, representative source examples, author vs attributed scholar, dialect/register scope, unresolved readings.
 3. Only after that, propose a course structure for user approval. Do not pre-empt approval by writing lessons.
+
+
+## Correction after enlarged character-level reinspection (2026-11-05)
+
+This addendum supersedes earlier audit statements that described the entries at PDF pp. 222 and 254 as contents-page discrepancies. Those earlier statements were transcription errors.
+
+### Rechecked page images at enlarged resolution
+
+- **PDF p. 222 and PDF p. 398, item 5:** the printed chapter heading and the contents entry show the same word. The scan's Kurdish-script glyphs are consistent across both locations; the earlier reading of the contents entry as **جێناو** was incorrect. Record the term as **چاوگ** (provisional Latin-script rendering is not needed; preserve the printed Kurdish form). The chapter-heading discrepancy is therefore **not present**.
+- **PDF p. 254 and PDF p. 398, item 7:** both the chapter page and contents entry read **پریپۆزیشن**. The earlier claim that the contents entry reads **پێوەندینیش** was incorrect. There is **no heading/contents discrepancy** here.
+- **PDF p. 392:** enlarged inspection of the diagram and repeated forms in the body text supports the printed technical term **کیرەک**. The earlier variant **کیریۆک** was an inaccurate preliminary reading. Retain **کیرەک** as the page's visible form; do not normalize it or infer an equivalent modern morpheme label without separate analysis.
+- **PDF pp. 393–395:** the term **کیرەک** recurs in the explanatory prose and examples. The pages show several numbered constructions, but their forms and functions still need a complete transcription before instructional use.
+
+### Updated audit status
+
+- Remove the two supposed discrepancies (p. 222 / p. 398 and p. 254 / p. 398) from the unresolved-issue list. The contents page and printed headings agree on both.
+- The source-internal difference in how **کار** and **چاوگ** are grouped remains a genuine issue to document: p. 347 lists them separately, whereas pp. 373 and 389 group them parenthetically.
+- The exact technical form **کیرەک** is now visually supported on p. 392 and corroborated on pp. 393–395. What remains unresolved is its full definition, distribution, and relation to other categories in the author's model—not its basic printed spelling.
+- Future source maps and any proposed course structure must use these corrected readings. This addendum takes precedence over earlier contradictory transcription notes in this audit.
