@@ -643,3 +643,23 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Several subgroup labels are visually readable only in context and should be rechecked in enlarged crops before quotation. This is a structural visual review, not a complete transcription.
 - Kurdish explanatory prose continues to use **عەتف**, not **عطف**. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 338.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 338–343 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 338:** continues the author's own analysis of **هەر**. It discusses additional subgroup cases, including uses that the author contrasts with the adverbial function; examples and sentence context are used to distinguish the constructions. A subsection labelled **ب** compares a set of forms and emphasizes that similar-looking expressions do not necessarily have the same function. The lower part begins a further attributed note referring to نووری عەلی ئەمین.
+- **PDF p. 339:** continues the note on نووری عەلی ئەمین and the author's commentary. It discusses **هەر** in combination with other forms and gives examples where its function is limited or emphatic. A new subsection labelled **ب** begins near the bottom, continuing the author's own descriptive grouping.
+- **PDF p. 340:** continues the author's discussion of the different uses of **هەر**, including combinations with other particles and constructions. A subsection labelled **ج** reviews an attributed analysis by نووری عەلی ئەمین and compares it with the author's account. A subsection **د** cites examples attributed to نووری عەلی ئەمین and explicitly discusses exceptional/limiting uses. Preserve these attributions and do not merge them into a single authorial rule.
+- **PDF p. 341:** concludes the examples for the preceding discussion, then clearly opens **٢١ ـ ئامرازی (هەرکە)ی عەتف**. The author notes that some Kurdish grammarians have not separately classified **هەرکە** as a conjunction, and compares it with forms including **هەر** and **کە**. Four sentence examples are numbered on this page. The examples show that interpretation depends on construction; do not treat the sequence as a simple mechanical sum of two particles.
+- **PDF p. 342:** continues section 21 and clearly opens **٢٢ ـ ئامرازی (کەچی)ی عەتف**. It surveys a description by نووری عەلی ئەمین and a Kurdish grammar reference, then gives the author's analysis and sentence examples. The source explicitly distinguishes the construction's use from other possible readings; exact examples should be transcribed before teaching.
+- **PDF p. 343:** continues section 22 with further examples and commentary, then clearly opens **٢٣ ـ ئامرازی (چونکە)ی عەتف**. It cites نووری عەلی ئەمین, a Kurdish grammar work, مامۆستا توفیق وەهبی, and جەگرخۆین. The page includes English glosses **since** and **because** and authorial examples. These glosses are comparative aids; preserve the Kurdish examples and the author's contextual distinctions.
+
+### Findings and limits
+- Pages 338–340 continue the detailed, source-specific analysis of **هەر** and its combinations. The author's own subgroups (including ب، ج، د) and the attributed analyses must be kept separate.
+- Section **21 (هەرکە)** begins on p. 341; section **22 (کەچی)** begins on p. 342; section **23 (چونکە)** begins on p. 343.
+- The source itself notes classification differences among Kurdish grammarians, including whether **هەرکە** receives a separate conjunction classification. Do not conceal these disagreements.
+- English glosses such as *since* and *because* do not replace the source's Kurdish sentence-level analysis.
+- Kurdish explanatory prose uses **عەتف**, not **عطف**. No lesson content has been drafted or activated; Course 4 remains planned and inactive.
+- This remains a sequential structural review, not a complete transcription. Exact wording of examples, technical subgroup labels, and full references need crop-level transcription before lesson drafting.
+- Next: continue sequentially from PDF p. 344.
