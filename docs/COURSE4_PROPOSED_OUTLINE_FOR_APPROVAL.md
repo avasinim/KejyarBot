@@ -1,6 +1,6 @@
-# Course 4 — proposed source-faithful outline (approval required)
+# Course 4 — approved source-faithful outline
 
-Status: **proposal only — not approved; no lessons created**  
+Status: **approved by the user on 2026-11-05; source transcription and validation still required; no lessons created**  
 Branch: `reset/grammar-course4-content`  
 Sole curriculum source: `Rezmany_axawtny_kurdy.pdf`
 
@@ -39,11 +39,11 @@ The outline follows the book's own order and visible contents page (PDF p.398). 
 
 ## Catalogue and release boundary
 
-This proposal is kept only in the isolated audit branch. The current `main` branch intentionally has no Course 4 catalogue entry; commit `e691feb6` removed the earlier planned entry. This proposal does not reverse that decision, add Course 4 to the live catalogue, or authorize a release. The outline must be explicitly approved before any lesson drafting, and any later catalogue restoration requires a separate explicit decision and compatibility review.
+This proposal is kept only in the isolated audit branch. The current `main` branch intentionally has no Course 4 catalogue entry; commit `e691feb6` removed the earlier planned entry. This proposal does not reverse that decision, add Course 4 to the live catalogue, or authorize a release. The user approved this outline on 2026-11-05, delegating the structural decision with the instruction that the assistant's approval is theirs. This approval authorizes the next controlled source-transcription and lesson-planning work within the boundaries below; it does not authorize runtime activation, catalogue restoration, merge, deployment, or changes to other courses. Any later catalogue restoration requires a separate explicit decision and compatibility review.
 
 ## User approval gate
 
-This document is only a proposed outline for review. No lesson text, quiz, lesson count, runtime content, or course activation has been created or changed. Wait for the user's explicit approval or requested corrections before drafting any lesson.
+The outline has been approved by the user on 2026-11-05. Approval is for the structure only. Before lesson text is drafted, each selected rule/example must still be transcribed from the primary source and independently validated; unresolved or provisional readings must not be used as settled teaching content. No lesson text, quiz, lesson count, runtime content, or course activation has yet been created or changed.
 
 Branch-local proposal metadata only: `id=grammar`, `key=course_grammar`, `order=4`, `status=planned`, `lesson_ids=[]`. This is not the current `main` catalogue or live runtime state; `main` intentionally has no Course 4 entry.
 
@@ -51,3 +51,8 @@ Branch-local proposal metadata only: `id=grammar`, `key=course_grammar`, `order=
 ## Page-span correction — 2026-11-05
 
 The earlier proposed Unit 9 span **349–387** was too broad. The evidence register maps the **ئامرازی سەرسووڕمان** discussion to pp.349–373, while the focused visual review identifies pp.374–379 as several separately attributed accounts and the closing review treats pp.374–385 as distinct affix/particle and comparative material. Therefore Unit 9 is now provisionally limited to **pp.349–373**. Pages **374–387** are shown separately as unstructured source material pending further source-led organization; this does not create a new lesson unit or assert a definitive chapter title. This is a correction to the proposal only, not approval of the outline.
+
+
+## Approval record — 2026-11-05
+
+The user explicitly delegated the outline decision: **«چۆنت پێت دروستە ئاوا بکە، پەسەندی تۆ پەسەندی منە»**. The assistant accepts the proposed structure as approved, subject to the source-fidelity safeguards and outstanding transcription/validation work in this document. This approval does not approve individual lesson content or authorize course activation or release.
