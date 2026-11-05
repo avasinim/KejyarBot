@@ -493,3 +493,16 @@ These are transcribed as seen in the crop, without normalization. If a later ful
 The sharp lower crop shows the heading as **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**. This supersedes the earlier transcription **بە کتایی کارەوە**; the first word after **بە** is **کۆتایی**, not **کتایی**.
 
 The opening rule reads **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples following **وەک** are still clipped by the crop boundary and remain untranscribed.
+
+
+## Reconciliation note — p.94/p.95 status and correction of an overconfident summary (2026-11-05)
+
+This note is the controlling status for the page-specific observations above.
+
+- **p.94 upper table:** only the root forms **(کلا + اند)**, **(خو + اند)**, **(وەر + اند)** and the first/third example pairs are sufficiently legible as recorded above. For the second row, the right example is **منداڵەکە خەوت**; the left example is **not certified**. In particular, do **not** use **منداڵەکەم خوارد** (or any other guessed form) as a transcription.
+- **p.94 lower table:** retain the two visible pairs exactly as transcribed in the second-pass section: **سەکەکە نەوەرێ / سەکەکەم نەوەرێنم** and **شووشەکە نەشکێ / شووشەکەم نەشکێنم**. Roots: **وەر + ین** and **شک + ین**.
+- **p.95:** heading is **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**. Opening is **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples after **وەک** are outside the supplied crop and remain untranscribed.
+- The complete p.93 table transcription at the end of the p.93 section supersedes the earlier tentative descriptions on that page. Keep every printed form and the blank root cell for **هاتن**.
+- The earlier p.94/p.95 historical paragraphs above that give different headings/readings are retained as audit history only; the second-pass and this reconciliation note govern current use.
+
+No lesson text, quiz, course metadata, activation, or runtime/deployment state was changed.
