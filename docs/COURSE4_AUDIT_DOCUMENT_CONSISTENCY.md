@@ -127,7 +127,7 @@ A fresh compare of `main` against `reset/grammar-course4-content` reports **dive
 
 ## Current source-review boundary — 2026-11-05
 
-The repository documents currently agree on the controlling Course 4 boundary: the sole curriculum source is `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded; the proposed outline is not approved; and Course 4 remains planned with zero lessons. The outstanding image-led queue remains p.106's note, p.95's clipped examples after **وەک**, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table. No new page transcription is asserted by this consistency update. Do not draft lessons, quizzes, or activate the course before explicit outline approval.
+The repository documents currently agree on the controlling Course 4 boundary: the sole curriculum source is `Rezmany_axawtny_kurdy.pdf`; the separate `ڕێزمانی ڕاناوی لکاو.pdf` remains excluded; the nine-part outline was approved on 2026-11-05; and Course 4 remains planned with zero lessons. The outstanding image-led queue remains p.106's note, p.95's clipped examples after **وەک**, p.120's full-width table and attributed passage, unresolved cells on pp.93–94, and p.119's separate preceding table. No new page transcription is asserted by this consistency update. Continue source transcription and validation; do not treat the outline approval as approval of lesson texts or runtime activation.
 
 
 ## Outline approval reconciliation — 2026-11-05
