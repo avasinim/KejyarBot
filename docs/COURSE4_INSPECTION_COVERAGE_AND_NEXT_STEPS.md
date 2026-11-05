@@ -377,3 +377,8 @@ The transcription ledger does not establish independent linguistic validation an
 ## Initial diplomatic transcription — ڕاناو, PDF pp.31–36 (2026-11-05)
 
 A separate ledger, `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_031_036.md`, records selective transcription from the original individual page previews for pp.31–36. It captures the personal-pronoun discussion on p.31, uncertain paradigm headings and paired forms on pp.32–33, connected-pronoun terminology and paradigms on pp.33–35, and the two printed three-column tables on p.36. All uncertain forms remain marked for crop-level verification; table cells and examples are not treated as fully certified. This ledger does not establish linguistic validation or create lesson content. Continue by checking the open cells/paragraphs in this ledger before proceeding beyond p.36. Course 4 remains planned with zero lessons.
+
+
+## Initial diplomatic transcription — ڕاناو, PDF pp.37–40 (2026-11-05)
+
+The ledger `docs/COURSE4_SOURCE_TRANSCRIPTION_PRONOUN_037_040.md` records selective readings from the original page images. It captures the continuation of connected-pronoun tables on p.37, an attributed discussion and paired forms on p.38, the Kurdish/Latin aligned forms (including **Ez im, Tu yi, Ew e, Em in, Hun in, Ew in**) on p.39, and the continuation of aligned forms and dialect footnotes on p.40. Dense paradigms, exact suffix boundaries, and footnote wording remain open for sharper crop verification. This is not a complete transcription or linguistic validation. Course 4 remains planned/inactive with zero lessons.
