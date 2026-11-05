@@ -240,3 +240,28 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - **PDF p. 254:** the printed section heading is visibly **پریپۆزیشن**; the page also prints the English term **A Preposition** and gives its English definition and examples (to, in, at, on, of, by, into, with, over, for, from, under, etc.). The contents page instead lists p. 254 as **پێوەندینیش**. This is a second heading/contents terminology discrepancy to resolve, not a license to rename or reinterpret the section.
 - **PDF p. 255:** continues the preposition discussion with Kurdish examples and a comparison to other grammatical categories. It explicitly cautions about overlap/usage with adverb and conjunction categories; the distinctions need full contextual transcription before teaching.
 - These page-boundary checks reinforce the need to preserve the book's printed terminology and record contents-page discrepancies rather than silently harmonizing them.
+
+
+## Visual review checkpoint: primary book PDF pp. 349, 388, 392, 395, 398 and 400 (2026-11-05)
+
+### Artifact and workflow
+- The expanded extraction/preview workflow for commit `203bc7dee719cd8d2ef3f0aa901d67bba70ac292` completed successfully: run `41984870708`.
+- Artifact `course4-source-text`, ID `13394938732`, includes the primary-book extracted text, extraction report, and individual page previews across the expanded 1–400 page range. Artifact expires 2026-11-19.
+- The page images for PDF pp. 349, 388, 392, 395, 398 and 400 were visually inspected. OCR/extracted text remains a navigation aid; page-image reading governs these observations.
+
+### Direct observations (not yet approved teaching claims)
+- **PDF p. 349:** begins section 9, printed as **ئامرازی «تعجب»**, with the English gloss **Interjection**. The prose describes an exclamatory/interjection category and gives examples. This supports the contents-page entry for p. 349 and provides a clear category boundary.
+- **PDF p. 388:** heading is **وشەی سەرنجخۆ و وشەی بەستراو**. The discussion compares two broad types of words and states that the source distinguishes the following five word classes in its analysis: **ناو، ڕاناو، ئاوەڵناو، کار (جاوک)، ئاوەڵکار**. The printed term in parentheses beside **کار** appears as **جاوک**, consistent with the unresolved heading seen on pp. 222–227. Do not silently replace it with a modern label or assume it means pronoun.
+- **PDF p. 392:** a tree diagram divides **وشە** into **سەربەخۆ** and **بەستراو**; the latter is further divided into **ئامراز، کیریۆک، نیشانە** (visual readings; exact technical spelling should be checked against surrounding pages). The page then discusses the classification and gives an explanation of **کیریۆک**. This is source-specific terminology and requires careful transcription before lesson use.
+- **PDF p. 395:** continues the discussion of bound forms and describes two groups of forms/markers, including forms appearing before and after a word; the examples and terminology require full transcription and cross-checking. This is not sufficient by itself to assert a general linguistic classification.
+- **PDF p. 398:** contents page reconfirms the chapter map: p. 349 **ئامرازی تعجب**; p. 388 **وشەی سەرنجخۆ و وشەی بەستراو**; p. 392 **یەکەم — کۆمەک**; p. 395 **پێشگر**. The page map is consistent with the inspected boundaries, but the p. 222 and p. 254 terminology discrepancies recorded above remain unresolved.
+- **PDF p. 400:** visually appears blank apart from the printed page number; no additional chapter content is visible on this page.
+
+### Updated structural findings and cautions
+- The book's closing pages introduce a distinction between independent/free and bound words and a further internal classification of bound forms. This is a separate analytical layer from the earlier chapter list; do not flatten it into a simple list of parts of speech.
+- The recurrence of **جاوک** in the p. 388 parenthetical classification, alongside the p. 222–227 verb-related examples, strengthens the need to resolve the source's exact intended term. It does not by itself establish the correct modern linguistic equivalent.
+- The p. 392 tree diagram and p. 395 discussion need line-by-line manual transcription before they can support a lesson. Preserve source spellings and terminology, and flag any claim that cannot be independently corroborated.
+
+### Next review step
+- Continue with a systematic pass over the full verb-related section and the intervening pages 301–348, then manually transcribe the p. 388–397 discussion and compare it with independent Central Kurdish linguistic research strictly for validation.
+- Do not draft or activate lessons from OCR snippets or the contents page alone. Course 4 remains planned/inactive with zero lessons; no other course, main branch, production database, Botkeep runtime, merge, or deployment was changed.
