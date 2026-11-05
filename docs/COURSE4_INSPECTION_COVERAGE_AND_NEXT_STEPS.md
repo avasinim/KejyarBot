@@ -495,3 +495,10 @@ This is visual mapping only, not complete diplomatic transcription or independen
 Original individual page previews pp.104–109 from the recovered source-text artifact were inspected separately. Structural observations and the next transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_104_109.md`. The pages include a continuation of an attributed discussion, the numbered subsection **پێنجەم**, distinct statements attributed to **مامۆستا مەسعود** and **مامۆستا سادق**, a two-column 17-item list on p.106, explanatory blocks on p.107, numbered arguments on p.108, and a four-column comparison on p.109.
 
 This is visual mapping only. The p.107 heading remains provisional and the p.106–109 dense forms require enlarged crop verification before diplomatic transcription. Preserve all attribution boundaries, printed row alignment, and numbered sequence. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.110–115 (2026-11-05)
+
+The original individual page previews pp.110–115 were reopened from the recovered `course4-source-text` artifact. Structural observations and the transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_110_115.md`. These pages continue the passive-construction discussion, introduce the bilingual heading **فعل مبنی للمعلوم و مبنی للمجهول / Active and Passive**, include attributions to **مامۆستا سەعید سەقفی** and **مامۆستا تۆفیق وەهبی**, and develop the book's own terminology **کارادار / کارابێزر**. Page 115 opens a separate section on composing the passive construction, including an infinitive/passive-past comparison.
+
+This is visual structure review only. Dense prose and all compact tables/examples still require crop-level diplomatic transcription. Keep attributed accounts, numbered subsections, and comparison tables separate; do not normalize the book's terminology. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
