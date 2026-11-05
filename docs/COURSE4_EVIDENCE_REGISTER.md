@@ -172,3 +172,16 @@ See `docs/COURSE4_VISUAL_REVIEW_386_391.md`.
 - The grouping **کار (چاوگ)** on p.388 contrasts with p.347's separate entries. Preserve the source-internal variation.
 
 Visual review only, not full transcription or independent linguistic validation. Course 4 remains planned with zero lessons.
+
+
+## Closing source synthesis — pp.374–400 (2026-11-05)
+
+The closing review synthesizing pp.374–397 and the book's end pages is recorded in `docs/COURSE4_CLOSING_REVIEW_374_400.md`.
+
+- The substantive grammar discussion ends at p.397; p.398 is the contents page; pp.399–400 are blank apart from page numbers.
+- The closing section contains multiple separately attributed frameworks and comparative passages. These must remain distinct and attributed; they do not form one unified inventory.
+- The independent/bound framework (pp.388–392), numbered examples (pp.393–394), attributed discussion (p.395), and prefix classification (pp.395–397) are separate layers of analysis.
+- Source-internal variation in grouping **کار** and **چاوگ** remains unresolved and must be documented rather than harmonized.
+- Dense lists remain unapproved for lesson transcription until character-level verification; independent linguistic validation is still required.
+
+This is a synthesis of existing visual evidence, not a complete transcription. Course 4 remains planned with zero lessons and awaits user approval of a proposed outline before any lesson drafting.
