@@ -133,3 +133,8 @@ The repository documents currently agree on the controlling Course 4 boundary: t
 ## Outline approval reconciliation — 2026-11-05
 
 The user explicitly approved the nine-part Course 4 outline on 2026-11-05. This supersedes the earlier final-status paragraph above that says the outline is not approved and says not to draft anything before outline approval. The approved outline is recorded in `COURSE4_PROPOSED_OUTLINE_FOR_APPROVAL.md`; the plan metadata records `outline_approved_source_transcription_and_validation_pending`. The next authorized work is source transcription and claim-level validation against the primary PDF, not lesson drafting from uncertain readings. Course 4 remains planned/inactive with zero lessons. This approval does not authorize restoring the catalogue entry to `main`, merging/rebasing, changing runtime/production, or syncing/deploying to Botkeep.
+
+
+## New source-review evidence — 2026-11-05
+
+Original-page preview images for PDF pp.11–24 were directly inspected and the selective structural findings recorded in `COURSE4_VISUAL_REVIEW_011_024.md`. The first approved unit (**ناو**) now has a page-viewing pass, but not a complete diplomatic transcription or claim-level validation. Dense labels and examples on pp.17, 19, 20, 22–24 remain open for enlarged-crop verification. No lesson content was drafted and the plan remains at zero lessons.
