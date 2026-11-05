@@ -178,3 +178,34 @@ These works are not additional curriculum books. They are independent checks to 
 - Individual-page images now directly inspected in this review block: PDF pp. 81, 88, 93, 112, 113, 120, 130, 140, 150, and 160. These are spot checks across the 81–160 range, not exhaustive reading of all 80 pages.
 - Topics now identified in the source for later detailed study: verb definitions, inflection/paradigms, infinitive and imperative forms, transitivity labels, active/passive voice, auxiliary/modal-like constructions, and negation.
 - No complete lesson, final grammar rule, or teaching sequence has been written from this block. Exact source wording and examples still need systematic transcription, then independent checking.
+
+
+## Visual review checkpoint: PDF pp. 81–221 (2026-11-05)
+
+### Extraction status
+- GitHub Actions run `41983766994` completed with conclusion **success** on isolated branch `reset/grammar-course4-content`, head commit `86482e43e67a6589a2f6a7261dc65e06f5e477c4`.
+- Artifact `course4-source-text`, ID `13395570599`, was downloaded successfully. It contains 296 files, including individual page previews for the primary book through PDF p. 221.
+- Artifact ZIP was unpacked locally and page images were inspected. The artifact itself is retained by GitHub until 2026-11-19.
+
+### Additional direct visual inspection
+The following individual page images were inspected at readable resolution in this checkpoint:
+- **PDF p. 112:** section heading explicitly includes “Active and Passive” and **فعل مبنی للمعلوم و مبنی للمجهول**, with Kurdish labels **کاری کاردار و کاری کاربێژ**. A table aligns forms identified in the source as معلوم / مجهول and related forms. Record the source's labels exactly; do not equate them automatically with transitivity.
+- **PDF p. 113:** continues the source's account of active/passive, with attributed reference material and examples. This confirms that the p. 112 topic is developed as a distinct discussion.
+- **PDF p. 114:** continues the active/passive discussion and then begins a subsection on **زاراوەی کاردار و کاربێژ** (as visible in the page heading/text). The terminology and examples need exact transcription before teaching.
+- **PDF p. 120:** continues verb constructions and examples, including forms with **دە-** and other verb material. The page also contains discussion of how forms are used; exact tense/aspect interpretation remains open.
+- **PDF p. 130:** contains forms and examples involving **توانین** and related constructions. This is a candidate for studying ability/modal-like expressions, not proof that the source's category is equivalent to a modern modal auxiliary.
+- **PDF p. 160:** continues discussion of negative verb forms and contrasts forms with negative marking and forms without it. The visible examples include **نە-**; its distribution must be checked across the surrounding paradigm.
+- **PDF p. 180:** continues a section with imperative/command-like examples and related forms. Preserve the source's exact forms and context; do not infer a general imperative rule from this isolated page.
+- **PDF p. 200:** shows further verb forms and examples, including forms discussed in relation to command/request and other verbal meanings. The precise subsection boundary and analysis require reading the intervening pages.
+- **PDF p. 221:** contains a short final set of examples and appears to close the verb material immediately before the next contents-listed chapter begins at p. 222. The next chapter boundary is independently listed on the contents page (PDF p. 398) as **5 — جێناو**. Verify the opening of p. 222 directly before recording the exact transition.
+
+### Structural and methodological observations
+- The source's treatment from p. 112 onward separates active/passive terminology from other verb classifications. Keep **کاری کاردار / کاری کاربێژ**, **معلوم / مجهول**, and **فعلی متعدی** distinct unless a complete analysis of the source's definitions and examples demonstrates a justified relationship.
+- The inspected pages include verb paradigms, negative forms, modal-like expressions, and imperative/command examples. These are topics for later transcription and validation, not approved teaching rules.
+- A page image being inspected does not mean its full text has been transcribed. OCR remains a navigation aid only.
+- No claims from pp. 81–221 have yet been marked “verified for teaching”; no lesson text has been drafted or approved from this review.
+
+### Coverage update and next step
+- Individual-page visual inspections now recorded across the verb chapter include pp. 81, 88, 93, 112–114, 120, 130, 140, 150, 160, 180, 200, and 221. This remains selective sampling, not exhaustive line-by-line inspection of every page from 81 to 221.
+- The next step is to inspect the verb chapter's intervening paradigms and examples where a specific claim needs to be evaluated, then inspect PDF p. 222 and the **جێناو** chapter independently. Do not draft a curriculum or lessons until the source's structure, exact examples, and independent validation have been reconciled.
+- Course 4 remains planned and inactive. No other course, `main`, production database, Botkeep runtime, merge, or deployment has been changed.
