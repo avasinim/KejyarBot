@@ -8,6 +8,7 @@ on:
       - "Rezmany_axawtny_kurdy.pdf"
       - "ڕێزمانی ڕاناوی لكاو.pdf"
       - "scripts/extract_course4_sources.py"
+      - "scripts/render_course4_source_previews.py"
       - ".github/workflows/extract-course4-sources.yml"
   workflow_dispatch:
 
