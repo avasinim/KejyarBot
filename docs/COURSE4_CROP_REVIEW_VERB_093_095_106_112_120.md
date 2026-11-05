@@ -340,3 +340,14 @@ The parenthetical list under **٥- چاوکی دالی** is visibly a separate l
 On p.120, the first line of the separate attributed passage is legible as **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە)**. The passage is a distinct account concerning **کاری شاراندنەوە** and must remain attributed to مامۆستا مەسعود; it must not be merged with the three pairs printed above it. Full line-by-line transcription remains pending, especially where dots/diacritics and joined glyphs are indistinct.
 
 This is a visual reading of the source image only. No spellings have been normalized and no grammatical claims independently validated.
+
+
+## p.119 — sharper reinspection of the parenthetical list (2026-11-05)
+
+The newly reopened full-width crop makes most of the parenthetical infinitive list readable. Transcribed in the printed right-to-left order, retaining the source spellings:
+
+**بژاردن، بوارن، خوارن، خڕین، ژمارن، سپاردن، شاراندنەوە، کردن، ناردن، هاوردن، هەڵپەساردن، وشاردن**.
+
+The fourth item is visually closest to **خڕین**, but its internal marks are less crisp than the surrounding entries; retain it as a provisional reading pending inspection of the original printed page at higher resolution. The list is introduced in the source as examples associated with the subsection; it is not a paradigm table. No forms have been modernized or normalized.
+
+The immediately following explanation states that, in the source's Sulaymaniyah variety account, these verbs are also used in the cited form/pattern, then gives the four aligned pairs already recorded above. The right-hand column is visually the **دەبژێرم، دەژمێرم، دەسپێرم، دەشارمەوە** series; the left-hand column is **بژێردرام، ژمێردرام، سپێردرام، شاردرامەوە**. The exact technical wording of the explanatory sentence should be checked against a higher-resolution page before quoting it verbatim.
