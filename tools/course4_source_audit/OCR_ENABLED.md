@@ -1,0 +1,1 @@
+Arabic-script OCR mode is enabled for scanned pages. The full OCR text is kept only in the runner's temporary workspace; the artifact contains a compact page-quality index and short lesson-specific excerpts.
