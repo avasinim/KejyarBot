@@ -285,3 +285,22 @@ The page continues the numbered formation discussion with **٢-** and a separate
 The crop's column alignment indicates the shorter form and the form containing **-ردرا** are paired, but the table headings are outside this crop. Therefore the pairs are recorded as provisional source readings, not assigned a grammatical label here. A separate prose discussion attributed to **مامۆستا مەسعود محەمەد** follows; it is not part of the example list. Its wording has not been transcribed.
 
 No general rule is inferred from these forms. The exact table heading and p.120 examples require checking against the full page and a sharper crop before use in instructional material.
+
+
+## p.119–120 — direct reinspection of original page images and enlarged crops (2026-11-05)
+
+The original rendered page images (804 × 1137) were reopened from the source-text artifact and the text regions enlarged. This confirms the structural details below, but not every small glyph in the paired lists.
+
+### p.119
+
+- The numbered heading is legible as **٥- چاوکی دالی**. This confirms the earlier provisional heading reading.
+- The parenthetical list immediately below the heading is a list of infinitive examples cited by the source; it is separate from the following paired-form table. Individual entries are not reproduced here because several glyphs remain difficult to distinguish at the available raster resolution.
+- The lower paired-form table contains four aligned rows. Its two columns are visually distinct, but the exact spelling of several forms is not sufficiently certain for diplomatic transcription. Keep the table as an untranscribed source block rather than guessing its cells.
+- The three paired forms at the top of p.119 are a separate preceding table/list, not part of subsection 5; their exact glyphs also remain unverified.
+
+### p.120
+
+- The numbered subsection **٢-** introduces a separate group of three paired forms. Enlarged crops confirm the visible pairings as **بوتێرا / بوتێردرا**, **بوورا / بووردرا**, and **ژمێرا / ژمێردرا**. The column headings are not present in the crop, so no grammatical labels are assigned to the columns.
+- The prose beginning **ڕای مامۆستا مەسعود...** is a separately attributed account, not an extension of the three-row table. It discusses the source's account of the distinction and formation of **کاری شاراوە** and provides additional examples. The full passage has not yet been diplomatically transcribed; retain it as a distinct attributed block.
+
+These observations refine the previous p.119–120 note: p.119's heading is now visually confirmed, while its paired-form tables remain untranscribed. The p.120 three pairs are clearer at crop level, but their column labels remain unavailable in the crop. None of these readings is an independent validation or lesson approval.
