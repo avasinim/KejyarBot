@@ -441,3 +441,31 @@ The lower table has two rows. The root column appears **وەر + ین** and **ش
 The heading immediately below the three-row table reads **پێوەڵکاندنی (اندن) بە کتایی کارەوە:**. The first line begins **یەکەم - ئەو کارە رابردوانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples following **وەک** are clipped at the left edge of the supplied zoom, so they are not transcribed. This confirms that the prose introduces a separate numbered/ordered formation rule after the table; do not merge it into the three table rows.
 
 All uncertain strings above remain explicitly provisional. This pass corrects the p.94 heading, adds the p.95 paragraph opening, and separates p.93 table groups; it does not silently normalize source spellings.
+
+
+## p.93 — transcription tightened from the full-width table zoom (2026-11-05)
+
+The supplied p.93 zoom is sharp enough to resolve the two upper numbered groups more confidently. Retain the printed four-column layout (right-to-left **کۆمەڵ / فعلی لازم / ڕەگ / فعلی متعدی**) and transcribe the visible rows as follows:
+
+| کۆمەڵ | فعلی لازم | ڕەگ | فعلی متعدی |
+|---:|---|---|---|
+| ١ | نووسستن | نوو | نواندن |
+| ١ | بڕاووتن | بڕوو | بڕواندن |
+| ٢ | چەقین | چەق | چەقتاندن |
+| ٢ | لەوەرین | لەوەر | لەوەراندن |
+
+The lower four-column block is separately headed with the same columns and begins at group **١**. Its visible rows are:
+
+| کۆمەڵ | فعلی لازم | ڕەگ | فعلی متعدی |
+|---:|---|---|---|
+| ١ | کەوتن | کەو | خستن |
+| ١ | هاتن | — | هێنان |
+| ١ | مردن | مر | مراندن |
+| ١ | کەمایین | کە | کەیاندن |
+| ١ | ڕۆیین | ڕۆ | ناردن |
+
+The dash for **هاتن** means the root cell is blank in the printed table; it is not an inferred root. The unusual spellings **بڕاووتن، لەوەرین، کەمایین، ڕۆیین** are retained as printed, not normalized. This table-level transcription supersedes the more tentative row descriptions earlier in this document.
+
+## p.95 — paragraph crop boundary
+
+The lower prose crop confirms the heading **پێوەڵکاندنی (اندن) بە کتایی کارەوە:** and the opening sentence **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples continue beyond the left edge of the supplied crop, so no example is transcribed from this partial image. The word **ڕابردووانە** is recorded as seen in this crop; retain the original orthography.
