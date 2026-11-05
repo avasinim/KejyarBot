@@ -420,3 +420,20 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source continues to report other grammarians' accounts alongside its own examples. Do not collapse those attributed views into one taxonomy.
 - This remains a visual structural audit, not a full transcription. Exact heading spelling, cited author names, individual particles and example sentences require close transcription before lesson drafting. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 270 until the source clearly starts the next chapter/section.
+
+
+## Sequential visual review: preposition discussion and chapter boundary PDF pp. 270–273 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 270:** continues the numbered inventory of prepositional forms and examples. Visible entries include **بە** and **تا** in separate numbered subsections, with sentence examples. The author also inserts a note about how a form's function is determined in context, and a further subsection begins with **(تا)**.
+- **PDF p. 271:** continues that subsection and introduces further numbered forms, visibly including **(وەک)** and **(بە)**, each with example sentences and an explanatory note. A further item **(بێ)** begins near the bottom and continues on the next page.
+- **PDF p. 272:** completes the discussion of **(بێ)** with example sentences, then gives a short explanatory paragraph about the grammatical status/function of the forms under discussion. This page contains no new chapter heading.
+- **PDF p. 273:** a new chapter begins with the printed heading **ئامرازی «عطف - Conjunction»**. This is the clear boundary after the preposition discussion.
+
+### Findings and limits
+- The preposition discussion extends through PDF p. 272; the next chapter begins at p. 273. Do not end the chapter at p. 258, 264, or 269.
+- The pages show a sequence of individual forms (including بە، تا، وەک، بێ) treated with sentence examples. These must be taught through their constructions and contextual functions, not as a bare list detached from syntax.
+- The contents page p. 398 labels the p. 254 chapter **پێوەندینیش**, while the actual printed heading at p. 254 is **پریپۆزیشن / A Preposition**. The mismatch remains unresolved as a source-internal discrepancy; preserve both readings in the audit.
+- The next chapter's printed heading at p. 273 is **ئامرازی عطف - Conjunction**, whereas the contents page uses **هاوەڵ (عطف / Conjunction)**. Record this as another difference in wording between contents and printed heading; do not silently harmonize.
+- This is a structural visual review, not a full transcription. Before drafting lessons, transcribe the definitions, numbered form labels, examples, and final explanatory paragraph from high-resolution crops. The primary book remains the sole lesson source. Course 4 remains planned and inactive.
+- Next: begin sequential review of the conjunction chapter from PDF p. 273 onward, keeping the author's analysis distinct from the accounts attributed to other grammarians.
