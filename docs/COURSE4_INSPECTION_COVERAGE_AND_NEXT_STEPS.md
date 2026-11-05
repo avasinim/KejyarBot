@@ -204,3 +204,10 @@ A second enlarged-crop reread resolves the previously withheld first row. The co
 
 - p.94: sharp crop confirms both table headings right-to-left **فرمانی تێنەپەڕ / ڕەگی فرمان / فرمانی تێپەڕ**. Upper roots and clear example pairs are recorded in the crop-review file; the second left-column verb remains unreadable with confidence and is not guessed. Lower roots **وەر + ین** and **شک + ین**, with their visible example pairs, are now transcribed.
 - p.95: heading corrected to **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:**; this supersedes earlier **بە کتایی کارەوە**. Opening rule is **یەکەم - ئەو کارە ڕابردووانەی کە کۆتاییان بە (ا) دێت، وەک:**. Examples after **وەک** remain clipped.
+
+
+### p.94–95 transcription reconciliation (2026-11-05; controlling note)
+
+The latest crop-review reconciliation is in `COURSE4_CROP_REVIEW_VERB_093_095_106_112_120.md` (commit `c67df8e`). For p.94, the left example in the second upper-table row remains unreadable and must not be guessed; an earlier conversational summary's **منداڵەکەم خوارد** is explicitly withdrawn. The lower-table pairs and their roots are transcribed in that crop-review record. For p.95, the heading is **پێوەڵکاندنی (اندن) بە کۆتایی کارەوە:** and the opening rule is transcribed; examples after **وەک** remain outside the supplied crop. These page-level statuses supersede older historical checkpoints in this file.
+
+Next source-audit action: obtain a full-width, high-resolution crop of p.95 including the examples after **وەک**; without that source image, do not infer or reconstruct the missing examples. Then continue the p.106 note beneath the 17-row table and p.119 preceding table only when the corresponding original crops are available.
