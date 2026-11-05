@@ -273,3 +273,17 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - These sampled pages visually continue the conjunction-related material following the section opening at p. 273; no new major chapter boundary is apparent in these sampled points before the interjection heading at p. 349.
 - The pages contain continued explanatory prose, examples and subdivisions. This is only a spaced sample, not a complete reading or transcription of pp. 301–348; do not treat it as evidence that every subsection or claim in the range has been checked.
 - Next step remains a sequential review of the intervening pages and manual transcription of source examples before any teaching content is proposed.
+
+
+## Targeted close reading: conjunction section PDF pp. 309, 314, 326 and transition p. 348 (2026-11-05)
+
+### Direct page-image observations
+- **PDF p. 309:** the page opens numbered subsection **10** under the conjunction material (the printed Kurdish subtype label is not yet safely transcribed). The text explicitly discusses how the cited authors/grammars treat this conjunction form, compares their analyses, and supplies Kurdish examples. The source itself therefore reports differing descriptions; its cited authorities must not be collapsed into a single uncontested rule.
+- **PDF p. 314:** begins numbered subsection **14** within the same conjunction discussion. It provides a definition/explanation and multiple numbered examples. The precise subtype label should be transcribed again from a higher-resolution crop before it is used as a lesson heading.
+- **PDF p. 326:** begins numbered subsection **20**, visibly headed **ئامرازی (هەر)ی عطف** (conjunction particle/form هەر). It distinguishes uses and gives examples; among its English glosses for the discussed quantifying/related forms are **any, every, each**. These are source-specific descriptions and need contextual transcription and independent validation before teaching.
+- **PDF p. 348:** the prose is a transition/introductory discussion immediately before the next section. It discusses an exclamatory category and includes the English term **Interjection**, consistent with the clear section heading on p. 349. The exact examples and definition still need manual transcription.
+
+### Method and limitation
+- These pages were inspected from the original page images, not inferred from OCR alone. The page numbers and numbered progression (10, 14, 20) show that the conjunction section contains multiple internally numbered subtypes, rather than one short undifferentiated topic.
+- This is targeted close reading of four pages, not a full transcription of all pages 273–348. The OCR extract is heavily character-encoded and cannot be treated as authoritative text. Do not turn the partial observations into a complete classification or lesson sequence.
+- The next safe step is to crop and transcribe the subtype headings and examples from the source images, then check each grammatical distinction against independent Sorani/Central Kurdish research. Keep the primary book as the sole lesson source; independent literature is validation only.
