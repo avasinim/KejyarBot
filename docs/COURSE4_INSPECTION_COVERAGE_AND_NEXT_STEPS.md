@@ -11,7 +11,8 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 | pp.3–30 | Direct visual review; opening structure recorded | Exact transcription and validation of candidate rules/examples; noun/pronoun taxonomy not approved |
 | pp.31–65 | Chapter map known; selective sample pages reviewed in the earlier extraction pass | Sequential visual review, especially definitions, pronoun paradigms, and distinction between ڕاناو and any later pronoun-related headings |
 | pp.66–79 | Chapter boundary known; p.70 sampled | Sequential review of adjective chapter; transcribe and validate examples |
-| pp.80–160 | Verb chapter spot-checked at multiple points (including 81, 88, 93, 112–114, 120, 130, 140, 150, 160) | Sequential review and transcription of paradigms, tense/aspect, negation, voice, transitivity, and modal-like constructions |
+| pp.80–120 | Sequential visual review completed; targeted crop transcription exists for pp.93–95, p.106, and selected tables on pp.112–120 | Continue cell-by-cell transcription where not yet covered; verify provisional readings and source context |
+| pp.121–160 | Sequential review status is recorded in the source page-map notes | Transcribe and validate selected paradigms, tense/aspect, negation, voice, transitivity, and modal-like constructions |
 | pp.161–221 | Sequential page-image review recorded | Still requires rule/example transcription and independent validation; sequential viewing alone is not content approval |
 | pp.222–227 | Direct visual review | Review remaining pages 228–235; preserve exact opening heading **چاوگ** |
 | pp.228–235 | Sequential visual review completed; see `COURSE4_VISUAL_REVIEW_228_235.md` | Exact transcription of selected examples and paradigms; independent validation |
@@ -24,7 +25,7 @@ Purpose: distinguish pages structurally mapped, visually sampled, sequentially r
 | pp.380–385 | Focused crop review | Character-level verification of long lists; keep French/Persian comparative material separate |
 | pp.386–391 | Focused visual review | Character-level verification of dense examples and segmentations |
 | pp.392–397 | Focused visual review | Character-level verification of numbered examples and prefix inventories |
-| p.398 | Contents page visually transcribed | Preserve the discrepancy: contents entry **جێناو** at p.398 vs chapter-opening heading **چاوگ** at p.222; see `COURSE4_SOURCE_DISCREPANCY_P222_P398.md` |
+| p.398 | Directly rechecked against p.222; contents entry 5 (page reference 222) reads **چاوگ** | No p.398/p.222 discrepancy remains; see `COURSE4_AUDIT_DOCUMENT_CONSISTENCY.md` |
 | pp.399–400 | Checked as blank apart from page numbers | No content transcription expected |
 
 ## Priority order for the next source work
@@ -148,3 +149,17 @@ Selected legible rows and table headings have now been transcribed from the enla
 ### p.119–120 follow-up crop pass (2026-11-05)
 
 p.119's fifth numbered heading is read as **٥- چاوکی دالی**; the paragraph/list below it is distinct from the preceding present-form table, whose individual rows remain unverified. p.120 contains a separate numbered pattern with three provisional pairs (**بوتێرا / بوتێردرا**, **بوورا / بووردرا**, **ژمێرا / ژمێردرا**) and then a separately attributed discussion by مامۆستا مەسعود محەمەد. The p.120 table heading and detailed prose are still outstanding. See crop-review notes; do not use provisional readings as settled lesson examples.
+
+
+## Current reconciled status — supersedes earlier historical checkpoints (2026-11-05)
+
+This section is the current source of truth where older dated notes above describe an earlier stage of work. Those historical notes are retained for audit history, not as current status.
+
+- **p.398 / p.222:** the alleged mismatch is resolved. Both read **چاوگ**; the earlier **جێناو** reading was a documentation error.
+- **pp.80–120:** sequential visual page review is complete, as recorded in `COURSE4_VISUAL_REVIEW_080_120.md`.
+- **pp.93–95:** selected headings and a limited set of rows have been transcribed. Other table rows remain outstanding.
+- **p.106:** all 17 numbered rows have been visually transcribed in the crop-review record. The separate note beneath the table remains untranscribed. This is source transcription, not linguistic validation or lesson approval.
+- **pp.112–120:** structural review is complete. Selected rows from tables on pp.112 and 115–118 have been transcribed; p.119's paired forms remain unverified, and p.120's three pairs and table heading remain provisional. The attributed prose by مامۆستا مەسعود محەمەد has not been transcribed.
+- **Next focused task:** resolve p.119's table rows and p.120's table heading from sharper original crops; then transcribe the separately attributed p.120 passage without merging it with the preceding examples.
+
+Course 4 remains planned/inactive with zero lessons. No lessons, quizzes, activation, or runtime/deployment changes are authorized by this audit work.
