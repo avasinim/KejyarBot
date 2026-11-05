@@ -231,3 +231,10 @@ The extraction report records:
 The artifact includes extracted text and page previews. Extracted text/OCR is a navigation and comparison aid, not a substitute for the original page image. In particular, the three OCR pages remain unverified. This recovery changes source availability status only; it does **not** upgrade any page to transcribed, validated, or lesson-ready. The earlier statement that no new character-level transcription was claimed remains accurate for that pass.
 
 **Next:** use the recovered page previews/original repository PDF to resume image-led checking, starting with outstanding crop targets already listed above. Do not use the excluded 32-page publication as Course 4 source material. Course 4 remains planned/inactive with zero lessons; no lesson drafting, quizzes, activation, or runtime/deployment changes are authorized.
+
+
+### OCR-page pinpointing and preview check (2026-11-05)
+
+The extraction report's page-method array identifies the primary PDF's three OCR pages exactly as **PDF pp.2, 399, and 400**. The preview for p.2 was visually checked: it is blank apart from the printed page number and scan/crop marks. The existing closing-page review already records pp.399–400 as blank apart from page numbers. Therefore, none of the three OCR-designated pages currently supplies substantive grammar text for lesson transcription; however, their status remains recorded as OCR/unverified in the extraction report rather than silently reclassified. The 397 embedded-text pages are still not equivalent to 397 visually verified pages.
+
+The separate 32-page publication has OCR on pp.1 and 3–32 and remains excluded. No content from it is to be imported into Course 4.
