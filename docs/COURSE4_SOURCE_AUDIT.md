@@ -724,3 +724,23 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Page 361 cites multiple Kurdish grammarians. Preserve the separation between each scholar's view, the source author's interpretation, and any independent linguistic validation.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 362.
+
+
+## Sequential visual review: Interjection chapter PDF pp. 362–367 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 362:** continues the detailed examples and authorial analysis of the forms discussed in the preceding pages, with multiple numbered sentence examples. It then groups the relevant uses into five descriptive patterns (including simple/compound and emphatic/repetitive environments). The author adds a note warning that a particle may be used in a way that differs from its apparent surface form; classify by sentence function and context, not by spelling alone.
+- **PDF p. 363:** completes the previous explanation and clearly opens **١١ ـ ئامرازی (کە)**, followed by **١٢ ـ ئامرازی (یا)** near the bottom. For section 11, the author cites مامۆستا توفیق وەهبی and gives two contrasting sentence examples. The page begins the review of section 12; the discussion continues on p. 364.
+- **PDF p. 364:** continues section 12 (**یا**) with separately attributed accounts from مامۆستا توفیق وەهبی، نووری عەلی ئەمین، and جەگرخۆین, then the author's own analysis and examples. A new numbered entry **١٣** begins in the lower half; its full heading is not sufficiently clear at this page resolution and must not be guessed.
+- **PDF p. 365:** continues entry 13 and its contextual examples. It clearly opens **١٤ ـ ئامرازی (شکاندنەوە ـ تعنیف ـ توپیخ)**, with forms/examples such as **هەی هەی، وەی وەی** and discussion of their admonishing/reproachful force. A further entry **١٥ ـ ئامرازی (وەبیرکەرنەوە)** begins at the bottom; its examples continue on p. 366.
+- **PDF p. 366:** continues section 15 with examples, then opens **١٦ ـ ئامرازی تەساف و کەسەر (بژاردە)**. The author surveys descriptions attributed to مامۆستا سەعید سەدقی، مامۆستا توفیق وەهبی، نووری عەلی ئەمین, and جەگرخۆین, and gives examples. Keep each scholar's description separate from the author's own account.
+- **PDF p. 367:** continues section 16 with examples and discussion, then clearly opens **١٧ ـ ئامرازی (نەدی)**. The author compares descriptions from Kurdish grammarians and gives contextual examples, including different sentence environments. The page continues this section beyond the visible lower edge.
+
+### Findings and limits
+- Pages 362–367 show that the source's Interjection chapter is a long, differentiated inventory of pragmatic/emotive functions, not one undifferentiated class of exclamatory words.
+- The author repeatedly distinguishes functions such as emphatic/repetitive expression, admonition/reproach, reminder, regret/sorrow, and negation. These are source-specific functional descriptions; do not collapse them into a single generic definition.
+- Entries 11 (**کە**) and 12 (**یا**) are legible. Entry 13's full heading on p. 364 is uncertain and must be checked from an enlarged crop before transcription.
+- Entry 14 is headed with the functional description **شکاندنەوە ـ تعنیف ـ توپیخ**; entry 15 is **وەبیرکەرنەوە**; entry 16 is **تەساف و کەسەر (بژاردە)**; entry 17 is **نەدی**. Retain source spelling and attribution.
+- The source cites multiple Kurdish grammarians on these entries. Preserve the difference between attributed views, the book author's own explanation, and independent linguistic validation.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 368.
