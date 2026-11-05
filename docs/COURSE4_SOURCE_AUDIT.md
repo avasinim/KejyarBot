@@ -704,3 +704,23 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - The source uses Arabic-script labels in its headings; Kurdish explanatory prose elsewhere continues to use **عەتف**, not **عطف**.
 - No lesson content has been drafted or activated. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 356.
+
+
+## Sequential visual review: Interjection chapter PDF pp. 356–361 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 356:** continues the numbered inventory with **٢ ـ کاشکی**, **٣ ـ بریا**, **٤ ـ بەڵکو**, and **٥ ـ نەری**. Each entry has sentence examples and short usage commentary. The author discusses how the same expression can appear in different sentence environments; do not infer that all occurrences have an identical interjection function.
+- **PDF p. 357:** completes examples under entry 5 and opens **٦ ـ ئامرازی (نەی)**. It gives a sequence of numbered contexts and examples, then comments on the limits of identifying an interjection from the form alone. The examples include interrogative and declarative sentence environments; preserve the author's own analysis rather than classifying solely by punctuation.
+- **PDF p. 358:** continues entry 6 with further examples and a methodological **ڕوونکردنەوە**. The author explicitly notes that certain examples previously treated as instances of the particle are not necessarily that particle in every context; sentence function and construction determine the analysis. This is an important caution against form-only classification.
+- **PDF p. 359:** clearly opens **٧ ـ ئامرازی (هە)**, with lettered example groups and a numbered discussion of how the form occurs in different constructions. The page includes examples attributed to or discussed alongside Kurdish usage. Exact wording of individual examples should be transcribed from crops before reuse.
+- **PDF p. 360:** continues the author's explanation and examples for entry 7, then clearly opens **٨ ـ ئامرازی (ژ)**. It gives several short examples and notes that forms that look similar should not automatically be treated as the same grammatical particle.
+- **PDF p. 361:** clearly opens **٩ ـ ئامرازی (هی)** and **١٠ ـ ئامرازی (هو)**. Entry 10 includes a survey of descriptions by named Kurdish grammarians, including مامۆستا سەعید سەدقی، نووری عەلی ئەمین، مامۆستا توفیق وەهبی، and مامۆستا جەگرخۆین. Their cited descriptions/examples must remain separately attributed; the author's later assessment should not be merged with them.
+
+### Findings and limits
+- The chapter proceeds through a numbered, example-based inventory of interjection forms. Pages 356–361 cover entries 2–10 (entry 1 began earlier).
+- The author repeatedly stresses context and sentence function: a written form or sound alone does not prove that every occurrence belongs to the interjection category.
+- Page 358 contains an explicit corrective explanation warning against treating all superficially similar examples as the same particle. This should become a central methodological point if this material is later taught.
+- The forms in headings on pp. 359–361 are visually legible as **هە، ژ، هی، هو**; nevertheless, their detailed phonetic/semantic analysis and the example sentences require close transcription before lesson use.
+- Page 361 cites multiple Kurdish grammarians. Preserve the separation between each scholar's view, the source author's interpretation, and any independent linguistic validation.
+- No lesson content has been drafted or activated. Course 4 remains planned and inactive.
+- Next: continue sequentially from PDF p. 362.
