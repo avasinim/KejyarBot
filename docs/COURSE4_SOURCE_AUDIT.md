@@ -986,3 +986,63 @@ The user correctly corrected the reading: the term is **گیرەک**, not **کی
 
 ## Next inspection checkpoint
 The next block is the Interjection inventory. PDF p. 354 visibly presents a numbered list through item 23. Each item will be transcribed from enlarged crops, keeping the author's explanation distinct from attributed grammarians. No lesson content is approved by this review.
+
+
+## Visual transcription pass: Interjection inventory, PDF pp. 354–355 (2026-11-05)
+
+### Scope and structure
+- PDF p. 354 introduces the chapter's Interjection discussion and prints a numbered inventory, items 1–23.
+- PDF p. 355 continues the same inventory, items 24–32. Thus the book's first list contains **32 numbered entries**, not 23; the earlier checkpoint referred only to the first page and is superseded by this clarification.
+- After item 32, p. 355 explicitly introduces further forms recorded by other Kurdish writers. These are a separate attributed/secondary list, not items 33 onward in the first inventory.
+
+### First inventory: legible readings from enlarged page images
+The following is a diplomatic working transcription. Parenthetical alternatives are retained as printed where legible; uncertain glyphs are marked rather than silently normalized.
+
+| No. | Printed form / reading |
+|---:|---|
+| 1 | خۆزگە، خۆزی، خۆزیا |
+| 2 | کاشکی، کیشکا |
+| 3 | بریا |
+| 4 | بەڵکو، بەشکو |
+| 5 | نەی (ی، نی، هی) — parenthetical forms need a closer crop |
+| 6 | هە (هۆ، هەی...) |
+| 7 | هەکە |
+| 8 | نەری |
+| 9 | نەندی (ئێسی ـ لە سلێمانی) — exact parenthetical reading needs verification |
+| 10 | نای |
+| 11 | نەی |
+| 12 | یا |
+| 13 | تۆف، نۆف |
+| 14 | ها (هاها) |
+| 15 | دەی (دەی، دەی) — variants are visually similar; recheck before quotation |
+| 16 | تا دەی |
+| 17 | وەی (وەی، وەی) — variants need recheck |
+| 18 | نوخەی |
+| 19 | هەو (حەو) |
+| 20 | حەست |
+| 21 | داخ |
+| 22 | تاخ (تاخ و داخ) |
+| 23 | دەک (تەک، هەک) |
+| 24 | چش (دەچش؟) — parenthetical/preceding mark needs crop verification |
+| 25 | ئافەرین |
+| 26 | بە بە |
+| 27 | هەی (هەی هەی) |
+| 28 | پەح |
+| 29 | پەکوو، پەک |
+| 30 | وای (وای وای) |
+| 31 | حەیف |
+| 32 | داد |
+
+### Secondary list introduced on p. 355
+The author then says that some Kurdish writers have also included additional forms under this discussion, and begins a distinct numbered set. The first visible items are:
+1. زینهار
+2. کەی کەی، پش پش (exact second form to verify)
+3. نایا، ناخۆ (last form needs crop verification)
+
+The explanatory prose immediately following begins with **خۆزگە** and gives several example sentences. This is evidence that the chapter does not treat the inventory as a bare dictionary list: the author proceeds to explain usage in context. The p. 355 paragraph's full wording and examples should be transcribed in the next pass.
+
+### Editorial cautions
+- Do not interpret all 32 forms as semantically identical. The page introduces them under Interjection, but subsequent explanations and the separate list attributed to other writers must be retained.
+- Several spellings are unusual and some glyphs are too close at this crop size for confident quotation. The table is a working reading, not a final normalized vocabulary list.
+- Keep the book's own terminology and spellings, including **گیرەک** from pp. 392–395; do not reintroduce the previously mistaken reading.
+- Course 4 remains planned/inactive; this source review has not created or activated lessons.
