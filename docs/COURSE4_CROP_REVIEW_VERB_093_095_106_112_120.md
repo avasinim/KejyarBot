@@ -415,3 +415,29 @@ A second close reading of the p.95 crop resolves the first row that was previous
 | خمل | خملان | خملاندن |
 
 This supersedes the earlier note that the first row was too unclear to certify. The heading and all three rows are visually legible in the enlarged crop. The explanatory prose immediately below is a separate discussion of verbs formed with **(اندن)**; it remains to be transcribed line by line.
+
+
+## pp.93–95 — corrections from the supplied high-resolution zooms (2026-11-05)
+
+### p.93 — distinguish the two table blocks; prior row summary was incomplete
+
+The zoom makes clear that the upper four-column table is a distinct set of examples, not the same table as the lower block. The upper block has two numbered groups and these visually readable entries (right-to-left headings **کۆمەڵ / فعلی لازم / ڕەگ / فعلی متعدی**):
+
+- Group 1: **نووسستن** (intransitive), root appears **نوو**, transitive **نواندن**; a second line appears **بڕاووتن / بڕاووتن? / بڕواندن** but the joined glyphs are not sufficiently certain, so do not treat that line as a settled transcription.
+- Group 2: the forms appear **چاقین / چەق / چەقتاندن** and **لەوەرین / لەوەر / لەوەڕاندن**; both are provisional pending original-page character inspection.
+
+The lower four-column table is separate. Its clearly legible rows include **کەوتن / کەو / خستن**, **هاتن / — / هێنان**, **مردن / مر / مراندن**, **کەمایین / کە / کەیاندن** (the last two words are provisional), and **ڕۆیین / ڕۆ / ناردن** (also provisional). Crucially, the lower table does **not** support the earlier summary's asserted direct row **مردن → مراندن** as a complete interpretation without preserving the root column; keep the table's actual three/four-column structure. The group number at the top of the lower table is **١** and the subsequent entries continue beneath it.
+
+### p.94 — heading correction and table transcription status
+
+The enlarged image shows the rightmost heading as **فرمانی تێنەپەڕ** (not the earlier provisional **فرمانی تێنەبەر**). The middle heading is **ڕەگی فرمان** and the left heading is **فرمانی تێپەڕ**. This correction applies to both tables on the page and supersedes earlier heading readings in this file.
+
+In the upper table, three example rows are visible. The central root column is clearly printed as **(کلا + اند)**, **(خو + اند)**, **(وەر + اند)**. The corresponding right/left example strings appear to read **سوارەکە کلا / سوارەکەم کلاند**, **منداڵەکە خەوت / منداڵەکەم خوارد**, and **کەلاگە وەری / کەلاگەم وەراند**; because some letters in the example columns are soft at this zoom, preserve these as provisional diplomatic readings, not normalized Kurdish forms.
+
+The lower table has two rows. The root column appears **وەر + ین** and **شک + ین**; the example columns remain partially clipped/soft and need a better crop. The prose between the two tables is a separate explanatory note, not a table row.
+
+### p.95 — visible continuation prose
+
+The heading immediately below the three-row table reads **پێوەڵکاندنی (اندن) بە کتایی کارەوە:**. The first line begins **یەکەم - ئەو کارە رابردوانەی کە کۆتاییان بە (ا) دێت، وەک:**. The examples following **وەک** are clipped at the left edge of the supplied zoom, so they are not transcribed. This confirms that the prose introduces a separate numbered/ordered formation rule after the table; do not merge it into the three table rows.
+
+All uncertain strings above remain explicitly provisional. This pass corrects the p.94 heading, adds the p.95 paragraph opening, and separates p.93 table groups; it does not silently normalize source spellings.
