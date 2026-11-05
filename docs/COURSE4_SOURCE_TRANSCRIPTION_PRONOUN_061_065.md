@@ -88,3 +88,70 @@ A further paragraph contrasts a construction with **(نفی)** and **(ایجاب
 6. After the diplomatic transcription is complete, independently validate each attributed claim. Do not merge the authors' taxonomies or silently normalize the source's terms.
 
 **Control status:** this ledger records selective source evidence and page structure only. It is not a complete transcript or independent linguistic validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Enlarged-crop verification — pp.61–65 (2026-11-05)
+
+The original individual page images from artifact `course4-source-text` were reopened and enlarged. This pass adds only readings that are visibly supported by the page crops; it does not claim a complete transcription.
+
+### p.61 — comparison table and interrogative examples
+
+The two-column table headings are confirmed as **ڕاناوی سادە** (right column) and **ڕاناوی لێکدراو** (left column). The first row is legible as:
+
+- simple: **چی دەکەیت**
+- compound: **بۆ چی وا دەکەیت**
+
+The second row is visible but its complete left-column wording is not certified here; it remains open rather than being reconstructed from OCR. The attribution below the table reads **مامۆستا ن. ع. تەمیم دەلێت:**. The following section is headed **ئەو وشانەی لای سەرەوە هەموویان (وشەی پرسیارن)، ئەم وشانە:**. Its numbered discussion includes the interrogative forms **کێ** and **چەند**. Full paragraph transcription remains open.
+
+### p.62 — interrogative/exclamatory contrast
+
+The enlarged page confirms the contrastive examples:
+
+- **بۆ چ درەنگ هاتیت (پرسیار)**
+- **چ درەنگ هاتیت (تعجب)!**
+
+The source explicitly comments on the difference between the interrogative and exclamatory use. The bracketed heading **[ڕوونکردنەوە]** is confirmed. The explanatory prose below it is still only selectively transcribed; do not treat the partial OCR-like readings in the earlier note as verified lexical forms.
+
+### p.63 — indefinite-pronoun table
+
+The heading **ڕاناوی نادیار (مبهم)** and the two table headings are confirmed more clearly as:
+
+- right: **بەناوی موهبەمی ڕووت**
+- left: **بەناوی موهبەمی لێکدراو**
+
+The table is a two-column layout and must retain its alignment. Clearly legible right-column entries include **کەس، کام، پیاو، چی، هیچ، کابرا، یەک، فڵان، کێ، هەموو، هێن، زۆر، کەم**. The left-column inventory contains compounds/attached forms, but several individual spellings are not yet sufficiently clear for a certified row-by-row transcription. Do not flatten the table into a single list or infer a morphological rule from it.
+
+The third numbered attribution at the bottom is visibly **٣- د. ن. فەخری (ڕاناوی نادیاری) ...** and continues onto p.64.
+
+### p.64 — attributions and seven-part taxonomy
+
+The numbered entries **٤** and **٥** continue at the top. The exact personal name/term in item 5 is not certified from this crop and remains unresolved.
+
+The summary attribution is followed by this seven-part list, which is legible on the enlarged image and is retained in printed order:
+
+1. **ڕاناوی کەسی** — split into **أ- ڕاناوی کەسی جودا** and **ب- ڕاناوی کەسی لکاو**
+2. **ڕاناوی پرسیاری**
+3. **ڕاناوی لکدەر**
+4. **ڕاناوی ئیشاری**
+5. **ڕاناوی خۆیی**
+6. **ڕاناوی هەیی**
+7. **ڕاناوی نادیار**
+
+This is a source-attributed taxonomy, not an adopted or independently validated course taxonomy.
+
+### p.65 — continuation of explanation
+
+The crop confirms the continuation of the explanatory passage, including examples beginning **هەر کەسێک** and a parenthetical contrast marked **(نفی و ایجاب)**. The passage discusses interrogative forms and contrasts a negative question/answer construction with an affirmative one. Because several words and punctuation marks remain difficult to distinguish at the available crop resolution, no continuous verbatim paragraph is asserted.
+
+The bracketed closing note is visually legible as **[دەمرساستی لێژنە]** only provisionally; its exact reading must remain open pending a sharper image. Do not interpret or expand this editorial note.
+
+## Updated open work queue
+
+1. Transcribe p.61's remaining comparison-table row(s) and full attributed interrogative discussion.
+2. Complete p.62's explanatory paragraph with line-level crops.
+3. Transcribe p.63's left-column compound forms row by row and verify all spellings in both columns.
+4. Resolve p.64 attribution 5 from a sharper crop; preserve the seven-part taxonomy as a quoted source classification.
+5. Re-crop p.65 to verify the full negative/affirmative examples and the final bracketed editorial note.
+6. Only after the diplomatic text is complete, perform independent linguistic validation. No lesson drafting or activation follows automatically.
+
+**Control status unchanged:** Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`. This crop pass does not constitute full transcription, linguistic validation, or lesson approval.
