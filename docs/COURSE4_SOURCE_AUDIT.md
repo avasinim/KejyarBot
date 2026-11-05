@@ -219,15 +219,15 @@ The following individual page images were inspected at readable resolution in th
 - Individual images for PDF pp. 222–227 were inspected at readable resolution.
 
 ### Direct observations (not yet approved teaching claims)
-- **PDF p. 222:** a section-opening heading is visibly printed as **جاوک** (visual transcription; retain the source glyphs pending expert reading). The opening prose discusses this category and refers to forms including Present Case and Infinitive. The contents page (PDF p. 398) labels p. 222 as **5 — جێناو**. This is a material heading/contents discrepancy or a possible terminology/reading issue; do not silently “correct” either reading. Reinspect the original scan and verify the exact term before curriculum mapping.
-- **PDF p. 223:** subsection heading appears as **جۆرەکانی جاوک**. It classifies forms and explicitly includes the term **Consonant**. Examples include Kurdish verbal forms such as کردن، بردن، مردن، خوێندن، خواردن، ناردن، ژماردن، سووتاندن، بڕاندن، خنکاندن، لەوەڕاندن. This page appears to discuss verb-related forms rather than personal pronouns, but the heading terminology must first be resolved.
+- **PDF p. 222:** a section-opening heading is visibly printed as **چاوگ** (visual transcription; retain the source glyphs pending expert reading). The opening prose discusses this category and refers to forms including Present Case and Infinitive. The contents page (PDF p. 398) labels p. 222 as **5 — جێناو**. This is a material heading/contents discrepancy or a possible terminology/reading issue; do not silently “correct” either reading. Reinspect the original scan and verify the exact term before curriculum mapping.
+- **PDF p. 223:** subsection heading appears as **جۆرەکانی چاوگ**. It classifies forms and explicitly includes the term **Consonant**. Examples include Kurdish verbal forms such as کردن، بردن، مردن، خوێندن، خواردن، ناردن، ژماردن، سووتاندن، بڕاندن، خنکاندن، لەوەڕاندن. This page appears to discuss verb-related forms rather than personal pronouns, but the heading terminology must first be resolved.
 - **PDF p. 224:** continues the same classification with further forms/examples and explanatory notes.
 - **PDF p. 225:** continues the classification and examples; a further subcategory is introduced.
 - **PDF p. 226:** provides additional examples and explanatory discussion; the visible content continues the same grammatical category.
 - **PDF p. 227:** introduces further lettered subdivisions and examples. The page continues the same topic rather than clearly beginning a personal-pronoun paradigm.
 
 ### Important audit finding
-There is an unresolved inconsistency between the contents-page label **جێناو** for p. 222 and the visibly printed chapter/subsection headings **جاوک / جۆرەکانی جاوک** on pp. 222–223, while the examples and discussion appear verb-related. Possible explanations include an unusual source term, print/scan reading ambiguity, or an error in the contents page. No interpretation is selected yet. Do not rename the chapter, treat it as a pronoun chapter, or map its content into lessons until the original heading and intended grammatical concept are independently confirmed.
+There is an unresolved inconsistency between the contents-page label **جێناو** for p. 222 and the visibly printed chapter/subsection headings **چاوگ / جۆرەکانی چاوگ** on pp. 222–223, while the examples and discussion appear verb-related. Possible explanations include an unusual source term, print/scan reading ambiguity, or an error in the contents page. No interpretation is selected yet. Do not rename the chapter, treat it as a pronoun chapter, or map its content into lessons until the original heading and intended grammatical concept are independently confirmed.
 
 ### Next review step
 - Continue inspecting pp. 228–254 and compare the page headings with the contents map, especially the transition into p. 236 (listed as **ئاوەڵکار**) and p. 254 (listed as **پێوەندینیش**).
@@ -251,7 +251,7 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 
 ### Direct observations (not yet approved teaching claims)
 - **PDF p. 349:** begins section 9, printed as **ئامرازی «تعجب»**, with the English gloss **Interjection**. The prose describes an exclamatory/interjection category and gives examples. This supports the contents-page entry for p. 349 and provides a clear category boundary.
-- **PDF p. 388:** heading is **وشەی سەرنجخۆ و وشەی بەستراو**. The discussion compares two broad types of words and states that the source distinguishes the following five word classes in its analysis: **ناو، ڕاناو، ئاوەڵناو، کار (جاوک)، ئاوەڵکار**. The printed term in parentheses beside **کار** appears as **جاوک**, consistent with the unresolved heading seen on pp. 222–227. Do not silently replace it with a modern label or assume it means pronoun.
+- **PDF p. 388:** heading is **وشەی سەرنجخۆ و وشەی بەستراو**. The discussion compares two broad types of words and states that the source distinguishes the following five word classes in its analysis: **ناو، ڕاناو، ئاوەڵناو، کار (چاوگ)، ئاوەڵکار**. The printed term in parentheses beside **کار** appears as **چاوگ**, consistent with the unresolved heading seen on pp. 222–227. Do not silently replace it with a modern label or assume it means pronoun.
 - **PDF p. 392:** a tree diagram divides **وشە** into **سەربەخۆ** and **بەستراو**; the latter is further divided into **ئامراز، کیریۆک، نیشانە** (visual readings; exact technical spelling should be checked against surrounding pages). The page then discusses the classification and gives an explanation of **کیریۆک**. This is source-specific terminology and requires careful transcription before lesson use.
 - **PDF p. 395:** continues the discussion of bound forms and describes two groups of forms/markers, including forms appearing before and after a word; the examples and terminology require full transcription and cross-checking. This is not sufficient by itself to assert a general linguistic classification.
 - **PDF p. 398:** contents page reconfirms the chapter map: p. 349 **ئامرازی تعجب**; p. 388 **وشەی سەرنجخۆ و وشەی بەستراو**; p. 392 **یەکەم — کۆمەک**; p. 395 **پێشگر**. The page map is consistent with the inspected boundaries, but the p. 222 and p. 254 terminology discrepancies recorded above remain unresolved.
@@ -259,7 +259,7 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 
 ### Updated structural findings and cautions
 - The book's closing pages introduce a distinction between independent/free and bound words and a further internal classification of bound forms. This is a separate analytical layer from the earlier chapter list; do not flatten it into a simple list of parts of speech.
-- The recurrence of **جاوک** in the p. 388 parenthetical classification, alongside the p. 222–227 verb-related examples, strengthens the need to resolve the source's exact intended term. It does not by itself establish the correct modern linguistic equivalent.
+- The recurrence of **چاوگ** in the p. 388 parenthetical classification, alongside the p. 222–227 verb-related examples, strengthens the need to resolve the source's exact intended term. It does not by itself establish the correct modern linguistic equivalent.
 - The p. 392 tree diagram and p. 395 discussion need line-by-line manual transcription before they can support a lesson. Preserve source spellings and terminology, and flag any claim that cannot be independently corroborated.
 
 ### Next review step
@@ -287,3 +287,12 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - These pages were inspected from the original page images, not inferred from OCR alone. The page numbers and numbered progression (10, 14, 20) show that the conjunction section contains multiple internally numbered subtypes, rather than one short undifferentiated topic.
 - This is targeted close reading of four pages, not a full transcription of all pages 273–348. The OCR extract is heavily character-encoded and cannot be treated as authoritative text. Do not turn the partial observations into a complete classification or lesson sequence.
 - The next safe step is to crop and transcribe the subtype headings and examples from the source images, then check each grammatical distinction against independent Sorani/Central Kurdish research. Keep the primary book as the sole lesson source; independent literature is validation only.
+
+
+## Erratum — correction of the source term (2026-11-05)
+
+- **Correction:** the earlier visual transcriptions in this audit that read **جاوک** were incorrect. The correct printed/grammatical term is **چاوگ**. All seven occurrences in the previous audit text have been corrected to **چاوگ**.
+- This is a substantive terminology correction, not a stylistic normalization. Future references to the category and its subdivisions must use **چاوگ**, while preserving any other exact source forms as printed.
+- The earlier uncertainty caused by the mistaken reading **جاوک** is withdrawn. The remaining task is to verify the precise definitions, subdivisions, and examples of **چاوگ** directly against the relevant page images and independent linguistic research; do not infer a full grammatical analysis from the corrected label alone.
+- The source's contents-page entry **جێناو** for p. 222 still needs to be reconciled with the actual section heading **چاوگ** and the chapter's content. Do not equate **چاوگ** with **جێناو** or silently change either term.
+- Going forward, every technical term must be checked character by character against a readable source-page image and cross-checked before it is used in course material. No OCR-only transcription is acceptable for lesson headings or core terminology.
