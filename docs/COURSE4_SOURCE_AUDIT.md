@@ -18,7 +18,7 @@ Independent linguistic publications may still be consulted strictly to verify or
 - Source commit: `f7f5236d861aaa5f9f26e81b0d7a25ceb992914e`
 - Blob: `e144eac2937c4f13a4f852fc403c17cc0fee3671`
 - Visible title page (PDF p. 3): **ڕێزمانی ئاخافتنی کوردی**
-- The copyright/publication page (PDF p. 4) indicates an original publication in 1990 and a second printing in 2011. The author/editor attribution remains to be transcribed carefully from the title/copyright pages.
+- The copyright/publication page (PDF p. 4) indicates an original publication in 1990 and a second printing in 2011. The exact bibliographic role/attribution needs further careful transcription; do not infer an individual author from an editorial signature alone.
 - PDF length: 400 pages.
 
 ## Excluded source — provenance only
@@ -37,11 +37,20 @@ Independent linguistic publications may still be consulted strictly to verify or
 ### ڕێزمانی ئاخافتنی کوردی
 
 - PDF p. 3: title page identifies the work as **ڕێزمانی ئاخافتنی کوردی**. This is a scope warning: it must not automatically be treated as a comprehensive grammar of every Kurdish variety.
-- PDF p. 4: publication information indicates 1990 and second printing 2011.
+- PDF p. 4: publication information indicates an original publication in 1990 and a second printing in 2011.
+- PDF pp. 5–10: these pages are introductory/foreword material, not a table of contents. They discuss the preparation and revision of the grammar and issues around Kurdish grammatical description and terminology. Page 10 ends with an editorial/committee-style signature; its precise wording and bibliographic significance have not yet been conclusively transcribed. Do not treat the foreword as a list of validated grammar rules.
 - PDF p. 11: the section on **ناو** begins.
 - PDF p. 12: discusses simple nouns and gives examples attributed to named writers/speakers; the page also includes a definition.
 - PDF pp. 13–15: continues the distinction and discussion of simple and compound nouns, with examples and classification. These examples must be transcribed exactly before reuse.
+- The introductory pages' statements about Kurdish grammar, terminology, and revision are the author's/editorial framing, not independent proof that every later rule is universally valid.
 - No general rule from these pages is approved for a course lesson yet. The dialect/register scope of each example and analysis still needs confirmation.
+
+## Inspection progress
+
+Visually inspected directly from page images:
+- PDF pp. 3–15 (title/publication pages, introduction, and opening noun section).
+- The first noun pages (pp. 11–15) are only a preliminary sample, not a completed audit of the noun chapter.
+- Next source-review task: locate the book's actual contents/section structure after the introduction and systematically map the chapter boundaries and printed page numbers. Do not assume the book has a conventional contents page; none appeared in pp. 3–10.
 
 ## Extraction reliability
 
