@@ -537,3 +537,10 @@ The exact p.133 heading for section **چوارەم** and one label on p.135 rema
 Pages 139–144 were extracted from the verified `course4-source-text` Actions artifact and inspected individually at original preview resolution. Structural observations and transcription tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_139_144.md`. These pages continue the paradigms from p.138, include the numbered groups 449–451 and attributed remarks, present six form/category labels (**ئێنجاری، التزامی، ئەمری، شرطی، مصدری، وصفی**), distinguish **کاری ڕابردوو** into two printed types, and open **یەکەم — کاری ڕابردووی ڕەها (مطلق)** on p.144 with separate upper/lower Kurmanji treatments.
 
 The p.139 heading for group 449 and several compact paradigm forms remain provisional pending crop-level reading. This is visual structure review only, not full diplomatic transcription or independent grammatical validation. Preserve the original column order, dialect labels, footnotes, and speaker attributions. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.145–150 (2026-11-05)
+
+Original individual page previews pp.145–150 from the recovered `course4-source-text` artifact were inspected separately and in sequence. Structural observations and the crop-level transcription queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_145_150.md`. These pages continue the complete-past discussion with separate upper/lower Kurmanji treatments, aligned paradigms, notes, and example groups; they then develop a second past-tense section and open **سێیەم — کاری ڕابردووی نزیک** on p.150.
+
+The full heading of the second past-tense section on p.148 and compact paradigm cells remain pending crop-level verification. This is sequential visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve dialect labels, table direction, and source spellings. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
