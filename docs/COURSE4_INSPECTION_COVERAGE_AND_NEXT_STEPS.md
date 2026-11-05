@@ -593,3 +593,10 @@ Exact wording of the p.185 type headings, compact paradigms, and bibliographic d
 Individual page previews pp.187–192 were extracted from the Actions artifact and inspected separately. Structural notes are in `docs/COURSE4_VISUAL_REVIEW_VERB_187_192.md`. Pages 187–190 continue the two imperative **دەستوری** rules and their examples/notes. Page 191 opens **نەهی کاری فرمان**, distinguishing **نەهی سەرڕاست** and **نەهی ناڕاست**, with a five-part sequence of uses. Page 192 continues the examples and contains two notes, including the English phrase **neither … nor**.
 
 Exact paradigms, dialect examples, and the five numbered uses remain pending crop-level transcription. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.193–198 (2026-11-05)
+
+Individual page previews pp.193–198 were extracted from the Actions artifact and inspected separately. Structural observations are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_193_198.md`. Page 193 completes the prohibitive discussion and opens **شەشەم — کار لە ڕووی فۆرمەوە**, distinguishing **کاری سادە** and **کاری ناسادە**. Pages 194–196 continue the definitions, types, and five numbered notes. Pages 197–198 open **پێشگر و پاشگری کار** and show prefix-list items 1–10.
+
+Exact wording, examples, and the hierarchy of the non-simple verb types remain pending crop-level transcription. The separate suffix inventory, if any, must be followed into subsequent pages. This is structural visual review only, not diplomatic transcription or independent grammatical validation. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
