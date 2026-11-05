@@ -108,7 +108,7 @@ PDF p. 398 is a contents page headed **پێڕست**. Its visible chapter map is:
 | 112 | کاری کاردار و کاری کاربێژ |
 | 222 | 5 — چاوگ |
 | 236 | 6 — ئاوەڵکار |
-| 254 | 7 — پێوەندینیش |
+| 254 | 7 — پریپۆزیشن |
 | 273 | 8 — هاوەڵ (عەتف / Conjunction) |
 | 349 | 9 — ئامرازی (تعجب) |
 | 388 | وشەی سەربەخۆ و وشەی بەستراو |
@@ -1332,3 +1332,17 @@ Use this reconciliation together with the final page-specific note in `COURSE4_C
 - **p.120:** the three pairs remain provisional; headings are not known; the full attributed passage by مامۆستا مەسعود محەمەد remains untranscribed.
 
 The remaining source-image queue is therefore: p.106 note; p.95 examples after **وەک**; p.120 full-width table and attributed passage; unresolved cells on pp.93–94; and the separate preceding table on p.119. Continue only from accessible original page images/crops. The extraction text is navigation aid only. These transcriptions are not independent linguistic validation and do not approve lesson use. Course 4 remains planned/inactive with zero lessons; no lesson, quiz, activation, or runtime/deployment change is authorized.
+
+
+## Current controlling source decision and contents correction — 2026-11-05
+
+This section supersedes earlier source-policy or contents-page statements in this file where they conflict:
+
+- The sole curriculum source is **ڕێزمانی ئاخافتنی کوردی** (`Rezmany_axawtny_kurdy.pdf`, 400 PDF pages). The separate **ڕێزمانی ڕاناوی لکاو.pdf** is excluded entirely from lesson content.
+- PDF p.398 item 7 and the chapter heading on p.254 both read **پریپۆزیشن**. Any earlier transcription in this file of p.398 item 7 as **پێوەندینیش** is withdrawn as an audit error. This is a printed-heading correction only; it does not establish theoretical equivalence with contemporary terminology.
+- PDF p.398 item 5 and p.222 both read **چاوگ**; the former **جێناو** reading is withdrawn.
+- The extracted text and OCR are navigation aids, not authoritative transcription. Every form used in any future lesson must be checked against the original page image and separately validated with variety/register awareness.
+- The evidence register and latest crop-review records govern page-level progress. Page viewing does not mean full transcription or independent validation.
+- Course 4 remains `planned`, `lesson_ids: []`, `lesson_count: 0`. The proposed outline has not been approved; no lesson or quiz may be drafted or activated without the user's explicit approval.
+
+The older sections above are retained as historical checkpoints where their statements have been superseded; read them under this controlling note and the latest audit reconciliation.
