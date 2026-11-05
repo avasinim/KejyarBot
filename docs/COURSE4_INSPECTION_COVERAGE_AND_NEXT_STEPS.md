@@ -551,3 +551,10 @@ The full heading of the second past-tense section on p.148 and compact paradigm 
 Original individual page previews pp.151–156 from the recovered `course4-source-text` Actions artifact were inspected separately. Structural notes and a crop-level verification queue are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_151_156.md`. These pages continue paradigms and numbered discussion, present upper/lower Kurmanji examples, and open **چوارەم — کاری ڕابردووی دوور** on p.155; its first subsection continues on p.156, where a second numbered subsection also begins.
 
 The full heading of the numbered subsection on p.153 and several compact paradigm labels/forms remain pending crop-level verification. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve source spellings, dialect labels, attributions, and table order. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
+
+
+## Sequential visual review — کار (فعل), PDF pp.157–162 (2026-11-05)
+
+Original individual page previews pp.157–162 from the recovered `course4-source-text` Actions artifact were inspected separately and sequentially. Structural observations and crop-level tasks are recorded in `docs/COURSE4_VISUAL_REVIEW_VERB_157_162.md`. These pages continue numbered and dialect-specific treatments with aligned paradigms, notes, and an attributed explanation by **مامۆستا مەسعود**; p.162 opens a new section on the near past (**ڕابردووی نزیک**) and begins its first numbered division.
+
+The full headings on pp.159 and 162 and compact paradigm cells remain pending crop-level verification. This is structural visual review only, not complete diplomatic transcription or independent grammatical validation. Preserve original spellings, attribution, dialect labels, and table order. Course 4 remains `planned`, `lesson_count=0`, and `lessons=[]`.
