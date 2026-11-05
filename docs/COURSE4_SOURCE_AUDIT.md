@@ -530,3 +530,22 @@ There is an unresolved inconsistency between the contents-page label **جێنا�
 - Continue using the Kurdish spelling **عەتف** in Kurdish prose, not **عطف**. The spelling **بەڵام** is retained as it appears in the Kurdish source.
 - This is a sequential structural review, not a complete transcription. The exact headings of entries 22–28, all examples, the footnote terminology on p. 299, and references on p. 301 need enlarged crop transcription before lesson drafting. Course 4 remains planned and inactive.
 - Next: continue sequentially from PDF p. 303 onward.
+
+
+## Sequential visual review: conjunction chapter PDF pp. 303–308 (2026-11-05)
+
+### Page-by-page observations
+- **PDF p. 303:** continues the two-use analysis of **(کەی عەتف)** introduced on p. 302. The page contains a substantial authorial note and a two-column list of paired/related forms or variants (examples visibly include لەت/لەنگە, فڕ/فڕکە, بن/بنکە, لۆت/لۆنگکە, خڕ/خڕکە, درک/درکە, شوور/شوورەکە, شل/شاکە, شەڵ/شەڵکە, دان/دانەکە, بەڵ/بەڵکە). These readings are provisional and must be checked in enlarged crops before transcription. The author discusses differences in usage and the danger of assuming the forms are interchangeable.
+- **PDF p. 304:** clearly opens **٧ ـ ئامرازی (یا)ی عەتف**. It reviews accounts by Kurdish grammarians, including مامۆستا توفیق وەهبی، سەعید سەدقی، and نووری عەلی ئەمین, then presents sentence examples and begins a numbered discussion of the form's functions. Keep the cited accounts distinct from the author's own observations.
+- **PDF p. 305:** continues the discussion of **(یا)**, adding examples and notes on how it operates in different sentence patterns. It distinguishes cases that may look alike in writing but differ in syntactic relation; examples include paired alternatives and coordinated elements. The page also begins a further set of numbered functional examples.
+- **PDF p. 306:** continues the **(یا)** analysis with further examples and discussion of its use in Kurdish constructions. At the bottom a new heading **٨ ـ ئامرازی ... ی عەتف** appears, but the exact particle between the heading and **ی عەتف** is not sufficiently legible at this scale; do not transcribe or infer it yet.
+- **PDF p. 307:** completes the preceding section with attributed material and examples, then clearly opens **٩ ـ ئامرازی (نەک)ی عەتف**. It cites نووری عەلی ئەمین and gives examples; preserve this as a source-specific heading rather than generalizing it to every use of نەک.
+- **PDF p. 308:** continues the **(نەک)ی عەتف** discussion with examples from Kurdish grammatical works and the author's own examples. The closing paragraph summarizes the use of several numbered forms and distinguishes their functions; the page remains in the conjunction chapter.
+
+### Findings and limits
+- Pages 302–303 develop **کەی عەتف** as a form with more than one use and include a list of paired/variant forms. Exact spellings in the p. 303 two-column list are provisional and require enlarged visual verification.
+- Pages 304–306 provide a focused section on **ئامرازی (یا)ی عەتف**, including attributed descriptions and sentence-level analysis. Do not reduce it to the English/Persian “or” equivalent without checking the Kurdish examples.
+- Page 307 introduces **ئامرازی (نەک)ی عەتف** as a distinct numbered section; p. 308 continues it. The exact particle heading at the foot of p. 306 (section 8) remains unresolved and must not be guessed.
+- The audit continues to use **عەتف** in Kurdish prose, not **عطف**. Any direct quotation in another language must be clearly marked as a quotation and must not replace Kurdish orthography in our explanatory text.
+- This is a sequential structural review, not a complete transcription. Course 4 remains planned and inactive; no lesson content has been drafted or activated.
+- Next: continue sequentially from PDF p. 309 onward.
