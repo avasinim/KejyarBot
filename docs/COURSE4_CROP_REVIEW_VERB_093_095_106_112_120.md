@@ -506,3 +506,16 @@ This note is the controlling status for the page-specific observations above.
 - The earlier p.94/p.95 historical paragraphs above that give different headings/readings are retained as audit history only; the second-pass and this reconciliation note govern current use.
 
 No lesson text, quiz, course metadata, activation, or runtime/deployment state was changed.
+
+
+## p.120 — reconciliation against the dedicated three-row crop (2026-11-05)
+
+The dedicated enlarged crop of the three-row paired-form block was reopened and compared with the earlier p.120 crop notes. Retain the printed right-to-left column order and the following **provisional visual readings**:
+
+| Right column | Left column |
+|---|---|
+| بوتێرا | بوتێردرا |
+| بوورا | بووردرا |
+| ژمێرا | ژمێردرا |
+
+These readings supersede the inconsistent approximate spellings entered in the first draft of the separate p.95–120 transcription note. The crop confirms the three aligned rows and supports the readings above, but the raster still does not resolve every medial glyph with enough certainty for final diplomatic certification. Do not normalize these forms or treat them as lesson-ready examples. The attributed passage beginning **ڕای مامۆستا مەسعود بە نسبت کاری (شاراندنەوە)** remains a separate prose block after the table; it must not be merged into these rows.
