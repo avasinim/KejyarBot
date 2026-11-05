@@ -65,3 +65,17 @@ Newly confirmed methodological cautions:
 All 61 printed page images from pp.161–221 were checked sequentially in the rendered source-PDF artifact (Actions run `41992196756`, artifact `13398428636`). See `docs/COURSE4_VISUAL_REVIEW_161_221.md`.
 
 This extends page-level visual coverage through p.221, immediately before the **چاوگ** chapter begins at p.222. The reviewed range continues the verb chapter's discussion of verbal constructions, negative forms, parallel paradigms, and comparisons. The note deliberately does not claim full transcription or validation of individual forms: dialect labels, source attributions, and dense paradigms still require enlarged crop-level checking. Course 4 remains planned with zero lessons.
+
+
+## New visual evidence — چاوگ and opening ئاوەڵکار, pp.222–240 (2026-11-05)
+
+Pages 222–240 have been checked sequentially from rendered source images. See `docs/COURSE4_VISUAL_REVIEW_222_240.md`.
+
+Confirmed:
+- p.222 begins the **چاوگ** chapter; p.236 begins **ئاوەڵکار**.
+- p.230 explicitly distinguishes **چاوگی سادە** and **چاوگی ناسادە**.
+- p.232 lists **چاوگی دایزراو (درۆست کراو)** and **چاوگی لێکدراو**; the third type heading is read as **چاوگی ناوەتە** in this scan but remains a crop-verification item.
+- p.228 heading appears as **وەربین**, also unresolved pending a higher-resolution crop.
+- pp.237–240 continue the adverb chapter's opening definition/classification.
+
+This is page-level visual review, not complete transcription. Uncertain readings are not promoted to lesson headings. Course 4 remains planned with zero lessons.
