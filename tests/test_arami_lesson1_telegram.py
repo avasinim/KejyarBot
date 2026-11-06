@@ -50,10 +50,18 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(callbacks, [
             "arami1:lesson",
-            "arami1:practice", "arami1:assessment",
+            "arami1:practice",
             "arami5:menu",
             "aramiC:menu",
         ])
+
+    def test_assessment_button_appears_only_after_lesson_completion(self):
+        callbacks = [
+            button.callback_data
+            for row in menu_keyboard(assessment_available=True).inline_keyboard
+            for button in row
+        ]
+        self.assertIn("arami1:assessment", callbacks)
 
     async def test_lesson1_menu_uses_the_current_course_title(self):
         update, query = make_update("menu")
