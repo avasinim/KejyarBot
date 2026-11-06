@@ -400,6 +400,18 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(any("کۆرسی ٣" in badge for badge in badges))
         self.assertFalse(any("Diyako" in badge for badge in badges))
 
+    def test_course_four_progress_badge_uses_owner_review_course_title(self):
+        grammar = bot.COURSE_LESSON_ORDER["grammar"]
+        with patch.object(bot, "get_completed_lessons", return_value=grammar[:2]):
+            badges = bot.current_progress_badges(12345)
+        self.assertEqual(
+            badges,
+            [
+                "🏅 کۆرسی ٤: ڕێزمان — وانەی 1",
+                "🏅 کۆرسی ٤: ڕێزمان — وانەی 2",
+            ],
+        )
+
     def test_progress_badges_hide_stale_later_completions(self):
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
         with patch.object(bot, "get_completed_lessons", return_value=[daily[0], daily[2]]):
