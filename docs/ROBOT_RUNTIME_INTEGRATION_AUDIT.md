@@ -134,3 +134,14 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for eb1722db0142d967deb5cc1f6bd5ad015ef3ae15: checks success; orthography-course-structure success. Python compileall passed; unit tests reported Ran 398 tests in 1.303s; OK (skipped=11). Structural workflow completed successfully.
 - Backup before this audit-log update: backup/robot-quiz-selection-ci-log-20261106, at eb1722db0142d967deb5cc1f6bd5ad015ef3ae15.
 - These are source-level tests with mocked Telegram callback and keyboard failures. They do not establish live Telegram or Botkeep runtime behavior. No Botkeep files, production database, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+## Quiz reward persistence failure recovery — 2026-11-06
+
+- Reviewed the final quiz-completion path. If the SQLite reward/completion transaction raised, the exhausted in-memory quiz could remain active even though the completion result had not been committed, leaving the learner unable to proceed normally.
+- Updated bot.py to catch reward-persistence exceptions, clear the exhausted in-memory quiz, log the failure, and re-raise. The transaction remains responsible for commit/rollback; no reward success is reported when persistence fails.
+- Added test: test_reward_persistence_failure_clears_exhausted_quiz. Its fixture supplies the Telegram reply mock needed to reach the reward-persistence branch.
+- Code commit: aaffc476c7c769a2fc933a310dbc4f2838687766. Initial test commit: 2d6f5fb54c055f3c49b9c88c947020a384fa30ae. Test-fixture correction commit: a80fc3f5a320341da38c170c9ab93f64e2e73368.
+- Backups: backup/robot-quiz-reward-db-failure-20261106 (before code/test edit); backup/robot-quiz-reward-db-test-fixture-20261106 (before fixture correction); backup/robot-quiz-reward-db-ci-log-20261106 (before this audit update).
+- CI for a80fc3f5a320341da38c170c9ab93f64e2e73368: checks success; orthography-course-structure success. Python compileall passed; unit tests reported Ran 399 tests in 1.254s; OK (skipped=11). Structural workflow completed successfully.
+- The initial test run failed because the new test fixture lacked query.message.reply_text; the fixture was corrected and the subsequent full CI run passed. This history is retained for transparency.
+- This is a mocked source-level failure-path test, not proof of live SQLite outage recovery, Telegram delivery, or Botkeep runtime behavior. No Botkeep files, production database, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
