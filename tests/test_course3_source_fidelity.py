@@ -46,6 +46,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("دڵناسک", examples)
         self.assertIn("ئەوان چوونە ژوورەوە", examples)
         self.assertIn("هاتوچۆ، دەستوبرد", examples)
+        self.assertNotIn("سلێمانییش", examples)  # belongs to lesson 49 / book p.57, not lesson 50 pp.58–59
         self.assertIn("نییە", examples)
         self.assertIn("٥٨", lesson["source"]["pages"])
         self.assertIn("٥٩", lesson["source"]["pages"])
