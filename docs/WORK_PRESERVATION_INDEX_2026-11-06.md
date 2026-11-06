@@ -145,3 +145,13 @@
 - ئەمە پشتڕاستکردنەوەی CIی ئەم کۆمیتەیە؛ بەڵگەی live Telegram، runtimeی Botkeep، production DB یان deployment نییە.
 - Backup پێش ئەم زیادکردنە: `backup/preservation-ci-confirmed-20261106` لە HEADی `5cc05d17b86403a98fe95a0c90aa079a43d558a1`.
 - کۆمیتی ئەم زیادکردنە پاش دروستکردن لە فهرستدا تۆمار دەکرێت؛ CIی خۆی پێویستی بە پشتڕاستکردنەوەی جیاواز هەیە.
+
+
+## Backup ـە نوێیەکانی دوای snapshotی سەرەتایی
+
+ئەم سێ لقە دوای لیستی ٩٥ backup ـەکە دروست کران؛ بۆیە بە جیا لێرە زیاد دەکرێن:
+- `backup/final-preservation-manifest-20261106` — `855f4d4cab8a36d73bd0485d05ba2aab4f05da2e`
+- `backup/preservation-index-crosslink-20261106` — `8c8de73391871e427975b3d7cfd51db92de3cb57`
+- `backup/preservation-ci-confirmed-20261106` — `5cc05d17b86403a98fe95a0c90aa079a43d558a1`
+
+- Backup پێش ئەم نوێکردنەوەی فهرستە: `backup/preservation-inventory-final-update-20261106` لە HEADی `8ae8c0705851dbe8ab19c6b48e142464ac4dca6c`.
