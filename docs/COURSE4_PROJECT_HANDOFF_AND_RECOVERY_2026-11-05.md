@@ -1168,3 +1168,21 @@
 ٣. پاشان adapter/loader، manifest، progress IDs، quiz/practice و startup validation لەگەڵ تاقیکردنەوەکان زیاد بکە.
 ٤. پێش هەر checkpointێک HEADی برانچی کار پشتڕاست بکەرەوە؛ checkpoint دەبێت لە هەمان SHA دروست بکرێت و compare بەرامبەر backup نوێ بکرێتەوە.
 
+
+
+---
+
+# دۆخی جێبەجێکردنی وەشانی پێداچوونەوە — 2026-11-06
+
+- فایل: `course_data/grammar_course4_lessons_01_08.json`؛ هەشت مۆدیولی پێداچوونەوە بۆ بەشەکانی ١ تا ٨ تۆمار کراون.
+- سنووری سەرچاوەی فایلەکە `source_page_limit: 342` ـە. بەشی ٨ تا پەڕەی ٣٤٢ سنووردارە؛ بەشی ٩ لەم وەشانەدا نییە.
+- `bot.py` ئێستا فایلەکە لە ڕێگەی `adapt_unified_orthography_lessons` دەخوێنێتەوە و ناوەڕۆکی وانەکان بۆ `LESSON_DATA` و `QUIZ_DATA` زیاد دەکات.
+- `courses.json`: کۆرسی `grammar` بە `status: active` و هەشت ID ـی `grammar_01` تا `grammar_08` تۆمار کراوە. دەقی کۆرس بە ڕوونی وەشانی پێداچوونەوەی خاوەن پڕۆژە دەناسێنێت.
+- ئەم هەشتە مۆدیولی سەرەتایی/ڕێکخراوی پێداچوونەوەن، نەک هەشت وانەی تەواوی زانستی؛ هەموویان `owner_review` ـن. هیچ quiz ـێک بەبێ بەڵگەی سەرچاوە دروست نەکراوە.
+- Startup validation بۆ Course 4 ژمارەی ٨، پڕبوونی ناوەڕۆک، دۆخی پێداچوونەوە و سنووری p.342 دەپشکنێت.
+- زیادکراون: تاقیکردنەوەی چالاکبوون، پێشکەشکردنی ٨ وانە لە منووی کۆرس، و پاراستنی metadataی پێداچوونەوە.
+- GitHub Actions run `42177977365` لە برانچی `feat/course4-owner-review-beta` سەرکەوتوو بوو: dependency install، `compileall` و `unittest discover -s tests -v` هەموویان success. برانچی تاقیکردنەوە لە هەمان SHAی سەرچاوەی کار `9b2feceeb8e18f43d2c770e38889dd575986fed5` دەست پێکرد.
+- Checkpoint `checkpoint/course4-2026-11-06-1200` بە هەمان SHA دروست کرا و compare بەرامبەر برانچی کار `identical` ـە.
+- برانچی کار بەرامبەر `backup/grammar-course4-2026-11-05`: 595 commit ahead، 0 behind.
+- ئەم چالاکسازییە تەنها لە Git branch ـە؛ deploymentی production، merge بۆ `main`، گۆڕینی production DB یان چالاککردنی بۆتی لایڤ ئەنجام نەدراوە. بۆیە نابێت بڵێین خوێندکارانی بۆتی بەرهەمهێنان هێشتا ئەم وەشانەیان دەستکەوتووە.
+
