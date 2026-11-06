@@ -113,7 +113,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         completed = Mock(return_value=[])
         await callback(
-            update, context, ROOT,
+            update, context, Path(__file__).resolve().parents[1],
             can_open=lambda user_id, lesson_id: True,
             get_completed_lessons=completed,
         )
