@@ -32,6 +32,8 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("نەء", content)
         self.assertIn("إقرأ", content)
         self.assertIn("گواڵو", content)
+        self.assertIn("گۆشتاو، گواڵو، ماستاو، ڕۆژاوا، مااڵوایی", content)
+        self.assertIn("گۆشتئاو، گوڵئاو، ماستئاو، ڕۆژئاوا، ماڵئاوایی", content)
 
     def test_lessons_3_and_4_preserve_unicode_letter_contrasts(self):
         lesson3 = self.lessons[2]
