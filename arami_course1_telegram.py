@@ -392,6 +392,26 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
+def _assessment_result(session, user_id, lesson_number, award_assessment, feedback=""):
+    result = session_result(session)
+    lesson_id = f"arami_course1_lesson_{lesson_number:02d}"
+    if award_assessment is not None:
+        if award_assessment(user_id, lesson_id):
+            session["assessment_reward_granted"] = True
+    reward_note = (
+        "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+        if session.get("assessment_reward_granted") else ""
+    )
+    text = (
+        f"{feedback}\\n\\n🏁 کۆتایی هات\\n"
+        f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
+    )
+    markup = InlineKeyboardMarkup([[
+        InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")
+    ]])
+    return text, markup
+
+
 async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
     action = query.data.removeprefix("aramiC:")
@@ -504,6 +524,14 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
+    if kind == "submit" and session.get("closed") and session.get("mode") == "assessment":
+        await query.answer()
+        result_text, result_markup = _assessment_result(
+            session, query.from_user.id, number, award_assessment,
+            "🏁 تاقیکردنەوەکەت پێشتر تەواو بوو."
+        )
+        await query.edit_message_text(result_text, reply_markup=result_markup)
+        return
     if kind == "pick":
         if len(parts) != 3 or not parts[2].isdigit():
             await query.answer()
@@ -539,19 +567,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
-            reward_note = ""
-            if session["mode"] == "assessment" and award_assessment is not None:
-                lesson_id = f"arami_course1_lesson_{number:02d}"
-                if award_assessment(query.from_user.id, lesson_id):
-                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
-            rows = []
-            if session["mode"] == "practice" and result["missed"]:
-                rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
-            rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
-            await query.edit_message_text(
-                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}",
-                reply_markup=InlineKeyboardMarkup(rows),
-            )
+            if session["mode"] == "assessment":
+                text, markup = _assessment_result(
+                    session, query.from_user.id, number, award_assessment, feedback
+                )
+            else:
+                rows = []
+                if result["missed"]:
+                    rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
+                rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
+                text = f"{feedback}\\n\\n🏁 کۆتایی هات\\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
+                markup = InlineKeyboardMarkup(rows)
+            await query.edit_message_text(text, reply_markup=markup)
         else:
             await query.edit_message_text(
                 feedback,
