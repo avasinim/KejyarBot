@@ -11,14 +11,16 @@ from arami_lesson1_interaction import (
 logger = logging.getLogger(__name__)
 
 
-def menu_keyboard():
-    return InlineKeyboardMarkup([
+def menu_keyboard(assessment_available=False):
+    rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
-        [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
         [InlineKeyboardButton("📚 وانەی ٥ — پیتەکان و هاوتای لاتینی", callback_data="arami5:menu")],
         [InlineKeyboardButton("📚 هەموو ٢١ وانەی کۆرس ١", callback_data="aramiC:menu")],
-    ])
+    ]
+    if assessment_available:
+        rows.insert(2, [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")])
+    return InlineKeyboardMarkup(rows)
 
 
 async def send_question(message, context):
@@ -71,7 +73,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
             "خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
-            reply_markup=menu_keyboard(),
+            reply_markup=menu_keyboard(
+                assessment_available=(
+                    get_completed_lessons is not None
+                    and "arami_course1_lesson_01" in set(get_completed_lessons(query.from_user.id))
+                )
+            ),
         )
         return
 
@@ -106,7 +113,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
             ]]),
         )
-        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
+        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard(
+            assessment_available=(
+                get_completed_lessons is not None
+                and "arami_course1_lesson_01" in set(get_completed_lessons(query.from_user.id))
+            )
+        ))
         return
 
     if action in {"practice", "assessment"}:
