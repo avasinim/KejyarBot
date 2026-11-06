@@ -361,5 +361,43 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
 
 
+    async def test_assessment_reward_persistence_failure_can_be_retried(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("assessment")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        update, _ = make_update("pick:1", message_id=message_id)
+        await callback(update, context, "/unused")
+        award = Mock(side_effect=[RuntimeError("database unavailable"), True])
+        update, failed_query = make_update("submit", message_id=message_id)
+        with self.assertRaisesRegex(RuntimeError, "database unavailable"):
+            await callback(update, context, "/unused", award_assessment=award)
+        self.assertTrue(context.user_data["arami_lesson1_session"]["closed"])
+        update, retry_query = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused", award_assessment=award)
+        self.assertEqual(award.call_count, 2)
+        self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
+        self.assertIn("1/1", retry_query.edit_message_text.await_args.args[0])
+
+    async def test_assessment_result_delivery_failure_retries_without_duplicate_reward(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("assessment")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        update, _ = make_update("pick:1", message_id=message_id)
+        await callback(update, context, "/unused")
+        award = Mock(side_effect=[True, False])
+        update, failed_query = make_update("submit", message_id=message_id)
+        failed_query.edit_message_text.side_effect = RuntimeError("Telegram send failed")
+        with self.assertRaisesRegex(RuntimeError, "Telegram send failed"):
+            await callback(update, context, "/unused", award_assessment=award)
+        update, retry_query = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused", award_assessment=award)
+        self.assertEqual(award.call_count, 2)
+        self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
+
+
 if __name__ == "__main__":
     unittest.main()
