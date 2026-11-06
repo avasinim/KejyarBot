@@ -656,8 +656,9 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         first_update, first_query = self.make_update("practice:2")
         first_query.message.message_id = 10
         first_query.message.reply_text.side_effect = delayed_first_reply
-        second_update, _second_query = self.make_update("practice:2")
+        second_update, second_query = self.make_update("practice:2")
         second_update.callback_query.message.message_id = 20
+        second_query.message.reply_text.return_value = SimpleNamespace(message_id=21)
 
         first_task = asyncio.create_task(
             arami_course1_callback(first_update, context, ROOT)
