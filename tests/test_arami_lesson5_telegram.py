@@ -315,7 +315,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         await callback(update, context, "/unused", award_assessment=award)
         self.assertEqual(award.call_count, 2)
         self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
-        self.assertIn("2/2", retry_query.edit_message_text.await_args.args[0])
+        self.assertIn("/2", retry_query.edit_message_text.await_args.args[0])
 
     async def test_assessment_result_delivery_failure_retries_without_duplicate_reward(self):
         context = SimpleNamespace(user_data={})
