@@ -108,6 +108,12 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
             examples,
         )
 
+    def test_lesson_58_avoids_disputed_historical_date_example(self):
+        lesson = self.lesson(58)
+        examples = " ".join(pair[0] for pair in lesson["examples"])
+        self.assertIn("وەشانی ٤ی کتێب (٢٠٢٤/٠٨/٢٥)", examples)
+        self.assertNotIn("حەمە پاشا (١٧٨٣–١٨٤٦)", examples)
+
     def test_lesson_59_distinguishes_dialogue_marker_from_sentence_dash(self):
         lesson = self.lesson(59)
         examples = {pair[0] for pair in lesson["examples"]}
