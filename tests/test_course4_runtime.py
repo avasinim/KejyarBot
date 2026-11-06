@@ -1,16 +1,9 @@
-"""Regression checks for the owner-review Course 4 runtime data."""
+"""Regression checks for the new owner-supplied Course 4 grammar curriculum."""
 import json
-import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
-
-import database
 
 from course_lesson_adapters import adapt_unified_orthography_lessons
-from course_runtime import can_open_lesson
-from quiz_option_order import randomized_question_copy
-
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSE4_PATH = ROOT / "course_data" / "grammar_course4_lessons_01_08.json"
@@ -23,137 +16,26 @@ class Course4RuntimeTests(unittest.TestCase):
         cls.payload = json.loads(COURSE4_PATH.read_text(encoding="utf-8"))
         cls.lessons, cls.quizzes = adapt_unified_orthography_lessons(cls.payload)
 
-    def test_course_boundary_and_eight_contiguous_lessons(self):
+    def test_course4_contains_only_the_new_first_grammar_lesson(self):
         self.assertEqual(self.payload["course_id"], "grammar")
-        self.assertEqual(self.payload["source_page_limit"], 342)
-        self.assertEqual([item["number"] for item in self.payload["lessons"]], list(range(1, 9)))
-        self.assertEqual(list(self.lessons), [f"grammar_{number:02d}" for number in range(1, 9)])
+        self.assertEqual([item["number"] for item in self.payload["lessons"]], [1])
+        self.assertEqual(list(self.lessons), ["grammar_01"])
+        self.assertEqual(self.payload["lessons"][0]["title"], "وانەی ١: پێشەکی — ڕێزمان (Grammar)")
+        self.assertEqual(self.payload["lessons"][0]["review_status"], "awaiting_owner_supplied_lesson_text")
 
-    def test_course4_is_registered_active_with_exact_lesson_ids(self):
+    def test_old_course4_lesson_ids_are_not_registered(self):
         manifest = json.loads(COURSES_PATH.read_text(encoding="utf-8"))
         course = next(item for item in manifest["courses"] if item["id"] == "grammar")
         self.assertEqual(course["status"], "active")
-        self.assertEqual(course["lesson_ids"], [f"grammar_{number:02d}" for number in range(1, 9)])
+        self.assertEqual(course["lesson_ids"], ["grammar_01"])
+        self.assertEqual(set(self.lessons), {"grammar_01"})
+        self.assertEqual(set(self.quizzes), {"grammar_01"})
+        self.assertEqual(self.quizzes["grammar_01"], [])
 
-    def test_course4_quizzes_are_not_blocked_by_editorial_gate(self):
-        from course_quiz_review import quiz_is_available
-        for number in range(1, 9):
-            self.assertTrue(quiz_is_available(f"grammar_{number:02d}"))
-
-    def test_source_page_ranges_are_contiguous_from_11_through_342(self):
-        import re
-        ranges = []
-        for item in self.payload["lessons"]:
-            match = re.search(r"(\d+)\s*[–-]\s*(\d+)", item["title"])
-            self.assertIsNotNone(match, item["title"])
-            ranges.append((int(match.group(1)), int(match.group(2))))
-        self.assertEqual(ranges[0][0], 11)
-        for previous, current in zip(ranges, ranges[1:]):
-            self.assertEqual(current[0], previous[1] + 1)
-        self.assertEqual(ranges[-1][1], 342)
-
-    def test_each_lesson_has_the_expected_teaching_sections(self):
-        for item in self.payload["lessons"]:
-            with self.subTest(lesson=item["number"]):
-                for field in ("objective", "key_points", "examples", "exercises", "comprehension"):
-                    self.assertTrue(item.get(field))
-
-    def test_every_lesson_has_nonempty_content_and_owner_review_marker(self):
-        for lesson_id, lesson in self.lessons.items():
-            with self.subTest(lesson=lesson_id):
-                self.assertTrue(lesson["title"].strip())
-                self.assertTrue(lesson["content"].strip())
-                self.assertTrue(lesson["review_status"].startswith("owner_review"))
-                self.assertIn("تێبینی پێداچوونەوە", lesson["content"])
-                self.assertIn("پەسەندی کۆتایی", lesson["content"])
-
-    def test_every_lesson_has_two_valid_provisional_quiz_questions(self):
-        for lesson_id, questions in self.quizzes.items():
-            with self.subTest(lesson=lesson_id):
-                self.assertEqual(len(questions), 2)
-                for question in questions:
-                    self.assertTrue(question["question"].strip())
-                    self.assertGreaterEqual(len(question["options"]), 2)
-                    self.assertEqual(len(question["options"]), len(set(question["options"])))
-                    self.assertIn(question["answer"], question["options"])
-                    self.assertTrue(question["explanation"].strip())
-
-    def test_course4_quiz_option_randomization_preserves_answers_and_source(self):
-        for lesson_id, questions in self.quizzes.items():
-            with self.subTest(lesson=lesson_id):
-                original = json.loads(json.dumps(questions, ensure_ascii=False))
-                shuffled = randomized_question_copy(questions, rng=type("Reverse", (), {"shuffle": staticmethod(list.reverse)})())
-                self.assertEqual(questions, original)
-                self.assertEqual(len(shuffled), len(original))
-                for before, after in zip(original, shuffled):
-                    self.assertEqual(set(before["options"]), set(after["options"]))
-                    self.assertEqual(before["answer"], after["answer"])
-                    self.assertEqual(after["options"], list(reversed(before["options"])))
-    def test_course4_lessons_unlock_in_sequence_only(self):
-        lesson_ids = [f"grammar_{number:02d}" for number in range(1, 9)]
-        completed = set()
-        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_01"))
-        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_02"))
-        completed.add("grammar_01")
-        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_02"))
-        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_03"))
-        completed.update(lesson_ids[:-1])
-        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_08"))
-        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_09"))
-    def test_course4_lesson_rewards_are_granted_once(self):
-        with tempfile.TemporaryDirectory() as directory:
-            db_path = Path(directory) / "course4-test.db"
-            with patch.object(database, "DB_NAME", str(db_path)):
-                database.init_db()
-                self.assertTrue(database.complete_lesson_with_rewards(900001, "grammar_01"))
-                self.assertFalse(database.complete_lesson_with_rewards(900001, "grammar_01"))
-                user = database.get_user(900001)
-                self.assertEqual(user[1], 10)  # score
-                self.assertEqual(user[2], 10)  # XP
-                self.assertEqual(user[8], 5)   # coins
-                self.assertEqual(user[9], 1)   # reward chests
-
-    def test_course4_quiz_rewards_are_granted_once_without_lesson_coins(self):
-        with tempfile.TemporaryDirectory() as directory:
-            db_path = Path(directory) / "course4-test.db"
-            with patch.object(database, "DB_NAME", str(db_path)):
-                database.init_db()
-                self.assertTrue(database.complete_quiz_with_rewards(900002, "grammar_01"))
-                self.assertFalse(database.complete_quiz_with_rewards(900002, "grammar_01"))
-                user = database.get_user(900002)
-                self.assertEqual(user[1], 20)  # score
-                self.assertEqual(user[2], 20)  # XP
-                self.assertEqual(user[7], 1)   # completed quiz count
-                self.assertEqual(user[8], 0)   # quizzes do not repeat lesson coins
-                self.assertEqual(user[9], 0)   # quizzes do not repeat lesson chests
-    def test_quizzes_are_not_silently_omitted_by_adapter(self):
-        self.assertEqual(set(self.quizzes), set(self.lessons))
-        self.assertTrue(all(self.quizzes[key] for key in self.lessons))
-
-
-    def test_course4_quiz_answers_match_source_option_indices(self):
-        for raw_lesson in self.payload["lessons"]:
-            lesson_id = f"grammar_{raw_lesson['number']:02d}"
-            adapted_questions = self.quizzes[lesson_id]
-            self.assertEqual(len(raw_lesson["quiz"]), len(adapted_questions))
-            for raw, adapted in zip(raw_lesson["quiz"], adapted_questions):
-                self.assertEqual(adapted["question"], raw["q"])
-                self.assertEqual(adapted["answer"], raw["options"][raw["answer"]])
-                self.assertEqual(adapted["options"], raw["options"])
-                self.assertEqual(adapted["explanation"], raw["explanation"])
-
-    def test_course4_adapter_rejects_out_of_range_quiz_answer(self):
-        malformed = json.loads(json.dumps(self.payload, ensure_ascii=False))
-        malformed["lessons"][0]["quiz"][0]["answer"] = 999
-        with self.assertRaises(ValueError):
-            adapt_unified_orthography_lessons(malformed)
-
-    def test_course4_adapter_rejects_duplicate_quiz_options(self):
-        malformed = json.loads(json.dumps(self.payload, ensure_ascii=False))
-        options = malformed["lessons"][0]["quiz"][0]["options"]
-        options[1] = options[0]
-        with self.assertRaises(ValueError):
-            adapt_unified_orthography_lessons(malformed)
+    def test_new_lesson_waits_for_owner_text_without_invented_quiz_content(self):
+        lesson = self.payload["lessons"][0]
+        for field in ("key_points", "examples", "exercises", "comprehension", "quiz"):
+            self.assertEqual(lesson[field], [])
 
 
 if __name__ == "__main__":
