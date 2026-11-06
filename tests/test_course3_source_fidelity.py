@@ -20,13 +20,25 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
     def lesson(self, number):
         return self.lessons[number - 1]
 
-    def test_lesson_50_retains_examples_from_book_page_58(self):
+    def test_lesson_10_preserves_the_books_dialect_examples_and_qualification(self):
+        lesson = self.lesson(10)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertIn("بیستوین (بێستوون)، چوی (چۆن)، دوێت (کچ)", examples)
+        self.assertIn("سویر (سوور، شایی)، دویر (دوور)، ژویر (ژوور)، نویسەر (نووسەر)", examples)
+        self.assertIn("بیستۊن، دۊر، سۊر", examples)
+        self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
+
+    def test_lesson_50_retains_examples_from_book_page_58_and_59(self):
         lesson = self.lesson(50)
         examples = {pair[0] for pair in lesson["examples"]}
         self.assertIn("پێم وا نییە، پێم وا بوو", examples)
         self.assertIn("تەمەندرێژ بیت", examples)
         self.assertIn("دڵناسک", examples)
+        self.assertIn("ئەوان چوونە ژوورەوە", examples)
+        self.assertIn("هاتوچۆ، دەستوبرد", examples)
+        self.assertIn("نییە", examples)
         self.assertIn("٥٨", lesson["source"]["pages"])
+        self.assertIn("٥٩", lesson["source"]["pages"])
 
     def test_lesson_59_distinguishes_dialogue_marker_from_sentence_dash(self):
         lesson = self.lesson(59)
