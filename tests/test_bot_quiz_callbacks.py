@@ -243,6 +243,20 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("quiz", context.user_data)
         self.assertEqual(query.message.reply_text.await_count, 2)
 
+    async def test_reward_persistence_failure_clears_exhausted_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        with patch.object(
+            bot,
+            "complete_quiz_with_rewards",
+            side_effect=RuntimeError("quiz reward database failure"),
+        ) as reward:
+            with self.assertRaisesRegex(RuntimeError, "quiz reward database failure"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_called_once_with(12345, "وانە_1")
+        self.assertEqual(query.message.reply_text.await_count, 1)
+
     async def test_final_result_delivery_failure_clears_already_rewarded_quiz(self):
         update, context, query = self.make_context("answer_0")
         query.message.reply_text = AsyncMock(
