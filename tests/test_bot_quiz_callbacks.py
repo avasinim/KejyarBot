@@ -146,6 +146,58 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
 
+    async def test_concurrent_course3_submit_callbacks_claim_one_answer_and_one_reward(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, first_query = self.make_context("submit_answer")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": 0,
+            "answer_in_progress": False,
+        })
+        reply_text = AsyncMock()
+        first_query.message.reply_text = reply_text
+
+        second_query = SimpleNamespace(
+            data="submit_answer",
+            message=SimpleNamespace(message_id=77, reply_text=reply_text),
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            edit_message_reply_markup=AsyncMock(),
+        )
+        second_update = SimpleNamespace(
+            callback_query=second_query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        acknowledgement_gate = asyncio.Event()
+
+        async def delayed_acknowledgement():
+            await acknowledgement_gate.wait()
+
+        first_query.answer = AsyncMock(side_effect=delayed_acknowledgement)
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            first = asyncio.create_task(bot.quiz_answer(
+                update, context, selected_index=0
+            ))
+            await asyncio.sleep(0)
+
+            # The first callback must claim the question before its first await.
+            self.assertTrue(context.user_data["quiz"]["answer_in_progress"])
+            await bot.quiz_answer(second_update, context, selected_index=0)
+
+            second_query.answer.assert_awaited_once()
+            second_query.edit_message_reply_markup.assert_not_awaited()
+            reward.assert_not_called()
+
+            acknowledgement_gate.set()
+            await first
+
+        reward.assert_called_once_with(12345, lesson)
+        self.assertNotIn("quiz", context.user_data)
+        first_query.edit_message_reply_markup.assert_awaited_once_with(
+            reply_markup=None
+        )
+        self.assertEqual(reply_text.await_count, 2)
+
     async def test_valid_final_answer_completes_quiz_and_claims_reward_once(self):
         from unittest.mock import patch
 
