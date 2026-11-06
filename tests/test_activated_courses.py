@@ -312,6 +312,36 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(keyboard[0][0].callback_data, "quiz_lesson_12_start")
         self.assertEqual(keyboard[-1][0].callback_data, "quizmenu:assessment:0")
 
+    async def test_progress_profile_displays_persisted_stats_and_current_course_badges(self):
+        message = SimpleNamespace(
+            text="👤 پێشکەوتنم",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        profile = (12345, 140, 160, "A1.2 🌿", 0, "", "", 0, 25, 3)
+        badges = [
+            "🏅 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1",
+            "🏅 کۆرسی ٣: ڕێنووسی یەکگرتوو — وانەی 1",
+        ]
+        with (
+            patch.object(bot, "get_user", return_value=profile),
+            patch.object(bot, "current_progress_badges", return_value=badges),
+        ):
+            await bot.message(update, SimpleNamespace())
+
+        message.reply_text.assert_awaited_once()
+        rendered = message.reply_text.await_args.args[0]
+        self.assertIn("⭐ خاڵ: 140", rendered)
+        self.assertIn("🔥 XP: 160", rendered)
+        self.assertIn("🎓 ئاست: A1.2 🌿", rendered)
+        self.assertIn("🪙 Coin: 25", rendered)
+        self.assertIn("🎁 سەنوق: 3", rendered)
+        self.assertIn(badges[0], rendered)
+        self.assertIn(badges[1], rendered)
+
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
