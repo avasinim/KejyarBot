@@ -50,6 +50,9 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
         self.assertIn("firewall", parentheses)
         self.assertIn("٢٠٢٤/٠٨/٢٥", parentheses)
         self.assertNotIn("١٧٨٣", parentheses)
+        self.assertIn("دەستێکی بااڵی هەبوو", parentheses)
+        self.assertIn("نموونەی فێرکاریی زیادکراو", parentheses)
+        self.assertNotIn("بنەمایەکی مێژوویی هەیە", parentheses)
 
     def test_dash_ellipsis_and_spaces(self):
         dash = " ".join(self.lessons[58]["key_points"] + [v for pair in self.lessons[58]["examples"] for v in pair])
