@@ -181,10 +181,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if action.startswith("pick:"):
         raw = action.removeprefix("pick:")
         if not raw.isdigit():
+            await query.answer()
             return
         try:
             selected = select_answer(session, int(raw))
         except (ValueError, TypeError):
+            await query.answer()
             await query.message.reply_text("⚠️ هەڵبژاردەکە دروست نییە؛ تکایە دووبارە هەڵبژێرە.")
             return
         question = current_question(session)
