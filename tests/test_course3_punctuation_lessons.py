@@ -30,7 +30,7 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
         comma = " ".join(self.lessons[52]["key_points"] + [v for pair in self.lessons[52]["examples"] for v in pair])
         semicolon = " ".join(self.lessons[53]["key_points"] + [v for pair in self.lessons[53]["examples"] for v in pair])
         self.assertIn("د. سۆران", period)
-        self.assertIn("ی.ن.ک.", period)
+        self.assertIn("ی. ن. ک.", period)
         self.assertIn("١٢:٢٧:١٢", colon)
         self.assertIn("بەزەیی، پێویست نییە", comma)
         self.assertIn("بەڵام", semicolon)
