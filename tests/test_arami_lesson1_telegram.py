@@ -253,6 +253,20 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
 
 
 class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.bank = {
+            "practice": [{
+                "id": "p1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "پرسیاری ڕاهێنان",
+                "options": ["A", "B"], "answer_index": 0,
+            }],
+            "assessment": [{
+                "id": "a1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "پرسیاری تاقیکردنەوە",
+                "options": ["A", "B"], "answer_index": 1,
+            }],
+        }
+
     async def test_practice_requires_submission_then_advances_and_invalidates_old_message(self):
         bank = {
             "practice": [
