@@ -147,9 +147,12 @@ CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
 )
 UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
+GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
+GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(GRAMMAR_COURSE4_DRAFT)
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
     (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+    (GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES),
 ):
     duplicate_ids = set(LESSON_DATA).intersection(course_lessons)
     if duplicate_ids:
@@ -264,7 +267,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 1}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -275,7 +278,23 @@ def validate_activated_course_runtime():
                 f"expected {expected_count}"
             )
         missing_lessons = [lesson_id for lesson_id in lesson_ids if lesson_id not in LESSON_DATA]
-        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)]
+        grammar_quiz_pending = (
+            course_id == "grammar"
+            and bool(lesson_ids)
+            and all(
+                LESSON_DATA.get(key, {}).get("review_status", "").startswith("owner_review_pending")
+                for key in lesson_ids
+            )
+        )
+        missing_quizzes = [] if grammar_quiz_pending else [
+            lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)
+        ]
+        if course_id == "grammar":
+            grammar_lessons = [LESSON_DATA[key] for key in lesson_ids if key in LESSON_DATA]
+            if any(not item.get("content", "").strip() for item in grammar_lessons):
+                raise RuntimeError("Course 4 contains an empty lesson")
+            if grammar_quiz_pending and (len(lesson_ids) != 1 or any(QUIZ_DATA.get(key) for key in lesson_ids)):
+                raise RuntimeError("New Course 4 must contain only its single pending Lesson 1 without invented quizzes")
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
@@ -348,6 +367,7 @@ BADGE_COURSE_TITLES = {
     "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
     "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
     "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+    "grammar": "کەژیار | زانستی زمان — بەشی ڕێزمان",
 }
 
 
