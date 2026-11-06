@@ -73,6 +73,16 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("Shift + M", content)
         self.assertIn("پەڕەی ١٥", content)
 
+    def test_lessons_10_to_12_preserve_pages_16_and_17_examples(self):
+        content = " ".join(
+            self.lessons[9]["key_points"] + [v for pair in self.lessons[9]["examples"] for v in pair]
+            + self.lessons[10]["key_points"] + [v for pair in self.lessons[10]["examples"] for v in pair]
+            + self.lessons[11]["key_points"] + [v for pair in self.lessons[11]["examples"] for v in pair]
+        )
+        for marker in ("جوێن", "بیستوین", "بیستۊن", "دەێ (deê)", "خوەی (xwey)", "دەسەسڕ", "دەنووسێت", "ئەمجار سەختترەن", "ئیمشەو هەم دیسان"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_13_distinguishes_adverbial_and_adjectival_reduplication(self):
         lesson = self.lessons[12]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
