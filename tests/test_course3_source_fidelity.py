@@ -28,6 +28,15 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("بیستۊن، دۊر، سۊر", examples)
         self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
 
+    def test_lesson_38_keeps_irregular_verb_paradigms_from_pages_45_to_47(self):
+        lesson = self.lesson(38)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertTrue(any("ژیام، ژیایت، ژیا" in example for example in examples))
+        self.assertTrue(any("گریام، گریایت، گریا" in example for example in examples))
+        self.assertTrue(any("شیام، شیایت، شیا" in example for example in examples))
+        self.assertTrue(any("دەژی/دەژێت" in example for example in examples))
+        self.assertIn("٤٥–٤٧", lesson["source"]["pages"])
+
     def test_lesson_50_retains_examples_from_book_page_58_and_59(self):
         lesson = self.lesson(50)
         examples = {pair[0] for pair in lesson["examples"]}
