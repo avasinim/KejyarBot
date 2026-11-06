@@ -399,11 +399,11 @@ def _assessment_result(session, user_id, lesson_number, award_assessment, feedba
         if award_assessment(user_id, lesson_id):
             session["assessment_reward_granted"] = True
     reward_note = (
-        "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+        "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
         if session.get("assessment_reward_granted") else ""
     )
     text = (
-        f"{feedback}\\n\\n🏁 کۆتایی هات\\n"
+        f"{feedback}\n\n🏁 کۆتایی هات\n"
         f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
     )
     markup = InlineKeyboardMarkup([[
@@ -576,7 +576,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 if result["missed"]:
                     rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
                 rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
-                text = f"{feedback}\\n\\n🏁 کۆتایی هات\\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
+                text = f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
                 markup = InlineKeyboardMarkup(rows)
             await query.edit_message_text(text, reply_markup=markup)
         else:
