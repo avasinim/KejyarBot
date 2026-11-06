@@ -92,6 +92,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         examples = " ".join(pair[0] for pair in lesson["examples"])
         self.assertIn("گرووپی یەکەم: هەولێر، سلێمانی؛ گرووپی دووەم: دهۆک، کەرکووک.", examples)
         self.assertIn("گرووپی یەکەم: زمان، ئەدەب؛ گرووپی دووەم: مێژوو، کولتوور.", examples)
+        self.assertIn("ئێمە هەموو بەرپرسیارین بۆ پاراستنی ژینگە؛ هەر یەک لە ئێمە دەتوانێت ڕۆڵی خۆی هەبێت.", examples)
 
     def test_lesson_55_covers_uncertainty_and_question_intonation(self):
         lesson = self.lesson(55)
