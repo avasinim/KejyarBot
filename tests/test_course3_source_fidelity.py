@@ -77,6 +77,15 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("لە گەشتەکەمدا سەردانی ئەم شوێنانەم کرد: هەولێر، پایتەختی هەرێم؛ سلێمانی، شاری ڕۆشنبیری؛ دهۆک، دەروازەی کوردستان.", examples)
         self.assertTrue(any("نموونەی فێرکاریی زیادکراو" in pair[1] for pair in lesson["examples"]))
 
+    def test_lesson_53_preserves_book_comma_rules_and_examples(self):
+        lesson = self.lesson(53)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertIn("مەستوورەی کوردستانی، هونەر و مێژوونووس، لە ڕۆژهەڵاتی کوردستاندا دەژیا.", examples)
+        self.assertIn("خوێ، ڕۆن، پیاز و برنج", examples)
+        self.assertIn("بەڵێ، نامەکەم نارد.", examples)
+        self.assertIn("نە، لەو کاتەدا ناتوانم بەشدار بم.", examples)
+        self.assertTrue(any("پەڕەی ٦٧" in pair[1] or "پەڕەی ٦٨" in pair[1] for pair in lesson["examples"]))
+
     def test_lesson_54_semicolons_separate_labeled_complex_groups(self):
         lesson = self.lesson(54)
         examples = " ".join(pair[0] for pair in lesson["examples"])
