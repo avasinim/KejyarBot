@@ -741,7 +741,14 @@ async def quiz_answer(
     # callbacks then observe the claim and cannot score the same answer twice.
     quiz["answer_in_progress"] = True
     quiz["question_message_id"] = None
-    await query.answer()
+    try:
+        await query.answer()
+    except Exception:
+        # Telegram acknowledgement failed before the answer was scored.
+        # Release the in-memory claim so the learner can safely retry.
+        quiz["answer_in_progress"] = False
+        quiz["question_message_id"] = query.message.message_id
+        raise
     quiz["selected_answer_index"] = None
     try:
         await query.edit_message_reply_markup(reply_markup=None)
