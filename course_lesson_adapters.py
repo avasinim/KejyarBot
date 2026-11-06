@@ -128,6 +128,16 @@ def adapt_unified_orthography_lessons(payload):
                 if isinstance(example, (list, tuple)) and len(example) == 2
             )
         for label, field in (
+            ("📎 پاشکۆ", "appendix"),
+            ("🎯 چالاکییەکان", "activities"),
+        ):
+            if raw.get(field):
+                sections.extend(["", label])
+                sections.extend(
+                    f"{index}. {item}"
+                    for index, item in enumerate(raw[field], 1)
+                )
+        for label, field in (
             ("🧩 ڕاهێنان", "exercises"),
             ("🧠 پرسیارەکانی تێگەیشتن", "comprehension"),
         ):
