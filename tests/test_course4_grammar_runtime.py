@@ -23,9 +23,13 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                          "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
                          "owner_review_pending_sorani_corpus_validation")
-        for lesson_id in ("grammar_03", "grammar_04", "grammar_05"):
-            self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"],
-                             "owner_review_pending_scientific_and_terminology_review")
+        expected_review_status = {
+            "grammar_03": "owner_review_pending_sorani_corpus_validation",
+            "grammar_04": "owner_review_pending_sorani_plural_and_gender_validation",
+            "grammar_05": "owner_review_pending_sorani_morphology_corpus_validation",
+        }
+        for lesson_id, expected_status in expected_review_status.items():
+            self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
 
     def test_source_preserves_course4_content_and_reviewable_quiz(self):
         source = json.loads(
