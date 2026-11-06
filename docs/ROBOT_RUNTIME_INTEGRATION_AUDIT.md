@@ -307,3 +307,35 @@ For every future runtime or integration change, append date/time, exact file pat
 - Test commit: `545c038297c8876ef9264d55060b7d9b8d2e7c28`. CI: Python checks passed, compileall passed, `Ran 434 tests`, `OK (skipped=11)`; orthography course structure workflow passed.
 - Backup before the test change: `backup/course1-reward-namespace-identity-20261106`, created from `fc8b6c85e3d91ef4b129e40123d522bcbacc823b`. Backup before this audit-log update: `backup/course1-reward-identity-audit-log-20261106`, created from `545c038297c8876ef9264d55060b7d9b8d2e7c28`.
 - Scope: source inspection, deterministic unit tests, and repository CI. This does not validate an actual production database file, live Telegram behavior, multi-process deployment behavior, Botkeep storage, or recovery. No production reward data was changed. No `main` changes; PR #118 remains Draft/open/unmerged.
+
+
+## فهرستی یەکگرتووی پاراستنی کارە ئەنجامدراوەکان — 2026-11-06
+
+ئەم بەشە پوختە و فهرستی ڕێنیشاندەری تۆمارە پێشووەکانە؛ هیچ تۆمارێکی پێشوو ناسڕێتەوە و جێگایان ناگرێتەوە. وردەکاریی هەر کارێک لە بەشی تایبەتی خۆیدا لە هەمان بەڵگەنامەدا پارێزراوە. تۆماری ناوەڕۆکی کۆرسی ٣ بە جیاوازی لە `course_data/UNIFIED_ORTHOGRAPHY_COURSE3_AUDIT.md` دەمێنێتەوە.
+
+### A) کارەکانی کۆرسی ١ و کویز/تاقیکردنەوە
+- گەڕاندنەوەی دۆخی کویز دوای هەڵەی ناردنی feedback، پرسیاری داهاتوو، ئەنجامی کۆتایی و تۆمارکردنی خەڵات؛ بە پشتبەستن بە ledgerی idempotency بۆ نەبوونی خەڵاتی دووبارە.
+- retryی ناردنی وانەی ئۆتۆماتیکی کۆرسی ٣ی ئارامی و پیشاندانی پڕۆفایلی پێشکەوتنی فێرخواز.
+- پاراستنی زنجیرەی کردنەوەی وانەکان و پێداویستی تەواوکردنی وانە پێش دەستگەیشتن بە تاقیکردنەوەی کۆرسی ١؛ ڕاهێنان لە وانەی کراوەدا بەردەوامە.
+- چاکسازیی retry بۆ ئەنجامی تاقیکردنەوە و پاشەکەوتکردنی خەڵات لە هاندڵەرە تایبەتەکانی وانەی ١ و ٥ و هاندڵەری هاوبەش.
+- پشکنینی callback ـە هاوکاتەکان: submitی دووبارە، دەستپێکردنی دووبارەی وانە، acknowledgementی دواکەوتووی هەڵبژاردنی وەڵام، و نەهێشتنی keyboardی کۆن دوای گواستنەوە بۆ پرسیاری داهاتوو.
+- پشکنینی callbackی هەڵە و ژمارەی هەڵبژاردنی نادروست؛ callback دەبێت acknowledge بکرێت و stateی هەڵە نەگیرێت.
+- پشکنینی ناسنامەی خەڵات: هەمان user و هەمان lesson بە هەمان کلیلی `arami_assessment:{lesson_id}` دەگەن؛ وانە جیاوازەکان کلیلی جیاوازیان هەیە؛ transactionی `BEGIN IMMEDIATE` و ledger دووبارەخەڵاتکردن ڕادەگرن.
+- تاقیکردنەوەی نوێی ناسنامەی خەڵات زیاد کرا: `test_assessment_reward_uses_one_stable_user_and_lesson_scoped_key`.
+
+### B) سنووری CI و بەڵگە
+- لە کۆمیتی `545c038297c8876ef9264d55060b7d9b8d2e7c28`: `compileall` سەرکەوتوو؛ ٤٣٤ تاقیکردنەوە، `OK (skipped=11)`؛ پشکنینی پێکهاتەی کۆرسی ڕێنووس سەرکەوتوو.
+- کۆمیتی دواتری تۆماری ئەم پوختەیە تەنیا بەڵگەنامەی audit زیاد دەکات؛ CIی سەرچاوە و تاقیکردنەوە بۆ کۆمیتی پێشووی کۆد جێبەجێ کراوە. دۆخی CIی کۆمیتی audit-log لە کاتی نووسینی ئەم تۆمارەدا هێشتا پشتڕاست نەکراوەتەوە.
+- تاقیکردنەوەکان unit/mock ـن؛ بەڵگەی کارکردنی Telegramی ڕاستەقینە، داتابەیسی بەرهەمهێنان، runtimeی Botkeep یان deployment نین.
+
+### C) پشکنینی مانەوەی داتا و سنووری deployment
+- PTB persistence backend دانەمەزراوە؛ assessment session ـەکان لە `context.user_data` ـی ناو پرۆسەدا هەڵدەگیرێن و لە restartدا لەدەست دەچن. ledgerی خەڵات دەتوانێت دووبارەخەڵاتکردن ڕابگرێت، بەڵام پرسیار/وەڵام/ئەنجامی sessionی لەدەستچوو ناگەڕێنێتەوە.
+- پێشنیاری چارەسەری persistenceی بەردەوام پێویستی بە expiry/cleanup، گواستنەوەی atomicی session و خەڵات، پاراستنی دەرئەنجامی خەڵات، ڕەتکردنەوەی message IDی کۆن و بیرکردنەوە لە هاوکاتیی چەند پرۆسە هەیە. تا دڵنیایی لە backup و storageی بەردەوام نەبێت، ئەم گۆڕانکارییە جێبەجێ ناکرێت.
+- کێشەی backupی Botkeep هێشتا چارەسەرنەکراوە و چاوەڕوانی وەڵامی تیمی پشتگیرییە. تا دڵنیایی لە recovery point و پاراستنی `kejyar.db` و فایلەکان نەدرێت، restore، reset، restart، سڕینەوەی backup یان نووسینەوەی فایلەکانی Botkeep قەدەغەیە.
+- هیچ live Telegram، production DB migration، Botkeep runtime test یان deployment لەم کارانەدا ئەنجام نەدراوە.
+
+### D) پاراستن و دۆخی ڕیپۆزیتۆری
+- هەموو تۆمارە وردەکانی پشکنین و CI لە بەڵگەنامەی runtime audit و تۆماری جیاوازی کۆرسی ٣دا هەڵگیراون؛ backup branch ـەکانی پێش هەر دەستکارییەکیش بە ناوی خۆیان لە GitHubدا پارێزراون.
+- backupی پێش زیادکردنی ئەم پوختەیە: `backup/work-preservation-index-20261106`، لەسەر HEADی `0cbd3f737ec1a143c4008c9cf7b310a90d8fdcd0`.
+- لقەی کار: `audit/course3-lessons-31-40`. PR #118 کراوە و Draft ـە و merge نەکراوە. `main` لە `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423` ماوەتەوە؛ هیچ گۆڕانکارییەکی لەسەر نەکراوە.
+- ئەم پوختەیە تۆماری پاراستن و ڕێنیشاندەرە، نە پەسەندکردنی بەرهەمهێنان. هەر کاری داهاتوو دەبێت بە backupی نوێ، بەڵگەی تاقیکردنەوە و زیادکردنی تۆمار بەبێ سڕینەوەی مێژووی پێشوو بەردەوام بێت.
