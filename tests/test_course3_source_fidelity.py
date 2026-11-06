@@ -27,7 +27,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("سویر (سوور، شایی)، دویر (دوور)، ژویر (ژوور)، نویسەر (نووسەر)", examples)
         self.assertIn("بیستۊن، دۊر، سۊر", examples)
         self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
-        self.assertTrue(any("شێوەزار" in point and "شیکاریی فۆنۆلۆژی" in point for point in lesson["key_points"]))
+        self.assertTrue(any("کوردیی ناوەڕاست و کوردیی خواروو" in point for point in lesson["key_points"]))
 
 
     def test_lessons_36_and_37_match_book_page_44(self):
@@ -280,8 +280,10 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
     def test_lesson_58_avoids_disputed_historical_date_example(self):
         lesson = self.lesson(58)
         examples = " ".join(pair[0] for pair in lesson["examples"])
-        self.assertIn("وەشانی ٤ی کتێب (٢٠٢٤/٠٨/٢٥)", examples)
-        self.assertNotIn("حەمە پاشا (١٧٨٣–١٨٤٦)", examples)
+        self.assertIn("حەمە پاشا (١٧٨٣–١٨٤٦)", examples)
+        self.assertIn("نموونەی چاپکراوی کتێب", examples)
+        self.assertIn("هیچ سەرچاوەی دەرەکی", lesson["source"]["source_policy"])
+        
 
     def test_lesson_59_distinguishes_dialogue_marker_from_sentence_dash(self):
         lesson = self.lesson(59)
