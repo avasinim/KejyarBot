@@ -56,12 +56,63 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         examples = " ".join(pair[0] for pair in lesson["examples"])
         self.assertIn("د. سۆران، م. م. بەدرخان", examples)
         self.assertNotIn("د. سۆران؛ م. م. بەدرخان", examples)
-        self.assertIn("نەورۆز جەژنێکی کوردییە.", examples)
+        self.assertIn("نەورۆز یەکەم مانگی کوردییە.", examples)
         self.assertIn("ی. ن. ک.", examples)
         self.assertIn("د. خ.", examples)
         self.assertNotIn("ی.ن.ک.", examples)
-        self.assertIn("نموونەی جێگرەوە بۆ ڕاستکردنەوەی هەڵەی زانیاریی کتێب", self.lesson(51)["examples"][0][1])
-        self.assertNotIn("نەورۆز یەکەم مانگی کوردییە.", examples)
+        self.assertIn("تەنیا بەراوردی خاڵبەندی", self.lesson(51)["source"]["source_policy"])
+        self.assertIn("هیچ سەرچاوەیەکی دەرەکی", self.lesson(51)["source"]["source_policy"])
+        self.assertNotIn("نەورۆز جەژنێکی کوردییە.", examples)
+
+
+    def test_lessons_28_to_35_match_the_book_pages_39_to_43(self):
+        lesson28 = self.lesson(28)
+        ex28 = {pair[0] for pair in lesson28["examples"]}
+        self.assertIn("من و تۆ", ex28)
+        self.assertIn("هەوڵ بدە تا بگەیتە ئامانج", ex28)
+        self.assertIn("یا بڕۆ یا دانیشە", ex28)
+
+        lesson29 = self.lesson(29)
+        ex29 = {pair[0] for pair in lesson29["examples"]}
+        self.assertIn("بێتۆیی دەمکوژێت", ex29)
+        self.assertIn("بێ تۆ ناچم", ex29)
+        self.assertIn("بێ ئازادی ژیان ئەستەمە", ex29)
+
+        lesson30 = self.lesson(30)
+        ex30 = {pair[0] for pair in lesson30["examples"]}
+        self.assertIn("بەهێواشی، بەهێمنی، بەئەسپایی، بەپەلە", ex30)
+        self.assertIn("ئەمشەو دەچم بۆ میوانی", ex30)
+        self.assertIn("ئەو جوانی دەدوێت / ئەو بەجوانی دەدوێت", ex30)
+
+        lesson31 = self.lesson(31)
+        ex31 = {pair[0] for pair in lesson31["examples"]}
+        self.assertIn("جوان، جوانتر، جوانترین", ex31)
+        self.assertIn("ڕۆژێکی تر (ڕۆژێکی دیکە)", ex31)
+        self.assertIn("کەسێکی تر (کەسێکی دیکە)", ex31)
+
+        lesson32 = self.lesson(32)
+        ex32 = {pair[0] for pair in lesson32["examples"]}
+        self.assertIn("بشتەوێ ناتدەمێ", ex32)
+        self.assertIn("نەشخۆی، نەشهات، نەشمانگرت، بشمانبەن", ex32)
+
+        lesson33 = self.lesson(33)
+        ex33 = {pair[0] for pair in lesson33["examples"]}
+        self.assertIn("گوڵئاو → گواڵو", ex33)
+        self.assertIn("ئینشائەڵاڵ → ئینشاڵاڵ", ex33)
+        self.assertIn("موحەممەد، نەججاڕ، بەننا", ex33)
+
+        lesson34 = self.lesson(34)
+        ex34 = {pair[0] for pair in lesson34["examples"]}
+        self.assertIn("گەر دەپرسی من لەبەر چی کەم دەخۆم", ex34)
+        self.assertIn("چم، خوەم، قسە کەم", ex34)
+
+        lesson35 = self.lesson(35)
+        ex35 = {pair[0] for pair in lesson35["examples"]}
+        self.assertIn("ڕەشماڵ، سەهۆڵفرۆش", ex35)
+        self.assertIn("لە کوردستاندا", ex35)
+        self.assertIn("U+200C", ex35)
+        for n in range(28, 36):
+            self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
 
     def test_lesson_52_colon_example_preserves_the_book_list(self):
         lesson = self.lesson(52)
