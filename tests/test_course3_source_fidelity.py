@@ -131,7 +131,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         # hyphens for parenthetical interruptions and numeric ranges.
         self.assertIn("ـ ئاکۆ، گوێت لە سەربازەکانە؟", examples)
         self.assertIn(
-            "پیرەمێرد - حاجی تۆفیق - لە وەرگێڕانی هۆنراوەدا دەستی بااڵی هەبوو.",
+            "پیرەمێرد - حاجی تۆفیق - لە وەرگێڕانی هۆنراوەدا دەستێکی بااڵی هەبوو.",
             examples,
         )
         self.assertIn(
