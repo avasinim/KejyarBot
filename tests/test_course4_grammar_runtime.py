@@ -56,7 +56,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 4, "grammar_05": 5}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 6}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -67,6 +67,10 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertIn("کەژیار", bot.LESSON_DATA[lesson_id]["content"])
             self.assertIn("پاشکۆ", bot.LESSON_DATA[lesson_id]["content"])
             self.assertIn("چالاکییەکان", bot.LESSON_DATA[lesson_id]["content"])
+        lesson4 = next(item for item in source["lessons"] if item["id"] == "grammar_04")
+        lesson5 = next(item for item in source["lessons"] if item["id"] == "grammar_05")
+        self.assertIn("ئەو ئەسپانە", " ".join(lesson4["key_points"]))
+        self.assertIn("ئەو ئەسپانە", " ".join(lesson5["key_points"]))
 
     def test_other_active_courses_keep_their_existing_lesson_counts(self):
         expected = {
