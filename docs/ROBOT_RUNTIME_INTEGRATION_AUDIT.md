@@ -123,3 +123,14 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for 52027d34fff173464f245c2302812e32562386be: checks success; orthography-course-structure success; compileall passed; 394 unit tests passed with 11 skipped (1.248s); structural validation passed.
 - Backup before this audit-log update: backup/robot-quiz-message-ci-log-20261106, at 52027d34fff173464f245c2302812e32562386be.
 - These tests use mocked Telegram delivery failures and verify in-memory recovery and reward idempotency. They do not prove live Telegram or Botkeep runtime behavior. No production DB, Botkeep files, deployment, or main-branch changes; PR #118 remains Draft/open/unmerged.
+
+## Quiz selection acknowledgement and keyboard-update failure handling — 2026-11-06
+
+- Reviewed the select-then-submit quiz interaction. If Telegram callback acknowledgement failed after a selection had been recorded in memory, the learner could be left with a selection that the interface had not acknowledged. If updating the inline keyboard failed, the in-memory selection could remain set even though the visible keyboard did not expose the submit action.
+- Updated bot.py to clear the pending selected_answer_index and re-raise when query.answer() fails; also clear the selection and log the exception when edit_message_reply_markup() fails. This avoids retaining a hidden/unsubmittable selection and allows a clean retry.
+- Added tests: test_selection_acknowledgement_failure_clears_pending_selection; test_selection_keyboard_edit_failure_clears_unsubmittable_selection.
+- Code commit: a8320cebe5c79566aa52288f28620799b48645b2. Test commit: eb1722db0142d967deb5cc1f6bd5ad015ef3ae15.
+- Backup before the code/test edit: backup/robot-quiz-selection-ui-failure-20261106 (created from the preceding branch head).
+- CI for eb1722db0142d967deb5cc1f6bd5ad015ef3ae15: checks success; orthography-course-structure success. Python compileall passed; unit tests reported Ran 398 tests in 1.303s; OK (skipped=11). Structural workflow completed successfully.
+- Backup before this audit-log update: backup/robot-quiz-selection-ci-log-20261106, at eb1722db0142d967deb5cc1f6bd5ad015ef3ae15.
+- These are source-level tests with mocked Telegram callback and keyboard failures. They do not establish live Telegram or Botkeep runtime behavior. No Botkeep files, production database, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
