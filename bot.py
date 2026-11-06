@@ -233,7 +233,7 @@ LATIN_COURSE_IDS = {
 def quiz_requires_submission(lesson):
     """Use explicit select-then-submit controls for interactive learning courses."""
     course_id = LESSON_COURSE.get(lesson)
-    return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS or course_id == "unified_orthography"
+    return lesson == "وانە_3" or course_id in LATIN_COURSE_IDS or course_id in {"unified_orthography", "grammar"}
 
 
 def lesson_practice_callback(lesson):
@@ -278,7 +278,7 @@ def validate_activated_course_runtime():
                 f"expected {expected_count}"
             )
         missing_lessons = [lesson_id for lesson_id in lesson_ids if lesson_id not in LESSON_DATA]
-        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id) and course_id != "grammar"]
+        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)]
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
