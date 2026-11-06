@@ -650,7 +650,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
     async def _finish_lesson6_assessment_before_final_delivery(self, award):
         context = SimpleNamespace(user_data={})
         update, _ = self.make_update("assessment:6")
-        await callback(update, context, ROOT, award_assessment=award)
+        await arami_course1_callback(update, context, ROOT, award_assessment=award)
         bank = load_question_banks(ROOT)[6]["assessment"]
         final_message_id = None
         for index, question in enumerate(bank):
@@ -658,13 +658,13 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             update, _ = self.make_update(
                 f"pick:6:{question['answer_index']}", message_id=message_id
             )
-            await callback(update, context, ROOT, award_assessment=award)
+            await arami_course1_callback(update, context, ROOT, award_assessment=award)
             final_message_id = message_id
             if index < len(bank) - 1:
                 update, _ = self.make_update("submit:6", message_id=message_id)
-                await callback(update, context, ROOT, award_assessment=award)
+                await arami_course1_callback(update, context, ROOT, award_assessment=award)
                 update, _ = self.make_update("next:6", message_id=message_id)
-                await callback(update, context, ROOT, award_assessment=award)
+                await arami_course1_callback(update, context, ROOT, award_assessment=award)
         return context, final_message_id
 
     async def test_shared_assessment_reward_persistence_failure_can_be_retried(self):
@@ -672,10 +672,10 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context, message_id = await self._finish_lesson6_assessment_before_final_delivery(award)
         update, _ = self.make_update("submit:6", message_id=message_id)
         with self.assertRaisesRegex(RuntimeError, "database unavailable"):
-            await callback(update, context, ROOT, award_assessment=award)
+            await arami_course1_callback(update, context, ROOT, award_assessment=award)
         self.assertTrue(context.user_data["arami_course1_sessions"]["6"]["closed"])
         update, retry_query = self.make_update("submit:6", message_id=message_id)
-        await callback(update, context, ROOT, award_assessment=award)
+        await arami_course1_callback(update, context, ROOT, award_assessment=award)
         self.assertEqual(award.call_count, 2)
         self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
 
@@ -685,9 +685,9 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         update, failed_query = self.make_update("submit:6", message_id=message_id)
         failed_query.edit_message_text.side_effect = RuntimeError("Telegram send failed")
         with self.assertRaisesRegex(RuntimeError, "Telegram send failed"):
-            await callback(update, context, ROOT, award_assessment=award)
+            await arami_course1_callback(update, context, ROOT, award_assessment=award)
         update, retry_query = self.make_update("submit:6", message_id=message_id)
-        await callback(update, context, ROOT, award_assessment=award)
+        await arami_course1_callback(update, context, ROOT, award_assessment=award)
         self.assertEqual(award.call_count, 2)
         self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
 
