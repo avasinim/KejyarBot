@@ -264,3 +264,14 @@ For every future runtime or integration change, append date/time, exact file pat
 - The persistence design must also handle the non-atomic boundary between Telegram message creation and recording the returned message ID, atomically persist answer/closed state with reward idempotency, preserve the reward-display outcome after restart, reject stale message IDs, and expire abandoned sessions safely. Enabling generic PTB persistence alone would not solve these transaction and message-delivery boundaries.
 - Next safe step: obtain confirmation of the deployment's durable database storage and recovery point, then implement a versioned SQLite session repository with explicit transaction boundaries and tests for restart/replay/expiry. Until then, current-process retries and one-time reward protection remain covered, but process-restart result recovery is not.
 - No production database, Botkeep runtime, Telegram live service, deployment, or `main` branch was changed. PR #118 remains Draft/open/unmerged.
+
+
+## Course 1 Lesson 1 invalid answer-selection callback acknowledgement — 2026-11-06
+
+- A parity review of the dedicated Lesson 1, dedicated Lesson 5, and shared Course 1 callback handlers found that Lesson 1 returned without acknowledging a malformed `pick:` callback, and its invalid/out-of-range selection branch sent an error message without acknowledging the callback. The corresponding Lesson 5 and shared-handler paths acknowledge malformed or rejected selections.
+- Updated `arami_lesson1_telegram.py` so malformed selection indices are acknowledged before returning, and rejected indices are acknowledged before the explanatory message is sent. No valid-answer selection, scoring, lesson progression, or reward logic was changed.
+- Added deterministic regression tests in `tests/test_arami_lesson1_telegram.py` for a non-numeric selection index and an out-of-range index. Both assert that the callback is acknowledged and that no selection/keyboard state is committed.
+- Source commit: `44833e1612d504b2b8587ee74d666c6e99683ec4`. Test commit / branch head: `08cabfc77dd82c6199d99cd6e9f456d9a980a01e`.
+- CI for `08cabfc77dd82c6199d99cd6e9f456d9a980a01e`: Python checks passed, including compileall and `Ran 427 tests`, `OK (skipped=11)`; orthography course structure workflow passed.
+- Backup before source/test edits: `backup/course1-lesson1-invalid-pick-ack-20261106`, created from `f0ac9dd47b51a559733bdba40a7db400398eafb5`. Backup before this audit-log update: `backup/course1-invalid-pick-ci-log-20261106`, created from `08cabfc77dd82c6199d99cd6e9f456d9a980a01e`.
+- Scope: mocked Telegram callback tests and repository CI only. No live Telegram, Botkeep runtime, production database, process restart, or deployment was performed. No `main` changes; PR #118 remains Draft/open/unmerged.
