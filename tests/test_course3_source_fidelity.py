@@ -54,6 +54,22 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         examples = " ".join(pair[0] for pair in lesson["examples"])
         self.assertIn("د. سۆران، م. م. بەدرخان", examples)
         self.assertNotIn("د. سۆران؛ م. م. بەدرخان", examples)
+        self.assertIn("نەورۆز جەژنێکی کوردییە.", examples)
+        self.assertNotIn("نەورۆز یەکەم مانگی کوردییە.", examples)
+
+    def test_lesson_52_colon_example_preserves_the_book_list(self):
+        lesson = self.lesson(52)
+        examples = " ".join(pair[0] for pair in lesson["examples"])
+        self.assertIn(
+            "میرنشینە کوردییەکان بریتی بوون لە: ئەردەڵان، سۆران، بادینان، بابان، هەکاری و بۆتان.",
+            examples,
+        )
+
+    def test_lesson_54_semicolons_separate_labeled_complex_groups(self):
+        lesson = self.lesson(54)
+        examples = " ".join(pair[0] for pair in lesson["examples"])
+        self.assertIn("گرووپی یەکەم: هەولێر، سلێمانی؛ گرووپی دووەم: دهۆک، کەرکووک.", examples)
+        self.assertIn("گرووپی یەکەم: زمان، ئەدەب؛ گرووپی دووەم: مێژوو، کولتوور.", examples)
 
     def test_lesson_56_uses_the_books_exclamation_mark_purposes(self):
         lesson = self.lesson(56)
