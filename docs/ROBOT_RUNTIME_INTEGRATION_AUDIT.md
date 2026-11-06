@@ -339,3 +339,11 @@ For every future runtime or integration change, append date/time, exact file pat
 - backupی پێش زیادکردنی ئەم پوختەیە: `backup/work-preservation-index-20261106`، لەسەر HEADی `0cbd3f737ec1a143c4008c9cf7b310a90d8fdcd0`.
 - لقەی کار: `audit/course3-lessons-31-40`. PR #118 کراوە و Draft ـە و merge نەکراوە. `main` لە `bde4b44ddf5127e6c9762d014fd7d2cde2dc0423` ماوەتەوە؛ هیچ گۆڕانکارییەکی لەسەر نەکراوە.
 - ئەم پوختەیە تۆماری پاراستن و ڕێنیشاندەرە، نە پەسەندکردنی بەرهەمهێنان. هەر کاری داهاتوو دەبێت بە backupی نوێ، بەڵگەی تاقیکردنەوە و زیادکردنی تۆمار بەبێ سڕینەوەی مێژووی پێشوو بەردەوام بێت.
+
+
+## پەیوەستکردنی فهرستی ناوەندیی پاراستن — 2026-11-06
+
+- فهرستی ناوەندیی شوێنکەوتن و backup refs لە `docs/WORK_PRESERVATION_INDEX_2026-11-06.md` زیاد کرا. ئەو فایلە ٩٥ backup branchی دۆزراوە لە GitHub، SHAی هەر یەک، کۆمیتە گرنگەکانی کار، شوێنی audit ـەکان و سنووری CI/runtime تۆمار دەکات.
+- کۆمیتی دروستکردنی فهرست: `8c8de73391871e427975b3d7cfd51db92de3cb57`.
+- Backup پێش پەیوەستکردنی ئەم تۆمارە: `backup/preservation-index-crosslink-20261106`، لە HEADی `8c8de73391871e427975b3d7cfd51db92de3cb57`.
+- فهرستەکە لە هەمان لقی کارە و بە تەنیا backupی سەربەخۆی دەرەکی نییە؛ بۆ پاراستنی زیاتر، mirrorێکی سەربەخۆ پێویستە. کێشەی Botkeep هێشتا چارەسەر نەکراوە.
