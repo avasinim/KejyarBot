@@ -640,7 +640,13 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     # Commit the selection before the first await. If the learner presses
     # submit immediately, submit_quiz_answer must see this selected index.
     quiz["selected_answer_index"] = choice_index
-    await query.answer()
+    try:
+        await query.answer()
+    except Exception:
+        # Keep the previous selection state if Telegram did not acknowledge
+        # the callback; the learner can safely retry selecting an option.
+        quiz["selected_answer_index"] = None
+        raise
     rows = [
         [
             InlineKeyboardButton(
@@ -653,7 +659,14 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     rows.append([
         InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="submit_answer")
     ])
-    await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+    try:
+        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+    except Exception:
+        # Without the submit button, do not retain a hidden selection that
+        # the learner cannot submit from the visible Telegram keyboard.
+        quiz["selected_answer_index"] = None
+        logger.exception("Could not update quiz selection keyboard; selection was cleared")
+        raise
 
 
 async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
