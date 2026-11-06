@@ -579,8 +579,19 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "selected_answer_index": None,
         "answer_in_progress": False,
     }
-    await query.answer()
-    await send_question(query.message, context.user_data["quiz"])
+    try:
+        await query.answer()
+    except Exception:
+        # A failed callback acknowledgement must not make a retry look like
+        # a duplicate launch of a quiz that never displayed its first question.
+        context.user_data.pop("quiz", None)
+        raise
+    try:
+        await send_question(query.message, context.user_data["quiz"])
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not deliver the first quiz question; active quiz was cleared")
+        raise
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
