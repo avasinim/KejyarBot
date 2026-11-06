@@ -113,7 +113,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             can_open=lambda user_id, lesson_id: True,
             get_completed_lessons=completed,
         )
-        completed.assert_called_once_with(12345)
+        completed.assert_called_once_with(query.from_user.id)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەکە بخوێنەوە و تەواوی بکە", query.message.reply_text.await_args.args[0])
         self.assertNotIn("arami_lesson5_session", context.user_data)
