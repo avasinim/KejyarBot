@@ -81,6 +81,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         lesson = self.lesson(53)
         examples = {pair[0] for pair in lesson["examples"]}
         self.assertIn("مەستوورەی کوردستانی، هونەر و مێژوونووس، لە ڕۆژهەڵاتی کوردستاندا دەژیا.", examples)
+        self.assertIn("کچینە، هەوڵ بدەن، بە هەوڵدان دەگەنە ئامانج.", examples)
         self.assertIn("خوێ، ڕۆن، پیاز و برنج", examples)
         self.assertIn("بەڵێ، نامەکەم نارد.", examples)
         self.assertIn("نە، لەو کاتەدا ناتوانم بەشدار بم.", examples)
