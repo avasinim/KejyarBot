@@ -48,8 +48,10 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
         parentheses = " ".join(self.lessons[57]["key_points"] + [v for pair in self.lessons[57]["examples"] for v in pair])
         self.assertIn("دەقگێڕانەوەی یەکەم", quotes)
         self.assertIn("firewall", parentheses)
-        self.assertIn("٢٠٢٤/٠٨/٢٥", parentheses)
-        self.assertNotIn("١٧٨٣", parentheses)
+        self.assertIn("١٧٨٣–١٨٤٦", parentheses)
+        self.assertIn("١٨٢٠", parentheses)
+        self.assertNotIn("٢٠٢٤/٠٨/٢٥", parentheses)
+        
         self.assertIn("دەستێکی بااڵی هەبوو", parentheses)
         self.assertIn("نموونەی فێرکاریی زیادکراو", parentheses)
         self.assertNotIn("بنەمایەکی مێژوویی هەیە", parentheses)
