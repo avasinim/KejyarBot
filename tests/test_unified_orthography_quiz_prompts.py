@@ -18,7 +18,7 @@ class UnifiedOrthographyQuizPromptTests(unittest.TestCase):
             for lesson in lessons
             for question in lesson.get("quiz", [])
         ]
-        self.assertEqual(len(prompts), 201)
+        self.assertEqual(len(prompts), 202)
         self.assertEqual(len(prompts), len(set(prompts)))
 
     def test_rewritten_prompts_keep_question_options_and_answer_keys(self):
