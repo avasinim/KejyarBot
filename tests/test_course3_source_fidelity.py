@@ -60,6 +60,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("ی. ن. ک.", examples)
         self.assertIn("د. خ.", examples)
         self.assertNotIn("ی.ن.ک.", examples)
+        self.assertIn("نموونەی جێگرەوە بۆ ڕاستکردنەوەی هەڵەی زانیاریی کتێب", self.lesson(51)["examples"][0][1])
         self.assertNotIn("نەورۆز یەکەم مانگی کوردییە.", examples)
 
     def test_lesson_52_colon_example_preserves_the_book_list(self):
@@ -69,6 +70,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
             "میرنشینە کوردییەکان بریتی بوون لە: ئەردەڵان، سۆران، بادینان، بابان، هەکاری و بۆتان.",
             examples,
         )
+        self.assertTrue(sum("نموونەی فێرکاریی زیادکراو" in pair[1] for pair in self.lesson(52)["examples"]) >= 3)
 
     def test_lesson_54_preserves_the_books_two_trip_examples(self):
         lesson = self.lesson(54)
