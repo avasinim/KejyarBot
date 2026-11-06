@@ -60,7 +60,7 @@ def _lesson_source_markdown(lesson):
     return '\n'.join(lines)
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
     action = query.data.removeprefix("arami1:")
     defer_ack = action.startswith("pick:") or action == "submit"
@@ -119,6 +119,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 return
             if not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
+        if action == "assessment" and get_completed_lessons is not None:
+            if lesson_record["id"] not in set(get_completed_lessons(query.from_user.id)):
+                await query.message.reply_text("🔒 سەرەتا وانەکە بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکە دەکرێتەوە.")
                 return
         try:
             bank = load_arami_lesson1_interactions(base_dir)
