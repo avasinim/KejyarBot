@@ -26,7 +26,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("بیستوین (بێستوون)، چوی (چۆن)، دوێت (کچ)", examples)
         self.assertIn("سویر (سوور، شایی)، دویر (دوور)، ژویر (ژوور)، نویسەر (نووسەر)", examples)
         self.assertIn("بیستۊن، دۊر، سۊر", examples)
-        self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
+        self.assertTrue(any("زۆربەیان" in point for point in lesson["key_points"]))
         self.assertTrue(any("کوردیی خواروودا" in point for point in lesson["key_points"]))
 
 
