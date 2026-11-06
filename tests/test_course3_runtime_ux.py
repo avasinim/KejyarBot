@@ -70,16 +70,18 @@ class CourseThreeRuntimeUxTests(unittest.IsolatedAsyncioTestCase):
             answer=AsyncMock(),
         )
         update = SimpleNamespace(callback_query=query)
-        with patch.object(bot, "can_open", return_value=True), \\
-             patch.object(bot, "get_user_level", side_effect=[1, 1, 1]), \\
-             patch.object(bot, "complete_lesson_with_rewards", side_effect=[True, False]) as complete, \\
-             patch.object(bot, "check_badges"), \\
-             patch.object(bot, "next_course_lesson", return_value=next_lesson), \\
-             patch.object(bot, "quiz_is_available", return_value=True), \\
-             patch.object(
-                 bot, "send_lesson_text",
-                 new=AsyncMock(side_effect=RuntimeError("Telegram lesson delivery failed")),
-             ) as send_text:
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", side_effect=[1, 1, 1]),
+            patch.object(bot, "complete_lesson_with_rewards", side_effect=[True, False]) as complete,
+            patch.object(bot, "check_badges"),
+            patch.object(bot, "next_course_lesson", return_value=next_lesson),
+            patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(
+                bot, "send_lesson_text",
+                new=AsyncMock(side_effect=RuntimeError("Telegram lesson delivery failed")),
+            ) as send_text,
+        ):
             with self.assertRaisesRegex(RuntimeError, "Telegram lesson delivery failed"):
                 await bot.finish_lesson(update, SimpleNamespace(user_data={}))
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
