@@ -757,13 +757,26 @@ async def quiz_answer(
     answer = question["options"][choice_index]
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    try:
+        await query.message.reply_text(feedback)
+    except Exception:
+        # The answer was not committed to the reward ledger. Clear the
+        # in-memory quiz so a failed Telegram send cannot strand a locked quiz.
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not deliver quiz answer feedback; active quiz was cleared")
+        raise
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
-        await send_question(query.message, quiz)
+        try:
+            await send_question(query.message, quiz)
+        except Exception:
+            context.user_data.pop("quiz", None)
+            logger.exception("Could not deliver the next quiz question; active quiz was cleared")
+            raise
         return
 
     lesson = quiz["lesson"]
@@ -777,8 +790,10 @@ async def quiz_answer(
         result += "⭐ +20 XP"
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
-    await query.message.reply_text(result)
+    # The reward ledger is already committed. Clear the in-memory quiz
+    # before sending the result so a failed Telegram delivery cannot replay it.
     context.user_data.pop("quiz", None)
+    await query.message.reply_text(result)
 
 def render_lesson_html_blocks(content):
     """Render lesson text in a clean, consistent academic Telegram layout."""
