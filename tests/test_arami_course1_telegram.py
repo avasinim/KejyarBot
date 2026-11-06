@@ -644,6 +644,40 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         session = context.user_data["arami_course1_sessions"]["2"]
         self.assertIsNone(session["selected_index"])
 
+    async def test_delayed_pick_ack_does_not_restore_keyboard_after_submit(self):
+        import asyncio
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "course1", "type": "recognize", "prompt": "Q1", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "course1", "type": "recognize", "prompt": "Q2", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 0, "selected_index": None, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_course1_sessions": {"2": session},
+            "arami_course1_active": {"lesson": 2, "message_id": 10},
+        })
+        pick_update, pick_query = self.make_update("pick:2:0", message_id=10)
+        started, release = asyncio.Event(), asyncio.Event()
+
+        async def delayed_ack():
+            started.set()
+            await release.wait()
+
+        pick_query.answer.side_effect = delayed_ack
+        pick_task = asyncio.create_task(arami_course1_callback(pick_update, context, ROOT))
+        await started.wait()
+
+        submit_update, submit_query = self.make_update("submit:2", message_id=10)
+        await arami_course1_callback(submit_update, context, ROOT)
+        submit_query.edit_message_text.assert_awaited_once()
+        self.assertEqual(session["index"], 1)
+
+        release.set()
+        await pick_task
+        pick_query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_duplicate_start_completion_cannot_replace_new_session_message_id(self):
         started, release = asyncio.Event(), asyncio.Event()
         context = SimpleNamespace(user_data={})
