@@ -40,8 +40,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
-        self.assertEqual(len(lesson["examples"]), 4)
-        self.assertEqual(len(lesson["appendix"]), 3)
+        self.assertEqual(len(lesson["examples"]), 3)
+        self.assertEqual(len(lesson["appendix"]), 4)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["quiz"]), 7)
         lesson2 = source["lessons"][1]
@@ -56,9 +56,10 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
-        for lesson_id in ("grammar_03", "grammar_04", "grammar_05"):
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 4, "grammar_05": 5}
+        for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
-            self.assertEqual(len(lesson["appendix"]), 3)
+            self.assertEqual(len(lesson["appendix"]), appendix_count)
             self.assertEqual(len(lesson["activities"]), 3)
             self.assertEqual(len(lesson["exercises"]), 5)
             self.assertEqual(len(lesson["quiz"]), 8)
