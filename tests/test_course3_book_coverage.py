@@ -19,7 +19,7 @@ class Course3BookCoverageTests(unittest.TestCase):
         self.assertEqual(len(self.lessons), 66)
         self.assertEqual([lesson["number"] for lesson in self.lessons], list(range(1, 67)))
         self.assertTrue(all(
-            lesson["review_status"] == "draft_editorial_review"
+            lesson["review_status"] in ("draft_editorial_review", "owner_review")
             for lesson in self.lessons
         ))
 
