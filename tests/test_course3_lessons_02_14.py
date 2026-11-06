@@ -38,7 +38,7 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         text4 = " ".join(lesson4["key_points"] + [v for pair in lesson4["examples"] for v in pair])
         self.assertIn("ڕاز / راز", text3)
         self.assertIn("چاک، چاك", text4)
-        self.assertIn("Unicode", text3)
+        self.assertIn("یونیکۆد", text3)
 
     def test_lesson_6_covers_long_i_and_consonantal_y_source_examples(self):
         lesson = self.lessons[5]
