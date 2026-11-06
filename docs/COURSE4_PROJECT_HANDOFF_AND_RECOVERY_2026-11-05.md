@@ -774,3 +774,43 @@
 3. دوای هەر بەڵگەنامەی نوێ، SHAی ڕاستەقینەی working HEAD بخوێنەوە و checkpointێکی نوێ لەسەر هەمان SHA دروست بکە.
 4. دوای دروستکردنی checkpoint، branchی checkpoint بخوێنەوە و SHAکەی بە working HEAD بەراورد بکە؛ پاشان compareی backup دووبارە بکە.
 5. ئەم بەڵگەنامەیە خاڵی گواستنەوە و پاراستنە، نەک مۆڵەتی چالاککردنی کۆرس یان بڵاوکردنەوە.
+
+
+---
+
+# Snapshot ـی پاراستنی پڕۆژە — 2026-11-06 09:29 (+03:30)
+
+ئەم snapshot ـە نوێترین خاڵی گواستنەوەیە؛ لە snapshot ـە کۆنەکان پێشینەیە. SHA و ژمارەکانی کۆن تەنها مێژوویی بن.
+
+## دۆخی Git پشتڕاستکراو پێش زیادکردنی ئەم snapshot ـە
+- Repository: `avasinim/KejyarBot`
+- Working branch: `reset/grammar-course4-content`
+- Working HEAD: `819c9c0193b93fa82dfcbb89abe8a2ae28203f59`
+- Backupی پارێزراو: `backup/grammar-course4-2026-11-05`
+- Backup HEAD: `e8eb58bf6b71be60ea85b93abec3ae47e7e46fd6`
+- Compareی live: **ahead 532 / behind 0**.
+- ئەم HEAD ـە کۆمیتی snapshotی گەڕانەوەی 2026-11-06 لەخۆدەگرێت؛ handoff پێش ئەم نوێکردنەوەیە لە کۆمیتی پێشووەوە زانیاریی هەبوو، بۆیە ئەم بەشە وەک زانیاریی نوێی پێشینە بەکاربهێنە.
+
+## دوا شوێنی پشکنینی سەرچاوە
+- پەڕەی 312: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P312.md`
+- پەڕەی 313: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P313.md`
+- دوا پەڕەی بەڵگەنامەکراوی پشتڕاستکراو: **p.314** — `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P314.md`
+- p.314 خاڵی 14ی ئامرازی عەتف، سەرچاوەکانی تۆفیق وەهبی (p.44) و نووری عەلی ئەمین (p.149)، پێنج نموونە و دەستپێکی خاڵی 15 تۆمار دەکات.
+- فۆڕمەکانی خاڵی 14 و خوێندنەوەی سەردێڕی خاڵی 15 تەنها کاتی/بینراون؛ هیچ یەکسانکردن یان ستانداردکردنێکیان بۆ نەکراوە.
+- هەنگاوی داهاتوو: پشکنینی p.315 لە PDFی سەرەکی بە وێنەی تەواو و کراپی گەورەکراو؛ خاڵی 15 لەگەڵ p.314 بەراورد بکە. هیچ فۆڕمی نادڵنیا لە خۆوە تەواو مەکە.
+
+## دۆخی کۆرس و سنووری پاراستن
+- `curriculum/grammar_course4_plan.json`: `status=planned`, `lesson_count=0`, `lessons=[]`.
+- `courses.json`: کۆرسی 4 هەروا `planned` ـە و `lesson_ids=[]` ـە؛ لە ڕێڕەوی چالاکدا نییە.
+- هیچ وانە، کوییز یان چالاککردنێک دروست نەکراوە.
+- `main`، Courses 1–3، production DB، runtime، Botkeep، deployment و merge دەستکاری مەکە.
+- سەرچاوەی تاک: `Rezmany_axawtny_kurdy.pdf`؛ `ڕێزمانی ڕاناوی لکاو.pdf` سەرچاوەی کۆرسی 4 نییە.
+- ڕێنماییەکانی سەرچاوە، نادڵنیاییی خوێندنەوە، و جیاوازیی نێوان پشکنینی بینراو و ترانسکرپشنی دپلۆماتیکی و پشتڕاستکردنەوەی زمانەوانی هەروا پابەندن.
+
+## ڕێنمایی گەڕانەوە
+1. پێش بەردەوامی، HEADی working branch و backup لە GitHub بخوێنەوە و compareی نوێ بکە.
+2. کار تەنها لە `reset/grammar-course4-content` بکە؛ backup و checkpointە کۆنەکان مەگۆڕە و force مەکە.
+3. دوای هەر پەڕەی نوێ، بەڵگەنامەی پەڕە دروست/نوێ بکە و commit بکە.
+4. SHAی ڕاستەقینەی working HEAD بخوێنەوە؛ checkpointی نوێ لەسەر هەمان SHA دروست بکە و SHAی checkpoint پشتڕاست بکەوە.
+5. دوای checkpoint، compareی backup دووبارە بکە و ahead/behind لە handoff و وەڵامدا تۆمار بکە.
+6. ئەم snapshot ـە تەنها بۆ پاراستن و گواستنەوەی کارە؛ مۆڵەتی چالاککردنی کۆرس یان بڵاوکردنەوە نییە.
