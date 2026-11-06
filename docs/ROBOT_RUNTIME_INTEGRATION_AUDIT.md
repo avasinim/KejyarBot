@@ -87,3 +87,14 @@ For every future runtime or integration change, append date/time, exact file pat
 - Backup before this log update: backup/robot-quiz-callback-log-20261106, at 235a53c8a4443b4ac1c3692634d21a050d1c1301.
 - CI state at the time of this entry: no check runs or commit statuses had appeared yet; status was pending. Do not treat the new test as passed until GitHub Actions reports completion.
 - No production database, Botkeep files, Telegram live session, or deployment was accessed or changed. PR #118 remains Draft/open/unmerged; main is unchanged.
+
+
+## CI verification for concurrent Course 3 quiz callback regression — 2026-11-06
+
+- GitHub Actions checks for test commit 235a53c8a4443b4ac1c3692634d21a050d1c1301 both completed successfully: checks and orthography-course-structure.
+- The checks job completed dependency installation, python -m compileall -q ., and python -m unittest discover -s tests -v. The test log reports: Ran 390 tests in 0.914s; OK (skipped=11). This includes the new overlapping Course 3 submit-callback regression test.
+- The orthography-course-structure job reports 4 tests run; OK.
+- These CI results apply to test commit 235a53c8a4443b4ac1c3692634d21a050d1c1301. The current branch then received documentation-only audit updates.
+- Backup before recording this CI result: backup/robot-quiz-callback-ci-log-20261106, at 3c9708bffbcc4792b09f3e1d1641467793757cc8.
+- This verifies mocked Telegram callback concurrency plus automated SQLite reward-ledger coverage. It does not prove live Telegram delivery, Botkeep runtime health, or production database safety.
+- No changes to main, no PR merge, and no deployment. PR #118 remains Draft/open/unmerged.
