@@ -139,6 +139,13 @@ def adapt_unified_orthography_lessons(payload):
                 )
         if raw.get("role_play"):
             sections.extend(["", "🛠️ کاری پڕاکتیکی", raw["role_play"]])
+        review_status = raw.get("review_status", "draft_editorial_review")
+        if course_id == "grammar" and str(review_status).startswith("owner_review"):
+            sections.extend([
+                "",
+                "⚠️ تێبینی پێداچوونەوە",
+                "ئەم وانەیە وەشانی پێداچوونەوەی خاوەن پڕۆژەیە؛ ناوەڕۆک و زاراوەکان پێویستیان بە پەسەندی کۆتایی هەیە. ئەم نیشانەیە بە مانای پەسەندکردنی زانستی نییە.",
+            ])
         lessons_by_id[key] = {
             "title": title,
             "content": "\n".join(sections),
