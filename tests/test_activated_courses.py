@@ -463,7 +463,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("دەقی تەواوی ئەم وانەیە هێشتا ئامادە نییە", message.reply_text.await_args.args[0])
 
     async def test_removed_course_four_lesson_callback_cannot_be_opened(self):
-        update, message, query = self.make_update("next_lesson_grammar_02")
+        update, message, query = self.make_update("next_lesson_grammar_99")
         with patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text:
             await bot.open_next_lesson(update, SimpleNamespace(user_data={}))
 
