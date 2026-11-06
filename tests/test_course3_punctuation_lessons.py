@@ -61,6 +61,8 @@ class Course3PunctuationLessonsTests(unittest.TestCase):
         self.assertIn("٠٩-١٢", dash)
         self.assertIn("٧-٨", dash)
         self.assertIn("تەنیا سێ", ellipsis)
+        self.assertIn("من سنە، کرماشان، مەهاباد، سلێمانی، کەرکووک و …م چاو پێکەوتووە.", ellipsis)
+        self.assertIn("فریام کەون! فریام کەون! فر…", ellipsis)
         self.assertIn("کرێکار", spaces)
         self.assertIn("باس دەکرێت", spaces)
         self.assertIn("کە ماڵت بێ", spaces)
