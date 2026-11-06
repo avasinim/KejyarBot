@@ -10,26 +10,37 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
-    def test_course4_is_active_with_only_owner_supplied_lesson_one(self):
+    def test_course4_is_active_with_two_owner_supplied_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01"])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02"])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(bot.QUIZ_DATA["grammar_01"], [])
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
                          "owner_review_pending_scientific_term_clarification")
+        self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
+                         "owner_review_pending_scientific_and_terminology_review")
 
     def test_source_preserves_owner_content_and_does_not_invent_quiz(self):
         source = json.loads(
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
         self.assertEqual(source["course_id"], "grammar")
-        self.assertEqual([lesson["id"] for lesson in source["lessons"]], ["grammar_01"])
+        self.assertEqual([lesson["id"] for lesson in source["lessons"]], ["grammar_01", "grammar_02"])
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 4)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
         self.assertEqual(lesson["quiz"], [])
+        lesson2 = source["lessons"][1]
+        self.assertEqual(len(lesson2["exercises"]), 5)
+        self.assertEqual(len(lesson2["activities"]), 3)
+        self.assertEqual(len(lesson2["appendix"]), 3)
+        self.assertEqual(len(lesson2["comprehension"]) - 2, 8)
+        self.assertEqual(len(lesson2["quiz"]), 8)
         self.assertIn("کەژیار", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
+        self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
+        self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
 
     def test_other_active_courses_keep_their_existing_lesson_counts(self):
         expected = {
