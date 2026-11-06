@@ -330,7 +330,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user", return_value=profile),
             patch.object(bot, "current_progress_badges", return_value=badges),
         ):
-            await bot.message(update, SimpleNamespace())
+            await bot.message(update, SimpleNamespace(user_data={}))
 
         message.reply_text.assert_awaited_once()
         rendered = message.reply_text.await_args.args[0]
