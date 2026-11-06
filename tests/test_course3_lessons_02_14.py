@@ -45,6 +45,14 @@ class Course3Lessons02To14Tests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
+    def test_lesson_9_preserves_the_books_keyboard_mapping(self):
+        lesson = self.lessons[8]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        self.assertIn("M + Shift + H → هـ", content)
+        self.assertIn("E → ە", content)
+        self.assertIn("Shift + M", content)
+        self.assertIn("پەڕەی ١٥", content)
+
     def test_lesson_13_distinguishes_adverbial_and_adjectival_reduplication(self):
         lesson = self.lessons[12]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
