@@ -282,6 +282,30 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
 
+    async def test_duplicate_start_completion_cannot_replace_new_session_message_id(self):
+        import asyncio
+        context = SimpleNamespace(user_data={})
+        started, release = asyncio.Event(), asyncio.Event()
+
+        async def delayed_first_reply(*args, **kwargs):
+            started.set()
+            await release.wait()
+            return SimpleNamespace(message_id=11)
+
+        first_update, first_query = make_update("practice", message_id=10)
+        first_query.message.reply_text.side_effect = delayed_first_reply
+        second_update, _second_query = make_update("practice", message_id=20)
+
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
+            first_task = asyncio.create_task(callback(first_update, context, "/unused"))
+            await started.wait()
+            await callback(second_update, context, "/unused")
+            self.assertEqual(context.user_data["arami_lesson5_message_id"], 21)
+            release.set()
+            await first_task
+
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 21)
+
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
         session = {
