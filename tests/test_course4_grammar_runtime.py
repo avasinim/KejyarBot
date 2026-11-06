@@ -26,7 +26,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual([lesson["id"] for lesson in source["lessons"]], ["grammar_01"])
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 4)
-        self.assertEqual(len(lesson["comprehension"]) - 1, 8)
+        self.assertEqual(len(lesson["comprehension"]) - 2, 8)
         self.assertEqual(lesson["quiz"], [])
         self.assertIn("کەژیار", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
