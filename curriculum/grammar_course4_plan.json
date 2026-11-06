@@ -12,31 +12,31 @@
       "number": 1,
       "id": "grammar_01",
       "title": "وانەی ١: پێشەکی — ڕێزمان (Grammar)",
-      "status": "owner_review_pending_scientific_term_clarification"
+      "status": "owner_review_pending_term_clarification"
     },
     {
       "number": 2,
       "id": "grammar_02",
       "title": "وانەی ٢: ژمارەی بەشەکانی ئاخاوتن",
-      "status": "owner_review_pending_scientific_and_terminology_review"
+      "status": "owner_review_pending_sorani_corpus_validation"
     },
     {
       "number": 3,
       "id": "grammar_03",
       "title": "وانەی ٣: پێناسەی ناو",
-      "status": "owner_review_pending_scientific_and_terminology_review"
+      "status": "owner_review_pending_sorani_corpus_validation"
     },
     {
       "number": 4,
       "id": "grammar_04",
       "title": "وانەی ٤: ناو لە ڕووی ژمارە و ڕەگەزەوە",
-      "status": "owner_review_pending_scientific_and_terminology_review"
+      "status": "owner_review_pending_sorani_plural_and_gender_validation"
     },
     {
       "number": 5,
       "id": "grammar_05",
       "title": "وانەی ٥: ناو لە ڕووی ناوەرۆک، ناسینەوە و پێکهاتەوە",
-      "status": "owner_review_pending_scientific_and_terminology_review"
+      "status": "owner_review_pending_sorani_morphology_corpus_validation"
     }
   ],
   "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
