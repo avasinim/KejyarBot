@@ -147,7 +147,7 @@ CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
 )
 UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
-GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons_01_08.json")
+GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(GRAMMAR_COURSE4_DRAFT)
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
