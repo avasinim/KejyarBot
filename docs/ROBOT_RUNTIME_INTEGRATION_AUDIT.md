@@ -98,3 +98,16 @@ For every future runtime or integration change, append date/time, exact file pat
 - Backup before recording this CI result: backup/robot-quiz-callback-ci-log-20261106, at 3c9708bffbcc4792b09f3e1d1641467793757cc8.
 - This verifies mocked Telegram callback concurrency plus automated SQLite reward-ledger coverage. It does not prove live Telegram delivery, Botkeep runtime health, or production database safety.
 - No changes to main, no PR merge, and no deployment. PR #118 remains Draft/open/unmerged.
+
+
+## Quiz callback acknowledgement failure recovery — 2026-11-06
+
+- Failure-path review found that quiz_answer claimed the active question (answer_in_progress = True and question_message_id = None) before awaiting Telegram query.answer(). If that acknowledgement raised, the in-memory claim remained set and the learner could not retry the active question.
+- Updated bot.py to release answer_in_progress and restore the current callback message ID when Telegram acknowledgement raises, then re-raise the exception. This rollback occurs before scoring, answer feedback, question advancement, or reward persistence.
+- Added test_telegram_acknowledgement_failure_releases_answer_claim to tests/test_bot_quiz_callbacks.py. It injects an acknowledgement exception and verifies the question remains retryable, with no score/index change and no answer feedback sent.
+- Code commit: 6a5ac1a979942fccc0bc10ba2f2ea4889ae44079. Test-fixture follow-up commit: 2b26e380e3f9014eea88214e4073e1635b8f3e01.
+- Backup before the code/test edit: backup/robot-quiz-ack-failure-20261106, at 6d222cc98bc26c04b75eda1d8c9e23e9a198ef1.
+- Additional test-fixture correction backup: backup/robot-quiz-ack-test-fixture-20261106, at 6a5ac1a979942fccc0bc10ba2f2ea4889ae44079.
+- CI for 2b26e380e3f9014eea88214e4073e1635b8f3e01: checks success; orthography-course-structure success. compileall passed; unit tests reported Ran 391 tests in 1.297s; OK (skipped=11). Structural job passed.
+- Backup before this log update: backup/robot-quiz-ack-ci-log-20261106, at 2b26e380e3f9014eea88214e4073e1635b8f3e01.
+- The fix addresses Telegram acknowledgement failure before scoring. Other later Telegram send failures and live runtime behavior remain separate review items; no Botkeep, production database, Telegram live session, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
