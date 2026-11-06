@@ -267,7 +267,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 8}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 1}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -278,7 +278,17 @@ def validate_activated_course_runtime():
                 f"expected {expected_count}"
             )
         missing_lessons = [lesson_id for lesson_id in lesson_ids if lesson_id not in LESSON_DATA]
-        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)]
+        grammar_text_pending = (
+            course_id == "grammar"
+            and bool(lesson_ids)
+            and all(
+                LESSON_DATA.get(key, {}).get("review_status") == "awaiting_owner_supplied_lesson_text"
+                for key in lesson_ids
+            )
+        )
+        missing_quizzes = [] if grammar_text_pending else [
+            lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)
+        ]
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
@@ -288,12 +298,14 @@ def validate_activated_course_runtime():
             grammar_lessons = [LESSON_DATA[key] for key in lesson_ids]
             if any(not item.get("content", "").strip() for item in grammar_lessons):
                 raise RuntimeError("Course 4 contains an empty lesson")
-            if any(not item.get("review_status", "").startswith("owner_review") for item in grammar_lessons):
-                raise RuntimeError("Course 4 lessons must remain visibly marked for owner review")
-            if GRAMMAR_COURSE4_DRAFT.get("source_page_limit") != 342:
-                raise RuntimeError("Course 4 source boundary must remain page 342")
-            if any(len(QUIZ_DATA.get(key, [])) != 2 for key in lesson_ids):
-                raise RuntimeError("Course 4 must load exactly two provisional practice questions per lesson")
+            if grammar_text_pending:
+                if len(lesson_ids) != 1 or any(QUIZ_DATA.get(key) for key in lesson_ids):
+                    raise RuntimeError("New Course 4 must contain only its single pending Lesson 1")
+            else:
+                if any(not item.get("review_status", "").startswith("owner_review") for item in grammar_lessons):
+                    raise RuntimeError("Completed Course 4 lessons must remain visibly marked for owner review")
+                if any(len(QUIZ_DATA.get(key, [])) != 2 for key in lesson_ids):
+                    raise RuntimeError("Reviewed Course 4 lessons must load exactly two provisional practice questions")
         logger.info(
             "Course runtime ready: %s status=active lessons=%d quizzes=%d",
             course_id, len(lesson_ids), sum(bool(QUIZ_DATA.get(key)) for key in lesson_ids),
@@ -427,6 +439,12 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not can_open(user_id, lesson):
         await query.answer()
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    if LESSON_DATA.get(lesson, {}).get("review_status") == "awaiting_owner_supplied_lesson_text":
+        await query.answer()
+        await query.message.reply_text(
+            "📌 دەقی تەواوی ئەم وانەیە هێشتا ئامادە نییە؛ تەواوکردن و خەڵات بۆی تۆمار ناکرێت."
+        )
         return
 
     old_level = get_user_level(user_id)
