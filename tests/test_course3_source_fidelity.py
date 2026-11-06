@@ -29,6 +29,25 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
         self.assertTrue(any("شێوەزار" in point and "شیکاریی فۆنۆلۆژی" in point for point in lesson["key_points"]))
 
+
+    def test_lessons_36_and_37_match_book_page_44(self):
+        lesson36 = self.lesson(36)
+        ex36 = {pair[0] for pair in lesson36["examples"]}
+        self.assertIn("خانووەکەم کڕی", ex36)
+        self.assertIn("خانۆکەم کڕی", ex36)
+        self.assertIn("جوانووەکەم ئاو دا", ex36)
+        self.assertIn("جوانۆکەم ئاو دا", ex36)
+
+        lesson37 = self.lesson(37)
+        ex37 = {pair[0] for pair in lesson37["examples"]}
+        self.assertIn("یەک پیاو", ex37)
+        self.assertIn("پیاوێک", ex37)
+        self.assertIn("گرمەیەک", ex37)
+        self.assertIn("گرمەیێک", ex37)
+        self.assertIn("سویدی + یەک = سویدییەک / سویدی + یێک = سویدییێک", ex37)
+        for n in (36, 37):
+            self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
+
     def test_lesson_38_keeps_irregular_verb_paradigms_from_pages_45_to_47(self):
         lesson = self.lesson(38)
         examples = {pair[0] for pair in lesson["examples"]}
