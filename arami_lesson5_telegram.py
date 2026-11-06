@@ -6,13 +6,15 @@ from arami_course1_telegram import load_manifest, _send_source
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
-def menu_keyboard():
-    return InlineKeyboardMarkup([
+def menu_keyboard(assessment_available=False):
+    rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ٥", callback_data="arami5:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ٥", callback_data="arami5:practice")],
-        [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٥", callback_data="arami5:assessment")],
         [InlineKeyboardButton("📚 هەموو ٢١ وانەی کۆرس ١", callback_data="aramiC:menu")],
-    ])
+    ]
+    if assessment_available:
+        rows.insert(2, [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ٥", callback_data="arami5:assessment")])
+    return InlineKeyboardMarkup(rows)
 
 async def _send_question(message, context):
     session = context.user_data.get("arami_lesson5_session")
@@ -33,7 +35,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        await query.message.reply_text("وانەی ٥ — هەڵبژاردنی خوێندنەوە یان تاقیکردنەوە:", reply_markup=menu_keyboard())
+        await query.message.reply_text("وانەی ٥ — هەڵبژاردنی خوێندنەوە یان تاقیکردنەوە:", reply_markup=menu_keyboard(
+            assessment_available=(
+                get_completed_lessons is not None
+                and "arami_course1_lesson_05" in set(get_completed_lessons(query.from_user.id))
+            )
+        ))
         return
     if action == "lesson":
         try:
@@ -58,7 +65,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
             ]]),
         )
-        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
+        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard(
+            assessment_available=(
+                get_completed_lessons is not None
+                and "arami_course1_lesson_05" in set(get_completed_lessons(query.from_user.id))
+            )
+        ))
         return
     if action in {"practice", "assessment"}:
         if can_open is not None:
