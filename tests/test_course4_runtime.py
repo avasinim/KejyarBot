@@ -9,6 +9,7 @@ import database
 
 from course_lesson_adapters import adapt_unified_orthography_lessons
 from course_runtime import can_open_lesson
+from quiz_option_order import randomized_question_copy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,6 +78,17 @@ class Course4RuntimeTests(unittest.TestCase):
                     self.assertIn(question["answer"], question["options"])
                     self.assertTrue(question["explanation"].strip())
 
+    def test_course4_quiz_option_randomization_preserves_answers_and_source(self):
+        for lesson_id, questions in self.quizzes.items():
+            with self.subTest(lesson=lesson_id):
+                original = json.loads(json.dumps(questions, ensure_ascii=False))
+                shuffled = randomized_question_copy(questions, rng=type("Reverse", (), {"shuffle": staticmethod(list.reverse)})())
+                self.assertEqual(questions, original)
+                self.assertEqual(len(shuffled), len(original))
+                for before, after in zip(original, shuffled):
+                    self.assertEqual(set(before["options"]), set(after["options"]))
+                    self.assertEqual(before["answer"], after["answer"])
+                    self.assertEqual(after["options"], list(reversed(before["options"])))
     def test_course4_lessons_unlock_in_sequence_only(self):
         lesson_ids = [f"grammar_{number:02d}" for number in range(1, 9)]
         completed = set()
