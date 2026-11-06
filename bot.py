@@ -805,7 +805,14 @@ async def quiz_answer(
 
     lesson = quiz["lesson"]
     earned = quiz["score"]
-    first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+    try:
+        first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+    except Exception:
+        # The reward transaction did not complete; discard the exhausted
+        # in-memory quiz so the learner can restart instead of staying locked.
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not persist quiz completion reward; active quiz was cleared")
+        raise
     result = (
         f"🎉 تاقیکردنەوە تەواو بوو!\n"
         f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
