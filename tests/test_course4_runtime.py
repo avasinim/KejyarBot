@@ -1,7 +1,11 @@
 """Regression checks for the owner-review Course 4 runtime data."""
 import json
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+import database
 
 from course_lesson_adapters import adapt_unified_orthography_lessons
 
@@ -72,6 +76,32 @@ class Course4RuntimeTests(unittest.TestCase):
                     self.assertIn(question["answer"], question["options"])
                     self.assertTrue(question["explanation"].strip())
 
+    def test_course4_lesson_rewards_are_granted_once(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "course4-test.db"
+            with patch.object(database, "DB_NAME", str(db_path)):
+                database.init_db()
+                self.assertTrue(database.complete_lesson_with_rewards(900001, "grammar_01"))
+                self.assertFalse(database.complete_lesson_with_rewards(900001, "grammar_01"))
+                user = database.get_user(900001)
+                self.assertEqual(user[1], 10)  # score
+                self.assertEqual(user[2], 10)  # XP
+                self.assertEqual(user[8], 5)   # coins
+                self.assertEqual(user[9], 1)   # reward chests
+
+    def test_course4_quiz_rewards_are_granted_once_without_lesson_coins(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "course4-test.db"
+            with patch.object(database, "DB_NAME", str(db_path)):
+                database.init_db()
+                self.assertTrue(database.complete_quiz_with_rewards(900002, "grammar_01"))
+                self.assertFalse(database.complete_quiz_with_rewards(900002, "grammar_01"))
+                user = database.get_user(900002)
+                self.assertEqual(user[1], 20)  # score
+                self.assertEqual(user[2], 20)  # XP
+                self.assertEqual(user[7], 1)   # completed quiz count
+                self.assertEqual(user[8], 0)   # quizzes do not repeat lesson coins
+                self.assertEqual(user[9], 0)   # quizzes do not repeat lesson chests
     def test_quizzes_are_not_silently_omitted_by_adapter(self):
         self.assertEqual(set(self.quizzes), set(self.lessons))
         self.assertTrue(all(self.quizzes[key] for key in self.lessons))
