@@ -63,3 +63,14 @@ For every future runtime or integration change, append date/time, exact file pat
 - These results apply to the code at commit `cecfa4426e645635f0c22762b442b9421204efad`. The later commit creating this documentation file does not change application code or tests.
 - Backup before this CI-result log update: `backup/robot-ci-migration-result-20261106`, at `9f780c7944ba452bc4e9374a2a312da35d48af2d`.
 - No Botkeep runtime, Telegram live test, production database migration, or deployment was performed.
+
+## Course 3 SQLite-to-unlock integration regression — 2026-11-06
+
+- Added `test_course3_progress_persists_and_unlocks_next_lesson` to `tests/test_database.py`.
+- The test uses the real temporary SQLite fixture and the actual `course_runtime.lesson_key` / `can_open_lesson` helpers. It confirms the namespaced Course 3 IDs `unified_orthography_01` and `unified_orthography_02`, verifies Lesson 2 is locked before Lesson 1 completion, writes Lesson 1 completion through `complete_lesson_with_rewards`, re-reads persisted progress from SQLite, and verifies Lesson 2 is then unlocked.
+- Test commit: `08c1a99b98f56400f27daa650dc5d628f87b54f0`.
+- GitHub Actions `checks`: success. The job completed `python -m compileall -q .` and `python -m unittest discover -s tests -v`; log result: `Ran 389 tests in 1.263s`, `OK (skipped=11)`.
+- GitHub Actions `orthography-course-structure`: success.
+- Backup before this test edit: `backup/robot-course3-progress-integration-test-20261106`, at `e6ebeba84251ad5d7b2bf20299a43fca3a6d4944`.
+- Backup before appending this result: `backup/robot-course3-progress-ci-log-20261106`, at `08c1a99b98f56400f27daa650dc5d628f87b54f0`.
+- This validates the SQLite persistence and sequential-unlock helper integration in automated tests. It does not validate a live Botkeep server, Telegram delivery, or production database.
