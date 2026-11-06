@@ -73,6 +73,13 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("Shift + M", content)
         self.assertIn("پەڕەی ١٥", content)
 
+    def test_lesson_13_preserves_scientific_compounds_and_source_table(self):
+        lesson = self.lessons[12]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("ناوەندەدەمار، هەستەدەمار", "دڕکەپەرچەکردار", "شاهەنگ", "مانگەشەو", "هێلکەوڕۆن", "لرفەلرف", "تەلەفۆنکردن", "کوڵوکۆ", "یەکشاخ، چوارچرا، هەزارپێ"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lessons_12_and_13_preserve_pages_18_and_19_compounds(self):
         content = " ".join(
             self.lessons[11]["key_points"] + [v for pair in self.lessons[11]["examples"] for v in pair]
