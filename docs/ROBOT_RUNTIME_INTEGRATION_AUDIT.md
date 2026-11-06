@@ -241,3 +241,26 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for final commit `f4741354ded1f3b25d299d161a8b550b7619e43f`: Python checks succeeded; `python -m compileall -q .` passed; unit tests reported `Ran 422 tests in 1.560s`; `OK (skipped=11)`. Orthography course structure workflow also completed successfully.
 - Backups before edits: `backup/course1-lesson1-selection-ack-failure-20261106` at `602ac245f67def17eac94136e5110fd443f646f0`; `backup/course1-all-handler-selection-failures-20261106` at `7b919ee85755f487b080c114953c8922c1cf8454`. Backup before this audit-log update: `backup/course1-selection-failure-ci-log-20261106` at `f4741354ded1f3b25d299d161a8b550b7619e43f`.
 - The tests deliberately simulate callback and keyboard failures; expected exception logs appear in the test output. They do not verify live Telegram delivery, Botkeep runtime, production database, or deployment. No `main` changes; PR #118 remains Draft/open/unmerged.
+
+
+## Course 1 simultaneous final assessment-submit callbacks — 2026-11-06
+
+- Extended the concurrency audit from the SQLite reward ledger into the three Telegram callback handlers: the shared Course 1 handler and dedicated Lessons 1 and 5.
+- Added deterministic async regression tests that pause the first final-submit callback at Telegram acknowledgement after the session has synchronously transitioned to `closed`, then replay a second submit callback against the same message before releasing the first callback. This exercises the real event-loop interleaving at the critical boundary.
+- All three handlers correctly route the second callback through the closed-assessment result-retry path. Both callbacks may attempt the idempotent reward helper, but the helper's database ledger is still the authority and permits only one grant. The retained session reward flag ensures both result edits carry the +20 XP note when one callback wins the grant.
+- Tests added:
+  - `test_concurrent_final_submit_callbacks_grant_assessment_reward_once` in `tests/test_arami_lesson1_telegram.py`
+  - `test_concurrent_final_submit_callbacks_grant_assessment_reward_once` in `tests/test_arami_lesson5_telegram.py`
+  - `test_shared_concurrent_final_submit_callbacks_grant_assessment_reward_once` in `tests/test_arami_course1_telegram.py`
+- Test commits: Lesson 1 `e8d3d47ff1624b82d5613b1965eacd2a1e14e868`; Lesson 5 `7c130f9b920cca9a140d7a9c222bb235bc44fc76`; shared handler/final branch head `5f840b4d608b36fe4102e39684d3cde5bd4584f7`. No runtime handler changes were needed.
+- CI for `5f840b4d608b36fe4102e39684d3cde5bd4584f7`: Python checks succeeded; compileall passed; unit tests reported `Ran 425 tests in 1.448s`; `OK (skipped=11)`. Orthography course structure workflow completed successfully.
+- Backup before the audit-log update: `backup/course1-concurrent-submit-ci-log-20261106`, created at `5f840b4d608b36fe4102e39684d3cde5bd4584f7`.
+- Scope: deterministic mocked Telegram callback interleaving plus existing SQLite idempotency/concurrency tests. This is not a live Telegram multi-worker test and does not establish correctness across multiple bot processes sharing a database file.
+
+## Durable Course 1 assessment-session persistence — design gate
+
+- The restart audit remains valid: active assessment state and the result-retry reward-display flag are held in process-local `context.user_data`; the current application builder has no PTB persistence backend, and the SQLite schema has no assessment-session table.
+- A full persistence implementation is intentionally not introduced in this change. Before choosing SQLite session storage or PTB persistence, the deployment must establish that the bot's database path is on durable storage, that only one process owns a learner's callback stream (or define cross-process locking/versioning), and that backup/restore procedures preserve the new session table. The Botkeep support ticket concerning the unresolved infrastructure backup/runtime state is still awaiting staff; no Botkeep files or runtime were touched.
+- The persistence design must also handle the non-atomic boundary between Telegram message creation and recording the returned message ID, atomically persist answer/closed state with reward idempotency, preserve the reward-display outcome after restart, reject stale message IDs, and expire abandoned sessions safely. Enabling generic PTB persistence alone would not solve these transaction and message-delivery boundaries.
+- Next safe step: obtain confirmation of the deployment's durable database storage and recovery point, then implement a versioned SQLite session repository with explicit transaction boundaries and tests for restart/replay/expiry. Until then, current-process retries and one-time reward protection remain covered, but process-restart result recovery is not.
+- No production database, Botkeep runtime, Telegram live service, deployment, or `main` branch was changed. PR #118 remains Draft/open/unmerged.
