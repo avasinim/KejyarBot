@@ -155,3 +155,12 @@
 - `backup/preservation-ci-confirmed-20261106` — `5cc05d17b86403a98fe95a0c90aa079a43d558a1`
 
 - Backup پێش ئەم نوێکردنەوەی فهرستە: `backup/preservation-inventory-final-update-20261106` لە HEADی `8ae8c0705851dbe8ab19c6b48e142464ac4dca6c`.
+
+
+## پشکنینی نوێی ناسنامەی تاقیکردنەوە کۆنەکان — 2026-11-06
+
+- تۆماری ورد لە `docs/ROBOT_RUNTIME_INTEGRATION_AUDIT.md` زیاد کرا: migrationی schemaی کۆن ژمارەی تاقیکردنەوە و XP و score دەپارێزێت، بەڵام ناسنامەی هەر quiz ـێکی کۆن لە schemaی پێشوودا نەبووە؛ بۆیە ledgerی نوێ بەتاڵ دەست پێ دەکات.
+- Backfillی خۆکار بەبێ سەرچاوەی متمانەپێکراوی user/quiz identity نەکرا؛ چونکە دەتوانێت هەڵەی دەرکردنی خەڵات یان قەدەغەکردنی quiz ـێکی تەواونەکراو دروست بکات.
+- هیچ application code یان production DB دەستکاری نەکرا.
+- Backupی پێش تۆمارکردنی ئەم audit ـە: `backup/legacy-quiz-ledger-migration-audit-20261106` لە `643a60f2ba3f515c2ccb371eb68c3b739755abc3`.
+- Backupی پێش ئەم نوێکردنەوەی فهرستە: `backup/legacy-quiz-ledger-index-update-20261106` لە `439effcc59159562f978f18e5ce2172c78f25db3`.
