@@ -113,20 +113,17 @@ def course_menu_keyboard(
         # Do not advertise practice or assessment actions for a locked lesson.
         # The callback handlers still enforce the same server-side guard.
         if lesson_is_open and number == 1:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"))
         elif lesson_is_open and number == 5:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"))
         elif lesson_is_open and number in interactive_lessons:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"))
         rows.append(row)
     return InlineKeyboardMarkup(rows)
 
@@ -477,6 +474,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 return
             if not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
+        if mode == "assessment" and get_completed_lessons is not None:
+            completed = set(get_completed_lessons(query.from_user.id))
+            if lesson_record["id"] not in completed:
+                await query.message.reply_text("🔒 سەرەتا وانەکە بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکە دەکرێتەوە.")
                 return
         try:
             banks = load_question_banks(base_dir)
