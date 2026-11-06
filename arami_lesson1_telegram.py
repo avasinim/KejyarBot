@@ -60,7 +60,11 @@ async def send_question(message, context):
         f"{heading} — پرسیاری {number}/{total}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows),
     )
-    context.user_data["arami_lesson1_message_id"] = sent.message_id
+    if (
+        context.user_data.get("arami_lesson1_session") is session
+        and context.user_data.get("arami_lesson1_message_id") is None
+    ):
+        context.user_data["arami_lesson1_message_id"] = sent.message_id
 
 
 def _lesson_source_markdown(lesson):
