@@ -91,6 +91,13 @@ class Course3Lessons02To14Tests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
+    def test_lesson_20_preserves_independent_particles_and_compound_infinitives(self):
+        lesson = self.lessons[19]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("پارە وەردەگرێت", "پشتلێهەڵکردن", "تەماتەسوورکردنەوە", "نامەکەم پێ دا", "پارەم پێنەما", "نامەکەی تێ خست", "دەستی لێ دا", "دەستی لێدا"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_15_distinguishes_simple_and_complex_preverbs(self):
         lesson = self.lessons[14]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
