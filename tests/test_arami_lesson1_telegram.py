@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, Mock, patch
 
 from arami_lesson1_telegram import callback, menu_keyboard, _lesson_source_markdown
 
