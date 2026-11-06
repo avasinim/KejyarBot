@@ -189,6 +189,52 @@ class DatabaseTests(unittest.TestCase):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
 
+    def test_legacy_database_migration_preserves_existing_user_progress(self):
+        # Recreate the pre-quiz-ledger schema with real learner progress.
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            conn.execute("DROP TABLE users")
+            conn.execute("""
+                CREATE TABLE users (
+                    user_id INTEGER PRIMARY KEY,
+                    score INTEGER DEFAULT 0,
+                    xp INTEGER DEFAULT 0,
+                    level TEXT DEFAULT 'A1.1 🌱',
+                    correct_answers INTEGER DEFAULT 0,
+                    completed_lessons TEXT DEFAULT '',
+                    badges TEXT DEFAULT '',
+                    tests INTEGER DEFAULT 0,
+                    coins INTEGER DEFAULT 0,
+                    chests INTEGER DEFAULT 0
+                )
+            """)
+            conn.execute(
+                """INSERT INTO users
+                   (user_id, score, xp, level, correct_answers,
+                    completed_lessons, badges, tests, coins, chests)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (12345, 70, 70, "A1.2 🌿", 8, "daily_conversation_01,unified_orthography_01",
+                 "🏅 first", 3, 15, 2),
+            )
+            conn.commit()
+
+        database.init_db()
+        user = database.get_user(12345)
+        self.assertEqual(user[1], 70)  # score preserved
+        self.assertEqual(user[2], 70)  # XP preserved
+        self.assertEqual(user[5], "daily_conversation_01,unified_orthography_01")
+        self.assertEqual(user[6], "🏅 first")
+        self.assertEqual(user[7], 3)   # quiz count preserved
+        self.assertEqual(user[8], 15)  # coins preserved
+        self.assertEqual(user[9], 2)   # chests preserved
+        self.assertEqual(user[10], "") # new quiz ledger starts empty
+
+        self.assertTrue(database.complete_quiz_with_rewards(
+            12345, "unified_orthography_01_quiz_01"
+        ))
+        migrated = database.get_user(12345)
+        self.assertEqual(migrated[10], "unified_orthography_01_quiz_01")
+        self.assertEqual(migrated[2], 90)
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
