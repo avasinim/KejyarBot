@@ -15,7 +15,7 @@ class Course3BackMatterTests(unittest.TestCase):
     def test_back_matter_titles_match_the_adapted_book_sequence(self):
         self.assertEqual(
             [lesson["title"] for lesson in self.lessons[62:]],
-            ["پاشەکی و ڕوونکردنەوە", "ژێدەر", "دەرەنجام", "سوپاسنامە و تەواو"],
+            ["پاشەکی و دەرەنجام", "ژێدەر", "ڕوونکردنەوە و مێژووی بڵاوکردنەوە", "سوپاسنامە"],
         )
 
     def test_back_matter_lessons_have_practice_and_keep_draft_status(self):
@@ -28,14 +28,14 @@ class Course3BackMatterTests(unittest.TestCase):
                 self.assertTrue(lesson["source"]["pages"])
 
     def test_appendix_tracks_publication_history_and_dates(self):
-        appendix = self.lessons[62]
+        appendix = self.lessons[64]
         content = " ".join(
             appendix["key_points"]
             + [v for pair in appendix["examples"] for v in pair]
         )
         for marker in ("٢٠٠٣/٠٩/٠٦", "٢٠٢١/٠٩/٢٥", "٢٠٢٤/٠٢/٢١", "٢٠٢٤/٠٨/٢٥", "٢٠٢٤/٠٨/٣٠"):
             self.assertIn(marker, content)
-        self.assertEqual(appendix["source"]["pages"], "٦٠، ٨٦–٨٨")
+        self.assertEqual(appendix["source"]["pages"], "٨٦–٨٨")
 
     def test_both_distinct_reference_lists_are_present(self):
         references = self.lessons[63]
@@ -51,7 +51,7 @@ class Course3BackMatterTests(unittest.TestCase):
         self.assertGreaterEqual(len(references["quiz"]), 5)
 
     def test_conclusion_and_acknowledgements_match_source_pages(self):
-        conclusion = self.lessons[64]
+        conclusion = self.lessons[62]
         acknowledgements = self.lessons[65]
         conclusion_text = " ".join(conclusion["key_points"])
         acknowledgement_text = " ".join(acknowledgements["key_points"])
@@ -60,7 +60,7 @@ class Course3BackMatterTests(unittest.TestCase):
         self.assertIn("حەمەسەعید حەسەن", acknowledgement_text)
         self.assertIn("سوپاسنامە", acknowledgements["title"])
         self.assertEqual(conclusion["source"]["pages"], "٨٤")
-        self.assertEqual(acknowledgements["source"]["pages"], "٨٤، ٨٩")
+        self.assertEqual(acknowledgements["source"]["pages"], "٨٩")
 
 
 if __name__ == "__main__":
