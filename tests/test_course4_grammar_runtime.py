@@ -10,15 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
-    def test_course4_is_active_with_five_owner_supplied_lessons(self):
+    def test_course4_is_active_with_six_owner_supplied_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05"])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06"])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_01"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_03"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_04"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_05"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_06"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
                          "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
@@ -27,6 +28,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_03": "owner_review_pending_sorani_corpus_validation",
             "grammar_04": "owner_review_pending_sorani_plural_and_gender_validation",
             "grammar_05": "owner_review_pending_sorani_morphology_corpus_validation",
+            "grammar_06": "owner_review_pending_sorani_adjective_corpus_validation",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -56,7 +58,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 11}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
