@@ -267,3 +267,14 @@ CI بۆ کۆمیتی نوێ لە پشکنینی ئێستادا هیچ workflow r
 - هەموو وانەکان هەر لە دۆخی draft_editorial_review دان؛ دۆخی سەرەوەی کۆرس active ـە. ئەم جیاوازییە بە مەبەست نەگۆڕدرا، چونکە پێویستی بە تێگەیشتن لە ڕەفتاری ڕۆبۆت هەیە.
 - ئەم پشکنینە تاقیکردنەوەی runtime، Telegram، deployment یان پەسەندکردنی بەرهەمهێنان نییە.
 - پاشەکەوتی پێش زیادکردنی ئەم تۆمارە: backup/course3-audit-20261106-before-final-quiz-count.
+
+
+## پشکنینی پەیوەندیی کۆرس ٣ بە ڕۆبۆت و چاککردنی تاقیکردنەوە — 2026-11-06
+
+- لە کۆدی bot.py پشتڕاست کراوەتەوە کە course_data/unified_orthography_lessons_01_66.json دەخوێنرێتەوە و بە adapt_unified_orthography_lessons بۆ وانە و کویزەکانی runtime دەگوازرێتەوە.
+- لە courses.json کۆرسی unified_orthography بە status=active تۆمار کراوە و ٦٦ lesson_idی هەیە؛ تاقیکردنەوەی test_activated_courses.py چالاکبوونی کۆرس و ژمارەی ٦٦ وانە دەسەلمێنێت لە ئاستی کۆددا.
+- لە کۆدی bot.py هاتووە کە مێتاداتای editorial review لە داتای وانەدا دەمێنێتەوە، بەڵام خۆی بە تەنیا مەرجی چالاککردنی کۆرس نییە. بۆیە status=activeی کۆرس و draft_editorial_reviewی وانەکان دوو ئەرکی جیاوازن؛ هیچ یەکێکیان لەم پشکنینەدا نەگۆڕدرا.
+- تاقیکردنەوەی tests/test_unified_orthography_quiz_prompts.py پێشتر بە هەڵە چاوەڕێی ٢٠٢ پرسیاری دەکرد. بە پشتبەستن بە ژمارەی ڕاستی فایلەکە، assertion ـەکە بۆ ٢٠٣ چاک کرا؛ commit: 14586acf2474999ea71435edaf43caa3d75ab0c4.
+- فایلەکانی bot.py، courses.json و database.py لەم قۆناغەدا نەگۆڕدران؛ تەنیا تاقیکردنەوەی ژمارەی کویز چاک کرا.
+- ئەم پشکنینە خوێندنەوەی کۆد و تاقیکردنەوە نووسراوەکانە؛ pytest/CI، Telegram، Botkeep runtime یان deployment لەم قۆناغەدا نەجێبەجێ کراون.
+- پاشەکەوتی پێش زیادکردنی ئەم تۆمارە: backup/course3-audit-20261106-before-integration-record.
