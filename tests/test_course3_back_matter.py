@@ -59,7 +59,7 @@ class Course3BackMatterTests(unittest.TestCase):
         self.assertIn("ڕێنووسێکی یەکگرتووش", conclusion_text)
         self.assertIn("حەمەسەعید حەسەن", acknowledgement_text)
         self.assertIn("سوپاسنامە", acknowledgements["title"])
-        self.assertEqual(conclusion["source"]["pages"], "٨٤")
+        self.assertEqual(conclusion["source"]["pages"], "٦٠، ٨٤")
         self.assertEqual(acknowledgements["source"]["pages"], "٨٩")
 
 
