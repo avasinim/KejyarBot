@@ -68,7 +68,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertIn("finish_grammar_01", callbacks)
 
-    async def test_finishing_course_four_lesson_unlocks_the_next_without_fake_quiz(self):
+    async def test_finishing_course_four_lesson_unlocks_next_and_offers_its_provisional_quiz(self):
         update, message, query = self.make_update("finish_grammar_01")
         with (
             patch.object(bot, "can_open", return_value=True),
@@ -84,8 +84,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وانەی دواتر ئامادەیە", text)
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         callbacks = [button.callback_data for row in keyboard for button in row]
-        self.assertEqual(callbacks, ["next_lesson_grammar_02"])
-        self.assertNotIn("quiz_grammar_01_start", callbacks)
+        self.assertEqual(callbacks, ["next_lesson_grammar_02", "quiz_grammar_01_start"])
 
     def test_course_four_lessons_are_marked_for_owner_review_and_stop_at_page_342(self):
         self.assertEqual(bot.GRAMMAR_COURSE4_DRAFT["source_page_limit"], 342)
@@ -93,7 +92,12 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             lesson = bot.LESSON_DATA[lesson_id]
             self.assertTrue(lesson["content"])
             self.assertTrue(lesson["review_status"].startswith("owner_review"))
-            self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
+            quiz = bot.QUIZ_DATA[lesson_id]
+            self.assertEqual(len(quiz), 2)
+            for question in quiz:
+                self.assertTrue(question["question"])
+                self.assertEqual(len(question["options"]), 3)
+                self.assertIn(question["answer"], question["options"])
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
         message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
