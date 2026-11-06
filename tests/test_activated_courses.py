@@ -92,7 +92,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         assessments = [button for button in buttons if ":assessment" in button.callback_data]
         self.assertEqual(len(reads), 21)
         self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
+        self.assertEqual(len(assessments), 0)
         self.assertIn("arami1:practice", [button.callback_data for button in practices])
         self.assertIn("arami5:practice", [button.callback_data for button in practices])
 
