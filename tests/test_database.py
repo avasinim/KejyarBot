@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import database
+from course_runtime import can_open_lesson, lesson_key
 
 
 class DatabaseTests(unittest.TestCase):
@@ -188,6 +189,30 @@ class DatabaseTests(unittest.TestCase):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         database.add_badge(12345, "🏅 وانەی یەکەم")
         self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
+
+    def test_course3_progress_persists_and_unlocks_next_lesson(self):
+        lesson_ids = [
+            lesson_key("unified_orthography", 1),
+            lesson_key("unified_orthography", 2),
+        ]
+        self.assertEqual(
+            lesson_ids,
+            ["unified_orthography_01", "unified_orthography_02"],
+        )
+        self.assertTrue(can_open_lesson(
+            lesson_ids, database.get_completed_lessons(12345), lesson_ids[0]
+        ))
+        self.assertFalse(can_open_lesson(
+            lesson_ids, database.get_completed_lessons(12345), lesson_ids[1]
+        ))
+
+        self.assertTrue(database.complete_lesson_with_rewards(
+            12345, lesson_ids[0]
+        ))
+        # A fresh database read must see the saved progress and unlock lesson 2.
+        persisted = database.get_completed_lessons(12345)
+        self.assertEqual(persisted, [lesson_ids[0]])
+        self.assertTrue(can_open_lesson(lesson_ids, persisted, lesson_ids[1]))
 
     def test_legacy_database_migration_preserves_existing_user_progress(self):
         # Recreate the pre-quiz-ledger schema with real learner progress.
