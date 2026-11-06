@@ -22,6 +22,23 @@ class Course4RuntimeTests(unittest.TestCase):
         self.assertEqual([item["number"] for item in self.payload["lessons"]], list(range(1, 9)))
         self.assertEqual(list(self.lessons), [f"grammar_{number:02d}" for number in range(1, 9)])
 
+    def test_source_page_ranges_are_contiguous_from_11_through_342(self):
+        import re
+        ranges = []
+        for item in self.payload["lessons"]:
+            match = re.search(r"(\\d+)\\s*[–-]\\s*(\\d+)", item["title"])
+            self.assertIsNotNone(match, item["title"])
+            ranges.append((int(match.group(1)), int(match.group(2))))
+        self.assertEqual(ranges[0][0], 11)
+        for previous, current in zip(ranges, ranges[1:]):
+            self.assertEqual(current[0], previous[1] + 1)
+        self.assertEqual(ranges[-1][1], 342)
+
+    def test_each_lesson_has_the_expected_teaching_sections(self):
+        for item in self.payload["lessons"]:
+            with self.subTest(lesson=item["number"]):
+                for field in ("objective", "key_points", "examples", "exercises", "comprehension"):
+                    self.assertTrue(item.get(field))
     def test_every_lesson_has_nonempty_content_and_owner_review_marker(self):
         for lesson_id, lesson in self.lessons.items():
             with self.subTest(lesson=lesson_id):
