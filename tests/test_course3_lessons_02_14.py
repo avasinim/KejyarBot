@@ -38,6 +38,13 @@ class Course3Lessons02To14Tests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
+    def test_lesson_8_covers_all_nisbat_patterns_from_the_book(self):
+        lesson = self.lessons[7]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("چەمچەماڵی", "میراوایی", "ئەمریکا + یی = ئەمریکایی", "ئەفریقا + یی = ئەفریقایی", "فەرەنسا + یی = فەرەنسایی"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_13_distinguishes_adverbial_and_adjectival_reduplication(self):
         lesson = self.lessons[12]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
