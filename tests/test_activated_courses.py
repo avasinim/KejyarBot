@@ -68,36 +68,27 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertIn("finish_grammar_01", callbacks)
 
-    async def test_finishing_course_four_lesson_unlocks_next_and_offers_its_provisional_quiz(self):
+    async def test_finishing_pending_course_four_lesson_does_not_grant_rewards(self):
         update, message, query = self.make_update("finish_grammar_01")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
             patch.object(bot, "get_user_level", return_value=1),
-            patch.object(bot, "check_badges"),
+            patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
-        text = message.reply_text.await_args.args[0]
-        self.assertIn("وانەکە تەواو بوو", text)
-        self.assertIn("وانەی دواتر ئامادەیە", text)
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        callbacks = [button.callback_data for row in keyboard for button in row]
-        self.assertEqual(callbacks, ["next_lesson_grammar_02", "quiz_grammar_01_start"])
+        self.assertIn("دەقی تەواوی ئەم وانەیە هێشتا ئامادە نییە", message.reply_text.await_args.args[0])
+        complete.assert_not_called()
+        badges.assert_not_called()
 
-    def test_course_four_lessons_are_marked_for_owner_review_and_stop_at_page_342(self):
-        self.assertEqual(bot.GRAMMAR_COURSE4_DRAFT["source_page_limit"], 342)
-        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
-            lesson = bot.LESSON_DATA[lesson_id]
-            self.assertTrue(lesson["content"])
-            self.assertTrue(lesson["review_status"].startswith("owner_review"))
-            quiz = bot.QUIZ_DATA[lesson_id]
-            self.assertEqual(len(quiz), 2)
-            for question in quiz:
-                self.assertTrue(question["question"])
-                self.assertGreaterEqual(len(question["options"]), 2)
-                self.assertIn(question["answer"], question["options"])
+    def test_course_four_has_only_the_new_lesson_pending_full_text(self):
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01"])
+        lesson = bot.LESSON_DATA["grammar_01"]
+        self.assertTrue(lesson["content"])
+        self.assertEqual(lesson["review_status"], "awaiting_owner_supplied_lesson_text")
+        self.assertEqual(bot.QUIZ_DATA["grammar_01"], [])
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
         message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
@@ -456,28 +447,24 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         application.run_polling.assert_called_once_with()
 
 
-    async def test_course_four_repeated_completion_does_not_repeat_rewards_and_keeps_next_lesson_resumable(self):
+    async def test_course_four_pending_lesson_cannot_be_completed(self):
         lesson_id = bot.COURSE_LESSON_ORDER["grammar"][0]
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "complete_lesson_with_rewards") as complete,
             patch.object(bot, "get_user_level", return_value=1),
             patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
 
-        complete.assert_called_once_with(12345, lesson_id)
+        complete.assert_not_called()
         badges.assert_not_called()
-        self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(keyboard[0][0].callback_data, "next_lesson_grammar_02")
+        self.assertIn("دەقی تەواوی ئەم وانەیە هێشتا ئامادە نییە", message.reply_text.await_args.args[0])
 
-    async def test_course_four_next_lesson_callback_rechecks_persisted_unlock_state(self):
+    async def test_removed_course_four_lesson_callback_cannot_be_opened(self):
         update, message, query = self.make_update("next_lesson_grammar_02")
-        with patch.object(bot, "can_open", return_value=False), patch.object(
-            bot, "send_lesson_text", new=AsyncMock()
-        ) as send_text:
+        with patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text:
             await bot.open_next_lesson(update, SimpleNamespace(user_data={}))
 
         query.answer.assert_awaited_once()
