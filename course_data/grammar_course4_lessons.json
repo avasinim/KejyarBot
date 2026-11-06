@@ -1,0 +1,22 @@
+{
+  "course_id": "grammar",
+  "course_key": "course_grammar",
+  "course_order": 4,
+  "title": "کۆرسی ٤: ڕێزمان",
+  "language": "ckb",
+  "curriculum_state": "new_owner_supplied_curriculum",
+  "lessons": [
+    {
+      "number": 1,
+      "id": "grammar_01",
+      "title": "وانەی ١: پێشەکی — ڕێزمان (Grammar)",
+      "objective": "ناسین و تێگەیشتن لە چەمکی ڕێزمان، بنەمای گشتی و تایبەتیی ڕێزمان، شوێنی ڕێزمان لە زانستی زمان، و پەیوەندیی مۆرفۆلۆجی و سینتاکس. دەقی تەواوی وانە و داڕشتنی فێرکاری لە قۆناغی داهاتوودا بە دەقی خاوەن پڕۆژە تەواو دەکرێت.",
+      "key_points": [],
+      "examples": [],
+      "exercises": [],
+      "comprehension": [],
+      "quiz": [],
+      "review_status": "awaiting_owner_supplied_lesson_text"
+    }
+  ]
+}
