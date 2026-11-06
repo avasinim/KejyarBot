@@ -33,6 +33,7 @@ class Course4RuntimeTests(unittest.TestCase):
         from course_quiz_review import quiz_is_available
         for number in range(1, 9):
             self.assertTrue(quiz_is_available(f"grammar_{number:02d}"))
+
     def test_source_page_ranges_are_contiguous_from_11_through_342(self):
         import re
         ranges = []
