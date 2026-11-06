@@ -242,6 +242,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(session["selected_index"], 0)
             pick_query.answer.side_effect = assert_pick_committed
             await callback(update, context, "/unused")
+            pick_query.answer.assert_awaited_once()
 
             update, submit_query = make_update("submit", message_id=message_id)
             async def assert_submit_committed():
@@ -250,6 +251,36 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             submit_query.answer.side_effect = assert_submit_committed
             await callback(update, context, "/unused")
 
+
+    async def test_selection_acknowledgement_failure_clears_pending_selection(self):
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
+            update, _ = make_update("practice")
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson5_message_id"]
+
+        update, query = make_update("pick:0", message_id=message_id)
+        query.answer.side_effect = RuntimeError("callback acknowledgement failed")
+        with self.assertRaisesRegex(RuntimeError, "callback acknowledgement failed"):
+            await callback(update, context, "/unused")
+
+        self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_keyboard_edit_failure_clears_unsubmittable_selection(self):
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
+            update, _ = make_update("practice")
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson5_message_id"]
+
+        update, query = make_update("pick:0", message_id=message_id)
+        query.edit_message_reply_markup.side_effect = RuntimeError("keyboard update failed")
+        with self.assertRaisesRegex(RuntimeError, "keyboard update failed"):
+            await callback(update, context, "/unused")
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
