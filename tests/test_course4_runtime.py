@@ -8,6 +8,7 @@ from course_lesson_adapters import adapt_unified_orthography_lessons
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSE4_PATH = ROOT / "course_data" / "grammar_course4_lessons_01_08.json"
+COURSES_PATH = ROOT / "courses.json"
 
 
 class Course4RuntimeTests(unittest.TestCase):
@@ -22,6 +23,16 @@ class Course4RuntimeTests(unittest.TestCase):
         self.assertEqual([item["number"] for item in self.payload["lessons"]], list(range(1, 9)))
         self.assertEqual(list(self.lessons), [f"grammar_{number:02d}" for number in range(1, 9)])
 
+    def test_course4_is_registered_active_with_exact_lesson_ids(self):
+        manifest = json.loads(COURSES_PATH.read_text(encoding="utf-8"))
+        course = next(item for item in manifest["courses"] if item["id"] == "grammar")
+        self.assertEqual(course["status"], "active")
+        self.assertEqual(course["lesson_ids"], [f"grammar_{number:02d}" for number in range(1, 9)])
+
+    def test_course4_quizzes_are_not_blocked_by_editorial_gate(self):
+        from course_quiz_review import quiz_is_available
+        for number in range(1, 9):
+            self.assertTrue(quiz_is_available(f"grammar_{number:02d}"))
     def test_source_page_ranges_are_contiguous_from_11_through_342(self):
         import re
         ranges = []
