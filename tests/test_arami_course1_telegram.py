@@ -603,6 +603,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(session["selected_index"], 0)
         pick_query.answer.side_effect = assert_pick_committed
         await callback(update, context, ROOT)
+        pick_query.answer.assert_awaited_once()
 
         update, submit_query = self.make_update("submit:2", message_id=message_id)
         async def assert_submit_committed():
@@ -610,6 +611,38 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(len(session["answers"]), 1)
         submit_query.answer.side_effect = assert_submit_committed
         await callback(update, context, ROOT)
+
+    async def test_selection_acknowledgement_failure_clears_pending_selection(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:2")
+        await callback(update, context, ROOT)
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+
+        update, query = self.make_update("pick:2:0", message_id=message_id)
+        query.answer.side_effect = RuntimeError("callback acknowledgement failed")
+        with self.assertRaisesRegex(RuntimeError, "callback acknowledgement failed"):
+            await callback(update, context, ROOT)
+
+        session = context.user_data["arami_course1_sessions"]["2"]
+        self.assertIsNone(session["selected_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_keyboard_edit_failure_clears_unsubmittable_selection(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:2")
+        await callback(update, context, ROOT)
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+
+        update, query = self.make_update("pick:2:0", message_id=message_id)
+        query.edit_message_reply_markup.side_effect = RuntimeError("keyboard update failed")
+        with self.assertRaisesRegex(RuntimeError, "keyboard update failed"):
+            await callback(update, context, ROOT)
+
+        query.answer.assert_awaited_once()
+        session = context.user_data["arami_course1_sessions"]["2"]
+        self.assertIsNone(session["selected_index"])
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
