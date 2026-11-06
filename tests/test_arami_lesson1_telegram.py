@@ -381,7 +381,8 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
             await callback(update, context, "/unused")
         message_id = context.user_data["arami_lesson1_message_id"]
-        update, _ = make_update("pick:1", message_id=message_id)
+        selected = context.user_data["arami_lesson1_session"]["questions"][0]["answer_index"]
+        update, _ = make_update(f"pick:{selected}", message_id=message_id)
         await callback(update, context, "/unused")
         award = Mock(side_effect=[RuntimeError("database unavailable"), True])
         update, failed_query = make_update("submit", message_id=message_id)
@@ -400,7 +401,8 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
             await callback(update, context, "/unused")
         message_id = context.user_data["arami_lesson1_message_id"]
-        update, _ = make_update("pick:1", message_id=message_id)
+        selected = context.user_data["arami_lesson1_session"]["questions"][0]["answer_index"]
+        update, _ = make_update(f"pick:{selected}", message_id=message_id)
         await callback(update, context, "/unused")
         award = Mock(side_effect=[True, False])
         update, failed_query = make_update("submit", message_id=message_id)
