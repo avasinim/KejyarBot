@@ -565,6 +565,39 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("quiz", context.user_data)
         self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
 
+    async def test_selection_acknowledgement_failure_clears_pending_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, query = self.make_context("select_answer_0")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": None,
+        })
+        query.answer = AsyncMock(side_effect=RuntimeError("selection acknowledgement failed"))
+
+        with self.assertRaisesRegex(RuntimeError, "selection acknowledgement failed"):
+            await bot.select_quiz_answer(update, context)
+
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_keyboard_edit_failure_clears_unsubmittable_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, query = self.make_context("select_answer_1")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": None,
+        })
+        query.edit_message_reply_markup = AsyncMock(
+            side_effect=RuntimeError("selection keyboard edit failed")
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "selection keyboard edit failed"):
+            await bot.select_quiz_answer(update, context)
+
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_awaited_once()
+
     async def test_selection_is_recorded_before_callback_acknowledgement(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
