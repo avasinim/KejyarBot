@@ -53,3 +53,13 @@ This file is the durable, separate continuity log for robot/runtime integration 
 
 ## Recordkeeping rule
 For every future runtime or integration change, append date/time, exact file paths, reason, evidence, backup branch, commit SHA, CI result, and deployment/review status. Never describe queued, pending, or unobserved tests as passed.
+
+## CI result for legacy database migration regression test — 2026-11-06
+
+- The new regression test in `tests/test_database.py` was included in the workflow run for commit `cecfa4426e645635f0c22762b442b9421204efad`.
+- GitHub Actions check `checks`: completed successfully. The job ran dependency installation, `python -m compileall -q .`, and `python -m unittest discover -s tests -v`.
+- The unit-test log reports: `Ran 388 tests in 1.063s`; `OK (skipped=11)`. This includes the legacy-schema migration test.
+- GitHub Actions check `orthography-course-structure`: completed successfully; its dedicated structural validation reports 4 tests run and OK.
+- These results apply to the code at commit `cecfa4426e645635f0c22762b442b9421204efad`. The later commit creating this documentation file does not change application code or tests.
+- Backup before this CI-result log update: `backup/robot-ci-migration-result-20261106`, at `9f780c7944ba452bc4e9374a2a312da35d48af2d`.
+- No Botkeep runtime, Telegram live test, production database migration, or deployment was performed.
