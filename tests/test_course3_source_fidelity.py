@@ -27,6 +27,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("سویر (سوور، شایی)، دویر (دوور)، ژویر (ژوور)، نویسەر (نووسەر)", examples)
         self.assertIn("بیستۊن، دۊر، سۊر", examples)
         self.assertTrue(any("زۆربەی زمانەوانان" in point for point in lesson["key_points"]))
+        self.assertTrue(any("شێوەزار" in point and "شیکاریی فۆنۆلۆژی" in point for point in lesson["key_points"]))
 
     def test_lesson_38_keeps_irregular_verb_paradigms_from_pages_45_to_47(self):
         lesson = self.lesson(38)
