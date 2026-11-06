@@ -129,11 +129,21 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         except (ValueError, TypeError):
             await query.answer()
             return
-        await query.answer()
+        try:
+            await query.answer()
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not acknowledge Arami Lesson 5 answer selection")
+            raise
         question = current_question(session)
         rows = [[InlineKeyboardButton(("☑️ " if i == selected else "▫️ ") + option, callback_data=f"arami5:pick:{i}")] for i, option in enumerate(question["options"])]
         rows.append([InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="arami5:submit")])
-        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        try:
+            await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not update Arami Lesson 5 answer-selection keyboard")
+            raise
         return
     if action == "submit" and session.get("closed") and session.get("mode") == "assessment":
         await query.answer()
