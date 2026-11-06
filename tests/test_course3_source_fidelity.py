@@ -79,7 +79,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("ی. ن. ک.", examples)
         self.assertIn("د. خ.", examples)
         self.assertNotIn("ی.ن.ک.", examples)
-        self.assertIn("تەنیا بەراوردی خاڵبەندی", self.lesson(51)["source"]["source_policy"])
+        self.assertIn("تەنیا بەرامبەر بەشی خاڵبەندی", self.lesson(51)["source"]["source_policy"])
         self.assertIn("هیچ سەرچاوەیەکی دەرەکی", self.lesson(51)["source"]["source_policy"])
         self.assertNotIn("نەورۆز جەژنێکی کوردییە.", examples)
 
@@ -128,7 +128,7 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         lesson35 = self.lesson(35)
         ex35 = {pair[0] for pair in lesson35["examples"]}
         self.assertIn("ڕەشماڵ، سەهۆڵفرۆش", ex35)
-        self.assertIn("لە کوردستاندا", ex35)
+        self.assertIn("لێرەدا، لە کوردستاندا", ex35)
         self.assertIn("U+200C", ex35)
         for n in range(28, 36):
             self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
