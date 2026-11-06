@@ -31,6 +31,13 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("قورئان", content)
         self.assertIn("گواڵو", content)
 
+    def test_lesson_6_covers_long_i_and_consonantal_y_source_examples(self):
+        lesson = self.lessons[5]
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        for marker in ("ئینجا", "فڕین", "مەستی", "هێشوویی", "سییی", "یۆنجە", "کۆیە", "سێیەک"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_7_preserves_all_yiii_source_patterns(self):
         lesson = self.lessons[6]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
