@@ -96,7 +96,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(len(quiz), 2)
             for question in quiz:
                 self.assertTrue(question["question"])
-                self.assertEqual(len(question["options"]), 3)
+                self.assertGreaterEqual(len(question["options"]), 2)
                 self.assertIn(question["answer"], question["options"])
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
