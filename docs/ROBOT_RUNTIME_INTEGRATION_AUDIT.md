@@ -347,3 +347,15 @@ For every future runtime or integration change, append date/time, exact file pat
 - کۆمیتی دروستکردنی فهرست: `8c8de73391871e427975b3d7cfd51db92de3cb57`.
 - Backup پێش پەیوەستکردنی ئەم تۆمارە: `backup/preservation-index-crosslink-20261106`، لە HEADی `8c8de73391871e427975b3d7cfd51db92de3cb57`.
 - فهرستەکە لە هەمان لقی کارە و بە تەنیا backupی سەربەخۆی دەرەکی نییە؛ بۆ پاراستنی زیاتر، mirrorێکی سەربەخۆ پێویستە. کێشەی Botkeep هێشتا چارەسەر نەکراوە.
+
+
+## Legacy quiz completion ledger migration audit — 2026-11-06
+
+- Inspected `database.init_db()`, `complete_quiz()`, `complete_quiz_with_rewards()`, the legacy-schema migration regression, and the quiz callback reward call in `bot.py`.
+- The pre-ledger `users` schema stores aggregate `tests`, `score`, `xp`, and `completed_lessons`; it has no per-quiz completion identity field. The migration adds `completed_quizzes` with an empty default and preserves the aggregate counters and lesson list.
+- The migration regression test confirms the legacy learner's aggregate values survive, then deliberately demonstrates that a newly submitted quiz key is treated as a first ledger claim and receives another 20 XP. This is expected by the current test, but it does not establish that this learner had not completed that quiz before migration.
+- Risk boundary: a legacy database may have historic completed quizzes represented only by aggregate `tests` and/or lesson completion, without a recoverable quiz ID. The current schema cannot safely infer which exact quiz keys should be backfilled from those aggregates. Blindly mapping the aggregate count to arbitrary quiz IDs would create false positives; leaving the ledger empty can permit a repeat reward for a previously completed legacy quiz if its old identity is reused.
+- No safe automatic backfill was made: the available legacy fields do not prove per-quiz identity. A reliable migration requires a trusted historical per-user/per-quiz source or an explicit product policy for legacy learners (for example, a one-time legacy reward cutoff), followed by a dedicated migration test.
+- No application code or production database was changed in this audit. No Botkeep, Telegram live runtime, deployment, or production data was accessed.
+- Backup before this audit-log append: `backup/legacy-quiz-ledger-migration-audit-20261106`, created from `643a60f2ba3f515c2ccb371eb68c3b739755abc3`.
+- PR #118 remains draft/open/unmerged; `main` was not modified.
