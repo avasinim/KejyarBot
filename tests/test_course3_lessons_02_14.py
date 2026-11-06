@@ -73,6 +73,15 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("Shift + M", content)
         self.assertIn("پەڕەی ١٥", content)
 
+    def test_lessons_16_and_17_preserve_compound_verb_patterns(self):
+        content = " ".join(
+            self.lessons[15]["key_points"] + [v for pair in self.lessons[15]["examples"] for v in pair]
+            + self.lessons[16]["key_points"] + [v for pair in self.lessons[16]["examples"] for v in pair]
+        )
+        for marker in ("نەماندەنووسی", "فێر مەکەن", "فێرتان نەکردبوو", "چاوداگرتن", "پارەوەرگرتن", "ئااڵ هەڵناکەین", "دەستیان هەڵنەگرتبوو"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_15_distinguishes_simple_and_complex_preverbs(self):
         lesson = self.lessons[14]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
