@@ -111,3 +111,15 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for 2b26e380e3f9014eea88214e4073e1635b8f3e01: checks success; orthography-course-structure success. compileall passed; unit tests reported Ran 391 tests in 1.297s; OK (skipped=11). Structural job passed.
 - Backup before this log update: backup/robot-quiz-ack-ci-log-20261106, at 2b26e380e3f9014eea88214e4073e1635b8f3e01.
 - The fix addresses Telegram acknowledgement failure before scoring. Other later Telegram send failures and live runtime behavior remain separate review items; no Botkeep, production database, Telegram live session, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+
+## Quiz Telegram message-delivery failure handling — 2026-11-06
+
+- Reviewed the post-acknowledgement quiz flow. Previously, an exception while sending answer feedback or the next question could leave the in-memory quiz locked. Also, the final reward ledger could be committed while the final result message failed, leaving the in-memory quiz present.
+- Updated bot.py: if answer feedback delivery fails before reward persistence, clear the in-memory quiz and log the failure; if sending the next question fails, clear the quiz and log the failure; after final quiz reward persistence, clear the in-memory quiz before attempting to send the result message. The SQLite completed_quizzes ledger remains the idempotency guard against repeated rewards.
+- Added tests: test_feedback_delivery_failure_clears_uncommitted_quiz; test_next_question_delivery_failure_clears_quiz; test_final_result_delivery_failure_clears_already_rewarded_quiz.
+- Code commit: 22978756789c1159f9a5821e4f6c05b62ddd7fd2. Test commit: 52027d34fff173464f245c2302812e32562386be.
+- Backup before this code/test change: backup/robot-quiz-message-failure-20261106, at daffcb3c55224d3e29150395e69805d667750bb9.
+- CI for 52027d34fff173464f245c2302812e32562386be: checks success; orthography-course-structure success; compileall passed; 394 unit tests passed with 11 skipped (1.248s); structural validation passed.
+- Backup before this audit-log update: backup/robot-quiz-message-ci-log-20261106, at 52027d34fff173464f245c2302812e32562386be.
+- These tests use mocked Telegram delivery failures and verify in-memory recovery and reward idempotency. They do not prove live Telegram or Botkeep runtime behavior. No production DB, Botkeep files, deployment, or main-branch changes; PR #118 remains Draft/open/unmerged.
