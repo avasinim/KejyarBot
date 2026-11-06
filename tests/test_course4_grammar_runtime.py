@@ -20,7 +20,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(bot.QUIZ_DATA["grammar_04"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_05"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
-                         "owner_review_pending_scientific_term_clarification")
+                         "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
                          "owner_review_pending_scientific_and_terminology_review")
         for lesson_id in ("grammar_03", "grammar_04", "grammar_05"):
@@ -36,7 +36,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
-        self.assertEqual(len(lesson["examples"]), 3)
+        self.assertEqual(len(lesson["examples"]), 4)
         self.assertEqual(len(lesson["appendix"]), 4)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["quiz"]), 7)
