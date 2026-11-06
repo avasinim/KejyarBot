@@ -145,3 +145,13 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for a80fc3f5a320341da38c170c9ab93f64e2e73368: checks success; orthography-course-structure success. Python compileall passed; unit tests reported Ran 399 tests in 1.254s; OK (skipped=11). Structural workflow completed successfully.
 - The initial test run failed because the new test fixture lacked query.message.reply_text; the fixture was corrected and the subsequent full CI run passed. This history is retained for transparency.
 - This is a mocked source-level failure-path test, not proof of live SQLite outage recovery, Telegram delivery, or Botkeep runtime behavior. No Botkeep files, production database, deployment, or main-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+## Course 3 retry after automatic next-lesson delivery failure — 2026-11-06
+
+- Added regression coverage for the recovery path after a Course 3 lesson has been committed and the automatic delivery of the next lesson fails.
+- The test simulates first completion succeeding, automatic Telegram lesson delivery raising, and the learner retrying the same completion callback. It verifies the completion helper is called again idempotently, the XP/reward claim is not repeated by the callback flow, and the retry presents a manual `next_lesson_<id>` resume button.
+- Test: `test_course3_retry_after_auto_delivery_failure_offers_manual_resume` in `tests/test_course3_runtime_ux.py`.
+- Test commit: `a1a9696a32061a14b9a123c8de0326e70142de00`. The initial test commit `5404cddfd8a11382a5941e7698e54ddd2a70ccea` had a Python line-continuation syntax error; CI identified it, and the test context manager was rewritten with parenthesized syntax before the successful run.
+- Backups: `backup/course3-retry-after-auto-delivery-failure-20261106` (before adding the test); `backup/course3-retry-test-syntax-fix-20261106` (before syntax correction); `backup/course3-retry-ci-audit-log-20261106` (before this log update).
+- CI for `a1a9696a32061a14b9a123c8de0326e70142de00`: checks success; orthography-course-structure success; `python -m compileall -q .` passed; unit tests reported `Ran 400 tests in 1.176s`; `OK (skipped=11)`.
+- This is a mocked source-level retry-path test. It does not verify live Telegram delivery, Botkeep runtime, deployment, or production database behavior. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
