@@ -700,6 +700,47 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 await arami_course1_callback(update, context, ROOT, award_assessment=award)
         return context, final_message_id
 
+    async def test_shared_concurrent_final_submit_callbacks_grant_assessment_reward_once(self):
+        import asyncio
+        session = {
+            "mode": "assessment",
+            "questions": [{
+                "id": "q1", "section_id": "lesson6",
+                "type": "recognize", "prompt": "پرسیار",
+                "options": ["A", "B"], "answer_index": 0,
+            }],
+            "index": 0, "selected_index": 0, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_course1_sessions": {"6": session},
+            "arami_course1_active": {"lesson": 6, "message_id": 10},
+        })
+        entered = asyncio.Event()
+        release = asyncio.Event()
+
+        async def hold_acknowledgement():
+            entered.set()
+            await release.wait()
+
+        first_update, first_query = self.make_update("submit:6", message_id=10)
+        first_query.answer.side_effect = hold_acknowledgement
+        award = Mock(side_effect=[True, False])
+        first_task = asyncio.create_task(
+            arami_course1_callback(first_update, context, ROOT, award_assessment=award)
+        )
+        await entered.wait()
+
+        second_update, second_query = self.make_update("submit:6", message_id=10)
+        await arami_course1_callback(second_update, context, ROOT, award_assessment=award)
+        release.set()
+        await first_task
+
+        self.assertTrue(session["closed"])
+        self.assertEqual(award.call_count, 2)
+        self.assertTrue(session["assessment_reward_granted"])
+        self.assertIn("+20 XP", first_query.edit_message_text.await_args.args[0])
+        self.assertIn("+20 XP", second_query.edit_message_text.await_args.args[0])
+
     async def test_shared_assessment_reward_persistence_failure_can_be_retried(self):
         award = Mock(side_effect=[RuntimeError("database unavailable"), True])
         context, message_id = await self._finish_lesson6_assessment_before_final_delivery(award)
