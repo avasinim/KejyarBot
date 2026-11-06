@@ -371,6 +371,36 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
 
+    async def test_malformed_pick_callback_is_acknowledged(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:not-an-index", message_id=message_id)
+        await callback(update, context, "/unused")
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_out_of_range_pick_callback_is_acknowledged_and_rejected(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:99", message_id=message_id)
+        await callback(update, context, "/unused")
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("هەڵبژاردەکە دروست نییە", query.message.reply_text.await_args.args[0])
+        query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
         session = {
