@@ -245,6 +245,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_reward_persistence_failure_clears_exhausted_quiz(self):
         update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock()
         with patch.object(
             bot,
             "complete_quiz_with_rewards",
