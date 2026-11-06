@@ -70,6 +70,13 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
             examples,
         )
 
+    def test_lesson_54_preserves_the_books_two_trip_examples(self):
+        lesson = self.lesson(54)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertIn("لە گەشتەکەمدا سەردانی ئەم شارانەم کرد: پاریس، فەرەنسا؛ ڕۆما، ئیتاڵیا؛ بەرلین، ئەڵمانیا.", examples)
+        self.assertIn("لە گەشتەکەمدا سەردانی ئەم شوێنانەم کرد: هەولێر، پایتەختی هەرێم؛ سلێمانی، شاری ڕۆشنبیری؛ دهۆک، دەروازەی کوردستان.", examples)
+        self.assertTrue(any("نموونەی فێرکاریی زیادکراو" in pair[1] for pair in lesson["examples"]))
+
     def test_lesson_54_semicolons_separate_labeled_complex_groups(self):
         lesson = self.lesson(54)
         examples = " ".join(pair[0] for pair in lesson["examples"])
