@@ -102,6 +102,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_telegram_acknowledgement_failure_releases_answer_claim(self):
         update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock()
         query.answer = AsyncMock(side_effect=RuntimeError("Telegram acknowledgement failed"))
 
         with self.assertRaisesRegex(RuntimeError, "acknowledgement failed"):
