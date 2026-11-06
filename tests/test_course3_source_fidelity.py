@@ -52,8 +52,8 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
     def test_lesson_51_uses_comma_between_abbreviated_names(self):
         lesson = self.lesson(51)
         examples = " ".join(pair[0] for pair in lesson["examples"])
-        self.assertIn("د. سۆران، م.م. بەدرخان", examples)
-        self.assertNotIn("د. سۆران؛ م.م. بەدرخان", examples)
+        self.assertIn("د. سۆران، م. م. بەدرخان", examples)
+        self.assertNotIn("د. سۆران؛ م. م. بەدرخان", examples)
 
     def test_lesson_56_uses_the_books_exclamation_mark_purposes(self):
         lesson = self.lesson(56)
