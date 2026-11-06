@@ -292,6 +292,8 @@ def validate_activated_course_runtime():
                 raise RuntimeError("Course 4 lessons must remain visibly marked for owner review")
             if GRAMMAR_COURSE4_DRAFT.get("source_page_limit") != 342:
                 raise RuntimeError("Course 4 source boundary must remain page 342")
+            if any(len(QUIZ_DATA.get(key, [])) != 2 for key in lesson_ids):
+                raise RuntimeError("Course 4 must load exactly two provisional practice questions per lesson")
         logger.info(
             "Course runtime ready: %s status=active lessons=%d quizzes=%d",
             course_id, len(lesson_ids), sum(bool(QUIZ_DATA.get(key)) for key in lesson_ids),
