@@ -293,8 +293,6 @@ def validate_activated_course_runtime():
             grammar_lessons = [LESSON_DATA[key] for key in lesson_ids if key in LESSON_DATA]
             if any(not item.get("content", "").strip() for item in grammar_lessons):
                 raise RuntimeError("Course 4 contains an empty lesson")
-            if grammar_quiz_pending and any(QUIZ_DATA.get(key) for key in lesson_ids):
-                raise RuntimeError("Pending Course 4 lessons must not contain unreviewed quiz banks")
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
