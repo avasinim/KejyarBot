@@ -55,6 +55,9 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("د. سۆران، م. م. بەدرخان", examples)
         self.assertNotIn("د. سۆران؛ م. م. بەدرخان", examples)
         self.assertIn("نەورۆز جەژنێکی کوردییە.", examples)
+        self.assertIn("ی. ن. ک.", examples)
+        self.assertIn("د. خ.", examples)
+        self.assertNotIn("ی.ن.ک.", examples)
         self.assertNotIn("نەورۆز یەکەم مانگی کوردییە.", examples)
 
     def test_lesson_52_colon_example_preserves_the_book_list(self):
