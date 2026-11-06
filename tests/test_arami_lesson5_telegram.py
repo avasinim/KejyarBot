@@ -334,6 +334,47 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
                 return message_id
         raise AssertionError("assessment did not reach its final question")
 
+    async def test_concurrent_final_submit_callbacks_grant_assessment_reward_once(self):
+        import asyncio
+        session = {
+            "mode": "assessment",
+            "questions": [{
+                "id": "q1", "section_id": "lesson5",
+                "type": "recognize", "prompt": "پرسیار",
+                "options": ["A", "B"], "answer_index": 1,
+            }],
+            "index": 0, "selected_index": 1, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_lesson5_session": session,
+            "arami_lesson5_message_id": 10,
+        })
+        entered = asyncio.Event()
+        release = asyncio.Event()
+
+        async def hold_acknowledgement():
+            entered.set()
+            await release.wait()
+
+        first_update, first_query = make_update("submit", message_id=10)
+        first_query.answer.side_effect = hold_acknowledgement
+        award = Mock(side_effect=[True, False])
+        first_task = asyncio.create_task(
+            callback(first_update, context, "/unused", award_assessment=award)
+        )
+        await entered.wait()
+
+        second_update, second_query = make_update("submit", message_id=10)
+        await callback(second_update, context, "/unused", award_assessment=award)
+        release.set()
+        await first_task
+
+        self.assertTrue(session["closed"])
+        self.assertEqual(award.call_count, 2)
+        self.assertTrue(session["assessment_reward_granted"])
+        self.assertIn("+20 XP", first_query.edit_message_text.await_args.args[0])
+        self.assertIn("+20 XP", second_query.edit_message_text.await_args.args[0])
+
     async def test_assessment_reward_persistence_failure_can_be_retried(self):
         context = SimpleNamespace(user_data={})
         message_id = await self._finish_lesson5_assessment(context)
