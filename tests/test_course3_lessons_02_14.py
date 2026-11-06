@@ -73,6 +73,15 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("Shift + M", content)
         self.assertIn("پەڕەی ١٥", content)
 
+    def test_lessons_18_and_19_preserve_pe_te_le_syntax(self):
+        content = " ".join(
+            self.lessons[17]["key_points"] + [v for pair in self.lessons[17]["examples"] for v in pair]
+            + self.lessons[18]["key_points"] + [v for pair in self.lessons[18]["examples"] for v in pair]
+        )
+        for marker in ("دەستپێکردن", "کارتێکردن", "دەستیان تێ نەخستبوو", "دەستلێهەڵگرتن", "خۆ تێ هەڵقورتاندن", "دەستم پێ ڕادەگات"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lessons_16_and_17_preserve_compound_verb_patterns(self):
         content = " ".join(
             self.lessons[15]["key_points"] + [v for pair in self.lessons[15]["examples"] for v in pair]
