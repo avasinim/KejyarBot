@@ -193,6 +193,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             await query.answer()
             await query.message.reply_text("⚠️ هەڵبژاردەکە دروست نییە؛ تکایە دووبارە هەڵبژێرە.")
             return
+        question_index = session["index"]
         question = current_question(session)
         rows = [
             [InlineKeyboardButton(
@@ -208,6 +209,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             session["selected_index"] = None
             logger.exception("Could not acknowledge Arami Lesson 1 answer selection")
             raise
+        if (
+            context.user_data.get("arami_lesson1_session") is not session
+            or context.user_data.get("arami_lesson1_message_id") != query.message.message_id
+            or session.get("index") != question_index
+            or session.get("selected_index") != selected
+        ):
+            return
         try:
             await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
         except Exception:
