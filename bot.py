@@ -359,6 +359,7 @@ BADGE_COURSE_TITLES = {
     "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
     "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
     "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+    "grammar": "کۆرسی ٤: ڕێزمان",
 }
 
 
