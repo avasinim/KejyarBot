@@ -74,6 +74,28 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("جوان + ـی ← جوانی", str(lesson5["examples"]))
         self.assertIn("دەست + نوێژ ← دەستنوێژ", str(lesson5["examples"]))
 
+    def test_all_course4_lesson_quizzes_and_learning_components_are_well_formed(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        for lesson in source["lessons"]:
+            with self.subTest(lesson=lesson["id"]):
+                self.assertTrue(lesson["objective"].strip())
+                self.assertTrue(lesson["key_points"])
+                self.assertTrue(lesson["examples"])
+                self.assertEqual(len(lesson["activities"]), 3)
+                self.assertEqual(len(lesson["exercises"]), 5)
+                self.assertEqual(len(lesson["quiz"]), 7 if lesson["id"] == "grammar_01" else 8)
+                self.assertTrue(lesson["appendix"])
+                self.assertTrue(lesson["comprehension"])
+                self.assertIn("کەژیار", json.dumps(lesson, ensure_ascii=False))
+                for question in lesson["quiz"]:
+                    self.assertTrue(question["q"].strip())
+                    self.assertGreaterEqual(len(question["options"]), 2)
+                    self.assertGreaterEqual(question["answer"], 0)
+                    self.assertLess(question["answer"], len(question["options"]))
+                    self.assertTrue(question["explanation"].strip())
+
     def test_other_active_courses_keep_their_existing_lesson_counts(self):
         expected = {
             "arami_orthography_foundations": 21,
