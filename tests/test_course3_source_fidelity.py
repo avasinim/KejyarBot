@@ -131,6 +131,18 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         for n in range(44, 49):
             self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
 
+
+    def test_lesson_49_preserves_book_examples_for_ish_and_sh(self):
+        lesson = self.lesson(49)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertIn("ئااڵیش/ئااڵش، پاوەیش/پاوەش", examples)
+        self.assertIn("سلێمانی + یش = سلێمانییش", examples)
+        self.assertIn("سلێمان + یش = سلێمانیش", examples)
+        self.assertIn("سویدی + یش = سویدییش", examples)
+        self.assertIn("سوید + یش = سویدیش", examples)
+        self.assertIn("پاوەیی + ش = پاوەییش؛ پەمەییش ڕەنگێکی جوانە", examples)
+        self.assertIn("هیچ سەرچاوەی دەرەکی", lesson["source"]["source_policy"])
+
     def test_lesson_50_retains_examples_from_book_page_58_and_59(self):
         lesson = self.lesson(50)
         examples = {pair[0] for pair in lesson["examples"]}
