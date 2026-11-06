@@ -13,7 +13,7 @@ class Course3AlphabetCoverageTests(unittest.TestCase):
         with COURSE_PATH.open(encoding="utf-8") as source:
             cls.lessons = json.load(source)["lessons"]
 
-    def test_lesson_1_contains_all_34_letters_and_both_letter_classes(self):
+    def test_lesson_1_contains_all_34_book_units_and_both_letter_classes(self):
         lesson = self.lessons[0]
         examples = " ".join(item for pair in lesson["examples"] for item in pair)
         for letter in ("ئـ", "ا", "ب", "پ", "ت", "ج", "چ", "ح", "خ", "د", "ر", "ڕ",
@@ -22,6 +22,10 @@ class Course3AlphabetCoverageTests(unittest.TestCase):
             self.assertIn(letter, examples)
         self.assertIn("پیتەلکاوەکان", examples)
         self.assertIn("پیتەنەلکاوەکان", examples)
+        content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
+        self.assertIn("وو", content)
+        self.assertIn("٣٤ یەکەی نووسینی ئەلفبێ", content)
+        self.assertIn("دوو پیتی", content)
         self.assertGreaterEqual(len(lesson["quiz"]), 3)
 
 
