@@ -29,7 +29,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
-        self.assertFalse(bot.course_is_active("grammar"))
+        self.assertTrue(bot.course_is_active("grammar"))
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 8)
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][0], "grammar_01")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_08")
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
@@ -81,11 +84,11 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 0)
         all_ids = [
             lesson
-            for course_id in ("daily_conversation", "unified_orthography")
+            for course_id in ("daily_conversation", "unified_orthography", "grammar")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 108)
-        self.assertEqual(len(set(all_ids)), 108)
+        self.assertEqual(len(all_ids), 116)
+        self.assertEqual(len(set(all_ids)), 116)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
