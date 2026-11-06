@@ -96,6 +96,41 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         for n in range(39, 44):
             self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
 
+
+    def test_lessons_44_to_48_match_book_pages_52_to_55(self):
+        lesson44 = self.lesson(44)
+        ex44 = {pair[0] for pair in lesson44["examples"]}
+        self.assertIn("بێکەسی، بێماڵی", ex44)
+        self.assertIn("بە فڕۆکە", ex44)
+        self.assertIn("لە ماڵدا، لە پۆلدا", ex44)
+
+        lesson45 = self.lesson(45)
+        ex45 = {pair[0] for pair in lesson45["examples"]}
+        self.assertIn("مامۆستاکە وانەکەی وتەوە", ex45)
+        self.assertIn("وانەکە وترایەوە", ex45)
+        self.assertIn("دەخوێنرێت، دەنووسرێت، دەوترێت", ex45)
+
+        lesson46 = self.lesson(46)
+        ex46 = {pair[0] for pair in lesson46["examples"]}
+        self.assertIn("شەو شاد", ex46)
+        self.assertIn("ساڵی نوێ پیرۆز", ex46)
+        self.assertIn("بە الدەمەوە بەیانیباشێکی پێ وتم", ex46)
+
+        lesson47 = self.lesson(47)
+        ex47 = {pair[0] for pair in lesson47["examples"]}
+        self.assertIn("ئەو کابرایەکی توانایە", ex47)
+        self.assertIn("سەرپەرشت", ex47)
+        self.assertIn("بەرانبەر", ex47)
+        self.assertIn("گوڵبەدەم، شارەوشار، گوڵەباخ، لەرزوتا، ڕەنگاوڕەنگ، سەرانسەر، لێوانلێو، شەقانشەق", ex47)
+
+        lesson48 = self.lesson(48)
+        ex48 = {pair[0] for pair in lesson48["examples"]}
+        self.assertIn("زانکۆی پزیشکیی هەولێر", ex48)
+        self.assertIn("کۆمپیوتەرفرۆشیی سۆران", ex48)
+        self.assertIn("گوڵفرۆشیی هانا", ex48)
+        for n in range(44, 49):
+            self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
+
     def test_lesson_50_retains_examples_from_book_page_58_and_59(self):
         lesson = self.lesson(50)
         examples = {pair[0] for pair in lesson["examples"]}
