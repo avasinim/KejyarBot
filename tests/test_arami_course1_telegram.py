@@ -644,6 +644,32 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         session = context.user_data["arami_course1_sessions"]["2"]
         self.assertIsNone(session["selected_index"])
 
+    async def test_duplicate_start_completion_cannot_replace_new_session_message_id(self):
+        started, release = asyncio.Event(), asyncio.Event()
+        context = SimpleNamespace(user_data={})
+
+        async def delayed_first_reply(*args, **kwargs):
+            started.set()
+            await release.wait()
+            return SimpleNamespace(message_id=11)
+
+        first_update, first_query = self.make_update("practice:2")
+        first_query.message.message_id = 10
+        first_query.message.reply_text.side_effect = delayed_first_reply
+        second_update, _second_query = self.make_update("practice:2")
+        second_update.callback_query.message.message_id = 20
+
+        first_task = asyncio.create_task(
+            arami_course1_callback(first_update, context, ROOT)
+        )
+        await started.wait()
+        await arami_course1_callback(second_update, context, ROOT)
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 21)
+        release.set()
+        await first_task
+
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 21)
+
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
         from arami_course1_telegram import callback
