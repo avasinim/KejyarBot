@@ -267,7 +267,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 1}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 2}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -293,8 +293,8 @@ def validate_activated_course_runtime():
             grammar_lessons = [LESSON_DATA[key] for key in lesson_ids if key in LESSON_DATA]
             if any(not item.get("content", "").strip() for item in grammar_lessons):
                 raise RuntimeError("Course 4 contains an empty lesson")
-            if grammar_quiz_pending and (len(lesson_ids) != 1 or any(QUIZ_DATA.get(key) for key in lesson_ids)):
-                raise RuntimeError("New Course 4 must contain only its single pending Lesson 1 without invented quizzes")
+            if grammar_quiz_pending and any(QUIZ_DATA.get(key) for key in lesson_ids):
+                raise RuntimeError("Pending Course 4 lessons must not contain unreviewed quiz banks")
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
