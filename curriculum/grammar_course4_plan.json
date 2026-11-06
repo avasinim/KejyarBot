@@ -4,9 +4,9 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "active_owner_review_beta",
-  "replacement_state": "new_owner_supplied_lessons_1_and_2_added",
+  "replacement_state": "new_owner_supplied_lessons_1_through_5_added",
   "language": "ckb",
-  "lesson_count": 2,
+  "lesson_count": 5,
   "lessons": [
     {
       "number": 1,
@@ -19,8 +19,26 @@
       "id": "grammar_02",
       "title": "وانەی ٢: ژمارەی بەشەکانی ئاخاوتن",
       "status": "owner_review_pending_scientific_and_terminology_review"
+    },
+    {
+      "number": 3,
+      "id": "grammar_03",
+      "title": "وانەی ٣: پێناسەی ناو",
+      "status": "owner_review_pending_scientific_and_terminology_review"
+    },
+    {
+      "number": 4,
+      "id": "grammar_04",
+      "title": "وانەی ٤: ناو لە ڕووی ژمارە و ڕەگەزەوە",
+      "status": "owner_review_pending_scientific_and_terminology_review"
+    },
+    {
+      "number": 5,
+      "id": "grammar_05",
+      "title": "وانەی ٥: ناو لە ڕووی ناوەرۆک، ناسینەوە و پێکهاتەوە",
+      "status": "owner_review_pending_scientific_and_terminology_review"
     }
   ],
   "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
-  "note": "لە 2026-11-06 وانەکانی ١ و ٢ بە پاشکۆ، چالاکی، نموونە، ڕاهێنان، هەشت پرسیاری هەڵسەنگاندن و هەشت پرسیاری تاقیکاری بۆ هەر وانە تەواو کراون. وانەی ١ هێشتا چاوەڕێی ڕوونکردنەوەی زاراوەی «فێزیۆلۆژی»یە؛ هەردوو وانەکە پێویستیان بە پەسەندکردنی کۆتاییی زانستی و زاراوەیی هەیە. کۆرسەکانی ١ تا ٣ دەستکاری نەکراون."
+  "note": "لە 2026-11-06 وانەکانی ١ تا ٥ بە نموونە، پاشکۆ، چالاکی، ڕاهێنان، هەشت پرسیاری هەڵسەنگاندن و هەشت پرسیاری تاقیکاری بۆ هەر وانە لە پێکهاتەی کۆرسدا تۆمار کران. هەموو وانەکان هێشتا چاوەڕێی پەسەندکردنی خاوەن پڕۆژە و پشکنینی زانستی و زاراوەیین. لە وانەکانی ٣ تا ٥، فۆڕمی کۆ، ڕەگەز، نیشانەی ناسراوی/نەناسراوی و شیکردنەوەی وشەسازی بە ئاگاداری لە جیاوازیی دیالێکتی و پێویستیی بەڵگە ڕێکخراون. کۆرسەکانی ١ تا ٣ دەستکاری نەکراون."
 }
