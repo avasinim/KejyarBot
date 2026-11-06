@@ -29,6 +29,8 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
         self.assertIn("لێوئاڵ", content)
         self.assertIn("قورئان", content)
+        self.assertIn("نەء", content)
+        self.assertIn("إقرأ", content)
         self.assertIn("گواڵو", content)
 
     def test_lessons_3_and_4_preserve_unicode_letter_contrasts(self):
