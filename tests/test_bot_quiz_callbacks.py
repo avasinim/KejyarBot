@@ -8,6 +8,26 @@ import bot
 
 
 class AramiCourse1ProgressionTests(unittest.TestCase):
+    def test_assessment_reward_uses_one_stable_user_and_lesson_scoped_key(self):
+        with patch.object(
+            bot, "complete_quiz_with_rewards", side_effect=[True, True, False]
+        ) as claim:
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_05"))
+            self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+
+        self.assertEqual(claim.call_args_list, [
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_01", points=20
+            ),
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_05", points=20
+            ),
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_01", points=20
+            ),
+        ])
+
     def test_all_21_lessons_form_one_ordered_sequence_with_terminal_lesson(self):
         lesson_ids = bot.ARMI_LESSON_IDS
         self.assertEqual(len(lesson_ids), 21)
