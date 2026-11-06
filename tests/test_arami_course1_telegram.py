@@ -355,7 +355,9 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
 
     def test_menu_exposes_practice_and_assessment_only_for_verified_question_banks(self):
         banks = load_question_banks(ROOT)
-        keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
+        manifest = load_manifest(ROOT)
+        completed = {lesson["id"] for lesson in manifest["lessons"]}
+        keyboard = course_menu_keyboard(manifest, banks, completed_lessons=completed)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
         self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 19)
