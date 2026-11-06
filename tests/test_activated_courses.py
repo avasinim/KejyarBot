@@ -460,3 +460,49 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    async def test_course_four_repeated_completion_does_not_repeat_rewards_and_keeps_next_lesson_resumable(self):
+        lesson_id = bot.COURSE_LESSON_ORDER["grammar"][0]
+        update, message, query = self.make_update(f"finish_{lesson_id}")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "get_user_level", return_value=1),
+            patch.object(bot, "check_badges") as badges,
+        ):
+            await bot.finish_lesson(update, SimpleNamespace(user_data={}))
+
+        complete.assert_called_once_with(12345, lesson_id)
+        badges.assert_not_called()
+        self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        self.assertEqual(keyboard[0][0].callback_data, "next_lesson_grammar_02")
+
+    async def test_course_four_next_lesson_callback_rechecks_persisted_unlock_state(self):
+        update, message, query = self.make_update("next_lesson_grammar_02")
+        with patch.object(bot, "can_open", return_value=False), patch.object(
+            bot, "send_lesson_text", new=AsyncMock()
+        ) as send_text:
+            await bot.open_next_lesson(update, SimpleNamespace(user_data={}))
+
+        query.answer.assert_awaited_once()
+        send_text.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
+    def test_course_four_menu_marks_only_the_contiguous_prefix_as_unlocked(self):
+        order = bot.COURSE_LESSON_ORDER["grammar"]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[order[0]]),
+            patch.object(bot, "can_open", side_effect=lambda user_id, lesson: lesson in order[:2]),
+        ):
+            keyboard, page_count = bot.course_menu_keyboard("grammar", 12345)
+
+        self.assertEqual(page_count, 1)
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        labels = [button.text for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
+        self.assertTrue(labels[0].startswith("✅ "))
+        self.assertTrue(labels[1].startswith("🔓 "))
+        self.assertTrue(all(label.startswith("🔒 ") for label in labels[2:]))
