@@ -1,0 +1,1 @@
+Course 4 beta verification branch created to run the repository's read-only Python checks. Source changes are identical to reset/grammar-course4-content at the branch point; no production deployment is performed.
