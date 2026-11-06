@@ -182,10 +182,15 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         for course_id in course_ids:
             order = bot.COURSE_LESSON_ORDER[course_id]
-            with self.subTest(course_id=course_id), patch.object(
-                bot, "get_completed_lessons", return_value=[order[0], order[2]]
-            ):
-                self.assertFalse(bot.can_open(12345, order[3]))
+            with self.subTest(course_id=course_id):
+                if len(order) == 1:
+                    with patch.object(bot, "get_completed_lessons", return_value=[]):
+                        self.assertTrue(bot.can_open(12345, order[0]))
+                else:
+                    with patch.object(
+                        bot, "get_completed_lessons", return_value=[order[0], order[2]]
+                    ):
+                        self.assertFalse(bot.can_open(12345, order[3]))
 
     async def test_finishing_arami_lesson_one_records_progress_and_unlocks_lesson_two(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][0]
@@ -484,7 +489,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         labels = [button.text for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(callbacks, ["open_lesson_grammar_01"])
-        self.assertTrue(labels[0].startswith("🔓 "))
+        self.assertTrue(labels[0].startswith("✅ "))
 
 
 
