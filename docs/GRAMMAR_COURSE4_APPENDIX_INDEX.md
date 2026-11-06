@@ -3,7 +3,7 @@
 تاریخی کۆکردنەوە: 2026-11-06  
 برانچی پارێزراوی کار: `feat/course4-owner-review-beta-sync-20261106`  
 کۆمیتی بنەڕەتیی پاشکۆ: `119cbcc71237db2d3224d32dbd0367a31adcd738`  
-دواترین کۆمیتی پشکنین: `2eab530b0bf10bc7c1eb9bb3c6f7abcc17ce0eff`
+دواترین کۆمیتی پشکنین: `18dff8ebaaed1ffc0e12b756dad06c76edff2d4a`
 
 ## ١. ئامانج و سنوور
 
@@ -65,9 +65,9 @@
 - بەڵگەی log: `Ran 15 tests` و `OK`.
 
 تاقیکردنەوەکان پێکهاتەی داتا، ڕیزبەندیی وانەکان، کردنەوەی وانە، هاوتاییی وەڵامی کویز، ڕیزکردنەوەی بژاردەکان و یەکجارەبوونی پاداشت دەسەلمێنن. لە کۆمیتی دواتر `c1bb338a4b5a2a9d23f13ec273914e3e9843392f` ـدا:
-- [Python checks — 42218816803](https://github.com/avasinim/KejyarBot/actions/runs/42218816803): سەرکەوتوو؛ `Ran 423 tests` و هەموو تاقیکردنەوەکان سەرکەوتوون.
-- [Course 4 runtime tests — 42218816773](https://github.com/avasinim/KejyarBot/actions/runs/42218816773): سەرکەوتوو لە هەمان کۆمیت.
-- [Course 4 runtime validation — 42218816831](https://github.com/avasinim/KejyarBot/actions/runs/42218816831): لە کاتی نووسینی ئەم پاشکۆیەدا هێشتا `pending` ـە؛ وەک سەرکەوتن هەژمار ناکرێت. دوا ڕانی تەواو و سەرکەوتووی ئەم workflow ـە هەر #36 ـە.
+- [Python checks — 42219133543](https://github.com/avasinim/KejyarBot/actions/runs/42219133543): سەرکەوتوو؛ `Ran 423 tests` و هەموو تاقیکردنەوەکان سەرکەوتوون.
+- [Course 4 runtime tests — 42219140395](https://github.com/avasinim/KejyarBot/actions/runs/42219140395): سەرکەوتوو لە هەمان کۆمیت.
+- [Course 4 runtime validation — 42219133386](https://github.com/avasinim/KejyarBot/actions/runs/42219133386): لە کاتی نووسینی ئەم پاشکۆیەدا هێشتا `pending` ـە؛ وەک سەرکەوتن هەژمار ناکرێت. دوا ڕانی تەواو و سەرکەوتووی ئەم workflow ـە هەر #36 ـە.
 
 ئەمە تاقیکردنەوەی ژینگەی Telegram یان Botkeep نییە.
 
