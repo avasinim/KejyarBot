@@ -29,7 +29,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
-        self.assertFalse(bot.course_is_active("grammar"))
+        self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
