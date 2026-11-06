@@ -43,7 +43,11 @@ async def _send_question(message, context):
     sent = await message.reply_text(
         f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows))
-    context.user_data["arami_lesson5_message_id"] = sent.message_id
+    if (
+        context.user_data.get("arami_lesson5_session") is session
+        and context.user_data.get("arami_lesson5_message_id") is None
+    ):
+        context.user_data["arami_lesson5_message_id"] = sent.message_id
 
 async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
