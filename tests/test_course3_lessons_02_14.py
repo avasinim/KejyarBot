@@ -38,11 +38,18 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("بااڵبەرز", content)
         self.assertIn("دەمارەشانە", content)
 
-    def test_lesson_14_covers_ordinal_and_compound_number_rules(self):
+    def test_lesson_14_covers_all_number_categories_and_source_examples(self):
         lesson = self.lessons[13]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
-        for marker in ("بیست و یەک", "یەکسەد", "دووشەممە", "سێیەم"):
-            self.assertIn(marker, content)
+        for marker in (
+            "بیست و یەک", "یەکسەد", "دووشەممە", "سێیەم",
+            "پێنج میلیۆن و سێ سەد و چل و شەش هەزار و چوار سەد و بیست و نۆ",
+            "یەک بە یەک", "٠٫٧", "ڕۆژهەڵات", "باشوور", "۴ ۵ ۶", "سێهەم",
+        ):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+        self.assertIn("٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩", content)
+        self.assertIn("٠ ١ ٢ ٣ ۴ ۵ ۶ ٧ ٨ ٩", content)
 
 
 if __name__ == "__main__":
