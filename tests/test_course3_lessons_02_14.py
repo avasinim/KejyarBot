@@ -34,7 +34,7 @@ class Course3Lessons02To14Tests(unittest.TestCase):
     def test_lesson_7_preserves_all_yiii_source_patterns(self):
         lesson = self.lessons[6]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
-        for marker in ("خۆجێیییەکان", "سەوزاییی دارستان", "پەککەوتەییم", "پەککەوتەییت", "پەککەوتەیی", "ییی"):
+        for marker in ("خۆجێیییەکان", "سەوزاییی دارستان", "پەککەوتەییم", "پەککەوتەییت", "پەککەوتەییی", "ییی"):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
