@@ -141,6 +141,33 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(kwargs.get("parse_mode"), "HTML")
         self.assertIn("<b>🎯 ئامانجەکانی فێربوون</b>", args[0])
 
+    async def test_assessment_callback_requires_completed_lesson_even_when_unlocked(self):
+        manifest = load_manifest(ROOT)
+        lesson = manifest["lessons"][1]
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(
+            data="aramiC:assessment:2",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        can_open = Mock(return_value=True)
+        get_completed = Mock(return_value=[])
+        context = SimpleNamespace(user_data={})
+
+        await arami_course1_callback(
+            update, context, ROOT,
+            can_open=can_open,
+            get_completed_lessons=get_completed,
+        )
+
+        query.answer.assert_awaited_once()
+        get_completed.assert_called_once_with(24680)
+        message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەکە بخوێنەوە و تەواوی بکە", message.reply_text.await_args.args[0])
+        self.assertNotIn("arami_course1_sessions", context.user_data)
+
     async def test_returning_to_course_menu_preserves_completed_open_and_locked_states(self):
         manifest = load_manifest(ROOT)
         first_id = manifest["lessons"][0]["id"]
@@ -176,7 +203,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
         self.assertIn("aramiC:practice:2", buttons)
-        self.assertIn("aramiC:assessment:2", buttons)
+        self.assertNotIn("aramiC:assessment:2", buttons)
         self.assertNotIn("aramiC:practice:3", buttons)
         self.assertNotIn("aramiC:assessment:3", buttons)
 
