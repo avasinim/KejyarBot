@@ -103,6 +103,20 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
+    async def test_assessment_callback_requires_completed_lesson(self):
+        update, query = make_update("assessment")
+        context = SimpleNamespace(user_data={})
+        completed = Mock(return_value=[])
+        await callback(
+            update, context, "/unused",
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=completed,
+        )
+        completed.assert_called_once_with(12345)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەکە بخوێنەوە و تەواوی بکە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("arami_lesson5_session", context.user_data)
+
     async def test_practice_and_assessment_use_lesson5_scoped_sessions(self):
         bank = sample_bank()
         lesson1_session = {"mode": "lesson1-practice", "sentinel": True}
