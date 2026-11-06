@@ -18,6 +18,36 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), message, query
 
+    async def test_locked_course_lesson_callback_cannot_bypass_sequence(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        locked_lesson = lesson_ids[2]
+        update, message, query = self.make_update(f"open_lesson_{locked_lesson}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_lesson,
+        ):
+            await bot.open_selected_lesson(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        send_lesson.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
+    async def test_stale_next_lesson_callback_rechecks_current_unlock_state(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        stale_target = lesson_ids[1]
+        update, message, query = self.make_update(f"next_lesson_{stale_target}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_lesson,
+        ):
+            await bot.open_next_lesson(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        send_lesson.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
     def test_manifest_activates_courses_two_and_three_and_retires_legacy_course_one(self):
         self.assertTrue(bot.course_is_active("arami_orthography_foundations"))
         self.assertFalse(bot.course_is_active("orthography_basic"))
