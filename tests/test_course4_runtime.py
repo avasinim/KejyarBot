@@ -8,6 +8,7 @@ from unittest.mock import patch
 import database
 
 from course_lesson_adapters import adapt_unified_orthography_lessons
+from course_runtime import can_open_lesson
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -76,6 +77,17 @@ class Course4RuntimeTests(unittest.TestCase):
                     self.assertIn(question["answer"], question["options"])
                     self.assertTrue(question["explanation"].strip())
 
+    def test_course4_lessons_unlock_in_sequence_only(self):
+        lesson_ids = [f"grammar_{number:02d}" for number in range(1, 9)]
+        completed = set()
+        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_01"))
+        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_02"))
+        completed.add("grammar_01")
+        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_02"))
+        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_03"))
+        completed.update(lesson_ids[:-1])
+        self.assertTrue(can_open_lesson(lesson_ids, completed, "grammar_08"))
+        self.assertFalse(can_open_lesson(lesson_ids, completed, "grammar_09"))
     def test_course4_lesson_rewards_are_granted_once(self):
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "course4-test.db"
