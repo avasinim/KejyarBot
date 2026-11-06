@@ -183,3 +183,12 @@ For every future runtime or integration change, append date/time, exact file pat
 - CI for `b229c34d98b131381095bc442a5b5832bf4e46cd`: checks success; orthography-course-structure success; compileall passed; `Ran 406 tests in 1.322s`; `OK (skipped=11)`.
 - Backup before source/test edits: `backup/course1-assessment-completion-gate-20261106`; subsequent test-fix backups: `backup/course1-assessment-gate-ci-test-fixes-20261106`, `backup/course1-assessment-gate-root-fixture-20261106`, and `backup/course1-assessment-userid-test-20261106`. Backup before this audit update: `backup/course1-assessment-gate-ci-log-20261106`.
 - This is a source-level callback and menu regression test. It does not verify live Telegram delivery, Botkeep runtime, deployment, or production database state. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+## Course 1 dedicated lesson menu assessment visibility — 2026-11-06
+
+- Follow-up UI audit found that the shared 21-lesson catalogue hid assessment actions until lesson completion, and the callbacks independently blocked premature attempts, but the dedicated Lesson 1 and Lesson 5 menus still displayed assessment buttons before completion. This was a UI consistency defect (the callbacks already denied access).
+- Updated `arami_lesson1_telegram.py` and `arami_lesson5_telegram.py` so their dedicated menus show the assessment action only when the corresponding lesson ID is present in the persisted completed-lesson set. The same condition is used when those menus are shown after reading; absent a progress reader, the safe default hides the assessment action. Existing callback-side completion checks remain in place.
+- Updated the dedicated menu tests to verify that assessment buttons are hidden by default and appear when completion is confirmed.
+- Test commit: `ecfc3b9ecd6d8e59a0c23290167dff0a45bdc031`. CI: checks success; orthography-course-structure success; compileall passed; `Ran 408 tests in 1.122s`; `OK (skipped=11)`.
+- Backup before source/test edit: `backup/course1-dedicated-menu-assessment-visibility-20261106`. Backup before audit update: `backup/course1-dedicated-menu-ci-log-20261106`.
+- This validates source-level menu rendering and callback behavior through automated tests only; it does not verify live Telegram, Botkeep runtime, deployment, or production database state. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
