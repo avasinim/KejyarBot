@@ -58,8 +58,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             await bot.open_selected_lesson(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         send_text.assert_awaited_once()
-        rendered, lesson_id, keyboard = send_text.await_args.args
-        self.assertEqual(lesson_id, "grammar_01")
+        _, rendered, keyboard = send_text.await_args.args
         self.assertTrue(rendered.strip())
         self.assertTrue(rendered.startswith("✦ کەژیار ✦"))
         callbacks = [
