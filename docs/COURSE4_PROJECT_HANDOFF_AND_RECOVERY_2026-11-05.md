@@ -814,3 +814,22 @@
 4. SHAی ڕاستەقینەی working HEAD بخوێنەوە؛ checkpointی نوێ لەسەر هەمان SHA دروست بکە و SHAی checkpoint پشتڕاست بکەوە.
 5. دوای checkpoint، compareی backup دووبارە بکە و ahead/behind لە handoff و وەڵامدا تۆمار بکە.
 6. ئەم snapshot ـە تەنها بۆ پاراستن و گواستنەوەی کارە؛ مۆڵەتی چالاککردنی کۆرس یان بڵاوکردنەوە نییە.
+
+
+---
+
+## زیادەی دۆخی پشکنین — 2026-11-06، کاتژمێر 09:35 (+03:30)
+
+- دوا پەڕەی پشکنین و بەڵگەنامەکراو: **p.315**.
+- بەڵگەنامە: `docs/COURSE4_CROP_REVIEW_CONJUNCTION_P315.md`.
+- p.315 بەردەوامیی خاڵی 15ی p.314 ـە؛ پێنج هاوتای ئینگلیزیی فۆڕمی «مەکەر» تۆمار کراون: `only`, `unless`, `except`, `do you mean to say`, `then in that case`.
+- سێ ئاماژەی سەرچاوە: تۆفیق وەهبی p.89؛ نووری عەلی ئەمین p.149؛ جەگەرخۆین p.100. ناوی کتێبی سەرچاوەی سێیەم و چەند وشەی نموونەکان نادڵنیان؛ بە شێوەی گومانلێکراو نیشان دراون.
+- ڕستەی کۆتایی پەڕە بە p.316 دەبەسترێتەوە؛ هەنگاوی داهاتوو پشکنینی p.316 ـە.
+- دۆخی کۆرس هیچ گۆڕانێکی نییە: `planned`, `lesson_count=0`, `lessons=[]`.
+
+## Git checkpoint — 2026-11-06 p.315
+- Working branch: `reset/grammar-course4-content`
+- Working HEAD پێش نوێکردنەوەی ئەم handoff ـە: `32adfffd8e8255aef29dd106f808813c2bdec7d5`
+- دوای commitی handoff، SHAی نوێی working HEAD بخوێنەوە و checkpointی تایبەت بە پەڕەی 315 لەسەر ئەو SHAیە دروست بکە.
+- Backupی پارێزراو: `backup/grammar-course4-2026-11-05`
+- دوای checkpoint، compareی backup/working بکە و ژمارەی ahead/behind نوێ تۆمار بکە.
