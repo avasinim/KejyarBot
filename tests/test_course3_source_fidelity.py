@@ -76,11 +76,22 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("گرووپی یەکەم: هەولێر، سلێمانی؛ گرووپی دووەم: دهۆک، کەرکووک.", examples)
         self.assertIn("گرووپی یەکەم: زمان، ئەدەب؛ گرووپی دووەم: مێژوو، کولتوور.", examples)
 
+    def test_lesson_55_covers_uncertainty_and_question_intonation(self):
+        lesson = self.lesson(55)
+        examples = {pair[0] for pair in lesson["examples"]}
+        key_points = " ".join(lesson["key_points"])
+        self.assertIn("ئەو لە ساڵی ١٩٨٥ (؟) لەدایک بووە.", examples)
+        self.assertIn("دەنگ و ئاوازی پرسیار", key_points)
+
     def test_lesson_56_uses_the_books_exclamation_mark_purposes(self):
         lesson = self.lesson(56)
         key_points = " ".join(lesson["key_points"])
         self.assertIn("هاندان و دنەدان", key_points)
         self.assertNotIn("پشتیوانی", key_points)
+        examples = {pair[0] for pair in lesson["examples"]}
+        self.assertIn("ئۆخهی! ئااڵی کورد هەڵکرا.", examples)
+        self.assertIn("ئێمە پاڵەوانێتیمان بەدەست هێناوە!", examples)
+        self.assertIn("چ خۆش بوو دوێنێ چاوم پێت کەوت!", examples)
 
     def test_lesson_57_nested_quotation_marks_match_the_book(self):
         lesson = self.lesson(57)
