@@ -30,25 +30,25 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 8)
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01"])
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][0], "grammar_01")
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_08")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_01")
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
 
-    async def test_open_course_four_shows_eight_review_modules(self):
+    async def test_open_course_four_shows_only_the_new_grammar_lesson(self):
         update, message, query = self.make_update("course_grammar")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("وەشانی پێداچوونەوە", text)
-        self.assertIn("کۆی 8", text)
+        self.assertIn("کۆرسی نوێی ڕێزمان", text)
+        self.assertIn("کۆی 1", text)
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         callbacks = [button.callback_data for row in keyboard for button in row]
-        self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
+        self.assertEqual(callbacks, ["open_lesson_grammar_01"])
 
     async def test_open_first_course_four_lesson_delivers_review_text_and_finish_button(self):
         update, message, query = self.make_update("open_lesson_grammar_01")
@@ -150,8 +150,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for course_id in ("daily_conversation", "unified_orthography", "grammar")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 116)
-        self.assertEqual(len(set(all_ids)), 116)
+        self.assertEqual(len(all_ids), 109)
+        self.assertEqual(len(set(all_ids)), 109)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
@@ -408,13 +408,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         grammar = bot.COURSE_LESSON_ORDER["grammar"]
         with patch.object(bot, "get_completed_lessons", return_value=grammar[:2]):
             badges = bot.current_progress_badges(12345)
-        self.assertEqual(
-            badges,
-            [
-                "🏅 کۆرسی ٤: ڕێزمان — وانەی 1",
-                "🏅 کۆرسی ٤: ڕێزمان — وانەی 2",
-            ],
-        )
+        self.assertEqual(badges, ["🏅 کۆرسی ٤: ڕێزمان — وانەی 1"])
 
     def test_progress_badges_hide_stale_later_completions(self):
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
@@ -502,10 +496,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(page_count, 1)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
         labels = [button.text for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
-        self.assertTrue(labels[0].startswith("✅ "))
-        self.assertTrue(labels[1].startswith("🔓 "))
-        self.assertTrue(all(label.startswith("🔒 ") for label in labels[2:]))
+        self.assertEqual(callbacks, ["open_lesson_grammar_01"])
+        self.assertTrue(labels[0].startswith("🔓 "))
 
 
 
