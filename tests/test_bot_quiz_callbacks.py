@@ -214,6 +214,48 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertEqual(reply_text.await_count, 2)
 
+    async def test_feedback_delivery_failure_clears_uncommitted_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock(
+            side_effect=RuntimeError("Telegram feedback delivery failed")
+        )
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
+            with self.assertRaisesRegex(RuntimeError, "feedback delivery failed"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_not_called()
+
+    async def test_next_question_delivery_failure_clears_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        context.user_data["quiz"]["questions"].append({
+            "question": "پرسیاری دووەم",
+            "options": ["وەڵامی A", "وەڵامی B"],
+            "answer": "وەڵامی A",
+        })
+        query.message.reply_text = AsyncMock(
+            side_effect=[None, RuntimeError("Telegram next question delivery failed")]
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "next question delivery failed"):
+            await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        self.assertEqual(query.message.reply_text.await_count, 2)
+
+    async def test_final_result_delivery_failure_clears_already_rewarded_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock(
+            side_effect=[None, RuntimeError("Telegram final result delivery failed")]
+        )
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            with self.assertRaisesRegex(RuntimeError, "final result delivery failed"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_called_once_with(12345, "وانە_1")
+        self.assertEqual(query.message.reply_text.await_count, 2)
+
     async def test_valid_final_answer_completes_quiz_and_claims_reward_once(self):
         from unittest.mock import patch
 
