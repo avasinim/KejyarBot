@@ -29,11 +29,11 @@ def _assessment_result(session, user_id, award_assessment, feedback=""):
         if award_assessment(user_id, "arami_course1_lesson_01"):
             session["assessment_reward_granted"] = True
     reward_note = (
-        "\\n\\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+        "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
         if session.get("assessment_reward_granted") else ""
     )
     text = (
-        f"{feedback}\\n\\n🏁 کۆتایی هات\\n"
+        f"{feedback}\n\n🏁 کۆتایی هات\n"
         f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
     )
     rows = []
@@ -235,7 +235,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                     rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
                 rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
                 await query.edit_message_text(
-                    f"{feedback}\\n\\n🏁 کۆتایی هات\\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪",
+                    f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪",
                     reply_markup=InlineKeyboardMarkup(rows),
                 )
         else:
