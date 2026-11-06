@@ -290,17 +290,18 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         update, _ = make_update("assessment")
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
             await callback(update, context, "/unused")
-        for _ in range(2):
+        for index in range(2):
             message_id = context.user_data["arami_lesson5_message_id"]
             update, _ = make_update("pick:1", message_id=message_id)
             await callback(update, context, "/unused")
-            if context.user_data["arami_lesson5_session"]["index"] == 1:
-                update, _ = make_update("submit", message_id=message_id)
-                await callback(update, context, "/unused")
+            update, _ = make_update("submit", message_id=message_id)
+            await callback(update, context, "/unused")
+            if index == 0:
                 update, _ = make_update("next", message_id=message_id)
                 await callback(update, context, "/unused")
             else:
                 return message_id
+        raise AssertionError("assessment did not reach its final question")
 
     async def test_assessment_reward_persistence_failure_can_be_retried(self):
         context = SimpleNamespace(user_data={})
