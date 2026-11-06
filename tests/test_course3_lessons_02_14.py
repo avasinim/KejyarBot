@@ -31,6 +31,15 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("قورئان", content)
         self.assertIn("گواڵو", content)
 
+    def test_lessons_3_and_4_preserve_unicode_letter_contrasts(self):
+        lesson3 = self.lessons[2]
+        lesson4 = self.lessons[3]
+        text3 = " ".join(lesson3["key_points"] + [v for pair in lesson3["examples"] for v in pair])
+        text4 = " ".join(lesson4["key_points"] + [v for pair in lesson4["examples"] for v in pair])
+        self.assertIn("ڕاز / راز", text3)
+        self.assertIn("چاک، چاك", text4)
+        self.assertIn("Unicode", text3)
+
     def test_lesson_6_covers_long_i_and_consonantal_y_source_examples(self):
         lesson = self.lessons[5]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
