@@ -266,5 +266,34 @@ class DatabaseTests(unittest.TestCase):
         user = database.get_user(12345)
         self.assertEqual(user[0], 12345)
 
+
+    def test_concurrent_course1_assessment_reward_is_granted_once(self):
+        quiz_id = "arami_assessment:arami_course1_lesson_06"
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(
+                    12345, quiz_id, points=20
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)  # exactly one +20 XP award
+        self.assertEqual(user[1], 20)  # exactly one score increment
+        self.assertEqual(user[7], 1)   # exactly one completed assessment
+
+    def test_distinct_course1_assessments_receive_independent_rewards(self):
+        first = "arami_assessment:arami_course1_lesson_01"
+        second = "arami_assessment:arami_course1_lesson_05"
+        self.assertTrue(database.complete_quiz_with_rewards(12345, first, points=20))
+        self.assertTrue(database.complete_quiz_with_rewards(12345, second, points=20))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, first, points=20))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, second, points=20))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 40)  # one reward per distinct lesson
+        self.assertEqual(user[1], 40)
+        self.assertEqual(user[7], 2)
+
+
 if __name__ == "__main__":
     unittest.main()
