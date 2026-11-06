@@ -28,6 +28,8 @@ class Course4RuntimeTests(unittest.TestCase):
                 self.assertTrue(lesson["title"].strip())
                 self.assertTrue(lesson["content"].strip())
                 self.assertTrue(lesson["review_status"].startswith("owner_review"))
+                self.assertIn("تێبینی پێداچوونەوە", lesson["content"])
+                self.assertIn("پەسەندی کۆتایی", lesson["content"])
 
     def test_every_lesson_has_two_valid_provisional_quiz_questions(self):
         for lesson_id, questions in self.quizzes.items():
