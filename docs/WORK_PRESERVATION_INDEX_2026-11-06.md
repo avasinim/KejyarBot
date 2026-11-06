@@ -135,3 +135,13 @@
 - کێشەی backupی Botkeep چارەسەر نەکراوە؛ restore/reset/restart یان نووسینەوەی فایلەکانی Botkeep مەکە تا recovery point پشتڕاست نەکرێتەوە.
 - هیچ ڕێگایەک دڵنیاییی هەمیشەیی لە وننەبوونی داتا نادات. بۆ پاراستنی بەهێزتر، clone/mirrorێکی سەربەخۆ لە ژینگەیەکی پارێزراو هەڵبگیرێت؛ ئەو mirrorە لەم کارەدا دروست نەکراوە.
 - backupی پێش دروستکردنی ئەم فهرستە: `backup/final-preservation-manifest-20261106` لە HEADی پێشووی `855f4d4cab8a36d73bd0485d05ba2aab4f05da2e`.
+
+
+## پشتڕاستکردنەوەی کۆتایی CI بۆ فهرستی پاراستن — 2026-11-06
+
+- لە کۆمیتی `5cc05d17b86403a98fe95a0c90aa079a43d558a1` هەردوو check تەواو بوون و سەرکەوتوون:
+  - `checks`: completed / success؛ هەنگاوەکانی dependency install، `python -m compileall -q .` و `python -m unittest discover -s tests -v` سەرکەوتوون.
+  - `orthography-course-structure`: completed / success.
+- ئەمە پشتڕاستکردنەوەی CIی ئەم کۆمیتەیە؛ بەڵگەی live Telegram، runtimeی Botkeep، production DB یان deployment نییە.
+- Backup پێش ئەم زیادکردنە: `backup/preservation-ci-confirmed-20261106` لە HEADی `5cc05d17b86403a98fe95a0c90aa079a43d558a1`.
+- کۆمیتی ئەم زیادکردنە پاش دروستکردن لە فهرستدا تۆمار دەکرێت؛ CIی خۆی پێویستی بە پشتڕاستکردنەوەی جیاواز هەیە.
