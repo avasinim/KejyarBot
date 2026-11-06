@@ -401,6 +401,37 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("هەڵبژاردەکە دروست نییە", query.message.reply_text.await_args.args[0])
         query.edit_message_reply_markup.assert_not_awaited()
 
+    async def test_delayed_pick_ack_does_not_restore_keyboard_after_submit(self):
+        import asyncio
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "lesson1", "type": "recognize", "prompt": "Q1", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "lesson1", "type": "recognize", "prompt": "Q2", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 0, "selected_index": None, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={"arami_lesson1_session": session, "arami_lesson1_message_id": 10})
+        pick_update, pick_query = make_update("pick:0", message_id=10)
+        started, release = asyncio.Event(), asyncio.Event()
+
+        async def delayed_ack():
+            started.set()
+            await release.wait()
+
+        pick_query.answer.side_effect = delayed_ack
+        pick_task = asyncio.create_task(callback(pick_update, context, "/unused"))
+        await started.wait()
+
+        submit_update, submit_query = make_update("submit", message_id=10)
+        await callback(submit_update, context, "/unused")
+        submit_query.edit_message_text.assert_awaited_once()
+        self.assertEqual(session["index"], 1)
+
+        release.set()
+        await pick_task
+        pick_query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_duplicate_start_completion_cannot_replace_new_session_message_id(self):
         import asyncio
         context = SimpleNamespace(user_data={})
