@@ -57,6 +57,45 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertTrue(any("دەژی/دەژێت" in example for example in examples))
         self.assertIn("٤٥–٤٧", lesson["source"]["pages"])
 
+
+    def test_lessons_39_to_43_match_book_pages_48_to_51(self):
+        lesson39 = self.lesson(39)
+        ex39 = {pair[0] for pair in lesson39["examples"]}
+        self.assertIn("ڤیکتۆر هۆگۆ", ex39)
+        self.assertIn("ڤیدیۆ", ex39)
+        self.assertIn("ئەرشیڤ، ئارشیڤ", ex39)
+        self.assertIn("ئێڤا", ex39)
+
+        lesson40 = self.lesson(40)
+        ex40 = {pair[0] for pair in lesson40["examples"]}
+        self.assertIn("یەکشەممە، دووشەممە", ex40)
+        self.assertIn("یەک دووشەممەی تر", ex40)
+        self.assertIn("دارهەنار، دارمۆز، دارگوێز، دارمێو، گەاڵمێو", ex40)
+        self.assertIn("بە پێی خۆی چوو بۆ الی دوکتۆر", ex40)
+        self.assertIn("بەپێی بڕیارەکە جێبەجێی بکە", ex40)
+
+        lesson41 = self.lesson(41)
+        ex41 = {pair[0] for pair in lesson41["examples"]}
+        self.assertIn("هەموو + ان = هەمووان", ex41)
+        self.assertIn("هێلکەوڕون، مشتومڕ، هاتوچۆ، دەستوبرد", ex41)
+        self.assertIn("هاتوچۆ / هاتووچۆ", ex41)
+        self.assertIn("پێم وا نییە، پێم وا بوو، وا نەبوو، وا دیارە", ex41)
+        self.assertIn("وایە", ex41)
+
+        lesson42 = self.lesson(42)
+        ex42 = {pair[0] for pair in lesson42["examples"]}
+        self.assertIn("گوڵەگەنم، مانگەشەو", ex42)
+        self.assertIn("منداڵە بزێوە جوانە چاوشینەکە", ex42)
+        self.assertIn("ناوەندەدەمارەکۆئەندام", ex42)
+
+        lesson43 = self.lesson(43)
+        ex43 = {pair[0] for pair in lesson43["examples"]}
+        self.assertIn("U+200C", ex43)
+        self.assertIn("پ.د.ف، پ.د.ک", ex43)
+        self.assertIn("PDF", ex43)
+        for n in range(39, 44):
+            self.assertIn("هیچ سەرچاوەی دەرەکی", self.lesson(n)["source"]["source_policy"])
+
     def test_lesson_50_retains_examples_from_book_page_58_and_59(self):
         lesson = self.lesson(50)
         examples = {pair[0] for pair in lesson["examples"]}
