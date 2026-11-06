@@ -91,6 +91,15 @@ class Course3Lessons02To14Tests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
+    def test_lessons_20_to_24_preserve_pages_34_and_35_examples(self):
+        content = " ".join(
+            " ".join(self.lessons[n]["key_points"] + [v for pair in self.lessons[n]["examples"] for v in pair])
+            for n in range(19, 24)
+        )
+        for marker in ("دەستی تێ وەردە", "پێم وت", "لێم سەند", "ڕێک کەوتن", "گرووپێکیان پێک هێنا", "بەفیڕۆتان داوە", "لەدایک نەبووە", "قەمچینەچێژ", "هەڵنەفڕی", "نە ئێوە نە ئێمە"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, content)
+
     def test_lesson_20_preserves_independent_particles_and_compound_infinitives(self):
         lesson = self.lessons[19]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
