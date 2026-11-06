@@ -50,6 +50,44 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         callbacks = [button.callback_data for row in keyboard for button in row]
         self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
 
+    async def test_open_first_course_four_lesson_delivers_review_text_and_finish_button(self):
+        update, message, query = self.make_update("open_lesson_grammar_01")
+        with patch.object(bot, "can_open", return_value=True), patch.object(
+            bot, "send_lesson_text", new=AsyncMock()
+        ) as send_text:
+            await bot.open_selected_lesson(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        send_text.assert_awaited_once()
+        rendered, lesson_id, keyboard = send_text.await_args.args
+        self.assertEqual(lesson_id, "grammar_01")
+        self.assertTrue(rendered.strip())
+        self.assertTrue(rendered.startswith("✦ کەژیار ✦"))
+        callbacks = [
+            button.callback_data
+            for row in keyboard.inline_keyboard
+            for button in row
+        ]
+        self.assertIn("finish_grammar_01", callbacks)
+
+    async def test_finishing_course_four_lesson_unlocks_the_next_without_fake_quiz(self):
+        update, message, query = self.make_update("finish_grammar_01")
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
+            patch.object(bot, "get_user_level", return_value=1),
+            patch.object(bot, "check_badges"),
+        ):
+            await bot.finish_lesson(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        text = message.reply_text.await_args.args[0]
+        self.assertIn("وانەکە تەواو بوو", text)
+        self.assertIn("وانەی دواتر ئامادەیە", text)
+        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        callbacks = [button.callback_data for row in keyboard for button in row]
+        self.assertEqual(callbacks, ["next_lesson_grammar_02"])
+        self.assertNotIn("quiz_grammar_01_start", callbacks)
+
     def test_course_four_lessons_are_marked_for_owner_review_and_stop_at_page_342(self):
         self.assertEqual(bot.GRAMMAR_COURSE4_DRAFT["source_page_limit"], 342)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
