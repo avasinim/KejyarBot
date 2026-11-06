@@ -379,7 +379,15 @@ async def _send_question(message, context, lesson_number):
         f"{heading} — وانەی {lesson_number} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows),
     )
-    context.user_data["arami_course1_active"] = {"lesson": lesson_number, "message_id": sent.message_id}
+    current_sessions = context.user_data.get("arami_course1_sessions", {})
+    current_active = context.user_data.get("arami_course1_active")
+    if (
+        current_sessions.get(str(lesson_number)) is session
+        and isinstance(current_active, dict)
+        and current_active.get("lesson") == lesson_number
+        and current_active.get("message_id") is None
+    ):
+        current_active["message_id"] = sent.message_id
 
 
 def _active_session(context, query, lesson_number):
