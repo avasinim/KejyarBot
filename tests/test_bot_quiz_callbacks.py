@@ -100,6 +100,21 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         })
         return update, context, query
 
+    async def test_telegram_acknowledgement_failure_releases_answer_claim(self):
+        update, context, query = self.make_context("answer_0")
+        query.answer = AsyncMock(side_effect=RuntimeError("Telegram acknowledgement failed"))
+
+        with self.assertRaisesRegex(RuntimeError, "acknowledgement failed"):
+            await bot.quiz_answer(update, context)
+
+        quiz = context.user_data["quiz"]
+        self.assertFalse(quiz["answer_in_progress"])
+        self.assertEqual(quiz["question_message_id"], 77)
+        self.assertEqual(quiz["index"], 0)
+        self.assertEqual(quiz["score"], 0)
+        query.edit_message_reply_markup.assert_not_awaited()
+        query.message.reply_text.assert_not_awaited()
+
     async def test_malformed_answer_does_not_strand_active_question(self):
         update, context, query = self.make_context("answer_nope")
 
