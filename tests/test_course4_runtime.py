@@ -131,5 +131,30 @@ class Course4RuntimeTests(unittest.TestCase):
         self.assertTrue(all(self.quizzes[key] for key in self.lessons))
 
 
+    def test_course4_quiz_answers_match_source_option_indices(self):
+        for raw_lesson in self.payload["lessons"]:
+            lesson_id = f"grammar_{raw_lesson['number']:02d}"
+            adapted_questions = self.quizzes[lesson_id]
+            self.assertEqual(len(raw_lesson["quiz"]), len(adapted_questions))
+            for raw, adapted in zip(raw_lesson["quiz"], adapted_questions):
+                self.assertEqual(adapted["question"], raw["q"])
+                self.assertEqual(adapted["answer"], raw["options"][raw["answer"]])
+                self.assertEqual(adapted["options"], raw["options"])
+                self.assertEqual(adapted["explanation"], raw["explanation"])
+
+    def test_course4_adapter_rejects_out_of_range_quiz_answer(self):
+        malformed = json.loads(json.dumps(self.payload, ensure_ascii=False))
+        malformed["lessons"][0]["quiz"][0]["answer"] = 999
+        with self.assertRaises(ValueError):
+            adapt_unified_orthography_lessons(malformed)
+
+    def test_course4_adapter_rejects_duplicate_quiz_options(self):
+        malformed = json.loads(json.dumps(self.payload, ensure_ascii=False))
+        options = malformed["lessons"][0]["quiz"][0]["options"]
+        options[1] = options[0]
+        with self.assertRaises(ValueError):
+            adapt_unified_orthography_lessons(malformed)
+
+
 if __name__ == "__main__":
     unittest.main()
