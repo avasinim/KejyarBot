@@ -155,3 +155,12 @@ For every future runtime or integration change, append date/time, exact file pat
 - Backups: `backup/course3-retry-after-auto-delivery-failure-20261106` (before adding the test); `backup/course3-retry-test-syntax-fix-20261106` (before syntax correction); `backup/course3-retry-ci-audit-log-20261106` (before this log update).
 - CI for `a1a9696a32061a14b9a123c8de0326e70142de00`: checks success; orthography-course-structure success; `python -m compileall -q .` passed; unit tests reported `Ran 400 tests in 1.176s`; `OK (skipped=11)`.
 - This is a mocked source-level retry-path test. It does not verify live Telegram delivery, Botkeep runtime, deployment, or production database behavior. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+## Learner progress profile display regression — 2026-11-06
+
+- Reviewed the learner progress/profile path: the message handler reads the persisted user totals (score, XP, level, coins, chests) and composes the visible course badges from the active-course lesson sequence.
+- Added regression test `test_progress_profile_displays_persisted_stats_and_current_course_badges` in `tests/test_activated_courses.py`. It verifies the rendered profile includes the persisted totals and current-course badge labels, including Course 3.
+- Initial test commit `e52c9338ddc4783990c12a85541355f5ccc4d303` failed because the mocked handler context omitted `user_data`; CI reported the fixture error. Corrected the fixture and committed as `9785d98ca82d52d80b0af1d244bc13e604298f0c`.
+- Backups: `backup/progress-profile-display-regression-20261106` (before test addition); `backup/progress-profile-fixture-fix-20261106` (before fixture correction); `backup/progress-profile-ci-audit-log-20261106` (before this log update).
+- CI for `9785d98ca82d52d80b0af1d244bc13e604298f0c`: checks success; orthography-course-structure success; `python -m compileall -q .` passed; unit tests reported `Ran 401 tests in 0.902s`; `OK (skipped=11)`.
+- The test uses mocked user/profile data and verifies message rendering only. It does not verify live Telegram delivery, Botkeep runtime, deployment, or production database state. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
