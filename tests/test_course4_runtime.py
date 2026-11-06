@@ -26,7 +26,7 @@ class Course4RuntimeTests(unittest.TestCase):
         import re
         ranges = []
         for item in self.payload["lessons"]:
-            match = re.search(r"(\\d+)\\s*[–-]\\s*(\\d+)", item["title"])
+            match = re.search(r"(\d+)\s*[–-]\s*(\d+)", item["title"])
             self.assertIsNotNone(match, item["title"])
             ranges.append((int(match.group(1)), int(match.group(2))))
         self.assertEqual(ranges[0][0], 11)
@@ -39,6 +39,7 @@ class Course4RuntimeTests(unittest.TestCase):
             with self.subTest(lesson=item["number"]):
                 for field in ("objective", "key_points", "examples", "exercises", "comprehension"):
                     self.assertTrue(item.get(field))
+
     def test_every_lesson_has_nonempty_content_and_owner_review_marker(self):
         for lesson_id, lesson in self.lessons.items():
             with self.subTest(lesson=lesson_id):
