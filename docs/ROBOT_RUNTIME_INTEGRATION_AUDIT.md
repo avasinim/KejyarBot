@@ -74,3 +74,16 @@ For every future runtime or integration change, append date/time, exact file pat
 - Backup before this test edit: `backup/robot-course3-progress-integration-test-20261106`, at `e6ebeba84251ad5d7b2bf20299a43fca3a6d4944`.
 - Backup before appending this result: `backup/robot-course3-progress-ci-log-20261106`, at `08c1a99b98f56400f27daa650dc5d628f87b54f0`.
 - This validates the SQLite persistence and sequential-unlock helper integration in automated tests. It does not validate a live Botkeep server, Telegram delivery, or production database.
+
+
+## Course 3 concurrent quiz callback audit — 2026-11-06
+
+- Reviewed bot.py quiz callback flow: select_quiz_answer stores the selected option before awaiting Telegram acknowledgement; quiz_answer validates the active question and callback index, claims it synchronously with answer_in_progress = True, clears the active question message ID, and only then awaits the callback acknowledgement. Duplicate/stale callbacks are ignored before scoring.
+- Reviewed database.py: complete_quiz_with_rewards uses SQLite BEGIN IMMEDIATE, checks the per-user completed_quizzes ledger, and atomically records the quiz, increments the test count, and grants score/XP only for the first claim. This is a source-code finding; persistence safety still depends on the live database being healthy.
+- Existing tests covered a pre-set in-progress flag and post-completion repeat clicks, but did not exercise two overlapping Course 3 submit callbacks while the first callback was suspended at its first await.
+- Added test_concurrent_course3_submit_callbacks_claim_one_answer_and_one_reward to tests/test_bot_quiz_callbacks.py. It launches two submit handlers against the same active Course 3 question, pauses the first callback acknowledgement, verifies the second cannot score or claim a reward, then confirms the first completes and calls the reward helper once.
+- Test commit: 235a53c8a4443b4ac1c3692634d21a050d1c1301.
+- Backup before the test edit: backup/robot-quiz-callback-audit-20261106, at parent 2a2bc2d3d1c0d7f436fac963bca809b23b39e67a.
+- Backup before this log update: backup/robot-quiz-callback-log-20261106, at 235a53c8a4443b4ac1c3692634d21a050d1c1301.
+- CI state at the time of this entry: no check runs or commit statuses had appeared yet; status was pending. Do not treat the new test as passed until GitHub Actions reports completion.
+- No production database, Botkeep files, Telegram live session, or deployment was accessed or changed. PR #118 remains Draft/open/unmerged; main is unchanged.
