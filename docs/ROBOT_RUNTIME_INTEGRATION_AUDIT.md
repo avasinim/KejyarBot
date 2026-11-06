@@ -164,3 +164,12 @@ For every future runtime or integration change, append date/time, exact file pat
 - Backups: `backup/progress-profile-display-regression-20261106` (before test addition); `backup/progress-profile-fixture-fix-20261106` (before fixture correction); `backup/progress-profile-ci-audit-log-20261106` (before this log update).
 - CI for `9785d98ca82d52d80b0af1d244bc13e604298f0c`: checks success; orthography-course-structure success; `python -m compileall -q .` passed; unit tests reported `Ran 401 tests in 0.902s`; `OK (skipped=11)`.
 - The test uses mocked user/profile data and verifies message rendering only. It does not verify live Telegram delivery, Botkeep runtime, deployment, or production database state. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
+
+## Sequential lesson callback guard regression — 2026-11-06
+
+- Reviewed the Course 2/3 lesson catalogue and lesson-opening callbacks. Both `open_selected_lesson` and `open_next_lesson` re-evaluate `can_open` against the current completed-lesson ledger before delivering content; this prevents stale or manually replayed callback data from bypassing the strict course sequence.
+- Added regression tests in `tests/test_activated_courses.py`: `test_locked_course_lesson_callback_cannot_bypass_sequence` and `test_stale_next_lesson_callback_rechecks_current_unlock_state`. Both assert the callback is acknowledged, locked content is not delivered, and the learner receives the lock explanation.
+- Test commit: `9afddd599af30e6850568f44eded55a4303df638`. No runtime code change was needed; the existing callback guards behaved as intended under the regression tests.
+- Backup before test edit: `backup/course-sequential-lesson-callback-guards-20261106`. Backup before this audit update: `backup/course-callback-guard-ci-log-20261106`.
+- CI for `9afddd599af30e6850568f44eded55a4303df638`: checks success; orthography-course-structure success; `python -m compileall -q .` passed; unit tests reported `Ran 403 tests in 1.248s`; `OK (skipped=11)`.
+- These are source-level mocked callback tests. They do not verify live Telegram delivery, Botkeep runtime, deployment, or production database state. No Botkeep files, production database, deployment, or `main`-branch changes were made. PR #118 remains Draft/open/unmerged.
