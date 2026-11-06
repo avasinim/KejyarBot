@@ -49,6 +49,26 @@ class CourseThreeSourceFidelityTests(unittest.TestCase):
         self.assertIn("٥٨", lesson["source"]["pages"])
         self.assertIn("٥٩", lesson["source"]["pages"])
 
+    def test_lesson_51_uses_comma_between_abbreviated_names(self):
+        lesson = self.lesson(51)
+        examples = " ".join(pair[0] for pair in lesson["examples"])
+        self.assertIn("د. سۆران، م.م. بەدرخان", examples)
+        self.assertNotIn("د. سۆران؛ م.م. بەدرخان", examples)
+
+    def test_lesson_56_uses_the_books_exclamation_mark_purposes(self):
+        lesson = self.lesson(56)
+        key_points = " ".join(lesson["key_points"])
+        self.assertIn("هاندان و دنەدان", key_points)
+        self.assertNotIn("پشتیوانی", key_points)
+
+    def test_lesson_57_nested_quotation_marks_match_the_book(self):
+        lesson = self.lesson(57)
+        examples = " ".join(pair[0] for pair in lesson["examples"])
+        self.assertIn(
+            '"ماسیگرە سەرلێشێواوەکە هاواری کرد \'سەیری ئەو دەیدامە بکەن\' پاشان بێدەنگ بوو"',
+            examples,
+        )
+
     def test_lesson_59_distinguishes_dialogue_marker_from_sentence_dash(self):
         lesson = self.lesson(59)
         examples = {pair[0] for pair in lesson["examples"]}
