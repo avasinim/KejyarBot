@@ -6,7 +6,7 @@ from pathlib import Path
 from course_lesson_adapters import adapt_unified_orthography_lessons
 
 ROOT = Path(__file__).resolve().parents[1]
-COURSE4_PATH = ROOT / "course_data" / "grammar_course4_lessons_01_08.json"
+COURSE4_PATH = ROOT / "course_data" / "grammar_course4_lessons.json"
 COURSES_PATH = ROOT / "courses.json"
 
 
