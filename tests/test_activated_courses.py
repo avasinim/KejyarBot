@@ -458,10 +458,6 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         application.run_polling.assert_called_once_with()
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     async def test_course_four_repeated_completion_does_not_repeat_rewards_and_keeps_next_lesson_resumable(self):
         lesson_id = bot.COURSE_LESSON_ORDER["grammar"][0]
         update, message, query = self.make_update(f"finish_{lesson_id}")
@@ -506,3 +502,8 @@ if __name__ == "__main__":
         self.assertTrue(labels[0].startswith("✅ "))
         self.assertTrue(labels[1].startswith("🔓 "))
         self.assertTrue(all(label.startswith("🔒 ") for label in labels[2:]))
+
+
+
+if __name__ == "__main__":
+    unittest.main()
