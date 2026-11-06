@@ -73,6 +73,17 @@ class Course3Lessons02To14Tests(unittest.TestCase):
         self.assertIn("Shift + M", content)
         self.assertIn("پەڕەی ١٥", content)
 
+    def test_lessons_13_and_14_cover_final_table_rows_and_number_examples(self):
+        lesson13 = self.lessons[12]
+        lesson14 = self.lessons[13]
+        text13 = " ".join(lesson13["key_points"] + [v for pair in lesson13["examples"] for v in pair])
+        text14 = " ".join(lesson14["key_points"] + [v for pair in lesson14["examples"] for v in pair])
+        self.assertIn("بڕوبیانوو", text13)
+        self.assertIn("جرتوفرت", text13)
+        self.assertIn("حەڤدە، هەژدە، نۆزدە", text14)
+        self.assertIn("نۆسەد", text14)
+        self.assertIn("١٬٨٥٢٬٣٤٤", text14)
+
     def test_lesson_13_preserves_scientific_compounds_and_source_table(self):
         lesson = self.lessons[12]
         content = " ".join(lesson["key_points"] + [v for pair in lesson["examples"] for v in pair])
