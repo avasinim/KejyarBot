@@ -397,4 +397,4 @@ class Course4ComprehensionFormattingTests(unittest.TestCase):
                 for number, question in enumerate(questions, start=1):
                     expected = f"{str(number).translate(str.maketrans('0123456789', '٠١٢٣٤٥٦٧٨٩'))}. "
                     self.assertTrue(question.startswith(expected), question)
-                    self.assertIsNone(duplicate_prefix.match(question), question)
+                    self.assertFalse(question.startswith(f"{expected}{expected}"), question)
