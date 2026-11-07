@@ -900,8 +900,6 @@ class Course4InterjectionLesson27Tests(unittest.TestCase):
         self.assertEqual(len(lesson["quiz"]), 8)
         self.assertTrue(all(len(item) == 2 for item in lesson["examples"]))
         self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
-        self.assertIn("ناوبەندی -ە- و -و-", lesson["quiz"][-1]["q"])
-        self.assertEqual(lesson["quiz"][-1]["answer"], 1)
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("Interjection", "Vocative", "ڕستەی سەرسووڕمان", "Ameka (1992)", "McCarus (2009)", "Taha (2022)"):
             self.assertIn(term, joined)
@@ -1099,6 +1097,8 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertEqual(len(lesson["examples"]), 15)
         self.assertEqual(len(lesson["appendix"]), 30)
         self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
+        self.assertIn("ناوبەندی -ە- و -و-", lesson["quiz"][-1]["q"])
+        self.assertEqual(lesson["quiz"][-1]["answer"], 1)
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("-(y)ێک", "-ان", "-ەکان", "ڕەگەزی سروشتی", "ڕەگەزی ڕێزمانی", "Jambrović", "Thackston", "وانەی ٣١", "وانەی ٣٠", "گوڵەباخ", "گاکێوی", "ئاسنگەر", "کچۆڵە", "Mirmokri", "براکە", "هەڵۆیەک", "Interfix", "Huseen", "Shuani", "ناوبەندی -ە-", "ناوبەندی -و-", "دەنگی پەیوەستکەری فۆنۆلۆژی"):
             self.assertIn(term, joined)
@@ -1111,3 +1111,12 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertIn("ئاو و هەوا", joined)
         self.assertIn("کاندیدی پشکنین", joined)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری شێوەزار", 1)[0])
+
+
+    def test_lesson_29_quiz_explanation_matches_ەوە_question(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_29")
+        question = lesson["quiz"][5]
+        self.assertIn("ـەوە", question["q"])
+        self.assertIn("ـەوە", question["explanation"])
+        self.assertNotIn("هەڵـ", question["explanation"])
