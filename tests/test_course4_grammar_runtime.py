@@ -883,8 +883,8 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         self.assertEqual(source["lesson_count"], 27)
         self.assertEqual(plan["lesson_count"], 27)
-        self.assertEqual(plan["lessons"][-1]["id"], "grammar_26")
-        self.assertEqual(plan["source_alignment_map"][-1]["lessons"], "26")
+        self.assertEqual(plan["lessons"][-1]["id"], "grammar_27")
+        self.assertEqual(plan["source_alignment_map"][-1]["lessons"], "27")
 
 
 class Course4InterjectionLesson27Tests(unittest.TestCase):
@@ -903,7 +903,8 @@ class Course4InterjectionLesson27Tests(unittest.TestCase):
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("Interjection", "Vocative", "ڕستەی سەرسووڕمان", "Ameka (1992)", "McCarus (2009)", "Taha (2022)"):
             self.assertIn(term, joined)
-        self.assertIn("ئەرێ، «جا»، «خۆ»", joined)
+        for form in ("ئەرێ", "«جا»", "«خۆ»", "«دەی»"):
+            self.assertIn(form, joined)
 
     def test_lesson_27_preserves_owner_list_and_distinguishes_lessons_24_and_26(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
