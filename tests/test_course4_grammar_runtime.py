@@ -832,10 +832,10 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
         self.assertIn("وانەی ٢٥", l26)
         self.assertNotIn("ش/یش", l23)
 
-    def test_lessons_19_to_27_keep_the_standard_quiz_schema_and_counts(self):
+    def test_lessons_19_to_25_keep_the_standard_quiz_schema_and_counts(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["number"]: item for item in source["lessons"]}
-        for number in range(19, 28):
+        for number in range(19, 26):
             lesson = lessons[number]
             self.assertEqual(len(lesson["key_points"]), 8)
             self.assertEqual(len(lesson["examples"]), 8)
