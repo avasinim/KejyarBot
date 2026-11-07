@@ -126,7 +126,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertIn("پاشکۆ", bot.LESSON_DATA[lesson_id]["content"])
             self.assertIn("چالاکییەکان", bot.LESSON_DATA[lesson_id]["content"])
         lesson2_text = json.dumps(lesson2, ensure_ascii=False)
-        self.assertIn("پۆلی ژمارەیی (Numeral)", lesson2_text)
+        self.assertIn("پۆلی وشەی ژمارەیی (Numeral)", lesson2_text)
         self.assertIn("نەک ژمارەی ڕێزمانیی ناو", lesson2_text)
         self.assertIn("ئامرازی پەیوەندی", lesson2_text)
         self.assertIn("پریپۆزیشن", lesson2_text)
