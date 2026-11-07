@@ -173,7 +173,7 @@
       "key": "course_grammar",
       "order": 4,
       "title": "کۆرسی ٤: ڕێزمان",
-      "description": "١٣ وانەی ڕێزمان؛ لە دۆخی active_owner_review_beta و وانەکان بە پێی پشکنینی زانستیی ناوخۆیی ڕێکخراون.",
+      "description": "١٧ وانەی ڕێزمان؛ لە دۆخی active_owner_review_beta و وانەکان بە پێی پشکنینی زانستیی ناوخۆیی ڕێکخراون.",
       "status": "active",
       "lesson_ids": [
         "grammar_01",
@@ -188,7 +188,11 @@
         "grammar_10",
         "grammar_11",
         "grammar_12",
-        "grammar_13"
+        "grammar_13",
+        "grammar_14",
+        "grammar_15",
+        "grammar_16",
+        "grammar_17"
       ]
     },
     {
