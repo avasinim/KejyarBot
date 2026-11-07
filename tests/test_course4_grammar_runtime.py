@@ -353,3 +353,32 @@ class Course4GrammarLessons14To17Tests(unittest.TestCase):
         self.assertEqual(plan["lesson_count"], 17)
         course = next(x for x in catalog["courses"] if x["id"] == "grammar")
         self.assertEqual(course["lesson_ids"], expected)
+
+
+class Course4TerminologyConsistencyTests(unittest.TestCase):
+    def test_numeral_term_is_identical_across_all_lessons(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        serialized = json.dumps(source, ensure_ascii=False)
+        self.assertIn("پۆلی وشەی ژمارەیی", serialized)
+        self.assertNotIn("پۆلی ژمارەیی", serialized.replace("پۆلی وشەی ژمارەیی", ""))
+        for lesson in source["lessons"]:
+            with self.subTest(lesson=lesson["id"]):
+                self.assertEqual(
+                    lesson["review_status"],
+                    "scientific_review_complete_with_qualified_notes",
+                )
+
+    def test_previously_standardized_core_terms_remain_stable(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        serialized = json.dumps(source, ensure_ascii=False)
+        self.assertNotIn("ئاوەڵکار", serialized)
+        self.assertIn("هاوەڵکار", serialized)
+        self.assertIn("دیارخەری ئاماژە", serialized)
+        self.assertIn("جێناوی ئاماژە", serialized)
+        self.assertIn("ژمارەی ڕێزمانی", serialized)
+        self.assertIn("کۆی نەناسراو", serialized)
+        self.assertNotIn("کۆی گشتی/نەناسراو", serialized)
