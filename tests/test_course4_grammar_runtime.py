@@ -86,6 +86,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("ڕوو + خۆش", " ".join(lesson7["examples"][3]))
         self.assertIn("پێویستی بە پشکنینی فەرهەنگ", " ".join(lesson7["key_points"]))
         self.assertIn("ڕووخۆش", lesson7["quiz"][6]["options"][2])
+        self.assertIn("ڕووخۆش", lesson7["activities"][0])
+        self.assertNotIn("ڕووڕەش", " ".join(lesson7["activities"]))
         lesson6 = next(item for item in source["lessons"] if item["id"] == "grammar_06")
         self.assertIn("ئیزافەی کراوە", " ".join(lesson6["key_points"]))
         self.assertIn("نامەی درێژ", " ".join(item[0] for item in lesson6["examples"]))
