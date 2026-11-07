@@ -225,6 +225,85 @@
       "source_pages": [],
       "status": "owner_supplied_material_not_page_mapped",
       "note": "Based on owner-supplied text in conversation; bibliographic details and page references were not supplied. Not page-verified against Rezmany_axawtny_kurdy.pdf."
+    },
+    {
+      "lessons": "22-24",
+      "topic": "Auxiliary Verbs — definition, Sorani constructions and use in clauses",
+      "source_pages": [
+        125,
+        134
+      ],
+      "status": "chapter_boundary_and_page_ranges_confirmed_content_mapping_in_progress",
+      "note": "The explicit chapter heading 'Auxiliary Verbs' begins on p.125. Pages 125–134 are provisionally divided into p.125–127 (definition and framing), pp.128–132 (Sorani constructions/examples), and pp.133–134 (further Sorani forms and clause-level use). The three-lesson split is pedagogical, not copied from book subheadings. Exact transcription, example-by-example analysis and dialect validation remain required before marking these lessons scientifically complete."
     }
-  ]
+  ],
+  "next_unit_outline": {
+    "unit_id": "auxiliary_verbs",
+    "title": "کاری یاریدەر — Auxiliary Verbs",
+    "source_file": "Rezmany_axawtny_kurdy.pdf",
+    "source_pages": [
+      125,
+      134
+    ],
+    "status": "outline_ready_full_lesson_drafting_pending",
+    "note": "The chapter heading 'Auxiliary Verbs' is explicit on p.125. The three-lesson division below is a pedagogical proposal based on the page sequence, not a claim that the book itself divides the chapter into these exact lessons. The active lesson count remains 21 until the lesson JSON, manifest, runtime, and tests are updated together.",
+    "lessons": [
+      {
+        "number": 22,
+        "id": "grammar_22",
+        "title": "وانەی ٢٢: کاری یاریدەر — پێناسە و سنووری چەمک",
+        "source_pages": [
+          125,
+          127
+        ],
+        "focus": [
+          "پێناسەی کاری یاریدەر لە سەرچاوەدا",
+          "جیاوازیی کردارە سەرەکییەکان لە کردارە یاریدەرەکان",
+          "پەیوەندیی کاری یاریدەر بە کردار و پێکهاتەی ڕستە",
+          "پۆلێنکردنی یاریدەرەکان تەنها بەپێی ئەو جیاوازییانەی سەرچاوە بەڵگەی بۆ دەهێنێت"
+        ],
+        "guardrails": [
+          "هەموو کرداری دووەم لە ڕستەدا بە یاریدەر ناونەنرێت.",
+          "جیاوازیی کردارێکی یاریدەر و کردارێکی تەواوکەر لە نموونەدا بپشکنرێت."
+        ]
+      },
+      {
+        "number": 23,
+        "id": "grammar_23",
+        "title": "وانەی ٢٣: کاری یاریدەر — پێکهاتە و نموونەکانی کوردی",
+        "source_pages": [
+          128,
+          132
+        ],
+        "focus": [
+          "پێکهاتەی کاری یاریدەر لەگەڵ کردارە سەرەکییەکان",
+          "نموونە و شێوەکانی بەکارهێنان لە سۆرانی",
+          "جیاکردنەوەی کاری یاریدەر لە کاری لێکدراو و هاوەڵکار",
+          "ڕۆڵی هەر بەشێک لە پێکهاتەی کردار"
+        ],
+        "guardrails": [
+          "هیچ نموونەیەک بەبێ دیاریکردنی واتا و ئەرکی ڕستەیی پۆلێن نەکرێت.",
+          "بەکارهێنانی هەر کردارێک وەک یاریدەر بە گشتی نەگشتێندرێت."
+        ]
+      },
+      {
+        "number": 24,
+        "id": "grammar_24",
+        "title": "وانەی ٢٤: کاری یاریدەر — شێوە و کارکرد لە ڕستەدا",
+        "source_pages": [
+          133,
+          134
+        ],
+        "focus": [
+          "پشکنینی شێوە و ڕۆڵی یاریدەر لە نموونەکانی سەرچاوەدا",
+          "بەراوردکردنی پێکهاتەکان لە ڕووی کات و شێوەی کردارەوە، تەنها لەو شوێنانەی بەڵگە هەیە",
+          "ڕاهێنانی شیکردنەوەی ڕستە و جیاکردنەوەی یاریدەر لە کردارە سەرەکی"
+        ],
+        "guardrails": [
+          "پێش ئەوەی یاسایەک بۆ هەموو سۆرانی دابنرێت، نموونە و شێوەزار پشکنین بکرێن.",
+          "ئەگەر پەڕەکان بە تەواوی پشتگیریی پۆلێنێک نەکەن، لە وانەدا وەک گریمانە نیشان بدرێت، نەک یاسای کۆتایی."
+        ]
+      }
+    ]
+  }
 }
