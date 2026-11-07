@@ -568,7 +568,7 @@ class Course4IzafaCrossLessonConsistencyTests(unittest.TestCase):
         l25 = " ".join(lessons[25]["key_points"] + lessons[25]["appendix"])
         self.assertIn("ئیزافەی کراوە", l6)
         self.assertIn("ئیزافەی داخراو", l6)
-        self.assertIn("پاشبەستی خاوەنداری", l14)
+        self.assertIn("پاشبەستەی خاوەندارییە", l14)
         self.assertIn("ئیزافەی کراوە", l25)
         self.assertIn("ئیزافەی داخراو", l25)
         self.assertIn("پاشبەستی خاوەنداری", l25)
