@@ -96,7 +96,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertNotIn("لەگەڵ جێناوی ئاماژەدا", " ".join(lesson5["key_points"]))
         self.assertIn("جوان + ـی ← جوانی", str(lesson5["examples"]))
         self.assertIn("ژمارەی ڕێزمانییەوە", " ".join(lesson4["key_points"]))
-        self.assertIn("نەک پۆلی وشەی ژمارەیی", " ".join(lesson4["key_points"]))
+        self.assertIn("نە پۆلی وشەی ژمارەیی", " ".join(lesson4["key_points"]))
         self.assertIn("دوو کتێب", json.dumps(lesson4["examples"], ensure_ascii=False))
         self.assertEqual(len(lesson4["quiz"]), 8)
         self.assertIn("وشەی ژمارەیی", lesson4["quiz"][7]["q"])
