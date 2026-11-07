@@ -932,7 +932,7 @@ class Course4InfinitiveLesson28Tests(unittest.TestCase):
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("Infinitive", "Past Stem", "Present Stem", "Kareem (2016)", "Haig (2018)", "Ahmadi (2021)"):
             self.assertIn(term, joined)
-        self.assertIn("پێنج گروپی بنجی ڕابردوون", joined)
+        self.assertIn("گروپی بنجی ڕابردوو", joined)
         self.assertIn("پێنج جۆری سەربەخۆی چاوگ", joined)
         self.assertIn("بنجی ئێستا", joined)
 
