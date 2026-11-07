@@ -169,5 +169,37 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         bot.validate_activated_course_runtime()
 
 
+    def test_course4_plan_catalog_and_source_lesson_ids_stay_in_sync(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        plan = json.loads(
+            (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
+        )
+        catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 9)]
+        source_ids = [lesson["id"] for lesson in source["lessons"]]
+        plan_ids = [lesson["id"] for lesson in plan["lessons"]]
+        course = next(item for item in catalog["courses"] if item["id"] == "grammar")
+
+        self.assertEqual(source_ids, expected_ids)
+        self.assertEqual(plan["lesson_count"], 8)
+        self.assertEqual(plan_ids, expected_ids)
+        self.assertEqual(course["lesson_ids"], expected_ids)
+
+    def test_each_course4_comprehension_section_has_eight_questions_and_two_markers(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        for lesson in source["lessons"]:
+            with self.subTest(lesson=lesson["id"]):
+                comprehension = lesson["comprehension"]
+                self.assertEqual(len(comprehension), 10)
+                self.assertTrue(comprehension[0].startswith("کورتەی وانە:"))
+                for number, question in enumerate(comprehension[1:9], start=1):
+                    self.assertTrue(question.startswith(f"{number}. "))
+                self.assertTrue(comprehension[9].startswith(f"کۆتایی وانەی {lesson['number']}:"))
+
+
 if __name__ == "__main__":
     unittest.main()
