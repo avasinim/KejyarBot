@@ -67,7 +67,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertNotIn("ئاوەڵکار", lesson2_text)
         lesson6 = next(item for item in source["lessons"] if item["id"] == "grammar_06")
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
-        self.assertIn("ل'ە دەستەواژەی ناویدا ناوەکە وەسف دەکات", lesson6["key_points"][0])
+        self.assertIn("لە دەستەواژەی ناویدا ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
         expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6}
         for lesson_id, appendix_count in expected_appendix_counts.items():
