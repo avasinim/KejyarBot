@@ -310,7 +310,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertNotIn("Percolation", content + examples)
         self.assertNotIn("Konjunktiv", content + examples)
         self.assertNotIn("لاپەڕەکانی ٨٥–٨٧", content)
-        self.assertIn("هیچ کتێب، PDF یان سەرچاوەی دەرەکی", content)
+        self.assertIn("هیچ کتێب، PDF، لاپەڕە یان سەرچاوەی دەرەکی", content)
         appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
         appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
         self.assertIn("هیچ mappingی لاپەڕەیی", appendix_lesson13)
