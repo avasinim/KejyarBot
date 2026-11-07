@@ -702,7 +702,7 @@ class Course4VoiceAndErgativeAlignmentConsistencyTests(unittest.TestCase):
         self.assertIn("وانەی ١٢", active_example)
         self.assertIn("نابێت بە خاوەنداری لێک بدرێتەوە", active_example)
         lesson15_example = lessons[15]["examples"][0][1]
-        self.assertIn("ـی لکاوی نیشانەی بکەری سێیەمی تاکە", lesson15_example)
+        self.assertIn("«ـی» لکاوی نیشانەی بکەری سێیەمی تاکە", lesson15_example)
         self.assertIn("وانەی ١٢", lesson15_example)
 
     def test_voice_is_distinguished_from_ergative_alignment(self):
