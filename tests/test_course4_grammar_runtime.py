@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class Course4GrammarRuntimeTests(unittest.TestCase):
     def test_course4_is_active_with_twenty_five_owner_supplied_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12", "grammar_13", "grammar_14", "grammar_15", "grammar_16", "grammar_17", "grammar_18", "grammar_19", "grammar_20", "grammar_21", "grammar_22", "grammar_23", "grammar_24", "grammar_25"])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12", "grammar_13", "grammar_14", "grammar_15", "grammar_16", "grammar_17", "grammar_18", "grammar_19", "grammar_20", "grammar_21", "grammar_22", "grammar_23", "grammar_24", "grammar_25", "grammar_26"])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_01"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
@@ -244,7 +244,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
 
         self.assertEqual(source_ids, expected_ids)
-        self.assertEqual(plan["lesson_count"], 25)
+        self.assertEqual(plan["lesson_count"], 26)
         self.assertEqual(plan_ids, expected_ids)
         self.assertEqual(course["lesson_ids"], expected_ids)
 
@@ -470,7 +470,7 @@ class Course4PrepositionLesson22Tests(unittest.TestCase):
         self.assertIn("ماددەی ڕاستەوخۆی نێردراوی خاوەن پڕۆژە", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_catalogs_register_25_lessons_without_changing_other_courses(self):
+    def test_course4_catalogs_register_26_lessons_without_changing_other_courses(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
@@ -497,7 +497,7 @@ class Course4ConjunctionLesson23Tests(unittest.TestCase):
         self.assertIn("پارتیکڵی زیادکردن", " ".join(lesson["key_points"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_has_25_registered_lessons(self):
+    def test_course4_has_26_registered_lessons(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
@@ -791,3 +791,40 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
             self.assertTrue(all(set(q) == {"q", "options", "answer", "explanation"} for q in lesson["quiz"]))
             self.assertTrue(all(0 <= q["answer"] < len(q["options"]) for q in lesson["quiz"]))
             self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
+
+
+class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
+    def test_lesson_26_has_complete_lesson_schema_and_source_caveats(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_26")
+        self.assertEqual(lesson["number"], 26)
+        self.assertEqual(len(lesson["key_points"]), 9)
+        self.assertEqual(len(lesson["examples"]), 8)
+        self.assertEqual(len(lesson["activities"]), 3)
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertTrue(all(0 <= item["answer"] < len(item["options"]) for item in lesson["quiz"]))
+        joined = " ".join(lesson["key_points"] + lesson["appendix"])
+        for term in ("پارتیکڵی گفتوگۆیی", "لکاوی زیادکردن/جەخت", "کۆرپەس", "Radnia (2022)", "Ahmadi (2021)"):
+            self.assertIn(term, joined)
+
+    def test_lesson_26_examples_are_sorani_discourse_particle_examples(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_26")
+        examples = " ".join(" ".join(item) for item in lesson["examples"])
+        for form in ("ئەرێ", "جا", "باشە", "ئەوە", "خۆ", "مەگەم", "دەی", "ڕاست"):
+            self.assertIn(form, examples)
+
+    def test_lesson_23_additive_ish_is_cross_referenced_as_a_clitic(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_23")
+        self.assertTrue(any("لکاوی زیادکردن/جەختە" in item for item in lesson["appendix"]))
+
+    def test_course4_has_26_lessons_and_plan_records_lesson_26(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        self.assertEqual(source["lesson_count"], 26)
+        self.assertEqual(plan["lesson_count"], 26)
+        self.assertEqual(plan["lessons"][-1]["id"], "grammar_26")
+        self.assertEqual(plan["source_alignment_map"][-1]["lessons"], "26")
