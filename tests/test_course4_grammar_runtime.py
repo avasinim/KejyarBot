@@ -26,6 +26,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(bot.QUIZ_DATA["grammar_10"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_11"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_12"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_13"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
                          "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
@@ -41,6 +42,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_10": "scientific_review_complete_with_qualified_notes",
             "grammar_11": "scientific_review_complete_with_qualified_notes",
             "grammar_12": "scientific_review_complete_with_qualified_notes",
+            "grammar_13": "scientific_review_complete_with_qualified_notes",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -50,7 +52,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
         self.assertEqual(source["course_id"], "grammar")
-        self.assertEqual([lesson["id"] for lesson in source["lessons"]], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12"])
+        self.assertEqual([lesson["id"] for lesson in source["lessons"]], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12", "grammar_13"])
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
@@ -77,7 +79,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         self.assertIn("ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
