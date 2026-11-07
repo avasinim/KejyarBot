@@ -4,9 +4,9 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "active_owner_review_beta",
-  "replacement_state": "owner_supplied_lessons_1_through_18",
+  "replacement_state": "owner_supplied_lessons_1_through_21",
   "language": "ckb",
-  "lesson_count": 18,
+  "lesson_count": 21,
   "lessons": [
     {
       "number": 1,
@@ -115,6 +115,24 @@
       "id": "grammar_18",
       "title": "وانەی ١٨: کردار — کاری چالاک و کاری نەچالاک (Active and Passive Voice)",
       "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 19,
+      "id": "grammar_19",
+      "title": "وانەی ١: هاوەڵکار — پێناسە، کات و شوێن",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 20,
+      "id": "grammar_20",
+      "title": "وانەی ٢: هاوەڵکار — پێکهاتە و داڕشتن بە «بەـ»",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 21,
+      "id": "grammar_21",
+      "title": "وانەی ٣: هاوەڵکار لە کاری لێکدراودا",
+      "status": "scientific_review_complete_with_qualified_notes"
     }
   ],
   "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
@@ -200,6 +218,13 @@
       ],
       "status": "section_and_topic_range_confirmed_content_comparison_partial",
       "note": "Active and Passive section begins p.112 and continues through p.124; learner-facing examples and Sorani construction details require separate corpus validation. Auxiliary verbs begin p.125 and are reserved for the next lesson."
+    },
+    {
+      "lessons": "19-21",
+      "topic": "adverbs/adverbials: time and place, derived forms with بەـ, and adverbial participation in compound verbs",
+      "source_pages": [],
+      "status": "owner_supplied_material_not_page_mapped",
+      "note": "Based on owner-supplied text in conversation; bibliographic details and page references were not supplied. Not page-verified against Rezmany_axawtny_kurdy.pdf."
     }
   ]
 }
