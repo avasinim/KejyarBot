@@ -1,7 +1,7 @@
 # Course 4 — source transcription ledger: ڕاناو, PDF pp.61–65
 
 Date: 2026-11-05  
-Source: `Rezmany_axawtny_kurdy.pdf` (sole approved Course 4 source).  
+Source association in the original local handoff: `Rezmany_axawtny_kurdy.pdf`. This association conflicts with the later authoritative PR #119 description, which explicitly records that this PDF was excluded and not used. Treat this ledger as a historical visual-review note only; do not use the PDF as a Course 4 teaching/research source unless the owner resolves the conflict.  
 Method: direct inspection of original individual page previews for pp.61–65; pp.61–64 enlarged individually and p.65 inspected at page scale.  
 Status: selective source transcription and structural record; dense passages and some table cells remain unverified.
 
