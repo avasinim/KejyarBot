@@ -600,3 +600,6 @@ class Course4CurriculumDocumentationConsistencyTests(unittest.TestCase):
         section = appendix.split("## 36. وانەکانی ١٩–٢١ — هاوەڵکار", 1)[1].split("\n## 37.", 1)[0]
         self.assertNotIn("لاپەڕەی ١٢٥", section)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", section)
+        historical = appendix.split("## 34. تۆماری بڕیاری هەڵوەشاندنەوەی سەرچاوە", 1)[1].split("\\n## 35.", 1)[0]
+        self.assertNotIn("p.", historical)
+        self.assertNotIn("pp.", historical)
