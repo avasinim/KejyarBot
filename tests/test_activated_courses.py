@@ -1,5 +1,6 @@
 """Regression tests for owner-activated Courses 2 and 3."""
 import asyncio
+import json
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
