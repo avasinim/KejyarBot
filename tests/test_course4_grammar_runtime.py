@@ -92,6 +92,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("پێویستی بە پشکنینی فەرهەنگ", " ".join(lesson7["key_points"]))
         self.assertIn("ڕووخۆش", lesson7["quiz"][6]["options"][2])
         self.assertIn("ڕووخۆش", lesson7["activities"][0])
+        self.assertNotIn("ڕووڕەش", json.dumps(lesson7["quiz"], ensure_ascii=False))
         self.assertNotIn("ڕووڕەش", " ".join(lesson7["activities"]))
         lesson6 = next(item for item in source["lessons"] if item["id"] == "grammar_06")
         self.assertIn("ئیزافەی کراوە", " ".join(lesson6["key_points"]))
