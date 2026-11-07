@@ -213,3 +213,14 @@
   - Python checks — `success`، Run `42342178141` و `42342183393`.
   - Orthography course structure tests — `success`، Run `42342183421`.
 - کەواتە هەردوو جۆری تاقیکردنەوە بۆ کۆمیتی کۆتایی سەرکەوتوون. ئەمە هێشتا پەسەندکردنی زانستیی نموونەکان یان deployment نییە.
+
+
+### 11.6 بەڵگەی سەرچاوەیی بۆ ئیزافە و پلەکانی هاوەڵناو
+
+پشکنینی سەرچاوەیی پشتگیریی ئەوە دەکات کە پێکهاتەی ناو + هاوەڵناو لە سۆرانیدا تەنها یەک فۆڕمی سادە نییە:
+
+- W. M. Thackston، *Sorani Kurdish: A Reference Grammar with Selected Readings*، بەشی §5–§8 (لاپەڕەکانی 10–12): جیاکردنەوەی `open adjectival izafa` و `close izafa`، هەروەها شوێنی جیاوازیی نیشانەی ناسراوی/کۆ لە پێکهاتەی ناو + هاوەڵناودا. نموونەی «نامەی درێژ» و «نامە درێژەکە» لە شێوازی نووسینی ئەو سەرچاوەیەدا هاتوون. [PDF ـ سەرچاوەی Thackston](https://www.kurdolojiakademi.net/wp-content/uploads/2021/11/sorani_1_grammar.pdf)
+- Sina Ahmadi & Hossein Hassani، *Towards Finite-State Morphology of Kurdish*، بەشی 3.2: پەیوەندیی ئیزافە، فۆڕمی `î/y` و پێکهاتەی جیاوازیی هاوەڵناوی ناوەوەیی؛ ئەم بەڵگەیە وەک دەستنووسی computational morphologyی سەرەتایی بەکاردێت، نەک وەک تاکە بنەمای ڕێزمانی. [دەستنووس](https://ask.qcloudimg.com/draft/7305468/v006xeeids.pdf)
+- Almas Nasradeen Abdul Rahman & Karwan Juma Raheem (2023)، “Attributive Adjectives in Standard English and Central Kurdish: A Contrastive Study”، *The Scientific Journal of Cihan University – Sulaimaniya* 7(2), 242–253، DOI: 10.25098/7.2.32. توێژینەوەکە گرنگیی جیاکردنەوەی شوێنی attributive و predicative و پەیوەندیی نێوان واتا و ئەرکی ڕستەیی دەخاتەڕوو. [PDF ـ توێژینەوە](https://journal.sulicihan.edu.krd/index.php/sjcus/article/download/253/236/873)
+
+**سنووری بەکارهێنان:** ئەم سەرچاوانە پشتیوانیی ڕێکخستنی بابەتن؛ بەڵام بۆ ئەوەی نموونەکان لەگەڵ دیالێکتی مەبەستی کەژیار یەکسان بن، پێویستە بە کۆرپەس و پەسەندی خاوەن پڕۆژە بپشکنرێن. بە تایبەتی، جیاوازیی ئیزافەی کراوە/داخراو نابێت بۆ هەموو ناو و هاوەڵناوەکان بە شێوەیەکی بێ‌مەرج گشتگیر بکرێت.
