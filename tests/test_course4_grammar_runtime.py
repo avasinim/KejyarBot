@@ -207,7 +207,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
 
         self.assertEqual(source_ids, expected_ids)
-        self.assertEqual(plan["lesson_count"], 12)
+        self.assertEqual(plan["lesson_count"], 13)
         self.assertEqual(plan_ids, expected_ids)
         self.assertEqual(course["lesson_ids"], expected_ids)
 
@@ -227,10 +227,6 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                 self.assertTrue(comprehension[9].startswith(f"کۆتایی وانەی {lesson_digit}:"))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     def test_pronoun_unit_scientific_distinctions(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["id"]: item for item in source["lessons"]}
@@ -245,6 +241,10 @@ if __name__ == "__main__":
         self.assertIn("خاوەنداری", " ".join(lessons["grammar_11"]["key_points"]))
         self.assertIn("ئەرجەتیڤی", " ".join(lessons["grammar_12"]["key_points"]))
         self.assertNotIn("هەموو", " ".join(lessons["grammar_12"]["key_points"][:1]))
+
+if __name__ == "__main__":
+    unittest.main()
+
 
 
 class Course4GrammarLesson13Tests(unittest.TestCase):
