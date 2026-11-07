@@ -149,7 +149,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         self.assertIn("ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9, "grammar_14": 8, "grammar_15": 9, "grammar_16": 8, "grammar_17": 8, "grammar_18": 7, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 9}
+        expected_appendix_counts = {"grammar_03": 10, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9, "grammar_14": 8, "grammar_15": 9, "grammar_16": 8, "grammar_17": 8, "grammar_18": 7, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 9}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -1080,3 +1080,26 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
         self.assertIn("پشتڕاست نەکرانەوە", joined)
         self.assertIn("وانەی ٣٠", joined)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری", 1)[0])
+
+
+class Course4NounLesson3Tests(unittest.TestCase):
+    def test_lesson_3_noun_expansion_keeps_runtime_schema_and_curriculum_alignment(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_03")
+        planned = next(item for item in plan["lessons"] if item["id"] == "grammar_03")
+        self.assertEqual(lesson["title"], planned["title"])
+        self.assertIn("تایبەتمەندییەکانی ناو", lesson["title"])
+        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertEqual(len(lesson["appendix"]), 10)
+        self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
+        joined = " ".join(lesson["key_points"] + lesson["appendix"])
+        for term in ("-(y)ێک", "-ان", "-ەکان", "ڕەگەزی سروشتی", "ڕەگەزی ڕێزمانی", "Jambrović", "Thackston", "وانەی ٣١", "وانەی ٣٠"):
+            self.assertIn(term, joined)
+        self.assertIn("پیاوەکان", joined)
+        self.assertIn("پیاوێک", joined)
+        self.assertIn("پۆلێنکردنی جیاوازن", joined)
+        self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری شێوەزار", 1)[0])
