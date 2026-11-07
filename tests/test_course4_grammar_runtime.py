@@ -30,13 +30,13 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         for lesson_id in ("grammar_14", "grammar_15", "grammar_16", "grammar_17"):
             self.assertEqual(len(bot.QUIZ_DATA[lesson_id]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
-                         "owner_review_pending_term_clarification")
+                         "scientific_review_complete_with_qualified_notes")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
-                         "owner_review_pending_sorani_corpus_validation")
+                         "scientific_review_complete_with_qualified_notes")
         expected_review_status = {
-            "grammar_03": "owner_review_pending_sorani_corpus_validation",
-            "grammar_04": "owner_review_pending_sorani_plural_and_gender_validation",
-            "grammar_05": "owner_review_pending_sorani_morphology_corpus_validation",
+            "grammar_03": "scientific_review_complete_with_qualified_notes",
+            "grammar_04": "scientific_review_complete_with_qualified_notes",
+            "grammar_05": "scientific_review_complete_with_qualified_notes",
             "grammar_06": "scientific_review_complete_with_qualified_notes",
             "grammar_07": "scientific_review_complete_with_qualified_notes",
             "grammar_08": "scientific_review_complete_with_qualified_notes",
@@ -48,6 +48,38 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
+
+
+    def test_lessons_1_to_5_scientific_review_corrections(self):
+        lessons = {item["id"]: item for item in json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )["lessons"]}
+        qualified = "scientific_review_complete_with_qualified_notes"
+        for lesson_id in ("grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05"):
+            self.assertEqual(lessons[lesson_id]["review_status"], qualified)
+            self.assertEqual(len(lessons[lesson_id]["activities"]), 3)
+            self.assertEqual(len(lessons[lesson_id]["exercises"]), 5)
+            self.assertEqual(len(lessons[lesson_id]["comprehension"]), 10)
+            self.assertEqual(len(lessons[lesson_id]["quiz"]), 8)
+            for question in lessons[lesson_id]["quiz"]:
+                self.assertGreaterEqual(question["answer"], 0)
+                self.assertLess(question["answer"], len(question["options"]))
+                self.assertTrue(question.get("explanation"))
+
+        lesson1 = lessons["grammar_01"]
+        self.assertNotIn("فێزیۆلۆژی", " ".join(lesson1["key_points"]))
+        self.assertIn("فێزیۆلۆژی", " ".join(lesson1["appendix"]))
+        self.assertIn("ڕێزمانی گەردوونی", " ".join(lesson1["appendix"]))
+        self.assertNotIn("ڕەچەڵەکی زاراوەکە", lesson1["objective"])
+
+        lesson2_text = " ".join(lessons["grammar_02"]["key_points"])
+        self.assertIn("«لە»، «بە» و «بۆ»", lesson2_text)
+        self.assertIn("لە ... دا", lesson2_text)
+        self.assertNotIn("تایبەتمەندییەکی زمانی ئینگلیزی و ڕووسییە", lesson2_text)
+
+        lesson4_text = " ".join(lessons["grammar_04"]["appendix"])
+        self.assertIn("کۆی نەناسراو", lesson4_text)
+        self.assertNotIn("کۆی گشتی/نەناسراو", lesson4_text)
 
     def test_source_preserves_course4_content_and_reviewable_quiz(self):
         source = json.loads(
@@ -65,13 +97,14 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         lesson2 = source["lessons"][1]
         self.assertEqual(len(lesson2["exercises"]), 5)
         self.assertEqual(len(lesson2["activities"]), 3)
-        self.assertEqual(len(lesson2["appendix"]), 4)
+        self.assertEqual(len(lesson2["appendix"]), 5)
         self.assertEqual(len(lesson2["comprehension"]) - 2, 8)
         self.assertEqual(len(lesson2["quiz"]), 8)
         self.assertIn("کەژیار", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_01"]["content"])
-        self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
+        self.assertNotIn("فێزیۆلۆژی", " ".join(bot.LESSON_DATA["grammar_01"]["key_points"]))
+        self.assertIn("فێزیۆلۆژی", " ".join(bot.LESSON_DATA["grammar_01"]["appendix"]))
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
         lesson2_text = json.dumps(source["lessons"][1], ensure_ascii=False)
