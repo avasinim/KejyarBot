@@ -450,4 +450,4 @@ class Course4Lesson18VoiceTests(unittest.TestCase):
         self.assertEqual(len(lesson["comprehension"]), 10)
         self.assertIn("Active and Passive", " ".join(lesson["appendix"]))
         self.assertIn("لاپەڕەکانی ١١٢–١٢٤", " ".join(lesson["appendix"]))
-        self.assertIn("وانەی ١٩", " ".join(lesson["appendix"]))
+        self.assertIn("سەربەخۆی داهاتووە", " ".join(lesson["appendix"]))
