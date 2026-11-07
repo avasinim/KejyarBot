@@ -792,6 +792,8 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
         self.assertIn("ئامرازی بانگکردن", l24)
         self.assertIn("ئیزافە", l25)
         self.assertIn("پارتیکڵی گفتوگۆیی", l26)
+        self.assertIn("جێناوی ئاماژەی سەربەخۆ", l26)
+        self.assertIn("دیارخەری ئاماژە", l26)
         self.assertIn("وانەی ٢٥", l26)
         self.assertNotIn("ش/یش", l23)
 
