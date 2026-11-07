@@ -574,3 +574,13 @@ class Course4IzafaCrossLessonConsistencyTests(unittest.TestCase):
         self.assertIn("پاشبەستی خاوەنداری", l25)
         self.assertIn("نامە درێژەکە", l25)
         self.assertIn("گوڵەکەی چاند", l25)
+
+
+class Course4Lesson18SourceExclusionTests(unittest.TestCase):
+    def test_lesson18_appendix_has_no_withdrawn_source_or_page_mapping(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["number"] == 18)
+        appendix = " ".join(lesson["appendix"])
+        self.assertNotIn("Rezmany_axawtny_kurdy.pdf", appendix)
+        self.assertNotIn("لاپەڕەی ١١٢", appendix)
+        self.assertIn("هیچ سەرچاوەی دەرەکی", appendix)
