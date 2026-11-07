@@ -30,9 +30,9 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_03": "owner_review_pending_sorani_corpus_validation",
             "grammar_04": "owner_review_pending_sorani_plural_and_gender_validation",
             "grammar_05": "owner_review_pending_sorani_morphology_corpus_validation",
-            "grammar_06": "owner_review_pending_sorani_adjective_corpus_validation",
-            "grammar_07": "owner_review_pending_sorani_adjective_corpus_validation",
-            "grammar_08": "owner_review_pending_sorani_adjective_corpus_validation",
+            "grammar_06": "scientific_review_complete_with_qualified_notes",
+            "grammar_07": "scientific_review_complete_with_qualified_notes",
+            "grammar_08": "scientific_review_complete_with_qualified_notes",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -115,7 +115,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("دەست + نوێژ ← دەستنوێژ", str(lesson5["examples"]))
         adjective_lessons = [item for item in source["lessons"] if item["id"] in {"grammar_06", "grammar_07", "grammar_08"}]
         self.assertEqual(len(adjective_lessons), 3)
-        self.assertTrue(all(item["review_status"] == "owner_review_pending_sorani_adjective_corpus_validation" for item in adjective_lessons))
+        self.assertTrue(all(item["review_status"] == "scientific_review_complete_with_qualified_notes" for item in adjective_lessons))
         lesson7 = next(item for item in source["lessons"] if item["id"] == "grammar_07")
         self.assertIn("ڕوو + خۆش", " ".join(lesson7["examples"][3]))
         self.assertIn("فەرهەنگی زمانی یەکگرتووی کوردی", " ".join(lesson7["key_points"]))
