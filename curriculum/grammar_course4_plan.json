@@ -3,18 +3,89 @@
   "course_key": "course_grammar",
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
-  "status": "active_owner_review_beta",
-  "replacement_state": "new_owner_supplied_lesson_1_added",
+  "status": "drafting_owner_supplied_replacement_lessons",
+  "replacement_state": "legacy_grammar_lessons_removed_new_owner_supplied_lessons_in_progress",
   "language": "ckb",
-  "lesson_count": 1,
+  "lesson_count": null,
   "lessons": [
     {
       "number": 1,
       "id": "grammar_01",
       "title": "وانەی ١: پێشەکی — ڕێزمان (Grammar)",
-      "status": "owner_review_pending_scientific_term_clarification"
+      "status": "owner_review_pending_scientific_term_clarification",
+      "note": "دەقی پێشتر تۆمارکراو پارێزراوە؛ لەبەر نەبوونی پشتڕاستکردنەوە، ناوەڕۆکی ئەم وانەیە لێرەدا ناگۆڕدرێت."
     }
   ],
-  "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
-  "note": "لە 2026-11-06 دەقی تەواوی وانەی ١ لەلایەن خاوەن پڕۆژەوە نێردرا و بە برندی کەژیار لە فایلە چالاکەکەدا تۆمار کرا. ڕاهێنان و هەشت پرسیاری هەڵسەنگاندن پارێزراون. زاراوەی «فێزیۆلۆژی» وەک زاراوەی نادیار نیشان کراوە و پێویستی بە ڕوونکردنەوەی خاوەن دەق هەیە. هەشت وانە کۆنەکە و ناوەڕۆکیان لە پێکهاتەی چالاکی کۆرسدا بەکارناهێنرێن؛ هیچ کۆرسێکی دیکە دەستکاری نەکراوە."
+  "source": {
+    "file": "Rezmany_axawtny_kurdy.pdf",
+    "title": "ڕێزمانی ئاخافتنی کوردی",
+    "page_count": 400,
+    "role": "sole_course4_reference_source"
+  },
+  "excluded_sources": [
+    {
+      "file": "ڕێزمانی ڕاناوی لکاو.pdf",
+      "role": "not_a_course4_source",
+      "must_not_mix": true
+    }
+  ],
+  "approved_sections": [
+    {
+      "number": 1,
+      "title": "ناو",
+      "pages": "11–24"
+    },
+    {
+      "number": 2,
+      "title": "ڕاناو",
+      "pages": "25–65"
+    },
+    {
+      "number": 3,
+      "title": "ئاوەڵناو",
+      "pages": "66–79"
+    },
+    {
+      "number": 4,
+      "title": "کار",
+      "pages": "80–221"
+    },
+    {
+      "number": 5,
+      "title": "چاوگ",
+      "pages": "222–235"
+    },
+    {
+      "number": 6,
+      "title": "ئاوەڵکار",
+      "pages": "236–253"
+    },
+    {
+      "number": 7,
+      "title": "پریپۆزیشن",
+      "pages": "254–272"
+    },
+    {
+      "number": 8,
+      "title": "هاوەڵ / ئامرازی عەتف",
+      "pages": "273–348"
+    },
+    {
+      "number": 9,
+      "title": "ئامرازی سەرسووڕمان",
+      "pages": "349–373"
+    }
+  ],
+  "supplementary_pages": {
+    "pages": "374–397",
+    "role": "supplementary_material_not_a_main_section"
+  },
+  "replacement_policy": "وانە نوێیەکانی خاوەن پڕۆژە جێگەی وانە کۆنەکانی ڕێزمان دەگرنەوە. سەرچاوەی کتێبی کۆرس و نەخشەی پەسەندکراوی ٩ بەش هەروا دەمێننەوە؛ گۆڕینی وانەکان بە مانای سڕینەوەی کتێب یان نەخشە نییە. هیچ دەق یان نموونەیەک لە خۆوە زیاد مەکرێت.",
+  "drafting_progress": {
+    "user_reported_progress": "نزیکەی ٨ وانەی نوێ لە بابەتەکانی ناو و هاوەڵناو داڕێژراون.",
+    "current_focus": "وانەکانی ٦ و ٧ و ٨ لە بابەتی هاوەڵناو.",
+    "repository_sync": "تەنها ئەو دەقانەی بە ڕاستی لە فایلەکانی پڕۆژەدا تۆمار کراون بە ناوی فایلەکانی پڕۆژە دەردەکەون؛ دەقی وانەکانی دیکە نابێت بە خەیاڵ پڕ بکرێتەوە."
+  },
+  "curriculum_policy": "تەنها دەقی نێردراو و پەسەندکراوی خاوەن پڕۆژە بۆ وانەکان بەکاربهێنە. سەرچاوەی تاکی کۆرس Rezmany_axawtny_kurdy.pdf ـە. کتێبی ڕێزمانی ڕاناوی لکاو بە هیچ شێوەیەک تێکەڵ مەکە.",
+  "note": "پلانی ٩ بەشی پەسەندکراو پارێزراوە. گۆڕانکارییەکانی 2026-11-07 کە کۆرسەکەیان بە یەک وانە کورت کردبوو هەڵە بوون؛ لە commit ـەکانی دواتردا ڕێکخراون. هیچ merge، deploy، Botkeep sync یان گۆڕانکاری main لەم کارەدا نەکراوە."
 }
