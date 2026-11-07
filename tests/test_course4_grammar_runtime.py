@@ -455,7 +455,7 @@ class Course4PrepositionLesson22Tests(unittest.TestCase):
         self.assertEqual(len(lesson["appendix"]), 8)
         self.assertIn("ـە", " ".join(lesson["key_points"]))
         self.assertIn("بەرکاری ناڕاستەوخۆ", " ".join(lesson["key_points"]))
-        self.assertIn("ماددەی ڕاستەوخۆی خاوەن پڕۆژە", " ".join(lesson["appendix"]))
+        self.assertIn("ماددەی ڕاستەوخۆی نێردراوی خاوەن پڕۆژە", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
     def test_course4_catalogs_register_22_lessons_without_changing_other_courses(self):
