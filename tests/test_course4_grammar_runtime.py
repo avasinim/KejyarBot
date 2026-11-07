@@ -62,6 +62,11 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
+        lesson2_text = json.dumps(source["lessons"][1], ensure_ascii=False)
+        self.assertIn("هاوەڵکار", lesson2_text)
+        self.assertNotIn("ئاوەڵکار", lesson2_text)
+        lesson6 = next(item for item in source["lessons"] if item["id"] == "grammar_06")
+        self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
