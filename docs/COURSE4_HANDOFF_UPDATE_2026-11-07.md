@@ -46,3 +46,9 @@
 - هیچ merge، rebase، cherry-pick یان sync بێ ڕەزامەندیی جیاواز مەکە.
 - برانچی backup مەگۆڕە.
 - کۆرسی ٤ لە برانچی کاری beta ـیە، نەک وەشانی production.
+
+## نوێکاریی workflow ـی سەرچاوەی کۆن
+- workflow ـی `.github/workflows/extract-course4-sources.yml` لە push ـی ئاسایی جیا کراوەتەوە و تەنها بە `workflow_dispatch` دەکرێت دەستی پێبکرێت.
+- پێش دامەزراندنی dependency و extraction، هەبوونی `Rezmany_axawtny_kurdy.pdf` دەپشکنێت؛ ئەگەر فایلەکە نەبوو، workflow بە سەلامەتی extraction دەوەستێنێت و هەڵەی FileNotFound دروست ناکات.
+- ئەم workflow ـە بۆ کتێبی کۆنە و سەرچاوەی وانەی نوێ نییە. ئەگەر سەرچاوەیەکی نوێ داهاتوو پێشکەش کرا، پێویستە workflow/script بە پێی ناو و فۆڕماتی سەرچاوەی نوێ جیاواز ڕێکبخرێت؛ بە ناوی کتێبی کۆنەوە خۆکارانە بەکارمەهێنە.
+- workflow ـی شکستخواردووی پێشتر: run `42269170140` لە commit ـی سڕینەوەی PDF؛ هەڵەکە بە ڕوونی `FileNotFoundError: Required source PDF missing: Rezmany_axawtny_kurdy.pdf` بوو. ئەو run ـە پێش چاکسازیی workflow ـە و testی runtimeی وانەی نوێ نییە.
