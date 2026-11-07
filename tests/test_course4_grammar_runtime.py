@@ -644,3 +644,22 @@ class Course4VerbStemTerminologyTests(unittest.TestCase):
         self.assertIn("Present stem = بنەمای ئێستا", " ".join(lessons[13]["appendix"]))
         self.assertIn("Past stem = بنەمای ڕابردوو", " ".join(lessons[13]["appendix"]))
         self.assertIn("Infinitive = چاوگ", " ".join(lessons[13]["appendix"]))
+
+
+class Course4CliticAndPastPerfectTerminologyTests(unittest.TestCase):
+    def test_clitic_enclitic_and_suffix_are_not_conflated(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        self.assertIn("Clitic = لکاو", lessons[11]["appendix"][0])
+        self.assertIn("Enclitic = پاشبەستە (لکاوی دواوە)", lessons[11]["appendix"][0])
+        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[12]["appendix"]))
+        self.assertIn("Clitic = لکاو", " ".join(lessons[13]["appendix"]))
+        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[13]["appendix"]))
+        self.assertIn("پاشبەستە لە پاشگر جیاوازە", " ".join(lessons[13]["key_points"]))
+
+    def test_boo_is_not_automatically_classified_as_a_suffix(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["number"] == 15)
+        content = " ".join(lesson["key_points"] + lesson["appendix"])
+        self.assertNotIn("پاشگرەکانی «ـووە/ـوە» و «بوو»", content)
+        self.assertIn("نابێت بە خۆکار هەموویان وەک پاشگر پۆلێن بکرێن", content)
