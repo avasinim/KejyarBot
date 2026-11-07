@@ -583,4 +583,4 @@ class Course4Lesson18SourceExclusionTests(unittest.TestCase):
         appendix = " ".join(lesson["appendix"])
         self.assertNotIn("Active and Passive", appendix)
         self.assertNotIn("لاپەڕەی ١١٢", appendix)
-        self.assertIn("هیچ سەرچاوەی دەرەکی", appendix)
+        self.assertIn("هیچ کتێب یان فایلێکی دەرەکی", appendix)
