@@ -136,222 +136,79 @@
     }
   ],
   "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
-  "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١ تا ١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت. وانەی ١٨ لە 2026-11-07 بە ناونیشانی کاری چالاک و نەچالاک زیاد کرا؛ بەشی سەرچاوە لە لاپەڕەی ١١٢ تا ١٢٤ شیکراوەتەوە، بەڵام وردەکاریی فۆڕمی نەچالاک و جیاوازیی شێوەزارەکان هێشتا پێویستیان بە پشتڕاستکردنەوەی داتای سۆرانی هەیە. بەشی Auxiliary Verbs لە لاپەڕەی ١٢٥ دەست پێدەکات و بۆ وانەیەکی سەربەخۆ هەڵگیراوە.",
-  "source_alignment_status": "pending_page_by_page_source_mapping",
-  "source_alignment_note": "Lesson 18 is now drafted from the Active and Passive section, pp.112–124. This is a structured pedagogical adaptation, not a word-for-word transcription. Validate detailed Sorani passive morphology against dialect data before claiming complete scientific/source verification. Auxiliary Verbs start at p.125 and are a separate next topic. The overall source_alignment_status remains pending_page_by_page_source_mapping.",
+  "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١ تا ١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت. وانەی ١٨ لە 2026-11-07 بە ناونیشانی کاری چالاک و نەچالاک زیاد کرا؛ بەشی سەرچاوە لە لاپەڕەی ١١٢ تا ١٢٤ شیکراوەتەوە، بەڵام وردەکاریی فۆڕمی نەچالاک و جیاوازیی شێوەزارەکان هێشتا پێویستیان بە پشتڕاستکردنەوەی داتای سۆرانی هەیە. بەشی Auxiliary Verbs لە لاپەڕەی ١٢٥ دەست پێدەکات و بۆ وانەیەکی سەربەخۆ هەڵگیراوە. بڕیاری خاوەن پڕۆژە: فایل/کتێبی Rezmany_axawtny_kurdy.pdf سەرچاوەی ڕێگەپێدراوی کۆرسی ٤ نییە؛ هەموو mapping و پێشنیارەکانی پەڕەبەندیی پێشووی پشتبەستوو بەو فایلە هەڵوەشێنراونەتەوە. هیچ سەرچاوەی جێگرەوە بە خۆکارانە دانانرێت و پێویستە تەنها ماددەی پەسەندکراوی خاوەن پڕۆژە بەکاربهێنرێت.",
+  "source_alignment_status": "source_mapping_suspended_owner_excluded_reference",
+  "source_alignment_note": "Owner instruction: Rezmany_axawtny_kurdy.pdf is not an authorized source for Course 4 and must not be used to draft, validate, or map lessons. All previous page mappings based on this PDF are withdrawn and must not be treated as evidence. Existing lesson content remains as previously authored pending use of owner-approved material; no replacement source is assumed. Lessons 22–24 are not planned from this book.",
   "source_alignment_map": [
     {
       "lessons": "1",
       "topic": "grammar introduction",
       "source_pages": null,
-      "status": "unmapped",
-      "note": "Inspect preface and pp.1-10; no page-level match confirmed."
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "2",
       "topic": "parts of speech",
-      "source_pages": [
-        11,
-        25,
-        66,
-        80,
-        236,
-        254,
-        273
-      ],
-      "status": "partial_section_starts_confirmed",
-      "note": "Only confirmed section starts; verify full inventory and exact ranges."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "3-5",
       "topic": "noun",
-      "source_pages": [
-        11,
-        24
-      ],
-      "status": "section_start_confirmed_range_provisional",
-      "note": "Noun heading visible at p.11; pronoun begins p.25. Subtopic page ranges not mapped."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "6-8",
       "topic": "adjective",
-      "source_pages": [
-        66,
-        79
-      ],
-      "status": "section_start_confirmed_range_provisional",
-      "note": "Adjective heading visible at p.66; end boundary requires verification."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "9",
       "topic": "numerals and word formation",
       "source_pages": null,
-      "status": "unmapped",
-      "note": "Do not infer from grammatical-number content; locate exact source section."
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "10-12",
       "topic": "pronouns and clitics",
-      "source_pages": [
-        25,
-        65
-      ],
-      "status": "section_start_confirmed_selective_transcription",
-      "note": "Pronoun heading at p.25; pp.61-65 selective transcription incomplete."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "13-17",
       "topic": "verbs, complements, tenses and imperative",
-      "source_pages": [
-        80,
-        221
-      ],
-      "status": "section_start_confirmed_range_provisional",
-      "note": "Verb heading at p.80; Active/Passive subsection starts p.112. Exact ranges and lesson-to-page mapping remain open."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "18",
       "topic": "active and passive voice",
-      "source_pages": [
-        112,
-        124
-      ],
-      "status": "section_and_topic_range_confirmed_content_comparison_partial",
-      "note": "Active and Passive begins p.112 and continues through p.124; learner-facing examples and Sorani construction details require separate corpus validation. Auxiliary verbs begin p.125 and remain a distinct future topic; current lessons 19–21 are based on the owner's newly supplied adverb material."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "19-21",
       "topic": "adverbs/adverbials: time and place, derived forms with بەـ, and adverbial participation in compound verbs",
-      "source_pages": [],
-      "status": "owner_supplied_material_not_page_mapped",
-      "note": "Based on owner-supplied text in conversation; bibliographic details and page references were not supplied. Not page-verified against Rezmany_axawtny_kurdy.pdf."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     },
     {
       "lessons": "22-24",
       "topic": "Auxiliary Verbs — definition, Sorani constructions and use in clauses",
-      "source_pages": [
-        125,
-        134
-      ],
-      "status": "chapter_boundary_and_page_ranges_confirmed_content_mapping_in_progress",
-      "note": "The explicit chapter heading 'Auxiliary Verbs' begins on p.125. Pages 125–134 are provisionally divided into p.125–127 (definition and framing), pp.128–132 (Sorani constructions/examples), and pp.133–134 (further Sorani forms and clause-level use). The three-lesson split is pedagogical, not copied from book subheadings. Exact transcription, example-by-example analysis and dialect validation remain required before marking these lessons scientifically complete."
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
     }
-  ],
-  "next_unit_outline": {
-    "unit_id": "auxiliary_verbs",
-    "title": "کاری یاریدەر — Auxiliary Verbs",
-    "source_file": "Rezmany_axawtny_kurdy.pdf",
-    "source_pages": [
-      125,
-      134
-    ],
-    "status": "outline_ready_full_lesson_drafting_pending",
-    "note": "The chapter heading 'Auxiliary Verbs' is explicit on p.125. The three-lesson division below is a pedagogical proposal based on the page sequence, not a claim that the book itself divides the chapter into these exact lessons. The active lesson count remains 21 until the lesson JSON, manifest, runtime, and tests are updated together.",
-    "lessons": [
-      {
-        "number": 22,
-        "id": "grammar_22",
-        "title": "وانەی ٢٢: کاری یاریدەر — پێناسە و سنووری چەمک",
-        "source_pages": [
-          125,
-          127
-        ],
-        "focus": [
-          "پێناسەی کاری یاریدەر لە سەرچاوەدا",
-          "جیاوازیی کردارە سەرەکییەکان لە کردارە یاریدەرەکان",
-          "پەیوەندیی کاری یاریدەر بە کردار و پێکهاتەی ڕستە",
-          "پۆلێنکردنی یاریدەرەکان تەنها بەپێی ئەو جیاوازییانەی سەرچاوە بەڵگەی بۆ دەهێنێت"
-        ],
-        "guardrails": [
-          "هەموو کرداری دووەم لە ڕستەدا بە یاریدەر ناونەنرێت.",
-          "جیاوازیی کردارێکی یاریدەر و کردارێکی تەواوکەر لە نموونەدا بپشکنرێت."
-        ]
-      },
-      {
-        "number": 23,
-        "id": "grammar_23",
-        "title": "وانەی ٢٣: کاری یاریدەر — پێکهاتە و نموونەکانی کوردی",
-        "source_pages": [
-          128,
-          132
-        ],
-        "focus": [
-          "پێکهاتەی کاری یاریدەر لەگەڵ کردارە سەرەکییەکان",
-          "نموونە و شێوەکانی بەکارهێنان لە سۆرانی",
-          "جیاکردنەوەی کاری یاریدەر لە کاری لێکدراو و هاوەڵکار",
-          "ڕۆڵی هەر بەشێک لە پێکهاتەی کردار"
-        ],
-        "guardrails": [
-          "هیچ نموونەیەک بەبێ دیاریکردنی واتا و ئەرکی ڕستەیی پۆلێن نەکرێت.",
-          "بەکارهێنانی هەر کردارێک وەک یاریدەر بە گشتی نەگشتێندرێت."
-        ]
-      },
-      {
-        "number": 24,
-        "id": "grammar_24",
-        "title": "وانەی ٢٤: کاری یاریدەر — شێوە و کارکرد لە ڕستەدا",
-        "source_pages": [
-          133,
-          134
-        ],
-        "focus": [
-          "پشکنینی شێوە و ڕۆڵی یاریدەر لە نموونەکانی سەرچاوەدا",
-          "بەراوردکردنی پێکهاتەکان لە ڕووی کات و شێوەی کردارەوە، تەنها لەو شوێنانەی بەڵگە هەیە",
-          "ڕاهێنانی شیکردنەوەی ڕستە و جیاکردنەوەی یاریدەر لە کردارە سەرەکی"
-        ],
-        "guardrails": [
-          "پێش ئەوەی یاسایەک بۆ هەموو سۆرانی دابنرێت، نموونە و شێوەزار پشکنین بکرێن.",
-          "ئەگەر پەڕەکان بە تەواوی پشتگیریی پۆلێنێک نەکەن، لە وانەدا وەک گریمانە نیشان بدرێت، نەک یاسای کۆتایی."
-        ]
-      }
-    ],
-    "source_review": {
-      "review_method": "Visual page inspection of pp.125–134, supported by extracted text; OCR is imperfect and does not support verbatim transcription.",
-      "confirmed_observations": [
-        {
-          "pages": [
-            125
-          ],
-          "observation": "The chapter heading 'Auxiliary Verbs' is explicit. The opening text frames auxiliary verbs as a distinct grammatical topic and cites Kurdish grammatical analysis."
-        },
-        {
-          "pages": [
-            126,
-            127
-          ],
-          "observation": "The source explicitly distinguishes intransitive and transitive auxiliary-verb groupings and discusses how auxiliary forms combine with lexical verbs; examples and classification details require careful transcription."
-        },
-        {
-          "pages": [
-            128,
-            129,
-            130
-          ],
-          "observation": "The chapter continues with Sorani constructions and multiple verb-form examples, including lists and sentence patterns. OCR is not reliable enough to copy all forms safely."
-        },
-        {
-          "pages": [
-            131,
-            132
-          ],
-          "observation": "Further examples and discussion continue, including source-author commentary; exact word-level transcription needs a higher-quality page image or manual verification."
-        },
-        {
-          "pages": [
-            133,
-            134
-          ],
-          "observation": "The source presents additional paradigms/lists and clause examples. The final forms must be transcribed and checked individually before learner-facing rules are written."
-        }
-      ],
-      "extraction_limitations": [
-        "The extracted text contains substantial character-encoding/OCR corruption.",
-        "Do not infer complete conjugation paradigms from OCR fragments.",
-        "Do not silently normalize uncertain forms into modern Sorani spelling.",
-        "Each source example should be retained with its page number and checked against the visible page image.",
-        "No lesson is to be marked scientifically complete until the forms, glosses, and syntactic roles are verified."
-      ],
-      "readiness": "Page boundary confirmed; broad content sequence reviewed; verbatim transcription and example-level analysis remain incomplete."
-    }
-  }
+  ]
 }
