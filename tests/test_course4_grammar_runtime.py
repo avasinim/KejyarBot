@@ -129,7 +129,6 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(lesson["appendix"]), 5)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["quiz"]), 8)
-        self.assertEqual(len(lesson["examples"]), 12)
         lesson2 = source["lessons"][1]
         self.assertEqual(len(lesson2["exercises"]), 5)
         self.assertEqual(len(lesson2["activities"]), 3)
@@ -1095,6 +1094,7 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]), 10)
         self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertEqual(len(lesson["examples"]), 12)
         self.assertEqual(len(lesson["appendix"]), 22)
         self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
