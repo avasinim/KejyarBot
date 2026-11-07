@@ -21,7 +21,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(bot.QUIZ_DATA["grammar_05"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_06"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_07"]), 8)
-        self.assertEqual(len(bot.QUIZ_DATA["grammar_08", "grammar_09"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_08"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_09"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
                          "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
@@ -216,7 +217,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                 kurdish_digits = "١٢٣٤٥٦٧٨"
                 for number, question in enumerate(comprehension[1:9]):
                     self.assertTrue(question.startswith(f"{kurdish_digits[number]}. "))
-                lesson_digit = "١٢٣٤٥٦٧٨"[lesson["number"] - 1]
+                lesson_digit = "١٢٣٤٥٦٧٨٩"[lesson["number"] - 1]
                 self.assertTrue(comprehension[9].startswith(f"کۆتایی وانەی {lesson_digit}:"))
 
 
