@@ -286,28 +286,31 @@ if __name__ == "__main__":
 
 
 class Course4GrammarLesson13Tests(unittest.TestCase):
-    def test_lesson13_verb_morphology_is_complete_and_source_qualified(self):
+    def test_lesson13_is_internal_cross_lesson_synthesis_without_external_source_mapping(self):
         source = json.loads(
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_13")
         self.assertEqual(lesson["number"], 13)
-        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(lesson["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
         self.assertEqual(len(lesson["quiz"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]), 10)
-        self.assertGreaterEqual(len(lesson["appendix"]), 8)
-        self.assertIn("چاوگ", " ".join(lesson["key_points"]))
-        self.assertIn("ڕەگی کردار", " ".join(lesson["key_points"]))
-        self.assertIn("کاریگەری", " ".join(lesson["key_points"]))
-        self.assertIn("هۆکاری", " ".join(lesson["key_points"]))
-        self.assertIn("دەنووسم", " ".join(item[1] for item in lesson["examples"]))
-        self.assertIn("مرداندن", " ".join(item[1] for item in lesson["examples"]))
-        self.assertIn("پوختەی وتاری دووەم", " ".join(lesson["key_points"]))
-        self.assertIn("لاپەڕەکانی ٨٥–٨٧", " ".join(lesson["appendix"]))
-        self.assertIn("ڕابردوو پێنج نیشانەی پاشگری", " ".join(lesson["appendix"]))
-        self.assertIn("هیچ ڕستەیەک بەبێ کردار", " ".join(lesson["appendix"]))
+        self.assertEqual(len(lesson["appendix"]), 9)
+        content = " ".join(lesson["key_points"] + lesson["appendix"])
+        examples = " ".join(item[1] for item in lesson["examples"])
+        self.assertIn("چاوگ", content)
+        self.assertIn("ڕەگی کردار", content)
+        self.assertIn("بنەمای ئێستا", content)
+        self.assertIn("پاشبەستە", content)
+        self.assertIn("دەخۆم", examples)
+        self.assertNotIn("مرداندن", content + examples)
+        self.assertNotIn("نووسراوم", content + examples)
+        self.assertNotIn("Percolation", content + examples)
+        self.assertNotIn("Konjunktiv", content + examples)
+        self.assertNotIn("لاپەڕەکانی ٨٥–٨٧", content)
+        self.assertIn("هیچ کتێب، PDF یان سەرچاوەی دەرەکی", content)
 
     def test_lesson13_registered_in_source_plan_and_manifest(self):
         source = json.loads(
