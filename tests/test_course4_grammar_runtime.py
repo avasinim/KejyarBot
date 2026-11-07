@@ -10,13 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
-    def test_all_twenty_eight_lessons_keep_complete_content_schema_and_catalog_alignment(self):
+    def test_all_thirty_lessons_keep_complete_content_schema_and_catalog_alignment(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
         lessons = source["lessons"]
         expected_ids = [f"grammar_{number:02d}" for number in range(1, 31)]
-        self.assertEqual(len(lessons), 29)
+        self.assertEqual(len(lessons), 30)
         self.assertEqual([item["id"] for item in lessons], expected_ids)
         self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
         self.assertEqual(plan["lesson_count"], 30)
@@ -45,9 +45,9 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                 self.assertLess(question["answer"], len(question["options"]), lesson["id"])
                 self.assertTrue(question.get("explanation", "").strip(), lesson["id"])
 
-    def test_course4_is_active_with_twenty_eight_lessons(self):
+    def test_course4_is_active_with_thirty_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 30)])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 31)])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_01"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
@@ -121,7 +121,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
         self.assertEqual(source["course_id"], "grammar")
-        self.assertEqual([lesson["id"] for lesson in source["lessons"]], [f"grammar_{number:02d}" for number in range(1, 30)])
+        self.assertEqual([lesson["id"] for lesson in source["lessons"]], [f"grammar_{number:02d}" for number in range(1, 31)])
         lesson = source["lessons"][0]
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
@@ -273,7 +273,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
         )
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected_ids = [f"grammar_{number:02d}" for number in range(1, 30)]
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 31)]
         source_ids = [lesson["id"] for lesson in source["lessons"]]
         plan_ids = [lesson["id"] for lesson in plan["lessons"]]
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
@@ -362,7 +362,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
             (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
         )
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected_ids = [f"grammar_{number:02d}" for number in range(1, 30)]
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 31)]
         self.assertEqual([item["id"] for item in source["lessons"]], expected_ids)
         self.assertEqual(plan["lesson_count"], 30)
         self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
@@ -392,7 +392,7 @@ class Course4GrammarLessons14To17Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected = [f"grammar_{n:02d}" for n in range(1, 30)]
+        expected = [f"grammar_{n:02d}" for n in range(1, 31)]
         self.assertEqual([x["id"] for x in source["lessons"]], expected)
         self.assertEqual([x["id"] for x in plan["lessons"]], expected)
         self.assertEqual(plan["lesson_count"], 30)
@@ -505,11 +505,11 @@ class Course4PrepositionLesson22Tests(unittest.TestCase):
         self.assertIn("ماددەی ڕاستەوخۆی نێردراوی خاوەن پڕۆژە", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_catalogs_register_28_lessons_without_changing_other_courses(self):
+    def test_course4_catalogs_register_30_lessons_without_changing_other_courses(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected = [f"grammar_{n:02d}" for n in range(1, 30)]
+        expected = [f"grammar_{n:02d}" for n in range(1, 31)]
         self.assertEqual([x["id"] for x in source["lessons"]], expected)
         self.assertEqual([x["id"] for x in plan["lessons"]], expected)
         self.assertEqual(plan["lesson_count"], 30)
@@ -532,11 +532,11 @@ class Course4ConjunctionLesson23Tests(unittest.TestCase):
         self.assertIn("پارتیکڵی زیادکردن", " ".join(lesson["key_points"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_has_28_registered_lessons(self):
+    def test_course4_has_30_registered_lessons(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected = [f"grammar_{n:02d}" for n in range(1, 30)]
+        expected = [f"grammar_{n:02d}" for n in range(1, 31)]
         self.assertEqual([x["id"] for x in source["lessons"]], expected)
         self.assertEqual([x["id"] for x in plan["lessons"]], expected)
         self.assertEqual(plan["lesson_count"], 30)
@@ -562,11 +562,11 @@ class Course4VocativeLesson24Tests(unittest.TestCase):
         self.assertIn("فراوانکردنی فێرکاری", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_has_28_registered_lessons(self):
+    def test_course4_has_30_registered_lessons(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected = [f"grammar_{n:02d}" for n in range(1, 30)]
+        expected = [f"grammar_{n:02d}" for n in range(1, 31)]
         self.assertEqual([x["id"] for x in source["lessons"]], expected)
         self.assertEqual([x["id"] for x in plan["lessons"]], expected)
         self.assertEqual(plan["lesson_count"], 30)
@@ -594,11 +594,11 @@ class Course4IzafaLesson25Tests(unittest.TestCase):
         self.assertIn("پاشبەستی خاوەنداری", " ".join(lesson["key_points"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_has_28_registered_lessons(self):
+    def test_course4_has_30_registered_lessons(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected = [f"grammar_{n:02d}" for n in range(1, 30)]
+        expected = [f"grammar_{n:02d}" for n in range(1, 31)]
         self.assertEqual([x["id"] for x in source["lessons"]], expected)
         self.assertEqual([x["id"] for x in plan["lessons"]], expected)
         self.assertEqual(plan["lesson_count"], 30)
@@ -878,7 +878,7 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
         self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
 
-    def test_course4_has_28_lessons_and_plan_records_lesson_28(self):
+    def test_course4_has_30_lessons_and_plan_records_lesson_28(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         self.assertEqual(source["lesson_count"], 30)
@@ -951,7 +951,7 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_29")
         self.assertEqual(lesson["number"], 29)
-        self.assertEqual(len(lesson["key_points"]), 13)
+        self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
@@ -981,8 +981,8 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         self.assertEqual(source["lesson_count"], 30)
         self.assertEqual(plan["lesson_count"], 30)
-        self.assertEqual(plan["lessons"][-1]["id"], "grammar_29")
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 30)])
+        self.assertEqual(plan["lessons"][-1]["id"], "grammar_30")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 31)])
 
 
 class Course4ComplexPredicateLesson30Tests(unittest.TestCase):
@@ -991,10 +991,10 @@ class Course4ComplexPredicateLesson30Tests(unittest.TestCase):
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_30")
         self.assertEqual(lesson["number"], 30)
         self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertEqual(len(lesson["key_points"]), 13)
+        self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
-        self.assertEqual(len(lesson["exercises"]), 6)
+        self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]), 10)
         self.assertEqual(len(lesson["quiz"]), 8)
         self.assertTrue(all(len(item) == 2 for item in lesson["examples"]))
