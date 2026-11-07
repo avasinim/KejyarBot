@@ -304,6 +304,54 @@
           "ئەگەر پەڕەکان بە تەواوی پشتگیریی پۆلێنێک نەکەن، لە وانەدا وەک گریمانە نیشان بدرێت، نەک یاسای کۆتایی."
         ]
       }
-    ]
+    ],
+    "source_review": {
+      "review_method": "Visual page inspection of pp.125–134, supported by extracted text; OCR is imperfect and does not support verbatim transcription.",
+      "confirmed_observations": [
+        {
+          "pages": [
+            125
+          ],
+          "observation": "The chapter heading 'Auxiliary Verbs' is explicit. The opening text frames auxiliary verbs as a distinct grammatical topic and cites Kurdish grammatical analysis."
+        },
+        {
+          "pages": [
+            126,
+            127
+          ],
+          "observation": "The source explicitly distinguishes intransitive and transitive auxiliary-verb groupings and discusses how auxiliary forms combine with lexical verbs; examples and classification details require careful transcription."
+        },
+        {
+          "pages": [
+            128,
+            129,
+            130
+          ],
+          "observation": "The chapter continues with Sorani constructions and multiple verb-form examples, including lists and sentence patterns. OCR is not reliable enough to copy all forms safely."
+        },
+        {
+          "pages": [
+            131,
+            132
+          ],
+          "observation": "Further examples and discussion continue, including source-author commentary; exact word-level transcription needs a higher-quality page image or manual verification."
+        },
+        {
+          "pages": [
+            133,
+            134
+          ],
+          "observation": "The source presents additional paradigms/lists and clause examples. The final forms must be transcribed and checked individually before learner-facing rules are written."
+        }
+      ],
+      "extraction_limitations": [
+        "The extracted text contains substantial character-encoding/OCR corruption.",
+        "Do not infer complete conjugation paradigms from OCR fragments.",
+        "Do not silently normalize uncertain forms into modern Sorani spelling.",
+        "Each source example should be retained with its page number and checked against the visible page image.",
+        "No lesson is to be marked scientifically complete until the forms, glosses, and syntactic roles are verified."
+      ],
+      "readiness": "Page boundary confirmed; broad content sequence reviewed; verbatim transcription and example-level analysis remain incomplete."
+    }
   }
 }
