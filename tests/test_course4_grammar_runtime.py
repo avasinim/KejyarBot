@@ -397,3 +397,27 @@ class Course4ComprehensionFormattingTests(unittest.TestCase):
                     expected = f"{str(number).translate(str.maketrans('0123456789', '٠١٢٣٤٥٦٧٨٩'))}. "
                     self.assertTrue(question.startswith(expected), question)
                     self.assertFalse(question.startswith(f"{expected}{expected}"), question)
+
+
+class Course4AdapterIsolationTests(unittest.TestCase):
+    def test_extended_sections_are_opt_in_and_do_not_leak_to_shared_courses(self):
+        from course_lesson_adapters import adapt_unified_orthography_lessons
+
+        payload = {
+            "course_id": "adapter_scope_test",
+            "lessons": [{
+                "number": 1,
+                "title": "تاقیکردنەوە",
+                "appendix": ["پاشکۆی تاقیکردنەوە"],
+                "activities": ["چالاکیی تاقیکردنەوە"],
+                "quiz": [],
+            }],
+        }
+        default_lessons, _ = adapt_unified_orthography_lessons(payload)
+        course4_lessons, _ = adapt_unified_orthography_lessons(
+            payload, include_extended_sections=True
+        )
+        self.assertNotIn("پاشکۆی تاقیکردنەوە", default_lessons["adapter_scope_test_01"]["content"])
+        self.assertNotIn("چالاکیی تاقیکردنەوە", default_lessons["adapter_scope_test_01"]["content"])
+        self.assertIn("پاشکۆی تاقیکردنەوە", course4_lessons["adapter_scope_test_01"]["content"])
+        self.assertIn("چالاکیی تاقیکردنەوە", course4_lessons["adapter_scope_test_01"]["content"])
