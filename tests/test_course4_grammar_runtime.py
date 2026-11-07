@@ -10,6 +10,40 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
+    def test_all_twenty_six_lessons_keep_complete_content_schema_and_catalog_alignment(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
+        lessons = source["lessons"]
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 27)]
+        self.assertEqual(len(lessons), 26)
+        self.assertEqual([item["id"] for item in lessons], expected_ids)
+        self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
+        self.assertEqual(plan["lesson_count"], 26)
+        course = next(item for item in catalog["courses"] if item["id"] == "grammar")
+        self.assertEqual(course["lesson_ids"], expected_ids)
+        kurdish_digits = "٠١٢٣٤٥٦٧٨٩"
+        for number, lesson in enumerate(lessons, start=1):
+            localized_number = "".join(kurdish_digits[int(digit)] for digit in str(number))
+            self.assertTrue(lesson["title"].startswith(f"وانەی {localized_number}:"))
+            self.assertEqual(len(lesson["key_points"]), 6 if number == 1 else len(lesson["key_points"]))
+            self.assertEqual(len(lesson["activities"]), 3, lesson["id"])
+            self.assertEqual(len(lesson["exercises"]), 5, lesson["id"])
+            self.assertEqual(len(lesson["comprehension"]), 10, lesson["id"])
+            self.assertTrue(lesson["comprehension"][0].startswith("کورتەی وانە"), lesson["id"])
+            self.assertTrue(lesson["comprehension"][-1].startswith("کۆتایی وانە"), lesson["id"])
+            self.assertEqual(len(lesson["quiz"]), 8, lesson["id"])
+            for example in lesson["examples"]:
+                self.assertIsInstance(example, list, lesson["id"])
+                self.assertEqual(len(example), 2, lesson["id"])
+                self.assertTrue(all(isinstance(part, str) and part.strip() for part in example), lesson["id"])
+            for question in lesson["quiz"]:
+                self.assertTrue(question.get("q", "").strip(), lesson["id"])
+                self.assertEqual(len(question["options"]), 4, lesson["id"])
+                self.assertGreaterEqual(question["answer"], 0, lesson["id"])
+                self.assertLess(question["answer"], len(question["options"]), lesson["id"])
+                self.assertTrue(question.get("explanation", "").strip(), lesson["id"])
+
     def test_course4_is_active_with_twenty_six_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12", "grammar_13", "grammar_14", "grammar_15", "grammar_16", "grammar_17", "grammar_18", "grammar_19", "grammar_20", "grammar_21", "grammar_22", "grammar_23", "grammar_24", "grammar_25", "grammar_26"])
