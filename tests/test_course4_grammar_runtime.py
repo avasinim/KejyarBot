@@ -758,7 +758,7 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
         self.assertIn("ـە", l22)
         self.assertIn("پارتیکڵی زیادکردن/جەخت", l23)
         self.assertIn("ئامرازی بانگکردن", l24)
-        self.assertIn("ئەرک و سیاق", l24)
+        self.assertIn("پێویستی بە سیاق و پێکهاتەی ڕستە هەیە", l24)
         self.assertIn("یا", l24)
         self.assertIn("ئامرازی پەیوەندی", l24)
 
@@ -766,11 +766,11 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["number"]: item for item in source["lessons"]}
         l6 = " ".join(lessons[6]["key_points"] + lessons[6]["appendix"])
-        l14 = " ".join(lessons[14]["key_points"] + lessons[14]["appendix"])
+        l14 = " ".join(lessons[14]["examples"][3])
         l25 = " ".join(lessons[25]["key_points"] + lessons[25]["appendix"])
         self.assertIn("ئیزافەی کراوە", l6)
         self.assertIn("ئیزافەی داخراو", l6)
-        self.assertIn("پاشبەستەی خاوەنداری", l14)
+        self.assertIn("گوڵەکەی چاند", l14)
         self.assertIn("ئیزافەی کراوە", l25)
         self.assertIn("ئیزافەی داخراو", l25)
         self.assertIn("پاشبەستی خاوەنداری", l25)
