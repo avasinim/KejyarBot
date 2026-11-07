@@ -44,7 +44,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_10": "scientific_review_complete_with_qualified_notes",
             "grammar_11": "scientific_review_complete_with_qualified_notes",
             "grammar_12": "scientific_review_complete_with_qualified_notes",
-            "grammar_13": "scientific_review_complete_with_qualified_notes",
+            "grammar_13": "internal_cross_lesson_synthesis_no_external_source_mapping",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -114,7 +114,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         self.assertIn("ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 13, "grammar_14": 8, "grammar_15": 8, "grammar_16": 8, "grammar_17": 8, "grammar_18": 5, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 8}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9, "grammar_14": 8, "grammar_15": 8, "grammar_16": 8, "grammar_17": 8, "grammar_18": 5, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 8}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -368,10 +368,12 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
         self.assertNotIn("پۆلی ژمارەیی", serialized.replace("پۆلی وشەی ژمارەیی", ""))
         for lesson in source["lessons"]:
             with self.subTest(lesson=lesson["id"]):
-                self.assertEqual(
-                    lesson["review_status"],
-                    "scientific_review_complete_with_qualified_notes",
+                expected_status = (
+                    "internal_cross_lesson_synthesis_no_external_source_mapping"
+                    if lesson["id"] == "grammar_13"
+                    else "scientific_review_complete_with_qualified_notes"
                 )
+                self.assertEqual(lesson["review_status"], expected_status)
 
     def test_previously_standardized_core_terms_remain_stable(self):
         source = json.loads(
