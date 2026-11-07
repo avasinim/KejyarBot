@@ -1100,7 +1100,9 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertEqual(len(lesson["appendix"]), 30)
         self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
         self.assertIn("ناوبەندی -ە- و -و-", lesson["quiz"][-1]["q"])
-        self.assertEqual(lesson["quiz"][-1]["answer"], 1)
+        correct_interfix_option = lesson["quiz"][-1]["options"][lesson["quiz"][-1]["answer"]]
+        self.assertIn("-ە-", correct_interfix_option)
+        self.assertIn("-و-", correct_interfix_option)
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("-(y)ێک", "-ان", "-ەکان", "ڕەگەزی سروشتی", "ڕەگەزی ڕێزمانی", "Jambrović", "Thackston", "وانەی ٣١", "وانەی ٣٠", "گوڵەباخ", "گاکێوی", "ئاسنگەر", "کچۆڵە", "Mirmokri", "براکە", "هەڵۆیەک", "Interfix", "Huseen", "Shuani", "ناوبەندی -ە-", "ناوبەندی -و-", "دەنگی پەیوەستکەری فۆنۆلۆژی"):
             self.assertIn(term, joined)
