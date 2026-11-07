@@ -200,7 +200,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
 
         self.assertEqual(source_ids, expected_ids)
-        self.assertEqual(plan["lesson_count"], 8)
+        self.assertEqual(plan["lesson_count"], 9)
         self.assertEqual(plan_ids, expected_ids)
         self.assertEqual(course["lesson_ids"], expected_ids)
 
