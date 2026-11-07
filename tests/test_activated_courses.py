@@ -388,8 +388,8 @@ if __name__ == "__main__":
 
 
 class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
-    def test_course4_catalog_is_paginated_and_all_17_callbacks_are_reachable(self):
-        expected = [f"grammar_{number:02d}" for number in range(1, 18)]
+    def test_course4_catalog_is_paginated_and_all_18_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 19)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
@@ -403,7 +403,7 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 17)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 18)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             with self.subTest(lesson=lesson_id):
                 lesson = bot.LESSON_DATA[lesson_id]
@@ -431,3 +431,19 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
                     self.assertTrue(question["question"].strip())
                     self.assertTrue(question["explanation"].strip())
                     self.assertIn(question["answer"], question["options"])
+
+
+class Course4Lesson18VoiceTests(unittest.TestCase):
+    def test_active_passive_lesson_is_complete_and_source_qualified(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_18")
+        self.assertEqual(lesson["number"], 18)
+        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(len(lesson["key_points"]), 8)
+        self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertEqual(len(lesson["activities"]), 3)
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertIn("Active and Passive", " ".join(lesson["appendix"]))
+        self.assertIn("لاپەڕەکانی ١١٢–١٢٤", " ".join(lesson["appendix"]))
+        self.assertIn("وانەی ١٩", " ".join(lesson["appendix"]))
