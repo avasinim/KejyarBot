@@ -30,28 +30,28 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 8)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 1)
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][0], "grammar_01")
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_08")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_01")
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
 
-    async def test_open_course_four_shows_eight_review_modules(self):
+    async def test_open_course_four_shows_one_owner_review_lesson(self):
         update, message, query = self.make_update("course_grammar")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("وەشانی پێداچوونەوە", text)
-        self.assertIn("کۆی 8", text)
+        self.assertIn("پێداچوونەوە", text)
+        self.assertIn("کۆی 1", text)
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         callbacks = [button.callback_data for row in keyboard for button in row]
-        self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
+        self.assertEqual(callbacks, ["open_lesson_grammar_01"])
 
-    def test_course_four_lessons_are_marked_for_owner_review_and_stop_at_page_342(self):
-        self.assertEqual(bot.GRAMMAR_COURSE4_DRAFT["source_page_limit"], 342)
+    def test_course_four_single_lesson_is_marked_for_owner_review(self):
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01"])
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             lesson = bot.LESSON_DATA[lesson_id]
             self.assertTrue(lesson["content"])
