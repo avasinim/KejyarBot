@@ -2,10 +2,13 @@
 import asyncio
 import json
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
 
 import bot
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
