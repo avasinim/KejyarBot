@@ -113,20 +113,17 @@ def course_menu_keyboard(
         # Do not advertise practice or assessment actions for a locked lesson.
         # The callback handlers still enforce the same server-side guard.
         if lesson_is_open and number == 1:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"))
         elif lesson_is_open and number == 5:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"))
         elif lesson_is_open and number in interactive_lessons:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"),
-            ])
+            row.append(InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"))
+            if lesson_id in completed_lessons:
+                row.append(InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"))
         rows.append(row)
     return InlineKeyboardMarkup(rows)
 
@@ -382,7 +379,15 @@ async def _send_question(message, context, lesson_number):
         f"{heading} — وانەی {lesson_number} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows),
     )
-    context.user_data["arami_course1_active"] = {"lesson": lesson_number, "message_id": sent.message_id}
+    current_sessions = context.user_data.get("arami_course1_sessions", {})
+    current_active = context.user_data.get("arami_course1_active")
+    if (
+        current_sessions.get(str(lesson_number)) is session
+        and isinstance(current_active, dict)
+        and current_active.get("lesson") == lesson_number
+        and current_active.get("message_id") is None
+    ):
+        current_active["message_id"] = sent.message_id
 
 
 def _active_session(context, query, lesson_number):
@@ -393,6 +398,26 @@ def _active_session(context, query, lesson_number):
         return None
     sessions = context.user_data.get("arami_course1_sessions", {})
     return sessions.get(str(lesson_number))
+
+
+def _assessment_result(session, user_id, lesson_number, award_assessment, feedback=""):
+    result = session_result(session)
+    lesson_id = f"arami_course1_lesson_{lesson_number:02d}"
+    if award_assessment is not None:
+        if award_assessment(user_id, lesson_id):
+            session["assessment_reward_granted"] = True
+    reward_note = (
+        "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+        if session.get("assessment_reward_granted") else ""
+    )
+    text = (
+        f"{feedback}\n\n🏁 کۆتایی هات\n"
+        f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
+    )
+    markup = InlineKeyboardMarkup([[
+        InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")
+    ]])
+    return text, markup
 
 
 async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
@@ -478,6 +503,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
                 return
+        if mode == "assessment" and get_completed_lessons is not None:
+            completed = set(get_completed_lessons(query.from_user.id))
+            if lesson_record["id"] not in completed:
+                await query.message.reply_text("🔒 سەرەتا وانەکە بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکە دەکرێتەوە.")
+                return
         try:
             banks = load_question_banks(base_dir)
             bank = banks[number]
@@ -502,6 +532,14 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
+    if kind == "submit" and session.get("closed") and session.get("mode") == "assessment":
+        await query.answer()
+        result_text, result_markup = _assessment_result(
+            session, query.from_user.id, number, award_assessment,
+            "🏁 تاقیکردنەوەکەت پێشتر تەواو بوو."
+        )
+        await query.edit_message_text(result_text, reply_markup=result_markup)
+        return
     if kind == "pick":
         if len(parts) != 3 or not parts[2].isdigit():
             await query.answer()
@@ -511,15 +549,33 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         except (ValueError, TypeError):
             await query.answer()
             return
-        await query.answer()
+        question_index = session["index"]
         question = current_question(session)
+        try:
+            await query.answer()
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not acknowledge Arami Course 1 answer selection")
+            raise
         rows = [
             [InlineKeyboardButton(("☑️ " if i == selected else "▫️ ") + option,
                                   callback_data=f"aramiC:pick:{number}:{i}")]
             for i, option in enumerate(question["options"])
         ]
         rows.append([InlineKeyboardButton("📨 ناردنی وەڵام", callback_data=f"aramiC:submit:{number}")])
-        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        if (
+            context.user_data.get("arami_course1_sessions", {}).get(str(number)) is not session
+            or _active_session(context, query, number) is not session
+            or session.get("index") != question_index
+            or session.get("selected_index") != selected
+        ):
+            return
+        try:
+            await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not update Arami Course 1 answer-selection keyboard")
+            raise
         return
     if kind == "submit":
         question = current_question(session)
@@ -537,19 +593,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
             result = session_result(session)
-            reward_note = ""
-            if session["mode"] == "assessment" and award_assessment is not None:
-                lesson_id = f"arami_course1_lesson_{number:02d}"
-                if award_assessment(query.from_user.id, lesson_id):
-                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
-            rows = []
-            if session["mode"] == "practice" and result["missed"]:
-                rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
-            rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
-            await query.edit_message_text(
-                f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}",
-                reply_markup=InlineKeyboardMarkup(rows),
-            )
+            if session["mode"] == "assessment":
+                text, markup = _assessment_result(
+                    session, query.from_user.id, number, award_assessment, feedback
+                )
+            else:
+                rows = []
+                if result["missed"]:
+                    rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data=f"aramiC:retry:{number}")])
+                rows.append([InlineKeyboardButton("📚 گەڕانەوە بۆ لیستی وانەکان", callback_data="aramiC:menu")])
+                text = f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪"
+                markup = InlineKeyboardMarkup(rows)
+            await query.edit_message_text(text, reply_markup=markup)
         else:
             await query.edit_message_text(
                 feedback,

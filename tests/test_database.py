@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import database
+from course_runtime import can_open_lesson, lesson_key
 
 
 class DatabaseTests(unittest.TestCase):
@@ -189,11 +190,110 @@ class DatabaseTests(unittest.TestCase):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
 
+    def test_course3_progress_persists_and_unlocks_next_lesson(self):
+        lesson_ids = [
+            lesson_key("unified_orthography", 1),
+            lesson_key("unified_orthography", 2),
+        ]
+        self.assertEqual(
+            lesson_ids,
+            ["unified_orthography_01", "unified_orthography_02"],
+        )
+        self.assertTrue(can_open_lesson(
+            lesson_ids, database.get_completed_lessons(12345), lesson_ids[0]
+        ))
+        self.assertFalse(can_open_lesson(
+            lesson_ids, database.get_completed_lessons(12345), lesson_ids[1]
+        ))
+
+        self.assertTrue(database.complete_lesson_with_rewards(
+            12345, lesson_ids[0]
+        ))
+        # A fresh database read must see the saved progress and unlock lesson 2.
+        persisted = database.get_completed_lessons(12345)
+        self.assertEqual(persisted, [lesson_ids[0]])
+        self.assertTrue(can_open_lesson(lesson_ids, persisted, lesson_ids[1]))
+
+    def test_legacy_database_migration_preserves_existing_user_progress(self):
+        # Recreate the pre-quiz-ledger schema with real learner progress.
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            conn.execute("DROP TABLE users")
+            conn.execute("""
+                CREATE TABLE users (
+                    user_id INTEGER PRIMARY KEY,
+                    score INTEGER DEFAULT 0,
+                    xp INTEGER DEFAULT 0,
+                    level TEXT DEFAULT 'A1.1 🌱',
+                    correct_answers INTEGER DEFAULT 0,
+                    completed_lessons TEXT DEFAULT '',
+                    badges TEXT DEFAULT '',
+                    tests INTEGER DEFAULT 0,
+                    coins INTEGER DEFAULT 0,
+                    chests INTEGER DEFAULT 0
+                )
+            """)
+            conn.execute(
+                """INSERT INTO users
+                   (user_id, score, xp, level, correct_answers,
+                    completed_lessons, badges, tests, coins, chests)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (12345, 70, 70, "A1.2 🌿", 8, "daily_conversation_01,unified_orthography_01",
+                 "🏅 first", 3, 15, 2),
+            )
+            conn.commit()
+
+        database.init_db()
+        user = database.get_user(12345)
+        self.assertEqual(user[1], 70)  # score preserved
+        self.assertEqual(user[2], 70)  # XP preserved
+        self.assertEqual(user[5], "daily_conversation_01,unified_orthography_01")
+        self.assertEqual(user[6], "🏅 first")
+        self.assertEqual(user[7], 3)   # quiz count preserved
+        self.assertEqual(user[8], 15)  # coins preserved
+        self.assertEqual(user[9], 2)   # chests preserved
+        self.assertEqual(user[10], "") # new quiz ledger starts empty
+
+        self.assertTrue(database.complete_quiz_with_rewards(
+            12345, "unified_orthography_01_quiz_01"
+        ))
+        migrated = database.get_user(12345)
+        self.assertEqual(migrated[10], "unified_orthography_01_quiz_01")
+        self.assertEqual(migrated[2], 90)
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
         user = database.get_user(12345)
         self.assertEqual(user[0], 12345)
+
+
+    def test_concurrent_course1_assessment_reward_is_granted_once(self):
+        quiz_id = "arami_assessment:arami_course1_lesson_06"
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_quiz_with_rewards(
+                    12345, quiz_id, points=20
+                ),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20)  # exactly one +20 XP award
+        self.assertEqual(user[1], 20)  # exactly one score increment
+        self.assertEqual(user[7], 1)   # exactly one completed assessment
+
+    def test_distinct_course1_assessments_receive_independent_rewards(self):
+        first = "arami_assessment:arami_course1_lesson_01"
+        second = "arami_assessment:arami_course1_lesson_05"
+        self.assertTrue(database.complete_quiz_with_rewards(12345, first, points=20))
+        self.assertTrue(database.complete_quiz_with_rewards(12345, second, points=20))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, first, points=20))
+        self.assertFalse(database.complete_quiz_with_rewards(12345, second, points=20))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 40)  # one reward per distinct lesson
+        self.assertEqual(user[1], 40)
+        self.assertEqual(user[7], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

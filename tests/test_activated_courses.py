@@ -18,6 +18,36 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), message, query
 
+    async def test_locked_course_lesson_callback_cannot_bypass_sequence(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        locked_lesson = lesson_ids[2]
+        update, message, query = self.make_update(f"open_lesson_{locked_lesson}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_lesson,
+        ):
+            await bot.open_selected_lesson(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        send_lesson.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
+    async def test_stale_next_lesson_callback_rechecks_current_unlock_state(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["unified_orthography"]
+        stale_target = lesson_ids[1]
+        update, message, query = self.make_update(f"next_lesson_{stale_target}")
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_lesson,
+        ):
+            await bot.open_next_lesson(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        send_lesson.assert_not_awaited()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("وانەی پێشووتر تەواو بکە", message.reply_text.await_args.args[0])
+
     def test_manifest_activates_courses_two_and_three_and_retires_legacy_course_one(self):
         self.assertTrue(bot.course_is_active("arami_orthography_foundations"))
         self.assertFalse(bot.course_is_active("orthography_basic"))
@@ -62,7 +92,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         assessments = [button for button in buttons if ":assessment" in button.callback_data]
         self.assertEqual(len(reads), 21)
         self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
+        self.assertEqual(len(assessments), 0)
         self.assertIn("arami1:practice", [button.callback_data for button in practices])
         self.assertIn("arami5:practice", [button.callback_data for button in practices])
 
@@ -311,6 +341,36 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(keyboard[0][0].callback_data, "quiz_lesson_12_start")
         self.assertEqual(keyboard[-1][0].callback_data, "quizmenu:assessment:0")
+
+    async def test_progress_profile_displays_persisted_stats_and_current_course_badges(self):
+        message = SimpleNamespace(
+            text="👤 پێشکەوتنم",
+            reply_text=AsyncMock(),
+        )
+        update = SimpleNamespace(
+            message=message,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        profile = (12345, 140, 160, "A1.2 🌿", 0, "", "", 0, 25, 3)
+        badges = [
+            "🏅 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1",
+            "🏅 کۆرسی ٣: ڕێنووسی یەکگرتوو — وانەی 1",
+        ]
+        with (
+            patch.object(bot, "get_user", return_value=profile),
+            patch.object(bot, "current_progress_badges", return_value=badges),
+        ):
+            await bot.message(update, SimpleNamespace(user_data={}))
+
+        message.reply_text.assert_awaited_once()
+        rendered = message.reply_text.await_args.args[0]
+        self.assertIn("⭐ خاڵ: 140", rendered)
+        self.assertIn("🔥 XP: 160", rendered)
+        self.assertIn("🎓 ئاست: A1.2 🌿", rendered)
+        self.assertIn("🪙 Coin: 25", rendered)
+        self.assertIn("🎁 سەنوق: 3", rendered)
+        self.assertIn(badges[0], rendered)
+        self.assertIn(badges[1], rendered)
 
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]

@@ -11,14 +11,36 @@ from arami_lesson1_interaction import (
 logger = logging.getLogger(__name__)
 
 
-def menu_keyboard():
-    return InlineKeyboardMarkup([
+def menu_keyboard(assessment_available=False):
+    rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
-        [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
         [InlineKeyboardButton("📚 وانەی ٥ — پیتەکان و هاوتای لاتینی", callback_data="arami5:menu")],
         [InlineKeyboardButton("📚 هەموو ٢١ وانەی کۆرس ١", callback_data="aramiC:menu")],
-    ])
+    ]
+    if assessment_available:
+        rows.insert(2, [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")])
+    return InlineKeyboardMarkup(rows)
+
+
+def _assessment_result(session, user_id, award_assessment, feedback=""):
+    result = session_result(session)
+    if award_assessment is not None:
+        if award_assessment(user_id, "arami_course1_lesson_01"):
+            session["assessment_reward_granted"] = True
+    reward_note = (
+        "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
+        if session.get("assessment_reward_granted") else ""
+    )
+    text = (
+        f"{feedback}\n\n🏁 کۆتایی هات\n"
+        f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
+    )
+    rows = []
+    if result["missed"]:
+        rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
+    rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
+    return text, InlineKeyboardMarkup(rows)
 
 
 async def send_question(message, context):
@@ -38,7 +60,11 @@ async def send_question(message, context):
         f"{heading} — پرسیاری {number}/{total}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows),
     )
-    context.user_data["arami_lesson1_message_id"] = sent.message_id
+    if (
+        context.user_data.get("arami_lesson1_session") is session
+        and context.user_data.get("arami_lesson1_message_id") is None
+    ):
+        context.user_data["arami_lesson1_message_id"] = sent.message_id
 
 
 def _lesson_source_markdown(lesson):
@@ -60,7 +86,7 @@ def _lesson_source_markdown(lesson):
     return '\n'.join(lines)
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
     query = update.callback_query
     action = query.data.removeprefix("arami1:")
     defer_ack = action.startswith("pick:") or action == "submit"
@@ -71,7 +97,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
             "خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
-            reply_markup=menu_keyboard(),
+            reply_markup=menu_keyboard(
+                assessment_available=(
+                    get_completed_lessons is not None
+                    and "arami_course1_lesson_01" in set(get_completed_lessons(query.from_user.id))
+                )
+            ),
         )
         return
 
@@ -106,7 +137,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
             ]]),
         )
-        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
+        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard(
+            assessment_available=(
+                get_completed_lessons is not None
+                and "arami_course1_lesson_01" in set(get_completed_lessons(query.from_user.id))
+            )
+        ))
         return
 
     if action in {"practice", "assessment"}:
@@ -119,6 +155,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 return
             if not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
+        if action == "assessment" and get_completed_lessons is not None:
+            if lesson_record["id"] not in set(get_completed_lessons(query.from_user.id)):
+                await query.message.reply_text("🔒 سەرەتا وانەکە بخوێنەوە و تەواوی بکە؛ پاشان تاقیکردنەوەکە دەکرێتەوە.")
                 return
         try:
             bank = load_arami_lesson1_interactions(base_dir)
@@ -145,12 +185,15 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if action.startswith("pick:"):
         raw = action.removeprefix("pick:")
         if not raw.isdigit():
+            await query.answer()
             return
         try:
             selected = select_answer(session, int(raw))
         except (ValueError, TypeError):
+            await query.answer()
             await query.message.reply_text("⚠️ هەڵبژاردەکە دروست نییە؛ تکایە دووبارە هەڵبژێرە.")
             return
+        question_index = session["index"]
         question = current_question(session)
         rows = [
             [InlineKeyboardButton(
@@ -160,7 +203,34 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             for i, option in enumerate(question["options"])
         ]
         rows.append([InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="arami1:submit")])
-        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        try:
+            await query.answer()
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not acknowledge Arami Lesson 1 answer selection")
+            raise
+        if (
+            context.user_data.get("arami_lesson1_session") is not session
+            or context.user_data.get("arami_lesson1_message_id") != query.message.message_id
+            or session.get("index") != question_index
+            or session.get("selected_index") != selected
+        ):
+            return
+        try:
+            await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+        except Exception:
+            session["selected_index"] = None
+            logger.exception("Could not update Arami Lesson 1 answer-selection keyboard")
+            raise
+        return
+
+    if action == "submit" and session.get("closed") and session.get("mode") == "assessment":
+        await query.answer()
+        result_text, result_markup = _assessment_result(
+            session, query.from_user.id, award_assessment,
+            "🏁 تاقیکردنەوەکەت پێشتر تەواو بوو."
+        )
+        await query.edit_message_text(result_text, reply_markup=result_markup)
         return
 
     if action == "submit":
@@ -178,20 +248,21 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         else:
             feedback = "✅ وەڵامەکەت وەرگیرا."
         if session["closed"]:
-            result = session_result(session)
-            reward_note = ""
-            if session["mode"] == "assessment" and award_assessment is not None:
-                if award_assessment(query.from_user.id, "arami_course1_lesson_01"):
-                    reward_note = "\n\n🎁 +20 XP — یەکەم تەواوکردنی تاقیکردنەوە"
-            text = (
-                f"{feedback}\n\n🏁 کۆتایی هات\n"
-                f"ئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}"
-            )
-            rows = []
-            if result["missed"]:
-                rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
-            rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
-            await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(rows))
+            if session["mode"] == "assessment":
+                text, markup = _assessment_result(
+                    session, query.from_user.id, award_assessment, feedback
+                )
+                await query.edit_message_text(text, reply_markup=markup)
+            else:
+                result = session_result(session)
+                rows = []
+                if result["missed"]:
+                    rows.append([InlineKeyboardButton("🔁 دووبارەکردنەوەی پرسیارە هەڵەکان", callback_data="arami1:retry")])
+                rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
+                await query.edit_message_text(
+                    f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪",
+                    reply_markup=InlineKeyboardMarkup(rows),
+                )
         else:
             await query.edit_message_text(
                 feedback,

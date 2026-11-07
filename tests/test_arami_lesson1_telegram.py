@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, Mock, patch
 
 from arami_lesson1_telegram import callback, menu_keyboard, _lesson_source_markdown
 
@@ -50,10 +50,18 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(callbacks, [
             "arami1:lesson",
-            "arami1:practice", "arami1:assessment",
+            "arami1:practice",
             "arami5:menu",
             "aramiC:menu",
         ])
+
+    def test_assessment_button_appears_only_after_lesson_completion(self):
+        callbacks = [
+            button.callback_data
+            for row in menu_keyboard(assessment_available=True).inline_keyboard
+            for button in row
+        ]
+        self.assertIn("arami1:assessment", callbacks)
 
     async def test_lesson1_menu_uses_the_current_course_title(self):
         update, query = make_update("menu")
@@ -107,6 +115,20 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update("audio")
         await callback(update, SimpleNamespace(user_data={}), "/unused")
         query.message.reply_voice.assert_not_awaited()
+
+    async def test_assessment_callback_requires_completed_lesson(self):
+        update, query = make_update("assessment")
+        context = SimpleNamespace(user_data={})
+        completed = Mock(return_value=[])
+        await callback(
+            update, context, Path(__file__).resolve().parents[1],
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=completed,
+        )
+        completed.assert_called_once_with(query.from_user.id)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەکە بخوێنەوە و تەواوی بکە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("arami_lesson1_session", context.user_data)
 
     async def test_practice_callback_starts_question_session(self):
         bank = {
@@ -231,6 +253,20 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
 
 
 class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.bank = {
+            "practice": [{
+                "id": "p1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "پرسیاری ڕاهێنان",
+                "options": ["A", "B"], "answer_index": 0,
+            }],
+            "assessment": [{
+                "id": "a1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "پرسیاری تاقیکردنەوە",
+                "options": ["A", "B"], "answer_index": 1,
+            }],
+        }
+
     async def test_practice_requires_submission_then_advances_and_invalidates_old_message(self):
         bank = {
             "practice": [
@@ -295,6 +331,7 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(session["selected_index"], 0)
         pick_query.answer.side_effect = assert_pick_committed
         await callback(update, context, base_dir)
+        pick_query.answer.assert_awaited_once()
 
         update, submit_query = make_update("submit", message_id=message_id)
         async def assert_submit_committed():
@@ -303,6 +340,121 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         submit_query.answer.side_effect = assert_submit_committed
         await callback(update, context, base_dir)
 
+
+    async def test_selection_acknowledgement_failure_clears_pending_selection(self):
+        base_dir = str(Path(__file__).resolve().parents[1])
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        await callback(update, context, base_dir)
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:0", message_id=message_id)
+        query.answer.side_effect = RuntimeError("callback acknowledgement failed")
+        with self.assertRaisesRegex(RuntimeError, "callback acknowledgement failed"):
+            await callback(update, context, base_dir)
+
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_keyboard_edit_failure_clears_unsubmittable_selection(self):
+        base_dir = str(Path(__file__).resolve().parents[1])
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        await callback(update, context, base_dir)
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:0", message_id=message_id)
+        query.edit_message_reply_markup.side_effect = RuntimeError("keyboard update failed")
+        with self.assertRaisesRegex(RuntimeError, "keyboard update failed"):
+            await callback(update, context, base_dir)
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+
+    async def test_malformed_pick_callback_is_acknowledged(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:not-an-index", message_id=message_id)
+        await callback(update, context, "/unused")
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_out_of_range_pick_callback_is_acknowledged_and_rejected(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+
+        update, query = make_update("pick:99", message_id=message_id)
+        await callback(update, context, "/unused")
+
+        query.answer.assert_awaited_once()
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("هەڵبژاردەکە دروست نییە", query.message.reply_text.await_args.args[0])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_delayed_pick_ack_does_not_restore_keyboard_after_submit(self):
+        import asyncio
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "lesson1", "type": "recognize", "prompt": "Q1", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "lesson1", "type": "recognize", "prompt": "Q2", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 0, "selected_index": None, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={"arami_lesson1_session": session, "arami_lesson1_message_id": 10})
+        pick_update, pick_query = make_update("pick:0", message_id=10)
+        started, release = asyncio.Event(), asyncio.Event()
+
+        async def delayed_ack():
+            started.set()
+            await release.wait()
+
+        pick_query.answer.side_effect = delayed_ack
+        pick_task = asyncio.create_task(callback(pick_update, context, "/unused"))
+        await started.wait()
+
+        submit_update, submit_query = make_update("submit", message_id=10)
+        await callback(submit_update, context, "/unused")
+        submit_query.edit_message_text.assert_awaited_once()
+        self.assertEqual(session["index"], 1)
+
+        release.set()
+        await pick_task
+        pick_query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_duplicate_start_completion_cannot_replace_new_session_message_id(self):
+        import asyncio
+        context = SimpleNamespace(user_data={})
+        started, release = asyncio.Event(), asyncio.Event()
+
+        async def delayed_first_reply(*args, **kwargs):
+            started.set()
+            await release.wait()
+            return SimpleNamespace(message_id=11)
+
+        first_update, first_query = make_update("practice", message_id=10)
+        first_query.message.reply_text.side_effect = delayed_first_reply
+        second_update, _second_query = make_update("practice", message_id=20)
+
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            first_task = asyncio.create_task(callback(first_update, context, "/unused"))
+            await started.wait()
+            await callback(second_update, context, "/unused")
+            self.assertEqual(context.user_data["arami_lesson1_message_id"], 21)
+            release.set()
+            await first_task
+
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], 21)
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
@@ -337,6 +489,91 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         release.set()
         await task
         self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
+
+
+    async def test_concurrent_final_submit_callbacks_grant_assessment_reward_once(self):
+        import asyncio
+        session = {
+            "mode": "assessment",
+            "questions": [{
+                "id": "q1", "section_id": "lesson1",
+                "type": "recognize", "prompt": "پرسیار",
+                "options": ["A", "B"], "answer_index": 0,
+            }],
+            "index": 0, "selected_index": 0, "answers": [], "closed": False,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_session": session,
+            "arami_lesson1_message_id": 10,
+        })
+        entered = asyncio.Event()
+        release = asyncio.Event()
+
+        async def hold_acknowledgement():
+            entered.set()
+            await release.wait()
+
+        first_update, first_query = make_update("submit", message_id=10)
+        first_query.answer.side_effect = hold_acknowledgement
+        award = Mock(side_effect=[True, False])
+        first_task = asyncio.create_task(
+            callback(first_update, context, "/unused", award_assessment=award)
+        )
+        await entered.wait()
+
+        second_update, second_query = make_update("submit", message_id=10)
+        await callback(second_update, context, "/unused", award_assessment=award)
+        release.set()
+        await first_task
+
+        self.assertTrue(session["closed"])
+        self.assertEqual(award.call_count, 2)
+        self.assertCountEqual(award.call_args_list, [
+            unittest.mock.call(123, "arami_course1_lesson_01"),
+            unittest.mock.call(123, "arami_course1_lesson_01"),
+        ])
+        self.assertTrue(session["assessment_reward_granted"])
+        self.assertIn("+20 XP", first_query.edit_message_text.await_args.args[0])
+        self.assertIn("+20 XP", second_query.edit_message_text.await_args.args[0])
+
+    async def test_assessment_reward_persistence_failure_can_be_retried(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("assessment")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        selected = context.user_data["arami_lesson1_session"]["questions"][0]["answer_index"]
+        update, _ = make_update(f"pick:{selected}", message_id=message_id)
+        await callback(update, context, "/unused")
+        award = Mock(side_effect=[RuntimeError("database unavailable"), True])
+        update, failed_query = make_update("submit", message_id=message_id)
+        with self.assertRaisesRegex(RuntimeError, "database unavailable"):
+            await callback(update, context, "/unused", award_assessment=award)
+        self.assertTrue(context.user_data["arami_lesson1_session"]["closed"])
+        update, retry_query = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused", award_assessment=award)
+        self.assertEqual(award.call_count, 2)
+        self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
+        self.assertIn("1/1", retry_query.edit_message_text.await_args.args[0])
+
+    async def test_assessment_result_delivery_failure_retries_without_duplicate_reward(self):
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("assessment")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        selected = context.user_data["arami_lesson1_session"]["questions"][0]["answer_index"]
+        update, _ = make_update(f"pick:{selected}", message_id=message_id)
+        await callback(update, context, "/unused")
+        award = Mock(side_effect=[True, False])
+        update, failed_query = make_update("submit", message_id=message_id)
+        failed_query.edit_message_text.side_effect = RuntimeError("Telegram send failed")
+        with self.assertRaisesRegex(RuntimeError, "Telegram send failed"):
+            await callback(update, context, "/unused", award_assessment=award)
+        update, retry_query = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused", award_assessment=award)
+        self.assertEqual(award.call_count, 2)
+        self.assertIn("+20 XP", retry_query.edit_message_text.await_args.args[0])
 
 
 if __name__ == "__main__":

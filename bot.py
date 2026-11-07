@@ -579,8 +579,19 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "selected_answer_index": None,
         "answer_in_progress": False,
     }
-    await query.answer()
-    await send_question(query.message, context.user_data["quiz"])
+    try:
+        await query.answer()
+    except Exception:
+        # A failed callback acknowledgement must not make a retry look like
+        # a duplicate launch of a quiz that never displayed its first question.
+        context.user_data.pop("quiz", None)
+        raise
+    try:
+        await send_question(query.message, context.user_data["quiz"])
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not deliver the first quiz question; active quiz was cleared")
+        raise
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
@@ -629,7 +640,13 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     # Commit the selection before the first await. If the learner presses
     # submit immediately, submit_quiz_answer must see this selected index.
     quiz["selected_answer_index"] = choice_index
-    await query.answer()
+    try:
+        await query.answer()
+    except Exception:
+        # Keep the previous selection state if Telegram did not acknowledge
+        # the callback; the learner can safely retry selecting an option.
+        quiz["selected_answer_index"] = None
+        raise
     rows = [
         [
             InlineKeyboardButton(
@@ -642,7 +659,14 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     rows.append([
         InlineKeyboardButton("📨 ناردنی وەڵام", callback_data="submit_answer")
     ])
-    await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+    try:
+        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
+    except Exception:
+        # Without the submit button, do not retain a hidden selection that
+        # the learner cannot submit from the visible Telegram keyboard.
+        quiz["selected_answer_index"] = None
+        logger.exception("Could not update quiz selection keyboard; selection was cleared")
+        raise
 
 
 async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -741,7 +765,14 @@ async def quiz_answer(
     # callbacks then observe the claim and cannot score the same answer twice.
     quiz["answer_in_progress"] = True
     quiz["question_message_id"] = None
-    await query.answer()
+    try:
+        await query.answer()
+    except Exception:
+        # Telegram acknowledgement failed before the answer was scored.
+        # Release the in-memory claim so the learner can safely retry.
+        quiz["answer_in_progress"] = False
+        quiz["question_message_id"] = query.message.message_id
+        raise
     quiz["selected_answer_index"] = None
     try:
         await query.edit_message_reply_markup(reply_markup=None)
@@ -750,18 +781,38 @@ async def quiz_answer(
     answer = question["options"][choice_index]
     if answer == question["answer"]:
         quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        feedback = "✅ ئافەرین! وەڵامی دروستە."
     else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        feedback = f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}"
+    try:
+        await query.message.reply_text(feedback)
+    except Exception:
+        # The answer was not committed to the reward ledger. Clear the
+        # in-memory quiz so a failed Telegram send cannot strand a locked quiz.
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not deliver quiz answer feedback; active quiz was cleared")
+        raise
 
     quiz["index"] += 1
     if quiz["index"] < len(quiz["questions"]):
-        await send_question(query.message, quiz)
+        try:
+            await send_question(query.message, quiz)
+        except Exception:
+            context.user_data.pop("quiz", None)
+            logger.exception("Could not deliver the next quiz question; active quiz was cleared")
+            raise
         return
 
     lesson = quiz["lesson"]
     earned = quiz["score"]
-    first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+    try:
+        first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+    except Exception:
+        # The reward transaction did not complete; discard the exhausted
+        # in-memory quiz so the learner can restart instead of staying locked.
+        context.user_data.pop("quiz", None)
+        logger.exception("Could not persist quiz completion reward; active quiz was cleared")
+        raise
     result = (
         f"🎉 تاقیکردنەوە تەواو بوو!\n"
         f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
@@ -770,8 +821,10 @@ async def quiz_answer(
         result += "⭐ +20 XP"
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
-    await query.message.reply_text(result)
+    # The reward ledger is already committed. Clear the in-memory quiz
+    # before sending the result so a failed Telegram delivery cannot replay it.
     context.user_data.pop("quiz", None)
+    await query.message.reply_text(result)
 
 def render_lesson_html_blocks(content):
     """Render lesson text in a clean, consistent academic Telegram layout."""
@@ -1502,6 +1555,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            get_completed_lessons=get_completed_lessons,
         ),
         pattern=r"^arami1:",
     ))
@@ -1519,6 +1573,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            get_completed_lessons=get_completed_lessons,
         ),
         pattern=r"^arami5:",
     ))

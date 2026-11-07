@@ -8,6 +8,26 @@ import bot
 
 
 class AramiCourse1ProgressionTests(unittest.TestCase):
+    def test_assessment_reward_uses_one_stable_user_and_lesson_scoped_key(self):
+        with patch.object(
+            bot, "complete_quiz_with_rewards", side_effect=[True, True, False]
+        ) as claim:
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_05"))
+            self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+
+        self.assertEqual(claim.call_args_list, [
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_01", points=20
+            ),
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_05", points=20
+            ),
+            unittest.mock.call(
+                12345, "arami_assessment:arami_course1_lesson_01", points=20
+            ),
+        ])
+
     def test_all_21_lessons_form_one_ordered_sequence_with_terminal_lesson(self):
         lesson_ids = bot.ARMI_LESSON_IDS
         self.assertEqual(len(lesson_ids), 21)
@@ -100,6 +120,22 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         })
         return update, context, query
 
+    async def test_telegram_acknowledgement_failure_releases_answer_claim(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock()
+        query.answer = AsyncMock(side_effect=RuntimeError("Telegram acknowledgement failed"))
+
+        with self.assertRaisesRegex(RuntimeError, "acknowledgement failed"):
+            await bot.quiz_answer(update, context)
+
+        quiz = context.user_data["quiz"]
+        self.assertFalse(quiz["answer_in_progress"])
+        self.assertEqual(quiz["question_message_id"], 77)
+        self.assertEqual(quiz["index"], 0)
+        self.assertEqual(quiz["score"], 0)
+        query.edit_message_reply_markup.assert_not_awaited()
+        query.message.reply_text.assert_not_awaited()
+
     async def test_malformed_answer_does_not_strand_active_question(self):
         update, context, query = self.make_context("answer_nope")
 
@@ -145,6 +181,115 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["quiz"]["question_message_id"], 77)
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_concurrent_course3_submit_callbacks_claim_one_answer_and_one_reward(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, first_query = self.make_context("submit_answer")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": 0,
+            "answer_in_progress": False,
+        })
+        reply_text = AsyncMock()
+        first_query.message.reply_text = reply_text
+
+        second_query = SimpleNamespace(
+            data="submit_answer",
+            message=SimpleNamespace(message_id=77, reply_text=reply_text),
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            edit_message_reply_markup=AsyncMock(),
+        )
+        second_update = SimpleNamespace(
+            callback_query=second_query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        acknowledgement_gate = asyncio.Event()
+
+        async def delayed_acknowledgement():
+            await acknowledgement_gate.wait()
+
+        first_query.answer = AsyncMock(side_effect=delayed_acknowledgement)
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            first = asyncio.create_task(bot.quiz_answer(
+                update, context, selected_index=0
+            ))
+            await asyncio.sleep(0)
+
+            # The first callback must claim the question before its first await.
+            self.assertTrue(context.user_data["quiz"]["answer_in_progress"])
+            await bot.quiz_answer(second_update, context, selected_index=0)
+
+            second_query.answer.assert_awaited_once()
+            second_query.edit_message_reply_markup.assert_not_awaited()
+            reward.assert_not_called()
+
+            acknowledgement_gate.set()
+            await first
+
+        reward.assert_called_once_with(12345, lesson)
+        self.assertNotIn("quiz", context.user_data)
+        first_query.edit_message_reply_markup.assert_awaited_once_with(
+            reply_markup=None
+        )
+        self.assertEqual(reply_text.await_count, 2)
+
+    async def test_feedback_delivery_failure_clears_uncommitted_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock(
+            side_effect=RuntimeError("Telegram feedback delivery failed")
+        )
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
+            with self.assertRaisesRegex(RuntimeError, "feedback delivery failed"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_not_called()
+
+    async def test_next_question_delivery_failure_clears_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        context.user_data["quiz"]["questions"].append({
+            "question": "پرسیاری دووەم",
+            "options": ["وەڵامی A", "وەڵامی B"],
+            "answer": "وەڵامی A",
+        })
+        query.message.reply_text = AsyncMock(
+            side_effect=[None, RuntimeError("Telegram next question delivery failed")]
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "next question delivery failed"):
+            await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        self.assertEqual(query.message.reply_text.await_count, 2)
+
+    async def test_reward_persistence_failure_clears_exhausted_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock()
+        with patch.object(
+            bot,
+            "complete_quiz_with_rewards",
+            side_effect=RuntimeError("quiz reward database failure"),
+        ) as reward:
+            with self.assertRaisesRegex(RuntimeError, "quiz reward database failure"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_called_once_with(12345, "وانە_1")
+        self.assertEqual(query.message.reply_text.await_count, 1)
+
+    async def test_final_result_delivery_failure_clears_already_rewarded_quiz(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock(
+            side_effect=[None, RuntimeError("Telegram final result delivery failed")]
+        )
+        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+            with self.assertRaisesRegex(RuntimeError, "final result delivery failed"):
+                await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_called_once_with(12345, "وانە_1")
+        self.assertEqual(query.message.reply_text.await_count, 2)
 
     async def test_valid_final_answer_completes_quiz_and_claims_reward_once(self):
         from unittest.mock import patch
@@ -338,6 +483,52 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
 
+    async def test_quiz_start_acknowledgement_failure_clears_launch_claim(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(side_effect=RuntimeError("Telegram start acknowledgement failed")),
+            message=SimpleNamespace(message_id=501, reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query, effective_user=SimpleNamespace(id=12345))
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "start acknowledgement failed"):
+                await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.message.reply_text.assert_not_awaited()
+
+    async def test_first_quiz_question_delivery_failure_clears_launch_state(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=502,
+                reply_text=AsyncMock(side_effect=RuntimeError("Telegram first question delivery failed")),
+            ),
+        )
+        update = SimpleNamespace(callback_query=query, effective_user=SimpleNamespace(id=12345))
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "first question delivery failed"):
+                await bot.start_quiz(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertNotIn("quiz", context.user_data)
+
     async def test_duplicate_quiz_start_callback_does_not_replace_inflight_quiz(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         query = SimpleNamespace(
@@ -408,6 +599,39 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         reward.assert_called_once_with(12345, lesson)
         self.assertNotIn("quiz", context.user_data)
         self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+
+    async def test_selection_acknowledgement_failure_clears_pending_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, query = self.make_context("select_answer_0")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": None,
+        })
+        query.answer = AsyncMock(side_effect=RuntimeError("selection acknowledgement failed"))
+
+        with self.assertRaisesRegex(RuntimeError, "selection acknowledgement failed"):
+            await bot.select_quiz_answer(update, context)
+
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_keyboard_edit_failure_clears_unsubmittable_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["unified_orthography"][0]
+        update, context, query = self.make_context("select_answer_1")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "selected_answer_index": None,
+        })
+        query.edit_message_reply_markup = AsyncMock(
+            side_effect=RuntimeError("selection keyboard edit failed")
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "selection keyboard edit failed"):
+            await bot.select_quiz_answer(update, context)
+
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_awaited_once()
 
     async def test_selection_is_recorded_before_callback_acknowledgement(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
