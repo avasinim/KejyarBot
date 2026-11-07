@@ -951,7 +951,7 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_29")
         self.assertEqual(lesson["number"], 29)
-        self.assertEqual(len(lesson["key_points"]), 14)
+        self.assertEqual(len(lesson["key_points"]), 13)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
