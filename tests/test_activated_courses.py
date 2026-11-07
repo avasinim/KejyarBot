@@ -398,13 +398,18 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
             second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
-        self.assertEqual(page_count, 2)
-        self.assertEqual(second_page_count, 2)
+            third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
+        self.assertEqual(page_count, 3)
+        self.assertEqual(second_page_count, 3)
+        self.assertEqual(third_page_count, 3)
         first_ids = [row[0].callback_data for row in first.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
         second_ids = [row[0].callback_data for row in second.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        third_ids = [row[0].callback_data for row in third.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
         self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
-        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:]])
+        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:24]])
+        self.assertEqual(third_ids, [f"open_lesson_{item}" for item in expected[24:]])
         self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
+        self.assertEqual(third.inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 25)
