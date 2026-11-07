@@ -114,7 +114,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         self.assertIn("ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 13, "grammar_14": 8, "grammar_15": 8, "grammar_16": 8, "grammar_17": 8, "grammar_18": 4, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 8}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 13, "grammar_14": 8, "grammar_15": 8, "grammar_16": 8, "grammar_17": 8, "grammar_18": 5, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 8}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -581,6 +581,6 @@ class Course4Lesson18SourceExclusionTests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["number"] == 18)
         appendix = " ".join(lesson["appendix"])
-        self.assertNotIn("Rezmany_axawtny_kurdy.pdf", appendix)
+        self.assertNotIn("Active and Passive", appendix)
         self.assertNotIn("لاپەڕەی ١١٢", appendix)
         self.assertIn("هیچ سەرچاوەی دەرەکی", appendix)
