@@ -4,9 +4,9 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "active_owner_review_beta",
-  "replacement_state": "owner_supplied_lessons_1_through_13",
+  "replacement_state": "owner_supplied_lessons_1_through_17",
   "language": "ckb",
-  "lesson_count": 13,
+  "lesson_count": 17,
   "lessons": [
     {
       "number": 1,
@@ -84,6 +84,30 @@
       "number": 13,
       "id": "grammar_13",
       "title": "وانەی ١٣: کردار — ڕەگ، کات و پێکهاتەی مۆرفۆلۆژی",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 14,
+      "id": "grammar_14",
+      "title": "وانەی ١٤: تەواوکەرەکانی ناو و کردار — پێکهاتە و ئەرکی ڕستەیی",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 15,
+      "id": "grammar_15",
+      "title": "وانەی ١٥: دەمەکانی ڕابردوو — سادە، بەردەوام، تەواو و پێشترتەواو",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 16,
+      "id": "grammar_16",
+      "title": "وانەی ١٦: ڕەگی کردار و کاری ڕانەبردوو — ئێستا، عادەت و داهاتوو",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 17,
+      "id": "grammar_17",
+      "title": "وانەی ١٧: کاری داخوازی — ڕێکخستنی تاک و کۆ و نەرێکردن",
       "status": "scientific_review_complete_with_qualified_notes"
     }
   ],
