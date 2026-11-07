@@ -1020,7 +1020,7 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_31")
         self.assertEqual(lesson["number"], 31)
         self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertEqual(len(lesson["key_points"]), 12)
+        self.assertEqual(len(lesson["key_points"]), 13)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
