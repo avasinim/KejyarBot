@@ -271,7 +271,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("مرداندن", " ".join(item[1] for item in lesson["examples"]))
         self.assertIn("پوختەی وتاری دووەم", " ".join(lesson["key_points"]))
         self.assertIn("لاپەڕەکانی ٨٥–٨٧", " ".join(lesson["appendix"]))
-        self.assertIn("پێنج نیشانەی ڕابردوو", " ".join(lesson["appendix"]))
+        self.assertIn("پێنج نیشانەی پاشگری ڕابردوو", " ".join(lesson["appendix"]))
         self.assertIn("هیچ ڕستەیەک بەبێ کردار", " ".join(lesson["appendix"]))
 
     def test_lesson13_registered_in_source_plan_and_manifest(self):
