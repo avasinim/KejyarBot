@@ -88,6 +88,11 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertNotIn("لە پێکهاتەی جێناوی ئاماژە", " ".join(lesson5["key_points"]))
         self.assertNotIn("لەگەڵ جێناوی ئاماژەدا", " ".join(lesson5["key_points"]))
         self.assertIn("جوان + ـی ← جوانی", str(lesson5["examples"]))
+        self.assertIn("کۆی نەناسراو", " ".join(lesson4["key_points"]))
+        self.assertNotIn("کۆی گشتی/نەناسراو", " ".join(lesson4["key_points"]))
+        lesson5_numbering = " ".join(lesson5["key_points"])
+        self.assertIn("«ـان»", lesson5_numbering)
+        self.assertIn("واتای گشتیی ناو", lesson5_numbering)
         self.assertIn("دەست + نوێژ ← دەستنوێژ", str(lesson5["examples"]))
         adjective_lessons = [item for item in source["lessons"] if item["id"] in {"grammar_06", "grammar_07", "grammar_08"}]
         self.assertEqual(len(adjective_lessons), 3)
