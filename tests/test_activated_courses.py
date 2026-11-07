@@ -407,7 +407,7 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 23)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 24)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             with self.subTest(lesson=lesson_id):
                 lesson = bot.LESSON_DATA[lesson_id]
