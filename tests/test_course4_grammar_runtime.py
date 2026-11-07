@@ -690,3 +690,23 @@ class Course4TenseAspectMoodConsistencyTests(unittest.TestCase):
         self.assertIn("ڕابردووی تەواو", note)
         self.assertIn("پێشترتەواو", note)
         self.assertIn("نە بانگەشەی یەک شیکردنەوەی تاک", note)
+
+
+class Course4VoiceAndErgativeAlignmentConsistencyTests(unittest.TestCase):
+    def test_lesson18_active_example_accounts_for_past_transitive_clitic(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        lesson18 = lessons[18]
+        active_example = " ".join(lesson18["key_points"] + [item[1] for item in lesson18["examples"]])
+        self.assertIn("«ـی» لکاوی نیشانەی بکەری سێیەمی تاکە", active_example)
+        self.assertIn("وانەی ١٢", active_example)
+        self.assertIn("نابێت بە خاوەنداری لێک بدرێتەوە", active_example)
+
+    def test_voice_is_distinguished_from_ergative_alignment(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson18 = next(item for item in source["lessons"] if item["number"] == 18)
+        appendix = " ".join(lesson18["appendix"])
+        self.assertIn("Voice", appendix)
+        self.assertIn("Alignment", appendix)
+        self.assertIn("جیاوازن", appendix)
+        self.assertIn("نابێت «لەلایەن» وەک نیشانەی یەکگرتووی ئەنجامدەر", appendix)
