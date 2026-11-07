@@ -971,6 +971,8 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         self.assertIn("سووتاندن", joined)
         self.assertIn("هەڵگرتن", joined)
         self.assertIn("کردارە لێکدراوەکان", joined)
+        self.assertIn("پارتیکڵ-کردار", joined)
+        self.assertIn("پاشگری داڕێژەیی", joined)
         self.assertIn("وانەی ٣٠", joined)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری بەڵگە", 1)[0])
 
