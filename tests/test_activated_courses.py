@@ -57,6 +57,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(lesson["content"])
             self.assertTrue(lesson["review_status"].startswith("owner_review"))
             self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            self.assertTrue(bot.can_open(12345, "grammar_01"))
+        with patch.object(bot, "get_completed_lessons", return_value=["grammar_01"]):
+            self.assertFalse(bot.can_open(12345, "grammar_01"))
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
         message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
@@ -146,7 +150,6 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "unified_orthography",
             "kurmanji_latin_orthography",
             "kurmanji_latin_grammar",
-            "grammar",
         )
         for course_id in course_ids:
             order = bot.COURSE_LESSON_ORDER[course_id]
