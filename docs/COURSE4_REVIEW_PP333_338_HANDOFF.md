@@ -2,7 +2,7 @@
 
 - Date: 2026-11-05
 - Course: 4 — ڕێزمانی ئاخافتنی کوردی
-- Sole approved source: `Rezmany_axawtny_kurdy.pdf`
+- Source association in the original local handoff: `Rezmany_axawtny_kurdy.pdf` (this conflicts with the later authoritative PR #119 description, which explicitly records that this PDF was excluded and not used; therefore this file is a historical visual-review note only, not authorization to use the PDF as a source).
 - Reviewed printed pages: 333–338
 - Method: direct visual inspection of the six original PDF page images (rendered individually at 170 dpi), alongside the extracted page text.
 - Review status: page-level visual review completed; this is not a diplomatic full transcription or independent linguistic validation.
