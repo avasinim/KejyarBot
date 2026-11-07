@@ -86,3 +86,5 @@ python -m unittest discover -s tests -v
 - PR #119 کراوە و Draft ـە؛ هیچ merge، deployment، Botkeep operation، database change یان server restart نەکراوە.
 
 - وانەکانی ١–٥: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ ڕوونکردنەوەی پریپۆزیشنەکانی سۆرانی؛ چاکسازیی زاراوەی «فێزیۆلۆژی» و «کۆی نەناسراو».
+
+- زاراوەی Numeral لە هەموو ١٧ وانەدا بە فۆڕمی یەکگرتووی «پۆلی وشەی ژمارەیی» پارێزراوە؛ تاقیکردنەوەی regression بۆ یەکسانیی زاراوەکان زیاد کرا.
