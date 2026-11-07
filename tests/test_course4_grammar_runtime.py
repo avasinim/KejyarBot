@@ -382,3 +382,19 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
         self.assertIn("ژمارەی ڕێزمانی", serialized)
         self.assertIn("کۆی نەناسراو", serialized)
         self.assertNotIn("کۆی گشتی/نەناسراو", serialized)
+
+
+class Course4ComprehensionFormattingTests(unittest.TestCase):
+    def test_comprehension_questions_have_single_kurdish_digit_prefix(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        duplicate_prefix = re.compile(r"^([٠-٩]+)\.\s+\1\.\s+")
+        for lesson in source["lessons"]:
+            with self.subTest(lesson=lesson["id"]):
+                questions = lesson["comprehension"][1:9]
+                self.assertEqual(len(questions), 8)
+                for number, question in enumerate(questions, start=1):
+                    expected = f"{str(number).translate(str.maketrans('0123456789', '٠١٢٣٤٥٦٧٨٩'))}. "
+                    self.assertTrue(question.startswith(expected), question)
+                    self.assertIsNone(duplicate_prefix.match(question), question)
