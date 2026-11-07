@@ -114,5 +114,76 @@
   "curriculum_policy": "تەنها ئەو وانە و دەقانە دەبنە ناوەڕۆکی کۆرس کە خاوەن پڕۆژە دەنێرێت؛ هیچ ناوەڕۆکی پێشووی کۆرس لەم پلانی نوێیەدا بەکارناهێنرێت.",
   "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١ تا ١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت.",
   "source_alignment_status": "pending_page_by_page_source_mapping",
-  "source_alignment_note": "Internal scientific review and CI do not establish complete source fidelity. Map all 17 lessons to the sole approved Rezmany_axawtny_kurdy.pdf page ranges; resolve and document pedagogical reordering (pronoun pp.61–65 before adjective p.66 in source versus adjective Lessons 6–8 before pronoun Lessons 10–12), and map Lessons 1–2 before claiming source verification."
+  "source_alignment_note": "Internal scientific review and CI do not establish complete source fidelity. Map all 17 lessons to the sole approved Rezmany_axawtny_kurdy.pdf page ranges; resolve and document pedagogical reordering (pronoun pp.61–65 before adjective p.66 in source versus adjective Lessons 6–8 before pronoun Lessons 10–12), and map Lessons 1–2 before claiming source verification. Confirmed section starts from direct page inspection: noun p.11, pronoun p.25, adjective p.66, verb p.80, active/passive p.112, preposition p.254, conjunction p.273. Lesson mapping remains partial; Lesson 1 and 9 unmapped; exact subtopic ranges and Lesson 13-17 alignment unresolved.",
+  "source_alignment_map": [
+    {
+      "lessons": "1",
+      "topic": "grammar introduction",
+      "source_pages": null,
+      "status": "unmapped",
+      "note": "Inspect preface and pp.1-10; no page-level match confirmed."
+    },
+    {
+      "lessons": "2",
+      "topic": "parts of speech",
+      "source_pages": [
+        11,
+        25,
+        66,
+        80,
+        236,
+        254,
+        273
+      ],
+      "status": "partial_section_starts_confirmed",
+      "note": "Only confirmed section starts; verify full inventory and exact ranges."
+    },
+    {
+      "lessons": "3-5",
+      "topic": "noun",
+      "source_pages": [
+        11,
+        24
+      ],
+      "status": "section_start_confirmed_range_provisional",
+      "note": "Noun heading visible at p.11; pronoun begins p.25. Subtopic page ranges not mapped."
+    },
+    {
+      "lessons": "6-8",
+      "topic": "adjective",
+      "source_pages": [
+        66,
+        79
+      ],
+      "status": "section_start_confirmed_range_provisional",
+      "note": "Adjective heading visible at p.66; end boundary requires verification."
+    },
+    {
+      "lessons": "9",
+      "topic": "numerals and word formation",
+      "source_pages": null,
+      "status": "unmapped",
+      "note": "Do not infer from grammatical-number content; locate exact source section."
+    },
+    {
+      "lessons": "10-12",
+      "topic": "pronouns and clitics",
+      "source_pages": [
+        25,
+        65
+      ],
+      "status": "section_start_confirmed_selective_transcription",
+      "note": "Pronoun heading at p.25; pp.61-65 selective transcription incomplete."
+    },
+    {
+      "lessons": "13-17",
+      "topic": "verbs, complements, tenses and imperative",
+      "source_pages": [
+        80,
+        221
+      ],
+      "status": "section_start_confirmed_range_provisional",
+      "note": "Verb heading at p.80; Active/Passive subsection starts p.112. Exact ranges and lesson-to-page mapping remain open."
+    }
+  ]
 }
