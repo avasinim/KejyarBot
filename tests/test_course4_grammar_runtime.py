@@ -91,7 +91,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(lesson["exercises"]), 5)
         self.assertEqual(len(lesson["comprehension"]) - 2, 8)
         self.assertEqual(len(lesson["examples"]), 3)
-        self.assertEqual(len(lesson["appendix"]), 4)
+        self.assertEqual(len(lesson["appendix"]), 5)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["quiz"]), 8)
         lesson2 = source["lessons"][1]
