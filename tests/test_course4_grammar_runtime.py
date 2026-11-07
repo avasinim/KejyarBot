@@ -629,3 +629,18 @@ class Course4PrepositionTerminologyConsistencyTests(unittest.TestCase):
         self.assertIn("Prepositional Phrase؛ لە زاراوەی وانەکانی تر: گرێی پریپۆزیشنی", lesson22)
         self.assertIn("لە پریپۆزیشنەکاندا جێناوی لکاو", lesson11)
         self.assertNotIn("پێشگر/پریپۆزیشن", lesson11)
+
+
+class Course4VerbStemTerminologyTests(unittest.TestCase):
+    def test_present_and_past_stem_terms_are_distinct_and_aligned(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        plan_titles = {item["number"]: item["title"] for item in plan["lessons"]}
+        self.assertEqual(lessons[16]["title"], plan_titles[16])
+        self.assertIn("بنەمای ئێستا", " ".join(lessons[16]["key_points"]))
+        self.assertNotIn("بنەمای ئێستا/ڕەگی ئێستا", " ".join(lessons[16]["key_points"]))
+        self.assertIn("بنەمای ڕابردوو", " ".join(lessons[15]["key_points"]))
+        self.assertIn("Present stem = بنەمای ئێستا", " ".join(lessons[13]["appendix"]))
+        self.assertIn("Past stem = بنەمای ڕابردوو", " ".join(lessons[13]["appendix"]))
+        self.assertIn("Infinitive = چاوگ", " ".join(lessons[13]["appendix"]))
