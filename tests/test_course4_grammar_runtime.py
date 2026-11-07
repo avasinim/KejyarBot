@@ -543,6 +543,8 @@ class Course4IzafaLesson25Tests(unittest.TestCase):
         for sample in ("چەم سیروان", "پارک ئاشتی", "چرای ماڵ", "دەسەی گوڵ", "پەنجەرەی شکاو"):
             self.assertIn(sample, text)
         self.assertIn("تەشبیهی", " ".join(lesson["appendix"]))
+        self.assertIn("ئیزافەی کراوە", " ".join(lesson["key_points"]))
+        self.assertIn("پاشبەستی خاوەنداری", " ".join(lesson["key_points"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
     def test_course4_has_25_registered_lessons(self):
@@ -555,3 +557,20 @@ class Course4IzafaLesson25Tests(unittest.TestCase):
         self.assertEqual(plan["lesson_count"], 25)
         course = next(x for x in catalog["courses"] if x["id"] == "grammar")
         self.assertEqual(course["lesson_ids"], expected)
+
+
+class Course4IzafaCrossLessonConsistencyTests(unittest.TestCase):
+    def test_lesson25_preserves_lesson6_and_lesson14_distinctions(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        l6 = " ".join(lessons[6]["key_points"] + lessons[6]["appendix"])
+        l14 = " ".join(lessons[14]["key_points"] + lessons[14]["examples"][3])
+        l25 = " ".join(lessons[25]["key_points"] + lessons[25]["appendix"])
+        self.assertIn("ئیزافەی کراوە", l6)
+        self.assertIn("ئیزافەی داخراو", l6)
+        self.assertIn("پاشبەستی خاوەنداری", l14)
+        self.assertIn("ئیزافەی کراوە", l25)
+        self.assertIn("ئیزافەی داخراو", l25)
+        self.assertIn("پاشبەستی خاوەنداری", l25)
+        self.assertIn("نامە درێژەکە", l25)
+        self.assertIn("گوڵەکەی چاند", l25)
