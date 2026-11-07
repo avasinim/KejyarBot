@@ -30,37 +30,33 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 1)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 8)
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][0], "grammar_01")
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_01")
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"][-1], "grammar_08")
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
 
-    async def test_open_course_four_shows_one_owner_review_lesson(self):
+    async def test_open_course_four_shows_eight_review_modules(self):
         update, message, query = self.make_update("course_grammar")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         text = message.reply_text.await_args.args[0]
-        self.assertIn("پێداچوونەوە", text)
-        self.assertIn("کۆی 1", text)
+        self.assertIn("وەشانی پێداچوونەوە", text)
+        self.assertIn("کۆی 8", text)
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
         callbacks = [button.callback_data for row in keyboard for button in row]
-        self.assertEqual(callbacks, ["open_lesson_grammar_01"])
+        self.assertEqual(callbacks, [f"open_lesson_grammar_{i:02d}" for i in range(1, 9)])
 
-    def test_course_four_single_lesson_is_marked_for_owner_review(self):
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01"])
+    def test_course_four_lessons_are_marked_for_owner_review_and_stop_at_page_342(self):
+        self.assertEqual(bot.GRAMMAR_COURSE4_DRAFT["source_page_limit"], 342)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             lesson = bot.LESSON_DATA[lesson_id]
             self.assertTrue(lesson["content"])
             self.assertTrue(lesson["review_status"].startswith("owner_review"))
             self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
-        with patch.object(bot, "get_completed_lessons", return_value=[]):
-            self.assertTrue(bot.can_open(12345, "grammar_01"))
-        with patch.object(bot, "get_completed_lessons", return_value=["grammar_01"]):
-            self.assertFalse(bot.can_open(12345, "grammar_01"))
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
         message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
@@ -150,6 +146,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "unified_orthography",
             "kurmanji_latin_orthography",
             "kurmanji_latin_grammar",
+            "grammar",
         )
         for course_id in course_ids:
             order = bot.COURSE_LESSON_ORDER[course_id]
