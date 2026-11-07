@@ -4,9 +4,9 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "active_owner_review_beta",
-  "replacement_state": "owner_supplied_lessons_1_through_25_plus_scholarly_researched_lessons_26_and_27",
+  "replacement_state": "owner_supplied_lessons_1_through_25_plus_scholarly_researched_lessons_26_through_28",
   "language": "ckb",
-  "lesson_count": 27,
+  "lesson_count": 28,
   "lessons": [
     {
       "number": 1,
@@ -168,6 +168,12 @@
       "number": 27,
       "id": "grammar_27",
       "title": "وانەی ٢٧: ئامرازی سەرسووڕمان لە زمانی کوردیی سۆرانیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 28,
+      "id": "grammar_28",
+      "title": "وانەی ٢٨: چاوگ — پێناسە، فۆڕمی بنەڕەتی و گروپەکانی بنجی ڕابردوو",
       "status": "scientific_review_complete_with_qualified_notes"
     }
   ],
