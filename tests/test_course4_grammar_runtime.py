@@ -1035,7 +1035,7 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
             self.assertIn(term, joined)
         self.assertIn("پەیوەندیی وانەی ٢٨ و ٣١", joined)
         self.assertIn("-in/-n", joined)
-        self.assertIn("نەک وەک یاسای سۆرانی", joined)
+        self.assertIn("نابێت وەک یاسای سۆرانی پێشکەش بکرێن", joined)
 
     def test_lesson_31_does_not_assert_unverified_five_and_seven_lists(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
