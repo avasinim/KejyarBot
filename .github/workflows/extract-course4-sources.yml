@@ -1,6 +1,15 @@
-name: Retired Course 4 PDF extraction (manual only)
+name: Extract Course 4 source PDFs
 
 on:
+  push:
+    branches:
+      - reset/grammar-course4-content
+    paths:
+      - "Rezmany_axawtny_kurdy.pdf"
+      - "ڕێزمانی ڕاناوی لكاو.pdf"
+      - "scripts/extract_course4_sources.py"
+      - "scripts/render_course4_source_previews.py"
+      - ".github/workflows/extract-course4-sources.yml"
   workflow_dispatch:
 
 permissions:
@@ -12,36 +21,21 @@ jobs:
     steps:
       - name: Check out isolated course branch
         uses: actions/checkout@v4
-      - name: Check whether the retired source PDF exists
-        id: source
-        shell: bash
-        run: |
-          if [[ -f "Rezmany_axawtny_kurdy.pdf" ]]; then
-            echo "available=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "available=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::The retired Course 4 source PDF is absent; extraction is safely skipped."
-          fi
       - name: Set up Python
-        if: steps.source.outputs.available == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install PDF and OCR dependencies
-        if: steps.source.outputs.available == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng
           python -m pip install --upgrade pip
           python -m pip install pymupdf pillow pytesseract
       - name: Extract source text without rewriting it
-        if: steps.source.outputs.available == 'true'
         run: python scripts/extract_course4_sources.py
       - name: Render source pages for visual review
-        if: steps.source.outputs.available == 'true'
         run: python scripts/render_course4_source_previews.py
       - name: Upload extracted source text for review
-        if: steps.source.outputs.available == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: course4-source-text
