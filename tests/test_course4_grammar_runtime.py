@@ -10,9 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
-    def test_course4_is_active_with_twelve_owner_supplied_lessons(self):
+    def test_course4_is_active_with_thirteen_owner_supplied_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12"])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08", "grammar_09", "grammar_10", "grammar_11", "grammar_12", "grammar_13"])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_01"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
@@ -201,7 +201,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
         )
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected_ids = [f"grammar_{number:02d}" for number in range(1, 13)]
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 14)]
         source_ids = [lesson["id"] for lesson in source["lessons"]]
         plan_ids = [lesson["id"] for lesson in plan["lessons"]]
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
@@ -245,3 +245,39 @@ if __name__ == "__main__":
         self.assertIn("خاوەنداری", " ".join(lessons["grammar_11"]["key_points"]))
         self.assertIn("ئەرجەتیڤی", " ".join(lessons["grammar_12"]["key_points"]))
         self.assertNotIn("هەموو", " ".join(lessons["grammar_12"]["key_points"][:1]))
+
+
+class Course4GrammarLesson13Tests(unittest.TestCase):
+    def test_lesson13_verb_morphology_is_complete_and_source_qualified(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_13")
+        self.assertEqual(lesson["number"], 13)
+        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertEqual(len(lesson["activities"]), 3)
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertGreaterEqual(len(lesson["appendix"]), 8)
+        self.assertIn("چاوگ", " ".join(lesson["key_points"]))
+        self.assertIn("ڕەگی کردار", " ".join(lesson["key_points"]))
+        self.assertIn("کاریگەری", " ".join(lesson["key_points"]))
+        self.assertIn("هۆکاری", " ".join(lesson["key_points"]))
+        self.assertIn("دەنووسم", " ".join(item[1] for item in lesson["examples"]))
+        self.assertIn("مرداندن", " ".join(item[1] for item in lesson["examples"]))
+
+    def test_lesson13_registered_in_source_plan_and_manifest(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        plan = json.loads(
+            (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
+        )
+        catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 14)]
+        self.assertEqual([item["id"] for item in source["lessons"]], expected_ids)
+        self.assertEqual(plan["lesson_count"], 13)
+        self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
+        course = next(item for item in catalog["courses"] if item["id"] == "grammar")
+        self.assertEqual(course["lesson_ids"], expected_ids)
