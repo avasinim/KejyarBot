@@ -279,7 +279,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
 
         self.assertEqual(source_ids, expected_ids)
-        self.assertEqual(plan["lesson_count"], 27)
+        self.assertEqual(plan["lesson_count"], 28)
         self.assertEqual(plan_ids, expected_ids)
         self.assertEqual(course["lesson_ids"], expected_ids)
 
@@ -562,7 +562,7 @@ class Course4VocativeLesson24Tests(unittest.TestCase):
         self.assertIn("فراوانکردنی فێرکاری", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_has_27_registered_lessons(self):
+    def test_course4_has_28_registered_lessons(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
