@@ -976,7 +976,7 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         self.assertIn("وانەی ٣٠", joined)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری بەڵگە", 1)[0])
 
-    def test_course4_has_31_registered_lessons_and_pagination_reaches_lesson_30(self):
+    def test_course4_has_31_registered_lessons_and_pagination_reaches_lesson_31(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         self.assertEqual(source["lesson_count"], 31)
