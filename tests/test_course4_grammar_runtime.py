@@ -44,6 +44,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                 self.assertGreaterEqual(question["answer"], 0, lesson["id"])
                 self.assertLess(question["answer"], len(question["options"]), lesson["id"])
                 self.assertTrue(question.get("explanation", "").strip(), lesson["id"])
+            answer_positions = [question["answer"] for question in lesson["quiz"]]
+            self.assertEqual([answer_positions.count(position) for position in range(4)], [2, 2, 2, 2], lesson["id"])
 
     def test_course4_is_active_with_thirty_one_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
@@ -202,7 +204,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("پێویستی بە پشکنینی فەرهەنگ", " ".join(lesson7["key_points"]))
         self.assertIn("بە + هێز", lesson7["quiz"][5]["explanation"])
         self.assertIn("هەنبانە بۆرینە", lesson7["quiz"][6]["explanation"])
-        self.assertIn("ڕووخۆش", lesson7["quiz"][6]["options"][2])
+        self.assertTrue(any("ڕووخۆش" in option for option in lesson7["quiz"][6]["options"]))
         self.assertIn("ڕووخۆش", lesson7["activities"][0])
         self.assertIn("ژمارەی بنجی", " ".join(lesson7["key_points"]))
         self.assertIn("ژمارەی ڕیزبەندی", " ".join(lesson7["key_points"]))
