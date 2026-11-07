@@ -385,3 +385,49 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
+    def test_course4_catalog_is_paginated_and_all_17_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 18)]
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
+            second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
+        self.assertEqual(page_count, 2)
+        self.assertEqual(second_page_count, 2)
+        first_ids = [row[0].callback_data for row in first.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        second_ids = [row[0].callback_data for row in second.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
+        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:]])
+        self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
+
+    async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 17)
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            with self.subTest(lesson=lesson_id):
+                lesson = bot.LESSON_DATA[lesson_id]
+                message = SimpleNamespace(reply_text=AsyncMock())
+                markup = bot.lesson_keyboard(lesson_id)
+                await bot.send_lesson_text(message, lesson["content"], markup)
+                self.assertGreater(message.reply_text.await_count, 0)
+                chunks = [call.args[0] for call in message.reply_text.await_args_list]
+                self.assertTrue(all(len(chunk) <= 3500 for chunk in chunks))
+                rendered = "\\n".join(chunks)
+                self.assertIn(lesson["title"], rendered)
+                self.assertIn("کەژیار — KejyarBot@", rendered)
+                self.assertTrue(all(call.kwargs.get("parse_mode") == "HTML" for call in message.reply_text.await_args_list))
+                self.assertEqual(message.reply_text.await_args_list[-1].kwargs.get("reply_markup"), markup)
+                for call in message.reply_text.await_args_list[:-1]:
+                    self.assertIsNone(call.kwargs.get("reply_markup"))
+
+    def test_course4_assessments_are_loaded_and_use_standard_quiz_flow(self):
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            with self.subTest(lesson=lesson_id):
+                self.assertEqual(len(bot.QUIZ_DATA[lesson_id]), 8)
+                self.assertTrue(bot.quiz_is_available(lesson_id))
+                self.assertFalse(bot.quiz_requires_submission(lesson_id))
+                for question in bot.QUIZ_DATA[lesson_id]:
+                    self.assertTrue(question["question"].strip())
+                    self.assertTrue(question["explanation"].strip())
+                    self.assertIn(question["answer"], question["options"])
