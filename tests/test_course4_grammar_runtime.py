@@ -603,3 +603,17 @@ class Course4CurriculumDocumentationConsistencyTests(unittest.TestCase):
         historical = appendix.split("## 34. تۆماری بڕیاری هەڵوەشاندنەوەی سەرچاوە", 1)[1].split("\\n## 35.", 1)[0]
         self.assertNotIn("p.", historical)
         self.assertNotIn("pp.", historical)
+
+
+class Course4PrepositionTerminologyConsistencyTests(unittest.TestCase):
+    def test_preposition_synonyms_are_explicit_and_prefix_is_distinct(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        lesson2 = " ".join(lessons[2]["key_points"] + lessons[2]["appendix"])
+        lesson11 = " ".join(lessons[11]["key_points"] + lessons[11]["appendix"])
+        lesson22 = " ".join(lessons[22]["key_points"] + lessons[22]["appendix"])
+        self.assertIn("Preposition = پریپۆزیشن (هاوتای کوردیی «پێشبەند»)", lesson2)
+        self.assertIn("هاوتای زاراوەی «پریپۆزیشن»ی وانەی ٢", lesson22)
+        self.assertIn("Prepositional Phrase؛ لە زاراوەی وانەکانی تر: گرێی پریپۆزیشنی", lesson22)
+        self.assertIn("لە پریپۆزیشنەکاندا جێناوی لکاو", lesson11)
+        self.assertNotIn("پێشگر/پریپۆزیشن", lesson11)
