@@ -584,3 +584,19 @@ class Course4Lesson18SourceExclusionTests(unittest.TestCase):
         self.assertNotIn("Active and Passive", appendix)
         self.assertNotIn("لاپەڕەی ١١٢", appendix)
         self.assertIn("هیچ کتێب یان فایلێکی دەرەکی", appendix)
+
+
+class Course4CurriculumDocumentationConsistencyTests(unittest.TestCase):
+    def test_all_lesson_titles_and_numbers_match_curriculum_plan(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            [(item["number"], item["title"]) for item in source["lessons"]],
+            [(item["number"], item["title"]) for item in plan["lessons"]],
+        )
+
+    def test_active_appendix_has_no_withdrawn_auxiliary_verb_page_claim(self):
+        appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
+        section = appendix.split("## 36. وانەکانی ١٩–٢١ — هاوەڵکار", 1)[1].split("\n## 37.", 1)[0]
+        self.assertNotIn("لاپەڕەی ١٢٥", section)
+        self.assertNotIn("Rezmany_axawtny_kurdy.pdf", section)
