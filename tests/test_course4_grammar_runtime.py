@@ -10,9 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Course4GrammarRuntimeTests(unittest.TestCase):
-    def test_course4_is_active_with_six_owner_supplied_lessons(self):
+    def test_course4_is_active_with_eight_owner_supplied_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
-        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06"])
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], ["grammar_01", "grammar_02", "grammar_03", "grammar_04", "grammar_05", "grammar_06", "grammar_07", "grammar_08"])
         self.assertIn("grammar_01", bot.LESSON_DATA)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_01"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_02"]), 8)
@@ -20,6 +20,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertEqual(len(bot.QUIZ_DATA["grammar_04"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_05"]), 8)
         self.assertEqual(len(bot.QUIZ_DATA["grammar_06"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_07"]), 8)
+        self.assertEqual(len(bot.QUIZ_DATA["grammar_08"]), 8)
         self.assertEqual(bot.LESSON_DATA["grammar_01"]["review_status"],
                          "owner_review_pending_term_clarification")
         self.assertEqual(bot.LESSON_DATA["grammar_02"]["review_status"],
@@ -29,6 +31,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_04": "owner_review_pending_sorani_plural_and_gender_validation",
             "grammar_05": "owner_review_pending_sorani_morphology_corpus_validation",
             "grammar_06": "owner_review_pending_sorani_adjective_corpus_validation",
+            "grammar_07": "owner_review_pending_sorani_adjective_corpus_validation",
+            "grammar_08": "owner_review_pending_sorani_adjective_corpus_validation",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -58,7 +62,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 11}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 4, "grammar_07": 5, "grammar_08": 5}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -75,6 +79,9 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("ئەو ئەسپانە", " ".join(lesson5["key_points"]))
         self.assertIn("جوان + ـی ← جوانی", str(lesson5["examples"]))
         self.assertIn("دەست + نوێژ ← دەستنوێژ", str(lesson5["examples"]))
+        adjective_lessons = [item for item in source["lessons"] if item["id"] in {"grammar_06", "grammar_07", "grammar_08"}]
+        self.assertEqual(len(adjective_lessons), 3)
+        self.assertTrue(all(item["review_status"] == "owner_review_pending_sorani_adjective_corpus_validation" for item in adjective_lessons))
 
     def test_all_course4_lesson_quizzes_and_learning_components_are_well_formed(self):
         source = json.loads(
