@@ -84,7 +84,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertTrue(all(item["review_status"] == "owner_review_pending_sorani_adjective_corpus_validation" for item in adjective_lessons))
         lesson7 = next(item for item in source["lessons"] if item["id"] == "grammar_07")
         self.assertIn("ڕوو + خۆش", " ".join(lesson7["examples"][3]))
-        self.assertIn("پێویستی بە پشتڕاستکردنەوە", " ".join(lesson7["key_points"]))
+        self.assertIn("پێویستی بە پشکنینی فەرهەنگ", " ".join(lesson7["key_points"]))
         self.assertIn("ڕووخۆش", lesson7["quiz"][6]["options"][2])
 
     def test_all_course4_lesson_quizzes_and_learning_components_are_well_formed(self):
