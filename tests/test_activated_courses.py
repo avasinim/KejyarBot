@@ -1,10 +1,14 @@
 """Regression tests for owner-activated Courses 2 and 3."""
 import asyncio
+import json
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
 
 import bot
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
@@ -29,7 +33,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(any(key.startswith("وانە_") for key in bot.QUIZ_DATA))
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
-        self.assertFalse(bot.course_is_active("grammar"))
+        self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
 
@@ -385,3 +389,71 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
+    def test_course4_catalog_is_paginated_and_all_26_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 27)]
+        self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
+            second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
+            third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
+        self.assertEqual(page_count, 3)
+        self.assertEqual(second_page_count, 3)
+        self.assertEqual(third_page_count, 3)
+        first_ids = [row[0].callback_data for row in first.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        second_ids = [row[0].callback_data for row in second.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        third_ids = [row[0].callback_data for row in third.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
+        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:24]])
+        self.assertEqual(third_ids, [f"open_lesson_{item}" for item in expected[24:]])
+        self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
+        self.assertEqual(third.inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
+
+    async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 26)
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            with self.subTest(lesson=lesson_id):
+                lesson = bot.LESSON_DATA[lesson_id]
+                message = SimpleNamespace(reply_text=AsyncMock())
+                markup = bot.lesson_keyboard(lesson_id)
+                await bot.send_lesson_text(message, lesson["content"], markup)
+                self.assertGreater(message.reply_text.await_count, 0)
+                chunks = [call.args[0] for call in message.reply_text.await_args_list]
+                self.assertTrue(all(len(chunk) <= 3500 for chunk in chunks))
+                rendered = "\\n".join(chunks)
+                self.assertIn(lesson["title"], rendered)
+                self.assertIn("کەژیار — KejyarBot@", rendered)
+                self.assertTrue(all(call.kwargs.get("parse_mode") == "HTML" for call in message.reply_text.await_args_list))
+                self.assertEqual(message.reply_text.await_args_list[-1].kwargs.get("reply_markup"), markup)
+                for call in message.reply_text.await_args_list[:-1]:
+                    self.assertIsNone(call.kwargs.get("reply_markup"))
+
+    def test_course4_assessments_are_loaded_and_use_standard_quiz_flow(self):
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            with self.subTest(lesson=lesson_id):
+                self.assertEqual(len(bot.QUIZ_DATA[lesson_id]), 8)
+                self.assertTrue(bot.quiz_is_available(lesson_id))
+                self.assertFalse(bot.quiz_requires_submission(lesson_id))
+                for question in bot.QUIZ_DATA[lesson_id]:
+                    self.assertTrue(question["question"].strip())
+                    self.assertTrue(question["explanation"].strip())
+                    self.assertIn(question["answer"], question["options"])
+
+
+class Course4Lesson18VoiceTests(unittest.TestCase):
+    def test_active_passive_lesson_is_complete_and_source_qualified(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["id"] == "grammar_18")
+        self.assertEqual(lesson["number"], 18)
+        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(len(lesson["key_points"]), 8)
+        self.assertEqual(len(lesson["quiz"]), 8)
+        self.assertEqual(len(lesson["activities"]), 3)
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertNotIn("Active and Passive", " ".join(lesson["appendix"]))
+        self.assertIn("هیچ کتێب یان فایلێکی دەرەکی", " ".join(lesson["appendix"]))
+        self.assertNotIn("١١٢–١٢٤", " ".join(lesson["appendix"]))
+        self.assertIn("بابەتێکی جیاوازە", " ".join(lesson["appendix"]))

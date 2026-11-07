@@ -1,0 +1,251 @@
+{
+  "course_id": "grammar",
+  "course_key": "course_grammar",
+  "course_order": 4,
+  "title": "کۆرسی ٤: ڕێزمان",
+  "status": "active_owner_review_beta",
+  "replacement_state": "owner_supplied_lessons_1_through_25_plus_scholarly_researched_lesson_26",
+  "language": "ckb",
+  "lesson_count": 26,
+  "lessons": [
+    {
+      "number": 1,
+      "id": "grammar_01",
+      "title": "وانەی ١: پێشەکی — ڕێزمان (Grammar)",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 2,
+      "id": "grammar_02",
+      "title": "وانەی ٢: ژمارەی بەشەکانی ئاخاوتن",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 3,
+      "id": "grammar_03",
+      "title": "وانەی ٣: پێناسەی ناو",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 4,
+      "id": "grammar_04",
+      "title": "وانەی ٤: ناو لە ڕووی ژمارە و ڕەگەزەوە",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 5,
+      "id": "grammar_05",
+      "title": "وانەی ٥: ناو لە ڕووی ناوەرۆک، ناسینەوە و پێکهاتەوە",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 6,
+      "id": "grammar_06",
+      "title": "وانەی ٦: هاوەڵناو — پێناسە و بنەماکانی ناسینەوە",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 7,
+      "id": "grammar_07",
+      "title": "وانەی ٧: هاوەڵناو — جۆربەندی و پێکهاتەی مۆرفۆلۆژی",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 8,
+      "id": "grammar_08",
+      "title": "وانەی ٨: هاوەڵناو — بەکارهێنان و پلەکانی بەراورد",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 9,
+      "id": "grammar_09",
+      "title": "وانەی ٩: ژمارە بەپێی پێکهاتە و ڕۆنانەوە",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 10,
+      "id": "grammar_10",
+      "title": "وانەی ١٠: جێناوی کەسیی سەربەخۆ",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 11,
+      "id": "grammar_11",
+      "title": "وانەی ١١: جێناوی کەسیی لکاو — فۆڕم و بەکارهێنان",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 12,
+      "id": "grammar_12",
+      "title": "وانەی ١٢: ئەرکی ڕێزمانیی جێناوە لکاوەکان",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 13,
+      "id": "grammar_13",
+      "title": "وانەی ١٣: کردار — ڕەگ، کات و پێکهاتەی مۆرفۆلۆژی",
+      "status": "internal_cross_lesson_synthesis_no_external_source_mapping"
+    },
+    {
+      "number": 14,
+      "id": "grammar_14",
+      "title": "وانەی ١٤: تەواوکەرەکانی ناو و کردار — پێکهاتە و ئەرکی ڕستەیی",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 15,
+      "id": "grammar_15",
+      "title": "وانەی ١٥: دەمەکانی ڕابردوو — سادە، بەردەوام، تەواو و پێشترتەواو",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 16,
+      "id": "grammar_16",
+      "title": "وانەی ١٦: بنەمای ئێستا و کاری ڕانەبردوو — ئێستا، عادەت و داهاتوو",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 17,
+      "id": "grammar_17",
+      "title": "وانەی ١٧: کاری داخوازی — ڕێکخستنی تاک و کۆ و نەرێکردن",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 18,
+      "id": "grammar_18",
+      "title": "وانەی ١٨: کردار — کاری چالاک و کاری نەچالاک (Active and Passive Voice)",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 19,
+      "id": "grammar_19",
+      "title": "وانەی ١٩: هاوەڵکار — پێناسە، کات و شوێن",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 20,
+      "id": "grammar_20",
+      "title": "وانەی ٢٠: هاوەڵکار — پێکهاتە و داڕشتن بە «بەـ»",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 21,
+      "id": "grammar_21",
+      "title": "وانەی ٢١: هاوەڵکار لە کاری لێکدراودا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 22,
+      "id": "grammar_22",
+      "title": "وانەی ٢٢: پێشبەند لە زمانی کوردیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 23,
+      "id": "grammar_23",
+      "title": "وانەی ٢٣: ئامرازی پەیوەندی لە زمانی کوردیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 24,
+      "id": "grammar_24",
+      "title": "وانەی ٢٤: ئامرازی بانگکردن لە زمانی کوردیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 25,
+      "id": "grammar_25",
+      "title": "وانەی ٢٥: پەیوەندیی ئیزافە و فۆڕمی «ی» لە زمانی کوردیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    },
+    {
+      "number": 26,
+      "id": "grammar_26",
+      "title": "وانەی ٢٦: پارتیکڵی گفتوگۆیی لە زمانی کوردیی سۆرانیدا",
+      "status": "scientific_review_complete_with_qualified_notes"
+    }
+  ],
+  "curriculum_policy": "وانەکانی ١–٢٥ لەسەر ماددەی خاوەن پڕۆژە و پشکنینی ناوخۆیی دامەزراون؛ وانەی ٢٦ بە داوای خاوەن پڕۆژە و لە نەبوونی ماددەی بنەڕەتیی نێردراو، لەسەر بنەمای توێژینەوەی ئەکادیمیی سەرچاوەدار و بە تێبینیی سنووری بەڵگە دابڕێژراوە. هیچ فایلێکی قەدەغەکراو بەکارنەهاتووە.",
+  "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١ تا ١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت. وانەی ١٨ لە 2026-11-07 بە ناونیشانی کاری چالاک و نەچالاک زیاد کرا؛ بەشی سەرچاوە لە لاپەڕەی ١١٢ تا ١٢٤ شیکراوەتەوە، بەڵام وردەکاریی فۆڕمی نەچالاک و جیاوازیی شێوەزارەکان هێشتا پێویستیان بە پشتڕاستکردنەوەی داتای سۆرانی هەیە. بەشی Auxiliary Verbs لە لاپەڕەی ١٢٥ دەست پێدەکات و بۆ وانەیەکی سەربەخۆ هەڵگیراوە. بڕیاری خاوەن پڕۆژە: فایل/کتێبی Rezmany_axawtny_kurdy.pdf سەرچاوەی ڕێگەپێدراوی کۆرسی ٤ نییە؛ هەموو mapping و پێشنیارەکانی پەڕەبەندیی پێشووی پشتبەستوو بەو فایلە هەڵوەشێنراونەتەوە. هیچ سەرچاوەی جێگرەوە بە خۆکارانە دانانرێت و پێویستە تەنها ماددەی پەسەندکراوی خاوەن پڕۆژە بەکاربهێنرێت. لە 2026-11-07 وانەی ٢٢ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: پێشبەندە سەربەخۆکانی «لە، بە، بۆ»، گرێی پێشبەندی و جیاوازیی پێشبەند لە «ـە»ی لکێنراو. ئامرازی پەیوەندی و ئیزافە لە وانەی ٢٢ جیا کراونەتەوە و بۆ بابەتی سەربەخۆ هەڵگیراون. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. وانەی ٢٣ لە 2026-11-07 لەسەر ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی پەیوەندی، «و»، «یان»، «نە...نە» و جیاوازیی «یش» و پارتیکڵی جەخت. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. لە 2026-11-07 وانەی ٢٤ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی بانگکردن «یا، ئەی، ا» و جیاوازیی شوێنیان لە پێش و دوای ناوی بانگکراو؛ نموونەکانی فراوانکراوی فێرکاری بە ڕوونی لە پاشکۆدا جیا کراونەتەوە لە ماددەی ڕاستەوخۆ. لە 2026-11-07 وانەی ٢٥ لەسەر نیشانەی خستنەپاڵ «ی» زیاد کرا؛ نموونەکانی ئەردەڵان/سنە و وشەی کۆتایی‌دەنگدار بە شێوەی مەرجدار پارێزراون. هەشت ناوی جۆری گرێی خستنەپاڵ تەنها وەک لیستی نێردراو تۆمار کراون، چونکە پێناسە و نموونەی تەواویان لە ماددەی بەردەستدا نییە.",
+  "source_alignment_status": "source_mapping_suspended_owner_excluded_reference",
+  "source_alignment_note": "Owner instruction: Rezmany_axawtny_kurdy.pdf is not an authorized source for Course 4 and must not be used to draft, validate, or map lessons. All previous page mappings based on this PDF are withdrawn and must not be treated as evidence. Existing lesson content remains as previously authored pending use of owner-approved material; no replacement source is assumed. Active Lessons 22–25 use owner-supplied material and have no mapping to that PDF. وانەی ٢٦ بە توێژینەوەی ئەکادیمیی سەربەخۆی تایبەت بە پارتیکڵی گفتوگۆییی سۆرانی دابڕێژراوە؛ سەرچاوە و سنووری بەڵگە لە پاشکۆ و فایلەکەی توێژینەوەدا تۆمار کراون، و هیچ mappingێکی پەڕەیی بۆ کتێبی قەدەغەکراو نییە.",
+  "source_alignment_map": [
+    {
+      "lessons": "1",
+      "topic": "grammar introduction",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "2",
+      "topic": "parts of speech",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "3-5",
+      "topic": "noun",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "6-8",
+      "topic": "adjective",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "9",
+      "topic": "numerals and word formation",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "10-12",
+      "topic": "pronouns and clitics",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "13-17",
+      "topic": "verbs, complements, tenses and imperative",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "18",
+      "topic": "active and passive voice",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "19-21",
+      "topic": "adverbs/adverbials: time and place, derived forms with بەـ, and adverbial participation in compound verbs",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Withdrawn: the previously cited PDF is not an authorized Course 4 source. Do not use this mapping or its page claims."
+    },
+    {
+      "lessons": "historical proposed unit — not the active lesson mapping",
+      "topic": "Auxiliary Verbs — withdrawn historical proposal",
+      "source_pages": null,
+      "status": "excluded_by_owner_instruction",
+      "note": "Historical proposal withdrawn after owner instruction excluding the previously cited PDF. This entry does not describe active Lessons 22–24; active lessons 22–24 use owner-supplied material and have no mapping to that PDF."
+    },
+    {
+      "lessons": "26",
+      "topic": "Sorani Kurdish discourse particles",
+      "source_pages": null,
+      "status": "independent_academic_research_owner_requested_lesson",
+      "note": "Drafted from independently retrieved academic research specifically on Sorani discourse particles; evidence limits, bibliography and cross-lesson distinctions are recorded in docs/COURSE4_LESSON26_PARTICLES_RESEARCH.md and Appendix §50. No use of the excluded PDF."
+    }
+  ]
+}
