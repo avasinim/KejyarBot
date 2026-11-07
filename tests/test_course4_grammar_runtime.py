@@ -951,7 +951,7 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_29")
         self.assertEqual(lesson["number"], 29)
-        self.assertEqual(len(lesson["key_points"]), 13)
+        self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
@@ -962,6 +962,8 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         joined = " ".join(lesson["key_points"] + lesson["appendix"])
         for term in ("Derivation", "Inflection", "Ahmadi (2021)", "Ahmadi & Mahmudi (2023)", "پارتیکڵی کردار", "ـەوە"):
             self.assertIn(term, joined)
+        self.assertIn("لە هەموو توێژینەوەکاندا یەکسان نییە", joined)
+        self.assertIn("چوارچێوەیەکی شیکارییە", joined)
 
     def test_lesson_29_separates_derived_verbs_from_compounds_and_particles(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
@@ -1020,7 +1022,7 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_31")
         self.assertEqual(lesson["number"], 31)
         self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertEqual(len(lesson["key_points"]), 13)
+        self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
@@ -1031,6 +1033,9 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
         joined = " ".join(lesson["key_points"] + lesson["appendix"] + [" ".join(x) for x in lesson["examples"]])
         for term in ("Kareem (2016)", "Salavati", "Ahmadi (2018)", "کوشتنی ئاژەڵەکە", "دەنگدانمان", "Nominalization"):
             self.assertIn(term, joined)
+        self.assertIn("پەیوەندیی وانەی ٢٨ و ٣١", joined)
+        self.assertIn("-in/-n", joined)
+        self.assertIn("نەک وەک یاسای سۆرانی", joined)
 
     def test_lesson_31_does_not_assert_unverified_five_and_seven_lists(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
