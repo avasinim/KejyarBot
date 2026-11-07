@@ -311,6 +311,13 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertNotIn("Konjunktiv", content + examples)
         self.assertNotIn("لاپەڕەکانی ٨٥–٨٧", content)
         self.assertIn("هیچ کتێب، PDF یان سەرچاوەی دەرەکی", content)
+        appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
+        appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
+        self.assertIn("هیچ mappingی لاپەڕەیی", appendix_lesson13)
+        self.assertNotIn("٦٢–٨٤", appendix_lesson13)
+        self.assertNotIn("٨٥–٨٧", appendix_lesson13)
+        self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
+        self.assertNotIn("د. سەروەت محەمەد ئەمین", appendix_lesson13)
 
     def test_lesson13_registered_in_source_plan_and_manifest(self):
         source = json.loads(
