@@ -392,8 +392,8 @@ if __name__ == "__main__":
 
 
 class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
-    def test_course4_catalog_is_paginated_and_all_21_callbacks_are_reachable(self):
-        expected = [f"grammar_{number:02d}" for number in range(1, 22)]
+    def test_course4_catalog_is_paginated_and_all_22_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 23)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
@@ -407,7 +407,7 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 21)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 22)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             with self.subTest(lesson=lesson_id):
                 lesson = bot.LESSON_DATA[lesson_id]
