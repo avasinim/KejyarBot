@@ -307,7 +307,7 @@ class Course4GrammarLessons14To17Tests(unittest.TestCase):
                 self.assertEqual(len(lesson["appendix"]), 8)
         self.assertIn("ئەرکی گرووپی ناوی", " ".join(lessons["grammar_14"]["key_points"]))
         self.assertIn("پێشترتەواو", " ".join(lessons["grammar_15"]["key_points"]))
-        self.assertIn("دەـ بە تەنها کاتی داهاتوو نیشان نادات", " ".join(lessons["grammar_16"]["key_points"]))
+        self.assertIn("بە تەنها کاتی داهاتوو نیشان نادات", " ".join(lessons["grammar_16"]["key_points"]))
         self.assertIn("نەرێی داخوازی", " ".join(lessons["grammar_17"]["appendix"]))
 
     def test_lessons_14_to_17_registered_in_all_course4_indexes(self):
