@@ -777,6 +777,24 @@ class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
         self.assertIn("ئەردەڵان/سنە", l25)
         self.assertIn("نابێت وەک یاسای گشتی", l25)
 
+    def test_lessons_22_to_26_keep_functional_categories_distinct(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        l22 = " ".join(lessons[22]["key_points"] + lessons[22]["appendix"])
+        l23 = " ".join(lessons[23]["key_points"] + lessons[23]["appendix"])
+        l24 = " ".join(lessons[24]["key_points"] + lessons[24]["appendix"])
+        l25 = " ".join(lessons[25]["key_points"] + lessons[25]["appendix"])
+        l26 = " ".join(lessons[26]["key_points"] + lessons[26]["appendix"])
+        self.assertIn("پێشبەند", l22)
+        self.assertIn("ئامرازی پەیوەندی", l23)
+        self.assertIn("«ـیش»", l23)
+        self.assertIn("لکاوی زیادکردن/جەخت", l26)
+        self.assertIn("ئامرازی بانگکردن", l24)
+        self.assertIn("ئیزافە", l25)
+        self.assertIn("پارتیکڵی گفتوگۆیی", l26)
+        self.assertIn("وانەی ٢٥", l26)
+        self.assertNotIn("ش/یش", l23)
+
     def test_lessons_19_to_25_keep_the_standard_quiz_schema_and_counts(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["number"]: item for item in source["lessons"]}
@@ -820,6 +838,8 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_23")
         self.assertTrue(any("لکاوی زیادکردن/جەختە" in item for item in lesson["appendix"]))
+        self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
+        self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
 
     def test_course4_has_26_lessons_and_plan_records_lesson_26(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
