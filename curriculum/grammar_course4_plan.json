@@ -3,89 +3,56 @@
   "course_key": "course_grammar",
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
-  "status": "drafting_owner_supplied_replacement_lessons",
-  "replacement_state": "legacy_grammar_lessons_removed_new_owner_supplied_lessons_in_progress",
+  "status": "owner_topic_driven_curriculum_in_progress",
   "language": "ckb",
   "lesson_count": null,
+  "source_model": {
+    "primary_source": "topics_and_lesson_materials_supplied_directly_by_course_owner",
+    "source_file": null,
+    "owner_role": "provides_topics, lesson goals, and any draft text",
+    "assistant_role": "develops lesson structure and explanations; checks grammar, linguistics, terminology, and scientific accuracy using established linguistic knowledge and reliable references when needed",
+    "prohibition": "Do not use the previously inspected 400-page PDF, its extracted text, page images, page ranges, or its old nine-section outline as a source or curriculum constraint."
+  },
+  "excluded_sources": [
+    {
+      "file": "Rezmany_axawtny_kurdy.pdf",
+      "role": "removed_and_not_a_course4_source",
+      "must_not_use": true
+    },
+    {
+      "file": "ڕێزمانی ڕاناوی لکاو.pdf",
+      "role": "not_a_course4_source",
+      "must_not_use": true
+    }
+  ],
+  "curriculum_structure": {
+    "source": "owner_supplied_topics",
+    "fixed_section_outline": null,
+    "rule": "The course sequence and lesson titles are determined by topics sent by the owner. Do not revive the former nine-section book outline or infer new topics from it."
+  },
   "lessons": [
     {
       "number": 1,
       "id": "grammar_01",
       "title": "وانەی ١: پێشەکی — ڕێزمان (Grammar)",
-      "status": "owner_review_pending_scientific_term_clarification",
-      "note": "دەقی پێشتر تۆمارکراو پارێزراوە؛ لەبەر نەبوونی پشتڕاستکردنەوە، ناوەڕۆکی ئەم وانەیە لێرەدا ناگۆڕدرێت."
+      "status": "provisional_existing_record_pending_alignment_with_owner_material",
+      "note": "پارێزراوە بۆ ئەوەی هیچ دەقێک بەبێ ڕەزامەندی نەسڕدرێتەوە؛ پێش بەکارهێنان دەبێت لەگەڵ بابەت و دەقی نوێی خاوەن پڕۆژە بگونجێندرێت."
     }
   ],
-  "source": {
-    "file": "Rezmany_axawtny_kurdy.pdf",
-    "title": "ڕێزمانی ئاخافتنی کوردی",
-    "page_count": 400,
-    "role": "sole_course4_reference_source"
-  },
-  "excluded_sources": [
-    {
-      "file": "ڕێزمانی ڕاناوی لکاو.pdf",
-      "role": "not_a_course4_source",
-      "must_not_mix": true
-    }
-  ],
-  "approved_sections": [
-    {
-      "number": 1,
-      "title": "ناو",
-      "pages": "11–24"
-    },
-    {
-      "number": 2,
-      "title": "ڕاناو",
-      "pages": "25–65"
-    },
-    {
-      "number": 3,
-      "title": "ئاوەڵناو",
-      "pages": "66–79"
-    },
-    {
-      "number": 4,
-      "title": "کار",
-      "pages": "80–221"
-    },
-    {
-      "number": 5,
-      "title": "چاوگ",
-      "pages": "222–235"
-    },
-    {
-      "number": 6,
-      "title": "ئاوەڵکار",
-      "pages": "236–253"
-    },
-    {
-      "number": 7,
-      "title": "پریپۆزیشن",
-      "pages": "254–272"
-    },
-    {
-      "number": 8,
-      "title": "هاوەڵ / ئامرازی عەتف",
-      "pages": "273–348"
-    },
-    {
-      "number": 9,
-      "title": "ئامرازی سەرسووڕمان",
-      "pages": "349–373"
-    }
-  ],
-  "supplementary_pages": {
-    "pages": "374–397",
-    "role": "supplementary_material_not_a_main_section"
-  },
-  "replacement_policy": "وانە نوێیەکانی خاوەن پڕۆژە جێگەی وانە کۆنەکانی ڕێزمان دەگرنەوە. سەرچاوەی کتێبی کۆرس و نەخشەی پەسەندکراوی ٩ بەش هەروا دەمێننەوە؛ گۆڕینی وانەکان بە مانای سڕینەوەی کتێب یان نەخشە نییە. هیچ دەق یان نموونەیەک لە خۆوە زیاد مەکرێت.",
   "drafting_progress": {
     "user_reported_progress": "نزیکەی ٨ وانەی نوێ لە بابەتەکانی ناو و هاوەڵناو داڕێژراون.",
     "current_focus": "وانەکانی ٦ و ٧ و ٨ لە بابەتی هاوەڵناو.",
-    "repository_sync": "تەنها ئەو دەقانەی بە ڕاستی لە فایلەکانی پڕۆژەدا تۆمار کراون بە ناوی فایلەکانی پڕۆژە دەردەکەون؛ دەقی وانەکانی دیکە نابێت بە خەیاڵ پڕ بکرێتەوە."
+    "repository_sync": "لە snapshot ـی پشکنراودا تەنها grammar_01 وەک داتا تۆمار کراوە؛ ئەمە بە مانای نەبوونی وانەکانی دیکە لە کاری پێشوودا نییە. دەقی وانەکانی دیکە تەنها لەسەر بنەمای ماددەی ڕاستەقینەی نێردراوی خاوەن پڕۆژە تۆمار بکرێت."
   },
-  "curriculum_policy": "تەنها دەقی نێردراو و پەسەندکراوی خاوەن پڕۆژە بۆ وانەکان بەکاربهێنە. سەرچاوەی تاکی کۆرس Rezmany_axawtny_kurdy.pdf ـە. کتێبی ڕێزمانی ڕاناوی لکاو بە هیچ شێوەیەک تێکەڵ مەکە.",
-  "note": "پلانی ٩ بەشی پەسەندکراو پارێزراوە. گۆڕانکارییەکانی 2026-11-07 کە کۆرسەکەیان بە یەک وانە کورت کردبوو هەڵە بوون؛ لە commit ـەکانی دواتردا ڕێکخراون. هیچ merge، deploy، Botkeep sync یان گۆڕانکاری main لەم کارەدا نەکراوە."
+  "scientific_editorial_method": [
+    "بابەت و دەقی خاوەن پڕۆژە بنەمای وانەیە؛ مەبەست و سنووری بابەت مەگۆڕە.",
+    "ڕێکخستنی وانە، پێناسە، ڕوونکردنەوە و نموونە بە پشتبەستن بە زانستی زمانناسی و ڕێزمانی دروست بکرێت.",
+    "هەڵەی زانستی، زمانناسی، زاراوەیی، ڕێنووسی یان ناهاوتاییی ناوخۆیی دیاری بکرێت و بە ڕوونی چاک بکرێتەوە؛ هۆکاری چاککردنەوەکەش بڵێ.",
+    "جیاوازیی شێوەزار، ڕێزمانی وەسفی و ڕێزمانی پێوەری، و ئاستەکانی دەنگ، وشەسازی، ڕستەسازی و واتاسازی تێکەڵ مەکە.",
+    "هیچ زانیاری، یاسا، سەرچاوە، نموونە یان بەڵگەیەک لە خۆوە بە ناوی خاوەن پڕۆژە مەنووسە؛ ئەگەر خاڵێک نادڵنیا بوو، وەک خاڵی پێویستی بە پشتڕاستکردنەوە نیشانەی بکە.",
+    "لە کاتی پێویستدا سەرچاوەی زانستیی باوەڕپێکراو بەکاربهێنە و جیاوازیی بۆچوونە زانستییەکان ڕوون بکەوە."
+  ],
+  "legacy_material_policy": "هەموو فایلەکانی COURSE4_SOURCE، COURSE4_VISUAL، COURSE4_CROP، COURSE4_EVIDENCE و پشکنینە پەیوەندیدارەکانی PDFی پێشوو تەنها تۆماری مێژوویی کارن؛ سەرچاوە، بەڵگە یان ڕێنمایی بۆ وانە نوێکان نین و نابێت لە ناوەڕۆکی کۆرسی نوێدا بەکاربهێنرێن.",
+  "next_step": "چاوەڕێی بابەت یان دەقی داهاتووی خاوەن پڕۆژە بە، پاشان وانەکە بە شێوەیەکی زانستی دابڕێژە و پێداچوونەوەی زمانناسی بۆ بکە.",
+  "safety": "تەنها برانچی کاری جیاکراوە بگۆڕە. main، production DB، migrations، Botkeep و deployment بێ ڕەزامەندیی ڕاستەوخۆ دەستکاری مەکە."
 }
