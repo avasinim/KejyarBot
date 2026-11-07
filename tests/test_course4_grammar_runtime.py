@@ -238,13 +238,13 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
         )
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
-        expected_ids = [f"grammar_{number:02d}" for number in range(1, 18)]
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 19)]
         source_ids = [lesson["id"] for lesson in source["lessons"]]
         plan_ids = [lesson["id"] for lesson in plan["lessons"]]
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
 
         self.assertEqual(source_ids, expected_ids)
-        self.assertEqual(plan["lesson_count"], 17)
+        self.assertEqual(plan["lesson_count"], 18)
         self.assertEqual(plan_ids, expected_ids)
         self.assertEqual(course["lesson_ids"], expected_ids)
 
