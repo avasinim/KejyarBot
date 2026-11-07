@@ -713,3 +713,21 @@ class Course4VoiceAndErgativeAlignmentConsistencyTests(unittest.TestCase):
         self.assertIn("Alignment", appendix)
         self.assertIn("جیاوازن", appendix)
         self.assertIn("نابێت «لەلایەن» وەک نیشانەی یەکگرتووی ئەنجامدەر", appendix)
+
+
+class Course4Lessons18To21CrossAuditTests(unittest.TestCase):
+    def test_quiz_schema_has_no_duplicate_or_unrecognized_question_fields(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        for number in range(18, 22):
+            for question in lessons[number]["quiz"]:
+                self.assertEqual(set(question), {"q", "options", "answer", "explanation"})
+        self.assertIn("خوێندنەوەی چالاکی ڕابردووی تێپەڕ", lessons[18]["quiz"][2]["q"])
+
+    def test_lesson21_does_not_present_incomplete_darkirdin_sentence_as_valid_example(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson21 = next(item for item in source["lessons"] if item["number"] == 21)
+        example = lesson21["examples"][0][1]
+        self.assertIn("ڕستەی نموونەی سەرچاوە تەواو و ڕوون نەبوو", example)
+        self.assertNotIn("ئەو دەرکردنی لە ژوورەکە.", example)
+        self.assertIn("پێویستیان بە پشکنینی فەرهەنگی هەیە", " ".join(lesson21["appendix"]))
