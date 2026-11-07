@@ -458,7 +458,7 @@ class Course4PrepositionLesson22Tests(unittest.TestCase):
         self.assertIn("ماددەی ڕاستەوخۆی نێردراوی خاوەن پڕۆژە", " ".join(lesson["appendix"]))
         self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
 
-    def test_course4_catalogs_register_24_lessons_without_changing_other_courses(self):
+    def test_course4_catalogs_register_25_lessons_without_changing_other_courses(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
