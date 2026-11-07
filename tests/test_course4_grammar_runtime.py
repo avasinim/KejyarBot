@@ -149,7 +149,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("هاوەڵکار", " ".join(lesson6["key_points"]))
         self.assertIn("ناوەکە وەسف دەکات", lesson6["key_points"][0])
         self.assertNotIn("ئاماژەی جێناویش دەکات", lesson6["key_points"][0])
-        expected_appendix_counts = {"grammar_03": 22, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9, "grammar_14": 8, "grammar_15": 9, "grammar_16": 8, "grammar_17": 8, "grammar_18": 7, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 9}
+        expected_appendix_counts = {"grammar_03": 30, "grammar_04": 6, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6, "grammar_10": 4, "grammar_11": 5, "grammar_12": 5, "grammar_13": 9, "grammar_14": 8, "grammar_15": 9, "grammar_16": 8, "grammar_17": 8, "grammar_18": 7, "grammar_19": 8, "grammar_20": 8, "grammar_21": 8, "grammar_22": 8, "grammar_23": 9}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -1091,9 +1091,9 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertEqual(lesson["title"], planned["title"])
         self.assertIn("تایبەتمەندییەکانی ناو", lesson["title"])
         self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertEqual(len(lesson["exercises"]), 6)
-        self.assertEqual(len(lesson["comprehension"]), 11)
-        self.assertEqual(len(lesson["quiz"]), 9)
+        self.assertEqual(len(lesson["exercises"]), 5)
+        self.assertEqual(len(lesson["comprehension"]), 10)
+        self.assertEqual(len(lesson["quiz"]), 8)
         self.assertEqual(len(lesson["examples"]), 15)
         self.assertEqual(len(lesson["appendix"]), 30)
         self.assertTrue(all(len(q["options"]) == 4 and 0 <= q["answer"] < 4 and q["explanation"].strip() for q in lesson["quiz"]))
