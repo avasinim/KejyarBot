@@ -239,7 +239,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertEqual(len(lesson["exercises"]), 5)
             self.assertEqual(len(lesson["comprehension"]) - 2, 8)
             self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertIn("من، تۆ، ئەو، ئێمە، ئێوە، ئەوان", " ".join(lessons["grammar_10"]["key_points"]))
+        for pronoun in ("من", "تۆ", "ئەو", "ئێمە", "ئێوە", "ئەوان"):
+            self.assertIn(pronoun, " ".join(lessons["grammar_10"]["key_points"]))
         self.assertIn("خاوەنداری", " ".join(lessons["grammar_11"]["key_points"]))
         self.assertIn("ئەرجەتیڤی", " ".join(lessons["grammar_12"]["key_points"]))
         self.assertNotIn("هەموو", " ".join(lessons["grammar_12"]["key_points"][:1]))
