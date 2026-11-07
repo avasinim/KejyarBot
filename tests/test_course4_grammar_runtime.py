@@ -62,7 +62,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("فێزیۆلۆژی", bot.LESSON_DATA["grammar_01"]["content"])
         self.assertIn("پاشکۆ", bot.LESSON_DATA["grammar_02"]["content"])
         self.assertIn("چالاکییەکان", bot.LESSON_DATA["grammar_02"]["content"])
-        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 5}
+        expected_appendix_counts = {"grammar_03": 4, "grammar_04": 5, "grammar_05": 7, "grammar_06": 6, "grammar_07": 5, "grammar_08": 6}
         for lesson_id, appendix_count in expected_appendix_counts.items():
             lesson = next(item for item in source["lessons"] if item["id"] == lesson_id)
             self.assertEqual(len(lesson["appendix"]), appendix_count)
@@ -93,6 +93,9 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         self.assertIn("نامەی درێژ", " ".join(item[0] for item in lesson6["examples"]))
         self.assertIn("نامە درێژەکە", " ".join(item[0] for item in lesson6["examples"]))
         self.assertIn("Open adjectival izafa", " ".join(lesson6["appendix"]))
+        lesson8 = next(item for item in source["lessons"] if item["id"] == "grammar_08")
+        self.assertIn("هەرە + هاوەڵناو", " ".join(lesson8["key_points"]))
+        self.assertIn("هەرە + هاوەڵناو", " ".join(lesson8["appendix"]))
 
     def test_all_course4_lesson_quizzes_and_learning_components_are_well_formed(self):
         source = json.loads(
