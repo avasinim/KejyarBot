@@ -199,7 +199,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
                 kurdish_digits = "١٢٣٤٥٦٧٨"
                 for number, question in enumerate(comprehension[1:9]):
                     self.assertTrue(question.startswith(f"{kurdish_digits[number]}. "))
-                self.assertTrue(comprehension[9].startswith(f"کۆتایی وانەی {lesson['number']}:"))
+                lesson_digit = "١٢٣٤٥٦٧٨"[lesson["number"] - 1]
+                self.assertTrue(comprehension[9].startswith(f"کۆتایی وانەی {lesson_digit}:"))
 
 
 if __name__ == "__main__":
