@@ -347,7 +347,7 @@ class Course4GrammarLessons14To17Tests(unittest.TestCase):
                 self.assertEqual(len(lesson["activities"]), 3)
                 self.assertEqual(len(lesson["exercises"]), 5)
                 self.assertEqual(len(lesson["comprehension"]), 10)
-                self.assertEqual(len(lesson["appendix"]), 8)
+                self.assertEqual(len(lesson["appendix"]), 9 if lesson_id == "grammar_15" else 8)
         self.assertIn("ئەرکی گرووپی ناوی", " ".join(lessons["grammar_14"]["key_points"]))
         self.assertIn("پێشترتەواو", " ".join(lessons["grammar_15"]["key_points"]))
         self.assertIn("بە تەنها کاتی داهاتوو نیشان نادات", " ".join(lessons["grammar_16"]["key_points"]))
@@ -663,3 +663,30 @@ class Course4CliticAndPastPerfectTerminologyTests(unittest.TestCase):
         content = " ".join(lesson["key_points"] + lesson["appendix"])
         self.assertNotIn("پاشگرەکانی «ـووە/ـوە» و «بوو»", content)
         self.assertIn("نابێت بە خۆکار هەموویان وەک پاشگر پۆلێن بکرێن", content)
+
+
+class Course4TenseAspectMoodConsistencyTests(unittest.TestCase):
+    def test_tense_aspect_mood_are_separate_concepts_across_lessons_15_to_17(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        lesson15 = " ".join(lessons[15]["key_points"] + lessons[15]["appendix"])
+        lesson16 = " ".join(lessons[16]["key_points"] + lessons[16]["appendix"])
+        lesson17 = " ".join(lessons[17]["key_points"] + lessons[17]["appendix"])
+        self.assertIn("Tense = دەم/کاتی ڕێزمانی", lesson15)
+        self.assertIn("Aspect = «ڕووی کردار»", lesson15)
+        self.assertIn("Mood = ڕەوشی کردار", lesson17)
+        self.assertIn("ڕووی کردار", lesson17)
+        self.assertIn("فۆڕمی ڕانەبردوو", lesson16)
+        self.assertIn("خوێندنەوەی ئێستا، عادەت یان داهاتوو", lesson16)
+        self.assertIn("کاتی ڕاستەقینە", lesson16)
+        self.assertNotIn("Aspect = ڕەوش", lesson15 + lesson16 + lesson17)
+        self.assertNotIn("Mood = دەم", lesson15 + lesson16 + lesson17)
+
+    def test_lesson15_aspect_labels_are_not_presented_as_four_identical_tenses(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in source["lessons"] if item["number"] == 15)
+        note = lesson["appendix"][-1]
+        self.assertIn("ڕابردووی بەردەوام", note)
+        self.assertIn("ڕابردووی تەواو", note)
+        self.assertIn("پێشترتەواو", note)
+        self.assertIn("نە بانگەشەی یەک شیکردنەوەی تاک", note)
