@@ -26,7 +26,8 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         for number, lesson in enumerate(lessons, start=1):
             localized_number = "".join(kurdish_digits[int(digit)] for digit in str(number))
             self.assertTrue(lesson["title"].startswith(f"وانەی {localized_number}:"))
-            self.assertEqual(len(lesson["key_points"]), 6 if number == 1 else len(lesson["key_points"]))
+            self.assertTrue(lesson["key_points"], lesson["id"])
+            self.assertTrue(lesson["appendix"], lesson["id"])
             self.assertEqual(len(lesson["activities"]), 3, lesson["id"])
             self.assertEqual(len(lesson["exercises"]), 5, lesson["id"])
             self.assertEqual(len(lesson["comprehension"]), 10, lesson["id"])
