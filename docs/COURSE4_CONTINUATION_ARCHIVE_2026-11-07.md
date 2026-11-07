@@ -281,3 +281,13 @@
 - بە پێچەوانەوە، `feat/course4-clean-port-main-20261106` داتای ٣١ وانەی کۆن/پێشوو هەڵدەگرێت: SHAی فایلەکە `4789a3c969786acd144cea528db2c4c57d9353ac`، پلانی ٣١ وانە SHAی `ea5d2df67e73de6928ddf4c1861b31990d8abcdc` و manifestی ٣١ ناسنامەی وانە SHAی `6cf263138159bcb36e1b28b6a49bded3fbc24608` ـە.
 - بۆ بەردەوامیی کار، `reset/grammar-course4-content` و handoffی 2026-11-07 وەک دۆخی نوێی کۆرسی چالاکی خاوەن پڕۆژە تێدەگەین؛ لقەی ٣١ وانەیی و ئەرشیفی `backup/course4-archive-2026-11-07` وەک مێژووی جیاواز و پێشوو دەپارێزرێن. ئەم دوو مێژووە نابێت بەبێ بڕیاری خاوەن پڕۆژە یەکبخرێن یان داتای یەکێکیان جێگای ئەوی تر بگرێتەوە.
 - هیچ وانەیەک لە ٣١ وانەی مێژووییەوە بۆ دۆخی نوێی یەک وانە نەگوازرایەوە؛ هیچ دەقێک نەسڕایەوە. هیچ گۆڕانکارییەک لە `reset/grammar-course4-content`، runtime، `main`، Botkeep، DB یان production نەکرا.
+
+
+## 20. تۆماری زنجیرەی مێژووییی دۆخی کۆرسی ٤ — 2026-11-07
+پشکنینی لقە مێژووییەکان چوار دۆخی جیاوازی تری کۆرسی ٤ی پشتڕاست کردەوە؛ ئەمانە وەشان و خاڵی گەشەپێدانی جیاوازن و نابێت لە یەکدا بتوێنرێنەوە:
+- `backup/grammar-course4-2026-11-04-v74`: پلانی ٣٠ وانەیی لە `curriculum/grammar_course4_plan.json` (SHA `78969b47c6f784ce525405ea256058778171e050`)؛ manifest کۆرسەکەی `planned` و `lesson_ids=[]` ـە، و فایلێکی runtimeی `course_data/grammar_course4_lessons.json` لەم لقەدا نییە.
+- `checkpoint/course4-2026-11-05-2102`: پلانی `planned` و `lesson_count=0`، manifest بە `lesson_ids=[]`؛ ئەمە خاڵی checkpointی پێش وانەسازییە.
+- `backup/course4-lesson4-clear-before-owner-text-20261106`: وەشانی ٨ وانەیی لە curriculum و manifest (ناسنامەکانی `grammar_01` تا `grammar_08`)؛ فایلەکەی `course_data/grammar_course4_lessons.json` لەو لقەدا نییە.
+- `reset/grammar-course4-content`: دۆخی نوێی خاوەن پڕۆژە بە تەنها وانەی ١ و manifestی `grammar_01`، و handoffی 2026-11-07 ئەمە وەک برانچی کاریی نوێ دەستنیشان دەکات.
+- `feat/course4-clean-port-main-20261106`: داتای ٣١ وانەیی کە بە جیاوازی لە ئەرشیفی مێژوویی پارێزراوە.
+**ڕێنمایی بەردەوامی:** دۆخی نوێی یەک وانە لەسەر برانچی `reset/grammar-course4-content` بۆ کاری نوێ بەکاربهێنە، مەگەر خاوەن پڕۆژە بڕیارێکی نوێ بدات؛ ٣٠ وانەی planned، ٨ وانەی پێشووتر و ٣١ وانەی archive بە مێژووی جیاواز بپارێزە. هیچ یەکێک بەبێ بڕیاری ڕوونی خاوەن پڕۆژە جێگای ئەوی تر ناگرێتەوە.
