@@ -731,3 +731,63 @@ class Course4Lessons18To21CrossAuditTests(unittest.TestCase):
         self.assertIn("ڕستەی نموونەی سەرچاوە تەواو و ڕوون نەبوو", example)
         self.assertNotIn("ئەو دەرکردنی لە ژوورەکە.", example)
         self.assertIn("پێویستیان بە پشکنینی فەرهەنگی هەیە", " ".join(lesson21["appendix"]))
+
+
+class Course4Lessons19To25CrossAuditTests(unittest.TestCase):
+    def test_adverb_adverbial_and_derived_form_distinctions_persist(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        l19 = " ".join(lessons[19]["key_points"] + lessons[19]["appendix"])
+        l20 = " ".join(lessons[20]["key_points"] + lessons[20]["appendix"])
+        l21 = " ".join(lessons[21]["key_points"] + lessons[21]["appendix"])
+        self.assertIn("هاوەڵکار (Adverb) پۆلی وشەییە", l19)
+        self.assertIn("هاوەڵکاری (Adverbial) ئەرکی ڕستەییە", l19)
+        self.assertIn("پریپۆزیشن", l20)
+        self.assertIn("پێشگری کوردی", l20)
+        self.assertIn("hardly", l20)
+        self.assertIn("هاوەڵناو دەتوانێت ئەرکی هاوەڵکاری ببینێت", l21)
+        self.assertIn("پۆلی وشە و ئەرکی ڕستەیی جیاوازن", l21)
+
+    def test_preposition_conjunction_and_vocative_roles_are_not_conflated(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        l22 = " ".join(lessons[22]["key_points"] + lessons[22]["appendix"])
+        l23 = " ".join(lessons[23]["key_points"] + lessons[23]["appendix"])
+        l24 = " ".join(lessons[24]["key_points"] + lessons[24]["appendix"])
+        self.assertIn("هاوتای زاراوەی «پریپۆزیشن»ی وانەی ٢", l22)
+        self.assertIn("ـە", l22)
+        self.assertIn("پارتیکڵی زیادکردن/جەخت", l23)
+        self.assertIn("ئامرازی بانگکردن", l24)
+        self.assertIn("ئەرک و سیاق", l24)
+        self.assertIn("یا", l24)
+        self.assertIn("ئامرازی پەیوەندی", l24)
+
+    def test_izafa_distinction_remains_aligned_with_lessons_6_and_14(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        l6 = " ".join(lessons[6]["key_points"] + lessons[6]["appendix"])
+        l14 = " ".join(lessons[14]["key_points"] + lessons[14]["appendix"])
+        l25 = " ".join(lessons[25]["key_points"] + lessons[25]["appendix"])
+        self.assertIn("ئیزافەی کراوە", l6)
+        self.assertIn("ئیزافەی داخراو", l6)
+        self.assertIn("پاشبەستەی خاوەنداری", l14)
+        self.assertIn("ئیزافەی کراوە", l25)
+        self.assertIn("ئیزافەی داخراو", l25)
+        self.assertIn("پاشبەستی خاوەنداری", l25)
+        self.assertIn("ئەردەڵان/سنە", l25)
+        self.assertIn("نابێت وەک یاسای گشتی", l25)
+
+    def test_lessons_19_to_25_keep_the_standard_quiz_schema_and_counts(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = {item["number"]: item for item in source["lessons"]}
+        for number in range(19, 26):
+            lesson = lessons[number]
+            self.assertEqual(len(lesson["key_points"]), 8)
+            self.assertEqual(len(lesson["examples"]), 8)
+            self.assertEqual(len(lesson["activities"]), 3)
+            self.assertEqual(len(lesson["exercises"]), 5)
+            self.assertEqual(len(lesson["comprehension"]), 10)
+            self.assertEqual(len(lesson["quiz"]), 8)
+            self.assertTrue(all(set(q) == {"q", "options", "answer", "explanation"} for q in lesson["quiz"]))
+            self.assertTrue(all(0 <= q["answer"] < len(q["options"]) for q in lesson["quiz"]))
+            self.assertTrue(all(q["explanation"].strip() for q in lesson["quiz"]))
