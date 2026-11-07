@@ -389,7 +389,6 @@ class Course4ComprehensionFormattingTests(unittest.TestCase):
         source = json.loads(
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
-        duplicate_prefix = re.compile(r"^([٠-٩]+)\.\s+\1\.\s+")
         for lesson in source["lessons"]:
             with self.subTest(lesson=lesson["id"]):
                 questions = lesson["comprehension"][1:9]
