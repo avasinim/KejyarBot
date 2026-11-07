@@ -1016,6 +1016,40 @@ class Course4ComplexPredicateLesson30Tests(unittest.TestCase):
 
 
 
+class Course4TerminologyChainTests(unittest.TestCase):
+    def test_course4_uses_consistent_preposition_interjection_and_verb_stem_terms(self):
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        lessons = source["lessons"]
+        all_text = " ".join(
+            value
+            for lesson in lessons
+            for value in self._strings(lesson)
+        )
+        self.assertNotIn("پریپۆزیشن", all_text)
+        self.assertNotIn("ئامرازی سەرسوڕمان", all_text)
+        self.assertIn("پێشبەند (Preposition", all_text)
+        self.assertIn("ئامرازی سەرسووڕمان (Interjection)", all_text)
+        lesson13 = next(item for item in lessons if item["id"] == "grammar_13")
+        glossary = " ".join(lesson13["appendix"])
+        self.assertIn("Root = ڕەگ", glossary)
+        self.assertIn("Verb stem = بنج", glossary)
+        self.assertIn("Root و Stem هاوتای یەکتر نین", glossary)
+        lesson16 = next(item for item in lessons if item["id"] == "grammar_16")
+        self.assertIn("بنجی ئێستا", lesson16["title"])
+        self.assertNotIn("بنەمای ئێستا", all_text)
+        self.assertNotIn("بنەمای ڕابردوو", all_text)
+
+    @staticmethod
+    def _strings(value):
+        if isinstance(value, str):
+            return [value]
+        if isinstance(value, list):
+            return [part for item in value for part in Course4TerminologyChainTests._strings(item)]
+        if isinstance(value, dict):
+            return [part for item in value.values() for part in Course4TerminologyChainTests._strings(item)]
+        return []
+
+
 class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
     def test_lesson_31_schema_and_nominalization_evidence(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
