@@ -260,19 +260,22 @@
       "id": "grammar_46",
       "title": "ڕستەی سادە و ڕستەی لێکدراو؛ ڕستەی سەربەخۆ و ژێرەڕستە",
       "source": "docs/source_archive/COURSE4_LESSON_046_OWNER_SOURCE_TEXT_2026-11-07.md",
-      "source_state": "owner_raw_and_separate_draft_exist",
+      "source_state": "owner_supplied_lesson_draft_audited_not_approved",
       "required_work": [
-        "align key terms with lessons 32-38",
-        "review clause taxonomy and examples",
-        "normalize into runtime schema"
+        "resolve compound vs complex terminology against lesson 37 source",
+        "resolve subordinate clause vs بەرڕستە/ژێرەڕستە terminology",
+        "review coordinating vs subordinating conjunction classifications",
+        "revise exercise answer key after taxonomy decision",
+        "normalize into runtime schema only after approval"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSON_046_TERMINOLOGY_AUDIT_2026-11-08.md"
     }
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Lessons 32-38 now have seven verified verbatim owner-source staging segments. Lessons 39-45 now have seven separate transcript-draft staging segments; these are explicitly labelled assistant-expanded drafts, not owner raw source.",
-    "caution": "No lesson 32-45 staging file is approved runtime content. Lesson 46 remains in its standalone source archive and needs terminology review.",
-    "next": "Review the 46th lesson and align the lesson 32-46 terminology sequence; only after that prepare runtime JSON proposals for approval."
+    "completed": "Lessons 32-38 have seven verified owner-source segments; lessons 39-45 have seven separately labelled transcript-draft segments; lesson 46 has a terminology audit comparing its draft with lessons 37-38.",
+    "caution": "The audit records conflicts and provisional recommendations only. No final terminology policy or lesson approval has been applied; no runtime data changed.",
+    "next": "Continue the cross-lesson terminology audit for lessons 32-36, then prepare a reviewed glossary decision sheet for owner confirmation before drafting runtime entries."
   }
 }
