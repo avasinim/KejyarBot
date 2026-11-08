@@ -73,3 +73,5 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **JSON/quiz comparison update:** both main and branch retain 26 lessons and 208 quiz questions; branch has richer examples/appendix/key points. Quiz differences: 185 permutations, 14 question texts, 21 option sets, 13 correct-answer texts, 17 explanations. Lesson 3 most divergent. No overwrite; all flagged for source-based review. See reconciliation report.
+
+- Quiz answer divergence audit (13 جیاوازیی answer text، هیچ هەڵەی ڕوونی answer key لە branch نەدۆزرایەوە): `docs/source_archive/COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`
