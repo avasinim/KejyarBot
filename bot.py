@@ -1027,7 +1027,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
 
 COURSE_MENU_PAGE_SIZE = 12
 
