@@ -22,3 +22,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** پشکنینی دواتری وانەکانی 37–38 و دۆخی ئێستای branch/CI لە کۆتایی `COURSE4_RECOVERY_CHECKPOINT_2026-11-08.md` تۆمار کراوە.
+
+
+**نوێکردنەوە:** یەکسانکردنی زاراوەی وانەی ٤٦ لە ڕەشنووس، structured review و Preservation Bundle تۆمار کراوە؛ وردەکاری لە checkpoint و terminology audit ـە.
