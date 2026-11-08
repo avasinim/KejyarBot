@@ -147,9 +147,25 @@ CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
 )
 UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
+GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
+GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
+    GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
+)
+# Course 4 expanded review drafts retain their authored Markdown as the display source.
+# Render it with the same table/heading-aware formatter used by the other lesson sources;
+# the structured fields remain available for quiz and review metadata.
+for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
+    source_markdown = raw_lesson.get("source_markdown")
+    lesson_id = raw_lesson.get("id")
+    if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
+        rendered_source = format_lesson_draft(source_markdown)
+        if raw_lesson["title"] not in rendered_source:
+            rendered_source = f'{raw_lesson["title"]}\n\n{rendered_source}'
+        GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = rendered_source
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
     (UNIFIED_LESSONS, UNIFIED_QUIZZES),
+    (GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES),
 ):
     duplicate_ids = set(LESSON_DATA).intersection(course_lessons)
     if duplicate_ids:
@@ -264,7 +280,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -275,7 +291,26 @@ def validate_activated_course_runtime():
                 f"expected {expected_count}"
             )
         missing_lessons = [lesson_id for lesson_id in lesson_ids if lesson_id not in LESSON_DATA]
-        missing_quizzes = [lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)]
+        grammar_quiz_pending = (
+            course_id == "grammar"
+            and bool(lesson_ids)
+            and all(
+                LESSON_DATA.get(key, {}).get("review_status", "").startswith("owner_review_pending")
+                for key in lesson_ids
+            )
+        )
+        missing_quizzes = [] if grammar_quiz_pending else [
+            lesson_id for lesson_id in lesson_ids
+            if not QUIZ_DATA.get(lesson_id)
+            and not (
+                course_id == "grammar"
+                and LESSON_DATA.get(lesson_id, {}).get("review_status", "").startswith("owner_review_pending")
+            )
+        ]
+        if course_id == "grammar":
+            grammar_lessons = [LESSON_DATA[key] for key in lesson_ids if key in LESSON_DATA]
+            if any(not item.get("content", "").strip() for item in grammar_lessons):
+                raise RuntimeError("Course 4 contains an empty lesson")
         if missing_lessons or missing_quizzes:
             raise RuntimeError(
                 f"Required course {course_id} is incomplete at startup: "
@@ -348,6 +383,7 @@ BADGE_COURSE_TITLES = {
     "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
     "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
     "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+    "grammar": "کەژیار | زانستی زمان — بەشی ڕێزمان",
 }
 
 
@@ -380,10 +416,30 @@ def check_badges(user_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
+def lesson_is_pending_review(lesson):
+    return (
+        LESSON_DATA.get(lesson, {}).get("review_status")
+        == "owner_review_pending_expanded_draft"
+    )
+
+
 def lesson_keyboard(lesson):
+    # Owner-review drafts are readable for beta inspection, never completable.
+    if lesson_is_pending_review(lesson):
+        return None
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+
+def lesson_display_content(lesson, content):
+    if lesson_is_pending_review(lesson):
+        notice = (
+            "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
+            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و خەڵات/تەواوکردنی بۆ چالاک نەکراوە.\\n\\n"
+        )
+        return notice + content
+    return content
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
@@ -409,6 +465,12 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if lesson not in LESSON_COURSE:
         await query.answer()
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
+        return
+    if lesson_is_pending_review(lesson):
+        await query.answer()
+        await query.message.reply_text(
+            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردن و خەڵاتدان بۆی چالاک نەکراوە."
+        )
         return
     if not can_open(user_id, lesson):
         await query.answer()
@@ -580,7 +642,12 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "answer_in_progress": False,
     }
     await query.answer()
-    await send_question(query.message, context.user_data["quiz"])
+    try:
+        await send_question(query.message, context.user_data["quiz"])
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Initial quiz question delivery failed; cleared active quiz state")
+        raise
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
@@ -741,37 +808,45 @@ async def quiz_answer(
     # callbacks then observe the claim and cannot score the same answer twice.
     quiz["answer_in_progress"] = True
     quiz["question_message_id"] = None
-    await query.answer()
-    quiz["selected_answer_index"] = None
     try:
-        await query.edit_message_reply_markup(reply_markup=None)
+        # Once claimed, a Telegram delivery failure must clear this in-memory
+        # quiz so the learner can restart. The persistent ledger protects rewards.
+        await query.answer()
+        quiz["selected_answer_index"] = None
+        try:
+            await query.edit_message_reply_markup(reply_markup=None)
+        except Exception:
+            logger.debug("Quiz keyboard was already removed or could not be edited")
+        answer = question["options"][choice_index]
+        if answer == question["answer"]:
+            quiz["score"] += 1
+            await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        else:
+            await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+
+        quiz["index"] += 1
+        if quiz["index"] < len(quiz["questions"]):
+            await send_question(query.message, quiz)
+            return
+
+        lesson = quiz["lesson"]
+        earned = quiz["score"]
+        first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+        result = (
+            f"🎉 تاقیکردنەوە تەواو بوو!\n"
+            f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
+        )
+        if first_completion:
+            result += "⭐ +20 XP"
+        else:
+            result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
+        await query.message.reply_text(result)
+        context.user_data.pop("quiz", None)
     except Exception:
-        logger.debug("Quiz keyboard was already removed or could not be edited")
-    answer = question["options"][choice_index]
-    if answer == question["answer"]:
-        quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
-    else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        context.user_data.pop("quiz", None)
+        logger.exception("Quiz answer delivery failed; cleared active quiz state")
+        raise
 
-    quiz["index"] += 1
-    if quiz["index"] < len(quiz["questions"]):
-        await send_question(query.message, quiz)
-        return
-
-    lesson = quiz["lesson"]
-    earned = quiz["score"]
-    first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
-    result = (
-        f"🎉 تاقیکردنەوە تەواو بوو!\n"
-        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
-    )
-    if first_completion:
-        result += "⭐ +20 XP"
-    else:
-        result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
-    await query.message.reply_text(result)
-    context.user_data.pop("quiz", None)
 
 def render_lesson_html_blocks(content):
     """Render lesson text in a clean, consistent academic Telegram layout."""
@@ -942,7 +1017,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -957,7 +1032,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
 
 COURSE_MENU_PAGE_SIZE = 12
 
@@ -973,7 +1048,10 @@ def course_menu_keyboard(course_id, user_id, page=0):
     rows = []
     for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
         is_open = can_open(user_id, lesson)
-        status = "🔒" if not is_open else ("✅" if lesson in completed else "🔓")
+        status = (
+            "📝" if lesson_is_pending_review(lesson)
+            else ("🔒" if not is_open else ("✅" if lesson in completed else "🔓"))
+        )
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 38 else title[:35] + "…"
         rows.append([InlineKeyboardButton(
@@ -1069,7 +1147,12 @@ def quiz_menu_items(user_id, mode):
     completed = set(get_completed_lessons(user_id))
     items = []
     for lesson in active_course_lessons():
-        if not QUIZ_DATA.get(lesson) or lesson not in completed or not can_open(user_id, lesson):
+        if (
+            not QUIZ_DATA.get(lesson)
+            or not quiz_is_available(lesson)
+            or lesson not in completed
+            or not can_open(user_id, lesson)
+        ):
             continue
         practice = quiz_requires_submission(lesson)
         if (mode == "practice") != practice:

@@ -85,11 +85,11 @@ def format_conversation_lesson(lesson):
     return "\n".join(sections)
 
 
-def adapt_unified_orthography_lessons(payload):
-    """Adapt unified-orthography drafts to namespaced lesson and quiz records.
+def adapt_unified_orthography_lessons(payload, include_extended_sections=False):
+    """Adapt course drafts to namespaced lesson and quiz records.
 
-    The returned records remain drafts; callers must not activate the course
-    until its practical editorial review is complete.
+    Extended appendix/activity sections are opt-in so the shared adapter does
+    not change the presentation of existing courses. Activation is separate.
     """
     lessons_by_id = {}
     quizzes_by_id = {}
@@ -127,6 +127,17 @@ def adapt_unified_orthography_lessons(payload):
                 for example in raw["examples"]
                 if isinstance(example, (list, tuple)) and len(example) == 2
             )
+        if include_extended_sections:
+            for label, field in (
+                ("📎 پاشکۆ", "appendix"),
+                ("🎯 چالاکییەکان", "activities"),
+            ):
+                if raw.get(field):
+                    sections.extend(["", label])
+                    sections.extend(
+                        f"{index}. {item}"
+                        for index, item in enumerate(raw[field], 1)
+                    )
         for label, field in (
             ("🧩 ڕاهێنان", "exercises"),
             ("🧠 پرسیارەکانی تێگەیشتن", "comprehension"),

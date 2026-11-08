@@ -1,0 +1,81 @@
+# فهرستی گەڕانەوەی کۆرسی ٤ — 2026-11-08
+
+ئەم فایلە پەڕگە سەرەکییەکانی پاراستن نیشان دەدات؛ لە کاتی گەڕانەوە لە گفتوگۆی نوێدا سەرەتا checkpoint بخوێنەوە.
+
+1. **[خاڵی گەڕانەوە و پاراستنی کۆرسی ٤](COURSE4_RECOVERY_CHECKPOINT_2026-11-08.md)** — شوێنی کار، دۆخی PR/CI، ڕەشنووسەکان، runtime، چاکسازییەکان، خاڵە کراوەکان و هەنگاوە داهاتووەکان.
+2. **[بەستەری پاراستنی وانەکانی ١–٤٦](COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json)** — 31 وانەی runtime + 15 ڕەشنووسی فراوانکراوی 32–46.
+3. **[لیستی سەرچاوە خاوەکان](COURSE4_RAW_SOURCE_INVENTORY_2026-11-08.md)** — فایلە سەرچاوە و transcriptە پارێزراوەکانی 32–46.
+4. **[Structured reviewی وانەکانی 32–46](staging/COURSE4_LESSONS_032_046_STRUCTURED_REVIEW_2026-11-08.json)** — پێکهاتە و ڕاهێنانەکان؛ هەموویان pending owner review ـن.
+5. **[ڕاپۆرتی بەراوردی quiz و پشکنینی ناوەڕۆک](COURSE4_QUIZ_MAINLINE_COMPARISON_2026-11-08.md)**.
+6. **[ڕاپۆرتی جیاوازیی main و branch](COURSE4_MAINLINE_DIVERGENCE_RECONCILIATION_2026-11-08.md)**.
+7. **[پشکنینی تەواوی سەرچاوەکان](COURSE4_LESSONS_032_046_SOURCE_COMPLETENESS_AUDIT_2026-11-08.md)** — پلەی پشتڕاستبوونی سەرچاوەی هەر وانە، جیاوازی master transcript و پارچەدەقەکان، و پاشکۆی WritingBlockی ماوە.
+8. **[لیستی چاکسازییە بەڵگەدارەکان](COURSE4_LESSONS_032_046_EVIDENCE_BASED_CORRECTION_QUEUE_2026-11-08.md)** — شوێنی هەڵە و پێشنیاری چاکسازی؛ بڕیارە زاراوەیی و زانستییەکان لە چاکسازیی دڵنیابووەکان جیا کراونەتەوە.
+9. **[پێوەری گواستنەوە بۆ runtime](COURSE4_LESSONS_032_046_RUNTIME_SCHEMA_AND_ACTIVATION_GATE_2026-11-08.md)** — مەرجە فنییەکانی پەسەندکردن و چالاککردن.
+10. **ڕەشنووسەکان:** لە `staging/drafts/COURSE4_LESSON_032_EXPANDED_DRAFT_2026-11-08.md` تا `COURSE4_LESSON_046_EXPANDED_DRAFT_2026-11-08.md`.
+11. **Snapshotەکانی main:** `MAINLINE_COURSE4_LESSONS_01_26_SNAPSHOT_2026-11-08.json`، `MAINLINE_COURSE4_RUNTIME_TESTS_SNAPSHOT_2026-11-08.py`، `MAINLINE_COURSE4_LESSON26_PARTICLES_RESEARCH_SNAPSHOT_2026-11-08.md`.
+
+Repository: `avasinim/KejyarBot`  
+Branch: `feat/course4-clean-port-main-20261106`  
+PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
+
+**یادخستنەوە:** دەقی خاو، ڕەشنووس و runtime جیاوازن. هیچ وانەیەک بە پەسەندکراو مەژمێرە تا خاوەن پڕۆژە پەسەندی نەکات؛ هیچ snapshotێک overwrite مەکە.
+
+
+**نوێکردنەوە:** پشکنینی دواتری وانەکانی 37–38 و دۆخی ئێستای branch/CI لە کۆتایی `COURSE4_RECOVERY_CHECKPOINT_2026-11-08.md` تۆمار کراوە.
+
+
+**نوێکردنەوە:** یەکسانکردنی زاراوەی وانەی ٤٦ لە ڕەشنووس، structured review و Preservation Bundle تۆمار کراوە؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** پشکنینی زنجیرەی زاراوەکان لە وانەکانی 32–46 و خاڵە کراوەکانی وانەی 39/41 و 42–45 لە کۆتایی ڕاپۆرتی پشکنینی quiz و ناوەڕۆک و خاڵی گەڕانەوە تۆمار کراوە.
+
+
+**نوێکردنەوە:** ناونانی پێکهاتەی «لەگەڵ مامۆستاکەی» لە وانەی 41 بە «پێکهاتەی هاوبەشی (Comitative phrase)» چاک کرا و ڕەشنووس، structured review و Preservation Bundle هاوتا نوێ کرانەوە؛ دەقی خاو پارێزراوە.
+
+
+**نوێکردنەوە:** سنووری بەڵگەی نموونەکانی وانەکانی 42–45 (clitic، نموونەی نەکارا و بەرکارپێشخستن) لە ڕاپۆرت و خاڵی گەڕانەوە تۆمار کرا؛ ئەم نموونانە تا پشتڕاستکردنەوەی زاری لە دۆخی پشکنین دەمێننەوە.
+
+
+**نوێکردنەوە:** ناونانی دوو پێڕستەی سەربەخۆی هاوئاست لە نموونەی لێکدراوی ئاڵۆزدا لە وانەکانی 37، 38 و 46 یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** لە وانەی 46 «پێڕستەی سەربەخۆ» لە «سەرڕستە» جیا کراوەتەوە و خشتەی چوار جۆری ڕستە لەگەڵ نموونەی لێکدراوی ئاڵۆز یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** خشتەی چوار جۆری ڕستەی وانەی ٤٦ جیاوازیی Independent و Main Clause بە ڕوونی پیشان دەدات؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** پێناسەی ڕستەی لێکدراوی ئاڵۆز لە وانەی 38 بە «دوو پێڕستەی سەربەخۆی هاوئاست + بەرڕستە» یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** لە وانەی 46 ناونانی پێڕستەی هاوئاست و `key_points[7]`ی Structured Review لەگەڵ Markdown یەکسان کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** پشکنینی دووبارەی 15 ڕەشنووسی 32–46 تەواو بوو: 15/15 `source_markdown` و Markdown هاوتان، 225/225 `key_points` لە دەقی وانەکاندا هەن؛ وردەکاری لە checkpoint ـە.
+
+
+**نوێکردنەوە:** وانەی 46 جیاوازیی Independent Clause و Main Clause ڕوون دەکاتەوە؛ داواکاریی ڕاهێنانی لێکدراوی ئاڵۆزیش بە زاراوەی دروست نوێ کراوەتەوە. وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**ئاگاداریی PR:** PR #119 هێشتا Draft و `mergeable_state=dirty` ـە؛ 3 commitی main لە branch نەهاتوونە ناوەوە. merge/deployment نەکراوە؛ وردەکاری لە checkpoint و reconciliation report ـە.
+
+
+**نوێکردنەوە:** نموونەی بەرڕستەی تەواوکەری وانەی 46 بە نموونەی خاوەنی «دەزانم کە ئەو ئەمڕۆ دێت» گۆڕدرا و Markdown، Structured Review و Preservation Bundle هاوتا نوێ کرانەوە؛ CIی ئەم گۆڕانکارییە لە کاتی تۆمارکردندا لە `in_progress` بوو. PR #119 هێشتا Draft/dirty ـە.
+
+
+**نوێکردنەوە:** ڕاپۆرتی reconciliation ڕوونکراوەتەوە: 4 ناوی test method ـی main (6 occurrence) بە assertionی گونجاو بە 46 وانە نوێ کراونەتەوە؛ JSONی 26 وانەی main لەگەڵ JSONی 46 وانەی branch overwrite ناکرێت. PR هێشتا dirty ـە.
+
+
+**نوێکردنەوە:** پشکنینی وردی mainline/branch: 4 ناوی test method ـی main (6 occurrence) کە ژمارەی 26یان تێدایە بە assertionی گونجاو بە 46 وانە جێگۆڕکێیان بۆ کراوە؛ پشکنینی component countsی وانەکانی 1–26 و گەیشتن بە وانەی 46 لە branchدا پارێزراوە. JSONی main overwrite نەکراوە. CIی دواهەم success؛ PR هێشتا Draft/dirty ـە. وردەکاری لە reconciliation report و checkpoint ـە.
+
+
+**ئاگاداریی conflict:** سێ فایل دیاریکراون: JSONی وانەکان (main=26، branch=46؛ پێویستی بە field-by-field merge)، test file (تاقیکردنەوەکانی main بۆ 46 وانە گونجێنراون)، و researchی وانەی 26 (هاوتایە). هیچ overwrite/merge نەکراوە؛ PR هێشتا Draft/dirty ـە. وردەکاری لە reconciliation report و checkpoint ـە.
+
+
+**JSON/quiz comparison update:** both main and branch retain 26 lessons and 208 quiz questions; branch has richer examples/appendix/key points. Quiz differences: 185 permutations, 14 question texts, 21 option sets, 13 correct-answer texts, 17 explanations. Lesson 3 most divergent. No overwrite; all flagged for source-based review. See reconciliation report.
+
+- Quiz answer divergence audit (13 جیاوازیی answer text، هیچ هەڵەی ڕوونی answer key لە branch نەدۆزرایەوە): `docs/source_archive/COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`
+
+- Quiz audit و چاکسازیی distractorی وانەی 24/Q8: `docs/source_archive/COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`
+
+- Mainline conflict reconciliation merge commit: `1a85068e5867be55729e0a5b1539fd0a1c89e545` (two parents; branch 46-lesson tree preserved; PR #119 mergeable, CI pending).
