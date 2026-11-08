@@ -379,6 +379,35 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
 
+    async def test_initial_question_delivery_failure_clears_new_quiz_state(self):
+        lesson = "grammar_01"
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=501,
+                reply_text=AsyncMock(side_effect=RuntimeError("Telegram delivery failed")),
+            ),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "can_open", return_value=True),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "Telegram delivery failed"):
+                await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+
     async def test_duplicate_quiz_start_callback_does_not_replace_inflight_quiz(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         query = SimpleNamespace(
