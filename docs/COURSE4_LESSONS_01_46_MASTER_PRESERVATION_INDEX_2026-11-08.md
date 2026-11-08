@@ -124,6 +124,7 @@
 - `docs/COURSE4_SOURCE_TO_RUNTIME_MAPPING_MATRIX_2026-11-08.md` — ماتریسی پەیوەندیی وانەکانی سەرچاوەی ١–٤٦ بە ٣١ وانەی runtime؛ پەیوەندیی بابەتی لە یەکخستنی تەواو جیا دەکاتەوە.
 - `docs/source_archive/COURSE4_LESSONS_039_045_VERIFIED_AUDIT_APPENDIX_2026-11-08.md` — پاشکۆی پشکنینی بەڵگەدار بۆ وانەکانی ٣٩–٤٥، لەسەر بنەمای ترانسکریپتی سەرچاوە؛ جێگرەوەی پاشکۆ مێژووییەکانی WritingBlock نییە.
 - `docs/source_archive/COURSE4_LESSONS_032_038_VERIFIED_AUDIT_APPENDIX_2026-11-08.md` — پاشکۆی پشکنینی بەڵگەدار بۆ وانەکانی ٣٢–٣٨؛ دەقی خام وەک خۆی ماوەتەوە.
+- `docs/source_archive/COURSE4_LESSON_046_VERIFIED_TERMINOLOGY_AUDIT_2026-11-08.md` — پشکنینی زاراوە و پێکهاتەی وانەی ٤٦ لەگەڵ وانەکانی ٣٢–٤٥؛ پێشنیارە و runtime نییە.
 
 ## ٦. ماتریسی دۆخی وانەکان — کورتەی پشتڕاستکراو
 
