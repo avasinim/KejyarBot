@@ -173,7 +173,7 @@
       "key": "course_grammar",
       "order": 4,
       "title": "کۆرسی ٤: ڕێزمان",
-      "description": "٣١ وانەی ڕێزمان؛ لە دۆخی active_owner_review_beta و وانەکان بە پێی پشکنینی زانستیی ناوخۆیی و توێژینەوەی سەرچاوەدار ڕێکخراون.",
+      "description": "٤٦ وانەی ڕێزمان؛ وانەکانی ٣٢–٤٦ لە دۆخی پشکنینی خاوەندارن و تاقیکردنەوەیان تا پەسەندکردن چالاک نییە.",
       "status": "active",
       "lesson_ids": [
         "grammar_01",
@@ -206,7 +206,22 @@
         "grammar_28",
         "grammar_29",
         "grammar_30",
-        "grammar_31"
+        "grammar_31",
+        "grammar_32",
+        "grammar_33",
+        "grammar_34",
+        "grammar_35",
+        "grammar_36",
+        "grammar_37",
+        "grammar_38",
+        "grammar_39",
+        "grammar_40",
+        "grammar_41",
+        "grammar_42",
+        "grammar_43",
+        "grammar_44",
+        "grammar_45",
+        "grammar_46"
       ]
     },
     {
