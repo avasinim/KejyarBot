@@ -801,15 +801,15 @@ async def quiz_answer(
         lesson = quiz["lesson"]
         earned = quiz["score"]
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
-    result = (
-        f"🎉 تاقیکردنەوە تەواو بوو!\n"
-        f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
-    )
-    if first_completion:
-        result += "⭐ +20 XP"
-    else:
-        result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
-    await query.message.reply_text(result)
+        result = (
+            f"🎉 تاقیکردنەوە تەواو بوو!\n"
+            f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
+        )
+        if first_completion:
+            result += "⭐ +20 XP"
+        else:
+            result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
+        await query.message.reply_text(result)
         context.user_data.pop("quiz", None)
     except Exception:
         context.user_data.pop("quiz", None)
