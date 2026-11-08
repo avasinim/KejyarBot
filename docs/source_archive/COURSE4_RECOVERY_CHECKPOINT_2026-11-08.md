@@ -176,3 +176,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - `key_points`ی 11 وانە بە بنەمای بەشەکانی Markdownی ئێستا دووبارە دروست کرایەوە؛ `comprehension`ی 34 و 36یش نوێ کرایەوە. کۆمیت: `980372ee6ef848755a59f08e90a467c18518abd6`.
 - پشتڕاستکردنەوە: 15 وانە؛ 225 key_points؛ 15 comprehension؛ هەموو exercises و role_play؛ هەموویان لە source_markdownی هاوتادا substringی تەواون؛ هیچ mismatchێک نەماوە.
 - ئەم چاکسازییە تەنها structured review ـی staging نوێ دەکاتەوە؛ دەقی خاو، runtime JSON، manifest، quizی چالاک و approval نەگۆڕدراون.
+
+
+## نوێکردنەوەی فهرستی گەڕانەوە و CI — 2026-11-08
+- Recovery Index دووبارە ڕیزبەندی کرا؛ بەڵگەی Source Completeness، Correction Queue و Runtime Activation Gate لە ژمارە و لینکە ڕاستەکاندا هەن. کۆمیت: `d24883bb491434a4919be1e024b1fda75ccae0c6`.
+- CI Run `42496782145` بۆ checkpoint commit `c3795b776258f965aa06b0fcbd77890512ca5554`: completed / success.
+- CIی پێشووی structured review Run `42496721235` بۆ commit `980372ee6ef848755a59f08e90a467c18518abd6`: completed / success.
+- PR #119 هێشتا open و Draft ـە؛ mergeability لە APIی ئێستادا `null` ـە و دەبێت لە گەڕانەوەی داهاتوودا دووبارە بخوێندرێتەوە. Merge و deployment نەکراون.
