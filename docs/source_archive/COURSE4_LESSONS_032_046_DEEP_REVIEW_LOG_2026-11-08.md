@@ -67,3 +67,12 @@ The lesson already contained model answers for exercises 1–3, but exercise 4 (
 Important qualification retained: the classification of the nominal elements in `قسەی کرد`, `شەڕیان کرد`, and `سوێندم خوارد` is presented as the lesson's proposed lexical-compound analysis, not a universal rule. The answer key explicitly requires dialect/naturalness validation and warns against deciding solely from word order or clitic marking. No disputed analysis was silently promoted to a final rule.
 
 The lesson's four exercise groups now have model-answer coverage. Raw source transcript remains unchanged; Lesson 41 remains `owner_review_pending_expanded_draft`, with no runtime or quiz change.
+
+## Lesson 42 — explicit contrast between possessive and past-transitive clitic
+Cross-checked Lesson 42 against the already reviewed Lesson 39 example `من تۆم بینی`. Added this attested-in-course example to Lesson 42 to make the distinction concrete:
+- `کتێبەکەم`: `ـم` expresses possession.
+- `من تۆم بینی`: `تۆ` is the direct object; `ـم` marks the first-person subject/agent relation in the past-transitive construction, not possession and not the object.
+
+This is explicitly scoped to the course's target dialect/construction and is not generalized to all Kurdish varieties. The previously unverified transcript forms `گرتمن`, `ناردمیت`, `گرتتن`, `گرتتانن`, `گرتمی`, and `گرتنی` remain unparsed pending context and morpheme segmentation. No unsupported forms were invented.
+
+Synchronized the added example and explanation across Lesson 42 Markdown, structured review, and preservation bundle. Lesson 42 remains owner-review-pending and is not runtime.
