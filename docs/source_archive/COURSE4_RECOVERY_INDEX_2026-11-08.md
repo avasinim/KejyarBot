@@ -77,3 +77,5 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 - Quiz answer divergence audit (13 جیاوازیی answer text، هیچ هەڵەی ڕوونی answer key لە branch نەدۆزرایەوە): `docs/source_archive/COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`
 
 - Quiz audit و چاکسازیی distractorی وانەی 24/Q8: `docs/source_archive/COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`
+
+- Mainline conflict reconciliation merge commit: `1a85068e5867be55729e0a5b1539fd0a1c89e545` (two parents; branch 46-lesson tree preserved; PR #119 mergeable, CI pending).
