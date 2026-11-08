@@ -158,7 +158,10 @@ for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
     source_markdown = raw_lesson.get("source_markdown")
     lesson_id = raw_lesson.get("id")
     if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
-        GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = format_lesson_draft(source_markdown)
+        rendered_source = format_lesson_draft(source_markdown)
+        if raw_lesson["title"] not in rendered_source:
+            rendered_source = f'{raw_lesson["title"]}\\n\\n{rendered_source}'
+        GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = rendered_source
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
     (UNIFIED_LESSONS, UNIFIED_QUIZZES),
