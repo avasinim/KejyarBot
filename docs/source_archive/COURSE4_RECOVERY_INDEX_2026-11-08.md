@@ -49,3 +49,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** لە وانەی 46 ناونانی پێڕستەی هاوئاست و `key_points[7]`ی Structured Review لەگەڵ Markdown یەکسان کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** پشکنینی دووبارەی 15 ڕەشنووسی 32–46 تەواو بوو: 15/15 `source_markdown` و Markdown هاوتان، 225/225 `key_points` لە دەقی وانەکاندا هەن؛ وردەکاری لە checkpoint ـە.
