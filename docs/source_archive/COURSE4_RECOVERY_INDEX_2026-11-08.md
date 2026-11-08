@@ -40,3 +40,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** لە وانەی 46 «پێڕستەی سەربەخۆ» لە «سەرڕستە» جیا کراوەتەوە و خشتەی چوار جۆری ڕستە لەگەڵ نموونەی لێکدراوی ئاڵۆز یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** خشتەی چوار جۆری ڕستەی وانەی ٤٦ جیاوازیی Independent و Main Clause بە ڕوونی پیشان دەدات؛ وردەکاری لە checkpoint و terminology audit ـە.
