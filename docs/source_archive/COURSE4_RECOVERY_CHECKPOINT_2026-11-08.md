@@ -7,7 +7,7 @@
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `288a7538dfbf3d58fb2fc78a95aa3149fc48e010`
+- Headی پشتڕاستکراو لە 2026-11-08: `1b152de67ec7afa118f15eae02e4dd05155344ec`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
 - دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
