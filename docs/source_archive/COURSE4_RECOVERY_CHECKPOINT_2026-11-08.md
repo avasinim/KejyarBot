@@ -3,10 +3,11 @@
 ئەم پەڕگەیە خاڵی یەکگرتووی گەڕانەوەی پڕۆژەی کۆرسی ٤ ـە. لە گفتوگۆی نوێ یان دوای وەستانی سیستەم، سەرەتا ئەم فایلە بخوێنەوە و پاشان دۆخی branch/PR/CI لە GitHub پشتڕاست بکەرەوە. وانەی پارێزراو بەهۆی نەبوونی لە چاتێکدا بە ونبوو مەژمێرە و داوای دووبارە ناردنی سەرچاوە مەکە، مەگەر پەڕگەکە لە repository و snapshotەکاندا بە وردی نەدۆزرێتەوە.
 
 ## شوێنی کار
+- فهرستی گەڕانەوە: `docs/source_archive/COURSE4_RECOVERY_INDEX_2026-11-08.md`.
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `65e427b14eff5140e91f6feb950a2cf3a760f2b3`
+- Headی پشتڕاستکراو لە 2026-11-08: `6da2c8f7948adf77b55fe5a969f99065c93cb6f4`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
 - دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
