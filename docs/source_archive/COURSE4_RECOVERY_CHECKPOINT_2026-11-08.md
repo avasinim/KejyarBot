@@ -7,9 +7,9 @@
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `3eb63e0e264595fb10ddd157af30ca8e0d5252e7`
+- Headی پشکنینی پێش ئەم نوێکردنەوەی checkpoint: `1d479050fcbfd6864a74d46dc068e00a7f0ef161`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
-- دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
+- دۆخی PR: open و Draft؛ merge و deployment ڕوویان نەداوە. mergeability لە هەر گەڕانەوەیەکدا نوێ پشتڕاست بکرێتەوە.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
 
 ## فهرستی سەرچاوەی خاو
@@ -22,7 +22,7 @@
    - snapshotە؛ بە JSONی main یان runtime overwrite مەکرێت.
 2. `docs/source_archive/staging/COURSE4_LESSONS_032_046_STRUCTURED_REVIEW_2026-11-08.json`
    - 15 وانەی 32–46؛ هەموویان `owner_review_pending_expanded_draft`.
-   - لەگەڵ Markdown بەیەکەوە نوێ بکرێتەوە؛ خانەکانی `exercises` و وەڵامەکان بە جیا پشکنین بکرێن.
+   - لەگەڵ Markdown بەیەکەوە نوێ بکرێتەوە؛ `key_points`, `exercises`, `comprehension`, `role_play` و خانەکانی تر بە جیا پشکنین بکرێن.
 3. `docs/source_archive/staging/drafts/COURSE4_LESSON_032_EXPANDED_DRAFT_2026-11-08.md` تا `COURSE4_LESSON_046_EXPANDED_DRAFT_2026-11-08.md`
    - 15 ڕەشنووسی فراوانکراو؛ دەقی خاو لەوانە جیاوازە و نابێت بسڕدرێتەوە.
 4. `docs/source_archive/COURSE4_QUIZ_MAINLINE_COMPARISON_2026-11-08.md`
@@ -53,7 +53,8 @@
 ## دۆخی پشکنینی هاوتایی
 لە پشکنینی 2026-11-08:
 - هەموو 15 ڕەشنووسی 32–46 لەگەڵ `source_markdown`ی structured review بە تەواوی یەکسانن.
-- هەموو دەقەکانی `exercises` لە فایلە هاوتاکانیاندا بوونیان پشتڕاست کراوەتەوە.
+- 225 خانەی `key_points`، 15 خانەی `comprehension`، هەموو `exercises` و `role_play` لە 15 structured reviewدا لە `source_markdown`ی هاوتایاندا بە تەواوی دۆزرایەوە؛ mismatch = 0.
+- `quiz`ی structured review بە ئەنقەست بەتاڵە؛ کویزی ناو Markdown بۆ پشکنینە و quizی runtime نییە.
 - ئەمە یەکسانیی دوو شێوەی ڕەشنووس دەسەلمێنێت، نەک پەسەندکردنی زانستی یان ئامادەبوونی runtime.
 - پشکنینی ناوەڕۆکی 39–45 ئەنجام دراوە؛ خاڵە هەستیارەکانی clitic، agent/object، passive و هەندێک نموونەی زاری بە مەرجی پشتڕاستکردنەوە ماونەتەوە.
 
@@ -68,12 +69,14 @@
 main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراوی branch لە هەندێک وانەدا زانیاری و نموونەی زیاتر هەیە. JSONی main بە blind overwrite/cherry-pick مەگوازرێتەوە؛ snapshot و reconciliation هەیە، بەراوردی ناوەڕۆکی JSON کارێکی جیاوازە.
 
 ## کارە ماوەکان — بە ڕیزبەندی
-1. پشکنینی وردی وانەکانی 32–38 لەسەر بنەمای دەقی خاو، Markdown و structured review؛ هیچ وانەیەک لەبەر نەبوونی لە چاتێکدا لادەنرێت.
-2. دووبارە پشکنینی نموونە، وەڵام، ژمارەی خانە و هەموو خانە structured ـەکان بۆ 32–46.
-3. پشکنینی زاراوە/نموونە هەستیارەکان: clitic، agent/object، passive، transitivity، compound/light verbs، Adjunct/Adverb/Adverbial.
-4. تەواوکردنی reconciliationی سێ کۆمیتی main بە پشکنینی ناوەڕۆکی JSON؛ نەک overwriteی خۆکار.
-5. پشکنینی کۆتاییی هەموو 46 وانە و CI.
-6. پەسەندکردنی وانەکان لەلایەن خاوەن پڕۆژە پێش هەر گۆڕانکارییەکی دۆخی approval؛ merge/deployment تەنها دوای پشتڕاستکردنەوە.
+1. پشکنینی وردی وانەکانی 32–38 لە ئاستی یەکەم تەواو کرا؛ چاکسازییەکانی 34 و 38 جێبەجێ و پاشکۆ کراون. خاڵە کراوەکان: شیکاریی نموونەی درێژی وانەی 38، پشکنینی هاولکیی «یان…یان/نە…نە» لە 37، و پشتڕاستکردنەوەی زاریی نموونە هەستیارەکان.
+2. بەراوردی master transcript و 7 segmentی 32–38 تەواوە (7/7 exact substring)؛ بەڵام 33–36 سەرچاوەی سەربەخۆی owner-verifiedیان نییە، هەرچەند segmentەکان لە master transcriptدا پشتڕاست کراون.
+3. پشکنینی structured reviewی 32–46 لە ئاستی خانەکان تەواو کرا؛ 225 key_points و هەموو exercises/comprehension/role_play لەگەڵ source_markdown یەکسانن. هەر چاکسازییەکی داهاتوو دەبێت هەمان پشکنینی خانە بە خانە دووبارە بکاتەوە.
+4. پشکنینی زاراوە/نموونە هەستیارەکان بەردەوام بێت: clitic، agent/object، passive، transitivity، compound/light verbs، Adjunct/Adverb/Adverbial.
+5. تەواوکردنی reconciliationی سێ کۆمیتی main بە پشکنینی ناوەڕۆکی JSON؛ نەک overwriteی خۆکار.
+6. پشکنینی کۆتاییی هەموو 46 وانە، Bundle و CI؛ پاشان بڕیاری runtime readiness تەنها دوای پەسەندی خاوەن پڕۆژە.
+7. پاشکۆی مێژوویی WritingBlock بۆ 39–45 بە ID/ناونیشانی دیاریکراو بگەڕێنەوە؛ داوای دووبارە ناردنی هەموو وانەکان مەکە.
+8. پەسەندکردنی وانەکان لەلایەن خاوەن پڕۆژە پێش هەر گۆڕانکارییەکی دۆخی approval؛ merge/deployment تەنها دوای پشتڕاستکردنەوە.
 
 ## سنوورەکان و پاراستن
 - دەقی خاو، ڕەشنووس و runtime جیاوازن؛ یەکێکیان بە یەکێکی تر مەگۆڕەوە.
