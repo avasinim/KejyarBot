@@ -1180,3 +1180,42 @@ class Course4NounLesson3Tests(unittest.TestCase):
         self.assertIn("ـەوە", question["q"])
         self.assertIn("ـەوە", question["explanation"])
         self.assertNotIn("هەڵـ", question["explanation"])
+
+
+class Course4Mainline26LessonPreservationTests(unittest.TestCase):
+    def test_mainline_first_26_lessons_keep_full_learning_component_counts(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        lessons = {item["id"]: item for item in source["lessons"]}
+        for number in range(1, 27):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                lesson = lessons[lesson_id]
+                self.assertEqual(len(lesson["activities"]), 3)
+                self.assertEqual(len(lesson["exercises"]), 5)
+                self.assertEqual(len(lesson["comprehension"]), 10)
+                self.assertEqual(len(lesson["quiz"]), 8)
+
+    def test_course4_expansion_preserves_first_26_and_marks_only_new_drafts_pending(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        plan = json.loads(
+            (ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8")
+        )
+        expected_ids = [f"grammar_{number:02d}" for number in range(1, 47)]
+        self.assertEqual([item["id"] for item in source["lessons"]], expected_ids)
+        self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
+        self.assertEqual(source["lesson_count"], 46)
+        self.assertEqual(plan["lesson_count"], 46)
+        for number in range(1, 27):
+            self.assertNotEqual(
+                source["lessons"][number - 1].get("review_status"),
+                "owner_review_pending_expanded_draft",
+            )
+        for number in range(32, 47):
+            lesson = source["lessons"][number - 1]
+            self.assertEqual(lesson["review_status"], "owner_review_pending_expanded_draft")
+            self.assertEqual(lesson["quiz"], [])
+
