@@ -885,10 +885,10 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
         self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
 
-    def test_course4_has_31_lessons_and_plan_records_lesson_28(self):
+    def test_course4_has_46_lessons_and_plan_records_lesson_28(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
-        self.assertEqual(source["lesson_count"], 31)
+        self.assertEqual(source["lesson_count"], 46)
         self.assertEqual(plan["lesson_count"], 46)
         self.assertEqual(plan["lessons"][-1]["id"], "grammar_46")
         self.assertEqual(plan["source_alignment_map"][-1]["lessons"], "46")
@@ -985,10 +985,10 @@ class Course4DerivedVerbLesson29Tests(unittest.TestCase):
         self.assertIn("وانەی ٣٠", joined)
         self.assertNotIn("Rezmany_axawtny_kurdy.pdf", joined.split("سنووری بەڵگە", 1)[0])
 
-    def test_course4_has_31_registered_lessons_and_pagination_reaches_lesson_31(self):
+    def test_course4_has_46_registered_lessons_and_pagination_reaches_lesson_46(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
-        self.assertEqual(source["lesson_count"], 31)
+        self.assertEqual(source["lesson_count"], 46)
         self.assertEqual(plan["lesson_count"], 46)
         self.assertEqual(plan["lessons"][-1]["id"], "grammar_46")
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 47)])
