@@ -300,3 +300,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - تاقیکردنەوەی نوێی main بۆ ژمارەی پێکهاتەکانی وانەکانی 1–26 لە branchدا بە `test_mainline_first_26_lessons_keep_full_learning_component_counts` پارێزراوە؛ تاقیکردنەوەی expansion بۆ 46 وانەش زیادە.
 - ناوی literalی تاقیکردنەوەکان هاوتا نییە، بەڵام assertionەکان بەپێی ژمارەی نوێ گونجێنراون. JSONی 26 وانەی main نابێت overwriteی JSONی 46 وانەی branch بکات.
 - CIی گۆڕانکارییەکانی پشکنینەکانی دواهەم success ـە؛ PR #119 هێشتا Draft و `mergeable_state=dirty` ـە، merge/deployment نەکراوە.
+
+
+### دیاریکردنی سەرچاوەی conflict ـی PR #119 — 2026-11-08
+- سێ فایل لە main و branch conflict ـی mergeability دروست دەکەن: `course_data/grammar_course4_lessons.json`, `tests/test_course4_grammar_runtime.py`, `docs/COURSE4_LESSON26_PARTICLES_RESEARCH.md`.
+- researchی وانەی 26 لە هەردوو branch یەکسانە؛ test assertions بۆ 46 وانە لە branch گونجێنراون؛ JSONی 26 وانەی main و JSONی 46 وانەی branch پێویستیان بە reconciliationی field-by-field هەیە. overwriteکردنی هەر یەکێکیان قەدەغەیە تا ناوەڕۆکەکان بە وردی یەکلا نەکرێنەوە.
+- هیچ merge/rebase/overwrite/deploymentێک لەم قۆناغەدا نەکراوە. PR open/Draft و dirty ـە.
