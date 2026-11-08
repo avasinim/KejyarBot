@@ -313,3 +313,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - Quiz comparison: 185 option-order/answer-index permutations, 14 question-text differences, 21 option-set differences, 13 correct-answer-text differences, 17 explanation differences. No lesson lacks its 8 questions. These differences are not automatically errors; keep them in audit queue pending source-grounded review.
 - Lesson 3 has 134 differing field paths and branch contains expanded content; do not overwrite. Lesson 2/19/20 term differences mainly Preposition `پریپۆزیشن` vs `پێشبەند`; project register keeps `پێشبەند`. Lesson 16 uses `بنج` in branch consistent with course register.
 - Full detail in `COURSE4_MAINLINE_DIVERGENCE_RECONCILIATION_2026-11-08.md`.
+
+
+### Quiz answer divergence review
+- پشکنینی 13 جیاوازیی دەقی وەڵامی ڕاست لە وانەکانی 2،3،10،19،20 بە تەواوی کرا؛ هیچ هەڵەیەکی ڕوونی answer key لە branch نەدۆزرایەوە.
+- جیاوازییەکانی وانەی 3 لەگەڵ key points/examplesی branch دەگونجێن؛ وانەکانی 2،19،20 جیاوازیی زاراوەیی «پریپۆزیشن/پێشبەند»یان هەیە؛ وانەی 10 تەنها ناوی نموونەیە.
+- Runtime JSON دەستکاری نەکرا. ڕاپۆرت: `COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`.
