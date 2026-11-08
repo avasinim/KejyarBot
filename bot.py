@@ -642,7 +642,12 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "answer_in_progress": False,
     }
     await query.answer()
-    await send_question(query.message, context.user_data["quiz"])
+    try:
+        await send_question(query.message, context.user_data["quiz"])
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Initial quiz question delivery failed; cleared active quiz state")
+        raise
 
 async def send_question(message, quiz):
     question = quiz["questions"][quiz["index"]]
