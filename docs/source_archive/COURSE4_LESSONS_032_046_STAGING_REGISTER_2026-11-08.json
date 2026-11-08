@@ -59,65 +59,70 @@
       "id": "grammar_32",
       "title": "بنەماکانی ڕستە و پێڕستە",
       "source": "Library:Pasted text(6).txt lines 1175-1539; earlier raw material lines 1-370",
-      "source_state": "owner_material_and_assistant_draft_mixed_in_source_file",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "separate raw source from draft",
         "terminology review",
         "final lesson review"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_032_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 33,
       "id": "grammar_33",
       "title": "بکەر و کار",
       "source": "Library:Pasted text(6).txt lesson split plan lines 1183-1190; raw material lines 1-115",
-      "source_state": "owner_material_embedded_in_combined_source",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "extract source material",
         "review agent vs grammatical subject distinction",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_033_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 34,
       "id": "grammar_34",
       "title": "نیهاد و گوزارە و کاری بەستەر",
       "source": "Library:Pasted text(6).txt plan lines 1192-1200; raw material lines 1-240",
-      "source_state": "owner_material_embedded_in_combined_source",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "extract source material",
         "review copula forms and usage",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_034_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 35,
       "id": "grammar_35",
       "title": "جۆرەکانی ڕستە لە ڕووی دەربڕینەوە",
       "source": "Library:Pasted text(6).txt plan lines 1202-1210; raw material lines 116-240",
-      "source_state": "owner_material_embedded_in_combined_source",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "extract source material",
         "review punctuation and sentence mood",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_035_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 36,
       "id": "grammar_36",
       "title": "تەواوکەر و بەشەکانی تری ڕستە",
       "source": "Library:Pasted text(6).txt plan lines 1212-1220; raw material lines 241-370",
-      "source_state": "owner_material_embedded_in_combined_source",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "extract source material",
         "distinguish complement, modifier, adjective and adjunct",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_036_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 37,
@@ -240,5 +245,11 @@
       ],
       "runtime_ready": false
     }
-  ]
+  ],
+  "progress_update": {
+    "date": "2026-11-08",
+    "completed": "Owner-source segments for lessons 32-36 were separated verbatim from the archived 32-38 transcript and fetched back for verification.",
+    "caution": "These are source staging files, not approved lesson texts and not runtime content.",
+    "next": "Continue separating lesson 37-38 source from the same archive, then review lesson 35 expansion as a separate draft without altering its raw source."
+  }
 }
