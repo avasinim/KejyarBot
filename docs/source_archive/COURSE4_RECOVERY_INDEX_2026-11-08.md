@@ -19,3 +19,6 @@ Branch: `feat/course4-clean-port-main-20261106`
 PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 **یادخستنەوە:** دەقی خاو، ڕەشنووس و runtime جیاوازن. هیچ وانەیەک بە پەسەندکراو مەژمێرە تا خاوەن پڕۆژە پەسەندی نەکات؛ هیچ snapshotێک overwrite مەکە.
+
+
+**نوێکردنەوە:** پشکنینی دواتری وانەکانی 37–38 و دۆخی ئێستای branch/CI لە کۆتایی `COURSE4_RECOVERY_CHECKPOINT_2026-11-08.md` تۆمار کراوە.
