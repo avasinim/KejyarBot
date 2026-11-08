@@ -7,7 +7,7 @@
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `6da2c8f7948adf77b55fe5a969f99065c93cb6f4`
+- Headی پشتڕاستکراو لە 2026-11-08: `9786b263071f6625069f4b04e440b9af28ea9d10`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
 - دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
@@ -93,3 +93,11 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - پشکنینی کۆتایی: 15/15 وانەی 32–46، `source_markdown`ی هاوتا و هەموو دەقەکانی `exercises` یەکسان و دۆزرایەوەن.
 - CI Run `42486020898` بۆ کۆمیتی `65e427b1`: completed / success. Run `42486017385` بۆ کۆمیتی ناوەڕاستی `f1bbf0c4` شکستی هێنا، چونکە لەو کۆمیتەدا ناونیشانی runtime نوێ بوو بەڵام curriculum plan هێشتا ناونیشانی کۆنی هەبوو؛ کۆمیتی دواتری `65e427b1` هەردووکی یەکسان کرد و CIی سەرکەوتوو هەیە.
 - خاڵی کراوەی وانەی 38: شیکاریی ڕستەی درێژی دەقی خاو هێشتا بە مەرجە؛ بکەر و پەیوەندیی کردارە هاوئاهەنگەکان پێویستیان بە پشتڕاستکردنەوەی خاوەن دەق هەیە. ئەمە بە شێوەی ڕاستگۆیانە تۆمار کراوە، نەک بە شیکاریی دڵنیای نادروست.
+
+
+## نوێکردنەوەی پاشکۆی یەکگرتوو — 2026-11-08
+- Preservation Bundle نوێ کرایەوە بۆ ئەوەی ناوەڕۆکی هەموو 15 ڕەشنووسی 32–46 لەگەڵ فایلە ئێستاییەکانی Markdown هاوتا بێت؛ 31 وانەی runtimeی ناو bundle وەک snapshot پارێزراون.
+- پشتڕاستکردنەوەی دووبارە: 15/15 `content_markdown`ی bundle بە تەواوی لەگەڵ ڕەشنووسی Markdownی هاوتایان یەکسانن.
+- پەڕگەی bundle ئێستا ڕێڕەوی checkpoint و recovery index ـیش لە metadataدا تۆمار دەکات.
+- CI Run `42486366934` بۆ bundle commit `9786b263`: completed / success؛ Run `42486340464` بۆ کۆمیتی پێشووی bundle `e8a6fe30`: completed / success.
+- لە کاتی ئەم نوێکردنەوەیەدا هەموو 15 وانە هێشتا `owner_review_pending_expanded_draft` ـن؛ هیچ approval، merge یان deployment ڕووی نەداوە.
