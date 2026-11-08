@@ -16,7 +16,7 @@
 - `docs/source_archive/COURSE4_LESSONS_032_038_SOURCE_2026-11-07.md`
 - `docs/source_archive/COURSE4_LESSON37_ADDITIONAL_OWNER_SOURCE_2026-11-08.md`
 - `docs/source_archive/COURSE4_LESSON38_ADDITIONAL_OWNER_SOURCE_2026-11-08.md`
-- `docs/source_archive/COURSE4_LESSONS_032_038_SOURCE_COMPLETENESS_AUDIT_2026-11-08.md` (ئەگەر لە هەمان archive ـدا هەبێت، بە هەمان ناو بپارێزرێت؛ سەرچاوەی سەرەکی لە لیستی سەرەوەیە.)
+- `docs/source_archive/staging/COURSE4_LESSONS_032_046_SOURCE_COMPLETENESS_AUDIT_2026-11-08.md`
 
 ## سەرچاوەی وانەکانی 39–45
 لە `docs/source_archive/staging/`:
