@@ -89,3 +89,23 @@
 ### زیادەیەکی پاراستنی ڕەفتاری بۆت
 - منووی تاقیکردنەوەکان ئێستا تاقیکردنەوەی وانەی تەواوکراو بەڵام هێشتا پەسەندنەکراو نیشان نادات؛ تەنها ئەو تاقیکردنەوانە دەردەکەون کە `quiz_is_available` ڕێگەیان پێدەدات.
 - دوو تاقیکردنەوەی نوێ ئەم سنوورە دەپشکنن؛ CIی کۆمیتی `8a355b7` سەرکەوتووە.
+
+
+## نوێکردنەوەی وردی ناوی تاقیکردنەوەکان و دۆخی merge — 2026-11-08، پشکنینی دواهەم
+
+### ژمارە و ناوی test method ـەکان
+- لە وەشانی ئێستای `main`دا 48 `test_...` method هەیە؛ لە branch ـدا 65 method هەیە.
+- بەراوردی ناوەکان نیشانی دا 4 ناوی جیاواز هەن کە بە شێوەی کۆن لە main ـدا ماونەتەوە؛ هەندێکیان بە دووبارە لە چەند TestCase ـدا هاتوون، بۆیە ژمارەی occurrence ـی ناهاوتا 6 ـە:
+  - `test_course4_is_active_with_twenty_six_lessons` → `test_course4_is_active_with_forty_six_lessons`؛ پشکنینی active بودن، ڕیزبەندی و کویزەکان هێشتا هەیە، بە ژمارەی نوێی 46.
+  - `test_course4_catalogs_register_26_lessons_without_changing_other_courses` → `test_course4_catalogs_register_31_lessons_without_changing_other_courses`؛ پشکنینی catalog/plan/source و پاراستنی کۆرسەکانی تر هەیە، بە ڕیزبەندیی 46 وانە.
+  - `test_course4_has_26_registered_lessons` (3 occurrence) → `test_course4_has_31_registered_lessons` (3 occurrence)؛ هەمان پشکنینی ID ـەکان و plan/catalog بە ژمارەی گونجاو نوێ کراوەتەوە.
+  - `test_course4_has_26_lessons_and_plan_records_lesson_26` → پشکنینی نوێی `test_course4_has_46_lessons_and_plan_records_lesson_28` و `test_course4_has_46_registered_lessons_and_pagination_reaches_lesson_46`؛ پشکنینی count و گەیشتن بە وانەی کۆتایی بۆ مۆدێلی 46.
+- بۆیە ناوی method ـەکان هەموویان بە هەمان literal name نەماون؛ بەڵام پشکنینە کۆنەکانی 26 وانە بە پێی مۆدێلی 46 وانە نوێنراونەوە. ئەمە بە مانای کۆپییەکی ناوی تاقیکردنەوە نییە؛ بە مانای گۆڕینی assertion ـی ژمارەی وانەی کۆرسە.
+
+### پشکنینی سێ فایلە جیاوازەکە و mergeability
+- `docs/COURSE4_LESSON26_PARTICLES_RESEARCH.md` لە main و branch بە تەواوی هاوتایە (SHA: `872af3a86e90f84fc19bc10bf897b0a108476369`).
+- `course_data/grammar_course4_lessons.json` لە main 26 وانە و لە branch 46 وانەیە؛ وەشانەکان جیاوازن و نابێت بە overwrite یەکێک لەناو ببرێت.
+- `tests/test_course4_grammar_runtime.py` لە main 48 و لە branch 65 test method ـی هەیە؛ assertion ـەکانی 26 وانە لە branch بۆ مۆدێلی 46 وانە گونجێنراونەوە.
+- `main` لە `4affb750244daebd1d13f886ef3c5a1d1efad79f` و branch لە `909ce146e10ffa6ee977022bd9d9f6680edba9c2` بوو لە کاتی پشکنین؛ compare دۆخی diverged و 3 commitی mainی پێش branch نیشان دا.
+- PR #119 هێشتا open/Draft و `mergeable=false`, `mergeable_state=dirty` ـە؛ CI بۆ نوێکردنەوەکانی ئەم پشکنینە سەرکەوتووە، بەڵام ئەمە conflictی Git یان deployment چارەسەر ناکات.
+- بڕیاری پاراستن: هیچ JSONێک overwrite نەکرێت؛ تا reconciliationی سەرچاوەیی و خانە بە خانە تەواو نەبێت، PR بە خۆکار merge/deploy ناکرێت.
