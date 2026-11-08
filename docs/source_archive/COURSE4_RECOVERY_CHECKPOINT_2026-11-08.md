@@ -115,3 +115,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - CIی شکستخواردوو Run `42486017385` بۆ commitی ناوەڕاست `f1bbf0c4` تەنها لە `test_all_lesson_titles_and_numbers_match_curriculum_plan` شکستی هێنا: ناونیشانی runtimeی وانەی 34 بە `بکەر` نوێ کرابووەوە، بەڵام plan هێشتا `نیهاد`ی هەبوو. کۆمیتی دواتری `65e427b1` هەردووکی یەکسان کرد؛ CIی `42486020898` و هەموو runەکانی دواتر سەرکەوتوون.
 - نوێترین CI: Run `42486450848`, commit `38ad8006`, completed/success. پێش ئەوەش runەکانی `42486366934`, `42486340464`, `42486273591`, `42486243849`, `42486228713`, `42486020898` completed/success.
 - تێبینی: ئەم پشتڕاستکردنەوەیە پاراستنی پەڕگە و تاقیکردنەوەی repository دەسەلمێنێت؛ بە مانای پەسەندکردنی وانەکانی 32–46، merge، یان deploymentی Botkeep نییە.
+
+
+## CI و سەرچاوەکان — پشتڕاستکردنەوەی کۆتاییی ئەم نۆرەی کار
+- هەموو فایلە سەرچاوە بنەڕەتییەکانی وانەکانی 32–38 (OWNER_SOURCE_SEGMENT)، 39–45 (DRAFT_TRANSCRIPT_SEGMENT) و 46 (OWNER_SOURCE_TEXT) لە archive ـدا هەن؛ لیستیان لە `COURSE4_RAW_SOURCE_INVENTORY_2026-11-08.md` ـە.
+- Preservation Bundle دووبارە پڕکراوەتەوە و 15/15 ڕەشنووسەکەی لەگەڵ Markdownی ئێستا یەکسانن.
+- CI Run `42486659208` بۆ کۆمیتی `56a92f8d`: completed / success؛ `compileall` و تاقیکردنەوەکانی repository لە workflowدا بە سەرکەوتوویی تێپەڕیون.
+- Recovery Index، Recovery Checkpoint، Raw Source Inventory و Preservation Bundle هەموویان لە repository دانراون؛ ئەمانە ڕێڕەوی گەڕانەوەی سەربەخۆ لە چاتن.
