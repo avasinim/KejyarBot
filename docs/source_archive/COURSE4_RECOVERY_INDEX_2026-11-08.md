@@ -55,3 +55,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** وانەی 46 جیاوازیی Independent Clause و Main Clause ڕوون دەکاتەوە؛ داواکاریی ڕاهێنانی لێکدراوی ئاڵۆزیش بە زاراوەی دروست نوێ کراوەتەوە. وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**ئاگاداریی PR:** PR #119 هێشتا Draft و `mergeable_state=dirty` ـە؛ 3 commitی main لە branch نەهاتوونە ناوەوە. merge/deployment نەکراوە؛ وردەکاری لە checkpoint و reconciliation report ـە.
