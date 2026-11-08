@@ -448,7 +448,8 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"][31:]:
             with self.subTest(review_lesson=lesson_id):
                 self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
-                self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
+                self.assertTrue(bot.LESSON_DATA[lesson_id]["review_status"].startswith("owner_review_pending"))
+                self.assertTrue(bot.LESSON_DATA[lesson_id]["content"].strip())
 
 
 class Course4Lesson18VoiceTests(unittest.TestCase):
