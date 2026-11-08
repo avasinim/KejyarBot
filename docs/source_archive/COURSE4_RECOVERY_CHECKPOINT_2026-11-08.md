@@ -287,3 +287,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - Markdownی وانەی 46، Structured Review، Preservation Bundle و Terminology Audit هاوتا نوێ کرانەوە؛ دەقی خاو و runtime نەگۆڕدراون.
 - کۆمیتی زنجیرەیی دواهەم: `65b328016a1024fb9b13ede16a778f9a036c181d`. CI بۆ ئەم زنجیرەیە لە کاتی نووسینی ئەم تۆمارەدا هێشتا `in_progress` بوو.
 - PR #119 هێشتا Draft و `mergeable_state=dirty` ـە؛ merge و deployment نەکراوە.
+
+
+### نوێکردنەوەی reconciliationی mainline — 2026-11-08
+- پشکنینی ناوی test method ـەکان بە وردی نوێ کرا: main 48 method و branch 65 method هەیە؛ 4 ناوی method (6 occurrence بەهۆی دووبارەبوونەوە)ی تایبەت بە 26 وانە لە branch بە تاقیکردنەوەی هاوتای گونجاو بە 46 وانە گۆڕدراونەوە. ناوی literal هەموویان هاوتا نییە، بەڵام پشکنینەکانی ژمارە، catalog، plan و pagination بۆ 46 نوێ کراونەوە.
+- فایلەکەی توێژینەوەی وانەی 26 لە main و branch بە تەواوی هاوتایە؛ JSONی main 26 وانە و JSONی branch 46 وانەیە و overwrite ناکرێت.
+- PR #119 هێشتا Draft و dirty/mergeable=false ـە؛ چاکسازیی ناوەڕۆک و CI سەرکەوتوون، بەڵام conflictی Git چارەسەر نەکراوە و deployment پشتڕاست نەکراوەتەوە.
