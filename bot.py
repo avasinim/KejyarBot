@@ -416,10 +416,30 @@ def check_badges(user_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
+def lesson_is_pending_review(lesson):
+    return (
+        LESSON_DATA.get(lesson, {}).get("review_status")
+        == "owner_review_pending_expanded_draft"
+    )
+
+
 def lesson_keyboard(lesson):
+    # Owner-review drafts are readable for beta inspection, never completable.
+    if lesson_is_pending_review(lesson):
+        return None
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+
+def lesson_display_content(lesson, content):
+    if lesson_is_pending_review(lesson):
+        notice = (
+            "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
+            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و خەڵات/تەواوکردنی بۆ چالاک نەکراوە.\\n\\n"
+        )
+        return notice + content
+    return content
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
@@ -445,6 +465,12 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if lesson not in LESSON_COURSE:
         await query.answer()
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
+        return
+    if lesson_is_pending_review(lesson):
+        await query.answer()
+        await query.message.reply_text(
+            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردن و خەڵاتدان بۆی چالاک نەکراوە."
+        )
         return
     if not can_open(user_id, lesson):
         await query.answer()
@@ -986,7 +1012,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, data["content"], lesson_keyboard(lesson))
+    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1017,7 +1043,10 @@ def course_menu_keyboard(course_id, user_id, page=0):
     rows = []
     for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
         is_open = can_open(user_id, lesson)
-        status = "🔒" if not is_open else ("✅" if lesson in completed else "🔓")
+        status = (
+            "📝" if lesson_is_pending_review(lesson)
+            else ("🔒" if not is_open else ("✅" if lesson in completed else "🔓"))
+        )
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 38 else title[:35] + "…"
         rows.append([InlineKeyboardButton(
