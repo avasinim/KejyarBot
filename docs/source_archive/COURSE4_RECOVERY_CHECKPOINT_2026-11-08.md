@@ -7,10 +7,13 @@
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `9786b263071f6625069f4b04e440b9af28ea9d10`
+- Headی پشتڕاستکراو لە 2026-11-08: `288a7538dfbf3d58fb2fc78a95aa3149fc48e010`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
 - دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
+
+## فهرستی سەرچاوەی خاو
+- `docs/source_archive/COURSE4_RAW_SOURCE_INVENTORY_2026-11-08.md` — لیستی فایلە خاوەکانی وانەکانی 32–46 و بەڵگەنامەکانی provenance/source.
 
 ## بەڵگەی سەرەکیی پاراستن
 1. `docs/source_archive/COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json`
