@@ -279,8 +279,9 @@
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Terminology audits now exist for lessons 32-36 and lesson 46. The audits identify conflicts in Subject vs Agent, Verb vs Predicate, copula vs predicate, Complement vs adjunct/modifier, and Compound vs Complex. Source segments remain unchanged.",
-    "caution": "All recommendations are provisional review notes, not approved terminology policy. No runtime JSON, course manifest, Botkeep, database, or deployment state was changed.",
-    "next": "Prepare a single terminology decision sheet for the 32-46 sequence, retaining unresolved choices for owner confirmation before drafting runtime lessons."
-  }
+    "completed": "Created the unified provisional terminology decision sheet for lessons 32-46, mapping the key concepts and terms lesson-by-lesson and recording unresolved owner decisions. Separate audits for lessons 32-36 and 46 are linked in this register.",
+    "caution": "The sheet is a proposal, not an approved glossary. Raw owner source and assistant-expanded drafts remain separate. No runtime JSON, course manifest, Botkeep, database, environment, deployment, or restart was changed.",
+    "next": "Await owner confirmation of the six unresolved terminology choices; then revise only draft lessons, preserve owner raw text, and validate the runtime schema before any runtime proposal."
+  },
+  "unified_terminology_decision_sheet": "docs/source_archive/COURSE4_LESSONS_032_046_UNIFIED_TERMINOLOGY_DECISION_SHEET_2026-11-08.md"
 }
