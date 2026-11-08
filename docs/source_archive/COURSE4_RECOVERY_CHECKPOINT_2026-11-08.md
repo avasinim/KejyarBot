@@ -101,3 +101,14 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - پەڕگەی bundle ئێستا ڕێڕەوی checkpoint و recovery index ـیش لە metadataدا تۆمار دەکات.
 - CI Run `42486366934` بۆ bundle commit `9786b263`: completed / success؛ Run `42486340464` بۆ کۆمیتی پێشووی bundle `e8a6fe30`: completed / success.
 - لە کاتی ئەم نوێکردنەوەیەدا هەموو 15 وانە هێشتا `owner_review_pending_expanded_draft` ـن؛ هیچ approval، merge یان deployment ڕووی نەداوە.
+
+
+## زیادەی پاراستن — پشتڕاستکردنەوەی bundle و دۆخی نوێی branch، 2026-11-08T17:14+03:30
+- Branch headی ئێستا: `38ad800612c1d91e59ae767773eae79c207c0dd3`؛ PR #119 head هەمان SHAیە. Base: `400c9ae8b567b565c74afe1e3db7c5274077da8e`؛ PR open و Draft و `mergeable=false`.
+- Preservation Bundle بە JSON خوێندرایەوە و 31 وانەی runtime لە `lessons` و 15 ڕەشنووسی 32–46 لە `preserved_draft_lessons` هەڵگرتووە؛ `lesson_count=46`, `runtime_lesson_count=31`, `draft_lesson_count=15`.
+- هەموو 15 `content_markdown` لە Bundle بە وردی بەراورد کرا بە فایلە Markdown ـە سەرەکییەکانی 32–46: 15/15 exact match؛ هیچ ڕەشنووسێک لە پاشکۆدا کۆن نەماوە.
+- Runtime JSON: 46 وانە؛ 1–31 وانەی runtime، 32–46 هەموویان `owner_review_pending_expanded_draft` و بێ quiz. Curriculum plan: 46 وانە، لەوانە 15 pending.
+- Structured review: 15 وانە، هەموویان `owner_review_pending_expanded_draft`; 15/15 `source_markdown` لەگەڵ فایلە Markdown ـەکان exact match. خانەکانی ڕاهێنان پێشتر بە جیا پشکنراون؛ لە پشکنینی نوێدا هیچ فایلێکی وانە لە repository ون نییە.
+- CIی شکستخواردوو Run `42486017385` بۆ commitی ناوەڕاست `f1bbf0c4` تەنها لە `test_all_lesson_titles_and_numbers_match_curriculum_plan` شکستی هێنا: ناونیشانی runtimeی وانەی 34 بە `بکەر` نوێ کرابووەوە، بەڵام plan هێشتا `نیهاد`ی هەبوو. کۆمیتی دواتری `65e427b1` هەردووکی یەکسان کرد؛ CIی `42486020898` و هەموو runەکانی دواتر سەرکەوتوون.
+- نوێترین CI: Run `42486450848`, commit `38ad8006`, completed/success. پێش ئەوەش runەکانی `42486366934`, `42486340464`, `42486273591`, `42486243849`, `42486228713`, `42486020898` completed/success.
+- تێبینی: ئەم پشتڕاستکردنەوەیە پاراستنی پەڕگە و تاقیکردنەوەی repository دەسەلمێنێت؛ بە مانای پەسەندکردنی وانەکانی 32–46، merge، یان deploymentی Botkeep نییە.
