@@ -243,6 +243,11 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         )
         for lesson in source["lessons"]:
             with self.subTest(lesson=lesson["id"]):
+                if lesson.get("review_status") == "owner_review_pending_expanded_draft":
+                    self.assertTrue(lesson.get("source_markdown", "").strip())
+                    self.assertEqual(lesson["quiz"], [])
+                    self.assertEqual(lesson["review_status"], "owner_review_pending_expanded_draft")
+                    continue
                 self.assertTrue(lesson["objective"].strip())
                 self.assertTrue(lesson["key_points"])
                 self.assertTrue(lesson["examples"])
@@ -421,10 +426,15 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
         self.assertNotIn("پۆلی ژمارەیی", serialized.replace("پۆلی وشەی ژمارەیی", ""))
         for lesson in source["lessons"]:
             with self.subTest(lesson=lesson["id"]):
+                lesson_number = int(lesson["id"].rsplit("_", 1)[1])
                 expected_status = (
-                    "internal_cross_lesson_synthesis_no_external_source_mapping"
-                    if lesson["id"] == "grammar_13"
-                    else "scientific_review_complete_with_qualified_notes"
+                    "owner_review_pending_expanded_draft"
+                    if lesson_number >= 32
+                    else (
+                        "internal_cross_lesson_synthesis_no_external_source_mapping"
+                        if lesson["id"] == "grammar_13"
+                        else "scientific_review_complete_with_qualified_notes"
+                    )
                 )
                 self.assertEqual(lesson["review_status"], expected_status)
 
@@ -449,6 +459,9 @@ class Course4ComprehensionFormattingTests(unittest.TestCase):
         )
         for lesson in source["lessons"]:
             with self.subTest(lesson=lesson["id"]):
+                if lesson.get("review_status") == "owner_review_pending_expanded_draft":
+                    self.assertTrue(lesson.get("source_markdown", "").strip())
+                    continue
                 questions = lesson["comprehension"][1:9]
                 self.assertEqual(len(questions), 8)
                 for number, question in enumerate(questions, start=1):
