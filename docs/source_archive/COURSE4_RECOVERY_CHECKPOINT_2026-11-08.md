@@ -166,3 +166,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - لە دووبارە پشکنینی structured reviewدا دەرکەوت دوو هەڵبژاردەی کویزی کۆنی وانەی 38 لە خانەی `key_points` ـدا ماونەتەوە، هەرچەند `source_markdown` و Bundle نوێ بوون.
 - ئەو block ـەی key_points نوێ کرایەوە تا هەردوو پرسیارەکە لەگەڵ Markdown یەکسان بن؛ لە JSONدا `quiz` بە ئەنقەست بەتاڵە، چونکە ئەم وانەیە draft ـە و quizی runtime نییە.
 - چاکسازییەکە لە structured review commit `87a92aed` تۆمار کرا. ئەمە هۆشدارییەکە پشتڕاست دەکاتەوە کە پشکنینی `source_markdown` بە تەنها بەس نییە؛ `key_points`، `exercises` و خانەکانی دیکەش دەبێت جیاواز پشکنین بکرێن.
+
+
+## پشکنینی تەواوی structured review — 2026-11-08
+- لە پشکنینی پێشوودا دەرکەوت `key_points`ی هەندێک وانە هێشتا وەشانی کۆنی هەبوو، هەرچەند `source_markdown` نوێ بوو. ئەمە بە تایبەتی لە وانەکانی 32، 33، 34، 36، 37، 38، 39، 42، 43، 44 و 46 دەرکەوت.
+- `key_points`ی 11 وانە بە بنەمای بەشەکانی Markdownی ئێستا دووبارە دروست کرایەوە؛ `comprehension`ی 34 و 36یش نوێ کرایەوە. کۆمیت: `980372ee6ef848755a59f08e90a467c18518abd6`.
+- پشتڕاستکردنەوە: 15 وانە؛ 225 key_points؛ 15 comprehension؛ هەموو exercises و role_play؛ هەموویان لە source_markdownی هاوتادا substringی تەواون؛ هیچ mismatchێک نەماوە.
+- ئەم چاکسازییە تەنها structured review ـی staging نوێ دەکاتەوە؛ دەقی خاو، runtime JSON، manifest، quizی چالاک و approval نەگۆڕدراون.
