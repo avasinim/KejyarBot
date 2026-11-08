@@ -306,3 +306,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - سێ فایل لە main و branch conflict ـی mergeability دروست دەکەن: `course_data/grammar_course4_lessons.json`, `tests/test_course4_grammar_runtime.py`, `docs/COURSE4_LESSON26_PARTICLES_RESEARCH.md`.
 - researchی وانەی 26 لە هەردوو branch یەکسانە؛ test assertions بۆ 46 وانە لە branch گونجێنراون؛ JSONی 26 وانەی main و JSONی 46 وانەی branch پێویستیان بە reconciliationی field-by-field هەیە. overwriteکردنی هەر یەکێکیان قەدەغەیە تا ناوەڕۆکەکان بە وردی یەکلا نەکرێنەوە.
 - هیچ merge/rebase/overwrite/deploymentێک لەم قۆناغەدا نەکراوە. PR open/Draft و dirty ـە.
+
+
+### JSON reconciliation detail — 2026-11-08
+- 1–26: both versions have 26 lessons and 208 quiz questions; Activities 78, Exercises 130, Comprehension 260 in both. Main vs branch: Examples 170/181, Appendix 189/216, Key points 235/262.
+- Quiz comparison: 185 option-order/answer-index permutations, 14 question-text differences, 21 option-set differences, 13 correct-answer-text differences, 17 explanation differences. No lesson lacks its 8 questions. These differences are not automatically errors; keep them in audit queue pending source-grounded review.
+- Lesson 3 has 134 differing field paths and branch contains expanded content; do not overwrite. Lesson 2/19/20 term differences mainly Preposition `پریپۆزیشن` vs `پێشبەند`; project register keeps `پێشبەند`. Lesson 16 uses `بنج` in branch consistent with course register.
+- Full detail in `COURSE4_MAINLINE_DIVERGENCE_RECONCILIATION_2026-11-08.md`.
