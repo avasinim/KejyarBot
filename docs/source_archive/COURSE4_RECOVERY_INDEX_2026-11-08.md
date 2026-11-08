@@ -58,3 +58,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **ئاگاداریی PR:** PR #119 هێشتا Draft و `mergeable_state=dirty` ـە؛ 3 commitی main لە branch نەهاتوونە ناوەوە. merge/deployment نەکراوە؛ وردەکاری لە checkpoint و reconciliation report ـە.
+
+
+**نوێکردنەوە:** نموونەی بەرڕستەی تەواوکەری وانەی 46 بە نموونەی خاوەنی «دەزانم کە ئەو ئەمڕۆ دێت» گۆڕدرا و Markdown، Structured Review و Preservation Bundle هاوتا نوێ کرانەوە؛ CIی ئەم گۆڕانکارییە لە کاتی تۆمارکردندا لە `in_progress` بوو. PR #119 هێشتا Draft/dirty ـە.
