@@ -43,3 +43,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** خشتەی چوار جۆری ڕستەی وانەی ٤٦ جیاوازیی Independent و Main Clause بە ڕوونی پیشان دەدات؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** پێناسەی ڕستەی لێکدراوی ئاڵۆز لە وانەی 38 بە «دوو پێڕستەی سەربەخۆی هاوئاست + بەرڕستە» یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
