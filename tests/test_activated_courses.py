@@ -399,7 +399,7 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
             second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
             third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
-        fourth, fourth_page_count = bot.course_menu_keyboard("grammar", 12345, 3)
+            fourth, fourth_page_count = bot.course_menu_keyboard("grammar", 12345, 3)
         self.assertEqual(page_count, 4)
         self.assertEqual(second_page_count, 4)
         self.assertEqual(third_page_count, 4)
