@@ -269,7 +269,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 31}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -289,7 +289,12 @@ def validate_activated_course_runtime():
             )
         )
         missing_quizzes = [] if grammar_quiz_pending else [
-            lesson_id for lesson_id in lesson_ids if not QUIZ_DATA.get(lesson_id)
+            lesson_id for lesson_id in lesson_ids
+            if not QUIZ_DATA.get(lesson_id)
+            and not (
+                course_id == "grammar"
+                and LESSON_DATA.get(lesson_id, {}).get("review_status", "").startswith("owner_review_pending")
+            )
         ]
         if course_id == "grammar":
             grammar_lessons = [LESSON_DATA[key] for key in lesson_ids if key in LESSON_DATA]
