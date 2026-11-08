@@ -1,6 +1,8 @@
 """Regression tests for the owner-supplied replacement Course 4 grammar lesson."""
 import json
 import unittest
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, patch
 from pathlib import Path
 
 import bot
@@ -384,6 +386,38 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertEqual([item["id"] for item in plan["lessons"]], expected_ids)
         course = next(item for item in catalog["courses"] if item["id"] == "grammar")
         self.assertEqual(course["lesson_ids"], expected_ids)
+
+
+class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
+    async def test_pending_draft_is_readable_with_warning_but_has_no_completion_button(self):
+        lesson_id = "grammar_32"
+        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+        self.assertIsNone(bot.lesson_keyboard(lesson_id))
+        content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
+        self.assertIn("دەقی پێداچوونەوەی خاوەن پڕۆژەیە", content)
+        self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
+
+    async def test_pending_draft_cannot_be_completed_or_awarded_rewards(self):
+        query = SimpleNamespace(
+            data="finish_grammar_32",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with patch.object(bot, "complete_lesson_with_rewards") as reward:
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێداچوونەوەدایە", query.message.reply_text.await_args.args[0])
+        reward.assert_not_called()
+
+    async def test_approved_lesson_keeps_its_completion_button(self):
+        self.assertFalse(bot.lesson_is_pending_review("grammar_31"))
+        self.assertIsNotNone(bot.lesson_keyboard("grammar_31"))
 
 
 class Course4GrammarLessons14To17Tests(unittest.TestCase):
