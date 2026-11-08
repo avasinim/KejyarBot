@@ -157,82 +157,103 @@
       "id": "grammar_39",
       "title": "بەرکار و ئەرکی ڕێزمانیی ئەو",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 208-514",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
-        "review and normalize into runtime schema"
+        "review and normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_039_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 40,
       "id": "grammar_40",
       "title": "کاری تێپەڕ و کاری تێنەپەڕ",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 523-1131",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
         "review answer key and examples",
-        "normalize into runtime schema"
+        "normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_040_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 41,
       "id": "grammar_41",
       "title": "کردارە سادە و لێکدراوەکان و پەیوەندییان بە بەرکارەوە",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 1136-1658",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
-        "review and normalize into runtime schema"
+        "review and normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_041_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 42,
       "id": "grammar_42",
       "title": "جێناوی لکاو و ئەرکی بەرکار لە زمانی کوردیدا",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 1663-2063",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
         "check contrastive examples and analysis",
-        "normalize into runtime schema"
+        "normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_042_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 43,
       "id": "grammar_43",
       "title": "جێناوی لکاو لە کردارە تێپەڕەکاندا",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 2068-2441",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
         "review grammatical analysis",
-        "normalize into runtime schema"
+        "normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_043_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 44,
       "id": "grammar_44",
       "title": "بەرکار لە ڕستەی نەکارادا",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 2446-2756",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
         "review examples and terminology",
-        "normalize into runtime schema"
+        "normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_044_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 45,
       "id": "grammar_45",
       "title": "ڕیزبەندی و گواستنەوەی بەرکار لە ڕستەدا",
       "source": "docs/source_archive/COURSE4_LESSONS_039_045_SOURCE_2026-11-07.md lines 2761-3031",
-      "source_state": "owner_transcript_archived",
+      "source_state": "assistant_expanded_draft_in_combined_transcript_not_owner_raw",
       "required_work": [
         "review focus and topicalization analysis",
-        "normalize into runtime schema"
+        "normalize into runtime schema",
+        "distinguish user-origin source material from assistant-expanded lesson draft",
+        "validate lesson against terminology and grammar standards"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_045_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
     },
     {
       "number": 46,
@@ -250,8 +271,8 @@
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Owner-source segments for lessons 32-38 were separated verbatim from the archived 32-38 transcript and verified by fetching each staging file. The seven-lesson split is now represented by seven separate source staging files.",
-    "caution": "The files preserve original source text and are not approved lesson texts or runtime content. Lessons 33-36 source was embedded in the combined Lesson 32 text; lesson 37-38 source was in the later combined segment.",
-    "next": "Audit and segment lessons 39-46 into individual staging source records, then review lesson drafts against the runtime schema without modifying runtime until approval."
+    "completed": "Lessons 32-38 now have seven verified verbatim owner-source staging segments. Lessons 39-45 now have seven separate transcript-draft staging segments; these are explicitly labelled assistant-expanded drafts, not owner raw source.",
+    "caution": "No lesson 32-45 staging file is approved runtime content. Lesson 46 remains in its standalone source archive and needs terminology review.",
+    "next": "Review the 46th lesson and align the lesson 32-46 terminology sequence; only after that prepare runtime JSON proposals for approval."
   }
 }
