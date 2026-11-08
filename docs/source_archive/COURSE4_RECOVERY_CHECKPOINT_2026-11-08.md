@@ -160,3 +160,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - فایلەی master: `COURSE4_LESSONS_032_038_SOURCE_2026-11-07.md` (1548 هێڵ).
 - bodyی هەموو 7 segmentی 32–38 بە master transcript بەراورد کرا؛ هەموویان substringی ڕاستەوخۆ و exact match بوون (7/7).
 - ئەمە پشتڕاست دەکاتەوە کە segmentەکان لە master transcriptەوە پارێزراون؛ بەڵام Source Completeness Audit هێشتا جیاوازیی نێوان دەقی master و owner sourceی سەربەخۆی 33–36 دەپارێزێت.
+
+
+## پشکنینی خانەی key_points — وانەی 38
+- لە دووبارە پشکنینی structured reviewدا دەرکەوت دوو هەڵبژاردەی کویزی کۆنی وانەی 38 لە خانەی `key_points` ـدا ماونەتەوە، هەرچەند `source_markdown` و Bundle نوێ بوون.
+- ئەو block ـەی key_points نوێ کرایەوە تا هەردوو پرسیارەکە لەگەڵ Markdown یەکسان بن؛ لە JSONدا `quiz` بە ئەنقەست بەتاڵە، چونکە ئەم وانەیە draft ـە و quizی runtime نییە.
+- چاکسازییەکە لە structured review commit `87a92aed` تۆمار کرا. ئەمە هۆشدارییەکە پشتڕاست دەکاتەوە کە پشکنینی `source_markdown` بە تەنها بەس نییە؛ `key_points`، `exercises` و خانەکانی دیکەش دەبێت جیاواز پشکنین بکرێن.
