@@ -8,7 +8,10 @@
 4. **[Structured reviewی وانەکانی 32–46](staging/COURSE4_LESSONS_032_046_STRUCTURED_REVIEW_2026-11-08.json)** — پێکهاتە و ڕاهێنانەکان؛ هەموویان pending owner review ـن.
 5. **[ڕاپۆرتی بەراوردی quiz و پشکنینی ناوەڕۆک](COURSE4_QUIZ_MAINLINE_COMPARISON_2026-11-08.md)**.
 6. **[ڕاپۆرتی جیاوازیی main و branch](COURSE4_MAINLINE_DIVERGENCE_RECONCILIATION_2026-11-08.md)**.
-7. **ڕەشنووسەکان:** لە `staging/drafts/COURSE4_LESSON_032_EXPANDED_DRAFT_2026-11-08.md` تا `COURSE4_LESSON_046_EXPANDED_DRAFT_2026-11-08.md`.
+7. **[پشکنینی تەواوی سەرچاوەکان](COURSE4_LESSONS_032_046_SOURCE_COMPLETENESS_AUDIT_2026-11-08.md)** — پلەی پشتڕاستبوونی سەرچاوەی هەر وانە، جیاوازی master transcript و پارچەدەقەکان، و پاشکۆی WritingBlockی ماوە.
+8. **[لیستی چاکسازییە بەڵگەدارەکان](COURSE4_LESSONS_032_046_EVIDENCE_BASED_CORRECTION_QUEUE_2026-11-08.md)** — شوێنی هەڵە و پێشنیاری چاکسازی؛ بڕیارە زاراوەیی و زانستییەکان لە چاکسازیی دڵنیابووەکان جیا کراونەتەوە.
+9. **[پێوەری گواستنەوە بۆ runtime](COURSE4_LESSONS_032_046_RUNTIME_SCHEMA_AND_ACTIVATION_GATE_2026-11-08.md)** — مەرجە فنییەکانی پەسەندکردن و چالاککردن.
+10. **ڕەشنووسەکان:** لە `staging/drafts/COURSE4_LESSON_032_EXPANDED_DRAFT_2026-11-08.md` تا `COURSE4_LESSON_046_EXPANDED_DRAFT_2026-11-08.md`.
 8. **Snapshotەکانی main:** `MAINLINE_COURSE4_LESSONS_01_26_SNAPSHOT_2026-11-08.json`، `MAINLINE_COURSE4_RUNTIME_TESTS_SNAPSHOT_2026-11-08.py`، `MAINLINE_COURSE4_LESSON26_PARTICLES_RESEARCH_SNAPSHOT_2026-11-08.md`.
 
 Repository: `avasinim/KejyarBot`  
