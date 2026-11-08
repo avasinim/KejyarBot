@@ -397,6 +397,24 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("دەقی پێداچوونەوەی خاوەن پڕۆژەیە", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
+    async def test_next_lesson_route_also_marks_pending_draft_as_review_only(self):
+        query = SimpleNamespace(
+            data="next_lesson_grammar_32",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with patch.object(bot, "can_open", return_value=True), patch.object(
+            bot, "send_lesson_text", new_callable=AsyncMock
+        ) as send:
+            await bot.open_next_lesson(update, context)
+
+        sent_content = send.await_args.args[1]
+        self.assertIn("دەقی پێداچوونەوەی خاوەن پڕۆژەیە", sent_content)
+        self.assertIsNone(send.await_args.args[2])
+
     async def test_pending_draft_cannot_be_completed_or_awarded_rewards(self):
         query = SimpleNamespace(
             data="finish_grammar_32",
