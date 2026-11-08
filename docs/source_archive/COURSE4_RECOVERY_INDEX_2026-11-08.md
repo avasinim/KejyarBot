@@ -46,3 +46,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** پێناسەی ڕستەی لێکدراوی ئاڵۆز لە وانەی 38 بە «دوو پێڕستەی سەربەخۆی هاوئاست + بەرڕستە» یەکگرتوو کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
+
+
+**نوێکردنەوە:** لە وانەی 46 ناونانی پێڕستەی هاوئاست و `key_points[7]`ی Structured Review لەگەڵ Markdown یەکسان کرا؛ وردەکاری لە checkpoint و terminology audit ـە.
