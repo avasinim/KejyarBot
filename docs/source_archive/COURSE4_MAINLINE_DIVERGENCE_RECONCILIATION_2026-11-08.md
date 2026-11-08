@@ -163,3 +163,9 @@
 
 ## پشکنینی وەڵامی جیاوازەکان
 پشکنینی ناوەڕۆکی 13 وەڵامی جیاوازی تاقیکردنەوە تەواو بوو. هیچ هەڵەیەکی ڕوونی answer key لە branch نەدۆزرایەوە؛ جیاوازییەکانی وانەی 3 لەگەڵ key points/examplesی branch دەگونجێن، و جیاوازییەکانی وانەکانی 2،19،20 زاراوەیین («پێشبەند»ی branch پارێزراوە). وانەی 10 تەنها ناوی نموونەی تێدا گۆڕاوە. وردەکاری لە `COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`.
+
+
+## چارەسەری conflictی Git — 2026-11-08
+- Mainline commitی `4affb750244daebd1d13f886ef3c5a1d1efad79f` و branchی پشکنراو لە merge commitی `1a85068e5867be55729e0a5b1539fd0a1c89e545`دا وەک دوو parent تۆمار کران.
+- Tree ـی branch پارێزرا؛ واتە JSON ـی 46 وانەیی، تاقیکردنەوە و پێکهاتەی 46 وانە، و فایلەکانی پڕۆژە نەگۆڕدران بە وەشانی 26 وانەیی main. Research file لە هەردوو branch/main یەکسان بوو. Test file ـی branch هەڵگیرا، چونکە هەموو test ـەکانی 46 وانە و هاوتاکانی 26 وانەی mainی لەخۆ گرتبوو.
+- GitHub PR #119 ئێستا `mergeable:true` و `mergeable_state:unstable` ڕاپۆرت دەکات؛ CI بۆ merge commit لە پشکنیندایە. ئەمە conflictی merge چارەسەر دەکات، بەڵام PR هێشتا Draft ـە و merge/deploy نەکراوە.
