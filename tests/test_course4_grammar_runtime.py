@@ -51,6 +51,10 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertEqual(lesson["review_status"], "owner_review_pending_expanded_draft")
             self.assertEqual(lesson["quiz"], [])
             self.assertTrue(lesson.get("source_markdown", "").strip())
+            runtime_lesson = bot.LESSON_DATA[lesson["id"]]
+            self.assertEqual(runtime_lesson["review_status"], lesson["review_status"])
+            self.assertTrue(runtime_lesson["content"].strip())
+            self.assertEqual(bot.QUIZ_DATA[lesson["id"]], [])
 
     def test_course4_is_active_with_forty_six_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
