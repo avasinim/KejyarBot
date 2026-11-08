@@ -59,70 +59,75 @@
       "id": "grammar_32",
       "title": "بنەماکانی ڕستە و پێڕستە",
       "source": "Library:Pasted text(6).txt lines 1175-1539; earlier raw material lines 1-370",
-      "source_state": "owner_source_segmented_verbatim_and_verified",
+      "source_state": "owner_source_segmented_verbatim_and_audited_not_approved",
       "required_work": [
         "separate raw source from draft",
         "terminology review",
         "final lesson review"
       ],
       "runtime_ready": false,
-      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_032_OWNER_SOURCE_SEGMENT_2026-11-08.md"
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_032_OWNER_SOURCE_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_032_036_TERMINOLOGY_AUDIT_2026-11-08.md"
     },
     {
       "number": 33,
       "id": "grammar_33",
       "title": "بکەر و کار",
       "source": "Library:Pasted text(6).txt lesson split plan lines 1183-1190; raw material lines 1-115",
-      "source_state": "owner_source_segmented_verbatim_and_verified",
+      "source_state": "owner_source_segmented_verbatim_and_audited_not_approved",
       "required_work": [
         "extract source material",
         "review agent vs grammatical subject distinction",
         "prepare independent lesson"
       ],
       "runtime_ready": false,
-      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_033_OWNER_SOURCE_SEGMENT_2026-11-08.md"
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_033_OWNER_SOURCE_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_032_036_TERMINOLOGY_AUDIT_2026-11-08.md"
     },
     {
       "number": 34,
       "id": "grammar_34",
       "title": "نیهاد و گوزارە و کاری بەستەر",
       "source": "Library:Pasted text(6).txt plan lines 1192-1200; raw material lines 1-240",
-      "source_state": "owner_source_segmented_verbatim_and_verified",
+      "source_state": "owner_source_segmented_verbatim_and_audited_not_approved",
       "required_work": [
         "extract source material",
         "review copula forms and usage",
         "prepare independent lesson"
       ],
       "runtime_ready": false,
-      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_034_OWNER_SOURCE_SEGMENT_2026-11-08.md"
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_034_OWNER_SOURCE_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_032_036_TERMINOLOGY_AUDIT_2026-11-08.md"
     },
     {
       "number": 35,
       "id": "grammar_35",
       "title": "جۆرەکانی ڕستە لە ڕووی دەربڕینەوە",
       "source": "Library:Pasted text(6).txt plan lines 1202-1210; raw material lines 116-240",
-      "source_state": "owner_source_segmented_verbatim_and_verified",
+      "source_state": "owner_source_segmented_verbatim_and_audited_not_approved",
       "required_work": [
         "extract source material",
         "review punctuation and sentence mood",
         "prepare independent lesson"
       ],
       "runtime_ready": false,
-      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_035_OWNER_SOURCE_SEGMENT_2026-11-08.md"
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_035_OWNER_SOURCE_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_032_036_TERMINOLOGY_AUDIT_2026-11-08.md"
     },
     {
       "number": 36,
       "id": "grammar_36",
       "title": "تەواوکەر و بەشەکانی تری ڕستە",
       "source": "Library:Pasted text(6).txt plan lines 1212-1220; raw material lines 241-370",
-      "source_state": "owner_source_segmented_verbatim_and_verified",
+      "source_state": "owner_source_segmented_verbatim_and_audited_not_approved",
       "required_work": [
         "extract source material",
         "distinguish complement, modifier, adjective and adjunct",
         "prepare independent lesson"
       ],
       "runtime_ready": false,
-      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_036_OWNER_SOURCE_SEGMENT_2026-11-08.md"
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_036_OWNER_SOURCE_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_032_036_TERMINOLOGY_AUDIT_2026-11-08.md"
     },
     {
       "number": 37,
@@ -274,8 +279,8 @@
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Lessons 32-38 have seven verified owner-source segments; lessons 39-45 have seven separately labelled transcript-draft segments; lesson 46 has a terminology audit comparing its draft with lessons 37-38.",
-    "caution": "The audit records conflicts and provisional recommendations only. No final terminology policy or lesson approval has been applied; no runtime data changed.",
-    "next": "Continue the cross-lesson terminology audit for lessons 32-36, then prepare a reviewed glossary decision sheet for owner confirmation before drafting runtime entries."
+    "completed": "Terminology audits now exist for lessons 32-36 and lesson 46. The audits identify conflicts in Subject vs Agent, Verb vs Predicate, copula vs predicate, Complement vs adjunct/modifier, and Compound vs Complex. Source segments remain unchanged.",
+    "caution": "All recommendations are provisional review notes, not approved terminology policy. No runtime JSON, course manifest, Botkeep, database, or deployment state was changed.",
+    "next": "Prepare a single terminology decision sheet for the 32-46 sequence, retaining unresolved choices for owner confirmation before drafting runtime lessons."
   }
 }
