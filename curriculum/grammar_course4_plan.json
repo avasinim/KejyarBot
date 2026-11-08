@@ -4,9 +4,9 @@
   "course_order": 4,
   "title": "کۆرسی ٤: ڕێزمان",
   "status": "active_owner_review_beta",
-  "replacement_state": "owner_supplied_lessons_1_through_25_plus_scholarly_researched_lessons_26_through_31",
+  "replacement_state": "31 structured lessons plus 15 expanded review drafts (lessons 32–46); pending owner/scientific review",
   "language": "ckb",
-  "lesson_count": 31,
+  "lesson_count": 46,
   "lessons": [
     {
       "number": 1,
@@ -193,10 +193,100 @@
       "id": "grammar_31",
       "title": "وانەی ٣١: چاوگ لە ئەرکی ناویدا — ناوکردن و ڕۆڵی سینتاکسی",
       "status": "independent_academic_research_owner_requested_lesson"
+    },
+    {
+      "number": 32,
+      "id": "grammar_32",
+      "title": "وانەی 32: بنەماکانی ڕستە و پێکهاتە سەرەکییەکان",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 33,
+      "id": "grammar_33",
+      "title": "وانەی 33: بکەر و کردار: ئەرکی ڕێزمانی و ڕۆڵی واتایی",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 34,
+      "id": "grammar_34",
+      "title": "وانەی 34: نیهاد، گوزارە و کاری بەستەر",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 35,
+      "id": "grammar_35",
+      "title": "وانەی 35: جۆرەکانی ڕستە لە ڕووی مەبەستی دەربڕینەوە",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 36,
+      "id": "grammar_36",
+      "title": "وانەی 36: تەواوکەر و پێکهاتەکانی ناو ڕستە",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 37,
+      "id": "grammar_37",
+      "title": "وانەی 37: جۆرەکانی ڕستە لە ڕووی پێکهاتەوە",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 38,
+      "id": "grammar_38",
+      "title": "وانەی 38: پێڕستە، سەرڕستە و بەرڕستە؛ شیکاری و ڕاهێنان",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 39,
+      "id": "grammar_39",
+      "title": "وانەی 39: بەرکار و ئەرکی ڕێزمانیی ئەو",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 40,
+      "id": "grammar_40",
+      "title": "وانەی 40: کاری تێپەڕ و کاری تێنەپەڕ",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 41,
+      "id": "grammar_41",
+      "title": "وانەی 41: کردارە سادە و لێکدراوەکان و پەیوەندییان بە بەرکارەوە",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 42,
+      "id": "grammar_42",
+      "title": "وانەی 42: جێناوی لکاو و ئەرکی بەرکار لە زمانی کوردیدا",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 43,
+      "id": "grammar_43",
+      "title": "وانەی 43: جێناوی لکاو لە کردارە تێپەڕەکاندا",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 44,
+      "id": "grammar_44",
+      "title": "وانەی 44: بەرکار لە ڕستەی نەکارادا؛ بکەری ڕێزمانی و ئەنجامدەری کردار",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 45,
+      "id": "grammar_45",
+      "title": "وانەی 45: ڕیزبەندی و گواستنەوەی بەرکار لە ڕستەدا",
+      "status": "owner_review_pending_expanded_draft"
+    },
+    {
+      "number": 46,
+      "id": "grammar_46",
+      "title": "وانەی 46: ڕستەی سادە، لێکدراو، ئاڵۆز و لێکدراوی ئاڵۆز",
+      "status": "owner_review_pending_expanded_draft"
     }
   ],
   "curriculum_policy": "وانەکانی ١–٢٥ لەسەر ماددەی خاوەن پڕۆژە و پشکنینی ناوخۆیی دامەزراون؛ وانەی ٢٦ بە داوای خاوەن پڕۆژە و لە نەبوونی ماددەی بنەڕەتیی نێردراو، لەسەر بنەمای توێژینەوەی ئەکادیمیی سەرچاوەدار و بە تێبینیی سنووری بەڵگە دابڕێژراوە. هیچ فایلێکی قەدەغەکراو بەکارنەهاتووە. وانەی ٢٩ بە توێژینەوەی سەربەخۆ لەسەر داڕشتنی مۆرفۆلۆژیی کردارەکانی سۆرانی زیاد کرا؛ جیاوازیی داڕشتن لە لەچۆنایەتی و لێکدان بە ڕوونی پارێزراوە. وانەی ٣٠ پێکهاتەی کرداری ئاڵۆز و کردارە سووکەکان لەسەر بنەمای Kareem (2016) و Ahmadi (2021) وەردەگرێت؛ جیاوازیی چوارچێوەی زانستییەکان لە پۆلێنکردنی پارتیکڵ-کردار پارێزراوە. وانەی ٣١ ناوکردنی چاوگ و ڕۆڵە سینتاکسییەکانی لەسەر بنەمای Kareem (2016) و Salavati & Ahmadi (2018) دەخاتەڕوو؛ لیستی پێنج تایبەتمەندی و حەوت ئەرک بەبێ بەڵگەی یەکگرتوو وەک یاسای داخراو پێشکەش ناکرێت.",
-  "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١–١٢ و ١٤–١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ وانەی ١٣ دۆخی internal_cross_lesson_synthesis_no_external_source_mappingی هەیە و بە سەرچاوەی دەرەکیی پەسەندکراو پشتڕاست نەکراوەتەوە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت. وانەی ١٨ لە 2026-11-07 بە ناونیشانی کاری چالاک و نەچالاک زیاد کرا؛ بەشی سەرچاوە لە لاپەڕەی ١١٢ تا ١٢٤ شیکراوەتەوە، بەڵام وردەکاریی فۆڕمی نەچالاک و جیاوازیی شێوەزارەکان هێشتا پێویستیان بە پشتڕاستکردنەوەی داتای سۆرانی هەیە. بەشی Auxiliary Verbs لە لاپەڕەی ١٢٥ دەست پێدەکات و بۆ وانەیەکی سەربەخۆ هەڵگیراوە. بڕیاری خاوەن پڕۆژە: فایل/کتێبی Rezmany_axawtny_kurdy.pdf سەرچاوەی ڕێگەپێدراوی کۆرسی ٤ نییە؛ هەموو mapping و پێشنیارەکانی پەڕەبەندیی پێشووی پشتبەستوو بەو فایلە هەڵوەشێنراونەتەوە. هیچ سەرچاوەی جێگرەوە بە خۆکارانە دانانرێت و پێویستە تەنها ماددەی پەسەندکراوی خاوەن پڕۆژە بەکاربهێنرێت. لە 2026-11-07 وانەی ٢٢ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: پێشبەندە سەربەخۆکانی «لە، بە، بۆ»، گرێی پێشبەندی و جیاوازیی پێشبەند لە «ـە»ی لکێنراو. ئامرازی پەیوەندی و ئیزافە لە وانەی ٢٢ جیا کراونەتەوە و بۆ بابەتی سەربەخۆ هەڵگیراون. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. وانەی ٢٣ لە 2026-11-07 لەسەر ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی پەیوەندی، «و»، «یان»، «نە...نە» و جیاوازیی «یش» و پارتیکڵی جەخت. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. لە 2026-11-07 وانەی ٢٤ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی بانگکردن «یا، ئەی، ا» و جیاوازیی شوێنیان لە پێش و دوای ناوی بانگکراو؛ نموونەکانی فراوانکراوی فێرکاری بە ڕوونی لە پاشکۆدا جیا کراونەتەوە لە ماددەی ڕاستەوخۆ. لە 2026-11-07 وانەی ٢٥ لەسەر نیشانەی خستنەپاڵ «ی» زیاد کرا؛ نموونەکانی ئەردەڵان/سنە و وشەی کۆتایی‌دەنگدار بە شێوەی مەرجدار پارێزراون. هەشت ناوی جۆری گرێی خستنەپاڵ تەنها وەک لیستی نێردراو تۆمار کراون، چونکە پێناسە و نموونەی تەواویان لە ماددەی بەردەستدا نییە.",
+  "note": "لە 2026-11-07 بابەتی هاوەڵناوی وانەی ٦ی پێشوو بە سێ وانەی ٦ تا ٨ دابەش کرا: بنەما و ناسینەوە؛ جۆربەندی و پێکهاتەی مۆرفۆلۆژی؛ بەکارهێنان و پلەکان. وانەکانی ١ تا ٥ بەبێ گۆڕانکاریی ناوەڕۆکی پارێزراون. وانەکانی ١–١٢ و ١٤–١٧ دۆخی scientific_review_complete_with_qualified_notesیان هەیە؛ وانەی ١٣ دۆخی internal_cross_lesson_synthesis_no_external_source_mappingی هەیە و بە سەرچاوەی دەرەکیی پەسەندکراو پشتڕاست نەکراوەتەوە؛ خاڵە نادڵنیاکان لە وانەکانی ١ تا ٥دا لە ناوەڕۆکی فێرکاری جیا کراونەتەوە و بە تێبینیی مەرجدار لە پاشکۆدا تۆمار کراون. وانەی ٩ لە 2026-11-07 زیاد کرا؛ پێکهاتەی ژمارەی سادە، داڕێژراو و لێکدراو بە شیکردنەوەی مۆرفۆلۆژی و جیاکردنەوەی پۆلی وشە لە پێکهاتە ڕوون کراوەتەوە. وانەکانی ١٠ تا ١٢ لە 2026-11-07 لە بابەتی جێناوی کەسی دابەش کران: جێناوی سەربەخۆ؛ جێناوی لکاو و فۆڕمەکانی؛ ئەرکی ڕێزمانیی لکاوەکان و ڕێکخستنی ڕابردووی تێپەڕ. وانەی ١٣ لە 2026-11-07 بە پشتبەستن بە وتاری «پێداچوونەوەیەکی نوێ بە یاسای ڕەکردار و (کات)ی زمانی کوردیدا» زیاد کرا؛ ڕەگ و چاوگ، پێشگر و پاشگر، شێوازی ئێستا/داهاتوو و ڕابردوو، تێپەڕی/ناتێپەڕی، کاریگەری و هۆکاری لەگەڵ تێبینییە تیۆرییەکان ڕێکخران. وانەکانی ١٤ تا ١٧ لە 2026-11-07 زیاد کران: تەواوکەر و ئیزافە؛ دەمەکانی ڕابردوو؛ ڕەگی کردار و فۆڕمی ڕانەبردوو؛ کاری داخوازی و نەرێکردن. لە کۆتایی پشکنینی پێکهاتەدا ١٧ ناسنامە لە سەرچاوە، پلان و manifest هاوتان و runtime ژمارەی ١٧ چاوەڕوان دەکات. CIی دوایین کۆمیت سەرکەوتووە. لە 2026-11-07 وانەکانی ١–٥یش پشکنین و چاکسازییان پێکرا: جیاکردنەوەی ڕێزمانی گشتی/بەراوردی لە Universal Grammar؛ لابردنی زاراوەی نادیاری «فێزیۆلۆژی» لە ناوەڕۆکی فێرکاری و هەڵگرتنی لە تێبینی؛ چاککردنی پێناسەی پریپۆزیشن لە سۆرانی و زیادکردنی بەڵگەی «لە/بە/بۆ» و پێکهاتەی «لە...دا/لە...ەوە»؛ و یەکخستنی «کۆی نەناسراو» لە پاشکۆی وانەی ٤. پشکنینی زنجیرەی زاراوەکانی ١٧ وانە لە 2026-11-07 ئەنجام درا؛ فۆڕمی Numeral لە هەموو شوێنەکاندا بە «پۆلی وشەی ژمارەیی» یەکخرا و regression test بۆ پاراستنی یەکسانیی زاراوەکان زیاد کرا. لە پشکنینی پەیوەندیی وانەکاندا ٣٢ ژمارەی دووبارەکراوی پرسیاری تێگەیشتن لە وانەکانی ١٤–١٧ چاک کران و regression test بۆ هەموو وانەکان زیاد کرا. پشکنینی پاراستنی کۆرسەکانی پێشوو ئەنجام درا و adapter بۆ پاشکۆ/چالاکییەکان بە opt-in سنووردار کرا؛ هاوتاییی تەواوی ١٧ وانە لەگەڵ کتێبی سەرچاوە هێشتا pending_page_by_page_source_mapping ـە و هیچ بانگەشەی source-verified ناکرێت. وانەی ١٨ لە 2026-11-07 بە ناونیشانی کاری چالاک و نەچالاک زیاد کرا؛ بەشی سەرچاوە لە لاپەڕەی ١١٢ تا ١٢٤ شیکراوەتەوە، بەڵام وردەکاریی فۆڕمی نەچالاک و جیاوازیی شێوەزارەکان هێشتا پێویستیان بە پشتڕاستکردنەوەی داتای سۆرانی هەیە. بەشی Auxiliary Verbs لە لاپەڕەی ١٢٥ دەست پێدەکات و بۆ وانەیەکی سەربەخۆ هەڵگیراوە. بڕیاری خاوەن پڕۆژە: فایل/کتێبی Rezmany_axawtny_kurdy.pdf سەرچاوەی ڕێگەپێدراوی کۆرسی ٤ نییە؛ هەموو mapping و پێشنیارەکانی پەڕەبەندیی پێشووی پشتبەستوو بەو فایلە هەڵوەشێنراونەتەوە. هیچ سەرچاوەی جێگرەوە بە خۆکارانە دانانرێت و پێویستە تەنها ماددەی پەسەندکراوی خاوەن پڕۆژە بەکاربهێنرێت. لە 2026-11-07 وانەی ٢٢ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: پێشبەندە سەربەخۆکانی «لە، بە، بۆ»، گرێی پێشبەندی و جیاوازیی پێشبەند لە «ـە»ی لکێنراو. ئامرازی پەیوەندی و ئیزافە لە وانەی ٢٢ جیا کراونەتەوە و بۆ بابەتی سەربەخۆ هەڵگیراون. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. وانەی ٢٣ لە 2026-11-07 لەسەر ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی پەیوەندی، «و»، «یان»، «نە...نە» و جیاوازیی «یش» و پارتیکڵی جەخت. هیچ سەرچاوەی دەرەکی یان فایلێکی قەدەغەکراو بەکارنەهاتووە. لە 2026-11-07 وانەی ٢٤ بە پشتبەستن بە ماددەی ڕاستەوخۆی خاوەن پڕۆژە زیاد کرا: ئامرازی بانگکردن «یا، ئەی، ا» و جیاوازیی شوێنیان لە پێش و دوای ناوی بانگکراو؛ نموونەکانی فراوانکراوی فێرکاری بە ڕوونی لە پاشکۆدا جیا کراونەتەوە لە ماددەی ڕاستەوخۆ. لە 2026-11-07 وانەی ٢٥ لەسەر نیشانەی خستنەپاڵ «ی» زیاد کرا؛ نموونەکانی ئەردەڵان/سنە و وشەی کۆتایی‌دەنگدار بە شێوەی مەرجدار پارێزراون. هەشت ناوی جۆری گرێی خستنەپاڵ تەنها وەک لیستی نێردراو تۆمار کراون، چونکە پێناسە و نموونەی تەواویان لە ماددەی بەردەستدا نییە. لە 2026-11-08 وانەکانی ٣٢–٤٦ وەک ڕەشنووسی فراوانکراوی بۆ خوێندنەوەی تاقیکاری زیاد کراون؛ پەسەندکراوی کۆتایی نین، کویزیان نییە، و provenanceی وانەکانی ٣٩–٤٥ لە transcriptی پێشووترەوەیە. ئەم ١٥ وانەیە لە پێداچوونەوەی خاوەن کۆرس و زانستی تێپەڕ نەبوون.",
   "source_alignment_status": "source_mapping_suspended_owner_excluded_reference",
   "source_alignment_note": "Owner instruction: Rezmany_axawtny_kurdy.pdf is not an authorized source for Course 4 and must not be used to draft, validate, or map lessons. All previous page mappings based on this PDF are withdrawn and must not be treated as evidence. Existing lesson content remains as previously authored pending use of owner-approved material; no replacement source is assumed. Active Lessons 22–25 use owner-supplied material and have no mapping to that PDF. وانەی ٢٦ بە توێژینەوەی ئەکادیمیی سەربەخۆی تایبەت بە پارتیکڵی گفتوگۆییی سۆرانی دابڕێژراوە؛ سەرچاوە و سنووری بەڵگە لە پاشکۆ و فایلەکەی توێژینەوەدا تۆمار کراون، و هیچ mappingێکی پەڕەیی بۆ کتێبی قەدەغەکراو نییە. وانەی ٢٧ بە توێژینەوەی ئەکادیمیی سەربەخۆ لەسەر Interjection و ڕستەی سەرسووڕمان دابڕێژراوە؛ سەرچاوەکانی Ameka (1992)، McCarus (2009)، Taha (2022) و سنووری بەڵگە لە پاشکۆدا تۆمار کراون. لیستی خاوەن پڕۆژە و فۆڕمە نەپشتڕاستکراوەکان بە جیاوازی پارێزراون؛ هیچ mappingێکی بۆ فایلە قەدەغەکراوەکە نییە. وانەی ٢٩ بە پشتبەستن بە Ahmadi (2021 manuscript) و Ahmadi & Mahmudi (2023, SIGMORPHON) دابڕێژراوە؛ پێشگرە کردارەکان لە پێشبەندیی سەربەخۆ جیا کراونەتەوە، و «ـەوە» بە مۆرفیمێکی یەکئەرکی نەناسێنراوە. هیچ mappingێکی بۆ فایلە قەدەغەکراوەکە نییە. وانەی ٣٠ لەسەر NV+LV و پێکهاتەی کردارە ئاڵۆزەکانە؛ جیاوازیی کردارە سووک و سەرەکییەکان و ڕێکخستنی تەواوکەرەکان بە پشتبەستن بە Kareem (2016)، Chapter 5، شیکراونەتەوە. لیستی ١٩ شێواز وەک یاسای داخراو پشتڕاست نەکراوەتەوە. وانەی ٣١ بە نموونەی «کوشتنی ئاژەڵەکە خراپ بوو» و «ناوەندەکانی دەنگدانمان» ناوکردنی کردار شیدەکاتەوە؛ جیاوازیی چاوگ و فۆڕمی ناوکردراو پارێزراوە.",
   "source_alignment_map": [
@@ -311,6 +401,111 @@
       "source_pages": null,
       "status": "independent_academic_research_owner_requested_lesson",
       "note": "Based on Kareem (2016), §4.5, pp. 112–114, example (29), and Salavati & Ahmadi (2018), Figure 1. Five nominal properties and seven syntactic functions from earlier raw notes were not validated as a closed scholarly list; no such list is asserted."
+    },
+    {
+      "lessons": "32",
+      "topic": "بنەماکانی ڕستە و پێکهاتە سەرەکییەکان",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "33",
+      "topic": "بکەر و کردار: ئەرکی ڕێزمانی و ڕۆڵی واتایی",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "34",
+      "topic": "نیهاد، گوزارە و کاری بەستەر",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "35",
+      "topic": "جۆرەکانی ڕستە لە ڕووی مەبەستی دەربڕینەوە",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "36",
+      "topic": "تەواوکەر و پێکهاتەکانی ناو ڕستە",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "37",
+      "topic": "جۆرەکانی ڕستە لە ڕووی پێکهاتەوە",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "38",
+      "topic": "پێڕستە، سەرڕستە و بەرڕستە؛ شیکاری و ڕاهێنان",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "39",
+      "topic": "بەرکار و ئەرکی ڕێزمانیی ئەو",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "40",
+      "topic": "کاری تێپەڕ و کاری تێنەپەڕ",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "41",
+      "topic": "کردارە سادە و لێکدراوەکان و پەیوەندییان بە بەرکارەوە",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "42",
+      "topic": "جێناوی لکاو و ئەرکی بەرکار لە زمانی کوردیدا",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "43",
+      "topic": "جێناوی لکاو لە کردارە تێپەڕەکاندا",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "44",
+      "topic": "بەرکار لە ڕستەی نەکارادا؛ بکەری ڕێزمانی و ئەنجامدەری کردار",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "45",
+      "topic": "ڕیزبەندی و گواستنەوەی بەرکار لە ڕستەدا",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "46",
+      "topic": "ڕستەی سادە، لێکدراو، ئاڵۆز و لێکدراوی ئاڵۆز",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
     }
   ]
 }
