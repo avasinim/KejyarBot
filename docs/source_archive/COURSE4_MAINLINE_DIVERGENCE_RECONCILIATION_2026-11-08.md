@@ -119,3 +119,11 @@
 - تاقیکردنەوەی نوێی main لەسەر `activities=3`, `exercises=5`, `comprehension=10`, `quiz=8` بۆ وانەکانی 1–26 لە branchدا بە `test_mainline_first_26_lessons_keep_full_learning_component_counts` پارێزراوە؛ تاقیکردنەوەی `test_course4_expansion_preserves_first_26_and_marks_only_new_drafts_pending`یش هەڵگری پەیوەندیی 1–46 و review status ـە.
 - بڕیار: ناوی method ـەکان بە خۆکار کۆپی نەکرێن، چونکە چەند ناو دووبارەن و assertion ـی 26 لە مۆدێلی 46دا هەڵە دەبێت. لە ئێستادا بەڵگەی تاقیکردنەوەیی بۆ ئەو جیاوازییانە هەیە؛ JSONی 26 وانەی mainیش نابێت بەسەر JSONی 46 وانەی branchدا overwrite بکرێت.
 - پشکنینی سێ فایل: researchی وانەی 26 لە main و branch بە تەواوی یەکسانە؛ JSON جیاوازیی 26/46 وانەی هەیە؛ test file جیاوازییەکانی لەسەر ژمارەی کۆرس و پشکنینە تایبەتەکان هەیە. CIی گۆڕانکارییەکانی دواهەم success ـە، بەڵام PR #119 هێشتا Draft و `mergeable_state=dirty` ـە.
+
+
+## دیاریکردنی فایلە conflict ـدارەکانی PR #119 — 2026-11-08
+- لە سێ commitی main، هەر یەک فایلێکی هاوبەشیان زیاد کردووە: `course_data/grammar_course4_lessons.json`، `tests/test_course4_grammar_runtime.py` و `docs/COURSE4_LESSON26_PARTICLES_RESEARCH.md`. چونکە branchیش ئەم فایلانەی لە merge-base ـەوە بە جیاوازی هەیە، PR لە دۆخی `dirty` ـدایە.
+- فایلەی researchی وانەی 26 لە main و branch بە تەواوی identical ـە؛ conflict ـی ناوەڕۆکیی ئەم فایلە لە دوو وەشاندا نییە و branch لە commitی پێشوودا sync کراوە.
+- فایلەی test لە main بە 48 method declaration و branch بە 65 method declaration هەیە. ناو و assertion ـەکانی ژمارەی 26 لە branch بە مۆدێلی 46 وانە گونجێنراون؛ تاقیکردنەوەی component countsی 1–26 و pagination تا 46 هەیە. ناوی method ـەکان بە خۆکار کۆپی ناکرێن.
+- فایلەی JSON conflict ـی سەرەکیی ماوە: main 26 وانە و branch 46 وانەیە. Main commit `676131a619c749eaac5da80e715d2ac0ef161a69` فایلەکەی بە schemaی نوێ زیاد کردووە؛ branchیش پەرەپێدانی تایبەتیی خۆی، وانەی 3ی فراوانکراو و وانەکانی 27–46ی تێدایە. نابێت هیچ‌کام بە overwrite لەناو بچێت. پێویستە پێکهاتەکانی 1–26 بە وردی field-by-field و source-by-source یەکلا بکرێنەوە و 27–46 لە branch بمێننەوە.
+- ئەم پشکنینە conflict ـەکان دیاری کردووە، بەڵام هیچ merge/rebase یان overwriteێک نەکراوە. PR #119 هێشتا Draft و `mergeable=false/dirty` ـە؛ deployment نەکراوە.
