@@ -280,3 +280,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - PR #119 هێشتا open و Draft ـە، merged نییە؛ API دۆخی `mergeable=false` و `mergeable_state=dirty` دەگەڕێنێتەوە.
 - `main` لە SHAی `4affb750244daebd1d13f886ef3c5a1d1efad79f` و branch لە کۆتایی ئەم پشکنینەدا لە `cad08c6b94cbdd3e9fa3b53305d26e19e3e2c515` بوو؛ بەراوردی main...branch دۆخی diverged و 3 commitی mainی پێش branch نیشان دەدات.
 - ئەم دۆخە بەڵگەی conflict/mergeability blocker ـە؛ PR بە خۆکار merge ناکرێت و هیچ deploymentێک پشتڕاست نەکراوەتەوە. چاکسازییەکانی ڕەشنووس لە branch پارێزراون؛ بۆ چارەسەری merge conflict پێویستە فایلە هاوبەشەکانی main و branch بە وردی یەکلا بکرێنەوە، نەک branch overwrite بکرێت.
+
+
+### چاکسازیی سەرچاوەیی لە وانەی 46 — 2026-11-08
+- نموونەی بەرڕستەی تەواوکەر «دەزانم کە تۆ ڕاست دەکەیت» کە لە دەقی خاوەنی وانەی 46دا نەبوو، بە نموونەی خاوەنی «دەزانم کە ئەو ئەمڕۆ دێت» گۆڕدرا.
+- Markdownی وانەی 46، Structured Review، Preservation Bundle و Terminology Audit هاوتا نوێ کرانەوە؛ دەقی خاو و runtime نەگۆڕدراون.
+- کۆمیتی زنجیرەیی دواهەم: `65b328016a1024fb9b13ede16a778f9a036c181d`. CI بۆ ئەم زنجیرەیە لە کاتی نووسینی ئەم تۆمارەدا هێشتا `in_progress` بوو.
+- PR #119 هێشتا Draft و `mergeable_state=dirty` ـە؛ merge و deployment نەکراوە.
