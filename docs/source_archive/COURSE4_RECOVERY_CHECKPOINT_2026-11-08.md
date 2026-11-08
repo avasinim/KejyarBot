@@ -183,3 +183,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - CI Run `42496782145` بۆ checkpoint commit `c3795b776258f965aa06b0fcbd77890512ca5554`: completed / success.
 - CIی پێشووی structured review Run `42496721235` بۆ commit `980372ee6ef848755a59f08e90a467c18518abd6`: completed / success.
 - PR #119 هێشتا open و Draft ـە؛ mergeability لە APIی ئێستادا `null` ـە و دەبێت لە گەڕانەوەی داهاتوودا دووبارە بخوێندرێتەوە. Merge و deployment نەکراون.
+
+
+## چاکسازیی کویزی وانەکانی 43 و 44 — 2026-11-08
+- وانەی 43 Q2: مەبەستی خاوەندارێتیی `ـی` بە کۆنتێکستی «ئەو کتێبەی خۆی خوێندەوە» ڕوون کرایەوە؛ پرسیاری پێشوو دووخوێندنەوەی هەبوو.
+- وانەی 44 Q3: پرسیاری «کەژیار هات چییە؟» بە پرسیاری دیاریکراوی تێپەڕبوون گۆڕدرا، بۆ ئەوەی Active/Passive لە Transitive/Intransitive تێکەڵ نەبن.
+- Markdown، structured review و Preservation Bundle هەرسێکیان نوێ کرانەوە. کۆمیتەکان: `34eb18dbffa9865a9d5eeb307ee4516335cd6025`, `c15c3ccdb1ef05b7cc8722708f32796f707a45b7`, `481bbb1353ac2bf9219d91b91ebdd27fbe774c7a`, `33316a91769e23eaca268ef85115d749e19683d6`.
+- ئەم چاکسازییانە تەنها لە ڕەشنووس/structured review/archive ـدان؛ quizی runtime و دۆخی approval نەگۆڕدراون.
