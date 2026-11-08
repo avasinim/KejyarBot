@@ -1147,7 +1147,12 @@ def quiz_menu_items(user_id, mode):
     completed = set(get_completed_lessons(user_id))
     items = []
     for lesson in active_course_lessons():
-        if not QUIZ_DATA.get(lesson) or lesson not in completed or not can_open(user_id, lesson):
+        if (
+            not QUIZ_DATA.get(lesson)
+            or not quiz_is_available(lesson)
+            or lesson not in completed
+            or not can_open(user_id, lesson)
+        ):
             continue
         practice = quiz_requires_submission(lesson)
         if (mode == "practice") != practice:
