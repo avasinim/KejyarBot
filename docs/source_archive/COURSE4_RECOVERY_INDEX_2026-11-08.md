@@ -61,3 +61,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** نموونەی بەرڕستەی تەواوکەری وانەی 46 بە نموونەی خاوەنی «دەزانم کە ئەو ئەمڕۆ دێت» گۆڕدرا و Markdown، Structured Review و Preservation Bundle هاوتا نوێ کرانەوە؛ CIی ئەم گۆڕانکارییە لە کاتی تۆمارکردندا لە `in_progress` بوو. PR #119 هێشتا Draft/dirty ـە.
+
+
+**نوێکردنەوە:** ڕاپۆرتی reconciliation ڕوونکراوەتەوە: 4 ناوی test method ـی main (6 occurrence) بە assertionی گونجاو بە 46 وانە نوێ کراونەتەوە؛ JSONی 26 وانەی main لەگەڵ JSONی 46 وانەی branch overwrite ناکرێت. PR هێشتا dirty ـە.
