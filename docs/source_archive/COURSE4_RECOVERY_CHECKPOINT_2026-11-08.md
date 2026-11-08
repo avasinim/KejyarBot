@@ -293,3 +293,10 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - پشکنینی ناوی test method ـەکان بە وردی نوێ کرا: main 48 method و branch 65 method هەیە؛ 4 ناوی method (6 occurrence بەهۆی دووبارەبوونەوە)ی تایبەت بە 26 وانە لە branch بە تاقیکردنەوەی هاوتای گونجاو بە 46 وانە گۆڕدراونەوە. ناوی literal هەموویان هاوتا نییە، بەڵام پشکنینەکانی ژمارە، catalog، plan و pagination بۆ 46 نوێ کراونەوە.
 - فایلەکەی توێژینەوەی وانەی 26 لە main و branch بە تەواوی هاوتایە؛ JSONی main 26 وانە و JSONی branch 46 وانەیە و overwrite ناکرێت.
 - PR #119 هێشتا Draft و dirty/mergeable=false ـە؛ چاکسازیی ناوەڕۆک و CI سەرکەوتوون، بەڵام conflictی Git چارەسەر نەکراوە و deployment پشتڕاست نەکراوەتەوە.
+
+
+### پشکنینی وردی تاقیکردنەوەی mainline — 2026-11-08
+- main: 48 test method declaration؛ branch: 65. چوار ناوی جیاوازی main کە ژمارەی 26یان تێدایە (6 occurrence بەهۆی duplicate declaration) بە assertionی گونجاو بە 46 وانە لە branchدا جێگۆڕکێیان بۆ کراوە.
+- تاقیکردنەوەی نوێی main بۆ ژمارەی پێکهاتەکانی وانەکانی 1–26 لە branchدا بە `test_mainline_first_26_lessons_keep_full_learning_component_counts` پارێزراوە؛ تاقیکردنەوەی expansion بۆ 46 وانەش زیادە.
+- ناوی literalی تاقیکردنەوەکان هاوتا نییە، بەڵام assertionەکان بەپێی ژمارەی نوێ گونجێنراون. JSONی 26 وانەی main نابێت overwriteی JSONی 46 وانەی branch بکات.
+- CIی گۆڕانکارییەکانی پشکنینەکانی دواهەم success ـە؛ PR #119 هێشتا Draft و `mergeable_state=dirty` ـە، merge/deployment نەکراوە.
