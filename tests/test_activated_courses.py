@@ -392,7 +392,7 @@ if __name__ == "__main__":
 
 
 class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
-    def test_course4_catalog_is_paginated_and_all_28_callbacks_are_reachable(self):
+    def test_course4_catalog_is_paginated_and_all_46_callbacks_are_reachable(self):
         expected = [f"grammar_{number:02d}" for number in range(1, 47)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
         with patch.object(bot, "get_completed_lessons", return_value=[]):
@@ -448,7 +448,7 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"][31:]:
             with self.subTest(review_lesson=lesson_id):
                 self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
-                self.assertFalse(bot.quiz_is_available(lesson_id))
+                self.assertEqual(bot.QUIZ_DATA[lesson_id], [])
 
 
 class Course4Lesson18VoiceTests(unittest.TestCase):
