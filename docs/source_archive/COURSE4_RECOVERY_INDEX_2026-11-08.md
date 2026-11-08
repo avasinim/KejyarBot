@@ -1,0 +1,17 @@
+# فهرستی گەڕانەوەی کۆرسی ٤ — 2026-11-08
+
+ئەم فایلە پەڕگە سەرەکییەکانی پاراستن نیشان دەدات؛ لە کاتی گەڕانەوە لە گفتوگۆی نوێدا سەرەتا checkpoint بخوێنەوە.
+
+1. **[خاڵی گەڕانەوە و پاراستنی کۆرسی ٤](COURSE4_RECOVERY_CHECKPOINT_2026-11-08.md)** — شوێنی کار، دۆخی PR/CI، ڕەشنووسەکان، runtime، چاکسازییەکان، خاڵە کراوەکان و هەنگاوە داهاتووەکان.
+2. **[بەستەری پاراستنی وانەکانی ١–٤٦](COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json)** — 31 وانەی runtime + 15 ڕەشنووسی فراوانکراوی 32–46.
+3. **[Structured reviewی وانەکانی 32–46](staging/COURSE4_LESSONS_032_046_STRUCTURED_REVIEW_2026-11-08.json)** — پێکهاتە و ڕاهێنانەکان؛ هەموویان pending owner review ـن.
+4. **[ڕاپۆرتی بەراوردی quiz و پشکنینی ناوەڕۆک](COURSE4_QUIZ_MAINLINE_COMPARISON_2026-11-08.md)**.
+5. **[ڕاپۆرتی جیاوازیی main و branch](COURSE4_MAINLINE_DIVERGENCE_RECONCILIATION_2026-11-08.md)**.
+6. **ڕەشنووسەکان:** لە `staging/drafts/COURSE4_LESSON_032_EXPANDED_DRAFT_2026-11-08.md` تا `COURSE4_LESSON_046_EXPANDED_DRAFT_2026-11-08.md`.
+7. **Snapshotەکانی main:** `MAINLINE_COURSE4_LESSONS_01_26_SNAPSHOT_2026-11-08.json`، `MAINLINE_COURSE4_RUNTIME_TESTS_SNAPSHOT_2026-11-08.py`، `MAINLINE_COURSE4_LESSON26_PARTICLES_RESEARCH_SNAPSHOT_2026-11-08.md`.
+
+Repository: `avasinim/KejyarBot`  
+Branch: `feat/course4-clean-port-main-20261106`  
+PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
+
+**یادخستنەوە:** دەقی خاو، ڕەشنووس و runtime جیاوازن. هیچ وانەیەک بە پەسەندکراو مەژمێرە تا خاوەن پڕۆژە پەسەندی نەکات؛ هیچ snapshotێک overwrite مەکە.
