@@ -52,3 +52,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** پشکنینی دووبارەی 15 ڕەشنووسی 32–46 تەواو بوو: 15/15 `source_markdown` و Markdown هاوتان، 225/225 `key_points` لە دەقی وانەکاندا هەن؛ وردەکاری لە checkpoint ـە.
+
+
+**نوێکردنەوە:** وانەی 46 جیاوازیی Independent Clause و Main Clause ڕوون دەکاتەوە؛ داواکاریی ڕاهێنانی لێکدراوی ئاڵۆزیش بە زاراوەی دروست نوێ کراوەتەوە. وردەکاری لە checkpoint و terminology audit ـە.
