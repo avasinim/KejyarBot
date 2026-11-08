@@ -72,6 +72,30 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
             self.assertFalse(bot.can_open(12345, bot.ARMI_LESSON_IDS[0]))
 
 
+class QuizMenuAvailabilityTests(unittest.TestCase):
+    def test_quiz_menu_hides_questions_pending_source_review(self):
+        lesson = "grammar_01"
+        with (
+            patch.object(bot, "active_course_lessons", return_value=[lesson]),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "quiz_is_available", return_value=False),
+        ):
+            self.assertEqual(bot.quiz_menu_items(12345, "assessment"), [])
+
+    def test_quiz_menu_shows_source_approved_completed_quizzes(self):
+        lesson = "grammar_01"
+        with (
+            patch.object(bot, "active_course_lessons", return_value=[lesson]),
+            patch.object(bot, "get_completed_lessons", return_value=[lesson]),
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "quiz_is_available", return_value=True),
+        ):
+            items = bot.quiz_menu_items(12345, "assessment")
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0][1], "quiz_grammar_01_start")
+
+
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
     def make_context(self, callback_data, message_id=77):
         query = SimpleNamespace(
