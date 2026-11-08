@@ -144,3 +144,13 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - وانەکانی 39–45 لە master transcriptی 39–45 و segmentەکاندا هەن؛ پاشکۆ مێژووییەکانی WritingBlock بۆ وانەکانی 39 و 45 لە Source Completeness Auditدا وەک بەشی گەڕانەوەی ماوە تۆمار کراون.
 - بۆیە هیچ داواکارییەک بۆ دووبارە ناردنەوەی هەموو وانەکان مەکە؛ سەرەتا master transcript، segmentەکان، snapshot و correction queue بخوێنەوە. ئەگەر پاشکۆیەکی دیاریکراوی WritingBlock پێویست بوو، تەنها هەمان پاشکۆ بە ID/ناونیشانی دیاریکراو بدۆزەرەوە.
 - چاکسازییەکانی ئەم نۆرە: وانەی 34 و 38 لە Markdown، structured review و Preservation Bundle یەکسان کران؛ 15/15 draft exact match؛ CI runەکانی 42496410825 تا 42496431481 completed/success.
+
+
+## دۆخی کۆتاییی نۆرەی کار — 2026-11-08
+- Branch head پێش ئەم نوێکردنەوەی checkpoint: `a0a2728134a77bb4068e97b76a40b05f4e3c567a`؛ PR #119 open/Draft و `mergeable=false` ـە.
+- چاکسازیی وانەی 34 (بکەر/نیهاد) و وانەی 38 (پێناسەی Main/Subordinate Clause) لە Markdown، structured review و Preservation Bundle هەرسێکیان exact match ـن.
+- 15 ڕەشنووسی 32–46 لە پشکنینی پێشوو 15/15 یەکسان بوون؛ دوو فایلە گۆڕدراوەکانی 34 و 38 دووبارە لەگەڵ structured review و bundle پشتڕاست کرانەوە؛ هەردووکیان یەکسانن.
+- Raw Source Inventory ڕێکخرایەوە: 32–38 master transcriptی 1548 هێڵی هەیە؛ segmentەکانی 33–36 بە سەرچاوەی سەربەخۆی owner-verified ناژمێردرێن، چونکە Source Completeness Audit ئەو پشتڕاستکردنەوەیەی بۆیان نییە. 37 و 38 additional owner sourceی partial/نا تەواو-پشتڕاستکراویان هەیە. ئەمە جیاوازیی provenance ـە، نە ونبوونی فایل.
+- Recovery Index نوێ کرایەوە و Source Completeness Audit، Evidence-based Correction Queue و Runtime Activation Gateی تێدا زیاد کران.
+- CI Run `42496537350` بۆ commit `a0a2728134`: completed / success؛ Runەکانی `42496516407` و `42496513210`یش success.
+- هەموو گۆڕانکارییەکان لە archive/draft/documentation ـدان؛ دەقی خاو، runtime JSON، quizی چالاک، approval، merge و deployment نەگۆڕدراون.
