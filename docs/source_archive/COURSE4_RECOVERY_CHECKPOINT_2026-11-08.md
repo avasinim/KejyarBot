@@ -154,3 +154,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - Recovery Index نوێ کرایەوە و Source Completeness Audit، Evidence-based Correction Queue و Runtime Activation Gateی تێدا زیاد کران.
 - CI Run `42496537350` بۆ commit `a0a2728134`: completed / success؛ Runەکانی `42496516407` و `42496513210`یش success.
 - هەموو گۆڕانکارییەکان لە archive/draft/documentation ـدان؛ دەقی خاو، runtime JSON، quizی چالاک، approval، merge و deployment نەگۆڕدراون.
+
+
+## بەراوردی ڕاستەوخۆی segmentەکانی 32–38 بە master transcript
+- فایلەی master: `COURSE4_LESSONS_032_038_SOURCE_2026-11-07.md` (1548 هێڵ).
+- bodyی هەموو 7 segmentی 32–38 بە master transcript بەراورد کرا؛ هەموویان substringی ڕاستەوخۆ و exact match بوون (7/7).
+- ئەمە پشتڕاست دەکاتەوە کە segmentەکان لە master transcriptەوە پارێزراون؛ بەڵام Source Completeness Audit هێشتا جیاوازیی نێوان دەقی master و owner sourceی سەربەخۆی 33–36 دەپارێزێت.
