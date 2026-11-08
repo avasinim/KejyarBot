@@ -129,26 +129,28 @@
       "id": "grammar_37",
       "title": "جۆرەکانی ڕستە لە ڕووی پێکهاتەوە",
       "source": "Library:Pasted text(6).txt lines 635-994; plan lines 1222-1230",
-      "source_state": "owner_raw_and_assistant_draft_mixed",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "separate raw source from revised draft",
         "review clause-based definitions",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_037_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 38,
       "id": "grammar_38",
       "title": "پێڕستە، سەرڕستە و بەرڕستە؛ شیکاری و ڕاهێنان",
       "source": "Library:Pasted text(6).txt plan lines 1232-1240; source examples lines 635-994",
-      "source_state": "planned_separate_lesson_with_examples_in_combined_source",
+      "source_state": "owner_source_segmented_verbatim_and_verified",
       "required_work": [
         "extract examples and analysis",
         "preserve Mawlawi and Goran source text",
         "prepare independent lesson"
       ],
-      "runtime_ready": false
+      "runtime_ready": false,
+      "staging_source_file": "docs/source_archive/staging/COURSE4_LESSON_038_OWNER_SOURCE_SEGMENT_2026-11-08.md"
     },
     {
       "number": 39,
@@ -248,8 +250,8 @@
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Owner-source segments for lessons 32-36 were separated verbatim from the archived 32-38 transcript and fetched back for verification.",
-    "caution": "These are source staging files, not approved lesson texts and not runtime content.",
-    "next": "Continue separating lesson 37-38 source from the same archive, then review lesson 35 expansion as a separate draft without altering its raw source."
+    "completed": "Owner-source segments for lessons 32-38 were separated verbatim from the archived 32-38 transcript and verified by fetching each staging file. The seven-lesson split is now represented by seven separate source staging files.",
+    "caution": "The files preserve original source text and are not approved lesson texts or runtime content. Lessons 33-36 source was embedded in the combined Lesson 32 text; lesson 37-38 source was in the later combined segment.",
+    "next": "Audit and segment lessons 39-46 into individual staging source records, then review lesson drafts against the runtime schema without modifying runtime until approval."
   }
 }
