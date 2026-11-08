@@ -64,3 +64,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **نوێکردنەوە:** ڕاپۆرتی reconciliation ڕوونکراوەتەوە: 4 ناوی test method ـی main (6 occurrence) بە assertionی گونجاو بە 46 وانە نوێ کراونەتەوە؛ JSONی 26 وانەی main لەگەڵ JSONی 46 وانەی branch overwrite ناکرێت. PR هێشتا dirty ـە.
+
+
+**نوێکردنەوە:** پشکنینی وردی mainline/branch: 4 ناوی test method ـی main (6 occurrence) کە ژمارەی 26یان تێدایە بە assertionی گونجاو بە 46 وانە جێگۆڕکێیان بۆ کراوە؛ پشکنینی component countsی وانەکانی 1–26 و گەیشتن بە وانەی 46 لە branchدا پارێزراوە. JSONی main overwrite نەکراوە. CIی دواهەم success؛ PR هێشتا Draft/dirty ـە. وردەکاری لە reconciliation report و checkpoint ـە.
