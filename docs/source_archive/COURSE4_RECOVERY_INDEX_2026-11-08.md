@@ -70,3 +70,6 @@ PR: [#119](https://github.com/avasinim/KejyarBot/pull/119)
 
 
 **ئاگاداریی conflict:** سێ فایل دیاریکراون: JSONی وانەکان (main=26، branch=46؛ پێویستی بە field-by-field merge)، test file (تاقیکردنەوەکانی main بۆ 46 وانە گونجێنراون)، و researchی وانەی 26 (هاوتایە). هیچ overwrite/merge نەکراوە؛ PR هێشتا Draft/dirty ـە. وردەکاری لە reconciliation report و checkpoint ـە.
+
+
+**JSON/quiz comparison update:** both main and branch retain 26 lessons and 208 quiz questions; branch has richer examples/appendix/key points. Quiz differences: 185 permutations, 14 question texts, 21 option sets, 13 correct-answer texts, 17 explanations. Lesson 3 most divergent. No overwrite; all flagged for source-based review. See reconciliation report.
