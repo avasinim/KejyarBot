@@ -135,3 +135,12 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - وانەی 38: دوو هەڵبژاردەی کویز نوێ کرانەوە؛ Main Clause بە «بنەمای سەرەکیی ڕستەی ئاڵۆز» و Subordinate Clause بە «پەیوەندیی ڕێزمانی بە سەرڕستە و ئەرکی دیاریکراو» پێناسە کرا، بۆ ئەوەی لەگەڵ Independent/Dependent وەک هاوواتای ڕەها تێکەڵ نەبن.
 - Markdown، source_markdownی structured review و content_markdownی Preservation Bundle بۆ هەردوو وانەکە هاوتا کران.
 - دەقی خاو، runtime و کویزی چالاک نەگۆڕدراون؛ هەردوو وانەکە هێشتا ڕەشنووسی پێداچوونەوەن.
+
+
+## پێداچوونەوەی provenanceی سەرچاوەکان — 2026-11-08
+- سەرچاوەی یەکگرتووی وانەکانی 32–38: `docs/source_archive/COURSE4_LESSONS_032_038_SOURCE_2026-11-07.md`، 1548 هێڵ، لە فایلێکی ناردراوی بەکارهێنەرەوە پارێزراوە و دەقی ناوەڕۆکی بەبێ دەستکارییە.
+- پارچەدەقەکانی 32–38 لە `docs/source_archive/staging/COURSE4_LESSON_0XX_OWNER_SOURCE_SEGMENT...` لە archive هەن؛ بەڵام Source Completeness Audit دەڵێت بۆ وانەکانی 33–36 سەرچاوەی سەربەخۆی خاوەن پڕۆژە بە جیا پشتڕاست نەکراوەتەوە. ئەم segmentانە وەک پارچەدەقی ئەرشیفی/هەڵگرتنەوەی transcript مامەڵەیان لەگەڵ بکرێت، نەک وەک سەرچاوەی سەربەخۆی owner-verified.
+- وانەی 37 دەقی زیادەی خاوەن پڕۆژەی هەیە بەڵام partial ـە؛ وانەی 38یش دەقی زیادەی هەیە بەڵام تەواوی ئەوەی نێردراوە پشتڕاست نەکراوەتەوە. master transcript هەردووکیان لەگەڵدا پارێزراوە.
+- وانەکانی 39–45 لە master transcriptی 39–45 و segmentەکاندا هەن؛ پاشکۆ مێژووییەکانی WritingBlock بۆ وانەکانی 39 و 45 لە Source Completeness Auditدا وەک بەشی گەڕانەوەی ماوە تۆمار کراون.
+- بۆیە هیچ داواکارییەک بۆ دووبارە ناردنەوەی هەموو وانەکان مەکە؛ سەرەتا master transcript، segmentەکان، snapshot و correction queue بخوێنەوە. ئەگەر پاشکۆیەکی دیاریکراوی WritingBlock پێویست بوو، تەنها هەمان پاشکۆ بە ID/ناونیشانی دیاریکراو بدۆزەرەوە.
+- چاکسازییەکانی ئەم نۆرە: وانەی 34 و 38 لە Markdown، structured review و Preservation Bundle یەکسان کران؛ 15/15 draft exact match؛ CI runەکانی 42496410825 تا 42496431481 completed/success.
