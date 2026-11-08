@@ -777,27 +777,30 @@ async def quiz_answer(
     # callbacks then observe the claim and cannot score the same answer twice.
     quiz["answer_in_progress"] = True
     quiz["question_message_id"] = None
-    await query.answer()
-    quiz["selected_answer_index"] = None
     try:
-        await query.edit_message_reply_markup(reply_markup=None)
-    except Exception:
-        logger.debug("Quiz keyboard was already removed or could not be edited")
-    answer = question["options"][choice_index]
-    if answer == question["answer"]:
-        quiz["score"] += 1
-        await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
-    else:
-        await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
+        # Once claimed, a Telegram delivery failure must clear this in-memory
+        # quiz so the learner can restart. The persistent ledger protects rewards.
+        await query.answer()
+        quiz["selected_answer_index"] = None
+        try:
+            await query.edit_message_reply_markup(reply_markup=None)
+        except Exception:
+            logger.debug("Quiz keyboard was already removed or could not be edited")
+        answer = question["options"][choice_index]
+        if answer == question["answer"]:
+            quiz["score"] += 1
+            await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
+        else:
+            await query.message.reply_text(f"❌ وەڵامەکە دروست نیە. وەڵامی دروست: {question['answer']}")
 
-    quiz["index"] += 1
-    if quiz["index"] < len(quiz["questions"]):
-        await send_question(query.message, quiz)
-        return
+        quiz["index"] += 1
+        if quiz["index"] < len(quiz["questions"]):
+            await send_question(query.message, quiz)
+            return
 
-    lesson = quiz["lesson"]
-    earned = quiz["score"]
-    first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
+        lesson = quiz["lesson"]
+        earned = quiz["score"]
+        first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
     result = (
         f"🎉 تاقیکردنەوە تەواو بوو!\n"
         f"✅ وەڵامی دروست: {earned}/{len(quiz['questions'])}\n"
@@ -807,7 +810,12 @@ async def quiz_answer(
     else:
         result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
     await query.message.reply_text(result)
-    context.user_data.pop("quiz", None)
+        context.user_data.pop("quiz", None)
+    except Exception:
+        context.user_data.pop("quiz", None)
+        logger.exception("Quiz answer delivery failed; cleared active quiz state")
+        raise
+
 
 def render_lesson_html_blocks(content):
     """Render lesson text in a clean, consistent academic Telegram layout."""
