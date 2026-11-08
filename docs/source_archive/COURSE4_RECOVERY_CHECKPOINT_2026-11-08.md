@@ -274,3 +274,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 ### جیاکردنەوەی Independent Clause و Main Clause لە وانەی 46 — 2026-11-08
 - «سەربەخۆ» وەک تایبەتمەندیی پێڕستە و «سەرڕستە» وەک ئەرکی پێڕستە لە پەیوەندی بە بەرڕستەوە جیا کرانەوە؛ ڕاهێنانی چوارەمیش بە «دوو پێڕستەی سەربەخۆی هاوئاست + بەرڕستە» ڕوون کرا.
 - Markdown، Structured Review و Preservation Bundle نوێ کرانەوە؛ دەقی خاو و runtime نەگۆڕدراون و وانەکە pending owner review ـە.
+
+
+### دۆخی PR و جیاوازیی main — پشکنینی 2026-11-08 16:xx UTC
+- PR #119 هێشتا open و Draft ـە، merged نییە؛ API دۆخی `mergeable=false` و `mergeable_state=dirty` دەگەڕێنێتەوە.
+- `main` لە SHAی `4affb750244daebd1d13f886ef3c5a1d1efad79f` و branch لە کۆتایی ئەم پشکنینەدا لە `cad08c6b94cbdd3e9fa3b53305d26e19e3e2c515` بوو؛ بەراوردی main...branch دۆخی diverged و 3 commitی mainی پێش branch نیشان دەدات.
+- ئەم دۆخە بەڵگەی conflict/mergeability blocker ـە؛ PR بە خۆکار merge ناکرێت و هیچ deploymentێک پشتڕاست نەکراوەتەوە. چاکسازییەکانی ڕەشنووس لە branch پارێزراون؛ بۆ چارەسەری merge conflict پێویستە فایلە هاوبەشەکانی main و branch بە وردی یەکلا بکرێنەوە، نەک branch overwrite بکرێت.
