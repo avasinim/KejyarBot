@@ -7,7 +7,7 @@
 - Repository: `avasinim/KejyarBot`
 - Branch: `feat/course4-clean-port-main-20261106`
 - PR: [#119 — Course 4 beta reading, 46 lessons](https://github.com/avasinim/KejyarBot/pull/119)
-- Headی پشتڕاستکراو لە 2026-11-08: `1b152de67ec7afa118f15eae02e4dd05155344ec`
+- Headی پشتڕاستکراو لە 2026-11-08: `3eb63e0e264595fb10ddd157af30ca8e0d5252e7`
 - Baseی PR لە پشکنینی کۆتاییدا: `400c9ae8b567b565c74afe1e3db7c5274077da8e`
 - دۆخی PR: open، Draft، `mergeable=false`. Merge و deployment ڕوویان نەداوە/پشتڕاست نەکراون.
 - براند: کەژیار؛ ناو و ناسنامەی براند بپارێزرێت.
@@ -122,3 +122,9 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - Preservation Bundle دووبارە پڕکراوەتەوە و 15/15 ڕەشنووسەکەی لەگەڵ Markdownی ئێستا یەکسانن.
 - CI Run `42486659208` بۆ کۆمیتی `56a92f8d`: completed / success؛ `compileall` و تاقیکردنەوەکانی repository لە workflowدا بە سەرکەوتوویی تێپەڕیون.
 - Recovery Index، Recovery Checkpoint، Raw Source Inventory و Preservation Bundle هەموویان لە repository دانراون؛ ئەمانە ڕێڕەوی گەڕانەوەی سەربەخۆ لە چاتن.
+
+
+## نوێکاریی یەکگرتوویی وانەی 33
+- ئاماژەی وانەی 33 بۆ وانەی 34 لە «نیهاد» بۆ «بکەر» ڕێکخرا؛ Markdown، structured review و Preservation Bundle هەرسێکیان هاوتا کران.
+- پشکنینی تایبەتی وانەی 33: Markdown = structured review = bundle، هەرسێکیان یەکسانن.
+- دۆخی PR هێشتا open/Draft و mergeable=false ـە؛ CI بۆ زنجیرەی کۆمیتەکانی ئەم چاکسازییە لە کاتی نووسینی ئەم زیادەیەدا لە پشکنین‌دایە.
