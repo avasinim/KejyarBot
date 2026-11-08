@@ -60,3 +60,10 @@ A review of the structured draft showed that Lessons 39 and 40 had exercises but
 - `docs/source_archive/COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json`
 
 The raw owner-source transcript was not modified. Both lessons remain pending drafts; no runtime or quiz data was changed.
+
+## Lesson 41 — exercise answer-key completion and analysis safeguards
+The lesson already contained model answers for exercises 1–3, but exercise 4 (sentence production with five compound verbs) had no sample responses. Added five sample sentences and role analyses for `قسەکردن`, `ئیشکردن`, `هەوڵدان`, `شەڕکردن`, and `سوێندخواردن` to the draft, structured review, and preservation bundle.
+
+Important qualification retained: the classification of the nominal elements in `قسەی کرد`, `شەڕیان کرد`, and `سوێندم خوارد` is presented as the lesson's proposed lexical-compound analysis, not a universal rule. The answer key explicitly requires dialect/naturalness validation and warns against deciding solely from word order or clitic marking. No disputed analysis was silently promoted to a final rule.
+
+The lesson's four exercise groups now have model-answer coverage. Raw source transcript remains unchanged; Lesson 41 remains `owner_review_pending_expanded_draft`, with no runtime or quiz change.
