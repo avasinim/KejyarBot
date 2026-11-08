@@ -321,3 +321,8 @@ main 26 وانەیە؛ branch 46 وانەیە. وەشانی فراوانکراو
 - Runtime JSON دەستکاری نەکرا. ڕاپۆرت: `COURSE4_QUIZ_ANSWER_DIVERGENCE_AUDIT_2026-11-08.md`.
 
 - 21 option-set differences پشکنران؛ چاکسازییەکی ڕوون لە وانەی 24/Q8 کرا: distractorی دووبارە «کەژیار و کەژیار» بوو بە «من و کەژیار». Runtime JSON و Preservation Bundle sync کران؛ وەڵامی ڕاست نەگۆڕدرا.
+
+
+### Mainline merge reconciliation
+- Merge commit `1a85068e5867be55729e0a5b1539fd0a1c89e545` بە دوو parent (branch پشکنراو + main `4affb750244daebd1d13f886ef3c5a1d1efad79f`) دروست کرا؛ tree ـی branch بە تەواوی پارێزرا.
+- JSON ـی 46 وانەیی و test ـی 46 وانەیی بەجێ ماون؛ research file ـی هاوبەش لە هەردوو وەشاندا یەکسان بوو. PR #119 `mergeable:true`, `mergeable_state:unstable`; CI ـی merge commit هێشتا لە پشکنیندایە. Draft/merge/deploy status گۆڕانکاری نەکرا.
