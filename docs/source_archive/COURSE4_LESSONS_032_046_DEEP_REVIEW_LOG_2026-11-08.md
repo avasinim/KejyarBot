@@ -36,3 +36,27 @@ The existing duplication/placement audit confirms that the expanded Lesson 46 su
 - Distinguish independent/dependent status from main/subordinate function; they are related but not interchangeable labels.
 - The lesson's examples and exercise answers still require dialect and naturalness review.
 - The wider Lessons 39–46 answer-key audit records unresolved framing and answer-key issues (including the indirect-object/recipient analysis in Lesson 39 and the object-clitic/word-order examples in Lessons 42–45). Those are not changed by this narrow Lesson 46 correction.
+
+## Exercise answer keys added — Lessons 39 and 40
+A review of the structured draft showed that Lessons 39 and 40 had exercises but no dedicated exercise answer-key section (quiz keys were present and are separate). Model answer keys have now been added to the draft Markdown, structured review, and preservation bundle.
+
+### Lesson 39
+- Added answers for all four exercise groups.
+- Exercise 1 distinguishes direct objects from the recipient phrase in sentence 5 and identifies the intransitive sentence 6 as having no direct object.
+- Exercise 2 identifies subject, verb, direct object, recipient, and adjuncts (time/place/manner).
+- Exercise 3 key: False, True, False, False.
+- Exercise 4 includes sample answers and explicitly allows other grammatically valid responses.
+
+### Lesson 40
+- Added conditional model answers for all five exercise groups.
+- The answer to «ئەو نان خوارد» remains explicitly context-dependent; it is not forced into a direct-object analysis because the lesson itself treats «نان خواردن» as a possible lexical compound.
+- «مامۆستا پرسیارەکەی کرد» is flagged as requiring clarification of intended meaning before a categorical transitivity/object decision.
+- The passive form «پەنجەرەکە شکێندرا» is presented as a proposed form whose naturalness must be checked in the course's target dialect.
+
+### Files synchronized
+- `docs/source_archive/staging/drafts/COURSE4_LESSON_039_EXPANDED_DRAFT_2026-11-08.md`
+- `docs/source_archive/staging/drafts/COURSE4_LESSON_040_EXPANDED_DRAFT_2026-11-08.md`
+- `docs/source_archive/staging/COURSE4_LESSONS_032_046_STRUCTURED_REVIEW_2026-11-08.json`
+- `docs/source_archive/COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json`
+
+The raw owner-source transcript was not modified. Both lessons remain pending drafts; no runtime or quiz data was changed.
