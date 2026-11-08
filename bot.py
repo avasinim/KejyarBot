@@ -151,6 +151,14 @@ GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
     GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
 )
+# Course 4 expanded review drafts retain their authored Markdown as the display source.
+# Render it with the same table/heading-aware formatter used by the other lesson sources;
+# the structured fields remain available for quiz and review metadata.
+for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
+    source_markdown = raw_lesson.get("source_markdown")
+    lesson_id = raw_lesson.get("id")
+    if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
+        GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = format_lesson_draft(source_markdown)
 for course_lessons, course_quizzes in (
     (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
     (UNIFIED_LESSONS, UNIFIED_QUIZZES),
