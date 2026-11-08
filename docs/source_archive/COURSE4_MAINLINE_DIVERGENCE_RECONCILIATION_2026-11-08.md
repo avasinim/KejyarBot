@@ -109,3 +109,13 @@
 - `main` لە `4affb750244daebd1d13f886ef3c5a1d1efad79f` و branch لە `909ce146e10ffa6ee977022bd9d9f6680edba9c2` بوو لە کاتی پشکنین؛ compare دۆخی diverged و 3 commitی mainی پێش branch نیشان دا.
 - PR #119 هێشتا open/Draft و `mergeable=false`, `mergeable_state=dirty` ـە؛ CI بۆ نوێکردنەوەکانی ئەم پشکنینە سەرکەوتووە، بەڵام ئەمە conflictی Git یان deployment چارەسەر ناکات.
 - بڕیاری پاراستن: هیچ JSONێک overwrite نەکرێت؛ تا reconciliationی سەرچاوەیی و خانە بە خانە تەواو نەبێت، PR بە خۆکار merge/deploy ناکرێت.
+
+
+## پشکنینی وردی تاقیکردنەوەکانی main و branch — 2026-11-08
+- پشکنینی ناوی test method ـەکان بە regex و خوێندنەوەی body ئەنجام درا: main 48 method declaration و branch 65 هەیە. لە mainدا 4 ناوی جیاواز کە 26 وانەیان چاوەڕوان دەکەن، بە 6 occurrence دووبارەبوونەوەیان هەیە؛ لە branchدا ناوی literal ـەکان نییە، چونکە assertion ـەکانیان بۆ مۆدێلی 46 وانە گونجێنراون.
+- `test_course4_is_active_with_twenty_six_lessons` هاوتای گونجاوی `test_course4_is_active_with_forty_six_lessons` هەیە.
+- `test_course4_catalogs_register_26_lessons_without_changing_other_courses` و سێ occurrence ـی `test_course4_has_26_registered_lessons` بە تاقیکردنەوەکانی 46 وانە و هەڵنەگۆڕانی کۆرسەکانی تر، لەگەڵ `test_course4_has_46_registered_lessons_and_pagination_reaches_lesson_46`، گونجێنراون.
+- `test_course4_has_26_lessons_and_plan_records_lesson_26` بە `test_course4_has_46_lessons_and_plan_records_lesson_28` و تاقیکردنەوەی 46 وانە/plan/catalog هاوتای گونجاوی هەیە؛ تاقیکردنەوەی 46 وانە بە pagination تا وانەی 46یش هەیە.
+- تاقیکردنەوەی نوێی main لەسەر `activities=3`, `exercises=5`, `comprehension=10`, `quiz=8` بۆ وانەکانی 1–26 لە branchدا بە `test_mainline_first_26_lessons_keep_full_learning_component_counts` پارێزراوە؛ تاقیکردنەوەی `test_course4_expansion_preserves_first_26_and_marks_only_new_drafts_pending`یش هەڵگری پەیوەندیی 1–46 و review status ـە.
+- بڕیار: ناوی method ـەکان بە خۆکار کۆپی نەکرێن، چونکە چەند ناو دووبارەن و assertion ـی 26 لە مۆدێلی 46دا هەڵە دەبێت. لە ئێستادا بەڵگەی تاقیکردنەوەیی بۆ ئەو جیاوازییانە هەیە؛ JSONی 26 وانەی mainیش نابێت بەسەر JSONی 46 وانەی branchدا overwrite بکرێت.
+- پشکنینی سێ فایل: researchی وانەی 26 لە main و branch بە تەواوی یەکسانە؛ JSON جیاوازیی 26/46 وانەی هەیە؛ test file جیاوازییەکانی لەسەر ژمارەی کۆرس و پشکنینە تایبەتەکان هەیە. CIی گۆڕانکارییەکانی دواهەم success ـە، بەڵام PR #119 هێشتا Draft و `mergeable_state=dirty` ـە.
