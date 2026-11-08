@@ -169,7 +169,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_039_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_039_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 40,
@@ -184,7 +185,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_040_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_040_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 41,
@@ -198,7 +200,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_041_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_041_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 42,
@@ -213,7 +216,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_042_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_042_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 43,
@@ -228,7 +232,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_043_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_043_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 44,
@@ -243,7 +248,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_044_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_044_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 45,
@@ -258,7 +264,8 @@
         "validate lesson against terminology and grammar standards"
       ],
       "runtime_ready": false,
-      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_045_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md"
+      "staging_draft_file": "docs/source_archive/staging/COURSE4_LESSON_045_DRAFT_TRANSCRIPT_SEGMENT_2026-11-08.md",
+      "terminology_audit_file": "docs/source_archive/staging/COURSE4_LESSONS_039_045_TERMINOLOGY_AND_GRAMMAR_AUDIT_2026-11-08.md"
     },
     {
       "number": 46,
@@ -279,9 +286,9 @@
   ],
   "progress_update": {
     "date": "2026-11-08",
-    "completed": "Created the unified provisional terminology decision sheet for lessons 32-46, mapping the key concepts and terms lesson-by-lesson and recording unresolved owner decisions. Separate audits for lessons 32-36 and 46 are linked in this register.",
-    "caution": "The sheet is a proposal, not an approved glossary. Raw owner source and assistant-expanded drafts remain separate. No runtime JSON, course manifest, Botkeep, database, environment, deployment, or restart was changed.",
-    "next": "Await owner confirmation of the six unresolved terminology choices; then revise only draft lessons, preserve owner raw text, and validate the runtime schema before any runtime proposal."
+    "completed": "Created the unified provisional terminology decision sheet for lessons 32-46, mapping the key concepts and terms lesson-by-lesson and recording unresolved owner decisions. Separate audits for lessons 32-36 and 46 are linked in this register. Added a separate terminology and grammar audit for lessons 39-45, with lesson-by-lesson findings and cross-lesson consistency rules.",
+    "caution": "The sheet is a proposal, not an approved glossary. Raw owner source and assistant-expanded drafts remain separate. No runtime JSON, course manifest, Botkeep, database, environment, deployment, or restart was changed. The lessons 39-45 audit is diagnostic only; none of the seven drafts has been approved or marked runtime-ready.",
+    "next": "Resolve the six owner terminology decisions and declare the target Kurdish variety; then separate source-origin material from assistant-expanded drafts and revise only draft lessons 32-46. Preserve all raw source and validate runtime schema before proposing runtime changes."
   },
   "unified_terminology_decision_sheet": "docs/source_archive/COURSE4_LESSONS_032_046_UNIFIED_TERMINOLOGY_DECISION_SHEET_2026-11-08.md"
 }
