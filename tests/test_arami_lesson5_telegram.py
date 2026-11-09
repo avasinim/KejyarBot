@@ -176,6 +176,8 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         bank = sample_bank()
         context = SimpleNamespace(user_data={})
         update, _query = make_update("assessment")
+        award_calls = []
+        award = lambda user_id, lesson_id: award_calls.append((user_id, lesson_id)) or True
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
             await callback(update, context, "/unused")
         for index in range(2):
@@ -183,7 +185,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             update, _pick_query = make_update("pick:0", message_id=message_id)
             await callback(update, context, "/unused")
             update, submit_query = make_update("submit", message_id=message_id)
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", award_assessment=award)
             shown = submit_query.edit_message_text.await_args.args[0]
             self.assertNotIn("وەڵامی ڕاست", shown)
             if index == 0:
@@ -194,12 +196,11 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
                 self.assertIn("ئەنجام", shown)
                 self.assertNotIn("دووبارەکردنەوەی پرسیارە هەڵەکان", str(submit_query.edit_message_text.await_args.kwargs["reply_markup"]))
                 message_id = context.user_data["arami_lesson5_message_id"]
-                award_calls = []
-                award = lambda user_id, lesson_id: award_calls.append((user_id, lesson_id)) or True
+                self.assertEqual(award_calls, [(123, "arami_course1_lesson_05")])
                 # The first completion is already closed; this callback must not award again.
                 update, duplicate_query = make_update("submit", message_id=message_id)
                 await callback(update, context, "/unused", award_assessment=award)
-                self.assertEqual(award_calls, [])
+                self.assertEqual(award_calls, [(123, "arami_course1_lesson_05")])
                 duplicate_query.answer.assert_awaited_once()
                 duplicate_query.message.reply_text.assert_not_awaited()
                 duplicate_query.edit_message_text.assert_not_awaited()
