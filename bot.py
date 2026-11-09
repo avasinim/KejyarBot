@@ -355,16 +355,14 @@ def active_course_lessons():
     ]
 MENU = ReplyKeyboardMarkup(
     [
-        ["📚 وانەکان", "📘 کۆرسەکان"],
-        ["ڕێنووسی لاتینی کوردیی"],
-        ["📕 ڕێنووسی سەرەتاییی کوردی"],
-        ["🗓️ مانگەکانی ساڵ لەناو کورداندا"],
-        ["🌐 گۆڕینی زمانی تەلەگرام"],
-        ["⌨️ تەختەکلیلی کوردی"],
-        ["📖 وشەنامەی کوردی"],
-        ["💬 گفتوگۆی ڕۆژانە"],
+        ["📘 کۆرسەکان", "🔎 گەڕانی وانە"],
+        ["📚 وانەکان", "ڕێنووسی لاتینی کوردیی"],
+        ["📕 ڕێنووسی سەرەتاییی کوردی", "💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
-        ["🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان"],
+        ["📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"],
+        ["🎁 سەنوقی خەڵات", "🗓️ مانگەکانی ساڵ لەناو کورداندا"],
+        ["📖 وشەنامەی کوردی", "⌨️ تەختەکلیلی کوردی"],
+        ["🌐 گۆڕینی زمانی تەلەگرام"],
     ],
     resize_keyboard=True,
 )
@@ -1074,7 +1072,7 @@ COURSE_MENU_PAGE_SIZE = 12
 
 
 def course_menu_keyboard(course_id, user_id, page=0):
-    """Build a compact, progress-aware page of one course's lesson catalogue."""
+    """Build a two-column academic lesson catalogue with clear progress states."""
     order = COURSE_LESSON_ORDER.get(course_id, [])
     page_count = max(1, (len(order) + COURSE_MENU_PAGE_SIZE - 1) // COURSE_MENU_PAGE_SIZE)
     if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
@@ -1082,34 +1080,39 @@ def course_menu_keyboard(course_id, user_id, page=0):
     completed = set(get_completed_lessons(user_id))
     beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
     start_index = page * COURSE_MENU_PAGE_SIZE
-    rows = []
-    for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
+    lesson_buttons = []
+    for offset, lesson in enumerate(order[start_index:start_index + COURSE_MENU_PAGE_SIZE]):
+        lesson_number = start_index + offset + 1
         is_open = can_open(user_id, lesson)
         if lesson_is_beta_review(lesson):
             status = "🧪✓" if lesson in beta_completed else "🧪"
         elif lesson_is_pending_review(lesson):
             status = "📝"
-        elif not is_open:
-            status = "🔒"
         elif lesson in completed:
             status = "✅"
-        else:
+        elif is_open:
             status = "🔓"
+        else:
+            status = "🔒"
         title = LESSON_DATA[lesson]["title"]
-        label = title if len(title) <= 38 else title[:35] + "…"
-        rows.append([InlineKeyboardButton(
-            f"{status} {label}",
+        label = title if len(title) <= 20 else title[:19] + "…"
+        lesson_buttons.append(InlineKeyboardButton(
+            f"{status} {lesson_number:02d} · {label}",
             callback_data=f"open_lesson_{lesson}",
-        )])
+        ))
+    rows = [
+        lesson_buttons[index:index + 2]
+        for index in range(0, len(lesson_buttons), 2)
+    ]
     navigation = []
     if page > 0:
         navigation.append(InlineKeyboardButton(
-            "⬅️ پێشوو",
+            "⬅️ لاپەڕەی پێشوو",
             callback_data=f"coursepage:{course_id}:{page - 1}",
         ))
     if page + 1 < page_count:
         navigation.append(InlineKeyboardButton(
-            "➡️ وانەکانی دواتر",
+            "لاپەڕەی دواتر ➡️",
             callback_data=f"coursepage:{course_id}:{page + 1}",
         ))
     if navigation:
@@ -1130,15 +1133,32 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     order = COURSE_LESSON_ORDER.get(course_id, [])
     first = page * COURSE_MENU_PAGE_SIZE + 1
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
+    completed = set(get_completed_lessons(user_id))
+    beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
+    completed_count = sum(
+        1 for lesson in order
+        if lesson in completed and not lesson_is_beta_review(lesson)
+    )
+    beta_count = sum(1 for lesson in order if lesson_is_beta_review(lesson))
     description = course.get("description", "")
     text = (
-        f"{course['title']}\n{description}\n\n"
-        f"📚 وانەکانی {first}–{last} لە کۆی {len(order)} — لاپەڕەی {page + 1}/{page_count}"
+        f"🎓 <b>{course['title']}</b>\n"
+        f"{description}\n\n"
+        f"📚 <b>فهرستی وانەکان</b> — {first} تا {last} لە {len(order)}\n"
+        f"📄 لاپەڕەی {page + 1}/{page_count}  •  "
+        f"✅ تەواوکراو: {completed_count}"
+    )
+    if beta_count:
+        text += f"  •  🧪 Beta: {len(beta_completed)}/{beta_count}"
+    text += (
+        "\n\n"
+        "🔓 ئامادەی خوێندن  |  🔒 داخراو  |  ✅ تەواوکراو"
+        "\n🧪 وانەی تاقیکاری  |  📝 لە پێداچوونەوەدا"
     )
     if edit:
-        await message.edit_text(text, reply_markup=keyboard)
+        await message.edit_text(text, parse_mode="HTML", reply_markup=keyboard)
     else:
-        await message.reply_text(text, reply_markup=keyboard)
+        await message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1260,6 +1280,73 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
     get_user(user_id)
+
+    if text == "🔎 گەڕانی وانە":
+        context.user_data["lesson_search_mode"] = True
+        context.user_data["daily_chat_mode"] = False
+        context.user_data.pop("daily_chat_scenario", None)
+        context.user_data.pop("daily_chat_stage", None)
+        await update.message.reply_text(
+            "🔎 <b>گەڕانی ئەکادیمیی وانەکان</b>\n"
+            "وشە یان بەشێک لە ناونیشانی وانەکە بنووسە؛ بۆ نموونە: مۆرفۆلۆجی، پیت، خاڵبەندی، ڕێزمان.",
+            parse_mode="HTML",
+            reply_markup=MENU,
+        )
+        return
+
+    if context.user_data.pop("lesson_search_mode", False):
+        needle = " ".join(text.casefold().split())
+        matches = []
+        for course in COURSES:
+            course_id = course.get("id")
+            if not course_is_active(course_id):
+                continue
+            if course_id == "arami_orthography_foundations":
+                try:
+                    manifest = load_arami_course1_manifest(BASE_DIR)
+                except Exception:
+                    logger.exception("Could not load Arami manifest for lesson search")
+                    continue
+                for item in manifest.get("lessons", []):
+                    title = str(item.get("title", ""))
+                    if needle and needle in " ".join(title.casefold().split()):
+                        number = item["number"]
+                        callback = (
+                            "arami1:lesson" if number == 1
+                            else "arami5:lesson" if number == 5
+                            else f"aramiC:lesson:{number}"
+                        )
+                        matches.append((
+                            f"📖 {number:02d} · {title[:28]}",
+                            callback,
+                        ))
+                continue
+            for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
+                lesson = LESSON_DATA.get(lesson_id, {})
+                title = str(lesson.get("title", ""))
+                if needle and needle in " ".join(title.casefold().split()):
+                    label = title if len(title) <= 27 else title[:26] + "…"
+                    matches.append((
+                        f"📘 {number:02d} · {label}",
+                        f"open_lesson_{lesson_id}",
+                    ))
+        if not matches:
+            await update.message.reply_text(
+                "🔍 هیچ وانەیەک بەو وشەیە نەدۆزرایەوە. وشەیەکی تر تاقی بکەرەوە.",
+                reply_markup=MENU,
+            )
+            return
+        rows = [
+            [InlineKeyboardButton(label, callback_data=callback)]
+            for label, callback in matches[:12]
+        ]
+        await update.message.reply_text(
+            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ یەکەم ١٢ دانە پیشان دراون.\n"
+            "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(rows),
+        )
+        return
 
     if text == "📕 ڕێنووسی سەرەتاییی کوردی":
         try:
@@ -1461,7 +1548,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
+        "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
         "⌨️ تەختەکلیلی کوردی",
