@@ -206,5 +206,26 @@ class LessonSearchTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(any(item.startswith("lessonsearch:2") for item in callbacks))
 
 
+    async def test_search_page_rejects_non_decimal_unicode_digits(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        query = SimpleNamespace(
+            data="lessonsearch:²",
+            message=message,
+            answer=AsyncMock(),
+            edit_message_text=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "lesson_search_results": [("Lesson", "open_lesson_grammar_01")],
+        })
+
+        await bot.open_lesson_search_page(update, context)
+
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("نادروستە", message.reply_text.await_args.args[0])
+        query.edit_message_text.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
