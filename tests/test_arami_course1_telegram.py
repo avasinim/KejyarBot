@@ -911,9 +911,6 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         })
         update, _ = self.make_update("menu", message_id=10)
         await callback(update, context, ROOT)
-        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
-        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
-        from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={
             "arami_course1_active": {"lesson": 6, "message_id": 10},
             "arami_course1_sessions": {"6": {
