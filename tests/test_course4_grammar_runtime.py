@@ -389,15 +389,17 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
 
 
 class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
-    async def test_pending_draft_is_readable_with_warning_but_has_no_completion_button(self):
+    async def test_beta_draft_is_readable_with_warning_and_has_beta_completion_button(self):
         lesson_id = "grammar_32"
         self.assertTrue(bot.lesson_is_pending_review(lesson_id))
-        self.assertIsNone(bot.lesson_keyboard(lesson_id))
+        keyboard = bot.lesson_keyboard(lesson_id)
+        self.assertIsNotNone(keyboard)
+        self.assertEqual(keyboard.inline_keyboard[0][0].callback_data, f"finish_{lesson_id}")
         content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
-        self.assertIn("دەقی پێداچوونەوەی خاوەن پڕۆژەیە", content)
+        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
-    async def test_next_lesson_route_also_marks_pending_draft_as_review_only(self):
+    async def test_next_lesson_route_marks_draft_as_beta_and_offers_progress_button(self):
         query = SimpleNamespace(
             data="next_lesson_grammar_32",
             from_user=SimpleNamespace(id=12345),
@@ -412,10 +414,10 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
             await bot.open_next_lesson(update, context)
 
         sent_content = send.await_args.args[1]
-        self.assertIn("دەقی پێداچوونەوەی خاوەن پڕۆژەیە", sent_content)
-        self.assertIsNone(send.await_args.args[2])
+        self.assertIn("وەشانی تاقیکاریی (Beta)", sent_content)
+        self.assertIsNotNone(send.await_args.args[2])
 
-    async def test_pending_draft_cannot_be_completed_or_awarded_rewards(self):
+    async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
             data="finish_grammar_32",
             from_user=SimpleNamespace(id=12345),
@@ -425,13 +427,20 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         update = SimpleNamespace(callback_query=query)
         context = SimpleNamespace(user_data={})
 
-        with patch.object(bot, "complete_lesson_with_rewards") as reward:
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+            patch.object(bot, "next_course_lesson", return_value=None),
+        ):
             await bot.finish_lesson(update, context)
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێداچوونەوەدایە", query.message.reply_text.await_args.args[0])
-        reward.assert_not_called()
+        self.assertIn("پێشچوونی Beta", query.message.reply_text.await_args.args[0])
+        self.assertIn("هیچ XP", query.message.reply_text.await_args.args[0])
+        beta_progress.assert_called_once_with(12345, "grammar_32")
+        official_reward.assert_not_called()
 
     async def test_approved_lesson_keeps_its_completion_button(self):
         self.assertFalse(bot.lesson_is_pending_review("grammar_31"))

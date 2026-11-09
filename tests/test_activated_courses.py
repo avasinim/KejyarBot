@@ -97,7 +97,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(order), 21)
         self.assertEqual(order[0], "arami_course1_lesson_01")
         self.assertEqual(order[-1], "arami_course1_lesson_21")
-        with patch.object(bot, "get_completed_lessons", return_value=[]):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[]),
+        ):
             self.assertTrue(bot.can_open(12345, order[0]))
             self.assertFalse(bot.can_open(12345, order[1]))
         with patch.object(bot, "get_completed_lessons", return_value=[order[0]]):
@@ -395,7 +398,10 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
     def test_course4_catalog_is_paginated_and_all_46_callbacks_are_reachable(self):
         expected = [f"grammar_{number:02d}" for number in range(1, 47)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
-        with patch.object(bot, "get_completed_lessons", return_value=[]):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[]),
+        ):
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
             second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
             third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)

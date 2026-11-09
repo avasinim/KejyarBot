@@ -25,6 +25,8 @@ from database import (
     get_user,
     complete_lesson_with_rewards,
     get_completed_lessons,
+    complete_beta_lesson,
+    get_completed_beta_lessons,
     add_badge,
     get_badges,
     get_user_level,
@@ -32,7 +34,7 @@ from database import (
     complete_quiz_with_rewards,
 )
 from daily_chat import PROMPTS, reply_to_daily_message
-from course_runtime import can_open_lesson, visible_course_lessons
+from course_runtime import can_open_lesson, visible_course_lessons, is_beta_review_lesson
 from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
@@ -372,6 +374,8 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
+    if course_id == "grammar":
+        completed.update(get_completed_beta_lessons(user_id))
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
@@ -399,7 +403,7 @@ def current_progress_badges(user_id):
         if not title:
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id not in completed:
+            if lesson_id not in completed or lesson_is_beta_review(lesson_id):
                 break
             visible.append(f"🏅 {title} — وانەی {number}")
     return visible
@@ -412,7 +416,7 @@ def check_badges(user_id):
         if not course_is_active(course_id):
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id not in completed:
+            if lesson_id not in completed or lesson_is_beta_review(lesson_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
@@ -423,9 +427,19 @@ def lesson_is_pending_review(lesson):
     )
 
 
+def lesson_is_beta_review(lesson):
+    return is_beta_review_lesson(
+        LESSON_COURSE.get(lesson), lesson, LESSON_DATA.get(lesson, {})
+    )
+
+
+def lesson_quiz_is_available(lesson):
+    return not lesson_is_beta_review(lesson) and quiz_is_available(lesson)
+
+
 def lesson_keyboard(lesson):
-    # Owner-review drafts are readable for beta inspection, never completable.
-    if lesson_is_pending_review(lesson):
+    # Course 4 review drafts may advance beta progress, but never earn rewards.
+    if lesson_is_pending_review(lesson) and not lesson_is_beta_review(lesson):
         return None
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
@@ -433,13 +447,21 @@ def lesson_keyboard(lesson):
 
 
 def lesson_display_content(lesson, content):
+    if lesson_is_beta_review(lesson):
+        notice = (
+            "🧪 ئەم وانەیە لە وەشانی تاقیکاریی (Beta) ـدایە. "
+            "دەتوانیت بیخوێنیت و بۆ بەردەوامبوونی ڕێڕەو تەواوی بکەیت؛ "
+            "بەڵام تا پشکنین و پەسەندکردنی ئەکادیمی، کویز و خەڵات بۆی نییە.\n\n"
+        )
+        return notice + content
     if lesson_is_pending_review(lesson):
         notice = (
             "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
-            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و خەڵات/تەواوکردنی بۆ چالاک نەکراوە.\\n\\n"
+            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و تەواوکردنی بۆ چالاک نەکراوە.\n\n"
         )
         return notice + content
     return content
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
@@ -466,10 +488,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer()
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
-    if lesson_is_pending_review(lesson):
+    beta_review = lesson_is_beta_review(lesson)
+    if lesson_is_pending_review(lesson) and not beta_review:
         await query.answer()
         await query.message.reply_text(
-            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردن و خەڵاتدان بۆی چالاک نەکراوە."
+            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردنی بۆ چالاک نەکراوە."
         )
         return
     if not can_open(user_id, lesson):
@@ -477,11 +500,23 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
-    old_level = get_user_level(user_id)
-    first_completion = complete_lesson_with_rewards(user_id, lesson)
+    if beta_review:
+        # Record progress idempotently, but do not grant XP, coins, chests, or badges
+        # to material that has not passed academic review.
+        first_completion = complete_beta_lesson(user_id, lesson)
+    else:
+        old_level = get_user_level(user_id)
+        first_completion = complete_lesson_with_rewards(user_id, lesson)
     # Acknowledge only after the idempotent database claim has completed.
     await query.answer()
-    if first_completion:
+    if beta_review:
+        message_text = (
+            "🧪 وانەکە بۆ پێشچوونی Beta تۆمار کرا؛ "
+            "هیچ XP، دراو، سەندوق یان نیشانەیەک بۆی نەدرا."
+            if first_completion
+            else "🧪 ئەم وانەیە پێشتر بۆ پێشچوونی Beta تۆمار کراوە؛ خەڵاتێکی بۆ نییە."
+        )
+    elif first_completion:
         check_badges(user_id)
         new_level = get_user_level(user_id)
         message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
@@ -492,8 +527,9 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Rewards and badges are never repeated.
         message_text = "✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت."
 
+
     next_lesson = next_course_lesson(lesson)
-    if next_lesson is not None and quiz_requires_submission(lesson) and QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+    if next_lesson is not None and quiz_requires_submission(lesson) and QUIZ_DATA.get(lesson) and lesson_quiz_is_available(lesson):
         next_title = LESSON_DATA.get(next_lesson, {}).get("title", next_lesson)
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton(
@@ -552,7 +588,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 callback_data=f"quiz_{last_lesson_number}_start" if last_lesson_number is not None else f"quiz_{quiz_suffix}_start",
             )
         ]])
-        if QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
+        if QUIZ_DATA.get(lesson) and lesson_quiz_is_available(lesson):
             await query.message.reply_text(
                 message_text + ("\n\n🎯 ئێستا ڕاهێنانی کرتەیی بکە." if quiz_requires_submission(lesson) else "\n\n🎓 ئێستا تاقیکردنەوەکەش بکە."),
                 reply_markup=keyboard,
@@ -601,7 +637,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer()
         await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
-    if not quiz_is_available(lesson):
+    if not lesson_quiz_is_available(lesson):
         await query.answer()
         await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
@@ -1044,14 +1080,21 @@ def course_menu_keyboard(course_id, user_id, page=0):
     if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
         raise ValueError("invalid course menu page")
     completed = set(get_completed_lessons(user_id))
+    beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
     start_index = page * COURSE_MENU_PAGE_SIZE
     rows = []
     for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
         is_open = can_open(user_id, lesson)
-        status = (
-            "📝" if lesson_is_pending_review(lesson)
-            else ("🔒" if not is_open else ("✅" if lesson in completed else "🔓"))
-        )
+        if lesson_is_beta_review(lesson):
+            status = "🧪✓" if lesson in beta_completed else "🧪"
+        elif lesson_is_pending_review(lesson):
+            status = "📝"
+        elif not is_open:
+            status = "🔒"
+        elif lesson in completed:
+            status = "✅"
+        else:
+            status = "🔓"
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 38 else title[:35] + "…"
         rows.append([InlineKeyboardButton(
@@ -1149,7 +1192,7 @@ def quiz_menu_items(user_id, mode):
     for lesson in active_course_lessons():
         if (
             not QUIZ_DATA.get(lesson)
-            or not quiz_is_available(lesson)
+            or not lesson_quiz_is_available(lesson)
             or lesson not in completed
             or not can_open(user_id, lesson)
         ):
