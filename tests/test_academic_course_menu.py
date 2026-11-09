@@ -24,16 +24,17 @@ class AcademicCourseMenuTests(unittest.TestCase):
             keyboard, page_count = bot.course_menu_keyboard("sample", 123, 0)
 
         self.assertEqual(page_count, 1)
-        self.assertEqual([len(row) for row in keyboard.inline_keyboard], [2])
+        self.assertEqual([len(row) for row in keyboard.inline_keyboard], [2, 1])
         buttons = [button for row in keyboard.inline_keyboard for button in row]
         self.assertEqual(
             [button.callback_data for button in buttons],
-            [f"open_lesson_{lesson_id}" for lesson_id in lesson_ids[:2]],
+            [f"open_lesson_{lesson_id}" for lesson_id in lesson_ids],
         )
         self.assertIn("01", buttons[0].text)
         self.assertIn("02", buttons[1].text)
         self.assertTrue(buttons[0].text.startswith("✅"))
         self.assertTrue(buttons[1].text.startswith("🔒"))
+        self.assertTrue(buttons[2].text.startswith("🔒"))
 
     def test_course_catalogue_keeps_page_navigation(self):
         lesson_ids = [f"sample_{index:02d}" for index in range(1, 14)]
