@@ -580,6 +580,13 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             message_text + "\n\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
             reply_markup=keyboard,
         )
+    elif next_lesson is None and beta_review:
+        await query.message.reply_text(
+            message_text
+            + "\\n\\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو. "
+            + "وانەکان هێشتا چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین؛ "
+            + "ئەمە بە مانای تەواوبوونی فەرمی کۆرس نییە."
+        )
     elif next_lesson is None:
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
