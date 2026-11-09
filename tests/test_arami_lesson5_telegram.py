@@ -338,12 +338,41 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         second_update, second_query = make_update("next", message_id=10)
         await callback(second_update, context, "/unused")
         second_query.message.reply_text.assert_not_awaited()
-        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 10)
+        self.assertTrue(session["sending_next"])
 
         release.set()
         await task
         self.assertEqual(context.user_data["arami_lesson5_message_id"], 11)
+        self.assertFalse(session["sending_next"])
 
+
+
+    async def test_failed_next_question_delivery_can_be_retried(self):
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "lesson5", "type": "recognize", "prompt": "یەک", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "lesson5", "type": "recognize", "prompt": "دوو", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 1, "selected_index": None, "answers": [{"correct": True}],
+            "closed": False, "awaiting_next": True,
+        }
+        context = SimpleNamespace(user_data={"arami_lesson5_session": session, "arami_lesson5_message_id": 10})
+        failed_update, failed_query = make_update("next", message_id=10)
+        failed_query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+            await callback(failed_update, context, "/unused")
+        self.assertTrue(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 10)
+
+        retry_update, retry_query = make_update("next", message_id=10)
+        await callback(retry_update, context, "/unused")
+        self.assertFalse(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 11)
+        self.assertIn("دوو", retry_query.message.reply_text.await_args.args[0])
 
     async def test_malformed_unicode_answer_callback_is_acknowledged_and_ignored(self):
         context = SimpleNamespace(user_data={
