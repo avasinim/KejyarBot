@@ -143,6 +143,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action.startswith("pick:"):
+        if session.get("awaiting_next"):
+            await query.answer()
+            return
         raw = action.removeprefix("pick:")
         if not raw.isdecimal():
             await query.answer()
@@ -166,6 +169,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action == "submit":
+        if session.get("awaiting_next"):
+            await query.answer()
+            return
         question = current_question(session)
         try:
             answer = submit_answer(session)
@@ -195,6 +201,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ منیووی کۆرسی ١", callback_data="arami1:menu")])
             await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(rows))
         else:
+            session["awaiting_next"] = True
             await query.edit_message_text(
                 feedback,
                 reply_markup=InlineKeyboardMarkup([[
@@ -205,6 +212,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
 
     if action == "next":
         if not session.get("closed"):
+            session["awaiting_next"] = False
             # Claim this next-question action before the first await so a
             # duplicate tap on the same feedback message cannot send twice.
             context.user_data["arami_lesson1_message_id"] = None
