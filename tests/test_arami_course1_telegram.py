@@ -53,6 +53,38 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(sent)
         message.reply_photo.assert_not_awaited()
 
+    async def test_assigned_infographic_is_requested_after_its_lesson_text(self):
+        message = SimpleNamespace(
+            message_id=10,
+            reply_text=AsyncMock(return_value=SimpleNamespace(message_id=11)),
+        )
+        query = SimpleNamespace(
+            data="aramiC:lesson:2",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        order = Mock()
+        with patch("arami_course1_telegram._send_source", new_callable=AsyncMock) as send_source, patch(
+            "arami_course1_telegram.send_lesson_infographic", new_callable=AsyncMock
+        ) as send_infographic:
+            order.attach_mock(send_source, "lesson_text")
+            order.attach_mock(send_infographic, "lesson_image")
+            await arami_course1_callback(update, SimpleNamespace(user_data={}), ROOT)
+
+        self.assertEqual(
+            [call[0] for call in order.mock_calls],
+            ["lesson_text", "lesson_image"],
+        )
+        self.assertEqual(send_source.await_args.args[1], "وانەی 2 — بزوێنەکان")
+        self.assertEqual(send_infographic.await_args.args[1]["number"], 2)
+        self.assertEqual(send_infographic.await_args.kwargs["base_dir"], ROOT)
+        self.assertTrue(any(
+            "تەواوکردنی وانە" in str(call.args[0])
+            for call in message.reply_text.await_args_list
+        ))
+
     def test_infographic_uses_the_current_course_title(self):
         svg = build_lesson_infographic_svg(
             {"number": 1, "title": "پیتەکان و دەنگەکان"},
