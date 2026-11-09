@@ -605,6 +605,33 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
                     self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
 
+    async def test_final_assessment_is_locked_until_lesson21_is_completed(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: [],
+        )
+        self.assertIn("تەنها دوای تەواوکردنی وانەی ٢١", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
+    async def test_final_assessment_opens_after_lesson21_is_completed(self):
+        from arami_course1_telegram import callback
+        lesson21 = load_manifest(ROOT)["lessons"][-1]["id"]
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: [lesson21],
+        )
+        self.assertEqual(
+            context.user_data["arami_course1_sessions"]["21"]["mode"],
+            "assessment",
+        )
+
     async def test_assessment_completion_awards_once_for_its_lesson(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
