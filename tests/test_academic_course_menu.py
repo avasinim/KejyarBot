@@ -255,5 +255,20 @@ class InvalidMenuPageRecoveryTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("لاپەڕەیە", message.edit_text.await_args.args[0])
 
 
-if __name__ == "__main__":
-    unittest.main()
+class UnhandledCallbackAcknowledgementTests(unittest.IsolatedAsyncioTestCase):
+    async def test_unhandled_callback_is_acknowledged(self):
+        query = SimpleNamespace(answer=AsyncMock())
+        await bot.acknowledge_unhandled_callback(
+            SimpleNamespace(callback_query=query), SimpleNamespace()
+        )
+        query.answer.assert_awaited_once_with()
+
+    async def test_callback_fallback_is_registered_after_specific_handlers(self):
+        source = open(bot.__file__, encoding="utf-8").read()
+        specific = source.index(
+            'app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))'
+        )
+        fallback = source.index(
+            "app.add_handler(CallbackQueryHandler(acknowledge_unhandled_callback))"
+        )
+        self.assertGreater(fallback, specific)
