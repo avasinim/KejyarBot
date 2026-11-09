@@ -583,7 +583,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif next_lesson is None and beta_review:
         await query.message.reply_text(
             message_text
-            + "\\n\\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو. "
+            + "\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو. "
             + "وانەکان هێشتا چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین؛ "
             + "ئەمە بە مانای تەواوبوونی فەرمی کۆرس نییە."
         )
@@ -1161,9 +1161,10 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         if lesson in completed and not lesson_is_beta_review(lesson)
     )
     beta_count = sum(1 for lesson in order if lesson_is_beta_review(lesson))
-    description = course.get("description", "")
+    description = html.escape(str(course.get("description", "")))
+    title = html.escape(str(course.get("title", "")))
     text = (
-        f"🎓 <b>{course['title']}</b>\n"
+        f"🎓 <b>{title}</b>\n"
         f"{description}\n\n"
         f"📚 <b>فهرستی وانەکان</b> — {first} تا {last} لە {len(order)}\n"
         f"📄 لاپەڕەی {page + 1}/{page_count}  •  "
