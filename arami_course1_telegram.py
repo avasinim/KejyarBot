@@ -393,6 +393,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         active = context.user_data.get("arami_course1_active")
         if isinstance(active, dict):
             active["message_id"] = None
@@ -434,6 +436,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith("select:"):
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         active = context.user_data.get("arami_course1_active")
         if isinstance(active, dict):
             active["message_id"] = None
@@ -486,6 +490,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith("lesson:"):
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         active = context.user_data.get("arami_course1_active")
         if isinstance(active, dict):
             active["message_id"] = None
@@ -530,6 +536,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith(("practice:", "assessment:")):
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         mode, raw = action.split(":", 1)
         if not raw.isdecimal():
             return
