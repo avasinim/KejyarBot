@@ -42,6 +42,15 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             message, {"number": 5}, base_dir=ROOT
         ))
         self.assertEqual(message.reply_photo.await_count, 6)
+        sent_photos = message.reply_photo.await_args_list
+        self.assertEqual(
+            [Path(call.kwargs["photo"].name).name for call in sent_photos],
+            [f"lesson_{number:02d}.png" for number in approved],
+        )
+        self.assertEqual(
+            [call.kwargs["caption"] for call in sent_photos],
+            [f"🖼️ وێنەی فێرکاری — وانەی {number}" for number in approved],
+        )
         self.assertFalse((ROOT / "assets" / "course1_infographics" / "lesson_05.png").exists())
 
     async def test_missing_course1_infographic_does_not_interrupt_lesson_delivery(self):
