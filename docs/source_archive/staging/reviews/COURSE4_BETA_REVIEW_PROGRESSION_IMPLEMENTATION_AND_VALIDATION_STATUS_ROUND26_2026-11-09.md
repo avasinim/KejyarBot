@@ -11,11 +11,12 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
   - lesson number 32 through 46 inclusive;
   - lesson ID matching `grammar_NN`;
   - exact review status `owner_review_pending_expanded_draft`.
+- `database.py`: added a separate `beta_completed_lessons` ledger through a backward-compatible SQLite column migration, plus idempotent read/write helpers. Beta progress is never inserted into official `completed_lessons`.
 - `bot.py`:
   - labels eligible lessons with a beta marker in the course menu;
   - displays a clear beta/review notice in the lesson;
   - permits the existing finish button only for the 15 eligible Course 4 drafts;
-  - records progress idempotently with zero XP, zero coins, and zero chests;
+  - records progress idempotently in the separate beta ledger, with no XP, coins, chests, official completion, or badges;
   - does not award badges for beta-review lessons;
   - prevents quizzes for these lessons while the review status remains pending, even if structured quiz data is later added before approval;
   - leaves all other pending-review lessons blocked.
@@ -25,7 +26,7 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 - No lesson source text was edited.
 - No embedded or structured quiz data was edited or migrated.
 - No review status was changed to approved.
-- No SQLite schema or existing progress ID was changed. Beta completion uses the existing idempotent completion ledger, but all reward deltas are explicitly zero.
+- Adds one backward-compatible SQLite column only; all existing columns and official progress IDs remain intact. Beta completion is stored separately and never counts as official completion.
 - Existing approved lesson rewards and Course 1–3 quiz behavior are unchanged by the new eligibility policy.
 - No changes to `courses.json`, the 46-lesson manifest, or `main`.
 - No Botkeep, Telegram, production, or live deployment action was performed.
@@ -39,7 +40,7 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 - Draft PR: #120, `https://github.com/avasinim/KejyarBot/pull/120`.
 
 ## Acceptance checks still required
-1. Run `python -m unittest tests.test_course4_beta_review -v` (or repository test discovery).
+1. Run `python -m unittest tests.test_course4_beta_review -v` (or repository test discovery), including the isolated temporary-database migration and idempotence test.
 2. Run `python -m compileall -q .`.
 3. Run the full existing test suite.
 4. Exercise Telegram callback flow with a test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
