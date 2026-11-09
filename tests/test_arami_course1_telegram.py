@@ -899,6 +899,20 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         stale_query.answer.assert_awaited_once()
 
     async def test_menu_invalidates_active_shared_course1_question(self):
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": 6, "message_id": 10},
+            "arami_lesson1_message_id": 20,
+            "arami_lesson5_message_id": 30,
+            "arami_course1_sessions": {"6": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            }},
+        })
+        update, _ = self.make_update("menu", message_id=10)
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
+        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={
             "arami_course1_active": {"lesson": 6, "message_id": 10},
