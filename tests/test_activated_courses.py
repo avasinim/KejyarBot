@@ -368,7 +368,9 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "quiz_menu_items", return_value=items):
             await bot.open_quiz_menu_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(keyboard[0][0].callback_data, "quiz_lesson_12_start")
         self.assertEqual(keyboard[-1][0].callback_data, "quizmenu:assessment:0")
 
