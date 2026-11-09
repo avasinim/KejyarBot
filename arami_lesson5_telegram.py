@@ -34,14 +34,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.answer()
     if action == "menu":
         context.user_data["arami_lesson5_message_id"] = None
-        await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
-        return
-    if action == "lesson":
         context.user_data["arami_lesson1_message_id"] = None
         active_course1 = context.user_data.get("arami_course1_active")
         if isinstance(active_course1, dict):
             active_course1["message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
+        await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
+        return
+    if action == "lesson":
         try:
             source = load_arami_lesson5_source(base_dir)
             manifest = load_manifest(base_dir)
@@ -53,6 +52,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
             await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
             return
+        context.user_data["arami_lesson5_message_id"] = None
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         await _send_source(
             query.message,
             f"وانەی ٥ — {lesson_record.get('title', 'پیتەکان و هاوتای لاتینی')}",
@@ -67,10 +71,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
-        context.user_data["arami_lesson1_message_id"] = None
-        active_course1 = context.user_data.get("arami_course1_active")
-        if isinstance(active_course1, dict):
-            active_course1["message_id"] = None
         if can_open is not None:
             try:
                 manifest = load_manifest(base_dir)
