@@ -20,7 +20,7 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
   - does not award badges for beta-review lessons;
   - prevents quizzes for these lessons while the review status remains pending, even if structured quiz data is later added before approval;
   - leaves all other pending-review lessons blocked.
-- `tests/test_course4_beta_review.py`: added seven unit tests covering lower/upper boundaries, other courses, status mismatches, lesson-ID mismatch, and Boolean-as-integer rejection.
+- `tests/test_course4_beta_review.py`: added nine unit tests covering lower/upper boundaries, other courses, status mismatches, lesson-ID mismatch, and Boolean-as-integer rejection.
 
 ## Safety and compatibility
 - No lesson source text was edited.
