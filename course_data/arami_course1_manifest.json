@@ -301,7 +301,7 @@
       "content_source": "user_supplied_immutable",
       "practice_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_practice_callback_available",
       "assessment_status": "6_source_derived_questions_registered_in_shared_bank; Telegram_assessment_callback_available",
-      "design_status": "shared_source_reader_practice_assessment_and_lesson_infographic_integrated",
+      "design_status": "shared_source_reader_practice_assessment_integrated_text_only_no_infographic_assigned",
       "source_audit_status": "user_source_and_both_lesson_topics_confirmed; historical_audio_references_superseded_by_text_only_policy",
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
