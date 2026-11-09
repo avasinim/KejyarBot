@@ -33,6 +33,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        context.user_data["arami_lesson5_message_id"] = None
         await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
         return
     if action == "lesson":
