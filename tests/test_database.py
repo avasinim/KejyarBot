@@ -198,8 +198,11 @@ class DatabaseTests(unittest.TestCase):
         user = database.get_user(12345)
         self.assertEqual(user[1], 0)   # score
         self.assertEqual(user[2], 0)   # XP
+        self.assertEqual(user[7], 0)   # quiz/test count
         self.assertEqual(user[8], 0)   # coins
         self.assertEqual(user[9], 0)   # chests
+        self.assertEqual(database.get_badges(12345), [])
+        self.assertEqual(user[10], '')  # completed quiz ledger
 
         self.assertTrue(database.complete_lesson_with_rewards(12345, "grammar_31"))
         self.assertEqual(database.get_completed_lessons(12345), ["grammar_31"])
@@ -216,8 +219,11 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_completed_lessons(12345), [])
         user = database.get_user(12345)
         self.assertEqual(user[2], 0)   # XP
+        self.assertEqual(user[7], 0)   # quiz/test count
         self.assertEqual(user[8], 0)   # coins
         self.assertEqual(user[9], 0)   # chests
+        self.assertEqual(database.get_badges(12345), [])
+        self.assertEqual(user[10], '')  # completed quiz ledger
 
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
