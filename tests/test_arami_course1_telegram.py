@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, Mock
+from unittest.mock import AsyncMock, Mock, patch
 
 from arami_course1_telegram import (
     AramiCourseTelegramError,
@@ -474,6 +474,26 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(expected.issubset(callbacks))
                 self.assertIn("aramiC:menu", callbacks)
                 self.assertEqual(query.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
+
+    async def test_selected_lesson_title_is_escaped_before_html_rendering(self):
+        from arami_course1_telegram import callback
+        manifest = load_manifest(ROOT)
+        lesson = dict(manifest["lessons"][1])
+        lesson["title"] = '<b>ناونیشانی تاقیکاری</b> &'
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:2")
+        with patch(
+            "arami_course1_telegram.load_lesson_source",
+            return_value=(lesson, "دەقی تاقیکاری"),
+        ):
+            await callback(
+                update, context, ROOT,
+                can_open=lambda user_id, lesson_id: True,
+                get_completed_lessons=lambda user_id: [],
+            )
+        rendered = query.message.reply_text.await_args.args[0]
+        self.assertIn("&lt;b&gt;ناونیشانی تاقیکاری&lt;/b&gt; &amp;", rendered)
+        self.assertNotIn("<b>ناونیشانی تاقیکاری</b>", rendered)
 
     async def test_selecting_lesson1_keeps_its_dedicated_interaction_callbacks(self):
         from arami_course1_telegram import callback
