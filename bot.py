@@ -1227,7 +1227,7 @@ async def open_course_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     prefix, _, remainder = query.data.partition(":")
     course_id, separator, raw_page = remainder.rpartition(":")
-    if prefix != "coursepage" or not separator or not raw_page.isdigit():
+    if prefix != "coursepage" or not separator or not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی وانەکان نادروستە.")
         return
     await send_course_page(query.message, course_id, query.from_user.id, int(raw_page), edit=True)
@@ -1299,7 +1299,7 @@ async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE
     await query.answer()
     prefix, sep, rest = query.data.partition(":")
     mode, sep2, raw_page = rest.partition(":")
-    if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdigit():
+    if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی تاقیکردنەوە نادروستە.")
         return
     await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
