@@ -822,6 +822,36 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
 
 
+    async def test_practice_retry_contains_only_missed_questions_and_no_assessment_reward(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        award = Mock(return_value=True)
+
+        update, _ = self.make_update("practice:6")
+        await callback(update, context, ROOT, award_assessment=award)
+        original = context.user_data["arami_course1_sessions"]["6"]
+        question = original["questions"][0]
+        missed_id = question["id"]
+        wrong_index = (question["answer_index"] + 1) % len(question["options"])
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+
+        update, _ = self.make_update(f"pick:6:{wrong_index}", message_id=message_id)
+        await callback(update, context, ROOT, award_assessment=award)
+        update, _ = self.make_update("submit:6", message_id=message_id)
+        await callback(update, context, ROOT, award_assessment=award)
+
+        update, retry_query = self.make_update("retry:6", message_id=message_id)
+        await callback(update, context, ROOT, award_assessment=award)
+        retry = context.user_data["arami_course1_sessions"]["6"]
+
+        self.assertEqual(retry["mode"], "practice")
+        self.assertEqual([item["id"] for item in retry["questions"]], [missed_id])
+        self.assertFalse(retry["closed"])
+        self.assertEqual(retry["answers"], [])
+        self.assertEqual(context.user_data["arami_course1_active"]["lesson"], 6)
+        retry_query.answer.assert_awaited_once()
+        award.assert_not_called()
+
     async def test_malformed_unicode_lesson_callback_is_ignored(self):
         query = SimpleNamespace(
             data="aramiC:select:²",
