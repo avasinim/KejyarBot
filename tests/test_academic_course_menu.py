@@ -69,5 +69,33 @@ class AcademicCourseMenuTests(unittest.TestCase):
         )
 
 
+    def test_locked_state_takes_precedence_over_beta_review_and_stale_completion(self):
+        lesson_ids = ["beta_01", "pending_02", "stale_03", "open_04"]
+        lesson_data = {
+            "beta_01": {"title": "وانەی Beta"},
+            "pending_02": {"title": "وانەی پێداچوونەوە"},
+            "stale_03": {"title": "وانەی پێشتر تەواوکراو"},
+            "open_04": {"title": "وانەی کراوە"},
+        }
+        with patch.multiple(
+            bot,
+            COURSE_LESSON_ORDER={"sample": lesson_ids},
+            LESSON_DATA=lesson_data,
+            get_completed_lessons=lambda _user_id: ["stale_03"],
+            get_completed_beta_lessons=lambda _user_id: [],
+            can_open=lambda _user_id, lesson_id: lesson_id == "open_04",
+            lesson_is_beta_review=lambda lesson_id: lesson_id == "beta_01",
+            lesson_is_pending_review=lambda lesson_id: lesson_id == "pending_02",
+        ):
+            keyboard, page_count = bot.course_menu_keyboard("sample", 123, 0)
+
+        self.assertEqual(page_count, 1)
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        self.assertTrue(buttons[0].text.startswith("🔒 🧪"))
+        self.assertTrue(buttons[1].text.startswith("🔒 📝"))
+        self.assertTrue(buttons[2].text.startswith("🔒"))
+        self.assertTrue(buttons[3].text.startswith("🔓"))
+
+
 if __name__ == "__main__":
     unittest.main()
