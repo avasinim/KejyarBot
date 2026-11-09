@@ -1,5 +1,6 @@
 import unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, patch
 
 import bot
 
@@ -95,6 +96,29 @@ class AcademicCourseMenuTests(unittest.TestCase):
         self.assertTrue(buttons[1].text.startswith("🔒 📝"))
         self.assertTrue(buttons[2].text.startswith("🔒"))
         self.assertTrue(buttons[3].text.startswith("🔓"))
+
+
+class InactiveAramiCourseCallbackTests(unittest.IsolatedAsyncioTestCase):
+    async def test_stale_course_button_does_not_open_inactive_arami_catalogue(self):
+        query = SimpleNamespace(
+            data="course_arami_orthography_foundations",
+            from_user=SimpleNamespace(id=123),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace()
+
+        with patch.object(bot, "course_is_active", return_value=False), \\
+             patch.object(bot, "load_arami_course1_manifest") as load_manifest, \\
+             patch.object(bot, "load_arami_course1_question_banks") as load_banks:
+            await bot.open_course(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("چالاک نییە", query.message.reply_text.await_args.args[0])
+        load_manifest.assert_not_called()
+        load_banks.assert_not_called()
 
 
 if __name__ == "__main__":
