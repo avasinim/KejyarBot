@@ -599,7 +599,14 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 with self.subTest(lesson=number, mode=mode):
                     context = SimpleNamespace(user_data={})
                     update, _ = self.make_update(f"{mode}:{number}")
-                    await callback(update, context, ROOT)
+                    completed = (
+                        [load_manifest(ROOT)["lessons"][-1]["id"]]
+                        if number == 21 else []
+                    )
+                    await callback(
+                        update, context, ROOT,
+                        get_completed_lessons=lambda user_id: completed,
+                    )
                     session = context.user_data["arami_course1_sessions"][str(number)]
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
