@@ -91,17 +91,15 @@ def course_menu_keyboard(
     completed_lessons=(),
     can_open=None,
 ):
-    interactive_lessons = set(interactive_lessons)
+    """Build a compact two-column catalogue; each lesson opens its own action panel."""
     completed_lessons = set(completed_lessons)
     rows = []
+    lesson_buttons = []
     for lesson in sorted(manifest["lessons"], key=lambda item: item["number"]):
         number = lesson["number"]
         lesson_id = lesson.get("id")
         title = str(lesson.get("title") or "وانە")
-        label = f"{number}. {title}"
-        if len(label) > 40:
-            label = f"{number}. {title[:34]}…"
-        read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
+        label = title if len(title) <= 19 else title[:18] + "…"
         lesson_is_open = can_open is None or can_open(lesson_id)
         if not lesson_is_open:
             status = "🔒"
@@ -109,25 +107,18 @@ def course_menu_keyboard(
             status = "✅"
         else:
             status = "🔓"
-        row = [InlineKeyboardButton(f"{status} 📖 {label}", callback_data=read_callback)]
-        # Do not advertise practice or assessment actions for a locked lesson.
-        # The callback handlers still enforce the same server-side guard.
-        if lesson_is_open and number == 1:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami1:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami1:assessment"),
-            ])
-        elif lesson_is_open and number == 5:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data="arami5:practice"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data="arami5:assessment"),
-            ])
-        elif lesson_is_open and number in interactive_lessons:
-            row.extend([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data=f"aramiC:practice:{number}"),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=f"aramiC:assessment:{number}"),
-            ])
-        rows.append(row)
+        lesson_buttons.append(InlineKeyboardButton(
+            f"{status} {number:02d} · {label}",
+            callback_data=f"aramiC:select:{number}",
+        ))
+    rows.extend(
+        lesson_buttons[index:index + 2]
+        for index in range(0, len(lesson_buttons), 2)
+    )
+    rows.append([InlineKeyboardButton(
+        "ℹ️ ڕێنمایی نیشانەکان",
+        callback_data="aramiC:legend",
+    )])
     return InlineKeyboardMarkup(rows)
 
 
@@ -416,11 +407,74 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if can_open is not None else None
         )
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\nوانەیەک هەڵبژێرە:",
+            "🎓 <b>کۆرسی ١ | ڕێنووسی سەرەتاییی کوردی</b>\n"
+            "فهرستی ئەکادیمیی وانەکان — وانەیەک هەڵبژێرە بۆ بینینی خوێندنەوە و ڕاهێنانەکانی.\n\n"
+            "🔓 ئامادەی خوێندن  |  🔒 داخراو  |  ✅ تەواوکراو",
+            parse_mode="HTML",
             reply_markup=course_menu_keyboard(
                 manifest, banks, completed_lessons=completed,
                 can_open=can_open_for_user,
             ),
+        )
+        return
+    if action == "legend":
+        await query.message.reply_text(
+            "📚 <b>ڕێنمایی فهرستی وانەکان</b>\n"
+            "🔓 وانەکە ئامادەی خوێندنەوەیە.\n"
+            "🔒 وانەکە تا تەواوکردنی وانە پێشووتر داخراوە.\n"
+            "✅ وانەکە پێشتر تەواو کراوە.\n\n"
+            "لە فهرستەکەدا ژمارە و ناونیشانی وانە هەڵبژێرە بۆ بینینی کردارەکانی.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton("⬅️ گەڕانەوە بۆ فهرستی وانەکان", callback_data="aramiC:menu")
+            ]]),
+        )
+        return
+    if action.startswith("select:"):
+        raw = action.removeprefix("select:")
+        if not raw.isdigit():
+            return
+        number = int(raw)
+        try:
+            manifest = load_manifest(base_dir)
+            banks = load_question_banks(base_dir)
+            lesson, _ = load_lesson_source(base_dir, number)
+        except AramiCourseTelegramError:
+            await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+            return
+        user_id = query.from_user.id
+        if can_open is not None and not can_open(user_id, lesson["id"]):
+            await query.message.reply_text(
+                "🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.",
+                reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("⬅️ گەڕانەوە بۆ فهرست", callback_data="aramiC:menu")
+                ]]),
+            )
+            return
+        read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
+        if number == 1:
+            practice_callback, assessment_callback = "arami1:practice", "arami1:assessment"
+        elif number == 5:
+            practice_callback, assessment_callback = "arami5:practice", "arami5:assessment"
+        elif number in banks:
+            practice_callback, assessment_callback = f"aramiC:practice:{number}", f"aramiC:assessment:{number}"
+        else:
+            practice_callback = assessment_callback = None
+        action_rows = [[InlineKeyboardButton("📖 خوێندنەوەی وانە", callback_data=read_callback)]]
+        if practice_callback and assessment_callback:
+            action_rows.append([
+                InlineKeyboardButton("🎯 ڕاهێنان", callback_data=practice_callback),
+                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=assessment_callback),
+            ])
+        action_rows.append([InlineKeyboardButton("⬅️ گەڕانەوە بۆ فهرست", callback_data="aramiC:menu")])
+        completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
+        progress = "✅ تەواوکراوە" if lesson["id"] in set(completed) else "📘 لە ڕێڕەوی فێربووندایە"
+        extra = "" if practice_callback else "\n⚪ ڕاهێنان و تاقیکردنەوەی سەرچاوەیی بۆ ئەم وانەیە بەردەست نییە."
+        await query.message.reply_text(
+            f"🎓 <b>وانەی {number:02d}</b>\n<b>{lesson.get('title', 'وانە')}</b>\n"
+            f"{progress}{extra}",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(action_rows),
         )
         return
     if action.startswith("lesson:"):
