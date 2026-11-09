@@ -226,11 +226,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
 
     if action == "next":
         if not session.get("closed"):
+            if session.get("sending_next"):
+                return
+            # Keep the feedback message active until delivery succeeds. This
+            # lets the learner retry the same button after a Telegram send error.
+            session["sending_next"] = True
+            try:
+                await send_question(query.message, context)
+            except Exception:
+                session["sending_next"] = False
+                raise
+            session["sending_next"] = False
             session["awaiting_next"] = False
-            # Claim this next-question action before the first await so a
-            # duplicate tap on the same feedback message cannot send twice.
-            context.user_data["arami_lesson1_message_id"] = None
-            await send_question(query.message, context)
         return
 
     if action == "retry":
