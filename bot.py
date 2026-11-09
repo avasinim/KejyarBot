@@ -1796,6 +1796,13 @@ async def open_kurdish_months(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
 
+async def acknowledge_unhandled_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Stop Telegram's loading indicator for callback payloads no handler recognizes."""
+    query = getattr(update, "callback_query", None)
+    if query is not None:
+        await query.answer()
+
+
 async def log_polling_start(application):
     """Log readiness only after python-telegram-bot has initialized successfully."""
     logger.info("KejyarBot Telegram initialization succeeded; polling is starting")
@@ -1846,6 +1853,9 @@ def main():
     app.add_handler(CallbackQueryHandler(submit_quiz_answer, pattern=r"^submit_answer$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
+    # Last in the callback handler group: acknowledge stale/unknown buttons so
+    # Telegram does not leave the user's loading indicator spinning forever.
+    app.add_handler(CallbackQueryHandler(acknowledge_unhandled_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
     app.run_polling()
 
