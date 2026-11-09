@@ -1325,6 +1325,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     get_user(user_id)
 
     if text == "🔎 گەڕانی وانە":
+        context.user_data.pop("lesson_search_results", None)
         context.user_data["lesson_search_mode"] = True
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
@@ -1374,6 +1375,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         f"open_lesson_{lesson_id}",
                     ))
         if not matches:
+            context.user_data.pop("lesson_search_results", None)
             await update.message.reply_text(
                 "🔍 هیچ وانەیەک بەو وشەیە نەدۆزرایەوە. وشەیەکی تر تاقی بکەرەوە.",
                 reply_markup=MENU,
