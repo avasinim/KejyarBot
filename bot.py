@@ -1312,7 +1312,7 @@ async def open_lesson_search_page(update: Update, context: ContextTypes.DEFAULT_
         return
     keyboard, page, page_count, first, last = lesson_search_keyboard(results, int(raw_page))
     await query.edit_message_text(
-        f"🔎 <b>ئەنجامی گەڕان</b> — {len(results)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\\n"
+        f"🔎 <b>ئەنجامی گەڕان</b> — {len(results)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\n"
         "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
         parse_mode="HTML",
         reply_markup=keyboard,
@@ -1382,7 +1382,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["lesson_search_results"] = matches
         keyboard, page, page_count, first, last = lesson_search_keyboard(matches, 0)
         await update.message.reply_text(
-            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\\n"
+            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\n"
             "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
             parse_mode="HTML",
             reply_markup=keyboard,
