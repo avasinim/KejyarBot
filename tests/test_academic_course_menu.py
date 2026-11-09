@@ -121,5 +121,34 @@ class InactiveAramiCourseCallbackTests(unittest.IsolatedAsyncioTestCase):
         load_banks.assert_not_called()
 
 
+
+class BetaProgressDisplayTests(unittest.IsolatedAsyncioTestCase):
+    async def test_course_page_counts_only_current_beta_review_lessons(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        course = {
+            "id": "grammar",
+            "title": "کۆرسی ٤: ڕێزمان",
+            "description": "٤٦ وانە",
+        }
+        order = ["grammar_32"]
+        with patch.object(bot, "COURSES", [course]), \
+             patch.object(bot, "course_is_active", return_value=True), \
+             patch.object(bot, "COURSE_LESSON_ORDER", {"grammar": order}), \
+             patch.object(bot, "course_menu_keyboard", return_value=("keyboard", 1)), \
+             patch.object(bot, "get_completed_lessons", return_value=[]), \
+             patch.object(
+                 bot,
+                 "get_completed_beta_lessons",
+                 return_value=["grammar_32", "grammar_99", "daily_conversation_01"],
+             ), \
+             patch.object(bot, "lesson_is_beta_review", side_effect=lambda lesson: lesson == "grammar_32"):
+            await bot.send_course_page(message, "grammar", 123)
+
+        message.reply_text.assert_awaited_once()
+        page_text = message.reply_text.await_args.args[0]
+        self.assertIn("Beta: 1/1", page_text)
+        self.assertNotIn("Beta: 3/1", page_text)
+
+
 if __name__ == "__main__":
     unittest.main()
