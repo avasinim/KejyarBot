@@ -429,7 +429,7 @@ def lesson_is_beta_review(lesson):
     )
 
 
-def lesson_lesson_quiz_is_available(lesson):
+def lesson_quiz_is_available(lesson):
     return not lesson_is_beta_review(lesson) and quiz_is_available(lesson)
 
 
@@ -1082,11 +1082,16 @@ def course_menu_keyboard(course_id, user_id, page=0):
     rows = []
     for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
         is_open = can_open(user_id, lesson)
-        status = (
-            "🧪" if lesson_is_beta_review(lesson)
-            else ("📝" if lesson_is_pending_review(lesson)
-            else ("🔒" if not is_open else ("✅" if lesson in completed else "🔓"))
-        )
+        if lesson_is_beta_review(lesson):
+            status = "🧪"
+        elif lesson_is_pending_review(lesson):
+            status = "📝"
+        elif not is_open:
+            status = "🔒"
+        elif lesson in completed:
+            status = "✅"
+        else:
+            status = "🔓"
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 38 else title[:35] + "…"
         rows.append([InlineKeyboardButton(
