@@ -399,6 +399,13 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(lessons[17]["content_file"], "course_data/arami_course1_lesson_16_v_source.md")
         self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_12_y_source.md")
         self.assertTrue(all(not any("audio" in key.lower() for key in lesson) for lesson in lessons.values()))
+        self.assertTrue(manifest["policy"]["no_audio"])
+        self.assertFalse(manifest["policy"]["audio_assets"])
+        self.assertFalse(manifest["policy"]["audio_catalog"])
+        self.assertFalse(manifest["policy"]["audio_playback"])
+        self.assertNotIn("recordings remain assigned", lessons[13].get("source_note", ""))
+        self.assertNotIn("recordings_verified", lessons[15].get("source_audit_status", ""))
+        self.assertNotIn("assign either recording elsewhere", lessons[16].get("source_policy", ""))
 
     def test_lesson14_preserves_the_supplied_hidden_vowel_examples(self):
         _, source = load_lesson_source(ROOT, 14)
