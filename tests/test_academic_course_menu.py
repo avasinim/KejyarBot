@@ -209,7 +209,7 @@ class QuizMenuPaginationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("13–14", message.edit_text.await_args.args[0])
         keyboard = message.edit_text.await_args.kwargs["reply_markup"]
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(callbacks, ["quizmenu:practice:0"])
+        self.assertEqual(callbacks, ["quiz_13_start", "quiz_14_start", "quizmenu:practice:0"])
 
     async def test_empty_quiz_menu_page_replaces_stale_menu_message(self):
         message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
