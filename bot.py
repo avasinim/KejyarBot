@@ -25,6 +25,8 @@ from database import (
     get_user,
     complete_lesson_with_rewards,
     get_completed_lessons,
+    complete_beta_lesson,
+    get_completed_beta_lessons,
     add_badge,
     get_badges,
     get_user_level,
@@ -372,6 +374,8 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
+    if course_id == "grammar":
+        completed.update(get_completed_beta_lessons(user_id))
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
@@ -499,9 +503,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if beta_review:
         # Record progress idempotently, but do not grant XP, coins, chests, or badges
         # to material that has not passed academic review.
-        first_completion = complete_lesson_with_rewards(
-            user_id, lesson, points=0, coins=0, chests=0
-        )
+        first_completion = complete_beta_lesson(user_id, lesson)
     else:
         old_level = get_user_level(user_id)
         first_completion = complete_lesson_with_rewards(user_id, lesson)
@@ -1078,12 +1080,13 @@ def course_menu_keyboard(course_id, user_id, page=0):
     if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
         raise ValueError("invalid course menu page")
     completed = set(get_completed_lessons(user_id))
+    beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
     start_index = page * COURSE_MENU_PAGE_SIZE
     rows = []
     for lesson in order[start_index:start_index + COURSE_MENU_PAGE_SIZE]:
         is_open = can_open(user_id, lesson)
         if lesson_is_beta_review(lesson):
-            status = "🧪"
+            status = "🧪✓" if lesson in beta_completed else "🧪"
         elif lesson_is_pending_review(lesson):
             status = "📝"
         elif not is_open:
