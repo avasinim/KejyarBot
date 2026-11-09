@@ -633,7 +633,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if suffix.isdigit():
+    if suffix.isdecimal():
         lesson = f"وانە_{suffix}"
         if lesson not in ORDER:
             await query.answer()
@@ -732,7 +732,7 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await query.answer()
         return
     raw_index = query.data.removeprefix("select_answer_")
-    if not raw_index.isdigit():
+    if not raw_index.isdecimal():
         await query.answer()
         return
     choice_index = int(raw_index)
@@ -842,7 +842,7 @@ async def quiz_answer(
         choice_index = selected_index
     else:
         raw_index = query.data.removeprefix("answer_")
-        if not raw_index.isdigit():
+        if not raw_index.isdecimal():
             await query.answer()
             return
         choice_index = int(raw_index)
