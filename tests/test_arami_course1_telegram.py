@@ -509,6 +509,26 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami1:practice", callbacks)
         self.assertIn("arami1:assessment", callbacks)
 
+    async def test_lesson_action_panel_discloses_missing_lesson4_source_sections(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:4")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
+        rendered = query.message.reply_text.await_args.args[0]
+        self.assertIn("بەشەکانی ١ و ٢", rendered)
+        self.assertIn("بەشەکانی ٣ تا ٨", rendered)
+
+    async def test_lesson_action_panel_discloses_lesson14_title_content_mismatch(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:14")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
+        rendered = query.message.reply_text.await_args.args[0]
+        self.assertIn("بەشی تەواوی هێشوو", rendered)
+        self.assertIn("وانەکانی ٢٠ و ٢١", rendered)
+
     async def test_selecting_locked_lesson_does_not_expose_actions(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
