@@ -62,7 +62,7 @@ def load_question_banks(base_dir):
     manifest_by_number = {str(item["number"]): item for item in manifest["lessons"]}
     banks = {}
     for raw_number, bank in payload["lessons"].items():
-        if not raw_number.isdigit() or str(int(raw_number)) not in manifest_by_number:
+        if not raw_number.isdecimal() or str(int(raw_number)) not in manifest_by_number:
             raise AramiCourseTelegramError("Question bank has an invalid lesson number")
         lesson = manifest_by_number[str(int(raw_number))]
         if bank.get("source_file") != lesson.get("content_file"):
@@ -432,7 +432,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if action.startswith("select:"):
         raw = action.removeprefix("select:")
-        if not raw.isdigit():
+        if not raw.isdecimal():
             return
         number = int(raw)
         try:
@@ -479,7 +479,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if action.startswith("lesson:"):
         raw = action.removeprefix("lesson:")
-        if not raw.isdigit():
+        if not raw.isdecimal():
             return
         number = int(raw)
         try:
@@ -520,7 +520,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if action.startswith(("practice:", "assessment:")):
         mode, raw = action.split(":", 1)
-        if not raw.isdigit():
+        if not raw.isdecimal():
             return
         number = int(raw)
         if can_open is not None:
@@ -546,7 +546,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await _send_question(query.message, context, number)
         return
     parts = action.split(":")
-    if len(parts) < 2 or not parts[1].isdigit():
+    if len(parts) < 2 or not parts[1].isdecimal():
         await query.answer()
         return
     kind, raw_number = parts[0], parts[1]
@@ -557,7 +557,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             await query.answer()
         return
     if kind == "pick":
-        if len(parts) != 3 or not parts[2].isdigit():
+        if len(parts) != 3 or not parts[2].isdecimal():
             await query.answer()
             return
         try:
