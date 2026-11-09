@@ -253,12 +253,21 @@
     "audit_status": "historical_git_commit_inventory_verified; current_main_tree_checked_2026-11-03",
     "audit_scope": "Course 1 Round 1 audio assets only; voice prompts and other course audio excluded",
     "verified_asset_count": 20,
-    "unique_asset_count": 20,
+    "unique_asset_count": 19,
     "manifest_assignment_count": 21,
-    "unique_manifest_asset_count": 20,
+    "unique_manifest_asset_count": 19,
     "orphaned_catalog_assets": [],
     "manifest_assets_missing_from_catalog": [],
-    "duplicate_physical_assets": [],
+    "duplicate_physical_assets": [
+      {
+        "filenames": [
+          "بزوێنی ی.ogg",
+          "ی.ogg"
+        ],
+        "blob_sha": "da6033b07d73ebd41769c725e95d8a714755a5cf",
+        "note": "Both historical filenames contain identical bytes; count as two preserved paths but one unique recording."
+      }
+    ],
     "pending_lesson_audio_mapping": [
       3,
       4,
@@ -276,7 +285,8 @@
       "Lesson 2's «دەنگەکانی ئەلفبێ.ogg» appears in both audio_files and the legacy audio_asset field for compatibility with its dedicated runtime validation. This is one physical asset and one lesson assignment, not a duplicate recording.",
       "Lesson 1's «بزوێنی ی.ogg» and Lesson 2's «دەنگەکانی ئەلفبێ.ogg» are both confirmed and mapped; the first 2026-11-02 audit pass had overlooked these earlier assignments.",
       "No asset was assigned to an unconfirmed lesson based on filename or topic alone. Pending lesson mappings remain pending.",
-      "The runtime treats lesson audio as optional and silently skips unavailable files; verify the Botkeep project filesystem separately before claiming that any recording is currently available."
+      "The runtime treats lesson audio as optional and silently skips unavailable files; verify the Botkeep project filesystem separately before claiming that any recording is currently available.",
+      "The 20 restored .ogg paths contain 19 unique binary contents: «بزوێنی ی.ogg» and «ی.ogg» share the same Git blob SHA. Keep both historical paths for compatibility, but do not count them as two distinct recordings."
     ],
     "current_main_tree_audio_file_count": 0,
     "deployment_filesystem_status": "not_verified; Botkeep may retain separately managed files when Merge files is used"
