@@ -39,7 +39,7 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 - Repository-wide Python checks: success (run #5772).
 - Orthography course structure workflow: success (run #1595).
 - These are automated CI results; Telegram callback smoke tests and production activation remain outstanding.
-- PR #120 is open and marked ready for review: `https://github.com/avasinim/KejyarBot/pull/120`.
+- PR #120 was squash-merged into `main` as commit `755d1d9e6dc98d06b187638ce627bb09848c1c2b`.
 
 ## Remaining release checks
 1. Exercise the Telegram callback flow against a dedicated test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
@@ -47,4 +47,4 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 3. Confirm approved lessons and Courses 1–3 retain their prior rewards and quiz behavior (covered by the passing full suite, with live Telegram smoke testing still separate).
 4. Production Telegram/Botkeep activation remains a separate operational step; no deployment workflow was found or executed.
 
-**Release state:** implementation is on an isolated feature branch; PR #120 is ready for review and all repository CI checks passed. No production activation.
+**Release state:** implementation is merged into `main`; pre-merge CI passed (476 tests, 11 skipped). No Telegram/Botkeep production activation or live smoke test was performed.
