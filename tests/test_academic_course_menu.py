@@ -219,5 +219,41 @@ class QuizMenuPaginationTests(unittest.IsolatedAsyncioTestCase):
         message.reply_text.assert_not_awaited()
 
 
+class InvalidMenuPageRecoveryTests(unittest.IsolatedAsyncioTestCase):
+    async def test_invalid_course_page_edits_existing_menu_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        with (
+            patch.object(bot, "COURSES", [{"id": "sample", "title": "کۆرس"}]),
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "course_menu_keyboard", side_effect=ValueError("invalid page")),
+        ):
+            await bot.send_course_page(message, "sample", 123, 99, edit=True)
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        self.assertIn("لاپەڕەیە", message.edit_text.await_args.args[0])
+
+    async def test_inactive_course_replaces_existing_menu_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        with patch.object(bot, "course_is_active", return_value=False):
+            await bot.send_course_page(
+                message, "sample", 123, 0, edit=True
+            )
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        self.assertIn("چالاک نییە", message.edit_text.await_args.args[0])
+
+    async def test_invalid_quiz_page_edits_existing_menu_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        items = [(f"ڕاهێنان {i}", f"quiz_{i}_start") for i in range(1, 3)]
+        with (
+            patch.object(bot, "quiz_menu_items", return_value=items),
+            patch.object(bot, "quiz_menu_keyboard", side_effect=ValueError("invalid page")),
+        ):
+            await bot.send_quiz_menu(message, 123, "practice", 99, edit=True)
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        self.assertIn("لاپەڕەیە", message.edit_text.await_args.args[0])
+
+
 if __name__ == "__main__":
     unittest.main()
