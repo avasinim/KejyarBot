@@ -54,15 +54,11 @@ class Course4BetaReviewPolicyTests(unittest.TestCase):
         ))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class Course4BetaProgressLedgerTests(unittest.TestCase):
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.original_db_name = database.DB_NAME
-        database.DB_NAME = os.path.join(self.temp_dir.name, "test_kejy ar.db".replace(" ", ""))
+        database.DB_NAME = os.path.join(self.temp_dir.name, "test_kejy_ar.db")
         database.init_db()
 
     def tearDown(self):
@@ -82,3 +78,7 @@ class Course4BetaProgressLedgerTests(unittest.TestCase):
         self.assertEqual(row[9], 0)  # chests
 
 
+
+
+if __name__ == "__main__":
+    unittest.main()
