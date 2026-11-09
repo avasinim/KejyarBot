@@ -309,6 +309,15 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("arami1:retry", callbacks)
         self.assertIn("arami1:menu", callbacks)
 
+    async def test_duplicate_final_assessment_submit_is_ignored(self):
+        context, _result_query = await self._start_and_answer("correct")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        duplicate_update, duplicate_query = make_update("submit", message_id=message_id)
+        await callback(duplicate_update, context, "/unused")
+        duplicate_query.answer.assert_awaited_once()
+        duplicate_query.message.reply_text.assert_not_awaited()
+        duplicate_query.edit_message_text.assert_not_awaited()
+
 
 
 class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
