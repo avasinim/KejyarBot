@@ -282,7 +282,7 @@ def complete_beta_lesson(user_id, lesson_id):
 
 
 def get_completed_beta_lessons(user_id):
-    row = get_user(user_id)
+    get_user(user_id)
     # The beta ledger is appended after legacy columns; query by name to avoid
     # depending on SQLite column positions across upgraded installations.
     conn = sqlite3.connect(DB_NAME, timeout=10)
