@@ -28,6 +28,8 @@ def init_db():
         columns = {row[1] for row in cur.fetchall()}
         if "completed_quizzes" not in columns:
             cur.execute("ALTER TABLE users ADD COLUMN completed_quizzes TEXT DEFAULT ''")
+        if "beta_completed_lessons" not in columns:
+            cur.execute("ALTER TABLE users ADD COLUMN beta_completed_lessons TEXT DEFAULT ''")
         conn.commit()
     except Exception:
         conn.rollback()
@@ -246,6 +248,53 @@ def complete_lesson_with_rewards(user_id, lesson_id, points=10, coins=5, chests=
 def get_completed_lessons(user_id):
     x=get_user(user_id)[5]
     return x.split(',') if x else []
+
+
+def complete_beta_lesson(user_id, lesson_id):
+    """Record beta-only lesson progress separately from official completions."""
+    get_user(user_id)
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        row = conn.execute(
+            "SELECT beta_completed_lessons FROM users WHERE user_id=?",
+            (user_id,),
+        ).fetchone()
+        old = row[0] if row and row[0] else ""
+        items = old.split(",") if old else []
+        if lesson_id in items:
+            conn.commit()
+            return False
+        items.append(lesson_id)
+        cur = conn.execute(
+            "UPDATE users SET beta_completed_lessons=? WHERE user_id=?",
+            (",".join(items), user_id),
+        )
+        if cur.rowcount != 1:
+            raise RuntimeError("Beta lesson completion update did not affect exactly one user row")
+        conn.commit()
+        return True
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
+def get_completed_beta_lessons(user_id):
+    row = get_user(user_id)
+    # The beta ledger is appended after legacy columns; query by name to avoid
+    # depending on SQLite column positions across upgraded installations.
+    conn = sqlite3.connect(DB_NAME, timeout=10)
+    try:
+        result = conn.execute(
+            "SELECT beta_completed_lessons FROM users WHERE user_id=?",
+            (user_id,),
+        ).fetchone()
+        value = result[0] if result and result[0] else ""
+        return value.split(",") if value else []
+    finally:
+        conn.close()
 
 
 def add_badge(user_id, badge):
