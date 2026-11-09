@@ -40,7 +40,7 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 - Draft PR: #120, `https://github.com/avasinim/KejyarBot/pull/120`.
 
 ## Acceptance checks still required
-1. Run `python -m unittest tests.test_course4_beta_review -v` (or repository test discovery), including the isolated temporary-database migration and idempotence test.
+1. Run `python -m unittest discover -s tests -p 'test_course4_beta_review.py' -v` (or repository test discovery), including the isolated temporary-database migration and idempotence test.
 2. Run `python -m compileall -q .`.
 3. Run the full existing test suite.
 4. Exercise Telegram callback flow with a test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
