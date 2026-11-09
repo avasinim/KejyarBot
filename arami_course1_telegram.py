@@ -545,7 +545,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             }
             if not required_lesson_ids.issubset(completed_ids):
                 await query.message.reply_text(
-                    "🔒 تاقیکردنەوەی کۆتایی کۆرسی ١ تەنها دوای تەواوکردنی هەموو ٢١ وانە دەکرێتەوە."
+                    "🔒 تاقیکردنەوەی وانەی ٢١ تەنها دوای تەواوکردنی هەموو ٢١ وانە دەکرێتەوە."
                 )
                 return
         try:
