@@ -183,7 +183,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action == "submit":
-        if session.get("awaiting_next"):
+        if session.get("awaiting_next") or session.get("closed"):
             await query.answer()
             return
         question = current_question(session)
