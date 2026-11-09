@@ -398,7 +398,10 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
     def test_course4_catalog_is_paginated_and_all_46_callbacks_are_reachable(self):
         expected = [f"grammar_{number:02d}" for number in range(1, 47)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
-        with patch.object(bot, "get_completed_lessons", return_value=[]):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[]),
+        ):
             first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
             second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
             third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
