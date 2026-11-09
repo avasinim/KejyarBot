@@ -830,17 +830,27 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         update, _ = self.make_update("practice:6")
         await callback(update, context, ROOT, award_assessment=award)
         original = context.user_data["arami_course1_sessions"]["6"]
-        question = original["questions"][0]
-        missed_id = question["id"]
-        wrong_index = (question["answer_index"] + 1) % len(question["options"])
-        message_id = context.user_data["arami_course1_active"]["message_id"]
+        missed_id = original["questions"][0]["id"]
 
-        update, _ = self.make_update(f"pick:6:{wrong_index}", message_id=message_id)
-        await callback(update, context, ROOT, award_assessment=award)
-        update, _ = self.make_update("submit:6", message_id=message_id)
-        await callback(update, context, ROOT, award_assessment=award)
+        for index, question in enumerate(original["questions"]):
+            message_id = context.user_data["arami_course1_active"]["message_id"]
+            selected = (
+                (question["answer_index"] + 1) % len(question["options"])
+                if index == 0 else question["answer_index"]
+            )
+            update, _ = self.make_update(f"pick:6:{selected}", message_id=message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            update, _ = self.make_update("submit:6", message_id=message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            if index < len(original["questions"]) - 1:
+                update, _ = self.make_update("next:6", message_id=message_id)
+                await callback(update, context, ROOT, award_assessment=award)
 
-        update, retry_query = self.make_update("retry:6", message_id=message_id)
+        self.assertTrue(original["closed"])
+        update, retry_query = self.make_update(
+            "retry:6",
+            message_id=context.user_data["arami_course1_active"]["message_id"],
+        )
         await callback(update, context, ROOT, award_assessment=award)
         retry = context.user_data["arami_course1_sessions"]["6"]
 
