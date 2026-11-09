@@ -1084,16 +1084,23 @@ def course_menu_keyboard(course_id, user_id, page=0):
     for offset, lesson in enumerate(order[start_index:start_index + COURSE_MENU_PAGE_SIZE]):
         lesson_number = start_index + offset + 1
         is_open = can_open(user_id, lesson)
-        if lesson_is_beta_review(lesson):
+        # Access state takes precedence over completion/review labels. A stale
+        # completion record must never make a locked lesson look available.
+        if not is_open:
+            if lesson_is_beta_review(lesson):
+                status = "🔒 🧪"
+            elif lesson_is_pending_review(lesson):
+                status = "🔒 📝"
+            else:
+                status = "🔒"
+        elif lesson_is_beta_review(lesson):
             status = "🧪✓" if lesson in beta_completed else "🧪"
         elif lesson_is_pending_review(lesson):
             status = "📝"
         elif lesson in completed:
             status = "✅"
-        elif is_open:
-            status = "🔓"
         else:
-            status = "🔒"
+            status = "🔓"
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 20 else title[:19] + "…"
         lesson_buttons.append(InlineKeyboardButton(
