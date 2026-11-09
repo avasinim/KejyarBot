@@ -71,7 +71,7 @@ class LessonSearchTests(unittest.IsolatedAsyncioTestCase):
 
         update.message.reply_text.assert_awaited_once()
         rendered = update.message.reply_text.await_args.args[0]
-        self.assertIn("٣ وانە دۆزرایەوە", rendered)
+        self.assertIn("3 وانە دۆزرایەوە", rendered)
         keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
         callbacks = [
             button.callback_data
