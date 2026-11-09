@@ -264,5 +264,25 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson5_message_id"], 11)
 
 
+    async def test_malformed_unicode_answer_callback_is_acknowledged_and_ignored(self):
+        context = SimpleNamespace(user_data={
+            "arami_lesson5_session": {
+                "mode": "practice",
+                "questions": [{
+                    "id": "q1", "section_id": "lesson5", "type": "recognize",
+                    "prompt": "پرسیار", "options": ["A", "B"],
+                    "answer_index": 0,
+                }],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            },
+            "arami_lesson5_message_id": 10,
+        })
+        update, query = make_update("pick:²", message_id=10)
+        await callback(update, context, "/unused")
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+        self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
+
+
 if __name__ == "__main__":
     unittest.main()
