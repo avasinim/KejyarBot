@@ -572,7 +572,7 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         final_number = int(lesson.rsplit("_", 1)[1])
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "📝 تاقیکردنەووەی وانەی ٢١",
+                "📝 تاقیکردنەوەی وانەی ٢١",
                 callback_data=f"aramiC:assessment:{final_number}",
             )
         ]])
