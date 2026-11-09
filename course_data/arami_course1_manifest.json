@@ -262,7 +262,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied Lesson 13 source on the three forms/functions of و; reviewed items are supported by the source examples and rules. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_14",
@@ -282,7 +284,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "partial_source_review_existing_questions_supported_missing_titled_topic",
+      "quiz_semantic_audit_note": "The existing practice and assessment items were compared with the preserved Lesson 14 body and are supported by its hidden-vowel content. IMPORTANT: the manifest title includes هێشوو, but the preserved source body contains no complete هێشوو/cluster section; this audit does not certify that missing topic or the whole titled lesson. Do not reconstruct it from other lessons."
     },
     {
       "id": "arami_course1_lesson_15",
@@ -300,7 +304,9 @@
       "content_file": "course_data/arami_course1_lesson_15_l_ll_source.md",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied Lesson 15 source on ل and ڵ, positions, pronunciation, examples, and meaning contrasts; reviewed items are supported. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_16",
@@ -318,7 +324,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied Lesson 16 source on ر and ڕ, their positions, diacritics, and minimal meaning contrasts. One practice prompt (16p1) is overgeneralized: it should condition the answer on a word beginning with ڕ; the source itself is clear. Flagged for review; not silently edited."
     },
     {
       "id": "arami_course1_lesson_17",
