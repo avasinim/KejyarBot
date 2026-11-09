@@ -617,6 +617,14 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("تەنها دوای تەواوکردنی وانەی ٢١", query.message.reply_text.await_args.args[0])
         self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
 
+    async def test_final_assessment_fails_closed_without_progress_provider(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(update, context, ROOT)
+        self.assertIn("تەنها دوای تەواوکردنی وانەی ٢١", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
     async def test_final_assessment_opens_after_lesson21_is_completed(self):
         from arami_course1_telegram import callback
         lesson21 = load_manifest(ROOT)["lessons"][-1]["id"]
