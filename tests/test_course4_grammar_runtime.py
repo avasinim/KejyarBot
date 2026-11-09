@@ -485,6 +485,33 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         beta_progress.assert_not_called()
         official_reward.assert_not_called()
 
+
+    async def test_duplicate_beta_finish_callback_does_not_repeat_progress_or_rewards(self):
+        query = SimpleNamespace(
+            data="finish_grammar_32",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=False) as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+            patch.object(bot, "check_badges") as badge_check,
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("پێشتر بۆ پێشچوونی Beta تۆمار کراوە", message)
+        self.assertIn("خەڵاتێکی بۆ نییە", message)
+        beta_progress.assert_called_once_with(12345, "grammar_32")
+        official_reward.assert_not_called()
+        badge_check.assert_not_called()
+
     async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
             data="finish_grammar_32",
