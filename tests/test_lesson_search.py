@@ -135,5 +135,48 @@ class LessonSearchTests(unittest.IsolatedAsyncioTestCase):
         self.assertIs(update.message.reply_text.await_args.kwargs["reply_markup"], bot.MENU)
 
 
+    async def test_search_results_are_paginated_without_dropping_matches(self):
+        results = [(f"Lesson {i}", f"open_lesson_grammar_{i:02d}") for i in range(1, 26)]
+        keyboard, page, page_count, first, last = bot.lesson_search_keyboard(results, 0)
+        self.assertEqual((page, page_count, first, last), (0, 3, 1, 12))
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(len(callbacks), 13)
+        self.assertEqual(callbacks[-1], "lessonsearch:1")
+
+        second, page, page_count, first, last = bot.lesson_search_keyboard(results, 1)
+        callbacks = [button.callback_data for row in second.inline_keyboard for button in row]
+        self.assertEqual((page, page_count, first, last), (1, 3, 13, 24))
+        self.assertEqual(callbacks[-1], "lessonsearch:2")
+        self.assertEqual(callbacks[-2], "lessonsearch:0")
+
+        third, page, page_count, first, last = bot.lesson_search_keyboard(results, 2)
+        callbacks = [button.callback_data for row in third.inline_keyboard for button in row]
+        self.assertEqual((page, page_count, first, last), (2, 3, 25, 25))
+        self.assertEqual(callbacks[-1], "lessonsearch:1")
+
+    async def test_search_page_callback_edits_existing_result_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        query = SimpleNamespace(
+            data="lessonsearch:1",
+            message=message,
+            answer=AsyncMock(),
+            edit_message_text=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        results = [(f"Lesson {i}", f"open_lesson_grammar_{i:02d}") for i in range(1, 15)]
+        context = SimpleNamespace(user_data={"lesson_search_results": results})
+
+        await bot.open_lesson_search_page(update, context)
+
+        query.answer.assert_awaited_once()
+        query.edit_message_text.assert_awaited_once()
+        rendered = query.edit_message_text.await_args.args[0]
+        self.assertIn("13–14", rendered)
+        keyboard = query.edit_message_text.await_args.kwargs["reply_markup"]
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(callbacks[-1], "lessonsearch:0")
+        self.assertFalse(any(item.startswith("lessonsearch:2") for item in callbacks))
+
+
 if __name__ == "__main__":
     unittest.main()
