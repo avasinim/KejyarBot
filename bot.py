@@ -1279,10 +1279,14 @@ def quiz_menu_keyboard(items, page, mode):
         rows.append(nav)
     return InlineKeyboardMarkup(rows), count
 
-async def send_quiz_menu(message, user_id, mode, page=0):
+async def send_quiz_menu(message, user_id, mode, page=0, *, edit=False):
     items = quiz_menu_items(user_id, mode)
     if not items:
-        await message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        notice = "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     try:
         keyboard, count = quiz_menu_keyboard(items, page, mode)
@@ -1292,7 +1296,11 @@ async def send_quiz_menu(message, user_id, mode, page=0):
     title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
     first = page * QUIZ_MENU_PAGE_SIZE + 1
     last = min(first + QUIZ_MENU_PAGE_SIZE - 1, len(items))
-    await message.reply_text(f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {page + 1}/{count})", reply_markup=keyboard)
+    rendered = f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {page + 1}/{count})"
+    if edit:
+        await message.edit_text(rendered, reply_markup=keyboard)
+    else:
+        await message.reply_text(rendered, reply_markup=keyboard)
 
 async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -1302,7 +1310,7 @@ async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE
     if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی تاقیکردنەوە نادروستە.")
         return
-    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
+    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page), edit=True)
 
 
 LESSON_SEARCH_PAGE_SIZE = 12
