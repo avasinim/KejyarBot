@@ -1170,7 +1170,11 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         f"✅ تەواوکراو: {completed_count}"
     )
     if beta_count:
-        text += f"  •  🧪 Beta: {len(beta_completed)}/{beta_count}"
+        valid_beta_completed = sum(
+            1 for lesson in order
+            if lesson_is_beta_review(lesson) and lesson in beta_completed
+        )
+        text += f"  •  🧪 Beta: {valid_beta_completed}/{beta_count}"
     text += (
         "\n\n"
         "🔓 ئامادەی خوێندن  |  🔒 داخراو  |  ✅ تەواوکراو"
