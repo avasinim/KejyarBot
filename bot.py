@@ -1144,12 +1144,20 @@ def course_menu_keyboard(course_id, user_id, page=0):
 async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     if course is None or not course_is_active(course_id):
-        await message.reply_text("⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە.")
+        notice = "⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     try:
         keyboard, page_count = course_menu_keyboard(course_id, user_id, page)
     except ValueError:
-        await message.reply_text("⚠️ ئەم لاپەڕەیە لە لیستی وانەکاندا نییە.")
+        notice = "⚠️ ئەم لاپەڕەیە لە لیستی وانەکاندا نییە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     order = COURSE_LESSON_ORDER.get(course_id, [])
     first = page * COURSE_MENU_PAGE_SIZE + 1
@@ -1291,7 +1299,11 @@ async def send_quiz_menu(message, user_id, mode, page=0, *, edit=False):
     try:
         keyboard, count = quiz_menu_keyboard(items, page, mode)
     except ValueError:
-        await message.reply_text("⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نیە.")
+        notice = "⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نییە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
     first = page * QUIZ_MENU_PAGE_SIZE + 1
