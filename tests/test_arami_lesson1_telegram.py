@@ -129,7 +129,10 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
     async def test_locked_lesson1_practice_and_assessment_are_not_started(self):
         for action in ("practice", "assessment"):
             update, query = make_update(action)
-            context = SimpleNamespace(user_data={})
+            context = SimpleNamespace(user_data={
+                "arami_lesson5_message_id": 55,
+                "arami_course1_active": {"lesson": 6, "message_id": 66},
+            })
             with patch("arami_lesson1_telegram.load_manifest", return_value={
                 "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
             }):
@@ -137,6 +140,8 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
+            self.assertEqual(context.user_data["arami_lesson5_message_id"], 55)
+            self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 66)
 
     async def test_opening_lesson_invalidates_active_lesson1_question(self):
         context = SimpleNamespace(user_data={
