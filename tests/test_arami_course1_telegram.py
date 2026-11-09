@@ -265,6 +265,33 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
 
+    async def test_locked_lesson_selection_preserves_other_active_quiz(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(
+            data="aramiC:select:3",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_message_id": 44,
+            "arami_lesson5_message_id": 55,
+            "arami_course1_active": {"lesson": 6, "message_id": 66},
+        })
+        manifest = {"lessons": [{"number": 3, "id": "arami_course1_lesson_03", "title": "وانەی ٣"}]}
+        with patch("arami_course1_telegram.load_manifest", return_value=manifest), \\
+             patch("arami_course1_telegram.load_question_banks", return_value={}), \\
+             patch("arami_course1_telegram.load_lesson_source", return_value=(manifest["lessons"][0], "دەقی وانە")):
+            await arami_course1_callback(
+                update, context, ROOT,
+                can_open=lambda user_id, lesson_id: False,
+            )
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], 44)
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 55)
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 66)
+        self.assertIn("سەرەتا وانەی پێشووتر", message.reply_text.await_args.args[0])
+
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
         self.assertEqual(len(manifest["lessons"]), 21)
