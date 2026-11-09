@@ -393,6 +393,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        active = context.user_data.get("arami_course1_active")
+        if isinstance(active, dict):
+            active["message_id"] = None
         try:
             manifest = load_manifest(base_dir)
             banks = load_question_banks(base_dir)
