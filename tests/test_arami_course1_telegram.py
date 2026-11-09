@@ -723,7 +723,9 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         duplicate_update, duplicate_query = self.make_update("submit:6", message_id=message_id)
         await callback(duplicate_update, context, ROOT, award_assessment=award)
         award.assert_called_once_with(123, "arami_course1_lesson_06")
-        duplicate_query.message.reply_text.assert_awaited_once()
+        duplicate_query.answer.assert_awaited_once()
+        duplicate_query.message.reply_text.assert_not_awaited()
+        duplicate_query.edit_message_text.assert_not_awaited()
 
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
