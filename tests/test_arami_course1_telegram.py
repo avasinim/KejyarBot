@@ -719,6 +719,12 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         award.assert_called_once_with(123, "arami_course1_lesson_06")
         self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
 
+        # A duplicate final submit callback must not claim the reward again.
+        duplicate_update, duplicate_query = self.make_update("submit:6", message_id=message_id)
+        await callback(duplicate_update, context, ROOT, award_assessment=award)
+        award.assert_called_once_with(123, "arami_course1_lesson_06")
+        duplicate_query.message.reply_text.assert_awaited_once()
+
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
