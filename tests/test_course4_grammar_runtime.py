@@ -442,6 +442,34 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         beta_progress.assert_called_once_with(12345, "grammar_32")
         official_reward.assert_not_called()
 
+    async def test_final_beta_lesson_does_not_claim_official_course_completion(self):
+        query = SimpleNamespace(
+            data="finish_grammar_46",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+            patch.object(bot, "next_course_lesson", return_value=None),
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        final_message = query.message.reply_text.await_args.args[0]
+        self.assertIn("ڕێڕەوی تاقیکاریی Beta تەواو بوو", final_message)
+        self.assertIn("چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین", final_message)
+        self.assertIn("تەواوبوونی فەرمی کۆرس نییە", final_message)
+        self.assertNotIn("🎓 ئەم کۆرسە تەواو بوو", final_message)
+        beta_progress.assert_called_once_with(12345, "grammar_46")
+        official_reward.assert_not_called()
+
     async def test_approved_lesson_keeps_its_completion_button(self):
         self.assertFalse(bot.lesson_is_pending_review("grammar_31"))
         self.assertIsNotNone(bot.lesson_keyboard("grammar_31"))
