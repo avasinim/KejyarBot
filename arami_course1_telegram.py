@@ -393,8 +393,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        context.user_data["arami_lesson1_message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
         active = context.user_data.get("arami_course1_active")
         if isinstance(active, dict):
             active["message_id"] = None
@@ -570,6 +568,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             bank = banks[number]
             session = create_session(bank[mode], mode)
         except (AramiCourseTelegramError, KeyError, ValueError):
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
             logger.exception("No verified %s bank for Arami Course 1 Lesson %s", mode, number)
             await query.message.reply_text(f"⚠️ {mode}ی سەرچاوەیی بۆ وانەی {number} ئامادە نییە.")
             return
