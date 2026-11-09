@@ -39,13 +39,10 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 - Therefore the tests are **added but not yet executed** in a project runtime. Do not describe this change as tested, merged, or deployed.
 - Draft PR: #120, `https://github.com/avasinim/KejyarBot/pull/120`.
 
-## Acceptance checks still required
-1. Run `python -m unittest discover -s tests -p 'test_course4_beta_review.py' -v` (or repository test discovery), including the isolated temporary-database migration and idempotence test.
-2. Run `python -m compileall -q .`.
-3. Run the full existing test suite.
-4. Exercise Telegram callback flow with a test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
-5. Exercise the same flow for Lesson 46 and verify no phantom Lesson 47 is generated.
-6. Verify approved lessons and Courses 1–3 retain their prior rewards and quiz behavior.
-7. Only after checks pass, prepare the PR for review/merge; deployment remains a separate explicit operational step.
+## Remaining release checks
+1. Exercise the Telegram callback flow against a dedicated test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
+2. Exercise Lesson 46 and verify no phantom Lesson 47 is generated.
+3. Confirm approved lessons and Courses 1–3 retain their prior rewards and quiz behavior (covered by the passing full suite, with live Telegram smoke testing still separate).
+4. Production Telegram/Botkeep activation remains a separate operational step; no deployment workflow was found or executed.
 
-**Release state:** implementation proposed on an isolated feature branch; draft PR open; no production activation.
+**Release state:** implementation is on an isolated feature branch; PR #120 is ready for review and all repository CI checks passed. No production activation.
