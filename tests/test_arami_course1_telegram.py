@@ -448,6 +448,61 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         )
         return SimpleNamespace(callback_query=query), query
 
+    async def test_selecting_lesson_opens_academic_action_panel_with_dedicated_routes(self):
+        from arami_course1_telegram import callback
+        manifest = load_manifest(ROOT)
+        lesson2 = manifest["lessons"][1]
+        lesson5 = manifest["lessons"][4]
+        for number, expected in (
+            (2, {"aramiC:lesson:2", "aramiC:practice:2", "aramiC:assessment:2"}),
+            (5, {"arami5:lesson", "arami5:practice", "arami5:assessment"}),
+        ):
+            with self.subTest(lesson=number):
+                context = SimpleNamespace(user_data={})
+                update, query = self.make_update(f"select:{number}")
+                query.from_user = SimpleNamespace(id=123)
+                await callback(
+                    update, context, ROOT,
+                    can_open=lambda user_id, lesson_id: True,
+                    get_completed_lessons=lambda user_id: [],
+                )
+                keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
+                callbacks = {
+                    button.callback_data
+                    for row in keyboard.inline_keyboard for button in row
+                }
+                self.assertTrue(expected.issubset(callbacks))
+                self.assertIn("aramiC:menu", callbacks)
+                self.assertEqual(query.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
+
+    async def test_selecting_lesson1_keeps_its_dedicated_interaction_callbacks(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:1")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
+        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = {
+            button.callback_data for row in keyboard.inline_keyboard for button in row
+        }
+        self.assertIn("arami1:lesson", callbacks)
+        self.assertIn("arami1:practice", callbacks)
+        self.assertIn("arami1:assessment", callbacks)
+
+    async def test_selecting_locked_lesson_does_not_expose_actions(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:2")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
+        keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
+        callbacks = {
+            button.callback_data for row in keyboard.inline_keyboard for button in row
+        }
+        self.assertEqual(callbacks, {"aramiC:menu"})
+
     async def test_every_registered_lesson_bank_opens_its_own_practice_and_assessment(self):
         from arami_course1_telegram import callback
         banks = load_question_banks(ROOT)
