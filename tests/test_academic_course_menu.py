@@ -152,3 +152,24 @@ class BetaProgressDisplayTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CoursePageRenderingTests(unittest.IsolatedAsyncioTestCase):
+    async def test_course_title_and_description_are_html_escaped(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        course = {"id": "sample", "title": "<Test & Course>", "description": "desc <tag> & details"}
+        with (
+            patch.object(bot, "COURSES", [course]),
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "course_menu_keyboard", return_value=("keyboard", 1)),
+            patch.object(bot, "COURSE_LESSON_ORDER", {"sample": ["sample_01"]}),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[]),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+        ):
+            await bot.send_course_page(message, "sample", 123)
+
+        rendered = message.reply_text.await_args.args[0]
+        self.assertIn("<b>&lt;Test &amp; Course&gt;</b>", rendered)
+        self.assertIn("desc &lt;tag&gt; &amp; details", rendered)
+        self.assertEqual(message.reply_text.await_args.kwargs["parse_mode"], "HTML")
