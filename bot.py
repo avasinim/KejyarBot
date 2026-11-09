@@ -1332,7 +1332,7 @@ async def open_lesson_search_page(update: Update, context: ContextTypes.DEFAULT_
     query = update.callback_query
     await query.answer()
     raw_page = query.data.partition(":")[2]
-    if not raw_page.isdigit():
+    if not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی گەڕان نادروستە.")
         return
     results = context.user_data.get("lesson_search_results", [])
