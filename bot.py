@@ -1180,6 +1180,9 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     course_id = query.data.removeprefix("course_")
     if course_id == "arami_orthography_foundations":
+        if not course_is_active(course_id):
+            await query.message.reply_text("📌 ئەم کۆرسە هێشتا چالاک نییە.")
+            return
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
