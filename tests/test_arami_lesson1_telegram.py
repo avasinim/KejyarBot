@@ -163,6 +163,20 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
     async def test_menu_invalidates_active_lesson1_question(self):
         context = SimpleNamespace(user_data={
             "arami_lesson1_message_id": 10,
+            "arami_lesson5_message_id": 20,
+            "arami_course1_active": {"lesson": 6, "message_id": 30},
+            "arami_lesson1_session": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            },
+        })
+        update, _ = make_update("menu", message_id=10)
+        await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_message_id": 10,
             "arami_lesson1_session": {
                 "mode": "practice",
                 "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
