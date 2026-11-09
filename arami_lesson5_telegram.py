@@ -33,10 +33,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         context.user_data["arami_lesson5_message_id"] = None
         await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
         return
     if action == "lesson":
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         context.user_data["arami_lesson5_message_id"] = None
         try:
             source = load_arami_lesson5_source(base_dir)
@@ -63,6 +71,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
         return
     if action in {"practice", "assessment"}:
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         if can_open is not None:
             try:
                 manifest = load_manifest(base_dir)
