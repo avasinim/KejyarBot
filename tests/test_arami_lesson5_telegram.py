@@ -193,6 +193,16 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             else:
                 self.assertIn("ئەنجام", shown)
                 self.assertNotIn("دووبارەکردنەوەی پرسیارە هەڵەکان", str(submit_query.edit_message_text.await_args.kwargs["reply_markup"]))
+                message_id = context.user_data["arami_lesson5_message_id"]
+                award_calls = []
+                award = lambda user_id, lesson_id: award_calls.append((user_id, lesson_id)) or True
+                # The first completion is already closed; this callback must not award again.
+                update, duplicate_query = make_update("submit", message_id=message_id)
+                await callback(update, context, "/unused", award_assessment=award)
+                self.assertEqual(award_calls, [])
+                duplicate_query.answer.assert_awaited_once()
+                duplicate_query.message.reply_text.assert_not_awaited()
+                duplicate_query.edit_message_text.assert_not_awaited()
 
     async def test_opening_lesson_invalidates_active_lesson5_question(self):
         context = SimpleNamespace(user_data={
