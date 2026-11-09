@@ -86,13 +86,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             context.user_data["arami_lesson5_session"] = create_session(bank[action], action)
             context.user_data["arami_lesson5_message_id"] = None
         except (OSError, ValueError):
-            context.user_data["arami_lesson1_message_id"] = None
-            active_course1 = context.user_data.get("arami_course1_active")
-            if isinstance(active_course1, dict):
-                active_course1["message_id"] = None
             logger.exception("Could not start Arami Lesson 5 interaction")
             await query.message.reply_text("⚠️ ڕاهێنان/تاقیکردنەوەی وانەی ٥ ئامادە نییە.")
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         await _send_question(query.message, context)
         return
     session = context.user_data.get("arami_lesson5_session")
