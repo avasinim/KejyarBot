@@ -109,10 +109,10 @@ class InactiveAramiCourseCallbackTests(unittest.IsolatedAsyncioTestCase):
         update = SimpleNamespace(callback_query=query)
         context = SimpleNamespace()
 
-        with patch.object(bot, "course_is_active", return_value=False), \\
-             patch.object(bot, "load_arami_course1_manifest") as load_manifest, \\
-             patch.object(bot, "load_arami_course1_question_banks") as load_banks:
-            await bot.open_course(update, context)
+        with patch.object(bot, "course_is_active", return_value=False):
+            with patch.object(bot, "load_arami_course1_manifest") as load_manifest:
+                with patch.object(bot, "load_arami_course1_question_banks") as load_banks:
+                    await bot.open_course(update, context)
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
