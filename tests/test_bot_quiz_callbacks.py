@@ -1031,6 +1031,31 @@ class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("\\n", message)
 
 
+class UnicodeQuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
+    def make_context(self, callback_data):
+        query = SimpleNamespace(
+            data=callback_data,
+            message=SimpleNamespace(message_id=77),
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            edit_message_reply_markup=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "quiz": {
+                "index": 0,
+                "lesson": "وانە_1",
+                "questions": [{
+                    "question": "پرسیار",
+                    "options": ["وەڵامی ١", "وەڵامی ٢"],
+                    "answer": "وەڵامی ١",
+                }],
+                "score": 0,
+                "question_message_id": 77,
+            }
+        })
+        return update, context, query
+
     async def test_unicode_digit_answer_is_rejected_without_stranding_question(self):
         update, context, query = self.make_context("answer_²")
         await bot.quiz_answer(update, context)
