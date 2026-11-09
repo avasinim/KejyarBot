@@ -221,7 +221,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
         complete.assert_called_once_with(12345, lesson_id)
         message.reply_text.assert_awaited_once()
-        self.assertIn("کۆرسی ١ تەواو بوو", message.reply_text.await_args.args[0])
+        self.assertIn("هەموو وانەکانی کۆرسی ١ تەواو بوون", message.reply_text.await_args.args[0])
+        self.assertIn("تاقیکردنەوەی وانەی ٢١", message.reply_text.await_args.args[0])
         self.assertNotIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
         self.assertEqual(
