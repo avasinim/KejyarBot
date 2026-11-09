@@ -621,7 +621,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             can_open=lambda user_id, lesson_id: True,
             get_completed_lessons=lambda user_id: [],
         )
-        self.assertIn("تەنها دوای تەواوکردنی وانەی ٢١", query.message.reply_text.await_args.args[0])
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
         self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
 
     async def test_final_assessment_fails_closed_without_progress_provider(self):
@@ -629,18 +629,34 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, query = self.make_update("assessment:21")
         await callback(update, context, ROOT)
-        self.assertIn("تەنها دوای تەواوکردنی وانەی ٢١", query.message.reply_text.await_args.args[0])
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
+    async def test_final_assessment_stays_locked_if_any_earlier_lesson_is_missing(self):
+        from arami_course1_telegram import callback
+        completed = [
+            item["id"] for item in load_manifest(ROOT)["lessons"]
+            if item["number"] != 8
+        ]
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: completed,
+        )
+        self.assertIn("هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
         self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
 
     async def test_final_assessment_opens_after_lesson21_is_completed(self):
         from arami_course1_telegram import callback
-        lesson21 = load_manifest(ROOT)["lessons"][-1]["id"]
+        completed_lessons = [item["id"] for item in load_manifest(ROOT)["lessons"]]
         context = SimpleNamespace(user_data={})
         update, _ = self.make_update("assessment:21")
         await callback(
             update, context, ROOT,
             can_open=lambda user_id, lesson_id: True,
-            get_completed_lessons=lambda user_id: [lesson21],
+            get_completed_lessons=lambda user_id: completed_lessons,
         )
         self.assertEqual(
             context.user_data["arami_course1_sessions"]["21"]["mode"],
