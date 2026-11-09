@@ -844,12 +844,45 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         second_update, second_query = self.make_update("next:2", message_id=10)
         await callback(second_update, context, ROOT)
         second_query.message.reply_text.assert_not_awaited()
-        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 10)
+        self.assertTrue(session["sending_next"])
 
         release.set()
         await task
         self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
+        self.assertFalse(session["sending_next"])
 
+
+
+    async def test_failed_next_question_delivery_can_be_retried(self):
+        from arami_course1_telegram import callback
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "course1", "type": "recognize", "prompt": "یەک", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "course1", "type": "recognize", "prompt": "دوو", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 1, "selected_index": None, "answers": [{"correct": True}],
+            "closed": False, "awaiting_next": True,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_course1_sessions": {"2": session},
+            "arami_course1_active": {"lesson": 2, "message_id": 10},
+        })
+        failed_update, failed_query = self.make_update("next:2", message_id=10)
+        failed_query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+            await callback(failed_update, context, ROOT)
+        self.assertTrue(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 10)
+
+        retry_update, retry_query = self.make_update("next:2", message_id=10)
+        await callback(retry_update, context, ROOT)
+        self.assertFalse(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
+        self.assertIn("دوو", retry_query.message.reply_text.await_args.args[0])
 
     async def test_practice_retry_contains_only_missed_questions_and_no_assessment_reward(self):
         from arami_course1_telegram import callback
