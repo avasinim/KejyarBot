@@ -22,7 +22,7 @@ async def _send_question(message, context):
         return
     rows = [[InlineKeyboardButton(option, callback_data=f"arami5:pick:{i}")] for i, option in enumerate(question["options"])]
     sent = await message.reply_text(
-        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
+        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — وانەی ٥ — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows))
     context.user_data["arami_lesson5_message_id"] = sent.message_id
 
@@ -33,7 +33,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        await query.message.reply_text("وانەی ٥ — هەڵبژاردنی خوێندنەوە یان تاقیکردنەوە:", reply_markup=menu_keyboard())
+        await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
         return
     if action == "lesson":
         try:
