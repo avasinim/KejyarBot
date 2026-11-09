@@ -138,7 +138,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied Lesson 7 source; all reviewed items are supported by the source examples and rules. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_08",
@@ -157,7 +159,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with both supplied sections (T and Z); all reviewed items are supported by the corresponding source examples and rules. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_09",
@@ -176,7 +180,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied Lesson 9 mappings (آ، اَ، اِ، اُ) and examples; all reviewed items are supported. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_10",
@@ -193,7 +199,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied hamza rules and examples, including hamza form, vowel separation, and elision; all reviewed items are supported. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_11",
@@ -212,7 +220,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the three supplied sections (بۆرە، سەرە، ژێرە); all reviewed items are supported by the stated forms and examples. Historical sound references remain inactive under the text-only policy."
     },
     {
       "id": "arami_course1_lesson_12",
@@ -231,7 +241,9 @@
       "runtime_design_status": "shared_course_reader_and_lesson_scoped_practice_assessment_callbacks_registered",
       "activation_status": "reader_practice_assessment_enabled_text_only",
       "runtime_status": "enabled_in_arami_course1_catalogue",
-      "interaction_mode": "shared_source_question_bank"
+      "interaction_mode": "shared_source_question_bank",
+      "quiz_semantic_audit_status": "reviewed_against_supplied_source_no_material_mismatch_found",
+      "quiz_semantic_audit_note": "Practice and assessment prompts, answer keys, and evidence were compared with the supplied distinctions (y/î), vowel/consonant roles, position, syllabification, and examples; all reviewed items are supported. No question text or source text changed."
     },
     {
       "id": "arami_course1_lesson_13",
