@@ -35,7 +35,7 @@ async def send_question(message, context):
         for i, option in enumerate(question["options"])
     ]
     sent = await message.reply_text(
-        f"{heading} — پرسیاری {number}/{total}\n\n{question['prompt']}",
+        f"{heading} — وانەی ١ — پرسیاری {number}/{total}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows),
     )
     context.user_data["arami_lesson1_message_id"] = sent.message_id
