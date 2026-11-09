@@ -64,6 +64,12 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:menu",
         ])
 
+    async def test_lesson5_menu_prompt_includes_all_three_actions(self):
+        update, query = make_update("menu")
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        shown = query.message.reply_text.await_args.args[0]
+        self.assertIn("خوێندنەوە، ڕاهێنان یان تاقیکردنەوە", shown)
+
     async def test_lesson_callback_reads_its_own_source_and_returns_to_lesson5_menu(self):
         update, query = make_update("lesson")
         manifest = {"lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]}
