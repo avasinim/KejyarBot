@@ -226,7 +226,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:unified_orthography:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
@@ -261,7 +261,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("13 تا 24 لە 42", rendered)
         self.assertIn("لاپەڕەی 2/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_daily_conversation_13",
