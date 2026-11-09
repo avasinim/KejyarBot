@@ -123,6 +123,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
         query.message.reply_text.assert_awaited_once()
+        self.assertIn("🎯 ڕاهێنان — وانەی ١ — پرسیاری 1/1", query.message.reply_text.await_args.args[0])
         self.assertIn("چەند پیت؟", query.message.reply_text.await_args.args[0])
 
     async def test_locked_lesson1_practice_and_assessment_are_not_started(self):
