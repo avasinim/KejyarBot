@@ -81,6 +81,30 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
 
+    def test_all_active_courses_have_globally_unique_lesson_ids_and_exact_reverse_mapping(self):
+        active_orders = {
+            course_id: lessons
+            for course_id, lessons in bot.COURSE_LESSON_ORDER.items()
+            if bot.course_is_active(course_id)
+        }
+        flattened = [
+            (course_id, lesson_id)
+            for course_id, lessons in active_orders.items()
+            for lesson_id in lessons
+        ]
+        lesson_ids = [lesson_id for _, lesson_id in flattened]
+
+        self.assertTrue(lesson_ids)
+        self.assertEqual(
+            len(lesson_ids),
+            len(set(lesson_ids)),
+            "A lesson ID must belong to exactly one active course",
+        )
+        for course_id, lesson_id in flattened:
+            self.assertEqual(bot.LESSON_COURSE.get(lesson_id), course_id)
+
+        self.assertEqual(set(bot.LESSON_COURSE), set(lesson_ids))
+
     def test_course_lesson_ids_are_unique_and_do_not_replace_course_one_ids(self):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 0)
         all_ids = [
