@@ -1031,5 +1031,30 @@ class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("\\n", message)
 
 
+    async def test_unicode_digit_answer_is_rejected_without_stranding_question(self):
+        update, context, query = self.make_context("answer_²")
+        await bot.quiz_answer(update, context)
+        self.assertEqual(context.user_data["quiz"]["index"], 0)
+        self.assertEqual(context.user_data["quiz"]["question_message_id"], 77)
+        self.assertEqual(context.user_data["quiz"]["score"], 0)
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_unicode_digit_selection_is_rejected_without_changing_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        update, context, query = self.make_context("select_answer_²")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+            "selected_answer_index": None,
+        })
+        await bot.select_quiz_answer(update, context)
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
