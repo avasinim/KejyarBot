@@ -983,6 +983,16 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_not_awaited()
 
+    async def test_failed_shared_question_delivery_leaves_no_active_message_id(self):
+        from arami_course1_telegram import callback
+        update, query = self.make_update("practice:6")
+        query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        context = SimpleNamespace(user_data={})
+        with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+            await callback(update, context, ROOT)
+        self.assertEqual(context.user_data["arami_course1_sessions"]["6"]["index"], 0)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+
 
 if __name__ == "__main__":
     unittest.main()
