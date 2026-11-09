@@ -1156,9 +1156,9 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         "\n🧪 وانەی تاقیکاری  |  📝 لە پێداچوونەوەدا"
     )
     if edit:
-        await message.edit_text(text, reply_markup=keyboard)
+        await message.edit_text(text, parse_mode="HTML", reply_markup=keyboard)
     else:
-        await message.reply_text(text, reply_markup=keyboard)
+        await message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
 
 async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1309,9 +1309,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     title = str(item.get("title", ""))
                     if needle and needle in " ".join(title.casefold().split()):
                         number = item["number"]
+                        callback = (
+                            "arami1:lesson" if number == 1
+                            else "arami5:lesson" if number == 5
+                            else f"aramiC:lesson:{number}"
+                        )
                         matches.append((
                             f"📖 {number:02d} · {title[:28]}",
-                            f"aramiC:lesson:{number}",
+                            callback,
                         ))
                 continue
             for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
@@ -1334,7 +1339,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             for label, callback in matches[:12]
         ]
         await update.message.reply_text(
-            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە.\n"
+            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ یەکەم ١٢ دانە پیشان دراون.\n"
             "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(rows),
