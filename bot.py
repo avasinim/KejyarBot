@@ -1276,6 +1276,49 @@ async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE
     await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
 
 
+LESSON_SEARCH_PAGE_SIZE = 12
+
+
+def lesson_search_keyboard(results, page):
+    """Build a paginated keyboard for the current user's saved search results."""
+    page_count = max(1, (len(results) + LESSON_SEARCH_PAGE_SIZE - 1) // LESSON_SEARCH_PAGE_SIZE)
+    page = max(0, min(page, page_count - 1))
+    start = page * LESSON_SEARCH_PAGE_SIZE
+    visible = results[start:start + LESSON_SEARCH_PAGE_SIZE]
+    rows = [
+        [InlineKeyboardButton(label, callback_data=callback)]
+        for label, callback in visible
+    ]
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton("⬅️ پێشوو", callback_data=f"lessonsearch:{page - 1}"))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton("دواتر ➡️", callback_data=f"lessonsearch:{page + 1}"))
+    if navigation:
+        rows.append(navigation)
+    return InlineKeyboardMarkup(rows), page, page_count, start + 1, min(start + len(visible), len(results))
+
+
+async def open_lesson_search_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    raw_page = query.data.partition(":")[2]
+    if not raw_page.isdigit():
+        await query.message.reply_text("⚠️ داواکاریی لاپەڕەی گەڕان نادروستە.")
+        return
+    results = context.user_data.get("lesson_search_results", [])
+    if not results:
+        await query.message.reply_text("🔎 ئەنجامی گەڕان بەردەست نییە؛ تکایە دووبارە گەڕانێک بکە.")
+        return
+    keyboard, page, page_count, first, last = lesson_search_keyboard(results, int(raw_page))
+    await query.edit_message_text(
+        f"🔎 <b>ئەنجامی گەڕان</b> — {len(results)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\\n"
+        "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     user_id = update.effective_user.id
@@ -1336,15 +1379,13 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 reply_markup=MENU,
             )
             return
-        rows = [
-            [InlineKeyboardButton(label, callback_data=callback)]
-            for label, callback in matches[:12]
-        ]
+        context.user_data["lesson_search_results"] = matches
+        keyboard, page, page_count, first, last = lesson_search_keyboard(matches, 0)
         await update.message.reply_text(
-            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ یەکەم ١٢ دانە پیشان دراون.\n"
+            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\\n"
             "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
             parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup(rows),
+            reply_markup=keyboard,
         )
         return
 
@@ -1738,6 +1779,7 @@ def main():
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(open_course_page, pattern=r"^coursepage:"))
+    app.add_handler(CallbackQueryHandler(open_lesson_search_page, pattern=r"^lessonsearch:"))
     app.add_handler(CallbackQueryHandler(open_quiz_menu_page, pattern=r"^quizmenu:"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
