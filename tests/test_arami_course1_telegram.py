@@ -220,9 +220,9 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in menu_call.kwargs["reply_markup"].inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
-        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
 
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
@@ -280,9 +280,9 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
-        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
 
     def test_stale_completed_lesson_is_displayed_as_locked(self):
         manifest = load_manifest(ROOT)
@@ -298,8 +298,8 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
         self.assertFalse(any(
             button.callback_data in {"aramiC:practice:3", "aramiC:assessment:3"}
             for button in buttons.values()
