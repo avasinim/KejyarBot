@@ -264,7 +264,8 @@ class UnhandledCallbackAcknowledgementTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once_with()
 
     async def test_callback_fallback_is_registered_after_specific_handlers(self):
-        source = open(bot.__file__, encoding="utf-8").read()
+        with open(bot.__file__, encoding="utf-8") as source_file:
+            source = source_file.read()
         specific = source.index(
             'app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))'
         )
