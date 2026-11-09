@@ -253,7 +253,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
             }],
         }
 
-    async def _start_and_answer(self, selected_index):
+    async def _start_and_answer(self, selected_index, award_assessment=None):
         update, query = make_update("assessment")
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
@@ -269,7 +269,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update(f"pick:{selected_index}", message_id=question_message_id)
         await callback(update, context, "/unused")
         update, query = make_update("submit", message_id=question_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", award_assessment=award_assessment)
         return context, query
 
     async def test_assessment_wrong_answer_offers_retry_and_retry_starts_practice(self):
@@ -310,10 +310,14 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami1:menu", callbacks)
 
     async def test_duplicate_final_assessment_submit_is_ignored(self):
-        context, _result_query = await self._start_and_answer("correct")
+        award_calls = []
+        award = lambda user_id, lesson_id: award_calls.append((user_id, lesson_id)) or True
+        context, _result_query = await self._start_and_answer("correct", award_assessment=award)
+        self.assertEqual(award_calls, [(123, "arami_course1_lesson_01")])
         message_id = context.user_data["arami_lesson1_message_id"]
         duplicate_update, duplicate_query = make_update("submit", message_id=message_id)
-        await callback(duplicate_update, context, "/unused")
+        await callback(duplicate_update, context, "/unused", award_assessment=award)
+        self.assertEqual(award_calls, [(123, "arami_course1_lesson_01")])
         duplicate_query.answer.assert_awaited_once()
         duplicate_query.message.reply_text.assert_not_awaited()
         duplicate_query.edit_message_text.assert_not_awaited()
