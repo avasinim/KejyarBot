@@ -572,12 +572,12 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         final_number = int(lesson.rsplit("_", 1)[1])
         keyboard = InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "📝 تاقیکردنەوەی کۆتایی کۆرسی ١",
+                "📝 تاقیکردنەووەی وانەی ٢١",
                 callback_data=f"aramiC:assessment:{final_number}",
             )
         ]])
         await query.message.reply_text(
-            message_text + "\n\n🏁 کۆرسی ١ تەواو بوو؛ ئێستا تاقیکردنەوەی کۆتایی ئەنجام بدە.",
+            message_text + "\n\n🏁 هەموو وانەکانی کۆرسی ١ تەواو بوون؛ ئێستا تاقیکردنەوەی وانەی ٢١ ئەنجام بدە.",
             reply_markup=keyboard,
         )
     elif next_lesson is None and beta_review:
