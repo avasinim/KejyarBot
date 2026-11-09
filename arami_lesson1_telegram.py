@@ -68,6 +68,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.answer()
 
     if action == "menu":
+        context.user_data["arami_lesson1_message_id"] = None
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
             "خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
