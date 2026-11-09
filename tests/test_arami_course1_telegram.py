@@ -600,7 +600,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     context = SimpleNamespace(user_data={})
                     update, _ = self.make_update(f"{mode}:{number}")
                     completed = (
-                        [load_manifest(ROOT)["lessons"][-1]["id"]]
+                        [item["id"] for item in load_manifest(ROOT)["lessons"]]
                         if number == 21 else []
                     )
                     await callback(
