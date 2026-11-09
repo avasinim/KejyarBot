@@ -572,6 +572,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
+    if kind in {"pick", "submit"} and session.get("awaiting_next"):
+        await query.answer()
+        return
     if kind == "pick":
         if len(parts) != 3 or not parts[2].isdecimal():
             await query.answer()
@@ -621,6 +624,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 reply_markup=InlineKeyboardMarkup(rows),
             )
         else:
+            session["awaiting_next"] = True
             await query.edit_message_text(
                 feedback,
                 reply_markup=InlineKeyboardMarkup([[
@@ -630,6 +634,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if kind == "next":
         if not session.get("closed"):
+            session["awaiting_next"] = False
             # Claim this next-question action before the first await so a
             # duplicate tap on the same feedback message cannot send twice.
             context.user_data["arami_course1_active"]["message_id"] = None
