@@ -417,6 +417,28 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", sent_content)
         self.assertIsNotNone(send.await_args.args[2])
 
+    async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
+        lesson_id = "grammar_46"
+        query = SimpleNamespace(
+            data=f"quiz_{lesson_id}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(
+            callback_query=query,
+            effective_user=SimpleNamespace(id=12345),
+        )
+        context = SimpleNamespace(user_data={})
+
+        await bot.start_quiz(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("quiz", context.user_data)
+        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+
     async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
             data="finish_grammar_32",
