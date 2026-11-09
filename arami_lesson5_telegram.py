@@ -87,6 +87,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             await query.answer()
         return
     if action.startswith("pick:"):
+        if session.get("awaiting_next"):
+            await query.answer()
+            return
         raw = action.removeprefix("pick:")
         if not raw.isdecimal():
             await query.answer()
@@ -103,6 +106,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
         return
     if action == "submit":
+        if session.get("awaiting_next"):
+            await query.answer()
+            return
         question = current_question(session)
         try:
             answer = submit_answer(session)
@@ -128,10 +134,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ وانەی ٥", callback_data="arami5:menu")])
             await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}", reply_markup=InlineKeyboardMarkup(rows))
         else:
+            session["awaiting_next"] = True
             await query.edit_message_text(feedback, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡️ پرسیاری دواتر", callback_data="arami5:next")]]))
         return
     if action == "next":
         if not session.get("closed"):
+            session["awaiting_next"] = False
             # Claim this next-question action before the first await so a
             # duplicate tap on the same feedback message cannot send twice.
             context.user_data["arami_lesson5_message_id"] = None
