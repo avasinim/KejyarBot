@@ -189,5 +189,35 @@ class CoursePageRenderingTests(unittest.IsolatedAsyncioTestCase):
         message.edit_text.assert_not_awaited()
 
 
+class QuizMenuPaginationTests(unittest.IsolatedAsyncioTestCase):
+    async def test_quiz_menu_page_edits_existing_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        query = SimpleNamespace(
+            data="quizmenu:practice:1",
+            message=message,
+            from_user=SimpleNamespace(id=123),
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        items = [(f"ڕاهێنان {i}", f"quiz_{i}_start") for i in range(1, 15)]
+        with patch.object(bot, "quiz_menu_items", return_value=items):
+            await bot.open_quiz_menu_page(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        self.assertIn("13–14", message.edit_text.await_args.args[0])
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"]
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertEqual(callbacks, ["quizmenu:practice:0"])
+
+    async def test_empty_quiz_menu_page_replaces_stale_menu_message(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        with patch.object(bot, "quiz_menu_items", return_value=[]):
+            await bot.send_quiz_menu(message, 123, "practice", edit=True)
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
