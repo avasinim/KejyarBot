@@ -68,6 +68,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.answer()
 
     if action == "menu":
+        context.user_data["arami_lesson5_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         context.user_data["arami_lesson1_message_id"] = None
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
@@ -77,6 +81,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action == "lesson":
+        context.user_data["arami_lesson5_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         context.user_data["arami_lesson1_message_id"] = None
         try:
             lesson = load_arami_lesson1_content(base_dir)
@@ -112,6 +120,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action in {"practice", "assessment"}:
+        context.user_data["arami_lesson5_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         if can_open is not None:
             try:
                 manifest = load_manifest(base_dir)
