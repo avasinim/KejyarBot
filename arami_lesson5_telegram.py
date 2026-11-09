@@ -37,6 +37,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
         return
     if action == "lesson":
+        context.user_data["arami_lesson5_message_id"] = None
         try:
             source = load_arami_lesson5_source(base_dir)
             manifest = load_manifest(base_dir)
