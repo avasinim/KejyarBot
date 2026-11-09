@@ -138,6 +138,23 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
 
+    async def test_menu_invalidates_active_lesson1_question(self):
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_message_id": 10,
+            "arami_lesson1_session": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            },
+        })
+        update, _ = make_update("menu", message_id=10)
+        await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
+        update, stale_query = make_update("pick:0", message_id=10)
+        await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
     async def test_stale_pick_after_submit_cannot_answer_next_question(self):
         bank = {"practice": [
             {"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q1", "options": ["A", "B"], "answer_index": 0},
