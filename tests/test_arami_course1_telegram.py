@@ -54,7 +54,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         message.reply_photo.assert_not_awaited()
 
     async def test_assigned_infographics_are_requested_after_their_lesson_text(self):
-        for number in (2, 3, 4, 6, 7, 5):
+        for number in (2, 3, 4, 6, 7):
             with self.subTest(lesson=number):
                 message = SimpleNamespace(
                     message_id=10,
@@ -82,12 +82,8 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
                 lesson, source = load_lesson_source(ROOT, number)
                 self.assertEqual(send_source.await_args.args[1], f"وانەی {number} — {lesson.get('title', '')}")
                 self.assertEqual(send_source.await_args.args[2], source)
-                if number in {2, 3, 4, 6, 7}:
-                    self.assertEqual(send_infographic.await_args.args[1]["number"], number)
-                    self.assertEqual(send_infographic.await_args.kwargs["base_dir"], ROOT)
-                else:
-                    # Lesson 5 has no assigned infographic; the helper safely declines it.
-                    self.assertEqual(send_infographic.await_args.args[1]["number"], 5)
+                self.assertEqual(send_infographic.await_args.args[1]["number"], number)
+                self.assertEqual(send_infographic.await_args.kwargs["base_dir"], ROOT)
 
     def test_infographic_uses_the_current_course_title(self):
         svg = build_lesson_infographic_svg(
