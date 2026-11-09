@@ -2,9 +2,9 @@ name: Python checks
 
 on:
   push:
-    branches: ["main", "fix/**", "feat/**", "work/**"]
+    branches: ["main", "fix/**", "feat/**", "work/**", "botkeep-runtime-2026-11-09"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "botkeep-runtime-2026-11-09"]
 
 # This workflow only reads source files and runs tests; no write permissions are needed.
 permissions:
