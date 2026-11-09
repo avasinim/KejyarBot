@@ -862,6 +862,24 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         retry_query.answer.assert_awaited_once()
         award.assert_not_called()
 
+    async def test_menu_invalidates_active_shared_course1_question(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": 6, "message_id": 10},
+            "arami_course1_sessions": {"6": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            }},
+        })
+        update, _ = self.make_update("menu", message_id=10)
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        update, stale_query = self.make_update("pick:6:0", message_id=10)
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_sessions"]["6"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
     async def test_stale_pick_after_submit_cannot_answer_next_shared_question(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
