@@ -434,6 +434,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith("select:"):
+        active = context.user_data.get("arami_course1_active")
+        if isinstance(active, dict):
+            active["message_id"] = None
         raw = action.removeprefix("select:")
         if not raw.isdecimal():
             return
