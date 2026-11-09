@@ -559,6 +559,7 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         final_message = query.message.reply_text.await_args.args[0]
         self.assertIn("ڕێڕەوی تاقیکاریی Beta تەواو بوو", final_message)
+        self.assertIn("\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو", final_message)
         self.assertIn("چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین", final_message)
         self.assertIn("تەواوبوونی فەرمی کۆرس نییە", final_message)
         self.assertNotIn("🎓 ئەم کۆرسە تەواو بوو", final_message)
