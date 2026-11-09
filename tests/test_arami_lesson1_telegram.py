@@ -138,6 +138,28 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
 
+    async def test_opening_lesson_invalidates_active_lesson1_question(self):
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_message_id": 10,
+            "arami_lesson1_session": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            },
+        })
+        lesson = {"title": "وانە", "objectives": [], "sections": [], "conclusion": ""}
+        manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
+        update, _ = make_update("lesson")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), \
+             patch("arami_lesson1_telegram.load_manifest", return_value=manifest), \
+             patch("arami_lesson1_telegram.send_lesson_infographic", new=AsyncMock()):
+            await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
+        update, stale_query = make_update("pick:0", message_id=10)
+        await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
     async def test_menu_invalidates_active_lesson1_question(self):
         context = SimpleNamespace(user_data={
             "arami_lesson1_message_id": 10,
