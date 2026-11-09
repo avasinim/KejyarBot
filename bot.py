@@ -1338,6 +1338,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    # A reply-keyboard menu choice must leave search mode instead of being
+    # consumed as a lesson-title query. Ordinary text remains a search query.
+    if context.user_data.get("lesson_search_mode") and text in {
+        button.text for row in MENU.keyboard for button in row
+    } and text != "🔎 گەڕانی وانە":
+        context.user_data.pop("lesson_search_mode", None)
+        context.user_data.pop("lesson_search_results", None)
+
     if context.user_data.pop("lesson_search_mode", False):
         needle = " ".join(text.casefold().split())
         matches = []
