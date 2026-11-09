@@ -138,6 +138,28 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
 
+    async def test_stale_pick_after_submit_cannot_answer_next_question(self):
+        bank = {"practice": [
+            {"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q1", "options": ["A", "B"], "answer_index": 0},
+            {"id": "q2", "section_id": "s2", "type": "recognize", "prompt": "Q2", "options": ["A", "B"], "answer_index": 1},
+        ]}
+        context = SimpleNamespace(user_data={})
+        update, _ = make_update("practice")
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson1_message_id"]
+        update, _ = make_update("pick:0", message_id=message_id)
+        await callback(update, context, "/unused")
+        update, _ = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused")
+        session = context.user_data["arami_lesson1_session"]
+        self.assertEqual(session["index"], 1)
+        update, stale_query = make_update("pick:1", message_id=message_id)
+        await callback(update, context, "/unused")
+        self.assertIsNone(session["selected_index"])
+        stale_query.answer.assert_awaited_once()
+        stale_query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_stale_question_message_cannot_change_current_answer(self):
         context = SimpleNamespace(user_data={
             "arami_lesson1_session": {
