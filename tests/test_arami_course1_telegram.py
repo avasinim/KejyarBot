@@ -862,6 +862,26 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         retry_query.answer.assert_awaited_once()
         award.assert_not_called()
 
+    async def test_stale_pick_after_submit_cannot_answer_next_shared_question(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:6")
+        await callback(update, context, ROOT)
+        session = context.user_data["arami_course1_sessions"]["6"]
+        self.assertGreaterEqual(len(session["questions"]), 2)
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+        question = session["questions"][0]
+        update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id=message_id)
+        await callback(update, context, ROOT)
+        update, _ = self.make_update("submit:6", message_id=message_id)
+        await callback(update, context, ROOT)
+        self.assertEqual(session["index"], 1)
+        update, stale_query = self.make_update("pick:6:0", message_id=message_id)
+        await callback(update, context, ROOT)
+        self.assertIsNone(session["selected_index"])
+        stale_query.answer.assert_awaited_once()
+        stale_query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_malformed_unicode_lesson_callback_is_ignored(self):
         query = SimpleNamespace(
             data="aramiC:select:²",
