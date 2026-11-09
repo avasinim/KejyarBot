@@ -77,6 +77,41 @@ class Course4BetaProgressLedgerTests(unittest.TestCase):
         self.assertEqual(row[8], 0)  # coins
         self.assertEqual(row[9], 0)  # chests
 
+    def test_existing_progress_survives_beta_column_migration(self):
+        import sqlite3
+
+        conn = sqlite3.connect(database.DB_NAME)
+        conn.execute("""
+            CREATE TABLE users (
+                user_id INTEGER PRIMARY KEY,
+                score INTEGER DEFAULT 0,
+                xp INTEGER DEFAULT 0,
+                level TEXT DEFAULT 'A1.1 🌱',
+                correct_answers INTEGER DEFAULT 0,
+                completed_lessons TEXT DEFAULT '',
+                badges TEXT DEFAULT '',
+                tests INTEGER DEFAULT 0,
+                coins INTEGER DEFAULT 0,
+                chests INTEGER DEFAULT 0
+            )
+        """)
+        conn.execute(
+            "INSERT INTO users(user_id, completed_lessons) VALUES(?, ?)",
+            (123456789, "grammar_01,grammar_02"),
+        )
+        conn.commit()
+        conn.close()
+
+        database.init_db()
+        self.assertEqual(
+            database.get_completed_lessons(123456789),
+            ["grammar_01", "grammar_02"],
+        )
+        self.assertEqual(database.get_completed_beta_lessons(123456789), [])
+        columns = {row[1] for row in sqlite3.connect(database.DB_NAME).execute("PRAGMA table_info(users)")}
+        self.assertIn("beta_completed_lessons", columns)
+        self.assertIn("completed_quizzes", columns)
+
 
 
 
