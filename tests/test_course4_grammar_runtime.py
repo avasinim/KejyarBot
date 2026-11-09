@@ -461,6 +461,30 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("quiz", context.user_data)
         self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
 
+
+    async def test_stale_finish_callback_cannot_complete_lesson_in_inactive_course(self):
+        query = SimpleNamespace(
+            data="finish_grammar_32",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "complete_beta_lesson") as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+        ):
+            await bot.finish_lesson(update, context)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێشووتر", query.message.reply_text.await_args.args[0])
+        beta_progress.assert_not_called()
+        official_reward.assert_not_called()
+
     async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
             data="finish_grammar_32",
