@@ -32,7 +32,7 @@ from database import (
     complete_quiz_with_rewards,
 )
 from daily_chat import PROMPTS, reply_to_daily_message
-from course_runtime import can_open_lesson, visible_course_lessons
+from course_runtime import can_open_lesson, visible_course_lessons, is_beta_review_lesson
 from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
@@ -399,7 +399,7 @@ def current_progress_badges(user_id):
         if not title:
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id not in completed:
+            if lesson_id not in completed or lesson_is_beta_review(lesson_id):
                 break
             visible.append(f"🏅 {title} — وانەی {number}")
     return visible
@@ -412,7 +412,7 @@ def check_badges(user_id):
         if not course_is_active(course_id):
             continue
         for number, lesson_id in enumerate(COURSE_LESSON_ORDER.get(course_id, []), 1):
-            if lesson_id not in completed:
+            if lesson_id not in completed or lesson_is_beta_review(lesson_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
@@ -423,9 +423,15 @@ def lesson_is_pending_review(lesson):
     )
 
 
+def lesson_is_beta_review(lesson):
+    return is_beta_review_lesson(
+        LESSON_COURSE.get(lesson), lesson, LESSON_DATA.get(lesson, {})
+    )
+
+
 def lesson_keyboard(lesson):
-    # Owner-review drafts are readable for beta inspection, never completable.
-    if lesson_is_pending_review(lesson):
+    # Course 4 review drafts may advance beta progress, but never earn rewards.
+    if lesson_is_pending_review(lesson) and not lesson_is_beta_review(lesson):
         return None
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
@@ -433,13 +439,21 @@ def lesson_keyboard(lesson):
 
 
 def lesson_display_content(lesson, content):
+    if lesson_is_beta_review(lesson):
+        notice = (
+            "🧪 ئەم وانەیە لە وەشانی تاقیکاریی (Beta) ـدایە. "
+            "دەتوانیت بیخوێنیت و بۆ بەردەوامبوونی ڕێڕەو تەواوی بکەیت؛ "
+            "بەڵام تا پشکنین و پەسەندکردنی ئەکادیمی، کویز و خەڵات بۆی نییە.\\n\\n"
+        )
+        return notice + content
     if lesson_is_pending_review(lesson):
         notice = (
             "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
-            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و خەڵات/تەواوکردنی بۆ چالاک نەکراوە.\\n\\n"
+            "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و تەواوکردنی بۆ چالاک نەکراوە.\\n\\n"
         )
         return notice + content
     return content
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["daily_chat_mode"] = False
@@ -466,10 +480,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer()
         await query.message.reply_text("❌ ئەم وانەیە نەناسراوە.")
         return
-    if lesson_is_pending_review(lesson):
+    beta_review = lesson_is_beta_review(lesson)
+    if lesson_is_pending_review(lesson) and not beta_review:
         await query.answer()
         await query.message.reply_text(
-            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردن و خەڵاتدان بۆی چالاک نەکراوە."
+            "⚠️ ئەم وانەیە هێشتا لە پێداچوونەوەدایە؛ تەواوکردنی بۆ چالاک نەکراوە."
         )
         return
     if not can_open(user_id, lesson):
@@ -477,20 +492,35 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
         return
 
-    old_level = get_user_level(user_id)
-    first_completion = complete_lesson_with_rewards(user_id, lesson)
+    if beta_review:
+        # Record progress idempotently, but do not grant XP, coins, chests, or badges
+        # to material that has not passed academic review.
+        first_completion = complete_lesson_with_rewards(
+            user_id, lesson, points=0, coins=0, chests=0
+        )
+    else:
+        old_level = get_user_level(user_id)
+        first_completion = complete_lesson_with_rewards(user_id, lesson)
     # Acknowledge only after the idempotent database claim has completed.
     await query.answer()
-    if first_completion:
+    if beta_review:
+        message_text = (
+            "🧪 وانەکە بۆ پێشچوونی Beta تۆمار کرا؛ "
+            "هیچ XP، دراو، سەندوق یان نیشانەیەک بۆی نەدرا."
+            if first_completion
+            else "🧪 ئەم وانەیە پێشتر بۆ پێشچوونی Beta تۆمار کراوە؛ خەڵاتێکی بۆ نییە."
+        )
+    elif first_completion:
         check_badges(user_id)
         new_level = get_user_level(user_id)
-        message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
+        message_text = "✅ وانەکە تەواو بوو!\\n\\n🔥 +10 XP\\n🪙 +5 Coin\\n🎁 +1 سەنوقی خەڵات"
         if old_level != new_level:
-            message_text += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
+            message_text += f"\\n\\n🎉 بەرزبوویتەوە بۆ: {new_level}"
     else:
         # Idempotent completion must still help a learner resume the sequence.
         # Rewards and badges are never repeated.
         message_text = "✅ ئەم وانەیە پێشتر تەواو کراوە؛ خەڵاتی دووبارە نادرێت."
+
 
     next_lesson = next_course_lesson(lesson)
     if next_lesson is not None and quiz_requires_submission(lesson) and QUIZ_DATA.get(lesson) and quiz_is_available(lesson):
