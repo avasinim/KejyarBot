@@ -150,10 +150,6 @@ class BetaProgressDisplayTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("Beta: 3/1", page_text)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class CoursePageRenderingTests(unittest.IsolatedAsyncioTestCase):
     async def test_course_title_and_description_are_html_escaped(self):
         message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
@@ -173,3 +169,25 @@ class CoursePageRenderingTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("<b>&lt;Test &amp; Course&gt;</b>", rendered)
         self.assertIn("desc &lt;tag&gt; &amp; details", rendered)
         self.assertEqual(message.reply_text.await_args.kwargs["parse_mode"], "HTML")
+
+
+    async def test_course_page_rejects_non_decimal_unicode_digits(self):
+        message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
+        query = SimpleNamespace(
+            data="coursepage:sample:²",
+            from_user=SimpleNamespace(id=123),
+            answer=AsyncMock(),
+            message=message,
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace()
+        await bot.open_course_page(update, context)
+
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
+        self.assertIn("نادروستە", message.reply_text.await_args.args[0])
+        message.edit_text.assert_not_awaited()
+
+
+if __name__ == "__main__":
+    unittest.main()
