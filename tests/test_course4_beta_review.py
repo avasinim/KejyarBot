@@ -80,6 +80,7 @@ class Course4BetaProgressLedgerTests(unittest.TestCase):
     def test_existing_progress_survives_beta_column_migration(self):
         import sqlite3
 
+        database.DB_NAME = os.path.join(self.temp_dir.name, "legacy_kejy_ar.db")
         conn = sqlite3.connect(database.DB_NAME)
         conn.execute("""
             CREATE TABLE users (
@@ -108,7 +109,9 @@ class Course4BetaProgressLedgerTests(unittest.TestCase):
             ["grammar_01", "grammar_02"],
         )
         self.assertEqual(database.get_completed_beta_lessons(123456789), [])
-        columns = {row[1] for row in sqlite3.connect(database.DB_NAME).execute("PRAGMA table_info(users)")}
+        conn = sqlite3.connect(database.DB_NAME)
+        columns = {row[1] for row in conn.execute("PRAGMA table_info(users)")}
+        conn.close()
         self.assertIn("beta_completed_lessons", columns)
         self.assertIn("completed_quizzes", columns)
 
