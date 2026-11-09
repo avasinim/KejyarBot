@@ -61,14 +61,14 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        reads = [button for button in buttons if button.callback_data.startswith("aramiC:select:")]
         practices = [button for button in buttons if ":practice" in button.callback_data]
         assessments = [button for button in buttons if ":assessment" in button.callback_data]
         self.assertEqual(len(reads), 21)
-        self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
-        self.assertIn("arami1:practice", [button.callback_data for button in practices])
-        self.assertIn("arami5:practice", [button.callback_data for button in practices])
+        self.assertEqual(len(practices), 0)
+        self.assertEqual(len(assessments), 0)
+        self.assertEqual(len(reads), 21)
+        self.assertEqual([len(row) for row in keyboard.inline_keyboard[:-1]], [2] * 10 + [1])
 
     def test_arami_assessment_reward_uses_unique_lesson_key_and_twenty_xp(self):
         with patch.object(bot, "complete_quiz_with_rewards", side_effect=[True, False]) as reward:
@@ -214,7 +214,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
@@ -226,7 +226,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:unified_orthography:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
@@ -258,9 +258,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertIn("کۆرسی ٢: وتووێژ", rendered)
-        self.assertIn("وانەکانی 13–24 لە کۆی 42 — لاپەڕەی 2/4", rendered)
+        self.assertIn("13 تا 24 لە 42", rendered)
+        self.assertIn("لاپەڕەی 2/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_daily_conversation_13",
@@ -276,9 +277,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         rendered = message.edit_text.await_args.args[0]
         self.assertEqual(rendered.count("کۆرسی ٢: وتووێژ"), 1)
         self.assertEqual(rendered.count("٤٢ وانەی وتووێژ"), 1)
-        self.assertIn("وانەکانی 37–42 لە کۆی 42 — لاپەڕەی 4/4", rendered)
+        self.assertIn("37 تا 42 لە 42", rendered)
+        self.assertIn("لاپەڕەی 4/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        lesson_buttons = [row[0].callback_data for row in keyboard if row and row[0].callback_data.startswith("open_lesson_")]
+        lesson_buttons = [button.callback_data for row in keyboard for button in row if button.callback_data.startswith("open_lesson_")]
         self.assertEqual(lesson_buttons, [
             "open_lesson_daily_conversation_37",
             "open_lesson_daily_conversation_38",
@@ -410,10 +412,10 @@ class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase
         self.assertEqual(second_page_count, 4)
         self.assertEqual(third_page_count, 4)
         self.assertEqual(fourth_page_count, 4)
-        first_ids = [row[0].callback_data for row in first.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        second_ids = [row[0].callback_data for row in second.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        third_ids = [row[0].callback_data for row in third.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        fourth_ids = [row[0].callback_data for row in fourth.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
+        first_ids = [button.callback_data for row in first.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
+        second_ids = [button.callback_data for row in second.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
+        third_ids = [button.callback_data for row in third.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
+        fourth_ids = [button.callback_data for row in fourth.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
         self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
         self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:24]])
         self.assertEqual(third_ids, [f"open_lesson_{item}" for item in expected[24:36]])
