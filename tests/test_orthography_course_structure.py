@@ -30,7 +30,7 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         self.assertEqual(len(banks), 19)
         keyboard = course_menu_keyboard(manifest, banks)
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        read = [b for b in buttons if b.callback_data.endswith(":lesson") or b.callback_data.startswith("aramiC:lesson:")]
+        read = [b for b in buttons if b.callback_data.startswith("aramiC:select:")]
         self.assertEqual(len(read), 21)
 
     def test_course_two_three_and_latin_courses_are_unchanged_and_active(self):
