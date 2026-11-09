@@ -1,8 +1,18 @@
+import os
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_NAME = str(BASE_DIR / "kejyar.db")
+
+
+def _database_path():
+    """Resolve SQLite storage, allowing hosts to mount a durable data directory."""
+    configured_path = os.environ.get("KEJYAR_DB_PATH", "").strip()
+    return str(Path(configured_path).expanduser()) if configured_path else str(BASE_DIR / "kejyar.db")
+
+
+DB_NAME = _database_path()
+Path(DB_NAME).parent.mkdir(parents=True, exist_ok=True)
 
 
 def init_db():
