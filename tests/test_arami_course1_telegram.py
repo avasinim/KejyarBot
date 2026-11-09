@@ -621,7 +621,10 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             can_open=lambda user_id, lesson_id: True,
             get_completed_lessons=lambda user_id: [],
         )
-        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("تاقیکردنەوەی وانەی ٢١", message)
+        self.assertNotIn("تاقیکردنەوەی کۆتایی کۆرسی ١", message)
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", message)
         self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
 
     async def test_final_assessment_fails_closed_without_progress_provider(self):
@@ -629,7 +632,10 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, query = self.make_update("assessment:21")
         await callback(update, context, ROOT)
-        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("تاقیکردنەوەی وانەی ٢١", message)
+        self.assertNotIn("تاقیکردنەوەی کۆتایی کۆرسی ١", message)
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", message)
         self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
 
     async def test_final_assessment_stays_locked_if_any_earlier_lesson_is_missing(self):
