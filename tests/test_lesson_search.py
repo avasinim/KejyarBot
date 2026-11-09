@@ -33,6 +33,25 @@ class LessonSearchTests(unittest.IsolatedAsyncioTestCase):
             "HTML",
         )
 
+    async def test_menu_selection_exits_search_mode_without_searching_menu_label(self):
+        update, context = self.make_update(
+            "📘 کۆرسەکان",
+            {
+                "lesson_search_mode": True,
+                "lesson_search_results": [("Old", "open_lesson_old")],
+            },
+        )
+        with (
+            patch.object(bot, "get_user"),
+            patch.object(bot, "COURSES", []),
+        ):
+            await bot.message(update, context)
+
+        self.assertNotIn("lesson_search_mode", context.user_data)
+        self.assertNotIn("lesson_search_results", context.user_data)
+        update.message.reply_text.assert_awaited_once()
+        self.assertIn("کۆرس", update.message.reply_text.await_args.args[0])
+
     async def test_search_finds_course_one_and_other_active_course_titles(self):
         update, context = self.make_update(
             "پیت",
