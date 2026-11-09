@@ -589,7 +589,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
-    if kind in {"pick", "submit"} and session.get("awaiting_next"):
+    if kind in {"pick", "submit"} and (session.get("awaiting_next") or (kind == "submit" and session.get("closed"))):
         await query.answer()
         return
     if kind == "pick":
