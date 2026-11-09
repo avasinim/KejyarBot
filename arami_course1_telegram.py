@@ -534,6 +534,16 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
                 return
+        if mode == "assessment" and number == 21:
+            completed = (
+                get_completed_lessons(query.from_user.id)
+                if get_completed_lessons is not None else []
+            )
+            if lesson_record["id"] not in set(completed):
+                await query.message.reply_text(
+                    "🔒 تاقیکردنەوەی کۆتایی کۆرسی ١ تەنها دوای تەواوکردنی وانەی ٢١ دەکرێتەوە."
+                )
+                return
         try:
             banks = load_question_banks(base_dir)
             bank = banks[number]
