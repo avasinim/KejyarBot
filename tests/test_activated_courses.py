@@ -97,7 +97,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(order), 21)
         self.assertEqual(order[0], "arami_course1_lesson_01")
         self.assertEqual(order[-1], "arami_course1_lesson_21")
-        with patch.object(bot, "get_completed_lessons", return_value=[]):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[]),
+        ):
             self.assertTrue(bot.can_open(12345, order[0]))
             self.assertFalse(bot.can_open(12345, order[1]))
         with patch.object(bot, "get_completed_lessons", return_value=[order[0]]):
