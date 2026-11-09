@@ -1,5 +1,8 @@
+import os
+import tempfile
 import unittest
 
+import database
 from course_runtime import is_beta_review_lesson
 
 
@@ -53,3 +56,29 @@ class Course4BetaReviewPolicyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Course4BetaProgressLedgerTests(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.original_db_name = database.DB_NAME
+        database.DB_NAME = os.path.join(self.temp_dir.name, "test_kejy ar.db".replace(" ", ""))
+        database.init_db()
+
+    def tearDown(self):
+        database.DB_NAME = self.original_db_name
+        self.temp_dir.cleanup()
+
+    def test_beta_completion_is_idempotent_and_separate_from_official_completion(self):
+        user_id = 987654321
+        self.assertTrue(database.complete_beta_lesson(user_id, "grammar_32"))
+        self.assertFalse(database.complete_beta_lesson(user_id, "grammar_32"))
+        self.assertEqual(database.get_completed_beta_lessons(user_id), ["grammar_32"])
+        self.assertEqual(database.get_completed_lessons(user_id), [])
+        row = database.get_user(user_id)
+        self.assertEqual(row[1], 0)  # score
+        self.assertEqual(row[2], 0)  # XP
+        self.assertEqual(row[8], 0)  # coins
+        self.assertEqual(row[9], 0)  # chests
+
+
