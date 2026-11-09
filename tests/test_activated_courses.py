@@ -107,6 +107,33 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, order[1]))
             self.assertFalse(bot.can_open(12345, order[2]))
 
+    def test_approved_course4_lesson_does_not_reuse_stale_beta_completion(self):
+        order = bot.COURSE_LESSON_ORDER["grammar"]
+        lesson_32 = order[31]
+        lesson_33 = order[32]
+        official_prefix = order[:31]
+        approved_record = {
+            **bot.LESSON_DATA[lesson_32],
+            "review_status": "scientific_review_complete_with_qualified_notes",
+        }
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=official_prefix),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+            patch.dict(bot.LESSON_DATA, {lesson_32: approved_record}),
+        ):
+            # The old Beta record must not stand in for official completion
+            # after the lesson has left the pending-review state.
+            self.assertFalse(bot.can_open(12345, lesson_33))
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=official_prefix),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+        ):
+            # While lesson 32 is still an eligible Beta draft, its separate
+            # Beta completion may continue the Beta review sequence.
+            self.assertTrue(bot.can_open(12345, lesson_33))
+
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
         course_three = bot.COURSE_LESSON_ORDER["unified_orthography"]
