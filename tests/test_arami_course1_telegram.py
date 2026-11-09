@@ -690,5 +690,21 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
 
 
+    async def test_malformed_unicode_lesson_callback_is_ignored(self):
+        query = SimpleNamespace(
+            data="aramiC:select:²",
+            answer=AsyncMock(),
+            from_user=SimpleNamespace(id=123),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        await arami_course1_callback(update, context, ROOT)
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_not_awaited()
+
+
 if __name__ == "__main__":
     unittest.main()
