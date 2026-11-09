@@ -33,11 +33,13 @@ A narrow runtime change for Course 4 expanded review drafts, Lessons 32–46. Th
 
 ## Validation state
 - All three changed/new files were fetched back from the feature branch after writes.
-- The new test file was fetched back and its seven cases were inspected.
-- GitHub Actions workflow runs for the final branch commit: none were returned.
-- Combined commit status: no statuses were returned.
-- Therefore the tests are **added but not yet executed** in a project runtime. Do not describe this change as tested, merged, or deployed.
-- Draft PR: #120, `https://github.com/avasinim/KejyarBot/pull/120`.
+- The new test file was fetched back and its nine test methods were inspected.
+- GitHub Actions passed on PR head `450d248c111999cd5259a655e3eea92df39e5bed`: compilation passed; the full unittest suite passed **476 tests with 11 skipped**.
+- Course 4 beta review safety workflow: success (run #12).
+- Repository-wide Python checks: success (run #5772).
+- Orthography course structure workflow: success (run #1595).
+- These are automated CI results; Telegram callback smoke tests and production activation remain outstanding.
+- PR #120 is open and marked ready for review: `https://github.com/avasinim/KejyarBot/pull/120`.
 
 ## Remaining release checks
 1. Exercise the Telegram callback flow against a dedicated test database: open Lesson 32 after Lesson 31, finish it, verify Lesson 33 unlocks, verify XP/coins/chests/badges remain unchanged, and verify quiz launch is blocked.
