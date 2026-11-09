@@ -393,6 +393,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         active = context.user_data.get("arami_course1_active")
         if isinstance(active, dict):
             active["message_id"] = None
@@ -434,11 +436,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith("select:"):
-        context.user_data["arami_lesson1_message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
-        active = context.user_data.get("arami_course1_active")
-        if isinstance(active, dict):
-            active["message_id"] = None
         raw = action.removeprefix("select:")
         if not raw.isdecimal():
             return
@@ -459,6 +456,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 ]]),
             )
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
+        active = context.user_data.get("arami_course1_active")
+        if isinstance(active, dict):
+            active["message_id"] = None
         read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
         if number == 1:
             practice_callback, assessment_callback = "arami1:practice", "arami1:assessment"
@@ -488,11 +490,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith("lesson:"):
-        context.user_data["arami_lesson1_message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
-        active = context.user_data.get("arami_course1_active")
-        if isinstance(active, dict):
-            active["message_id"] = None
         raw = action.removeprefix("lesson:")
         if not raw.isdecimal():
             return
@@ -502,6 +499,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if can_open is not None and not can_open(query.from_user.id, lesson["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
                 return
+            context.user_data["arami_lesson1_message_id"] = None
+            context.user_data["arami_lesson5_message_id"] = None
+            active = context.user_data.get("arami_course1_active")
+            if isinstance(active, dict):
+                active["message_id"] = None
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
             await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
             await query.message.reply_text(
@@ -534,8 +536,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action.startswith(("practice:", "assessment:")):
-        context.user_data["arami_lesson1_message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
         mode, raw = action.split(":", 1)
         if not raw.isdecimal():
             return
