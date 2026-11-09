@@ -149,6 +149,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
             await callback(update, context, "/unused")
         first_id = context.user_data["arami_lesson5_message_id"]
+        self.assertIn("🎯 ڕاهێنان — وانەی ٥ — پرسیاری 1/2", _query.message.reply_text.await_args.args[0])
 
         update, pick_query = make_update("pick:0", message_id=first_id)
         await callback(update, context, "/unused")
