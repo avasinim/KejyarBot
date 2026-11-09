@@ -539,9 +539,13 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 get_completed_lessons(query.from_user.id)
                 if get_completed_lessons is not None else []
             )
-            if lesson_record["id"] not in set(completed):
+            completed_ids = set(completed)
+            required_lesson_ids = {
+                item["id"] for item in load_manifest(base_dir)["lessons"]
+            }
+            if not required_lesson_ids.issubset(completed_ids):
                 await query.message.reply_text(
-                    "🔒 تاقیکردنەوەی کۆتایی کۆرسی ١ تەنها دوای تەواوکردنی وانەی ٢١ دەکرێتەوە."
+                    "🔒 تاقیکردنەوەی کۆتایی کۆرسی ١ تەنها دوای تەواوکردنی هەموو ٢١ وانە دەکرێتەوە."
                 )
                 return
         try:
