@@ -17,7 +17,7 @@ class AcademicCourseMenuTests(unittest.TestCase):
             LESSON_DATA=lesson_data,
             get_completed_lessons=lambda _user_id: ["sample_01"],
             get_completed_beta_lessons=lambda _user_id: [],
-            can_open=lambda _user_id, lesson_id: lesson_id != "sample_03",
+            can_open=lambda _user_id, lesson_id: lesson_id == "sample_01",
             lesson_is_beta_review=lambda _lesson_id: False,
             lesson_is_pending_review=lambda _lesson_id: False,
         ):
