@@ -154,6 +154,15 @@ class LessonSearchTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual((page, page_count, first, last), (2, 3, 25, 25))
         self.assertEqual(callbacks[-1], "lessonsearch:1")
 
+    async def test_new_search_clears_stale_saved_results(self):
+        update, context = self.make_update(
+            "🔎 گەڕانی وانە",
+            {"lesson_search_results": [("Old", "open_lesson_old")]},
+        )
+        with patch.object(bot, "get_user"):
+            await bot.message(update, context)
+        self.assertNotIn("lesson_search_results", context.user_data)
+
     async def test_search_page_callback_edits_existing_result_message(self):
         message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock())
         query = SimpleNamespace(
