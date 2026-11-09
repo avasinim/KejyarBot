@@ -92,15 +92,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("٢١ وانە", call.args[0])
         keyboard = call.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        reads = [button.callback_data for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
-        practices = [button.callback_data for button in buttons if ":practice" in button.callback_data]
-        assessments = [button.callback_data for button in buttons if ":assessment" in button.callback_data]
+        reads = [button.callback_data for button in buttons if button.callback_data.startswith("aramiC:select:")]
         self.assertEqual(len(reads), 21)
-        self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
-        self.assertIn("arami1:practice", practices)
-        self.assertIn("arami5:practice", practices)
-        self.assertIn("aramiC:practice:21", practices)
+        self.assertEqual([len(row) for row in keyboard.inline_keyboard[:-1]], [2] * 10 + [1])
+        self.assertEqual(keyboard.inline_keyboard[-1][0].callback_data, "aramiC:legend")
 
     async def test_learning_path_reports_all_21_arami_lessons_and_progress(self):
         update, context = self.make_update_context("🧭 ڕێگای فێربوون")
@@ -162,7 +157,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(bot.ORDER), 0)
         read_buttons = [
             button for button in buttons
-            if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
+            if button.callback_data.startswith("aramiC:select:")
         ]
         self.assertEqual(len(read_buttons), 21)
         self.assertIn("ڕێنووسی سەرەتاییی کوردی", call.args[0])
