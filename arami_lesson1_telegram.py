@@ -144,7 +144,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
 
     if action.startswith("pick:"):
         raw = action.removeprefix("pick:")
-        if not raw.isdigit():
+        if not raw.isdecimal():
+            await query.answer()
             return
         try:
             selected = select_answer(session, int(raw))
