@@ -189,6 +189,24 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
                 self.assertIn("ئەنجام", shown)
                 self.assertNotIn("دووبارەکردنەوەی پرسیارە هەڵەکان", str(submit_query.edit_message_text.await_args.kwargs["reply_markup"]))
 
+    async def test_stale_pick_after_submit_cannot_answer_next_question(self):
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
+            update, _ = make_update("practice")
+            await callback(update, context, "/unused")
+        message_id = context.user_data["arami_lesson5_message_id"]
+        update, _ = make_update("pick:0", message_id=message_id)
+        await callback(update, context, "/unused")
+        update, _ = make_update("submit", message_id=message_id)
+        await callback(update, context, "/unused")
+        session = context.user_data["arami_lesson5_session"]
+        self.assertEqual(session["index"], 1)
+        update, stale_query = make_update("pick:1", message_id=message_id)
+        await callback(update, context, "/unused")
+        self.assertIsNone(session["selected_index"])
+        stale_query.answer.assert_awaited_once()
+        stale_query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_stale_lesson5_question_message_cannot_change_current_answer(self):
         context = SimpleNamespace(user_data={
             "arami_lesson5_session": {
