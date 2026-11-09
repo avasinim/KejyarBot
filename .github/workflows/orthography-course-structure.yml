@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - fix/kejyarbot-stability-2026-10-25
+      - botkeep-runtime-2026-11-09
   pull_request:
     branches:
       - main
       - fix/kejyarbot-stability-2026-10-25
+      - botkeep-runtime-2026-11-09
   workflow_dispatch:
 
 permissions:
