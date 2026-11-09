@@ -77,6 +77,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action == "lesson":
+        context.user_data["arami_lesson1_message_id"] = None
         try:
             lesson = load_arami_lesson1_content(base_dir)
             manifest = load_manifest(base_dir)
