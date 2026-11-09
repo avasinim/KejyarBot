@@ -373,7 +373,14 @@ def can_open(user_id, lesson):
         return False
     completed = set(get_completed_lessons(user_id))
     if course_id == "grammar":
-        completed.update(get_completed_beta_lessons(user_id))
+        # Beta progress unlocks only lessons that are still explicitly pending
+        # review. If a draft is approved later, its old Beta record must not
+        # silently count as official completion in the approved course path.
+        completed.update(
+            beta_lesson
+            for beta_lesson in get_completed_beta_lessons(user_id)
+            if lesson_is_beta_review(beta_lesson)
+        )
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
