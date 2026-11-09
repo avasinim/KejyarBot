@@ -280,9 +280,11 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_course1_active": {"lesson": 6, "message_id": 66},
         })
         manifest = {"lessons": [{"number": 3, "id": "arami_course1_lesson_03", "title": "وانەی ٣"}]}
-        with patch("arami_course1_telegram.load_manifest", return_value=manifest), \\
-             patch("arami_course1_telegram.load_question_banks", return_value={}), \\
-             patch("arami_course1_telegram.load_lesson_source", return_value=(manifest["lessons"][0], "دەقی وانە")):
+        with (
+            patch("arami_course1_telegram.load_manifest", return_value=manifest),
+            patch("arami_course1_telegram.load_question_banks", return_value={}),
+            patch("arami_course1_telegram.load_lesson_source", return_value=(manifest["lessons"][0], "دەقی وانە")),
+        ):
             await arami_course1_callback(
                 update, context, ROOT,
                 can_open=lambda user_id, lesson_id: False,
