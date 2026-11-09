@@ -172,13 +172,10 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["arami1:lesson"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:lesson:2"].text.startswith("🔓"))
-        self.assertTrue(buttons["aramiC:lesson:3"].text.startswith("🔒"))
-        self.assertIn("aramiC:practice:2", buttons)
-        self.assertIn("aramiC:assessment:2", buttons)
-        self.assertNotIn("aramiC:practice:3", buttons)
-        self.assertNotIn("aramiC:assessment:3", buttons)
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
+        self.assertEqual(len(keyboard.inline_keyboard[0]), 2)
 
     async def test_returning_from_lesson_reader_keeps_the_users_progress_states(self):
         manifest = load_manifest(ROOT)
@@ -213,7 +210,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             call for call in reversed(message.reply_text.await_args_list)
             if call.kwargs.get("reply_markup") is not None
             and any(
-                button.callback_data == "aramiC:lesson:3"
+                button.callback_data == "aramiC:select:3"
                 for row in call.kwargs["reply_markup"].inline_keyboard
                 for button in row
             )
@@ -249,15 +246,24 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             with self.assertRaises(AramiCourseTelegramError):
                 load_manifest(root)
 
-    def test_course_menu_exposes_all_21_lessons(self):
+    def test_course_menu_exposes_all_21_lessons_in_two_columns(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        callbacks = {button.callback_data for button in buttons}
-        read_callbacks = {item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")}
-        self.assertEqual(len(read_callbacks), 21)
+        lesson_buttons = [
+            button for row in keyboard.inline_keyboard for button in row
+            if button.callback_data.startswith("aramiC:select:")
+        ]
+        self.assertEqual(len(lesson_buttons), 21)
         self.assertEqual(
-            read_callbacks,
-            {("arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")) for number in range(1, 22)},
+            [len(row) for row in keyboard.inline_keyboard[:-1]],
+            [2] * 10 + [1],
+        )
+        self.assertEqual(
+            {button.callback_data for button in lesson_buttons},
+            {f"aramiC:select:{number}" for number in range(1, 22)},
+        )
+        self.assertEqual(
+            keyboard.inline_keyboard[-1][0].callback_data,
+            "aramiC:legend",
         )
 
     def test_course_menu_displays_completed_available_and_locked_states(self):
@@ -301,7 +307,10 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
 
     def test_course_menu_marks_all_lessons_available_without_progress_guard(self):
         keyboard = course_menu_keyboard(load_manifest(ROOT))
-        buttons = [row[0] for row in keyboard.inline_keyboard]
+        buttons = [
+            button for row in keyboard.inline_keyboard for button in row
+            if button.callback_data.startswith("aramiC:select:")
+        ]
         self.assertEqual(len(buttons), 21)
         self.assertTrue(all(button.text.startswith("🔓") for button in buttons))
 
@@ -326,25 +335,13 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
                     self.assertNotIn(item["id"], seen_ids)
                     seen_ids.add(item["id"])
 
-    def test_menu_exposes_practice_and_assessment_only_for_verified_question_banks(self):
+    def test_menu_catalogue_contains_only_lesson_selectors_and_legend(self):
         banks = load_question_banks(ROOT)
         keyboard = course_menu_keyboard(load_manifest(ROOT), banks)
         callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
-        self.assertEqual(len([item for item in callbacks if item.endswith(":lesson") or item.startswith("aramiC:lesson:")]), 21)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:practice:")]), 19)
-        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:assessment:")]), 19)
-        self.assertIn("aramiC:practice:11", callbacks)
-        self.assertIn("aramiC:practice:14", callbacks)
-        self.assertIn("aramiC:practice:21", callbacks)
-        self.assertIn("aramiC:assessment:21", callbacks)
-        self.assertIn("aramiC:assessment:11", callbacks)
-        self.assertIn("aramiC:assessment:14", callbacks)
-        self.assertIn("aramiC:practice:15", callbacks)
-        self.assertIn("aramiC:assessment:15", callbacks)
-        self.assertIn("arami1:practice", callbacks)
-        self.assertIn("arami1:assessment", callbacks)
-        self.assertIn("arami5:practice", callbacks)
-        self.assertIn("arami5:assessment", callbacks)
+        self.assertEqual(len([item for item in callbacks if item.startswith("aramiC:select:")]), 21)
+        self.assertEqual(callbacks[-1], "aramiC:legend")
+        self.assertFalse(any(":practice" in item or ":assessment" in item for item in callbacks))
 
     def test_all_21_lessons_are_enabled_as_text_only_readers(self):
         manifest = load_manifest(ROOT)
