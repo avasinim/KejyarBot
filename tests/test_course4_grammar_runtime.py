@@ -417,6 +417,28 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", sent_content)
         self.assertIsNotNone(send.await_args.args[2])
 
+    def test_beta_progress_never_appears_as_official_progress_badges(self):
+        beta_ids = [f"grammar_{number:02d}" for number in range(32, 47)]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=beta_ids),
+            patch.object(bot, "course_is_active", side_effect=lambda course_id: course_id == "grammar"),
+        ):
+            self.assertEqual(bot.current_progress_badges(12345), [])
+
+    def test_beta_lesson_ids_in_legacy_official_ledger_do_not_create_badges(self):
+        completed = [f"grammar_{number:02d}" for number in range(1, 47)]
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "course_is_active", side_effect=lambda course_id: course_id == "grammar"),
+            patch.object(bot, "add_badge") as add_badge,
+        ):
+            bot.check_badges(12345)
+
+        added = [call.args[1] for call in add_badge.call_args_list]
+        self.assertEqual(len(added), 31)
+        self.assertTrue(all("وانەی ٣٢" not in badge for badge in added))
+
     async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
         lesson_id = "grammar_46"
         query = SimpleNamespace(
