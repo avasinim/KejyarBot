@@ -470,9 +470,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
         progress = "✅ تەواوکراوە" if lesson["id"] in set(completed) else "📘 لە ڕێڕەوی فێربووندایە"
         extra = "" if practice_callback else "\n⚪ ڕاهێنان و تاقیکردنەوەی سەرچاوەیی بۆ ئەم وانەیە بەردەست نییە."
+        source_warning = str(lesson.get("source_warning") or "").strip()
+        warning_note = f"\n\n⚠️ {escape(source_warning)}" if source_warning else ""
         await query.message.reply_text(
             f"🎓 <b>وانەی {number:02d}</b>\n<b>{escape(str(lesson.get('title', 'وانە')))}</b>\n"
-            f"{progress}{extra}",
+            f"{progress}{extra}{warning_note}",
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(action_rows),
         )
