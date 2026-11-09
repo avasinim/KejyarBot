@@ -459,6 +459,22 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
 
+    async def test_failed_question_delivery_leaves_no_active_message_id(self):
+        bank = {
+            "practice": [{
+                "id": "q1", "section_id": "lesson1", "type": "recognize",
+                "prompt": "پرسیار", "options": ["A", "B"], "answer_index": 0,
+            }],
+        }
+        update, query = make_update("practice")
+        query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
+            with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+                await callback(update, context, "/unused")
+        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
+        self.assertEqual(context.user_data["arami_lesson1_session"]["index"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
