@@ -568,11 +568,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             bank = banks[number]
             session = create_session(bank[mode], mode)
         except (AramiCourseTelegramError, KeyError, ValueError):
-        context.user_data["arami_lesson1_message_id"] = None
-        context.user_data["arami_lesson5_message_id"] = None
             logger.exception("No verified %s bank for Arami Course 1 Lesson %s", mode, number)
             await query.message.reply_text(f"⚠️ {mode}ی سەرچاوەیی بۆ وانەی {number} ئامادە نییە.")
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         sessions = context.user_data.setdefault("arami_course1_sessions", {})
         sessions[str(number)] = session
         context.user_data["arami_course1_active"] = {"lesson": number, "message_id": None}
