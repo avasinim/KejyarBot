@@ -267,17 +267,27 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 
 **Têkiliya bi Ders 7:** Ev ders formên nebinavkirî pêşkêş dike; di Ders 7 de formên binavkirî hatin fêrbûn. Cudahîya bingehîn di navbera binavkirî û nebinavkirîbûna navdêrê de ye, ne di navbera zayend û mêjerê de.
 
-**1. Piştî navdêrê, bê bireser:**
+**1. Piştî navdêrê, bê pêvekeke raveker li pey navdêrê (§66):**
 - `-ek` ji bo nêr yekjimar: `hespek hat`.
 - `-ek` ji bo mê yekjimar: `mehînek hat`.
 - `-in` ji bo gelemjar: `hespin hatin`, `mehînin hatin`.
 
-**2. Piştî navdêrê, dema bireser/rengdêr li pey were:**
+**2. Piştî navdêrê, bi pêvekeke raveker li pey navdêrê (§67):**
 - `-ekî` ji bo nêr yekjimar: `hespekî delal hat`.
 - `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
 - `-ine` ji bo gelemjar: `mehînine delal hatin`.
 
-Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an hêmaneke din a raveker li pey navdêrê were tên. Di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+**3. Pêşîya rengdêrê (§68):**
+Dema veqetandeka nebinavkirî pêşîya rengdêrê dikeve, şêweyên wê `-î`, `-e`, `-en` in:
+- Nêr yekjimar: `hespekî min î qenc hebû`.
+- Mê yekjimar: `mehîneke min e qenc hebû`.
+- Gelemjar: `hespine min en qenc hebûn`.
+
+**Tewang (§70):** Dema ev veqetandek li paş navdêrekê were ku di hevokê de ne kirar, lê bireser e, formên tewandî tên bikaranîn. Sەرچاوە nimûneyên `hespekî`, `mehînekê` û `hespina` dide: `Ez hespekî dibînim`, `Ez mehînekê dibînim`, `Ez hespina dibînim`. Ji ber vê yekê formên tewandî divê ji formên serەکی yên `-ek/-ek/-in` cuda bên fêrkirin.
+
+**Rێسای زۆرپێکەوەهاتنی پێکەوەبەستەکان (§69):** Dema zêتر لە yek pêvek bi navdêrەوە گرێدرا بن، şêweya veqetandekê li gorî mêjer û zayendê pêکهاتەی دواوە دیاری dibe. Ev وردەکارییە لە وانەی ئێستادا وەک یاسای پێشکەوتوو هاتووە، نەک وەک بنەمای سەرەتایی.
+
+Nîşe: `-ek/-ek/-in`, `-ekî/-eke/-ine` û `-î/-e/-en` سێ پێکهاتەی جیاوازن؛ نابێت یەک بە یەک بەکاربهێنرێن. Ev pêڤەکان bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
