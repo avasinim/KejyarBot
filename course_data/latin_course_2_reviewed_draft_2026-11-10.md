@@ -574,7 +574,7 @@ Mînakên bingehîn:
 - nîv
 - hezar
 
-Di pêvajoya fêrbûnê de jmarnavên di hevokê de bibîne û erkê wan ji erkê rengdêra jmarîn cuda bike: di `sê mal` de hejmar bi navdêrê re tê, lê jmarnav di vê rêبازەدا wek beşeke serbixwe tê pêşkêşkirin.
+Di pêvajoya fêrbûnê de jmarnavên di hevokê de bibîne û erkê wan ji erkê rengdêra jmarîn cuda bike: di `sê mal` de hejmar bi navdêrê re tê, lê jmarnav di vê rêbazê de wek beşeke serbixwe tê pêşkêşkirin.
 
 ### 9. Xebata Kejyar
 Di van koman de cureya rengdêr an jmarnav diyar bike:
