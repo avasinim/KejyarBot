@@ -1479,3 +1479,24 @@ class Course4TerminologyNormalizationTests(unittest.TestCase):
 # Course 4 terminology normalization regression coverage (Round 37).
 
 # Round 38: Lesson 13 Affix glossary normalization is included in the regression suite.
+
+
+class Course4RootStemCrosswalkTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.lessons = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )["lessons"]
+
+    def test_lesson29_crosswalk_distinguishes_course_sorani_from_karimi_glossary(self):
+        appendix = " ".join(self.lessons[28]["appendix"])
+        self.assertIn("ڕەگ", appendix)
+        self.assertIn("بنج", appendix)
+        self.assertIn("Root = ڕیشە", appendix)
+        self.assertIn("Bound Root = ڕەگ", appendix)
+        self.assertIn("Stem = بنکە", appendix)
+        self.assertIn("کەرەمی تەنها crosswalkی زاراوەیی", appendix)
+
+    def test_lesson29_quiz_source_and_review_status_are_unchanged(self):
+        self.assertEqual(self.lessons[28]["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(len(self.lessons[28]["quiz"]), 8)
