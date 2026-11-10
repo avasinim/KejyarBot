@@ -89,7 +89,7 @@ Nimûneyên zayenda navdêran:
 - **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
 - **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
-**Têبینیی سەرچاوە:** `Herekol` لە لیستی zayenda mê ـی کتێبی Celadet دا هاتووە؛ ئەم وانەیە ئەو پۆلێنکردنەی سەرچاوە دەپارێزێت. ئەمە حوکمێکی ڕێزمانیی سەرچاوەیە، نە پێناسەیەک لەسەر زایەندی زیندەوەری یان سروشتی شوێنەکە.
+**Têbînîya sەرچاوە:** `Herekol` لە لیستی zayenda mê ـی کتێبی Celadet دا هاتووە؛ ئەم وانەیە ئەو پۆلێنکردنەی سەرچاوە دەپارێزێت. ئەمە حوکمێکی ڕێزمانیی سەرچاوەیە، نە پێناسەیەک لەسەر زایەندی زیندەوەری یان سروشتی شوێنەکە.
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
 
