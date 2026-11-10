@@ -63,7 +63,7 @@ Nasîna navdêrên giştî û taybet.
 ### Naverok
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Navdêr dikarin li gorî giştî an taybetbûna navê xwe di du koman de bên dabeşkirin:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferezende`. `Nimûneyên pêvekirî yên vê dersê: Ferzane, Kejyar û Argesh.`
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferezende`. Nimûneyên pêvekirî yên vê dersê: `Ferzane`, `Kejyar` û `Argesh`.
 
 Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
@@ -89,7 +89,7 @@ Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem b
 
 Nimûneyên zayenda navdêran:
 - **Nêr:** `Argesh`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
-- **Mê:** `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehîn`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
+- **Mê:** `Sînemxan`, `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehîn`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
 
 **Nimûneyên navên kesan ji bo rahênan:** `Argesh` navê kurekî ye; `Ferzane` û `Kejyar` navên keçan in. Ev sê nav nimûneyên zêdekirî yên vê dersê ne, ne nimûneyên rasterast ên lîsteya Celadet.
