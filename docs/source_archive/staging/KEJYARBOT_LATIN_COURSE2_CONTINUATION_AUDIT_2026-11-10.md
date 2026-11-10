@@ -18,7 +18,7 @@ This is a structural integrity check only. It does not prove that every distract
 ## 2. Confirmed source correction in Course 2 Lesson 5
 A source-audit record in `course_data/LATIN_COURSES_SOURCE_AUDIT_2026-11-01.md` records Celadet Part II §57, printed pp. 57–60, with the exact three regional variants:
 - `Soro kevirî tavêje.`
-- `Soro kê vir ta vêje.`
+- `Soro kê vir tavêje.`
 - `Soro kevir tavêje.`
 
 The current main lesson and the first reviewed draft had the second form as `Soro kê vir tavêje`, omitting the source's word break `ta vêje`. Corrected the reviewed Course 2 draft to the source form. Main remains untouched.
@@ -39,3 +39,7 @@ The current main lesson and the first reviewed draft had the second form as `Sor
 ## Preservation
 - Updated only `course_data/latin_course_2_reviewed_draft_2026-11-10.md` on the archive branch.
 - No main file, runtime, manifest, Botkeep deployment, database, or live bot was changed.
+
+
+## 5. Further issue identified for source-level adjudication
+- **Lesson 10 terminology:** The section titled `Pronavên Bireser` lists `min/te/wî/wê/me/we/wan`, which are oblique forms used in agent positions in transitive past clauses (e.g. `Wê ew dît`), while `ew` is the direct object in that example. The section currently risks conflating oblique/agent forms with direct-object pronouns. Do not rename the section until the exact terminology and examples in Celadet §§86–93 are checked; add a source-grounded distinction between syntactic role and morphological case if supported.
