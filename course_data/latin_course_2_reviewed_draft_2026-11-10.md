@@ -27,12 +27,12 @@ Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de h
 Çar hêmanên bingehîn ên ziman ev in:
 - **Tîp:** nîşana nivîskî ye ku deng bi wê tê nîşandan; tîp xwe deng nîne, lê nûnerê wî di nivîsê de ye.
 - **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
-- **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
-- **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
+- **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e. Celadet di §15 de bêje bi fikirê ku di hişê mirov de çêdibe ve girê dide û dibêje ev fikir dikare bi şêweyekî dîtbar an bi manayê were eşkerekirin. Pênaseya li vir ji bo fêrbûnê bi erk û wateya bêjeyê re hatiye firehkirin.
+- **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin; ev xal bi §3 re li hev e.
 
 **Têbînîya girêdana bi Korsa 1:** Di Korsa 1 de yekeyên alfabeyê bi peyva `herf` têne binavkirin; di vê kursê de di rêza çar hêmanan de peyva `tîp` tê bikaranîn. Em termên her kursê li gorî çarçove û çavkaniya wê diparêzin; lê di her du kursan de divê nîşana nivîskî ji dengê axaftinê were cudakirin. `Tîp` dengê xwe nîne; deng bi wê di nivîsê de tê nîşandan.
 
-**Qiset** encama peyhevketina komekan e; ew li ser komekê tê û di lîsteya çar hêmanên ziman de wek hêmaneke pêncemîn nayê hejmartin.
+**Qiset** bi peyhevketina komekan pêk tê (§3). Di ravekirina Celadet de qiset bi mijarekê ve girêdayî ye û ziman bi xwe pêk tîne. Ji ber vê yekê qiset di lîsteya çar hêmanên bingehîn de wek hêmaneke pêncemîn nayê hejmartin; ew pêkhateya firehtir e ku ji komekan pêk tê.
 
 ### Nimûne
 - Tîp: `a`, `g`, `ê`
