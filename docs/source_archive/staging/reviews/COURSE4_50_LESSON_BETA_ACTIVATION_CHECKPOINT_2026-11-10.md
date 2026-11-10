@@ -92,3 +92,10 @@
 - Round 27 دۆخی گشتیی ٥٠ وانە، ٢٤٠ کویز و کارە ماوەکان کۆ دەکاتەوە.
 - Headی PR #129 لە کاتی ئەم پاشکۆیە: `bdb4a92a7f364ac76fb359a021113f2a837c9d88`.
 - Workflow لەسەر ئەم head ـە: https://github.com/avasinim/KejyarBot/actions/runs/42780867566 — success؛ ٥٢٤ passed، ١١ skipped.
+
+
+### ١٢. پاشکۆی کۆتاییی ئەم checkpoint ـە
+- Headی PR #129 لە کاتی ئەم پاشکۆیە: `f2b26da7fe51d66cae61375d0521e6baf71b6245`.
+- Workflowی ئەم head ـە: https://github.com/avasinim/KejyarBot/actions/runs/42782037618 — completed / success.
+- Python compileall: success؛ full test suite: ٥٢٤ passed، ١١ skipped.
+- PR #128 پاشکۆی پشکنینی ٢٤٠ کویز و تۆماری زاراوەیی وەشانی ١ی هەیە؛ PR #129 تەنها گۆڕانکاریی runtime/manifest/testی ٥٠ وانەی Beta هەڵدەگرێت.
