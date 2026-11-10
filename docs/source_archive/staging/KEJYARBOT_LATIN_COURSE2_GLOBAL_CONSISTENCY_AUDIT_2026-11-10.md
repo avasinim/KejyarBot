@@ -76,3 +76,9 @@ This pass confirms Lesson 8's suffix distinctions only; it does not certify othe
 Printed pp.61–63, §§59–64, were checked directly against page images. The existing reviewed draft's central explanations are aligned: Lesson 6 covers pre- and post-nominal modifiers, nested modifier groups, and the distinction between a noun modifier and a clause's direct object; Lesson 7 covers the definite forms `ê/a/ên` and their separate use before adjectives when the noun is understood/omitted. No substantive contradiction was found in the core explanations for these two lessons. Evidence: `KEJYARBOT_LATIN_COURSE2_LESSONS6_7_PAGE_IMAGE_REVIEW_2026-11-10.md`.
 
 This pass does not certify all quiz keys, other lesson pages, or runtime behavior.
+
+
+## 11. Lessons 4–5 page-image verification (2026-11-10)
+Printed pp.55–60, §§47–58, were checked directly against page images. Lesson 4's central singular/plural account is aligned with the source. Lesson 5's general subject/object inflection account needed two source-specific qualifications: §56 says that in transitive past constructions the agent/subject is inflected while the direct object remains uninflected; §58 explains that in multi-noun groups the final noun's gender/number can govern group inflection and not every noun is necessarily inflected. Both qualifications were added to the reviewed draft and the updated file was fetched again for SHA verification. Evidence: `KEJYARBOT_LATIN_COURSE2_LESSONS4_5_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+This pass does not certify all quiz keys, other lesson pages, or runtime behavior.
