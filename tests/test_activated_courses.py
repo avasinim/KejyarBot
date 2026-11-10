@@ -240,7 +240,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
-        self.assertIn("67 تا 68 لە 68", rendered)
+        self.assertIn("61 تا 68 لە 68", rendered)
         self.assertIn("لاپەڕەی 6/6", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         callbacks = [button.callback_data for row in keyboard for button in row]
