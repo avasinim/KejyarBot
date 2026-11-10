@@ -130,3 +130,29 @@ This pass has made exactly two verified spelling/transcription corrections in th
 2. `Soro kê vir tavêje` → `Soro kêvir tavêje` (printed p.59).
 
 No original source, quiz, master answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed.
+
+
+## 9. Additional printed-page check — Course 2, Lessons 6–8
+
+Printed pp.61–68 were inspected as page images.
+
+- **p.61, §§59–60:** confirms the pre-noun modifier examples `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`, and post-noun examples including `hespê beza`, `mehîna spehî`, `xencera min`. Current Lesson 6 preserves the core examples and the singular `mehîna spehî`.
+- **p.62, §63:** confirms definite suffix forms `ê`, `a`, `ên`; feminine singular example `Mehîna Cemşîd`.
+- **p.63, §63–64:** the plural source example is `mehînên Cemşîd` (with `î` in the noun stem). The reviewed Lesson 7 had `mehinên Cemşîd`; corrected it to `mehînên Cemşîd` and verified by fetching the updated file.
+- **pp.64–65, §§65–67:** confirms indefinite suffix patterns `ek, ek, in` and `ekî, eke, ine`, with masculine singular, feminine singular and plural distributions as represented in Lesson 8.
+- **p.66, §68:** confirms the patterns `î, e, en` before adjectives in the described indefinite constructions. The reviewed draft does not silently merge these with the post-noun suffix patterns.
+
+Lesson 7 correction:
+- Update commit: `0ebcfc4f9e0942f80da76c7f3458b85b2bd411d5`
+- New Course 2 reviewed-draft SHA: `e3700d373b8606fe6ed1b51080e3e8437d107cc6`
+
+**Pending rather than guessed:** Lesson 4 uses `mehin` in its own singular/plural teaching pair, and Lesson 12 contains supplementary `mehinên ...` examples. Their exact intended morphology/spelling should be compared against the relevant full printed examples before making a blanket normalization. This pass changed only the exact Lesson 7 form directly attested on p.63.
+
+## 10. Updated correction inventory
+
+The separate Course 2 reviewed draft now has three verified corrections from printed-page inspection:
+1. `Ferazende` → `Ferezende` (p.51).
+2. `Soro kê vir tavêje` → `Soro kêvir tavêje` (p.59).
+3. `mehinên Cemşîd` → `mehînên Cemşîd` (p.63).
+
+Each correction was fetched and verified after update. All other uncertain `mehin/mehîn` occurrences remain unchanged pending a more exact source-context comparison.
