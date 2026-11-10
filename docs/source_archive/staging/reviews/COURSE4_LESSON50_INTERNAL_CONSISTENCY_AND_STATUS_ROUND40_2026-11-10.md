@@ -5,7 +5,7 @@
 - PR #137 یەکخراوە بۆ برانچی کاری.
 - PR #128 لە کاتی Round 39دا بە squash merge یەکخراوە؛ merge commit: `5af1b21f8ed4101d3fcb3df5571f3dd414a391e6`.
 - تۆماری Round 39 لە هەمان branchدا دۆزرایەوە؛ بەڵام بەشی PR #128ی تێیدا پێش یەکخستن نووسراوە و ئێستا مێژووییە، نە دۆخی نوێ.
-- PR #125 هێشتا Open و unmerged ـە. headی ئەو PR ـە `5af1b21f8ed4101d3fcb3df5571f3dd414a391e6) و baseی `botkeep-runtime-2026-11-09) ـە؛ GitHub mergeable=true نیشان دەدات. ئەمە بە تەنها بەڵگەی ئامادەیی Botkeep staging/backup/production نییە؛ بۆیە هیچ merge/deploy لەم قۆناغەدا ناکرێت.
+- PR #125 هێشتا Open و unmerged ـە. headی ئەو PR ـە `5af1b21f8ed4101d3fcb3df5571f3dd414a391e6` و baseی `botkeep-runtime-2026-11-09` ـە؛ GitHub mergeable=true نیشان دەدات. ئەمە بە تەنها بەڵگەی ئامادەیی Botkeep staging/backup/production نییە؛ بۆیە هیچ merge/deploy لەم قۆناغەدا ناکرێت.
 
 ### ٢. پشکنینی وردی وانەی ٥٠
 سەرچاوەی پشکنین: `COURSE4_LESSON_050_RELATIVE_CLAUSES_SORANI_DRAFT_V2_2026-11-09.md` و structured lesson `grammar_50`.
@@ -26,12 +26,12 @@
 - چەمکە تیۆرییەکان لە فۆڕمی سۆرانیی پشتڕاستکراو جیا بکرێنەوە.
 
 ### ٤. دۆخی کۆرس و پاراستن
-- ٥٠ وانە لە catalogueدا هەن؛ وانەکانی ٣٢–٥٠ هێشتا `owner_review_pending_expanded_draft) ـن.
+- ٥٠ وانە لە catalogueدا هەن؛ وانەکانی ٣٢–٥٠ هێشتا `owner_review_pending_expanded_draft` ـن.
 - وانەی ١٣ هێشتا Beta review gate ـی تایبەتی هەیە.
 - ژمارەی کویزی structuredی خاو لە وانەکانی ١–٣١: ٢٤٨؛ ٥٠ overrideی پارێزراو لە کارەکانی پێشوو.
 - وانەکانی ٣٢–٥٠ structured quizیان نییە؛ هیچ پرسیاری خەمڵێنراو زیاد نەکرێت.
 - هیچ دەقی خاو، quiz source، answer key، وانە، backup یان داتای فێرخواز ناسڕدرێتەوە.
-- هیچ گۆڕانکارییەک لە `main)، DB، Botkeep، Telegram یان production لەم پاشکۆیەدا ناکرێت.
+- هیچ گۆڕانکارییەک لە `main`، DB، Botkeep، Telegram یان production لەم پاشکۆیەدا ناکرێت.
 
 ### ٥. کارەکانی داهاتوو
 1. پشکنینی پاشماوەی وانەکانی ٣٢–٤٩ بە هەمان شێوازی evidence-first و append-only.
