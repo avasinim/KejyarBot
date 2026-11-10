@@ -301,7 +301,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 - `mehîn__ delal hat`
 - Di pêşiya rengdêrê de: `hespek__ min __ qenc hebû` (şêweya nêr), `mehîneke min __ qenc hebû` (şêweya mê).
 
-### Kuis — 5 pirs
+### Kuis — 7 pirs
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
 2. `hespek hat` di çi rewşê de ye? A) bi rengdêr B) gelemjimar C) bê hêmaneke raveker a li pey navdêrê
 3. Forma gelemjimar a nebinavkirî ya bê bireser çi ye? A) -in B) -ên C) -a
@@ -411,7 +411,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
 3. Ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
 4. Di hevoka `Wan ew xwar` de `ew` kîjan erk digire? A) kirar B) bireser C) rengdêr
-5. Pronavên berbihevîn çi nîşan didin? A) yek kes B) du an zêdetir kes bi hev re C) tenê cih
+5. Pronavên berbihevîn çi nîşan didin? A) yek kes B) du an sê kes bi hev re C) tenê cih
 
 ---
 
