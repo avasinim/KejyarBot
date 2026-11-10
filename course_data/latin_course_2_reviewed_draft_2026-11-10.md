@@ -61,7 +61,7 @@ Nasîna navdêrên giştî û taybet.
 ### Naverok
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Navdêr dikarin li gorî giştî an taybetbûna navê xwe di du koman de bên dabeşkirin:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferezende`.
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferezende`. `Nimûneyên pêvekirî yên vê dersê: Ferzane, Kejyar û Argesh.`
 
 Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
@@ -90,7 +90,7 @@ Nimûneyên zayenda navdêran:
 - **Mê:** `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
 
-**Nimûneyên navên kesان بۆ ڕاهێنان:** `Argesh` ناوی کوڕە؛ `Ferzane` و `Kejyar` ناوی کچن. ئەم سێ ناوە نموونەی زیادکراوی ئەم وانەن و نابێت وەک ناوی چاپکراوی لیستی Celadet بخوێندرێنەوە.
+**Nimûneyên navên kesan ji bo rahênan:** `Argesh` navê kurekî ye; `Ferzane` û `Kejyar` navên keçan in. Ev sê nav nimûneyên zêdekirî yên vê dersê ne, ne nimûneyên rasterast ên lîsteya Celadet.
 **Têbînîya çavkaniyê:** `Herekol` لە لیستی zayenda mê ـی کتێبی Celadet دا هاتووە؛ ئەم وانەیە ئەو پۆلێنکردنەی سەرچاوە دەپارێزێت. ئەمە حوکمێکی ڕێزمانیی سەرچاوەیە، نە پێناسەیەک لەسەر زایەندی زیندەوەری یان سروشتی شوێنەکە.
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
