@@ -1080,7 +1080,7 @@ D) Bi bêhn
 A) Dengê bihîstî
 B) Nîşana nivîskî
 C) Rêza axaftinê
-D) Bêhna peyvê
+D) Yekeya ku wateya xwe heye
 
 3. Di peyva mal de çend herf hene?
 A) Du
@@ -1096,9 +1096,9 @@ D) B û B
 
 5. Di nivîsandina peyvê de çi girîng e?
 A) Rêza herfan
-B) Tenê rengê herfan
-C) Mezinahiya peyvê
-D) Cihê peyvê di rûpelê de
+B) Nîşanên taybet ên herfan tenê
+C) Wateya peyvê bê girîngiya rêza herfan
+D) Rengê nivîsê
 
 ### Xulasa
 Deng di axaftinê de tê bihîstin û herf di nivîsandinê de tê dîtin. Herf û deng girêdayî hev in, lê ne heman tişt in; nivîsîn cudahiyên girîng ên dengî nîşan dide, ne hemû guherînên biçûk ên axaftinê.
