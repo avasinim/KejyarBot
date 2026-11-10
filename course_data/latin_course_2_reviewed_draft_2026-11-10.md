@@ -128,7 +128,8 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 **Têbînî:** Di vê nimûneyê de `mîr` navdêra giştî ye (bi wateya serok/mîr), ne serenav. `Mîr` bi pêşînîya hevokê bi herfa mezin hatiye nivîsîn; forma gelemjimar `mîr` e, ne ku navê kesekî taybet gelemjimar bibe.
 | `Ev mehîn e.` | `Ev mehîn in.` |
 | `Min mehîn dît.` | `Min mehîn dîtin.` |
-| `Ez mehînekê dibînim.` | `Ez mehînan dibînim.` |
+| `Ez mehîne dibînim.` | `Ez mehînan dibînim.` |
+| `Ez mehînekê dibînim.` | `Ez mehînina dibînim.` |
 | `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
 
 Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehînek/mehînin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
@@ -160,8 +161,8 @@ Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê x
 **Nimûneyên bingehîn:**
 | Erk / rewş | Nêr yekjimar | Mê yekjimar | Gelemjimar |
 |---|---|---|---|
-| Kirar | `Hesp hat.` | `Mehin hat.` | `Hesp hatin.` / `Mehin hatin.` |
-| Bireser | `Ez hespî dibînim.` | `Ez mehinê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
+| Kirar | `Hesp hat.` | `Mehîn hat.` | `Hesp hatin.` / `Mehîn hatin.` |
+| Bireser | `Ez hespî dibînim.` | `Ez mehînê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
 
 Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
 
@@ -173,7 +174,7 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 ### Xebat
 1. Di `Hesp hat` û `Ez hespî dibînim` de erkên navdêrê cuda bike.
-2. Guherîna `mehin → mehinê` û `mehin → mehînan` bi zayend û mêjer ve girê bide.
+2. Guherîna `mehîn → mehînê` û `mehin → mehînan` bi zayend û mêjer ve girê bide.
 3. Ji bo çima `gund` di hin nimûneyan de bê tewang dimîne, sedemê ji rêbazê dengên `e/a` re girê bide.
 
 ### Kuis — 5 pirs
