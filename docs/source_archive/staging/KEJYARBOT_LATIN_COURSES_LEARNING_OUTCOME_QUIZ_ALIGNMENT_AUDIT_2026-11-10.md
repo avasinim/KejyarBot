@@ -49,8 +49,8 @@ Lesson 7 has no explicit standalone `Armancên dersê` heading in the current re
 
 ## 4. Priority and safe remediation
 
-### Priority A — editorial completion, no quiz/key change
-1. Add an explicit learning-outcome block to Course 1 Lesson 7.
+### Priority A — no content correction required
+1. Course 1 Lesson 7 already has a clear learning-outcome block; retain it.
 2. Keep Course 1 Lesson 7's listening/articulation claim appropriately bounded if the bot cannot deliver audio.
 3. In Course 1 Lesson 10, label the existing quiz as a basic recognition check; it does not fully measure application of the sound/letter distinction.
 
@@ -64,7 +64,7 @@ Do not change current question text, order, key letters, quiz IDs or lesson coun
 
 ## 5. Confirmed editorial issue vs coverage gaps
 
-- **Confirmed editorial issue:** Course 1 Lesson 7 lacks a clearly labeled learning-outcome block.
+- **Confirmed missing-objective issue:** none found in Course 1 Lesson 7; the four learning outcomes are present. The initial automated heading scan missed the bold-formatted heading, and this was corrected by direct inspection.
 - **Coverage gaps:** Course 1 Lessons 7, 10 and 12; Course 2 Lessons 10–12 as described above. These are not claims that the current quiz answers are wrong.
 - **Not confirmed:** no Course 2 master answer-key file was located in this pass, so no fresh semantic re-validation of its key letters is claimed.
 - **No lesson or quiz content has been deleted.**
@@ -75,4 +75,4 @@ This report is an append-only audit artifact on `archive/preservation-audit-2026
 
 ## 7. Next step
 
-Add only the missing Course 1 Lesson 7 learning-outcome block to the separate reviewed draft, fetch and verify it, then create a separate assessment blueprint for the Course 2 Lessons 10–12 and Course 1 cumulative review coverage gaps. Keep all existing questions and answer keys unchanged.
+Do not change Course 1 Lesson 7's objectives because they are already present. Create a separate assessment blueprint for the Course 2 Lessons 10–12 and Course 1 cumulative review coverage gaps. Keep all existing questions and answer keys unchanged.
