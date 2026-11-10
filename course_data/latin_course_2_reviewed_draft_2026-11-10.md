@@ -185,9 +185,9 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 ### Kuis — 5 pirs
 1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
-2. Di nimûneya bireserê ya yekjimar nêr de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
-3. Di nimûneya bireserê ya yekjimar mê de forma tewandî ya `mehîn` çi ye? A) mehînê B) mehîna C) mehînan
-4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
+2. Di dema niha de, di nimûneya bireserê ya yekjimar nêr de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
+3. Di dema niha de, di nimûneya bireserê ya yekjimar mê de forma tewandî ya `mehîn` çi ye? A) mehînê B) mehîna C) mehînan
+4. Di hevoka `Ez hespan dibînim` de `hespan` çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
 5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
 
 ---
