@@ -8,7 +8,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 |---:|---:|:---:|---|---|
 | 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 2 | B | 4 | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
-| 1 | 3 | A | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 3 | B | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 4 | B | bêje | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 5 | B | bi peyhevketina koman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 2 | 1 | B | kes/heywan/tişt | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
