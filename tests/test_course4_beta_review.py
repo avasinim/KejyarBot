@@ -7,6 +7,16 @@ from course_runtime import is_beta_review_lesson
 
 
 class Course4BetaReviewPolicyTests(unittest.TestCase):
+    def test_internal_synthesis_lesson_13_is_beta_gated(self):
+        self.assertTrue(is_beta_review_lesson(
+            "grammar", "grammar_13",
+            {"source_number": 13, "review_status": "internal_cross_lesson_synthesis_no_external_source_mapping"},
+        ))
+        self.assertFalse(is_beta_review_lesson(
+            "grammar", "grammar_13",
+            {"source_number": 13, "review_status": "owner_review_pending_expanded_draft"},
+        ))
+
     def test_lesson_32_is_beta_progression_eligible(self):
         self.assertTrue(is_beta_review_lesson(
             "grammar", "grammar_32",
@@ -19,8 +29,22 @@ class Course4BetaReviewPolicyTests(unittest.TestCase):
             {"source_number": 46, "review_status": "owner_review_pending_expanded_draft"},
         ))
 
-    def test_lessons_outside_32_to_46_are_not_eligible(self):
-        for number in (31, 47, 0, -1):
+    def test_lesson_50_is_beta_progression_eligible(self):
+        self.assertTrue(is_beta_review_lesson(
+            "grammar", "grammar_50",
+            {"source_number": 50, "review_status": "owner_review_pending_expanded_draft"},
+        ))
+
+    def test_lessons_47_to_50_are_beta_progression_eligible(self):
+        for number in range(47, 51):
+            with self.subTest(number=number):
+                self.assertTrue(is_beta_review_lesson(
+                    "grammar", f"grammar_{number:02d}",
+                    {"source_number": number, "review_status": "owner_review_pending_expanded_draft"},
+                ))
+
+    def test_lessons_outside_32_to_50_are_not_eligible(self):
+        for number in (31, 51, 0, -1):
             with self.subTest(number=number):
                 self.assertFalse(is_beta_review_lesson(
                     "grammar", f"grammar_{number:02d}",

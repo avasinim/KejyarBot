@@ -450,35 +450,33 @@ if __name__ == "__main__":
 
 
 class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
-    def test_course4_catalog_is_paginated_and_all_46_callbacks_are_reachable(self):
-        expected = [f"grammar_{number:02d}" for number in range(1, 47)]
+    def test_course4_catalog_is_paginated_and_all_50_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 51)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
         with (
             patch.object(bot, "get_completed_lessons", return_value=[]),
             patch.object(bot, "get_completed_beta_lessons", return_value=[]),
         ):
-            first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
-            second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
-            third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
-            fourth, fourth_page_count = bot.course_menu_keyboard("grammar", 12345, 3)
-        self.assertEqual(page_count, 4)
-        self.assertEqual(second_page_count, 4)
-        self.assertEqual(third_page_count, 4)
-        self.assertEqual(fourth_page_count, 4)
-        first_ids = [button.callback_data for row in first.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
-        second_ids = [button.callback_data for row in second.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
-        third_ids = [button.callback_data for row in third.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
-        fourth_ids = [button.callback_data for row in fourth.inline_keyboard for button in row if button.callback_data.startswith("open_lesson_")]
-        self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
-        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:24]])
-        self.assertEqual(third_ids, [f"open_lesson_{item}" for item in expected[24:36]])
-        self.assertEqual(fourth_ids, [f"open_lesson_{item}" for item in expected[36:]])
-        self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
-        self.assertEqual(third.inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
-        self.assertEqual(fourth.inline_keyboard[-1][0].callback_data, "coursepage:grammar:2")
+            pages = [
+                bot.course_menu_keyboard("grammar", 12345, page)
+                for page in range(5)
+            ]
+        for _, page_count in pages:
+            self.assertEqual(page_count, 5)
+        page_ids = [
+            [button.callback_data for row in keyboard.inline_keyboard for button in row
+             if button.callback_data.startswith("open_lesson_")]
+            for keyboard, _ in pages
+        ]
+        for page, ids in enumerate(page_ids):
+            self.assertEqual(ids, [f"open_lesson_{item}" for item in expected[page * 12:(page + 1) * 12]])
+        self.assertEqual(pages[1][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
+        self.assertEqual(pages[2][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
+        self.assertEqual(pages[3][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:2")
+        self.assertEqual(pages[4][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:3")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 46)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 50)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             with self.subTest(lesson=lesson_id):
                 lesson = bot.LESSON_DATA[lesson_id]

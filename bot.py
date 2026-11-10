@@ -282,7 +282,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 50}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -781,6 +781,12 @@ async def quiz_answer(
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
+    active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
+    if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
+        await query.answer()
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
+        return
     # Claim the answer synchronously before acknowledging the callback. Telegram
     # can deliver duplicate submit callbacks while query.answer() is awaiting;
     # the flag prevents both handlers from scoring the same question.
@@ -879,6 +885,12 @@ async def quiz_answer(
 
         lesson = quiz["lesson"]
         earned = quiz["score"]
+        # Revalidate immediately before the reward ledger write. A quiz session
+        # opened before a lesson became pending must never award stale rewards.
+        if not lesson_quiz_is_available(lesson):
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
+            return
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
             f"🎉 تاقیکردنەوە تەواو بوو!\n"
