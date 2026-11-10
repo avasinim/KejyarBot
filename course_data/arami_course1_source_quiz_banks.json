@@ -1,6 +1,6 @@
 {
   "course_id": "arami_orthography_foundations",
-  "policy": "Questions are transcribed from the explicitly supplied exercises in each lesson source. Practice and assessment share the supplied question set; assessment feedback is withheld until completion.",
+  "policy": "Practice and assessment use separate source-derived question sets. Questions are authored or adapted from the corresponding lesson source and include source_evidence; they are not necessarily verbatim transcriptions of numbered exercises. Assessment feedback is withheld until completion.",
   "lessons": {
     "2": {
       "source_file": "course_data/arami_course1_lesson_02_vowels_source.md",

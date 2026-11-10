@@ -42,6 +42,15 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             message, {"number": 5}, base_dir=ROOT
         ))
         self.assertEqual(message.reply_photo.await_count, 6)
+        sent_photos = message.reply_photo.await_args_list
+        self.assertEqual(
+            [Path(call.kwargs["photo"].name).name for call in sent_photos],
+            [f"lesson_{number:02d}.png" for number in approved],
+        )
+        self.assertEqual(
+            [call.kwargs["caption"] for call in sent_photos],
+            [f"🖼️ وێنەی فێرکاری — وانەی {number}" for number in approved],
+        )
         self.assertFalse((ROOT / "assets" / "course1_infographics" / "lesson_05.png").exists())
 
     async def test_missing_course1_infographic_does_not_interrupt_lesson_delivery(self):
@@ -52,6 +61,38 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             )
         self.assertFalse(sent)
         message.reply_photo.assert_not_awaited()
+
+    async def test_assigned_infographics_are_requested_after_their_lesson_text(self):
+        for number in (2, 3, 4, 6, 7):
+            with self.subTest(lesson=number):
+                message = SimpleNamespace(
+                    message_id=10,
+                    reply_text=AsyncMock(return_value=SimpleNamespace(message_id=11)),
+                )
+                query = SimpleNamespace(
+                    data=f"aramiC:lesson:{number}",
+                    from_user=SimpleNamespace(id=24680),
+                    message=message,
+                    answer=AsyncMock(),
+                )
+                update = SimpleNamespace(callback_query=query)
+                order = Mock()
+                with patch("arami_course1_telegram._send_source", new_callable=AsyncMock) as send_source, patch(
+                    "arami_course1_telegram.send_lesson_infographic", new_callable=AsyncMock
+                ) as send_infographic:
+                    order.attach_mock(send_source, "lesson_text")
+                    order.attach_mock(send_infographic, "lesson_image")
+                    await arami_course1_callback(update, SimpleNamespace(user_data={}), ROOT)
+
+                self.assertEqual(
+                    [call[0] for call in order.mock_calls],
+                    ["lesson_text", "lesson_image"],
+                )
+                lesson, source = load_lesson_source(ROOT, number)
+                self.assertEqual(send_source.await_args.args[1], f"وانەی {number} — {lesson.get('title', '')}")
+                self.assertEqual(send_source.await_args.args[2], source)
+                self.assertEqual(send_infographic.await_args.args[1]["number"], number)
+                self.assertEqual(send_infographic.await_args.kwargs["base_dir"], ROOT)
 
     def test_infographic_uses_the_current_course_title(self):
         svg = build_lesson_infographic_svg(
@@ -223,6 +264,35 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
         self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
+
+    async def test_locked_lesson_selection_preserves_other_active_quiz(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        query = SimpleNamespace(
+            data="aramiC:select:3",
+            from_user=SimpleNamespace(id=24680),
+            message=message,
+            answer=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "arami_lesson1_message_id": 44,
+            "arami_lesson5_message_id": 55,
+            "arami_course1_active": {"lesson": 6, "message_id": 66},
+        })
+        manifest = {"lessons": [{"number": 3, "id": "arami_course1_lesson_03", "title": "وانەی ٣"}]}
+        with (
+            patch("arami_course1_telegram.load_manifest", return_value=manifest),
+            patch("arami_course1_telegram.load_question_banks", return_value={}),
+            patch("arami_course1_telegram.load_lesson_source", return_value=(manifest["lessons"][0], "دەقی وانە")),
+        ):
+            await arami_course1_callback(
+                update, context, ROOT,
+                can_open=lambda user_id, lesson_id: False,
+            )
+        self.assertEqual(context.user_data["arami_lesson1_message_id"], 44)
+        self.assertEqual(context.user_data["arami_lesson5_message_id"], 55)
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 66)
+        self.assertIn("سەرەتا وانەی پێشووتر", message.reply_text.await_args.args[0])
 
     def test_manifest_has_exactly_21_numbered_lessons(self):
         manifest = load_manifest(ROOT)
@@ -399,6 +469,13 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(lessons[17]["content_file"], "course_data/arami_course1_lesson_16_v_source.md")
         self.assertEqual(lessons[12]["content_file"], "course_data/arami_course1_lesson_12_y_source.md")
         self.assertTrue(all(not any("audio" in key.lower() for key in lesson) for lesson in lessons.values()))
+        self.assertTrue(manifest["safety"]["no_audio"])
+        self.assertFalse(manifest["safety"]["audio_assets"])
+        self.assertFalse(manifest["safety"]["audio_catalog"])
+        self.assertFalse(manifest["safety"]["audio_playback"])
+        self.assertNotIn("recordings remain assigned", lessons[13].get("source_note", ""))
+        self.assertNotIn("recordings_verified", lessons[15].get("source_audit_status", ""))
+        self.assertNotIn("assign either recording elsewhere", lessons[16].get("source_policy", ""))
 
     def test_lesson14_preserves_the_supplied_hidden_vowel_examples(self):
         _, source = load_lesson_source(ROOT, 14)
@@ -509,6 +586,26 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("arami1:practice", callbacks)
         self.assertIn("arami1:assessment", callbacks)
 
+    async def test_lesson_action_panel_discloses_missing_lesson4_source_sections(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:4")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
+        rendered = query.message.reply_text.await_args.args[0]
+        self.assertIn("بەشەکانی ١ و ٢", rendered)
+        self.assertIn("بەشەکانی ٣ تا ٨", rendered)
+
+    async def test_lesson_action_panel_discloses_lesson14_title_content_mismatch(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("select:14")
+        query.from_user = SimpleNamespace(id=123)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
+        rendered = query.message.reply_text.await_args.args[0]
+        self.assertIn("بەشی تەواوی هێشوو", rendered)
+        self.assertIn("وانەکانی ٢٠ و ٢١", rendered)
+
     async def test_selecting_locked_lesson_does_not_expose_actions(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
@@ -531,11 +628,75 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 with self.subTest(lesson=number, mode=mode):
                     context = SimpleNamespace(user_data={})
                     update, _ = self.make_update(f"{mode}:{number}")
-                    await callback(update, context, ROOT)
+                    completed = (
+                        [item["id"] for item in load_manifest(ROOT)["lessons"]]
+                        if number == 21 else []
+                    )
+                    await callback(
+                        update, context, ROOT,
+                        get_completed_lessons=lambda user_id: completed,
+                    )
                     session = context.user_data["arami_course1_sessions"][str(number)]
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
                     self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
+
+    async def test_final_assessment_is_locked_until_lesson21_is_completed(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: [],
+        )
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("تاقیکردنەوەی وانەی ٢١", message)
+        self.assertNotIn("تاقیکردنەوەی کۆتایی کۆرسی ١", message)
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", message)
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
+    async def test_final_assessment_fails_closed_without_progress_provider(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(update, context, ROOT)
+        message = query.message.reply_text.await_args.args[0]
+        self.assertIn("تاقیکردنەوەی وانەی ٢١", message)
+        self.assertNotIn("تاقیکردنەوەی کۆتایی کۆرسی ١", message)
+        self.assertIn("تەنها دوای تەواوکردنی هەموو ٢١ وانە", message)
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
+    async def test_final_assessment_stays_locked_if_any_earlier_lesson_is_missing(self):
+        from arami_course1_telegram import callback
+        completed = [
+            item["id"] for item in load_manifest(ROOT)["lessons"]
+            if item["number"] != 8
+        ]
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: completed,
+        )
+        self.assertIn("هەموو ٢١ وانە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("21", context.user_data.get("arami_course1_sessions", {}))
+
+    async def test_final_assessment_opens_after_lesson21_is_completed(self):
+        from arami_course1_telegram import callback
+        completed_lessons = [item["id"] for item in load_manifest(ROOT)["lessons"]]
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("assessment:21")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            get_completed_lessons=lambda user_id: completed_lessons,
+        )
+        self.assertEqual(
+            context.user_data["arami_course1_sessions"]["21"]["mode"],
+            "assessment",
+        )
 
     async def test_assessment_completion_awards_once_for_its_lesson(self):
         from arami_course1_telegram import callback
@@ -557,6 +718,14 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
 
         award.assert_called_once_with(123, "arami_course1_lesson_06")
         self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
+
+        # A duplicate final submit callback must not claim the reward again.
+        duplicate_update, duplicate_query = self.make_update("submit:6", message_id=message_id)
+        await callback(duplicate_update, context, ROOT, award_assessment=award)
+        award.assert_called_once_with(123, "arami_course1_lesson_06")
+        duplicate_query.answer.assert_awaited_once()
+        duplicate_query.message.reply_text.assert_not_awaited()
+        duplicate_query.edit_message_text.assert_not_awaited()
 
     async def test_lesson6_practice_and_assessment_use_separate_scoped_sessions(self):
         from arami_course1_telegram import callback
@@ -683,12 +852,162 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         second_update, second_query = self.make_update("next:2", message_id=10)
         await callback(second_update, context, ROOT)
         second_query.message.reply_text.assert_not_awaited()
-        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 10)
+        self.assertTrue(session["sending_next"])
 
         release.set()
         await task
         self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
+        self.assertFalse(session["sending_next"])
 
+
+
+    async def test_failed_next_question_delivery_can_be_retried(self):
+        from arami_course1_telegram import callback
+        session = {
+            "mode": "practice",
+            "questions": [
+                {"id": "q1", "section_id": "course1", "type": "recognize", "prompt": "یەک", "options": ["A", "B"], "answer_index": 0},
+                {"id": "q2", "section_id": "course1", "type": "recognize", "prompt": "دوو", "options": ["A", "B"], "answer_index": 1},
+            ],
+            "index": 1, "selected_index": None, "answers": [{"correct": True}],
+            "closed": False, "awaiting_next": True,
+        }
+        context = SimpleNamespace(user_data={
+            "arami_course1_sessions": {"2": session},
+            "arami_course1_active": {"lesson": 2, "message_id": 10},
+        })
+        failed_update, failed_query = self.make_update("next:2", message_id=10)
+        failed_query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+            await callback(failed_update, context, ROOT)
+        self.assertTrue(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 10)
+
+        retry_update, retry_query = self.make_update("next:2", message_id=10)
+        await callback(retry_update, context, ROOT)
+        self.assertFalse(session["awaiting_next"])
+        self.assertFalse(session["sending_next"])
+        self.assertEqual(context.user_data["arami_course1_active"]["message_id"], 11)
+        self.assertIn("دوو", retry_query.message.reply_text.await_args.args[0])
+
+    async def test_practice_retry_contains_only_missed_questions_and_no_assessment_reward(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        award = Mock(return_value=True)
+
+        update, _ = self.make_update("practice:6")
+        await callback(update, context, ROOT, award_assessment=award)
+        original = context.user_data["arami_course1_sessions"]["6"]
+        missed_id = original["questions"][0]["id"]
+
+        for index, question in enumerate(original["questions"]):
+            message_id = context.user_data["arami_course1_active"]["message_id"]
+            selected = (
+                (question["answer_index"] + 1) % len(question["options"])
+                if index == 0 else question["answer_index"]
+            )
+            update, _ = self.make_update(f"pick:6:{selected}", message_id=message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            update, _ = self.make_update("submit:6", message_id=message_id)
+            await callback(update, context, ROOT, award_assessment=award)
+            if index < len(original["questions"]) - 1:
+                update, _ = self.make_update("next:6", message_id=message_id)
+                await callback(update, context, ROOT, award_assessment=award)
+
+        self.assertTrue(original["closed"])
+        update, retry_query = self.make_update(
+            "retry:6",
+            message_id=context.user_data["arami_course1_active"]["message_id"],
+        )
+        await callback(update, context, ROOT, award_assessment=award)
+        retry = context.user_data["arami_course1_sessions"]["6"]
+
+        self.assertEqual(retry["mode"], "practice")
+        self.assertEqual([item["id"] for item in retry["questions"]], [missed_id])
+        self.assertFalse(retry["closed"])
+        self.assertEqual(retry["answers"], [])
+        self.assertEqual(context.user_data["arami_course1_active"]["lesson"], 6)
+        retry_query.answer.assert_awaited_once()
+        award.assert_not_called()
+
+    async def test_selecting_lesson_invalidates_active_shared_course1_question(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": 8, "message_id": 10},
+            "arami_course1_sessions": {"8": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            }},
+        })
+        update, _ = self.make_update("select:8")
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        update, stale_query = self.make_update("pick:8:0", message_id=10)
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_sessions"]["8"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
+    async def test_opening_lesson_invalidates_active_shared_course1_question(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": 8, "message_id": 10},
+            "arami_course1_sessions": {"8": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            }},
+        })
+        update, _ = self.make_update("lesson:8")
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        update, stale_query = self.make_update("pick:8:0", message_id=10)
+        await callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_sessions"]["8"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
+    async def test_menu_invalidates_active_shared_course1_question(self):
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": 6, "message_id": 10},
+            "arami_lesson1_message_id": 20,
+            "arami_lesson5_message_id": 30,
+            "arami_course1_sessions": {"6": {
+                "mode": "practice",
+                "questions": [{"id": "q1", "section_id": "s1", "type": "recognize", "prompt": "Q", "options": ["A", "B"], "answer_index": 0}],
+                "index": 0, "selected_index": None, "answers": [], "closed": False,
+            }},
+        })
+        update, _ = self.make_update("menu", message_id=10)
+        await arami_course1_callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
+        self.assertIsNone(context.user_data["arami_lesson1_message_id"])
+        self.assertIsNone(context.user_data["arami_lesson5_message_id"])
+        update, stale_query = self.make_update("pick:6:0", message_id=10)
+        await arami_course1_callback(update, context, ROOT)
+        self.assertIsNone(context.user_data["arami_course1_sessions"]["6"]["selected_index"])
+        stale_query.answer.assert_awaited_once()
+
+    async def test_stale_pick_after_submit_cannot_answer_next_shared_question(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("practice:6")
+        await callback(update, context, ROOT)
+        session = context.user_data["arami_course1_sessions"]["6"]
+        self.assertGreaterEqual(len(session["questions"]), 2)
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+        question = session["questions"][0]
+        update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id=message_id)
+        await callback(update, context, ROOT)
+        update, _ = self.make_update("submit:6", message_id=message_id)
+        await callback(update, context, ROOT)
+        self.assertEqual(session["index"], 1)
+        update, stale_query = self.make_update("pick:6:0", message_id=message_id)
+        await callback(update, context, ROOT)
+        self.assertIsNone(session["selected_index"])
+        stale_query.answer.assert_awaited_once()
+        stale_query.edit_message_reply_markup.assert_not_awaited()
 
     async def test_malformed_unicode_lesson_callback_is_ignored(self):
         query = SimpleNamespace(
@@ -704,6 +1023,16 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_not_awaited()
+
+    async def test_failed_shared_question_delivery_leaves_no_active_message_id(self):
+        from arami_course1_telegram import callback
+        update, query = self.make_update("practice:6")
+        query.message.reply_text.side_effect = RuntimeError("simulated Telegram send failure")
+        context = SimpleNamespace(user_data={})
+        with self.assertRaisesRegex(RuntimeError, "simulated Telegram send failure"):
+            await callback(update, context, ROOT)
+        self.assertEqual(context.user_data["arami_course1_sessions"]["6"]["index"], 0)
+        self.assertIsNone(context.user_data["arami_course1_active"]["message_id"])
 
 
 if __name__ == "__main__":

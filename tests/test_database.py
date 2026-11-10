@@ -21,6 +21,15 @@ class DatabaseTests(unittest.TestCase):
         self.temp_dir.cleanup()
 
 
+    def test_database_path_uses_configured_persistent_location(self):
+        configured = Path(self.temp_dir.name) / "persistent" / "kejyar.db"
+        with patch.dict("os.environ", {"KEJYAR_DB_PATH": str(configured)}):
+            self.assertEqual(database._database_path(), str(configured))
+
+    def test_database_path_defaults_to_repository_database(self):
+        with patch.dict("os.environ", {"KEJYAR_DB_PATH": ""}):
+            self.assertEqual(database._database_path(), str(database.BASE_DIR / "kejyar.db"))
+
     def test_init_db_rolls_back_and_closes_when_schema_setup_fails(self):
         connection = MagicMock()
         connection.cursor.return_value.execute.side_effect = RuntimeError("schema failure")

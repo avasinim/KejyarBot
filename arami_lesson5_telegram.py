@@ -22,7 +22,7 @@ async def _send_question(message, context):
         return
     rows = [[InlineKeyboardButton(option, callback_data=f"arami5:pick:{i}")] for i, option in enumerate(question["options"])]
     sent = await message.reply_text(
-        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
+        f"{'🎯 ڕاهێنان' if session['mode'] == 'practice' else '📝 تاقیکردنەوە'} — وانەی ٥ — پرسیاری {session['index'] + 1}/{len(session['questions'])}\n\n{question['prompt']}",
         reply_markup=InlineKeyboardMarkup(rows))
     context.user_data["arami_lesson5_message_id"] = sent.message_id
 
@@ -33,7 +33,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        await query.message.reply_text("وانەی ٥ — هەڵبژاردنی خوێندنەوە یان تاقیکردنەوە:", reply_markup=menu_keyboard())
+        context.user_data["arami_lesson5_message_id"] = None
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
+        await query.message.reply_text("وانەی ٥ — خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:", reply_markup=menu_keyboard())
         return
     if action == "lesson":
         try:
@@ -47,6 +52,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
             await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
             return
+        context.user_data["arami_lesson5_message_id"] = None
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         await _send_source(
             query.message,
             f"وانەی ٥ — {lesson_record.get('title', 'پیتەکان و هاوتای لاتینی')}",
@@ -79,6 +89,10 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             logger.exception("Could not start Arami Lesson 5 interaction")
             await query.message.reply_text("⚠️ ڕاهێنان/تاقیکردنەوەی وانەی ٥ ئامادە نییە.")
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        active_course1 = context.user_data.get("arami_course1_active")
+        if isinstance(active_course1, dict):
+            active_course1["message_id"] = None
         await _send_question(query.message, context)
         return
     session = context.user_data.get("arami_lesson5_session")
@@ -87,6 +101,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             await query.answer()
         return
     if action.startswith("pick:"):
+        if session.get("awaiting_next"):
+            await query.answer()
+            return
         raw = action.removeprefix("pick:")
         if not raw.isdecimal():
             await query.answer()
@@ -103,6 +120,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(rows))
         return
     if action == "submit":
+        if session.get("awaiting_next") or session.get("closed"):
+            await query.answer()
+            return
         question = current_question(session)
         try:
             answer = submit_answer(session)
@@ -128,14 +148,23 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             rows.append([InlineKeyboardButton("↩️ گەڕانەوە بۆ وانەی ٥", callback_data="arami5:menu")])
             await query.edit_message_text(f"{feedback}\n\n🏁 کۆتایی هات\nئەنجام: {result['correct']}/{result['total']} — {result['percentage']}٪{reward_note}", reply_markup=InlineKeyboardMarkup(rows))
         else:
+            session["awaiting_next"] = True
             await query.edit_message_text(feedback, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡️ پرسیاری دواتر", callback_data="arami5:next")]]))
         return
     if action == "next":
         if not session.get("closed"):
-            # Claim this next-question action before the first await so a
-            # duplicate tap on the same feedback message cannot send twice.
-            context.user_data["arami_lesson5_message_id"] = None
-            await _send_question(query.message, context)
+            if session.get("sending_next"):
+                return
+            # Keep the feedback message active until delivery succeeds. This
+            # lets the learner retry the same button after a Telegram send error.
+            session["sending_next"] = True
+            try:
+                await _send_question(query.message, context)
+            except Exception:
+                session["sending_next"] = False
+                raise
+            session["sending_next"] = False
+            session["awaiting_next"] = False
         return
     if action == "retry":
         try:

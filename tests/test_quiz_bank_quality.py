@@ -17,6 +17,37 @@ def _normalized_prompt(value):
 
 
 class QuizBankQualityTests(unittest.TestCase):
+    def test_course1_source_question_bank_has_complete_grounding_and_valid_schema(self):
+        path = ROOT / "course_data" / "arami_course1_source_quiz_banks.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        lessons = payload["lessons"]
+
+        self.assertEqual(set(lessons), {str(number) for number in range(2, 22) if number != 5})
+        all_ids = set()
+        for lesson_number, lesson in lessons.items():
+            source_path = ROOT / lesson["source_file"]
+            self.assertTrue(source_path.is_file(), f"Lesson {lesson_number}: missing source file")
+            self.assertTrue(lesson["practice"], f"Lesson {lesson_number}: empty practice bank")
+            self.assertTrue(lesson["assessment"], f"Lesson {lesson_number}: empty assessment bank")
+
+            for mode in ("practice", "assessment"):
+                for question in lesson[mode]:
+                    with self.subTest(lesson=lesson_number, mode=mode, question=question.get("id")):
+                        self.assertTrue(question.get("id"))
+                        self.assertNotIn(question["id"], all_ids)
+                        all_ids.add(question["id"])
+                        self.assertTrue(question.get("prompt", "").strip())
+                        self.assertTrue(question.get("section_id", "").strip())
+                        self.assertTrue(question.get("source_evidence", "").strip())
+                        options = question["options"]
+                        self.assertGreaterEqual(len(options), 2)
+                        self.assertEqual(len(options), len(set(options)))
+                        self.assertGreaterEqual(question["answer_index"], 0)
+                        self.assertLess(question["answer_index"], len(options))
+
+        self.assertEqual(len(all_ids), 188)
+
+
     def test_course1_practice_and_assessment_prompts_are_not_reused_between_lessons(self):
         banks = load_question_banks(ROOT)
         banks[1] = load_arami_lesson1_interactions(ROOT)

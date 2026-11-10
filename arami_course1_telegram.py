@@ -393,6 +393,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
+        active = context.user_data.get("arami_course1_active")
+        if isinstance(active, dict):
+            active["message_id"] = None
         try:
             manifest = load_manifest(base_dir)
             banks = load_question_banks(base_dir)
@@ -451,6 +456,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 ]]),
             )
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
+        active = context.user_data.get("arami_course1_active")
+        if isinstance(active, dict):
+            active["message_id"] = None
         read_callback = "arami1:lesson" if number == 1 else ("arami5:lesson" if number == 5 else f"aramiC:lesson:{number}")
         if number == 1:
             practice_callback, assessment_callback = "arami1:practice", "arami1:assessment"
@@ -470,9 +480,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
         progress = "✅ تەواوکراوە" if lesson["id"] in set(completed) else "📘 لە ڕێڕەوی فێربووندایە"
         extra = "" if practice_callback else "\n⚪ ڕاهێنان و تاقیکردنەوەی سەرچاوەیی بۆ ئەم وانەیە بەردەست نییە."
+        source_warning = str(lesson.get("source_warning") or "").strip()
+        warning_note = f"\n\n⚠️ {escape(source_warning)}" if source_warning else ""
         await query.message.reply_text(
             f"🎓 <b>وانەی {number:02d}</b>\n<b>{escape(str(lesson.get('title', 'وانە')))}</b>\n"
-            f"{progress}{extra}",
+            f"{progress}{extra}{warning_note}",
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(action_rows),
         )
@@ -487,6 +499,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if can_open is not None and not can_open(query.from_user.id, lesson["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
                 return
+            context.user_data["arami_lesson1_message_id"] = None
+            context.user_data["arami_lesson5_message_id"] = None
+            active = context.user_data.get("arami_course1_active")
+            if isinstance(active, dict):
+                active["message_id"] = None
             await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
             await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
             await query.message.reply_text(
@@ -523,14 +540,28 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if not raw.isdecimal():
             return
         number = int(raw)
-        if can_open is not None:
+        if can_open is not None or (mode == "assessment" and number == 21):
             try:
                 lesson_record, _ = load_lesson_source(base_dir, number)
             except AramiCourseTelegramError:
                 await query.message.reply_text(f"⚠️ سەرچاوەی وانەی {number} ئامادە نییە.")
                 return
-            if not can_open(query.from_user.id, lesson_record["id"]):
+            if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+                return
+        if mode == "assessment" and number == 21:
+            completed = (
+                get_completed_lessons(query.from_user.id)
+                if get_completed_lessons is not None else []
+            )
+            completed_ids = set(completed)
+            required_lesson_ids = {
+                item["id"] for item in load_manifest(base_dir)["lessons"]
+            }
+            if not required_lesson_ids.issubset(completed_ids):
+                await query.message.reply_text(
+                    "🔒 تاقیکردنەوەی وانەی ٢١ تەنها دوای تەواوکردنی هەموو ٢١ وانە دەکرێتەوە."
+                )
                 return
         try:
             banks = load_question_banks(base_dir)
@@ -540,6 +571,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             logger.exception("No verified %s bank for Arami Course 1 Lesson %s", mode, number)
             await query.message.reply_text(f"⚠️ {mode}ی سەرچاوەیی بۆ وانەی {number} ئامادە نییە.")
             return
+        context.user_data["arami_lesson1_message_id"] = None
+        context.user_data["arami_lesson5_message_id"] = None
         sessions = context.user_data.setdefault("arami_course1_sessions", {})
         sessions[str(number)] = session
         context.user_data["arami_course1_active"] = {"lesson": number, "message_id": None}
@@ -555,6 +588,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not isinstance(session, dict):
         if defer_ack:
             await query.answer()
+        return
+    if kind in {"pick", "submit"} and (session.get("awaiting_next") or (kind == "submit" and session.get("closed"))):
+        await query.answer()
         return
     if kind == "pick":
         if len(parts) != 3 or not parts[2].isdecimal():
@@ -605,6 +641,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 reply_markup=InlineKeyboardMarkup(rows),
             )
         else:
+            session["awaiting_next"] = True
             await query.edit_message_text(
                 feedback,
                 reply_markup=InlineKeyboardMarkup([[
@@ -614,10 +651,18 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if kind == "next":
         if not session.get("closed"):
-            # Claim this next-question action before the first await so a
-            # duplicate tap on the same feedback message cannot send twice.
-            context.user_data["arami_course1_active"]["message_id"] = None
-            await _send_question(query.message, context, number)
+            if session.get("sending_next"):
+                return
+            # Keep the feedback message active until delivery succeeds. This
+            # lets the learner retry the same button after a Telegram send error.
+            session["sending_next"] = True
+            try:
+                await _send_question(query.message, context, number)
+            except Exception:
+                session["sending_next"] = False
+                raise
+            session["sending_next"] = False
+            session["awaiting_next"] = False
         return
     if kind == "retry":
         try:
