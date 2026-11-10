@@ -447,7 +447,7 @@ Dengdêrên kin yên vê dersê E, I, U ne. Xwendekar divê wan di nav peyvan de
 ---
 
 ### Provenance — Course 1, Lesson 4
-User-provided lesson text confirmed in conversation; current branch copy is editorially source-aligned.
+The short-vowel classification E/I/U is checked against Celadet Alî Bedir-Xan, Part I, pp.24–30. The table words are teaching examples selected for sound recognition; they are not presented as a verbatim list of the source's examples.
 
 **🤖 کەژیار — KejyarBot@**
 ## Ders 5: Dengdêrên Dirêj — A, Ê, Î, O, Û
@@ -478,7 +478,6 @@ Li gorî çavkaniya bingehîn, dengdêrên kurmancî li gorî dirêjî û kurtah
 | aş | A |
 | agahî | A |
 | çav | A |
-
 | bar | A |
 
 ### 3. Dengdêra Ê
@@ -589,7 +588,7 @@ D) Î
 Di vê dersê de pênc dengdêrên koma dirêj nas kirin: A, Ê, Î, O, Û. Herfên nîşankirî divê bi nîşana xwe bên parastin û bi dengdêrên din re neyên tevlihevkirin.
 
 ### Provenance — Course 1, Lesson 5
-Recovered from the user's source file; vowel classification checked against Celadet Alî Bedir-Xan, Part I, pp. 24–30.
+The long-vowel classification A/Ê/Î/O/Û is checked against Celadet Alî Bedir-Xan, Part I, pp.24–30. The table words are teaching examples; they are not presented as a verbatim list of the source's examples.
 
 **🤖 کەژیار — KejyarBot@**
 ## Ders 6: Cudahiyên Dengên I û Î
@@ -708,7 +707,7 @@ I — Î
 **🤖 کەژیار — KejyarBot@**
 
 ### Provenance — Course 1, Lesson 6
-Recovered and corrected draft; I/Î distinction rechecked against Celadet Alî Bedir-Xan, Part I.
+Recovered and corrected draft. The I/Î distinction is checked against Celadet Alî Bedir-Xan, Part I, pp.24–27; the word pairs are supplementary teaching examples, not a verbatim source list.
 ## Ders 7: Cudahiyên Dengên U û Û
 
 **Armancên dersê**
@@ -809,7 +808,7 @@ U û Û du dengdêrên cuda ne. U di koma dengdêrên kin û Û di koma dengdêr
 **🤖 کەژیار — KejyarBot@**
 
 ### Provenance — Course 1, Lesson 7
-Rechecked against Celadet Alî Bedir-Xan, Part I, pp. 28–30; U and Û are distinct vowel letters.
+Rechecked against Celadet Alî Bedir-Xan, Part I, pp.28–30; U and Û are distinct vowel letters in the source's analysis. The word tables are supplementary teaching examples, not a verbatim source list.
 ## Ders 8: Cudahiyên Dengên V û W
 
 ### Armancên dersê
