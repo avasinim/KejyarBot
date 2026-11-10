@@ -210,3 +210,23 @@ Printed pp.37–44 and pp.51–53 were inspected.
 - **p.53, §§43–46:** confirms the distinction between natural/semantic gender and grammatical gender, including the source's `dar` example: when meaning a living tree/plant it is feminine; when meaning dry wood it is masculine. The reviewed Lesson 3's explanation is aligned with this source distinction.
 
 No additional spelling correction was justified for Lessons 1–3 in this pass.
+
+
+## 14. Printed-page collation — Course 1, alphabet principles and vowel contrasts
+
+Printed pp.13–15 and pp.24–30 were inspected.
+
+- **pp.13–15:** these pages set out the source's alphabet-design principles, including distinguishing Kurdish sounds that are not represented well by neighboring alphabets, preserving distinctive Kurdish letters, and limiting unnecessary diacritics. Course 1 Lesson 2's general teaching about marked letters and case forms is editorially framed; it should not be presented as a verbatim quotation from these principles.
+- **p.24:** confirms the source's short/long vowel classification and explains that short vowels are `e, i, u`, while long vowels are `a, ê, î, o, û`. The source explicitly treats `a` and `o` as long in this inventory.
+- **pp.25–26:** the source explains why some vowel contrasts cannot be reduced to simply lengthening the same sound; the reviewed Lessons 4–6 appropriately warn against treating every short/long pair as a simple duration difference.
+- **pp.28–29:** confirms the source's special discussion of `û` and `u`; the reviewed Lesson 7 preserves the distinction between the two letters/sounds and does not treat the circumflex as decoration.
+- **p.30:** continues the discussion of sound distinctions and the need to represent Kurdish sounds distinctly. No source mismatch requiring a Course 1 edit was found in this subpass.
+- **pp.16–17** (already recorded in the earlier collation): the source's V/W contrast pairs match the reviewed Lesson 8 examples.
+
+The reviewed Course 1 Lessons 1–3 were also compared with the printed alphabet inventory and definitions on pp.11–12:
+- 31 alphabet letters;
+- 8 vowel letters and 23 consonant letters;
+- source examples for X/Y/Z are distinct from the additional teaching examples in Lesson 9;
+- the source's classification of Y within the consonant-letter inventory is retained.
+
+No Course 1 reviewed-draft edit was justified by this page-image pass. Keep the distinction between the source's letter inventory and any broader modern phonetic description explicit.
