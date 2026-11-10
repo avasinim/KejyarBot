@@ -399,6 +399,31 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
+    def test_lesson_13_internal_synthesis_is_beta_readable_but_not_quiz_eligible(self):
+        lesson_id = "grammar_13"
+        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+        content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
+        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
+
+    async def test_inflight_quiz_for_pending_lesson_is_cleared_without_rewards(self):
+        lesson_id = "grammar_50"
+        query = SimpleNamespace(
+            data="answer_0",
+            message_id=987,
+            answer=AsyncMock(),
+            message=SimpleNamespace(message_id=987, reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={"quiz": {"lesson": lesson_id}})
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
+            await bot.quiz_answer(update, context)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
+        self.assertNotIn("quiz", context.user_data)
+        reward.assert_not_called()
+
     async def test_next_lesson_route_marks_draft_as_beta_and_offers_progress_button(self):
         query = SimpleNamespace(
             data="next_lesson_grammar_32",
