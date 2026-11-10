@@ -1,11 +1,19 @@
+import os
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_NAME = str(BASE_DIR / "kejyar.db")
+# Railway persistent storage can be mounted at /data and selected explicitly.
+# Local development keeps the historical project-local database by default.
+DB_NAME = os.environ.get(
+    "KEJYARBOT_DB_PATH",
+    str(BASE_DIR / "kejyar.db"),
+)
 
 
 def init_db():
+    # Ensure a mounted persistent directory exists before opening SQLite.
+    Path(DB_NAME).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         cur = conn.cursor()
