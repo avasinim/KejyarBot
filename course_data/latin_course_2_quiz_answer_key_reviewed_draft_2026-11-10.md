@@ -27,8 +27,8 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 5 | C | gelemjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
-| 5 | 2 | C | hespî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
-| 5 | 3 | A | mehînê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr de, şêweya tewandî ya hesp `hespî` ye (§55). |
+| 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê de, şêweya tewandî ya mehîn `mehînê` ye (§55). |
 | 5 | 4 | B | forma gelemjimar a tewandî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 5 | C | na | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 6 | 1 | B | navdêrê rave dike/taybet dike | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
@@ -44,14 +44,14 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 8 | 1 | B | tiştekî hê nenaskirî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 2 | C | bê hêmaneke raveker a li pey navdêrê | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 3 | A | -in | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
-| 8 | 4 | B | -ekî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 4 | B | -ekî | Dema pêvekeke raveker li pey navdêrê were, forma nêr yekjimar `-ekî` ye (§67). |
 | 8 | 5 | C | na, erkên wan cuda ne | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 6 | A | `-î/-e/-en` | Li gorî §68, ev şêweyên veqetandeka nebinavkirî ne ku pêşîya rengdêrê tên. |
 | 8 | 7 | B | `-ekî/-ekê/-ina` | Li gorî §70, ev şêweyên tewandî ne ku di rewşa bireserê de tên bikaranîn. |
-| 9 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
-| 9 | 2 | C | te | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
-| 9 | 3 | A | wî | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
-| 9 | 4 | B | me | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
+| 9 | 1 | B | min | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê yekem yekjimar `min` e (§86). |
+| 9 | 2 | C | te | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê duyem yekjimar `te` ye (§86). |
+| 9 | 3 | A | wî | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê nêr `wî` ye (§86). |
+| 9 | 4 | B | me | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê yekem gelemjar `me` ye (§86). |
 | 9 | 5 | A | hon | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
 | 10 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 2 | C | wê | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
