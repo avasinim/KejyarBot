@@ -35,7 +35,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 68)
 
     async def test_retired_22_lesson_course_is_not_shown_in_course_menu(self):
         message = SimpleNamespace(reply_text=AsyncMock(), text="📘 کۆرسەکان")
@@ -88,8 +88,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             for course_id in ("daily_conversation", "unified_orthography")
             for lesson in bot.COURSE_LESSON_ORDER[course_id]
         ]
-        self.assertEqual(len(all_ids), 108)
-        self.assertEqual(len(set(all_ids)), 108)
+        self.assertEqual(len(all_ids), 110)
+        self.assertEqual(len(set(all_ids)), 110)
         self.assertEqual(bot.COURSE_LESSON_ORDER["orthography_basic"], [])
 
     def test_arami_course_progression_uses_all_21_manifest_lesson_ids(self):
@@ -221,7 +221,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "open_lesson_daily_conversation_01",
         )
 
-    async def test_open_course_three_shows_all_66_lesson_buttons(self):
+    async def test_open_course_three_first_page_shows_first_twelve_lessons(self):
         update, message, query = self.make_update("course_unified_orthography")
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
@@ -232,6 +232,20 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             keyboard[0][0].callback_data,
             "open_lesson_unified_orthography_01",
         )
+
+    async def test_course_three_final_page_exposes_lessons_67_and_68(self):
+        update, message, query = self.make_update("coursepage:unified_orthography:5")
+        with patch.object(bot, "get_completed_lessons", return_value=[]):
+            await bot.open_course_page(update, SimpleNamespace())
+        query.answer.assert_awaited_once()
+        message.edit_text.assert_awaited_once()
+        rendered = message.edit_text.await_args.args[0]
+        self.assertIn("67 تا 68 لە 68", rendered)
+        self.assertIn("لاپەڕەی 6/6", rendered)
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
+        callbacks = [button.callback_data for row in keyboard for button in row]
+        self.assertIn("open_lesson_unified_orthography_67", callbacks)
+        self.assertIn("open_lesson_unified_orthography_68", callbacks)
 
     async def test_course_menu_descriptions_use_real_line_breaks(self):
         update, message, query = self.make_update("course_daily_conversation")
