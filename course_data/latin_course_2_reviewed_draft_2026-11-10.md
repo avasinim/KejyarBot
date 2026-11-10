@@ -45,11 +45,11 @@ Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de h
 4. Çima `Îro dinya sar e` komek e, ne tîp an kît?
 
 ### Kuis — 5 pirs
-1. Gramêr çi ye? A) tenê zanista dengdanê B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) komek nav
+1. Gramêr çi ye? A) Tenê rêz û awayê derxistina dengên ziman B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) Tenê pêkhate û avakirina peyvan
 2. Li gorî rêzimanê, çend hêmanên bingehîn ên ziman hene? A) 3 B) 4 C) 6
-3. Tîp çi ye? A) nîşana nivîskî B) yekeya wateyê C) komek bêje
+3. Tîp çi ye? A) Dengê ku bi dev tê derxistin B) nîşana nivîskî C) Yekeya ku wateya xwe heye
 4. `hesp` di çi kategoriyê de ye? A) kît B) bêje C) komek
-5. Qiset çawa pêk tê? A) bi dubarekirina tîpan B) bi peyhevketina koman C) bi yek tîpê
+5. Qiset çawa pêk tê? A) Bi peyhevketina tîpan tenê B) bi peyhevketina koman C) Bi dubarekirina kîteyan
 
 ---
 
@@ -69,7 +69,7 @@ Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an 
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
 
 ### Kuis — 5 pirs
-1. Navdêr çi nîşan dide? A) tenê reng B) kes/heywan/tişt C) tenê dem
+1. Navdêr çi nîşan dide? A) Kar an pêvajoya di hevokê de B) kes/heywan/tişt C) Taybetmendiya navdêrekê
 2. `hesp` çi ye? A) serenav B) daçek C) hevenav
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
 4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
@@ -208,7 +208,7 @@ Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xu
 Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê beza`, `xencera min`, `çar xanî`.
 
 ### Kuis — 5 pirs
-1. Bireserê navdêrê çi dike? A) lêkerê guher dike B) navdêrê rave dike/taybet dike C) dengê peyvê diguherîne
+1. Bireserê navdêrê çi dike? A) Erkê navdêrê di hevokê de nîşan dide B) navdêrê rave dike/taybet dike C) Tewang an forma navdêrê bi tenê diyar dike
 2. Di `ev keçik` de navdêr kîjan e? A) ev B) her du C) keçik
 3. Di `hespê beza` de bireser çi ye? A) beza B) hesp C) hespê
 4. Bireser dikare li ku were? A) tenê di dawiya qisetê B) pêşî an paşî navdêrê C) tenê pêşî lêkerê
@@ -594,9 +594,9 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 
 ### 10. Testa Kejyar
 1. Rengdêr çi dike?
-A) kesê axêver nîşan dide
+A) Têkiliya navdêrê bi lêkerê re diyar dike
 B) taybetmendî an taybetiya navdêrê rave dike
-C) tenê dem nîşan dide
+C) Kes û hejmarê lêkerê li gorî kiryarê diguherîne
 
 2. mezin di hespê mezin de çi ye?
 A) jmarnav
