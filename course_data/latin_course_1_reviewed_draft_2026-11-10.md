@@ -765,7 +765,7 @@ U û Û du herfên cuda ne. Di rêzkirina dengdêran de U di koma kin û Û di k
 
 kur — dûr — gur — bûk — kum — bûn — kul — kûr
 
-**Xebata 2:** Dengdêra rast bi tîpa mezin nîşan bike:
+**Xebata 2:** Dengdêra rast bi herfa mezin nîşan bike:
 
 gul — xwîn — dûr — gur — mû — kum
 
