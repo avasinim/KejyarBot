@@ -311,7 +311,7 @@ Pronav li şûna navdêrê tê û dikare zayend û kes nîşan bide. Di tabloya 
 
 Di hin hevokên rabirdû de forma kirarî tê bikaranîn; mînak: `Min got`, `Te xwar`, `Wî xist`, `Wê xwar`, `Me xwar`, `We got`, `Wan xist`.
 
-**Têbînî li ser nav û erk:** `min/te/wî/wê/me/we/wan` di tabloyê de navê formên kirarî ne؛ ev nav tenê şêweya pronavê di vê avahiyê de nîşan dide. Ew nayê wateya ku ev form di her hevokê de kirar in; erkê wan divê li gorî lêker û avahiya hevokê were diyarkirin. Ji bo vê cudahiyê li Ders 10 jî binêre.
+**Têbînî li ser nav û erk:** `min/te/wî/wê/me/we/wan` di tabloyê de navê formên kirarî ne; ev nav tenê şêweya pronavê di vê avahiyê de nîşan dide. Ew nayê wateya ku ev form di her hevokê de kirar in; erkê wan divê li gorî lêker û avahiya hevokê were diyarkirin. Ji bo vê cudahiyê li Ders 10 jî binêre.
 
 **Sê zayendên pronav:** rêziman pronavên nêr, mê û nêtar cuda dike. `wî` forma nêr e û `wê` forma mê ye; formên din ên kesîn di rêzimanê de nêtar tên hesibandin. `ew` wek pronavê kesîn dikare nêtar be û li şûna navdêrên nêr û mê jî were. Lê di tabloya formên kirarî de Celadet tenê `wî` û `wê` dide; ji ber vê yekê ji bo `ew`-a nêtar formeke kirarî ya serbixwe li vir nehatiye danîn.
 
