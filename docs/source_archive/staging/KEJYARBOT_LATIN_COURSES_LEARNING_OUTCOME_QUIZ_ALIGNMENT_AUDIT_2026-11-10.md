@@ -28,7 +28,7 @@ The master answer-key file available in this pass was the Course 1 key. The Cour
 
 ### Course 1 structural note
 
-Lesson 7 has no explicit standalone `Armancên dersê` heading in the current reviewed draft, although its opening teaching content and final quiz make the intended outcomes inferable. Add a concise learning-outcome statement so the lesson is consistent with the other lessons. This is a low-risk editorial completion, not a change to the source's content.
+Course 1 Lesson 7 already contains an explicit `Armancên dersê` block with four outcomes. No missing-objective correction is needed. The remaining issue is assessment coverage: the quiz checks letter identity and spelling but does not directly assess listening/articulation.
 
 ## 3. Course 2 — alignment findings
 
