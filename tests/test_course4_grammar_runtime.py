@@ -1136,6 +1136,11 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
             sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 31)),
             240,
         )
+        # Lessons 1–30 have 240 questions; Lesson 31 adds 8 more.
+        self.assertEqual(
+            sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 32)),
+            248,
+        )
 
     def test_course4_has_50_lessons_and_plan_records_lesson_28(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
