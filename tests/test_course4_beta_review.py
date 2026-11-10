@@ -7,6 +7,16 @@ from course_runtime import is_beta_review_lesson
 
 
 class Course4BetaReviewPolicyTests(unittest.TestCase):
+    def test_internal_synthesis_lesson_13_is_beta_gated(self):
+        self.assertTrue(is_beta_review_lesson(
+            "grammar", "grammar_13",
+            {"source_number": 13, "review_status": "internal_cross_lesson_synthesis_no_external_source_mapping"},
+        ))
+        self.assertFalse(is_beta_review_lesson(
+            "grammar", "grammar_13",
+            {"source_number": 13, "review_status": "owner_review_pending_expanded_draft"},
+        ))
+
     def test_lesson_32_is_beta_progression_eligible(self):
         self.assertTrue(is_beta_review_lesson(
             "grammar", "grammar_32",
