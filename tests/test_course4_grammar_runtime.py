@@ -1112,6 +1112,36 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
         self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
 
+    def test_course4_quiz_overrides_preserve_original_bank_and_apply_44_reviewed_replacements(self):
+        override_file = bot.load_json("course_data/grammar_course4_quiz_overrides.json")
+        overrides = override_file["overrides"]
+        self.assertEqual(len(overrides), 44)
+        raw_by_id = {lesson["id"]: lesson for lesson in bot.GRAMMAR_COURSE4_DRAFT["lessons"]}
+        seen = set()
+        for override in overrides:
+            lesson_id = override["lesson_id"]
+            index = override["question_index"]
+            key = (lesson_id, index)
+            self.assertNotIn(key, seen)
+            seen.add(key)
+            self.assertEqual(raw_by_id[lesson_id]["quiz"][index], override["original_snapshot"])
+            replacement = override["replacement"]
+            runtime_question = bot.QUIZ_DATA[lesson_id][index]
+            self.assertEqual(runtime_question["question"], replacement["q"])
+            self.assertEqual(runtime_question["options"], replacement["options"])
+            self.assertEqual(runtime_question["answer"], replacement["options"][replacement["answer"]])
+            self.assertEqual(runtime_question["explanation"], replacement["explanation"])
+            self.assertEqual(len(replacement["options"]), 4)
+        self.assertEqual(
+            sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 31)),
+            240,
+        )
+        # Lessons 1–30 have 240 questions; Lesson 31 adds 8 more.
+        self.assertEqual(
+            sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 32)),
+            248,
+        )
+
     def test_course4_has_50_lessons_and_plan_records_lesson_28(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
