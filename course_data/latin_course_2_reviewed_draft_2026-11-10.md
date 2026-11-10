@@ -92,7 +92,7 @@ Nimûneyên zayenda navdêran:
 
 **Nimûneyên navên kesan ji bo rahênan:** `Argesh` navê kurekî ye; `Ferzane` û `Kejyar` navên keçan in. Ev sê nav nimûneyên zêdekirî yên vê dersê ne, ne nimûneyên rasterast ên lîsteya Celadet.
 
-**Têbînîya çavkaniyê:** `Herekol` لە لیستی zayenda mê ـی کتێبی Celadet دا هاتووە؛ ئەم وانەیە ئەو پۆلێنکردنەی سەرچاوە دەپارێزێت. ئەمە حوکمێکی ڕێزمانیی سەرچاوەیە، نە پێناسەیەک لەسەر زایەندی زیندەوەری یان سروشتی شوێنەکە.
+**Têbînîya çavkaniyê:** `Herekol` di lîsteya zayenda mê ya pirtûka Celadet de hatiye nivîsîn; ev ders vê tesnîfkirina çavkaniyê diparêze. Ev biryareke rêzimanî ya çavkaniyê ye, ne daxuyaniyek li ser zayenda biyolojîk an taybetiya xwezayî ya cihêkê.
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
 
