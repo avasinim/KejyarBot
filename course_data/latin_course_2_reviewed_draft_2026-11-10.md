@@ -483,10 +483,9 @@ Mînak:
 
 Hin rengdêrên wesfîn dikarin dereceya taybetmendiyê nîşan bidin:
 - Asta bingehîn: mezin
-- Berawirdî: mezintir
-- Asta herî bilind: herî mezin
+- Berawirdî: mezintir (bi pêveka `-tir`)
 
-Di berawirdkirinê de divê bizanî ka em du tişt berawird dikin an yek tişt wekî asta herî bilind di komê de diyar dikin.
+**Têbînîya çavkaniyê:** Celadet di §§128–129 de şêweya berawirdkirinê bi pêveka `-tir` nîşan dide (wek `genç/gençtir`, `bilind/bilindtir`, `spehî/spehîtir`, `bez/bezatir`). Forma `herî mezin` di vê dersê de dikare wekî şêwazeke fêrkarî ya zimanê îroyîn were pêşkêşkirin, lê divê wek nimûneya rasterast a Celadet neyê nîşandan; di sarchavê de di beşa dereceyan de ev form nehatiye danîn.
 
 ### 3. Rengdêrên îşarkî
 Rengdêrên îşarkî nîşan didin ka kîjan navdêr tê armanc kirin.
@@ -567,7 +566,7 @@ Jmarnav di vê rêbazê de wek beşeke rêzimanî ya cuda tê vekolîn; ji ber v
 Di beşa jmarnavan de rêziman du komên sereke cuda dike: **jmarnavên binavkirî** û **jmarnavên nebinavkirî**. Jmarnavên binavkirî jî çar cure ne: **bingehîn** (hejmarên rast), **rêzîn** (rêzê nîşan didin), **birewîn** (beşek ji hejmarê nîşan didin) û **komelîn**. Jmarnavên nebinavkirî wek `gelek`, `hindik`, `pir`, `bêtir` û `zehf` hejmarê bi awayekî ne-diyar nîşan didin.
 
 Hin formên taybet jî rêgezên xwe hene:
-- **Nîv:** dema bi serê xwe tê bikaranîn dikare bi `-î` were tewandin (`nîvî`); dema li pêşiya hejmar an navdêrekê tê, forma `nîv` diparêze.
+- **Nîv:** dema bi serê xwe tê bikaranîn dikare bi `-î` were tewandin (`nîvî`); sarchavê herwiha forma `nîvekî` jî dide. Dema li pêşiya hejmar an navdêrekê tê, forma `nîv` diparêze.
 - **Yek:** di hin bikaranînên serbixwe de bi `-ê` tê (`yekê`); lê dema rasterast li pêşiya navdêrê tê, forma `yek` dimîne û navdêr li gorî rêzê xwe tewandinê werdigire.
 - **Hezar:** di bikaranîna serbixwe de dikare bi `-î` were tewandin (`hezarî`); di hejmarên tevlihev de rêza tewandinê li gorî hejmarê dawî tê diyarkirin.
 
