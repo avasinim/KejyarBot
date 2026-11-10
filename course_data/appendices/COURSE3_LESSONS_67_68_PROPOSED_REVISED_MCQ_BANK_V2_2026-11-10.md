@@ -51,7 +51,7 @@ C. -eke
 ### 67-V2-Q05 — Apply the definite/indefinite contrast
 **Question:** لە خشتەی Haigدا کام بەراورد دروستە؟
 A. pyāw-ēk = «ئەو پیاوە»؛ pyāw-eke = «پیاوێک».
-B. pyāw-ēk = «پیاوێک»؛ pyāw-eke = «ئەو پیاوە».
+B. pyāw-ēk = «پیاوێک»؛ pyāw-eke = «پیاوەکە».
 C. هەردوو فۆڕمەکە تەنیا بانگکردنن.
 
 **Answer:** B  
