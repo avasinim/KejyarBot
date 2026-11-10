@@ -1,0 +1,73 @@
+{
+  "_patch_metadata": {
+    "status": "proposal_only_inactive_not_applied",
+    "round": 137,
+    "created": "2026-11-10",
+    "branch": "work/course4-lessons32-50-completion-2026-11-10",
+    "source_candidates": {
+      "lesson48": {
+        "path": "docs/source_archive/staging/candidates/COURSE4_LESSON48_STRUCTURED_CONTENT_CANDIDATE_ROUND132_2026-11-10.json",
+        "sha": "50b78a2108483d696324769c4329189950559217"
+      },
+      "lesson49": {
+        "path": "docs/source_archive/staging/candidates/COURSE4_LESSON49_STRUCTURED_CONTENT_CANDIDATE_ROUND133_2026-11-10.json",
+        "sha": "aa42a55c3197f0c9b3ed6532e7f717dc7b699838"
+      }
+    },
+    "notes": [
+      "پێشنیاری patch ـە و هیچ فایلێکی پێشوو overwrite یان دەستکاری نەکراوە.",
+      "source_markdown و source_path بە تەواوی دەبێت وەک خۆیان بمێننەوە؛ patch تەنها بۆ structured fields ـە.",
+      "پێشنیارەکان بە پێی تۆماری زاراوەی پێشوو و جیاوازیی Subject/Agent نووسراون."
+    ]
+  },
+  "patches": [
+    {
+      "lesson": 48,
+      "path": "objective",
+      "operation": "replace_exact_phrase",
+      "before": "لە نموونەکانی سۆرانیدا سنووری شێوەزار و سیاق بپارێزێت.",
+      "after": "لە نموونەکانی سۆرانیدا سنووری شێوەزار و بەستێن بپارێزێت.",
+      "reason": "داواکاریی زاراوەیی بەکارهێنەر؛ سیاق → بەستێن."
+    },
+    {
+      "lesson": 48,
+      "path": "objective",
+      "operation": "replace_exact_phrase",
+      "before": "تەواوکەری پێویست لە هاوەڵکاریی ئازاد جیا بکاتەوە.",
+      "after": "تەواوکەری پێویست لە هاوەڵکاریی زیادە (Adjunct) جیا بکاتەوە.",
+      "reason": "هاوڕێکخستنی Adjunct لەگەڵ تۆماری پێشنیاری کۆرس؛ Adverb=هاوەڵکار، Adverbial=هاوەڵکاری، Adjunct=هاوەڵکاریی زیادە (هێشتا پێشنیاری کاتی)."
+    },
+    {
+      "lesson": 49,
+      "path": "examples[1].analysis",
+      "operation": "replace_exact_phrase",
+      "before": "لە داتای موکریدا =m بکەری تێپەڕ/ئەنجامدەری کردار نیشان دەدات؛",
+      "after": "لە داتای موکریدا =m نیشانەی بکەری ڕستەی تێپەڕی ڕابردوو (A) نیشان دەدات؛",
+      "reason": "Subject/grammatical function لە Agent/semantic role جیا بپارێزرێت."
+    },
+    {
+      "lesson": 49,
+      "path": "exercises[0].answer",
+      "operation": "replace_exact_phrase",
+      "before": "لە نموونەی یەکەمدا =m بکەری تێپەڕ/ئەنجامدەری کردار نیشان دەدات؛",
+      "after": "لە نموونەی یەکەمدا =m نیشانەی بکەری ڕستەی تێپەڕی ڕابردوو (A) نیشان دەدات؛",
+      "reason": "Subject/grammatical function لە Agent/semantic role جیا بپارێزرێت."
+    },
+    {
+      "lesson": 49,
+      "path": "comprehension[3].answer",
+      "operation": "replace_exact_phrase",
+      "before": "لە ڕستەی ڕابردووی تێپەڕدا بکەری تێپەڕ/ئەنجامدەری کردار نیشان دەدات؛",
+      "after": "لە ڕستەی ڕابردووی تێپەڕدا نیشانەی بکەری ڕستە (A) نیشان دەدات؛",
+      "reason": "Subject/grammatical function لە Agent/semantic role جیا بپارێزرێت."
+    },
+    {
+      "lesson": 49,
+      "path": "quiz[0].options[1]",
+      "operation": "replace_exact_phrase",
+      "before": "بکەری تێپەڕ/ئەنجامدەری کردار",
+      "after": "نیشانەی بکەری ڕستەی تێپەڕی ڕابردوو (A)",
+      "reason": "وەڵامی کویز دەبێت ئەرکی ڕێزمانی دیاری بکات، نە Agent بە خۆکار."
+    }
+  ]
+}
