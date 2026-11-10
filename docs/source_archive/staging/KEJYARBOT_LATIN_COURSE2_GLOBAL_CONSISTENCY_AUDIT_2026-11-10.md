@@ -52,3 +52,9 @@ The source's own headings confirm that these are not invented course labels:
 A targeted internal spelling scan found and corrected one confirmed consistency issue in the reviewed draft: `mehin` / `vê mehinê / van mehinan` was normalized to `mehîn` / `vê mehînê / van mehînan`, consistent with the form used elsewhere in the draft. The update was verified by fetching the changed file again. The same pass confirmed that `hon` is the source form in Celadet's pronoun inventory; it was correctly retained rather than changed to `hûn`. Details and OCR limitations are recorded in `KEJYARBOT_LATIN_COURSE2_ORTHOGRAPHY_PASS_2026-11-10.md`.
 
 This follow-up remains a targeted consistency check, not a complete page-image proofread of every example and diacritic in all 12 lessons.
+
+
+## 7. Lesson 12 page-image verification (2026-11-10)
+Printed pp.89–100 were checked visually against the scan, §§119–152. The six adjective classes and the main demonstrative, numeral-adjective, interrogative, indefinite, and possessive paradigms in the reviewed draft are aligned with the source. Two teaching-precision refinements were applied to the reviewed draft: (1) the source-supported descriptive-adjective comparative pattern is `-tir`; `herî mezin` is now explicitly labelled an editorial/modern supplement rather than a direct source example; (2) the source's special `nîv` examples include both `nîvî` and `nîvekî`, and the draft now includes the latter. Source-page verification details are in `KEJYARBOT_LATIN_COURSE2_LESSON12_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+This page-image pass verifies the Lesson 12 source content described above; it does not certify all quiz keys or complete page-image proofreading of every earlier lesson.
