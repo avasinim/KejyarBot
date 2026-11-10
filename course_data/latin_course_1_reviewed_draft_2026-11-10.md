@@ -71,11 +71,11 @@ B) 6
 C) 8
 D) 9
 
-3. Kîjan kom tenê ji dengdêrên kin pêk tê?
+3. Kîjan kom tenê ji herfên dengdar pêk tê?
 A) A, Ê, Î
-B) E, I, U
-C) O, Û, A
-D) E, Ê, O
+B) B, M, R
+C) I, Î, U
+D) O, Û, A
 
 4. Kîjan ji van herfan dengdêr e?
 A) Ş
