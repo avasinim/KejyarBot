@@ -82,3 +82,9 @@ This pass does not certify all quiz keys, other lesson pages, or runtime behavio
 Printed pp.55–60, §§47–58, were checked directly against page images. Lesson 4's central singular/plural account is aligned with the source. Lesson 5's general subject/object inflection account needed two source-specific qualifications: §56 says that in transitive past constructions the agent/subject is inflected while the direct object remains uninflected; §58 explains that in multi-noun groups the final noun's gender/number can govern group inflection and not every noun is necessarily inflected. Both qualifications were added to the reviewed draft and the updated file was fetched again for SHA verification. Evidence: `KEJYARBOT_LATIN_COURSE2_LESSONS4_5_PAGE_IMAGE_REVIEW_2026-11-10.md`.
 
 This pass does not certify all quiz keys, other lesson pages, or runtime behavior.
+
+
+## 12. Lessons 2–3 page-image verification (2026-11-10)
+Printed pp.51–54, §§34–46, were checked directly against page images. The Lesson 2 common/proper noun distinction and cited source examples are aligned; the three requested names `Ferzane`, `Kejyar`, and `Argesh` remain explicitly marked as user-added supplemental examples. In Lesson 3, the reviewed draft omitted two feminine nouns present in Celadet's §41 list, `Sînemxan` and `Hezarom`; both have now been restored to the selected source examples. The page images also confirm the meaning-dependent gender of `dar` (§44), which the draft already preserves, and confirm `Herekol` appears in the source's proper-noun list (§37) and feminine-gender list (§41). Evidence: `KEJYARBOT_LATIN_COURSE2_LESSONS2_3_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+This pass does not certify all quiz keys, Lesson 1, or runtime behavior.
