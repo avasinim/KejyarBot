@@ -86,9 +86,11 @@ Nasîna zayenda nêr û mê û fêmkirina zayenda rêzimanî.
 Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem bi zayenda rastîn a heywan an mirovê re yek nîne; tiştên bêcan jî dikarin zayenda rêzimanî ya xwe hebin.
 
 Nimûneyên zayenda navdêran:
-- **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
-- **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
+- **Nêr:** `Argesh`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
+- **Mê:** `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
+
+**Nimûneyên navên kesان بۆ ڕاهێنان:** `Argesh` ناوی کوڕە؛ `Ferzane` و `Kejyar` ناوی کچن. ئەم سێ ناوە نموونەی زیادکراوی ئەم وانەن و نابێت وەک ناوی چاپکراوی لیستی Celadet بخوێندرێنەوە.
 **Têbînîya çavkaniyê:** `Herekol` لە لیستی zayenda mê ـی کتێبی Celadet دا هاتووە؛ ئەم وانەیە ئەو پۆلێنکردنەی سەرچاوە دەپارێزێت. ئەمە حوکمێکی ڕێزمانیی سەرچاوەیە، نە پێناسەیەک لەسەر زایەندی زیندەوەری یان سروشتی شوێنەکە.
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
