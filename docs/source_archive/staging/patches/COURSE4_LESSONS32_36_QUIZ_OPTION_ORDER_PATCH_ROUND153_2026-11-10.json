@@ -1,0 +1,487 @@
+{
+  "_patch_metadata": {
+    "status": "proposal_only_inactive_not_applied",
+    "round": 153,
+    "created": "2026-11-10",
+    "branch": "work/course4-lessons32-50-completion-2026-11-10",
+    "lessons": "32-36",
+    "rule": "target_answer_index=(lesson_number+question_index_zero_based) mod 4; move only correct option to target position, preserving all option text and explanation."
+  },
+  "operations": [
+    {
+      "lesson": 32,
+      "question": 1,
+      "before_options": [
+        "منداڵەکە خەوت.",
+        "بنووسە!",
+        "کەژیار هات.",
+        "فەرزانە خوێندەوە."
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "بنووسە!",
+        "منداڵەکە خەوت.",
+        "کەژیار هات.",
+        "فەرزانە خوێندەوە."
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 32,
+      "question": 2,
+      "before_options": [
+        "کەژیار",
+        "بابەتەکە",
+        "دەنووسێت",
+        "بابەت"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "کەژیار",
+        "دەنووسێت",
+        "بابەتەکە",
+        "بابەت"
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 32,
+      "question": 3,
+      "before_options": [
+        "کەژیار پەنجەرەکەی شکاند.",
+        "پەنجەرەکە شکێنرا.",
+        "منداڵەکە خەوت.",
+        "فەرزانە هات."
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "کەژیار پەنجەرەکەی شکاند.",
+        "منداڵەکە خەوت.",
+        "پەنجەرەکە شکێنرا.",
+        "فەرزانە هات."
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 32,
+      "question": 4,
+      "before_options": [
+        "هەر کردارێک",
+        "پێکهاتەیەک کە ناو یان جێناو ناوەندییەکەیە",
+        "تەنها هاوەڵکار",
+        "هەر پێکهاتەیەکی دوای کردار"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "هەر کردارێک",
+        "تەنها هاوەڵکار",
+        "هەر پێکهاتەیەکی دوای کردار",
+        "پێکهاتەیەک کە ناو یان جێناو ناوەندییەکەیە"
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 32,
+      "question": 5,
+      "before_options": [
+        "منداڵەکە خەوت.",
+        "کەژیار بابەتەکە دەنووسێت.",
+        "بنووسە!",
+        "فەرزانە هات."
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "کەژیار بابەتەکە دەنووسێت.",
+        "منداڵەکە خەوت.",
+        "بنووسە!",
+        "فەرزانە هات."
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 33,
+      "question": 1,
+      "before_options": [
+        "هەمیشە ئەنجامدەری کردارە",
+        "پێکهاتەیەکە کە ئەرکی بکەری ڕێزمانی دەبینێت",
+        "هەمیشە بەرکارە",
+        "تەنها وشەی کردارە"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "هەمیشە ئەنجامدەری کردارە",
+        "پێکهاتەیەکە کە ئەرکی بکەری ڕێزمانی دەبینێت",
+        "هەمیشە بەرکارە",
+        "تەنها وشەی کردارە"
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 33,
+      "question": 2,
+      "before_options": [
+        "کەژیار",
+        "نامە",
+        "دەنووسێت",
+        "هیچکام"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "کەژیار",
+        "نامە",
+        "دەنووسێت",
+        "هیچکام"
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 33,
+      "question": 3,
+      "before_options": [
+        "کەژیار پەنجەرەکەی شکاند.",
+        "پەنجەرەکە شکێنرا.",
+        "من ستران دەبیستم.",
+        "ئاڕگەش هات."
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "کەژیار پەنجەرەکەی شکاند.",
+        "من ستران دەبیستم.",
+        "ئاڕگەش هات.",
+        "پەنجەرەکە شکێنرا."
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 33,
+      "question": 4,
+      "before_options": [
+        "فەرزانە",
+        "شووتی",
+        "دەخوات",
+        "هیچکام"
+      ],
+      "before_answer": 0,
+      "after_options": [
+        "فەرزانە",
+        "شووتی",
+        "دەخوات",
+        "هیچکام"
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 33,
+      "question": 5,
+      "before_options": [
+        "خانووەکە کردارە",
+        "خانووەکە بکەرە و «سووتا» کردارە",
+        "خانووەکە بە پێویستی ئەنجامدەری ئەنقەستییە",
+        "«سووتا» بکەرە"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "خانووەکە کردارە",
+        "خانووەکە بکەرە و «سووتا» کردارە",
+        "خانووەکە بە پێویستی ئەنجامدەری ئەنقەستییە",
+        "«سووتا» بکەرە"
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 34,
+      "question": 1,
+      "before_options": [
+        "تەنها وشەی کردار",
+        "ئەو بەشەی ڕستە کە زانیاری لەبارەی بکەرەوە دەدات",
+        "هەمیشە ئەنجامدەری کردار",
+        "تەنها ناوی بکەر"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "تەنها وشەی کردار",
+        "هەمیشە ئەنجامدەری کردار",
+        "ئەو بەشەی ڕستە کە زانیاری لەبارەی بکەرەوە دەدات",
+        "تەنها ناوی بکەر"
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 34,
+      "question": 2,
+      "before_options": [
+        "دڵسۆز",
+        "بوو",
+        "دایکەکە",
+        "دڵسۆز بوو"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "دڵسۆز",
+        "بوو",
+        "دڵسۆز بوو",
+        "دایکەکە"
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 34,
+      "question": 3,
+      "before_options": [
+        "فەرزانە گەنجێکی ڕۆشنبیرە.",
+        "ئاڕگەش هات.",
+        "منداڵەکە خەوت.",
+        "من ستران دەبیستم."
+      ],
+      "before_answer": 0,
+      "after_options": [
+        "فەرزانە گەنجێکی ڕۆشنبیرە.",
+        "ئاڕگەش هات.",
+        "منداڵەکە خەوت.",
+        "من ستران دەبیستم."
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 34,
+      "question": 4,
+      "before_options": [
+        "ئاڕگەش زیرەک بوو.",
+        "ئاڕگەش هات.",
+        "کەژیار نامە دەنووسێت.",
+        "منداڵەکە خەوت."
+      ],
+      "before_answer": 0,
+      "after_options": [
+        "ئاڕگەش هات.",
+        "ئاڕگەش زیرەک بوو.",
+        "کەژیار نامە دەنووسێت.",
+        "منداڵەکە خەوت."
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 34,
+      "question": 5,
+      "before_options": [
+        "چونکە هەمیشە ناوە",
+        "چونکە هەمیشە بەرکارە",
+        "چونکە دەتوانێت واتا و ئەرکی جیاواز هەبێت",
+        "چونکە هەرگیز کردار نییە"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "چونکە هەمیشە ناوە",
+        "چونکە هەمیشە بەرکارە",
+        "چونکە دەتوانێت واتا و ئەرکی جیاواز هەبێت",
+        "چونکە هەرگیز کردار نییە"
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 35,
+      "question": 1,
+      "before_options": [
+        "ڕاگەیاندن",
+        "داخوازی",
+        "پرسیاری",
+        "سەرسوڕمان"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "ڕاگەیاندن",
+        "داخوازی",
+        "سەرسوڕمان",
+        "پرسیاری"
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 35,
+      "question": 2,
+      "before_options": [
+        "دوێنێ باران باری.",
+        "بڕۆ بۆ فێرگە.",
+        "ئایا گەیشتیت؟",
+        "کرماشان چەند خۆشە!"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "بڕۆ بۆ فێرگە.",
+        "دوێنێ باران باری.",
+        "ئایا گەیشتیت؟",
+        "کرماشان چەند خۆشە!"
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 35,
+      "question": 3,
+      "before_options": [
+        ".",
+        "؟",
+        "،",
+        ":"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        ".",
+        "؟",
+        "،",
+        ":"
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 35,
+      "question": 4,
+      "before_options": [
+        "داوا",
+        "پرسیار",
+        "سەرسوڕمان و ستایش",
+        "فەرمانی توند"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "داوا",
+        "پرسیار",
+        "سەرسوڕمان و ستایش",
+        "فەرمانی توند"
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 35,
+      "question": 5,
+      "before_options": [
+        "ئایا گەیشتیت؟",
+        "دەرگاکە دابخە.",
+        "ئۆف! چەند ماندووم!",
+        "دوێنێ باران باری."
+      ],
+      "before_answer": 3,
+      "after_options": [
+        "ئایا گەیشتیت؟",
+        "دەرگاکە دابخە.",
+        "ئۆف! چەند ماندووم!",
+        "دوێنێ باران باری."
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 36,
+      "question": 1,
+      "before_options": [
+        "بکەر",
+        "بەرکار",
+        "کردار",
+        "هاوەڵکاری کات"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "بەرکار",
+        "بکەر",
+        "کردار",
+        "هاوەڵکاری کات"
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 36,
+      "question": 2,
+      "before_options": [
+        "کردارە",
+        "بەرکارە",
+        "دیارخەری ناوە",
+        "بکەرە"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "کردارە",
+        "دیارخەری ناوە",
+        "بەرکارە",
+        "بکەرە"
+      ],
+      "after_answer": 1,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 36,
+      "question": 3,
+      "before_options": [
+        "هاوەڵکاری کات",
+        "بەرکار",
+        "بکەر",
+        "کردار"
+      ],
+      "before_answer": 0,
+      "after_options": [
+        "بەرکار",
+        "بکەر",
+        "هاوەڵکاری کات",
+        "کردار"
+      ],
+      "after_answer": 2,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 36,
+      "question": 4,
+      "before_options": [
+        "چونکە هیچ پێکهاتەی زیادە نییە",
+        "چونکە بەرکار، دیارخەر و هاوەڵکار ئەرکی جیاوازیان هەیە",
+        "چونکە ڕستە تەنها لە کردار پێک دێت",
+        "چونکە بکەر هەمیشە شاراوەیە"
+      ],
+      "before_answer": 1,
+      "after_options": [
+        "چونکە هیچ پێکهاتەی زیادە نییە",
+        "چونکە ڕستە تەنها لە کردار پێک دێت",
+        "چونکە بکەر هەمیشە شاراوەیە",
+        "چونکە بەرکار، دیارخەر و هاوەڵکار ئەرکی جیاوازیان هەیە"
+      ],
+      "after_answer": 3,
+      "correct_option_preserved": true
+    },
+    {
+      "lesson": 36,
+      "question": 5,
+      "before_options": [
+        "بکەر",
+        "کردار",
+        "هاوەڵکاری ئامراز/شێواز",
+        "بەرکار"
+      ],
+      "before_answer": 2,
+      "after_options": [
+        "هاوەڵکاری ئامراز/شێواز",
+        "بکەر",
+        "کردار",
+        "بەرکار"
+      ],
+      "after_answer": 0,
+      "correct_option_preserved": true
+    }
+  ]
+}
