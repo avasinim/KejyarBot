@@ -113,3 +113,11 @@ The reviewed answer key's rationales for those seven items were strengthened wit
 
 ## 16. Answer-key metadata count correction (2026-11-10)
 The final metadata note inside the reviewed answer-key file still stated 60 rows after Lesson 8's two questions had been added. This stale count was corrected to 62, with the per-lesson distribution stated explicitly (seven in Lesson 8, five in each of the other eleven lessons). The answer-key file was fetched again; the corrected count is present and the stale "60 rows" wording is absent. This corrects documentation metadata only; the structural count of 62 quiz/key rows was independently rechecked.
+
+
+## 17. Additional quiz distractor and stem-ambiguity pass (2026-11-10)
+A further review of the Course 2 quiz wording identified two places where the stem could unintentionally admit a second interpretation:
+- Lesson 1, Q4: `hesp` is a meaningful word and may also be a single syllable. The stem was narrowed to ask for its category as a meaningful unit in the linguistic hierarchy, so `bêje` is unambiguously targeted rather than `kît`.
+- Lesson 7, Q2–Q4: the suffix forms `-ê/-a/-ên` can be encountered in different grammatical environments. The stems now explicitly anchor them to the definite-determiner system taught in the lesson.
+
+The corresponding answer-key rationales were updated to explain the intended category/system and cite the relevant source section. No answer letters changed. The remaining reviewed stems were retained because their distractors test the intended contrast without an evident second correct response in the lesson's stated scope. This is an editorial clarity review of the staged quiz text; it does not certify every possible dialectal/contextual interpretation and does not replace runtime testing.
