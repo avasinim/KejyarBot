@@ -19,8 +19,14 @@ class Course4BetaReviewPolicyTests(unittest.TestCase):
             {"source_number": 46, "review_status": "owner_review_pending_expanded_draft"},
         ))
 
-    def test_lessons_outside_32_to_46_are_not_eligible(self):
-        for number in (31, 47, 0, -1):
+    def test_lesson_50_is_beta_progression_eligible(self):
+        self.assertTrue(is_beta_review_lesson(
+            "grammar", "grammar_50",
+            {"source_number": 50, "review_status": "owner_review_pending_expanded_draft"},
+        ))
+
+    def test_lessons_outside_32_to_50_are_not_eligible(self):
+        for number in (31, 51, 0, -1):
             with self.subTest(number=number):
                 self.assertFalse(is_beta_review_lesson(
                     "grammar", f"grammar_{number:02d}",
