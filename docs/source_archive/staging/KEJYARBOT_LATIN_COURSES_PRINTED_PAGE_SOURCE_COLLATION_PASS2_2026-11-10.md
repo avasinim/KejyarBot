@@ -230,3 +230,15 @@ The reviewed Course 1 Lessons 1–3 were also compared with the printed alphabet
 - the source's classification of Y within the consonant-letter inventory is retained.
 
 No Course 1 reviewed-draft edit was justified by this page-image pass. Keep the distinction between the source's letter inventory and any broader modern phonetic description explicit.
+
+
+## 15. Course 1, Lesson 10 — source boundary clarification
+
+Printed pp.31–32 were inspected. These pages discuss certain borrowed/neighboring-language sounds and their adaptation in Kurdish writing; they do not present the exact teaching sequence used in reviewed Lesson 10.
+
+Reviewed Lesson 10 is therefore best treated as an **editorial teaching synthesis**, not a verbatim Part I source lesson:
+- the distinction between heard speech sound and written sign is consistent with the source's alphabet principles on pp.13–15 and the explicit `tîp/deng` definitions in Part II, pp.37–38;
+- the word tables (`av, mal, jin, roj, şev`) and the exercises are teaching examples;
+- the claim that spelling does not encode every small phonetic variation should be taught as an explanatory generalization grounded in the source's discussion of alphabet representation, not attributed as a direct sentence from the page.
+
+No Course 1 Lesson 10 text change was made. Keep its provenance marked as editorial synthesis if the provenance section is expanded later.
