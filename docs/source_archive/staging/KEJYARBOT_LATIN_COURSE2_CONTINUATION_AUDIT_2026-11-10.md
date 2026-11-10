@@ -118,3 +118,10 @@ Reviewed all 60 questions in each course's 12-lesson reviewed draft, together wi
 
 ### Disposition
 No answer-key edits were justified by this pass. No question or distractor was silently deleted. The current keys remain editorial drafts and must not be treated as runtime-validated. Recommended next assessment step: a controlled distractor-strengthening proposal in separate append-only files, with before/after wording, rationale, and key-preservation checks; do not replace the original question sets.
+## 11. Separate distractor-strengthening proposal created
+Created an append-only proposal file (not applied to lesson or answer-key drafts):
+`docs/source_archive/staging/KEJYARBOT_LATIN_COURSES_DISTRACTOR_STRENGTHENING_PROPOSAL_2026-11-10.md`.
+
+The proposal gives targeted replacement distractors for six Course 1 items and six Course 2 items. It preserves each question's correct answer and uses adjacent linguistic concepts as distractors rather than unrelated categories. It includes pre-application checks for single-answer validity, answer-key alignment, and separation of source quotation from editorial explanation.
+
+Verified that the proposal file exists on `archive/preservation-audit-2026-11-10`. No reviewed lesson, master answer key, `main` branch, runtime, database, Botkeep bot, or Telegram content was changed in this step.
