@@ -64,3 +64,9 @@ This page-image pass verifies the Lesson 12 source content described above; it d
 Printed pp.71–88 were checked against page images, §§72–118. Three precision improvements were applied to the reviewed draft: (1) Lesson 10 now includes the §88 coordinated-phrase uses of `xwe`; (2) reciprocal `hev/êk` examples are scoped to two or three people as the source describes in §90, rather than the broader phrase "two or more"; (3) Lesson 11 now distinguishes non-declined `kî/kê/çi/çî` from noun-like declined `kîjik/kîjan`, and explicitly notes the quantity/place roles of `çend/kû`. Details are in `KEJYARBOT_LATIN_COURSE2_PRONOUNS_PAGE_IMAGE_REVIEW_2026-11-10.md`.
 
 The page-image pass confirms the pronoun-source details described in that note; it does not certify the remaining non-pronoun lesson pages, all quiz keys, or runtime behavior.
+
+
+## 9. Lesson 8 suffix page-image verification (2026-11-10)
+Printed pp.63–68, §§65–71, were checked against page images. A substantive omission was found in the reviewed draft: it had not included the separate pre-adjective forms `-î/-e/-en` from §68. The draft has now been expanded to distinguish (a) `-ek/-ek/-in` with no following modifier, (b) `-ekî/-eke/-ine` when a following complement/modifier is present, (c) `-î/-e/-en` before adjectives, and (d) oblique forms `-ekî/-ekê/-ina` from §70. An advanced note on agreement with the final complement (§69) was also added. Full evidence and examples: `KEJYARBOT_LATIN_COURSE2_LESSON8_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+This pass confirms Lesson 8's suffix distinctions only; it does not certify other lessons, all quiz keys, or runtime behavior.
