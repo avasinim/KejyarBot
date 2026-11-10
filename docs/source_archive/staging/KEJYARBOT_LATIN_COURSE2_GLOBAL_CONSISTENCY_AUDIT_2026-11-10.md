@@ -157,3 +157,11 @@ The plan identifies the currently hard-coded assumptions that must be migrated t
 Plan file: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_RUNTIME_MIGRATION_PLAN_2026-11-10.md`.
 
 No code, runtime source, active manifest, database, Botkeep, or Telegram state was changed. No tests were executed. This is an implementation plan, not an activation or deployment.
+
+
+## 21. Migration test-surface precision check (2026-11-10)
+A second, line-level inspection of the actual test files refined the migration checklist. The dedicated Course 2 answer-key test is stricter than the runtime parser: it currently accepts only option labels A/B/C and asserts exactly that set, while the runtime parser accepts contiguous labels through D. Its heading matcher recognizes only `Kuis — 5 pirs` or the legacy `10. Testa Kejyar`; its expected key set and row-count assertion are fixed at 12×5=60. The migration must update these independently and preserve per-question actual option-count checks.
+
+The aggregate assumptions are in `tests/test_latin_course_runtime.py`: total 120, five questions per lesson, and five questions in bot-loaded quiz data. These must become course-aware, with Course 1 unchanged and Course 2 Lesson 8 set to seven. By contrast, the inspected `tests/test_activated_courses.py` has no Latin five-question assertion, so it should not be changed merely on assumption. `tests/test_bot_quiz_callbacks.py` checks generic Latin quiz start length against `QUIZ_DATA`, but lacks the required dedicated seven-question Course 2 Lesson 8 select/submit completion path test.
+
+The migration plan was amended with these exact distinctions. No runtime, source, key, manifest, test code, Botkeep, or Telegram state was modified; tests remain unexecuted.
