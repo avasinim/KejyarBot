@@ -465,7 +465,7 @@ Ev rengdêr taybetmendiya navdêrê rave dikin.
 Mînak:
 - mirovê baş
 - hespê mezin
-- mehinên spehî
+- mehînên spehî
 
 Hin rengdêrên wesfîn dikarin dereceya taybetmendiyê nîşan bidin:
 - Asta bingehîn: mezin
@@ -537,7 +537,7 @@ Ev rengdêr têkiliya xwedîtiyê diyar dikin.
 
 Mînakên vê mijarê:
 - `hespê min`
-- `mehinên te`
+- `mehînên te`
 - `kitêba vî`
 - `qelemên wê`
 - `xaniyê me`
@@ -576,7 +576,7 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 - kîjan mirov
 - hin çiya
 - hespê min
-- mehinên te
+- mehînên te
 - kurên van
 - `tu mirov`
 - `gelek fêkî`
