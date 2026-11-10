@@ -241,7 +241,7 @@ Ev formên kurtkirî ji bo ku navdêr ji nû ve neyê dubarekirin tên bikaranî
 ### Xebat
 Veqetandeka rast hilbijêre:
 1. `hesp__ Soro`
-2. `mehin__ Cemşîd`
+2. `mehîn__ Cemşîd`
 3. `hesp__ Soro` (gelemjimar)
 
 ### Kuis — 5 pirs
@@ -279,8 +279,8 @@ Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tê
 Forma guncaw hilbijêre û sedemê bibêje:
 - `hesp__ hat`
 - `hesp__ delal hat`
-- `mehin__ hat`
-- `mehin__ delal hat`
+- `mehîn__ hat`
+- `mehîn__ delal hat`
 
 ### Kuis — 5 pirs
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
