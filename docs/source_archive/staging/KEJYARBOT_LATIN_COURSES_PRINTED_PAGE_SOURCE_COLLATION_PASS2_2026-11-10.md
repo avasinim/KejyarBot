@@ -107,3 +107,26 @@ The current Lesson 11 selected figures match the source images. The draft correc
 ## 6. Preservation boundary
 
 This pass changed exactly one spelling in the separate Course 2 reviewed draft: `Ferazende` → `Ferezende`. The correction was fetched and verified. No original source file, quiz, answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed. The archive note itself is append-only. No test suite or live runtime verification is claimed.
+
+
+## 7. Additional printed-page check — Course 2, Lesson 5
+
+Printed p.59, §57, shows the three source variants as:
+- `Soro kevirî tavêje.`
+- `Soro kêvir tavêje.`
+- `Soro kevir tavêje.`
+
+The reviewed draft had incorrectly split the second form as `Soro kê vir tavêje.`. The printed page image confirms that `kêvir` is one word. The separate reviewed draft was corrected to `Soro kêvir tavêje.`, then fetched again and verified.
+
+- Update commit: `c1ad3eb52eb79631bd25459d43fbd5f2dbc58f3b`
+- New Course 2 reviewed-draft SHA: `693a58e214e63d04035dbc6419ca3c367cc273c0`
+
+**Audit-history correction:** the earlier source-audit note's transcription of the second variant also contained the same space error. Treat the printed p.59 image as authoritative; the prior text transcription is superseded for this example.
+
+## 8. Updated preservation boundary
+
+This pass has made exactly two verified spelling/transcription corrections in the separate Course 2 reviewed draft:
+1. `Ferazende` → `Ferezende` (printed p.51).
+2. `Soro kê vir tavêje` → `Soro kêvir tavêje` (printed p.59).
+
+No original source, quiz, master answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed.
