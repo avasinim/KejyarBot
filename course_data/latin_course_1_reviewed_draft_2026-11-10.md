@@ -12,6 +12,8 @@
 ### 1. Elfabeya kurmancî ya latînî
 Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê hene: mezin û biçûk.
 
+**Têkiliya bi dersên paşerojê:** Di vê kursê de em pêşî herfên nivîskî nas dikin. Herf nîşana nivîskî ye, lê deng di axaftinê de tê bihîstin; cudahiya wan bi hûrgulî di Ders 10 de tê ravekirin.
+
 | Mezin | Biçûk | Mezin | Biçûk | Mezin | Biçûk |
 |---|---|---|---|---|---|
 | A | a | B | b | C | c |
