@@ -1475,3 +1475,5 @@ class Course4TerminologyNormalizationTests(unittest.TestCase):
             "ناوکردنی کردار (Nominalization) چییە؟",
         )
         self.assertEqual(self.lessons[30]["quiz"][0]["answer"], 2)
+
+# Course 4 terminology normalization regression coverage (Round 37).
