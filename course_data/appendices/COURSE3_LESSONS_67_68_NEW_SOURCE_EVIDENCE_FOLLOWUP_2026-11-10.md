@@ -41,3 +41,29 @@ A second Sorani morphology-generation paper by Aziz, Teimoor, Toq and Salih (202
 
 ## 5. Preservation
 This note only records new evidence and refines the interpretation of existing HOLD decisions. It does not edit the original 24 MCQs, the candidate dataset, the original practice patch, runtime files, Botkeep settings, Telegram, database, tokens, deployment or production services.
+
+
+## 6. Further exact-form and lexical search findings
+
+### Exact surface attestation of «نەدەنووسی»
+A published Sorani-script text by Nawa Mukerji, *ئولیس و ڕاڤەکانی* (Volume I, 2025), includes the phrase «پێشتر هەرگیز ... نەدەنووسی» in an editorial note. The searchable PDF passage is at the source's lines 892–900:
+https://nawa.net/wp-content/uploads/2025/03/01-Kurdish-Ulysses-With-Annotations-Vol-I-21-Mar-2025.pdf
+
+This is a direct surface-form attestation in Sorani prose. It improves the exact-form status of «نەدەنووسی» beyond a merely constructed example. The surrounding meaning is approximately “previously I never used to write [them]”; however, this editorial prose does not itself provide a formal morpheme segmentation or label the category as past progressive versus past habitual. Combine this attestation with Ahmadi's formal ne- + de-/e- past-progressive patterns, but keep the exact grammatical label and person/stem segmentation subject to specialist confirmation.
+
+**Disposition refinement:** «نەدەنووسی» is no longer unsupported as a surface form. It can be used in a contextual reading/attestation exercise with the cited sentence. Keep a scored morphology question on HOLD until the exact grammatical analysis, target variety and answer wording are checked.
+
+### «بەدخواز»: found in a Hewrami dictionary, not admissible as Sorani evidence
+The term appears in *فەرهەنگی کوردی هەورامان* (Ali Newzad, 2005), with a gloss and segmentation «بەد + خواز»: https://www.kurdi.info/ferheng/herman1.pdf
+The PDF itself identifies the work as a Hewrami Kurdish dictionary at its opening pages. Therefore this record must **not** be used to establish Sorani lexical status or productivity. It is evidence for a Hewrami dictionary entry only. A Sorani-specific source is still required before using «بەدخواز» as a scored Sorani example.
+
+### «چاونەشۆر»: occurrence as a personal epithet is not a lexical definition
+A text listing personal nicknames includes «برایم چاونەشۆر» among examples of personal descriptions/nicknames: https://mitania.net/?p=966
+This occurrence is not a dictionary headword or a clear definition of the common noun/adjective intended in the lesson. Keep the lesson's proposed lexical analysis on HOLD until a Sorani dictionary/corpus example in a full sentence is found.
+
+## 7. Evidence-source distinction
+- VejinLex entries for «ڕەشەبا» are Central Kurdish dictionary records; they confirm lexical existence/meaning, not internal segmentation.
+- The Nawa Mukerji PDF is an authentic Sorani-script prose attestation for «نەدەنووسی», not a formal grammar.
+- The Ahmadi manuscript is formal descriptive evidence for ne- and de-/e- patterns in Sorani past-progressive constructions, but is explicitly a work-in-progress manuscript.
+- The Hewrami dictionary entry for «بەدخواز» is excluded from Sorani claims.
+- The «چاونەشۆر» personal-name/nickname occurrence is insufficient to establish the lesson's lexical meaning.
