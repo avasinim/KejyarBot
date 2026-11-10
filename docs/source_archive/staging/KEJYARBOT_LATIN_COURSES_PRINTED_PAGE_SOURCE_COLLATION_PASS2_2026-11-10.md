@@ -196,3 +196,17 @@ No additional source-spelling correction was justified for Lessons 10–11 in th
 - **p.100, §152:** confirms `hezar` can take `-î` when used independently (`hezarî`) and behaves differently when combined with another numeral. The reviewed lesson's summary is source-aligned.
 
 No further spelling change was made to Lesson 12 in this subpass.
+
+
+## 13. Printed-page collation — Course 2, Lessons 1–3
+
+Printed pp.37–44 and pp.51–53 were inspected.
+
+- **p.37, §§1–5:** confirms the definition of grammar, the four language elements `tîp, kît, bêje, komek`, the definition of `tîp`, and the alphabet inventory. The reviewed Lesson 1's explicit note that `qiset` is formed through the sequence of `komek` and is not a fifth item in the four-part list is consistent with the source structure.
+- **p.38, §§6–9:** confirms the distinction between `dengdêr` and `dengdar`, the eight vowel letters, and the 23 consonant letters. No mismatch was found in the reviewed Lesson 1's basic inventory description.
+- **pp.43–44, §§13–16:** confirms the source's definitions of `kît`, `bêje` and `birên qisetê`. The reviewed lesson's explanations are editorially simplified but do not change the four-element architecture.
+- **p.51, §§34–37:** confirms the noun section and proper-name examples. The spelling `Ferezende` correction is recorded in §2.
+- **p.52, §§39–42:** confirms the two grammatical genders and the source's masculine/feminine example lists. In particular, `Herekol` appears in the feminine list. The reviewed Lesson 3 preserves the source classification and clearly labels it as grammatical gender.
+- **p.53, §§43–46:** confirms the distinction between natural/semantic gender and grammatical gender, including the source's `dar` example: when meaning a living tree/plant it is feminine; when meaning dry wood it is masculine. The reviewed Lesson 3's explanation is aligned with this source distinction.
+
+No additional spelling correction was justified for Lessons 1–3 in this pass.
