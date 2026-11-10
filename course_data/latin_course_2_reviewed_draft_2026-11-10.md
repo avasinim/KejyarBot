@@ -465,7 +465,7 @@ Di dawiya dersê de xwendekar dikare:
 - Jmarnav wek beşeke cuda fêm bike û nimûneyên bingehîn nas bike.
 
 ### 1. Rengdêr çi ye?
-Rengdêr peyveke rêzimanî ye ku taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike. Li gorî erkê xwe rengdêr dikarin di şeş koman de bên dabeşkirin.
+Rengdêr peyveke rêzimanî ye ku bi navdêrê re tê û taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya wê diyar dike. Li gorî erkê xwe, di vê rêbazê de rengdêr di şeş koman de tên dabeşkirin. Ji bo nasîna rengdêrê, binêre ka peyv bi navdêrekê re têkildar e û wê diyar dike an na.
 
 ### 2. Rengdêrên wesfîn
 Ev rengdêr taybetmendiya navdêrê rave dikin.
@@ -556,7 +556,7 @@ Mînakên vê mijarê:
 Rengdêrên xwemalîn her gav piştî navdêrê tên û veqetandek di navbera wan û navdêrê de dikeve. Veqetandek li gorî mêjer û zayenda navdêrê tê hilbijartin.
 
 ### 8. Jmarnav: beşeke cuda
-Jmarnav di rêzimanê de di beşeke cuda de tê vekolîn; ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn hejmarê navdêrekê diyar dike, lê jmarnav xwe wek beşeke rêzimanî ya serbixwe heye û dikare li gorî erkê xwe di hevokê de were bikaranîn.
+Jmarnav di vê rêbazê de wek beşeke rêzimanî ya cuda tê vekolîn; ji ber vê yekê divê em wê bi rengdêrên jmarîn re tevlihev nekin. Rengdêrê jmarîn bi navdêrê re tê û hejmar an rêza wê diyar dike (wek `sê mal` an `stûna çaran`). Jmarnav di vê tesnîfê de wek beşeke serbixwe tê pêşkêşkirin û dikare bêyî ku navdêrekê rasterast diyar bike, di hevokê de erkê hejmarî bigire. Ji ber vê yekê, tenê forma hejmarê bes nîne; divê têkiliya wê bi navdêrê û erkê wê di hevokê de were dîtin.
 
 Di beşa jmarnavan de rêziman du komên sereke cuda dike: **jmarnavên binavkirî** û **jmarnavên nebinavkirî**. Jmarnavên binavkirî jî çar cure ne: **bingehîn** (hejmarên rast), **rêzîn** (rêzê nîşan didin), **birewîn** (beşek ji hejmarê nîşan didin) û **komelîn**. Jmarnavên nebinavkirî wek `gelek`, `hindik`, `pir`, `bêtir` û `zehf` hejmarê bi awayekî ne-diyar nîşan didin.
 
@@ -574,7 +574,7 @@ Mînakên bingehîn:
 - nîv
 - hezar
 
-Di pêvajoya fêrbûnê de jmarnavên di hevokê de bibîne û erkê wan ji erkê rengdêra jmarîn cuda bike.
+Di pêvajoya fêrbûnê de jmarnavên di hevokê de bibîne û erkê wan ji erkê rengdêra jmarîn cuda bike: di `sê mal` de hejmar bi navdêrê re tê, lê jmarnav di vê rêبازەدا wek beşeke serbixwe tê pêşkêşkirin.
 
 ### 9. Xebata Kejyar
 Di van koman de cureya rengdêr an jmarnav diyar bike:
