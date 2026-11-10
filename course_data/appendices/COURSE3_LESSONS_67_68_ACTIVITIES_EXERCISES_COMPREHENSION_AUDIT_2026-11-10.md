@@ -111,8 +111,8 @@ Status: audit-only. No existing lesson, activity, exercise, comprehension item, 
 | Lesson | KEEP | REVISE | HOLD | OPEN TASK |
 |---|---:|---:|---:|---:|
 | 67 (30 items) | 9 | 9 | 9 | 3 |
-| 68 (32 items) | 11 | 8 | 12 | 1 |
-| **Total (62 items)** | **20** | **17** | **21** | **4** |
+| 68 (32 items) | 11 | 8 | 13 | 0 |
+| **Total (62 items)** | **20** | **17** | **22** | **3** |
 
 The OPEN TASK category is not a release approval: these items may remain as formative writing/research tasks with no single-answer key. HOLD items must not be scored or presented as settled grammatical facts. REVISE items retain their pedagogical goal but need the stated context or evidence before they are integrated into the candidate.
 
