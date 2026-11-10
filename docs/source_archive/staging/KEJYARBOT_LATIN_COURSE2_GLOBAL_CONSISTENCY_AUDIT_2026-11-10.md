@@ -137,3 +137,13 @@ Lesson 5 Q2–Q3 previously asked for the inflected direct-object forms without 
 
 ### Verification and limits
 The staged lesson draft and answer-key file were fetched again after edits. The 12 lesson quiz counts remain 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5 (62 total), and each lesson's key-row count matches its quiz count (62 total). This is a textual sequencing and editorial alignment check only; it does not establish runtime behavior, deployment status, or exhaustive acceptability across all dialects.
+
+
+## 19. Runtime and quiz-handler linkage audit (2026-11-10)
+Static inspection traced the repository code path from the Latin source loader through `bot.py`, the course/lesson manifest checks, Telegram callback registrations, the namespaced quiz-start callback, the Latin select-then-submit handlers, and answer randomization. The existing 60-question runtime path is structurally connected in source code.
+
+**Important promotion blocker:** the 62-question reviewed Course 2 draft and reviewed key remain staging-only. The active code path still reads `latin_course_2_source_aligned_lessons_01_12.md` and `latin_course_2_quiz_answer_key_draft.md`; `latin_course_runtime.py` and the current tests enforce five questions per lesson and 60 answer-key rows. Replacing the runtime pair with the 62-question reviewed draft without a coordinated loader/test migration would fail those checks or omit the reviewed changes. Lesson 8's seventh question is therefore not currently part of the code-defined runtime quiz source.
+
+The dedicated linkage report records the exact code path, callback names, safeguards, test files, and required coordinated integration steps: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RUNTIME_LINKAGE_AUDIT_2026-11-10.md`.
+
+The inspected runtime files, old runtime content/key, and relevant tests have identical blob SHAs on `main` and this archive branch. No runtime, active manifest, database, Botkeep, or Telegram changes were made. Tests/CI were inspected but not executed; no runtime or deployment success is claimed.
