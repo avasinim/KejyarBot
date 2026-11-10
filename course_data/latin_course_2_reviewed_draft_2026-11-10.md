@@ -89,7 +89,7 @@ Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem b
 
 Nimûneyên zayenda navdêran:
 - **Nêr:** `Argesh`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
-- **Mê:** `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
+- **Mê:** `Ferzane`, `jin`, `meh`, `dar`, `çêlek`, `mehîn`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Kejyar`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
 
 **Nimûneyên navên kesan ji bo rahênan:** `Argesh` navê kurekî ye; `Ferzane` û `Kejyar` navên keçan in. Ev sê nav nimûneyên zêdekirî yên vê dersê ne, ne nimûneyên rasterast ên lîsteya Celadet.
@@ -496,8 +496,8 @@ Mînakên vê mijarê:
 - `ew mirov` — mirovê dûr an yê ku berê hatiye gotin.
 - `vî hespî / van hespan` — formên nêr li gorî mêjer û tewangê.
 - `wî hespî / wan hespan` — formên nêr ên dûr.
-- `vê mehinê / van mehinan` — formên mê.
-- `wê mehinê / wan mehinan` — formên mê ên dûr.
+- `vê mehînê / van mehînan` — formên mê.
+- `wê mehînê / wan mehînan` — formên mê ên dûr.
 
 Dema rengdêrê îşarkî li pêş navdêrê tê, navdêr li gorî zayend, mêjer û tewangê dikare biguhere. Di komên navdêrên yek zayendê de, carinan tenê navdêra dawî bi rengdêrê îşarkî tê nîşandan.
 
