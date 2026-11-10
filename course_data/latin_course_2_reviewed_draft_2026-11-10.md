@@ -126,9 +126,9 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 | `Mîr hat.` | `Mîr hatin.` |
 
 **Têbînî:** Di vê nimûneyê de `mîr` navdêra giştî ye (bi wateya serok/mîr), ne serenav. `Mîr` bi pêşînîya hevokê bi herfa mezin hatiye nivîsîn; forma gelemjimar `mîr` e, ne ku navê kesekî taybet gelemjimar bibe.
-| `Ev mehin e.` | `Ev mehin in.` |
-| `Min mehin dît.` | `Min mehin dîtin.` |
-| `Ez mehinê dibînim.` | `Ez mehînan dibînim.` |
+| `Ev mehîn e.` | `Ev mehîn in.` |
+| `Min mehîn dît.` | `Min mehîn dîtin.` |
+| `Ez mehînekê dibînim.` | `Ez mehînan dibînim.` |
 | `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
 
 Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehînek/mehînin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
@@ -136,7 +136,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 **Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; ev yek jî bi taybetî tê nîşandan.
 
 ### Xebat
-1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehin e/Ev mehin in` de cuda bike.
+1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehîn e/Ev mehîn in` de cuda bike.
 2. Di `hespek/hespin` de pêveka nebinavkirî bibîne.
 3. Rave bike çima `hespan` di dersa tewangê de tê xwendin, ne wek pêveka gelemjimarê ya bingehîn.
 
