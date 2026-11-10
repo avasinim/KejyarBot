@@ -61,7 +61,7 @@ Nasîna navdêrên giştî û taybet.
 ### Naverok
 Navdêr bêjeyek e ku kesek, heywanek an tiştekî nîşan dide. Navdêr dikarin li gorî giştî an taybetbûna navê xwe di du koman de bên dabeşkirin:
 - **Hevenav:** navê giştî yê kes, heywan an tişt; mînak `hesp`, `xanî`, `çiya`, `dar`.
-- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferazende`.
+- **Serenav:** navê taybet yê kesek, cih an welatekî; mînakên `Sado`, `Bêlan`, `Herekol`, `Hevind`, `Sîpan`, `Xabûr`, `Hindistan`, `Hezro`, `Kerevan`, `Zîn`, `Dêrgul`, `Kurdistan`, `Agirî`, `Cemşîd` û `Ferezende`.
 
 Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an tiştekî taybet dide nasîn. Di nimûneyên de `Zîn` navê kesekê ye, lê `hesp` û `çiya` navên giştî ne.
 
