@@ -69,3 +69,17 @@ Primary source: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera ku
 - This pass checks the validity of the intended answer and obvious ambiguity. It does not certify every distractor as optimally diagnostic or validate all spelling variants against manuscript-level originals.
 
 Source lines used for this collation: §§1–4 (printed pp. 37–44), §§34–45 (printed pp. 51–53), §§59–60 (printed pp. 61–62), in the 2002 digital edition.
+## 8. Lesson 12 — source and quiz review
+Cross-check against Celadet's sections 119–123, 134–137, and 141–147 (Part II; printed pagination in the 2002 Nefel edition is to be retained when checked against that edition; the searchable Hawar compilation reproduces the original section numbering).
+
+- **Six adjective classes:** the lesson's six groups (wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî, xwemalîn) match the sixfold classification in §122. §123 also supports the broad position patterns: possessive adjectives follow the noun with a veqetandek, while demonstrative, interrogative and indefinite adjectives precede it; numeral adjectives have more than one position pattern.
+- **Cardinal and ordinal numeral adjectives:** §§134–136 distinguish cardinal numerals, which indicate number/quantity, from ordinal forms, which indicate order. The lesson's separation of cardinal examples (`sê mal`, `deh mirov`) from ordinal examples (`stûna çaran`, `a pêncan`, `ê heftan`) is source-aligned. The source also explicitly shows that the noun following a cardinal numeral changes form according to its syntactic role.
+- **Numeral pronouns:** §§141–147 treat `jmarnav` as a separate category, define it as expressing number/quantity and either accompanying a noun or replacing it, distinguish definite and indefinite numeral pronouns, and subdivide definite numeral pronouns into four groups. The lesson correctly keeps numeral adjectives separate from numeral pronouns and preserves the four-way subdivision.
+- **Lesson 12 quiz:** Q1–Q5 each have one clearly intended answer under the lesson's definitions. Q3 tests a numeral adjective (`sê` modifying `mal`); Q4 tests the independent grammatical category `jmarnav`; Q5 treats `nîv` as a numeral-pronoun example. No answer-key change is required on this pass.
+
+### Terminology and source-form items to verify before certification
+- The lesson uses `rêzîn` for ordinal numeral adjectives and also uses `rêzîn` in the four-way subdivision of definite numeral pronouns. The searchable Hawar compilation's OCR renders the latter as `razîn` (§143), while it renders the adjective label in §136 as `rezîn`. OCR is not sufficient evidence to normalize the 2002 Nefel text; retain both lesson forms provisionally and inspect the printed 2002 page image before certifying the spelling. Do not merge the two labels without that check.
+- The lesson's `xwemalîn` is a normalized form; §122 in the searchable compilation is OCR-rendered as `xwemanî`. This is recorded as an orthographic/source-form check, not yet as a confirmed error.
+- The expanded explanations of `nîv`, `yek`, and `hezar` are retained as lesson editorial material. This pass did not fully collate every detailed inflection example for those forms against the printed 2002 page images.
+
+Result: Lesson 12's grammatical architecture and five intended answers are source-consistent. Two source-spelling points (`rêzîn/razîn` and `xwemalîn/xwemanî`) and detailed numeral inflection examples remain open for image-level collation; therefore this is not a final source certification.
