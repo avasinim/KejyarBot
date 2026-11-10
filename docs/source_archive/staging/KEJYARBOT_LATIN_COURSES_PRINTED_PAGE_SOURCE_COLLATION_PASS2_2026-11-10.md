@@ -106,7 +106,7 @@ The current Lesson 11 selected figures match the source images. The draft correc
 
 ## 6. Preservation boundary
 
-This pass changed exactly one spelling in the separate Course 2 reviewed draft: `Ferazende` → `Ferezende`. The correction was fetched and verified. No original source file, quiz, answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed. The archive note itself is append-only. No test suite or live runtime verification is claimed.
+At the time this section was first written, one spelling correction had been made: `Ferazende` → `Ferezende`. Later append-only sections below record additional verified corrections. No original source file, quiz, answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed. The archive note itself is append-only. No test suite or live runtime verification is claimed.
 
 
 ## 7. Additional printed-page check — Course 2, Lesson 5
@@ -123,9 +123,9 @@ The reviewed draft had incorrectly split the second form as `Soro kê vir tavêj
 
 **Audit-history correction:** the earlier source-audit note's transcription of the second variant also contained the same space error. Treat the printed p.59 image as authoritative; the prior text transcription is superseded for this example.
 
-## 8. Updated preservation boundary
+## 8. Interim preservation boundary (chronological snapshot)
 
-This pass has made exactly two verified spelling/transcription corrections in the separate Course 2 reviewed draft:
+At this point in the chronological audit, two verified corrections had been made in the separate Course 2 reviewed draft:
 1. `Ferazende` → `Ferezende` (printed p.51).
 2. `Soro kê vir tavêje` → `Soro kêvir tavêje` (printed p.59).
 
@@ -242,3 +242,22 @@ Reviewed Lesson 10 is therefore best treated as an **editorial teaching synthesi
 - the claim that spelling does not encode every small phonetic variation should be taught as an explanatory generalization grounded in the source's discussion of alphabet representation, not attributed as a direct sentence from the page.
 
 No Course 1 Lesson 10 text change was made. Keep its provenance marked as editorial synthesis if the provenance section is expanded later.
+
+
+## 16. Final state of this collation pass
+
+The following exact changes are now present in the separate Course 2 reviewed draft, all fetched and verified after the relevant update:
+
+| Original reviewed-draft form | Verified source-aligned form | Printed page |
+|---|---|---:|
+| `Ferazende` | `Ferezende` | 51 |
+| `Soro kê vir tavêje` | `Soro kêvir tavêje` | 59 |
+| `mehinên Cemşîd` | `mehînên Cemşîd` | 63 |
+| `mehinên spehî` | `mehînên spehî` | 63 |
+| `mehinên te` | `mehînên te` | 63 |
+
+This is five corrected text occurrences across three distinct spelling/transcription rules. The distinct forms `vê mehinê` and `van mehinan` remain unchanged because the printed p.93 confirms those exact forms. Course 2 Lesson 4's separate `mehin` paradigm remains pending context-specific verification and has not been normalized.
+
+The latest Course 2 reviewed-draft SHA is `bf5e790f7c70169aa463e7bbdf8a289665784127`. The latest source-collation note SHA is recorded by the final fetch after this update.
+
+No Course 1 reviewed-draft changes were required by this printed-page pass. No original lesson file, quiz, answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot or deployment was changed. Repository tests and live runtime were not executed or certified.
