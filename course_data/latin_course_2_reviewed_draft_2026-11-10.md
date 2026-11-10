@@ -172,6 +172,10 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 **Navên nêr ên bi `e` an `a`:** vê mijarê di hin nimûneyan de sê formên tewandinê qebûl dike. Bo nimûne, `Soro kevirî tavêje`, `Soro kêvir tavêje` û `Soro kevir tavêje` wek şêweyên cuda yên rast têne nîşandan. Di gelemjimarê de jî hin dengên `e/a` dikarin biçin û `-an` were zêdekirin: `maseyan → masan`, `çiyayan → çiyan` (li gorî vê nimûneyê).
 
+**Têbînîya girîng ji §56:** Di lêkerên gerguhêz ên rabirdû de, li gorî Celadet, kirar tê tewandin û bireser dikare bê tewang bimîne. Ji ber vê yekê rêbaza giştî ya «bireser tê tewandin» divê bê şert neyê sepandin; dem, cureya lêkerê û erkê navdêrê divê bi hev re bên dîtin. Nimûneyên `Zînê Sîsin dît`, `Hespan ceh xwar`, `Çêlekan giha xwarî bû` û `Zarokan pencere şikand` vê cudahiyê nîşan didin.
+
+**Têbînîya pêşketî ji §58:** Dema çend navdêr bi hev re tên, tewandina wan tenê li gorî mêjerê wan nayê birêvebirin; zayend û mêjera navdêra dawî dikare li ser şêweya tewandina komê bandor bike. Ev rêzik bi taybetî di komên navdêran de girîng e û divê ji nimûneyên yek-navdêrî cuda were fêrbûn.
+
 **Têbînî:** `hespan` û `mehînan` şêweyên tewandî ne; `hespin` û `mehînin` di nimûneyên nebinavkirî de formên gelemjimar in. Ev du cot divê neyên tevlihevkirin.
 
 ### Xebat
