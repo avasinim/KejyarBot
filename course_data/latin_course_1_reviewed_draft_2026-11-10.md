@@ -926,6 +926,9 @@ Di dawiya dersê de xwendekar dikare:
 - Wan di nav koma dengdarên elfabeya kurdî de bi cih bike.
 - Mînakên her sê herfan rast bixwîne û binivîse.
 
+### Nimûneyên rasterast ên çavkaniyê
+Di pirtûka Celadet de ji bo X ev nimûne hatine dayîn: `xanî`, `xwarin`, `xar`; ji bo Y: `yar`, `yek`, `yarî`; ji bo Z: `zor`, `zabit`, `nafiz`. Ev nimûne bingehê çavkaniyê ne; nimûneyên din ên tabloyên jêrîn ji bo rahênan hatine zêdekirin.
+
 ### 1. Herfa X
 X yek ji 23 herfên dengdar ên elfabeya kurdî ye. Di van peyvan de tê dîtin:
 
@@ -1010,7 +1013,7 @@ D) Nîşana xalê ye
 X, Y û Z di dabeşkirina çavkaniyê de herfên dengdar in. Nasîna wan di peyvan de alîkariya xwendin û nivîsandina rast dike.
 
 ### Provenance — Course 1, Lesson 9
-Revised against Celadet Alî Bedir-Xan, Part I, pp. 11–12.
+Revised against Celadet Alî Bedir-Xan, Part I, pp. 11–12. Source examples are explicitly separated above from supplementary teaching examples. The form `yazde` is retained as a supplementary attested variant, not attributed to the source's Y example list.
 **🤖 کەژیار — KejyarBot@**
 ## Ders 10: Têkiliya Deng û Herfê
 
