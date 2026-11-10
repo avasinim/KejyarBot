@@ -42,7 +42,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 7 | 4 | B | gelemjara her du zayendan | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
 | 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
 | 8 | 1 | B | tiştekî hê nenaskirî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
-| 8 | 2 | C | bê bireser | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 2 | C | bê hêmaneke raveker a li pey navdêrê | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 3 | A | -in | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 4 | B | -ekî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 5 | C | na, erkên wan cuda ne | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
@@ -54,7 +54,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 10 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 2 | C | wê | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 3 | A | hev, êk | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
-| 10 | 4 | B | pronavên bireser | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 4 | B | bireser | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 5 | B | du an zêdetir kes bi hev re | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 11 | 1 | B | ev/ew | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 2 | C | yê/ya/yên | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
