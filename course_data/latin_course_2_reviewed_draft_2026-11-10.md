@@ -288,7 +288,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 
 ### Kuis — 5 pirs
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
-2. `hespek hat` di çi rewşê de ye? A) bi rengdêr B) gelemjimar C) bê bireser
+2. `hespek hat` di çi rewşê de ye? A) bi rengdêr B) gelemjimar C) bê hêmaneke raveker a li pey navdêrê
 3. Forma gelemjimar a nebinavkirî ya bê bireser çi ye? A) -in B) -ên C) -a
 4. Dema bireser li pey were, forma nêr yekjimar çi ye? A) -ek B) -ekî C) -ên
 5. `-ên` û `-ine` ma yek in? A) erê B) her tim C) na, erkên wan cuda ne
