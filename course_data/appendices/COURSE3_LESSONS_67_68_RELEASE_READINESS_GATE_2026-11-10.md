@@ -54,3 +54,10 @@ This readiness file is documentation-only. It does not alter lesson data, the ca
 - V3 quiz proposal created with 19 questions (9 + 10). Its Q10 tests the source-attested sequence ne- before de- in the intransitive past-progressive example; it does not present that example as a direct equivalent of «نەدەنووسی».
 - V3 answer key check: 19 questions / 19 answers / 19 key entries, all matching; answer positions A=4, B=8, C=7.
 - V3 remains proposal-only. Human Sorani specialist review and Botkeep host-safety clearance remain blocked release gates.
+
+
+## 7. Exact-form evidence refinement
+- «نەدەنووسی» is now surface-attested in Nawa Mukerji's 2025 Sorani-script prose; the formal ne- + de-/e- past-progressive pattern is independently described by Ahmadi (2021), Rules 7.9–7.10.
+- This removes the claim that the form is wholly unattested, but does not settle its exact person, verb-stem segmentation, habitual/progressive interpretation or target subdialect. Keep scored morphology on HOLD pending specialist review.
+- «بەدخواز» was located only in a Hewrami dictionary record, so it is not Sorani evidence. «چاونەشۆر» was found as a personal epithet, not a verified common-noun headword; both remain HOLD.
+- The V3 question bank uses the cited formal Sorani example and avoids claiming it is an exact equivalent of «نەدەنووسی».
