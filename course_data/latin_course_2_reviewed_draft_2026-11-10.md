@@ -30,7 +30,7 @@ Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de h
 - **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
 - **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
 
-**Têbînîya girêdana bi Korsa 1:** Di Korsa 1 de yekeyên alfabeyê bi peyva `herf` têne binavkirin؛ di vê kursê de di rêza çar hêmanan de peyva `tîp` tê bikaranîn. Em termên her kursê li gorî چوارچێوە و چavkaniya wê diparêzin؛ lê di her du kursan de divê nîşana nivîskî ji dengê axaftinê were cudakirin. `Tîp` dengê xwe nîne؛ deng bi wê di nivîsê de tê nîşandan.
+**Têbînîya girêdana bi Korsa 1:** Di Korsa 1 de yekeyên alfabeyê bi peyva `herf` têne binavkirin; di vê kursê de di rêza çar hêmanan de peyva `tîp` tê bikaranîn. Em termên her kursê li gorî çarçove û çavkaniya wê diparêzin; lê di her du kursan de divê nîşana nivîskî ji dengê axaftinê were cudakirin. `Tîp` dengê xwe nîne; deng bi wê di nivîsê de tê nîşandan.
 
 **Qiset** encama peyhevketina komekan e; ew li ser komekê tê û di lîsteya çar hêmanên ziman de wek hêmaneke pêncemîn nayê hejmartin.
 
