@@ -165,3 +165,9 @@ A second, line-level inspection of the actual test files refined the migration c
 The aggregate assumptions are in `tests/test_latin_course_runtime.py`: total 120, five questions per lesson, and five questions in bot-loaded quiz data. These must become course-aware, with Course 1 unchanged and Course 2 Lesson 8 set to seven. By contrast, the inspected `tests/test_activated_courses.py` has no Latin five-question assertion, so it should not be changed merely on assumption. `tests/test_bot_quiz_callbacks.py` checks generic Latin quiz start length against `QUIZ_DATA`, but lacks the required dedicated seven-question Course 2 Lesson 8 select/submit completion path test.
 
 The migration plan was amended with these exact distinctions. No runtime, source, key, manifest, test code, Botkeep, or Telegram state was modified; tests remain unexecuted.
+
+
+## 22. Course 2 62-question answer-key structural verification (2026-11-10)
+A read-only structural comparison of the reviewed Course 2 quiz draft and reviewed answer-key draft parsed all 12 lessons and all 62 questions, including the seven-question Lesson 8 and Lesson 12's legacy `10. Testa Kejyar` heading. It found 62 answer-key rows, with zero missing/orphan/duplicate rows, zero absent option-letter references, zero normalized answer-text mismatches, zero question-numbering gaps/repeats, zero invalid option counts (each question had 3 or 4 options), and zero duplicate option texts within a question. The option letter and stored answer text matched the corresponding option in all 62 cases.
+
+This is structural agreement only; it is not independent proof that every keyed answer is linguistically correct or that distractors are ideal. Runtime/tests/CI were not executed. Report: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_ANSWER_KEY_STRUCTURAL_VERIFICATION_2026-11-10.md`. No runtime or active system was changed.
