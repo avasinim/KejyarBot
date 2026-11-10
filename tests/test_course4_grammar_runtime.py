@@ -92,7 +92,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_10": "scientific_review_complete_with_qualified_notes",
             "grammar_11": "scientific_review_complete_with_qualified_notes",
             "grammar_12": "scientific_review_complete_with_qualified_notes",
-            "grammar_13": "internal_cross_lesson_synthesis_no_external_source_mapping",
+            "grammar_13": "scientific_review_complete_with_qualified_notes",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -339,13 +339,13 @@ if __name__ == "__main__":
 
 
 class Course4GrammarLesson13Tests(unittest.TestCase):
-    def test_lesson13_is_internal_cross_lesson_synthesis_without_external_source_mapping(self):
+    def test_lesson13_has_internal_source_map_and_qualified_scientific_review(self):
         source = json.loads(
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_13")
         self.assertEqual(lesson["number"], 13)
-        self.assertEqual(lesson["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
+        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
         self.assertEqual(len(lesson["quiz"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
@@ -366,7 +366,8 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("هیچ کتێب، PDF، لاپەڕە یان سەرچاوەی دەرەکی", content)
         appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
         appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
-        self.assertIn("هیچ mappingی لاپەڕەیی", appendix_lesson13)
+        self.assertIn("source mapی خاڵ بە خاڵ", appendix_lesson13)
+        self.assertIn("Source mapی ناوخۆیی", appendix_lesson13)
         self.assertNotIn("٦٢–٨٤", appendix_lesson13)
         self.assertNotIn("٨٥–٨٧", appendix_lesson13)
         self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
@@ -399,12 +400,12 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
-    def test_lesson_13_internal_synthesis_is_beta_readable_but_not_quiz_eligible(self):
+    def test_lesson13_is_scientifically_reviewed_and_quiz_eligible(self):
         lesson_id = "grammar_13"
-        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
-        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+        self.assertFalse(bot.lesson_is_beta_review(lesson_id))
+        self.assertTrue(bot.lesson_quiz_is_available(lesson_id))
         content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
-        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
+        self.assertNotIn("وەشانی تاقیکاریی (Beta)", content)
 
     async def test_inflight_quiz_for_pending_lesson_is_cleared_without_rewards(self):
         lesson_id = "grammar_50"
@@ -641,9 +642,7 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
                     "owner_review_pending_expanded_draft"
                     if lesson_number >= 32
                     else (
-                        "internal_cross_lesson_synthesis_no_external_source_mapping"
-                        if lesson["id"] == "grammar_13"
-                        else "scientific_review_complete_with_qualified_notes"
+                        "scientific_review_complete_with_qualified_notes"
                     )
                 )
                 self.assertEqual(lesson["review_status"], expected_status)
