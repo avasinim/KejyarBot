@@ -920,10 +920,10 @@ class Course4CliticAndPastPerfectTerminologyTests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["number"]: item for item in source["lessons"]}
         self.assertIn("Clitic = لکاو", lessons[11]["appendix"][0])
-        self.assertIn("Enclitic = پاشبەستە (لکاوی دواوە)", lessons[11]["appendix"][0])
-        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[12]["appendix"]))
+        self.assertIn("Enclitic = پاشنووس (لکاوی دواوە)", lessons[11]["appendix"][0])
+        self.assertIn("Enclitic = پاشنووس", " ".join(lessons[12]["appendix"]))
         self.assertIn("Clitic = لکاو", " ".join(lessons[13]["appendix"]))
-        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[13]["appendix"]))
+        self.assertIn("Enclitic = پاشنووس", " ".join(lessons[13]["appendix"]))
         self.assertIn("پاشبەستە لە پاشگر جیاوازە", " ".join(lessons[13]["key_points"]))
 
     def test_boo_is_not_automatically_classified_as_a_suffix(self):
