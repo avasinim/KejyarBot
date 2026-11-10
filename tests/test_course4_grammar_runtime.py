@@ -539,7 +539,7 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_final_beta_lesson_does_not_claim_official_course_completion(self):
         query = SimpleNamespace(
-            data="finish_grammar_46",
+            data="finish_grammar_50",
             from_user=SimpleNamespace(id=12345),
             answer=AsyncMock(),
             message=SimpleNamespace(reply_text=AsyncMock()),
