@@ -81,6 +81,6 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 
 - Ev guhertoya pêداچوونەوەکراو ji mifteya pêşnûsê hatiye derxistin; belgeya pêşnûsê bêguhertin hatiye parastin.
 - Ders 5, Pirs 3: `mehinê` bo `mehînê` sererast bû, da ku bi nivîsa dawî ya pêşnûsa dersê re yekgirtû be.
-- Hemû 60 rêzên mifteyê bi 12 ders re; Ders 8 niha 7 pirs û 11 dersên din 5 pirs hene hatine parastin; bersiva rast bi nivîsa bersivê hatiye tomarkirin, ne tenê bi jimara vebijarkê.
+- Hemû 62 rêzên mifteyê bi 12 ders re hatine parastin: Ders 8 heft pirs û her yek ji 11 dersên din pênc pirs hene. Bersiva rast bi nivîsa bersivê hatiye tomarkirin, ne tenê bi jimara vebijarkê.
 - Kontrola vebijarkên şaş û yek-bersivîbûnê ji kontrola ساختاری جیاوازە؛ ئەم تۆمارە بە تەنیا جێگرەوەی تاقیکردنەوەی runtime نییە.
 - ئەم فایلە تەنیا پێداچوونەوەی پاشکۆییە؛ هیچ گۆڕانکارییەک لە main، runtime، active manifest، DB، Botkeep یان Telegram نەکراوە.
