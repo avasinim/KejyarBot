@@ -30,7 +30,7 @@ Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîs
 
 ### 2. Dengdêr û dengdar
 - **Dengdêr:** A, E, Ê, I, Î, O, U, Û.
-- **Herfên din:** B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, W, X, Y, Z.
+- **Herfên dengdar:** B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, W, X, Y, Z.
 
 Di vê alfabeyê de 8 dengdêr û 23 herfên dengdar hene.
 
