@@ -156,3 +156,15 @@ The separate Course 2 reviewed draft now has three verified corrections from pri
 3. `mehinên Cemşîd` → `mehînên Cemşîd` (p.63).
 
 Each correction was fetched and verified after update. All other uncertain `mehin/mehîn` occurrences remain unchanged pending a more exact source-context comparison.
+
+
+## 11. Consistent plural spelling in Course 2, Lesson 12
+
+Printed p.63 gives the plural source form `mehînên Cemşîd`. Applying the same plural stem spelling to the reviewed draft's parallel plural noun phrases, the two Lesson 12 examples `mehinên spehî` and `mehinên te` were normalized to `mehînên spehî` and `mehînên te`. The third occurrence in Lesson 7 was already corrected in §9.
+
+This correction is limited to the plural form `mehînên`. The separate forms `mehinê` / `mehinan` in demonstrative examples have not been globally changed: printed p.93 itself shows `vê mehinê / van mehinan`, so those forms must remain distinct.
+
+- Update commit: `dd16456a3750bb9b96b56724be4424a136aa360c`
+- New Course 2 reviewed-draft SHA: `bf5e790f7c70169aa463e7bbdf8a289665784127`
+
+The pending note in §9 remains: Course 2 Lesson 4's standalone `mehin` paradigm still needs its own context-specific collation; no blanket normalization was applied to it.
