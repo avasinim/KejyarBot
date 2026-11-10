@@ -50,7 +50,7 @@ Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de h
 1. Gramêr çi ye? A) Tenê rêz û awayê derxistina dengên ziman B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) Tenê pêkhate û avakirina peyvan
 2. Li gorî rêzimanê, çend hêmanên bingehîn ên ziman hene? A) 3 B) 4 C) 6
 3. Tîp çi ye? A) Dengê ku bi dev tê derxistin B) nîşana nivîskî C) Yekeya ku wateya xwe heye
-4. `hesp` di çi kategoriyê de ye? A) kît B) bêje C) komek
+4. `hesp` wek yekeya watedar di rêzbendiya ziman de çi ye? A) kît B) bêje C) komek
 5. Qiset çawa pêk tê? A) Bi peyhevketina tîpan tenê B) bi peyhevketina koman C) Bi dubarekirina kîteyan
 
 ---
@@ -254,9 +254,9 @@ Veqetandeka rast hilbijêre:
 
 ### Kuis — 5 pirs
 1. Çend veqetandekên binavkirî hene? A) 2 B) 3 C) 5
-2. `-ê` bi gelemperî ji bo çi ye? A) mê yekjimar B) gelemjimar C) nêr yekjimar
-3. `-a` di nimûneyên rêzimanê de ji bo çi ye? A) mê yekjimar B) nêr yekjimar C) gelemjimar
-4. `-ên` ji bo çi ye? A) tenê mê yekjimar B) gelemjara her du zayendan C) tenê nêr yekjimar
+2. Di pergala veqetandekên binavkirî de `-ê` bi gelemperî ji bo çi ye? A) mê yekjimar B) gelemjimar C) nêr yekjimar
+3. Di pergala veqetandekên binavkirî de `-a` di nimûneyên rêzimanê de ji bo çi ye? A) mê yekjimar B) nêr yekjimar C) gelemjimar
+4. Di pergala veqetandekên binavkirî de `-ên` ji bo çi ye? A) tenê mê yekjimar B) gelemjara her du zayendan C) tenê nêr yekjimar
 5. `hespên Soro` çi ye? A) veqetandeka nebinavkirî B) lêker C) veqetandeka binavkirî ya gelemjimar
 
 ---
