@@ -47,7 +47,7 @@
 | 9 | 2 | A | Dengdar |
 | 9 | 3 | C | zozan |
 | 9 | 4 | B | xort |
-| 9 | 5 | A | Y di koma 23 herfên dengdar de tê hesibandin |
+| 9 | 5 | A | Dengdar e |
 | 10 | 1 | B | Bi guh |
 | 10 | 2 | B | Nîşana nivîskî |
 | 10 | 3 | B | Sê |
