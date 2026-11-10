@@ -195,7 +195,7 @@ These can remain in open analysis or teacher notes, not auto-scored MCQs.
 
 ## Answer key
 - Lesson 67: 01-B, 02-C, 03-A, 04-C, 05-B, 06-A, 07-B, 08-C, 09-A.
-- Lesson 68: 01-C, 02-A, 03-B, 04-C, 05-C, 06-B, 07-C, 08-B, 09-C, 10-B.
+- Lesson 68: 01-C, 02-A, 03-B, 04-B, 05-C, 06-B, 07-C, 08-B, 09-C, 10-B.
 
 ## Source references
 - Geoffrey Haig (2018), “The Iranian languages of northern Iraq,” chapter 3.3, *The Languages and Linguistics of Western Asia: An Areal Perspective*, DOI: https://doi.org/10.1515/9783110421682-009. Full PDF: https://www.uni-bamberg.de/fileadmin/aspra/06_Team/Publications_and_CV/haig_2018_ch.3.3_iranian_languages_northern_iraq.pdf
