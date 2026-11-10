@@ -185,8 +185,8 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 ### Kuis — 5 pirs
 1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
-2. Di nimûneya dersê de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
-3. Forma tewandî ya `mehîn` di nimûneya yekjimar de çi ye? A) mehînê B) mehîna C) mehînan
+2. Di nimûneya bireserê ya yekjimar nêr de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
+3. Di nimûneya bireserê ya yekjimar mê de forma tewandî ya `mehîn` çi ye? A) mehînê B) mehîna C) mehînan
 4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
 5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
 
@@ -305,7 +305,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
 2. `hespek hat` di çi rewşê de ye? A) bi rengdêr B) gelemjimar C) bê hêmaneke raveker a li pey navdêrê
 3. Forma gelemjimar a nebinavkirî ya bê bireser çi ye? A) -in B) -ên C) -a
-4. Dema bireser li pey were, forma nêr yekjimar çi ye? A) -ek B) -ekî C) -ên
+4. Dema pêvekeke raveker li pey navdêr were, forma nêr yekjimar çi ye? A) -ek B) -ekî C) -ên
 5. `-ên` û `-ine` ma yek in? A) erê B) her tim C) na, erkên wan cuda ne
 6. Şêweyên pêşîya rengdêrê yên bingehîn kîjan in? A) `-î/-e/-en` B) `-ek/-ek/-in` C) `-ên/-a/-ê`
 7. Dema veqetandek di rewşa bireserê de tewandî dibe, kîjan kom şêwe nîşan dide? A) `-ek/-ek/-in` B) `-ekî/-ekê/-ina` C) `-ên/-a/-ê`
@@ -342,10 +342,10 @@ Di vê kursê de `hon` wek pronavê kesê duyem gelemjar tê bikaranîn.
 Di van hevokan de forma kirarî bibîne: `Min got`, `Te xwar`, `Wê dît`, `Wan ew xwar`.
 
 ### Kuis — 5 pirs
-1. Di tabloya rêzimanê de forma kirarî ya `ez` çi ye? A) te B) min C) me
-2. Forma kirarî ya `tu` çi ye? A) wî B) we C) te
-3. Forma kirarî ya `ew` nêr di nimûneyên rabirdû de çi ye? A) wî B) wê C) wan
-4. Forma kirarî ya `em` çi ye? A) we B) me C) min
+1. Di rabirdûya lêkerên gerguhêz de, forma kirarî ya `ez` çi ye? A) te B) min C) me
+2. Di rabirdûya lêkerên gerguhêz de, forma kirarî ya `tu` çi ye? A) wî B) we C) te
+3. Di rabirdûya lêkerên gerguhêz de, forma kirarî ya `ew` nêr çi ye? A) wî B) wê C) wan
+4. Di rabirdûya lêkerên gerguhêz de, forma kirarî ya `em` çi ye? A) we B) me C) min
 5. Pronavê kesê duyem gelemjar kîjan e? A) hon B) min C) wan
 
 ---
