@@ -174,13 +174,13 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 ### Xebat
 1. Di `Hesp hat` û `Ez hespî dibînim` de erkên navdêrê cuda bike.
-2. Guherîna `mehîn → mehînê` û `mehin → mehînan` bi zayend û mêjer ve girê bide.
+2. Guherîna `mehîn → mehînê` û `mehîn → mehînan` bi zayend û mêjer ve girê bide.
 3. Ji bo çima `gund` di hin nimûneyan de bê tewang dimîne, sedemê ji rêbazê dengên `e/a` re girê bide.
 
 ### Kuis — 5 pirs
 1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
 2. Di nimûneya dersê de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
-3. Forma tewandî ya `mehin` di nimûneya yekjimar de çi ye? A) mehinê B) mehina C) mehinan
+3. Forma tewandî ya `mehîn` di nimûneya yekjimar de çi ye? A) mehînê B) mehîna C) mehînan
 4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
 5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
 
