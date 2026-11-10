@@ -7,7 +7,7 @@
 
 ## Ders 1: Elfabeya Kurmancî ya Latînî
 
-**Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdêr ji 23 herfên din cuda bike.
+**Armanca dersê:** Xwendekar dikare 31 herfên alfabeyê nas bike, herfên mezin û biçûk ji hev cuda bike, û 8 dengdêr ji 23 herfên dengdar cuda bike.
 
 ### 1. Elfabeya kurmancî ya latînî
 Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîsînê hene: mezin û biçûk.
@@ -32,7 +32,7 @@ Elfabeya kurmancî ya latînî ji 31 herfan pêk tê. Her herf du awayên nivîs
 - **Dengdêr:** A, E, Ê, I, Î, O, U, Û.
 - **Herfên din:** B, C, Ç, D, F, G, H, J, K, L, M, N, P, Q, R, S, Ş, T, V, W, X, Y, Z.
 
-Di vê alfabeyê de 8 dengdêr û 23 herfên din hene.
+Di vê alfabeyê de 8 dengdêr û 23 herfên dengdar hene.
 
 ### 3. Mînakên dengdêran
 | Dengdêr | Mînak |
@@ -56,7 +56,7 @@ Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 ### 5. Xebata Kejyar
 1. Dengdêran di van peyvan de bibîne: av — ez — êvar — dil — îro — roj — gur — dûr.
 2. Herfên mezin bi biçûk binivîse: A, Ê, Î, Ş, Û, W.
-3. Ji alfabeyê pênc dengdêr û pênc herfên din hilbijêre û bi wan peyvan çêke.
+3. Ji alfabeyê pênc dengdêr û pênc herfên dengdar hilbijêre û bi wan peyvan çêke.
 
 ### 6. Testa Kejyar
 1. Elfabeya kurmancî ya latînî ji çend herfan pêk tê?
@@ -90,7 +90,7 @@ C) ç
 D) z
 
 ### Xulasa
-Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdêr û 23 herfên din. Herfên mezin û biçûk du formên heman herf in.
+Elfabeya kurmancî ya latînî 31 herf heye: 8 dengdêr û 23 herfên dengdar. Herfên mezin û biçûk du formên heman herf in.
 
 **🤖 کەژیار — KejyarBot@**
 
