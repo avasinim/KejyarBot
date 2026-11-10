@@ -58,3 +58,9 @@ This follow-up remains a targeted consistency check, not a complete page-image p
 Printed pp.89–100 were checked visually against the scan, §§119–152. The six adjective classes and the main demonstrative, numeral-adjective, interrogative, indefinite, and possessive paradigms in the reviewed draft are aligned with the source. Two teaching-precision refinements were applied to the reviewed draft: (1) the source-supported descriptive-adjective comparative pattern is `-tir`; `herî mezin` is now explicitly labelled an editorial/modern supplement rather than a direct source example; (2) the source's special `nîv` examples include both `nîvî` and `nîvekî`, and the draft now includes the latter. Source-page verification details are in `KEJYARBOT_LATIN_COURSE2_LESSON12_PAGE_IMAGE_REVIEW_2026-11-10.md`.
 
 This page-image pass verifies the Lesson 12 source content described above; it does not certify all quiz keys or complete page-image proofreading of every earlier lesson.
+
+
+## 8. Pronoun lessons page-image verification (2026-11-10)
+Printed pp.71–88 were checked against page images, §§72–118. Three precision improvements were applied to the reviewed draft: (1) Lesson 10 now includes the §88 coordinated-phrase uses of `xwe`; (2) reciprocal `hev/êk` examples are scoped to two or three people as the source describes in §90, rather than the broader phrase "two or more"; (3) Lesson 11 now distinguishes non-declined `kî/kê/çi/çî` from noun-like declined `kîjik/kîjan`, and explicitly notes the quantity/place roles of `çend/kû`. Details are in `KEJYARBOT_LATIN_COURSE2_PRONOUNS_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+The page-image pass confirms the pronoun-source details described in that note; it does not certify the remaining non-pronoun lesson pages, all quiz keys, or runtime behavior.
