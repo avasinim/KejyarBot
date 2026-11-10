@@ -1131,7 +1131,7 @@ Di beşa xişteya hejmarên herfên kurdî de, Celadet Alî Bedir-Xan xişteyeke
 | b | 650 |
 | k | 650 |
 
-Ev hejmar jimareyên xişteya çavkaniyê ne، ne rêjeyên sedî û ne jî rêjeyên bêguhertin ên hemû nivîsên kurdî ne.
+Ev hejmar jimareyên xişteya çavkaniyê ne, ne rêjeyên sedî û ne jî rêjeyên bêguhertin ên hemû nivîsên kurdî ne.
 
 ### 2. Herf di destpêka peyvan de
 Çavkaniyê xişteyeke din jî dide ku tenê destpêka peyvan dihesibîne. Mînak:
