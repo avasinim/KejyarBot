@@ -196,7 +196,7 @@ Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dik
 - Pêşî navdêrê: `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`.
 - Paşî navdêrê: `hespê beza`, `mehîna spehî`, `xencera min`.
 
-**Têkiliya bi Ders 11:** Di van نموونانەدا `ev/ew` وەک پێشگر/بەشێک لە گروپی ناو بەکاردێن؛ کاتێک بە تەنیا لە شوێنی ناو دێن، وەک پڕۆناڤی ئیشاری لە Ders 11 دەخوێندرێن.
+**Têkiliya bi Ders 11:** Di van nimûneyan de `ev/ew` wek bireserê navdêrê tên bikaranîn; dema ku bi tenê li şûna navdêrê tên, wek pronavên îşarkî di Ders 11 de tên fêrbûn.
 
 Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xulamê min`. Di vê komê de her hêman dikare hêmaneke din jî rave bike.
 
@@ -229,7 +229,7 @@ Sê veqetandekên binavkirî hene:
 
 Veqetandek piştî navdêrê tê û navdêrê bi awayekî binavkirî dide nasîn. Ev pêveka binavkirinê divê ji tewangê cuda were fêrbûn; her du dikarin di formên hevokê de hev re xuya bibin, lê erkên wan yek nînin.
 
-**Têبینیی پەیوەندی:** Veqetandeka binavkirî ناسنامە/دیاریکراوی ناو نیشان دەدات؛ tewangیش گۆڕانی فۆڕمی ناو بەهۆی ڕۆڵی ڕێزمانییەوەیە. ئەم دوو پڕۆسەیە جیاوازن، هەرچەند لە هەندێک فۆڕمدا پێکەوە دەردەکەون.
+**Têbîniya girêdanê:** Veqetandeka binavkirî nasname û diyarbûna navdêrê nîşan dide; tewang jî guherîna forma navdêrê li gorî erkê rêzimanî ye. Ev her du pêvajoyên cuda ne, herçend di hin formên de bi hev re xuya dibin.
 
 **Dema navdêr bi rengdêr re tê:** rêziman nîşan dide ku veqetandeka binavkirî dikare li pêşiya rengdêrê jî were û navdêrê ku rengdêr rave dike bi awayekî nas nîşan bide:
 - `Ez ê gewir dixwazim.` — `ê` navdêra nêr a veşartî nîşan dide.
@@ -261,7 +261,7 @@ Cudahîkirina navdêrên nebinavkirî û formên wan bi rêya veqetandekê.
 ### Naverok
 Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet nehatiye nasandin. Di vê mijarê de du rewşên cuda hene:
 
-**Têkiliya bi Ders 7:** ئەم وانەیە فۆڕمە نەناسراوەکان دەخاتەڕوو؛ لە Ders 7 دا فۆڕمە ناسراوەکانمان بینی. جیاوازیی بنەڕەتی لە نێوان ناسراوی و نەناسراوی ناوە، نەک لە نێوان زایەند و ژمارە.
+**Têkiliya bi Ders 7:** Ev ders formên nebinavkirî pêşkêş dike; di Ders 7 de formên binavkirî hatin fêrbûn. Cudahîya bingehîn di navbera binavkirî û nebinavkirîbûna navdêrê de ye, ne di navbera zayend û mêjerê de.
 
 **1. Piştî navdêrê, bê bireser:**
 - `-ek` ji bo nêr yekjimar: `hespek hat`.
