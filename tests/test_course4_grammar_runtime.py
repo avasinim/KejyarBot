@@ -1427,3 +1427,51 @@ class Course4Mainline26LessonPreservationTests(unittest.TestCase):
             self.assertEqual(lesson["review_status"], "owner_review_pending_expanded_draft")
             self.assertEqual(lesson["quiz"], [])
 
+
+
+class Course4TerminologyNormalizationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.lessons = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )["lessons"]
+
+    def lesson_text_without_quiz(self, number):
+        lesson = self.lessons[number - 1]
+        return json.dumps({key: value for key, value in lesson.items() if key != "quiz"}, ensure_ascii=False)
+
+    def test_noun_and_verb_phrase_terms_are_consistent(self):
+        for number in (31, 32, 33, 34):
+            text = self.lesson_text_without_quiz(number)
+            self.assertNotIn("گروپی ناوی", text, f"lesson {number}")
+            self.assertIn("گرێی ناوی", text, f"lesson {number}")
+        self.assertNotIn("گروپی کرداری", self.lesson_text_without_quiz(32))
+        self.assertIn("گرێی کرداری", self.lesson_text_without_quiz(32))
+
+    def test_subject_and_subordinate_clause_terms_are_consistent(self):
+        for number in (32, 33, 34, 36, 46):
+            self.assertNotIn("نیهاد", self.lesson_text_without_quiz(number), f"lesson {number}")
+        for number in (37, 38, 46, 50):
+            text = self.lesson_text_without_quiz(number)
+            self.assertNotIn("بەرڕستە", text, f"lesson {number}")
+            self.assertIn("ژێرەڕستە", text, f"lesson {number}")
+
+    def test_inflection_affix_and_enclitic_glossary_terms_are_consistent(self):
+        for number in (29, 30):
+            text = self.lesson_text_without_quiz(number)
+            self.assertNotIn("لەچۆنایەتی", text, f"lesson {number}")
+            self.assertIn("گەردان", text, f"lesson {number}")
+        for number in (13, 26):
+            self.assertNotIn("ئەفیکس", self.lesson_text_without_quiz(number), f"lesson {number}")
+            self.assertIn("گیرەک", self.lesson_text_without_quiz(number), f"lesson {number}")
+        for number in (11, 12):
+            self.assertIn("Enclitic = پاشنووس", self.lesson_text_without_quiz(number))
+
+    def test_quiz_source_bank_and_lesson_count_remain_unchanged(self):
+        self.assertEqual(len(self.lessons), 50)
+        self.assertEqual(sum(len(lesson["quiz"]) for lesson in self.lessons), 248)
+        self.assertEqual(
+            self.lessons[30]["quiz"][0]["q"],
+            "ناوکردنی کردار (Nominalization) چییە؟",
+        )
+        self.assertEqual(self.lessons[30]["quiz"][0]["answer"], 2)
