@@ -9,7 +9,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 1 | 1 | B | tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 2 | B | 4 | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 3 | B | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
-| 1 | 4 | B | bêje | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
+| 1 | 4 | B | bêje | Di rêzbendiya ziman de, `hesp` yekeya watedar e (bêje); ew dikare ji yek kîtê/kitê pêk bê, lê pirs li ser yekeya watedar e. |
 | 1 | 5 | B | bi peyhevketina koman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 2 | 1 | B | kes/heywan/tişt | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 2 | C | hevenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
@@ -37,9 +37,9 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 6 | 4 | B | pêşî an paşî navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 5 | C | bireserê navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 7 | 1 | B | 3 | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
-| 7 | 2 | C | nêr yekjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
-| 7 | 3 | A | mê yekjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
-| 7 | 4 | B | gelemjara her du zayendan | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
+| 7 | 2 | C | nêr yekjimar | Di pergala veqetandekên binavkirî de, `-ê` forma nêr yekjimar e (§61–64). |
+| 7 | 3 | A | mê yekjimar | Di pergala veqetandekên binavkirî de, `-a` forma mê yekjimar e (§61–64). |
+| 7 | 4 | B | gelemjara her du zayendan | Di pergala veqetandekên binavkirî de, `-ên` forma gelemjara her du zayendan e (§61–64). |
 | 7 | 5 | C | veqetandeka binavkirî ya gelemjimar | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
 | 8 | 1 | B | tiştekî hê nenaskirî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 2 | C | bê hêmaneke raveker a li pey navdêrê | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
