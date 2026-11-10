@@ -192,6 +192,8 @@ Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dik
 - Pêşî navdêrê: `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`.
 - Paşî navdêrê: `hespê beza`, `mehîna spehî`, `xencera min`.
 
+**Têkiliya bi Ders 11:** Di van نموونانەدا `ev/ew` وەک پێشگر/بەشێک لە گروپی ناو بەکاردێن؛ کاتێک بە تەنیا لە شوێنی ناو دێن، وەک پڕۆناڤی ئیشاری لە Ders 11 دەخوێندرێن.
+
 Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xulamê min`. Di vê komê de her hêman dikare hêmaneke din jî rave bike.
 
 **Bingeh:** Bireserê navdêrê ne heman tişt e bi pronavên îşarkî `ev/ew`; ew du mijarên cuda ne.
@@ -223,6 +225,8 @@ Sê veqetandekên binavkirî hene:
 
 Veqetandek piştî navdêrê tê û navdêrê bi awayekî binavkirî dide nasîn. Ev pêveka binavkirinê divê ji tewangê cuda were fêrbûn; her du dikarin di formên hevokê de hev re xuya bibin, lê erkên wan yek nînin.
 
+**Têبینیی پەیوەندی:** Veqetandeka binavkirî ناسنامە/دیاریکراوی ناو نیشان دەدات؛ tewangیش گۆڕانی فۆڕمی ناو بەهۆی ڕۆڵی ڕێزمانییەوەیە. ئەم دوو پڕۆسەیە جیاوازن، هەرچەند لە هەندێک فۆڕمدا پێکەوە دەردەکەون.
+
 **Dema navdêr bi rengdêr re tê:** rêziman nîşan dide ku veqetandeka binavkirî dikare li pêşiya rengdêrê jî were û navdêrê ku rengdêr rave dike bi awayekî nas nîşan bide:
 - `Ez ê gewir dixwazim.` — `ê` navdêra nêr a veşartî nîşan dide.
 - `Ez a sor dixwazim.` — `a` navdêra mê a veşartî nîşan dide.
@@ -252,6 +256,8 @@ Cudahîkirina navdêrên nebinavkirî û formên wan bi rêya veqetandekê.
 
 ### Naverok
 Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet nehatiye nasandin. Di vê mijarê de du rewşên cuda hene:
+
+**Têkiliya bi Ders 7:** ئەم وانەیە فۆڕمە نەناسراوەکان دەخاتەڕوو؛ لە Ders 7 دا فۆڕمە ناسراوەکانمان بینی. جیاوازیی بنەڕەتی لە نێوان ناسراوی و نەناسراوی ناوە، نەک لە نێوان زایەند و ژمارە.
 
 **1. Piştî navdêrê, bê bireser:**
 - `-ek` ji bo nêr yekjimar: `hespek hat`.
