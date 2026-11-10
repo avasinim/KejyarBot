@@ -1,0 +1,54 @@
+{
+  "patch_type": "append_only",
+  "course_id": "grammar",
+  "lesson_id": "grammar_04",
+  "lesson_number": 4,
+  "lesson_title": "وانەی ٤: ناو لە ڕووی ژمارە و ڕەگەزەوە",
+  "operation": "append_only_additions",
+  "preserve_existing": true,
+  "source_lesson_unchanged": true,
+  "source_baseline": {
+    "repository": "avasinim/KejyarBot",
+    "branch": "main",
+    "file": "course_data/grammar_course4_lessons.json",
+    "lesson_id": "grammar_04",
+    "review_status": "scientific_review_complete_with_qualified_notes",
+    "original_inventory": {
+      "key_points": 9,
+      "structured_examples": 6,
+      "structured_activities": 3,
+      "structured_exercises": 5,
+      "structured_comprehension": 10,
+      "structured_quiz": 8,
+      "structured_appendix": 6
+    },
+    "book_addendum": "KEJYAR_COURSE4_LESSON04_BOOK_ADDENDUM.md",
+    "book_reference": "سەعید کەرەمی، وشەناسیی زمانی کوردی، بەشی 5-1-1 ژمارە، لاپەڕە چاپییەکانی 129–131؛ بەشی 5-1-2 ناسراوەتی.",
+    "note": "پاشکۆی کتێب پێشنیارکراو بوو و لە runtimeدا جێبەجێ نەکرابوو. ئەم پەچە تەنها ئەو وردەکارییانە زیاد دەکات کە لە پاشکۆی بەڵگەداردا هاتوون و لە 6 خاڵی پاشکۆی runtimeدا بە ڕوونی تۆمار نەکراون."
+  },
+  "source_preservation": {
+    "replace_existing_fields": false,
+    "delete_existing_items": false,
+    "preserve_existing_structured_items": true,
+    "preserve_original_lesson_text": true,
+    "append_only": true
+  },
+  "additions": {
+    "appendix_additions": [
+      "نیشانەی ـات و ـەها: سەعید کەرەمی لە بەشی ژمارەدا نموونەی کوردستان-ات، عێراق-ات، هەورامان-ات، ساڵ-ەها و دەرد-ەها دەهێنێتەوە. لە شیکردنەوەی ئەو کتێبەدا ئەمانە نیشانەی وەرگیراو و سنووردارن؛ نابێت وەک پاشگری بەرهەمهێنەری گشتی بۆ هەموو ناوەکانی سۆرانی وانە بکرێن. هەر وشەیەک دەبێت بە جیا و بە پێی بەکارهێنان و فەرهەنگ بپشکنرێت.",
+      "شیکردنەوەی =گەل: کتێب نیشانەی =گەل بە نووسەک (clitic) دەناسێنێت، نە بە گیرەکی ئاسایی و بێ‌مەرجی کۆ؛ بەکارهێنانەکەی لە شێوەزارەکاندا یەکسان نییە. بۆیە نابێت لە وانەی سۆرانیی کەژیاردا بە یاسایەکی گشتی و هاوتای ـان یان ـەکان پێشکەش بکرێت.",
+      "بەکارهێنانی ـان بە پێی بنەما و پێکهاتە دەگۆڕێت: کتێب نموونەی ناوی مرۆڤ وەک پیاوان، کچان، کوڕان، منداڵان و گەنجان، هەروەها نموونەی ناوی نامرۆڤ وەک ئەسپان، پێنووسان و پانتۆڵان دەهێنێتەوە؛ لەگەڵ فۆڕمی ناسراوی ئەسپەکان، پێنووسەکان و پانتۆڵەکان و فۆڕمی ئاماژەیی ئەم ئەسپانە. ئەم نموونانە نیشان دەدەن کە ـان نابێت بە شێوەیەکی میکانیکی بۆ هەموو بنەماکان یەکسان دابنرێت؛ جۆری ناو، نیشانەی ناسراوی و دیارخەری ئاماژە دەبێت لەگەڵ یەکدا شیکرێنەوە."
+    ]
+  },
+  "preservation_note": "هەموو 9 خاڵی سەرەکی، 6 نموونە، 3 چالاکی، 5 ڕاهێنان، 10 پرسیاری تێگەیشتن، 8 پرسیاری کویز و 6 خاڵی پاشکۆی پێشوو وەک خۆیان دەمێننەوە. تەنها 3 خاڵی پاشکۆی نوێ زیاد دەکرێن؛ هیچ خاڵێک ناسڕدرێتەوە و هیچ ناوەڕۆکێک جێگۆڕکێی ناکرێت.",
+  "technical_and_design_notes": {
+    "presentation_layers": [
+      "وانەی سەرەکی",
+      "پاشکۆی بەڵگەی کتێب"
+    ],
+    "terminology": "ژمارەی ڕێزمانی، وشەی ژمارەیی، نیشانەی کۆ، نیشانەی ناسراوەتی، فۆڕمی ئاماژەی کۆ، نووسەک (clitic) بە جیاوازی بەکاربهێنە.",
+    "quality_control": "ـات و ـەها و =گەل وەک نیشانەی سنووردار/شێوەزاری بناسێنە؛ لەگەڵ ـان و ـەکان یەکسانیان مەکە.",
+    "deployment": "ئەرشیفی پەچی append-only؛ هیچ گۆڕانکارییەک لە runtime، Botkeep، Railway یان Telegram ئەنجام نەدرێت."
+  },
+  "status": "archival_patch_prepared_not_applied_to_runtime"
+}
