@@ -47,8 +47,8 @@ Policy: append-only audit. No lesson source, original 66 lessons, candidate less
 ## Summary
 - KEEP: 11 items.
 - REVISE: 3 items.
-- HOLD: 3 items.
-- REPLACE/DE-DUPLICATE: 7 items.
+- HOLD: 4 items.
+- REPLACE/DE-DUPLICATE: 6 items.
 
 The existing 24-item quiz and its answer keys remain untouched. This matrix is a review record, not an authorization to overwrite the candidate. Items marked HOLD must not be treated as validated facts. Before publication, each replacement must have one defensible answer, a complete contextual sentence, and an explanation that matches Central Kurdish/Sorani evidence rather than evidence from Kurmanji or another variety.
 
