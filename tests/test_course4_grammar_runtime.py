@@ -270,7 +270,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         expected = {
             "arami_orthography_foundations": 21,
             "daily_conversation": 42,
-            "unified_orthography": 66,
+            "unified_orthography": 68,
             "kurmanji_latin_orthography": 12,
             "kurmanji_latin_grammar": 12,
         }
