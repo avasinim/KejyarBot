@@ -190,7 +190,7 @@ Nasîna hêmanên ku navdêrekê rave dikin an sînorê wî teng dikin.
 ### Naverok
 Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dike an jê re agahiyek din zêde dike. Ew dikare pêşî an paşî navdêrê were.
 - Pêşî navdêrê: `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`.
-- Paşî navdêrê: `hespê beza`, `mehinên spehî`, `xencera min`.
+- Paşî navdêrê: `hespê beza`, `mehîna spehî`, `xencera min`.
 
 Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xulamê min`. Di vê komê de her hêman dikare hêmaneke din jî rave bike.
 
