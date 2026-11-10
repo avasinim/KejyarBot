@@ -202,6 +202,8 @@ Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xu
 
 **Bingeh:** Bireserê navdêrê ne heman tişt e bi pronavên îşarkî `ev/ew`; ew du mijarên cuda ne.
 
+**Cudahîya termînolojî:** Di vê dersê de `bireserê navdêrê` tê wateya hêman an komeka ku navdêrê rave dike an taybet dike (wek `hespê beza`). Ev bi `bireser`-a hevokê re ne yek e: di Ders 10 de `pronavên bireser` behsa pronavên ku di hevokê de erkê bەرکار/rasterast digirin dike. Ji ber vê yekê, peyva `bireser` bi tenê bes nîne; pêkhate û erkê wê di hevokê de divê were dîtin.
+
 **Têbînîya rêzimanî:** Di komê `ev keçik` de `ev` pêşnavdêr/bireser e û navdêrê `keçik` diyar dike. Dema `ev` bi serê xwe li şûna navdêrekê tê (mînak `Ev hat.`), wek pronavê îşarkî dixebite. Ji ber vê yekê divê peyvê tenê li gorî forma xwe neyê tesnîfkirin; erkê wê di nav kom û hevokê de girîng e.
 
 ### Xebat
@@ -273,7 +275,7 @@ Veqetandekên nebinavkirî navdêrekê nîşan didin ku hê bi awayekî taybet n
 - `-eke` ji bo mê yekjimar: `mehîneke delal hat`.
 - `-ine` ji bo gelemjar: `mehînine delal hatin`.
 
-Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an bireser li pey navdêrê were tên. Di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tên; formên `-ekî/-eke/-ine` dema rengdêr an hêmaneke din a raveker li pey navdêrê were tên. Di rewşên tewandî de jî formên din, wek `-ekî`, `-ekê`, `-ina`, tên nîşandan; ji ber vê yekê divê form bi erkê navdêrê di hevokê de were hilbijartin. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
