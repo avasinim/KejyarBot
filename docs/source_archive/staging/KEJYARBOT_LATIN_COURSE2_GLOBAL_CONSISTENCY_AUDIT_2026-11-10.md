@@ -100,3 +100,12 @@ This completes the page-image source pass for Lessons 1–12 at the level of the
 The page-image-driven Lesson 8 update added two quiz items (Q6 on pre-adjective forms `-î/-e/-en`, Q7 on oblique forms `-ekî/-ekê/-ina`). The reviewed answer key had still contained only the original five Lesson 8 entries, so Q6 and Q7 were appended with answers A and B respectively and source-based explanations. The Lesson 10 reciprocal-pronoun quiz wording and answer-key text were also narrowed from "two or more" to "two or three" to match §90. The Lesson 8 quiz heading was updated to seven questions. The reviewed answer key now contains 62 rows (Lesson 8 has seven questions; the other 11 lessons have five each). The reviewed draft and reviewed answer key were each fetched after their updates and their blob SHAs verified.
 
 This is an editorial synchronization of reviewed drafts only. It is not a runtime answer-key integration or runtime test; the original answer-key draft remains preserved.
+
+
+## 15. Quiz stem clarity and answer-key rationale pass (2026-11-10)
+A wording-only quality pass was made across the 62 questions in Lessons 1–12. Seven stems were narrowed to make the intended grammatical environment explicit:
+- Lesson 5, Q2–Q3 now specify masculine/feminine singular direct-object examples, avoiding the impression that a noun has one context-free oblique form.
+- Lesson 8, Q4 now says a following descriptive/modifying element, not the ambiguous word `bireser`, to distinguish noun modifiers from clause objects.
+- Lesson 9, Q1–Q4 now specify the transitive past construction when asking for agent forms `min/te/wî/me`, consistent with the table and source §86.
+
+The reviewed answer key's rationales for those seven items were strengthened with the relevant grammatical context and source section. No correct answer letter was changed in this pass. The quiz and answer-key files were fetched after updates and verified. A fresh structural count confirms all 12 lessons have matching question/key row counts: Lessons 1–7 and 9–12 have five each; Lesson 8 has seven; total 62 questions and 62 key rows. This is a structural and wording check, not a complete independent validation of every distractor, nor a runtime test.
