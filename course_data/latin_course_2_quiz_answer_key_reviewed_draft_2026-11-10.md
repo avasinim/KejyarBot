@@ -46,6 +46,8 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 8 | 3 | A | -in | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 4 | B | -ekî | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
 | 8 | 5 | C | na, erkên wan cuda ne | Li gorî pirs û vebijarkên testa Ders 8, ev vebijarka rast e. |
+| 8 | 6 | A | `-î/-e/-en` | Li gorî §68, ev şêweyên veqetandeka nebinavkirî ne ku pêşîya rengdêrê tên. |
+| 8 | 7 | B | `-ekî/-ekê/-ina` | Li gorî §70, ev şêweyên tewandî ne ku di rewşa bireserê de tên bikaranîn. |
 | 9 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
 | 9 | 2 | C | te | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
 | 9 | 3 | A | wî | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
@@ -55,7 +57,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 10 | 2 | C | wê | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 3 | A | hev, êk | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 4 | B | bireser | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
-| 10 | 5 | B | du an zêdetir kes bi hev re | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 5 | B | du an sê kes bi hev re | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 11 | 1 | B | ev/ew | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 2 | C | yê/ya/yên | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 3 | A | ko | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
@@ -69,7 +71,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 
 ## Têbînî berî runtime
 
-1. Her 60 ڕیزی مافتەی وەڵام لەگەڵ پێنج پرسیاری هەر 12 وانەکە بەراورد کرا؛ ژمارەی هەڵبژاردە و دەقی وەڵامی ڕاست لە کویزی ناو فایلەکەوە وەرگیرا.
+1. Her 62 ڕیزی مافتەی وەڵام لەگەڵ پێنج پرسیاری هەر 12 وانەکە بەراورد کرا؛ ژمارەی هەڵبژاردە و دەقی وەڵامی ڕاست لە کویزی ناو فایلەکەوە وەرگیرا.
 2. Ders 6, "Bireserê Navdêrê", bi beşa 59–60 ya çavkaniya Celadet re li hev e: bireser dikare pêşî an paşî navdêr were; nimûneyên "ev keçik", "hespê beza" û "xencera min" di çavkaniyê de hene.
 3. Ders 11 niha cudahiya her du karanînên "ko" di kuizê de jî diparêze: pirs 3 "ko" wek pronavê girêkî, pirs 4 "ko" wek gihanek di "Min got ko ez nayêm". Ev cudahî li beşên 99–100 yên çavkaniyê hatiye ravekirin.
 4. Ev mifte hîn pêşnûse ye; bi handlerê botê re nehatiye girêdan û testa runtime nehatiye kirin. Du nivîsên Ders 12 yên cuda jî divê di runtime de tenê bi guhertoya dawî bên bikaranîn.
@@ -79,6 +81,6 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 
 - Ev guhertoya pêداچوونەوەکراو ji mifteya pêşnûsê hatiye derxistin; belgeya pêşnûsê bêguhertin hatiye parastin.
 - Ders 5, Pirs 3: `mehinê` bo `mehînê` sererast bû, da ku bi nivîsa dawî ya pêşnûsa dersê re yekgirtû be.
-- Hemû 60 rêzên mifteyê bi 12 ders û 5 pirsên her dersê re hatine parastin; bersiva rast bi nivîsa bersivê hatiye tomarkirin, ne tenê bi jimara vebijarkê.
+- Hemû 60 rêzên mifteyê bi 12 ders re; Ders 8 niha 7 pirs û 11 dersên din 5 pirs hene hatine parastin; bersiva rast bi nivîsa bersivê hatiye tomarkirin, ne tenê bi jimara vebijarkê.
 - Kontrola vebijarkên şaş û yek-bersivîbûnê ji kontrola ساختاری جیاوازە؛ ئەم تۆمارە بە تەنیا جێگرەوەی تاقیکردنەوەی runtime نییە.
 - ئەم فایلە تەنیا پێداچوونەوەی پاشکۆییە؛ هیچ گۆڕانکارییەک لە main، runtime، active manifest، DB، Botkeep یان Telegram نەکراوە.
