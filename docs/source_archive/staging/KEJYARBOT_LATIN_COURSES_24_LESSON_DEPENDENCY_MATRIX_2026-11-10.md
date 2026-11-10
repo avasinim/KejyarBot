@@ -103,3 +103,19 @@ Any new example must be source-checked or explicitly labelled as an editorial pr
 ## 6. Next step
 
 Apply only the five low-risk bridge edits above to separate reviewed drafts, one file at a time. For each file: fetch the exact archive-branch version, preserve all existing text, append/insert only the approved explanatory bridge, update the archive branch, fetch again, and verify the change. Do not deploy or activate.
+
+
+## 7. Low-risk bridge edits applied to reviewed drafts
+
+After the dependency matrix was written, four explanatory bridges were inserted into the separate reviewed drafts and verified by fetching both files again:
+
+- Course 1 Lesson 1: a preview distinguishing the written letter from the heard speech sound, pointing to Lesson 10 for the full explanation.
+- Course 2 Lesson 6: a cross-reference clarifying that `ev/ew` are shown in this lesson as noun modifiers and their standalone demonstrative-pronoun use is covered in Lesson 11.
+- Course 2 Lesson 7: an explicit reminder distinguishing definiteness marking from noun inflection (tewang).
+- Course 2 Lesson 8: a transition contrasting indefinite forms with the definite forms taught in Lesson 7.
+
+Verification:
+- Course 1 reviewed draft update commit: `e2ea186cf0d035f09e32d5523510d04f8c0cbcf5`; fetched content SHA: `188d8411bf90f4e1f045f7b23d300ec12c3e267b`.
+- Course 2 reviewed draft update commit: `e828db55c1a2654220e7d3e270cca78f4e626529`; fetched content SHA: `77db962d942858929d3367385bfcb66d7c714499`.
+
+No original course file, quiz, answer key, main branch, runtime, database, Botkeep, Telegram, manifest, or deployment was changed. These insertions are editorial teaching bridges, not quotations from Celadet's source. The matrix's source-status cautions remain in force.
