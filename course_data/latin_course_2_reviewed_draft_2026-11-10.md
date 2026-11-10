@@ -221,7 +221,7 @@ Nasîna veqetandekên ku navdêrê diyar û nasnamekirî dikin.
 Sê veqetandekên binavkirî hene:
 - `-ê`: bo navdêrên nêr ên yekjimar — `hespê Soro`, `deriyê malê`.
 - `-a`: bo navdêrên mê ên yekjimar — `mehîna Cemşîd`, `ava tenik`.
-- `-ên`: bo gelemjara her du zayendan — `hespên Soro`, `mehinên Cemşîd`.
+- `-ên`: bo gelemjara her du zayendan — `hespên Soro`, `mehînên Cemşîd`.
 
 Veqetandek piştî navdêrê tê û navdêrê bi awayekî binavkirî dide nasîn. Ev pêveka binavkirinê divê ji tewangê cuda were fêrbûn; her du dikarin di formên hevokê de hev re xuya bibin, lê erkên wan yek nînin.
 
