@@ -70,3 +70,9 @@ The page-image pass confirms the pronoun-source details described in that note; 
 Printed pp.63–68, §§65–71, were checked against page images. A substantive omission was found in the reviewed draft: it had not included the separate pre-adjective forms `-î/-e/-en` from §68. The draft has now been expanded to distinguish (a) `-ek/-ek/-in` with no following modifier, (b) `-ekî/-eke/-ine` when a following complement/modifier is present, (c) `-î/-e/-en` before adjectives, and (d) oblique forms `-ekî/-ekê/-ina` from §70. An advanced note on agreement with the final complement (§69) was also added. Full evidence and examples: `KEJYARBOT_LATIN_COURSE2_LESSON8_PAGE_IMAGE_REVIEW_2026-11-10.md`.
 
 This pass confirms Lesson 8's suffix distinctions only; it does not certify other lessons, all quiz keys, or runtime behavior.
+
+
+## 10. Lessons 6–7 page-image verification (2026-11-10)
+Printed pp.61–63, §§59–64, were checked directly against page images. The existing reviewed draft's central explanations are aligned: Lesson 6 covers pre- and post-nominal modifiers, nested modifier groups, and the distinction between a noun modifier and a clause's direct object; Lesson 7 covers the definite forms `ê/a/ên` and their separate use before adjectives when the noun is understood/omitted. No substantive contradiction was found in the core explanations for these two lessons. Evidence: `KEJYARBOT_LATIN_COURSE2_LESSONS6_7_PAGE_IMAGE_REVIEW_2026-11-10.md`.
+
+This pass does not certify all quiz keys, other lesson pages, or runtime behavior.
