@@ -41,14 +41,14 @@ def visible_course_lessons(course, lesson_data):
 
 
 def is_beta_review_lesson(course_id, lesson_id, lesson_record):
-    """Allow only Course 4 lessons 32–46 to advance beta progress without approval."""
+    """Allow only Course 4 lessons 32–50 to advance beta progress without approval."""
     if course_id != "grammar" or not isinstance(lesson_record, dict):
         return False
     number = lesson_record.get("source_number")
     return (
         isinstance(number, int)
         and not isinstance(number, bool)
-        and 32 <= number <= 46
+        and 32 <= number <= 50
         and lesson_id == f"grammar_{number:02d}"
         and lesson_record.get("review_status") == "owner_review_pending_expanded_draft"
     )
