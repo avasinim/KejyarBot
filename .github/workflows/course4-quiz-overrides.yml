@@ -7,6 +7,7 @@ on:
       - feature/course4-quiz-overrides-lesson31-2026-11-10
       - review/course4-terminology-normalization-round2-2026-11-10
       - review/course4-lesson13-approval-round1-2026-11-10
+      - review/course4-root-stem-crosswalk-lesson29-2026-11-10
 
 permissions:
   contents: read
