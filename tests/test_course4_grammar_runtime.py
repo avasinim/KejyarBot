@@ -1461,8 +1461,9 @@ class Course4TerminologyNormalizationTests(unittest.TestCase):
             text = self.lesson_text_without_quiz(number)
             self.assertNotIn("لەچۆنایەتی", text, f"lesson {number}")
             self.assertIn("گەردان", text, f"lesson {number}")
-        self.assertNotIn("ئەفیکس", self.lesson_text_without_quiz(26))
-        self.assertIn("گیرەک", self.lesson_text_without_quiz(26))
+        for number in (13, 26):
+            self.assertNotIn("ئەفیکس", self.lesson_text_without_quiz(number), f"lesson {number}")
+            self.assertIn("گیرەک", self.lesson_text_without_quiz(number), f"lesson {number}")
         for number in (11, 12, 13):
             self.assertIn("Enclitic = پاشنووس", self.lesson_text_without_quiz(number))
 
