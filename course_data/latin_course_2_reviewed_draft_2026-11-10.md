@@ -125,7 +125,7 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 |---|---|
 | `Mîr hat.` | `Mîr hatin.` |
 
-**Têbînî:** Di vê nimûneyê de `mîr` navdêra giştî ye (bi wateya serok/mîr), ne serenav. `Mîr` bi pêşînîya hevokê bi herfa mezin hatiye nivîsîn; forma gelemjimar `mîr` e, ne ku navê kesekî taybet gelemjimar bibe.
+**Têbînî:** Di vê nimûneyê de `mîr` navdêra giştî ye (bi wateya serok/mîr), ne serenav. `Mîr` bi pêşînîya hevokê bi tîpa mezin hatiye nivîsîn; forma gelemjimar `mîr` e, ne ku navê kesekî taybet gelemjimar bibe.
 | `Ev mehîn e.` | `Ev mehîn in.` |
 | `Min mehîn dît.` | `Min mehîn dîtin.` |
 | `Ez mehîne dibînim.` | `Ez mehînan dibînim.` |
