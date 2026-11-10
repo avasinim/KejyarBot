@@ -109,3 +109,7 @@ A wording-only quality pass was made across the 62 questions in Lessons 1–12. 
 - Lesson 9, Q1–Q4 now specify the transitive past construction when asking for agent forms `min/te/wî/me`, consistent with the table and source §86.
 
 The reviewed answer key's rationales for those seven items were strengthened with the relevant grammatical context and source section. No correct answer letter was changed in this pass. The quiz and answer-key files were fetched after updates and verified. A fresh structural count confirms all 12 lessons have matching question/key row counts: Lessons 1–7 and 9–12 have five each; Lesson 8 has seven; total 62 questions and 62 key rows. This is a structural and wording check, not a complete independent validation of every distractor, nor a runtime test.
+
+
+## 16. Answer-key metadata count correction (2026-11-10)
+The final metadata note inside the reviewed answer-key file still stated 60 rows after Lesson 8's two questions had been added. This stale count was corrected to 62, with the per-lesson distribution stated explicitly (seven in Lesson 8, five in each of the other eleven lessons). The answer-key file was fetched again; the corrected count is present and the stale "60 rows" wording is absent. This corrects documentation metadata only; the structural count of 62 quiz/key rows was independently rechecked.
