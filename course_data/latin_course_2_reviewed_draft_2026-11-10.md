@@ -337,7 +337,7 @@ Mînak:
 - Rabirdû: `Te ez dîtim.` — `te` kirar e û `ez` bireser e.
 - `Zînê Sîsin dît.` → `Wê ew dît.` — `wê` kirarê tewandî ye, `ew` bireserê rasterast e.
 
-Lê di bireserên nerasterast de forma pronavê dikare wek xwe bimîne: `min ji wan re got`, `te ji min stand`, `wî ji wan girt`. Ji ber vê yekê pێویستە erk (kirar/bireser) ji şêweya pronav (forma rast/tewandî) cuda were fêrkirin.
+Lê di bireserên nerasterast de forma pronavê dikare wek xwe bimîne: `min ji wan re got`, `te ji min stand`, `wî ji wan girt`. Ji ber vê yekê pêwîst e erk (kirar/bireser) ji şêweya pronav (forma rast/tewandî) cuda were fêrkirin.
 
 Pronavên berbihevîn ji bo nîşandana du an zêdetir kes/tiştan ku bi hev re têkildar in têne bikaranîn. Du formên bingehîn hene: `hev` û `êk`. Forma `êk` bi taybetî li nîvrohelatê Kurdistanê tê gotin. Ev pronav bi tenê yek kes nîşan nadin; têkiliya du an zêdetir kesan bi hev re nîşan didin.
 
