@@ -1002,7 +1002,7 @@ B) xort
 C) yazde
 D) çiya
 
-5. Di peyva çiya de herfa Y di kîjan komê de tê hesibandin?
+5. Di dabeşkirina herfên alfabeyê de, li gorî çavkaniya kursê, Y di kîjan komê de tê hesibandin?
 A) Dengdar e
 B) Dengdêr e
 C) Nîşana dirêjiyê ye
