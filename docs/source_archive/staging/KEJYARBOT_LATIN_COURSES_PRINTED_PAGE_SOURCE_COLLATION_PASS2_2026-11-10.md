@@ -168,3 +168,31 @@ This correction is limited to the plural form `mehînên`. The separate forms `m
 - New Course 2 reviewed-draft SHA: `bf5e790f7c70169aa463e7bbdf8a289665784127`
 
 The pending note in §9 remains: Course 2 Lesson 4's standalone `mehin` paradigm still needs its own context-specific collation; no blanket normalization was applied to it.
+
+
+## 12. Printed-page collation — Course 2, Lessons 10–12
+
+Printed pp.76–84 and pp.90–100 were inspected.
+
+### Lessons 10–11
+
+- **p.76, §§86–87:** confirms object-pronoun forms `min, te, wî, wê, me, we, wan`, their role alternation in transitive past clauses, and reflexive `xwe`. The reviewed Lesson 10's central contrasts and examples are source-aligned.
+- **p.77, §90:** confirms reciprocal pronouns `hev, êk` and the regional note for `êk`.
+- **p.79, §§91–93:** confirms compound pronouns `jê, lê, pê, tê` and the corresponding preposition/pronoun constructions. The reviewed Lesson 10 keeps these forms and does not collapse them into ordinary independent pronouns.
+- **p.81, §§94–96:** confirms demonstrative pronouns `ev/ew` and the two source classes, near/far and `yê/ya/yên`.
+- **p.83, §99:** confirms relative `ko` and its position after the relevant noun/pronoun phrase.
+- **p.84, §§100–102:** confirms the distinct conjunction `ko` and interrogative forms `kî, kê, çi, çî`. The reviewed Lesson 11's distinction between relative-pronoun `ko` and conjunction `ko` is source-aligned.
+
+No additional source-spelling correction was justified for Lessons 10–11 in this pass.
+
+### Lesson 12
+
+- **p.90, §§124–126:** confirms descriptive adjective behavior and examples such as `reş`, `spehî`, `bilind`; the reviewed lesson's adjective-class framework is consistent with the source.
+- **p.91, §128:** confirms the descriptive adjective comparison sequence, including `beza` and `bezatir`; the lesson's basic/comparative/superlative teaching distinction is appropriate.
+- **p.93, §§131–133:** confirms demonstrative adjective forms including `vî hespî / van hespan`, `wî hespî / wan hespan`, `vê mehinê / van mehinan`, `wê mehinê / wan mehinan`. These exact `mehinê/mehinan` spellings are preserved in the reviewed lesson; do not apply the plural `mehînên` normalization to these different inflected forms.
+- **p.95, §139:** confirms the heading and category `Rengdêrên xwemalîn`, and explains that these possessive adjectives follow nouns and show possession. The reviewed lesson distinguishes them from possessive pronouns.
+- **p.98, §148:** confirms the special `nîv` inflection when used independently, including `nîvî` and `nîvekî`, and contrasts it with `nîv` before another numeral or noun.
+- **p.99, §149:** confirms the independent `yekê` form and examples such as `ji yekê`, `bîst û yekê`; the reviewed lesson's `yekê` form is supported.
+- **p.100, §152:** confirms `hezar` can take `-î` when used independently (`hezarî`) and behaves differently when combined with another numeral. The reviewed lesson's summary is source-aligned.
+
+No further spelling change was made to Lesson 12 in this subpass.
