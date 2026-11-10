@@ -147,3 +147,13 @@ Static inspection traced the repository code path from the Latin source loader t
 The dedicated linkage report records the exact code path, callback names, safeguards, test files, and required coordinated integration steps: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RUNTIME_LINKAGE_AUDIT_2026-11-10.md`.
 
 The inspected runtime files, old runtime content/key, and relevant tests have identical blob SHAs on `main` and this archive branch. No runtime, active manifest, database, Botkeep, or Telegram changes were made. Tests/CI were inspected but not executed; no runtime or deployment success is claimed.
+
+
+## 20. Coordinated 62-question runtime migration plan (2026-11-10)
+Prepared a dedicated, non-executing migration plan for the reviewed Course 2 draft. It specifies the exact per-lesson count contract (5 questions in Lessons 1–7, 7 in Lesson 8, 5 in Lessons 9–12), total Course 2 count 62, combined Latin runtime total 122, loader changes, exact answer-key coverage validation, dedicated test-parser changes (including the `Kuis — 7 pirs` heading), aggregate/callback regression tests, validation sequence, and rollback conditions.
+
+The plan identifies the currently hard-coded assumptions that must be migrated together: loader's five-question and 60-key-row checks; the dedicated key test's exact `Kuis — 5 pirs` heading, 60-row expected set and ABC-only parser; aggregate runtime total 120 and per-lesson five-question assertions; and course-aware tests. It recommends retaining current runtime inputs until a separately approved integration branch updates source, key, loader, and tests atomically.
+
+Plan file: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_RUNTIME_MIGRATION_PLAN_2026-11-10.md`.
+
+No code, runtime source, active manifest, database, Botkeep, or Telegram state was changed. No tests were executed. This is an implementation plan, not an activation or deployment.
