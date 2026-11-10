@@ -283,11 +283,11 @@ Dema veqetandeka nebinavkirî pêşîya rengdêrê dikeve, şêweyên wê `-î`,
 - Mê yekjimar: `mehîneke min e qenc hebû`.
 - Gelemjar: `hespine min en qenc hebûn`.
 
-**Tewang (§70):** Dema ev veqetandek li paş navdêrekê were ku di hevokê de ne kirar, lê bireser e, formên tewandî tên bikaranîn. Sەرچاوە nimûneyên `hespekî`, `mehînekê` û `hespina` dide: `Ez hespekî dibînim`, `Ez mehînekê dibînim`, `Ez hespina dibînim`. Ji ber vê yekê formên tewandî divê ji formên serەکی yên `-ek/-ek/-in` cuda bên fêrkirin.
+**Tewang (§70):** Dema ev veqetandek li paş navdêrekê were ku di hevokê de ne kirar, lê bireser e, formên tewandî tên bikaranîn. Celadet nimûneyên `hespekî`, `mehînekê` û `hespina` dide: `Ez hespekî dibînim`, `Ez mehînekê dibînim`, `Ez hespina dibînim`. Ji ber vê yekê formên tewandî divê ji formên serەکی yên `-ek/-ek/-in` cuda bên fêrkirin.
 
-**Rێسای زۆرپێکەوەهاتنی پێکەوەبەستەکان (§69):** Dema zêتر لە yek pêvek bi navdêrەوە گرێدرا بن، şêweya veqetandekê li gorî mêjer û zayendê pêکهاتەی دواوە دیاری dibe. Ev وردەکارییە لە وانەی ئێستادا وەک یاسای پێشکەوتوو هاتووە، نەک وەک بنەمای سەرەتایی.
+**Rêzika pêvekên pir (§69):** Dema zêتر لە yek pêvek bi navdêrەوە گرێدرا بن، şêweya veqetandekê li gorî mêjer û zayendê pêکهاتەی دواوە دیاری dibe. Ev وردەکارییە لە وانەی ئێستادا وەک یاسای پێشکەوتوو هاتووە، نەک وەک بنەمای سەرەتایی.
 
-Nîşe: `-ek/-ek/-in`, `-ekî/-eke/-ine` û `-î/-e/-en` سێ پێکهاتەی جیاوازن؛ نابێت یەک بە یەک بەکاربهێنرێن. Ev pêڤەکان bi veqetandekên binavkirî `ê/a/ên` ne yek in.
+Nîşe: `-ek/-ek/-in`, `-ekî/-eke/-ine` û `-î/-e/-en` سێ پێکهاتەی جیاوازن؛ نابێت یەک بە یەک بەکاربهێنرێن. Ev pêvek bi veqetandekên binavkirî `ê/a/ên` ne yek in.
 
 ### Xebat
 Forma guncaw hilbijêre û sedemê bibêje:
@@ -295,6 +295,7 @@ Forma guncaw hilbijêre û sedemê bibêje:
 - `hesp__ delal hat`
 - `mehîn__ hat`
 - `mehîn__ delal hat`
+- Di pêşiya rengdêrê de: `hespek__ min __ qenc hebû` (şêweya nêr), `mehîneke min __ qenc hebû` (şêweya mê).
 
 ### Kuis — 5 pirs
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
@@ -302,6 +303,8 @@ Forma guncaw hilbijêre û sedemê bibêje:
 3. Forma gelemjimar a nebinavkirî ya bê bireser çi ye? A) -in B) -ên C) -a
 4. Dema bireser li pey were, forma nêr yekjimar çi ye? A) -ek B) -ekî C) -ên
 5. `-ên` û `-ine` ma yek in? A) erê B) her tim C) na, erkên wan cuda ne
+6. Şêweyên pêşîya rengdêrê yên bingehîn kîjan in? A) `-î/-e/-en` B) `-ek/-ek/-in` C) `-ên/-a/-ê`
+7. Dema veqetandek di rewşa bireserê de tewandî dibe, kîjan kom şêwe nîşan dide? A) `-ek/-ek/-in` B) `-ekî/-ekê/-ina` C) `-ên/-a/-ê`
 
 ---
 
