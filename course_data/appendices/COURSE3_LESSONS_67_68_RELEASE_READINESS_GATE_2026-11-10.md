@@ -46,3 +46,11 @@ Status: operational readiness snapshot; this is not a production activation requ
 
 ## 5. Preservation
 This readiness file is documentation-only. It does not alter lesson data, the candidate, runtime, PR merge state, Botkeep settings, Telegram, database, tokens or production services.
+
+
+## 6. Evidence and quiz proposal update — V3
+- New source evidence follow-up added: «ڕەشەبا» is attested in two Central Kurdish dictionary records for lexical meaning, but its internal segmentation remains HOLD.
+- Ahmadi (2021), Rules 7.9–7.10, explicitly documents Sorani past-progressive negation with ne- and de-/e- in intransitive and transitive examples. This supports the general pattern, but does not validate the exact Kurdish-script lesson example «نەدەنووسی»; that exact form remains HOLD pending dialect/person/stem review.
+- V3 quiz proposal created with 19 questions (9 + 10). Its Q10 tests the source-attested sequence ne- before de- in the intransitive past-progressive example; it does not present that example as a direct equivalent of «نەدەنووسی».
+- V3 answer key check: 19 questions / 19 answers / 19 key entries, all matching; answer positions A=4, B=8, C=7.
+- V3 remains proposal-only. Human Sorani specialist review and Botkeep host-safety clearance remain blocked release gates.
