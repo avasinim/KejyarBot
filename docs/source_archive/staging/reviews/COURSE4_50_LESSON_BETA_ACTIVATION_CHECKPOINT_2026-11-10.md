@@ -84,3 +84,11 @@
 - Full test suite: ٥٢٤ passed، ١١ skipped؛ Python compileall success.
 - Headی کۆتاییی branch لە کاتی ئەم تۆمارە: `5fad7d5eb0cf70f26ebb18668e239cca09e25df9`.
 - PR #129 هێشتا Draft/Open/Unmerged ـە؛ تاقیکردنەوەی سەرکەوتوو deployment نییە.
+
+
+### ١١. پەیوەندی بە پشکنینی ٢٤٠ کویز و تۆماری زاراوەیی
+- PR #128: https://github.com/avasinim/KejyarBot/pull/128 — پشکنینی تاک‌تاکی ٢٤٠ پرسیاری وانەکانی ١–٣٠ تەواو تۆمار کراوە؛ ٤٤ تێبینی/خاڵی پێویست بە چارەسەر هەیە، بەڵام هیچ پرسیارێک نەسڕدراوەتەوە یان لە runtime نەگۆڕدراوە.
+- تۆماری یەکگرتووی زاراوەکان بۆ ٥٠ وانە (V1) لە PR #128 زیاد کراوە.
+- Round 27 دۆخی گشتیی ٥٠ وانە، ٢٤٠ کویز و کارە ماوەکان کۆ دەکاتەوە.
+- Headی PR #129 لە کاتی ئەم پاشکۆیە: `bdb4a92a7f364ac76fb359a021113f2a837c9d88`.
+- Workflow لەسەر ئەم head ـە: https://github.com/avasinim/KejyarBot/actions/runs/42780867566 — success؛ ٥٢٤ passed، ١١ skipped.
