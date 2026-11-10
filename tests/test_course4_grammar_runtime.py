@@ -1475,5 +1475,7 @@ class Course4TerminologyNormalizationTests(unittest.TestCase):
             "ناوکردنی کردار (Nominalization) چییە؟",
         )
         self.assertEqual(self.lessons[30]["quiz"][0]["answer"], 2)
+        # Preserve the original source metadata while editorial terminology is normalized.
+        self.assertIn("**کۆرسی:** ١ — بەشی ٤", self.lessons[31]["source_markdown"])
 
 # Course 4 terminology normalization regression coverage (Round 37).
