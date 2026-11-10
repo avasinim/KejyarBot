@@ -341,6 +341,8 @@ Mînak:
 - `Hespan ceh xwar.` → `Wan ew xwar.`
 - `Min qelem ji destê xwe xist.`
 
+**Têkiliya bi Ders 11:** Di nimûneyên `Wê ew dît` û `Wan ew xwar` de `ew` pronavê kesîn e û li şûna navê kes/tiştê ku wek bireser tê dîtin disekine. Di Ders 11 de `ev/ew` wek pronavên îşarkî têne fêrbûn; forma peyvê dikare wek hev be, lê erk û wateya wê bi avahiya hevokê têne nasîn.
+
 **Guherîna erkê pronavan di rabirdûya lêkerên gerguhêz de:** Li gorî Celadet, di hevokên rabirdû yên lêkerên gerguhêz de, pronavên ku di avahiya bingehîn de bireser in dikarin bibin kirar, û pronavên kirar bibin bireser. Ji ber vê yekê divê `min/te/wî/wê/me/we/wan` bi awayekî giştî wek kirar an bireser neyên hesibandin; erkê wan bi avahiya hevokê ve girêdayî ye.
 
 - Niha: `Ez te dibînim.` — `te` bireser e.
@@ -401,6 +403,8 @@ Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinav
 - **Yên qerse:** `yê`, `ya`, `yên` — kes, tişt an heywan nîşan didin, bêyî ku nêzîkî an dûrbûna wan diyar bikin; di hevokê de kirar in û bi `ko`-ya girêkî re tên.
 
 `ev` ji bo tiştê nêzîk an navdêra ku di gotinê de nû hatiye; `ew` ji bo tiştê dûr an navdêra ku berê hatiye gotin tê bikaranîn.
+
+**Têkiliya bi Ders 9–10:** `ew` dikare wek pronavê kesîn jî were (wek `Wê ew dît`), lê di vê beşê de `ev/ew` wek pronavên îşarkî tên bikaranîn. Ji bo tesnîfkirinê tenê li forma peyvê mêzere; erkê wê di hevokê de bibîne.
 
 **Pronavên girêkî:** rêziman `ko` wek pronavê girêkî dide û dibêje ku ji bo her du mêjer û zayendan heman form e. Di vê kursê de forma vê mijarê `ko` tê parastin; `ku` di standardên din de dikare were dîtin, lê li vir bê agahdarî nayê şûngirtin.
 
