@@ -25,7 +25,7 @@ Xwendekar dikare pênaseya gramêr û zimanê kurdmancî nas bike û çar hêman
 Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de hêmanên bingehîn deng in; deng bi tîpan tên nîşankirin. Tîp ji bo çêkirina kîtan, kît ji bo çêkirina bêjeyan, û bêje ji bo çêkirina komekan tên bikaranîn.
 
 Çar hêmanên bingehîn ên ziman ev in:
-- **Tîp:** nîşana nivîskî ya ku deng li ser kaxezê bi wê tê sekinandin.
+- **Tîp:** nîşana nivîskî ye ku deng bi wê tê nîşandan; tîp xwe deng nîne, lê nûnerê wî di nivîsê de ye.
 - **Kît:** yekeya ku ji yek an ji yekê zêdetir tîpan pêk tê.
 - **Bêje:** yekeya zimanî ya ku di komê de wate û erkek digire; bêje ne tenê nav e.
 - **Komek:** çend bêje ku bi awayekî watedar tên cem hev û fikrekê temam dikin.
