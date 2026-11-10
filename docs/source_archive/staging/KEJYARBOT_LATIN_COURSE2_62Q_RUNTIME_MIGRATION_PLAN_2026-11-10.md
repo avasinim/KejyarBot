@@ -122,6 +122,19 @@ Do not change callback names or course/lesson IDs unless a test reveals a separa
 
 Keep the pre-migration source/key and loader/test revisions intact on the integration branch history. If any parser, key, callback, or progression regression appears, revert the entire coordinated integration commit—not only one of the source/key files. Since no database schema or callback ID migration is planned, rollback should be a code/content revert, but deployment rollback must still be explicitly authorized.
 
+
+## 7. Test-surface precision notes (2026-11-10)
+
+A follow-up source inspection refined the test inventory above:
+
+- `tests/test_latin_course_2_quiz_keys.py` parses only option labels `A/B/C` and asserts exactly those three labels for every Course 2 question. The runtime parser accepts contiguous labels through `D`. The integration must make the dedicated parser use the same option-label contract as runtime, while retaining per-question validation of the actual option count; do not assume every question must have four options.
+- The dedicated key test currently recognizes only `Kuis — 5 pirs` or the legacy `10. Testa Kejyar` heading, constructs a 12×5 expected key set, and asserts 60 rows. These are separate changes from broadening the option-letter parser.
+- `tests/test_latin_course_runtime.py` contains the aggregate total 120, the per-lesson five-question assertion, and a bot-loaded per-lesson five-question assertion. Those need course-aware expected counts.
+- The inspected `tests/test_activated_courses.py` does not contain a five-question-per-Latin-lesson assertion; it checks other course/assessment behavior. Do not modify it solely for this migration unless a subsequent focused search identifies a concrete Latin-count dependency.
+- `tests/test_bot_quiz_callbacks.py` already verifies that a Latin quiz starts with the same question count as `QUIZ_DATA`, but it does not specifically drive Course 2 Lesson 8 through seven select-and-submit cycles. Add that explicit end-to-end handler regression.
+
+This precision note supersedes any broader suggestion in the preceding plan/audit that `test_activated_courses.py` necessarily needs a five-to-seven count update. No code or test file was changed and no test was executed.
+
 ## 6. Current blockers and boundaries
 
 - The reviewed 62-question files are not yet runtime inputs.
