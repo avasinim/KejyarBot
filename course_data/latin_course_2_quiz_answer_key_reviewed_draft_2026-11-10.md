@@ -27,9 +27,9 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 5 | C | gelemjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
-| 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr de, şêweya tewandî ya hesp `hespî` ye (§55). |
-| 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê de, şêweya tewandî ya mehîn `mehînê` ye (§55). |
-| 5 | 4 | B | forma gelemjimar a tewandî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr a dema niha de, şêweya tewandî ya hesp `hespî` ye; mînak: `Ez hespî dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
+| 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê a dema niha de, şêweya tewandî ya mehîn `mehînê` ye; mînak: `Ez mehînê dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
+| 5 | 4 | B | forma gelemjimar a tewandî | Di hevoka `Ez hespan dibînim` de `hespan` biresera gelemjimar a tewandî ye; ev nimûneya dema niha ye, ne kirara tewandî ya rabirdûya lêkerên gerguhêz (§55–56). |
 | 5 | 5 | C | na | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 6 | 1 | B | navdêrê rave dike/taybet dike | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 2 | C | keçik | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
