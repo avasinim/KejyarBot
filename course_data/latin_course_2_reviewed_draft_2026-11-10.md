@@ -357,7 +357,7 @@ Mînak:
 
 Lê di bireserên nerasterast de forma pronavê dikare wek xwe bimîne: `min ji wan re got`, `te ji min stand`, `wî ji wan girt`. Ji ber vê yekê pêwîst e erk (kirar/bireser) ji şêweya pronav (forma rast/tewandî) cuda were fêrkirin.
 
-Pronavên berbihevîn ji bo nîşandana du an zêdetir kes/tiştan ku bi hev re têkildar in têne bikaranîn. Du formên bingehîn hene: `hev` û `êk`. Forma `êk` bi taybetî li nîvrohelatê Kurdistanê tê gotin. Ev pronav bi tenê yek kes nîşan nadin; têkiliya du an zêdetir kesan bi hev re nîşan didin.
+Pronavên berbihevîn ji bo nîşandana kesên ku bi hev re têkildar in tên bikaranîn. Celadet di §90 de bi taybetî du an sê kesan nîşan dide; ji ber vê yekê di vê dersê de nimûne û pênaseya bingehîn bi du an sê kesan ve tê girêdan. Du formên bingehîn hene: `hev` û `êk`. Forma `êk` bi taybetî li nîvrohelatê Kurdistanê tê gotin.
 
 ### Pronavên lihevxistî
 Cureyeke din bi navê **pronavên lihevxistî** rave dike. Ev form ji pêkhatina daçekê û pronavê çêdibin:
@@ -374,7 +374,7 @@ Formên `jev/jêk`, `lev/lêk`, `pev/pêk` û `tev/têk` jî di vê mijarê de t
 - `Wê xwe kuşt.`
 - `Wan xwe kuşt.`
 
-Ji ber vê yekê di hevoka wek `Ez xwe di neynikê de dibînim` de `xwe` ji heman kesê `ez` re vedigere. Di hin hevokên din de `xwe` dikare bi pronavên kesîn re bê bikaranîn; divê li gorî kes û mêjera hevokê were fêmkirin.
+Ji ber vê yekê di hevoka wek `Ez xwe di neynikê de dibînim` de `xwe` ji heman kesê `ez` re vedigere. Di hin hevokên din de `xwe` dikare bi pronavên kesîn re bê bikaranîn. Celadet di §88 de herwiha rewşeke taybet nîşan dide ku `xwe` di komeke hevaheng de bi navdêr/pronavê din re tê û di pêkhateya kirarê de xuya dibe: `Ez û birayê xwe em hatin`, `Min û birayê xwe me got`. Ji ber vê yekê `xwe` tenê bi rêzikeke sade ya «kirar û bireser heman kes in» nayê kurtkirin.
 
 ### Pronavê nêtar ê `ê`
 Forma `ê` wek pronavê nêtar ê yekjimar nîşan dide. Ew dikare di hin rewşan de li şûna `vî`, `vê`, `wî` an `wê` were, lê ji bo gelemjimarê nayê bikaranîn:
@@ -416,7 +416,7 @@ Nasîna pronavên îşarkî yên pî ve û qerse, girêkî, pirsiyarkî, nebinav
 
 **Cudahîkirina `ko` ya pronav ji `ko` ya gihane:** di rêzimanê de `ko`-ya pronavî girêdana navdêr/pronavê pêşî bi komê dike; `ko`-ya gihane jî dikare wateya `heke` bide û li gorî rêza hevokê bi lêkerê ve girêdayî ye. Ev du erk divê di kuizê de neyên tevlihevkirin.
 
-**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. `kîjan` hilbijartinê di nav çend kes an tiştan de nîşan dide. Her wiha `kîjik` û `kîjan` wek formên pirsiyarkî, û `çend` û `kû` di pirsên hejmar û cihê de vedikole.
+**Pronavên pirsiyarkî:** `kî`, `kê`, `çi` (di hin şêwazan de `çî`) û `kîjan` ji bo pirsê tên bikaranîn. `kî/kê` bi gelemperî ji bo kesan in; `çi/çî` ji bo tiştan têne bikaranîn. Li gorî §102, `kî/kê/çi/çî` di erkên kirar û bireser de du şêweyên xwe hene û di vê tesnîfê de nayên tewandin. `kîjik/kîjan` di §103 de wek du formên heman peyvê tên pêşkêşkirin; ew li gorî navdêrê ku dinimînin dikarin tewandinê werbigirin. `çend` di §104 de ji bo hejmarê ye û dema bi tenê tê, dikare tewandinê werbigire; `kû` di §105 de ji bo pirsiyariya cihê ye.
 
 ### Pronavên nebinavkirî
 Ev pronav li şûna navdêrên ku di gotinê de bi awayekî taybet nehatine destnîşankirin tên. Nimûneyên wek `yek`, `her yek`, `kes`, `tu kes`, `her kes`, `tişttek`, `hin`, `hinek`, `çend`, `hemî`, `gişt` û `gelek` dide. Forma wan li gorî erkê wan di hevokê de dikare biguhere.
