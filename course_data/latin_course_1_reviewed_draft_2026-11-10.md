@@ -60,16 +60,16 @@ Mînak: A → a; Ç → ç; Ê → ê; Î → î; Ş → ş; Û → û.
 
 ### 6. Testa Kejyar
 1. Elfabeya kurmancî ya latînî ji çend herfan pêk tê?
-A) 28
+A) 30
 B) 31
-C) 33
-D) 26
+C) 32
+D) 34
 
 2. Di kurmancî de çend dengdêr hene?
-A) 5
+A) 7
 B) 6
 C) 8
-D) 10
+D) 9
 
 3. Kîjan kom tenê ji dengdêrên kin pêk tê?
 A) A, Ê, Î
@@ -1235,8 +1235,8 @@ D) 10
 3. Di elfabeya kurdî de çend herfên dengdar hene?
 A) 23
 B) 8
-C) 31
-D) 21
+C) 22
+D) 24
 
 4. Kîjan kom tenê ji dengdêrên kin pêk tê?
 A) A, Ê, Î
