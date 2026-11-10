@@ -121,3 +121,19 @@ A further review of the Course 2 quiz wording identified two places where the st
 - Lesson 7, Q2–Q4: the suffix forms `-ê/-a/-ên` can be encountered in different grammatical environments. The stems now explicitly anchor them to the definite-determiner system taught in the lesson.
 
 The corresponding answer-key rationales were updated to explain the intended category/system and cite the relevant source section. No answer letters changed. The remaining reviewed stems were retained because their distractors test the intended contrast without an evident second correct response in the lesson's stated scope. This is an editorial clarity review of the staged quiz text; it does not certify every possible dialectal/contextual interpretation and does not replace runtime testing.
+
+
+## 18. Quiz-to-lesson teaching-sequence and key-alignment pass (2026-11-10)
+Reviewed all 62 quiz stems against the teaching material appearing earlier in their respective lessons and checked the corresponding answer-key entries.
+
+### Sequence checks
+- Lessons 1–4: the quiz tests grammar definition, the four language units, noun classes, grammatical gender, and singular/plural distinctions after those concepts and examples have been introduced.
+- Lessons 5–8: case/inflection, noun modifiers, definite determiners, and indefinite suffix paradigms are introduced before the corresponding quiz items. The Lesson 8 items distinguish the bare indefinite forms, post-nominal descriptive-modifier forms, pre-adjective forms, and oblique forms rather than treating them as interchangeable.
+- Lessons 9–11: the personal-pronoun agent forms, object pronouns, reciprocal/reflexive/compound forms, demonstratives, relative `ko`, conjunction `ko`, and interrogatives are all introduced before being tested. Lesson 11 Q4 tests the conjunction reading in the explicit sentence `Min got ko ez nayêm`, not the relative-pronoun use.
+- Lesson 12: the adjective classes, ordinal/cardinal distinction, independent numeral-pronoun category, and special `nîv` forms are introduced before the quiz items.
+
+### Correction made
+Lesson 5 Q2–Q3 previously asked for the inflected direct-object forms without explicitly limiting the construction to the present-tense examples. Since §56 separately explains the transitive-past pattern (where the agent is inflected and the direct object may remain uninflected), the stems now explicitly say **di dema niha de**. Lesson 5 Q4 now names the exact example `Ez hespan dibînim`, preventing confusion with the inflected agent `Hespan` in a past-transitive example. The answer-key rationales were updated to explain the tense distinction and cite §§55–56.
+
+### Verification and limits
+The staged lesson draft and answer-key file were fetched again after edits. The 12 lesson quiz counts remain 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5 (62 total), and each lesson's key-row count matches its quiz count (62 total). This is a textual sequencing and editorial alignment check only; it does not establish runtime behavior, deployment status, or exhaustive acceptability across all dialects.
