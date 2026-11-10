@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/course4-quiz-overrides-2026-11-10
+      - feature/course4-quiz-overrides-lesson31-2026-11-10
 
 permissions:
   contents: read
