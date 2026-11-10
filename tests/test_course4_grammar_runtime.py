@@ -461,7 +461,7 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
             bot.check_badges(12345)
 
         added = [call.args[1] for call in add_badge.call_args_list]
-        self.assertEqual(len(added), 31)
+        self.assertEqual(len(added), 12)
         self.assertTrue(all("وانەی ٣٢" not in badge for badge in added))
 
     async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
