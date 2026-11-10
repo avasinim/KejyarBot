@@ -1112,10 +1112,10 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
         self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
 
-    def test_course4_quiz_overrides_preserve_original_bank_and_apply_44_reviewed_replacements(self):
+    def test_course4_quiz_overrides_preserve_original_bank_and_apply_50_reviewed_replacements(self):
         override_file = bot.load_json("course_data/grammar_course4_quiz_overrides.json")
         overrides = override_file["overrides"]
-        self.assertEqual(len(overrides), 44)
+        self.assertEqual(len(overrides), 50)
         raw_by_id = {lesson["id"]: lesson for lesson in bot.GRAMMAR_COURSE4_DRAFT["lessons"]}
         seen = set()
         for override in overrides:
@@ -1132,6 +1132,8 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
             self.assertEqual(runtime_question["answer"], replacement["options"][replacement["answer"]])
             self.assertEqual(runtime_question["explanation"], replacement["explanation"])
             self.assertEqual(len(replacement["options"]), 4)
+        lesson31_overrides = [item for item in overrides if item["lesson_id"] == "grammar_31"]
+        self.assertEqual(len(lesson31_overrides), 6)
         self.assertEqual(
             sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 31)),
             240,
