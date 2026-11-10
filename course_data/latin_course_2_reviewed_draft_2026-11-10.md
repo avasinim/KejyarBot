@@ -393,7 +393,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 1. Kîjan yek ji pronavên bireser e? A) ez B) min C) tu
 2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
 3. Ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
-4. `Wan ew xwar` di çi de nimûne ye? A) pronavên îşarkî B) pronavên bireser C) rengdêr
+4. Di hevoka `Wan ew xwar` de `ew` kîjan erk digire? A) kirar B) bireser C) rengdêr
 5. Pronavên berbihevîn çi nîşan didin? A) yek kes B) du an zêdetir kes bi hev re C) tenê cih
 
 ---
