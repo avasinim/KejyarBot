@@ -46,3 +46,9 @@ The source's own headings confirm that these are not invented course labels:
 - This report does not certify every exercise, distractor, example spelling, or source quotation. It does not claim tests or runtime execution.
 - This report is an append-only archive artifact on `archive/preservation-audit-2026-11-10`. No `main`, active manifest, runtime, database, Botkeep bot, Telegram bot, or deployment was changed.
 - Lesson 12 source-page and terminology corrections are recorded separately in `KEJYARBOT_LATIN_COURSE2_LESSON12_AUDIT_CORRECTION_2026-11-10.md`; that correction note supersedes the erroneous page/term assertions in the earlier Lesson 12 comparison note.
+
+
+## 6. Follow-up orthography pass (2026-11-10)
+A targeted internal spelling scan found and corrected one confirmed consistency issue in the reviewed draft: `mehin` / `vê mehinê / van mehinan` was normalized to `mehîn` / `vê mehînê / van mehînan`, consistent with the form used elsewhere in the draft. The update was verified by fetching the changed file again. The same pass confirmed that `hon` is the source form in Celadet's pronoun inventory; it was correctly retained rather than changed to `hûn`. Details and OCR limitations are recorded in `KEJYARBOT_LATIN_COURSE2_ORTHOGRAPHY_PASS_2026-11-10.md`.
+
+This follow-up remains a targeted consistency check, not a complete page-image proofread of every example and diacritic in all 12 lessons.
