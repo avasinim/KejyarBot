@@ -1478,3 +1478,5 @@ class Course4TerminologyNormalizationTests(unittest.TestCase):
         self.assertIn("**کۆرسی:** ١ — بەشی ٤", self.lessons[31]["source_markdown"])
 
 # Course 4 terminology normalization regression coverage (Round 37).
+
+# Round 38: Lesson 13 Affix glossary normalization is included in the regression suite.
