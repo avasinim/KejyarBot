@@ -23,9 +23,11 @@ A source-audit record in `course_data/LATIN_COURSES_SOURCE_AUDIT_2026-11-01.md` 
 
 The current main lesson and the first reviewed draft had the second form as `Soro kê vir tavêje`, omitting the source's word break `ta vêje`. Corrected the reviewed Course 2 draft to the source form. Main remains untouched.
 
-## 3. Remaining pedagogical review queue
-- Recheck each question's *conceptual validity*, not just answer-key matching; prioritize Lessons 1, 4–5, 7–8, 9–11.
-- Lesson 1: refine the definition of `tîp` so it does not imply that a letter literally fixes or arrests a sound; explain that it is a written sign representing a sound.
+## 3. Additional confirmed editorial correction
+- Lesson 1's definition of `tîp` was revised to state that it is a written sign representing a sound, not the sound itself. The earlier phrase implying that the sound is literally fixed/arrested on paper was imprecise.
+
+## 4. Remaining pedagogical review queue
+- Recheck each question's *conceptual validity*, not just answer-key matching; prioritize Lessons 4–5, 7–8, 9–11.
 - Lesson 4: retain the explicit note that `Mîr` at sentence start is the common noun/title `mîr`, not necessarily a personal proper name. The capital letter is sentence-initial capitalization.
 - Lesson 7: ensure suffix labels `-ê/-a/-ên` are consistently called definite determiners/suffixes and distinguished from oblique marking; the current lesson already warns against conflation.
 - Lesson 8: preserve the two source patterns `-ek/-ek/-in` and `-ekî/-eke/-ine`; do not normalize the source's feminine examples to an unrelated form.
