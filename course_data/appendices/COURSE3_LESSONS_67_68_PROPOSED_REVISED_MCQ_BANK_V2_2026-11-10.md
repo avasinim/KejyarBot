@@ -122,14 +122,14 @@ C. نەرێی indicative.
 **Answer:** B  
 **Explanation:** سەرچاوەکە me- بۆ imperativeی نەرێ تۆمار دەکات.
 
-### 68-V2-Q04 — Negative past
-**Question:** لە نموونەی Haig، ne-kušt بە کام واتایە؟
-A. «من دەیکوژم».
-B. «مەیکوژە».
-C. «من سەگم نەکوشت».
+### 68-V2-Q04 — Negative past marker in full context
+**Question:** لە نموونەی تەواوی Haig «min seg-eke=m ne-kušt»دا کام بەش نەرێکەری کردارە؟
+A. =m
+B. ne-
+C. -eke
 
-**Answer:** C  
-**Explanation:** Haig نموونەی ne-kušt بە نەرێی کردار لە ڕابردوودا دەهێنێتەوە؛ لەو بەستێنەدا «=m»ی پەیوەندیدار بە کەس لە شوێنی ترە و نابێت بە نەرێکەر تێکەڵ بکرێت.
+**Answer:** B  
+**Explanation:** لە شیکردنەوەی سەرچاوەکەدا ne- نەرێکەری کردارە؛ =m نیشانەی کەسیی لکێنراوە و -eke نیشانەی ناسراویی ناوە. بەستێنی تەواو ڕێگری لەوە دەکات کە ne-kušt بە تەنیا وەک ڕستەیەکی تەواو وەربگیرێت.
 
 ### 68-V2-Q05 — No dedicated future marker
 **Question:** کام بانگەشە لەسەر داهاتوو لە سۆرانیی Haig وردە؟
