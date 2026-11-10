@@ -76,3 +76,11 @@
 - PR #129 لە کاتی نوێکردنەوە: Draft/Open/Unmerged، mergeable=true، mergeable_state=clean.
 - Head SHA: `60800ed10d4bb83df2d401cd00c05d42db43bf1c`.
 - ئەم ئەنجامە تاقیکردنەوەی branch ـە؛ بەڵگەی deployment یان چالاکبوونی production نییە.
+
+
+### ١٠. پشتڕاستکردنەوەی کۆتاییی head و CI
+- دوای زیادکردنی تۆماری CI، workflow ـی branch دووبارە لەسەر headی نوێ جێبەجێ بوو.
+- Run: https://github.com/avasinim/KejyarBot/actions/runs/42780709569 — completed / success.
+- Full test suite: ٥٢٤ passed، ١١ skipped؛ Python compileall success.
+- Headی کۆتاییی branch لە کاتی ئەم تۆمارە: `5fad7d5eb0cf70f26ebb18668e239cca09e25df9`.
+- PR #129 هێشتا Draft/Open/Unmerged ـە؛ تاقیکردنەوەی سەرکەوتوو deployment نییە.
