@@ -147,8 +147,10 @@ CONVERSATION_DRAFTS = [
 CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
     "daily_conversation", CONVERSATION_DRAFTS
 )
-UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
-UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
+UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/appendices/unified_orthography_lessons_01_68_candidate_2026-11-10.json")
+UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(
+    UNIFIED_ORTHOGRAPHY_DRAFT, include_extended_sections=True
+)
 GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
     GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
@@ -282,7 +284,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 68, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")

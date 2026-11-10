@@ -128,16 +128,26 @@ def adapt_unified_orthography_lessons(payload, include_extended_sections=False):
                 if isinstance(example, (list, tuple)) and len(example) == 2
             )
         if include_extended_sections:
-            for label, field in (
-                ("📎 پاشکۆ", "appendix"),
-                ("🎯 چالاکییەکان", "activities"),
-            ):
-                if raw.get(field):
-                    sections.extend(["", label])
-                    sections.extend(
-                        f"{index}. {item}"
-                        for index, item in enumerate(raw[field], 1)
-                    )
+            if raw.get("appendix"):
+                sections.extend(["", "📎 پاشکۆ"])
+                sections.extend(
+                    f"{index}. {item}"
+                    for index, item in enumerate(raw["appendix"], 1)
+                )
+            if raw.get("activities"):
+                sections.extend(["", "🎯 چالاکییەکان"])
+                for index, activity in enumerate(raw["activities"], 1):
+                    if isinstance(activity, dict):
+                        activity_title = str(activity.get("title", "")).strip()
+                        instruction = str(activity.get("instruction", "")).strip()
+                        if activity_title and instruction:
+                            rendered_activity = f"{activity_title}: {instruction}"
+                        else:
+                            rendered_activity = instruction or activity_title
+                    else:
+                        rendered_activity = str(activity).strip()
+                    if rendered_activity:
+                        sections.append(f"{index}. {rendered_activity}")
         for label, field in (
             ("🧩 ڕاهێنان", "exercises"),
             ("🧠 پرسیارەکانی تێگەیشتن", "comprehension"),

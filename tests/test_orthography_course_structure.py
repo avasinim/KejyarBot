@@ -33,13 +33,13 @@ class OrthographyCourseStructureTests(unittest.TestCase):
         read = [b for b in buttons if b.callback_data.startswith("aramiC:select:")]
         self.assertEqual(len(read), 21)
 
-    def test_course_two_three_and_latin_courses_are_unchanged_and_active(self):
+    def test_course_two_three_and_latin_courses_are_active_with_expected_counts(self):
         self.assertTrue(bot.course_is_active("daily_conversation"))
         self.assertTrue(bot.course_is_active("unified_orthography"))
         self.assertTrue(bot.course_is_active("kurmanji_latin_orthography"))
         self.assertTrue(bot.course_is_active("kurmanji_latin_grammar"))
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["daily_conversation"]), 42)
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 66)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["unified_orthography"]), 68)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"]), 12)
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"]), 12)
 

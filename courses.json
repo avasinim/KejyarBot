@@ -97,7 +97,7 @@
       "key": "course_unified_orthography",
       "order": 3,
       "title": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
-      "description": "٦٦ وانەی ڕێنووسی یەکگرتوو؛ ٥٠ بابەتی ڕێنووس، ١٢ وانەی خاڵبەندی و ٤ بەشی پاشبنەمایی.",
+      "description": "٦٨ وانەی ڕێنووسی یەکگرتوو؛ ٥٠ بابەتی ڕێنووس، ١٢ وانەی خاڵبەندی، ٤ بەشی پاشبنەمایی و ٢ پاشکۆی ڕاهێنان و تاقیکاری.",
       "status": "active",
       "lesson_ids": [
         "unified_orthography_01",
@@ -165,7 +165,9 @@
         "unified_orthography_63",
         "unified_orthography_64",
         "unified_orthography_65",
-        "unified_orthography_66"
+        "unified_orthography_66",
+        "unified_orthography_67",
+        "unified_orthography_68"
       ]
     },
     {
