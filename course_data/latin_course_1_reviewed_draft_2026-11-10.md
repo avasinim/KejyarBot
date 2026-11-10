@@ -249,7 +249,7 @@ Di çavkaniya bingehîn de heşt dengdêr hene:
 Dengdêr ew herf in ku dengê wan bi serê xwe tê derxistin.
 
 ### 2. Dengdar çi ne?
-Di heman alfabeyê de 23 herfên din wek dengdar tên dabeşkirin:
+Di heman alfabeyê de 23 herfên dengdar hene:
 
 **B — C — Ç — D — F — G — H — J — K — L — M — N — P — Q — R — S — Ş — T — V — W — X — Y — Z**
 
