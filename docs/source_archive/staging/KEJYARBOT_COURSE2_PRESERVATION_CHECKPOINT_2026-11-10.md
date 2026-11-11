@@ -601,3 +601,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_PACK_KEY_ALIGNMENT_VERIFICATION_2026-11-11.md`, SHA `3bca6cd89bda8186c8ed52c9b6b2553c7d6093d5`.
 - Consolidated pack contains 45 rationale rows (44 base + L10 Q2), with current superseding corrections. A fresh parse confirms 45/45 key-letter matches, no missing rows or duplicates. This validates mapping only, not linguistic correctness.
 - L1 Q4, L12 Q1 and L12 Q3 remain held; L10 Q2 needs editorial clarity review. No native-speaker certification, tests/CI, runtime or deployment. No lesson/key changes; `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — Editorial preflight of consolidated 45 rationales (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALES_EDITORIAL_PREFLIGHT_2026-11-11.md`, SHA `70e075aaddf5848aee1598e6f59c3e4251a455a5`.
+- Three proposed clarity refinements flagged for native-editor review: L2 Q2, L11 Q2 and L10 Q2. Remaining 42 rows had no new concrete correction established in this screening pass.
+- L1 Q4, L12 Q1 and L12 Q3 remain held. All proposals remain unapproved/unapplied; no learner-facing or runtime changes and no tests/CI. `main` read-only; no separate offsite backup claimed.
