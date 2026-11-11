@@ -808,3 +808,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - All eight holds now have source-backed resolution paths: L1 Q4 rationale-only simplification; L6 Q3/Q4 restore full `bireserê navdêrê`; L8 Q3 explicit §66 condition; L10 Q1/Q2 explicit paradigm-table membership; L12 Q1 narrow to `wesfîn`; L12 Q3 use the plural class label `rengdêrên jmarîn`.
 - No key changes proposed for these eight. These remain proposals only; no approval/application. Native-Kurmanji editorial validation is still recommended for exact wording.
 - No learner-facing/source/key/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 90 — Parallel lesson-artifact scope and quiz-count audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_PARALLEL_LESSON_ARTIFACT_SCOPE_AUDIT_2026-11-11.md`, SHA `33bcf3591574e38b8d67cf4e340ad1e13c007eca`.
+- The source-aligned lesson artifact contains 60 quiz snippets (5 per lesson); the reviewed draft contains 62 (Lesson 8 has 7, adding Q6/Q7). The 62-row reviewed answer key aligns with the 62-question reviewed draft.
+- These are distinct, materially different artifacts, not duplicate copies. For the active 62-question quiz/key review, retain the reviewed draft + reviewed answer key as the aligned pair; preserve the 60-question source-aligned artifact separately and do not merge/overwrite it.
+- No lesson/quiz/key/source/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
