@@ -24,3 +24,21 @@ The update was fetched again and its resulting blob SHA verified. The comparison
 
 ## Preservation
 No original lesson source, master answer key, `main`, active manifest, runtime, database, Botkeep bot, Telegram bot, or deployment was changed. No tests or runtime execution were performed.
+
+
+## Addendum — definitive distinction between §§68 and 69 (2026-11-11)
+
+The earlier bullet above describing §69 as governed by the final complement was inaccurate and is superseded. Direct inspection of the original page images establishes:
+
+- **§68, printed p.66:** when several nouns are linked by one complement, the determiner follows the gender of the final noun. This is the final-noun agreement rule.
+- **§69, printed pp.66–67:** when multiple complements are attached in the construction described, each linked complement receives its own determiner according to its own gender and number. The examples on printed p.67 demonstrate the distinct forms.
+- **§70, printed pp.67–68:** the indefinite forms -ek/-ek/-in are inflected in the stated non-subject/object environment as -ekî/-ekê/-ina.
+
+The earlier §69 summary should not be used. This addendum is the controlling source-image interpretation. The reviewed draft remains unchanged in this addendum; the source review note is corrected by appended clarification, not by erasing its history.
+
+Additional check of proposed mixed-script replacements:
+- Draft line 290: formên netewandî yên -ek/-ek/-in is an accurate editorial contrast with the inflected forms in §70.
+- Draft line 292: the proposal accurately preserves §69's each-complement agreement rule.
+- Draft line 294: the three groups -ek/-ek/-in, -ekî/-eke/-ine, and -î/-e/-en are distinct environments (§§66–68); they are indefinite forms and must not be conflated with the definite suffixes -ê/-a/-ên. The proposal's phrase 'Ev form ji veqetandekên binavkirî ... cuda ne' correctly states that contrast. It also removes the mixed-script Kurdish-Arabic fragments from the original line.
+
+Evidence: original page images, printed p.65 (PDF index 65) for §67 and printed pp.66–67 (PDF indices 66–67) for §§68–70. The visible examples and headings, not OCR alone, support this distinction.
