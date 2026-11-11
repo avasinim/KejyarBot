@@ -96,3 +96,38 @@ The following distinctions were confirmed by reading the complete preserved patc
 - Preserve alternative analyses when a patch itself identifies ambiguity.
 - Do not use a term list as a substitute for full clause-level examples and paradigms.
 - Keep every claim tied to its actual source; do not present the pedagogical examples as corpus attestations or quotations from the cited book.
+
+
+## Lexical first-occurrence scan — current 50-lesson runtime (2026-11-11)
+
+Runtime source: `course_data/grammar_course4_lessons.json`, blob SHA `1dd8abe8a128937c74a18cf04f99878b2e38d962`, 50 lesson records. The scan checks the lesson JSON text fields with Unicode letter-boundary matching; it is a lexical locator, not a semantic determination of where a concept is taught or defined. English and Kurdish forms are listed separately where their first occurrences differ.
+
+| Search concept | Earliest exact lexical hit in runtime | Later lesson hits (same scan) | Limitation / interpretation |
+|---|---|---|---|
+| Enclitic | Lesson 11: Enclitic, پاشبەستە, پاشنووس | 12, 13 | Both Kurdish forms occur in the runtime; this is a collision, not a settled synonym mapping. |
+| Affix | Lesson 13: Affix, گیرەک | 26 | ئەفیکس is present in preserved patch evidence, not in this runtime scan. |
+| Clitic | Lesson 3: لکاو | 11, 12, 13, 17, 26, 27, 40, 42, 43, 45, 47, 49, 50 | Earliest token does not prove Lesson 3 formally defines the category. |
+| Clitic pronoun | Lesson 11: Clitic pronoun, جێناوی لکاو | 12, 13, 17, 40, 42, 43, 45, 49 | Keep distinct from the broader Clitic category and from grammatical function. |
+| Prefix | Lesson 5: پێشگر | 7, 9, 10, 12, 13, 14, 15, 16, 17, 20, 26, 27, 29, 30, 39, 42 | Earliest hit is Kurdish only; English label first appears in Lesson 13/29. |
+| Suffix | Lesson 3: پاشگر | 5, 6, 7, 9, 11, 12, 13, 15, 16, 27, 28, 29, 30, 34, 49 | Do not infer equivalence with Enclitic. |
+| Inflection | Lesson 28: Inflection | 29, 30, 31 | The Kurdish variants لەچۆنایەتی and گەردان are found in Lessons 29–30; first lexical hit does not resolve preferred form. |
+| Noun Phrase | Lesson 3: گرێی ناوی | 22, 23, 24, 25, 31, 32, 33, 34, 47, 49, 50 | Patch 31-v2 also contains گروپی ناوی; runtime scan finds both forms in Lesson 31. |
+| Root | Lesson 3: ڕەگ | 13, 15, 16, 17, 29 | Root appears explicitly in English in Lesson 13/29; Kurdish lexical hit in Lesson 3 is not proof of a technical Root definition there. |
+| Stem | Lesson 13: Stem, بنج | 16, 28, 29 | Earlier lesson 7 contains بنج only as part of other lexical material; exact-token scan first finds it in 13. |
+| Subject | Lesson 1: بابەت; explicit English Subject first appears in Lesson 12; بکەر is not interchangeable by assumption | 3, 6, 8, 10–20, 31–50 (varies by form) | بابەت may denote Topic/subject matter in context; this scan cannot equate it with grammatical Subject. Track بابەت, بکەر and Subject as separate entries until context is reviewed. |
+| Agent | Lesson 18: ئەنجامدەری کردار | 32, 33, 34, 39, 42, 43, 44, 45, 48, 49, 50 | Semantic role; not synonymous with grammatical Subject. |
+| Object | Lesson 3: بەرکار | 11–14, 18–20, 31–50 (varies by lesson) | Do not infer Patient role from Object label. |
+| Patient | No exact lexical hit among the candidate Kurdish/English forms searched | none | Absence from this scan does not prove absence of the concept under another label; source/lesson review remains open. |
+| Derivation | Lesson 5: Derivation | 29 | Kurdish داڕێژە has an earlier lexical hit in Lesson 3; definition and scope need context review. |
+| Verbal particle | Lesson 29: verbal particle, پارتیکڵی کردار | 30 | General پارتیکڵ appears earlier, but the compound concept first appears in 29. |
+
+### Correction to the candidate register's earlier assumptions
+- Noun Phrase has an earlier runtime lexical hit in Lesson 3, not only Lesson 31.
+- Prefix has an earlier Kurdish lexical hit in Lesson 5.
+- Suffix and Root have earlier Kurdish lexical hits in Lesson 3.
+- The earlier register entry that treated Subject/بکەر/بابەت as one mapped set was too compressed. These are now separate unresolved labels; context must determine whether بابەت is Topic, grammatical Subject, or another use in each occurrence.
+- Stem's exact-token first hit is Lesson 13; an earlier raw substring match in Lesson 7 was a false positive.
+- Patient has no exact hit under the candidate forms searched. It must not be added as if runtime already teaches it.
+
+### Next verification gate
+A lexical scan cannot identify pedagogical first introduction. For each candidate, inspect the full lesson context at the earliest hit, identify explicit definition/learning objective/example vs incidental mention, and then check source drafts and patches. Record the first *defined* lesson separately from the first *mentioned* lesson. Do not normalize terms until that review is complete.
