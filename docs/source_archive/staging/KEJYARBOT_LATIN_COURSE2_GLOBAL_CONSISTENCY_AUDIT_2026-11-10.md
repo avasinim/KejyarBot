@@ -916,3 +916,14 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - PR #142 is Open/Unmerged, head `20b703b3614c75650459683e96d202f1c92d3a57`, targeting the preservation/audit branch, not `main`. The workflow-run lookup currently returned no runs for this PR head; no CI success is claimed for this patch.
 - Exact PR diff inspected: four files only (reviewed quiz draft, full quiz audit, global audit, preservation checkpoint). No lesson, answer-key, runtime, database, infrastructure, or deployment files changed.
 - Native Kurmanji idiom review remains a separate editorial quality limitation; the structural checks do not certify idiomaticity or psychometric quality.
+
+
+## Section 102 — approved Latin Course 2 stem and coverage refinements (2026-11-11)
+
+- Applied the previously approved L10 Q1, L2 Q5, L3 Q3 and L4 Q5 proposals to the review-branch quiz and answer key.
+- L10 Q1 retains key B (`min`) with a more precise inventory-membership stem.
+- L2 Q5 now tests `Argesh` versus `hesp`; key letter changes C→B and answer text/rationale updates accordingly. This corrects the earlier audit erratum, which incorrectly stated the baseline key was B; the source answer-key row was C.
+- L3 Q3 now tests `jin` as feminine; key letter A retained, answer text changes `nêr`→`mê`.
+- L4 Q5 now tests plural agreement in `Ev mehîn __`; key letter C retained, answer text changes `gelemjimar`→`in`.
+- Combined with Section 100's six distractor refinements, ten quiz items now have approved edits. Structural validation of all 62 quiz/key mappings is the next gate.
+- Review branch only; no `main`, runtime, Railway, Botkeep, Telegram, or deployment change.
