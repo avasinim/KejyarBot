@@ -117,7 +117,10 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(context.user_data["arami_lesson5_message_id"], 11)
 
         update, _query = make_update("assessment")
-        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank), patch(
+            "arami_lesson5_telegram.load_manifest",
+            return_value={"lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]},
+        ):
             await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         assessment = context.user_data["arami_lesson5_session"]
         self.assertEqual(assessment["mode"], "assessment")
@@ -164,7 +167,10 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         bank = sample_bank()
         context = SimpleNamespace(user_data={})
         update, _query = make_update("assessment")
-        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
+        with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank), patch(
+            "arami_lesson5_telegram.load_manifest",
+            return_value={"lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]},
+        ):
             await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         for index in range(2):
             message_id = context.user_data["arami_lesson5_message_id"]
