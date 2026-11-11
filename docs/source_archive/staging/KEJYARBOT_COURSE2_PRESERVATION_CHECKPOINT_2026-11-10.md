@@ -181,3 +181,14 @@ It consolidates the four proposed quiz edits and the three proposed Lesson 8 pro
 The consolidated handoff now contains a language-editor candidate for line 292 that uses the course's precise term `bireserên navdêrê` rather than the potentially ambiguous bare `bireser`. The candidate is explicitly proposal-only and requires final language-editor review. It does not alter the source-based rule: each linked modifier receives its own determiner according to its own gender and number (§69), distinct from §68's final-noun agreement rule.
 
 Consolidated handoff current blob SHA: `c648fae070f10691ebcb754b772544af0a343ff8`. No base lesson, quiz, key, runtime, manifest, database, Botkeep, Telegram, or deployment file changed. Tests/CI not run; `main` remains read-only.
+
+
+## Checkpoint update — full 12-lesson terminology and orthography audit (2026-11-11)
+
+- New append-only report: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_12LESSON_TERMINOLOGY_ORTHOGRAPHY_AUDIT_2026-11-11.md`
+- Verified report blob SHA: `d727d0d2c49109f254eacc954ce22206054e568f`
+- Global audit section 34 appended; commit `60c85e2f85a8afde08d9b9c518658e2babeecf42`, blob SHA `fd72d2f8b5c2e3aa756aa721670825709b8a65c8`.
+
+The report covers all 12 lesson sections in the reviewed 651-line draft. Main follow-ups: language-editor decision on `rengdêrê/rengdêra jmarîn`; glossary distinction for broad `pêvek` versus specific `veqetandek`; review of Lesson 6's paired `pêşnavdêr/bireser` label; retain the contextual distinction of `bireserê navdêrê` versus clause-level `bireser`, and source-aware `ko/ku`; and keep the three Lesson 8 mixed-script lines pending approval of the existing proposal.
+
+The report is audit-only. Reviewed lesson SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`; runtime SHA remains `7139aec3d585919baac65f93c2630a519c995e04`. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred. `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
