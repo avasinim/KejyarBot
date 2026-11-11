@@ -96,7 +96,7 @@ The following are proposed full-line replacements for the three affected lines i
 
 **Draft line 292 — proposed replacement**
 
-`Dema ku zêdetir ji yek pêvek bi navdêrê ve tên girêdan, şêweya veqetandekê li gorî mêjer û zayenda pêkhateya dawî tê diyarkirin. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
+`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin, hingê her yek ji wan li gorî mêjer û zayenda xwe veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
 
 **Draft line 294 — proposed replacement**
 
@@ -115,3 +115,10 @@ The following are proposed full-line replacements for the three affected lines i
 ## Approval boundary
 
 No proposed edit in this file has been applied. A separate explicit approval is required before creating the revised lesson/quiz/key patch artifact. The archive branch remains the only writable branch for this work; `main` remains read-only.
+
+
+## Source-verification correction — Lesson 8, §69 (2026-11-11)
+
+A direct recheck of Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, printed pp.66–67, §§67–70, found that the earlier proposed replacement for reviewed-draft line 292 repeated an inaccurate interpretation. Section 69 says that when more than one complement/modifier is attached in a linked noun group, **each** such element receives its own suffix according to its own gender and number. It does not state that only the final component determines the suffix. The proposed replacement above has therefore been corrected to express separate inflection for each element. The reviewed base lesson remains unchanged; this is still a proposal-only wording update.
+
+Source locator: printed p.67, §69; the preceding paradigms are §67 (printed p.66), §68 (printed p.66), and §70 (printed pp.67–68). The source PDF is the 2002 Nefel edition, ISBN 91-89687-04-3. The current source wording was checked against the PDF text and the original page image context; the source's §69 examples include the coordinated forms on printed pp.67–68.
