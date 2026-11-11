@@ -657,9 +657,15 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         assessment_message_id = context.user_data["arami_course1_active"]["message_id"]
         approved = lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_06"
         update, _ = self.make_update("pick:6:0", message_id=assessment_message_id)
-        await callback(update, context, ROOT, can_take_assessment=approved)
+        await callback(
+            update, context, ROOT, can_take_assessment=approved,
+            can_open=lambda user_id, lesson_id: True,
+        )
         update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
-        await callback(update, context, ROOT, can_take_assessment=approved)
+        await callback(
+            update, context, ROOT, can_take_assessment=approved,
+            can_open=lambda user_id, lesson_id: True,
+        )
         self.assertIn("وەڵامەکەت وەرگیرا", assessment_query.edit_message_text.await_args.args[0])
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
