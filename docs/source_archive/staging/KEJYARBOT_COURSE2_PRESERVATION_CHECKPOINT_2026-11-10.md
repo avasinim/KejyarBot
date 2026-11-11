@@ -785,3 +785,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Quiz SHA: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
 - Adoption details appended to the full quiz audit; global consistency audit updated in Section 100.
 - Review branch only. No merge to `main`, runtime activation, Botkeep/Telegram action, or deployment.
+
+
+## Checkpoint — Section 101 post-patch verification (2026-11-11)
+
+- Structural verification: 12 lessons and 62 quiz items retained; all 62 keyed option letters and answer texts match the quiz (62/62, zero mismatches).
+- Answer-key artifact unchanged at SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- PR #142 Open/Unmerged, targeting archive/preservation branch; no workflow runs were returned for its head, so no CI pass is claimed.
+- Four-file diff inspected; no runtime, database, Railway, Botkeep, Telegram, or production changes.
