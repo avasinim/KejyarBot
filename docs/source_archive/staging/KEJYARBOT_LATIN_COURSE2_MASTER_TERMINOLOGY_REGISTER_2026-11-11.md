@@ -311,3 +311,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L10 Q2: `wê` is source-supported in the §86 object-pronoun paradigm, but may function as inflected agent in a transitive past clause such as `Wê ew dît`. Keep form vs syntactic role distinct; wording clarification only, no key change proposed.
 - L12 Q1: qualify the basic adjective definition because source §§124–127 allow predicative and substantivized uses.
 - L12 Q3 morphology `rengdêra/rengdêrê jmarîn` and L1 Q4 `kîtê/kitê` remain unresolved holds.
+
+
+## Rationale wording refinement — form vs clause role (2026-11-11)
+
+- For L10 Q2, preserve the distinction between the paradigm label `forma bireserî` and the syntactic role realized in a particular clause. Source §86 supports `wê` as the feminine form in the direct-object pronoun paradigm; in `Wê ew dît`, `wê` is the inflected agent and `ew` the direct object. Do not infer that the form label determines its clause role in every sentence.
+- For L10 Q1, likewise do not classify `min` by shape alone: its clause role depends on the construction; it may be an inflected agent in transitive past clauses.
+- The rationale refinement patch records these clarifications alongside course-scope and terminology refinements. It is editorial staging only; no glossary-wide normalization or learner-facing change is authorized.
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_REFINEMENT_PATCH_2026-11-11.md`, verified blob SHA `2b82d52cd10ef336ccc2455eb7455e21746d9cd4`.
