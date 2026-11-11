@@ -809,3 +809,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Quiz SHA: `3fe2bd44b9708551a4c9686d28148450003ac3c1`.
 - Answer-key SHA: `2caf0fa40e9638551b3e47f9cccdef3683171c80`.
 - PR #142 is the open review path; no CI run is currently returned for its head. No merge to `main` or production deployment.
+
+
+## Checkpoint — Section 104 single-answer defensibility pass (2026-11-11)
+
+- Four clarity/overlap refinements applied to L2 Q1, L4 Q5, L6 Q5 and L12 Q1; answer-key letters preserved (B, C, C, B).
+- Structural verification after edits: 62 quiz items, 62 answer-key rows, 62/62 keyed option text matches, zero mismatches.
+- Quiz SHA `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`; key SHA `66aa4476365f4766d7916403b25f2886f5fd2e70`.
+- Review branch only. No merge to `main`, runtime, Railway, Botkeep, Telegram or deployment action. Native-speaker review remains advisable.
