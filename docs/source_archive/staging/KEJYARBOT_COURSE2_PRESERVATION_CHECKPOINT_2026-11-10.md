@@ -76,3 +76,18 @@ The 62-question structural, pedagogical, and distractor/orthography review stage
 
 ### Verification and boundaries
 The new report, global audit append, and this checkpoint update are to be fetched and checked after commit. All work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only. No tests/CI, runtime, Botkeep, Telegram, manifest, DB, or deployment action was performed. No separate ZIP/off-site backup is claimed; the GitHub archive branch and commit history remain the persisted project record.
+
+
+## Checkpoint update — proposed editorial patch prepared (2026-11-11)
+
+- Proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md`
+  - Initial creation commit: `c81af46f19cb499116977a148b4193e73e652fee`
+  - Wording refinement commit: `706b0a52978117695608222e2315b217817daa50`
+  - Latest proposal blob SHA: `e2c9238cb36b6792ddc3b49ba260c49d6d2a5c6f`
+- Global audit section 26 appended:
+  - Commit: `0dc16deeed398304a2589ec174fafa9ee77d5202`
+  - Latest global-audit blob SHA: `605e637156ed700139a0c08c8bf61a9f4fde0ddb`
+
+The proposal contains exact candidate stems/options and replacement text for the three mixed-script Lesson 8 lines. **It is not an applied patch.** The two reviewed base artifacts remain unchanged at their protected blob SHAs. Do not create a revised quiz/lesson/key patch until the proposal is explicitly approved. After approval, create a new dated append-only artifact and re-run the 62-row structural comparison.
+
+All changes remain confined to the archive branch. `main` is read-only. No runtime, test execution, manifest, DB, Botkeep, Telegram, or deployment action occurred. GitHub archive-branch history remains the persisted record; no separate ZIP/off-site backup is claimed.
