@@ -59,3 +59,12 @@ This row is now eligible for editorial wording review; the previous claim of a d
 - No source, lesson, quiz, answer-key or learner-facing file was changed. No rationale was applied.
 - No runtime, parser, manifest, database, Botkeep, Telegram, deployment, tests/CI, learner-response or psychometric work was performed.
 - main remains read-only. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
+
+
+## Editorial erratum — L4 Q5 wording (2026-11-11)
+
+The table above contains an awkward comparative phrase in L4 Q5: “Ev form ji `hespek`-a yekjimar cuda ye.” Use this corrected proposed sentence instead:
+
+> `hespin` di paradigmaya nebinavkirî ya ku di vê dersê de hatiye fêrkirin de forma gelemjimar e. Ev form ji forma yekjimara `hespek` cuda ye û divê ji formên tewandî yên wek `hespan` were cudakirin.
+
+This is an editorial correction within the proposal only; no answer-key content was changed.
