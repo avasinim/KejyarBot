@@ -15,17 +15,17 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 2 | 2 | C | hevenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 3 | A | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 4 | B | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
-| 2 | 5 | C | navê giştî | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 5 | B | Argesh | Di koma `Argesh û hesp` de `Argesh` navê taybet e (serenav), lê `hesp` navê giştî ye. |
 | 3 | 1 | B | 2 | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
 | 3 | 2 | C | nêr | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
-| 3 | 3 | A | nêr | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
+| 3 | 3 | A | mê | `jin` di lîsteya navên mê ya dersê de hatiye danîn; ji ber vê yekê zayenda wê ya rêzimanî mê ye. |
 | 3 | 4 | B | mê | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
 | 3 | 5 | C | zayenda rêzimanî | Li gorî pirs û vebijarkên testa Ders 3, ev vebijarka rast e. |
 | 4 | 1 | B | yek an gelek | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 2 | C | hespin | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 3 | A | yekjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
-| 4 | 5 | C | gelemjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
+| 4 | 5 | C | in | Di nimûneya `Ev mehîn in` de, lêkera `in` bi navdêra gelemjimar re li hev dike. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr a dema niha de, şêweya tewandî ya hesp `hespî` ye; mînak: `Ez hespî dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
 | 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê a dema niha de, şêweya tewandî ya mehîn `mehînê` ye; mînak: `Ez mehînê dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
@@ -53,7 +53,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 9 | 3 | A | wî | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê nêr `wî` ye (§86). |
 | 9 | 4 | B | me | Di rabirdûya lêkerên gerguhêz de, forma kirarî ya pronavê yekem gelemjar `me` ye (§86). |
 | 9 | 5 | A | hon | Li gorî pirs û vebijarkên testa Ders 9, ev vebijarka rast e. |
-| 10 | 1 | B | min | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
+| 10 | 1 | B | min | `min` di lîsteya formên pronavên bireser a Ders 10 de heye; stem pirsê li ser endametiya lîsteyê dike, ne erkê `min` di her hevokekê de. |
 | 10 | 2 | C | wê | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 3 | A | hev, êk | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
 | 10 | 4 | B | bireser | Li gorî pirs û vebijarkên testa Ders 10, ev vebijarka rast e. |
