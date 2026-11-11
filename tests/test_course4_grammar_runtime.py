@@ -698,7 +698,9 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
                     "owner_review_pending_expanded_draft"
                     if lesson_number >= 32
                     else (
-                        "scientific_review_complete_with_qualified_notes"
+                        "internal_cross_lesson_synthesis_no_external_source_mapping"
+                        if lesson_number == 13
+                        else "scientific_review_complete_with_qualified_notes"
                     )
                 )
                 if lesson_number == 13:
