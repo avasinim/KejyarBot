@@ -91,3 +91,16 @@ The new report, global audit append, and this checkpoint update are to be fetche
 The proposal contains exact candidate stems/options and replacement text for the three mixed-script Lesson 8 lines. **It is not an applied patch.** The two reviewed base artifacts remain unchanged at their protected blob SHAs. Do not create a revised quiz/lesson/key patch until the proposal is explicitly approved. After approval, create a new dated append-only artifact and re-run the 62-row structural comparison.
 
 All changes remain confined to the archive branch. `main` is read-only. No runtime, test execution, manifest, DB, Botkeep, Telegram, or deployment action occurred. GitHub archive-branch history remains the persisted record; no separate ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — answer-key rationale proposal (2026-11-11)
+
+- Companion proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md`
+  - Creation commit: `43c248d19b347f33568763cbcf2cc5a45ff641a8`
+- Global audit section 27 appended:
+  - Commit: `2f790434789dd0a1bf0e939494a4777d8d94ab9f`
+  - Latest global-audit blob SHA: `18e66c27d90c4599afdba9b7445a6809ab57cc7f`
+
+The companion proposal supplies four matching rationale entries for L6 Q3, L8 Q5, L10 Q1, and L10 Q2. It is proposal-only and must not be applied until the related quiz/lesson proposal receives explicit approval. The base quiz SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the base answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`.
+
+No runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment action occurred. All writes remain on the archive branch; `main` remains read-only. No separate ZIP/off-site backup is claimed.
