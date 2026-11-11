@@ -1,5 +1,4 @@
 import asyncio
-import asyncio
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
@@ -1191,6 +1190,74 @@ class AramiAcademicAssessmentFailClosedTests(unittest.TestCase):
         ):
             self.assertFalse(bot.award_arami_assessment(12345, self.lesson_id))
         complete.assert_not_called()
+
+
+class ReviewOnlyQuizLaunchGuardTests(unittest.IsolatedAsyncioTestCase):
+    async def test_lesson13_direct_quiz_callback_is_rejected(self):
+        lesson = "grammar_13"
+        self.assertIn(lesson, bot.LESSON_COURSE)
+        query = SimpleNamespace(
+            data=f"quiz_{lesson}_start",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=900,
+                reply_text=AsyncMock(),
+            ),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "lesson_quiz_is_available", return_value=False),
+        ):
+            await bot.start_quiz(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پێداچوونەوە", query.message.reply_text.await_args.args[0])
+
+    async def test_stale_lesson13_quiz_session_is_discarded_before_scoring(self):
+        lesson = "grammar_13"
+        query = SimpleNamespace(
+            data="answer_0",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=901,
+                reply_text=AsyncMock(),
+                edit_message_reply_markup=AsyncMock(),
+            ),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "quiz": {
+                "index": 0,
+                "lesson": lesson,
+                "questions": [{
+                    "question": "پرسیاری تاقیکردنەوە",
+                    "options": ["وەڵامی یەکەم", "وەڵامی دووەم"],
+                    "answer": "وەڵامی یەکەم",
+                }],
+                "score": 0,
+                "question_message_id": 901,
+            }
+        })
+
+        with (
+            patch.object(bot, "lesson_quiz_is_available", return_value=False),
+            patch.object(bot, "complete_quiz_with_rewards") as award,
+        ):
+            await bot.quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("هیچ خەڵاتێک", query.message.reply_text.await_args.args[0])
+        award.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
