@@ -389,3 +389,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Updated teacher guidance: `kurên van` follows the lesson's `xwemalîn` example list (editor review remains); `nîv roj` is `jmarnav` in the lesson taxonomy, with its noun-phrase function recorded separately.
 - Xebata 2 and Xebata 3 marking criteria now distinguish class/subclass/function/surface form. Q3 singular label morphology remains open.
 - Audit-only. No learner-facing content, quiz/key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## Checkpoint update — complete 13-item Lesson 12 exercise audit (2026-11-11)
+
+- Full 13-row teacher-facing audit appended and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`, blob SHA `99694a86c9457e3b5a296d105209b5175b24a25b`.
+- Global consistency audit Section 50 appended and verified: blob SHA `7adc1886654751a138392a40152741c74bbe4393`.
+- The matrix distinguishes course-intended class from phrase function, morphology, and context. `tu mirov` requires context; `hespê min` and `mehînên te` require careful possessive/pronoun terminology and Kurmanji editor review; `kurên van` remains the lesson-intended `xwemalîn` item pending syntax/idiomaticity review; `nîv roj` remains `jmarnav` with modifying phrase function stated separately.
+- No learner-facing lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
