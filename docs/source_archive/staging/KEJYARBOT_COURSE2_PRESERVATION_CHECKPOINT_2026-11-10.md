@@ -414,3 +414,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Master terminology register addendum and global consistency audit Section 52 record the course-taxonomy caveat and the distinctions among lexical class, phrase function, and surface form.
 - Main open issues: broad opening definition; context-sensitive demonstrative/interrogative/quantifier forms; mixed possessor morphology (especially `kitêba vî`); `nîv roj` lexical-vs-phrase analysis; case context in numeral examples; ellipsis context for ordinal forms.
 - No learner-facing or protected runtime/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — Course 2 cross-lesson terminology chain (2026-11-11)
+
+- Cross-lesson terminology audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CROSS_LESSON_TERMINOLOGY_CHAIN_AUDIT_2026-11-11.md`, blob SHA `178b0fb99da312265e27172208635a0221a9ef2b`.
+- Master terminology register updated to record the core distinctions and unresolved labels; global consistency audit Section 53 appended.
+- No learner-facing lesson/exercise/quiz/key or protected runtime/parser/tests/manifest/database/Botkeep/Telegram/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
