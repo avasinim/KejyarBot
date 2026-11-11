@@ -530,7 +530,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         reward.assert_not_called()
         self.assertNotIn("quiz", context.user_data)
-        self.assertTrue(any("ڕاهێنانی Beta تەواو بوو" in call.args[0] for call in query.message.reply_text.await_args_list))
+        self.assertTrue(any("ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە" in call.args[0] for call in query.message.reply_text.await_args_list))
 
     async def test_selection_is_recorded_before_callback_acknowledgement(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
@@ -579,7 +579,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.submit_quiz_answer(update, context)
 
         feedback = [call.args[0] for call in query.message.reply_text.await_args_list]
-        self.assertTrue(any("ڕاهێنانی Beta تەواو بوو" in item for item in feedback))
+        self.assertTrue(any("ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە" in item for item in feedback))
         self.assertFalse(any("❌" in item for item in feedback))
         self.assertNotIn("quiz", context.user_data)
 
