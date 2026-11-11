@@ -172,8 +172,8 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("🧪"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🧪"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
         self.assertEqual(len(keyboard.inline_keyboard[0]), 2)
 
@@ -312,7 +312,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             if button.callback_data.startswith("aramiC:select:")
         ]
         self.assertEqual(len(buttons), 21)
-        self.assertTrue(all(button.text.startswith("🔓") for button in buttons))
+        self.assertTrue(all(button.text.startswith("🧪") for button in buttons))
 
     def test_source_question_banks_match_their_own_lessons_and_preserve_source_counts(self):
         banks = load_question_banks(ROOT)
