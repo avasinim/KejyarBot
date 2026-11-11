@@ -570,3 +570,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSON1_Q3_Q5_RECHECK_2026-11-11.md`, SHA `dfce471ab619202c8f4b307216b649be1de36ffb`.
 - Two rows checked: L1 Q3 (`tîp` as written sign, not speech sound) and L1 Q5 (`qiset` formed from `komek` units). Both align; no correction. L1 Q4 remains held.
 - No source/key/runtime/deployment changes or tests/CI; `main` read-only; no separate offsite backup claimed.
+
+
+
+## Checkpoint — Remaining proposed rationale rows source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_REMAINING_ROWS_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `bca455a18d0ad6d58d9c4b89dc3f2d327d23a4f7`.
+- Sixteen rows checked across Lessons 5, 6, 9, 10, 11 and 12; no new stem/key/source contradiction or proposal correction. Superseding L6 Q5 possessive-adjective wording retained.
+- L1 Q4, L12 Q1 and L12 Q3 remain held. No lesson/key/runtime/deployment changes or tests/CI; proposals remain unapproved/unapplied. `main` read-only; no separate offsite backup claimed.
