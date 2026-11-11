@@ -51,7 +51,7 @@ def sample_bank():
 
 class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
     def test_menu_exposes_reading_practice_and_assessment(self):
-        keyboard = menu_keyboard()
+        keyboard = menu_keyboard(assessment_enabled=True)
         callbacks = [
             button.callback_data
             for row in keyboard.inline_keyboard
@@ -63,6 +63,12 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami5:assessment",
             "aramiC:menu",
         ])
+
+    def test_menu_hides_assessment_by_default_without_approval(self):
+        keyboard = menu_keyboard()
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertNotIn("arami5:assessment", callbacks)
+        self.assertIn("arami5:practice", callbacks)
 
     async def test_lesson_callback_reads_its_own_source_and_returns_to_lesson5_menu(self):
         update, query = make_update("lesson")
