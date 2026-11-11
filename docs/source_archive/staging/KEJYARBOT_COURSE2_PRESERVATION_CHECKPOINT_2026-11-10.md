@@ -354,3 +354,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - The five current key answers align with the concepts they test; no key contradiction was found. The quiz samples only a subset of the lesson objectives: it does not directly test the six-class taxonomy as a whole, adjective degrees, adjective/pronoun distinction, or the interrogative, indefinite, and possessive classes.
 - The quiz is best characterized as a short end-of-lesson checkpoint, not a representative assessment of all objectives. Xebata 1's `nîv roj` needs a teacher-facing answer criterion; Xebata 3 should model the expressed-noun vs independent numeral distinction.
 - Recommendations are audit-only. No lesson, exercise, quiz, key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 12 exercise teacher rubric (2026-11-11)
+
+- New verified audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`, blob SHA `6abe7c8440175b0f5f50781b1ee6f4456b54a4fc`.
+- Xebata 1 provisional classifications are documented. `kurên van` and `nîv roj` are intentionally left unresolved pending syntax/category decisions; `mehînên te` needs Kurmanji review; `tu mirov` and oblique demonstratives need context for interpretation-based marking.
+- Xebata 2's implied six-example requirement and proposed marking criteria are documented. Xebata 3 has a scoped model answer contrasting `sê mal` with independent `jmarnav` use.
+- All content is teacher-facing proposal only. No lesson/exercise/quiz/key/runtime/parser/tests/manifest/DB/Botkeep/Telegram/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
