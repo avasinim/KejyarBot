@@ -748,9 +748,10 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer()
         await query.message.reply_text("🔒 ئەم کۆرسە هێشتا چالاک نەکراوە.")
         return
-    if not lesson_quiz_is_available(lesson):
+    beta_practice_only = lesson_is_beta_review(lesson) and quiz_requires_submission(lesson)
+    if not lesson_quiz_is_available(lesson) and not beta_practice_only:
         await query.answer()
-        await query.message.reply_text("📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
+        await query.message.reply_text("📚 تاقیکردنەوەی فەرمیی ئەم وانەیە هێشتا لە پێداچوونەوەی سەرچاوەدایە.")
         return
     source_questions = QUIZ_DATA.get(lesson)
     if not source_questions:
@@ -881,7 +882,14 @@ async def quiz_answer(
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
     active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
-    if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
+    beta_practice_only = (
+        isinstance(active_lesson, str)
+        and lesson_is_beta_review(active_lesson)
+        and quiz_requires_submission(active_lesson)
+    )
+    if not isinstance(active_lesson, str) or (
+        not lesson_quiz_is_available(active_lesson) and not beta_practice_only
+    ):
         await query.answer()
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
@@ -989,9 +997,15 @@ async def quiz_answer(
         # Revalidate immediately before writing the official reward ledger.
         if not lesson_quiz_is_available(lesson):
             context.user_data.pop("quiz", None)
-            await query.message.reply_text(
-                "📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا."
-            )
+            if quiz_requires_submission(lesson) and lesson_is_beta_review(lesson):
+                await query.message.reply_text(
+                    f"🧪 ڕاهێنانی Beta تەواو بوو: {earned}/{len(quiz['questions'])}. "
+                    "هیچ خەڵات یان تەواوکردنی فەرمی بۆی تۆمار نەکرا."
+                )
+            else:
+                await query.message.reply_text(
+                    "📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا."
+                )
             return
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
@@ -1336,11 +1350,22 @@ QUIZ_MENU_PAGE_SIZE = 12
 
 def quiz_menu_items(user_id, mode):
     completed = set(get_completed_lessons(user_id))
+    if mode == "practice":
+        completed.update(
+            beta_lesson
+            for beta_lesson in get_completed_beta_lessons(user_id)
+            if lesson_is_beta_review(beta_lesson)
+        )
     items = []
     for lesson in active_course_lessons():
+        beta_practice_only = (
+            mode == "practice"
+            and quiz_requires_submission(lesson)
+            and lesson_is_beta_review(lesson)
+        )
         if (
             not QUIZ_DATA.get(lesson)
-            or not lesson_quiz_is_available(lesson)
+            or (not lesson_quiz_is_available(lesson) and not beta_practice_only)
             or lesson not in completed
             or not can_open(user_id, lesson)
         ):
@@ -1414,7 +1439,7 @@ async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE
     title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
     first = int(raw_page) * QUIZ_MENU_PAGE_SIZE + 1
     last = min(first + QUIZ_MENU_PAGE_SIZE - 1, len(items))
-    await query.edit_message_text(
+    await query.message.edit_text(
         f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {int(raw_page) + 1}/{count})",
         reply_markup=keyboard,
     )
