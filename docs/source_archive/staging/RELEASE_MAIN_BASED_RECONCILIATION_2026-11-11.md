@@ -75,3 +75,37 @@
 ## ٧. بڕیاری پاراستن
 
 PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەرکەوتنی CI بە مانای کارکردنی ڕۆبۆتی زیندوو، پەسەندی زانستیی ٢٠ وانەی پێداچوونەوەماوە، یان ئامادەبوونی Botkeep نییە. تا Node17 و تاقیکردنەوەی ڕاستەوخۆ چارەسەر نەبن، هیچ import، restart، deploy یان گۆڕانکاریی DB ئەنجام نادرێت.
+
+
+## ٨. پاشکۆی پشکنینی callback و Arami — 2026-11-11 12:25 UTC
+
+ئەم بەشە تۆمارێکی زیادکراوی append-only ـە؛ هیچ بەڵگەی پێشووتر ناسڕێتەوە و هیچ دۆخی پەسەندکردنی ئەکادیمی ناگۆڕێت.
+
+- Headی PR #152 لەم پشکنینەدا: `f06552a6d8c75df516de98696eb9e5e5967f2554`.
+- پشکنینی callbackی کردنەوەی وانە، `can_open`، دەستپێکردنی کویز، و پشکنینی دووبارەی کویز پێش خەڵاتدانەوە بەڵگەدار کرا.
+- پشکنینی داتابەیس: completionی وانە، Beta ledger، completionی کویز، XP/coins/chests و badge بە transactionی SQLite و ڕێکاری idempotent پارێزراون؛ تاقیکردنەوەی هاوکات بۆ دووبارە خەڵاتدانەوەش هەیە.
+- لاوازییەکی تایبەتی دۆزرایەوە: callbackی گشتیی Arami Course 1 لە دۆخی نەبوونی `can_take_assessment` ـدا تاقیکردنەوەی فەرمی بە شێوەی fail-closed ڕەت نەدەکردەوە.
+- چاکسازی: `arami_course1_telegram.py` ئێستا ئەگەر permission callback نەبێت، assessment ڕەت دەکاتەوە؛ تاقیکردنەوەی regression زیاد کرا و تاقیکردنەوەکانی موجود بە مۆڵەتی ڕوون نوێ کرانەوە. هیچ review status یان source approval نەگۆڕدرا.
+- یەکەم CIی دوای زیادکردنی guard شکستی تاقیکردنەوەی هەبوو بەهۆی چاوەڕوانی/ئامادەکاریی تاقیکردنەوەکان؛ هەڵەکان ڕاست کرانەوە، guard لە شوێنی خۆی ماوە و هیچ پاراستنێک لابرا نەبوو.
+- ئەنجامی کۆتایی Python checks لەسەر هەمان head: ٥٥٥ تاقیکردنەوە، ١١ skip، `OK`. تاقیکردنەوەی نوێی `test_assessment_fails_closed_when_permission_callback_is_missing` سەرکەوتووە.
+
+### CIی پشتڕاستکراو لە headی ئەم پاشکۆیە
+
+| Workflow | Run ID | دۆخ |
+|---|---:|---|
+| Python checks (push) | 43020119813 | success — 555 tests، 11 skipped |
+| Course 4 Beta review safety (push) | 43020119876 | success |
+| Course 4 50-lesson Beta validation (push) | 43020119624 | success |
+| Course 4 quiz override validation (push) | 43020119646 | success |
+| Review gate regression validation (push) | 43020119610 | success |
+| Orthography course structure (push) | 43020119608 | success |
+| Python checks (pull request) | 43020127395 | success |
+| Course 4 Beta review safety (pull request) | 43020127252 | success |
+| Orthography course structure (pull request) | 43020127257 | success |
+
+### دۆخی release
+
+- PR #152 هێشتا open ـە و merged=false؛ merge نەکراوە.
+- ئەم پشکنینە CI و کۆدی branch پشتڕاست دەکاتەوە، نە runtimeی Botkeep.
+- Node17 clearanceی نووسراو هێشتا بەڵگەدار نییە؛ هیچ import، restart، deploy، Telegram production rollout یان گۆڕانکاریی DBی بەرهەمهێنان نەکراوە.
+- Course 4 Lesson 13 هێشتا `internal_cross_lesson_synthesis_no_external_source_mapping` ـە و Beta/review-only دەمێنێتەوە؛ هیچ کویز یان خەڵاتی فەرمیی بۆ چالاک نەکراوە.
