@@ -550,3 +550,30 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - دووبارە جێبەجێکردنی Python checks و Orthography structureیش success بوو.
 
 ئەم گۆڕانکارییە تەنها پاراستنی assessment ـی Arami و fixture ـی تاقیکردنەوەیە؛ هیچ دۆخی پەسەندکردنی ئەکادیمی، ناوەڕۆکی وانە، داتای فێرخواز، DBی production یان deployment نەگۆڕدرا.
+
+
+## ٩.٢٢. قفڵی assessmentی تایبەتی وانەکانی ١ و ٥ و پشکنینی کۆرسە چالاکەکان — 2026-11-11
+
+### قفڵی دوو ڕێڕەوی تایبەتی Arami
+پشکنینی `arami_lesson1_telegram.py` و `arami_lesson5_telegram.py` نیشانی دا:
+- پێشتر `can_open` لە دەستپێکی practice/assessment optional بوو؛ نەبوونی callback دەتوانی پشکنینی ڕێڕەو بپەڕێنێت.
+- مۆڵەتی ئەکادیمی لە دەستپێکی assessment پشکنین دەکرا، بەڵام لە هەر callbackی ناو سێشنەکەدا دووبارە پشتڕاست نەدەکرایەوە.
+- چاکسازی: هەردوو ڕێڕەوی تایبەتی وانەی ١ و ٥ ئێستا بۆ practice و assessment بە `can_open`ی بوونی پێویستن؛ assessment هەروەها `can_take_assessment`ی پێویستە. هەر callbackی assessment هەردوو مۆڵەتەکە دووبارە دەپشکنێت؛ ئەگەر callback نەبێت یان مۆڵەت ڕەت بکرێتەوە، سێشن و message state پاک دەکرێتەوە و تاقیکردنەوە دەوەستێت.
+- بۆ کەمکردنەوەی failure surface، IDی ناسراوی هەر وانەیەک بە شێوەی ثابت بەکاردێت؛ خوێندنەوەی manifest بۆ هەر startی practice پێویست ناکات. مۆڵەتی ئەکادیمی هەر لە `can_take_arami_assessment`دا لە manifestی سەرچاوەوە پشتڕاست دەکرێتەوە.
+- تاقیکردنەوەی regression بۆ ونبوونی callback و هەڵوەشاندنەوەی مۆڵەت لە ناو سێشن زیاد کرا بۆ هەردوو وانە.
+
+### ئەنجامی CI
+لە headی `49b4bf22bc13dfb1cef11057b3f317a0b2850b5c`:
+- Python checks: 570 tests، 11 skipped، 0 failure، 0 error.
+- Course 4 Beta review safety، Course 4 50-lesson Beta validation، Review gate regression، Quiz override validation، Orthography structure و Kurdish months tests: هەموویان success.
+- لە هەندێک جێبەجێکردنی پێشوودا fixtureی تاقیکردنەوە کێشەی syntax/fixtureی هەبوو؛ ئەوە لە test-only correctionدا چاک کرا. هیچ runtime guardێک لاواز نەکرا.
+
+### پشکنینی دۆخی کۆرسە چالاکەکان
+پشکنینی `courses.json` و داتای سەرچاوە:
+- کۆرسی ٢ — وتووێژ: ٤٢ وانە؛ هەموویان `draft_editorial_review`.
+- کۆرسی ٣ — ڕێنووسی یەکگرتوو: ٦٦ وانە؛ هەموویان `draft_editorial_review`.
+- دوو کۆرسی لاتینی: ١٢ + ١٢ وانە؛ loader هەموویان بە `draft_editorial_review` دروست دەکات.
+- کۆی ئەم چوار کۆرسە ١٣٢ وانەیە. لەبەر ئەوەی هەموو کۆرسە چالاکەکان لە `ACADEMIC_REVIEW_REQUIRED_COURSE_IDS`دان، `lesson_is_beta_review` بۆ ئەم وانانە true دەبێت: خوێندنەوە و پێشکەوتنی Beta ڕێگەپێدراوە، بەڵام کویزی فەرمی و خەڵاتی XP تا پەسەندکردنی ئەکادیمی ناچالاکن.
+- ئەمە گۆڕینی status نییە؛ هیچ وانەیەک بە دەستی پەسەند نەکرا و هیچ quiz/rewardیەک چالاک نەکرا. پێویستە پەسەندکردنی ئەکادیمی لەسەر بنەمای بەڵگە و بڕیاری خاوەن پڕۆژە بێت.
+
+بڕیار: پاراستنی دوو ڕێڕەوی تایبەتی Arami بەهێز کرا و بە CI پشتڕاست کرایەوە. دۆخی ١٣٢ وانەی چوار کۆرسی چالاک تەنها بە شێوەی audit تۆمار کرا؛ هیچ status، ناوەڕۆک، DB، production data یان deployment نەگۆڕدرا.
