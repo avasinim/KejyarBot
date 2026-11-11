@@ -1143,10 +1143,6 @@ class UnicodeQuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.edit_message_reply_markup.assert_not_awaited()
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class AramiAcademicAssessmentFailClosedTests(unittest.TestCase):
     def setUp(self):
         self.lesson_id = bot.ARMI_LESSON_IDS[0]
@@ -1195,3 +1191,6 @@ class AramiAcademicAssessmentFailClosedTests(unittest.TestCase):
         ):
             self.assertFalse(bot.award_arami_assessment(12345, self.lesson_id))
         complete.assert_not_called()
+
+if __name__ == "__main__":
+    unittest.main()
