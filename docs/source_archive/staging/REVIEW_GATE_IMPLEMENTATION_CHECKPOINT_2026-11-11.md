@@ -36,8 +36,17 @@
 - Do not retry import/restore until Botkeep staff confirms Node17 resource/staging health, the previous operation is cleared, and safe import is explicitly confirmed.
 - Keep the test and main bot databases and Telegram credentials separate. Rotate any previously exposed Telegram token before testing.
 
-## Next gates
-1. Obtain a confirmed full-suite run for the latest exact candidate head and repair any remaining failures.
-2. Obtain Botkeep's written Node17/staging clearance.
-3. Rehearse additive database migration against a disposable copy of the preserved test backup.
-4. Only then import the exact verified candidate into KejyarBot-Test, verify runtime state and learner flows, and separately plan main-bot promotion.
+## Latest verification and integration
+- Exact candidate head `2ae4d243ca2a0cd8936f097303c88c81915c376d` passed:
+  - Python checks: compileall and full unittest suite (535 tests).
+  - Course 4 beta review safety suite.
+  - Orthography course structure suite.
+- PR #125 was merged into `botkeep-runtime-2026-11-09` with merge commit `2637c121bf04f6cce1777a9932d60914ceca1bb7`. This updates the GitHub runtime branch only; it does not deploy to Botkeep.
+- The preserved backup `KEJYARBOT_BACKUP_PRESERVED_2026-11-11.tar.gz` was materialized and its SQLite database copied to `/mnt/data/kejyarbot-backup-rehearsal/migration-test-copy.db`.
+- On the disposable copy only, the candidate's additive migration added `completed_quizzes` and `beta_completed_lessons`; the original learner row count and every pre-existing column value were unchanged, SQLite integrity remained `ok`, and a synthetic beta completion was idempotent with XP/coins/chests/badges unchanged. The preserved source database was not modified.
+- Backup archive SHA-256: `5d75b7498a00c22d1f9f167250b3c4103fffca6e24d378769ef89fe31c8f7059`.
+
+## Remaining gates
+1. Obtain Botkeep's written Node17/staging clearance and confirmation that the previous cancelled import is fully cleared.
+2. Only after that clearance, import the exact runtime-branch commit into KejyarBot-Test and verify live process state, menu, courses, lesson flow, beta progress, quiz blocking, and reward isolation.
+3. Promote to the main bot only after test-bot verification, with separate token and database.
