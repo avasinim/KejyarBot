@@ -248,3 +248,13 @@ The consolidated handoff now explicitly marks the earlier line 292 wording in se
 - The working preference is to retain `rengdêrên jmarîn` as plural class label and provisionally use `rengdêrê jmarîn` in singular prose. Quiz Q3's `rengdêra jmarîn` remains unresolved pending a Kurmanji editor's grammatical judgment in that exact context. This is not a final grammar ruling because the primary Lesson 12 source page image was not reopened.
 
 No base lesson/quiz/key edits were made; all proposals remain unapproved. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only.
+
+
+## Checkpoint update — Lesson 6 terminology adjudication (2026-11-11)
+
+- New note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON6_PRENOMINAL_MODIFIER_ADJUDICATION_2026-11-11.md`, blob SHA `9bcb2af635e61a5a78945c5cb17031f634cd8331`.
+- Master terminology register addendum commit: `d34de2a3a6b2655cef7b9435cbaac43ad97feee8`.
+- Global consistency audit addendum commit: `17c26ec4d5058cd488eaf9caade687975f996a80`.
+- Finding: `pêşnavdêr/bireser` is an unexplained slash-pair; distinguish pre-nominal position from noun-modifying function and from clause-level object `bireser`. Verify the technical sense of `pêşnavdêr` against the primary source before final wording.
+
+No lesson, quiz, answer key, or runtime changes; all proposals remain unapproved. No tests/CI or live runtime check occurred. `main` remains read-only.
