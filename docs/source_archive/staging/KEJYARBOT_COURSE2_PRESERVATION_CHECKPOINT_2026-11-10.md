@@ -192,3 +192,14 @@ Consolidated handoff current blob SHA: `c648fae070f10691ebcb754b772544af0a343ff8
 The report covers all 12 lesson sections in the reviewed 651-line draft. Main follow-ups: language-editor decision on `rengdêrê/rengdêra jmarîn`; glossary distinction for broad `pêvek` versus specific `veqetandek`; review of Lesson 6's paired `pêşnavdêr/bireser` label; retain the contextual distinction of `bireserê navdêrê` versus clause-level `bireser`, and source-aware `ko/ku`; and keep the three Lesson 8 mixed-script lines pending approval of the existing proposal.
 
 The report is audit-only. Reviewed lesson SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`; runtime SHA remains `7139aec3d585919baac65f93c2630a519c995e04`. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred. `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — master terminology register created (2026-11-11)
+
+- Register: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_MASTER_TERMINOLOGY_REGISTER_2026-11-11.md`
+- Verified register blob SHA: `08423c8bf0a44f5b3b5efe28f531a41f81b5fed8`
+- Global audit section 35 appended; commit `24b9a232df79aaadc440e928f8c5e5316694817f`, blob SHA `0ec4bdd0f87cc381167268ce792c7d9adeb01ec4`.
+
+The register consolidates the working terminology and semantic boundaries for all 12 Course 2 lessons. It is an editorial navigation baseline, not an external standard. It records the outstanding language-editor decisions for Lesson 12 `rengdêrê/rengdêra jmarîn`, the `pêvek/veqetandek` glossary distinction, Lesson 6's paired label, and Lesson 8's proposal-only mixed-script replacements. No source lesson or reviewed base was modified.
+
+Protected baselines remain: reviewed lesson `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; reviewed answer key `879e1525e720bdc25b8f6e896de3e388801238d0`; runtime `7139aec3d585919baac65f93c2630a519c995e04`. No tests/CI, runtime, manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
