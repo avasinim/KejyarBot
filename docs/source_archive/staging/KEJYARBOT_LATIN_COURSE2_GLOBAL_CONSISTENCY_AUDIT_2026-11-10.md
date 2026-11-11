@@ -359,3 +359,15 @@ Cross-check of the staged source-aligned text identifies three levels that must 
 Internal consistency ruling: `ev` in `ev keçik` is a demonstrative adjective/modifier under the course's Lesson 12 `rengdêrên îşarkî` taxonomy; `Ev` in `Ev hat.` is an independent demonstrative pronoun. The Lesson 6 slash-pair `pêşnavdêr/bireser` remains unexplained and should be clarified only through an approved editorial patch; do not claim a definitive technical meaning for `pêşnavdêr` without source confirmation. Lesson 8's `bireser/rengdêr` shorthand should be expanded so broad following complement/modifier environments are not conflated with the narrower adjective class.
 
 Source limitation: Lesson 12 page images were not reopened in this pass; its taxonomy is verified against the staged source-aligned text. Existing Lesson 6 and Lesson 8 page-image reviews are cited in the dedicated adjudication. No lesson, quiz, key, or runtime content was changed. See adjudication blob SHA `b245160ce26b27d6bc1adeb8416708febc722824` and master register latest blob SHA `bcae04276e7946d4874a2df1a062636f99a946c3`.
+
+
+## Section 40 — Lesson 12 source-grounded adjective, pronoun, and numeral boundaries (2026-11-11)
+
+Reconciliation of the recorded page-image reviews for printed pp.71–88 (§§72–118) and pp.89–100 (§§119–152) with the staged Lesson 12 confirms:
+- Category is determined by syntactic use, not spelling alone: `ev keçik` = demonstrative adjective/modifier with an expressed noun; `Ev hat.` = independent demonstrative pronoun. Similarly, `hespê min` modifies an expressed noun, while `yê min/yên min` may replace an understood noun/group and function pronominally.
+- Interrogative and indefinite forms can have adjective or pronoun uses depending on whether a noun is expressed. Teach the syntactic test rather than a permanent form-to-category mapping.
+- Numeral adjective modifies a stated noun (`sê mal`, `stûna çaran)); `jmarnav` is a separate category in the course's adopted framework when used independently/substantively. Do not infer the distinction merely from the book's section layout.
+- Source §§124–127 allow descriptive adjectives to be predicative or substantivized; qualify the simplified definition that an adjective only “describes a noun”.
+- Source/course terminology mapping should be explicit at first mention: course `wesfîn` vs source `çilobûn û çawabûnê`; course `xwemalîn` vs source `destdaniyê/xwedîtiyê`; course `rêzîn` vs source `rêzda`. Source comparison records `jmarda` for adjective numerals while the page-image review also records `jmarîn/rêzîn`; preserve the course label but don't present it as a verbatim source term.
+
+Lesson 12 Q3's `rengdêra jmarîn` vs explanatory `rengdêrê jmarîn` remains unresolved; the source page-image review does not settle this isolated option's morphology. No lesson/quiz/key text changed. See adjudication blob SHA `d6baeceb8981b661cdac7f10d4a42257db431a86`.
