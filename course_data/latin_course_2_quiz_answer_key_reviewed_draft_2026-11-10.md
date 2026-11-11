@@ -11,7 +11,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 1 | 3 | B | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 4 | B | bêje | Di rêzbendiya ziman de, `hesp` yekeya watedar e (bêje); ew dikare ji yek kîtê/kitê pêk bê, lê pirs li ser yekeya watedar e. |
 | 1 | 5 | B | bi peyhevketina koman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
-| 2 | 1 | B | kes/heywan/tişt | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 1 | B | kes/heywan/tişt | Navdêr li gorî pênaseya Ders 2 kes, heywan an tişt nîşan dide; erkê peyvê di hevokê de (A) pênaseya navdêrê nîne û taybetmendî (C) bi rengdêr ve girêdayî ye. |
 | 2 | 2 | C | hevenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 3 | A | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 4 | B | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
@@ -63,7 +63,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 11 | 3 | A | ko | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 4 | B | gihanek | Di hevoka `Min got ko ez nayêm` de `ko` du hevok bi hev ve girêdide. |
 | 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
-| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 1 | B | taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike | Ev bersiv pênaseya fireh a rengdêrê di Ders 12 de diparêze; A erkê rêzimanî ya navdêrê û C guherîna lêkerê rave dike. |
 | 12 | 2 | C | rengdêra wesfîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 | 12 | 3 | A | rengdêra jmarîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 | 12 | 4 | B | wek beşeke serbixwe | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
