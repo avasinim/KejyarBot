@@ -762,3 +762,16 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AramiCourseMissingPermissionTests(unittest.IsolatedAsyncioTestCase):
+    async def test_assessment_fails_closed_when_permission_callback_is_missing(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:2")
+        await callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+        )
+        self.assertEqual(context.user_data, {})
+        self.assertIn("پەسەندکردنی ئەکادیمی", query.message.reply_text.await_args.args[0])
