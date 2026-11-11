@@ -82,7 +82,7 @@ The complete lesson explicitly places `kurên van` and `keçên wan` in the poss
 3. Add a boundary note: lexical class and phrase/sentence function are separate; an adjective need not always be attributive.
 4. Add the expressed-noun/replacement test for adjective vs pronoun, and the stated-noun/independent-use test for numeral adjective vs `jmarnav`.
 5. Add `nîv roj` as a worked example of `jmarnav` used before an expressed noun, with its modifying function stated separately.
-6. Retain `kurên van` as the lesson's intended `xwemalîn) example, while marking its detailed syntax/idiomaticity for editor review.
+6. Retain `kurên van` as the lesson's intended `xwemalîn` example, while marking its detailed syntax/idiomaticity for editor review.
 7. Keep `rengdêra jmarîn` vs `rengdêrê jmarîn` open until a Kurmanji editor rules on the exact quiz option context.
 
 ## 6. Preservation and limitations
