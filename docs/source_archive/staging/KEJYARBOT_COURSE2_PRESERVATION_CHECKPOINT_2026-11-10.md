@@ -766,3 +766,12 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Railway production remains Offline. The 10-change patch remains staged; the 1 GB `kejyarbot-data` volume is empty/staged-create; DB path is staged; live service variables currently include `TELEGRAM_BOT_TOKEN` only.
 - No deploy or poller start: Botkeep database backup/restore and Botkeep stopped-state are not verified; PR #125 records an unresolved Botkeep staging incident and warns not to retry staging recovery actions before support confirmation.
 - Global Audit Section 98 records the verified state. The Railway patch was not accepted, and no restart/deployment occurred.
+
+
+## Checkpoint — Section 99 pre-activation migration gate (2026-11-11)
+
+- Evidence register: `docs/source_archive/staging/KEJYARBOT_PREACTIVATION_MIGRATION_GATE_2026-11-11.md`, SHA `f7ab2a8965d0f5f377955ab2e18af529becfeb69`.
+- PR #141 persistent SQLite preparation CI is green on exact head, but PR remains Draft/Open/Unmerged.
+- Railway production remains Offline; staged volume is empty and staged patch is not committed.
+- Authoritative Botkeep SQLite backup, integrity report, restore verification and confirmed Botkeep stopped-state are missing. No deployment/poller start is safe yet.
+- No source DB recovery action, Railway accept-deploy, restart, or live Telegram action performed.
