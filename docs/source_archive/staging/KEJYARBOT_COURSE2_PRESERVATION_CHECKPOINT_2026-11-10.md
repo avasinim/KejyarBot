@@ -164,3 +164,13 @@ Primary-source cross-check supports all four proposed revisions:
 The proposed key letters remain A/C/B/C. The current option order supports these keys. Editorial proposal SHA: `7ce8709d4847cc9fde265d198c69a0d694610787`; answer-key rationale proposal SHA: `79b39c8fb499f45c61445f640dc268f32c05eecb`. Both were fetched and verified after updates. They remain unapproved and unapplied.
 
 The reviewed lesson baseline remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; reviewed answer-key baseline remains `879e1525e720bdc25b8f6e896de3e388801238d0`; runtime baseline remains `7139aec3d585919baac65f93c2630a519c995e04`. No tests/CI, runtime, manifest, database, Botkeep, Telegram, or deployment operation occurred. `main` remains read-only.
+
+
+## Checkpoint update — consolidated patch review handoff (2026-11-11)
+
+A single operative handoff has been created and fetched back successfully:
+`docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_PATCH_REVIEW_2026-11-11.md`
+
+Verified blob SHA: `ccd2ed2ead0783354699c2df5db26ba8fac8ca6d`.
+
+It consolidates the four proposed quiz edits and the three proposed Lesson 8 prose-line replacements, records the controlling §§68–70 interpretation, and clearly labels all changes as unapproved and unapplied. It also flags a remaining language-editor pass for the exact Kurmanji Latin syntax/terminology of the prose replacements, particularly line 292. The baseline reviewed lesson, quiz, answer key and runtime remain unchanged. Tests/CI were not run; runtime was not tested live; no deployment or Botkeep/Telegram operation occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
