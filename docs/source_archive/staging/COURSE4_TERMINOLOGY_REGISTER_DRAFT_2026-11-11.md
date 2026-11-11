@@ -64,3 +64,35 @@ Rules:
 - Current runtime and Preservation Bundle are distinct snapshots. Appendix 9.51 documents 24/31 exact lesson matches and seven content differences.
 - The exact authoritative source/baseline for every term is not yet mapped. This draft therefore deliberately does not select between competing Kurdish forms.
 - No lesson, patch, quiz, runtime, status, database, Botkeep, or Telegram data was changed by creating this register.
+
+
+## Evidence refinement — 2026-11-11 (append-only)
+
+The following distinctions were confirmed by reading the complete preserved patches for Lessons 12, 13, 26 and 29. They refine the candidate register but do not approve any term.
+
+### Lesson 12 — one surface form, more than one function
+- `ـیان` is shown in `دەفتەرەکەیانە` as possessive, while in `ئاڕگەش و فەرزانە نامەکەیان نووسی` the patch gives a possible past-transitive subject-marking reading.
+- The patch explicitly asks for context-sensitive interpretation. The register must therefore store form + host + construction + reading, not map the string `ـیان` to one fixed grammatical function.
+- The patch also distinguishes word class/form (`جێناوی لکاو`) from grammatical functions such as Subject/Object and the relation of possession.
+
+### Lesson 13 — Root, Stem and clitic boundaries
+- The patch explicitly says Root and Stem are not synonyms; present and past stems are to be established through a verb paradigm, not by imagined segmentation.
+- It distinguishes Prefix/Suffix as bound affixal morphology from Enclitic attached to a host. This supports keeping the Enclitic/Affix collision unresolved rather than merging them.
+- Its examples are declared pedagogical Sorani examples, not direct quotations from Saeed Karimi.
+
+### Lesson 26 — discourse particle vs bound focus clitic
+- The lesson is explicitly scoped to narrow discourse particles in Sorani; it warns that not every item called a particle in other sources belongs to this category.
+- `ـیش` in `منیش` is described as a bound additive/focus clitic, not an independent discourse particle.
+- `خۆ` and `ئەوە` are not classified by form alone; `ئەوە` may be a discourse particle in one context and an independent demonstrative pronoun in another.
+- Radnia (2022) is described in the patch as based on author observations because no Kurdish conversational corpus was available; its evidence is characterized as descriptive/preliminary, not representative of all Sorani.
+
+### Lesson 29 — derivation, inflection and verbal particles
+- The patch explicitly distinguishes Derivation from Inflection: derivation may create a new lexeme, while inflection changes the grammatical form of the same lexeme.
+- It distinguishes verbal particles such as `هەڵـ` from derivational affixes such as `ـاند`; spelling/spacing alone is not a sufficient morphological classification criterion.
+- The function of `ـەوە` is context-sensitive and must not automatically be treated as derivational.
+
+### Register implications
+- Add contextual fields for host, construction, syntactic/semantic function, dialect scope, evidence type and confidence.
+- Preserve alternative analyses when a patch itself identifies ambiguity.
+- Do not use a term list as a substitute for full clause-level examples and paradigms.
+- Keep every claim tied to its actual source; do not present the pedagogical examples as corpus attestations or quotations from the cited book.
