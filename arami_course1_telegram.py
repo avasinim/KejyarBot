@@ -624,6 +624,22 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
+    if session.get("mode") == "assessment":
+        lesson_id = f"arami_course1_lesson_{number:02d}"
+        approved = (
+            can_take_assessment is not None
+            and can_take_assessment(query.from_user.id, lesson_id)
+        )
+        unlocked = can_open is None or can_open(query.from_user.id, lesson_id)
+        if not approved or not unlocked:
+            context.user_data.get("arami_course1_sessions", {}).pop(str(number), None)
+            context.user_data.pop("arami_course1_active", None)
+            if defer_ack:
+                await query.answer()
+            await query.message.reply_text(
+                "📚 ئەم تاقیکردنەوەیە وەستێندرا؛ مۆڵەتی ئەکادیمی یان ڕێگەپێدانی وانەکە چیتر پشتڕاست نییە."
+            )
+            return
     if kind == "pick":
         if len(parts) != 3 or not parts[2].isdecimal():
             await query.answer()
