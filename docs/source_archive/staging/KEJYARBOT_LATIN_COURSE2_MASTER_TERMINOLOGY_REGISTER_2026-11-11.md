@@ -292,3 +292,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_
 ### Verification addendum — proposed rationale key alignment (2026-11-11)
 
 The 44-row proposal file `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md` was re-fetched at SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`. A row-level comparison against the reviewed answer key confirmed **44/44 proposed rationale rows map to the existing keyed option letter**, with zero missing mappings and zero mismatches. This checks mapping only, not linguistic certification or approval.
+
+
+## Linguistic/source alignment review of 44 proposed rationales (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_RATIONALE_PROPOSALS_LINGUISTIC_SOURCE_ALIGNMENT_AUDIT_2026-11-11.md`, verified SHA `d1275daeedd8e7576524f30d71d1eb6276795ada`.
+
+- All 44 proposals were checked against the reviewed lesson draft and matching quiz/key entries. Broad alignment is good; no explicit lesson rule reversal was found.
+- Ten precision refinements are recorded, including qualified use of -in, the course-specific gender classification, consistent term hêmaneke raveker in L8, the L10 min agent/object caveat, the L11 qerse subtype, and lexical class vs phrase function for nîv roj.
+- L10 Q2, L12 Q1 and L12 Q3 remain held; L1 Q4 remains a separate kîtê/kitê notation hold.
+- This was comparison against the reviewed lesson transcription/draft, not a fresh inspection of every original book page. Proposals remain unapproved and unapplied; no answer key/lesson/runtime changes.
