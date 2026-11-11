@@ -593,3 +593,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - L4 Q4 is aligned: `mêjer` marks singular/plural quantity; `tewang` changes word form according to grammatical role and clause structure. Key B remains supported; no correction.
 - Targeted exact stem-option-key-source coverage of the 44 base proposal rows is now complete; L10 Q2 is the separately added 45th rationale and was checked separately. This is not a full native-Kurmanji editorial certification. L1 Q4, L12 Q1 and L12 Q3 remain held.
 - No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — Consolidated 45-item editorial review pack (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_RATIONALE_EDITORIAL_REVIEW_PACK_2026-11-11.md`, SHA `177faaaa5260879bf4b2211474dede013f8d002c`.
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_PACK_KEY_ALIGNMENT_VERIFICATION_2026-11-11.md`, SHA `3bca6cd89bda8186c8ed52c9b6b2553c7d6093d5`.
+- Consolidated pack contains 45 rationale rows (44 base + L10 Q2), with current superseding corrections. A fresh parse confirms 45/45 key-letter matches, no missing rows or duplicates. This validates mapping only, not linguistic correctness.
+- L1 Q4, L12 Q1 and L12 Q3 remain held; L10 Q2 needs editorial clarity review. No native-speaker certification, tests/CI, runtime or deployment. No lesson/key changes; `main` read-only; no separate offsite backup claimed.
