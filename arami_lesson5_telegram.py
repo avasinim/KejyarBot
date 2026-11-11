@@ -6,7 +6,7 @@ from arami_course1_telegram import load_manifest, _send_source, lesson_is_academ
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
-def menu_keyboard(assessment_enabled=False):
+def menu_keyboard(assessment_enabled=True):
     rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ٥", callback_data="arami5:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ٥", callback_data="arami5:practice")],
@@ -35,10 +35,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        assessment_enabled = False
+        assessment_enabled = True
         if can_take_assessment is not None:
             try:
-                lesson_record = {"id": "arami_course1_lesson_05"}
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
             except (OSError, ValueError, StopIteration):
                 await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
                 return
@@ -72,8 +73,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             ]]),
         )
         assessment_enabled = (
-            can_take_assessment is not None
-            and can_take_assessment(query.from_user.id, lesson_record["id"])
+            can_take_assessment is None
+            or can_take_assessment(query.from_user.id, lesson_record["id"])
         )
         await query.message.reply_text(
             "📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.",
@@ -89,10 +90,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             except (OSError, ValueError, StopIteration):
                 await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
                 return
-        if action == "assessment" and (
-            can_take_assessment is None
-            or not can_take_assessment(query.from_user.id, lesson_record["id"])
-        ):
+        if action == "assessment" and can_take_assessment is not None:
+            if not can_take_assessment(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
                 return
         if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
