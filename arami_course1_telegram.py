@@ -481,7 +481,12 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             ])
         action_rows.append([InlineKeyboardButton("⬅️ گەڕانەوە بۆ فهرست", callback_data="aramiC:menu")])
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
-        progress = "✅ تەواوکراوە" if lesson["id"] in set(completed) else "📘 لە ڕێڕەوی فێربووندایە"
+        beta_completed = get_completed_beta_lessons(user_id) if get_completed_beta_lessons is not None else []
+        progress = (
+            "🧪 پێشچوونی Beta تەواو کراوە" if lesson["id"] in set(beta_completed)
+            else "✅ تەواوکراوە" if lesson["id"] in set(completed)
+            else "📘 لە ڕێڕەوی فێربووندایە"
+        )
         extra = "" if practice_callback else "\n⚪ ڕاهێنان و تاقیکردنەوەی سەرچاوەیی بۆ ئەم وانەیە بەردەست نییە."
         await query.message.reply_text(
             f"🎓 <b>وانەی {number:02d}</b>\n<b>{escape(str(lesson.get('title', 'وانە')))}</b>\n"
@@ -537,6 +542,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         banks = load_question_banks(base_dir)
         user_id = query.from_user.id
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
+        beta_completed = get_completed_beta_lessons(user_id) if get_completed_beta_lessons is not None else []
         can_open_for_user = (
             (lambda lesson_id: can_open(user_id, lesson_id))
             if can_open is not None else None
@@ -545,6 +551,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             f"⭐ کۆتایی خوێندنەوەی وانەی {number}.",
             reply_markup=course_menu_keyboard(
                 manifest, banks, completed_lessons=completed,
+                beta_completed_lessons=beta_completed,
                 can_open=can_open_for_user,
             ),
         )
