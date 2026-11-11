@@ -25,7 +25,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 4 | 2 | C | hespin | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 3 | A | yekjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
-| 4 | 5 | C | in | Pirs bi awayekî ڕوون داوای lêkera girêdanê dike؛ `in` forma gelemjimar e. `hatin` lêkera rabirdû ya tevgerê ye، ne forma girêdanê ya vê hevoka nasandinê. |
+| 4 | 5 | C | in | Pirs bi awayekî zelal dawiya hevoka nasandinê û lêkera girêdanê dipirse; `in` forma gelemjimar e. `hatin` lêkera rabirdû ya tevgerê ye, ne forma girêdanê ya vê hevokê. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr a dema niha de, şêweya tewandî ya hesp `hespî` ye; mînak: `Ez hespî dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
 | 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê a dema niha de, şêweya tewandî ya mehîn `mehînê` ye; mînak: `Ez mehînê dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
@@ -35,7 +35,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 6 | 2 | C | keçik | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 3 | A | beza | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 4 | B | pêşî an paşî navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
-| 6 | 5 | C | bireserê navdêrê | Di çarچێوەی Ders 6 de، tevahiya koma `xencera min` wek nimûneya bireserê navdêrê hatiye pêşkêşkirin؛ pirs jî bi eşkereyî wê dabeşkirina dersê dipirse. |
+| 6 | 5 | C | bireserê navdêrê | Di çarçoveya Ders 6 de, tevahiya koma `xencera min` wek nimûneya bireserê navdêrê hatiye pêşkêşkirin; pirs jî bi eşkereyî wê dabeşkirina dersê dipirse. |
 | 7 | 1 | B | 3 | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
 | 7 | 2 | C | nêr yekjimar | Di pergala veqetandekên binavkirî de, `-ê` forma nêr yekjimar e (§61–64). |
 | 7 | 3 | A | mê yekjimar | Di pergala veqetandekên binavkirî de, `-a` forma mê yekjimar e (§61–64). |
