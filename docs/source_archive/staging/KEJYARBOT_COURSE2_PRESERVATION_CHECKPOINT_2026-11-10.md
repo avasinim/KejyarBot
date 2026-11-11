@@ -203,3 +203,14 @@ The report is audit-only. Reviewed lesson SHA remains `abc88219e2a0e249883e8d62c
 The register consolidates the working terminology and semantic boundaries for all 12 Course 2 lessons. It is an editorial navigation baseline, not an external standard. It records the outstanding language-editor decisions for Lesson 12 `rengdêrê/rengdêra jmarîn`, the `pêvek/veqetandek` glossary distinction, Lesson 6's paired label, and Lesson 8's proposal-only mixed-script replacements. No source lesson or reviewed base was modified.
 
 Protected baselines remain: reviewed lesson `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; reviewed answer key `879e1525e720bdc25b8f6e896de3e388801238d0`; runtime `7139aec3d585919baac65f93c2630a519c995e04`. No tests/CI, runtime, manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
+
+
+## Checkpoint update — 62-question lesson/quiz terminology cross-check (2026-11-11)
+
+- New append-only report: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_LESSON_QUIZ_TERMINOLOGY_CROSSCHECK_2026-11-11.md`
+- Verified report blob SHA: `e5e7b67bcc98504d0fd39b7da8a348ba8bee7350`
+- Global audit Section 36 appended in commit `698c2466ffadd7728cca14e0000b7935dc4afa9d`.
+
+All 62 questions across 12 lessons were cross-checked against lesson terminology and the 62-row reviewed answer key. New exact follow-ups: L8 Q3 should use the §66 condition `bê pêvekeke raveker li pey navdêrê` rather than ambiguous `bê bireser`; L6 Q3 retains the full term `bireserê navdêrê`; L8 Q5 and L10 Q1–Q2 remain covered by the existing proposal; L12 Q3 remains pending a language-editor decision on `rengdêra jmarîn` versus the source category heading `rengdêrên jmarîn`. No content edits were applied.
+
+Protected lesson SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
