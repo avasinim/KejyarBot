@@ -46,12 +46,6 @@ def is_beta_review_lesson(course_id, lesson_id, lesson_record):
         return False
     number = lesson_record.get("source_number")
     status = lesson_record.get("review_status")
-    if (
-        number == 13
-        and lesson_id == "grammar_13"
-        and status == "internal_cross_lesson_synthesis_no_external_source_mapping"
-    ):
-        return True
     return (
         isinstance(number, int)
         and not isinstance(number, bool)
