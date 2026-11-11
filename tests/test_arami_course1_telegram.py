@@ -535,6 +535,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     await callback(
                         update, context, ROOT,
                         can_take_assessment=lambda user_id, lesson_id: True,
+                        can_open=lambda user_id, lesson_id: True,
                     )
                     session = context.user_data["arami_course1_sessions"][str(number)]
                     self.assertEqual(session["mode"], mode)
@@ -552,6 +553,42 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertIn("مۆڵەتی ئەکادیمی", query.message.reply_text.await_args.args[0])
 
+    async def test_assessment_fails_closed_when_unlock_callback_is_missing(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:6")
+        approved = Mock(return_value=True)
+        await callback(
+            update, context, ROOT,
+            can_take_assessment=approved,
+        )
+        self.assertEqual(context.user_data, {})
+        approved.assert_not_called()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("ڕێگەپێدانی وانەکە", query.message.reply_text.await_args.args[0])
+
+    async def test_assessment_session_fails_closed_when_unlock_callback_disappears(self):
+        from arami_course1_telegram import callback
+        context = SimpleNamespace(user_data={})
+        update, _ = self.make_update("assessment:6")
+        approved = lambda user_id, lesson_id: True
+        unlocked = lambda user_id, lesson_id: True
+        await callback(
+            update, context, ROOT,
+            can_take_assessment=approved, can_open=unlocked,
+        )
+        self.assertIn("6", context.user_data["arami_course1_sessions"])
+        message_id = context.user_data["arami_course1_active"]["message_id"]
+        update, query = self.make_update("pick:6:0", message_id)
+        await callback(
+            update, context, ROOT,
+            can_take_assessment=approved,
+        )
+        self.assertNotIn("6", context.user_data.get("arami_course1_sessions", {}))
+        self.assertNotIn("arami_course1_active", context.user_data)
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("وەستێندرا", query.message.reply_text.await_args.args[0])
+
     async def test_assessment_completion_awards_once_for_its_lesson(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
@@ -560,6 +597,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         await callback(
             update, context, ROOT, award_assessment=award,
             can_take_assessment=lambda user_id, lesson_id: True,
+            can_open=lambda user_id, lesson_id: True,
         )
 
         bank = load_question_banks(ROOT)[6]["assessment"]
@@ -570,17 +608,20 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             await callback(
                 update, context, ROOT, award_assessment=award,
                 can_take_assessment=approved,
+                can_open=lambda user_id, lesson_id: True,
             )
             update, submit_query = self.make_update(f"submit:6", message_id)
             await callback(
                 update, context, ROOT, award_assessment=award,
                 can_take_assessment=approved,
+                can_open=lambda user_id, lesson_id: True,
             )
             if index < len(bank) - 1:
                 update, _ = self.make_update("next:6", message_id)
                 await callback(
                     update, context, ROOT, award_assessment=award,
                     can_take_assessment=approved,
+                    can_open=lambda user_id, lesson_id: True,
                 )
 
         award.assert_called_once_with(123, "arami_course1_lesson_06")
@@ -607,6 +648,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         await callback(
             update, context, ROOT,
             can_take_assessment=lambda user_id, lesson_id: True,
+            can_open=lambda user_id, lesson_id: True,
         )
         assessment = context.user_data["arami_course1_sessions"]["6"]
         self.assertEqual(assessment["mode"], "assessment")
