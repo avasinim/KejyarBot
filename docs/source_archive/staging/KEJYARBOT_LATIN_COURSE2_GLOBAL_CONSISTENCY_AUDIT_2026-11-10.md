@@ -535,3 +535,10 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - L6 Q3 proposal uses the full noun-attached term `bireserê navdêrê` and explicitly distinguishes it from clause-level `bireser`.
 - Drafted wording is in Kurmanji Latin to match the course. It is editorial proposal text only; no key, quiz or lesson content has been changed or approved.
 - No runtime/parser/manifest/database/Botkeep/Telegram/deployment changes, tests/CI, learner-response analysis or psychometric validation. `main` remains read-only; no independent ZIP/off-site backup is claimed.
+
+
+### Section 58 addendum — proposed rationale row-to-key alignment (2026-11-11)
+
+- Proposal document re-verified at SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`.
+- Independent row-level comparison: 44 proposed rationale rows, 44/44 option letters match the existing answer-key rows; zero missing mappings and zero mismatches.
+- This is a mapping check only. It does not certify the underlying answer's linguistic validity, resolve the three held items, or approve any proposal. No quiz/key edits.
