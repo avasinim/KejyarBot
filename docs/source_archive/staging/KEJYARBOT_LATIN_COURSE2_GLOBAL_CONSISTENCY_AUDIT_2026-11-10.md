@@ -595,3 +595,5 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Refined the L8 Q3 diagnosis: the local Lesson 8 heading “bê bireser” matches its own §66/§67 contrast, so the keyed `-in` is not thereby disproved. The risk is cross-lesson ambiguity because Lesson 6 uses full `bireserê navdêrê` for a noun-attached modifier, while Lesson 10 uses bare `bireser` for clause-level object.
 - Proposed explicit “bê hêmaneke raveker li pey navdêrê” wording for Lesson 8, pending Kurmanji editor approval; proposed full `bireserê navdêrê` in L6 Q3 stem. No global replacement and no source/key changes.
 - Audit-only; no learner-facing/runtime/deployment changes or tests/CI. `main` read-only; no independent offsite backup claimed.
+
+- Follow-up: added item-specific rationale proposals for L6 Q3 (why `beza` is the noun-attached modifier) and L8 Q3 (why `-in` is correct under §66 and how it differs from `-ên` / `-a` and §67 `-ine`). Clarification artifact latest SHA `ffc5cea44282a08d32f390bd204c4bcaf6c267ae`. Proposals remain unapproved/unapplied.
