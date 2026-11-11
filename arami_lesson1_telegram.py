@@ -14,7 +14,7 @@ from arami_lesson1_interaction import (
 logger = logging.getLogger(__name__)
 
 
-def menu_keyboard(assessment_enabled=True):
+def menu_keyboard(assessment_enabled=False):
     rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
