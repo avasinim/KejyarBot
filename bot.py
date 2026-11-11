@@ -54,6 +54,7 @@ from arami_course1_telegram import (
     load_manifest as load_arami_course1_manifest,
     load_question_banks as load_arami_course1_question_banks,
     lesson_is_academically_approved,
+    ACADEMIC_APPROVAL_STATUSES,
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -295,6 +296,16 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+# Every active course must carry an explicit academic approval status before
+# official assessments, rewards, or badges are enabled. New active courses
+# inherit this fail-closed rule automatically.
+ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset(
+    course.get("id")
+    for course in COURSES
+    if course.get("status") == "active" and isinstance(course.get("id"), str)
+)
+
+
 LATIN_COURSE_IDS = {
     "kurmanji_latin_orthography",
     "kurmanji_latin_grammar",
@@ -490,28 +501,32 @@ def _arami_lesson_requires_review(lesson):
     if record is None:
         return True
     # No Arami lesson is promoted to official rewards until its manifest
-    # carries an explicit scientific/owner approval state. Source receipt,
+    # carries an explicit academic approval state. Source receipt,
     # immutability, and interaction wiring alone are not academic approval.
     return not lesson_is_academically_approved(record)
 
 
-def lesson_is_pending_review(lesson):
+def _lesson_requires_academic_approval(lesson):
+    """Fail closed for every active course unless its review status is explicitly approved."""
     if _arami_lesson_requires_review(lesson):
         return True
-    return LESSON_DATA.get(lesson, {}).get("review_status") in {
-        "draft_editorial_review",
-        "owner_review_pending_expanded_draft",
-    }
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id not in ACADEMIC_REVIEW_REQUIRED_COURSE_IDS:
+        return False
+    record = LESSON_DATA.get(lesson)
+    if not isinstance(record, dict):
+        return True
+    return record.get("review_status") not in ACADEMIC_APPROVAL_STATUSES
+
+
+def lesson_is_pending_review(lesson):
+    return _lesson_requires_academic_approval(lesson)
 
 
 def lesson_is_beta_review(lesson):
-    if _arami_lesson_requires_review(lesson):
+    if _lesson_requires_academic_approval(lesson):
         return True
     record = LESSON_DATA.get(lesson, {})
-    # Editorial drafts across Courses 2, 3, and Latin courses can be read and
-    # recorded as review progress, but never receive official quiz/rewards.
-    if record.get("review_status") == "draft_editorial_review":
-        return True
     return is_beta_review_lesson(LESSON_COURSE.get(lesson), lesson, record)
 
 
