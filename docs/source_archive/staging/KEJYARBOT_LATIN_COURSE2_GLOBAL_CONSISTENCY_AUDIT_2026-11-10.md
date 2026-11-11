@@ -614,3 +614,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Reconfirmed controlled distinctions: `bireserê navdêrê` vs clause-level `bireser`; L8 local `bê bireser` ambiguity is cross-lesson, not proof that key `-in` is wrong; word class vs phrase function; paradigm form vs clause role.
 - L1 Q4, L12 Q1 and L12 Q3 remain held; L10 Q2 remains source-supported but wording-sensitive. Proposal-only; no key/lesson changes.
 - No tests/CI/runtime/deployment; `main` read-only; no independent offsite backup claimed.
+
+
+## Section 67 — Targeted stem/option/rationale recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_TARGETED_STEM_OPTION_RECHECK_2026-11-11.md`, SHA `47db0bc21ffc740e9c275ab4e2385057753a67eb`.
+- Rechecked L8 Q2/Q3 against the exact quiz stems and §66/§67 lesson paradigms: the local `-in` key remains supported; the unresolved issue is cross-lesson ambiguity in bare `bireser`, not evidence of a wrong key.
+- Rechecked L9/L10 paradigm form vs clause role, L11's two uses of `ko`, and L12 Q5 lexical class vs phrase function. No additional correction identified in these targeted rows.
+- Appended superseding L1 Q1 and L6 Q5 corrections to the base proposal; latest base SHA `ccdd1fea505fa354d9c043dd0c010f8fe84faf2a`.
+- This is not a fresh independent copy-edit of all 45 items. L1 Q4, L12 Q1 and L12 Q3 remain held. No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
