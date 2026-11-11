@@ -194,7 +194,7 @@ This is a provisional course-internal clarification, not an external terminology
 - `rêzîn` is treated in Lesson 12 as an ordinal subtype within the numeral-adjective discussion, not a seventh top-level adjective class. Source/course crosswalk: course `rêzîn` ↔ source wording `rêzda`.
 - Keep four levels separate: word class, subclass, syntactic function/use, and surface form. Adjectives can be attributive, predicative, or substantivized; an expressed noun is a useful diagnostic for attributive adjective vs pronoun, not a universal requirement for every adjective.
 - For numerals, distinguish a numeral modifying an expressed noun (numeral-adjective use) from an independent/substantive `jmarnav` use. In the lesson's own taxonomy, `nîv roj` is `jmarnav` used before an expressed noun; its phrase-level function is quantifying/modifying `roj`.
-- The lesson explicitly lists `kurên van` under possessive-adjective examples; provisional course classification is `xwemalîn), while precise syntax and idiomaticity remain for Kurmanji editor review.
+- The lesson explicitly lists `kurên van` under possessive-adjective examples; provisional course classification is `xwemalîn`, while precise syntax and idiomaticity remain for Kurmanji editor review.
 - Source/course labels are a crosswalk, not synonyms: `wesfîn` ↔ `çilobûn û çawabûnê`; `xwemalîn` ↔ `destdaniyê/xwedîtiyê`; `jmarîn` ↔ source comparison `jmarda`; `rêzîn` ↔ `rêzda`.
 - Keep Q3's singular variation `rengdêrê jmarîn` (prose) vs `rengdêra jmarîn` (quiz option) unresolved until a Kurmanji editor reviews that exact construction. Do not global-replace.
 
