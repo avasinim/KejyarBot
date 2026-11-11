@@ -519,3 +519,18 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - Orthography course structure tests: success؛ `Ran 4 tests`.
 
 ئەمە CIی ئەم کۆمیتەیە پشتڕاست دەکاتەوە، بەڵام تەنها پشتڕاستکردنەوەی تاقیکردنەوەکانە؛ بەڵگەی Botkeep runtime، Telegram end-to-end، یان ئامادەبوونی production نییە. PR هێشتا کراوە و merge نەکراوە؛ هیچ review/comment ـێکی نوێ لە API ـدا نەدۆزرایەوە. هیچ deployment، import، restore، DB mutation یان گۆڕینی دۆخی ئەکادیمی ئەنجام نەدرا.
+
+
+## ٩.٢٠. پشکنینی جیاوازیی PR #152 بەرامبەر main — ناوەڕۆکی کۆرسی ٤ و قفڵی داتای فێرخواز — 2026-11-11
+
+پشکنینی JSONی `course_data/grammar_course4_lessons.json` لە baseی PR (`7db20f242087e3eb9149e2e788f6c20529870f32`) بەرامبەر headی `984093bf938b2fcef88c49cbe1b5e327d37086a0`:
+- ژمارەی وانەکان لە ٤٦ بووە ٥٠؛ ٤ وانەی نوێ (٤٧–٥٠) زیاد کراون، هەموویان `owner_review_pending_expanded_draft` و quiz ـیان بەتاڵە.
+- ١٤ وانەی پێشووی ٣٢،٣٣،٣٤،٣٦،٣٧،٣٨،٤٦ هەندێک خانەی ڕەشنووس/ڕێکخستن/سەرچاوەیان جیاوازە؛ دۆخی پێداچوونەوەیان هەر `owner_review_pending_expanded_draft` و quiz ـیان هەر ٠ ـە. ئەم جیاوازییانە بەڵگەی پەسەندکردنی ئەکادیمی نین.
+- وانەکانی ١١،١٢،١٣،٢٦،٣٠ تەنها appendix ـیان جیاوازە؛ status و quiz نەگۆڕاون. وانەی ١٣ هەر `internal_cross_lesson_synthesis_no_external_source_mapping` ـە و ٨ پرسیاری بنەڕەتیی هەیە، بەڵام قفڵی فەرمیی کویز لە runtime بەردەوامە.
+- وانەی ٢٩: ژمارەی key_points و comprehension و quiz نەگۆڕاوە؛ گۆڕانی دەقی ئەو دوو خانەیە گۆڕینی زاراوەی `لەچۆنایەتی` بۆ `گەردان` ـە. Appendix crosswalkی Root/Bound Root/Stemی زیادکراوە. status هەر `scientific_review_complete_with_qualified_notes` ـە.
+- وانەی ٣١: ژمارەی key_points/examples/comprehension/quiz نەگۆڕاوە؛ گۆڕانی دیاریکراو لە خانەکاندا یەکسانکردنی `گروپی ناوی` بۆ `گرێی ناوی` ـە. تێبینییەکانی سنووری بەڵگە و پێویستی بە پشتڕاستکردنەوەی نموونەکان هەر ماونەتەوە. status هەر `scientific_review_complete_with_qualified_notes` ـە.
+- هیچ quiz ـێکی وانەکانی ٣٢–٥٠ زیاد نەکراوە؛ کۆی quiz ـی وانەکانی ١–٣١ لەم پشکنینەدا نەگۆڕاوە.
+
+پشکنینی ٤٣ فایلە گۆڕدراوەکانی PR نیشانی دا workflow/test/docs/code/lesson-data ـە؛ هیچ `.env`، token، password یان فایلێکی نهێنی لە ناوی فایلە گۆڕدراوەکاندا نەبوو. پەڕگەی `database.py` لە diffی PR نییە؛ پشکنینی migrationی پێشووتر نیشانی دا زیادکردنی ستوونی Beta بە `ALTER TABLE` و بێ سڕینەوەی ستوونە کۆنەکانە. هیچ DBی بەکارهێنەر نەخوێندرایەوە یان نەگۆڕدرا.
+
+بڕیار: هیچ دەستکاریی وانە، quiz، status، DB یان deploy پێویست نەبوو؛ جیاوازییەکان لە سنووری گۆڕینی زاراوە، appendix، ڕەشنووسی review-only و زیادکردنی وانەی review-only دان. پێویستە پێداچوونەوەی مرۆیی و سەرچاوەیی بۆ ڕەشنووسەکان بەردەوام بێت.
