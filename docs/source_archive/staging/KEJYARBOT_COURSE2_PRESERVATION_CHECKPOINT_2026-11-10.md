@@ -406,3 +406,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Xebata 2 rubric specifies six top-level adjective classes, one new noun-containing example per class; `rêzîn` remains a subtype within `jmarîn`, not a seventh class.
 - Xebata 3 rubric distinguishes numeral-adjective use with an expressed noun from independent/substantive `jmarnav` use and records a provisional one-sentence model response. Kurmanji copy-edit and the existing singular morphology query remain open.
 - No learner-facing content or protected runtime/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup was created or verified.
+
+
+## Checkpoint update — Lesson 12 internal definition/example consistency audit (2026-11-11)
+
+- New teacher-facing audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_INTERNAL_DEFINITION_EXAMPLE_CONSISTENCY_AUDIT_2026-11-11.md`, blob SHA `6488333dfc374f7ba3fa36240cdf1ebc019c9d4c`.
+- Master terminology register addendum and global consistency audit Section 52 record the course-taxonomy caveat and the distinctions among lexical class, phrase function, and surface form.
+- Main open issues: broad opening definition; context-sensitive demonstrative/interrogative/quantifier forms; mixed possessor morphology (especially `kitêba vî`); `nîv roj` lexical-vs-phrase analysis; case context in numeral examples; ellipsis context for ordinal forms.
+- No learner-facing or protected runtime/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
