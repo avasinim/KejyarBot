@@ -57,7 +57,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_lesson1_menu_uses_the_current_course_title(self):
         update, query = make_update("menu")
-        await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, SimpleNamespace(user_data={}), "/unused")
         shown = query.message.reply_text.await_args.args[0]
         self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی", shown)
         self.assertNotIn("ڕێنووسی ئارامی", shown)
@@ -175,7 +175,10 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
     async def _start_and_answer(self, selected_index):
         update, query = make_update("assessment")
         context = SimpleNamespace(user_data={})
-        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
+        with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank), patch(
+            "arami_lesson1_telegram.load_manifest",
+            return_value={"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]},
+        ):
             await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "assessment")
         question_message_id = context.user_data["arami_lesson1_message_id"]
