@@ -572,6 +572,11 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
     if action.startswith(("practice:", "assessment:")):
         mode, raw = action.split(":", 1)
+        if mode == "assessment" and can_take_assessment is None:
+            await query.message.reply_text(
+                "📚 تاقیکردنەوەی فەرمی تەنها دوای پشکنینی مۆڵەتی ئەکادیمی چالاک دەبێت."
+            )
+            return
         if not raw.isdecimal():
             return
         number = int(raw)
