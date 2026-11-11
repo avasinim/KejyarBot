@@ -194,3 +194,50 @@ A consistency check caught a mismatch in the option ordering of the Section 95 p
 L2 Q5 remains key B and L10 Q1 remains key B. Thus all four replacement proposals now preserve the existing answer-key letters: L2 Q5 B, L3 Q3 A, L4 Q5 C, L10 Q1 B. This erratum supersedes the Section 95 claim that all four proposed keys were B. No answer-key file has been changed.
 
 This was a proposal-document consistency defect, not a defect in the live quiz or key. All four proposals remain unapproved and unapplied; native-Kurmancî review is still outstanding.
+
+
+## Distractor refinement batch — six weak sets (proposal only, 2026-11-11)
+
+This pass targets the six sets previously flagged as having one or more obviously unrelated distractors. It is based on the exact reviewed quiz and answer-key rows. These are editorial candidates, not approved edits. All correct-answer letters are deliberately preserved.
+
+### L1 Q1 — grammar definition (key B)
+- Proposed A: `tenê rêzikên bilêvkirina dengên ziman`
+- B remains: `tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman`
+- Proposed C: `tenê rêzikên avakirina peyvan`
+- Rationale: both distractors now name narrower linguistic domains rather than unrelated wording. Check whether the intended course definition of grammar should continue to include both correct speech and orthography; this proposal does not redefine it.
+
+### L2 Q1 — noun definition (key B)
+- Proposed A: `kes/heywan/tişt di kar an pêvajoyekê de`
+- B remains: `kes/heywan/tişt`
+- Proposed C: `taybetmendiya kes/heywan/tişt`
+- Rationale: alternatives stay within semantic description of entities, actions and properties, making the noun-versus-other-word-class distinction less trivial. The wording should be checked for idiomatic Kurmanji before adoption.
+
+### L5 Q1 — definition of tewang (key B)
+- Proposed A: `guherîna erkê peyvê bê guherîna forma wê`
+- B remains: `guherîna forma peyvê`
+- Proposed C: `guherîna wateya peyvê bê guherîna forma wê`
+- Rationale: both alternatives describe plausible but distinct grammatical changes, rather than colour or a question. The stem asks for the defining formal change; preserve the course's broader explanation that case/role and construction condition the form.
+
+### L5 Q5 — overgeneralization of inflection (key C)
+- Proposed A: `hemû navên nêr di yekjimarê de bi -î tên tewandin`
+- Proposed B: `hemû navdêr bi heman rêbazê tên tewandin`
+- C remains: `na`
+- Rationale: A tests overextension of a taught common pattern; B tests the stronger false claim of one universal pattern. Both are refutable from the lesson's stated exceptions and conditions. Ensure A is not read as a claim about all environments; its singular restriction is intentional.
+
+### L7 Q5 — identify the definite plural marker (key C)
+- Proposed A: `veqetandeka nebinavkirî ya gelemjimar`
+- Proposed B: `nîşana tewangê`
+- C remains: `veqetandeka binavkirî ya gelemjimar`
+- Rationale: the distractors are adjacent grammatical categories taught in the course (indefinite marking and case inflection), not an unrelated verb. They test whether the learner distinguishes definiteness, number and case.
+
+### L12 Q1 — adjective function (key B)
+- Proposed A: `erkê navdêrê di hevokê de wek kirar an bireser nîşan dide`
+- B remains: `taybetmendî an taybetiya navdêrê rave dike`
+- Proposed C: `lêkerê li gorî kes û mêjer diguherîne`
+- Rationale: the alternatives contrast adjective modification with nominal clause role and verbal agreement. This should make the target word-class function clearer without changing the course's definition.
+
+### Key and scope control
+- Proposed key letters remain unchanged: L1 Q1 B; L2 Q1 B; L5 Q1 B; L5 Q5 C; L7 Q5 C; L12 Q1 B.
+- No new key or answer text is asserted beyond the current key mapping. No answer-key, quiz, lesson, rationale or runtime file was modified.
+- This is a text-based editorial proposal pass, not native-speaker certification, learner-response analysis, or proof that each distractor is optimally calibrated. Before adoption, check idiomatic Kurmanji, category parallelism and whether any distractor could become defensible under the full lesson's exceptions.
+- Proposals remain unapproved and unapplied.
