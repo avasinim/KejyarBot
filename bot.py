@@ -759,6 +759,12 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ تاقیکردنەوەی ئەم وانەیە ئامادە نیە.")
         return
     completed_lessons = set(get_completed_lessons(user_id))
+    if beta_practice_only:
+        completed_lessons.update(
+            beta_lesson
+            for beta_lesson in get_completed_beta_lessons(user_id)
+            if lesson_is_beta_review(beta_lesson)
+        )
     if lesson not in completed_lessons:
         await query.answer()
         await query.message.reply_text("🔒 سەرەتا خودی ئەم وانەیە تەواو بکە، پاشان تاقیکردنەوەکە بکە.")
