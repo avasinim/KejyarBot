@@ -1234,3 +1234,23 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 ### سنووری بڕیار
 - هاوتاییی ژمارەی baseline بە تەنها دروستیی ناوەڕۆکی patch، provenance یان پەسەندی زانستی ناسەلمێنێت.
 - هیچ پەچێک apply، normalize، merge یان overwrite نەکرا؛ runtime JSON، source lesson، quiz، status، DB، Botkeep، Railway و Telegram نەگۆڕدران.
+
+
+## ٩.٤٥. پشکنینی ڕێڕەوی جێبەجێکردنی پەچەکان لە runtime — 2026-11-11
+
+### دۆزینەوەی ڕێڕەوی بارکردن
+- لە درەختی فایلەکانی repositoryی پشکنراو، هیچ script/moduleی گشتی بۆ خوێندنەوە و applyکردنی `grammar_NN_append_only_patch.json` یان schema خێزانەکانی پەچەکانی Library نەدۆزرایەوە.
+- فایلە ٤٣ پەچەکە لە Libraryی `/KejyarBot/Course4_Archive/`دان؛ ئەم فۆڵدەرە بەخۆی بەشێک لە runtimeی repository نییە و `bot.py` هیچ referenceێکی بۆ ئەو فایلانە یان ناویان نییە.
+- `bot.py` وانەکانی Course 4 لە `course_data/grammar_course4_lessons.json` بار دەکات، بە `adapt_unified_orthography_lessons(..., include_extended_sections=True)` دەیانگۆڕێت بۆ lesson/quiz records، پاشان `source_markdown`ی هەر وانەیەک وەک دەقی پیشاندان دابەزێنێت. ئەمە loaderی patchی ئەرشیفی نییە.
+
+### جێبەجێکردنی تایبەتی quiz override
+- تەنها ڕێڕەوی append-onlyی دۆزراوە لە runtimeدا تایبەتە بە `course_data/grammar_course4_quiz_overrides.json`.
+- `bot.py` ئەم فایلە بار دەکات و بۆ هەر override پشکنینی duplicate key، lesson ID، question index، exact `original_snapshot`، و شێوەی replacement دەکات؛ ناهاوتایی یان replacementی نادروست `ValueError` دەهێنێت.
+- پاش تێپەڕاندنی پشکنینەکان، تەنها خانەی quizی runtime بە replacement دەگۆڕێت؛ بانکە سەرەکییەکەی وانە و snapshotی original دەماونەوە.
+- فایلەکە ٥٠ overrideی تۆمارکراوی هەیە: ٤٤ پرسیار لە وانەکانی ١–٣٠ و ٦ پرسیار لە وانەی ٣١. تاقیکردنەوەی `tests/test_course4_quiz_overrides.py` exact snapshot، uniqueness، replacement structure و بەکارهێنانی runtime پشتڕاست دەکاتەوە.
+- ئەم ٥٠ overrideە تایبەتن بە quiz؛ هیچ بەڵگەیەک نییە کە پەچەکانی ٤٣ فایلەی Library لە runtimeدا بە شێوەی گشتی apply بکرێن.
+
+### بڕیاری فنی و سنووری کار
+- نابێت هیچ پەچی Library بە کۆپی‌کردن بۆ JSONی runtime یان بە scriptێکی نەناسراو جێبەجێ بکرێت. پێویستە پێش هەر کارێکی داهاتوو: schemaی هەر پەچ دیاری بکرێت، baselineی سەرچاوە و runtime snapshot بپشکنرێت، diffی append-only دروست بکرێت، و تاقیکردنەوەی idempotency/duplicate/replay/rollback بۆ runnerێکی جیاواز دابنرێت.
+- ئەم پشکنینە هیچ runnerێکی نوێ دروست نەکرد و هیچ patchێک apply نەکرد.
+- هیچ source lesson، runtime JSON، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا؛ هیچ merge/deploy/restart/sync ئەنجام نەدرا.
