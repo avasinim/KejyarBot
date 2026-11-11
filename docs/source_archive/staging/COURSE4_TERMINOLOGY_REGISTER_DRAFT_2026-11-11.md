@@ -131,3 +131,30 @@ Runtime source: `course_data/grammar_course4_lessons.json`, blob SHA `1dd8abe8a1
 
 ### Next verification gate
 A lexical scan cannot identify pedagogical first introduction. For each candidate, inspect the full lesson context at the earliest hit, identify explicit definition/learning objective/example vs incidental mention, and then check source drafts and patches. Record the first *defined* lesson separately from the first *mentioned* lesson. Do not normalize terms until that review is complete.
+
+
+## Contextual definition review — earliest candidate lessons (2026-11-11)
+
+The lexical scan was followed by field-level reading of Lessons 3, 5, 11, 12, 13, 18, 28, 29 and 31. The distinction below is between a term being *mentioned* and being *defined/taught*.
+
+| Term | Earliest mention located | Earliest explicit teaching/definition located in this pass | Notes |
+|---|---:|---:|---|
+| Noun Phrase / گرێی ناوی | Lesson 3 | Not conclusively established before Lesson 31 in this pass | Lesson 3 says a noun can be part of a Noun Phrase and discusses NP contexts; Lesson 31 gives an explicit glossary mapping. Earlier lesson content needs review before declaring Lesson 31 the first formal introduction. |
+| Suffix / پاشگر | Lesson 3 | Lesson 13 distinguishes Suffix from Enclitic and places it within bound morphology | Lesson 3 uses it for noun markers and derivational examples; this is earlier than the formal crosswalk. |
+| Prefix / پێشگر | Lesson 5 | Lesson 13 crosswalk; Lesson 5 gives a criterion for recognizing a prefix or suffix | Lesson 5 does not by itself establish a complete taxonomy. |
+| Enclitic / پاشبەستە / پاشنووس | Lesson 11 | Lesson 11 defines the positional category in key_points | **Internal contradiction:** Lesson 11 key_points defines Enclitic as پاشبەستە, but Lesson 11 appendix glossary says Enclitic = پاشنووس. Lesson 12 appendix and Lesson 13 appendix crosswalk also say پاشنووس, while Lesson 13 key_points again uses پاشبەستە. This is a runtime-internal inconsistency, not only a patch-vs-runtime conflict. |
+| Affix / گیرەک | Lesson 13 | Lesson 13 appendix crosswalk | The same crosswalk notes an earlier form in a prior appendix; preserve that history. |
+| Root / ڕەگ; Stem / بنج | Lesson 13 explicit contrast | Lesson 13 | Lesson 13 explicitly distinguishes lexical Root from verbal Stem and present/past stems. Earlier raw mentions of ڕەگ in Lesson 3 do not teach the technical Root category. |
+| Subject / بکەر | Lesson 12 appendix mapping; Lesson 12 key_points define role | Lesson 12 | Lesson 1 occurrences of بابەت are ordinary "topic/subject matter" contexts, not proof that Lesson 1 teaches grammatical Subject. |
+| Agent / ئەنجامدەری کردار | Lesson 18 | Lesson 18 | Lesson 18 explains Active/Passive and explicitly distinguishes the Agent from other grammatical roles. |
+| Inflection / گەردان | Lesson 28 appendix citation title; explicit definition in Lesson 29 | Lesson 29 | Lesson 29 contrasts Derivation and Inflection. Earlier "لەچۆنایەتی" is retained in quiz/options and prior patch history; runtime body uses گەردان. |
+| Derivation / داڕشتن | Lesson 3 uses داڕێژە in noun formation; explicit process contrast in Lesson 29 | Lesson 29 for the Derivation/Inflection distinction | Preserve داڕێژە vs داڕشتن as actual forms; do not silently normalize. |
+| Verbal particle / پارتیکڵی کردار | General پارتیکڵ appears earlier; compound label appears Lesson 29 | Lesson 29 | Lesson 29 distinguishes verbal particles from derivational affixes and ordinary prepositions. |
+| Patient | No exact candidate term found | Not established | Lesson 31 uses Theme/بەشداربوو; this is not automatically Patient. |
+
+### Required corrections and safety
+- The earlier register's "first lesson" cells are lexical hits only. This contextual review must not be presented as a complete first-definition audit; several entries remain provisional.
+- The Enclitic mismatch inside Lessons 11 and 13 must be treated as a high-priority consistency defect. Do not pick پاشبەستە or پاشنووس until the course owner and academic evidence resolve it.
+- Lesson 13's own crosswalk says Affix = گیرەک and explicitly notes a prior form; this is evidence of an intentional historical crosswalk in runtime, but not proof of academic approval.
+- Keep grammatical Subject, semantic Agent, Theme and Patient distinct. Lesson 31's Theme is not automatically Patient.
+- No lesson content was edited to repair these conflicts; this register records the defect for a future reviewed change.
