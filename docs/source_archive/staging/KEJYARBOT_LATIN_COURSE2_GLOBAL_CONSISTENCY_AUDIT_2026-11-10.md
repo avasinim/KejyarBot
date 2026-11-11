@@ -816,3 +816,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - The source-aligned lesson artifact contains 60 quiz snippets (5 per lesson); the reviewed draft contains 62 (Lesson 8 has 7, adding Q6/Q7). The 62-row reviewed answer key aligns with the 62-question reviewed draft.
 - These are distinct, materially different artifacts, not duplicate copies. For the active 62-question quiz/key review, retain the reviewed draft + reviewed answer key as the aligned pair; preserve the 60-question source-aligned artifact separately and do not merge/overwrite it.
 - No lesson/quiz/key/source/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 91 — Distractor candidates rechecked against primary source (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_DISTRACTOR_CANDIDATES_PRIMARY_SOURCE_RECHECK_2026-11-11.md`, SHA `e766e4c4b06a28ffb09aa58cebf1323fd91250cd`.
+- Directly checked the 2002 Nefel PDF sections §§13–16, 39–45, 47–56, 66–68, 101–103, 119–124.
+- L1 Q5, L3 Q5, L4 Q1, L8 Q2, L11 Q5 candidates retained with stated caveats. L5 Q1 candidate distractors A/C need refinement because gender/number can condition inflected forms; safer non-overlapping wording is proposed in the artifact.
+- Optional L4 Q5 contrast `hespan` vs `hespin` is source-backed but tests the Lesson 5 oblique/inflection distinction before it is taught in Lesson 4. Hold out of Lesson 4; consider cumulative review after Lesson 5.
+- No quiz/key/lesson change; no approval/application; no tests/CI/runtime; `main` read-only; no independent ZIP/offsite backup claimed.
