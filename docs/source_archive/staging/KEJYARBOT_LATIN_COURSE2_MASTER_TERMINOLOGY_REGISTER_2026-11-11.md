@@ -247,3 +247,15 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_DISTRACTOR_
 - High priority: L6 Q3 should not abbreviate `bireserê navdêrê` to bare `bireser`.
 - Preserve source scope for L10 Q5 (two/three participants in the cited §90 account) and L11 Q3 (`ko` traditional form; do not imply `ku` is universally wrong).
 - No answer letters or learner-facing content changed. No learner-response data or psychometric analysis available.
+
+
+## Quiz orthography and formatting audit — 62 items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_ORTHOGRAPHY_FORMATTING_AUDIT_2026-11-11.md`, verified SHA `6478e42c7231732ae1bf9ea5cba45ff9ae4636ff`.
+
+- Confirmed 62 quiz items and 62 key rows. The principal issues are formatting consistency rather than widespread clear misspellings.
+- Lesson 12 differs from Lessons 1–11 in quiz heading, vertical option layout, stem capitalization, and inline formatting of target words.
+- Lesson 1 Q4 answer-key rationale writes `kîtê/kitê` without explaining the variant relationship; obtain an editorial spelling ruling rather than guessing.
+- Preserve `mehînê` in Lesson 5 Q3. Do not normalize grammatical contrasts such as `hespî/hespê` or the Lesson 8 suffix paradigms as spelling variants.
+- Open terminology decisions remain L10 Q2 `forma bireserî`, L12 Q1 `kiryar/kirar`, L12 Q3 `rengdêra/rengdêrê jmarîn`; these are not safe spell-check substitutions.
+- No quiz or answer-key edits. A consistent house style is proposed, not applied; parser compatibility was not tested.
