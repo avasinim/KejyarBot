@@ -416,6 +416,38 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         content = bot.lesson_display_content(lesson_id, record["content"])
         self.assertIn("وەشانی تاقیکاریی (Beta)", content)
 
+    async def test_lesson13_beta_completion_uses_only_the_beta_ledger(self):
+        lesson_id = "grammar_13"
+        query = SimpleNamespace(
+            data=f"finish_{lesson_id}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+            patch.object(bot, "complete_quiz_with_rewards") as quiz_reward,
+            patch.object(bot, "check_badges") as badge_check,
+        ):
+            await bot.finish_lesson(update, context)
+        beta_progress.assert_called_once_with(12345, lesson_id)
+        official_reward.assert_not_called()
+        quiz_reward.assert_not_called()
+        badge_check.assert_not_called()
+        self.assertIn("هیچ XP", query.message.reply_text.await_args.args[0])
+
+    def test_lesson13_beta_progress_unlocks_lesson14_without_official_completion(self):
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=["grammar_13"]),
+        ):
+            self.assertTrue(bot.can_open(12345, "grammar_14"))
+            self.assertFalse(bot.can_open(12345, "grammar_15"))
+
     def test_cross_course_editorial_drafts_are_beta_only_and_unlock_in_order(self):
         lesson_id = "daily_conversation_01"
         self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], "draft_editorial_review")
