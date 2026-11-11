@@ -45,3 +45,8 @@ Validated PR head: `89703140fe2439407ed5aa2aa3d405b3bff848ba`.
 **Not yet approved for a full public launch.** The source branch and tests are healthy, but only 30 of 203 lessons are explicitly academically approved. A controlled learner pilot can expose the approved content and clearly marked Beta reading/practice material, provided the actual deployed runtime is verified first.
 
 The external Botkeep Node17 support blocker remains unresolved in the available record. Do not import, restart, or deploy to Botkeep until the platform's written compatibility/clearance response is received. After clearance, perform a test-bot import using the supported runtime, verify the loaded commit/revision, and complete Telegram end-to-end smoke tests for menus, lesson reading, search, Beta labels/progress, quiz eligibility, reward idempotency, and database persistence. No production database or live Telegram bot was changed by this work.
+
+
+## 2026-11-11 clarification — Course 4 Lesson 13
+
+The pure helper `course_runtime.is_beta_review_lesson()` identifies the explicit Course 4 owner-review progression range (lessons 32–50); its negative result for lesson 13 does **not** imply academic approval. The bot-level `lesson_is_beta_review()` first applies the fail-closed academic approval check. Since lesson 13 has status `internal_cross_lesson_synthesis_no_external_source_mapping`, it remains pending review, is shown as review/Beta material, cannot start an official quiz, and cannot receive official rewards. The cross-course count therefore remains 30 explicitly approved and 173 review-only out of 203. A named regression test now asserts all four lesson-13 conditions directly.
