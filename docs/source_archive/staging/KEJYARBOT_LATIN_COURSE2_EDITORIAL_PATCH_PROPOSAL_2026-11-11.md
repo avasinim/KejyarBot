@@ -92,7 +92,7 @@ The following are proposed full-line replacements for the three affected lines i
 
 **Draft line 290 — proposed replacement**
 
-`Ji ber vê yekê formên tewandî divê ji formên sereke yên `-ek/-ek/-in` cuda bên fêrkirin.`
+`Ji ber vê yekê formên tewandî divê ji formên bingehîn yên `-ek/-ek/-in` cuda bên fêrkirin.`
 
 **Draft line 292 — proposed replacement**
 
