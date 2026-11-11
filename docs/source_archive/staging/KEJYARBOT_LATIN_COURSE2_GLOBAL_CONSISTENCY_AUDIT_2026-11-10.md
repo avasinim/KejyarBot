@@ -623,3 +623,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Rechecked L9/L10 paradigm form vs clause role, L11's two uses of `ko`, and L12 Q5 lexical class vs phrase function. No additional correction identified in these targeted rows.
 - Appended superseding L1 Q1 and L6 Q5 corrections to the base proposal; latest base SHA `ccdd1fea505fa354d9c043dd0c010f8fe84faf2a`.
 - This is not a fresh independent copy-edit of all 45 items. L1 Q4, L12 Q1 and L12 Q3 remain held. No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
+
+
+
+## Section 68 — Early-lessons rationale targeted source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_EARLY_LESSONS_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `02e8d8db530136ab7e1c2a941e437b5a5f9209d8`.
+- Rechecked L1 Q2, L2 Q2, L3 Q5, L4 Q2/Q5 and L5 Q1 against the exact stems/options, lesson explanations/examples and answer-key mapping. No new concrete key/rationale contradiction or wording correction was identified.
+- L4 recheck preserves the scoped indefinite paradigm distinction `hespek/hespin` versus inflected `hespan`; the corrected Q5 comparative wording remains in force. L5 Q1's reference to tense/verb type is supported by the lesson's §56 exception for transitive past clauses.
+- This covers six rows, not all 45 proposals; the overall review still requires a native-Kurmanji editorial pass. Held items remain held. No learner-facing/source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
