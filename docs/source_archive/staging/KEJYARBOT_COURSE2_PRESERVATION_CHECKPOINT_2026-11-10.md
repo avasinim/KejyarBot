@@ -239,3 +239,12 @@ No tests/CI, live runtime, manifest, DB, Botkeep, Telegram, or deployment action
 ## Checkpoint update — Lesson 8 line 292 supersession guard (2026-11-11)
 
 The consolidated handoff now explicitly marks the earlier line 292 wording in section 3 as non-operative and not approved. The later section 6 candidate using `bireserên navdêrê` is also pending language-editor review; neither should be applied. The §68/§69 source distinction remains verified. Current handoff blob SHA: `73cf22bbd2280e4d9dcf79ea88e494b22e7ed7fc`. Protected base files remain unchanged.
+
+
+## Checkpoint update — Lesson 12 terminology adjudication (2026-11-11)
+
+- New note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_TERMINOLOGY_ADJUDICATION_2026-11-11.md`, verified blob SHA `833c34339eb6ae80de339e0d1b7c42b5fa65960b`.
+- Master terminology register has an append-only adjudication addendum; update commit `4c7578d4d0f5f46155a8c3b2aea7e605c4745102`.
+- The working preference is to retain `rengdêrên jmarîn` as plural class label and provisionally use `rengdêrê jmarîn` in singular prose. Quiz Q3's `rengdêra jmarîn` remains unresolved pending a Kurmanji editor's grammatical judgment in that exact context. This is not a final grammar ruling because the primary Lesson 12 source page image was not reopened.
+
+No base lesson/quiz/key edits were made; all proposals remain unapproved. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only.
