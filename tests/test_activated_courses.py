@@ -77,13 +77,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(reads), 21)
         self.assertEqual([len(row) for row in keyboard.inline_keyboard[:-1]], [2] * 10 + [1])
 
-    def test_arami_assessment_reward_uses_unique_lesson_key_and_twenty_xp(self):
-        with patch.object(bot, "complete_quiz_with_rewards", side_effect=[True, False]) as reward:
-            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+    def test_arami_assessment_does_not_award_xp_before_explicit_approval(self):
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
             self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
-        self.assertEqual(reward.call_count, 2)
-        self.assertEqual(reward.call_args_list[0].args, (12345, "arami_assessment:arami_course1_lesson_01"))
-        self.assertEqual(reward.call_args_list[0].kwargs, {"points": 20})
+        reward.assert_not_called()
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
@@ -400,9 +397,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         ):
             badges = bot.current_progress_badges(12345)
 
-        self.assertEqual(len(badges), 2)
-        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1", badges[0])
-        self.assertIn("کۆرسی ٢: وتووێژ — وانەی 1", badges[1])
+        self.assertEqual(len(badges), 0, "Unapproved Arami and draft editorial lessons cannot earn official badges")
         self.assertFalse(any("کۆرسی ٣" in badge for badge in badges))
         self.assertFalse(any("Diyako" in badge for badge in badges))
 
@@ -410,10 +405,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
         with patch.object(bot, "get_completed_lessons", return_value=[daily[0], daily[2]]):
             badges = bot.current_progress_badges(12345)
-        self.assertEqual(
-            badges.count("🏅 کۆرسی ٢: وتووێژ — وانەی 1"),
-            1,
-        )
+        self.assertEqual(badges, [], "Draft editorial progress must stay outside official badges")
         self.assertFalse(any("کۆرسی ٢: وتووێژ — وانەی 3" in badge for badge in badges))
 
     def test_lesson_editorial_review_notes_do_not_deactivate_courses(self):
