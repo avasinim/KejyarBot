@@ -324,3 +324,15 @@ No lesson, quiz, key, source-aligned text, runtime, parser, tests, manifest, DB,
 Lesson 6 uses `pêşnavdêr/bireser` for `ev` in `ev keçik`, without defining the slash-pair as synonyms. The same lesson defines `bireserê navdêrê` as a noun-attached modifier that can be pre- or post-nominal; elsewhere bare `bireser` denotes clause-level object role. Provisional recommendation: distinguish position from function, avoid the unexplained slash-pair, retain the distinction between attributive demonstrative use and independent demonstrative pronoun use, and verify `pêşnavdêr` against the primary source before finalizing a replacement label. No source lesson/quiz/key changes. Note SHA `9bcb2af635e61a5a78945c5cb17031f634cd8331`; register update commit `d34de2a3a6b2655cef7b9435cbaac43ad97feee8`.
 
 No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred; `main` remains read-only.
+
+
+## Section 37 — Lessons 7–8: `pêvek` vs `veqetandek` (2026-11-11)
+
+A focused comparison of Lessons 4–8 and the Lesson 12 comparative-suffix example supports a broader–narrower distinction rather than synonymy:
+- `pêvek` is the broad morphological term used for several kinds of bound affix/suffix (including `-ek/-in`, inflectional discussion, and comparative `-tir`).
+- `veqetandek` is the course-specific category label for the definite and indefinite noun-determining paradigms in Lessons 7–8. Retain `veqetandeka binavkirî` and `veqetandeka nebinavkirî`.
+- `pêveka raveker` is descriptive wording for a suffix in the modifier-following environment; it does not establish that the broad term `pêvek` and the paradigm label `veqetandek` are synonyms.
+
+Editorial consequence: avoid global find/replace and do not mechanically substitute one term for the other in lesson headings, definitions, or quiz answers. The distinction is internally supported by the reviewed course's usage; a Kurmanji editor should still confirm the formal glossary definition against the cited edition. The full primary-source pages for §§61–67 were not independently reopened in this pass; the existing page-image review of §§68–70 does not prove every glossary-level definition. No lesson, quiz, answer-key, or runtime changes were made.
+
+Evidence note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS7_8_PEKVEK_VEQETANDEK_ADJUDICATION_2026-11-11.md`, blob SHA `ffac88211e309ede86159e8132d5e0d73c8c5be9`. Master terminology register addendum verified at blob SHA `a0268a554d8e5650bab7c8b20aa52537c4a628bc`.
