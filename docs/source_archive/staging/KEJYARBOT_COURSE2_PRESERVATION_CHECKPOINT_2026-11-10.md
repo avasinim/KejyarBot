@@ -638,3 +638,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - L12 Q1: key B remains supported for the wesfîn subtype, but the broad stem asks about the whole adjective class; proposed narrowing the stem to `Rengdêra wesfîn çi dike?`. Hold remains.
 - L12 Q3: key A and numeral-adjective category supported by `sê mal`; singular option-label inflection remains unresolved pending native-Kurmanji review. Hold remains.
 - Open holds now: L1 Q4, L8 Q3, L10 Q1, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lesson 6 Q3/Q4 “bireser” term boundary (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON6_Q3_Q4_BIRESER_TERM_BOUNDARY_RECHECK_2026-11-11.md`, SHA `0788cb3a644cdc3b32c08ee3de4872bb5dc7c7cb`.
+- L6 Q3 and Q4 omit `ê navdêrê` from the term although Lesson 6 explicitly warns bare `bireser` can be confused with Lesson 10 clause object. Keys A and B remain supported; stem clarifications proposed, not applied.
+- New holds: L6 Q3 and L6 Q4. Current open holds: L1 Q4, L6 Q3, L6 Q4, L8 Q3, L10 Q1, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
