@@ -630,3 +630,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q1_OBJECT_PRONOUN_FORM_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `a639fa4783ecaf31d535b6ca0ed9e43166b1f30c`.
 - L10 Q1 key B (`min`) is supported as a member of the course's named paradigm, but the stem wording may be read as syntactic-object function. Lesson examples explicitly distinguish paradigm form from actual clause role. Alternative wording and hold recorded; no key or lesson change.
 - New hold L10 Q1 added. Existing L1 Q4, L8 Q3, L12 Q1 and L12 Q3 remain open. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lesson 12 Q1 scope and Q3 label morphology (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_Q1_Q3_SCOPE_AND_MORPHOLOGY_RECHECK_2026-11-11.md`, SHA `b54353948d19b933b62ddf4cf5a2e04ee0d0b714`.
+- L12 Q1: key B remains supported for the wesfîn subtype, but the broad stem asks about the whole adjective class; proposed narrowing the stem to `Rengdêra wesfîn çi dike?`. Hold remains.
+- L12 Q3: key A and numeral-adjective category supported by `sê mal`; singular option-label inflection remains unresolved pending native-Kurmanji review. Hold remains.
+- Open holds now: L1 Q4, L8 Q3, L10 Q1, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
