@@ -799,3 +799,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Six no-key-change candidate sets drafted for L1 Q5, L3 Q5, L4 Q1, L5 Q1, L8 Q2 and L11 Q5 to make distractors more parallel and conceptually adjacent.
 - Separate optional L4 Q5 proposal tests the source-backed `hespan` vs `hespin` distinction; it would change that item's key from C to B and is not part of the six no-key-change proposals.
 - These are proposals only; none approved or applied. Existing 8 holds remain unchanged, especially L10 Q1/Q2 terminology issues. No source/quiz/key/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 89 — Primary-source adjudication of all eight held items (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EIGHT_HELD_ITEMS_PRIMARY_SOURCE_ADJUDICATION_2026-11-11.md`, SHA `af48c1b3a5263f083a9a400e7a6ccf01f7c9d5ec`.
+- Newly inspected the full 2002 Nefel digital edition of Celadet Alî Bedir-Xan's *Elfabêya kurdî & Bingehên gramera kurdmancî*; exact printed sections now directly checked: §§13–15, 59–60, 65–68, 86, 119–124 and 134–135.
+- All eight holds now have source-backed resolution paths: L1 Q4 rationale-only simplification; L6 Q3/Q4 restore full `bireserê navdêrê`; L8 Q3 explicit §66 condition; L10 Q1/Q2 explicit paradigm-table membership; L12 Q1 narrow to `wesfîn`; L12 Q3 use the plural class label `rengdêrên jmarîn`.
+- No key changes proposed for these eight. These remain proposals only; no approval/application. Native-Kurmanji editorial validation is still recommended for exact wording.
+- No learner-facing/source/key/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
