@@ -530,3 +530,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_CONTROLLED_TERMINOLOGY_FINAL_PASS_2026-11-11.md`, SHA `7f912cbca35233b18df7281c3d685fead169f0ed`.
 - Two proposal-level corrections: L6 Q5 `min` in `xencera min` is `rengdêra xwemalîn` (possessive adjective), not `pronavê xwemalî`; L1 Q1 should use `qaydeyên` to match the keyed option.
 - No learner-facing/key/lesson/runtime changes; no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — targeted rationale recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_TARGETED_STEM_OPTION_RECHECK_2026-11-11.md`, SHA `47db0bc21ffc740e9c275ab4e2385057753a67eb`.
+- Rechecked L8 Q2/Q3 against the quiz and §66/§67; key `-in` remains locally supported while cross-lesson bare `bireser` ambiguity remains. Rechecked L9/L10 form-vs-role, L11 `ko` uses, and L12 Q5 class/function distinction; no new correction found in these selected rows.
+- Appended corrected L1 Q1 and L6 Q5 wording to the base 44-row proposal; latest SHA `ccdd1fea505fa354d9c043dd0c010f8fe84faf2a`.
+- L1 Q4, L12 Q1 and L12 Q3 remain held. No learner-facing/source/key/runtime changes, no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
