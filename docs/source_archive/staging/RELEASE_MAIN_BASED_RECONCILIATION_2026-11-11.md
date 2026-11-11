@@ -1153,3 +1153,22 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - ئەم کارە تەنها restoreی exact-copyی ١٤ فایلەی پەچی لە ZIP بۆ Library و دروستکردنی فهرستێکی نوێ بوو.
 - هیچ patchێک بۆ runtime جێبەجێ نەکرا؛ هیچ source lesson، runtime JSON، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا.
 - هیچ merge، deploy، restart، sync یان activation ئەنجام نەدرا.
+
+
+## ٩.٤٢. پشکنینی ناهاوتاییی دوو وەشانی پەچی وانەی ٢١ — 2026-11-11
+
+### بەڵگەی دوو وەشان
+- لە Library دوو فایل بە هەمان `lesson_id=grammar_21` دۆزرایەوە: `grammar_21_append_only_patch.json` و `grammar_21_append_only_patch(1).json`.
+- هەردووکیان `patch_type=append_only` و `preserve_existing=true`یان هەیە؛ بەڵام ناوەڕۆکی `append.examples`, `append.appendix`, `append.activities` و `review_notes` یەکسان نییە.
+- چوار نموونەی سەرەکی لە هەردوو وەشاندا جیاوازن؛ تەنها نموونەی «فەرزانە کارەکەی جێبەجێ کرد» هاوبەشە.
+- Variant A خانەکانی `text` و `note` بەکار دەهێنێت؛ Variant B `sentence` و `analysis` بەکار دەهێنێت. بۆیە جیاوازیی schemaیش هەیە، نەک تەنها دەق.
+- هەردوو وەشانەکە ٧ خاڵی پاشکۆ و ٣ چالاکییان هەیە، بەڵام دەق و داواکاریی چالاکییەکان جیاوازن.
+
+### بڕیاری پاراستن
+- هیچکام بە خۆکار وەشانی کۆتایی یان جێگرەوەی ئەوی تر دانانرێت؛ هەردوو فایلەکە وەک خۆیان پارێزراون.
+- پشکنینی وردی سەرچاوەی بنەڕەتیی وانەی ٢١ و provenanceی هەر دوو پەچ پێویستە پێش هەر بڕیارێکی هەڵبژاردن/یەکخستن.
+- فهرستی جیاوازییەکان لە Library بە ناوی `README_KU_PATCH21_VARIANTS_AUDIT_2026-11-11.md` زیاد کرا.
+- تا بڕیاری سەرچاوەیی و schemaی یەکگرتوو، هیچکام بۆ runtime، Botkeep، Railway یان Telegram جێبەجێ ناکرێن.
+
+### سنووری کار
+ئەمە تەنها پشکنین و پاراستنی بەڵگەییە؛ هیچ پەچ، source lesson، runtime JSON، quiz، review_status، DB یان فایلێکی پێشووی Library نەگۆڕدرا و نەسڕدرایەوە. تەنها فایلێکی auditی نوێ زیاد کرا.
