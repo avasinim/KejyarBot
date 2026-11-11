@@ -105,7 +105,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
             "arami_lesson1_telegram.load_manifest", return_value=manifest
         ):
-            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True, can_open=lambda user_id, lesson_id: True)
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
@@ -138,7 +138,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             with patch("arami_lesson1_telegram.load_manifest", return_value={
                 "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
             }):
-                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True, can_open=lambda user_id, lesson_id: True)
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
