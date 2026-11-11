@@ -451,3 +451,12 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Stronger existing rationales: L5 Q2–Q4, L8 Q6–Q7, L11 Q4. Repeated but useful paradigms: L7 Q2–Q4 and L9 Q1–Q4.
 - Priority holds: L10 Q2 (`wê` agent vs stem's object-form label), L12 Q1 adjective-definition scope, L12 Q3 `rengdêra/rengdêrê jmarîn`, L1 Q4 `kîtê/kitê`. L6 Q3 must retain the full noun-attached modifier distinction.
 - No quiz, key, rationale or lesson text was edited. No tests/CI, live runtime checks, learner-response or psychometric analysis occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — 44 proposed answer-key rationale rewrites (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md`, SHA `04931e2bc674c6a0d842a74b41e20f82e440f3d5`; exact proposal-row count: 44.
+- Draft covers generic-rationale items across Lessons 1–12. Three generic items remain on hold (L10 Q2, L12 Q1, L12 Q3); L1 Q4 remains a separate spelling/notation hold.
+- L6 Q3 wording retains `bireserê navdêrê` and avoids the ambiguous bare term `bireser`.
+- No answer-key or lesson edits; proposals are not approved or learner-facing. No runtime/parser/manifest/database/Botkeep/Telegram/deployment changes, tests/CI, or psychometric/learner-response analysis.
+- `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
