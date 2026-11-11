@@ -372,6 +372,10 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertNotIn("٨٥–٨٧", appendix_lesson13)
         self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
         self.assertNotIn("د. سەروەت محەمەد ئەمین", appendix_lesson13)
+        source_map = (ROOT / "docs" / "source_archive" / "staging" / "reviews" / "COURSE4_LESSON_013_SOURCE_MAP_AND_TERMINOLOGY_PATCH_2026-11-10.md").read_text(encoding="utf-8")
+        self.assertIn("پەیوەندیی خاڵەکانی وانە", source_map)
+        self.assertIn("Crosswalkی زاراوەیی", source_map)
+        self.assertIn("review_status هێشتا internal_cross_lesson_synthesis_no_external_source_mapping", source_map)
 
     def test_lesson13_registered_in_source_plan_and_manifest(self):
         source = json.loads(
