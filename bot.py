@@ -53,6 +53,7 @@ from arami_course1_telegram import (
     course_menu_keyboard as arami_course1_menu_keyboard,
     load_manifest as load_arami_course1_manifest,
     load_question_banks as load_arami_course1_question_banks,
+    lesson_is_academically_approved,
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -491,11 +492,7 @@ def _arami_lesson_requires_review(lesson):
     # No Arami lesson is promoted to official rewards until its manifest
     # carries an explicit scientific/owner approval state. Source receipt,
     # immutability, and interaction wiring alone are not academic approval.
-    return record.get("status") not in {
-        "scientific_review_complete",
-        "scientific_review_complete_with_qualified_notes",
-        "approved",
-    }
+    return not lesson_is_academically_approved(record)
 
 
 def lesson_is_pending_review(lesson):
@@ -1359,6 +1356,8 @@ def quiz_menu_items(user_id, mode):
             lesson_id = item["id"]
             if lesson_id not in completed or not can_open(user_id, lesson_id):
                 continue
+            if mode != "practice" and not lesson_is_academically_approved(item):
+                continue
             n = item["number"]
             callback_mode = "practice" if mode == "practice" else "assessment"
             callback = f"arami1:{callback_mode}" if n == 1 else (f"arami5:{callback_mode}" if n == 5 else f"aramiC:{callback_mode}:{n}")
@@ -1917,6 +1916,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^arami1:",
     ))
@@ -1927,6 +1927,7 @@ def main():
             award_assessment=award_arami_assessment,
             get_completed_lessons=get_completed_lessons,
             get_completed_beta_lessons=get_completed_beta_lessons,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^aramiC:",
     ))
@@ -1935,6 +1936,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^arami5:",
     ))

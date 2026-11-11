@@ -3,7 +3,10 @@ import logging
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson1_interactions, load_arami_lesson1_content
-from arami_course1_telegram import load_manifest, _send_source, send_lesson_infographic
+from arami_course1_telegram import (
+    load_manifest, _send_source, send_lesson_infographic,
+    lesson_is_academically_approved,
+)
 from arami_lesson1_interaction import (
     create_session, current_question, select_answer, submit_answer, session_result, retry_missed,
 )
@@ -11,14 +14,18 @@ from arami_lesson1_interaction import (
 logger = logging.getLogger(__name__)
 
 
-def menu_keyboard():
-    return InlineKeyboardMarkup([
+def menu_keyboard(assessment_enabled=True):
+    rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ١", callback_data="arami1:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ١", callback_data="arami1:practice")],
-        [InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")],
+    ]
+    if assessment_enabled:
+        rows.append([InlineKeyboardButton("📝 تاقیکردنەوەی وانەی ١", callback_data="arami1:assessment")])
+    rows.extend([
         [InlineKeyboardButton("📚 وانەی ٥ — پیتەکان و هاوتای لاتینی", callback_data="arami5:menu")],
         [InlineKeyboardButton("📚 هەموو ٢١ وانەی کۆرس ١", callback_data="aramiC:menu")],
     ])
+    return InlineKeyboardMarkup(rows)
 
 
 async def send_question(message, context):
@@ -60,7 +67,7 @@ def _lesson_source_markdown(lesson):
     return '\n'.join(lines)
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, can_take_assessment=None):
     query = update.callback_query
     action = query.data.removeprefix("arami1:")
     defer_ack = action.startswith("pick:") or action == "submit"
@@ -68,10 +75,19 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         await query.answer()
 
     if action == "menu":
+        assessment_enabled = True
+        if can_take_assessment is not None:
+            try:
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 1)
+            except (OSError, ValueError, StopIteration):
+                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+                return
+            assessment_enabled = can_take_assessment(query.from_user.id, lesson_record["id"])
         await query.message.reply_text(
             "📕 کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی ١\n«پیتەکان و دەنگەکان»\n\n"
-            "خوێندنەوە، ڕاهێنان یان تاقیکردنەوە هەڵبژێرە:",
-            reply_markup=menu_keyboard(),
+            "خوێندنەوە و ڕاهێنان هەڵبژێرە؛ تاقیکردنەوەی فەرمی دوای پەسەندکردنی ئەکادیمی چالاک دەبێت:",
+            reply_markup=menu_keyboard(assessment_enabled=assessment_enabled),
         )
         return
 
@@ -106,20 +122,32 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
                 InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson_record['id']}")
             ]]),
         )
-        await query.message.reply_text("📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.", reply_markup=menu_keyboard())
+        assessment_enabled = (
+            can_take_assessment is None
+            or can_take_assessment(query.from_user.id, lesson_record["id"])
+        )
+        await query.message.reply_text(
+            "📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.",
+            reply_markup=menu_keyboard(assessment_enabled=assessment_enabled),
+        )
         return
 
     if action in {"practice", "assessment"}:
-        if can_open is not None:
+        lesson_record = None
+        if can_open is not None or (action == "assessment" and can_take_assessment is not None):
             try:
                 manifest = load_manifest(base_dir)
                 lesson_record = next(item for item in manifest["lessons"] if item["number"] == 1)
             except (OSError, ValueError, StopIteration):
                 await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
                 return
-            if not can_open(query.from_user.id, lesson_record["id"]):
-                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+        if action == "assessment" and can_take_assessment is not None:
+            if not can_take_assessment(query.from_user.id, lesson_record["id"]):
+                await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
                 return
+        if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
+            await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+            return
         try:
             bank = load_arami_lesson1_interactions(base_dir)
             context.user_data["arami_lesson1_session"] = create_session(bank[action], action)
