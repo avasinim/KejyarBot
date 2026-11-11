@@ -608,3 +608,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALES_EDITORIAL_PREFLIGHT_2026-11-11.md`, SHA `70e075aaddf5848aee1598e6f59c3e4251a455a5`.
 - Three proposed clarity refinements flagged for native-editor review: L2 Q2, L11 Q2 and L10 Q2. Remaining 42 rows had no new concrete correction established in this screening pass.
 - L1 Q4, L12 Q1 and L12 Q3 remain held. All proposals remain unapproved/unapplied; no learner-facing or runtime changes and no tests/CI. `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — Editorial refinements E1–E3 source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_REFINEMENT_E1_E3_SOURCE_RECHECK_2026-11-11.md`, SHA `b5456386a9fd56320eff4e0c8176a8a24433e39f`.
+- Source recheck confirms the three clarity refinements for L2 Q2, L11 Q2 and L10 Q2; suggested wording is recorded for qualified editor review only. The answer keys remain unchanged (C).
+- This was a focused review of the three flagged items, not a re-adjudication of all 45 rows or native-speaker certification. L1 Q4, L12 Q1 and L12 Q3 remain held.
+- No learner-facing, lesson, quiz, answer-key, runtime or deployment files changed; no tests/CI or live runtime checks. `main` read-only; archive branch is not an independent ZIP/offsite backup.
