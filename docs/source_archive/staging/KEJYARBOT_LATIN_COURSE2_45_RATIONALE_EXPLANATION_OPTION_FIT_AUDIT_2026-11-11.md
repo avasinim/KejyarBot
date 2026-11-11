@@ -104,3 +104,8 @@ These are judgments of explanation-to-option fit, not independent linguistic cer
 ## 7. Preservation and validation boundary
 
 No lesson, quiz, answer-key, source transcription, runtime, parser, manifest, database, Botkeep, Telegram or deployment file was modified. No proposal was approved or applied. No tests/CI, runtime checks, learner-response analysis or psychometric validation was performed. `main` remains read-only. Work is confined to `archive/preservation-audit-2026-11-10`. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
+
+
+## Clarification addendum — Lesson 6 / Lesson 8 modifier terminology (2026-11-11)
+
+The initial L8 Q3 diagnosis is refined by the source-aligned lesson wording. Lesson 8 locally labels the first suffix environment “bê bireser” and contrasts it with a postnominal descriptive element, so L8 Q3's intended grammatical contrast and key `-in` are consistent with its local section. The actual problem is cross-lesson terminology ambiguity: Lesson 6 teaches the full `bireserê navdêrê` for noun-attached modifiers, while Lesson 10 uses bare `bireser` for clause-level object. Lesson 8's abbreviated bare `bireser` can therefore be misunderstood outside its local context. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_L8_MODIFIER_TERMINOLOGY_CLARIFICATION_2026-11-11.md`, SHA `5ab9adcaf4a05d30618b16de3dd9ee3f17f90e18`. Proposed solution: describe Lesson 8's condition as “bê hêmaneke raveker li pey navdêrê” (pending Kurmanji editorial approval), and use the full `bireserê navdêrê` in L6 Q3 stem. No key or lesson content changed.
