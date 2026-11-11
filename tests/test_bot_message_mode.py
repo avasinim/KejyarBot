@@ -6,6 +6,23 @@ from unittest.mock import AsyncMock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = None
+_beta_completion_test_default = None
+
+def setUpModule():
+    global _beta_ledger_test_default, _beta_completion_test_default
+    _beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+    _beta_completion_test_default = patch.object(bot, "complete_beta_lesson", return_value=True)
+    _beta_ledger_test_default.start()
+    _beta_completion_test_default.start()
+
+def tearDownModule():
+    if _beta_completion_test_default is not None:
+        _beta_completion_test_default.stop()
+    if _beta_ledger_test_default is not None:
+        _beta_ledger_test_default.stop()
+
 
 class MessageModeTests(unittest.IsolatedAsyncioTestCase):
     def make_update_context(self, text, user_data=None):
@@ -92,15 +109,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("٢١ وانە", call.args[0])
         keyboard = call.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        reads = [button.callback_data for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
-        practices = [button.callback_data for button in buttons if ":practice" in button.callback_data]
-        assessments = [button.callback_data for button in buttons if ":assessment" in button.callback_data]
+        reads = [button.callback_data for button in buttons if button.callback_data.startswith("aramiC:select:")]
         self.assertEqual(len(reads), 21)
-        self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
-        self.assertIn("arami1:practice", practices)
-        self.assertIn("arami5:practice", practices)
-        self.assertIn("aramiC:practice:21", practices)
+        self.assertEqual([len(row) for row in keyboard.inline_keyboard[:-1]], [2] * 10 + [1])
+        self.assertEqual(keyboard.inline_keyboard[-1][0].callback_data, "aramiC:legend")
 
     async def test_learning_path_reports_all_21_arami_lessons_and_progress(self):
         update, context = self.make_update_context("🧭 ڕێگای فێربوون")
@@ -162,7 +174,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(bot.ORDER), 0)
         read_buttons = [
             button for button in buttons
-            if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")
+            if button.callback_data.startswith("aramiC:select:")
         ]
         self.assertEqual(len(read_buttons), 21)
         self.assertIn("ڕێنووسی سەرەتاییی کوردی", call.args[0])
@@ -183,10 +195,9 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("سەرەتا وانەیەک بکەرەوە", call.args[0])
         self.assertEqual(bot.ORDER, [])
 
-    async def test_clickable_practice_menu_lists_only_lesson_three_and_both_latin_courses(self):
+    async def test_practice_menu_hides_latin_quizzes_until_editorial_approval(self):
         update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
         completed = [
-            *bot.ORDER,
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
@@ -196,22 +207,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         ):
             await bot.message(update, context)
 
-        self.assertIn("ڕاهێنانی کرتەیی", update.message.reply_text.await_args.args[0])
-        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        expected = [
-            *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
-            *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
-        ]
-        lesson_callbacks = [
-            button.callback_data for button in buttons
-            if button.callback_data.startswith("quiz_")
-        ]
-        self.assertEqual(
-            lesson_callbacks,
-            [bot.lesson_practice_callback(lesson) for lesson in expected[:bot.QUIZ_MENU_PAGE_SIZE]],
-        )
-        self.assertEqual(buttons[-1].callback_data, "quizmenu:practice:1")
+        self.assertEqual(update.message.reply_text.await_args.args[0], "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        self.assertNotIn("reply_markup", update.message.reply_text.await_args.kwargs)
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())

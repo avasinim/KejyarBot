@@ -8,6 +8,23 @@ from unittest.mock import AsyncMock, Mock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = None
+_beta_completion_test_default = None
+
+def setUpModule():
+    global _beta_ledger_test_default, _beta_completion_test_default
+    _beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+    _beta_completion_test_default = patch.object(bot, "complete_beta_lesson", return_value=True)
+    _beta_ledger_test_default.start()
+    _beta_completion_test_default.start()
+
+def tearDownModule():
+    if _beta_completion_test_default is not None:
+        _beta_completion_test_default.stop()
+    if _beta_ledger_test_default is not None:
+        _beta_ledger_test_default.stop()
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -61,25 +78,46 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"]
         buttons = [button for row in keyboard.inline_keyboard for button in row]
-        reads = [button for button in buttons if button.callback_data.endswith(":lesson") or button.callback_data.startswith("aramiC:lesson:")]
+        reads = [button for button in buttons if button.callback_data.startswith("aramiC:select:")]
         practices = [button for button in buttons if ":practice" in button.callback_data]
         assessments = [button for button in buttons if ":assessment" in button.callback_data]
         self.assertEqual(len(reads), 21)
-        self.assertEqual(len(practices), 21)
-        self.assertEqual(len(assessments), 21)
-        self.assertIn("arami1:practice", [button.callback_data for button in practices])
-        self.assertIn("arami5:practice", [button.callback_data for button in practices])
+        self.assertEqual(len(practices), 0)
+        self.assertEqual(len(assessments), 0)
+        self.assertEqual(len(reads), 21)
+        self.assertEqual([len(row) for row in keyboard.inline_keyboard[:-1]], [2] * 10 + [1])
 
-    def test_arami_assessment_reward_uses_unique_lesson_key_and_twenty_xp(self):
-        with patch.object(bot, "complete_quiz_with_rewards", side_effect=[True, False]) as reward:
-            self.assertTrue(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
+    def test_arami_assessment_does_not_award_xp_before_explicit_approval(self):
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
             self.assertFalse(bot.award_arami_assessment(12345, "arami_course1_lesson_01"))
-        self.assertEqual(reward.call_count, 2)
-        self.assertEqual(reward.call_args_list[0].args, (12345, "arami_assessment:arami_course1_lesson_01"))
-        self.assertEqual(reward.call_args_list[0].kwargs, {"points": 20})
+        reward.assert_not_called()
 
     def test_startup_validation_confirms_both_activated_courses_are_complete(self):
         bot.validate_activated_course_runtime()
+
+    def test_all_active_courses_have_globally_unique_lesson_ids_and_exact_reverse_mapping(self):
+        active_orders = {
+            course_id: lessons
+            for course_id, lessons in bot.COURSE_LESSON_ORDER.items()
+            if bot.course_is_active(course_id)
+        }
+        flattened = [
+            (course_id, lesson_id)
+            for course_id, lessons in active_orders.items()
+            for lesson_id in lessons
+        ]
+        lesson_ids = [lesson_id for _, lesson_id in flattened]
+
+        self.assertTrue(lesson_ids)
+        self.assertEqual(
+            len(lesson_ids),
+            len(set(lesson_ids)),
+            "A lesson ID must belong to exactly one active course",
+        )
+        for course_id, lesson_id in flattened:
+            self.assertEqual(bot.LESSON_COURSE.get(lesson_id), course_id)
+
+        self.assertEqual(set(bot.LESSON_COURSE), set(lesson_ids))
 
     def test_course_lesson_ids_are_unique_and_do_not_replace_course_one_ids(self):
         self.assertEqual(len(bot.COURSE_LESSON_ORDER["orthography_basic"]), 0)
@@ -106,6 +144,33 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[order[0]]):
             self.assertTrue(bot.can_open(12345, order[1]))
             self.assertFalse(bot.can_open(12345, order[2]))
+
+    def test_approved_course4_lesson_does_not_reuse_stale_beta_completion(self):
+        order = bot.COURSE_LESSON_ORDER["grammar"]
+        lesson_32 = order[31]
+        lesson_33 = order[32]
+        official_prefix = order[:31]
+        approved_record = {
+            **bot.LESSON_DATA[lesson_32],
+            "review_status": "scientific_review_complete_with_qualified_notes",
+        }
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=official_prefix),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+            patch.dict(bot.LESSON_DATA, {lesson_32: approved_record}),
+        ):
+            # The old Beta record must not stand in for official completion
+            # after the lesson has left the pending-review state.
+            self.assertFalse(bot.can_open(12345, lesson_33))
+
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=official_prefix),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+        ):
+            # While lesson 32 is still an eligible Beta draft, its separate
+            # Beta completion may continue the Beta review sequence.
+            self.assertTrue(bot.can_open(12345, lesson_33))
 
     def test_course_two_and_three_progression_is_independent(self):
         course_two = bot.COURSE_LESSON_ORDER["daily_conversation"]
@@ -141,8 +206,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
-            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as complete,
             patch.object(bot, "check_badges"),
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
@@ -161,8 +225,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
-            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as complete,
             patch.object(bot, "check_badges"),
             patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
         ):
@@ -196,8 +259,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
-            patch.object(bot, "get_user_level", return_value=1),
+            patch.object(bot, "complete_beta_lesson", return_value=False) as complete,
             patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
@@ -205,7 +267,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         complete.assert_called_once_with(12345, lesson_id)
         badges.assert_not_called()
         message.reply_text.assert_awaited_once()
-        self.assertIn("پێشتر تەواو کراوە", message.reply_text.await_args.args[0])
+        self.assertIn("پێشتر بۆ پێشچوونی Beta تۆمار کراوە", message.reply_text.await_args.args[0])
 
     async def test_open_course_two_shows_first_12_of_42_lesson_buttons(self):
         update, message, query = self.make_update("course_daily_conversation")
@@ -214,7 +276,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         message.reply_text.assert_awaited_once()
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:daily_conversation:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
@@ -226,7 +288,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "get_completed_lessons", return_value=[]):
             await bot.open_course(update, SimpleNamespace())
         keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(keyboard[-1][0].callback_data, "coursepage:unified_orthography:1")
         self.assertEqual(
             keyboard[0][0].callback_data,
@@ -258,9 +320,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertIn("کۆرسی ٢: وتووێژ", rendered)
-        self.assertIn("وانەکانی 13–24 لە کۆی 42 — لاپەڕەی 2/4", rendered)
+        self.assertIn("13 تا 24 لە 42", rendered)
+        self.assertIn("لاپەڕەی 2/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        self.assertEqual(len(keyboard), 13)
+        self.assertEqual(len(keyboard), 7)
         self.assertEqual(
             keyboard[0][0].callback_data,
             "open_lesson_daily_conversation_13",
@@ -276,9 +339,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         rendered = message.edit_text.await_args.args[0]
         self.assertEqual(rendered.count("کۆرسی ٢: وتووێژ"), 1)
         self.assertEqual(rendered.count("٤٢ وانەی وتووێژ"), 1)
-        self.assertIn("وانەکانی 37–42 لە کۆی 42 — لاپەڕەی 4/4", rendered)
+        self.assertIn("37 تا 42 لە 42", rendered)
+        self.assertIn("لاپەڕەی 4/4", rendered)
         keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
-        lesson_buttons = [row[0].callback_data for row in keyboard if row and row[0].callback_data.startswith("open_lesson_")]
+        lesson_buttons = [button.callback_data for row in keyboard for button in row if button.callback_data.startswith("open_lesson_")]
         self.assertEqual(lesson_buttons, [
             "open_lesson_daily_conversation_37",
             "open_lesson_daily_conversation_38",
@@ -315,7 +379,9 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         with patch.object(bot, "quiz_menu_items", return_value=items):
             await bot.open_quiz_menu_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"].inline_keyboard
+        message.edit_text.assert_awaited_once()
+        message.reply_text.assert_not_awaited()
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(keyboard[0][0].callback_data, "quiz_lesson_12_start")
         self.assertEqual(keyboard[-1][0].callback_data, "quizmenu:assessment:0")
 
@@ -338,9 +404,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         ):
             badges = bot.current_progress_badges(12345)
 
-        self.assertEqual(len(badges), 2)
-        self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی — وانەی 1", badges[0])
-        self.assertIn("کۆرسی ٢: وتووێژ — وانەی 1", badges[1])
+        self.assertEqual(len(badges), 0, "Unapproved Arami and draft editorial lessons cannot earn official badges")
         self.assertFalse(any("کۆرسی ٣" in badge for badge in badges))
         self.assertFalse(any("Diyako" in badge for badge in badges))
 
@@ -348,10 +412,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
         with patch.object(bot, "get_completed_lessons", return_value=[daily[0], daily[2]]):
             badges = bot.current_progress_badges(12345)
-        self.assertEqual(
-            badges.count("🏅 کۆرسی ٢: وتووێژ — وانەی 1"),
-            1,
-        )
+        self.assertEqual(badges, [], "Draft editorial progress must stay outside official badges")
         self.assertFalse(any("کۆرسی ٢: وتووێژ — وانەی 3" in badge for badge in badges))
 
     def test_lesson_editorial_review_notes_do_not_deactivate_courses(self):
@@ -395,35 +456,33 @@ if __name__ == "__main__":
 
 
 class Course4TelegramPresentationReadinessTests(unittest.IsolatedAsyncioTestCase):
-    def test_course4_catalog_is_paginated_and_all_46_callbacks_are_reachable(self):
-        expected = [f"grammar_{number:02d}" for number in range(1, 47)]
+    def test_course4_catalog_is_paginated_and_all_50_callbacks_are_reachable(self):
+        expected = [f"grammar_{number:02d}" for number in range(1, 51)]
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], expected)
         with (
             patch.object(bot, "get_completed_lessons", return_value=[]),
             patch.object(bot, "get_completed_beta_lessons", return_value=[]),
         ):
-            first, page_count = bot.course_menu_keyboard("grammar", 12345, 0)
-            second, second_page_count = bot.course_menu_keyboard("grammar", 12345, 1)
-            third, third_page_count = bot.course_menu_keyboard("grammar", 12345, 2)
-            fourth, fourth_page_count = bot.course_menu_keyboard("grammar", 12345, 3)
-        self.assertEqual(page_count, 4)
-        self.assertEqual(second_page_count, 4)
-        self.assertEqual(third_page_count, 4)
-        self.assertEqual(fourth_page_count, 4)
-        first_ids = [row[0].callback_data for row in first.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        second_ids = [row[0].callback_data for row in second.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        third_ids = [row[0].callback_data for row in third.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        fourth_ids = [row[0].callback_data for row in fourth.inline_keyboard if row[0].callback_data.startswith("open_lesson_")]
-        self.assertEqual(first_ids, [f"open_lesson_{item}" for item in expected[:12]])
-        self.assertEqual(second_ids, [f"open_lesson_{item}" for item in expected[12:24]])
-        self.assertEqual(third_ids, [f"open_lesson_{item}" for item in expected[24:36]])
-        self.assertEqual(fourth_ids, [f"open_lesson_{item}" for item in expected[36:]])
-        self.assertEqual(second.inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
-        self.assertEqual(third.inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
-        self.assertEqual(fourth.inline_keyboard[-1][0].callback_data, "coursepage:grammar:2")
+            pages = [
+                bot.course_menu_keyboard("grammar", 12345, page)
+                for page in range(5)
+            ]
+        for _, page_count in pages:
+            self.assertEqual(page_count, 5)
+        page_ids = [
+            [button.callback_data for row in keyboard.inline_keyboard for button in row
+             if button.callback_data.startswith("open_lesson_")]
+            for keyboard, _ in pages
+        ]
+        for page, ids in enumerate(page_ids):
+            self.assertEqual(ids, [f"open_lesson_{item}" for item in expected[page * 12:(page + 1) * 12]])
+        self.assertEqual(pages[1][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:0")
+        self.assertEqual(pages[2][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:1")
+        self.assertEqual(pages[3][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:2")
+        self.assertEqual(pages[4][0].inline_keyboard[-1][0].callback_data, "coursepage:grammar:3")
 
     async def test_every_course4_lesson_renders_as_telegram_safe_branded_chunks(self):
-        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 46)
+        self.assertEqual(len(bot.COURSE_LESSON_ORDER["grammar"]), 50)
         for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
             with self.subTest(lesson=lesson_id):
                 lesson = bot.LESSON_DATA[lesson_id]
