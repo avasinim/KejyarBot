@@ -825,3 +825,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L1 Q5, L3 Q5, L4 Q1, L8 Q2, L11 Q5 candidates retained with stated caveats. L5 Q1 candidate distractors A/C need refinement because gender/number can condition inflected forms; safer non-overlapping wording is proposed in the artifact.
 - Optional L4 Q5 contrast `hespan` vs `hespin` is source-backed but tests the Lesson 5 oblique/inflection distinction before it is taught in Lesson 4. Hold out of Lesson 4; consider cumulative review after Lesson 5.
 - No quiz/key/lesson change; no approval/application; no tests/CI/runtime; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 92 — L5 Q1 distractor refinement and L4 Q5 sequencing patch (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L5_Q1_DISTRACTOR_REFINEMENT_AND_L4_Q5_SEQUENCE_PATCH_2026-11-11.md`, SHA `bd7a1fae9dc1315fc57bbcd99f579e9505c4c297`.
+- L5 Q1's earlier gender/number distractors are replaced in the proposal with cleaner contrasts: role change without form change; the correct form change conditioned by role; meaning change without form change. Key B retained.
+- The optional `hespan/hespin` contrast is kept out of Lesson 4's end quiz because its oblique/inflection concept is taught in Lesson 5. It is reserved for cumulative review after Lesson 5; current L4 Q5 key C remains unchanged.
+- Proposal only; no quiz/key/lesson changes; no tests/CI/runtime; `main` read-only; no independent ZIP/offsite backup claimed.
