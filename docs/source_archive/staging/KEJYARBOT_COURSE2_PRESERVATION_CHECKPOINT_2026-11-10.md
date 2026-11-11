@@ -104,3 +104,18 @@ All changes remain confined to the archive branch. `main` is read-only. No runti
 The companion proposal supplies four matching rationale entries for L6 Q3, L8 Q5, L10 Q1, and L10 Q2. It is proposal-only and must not be applied until the related quiz/lesson proposal receives explicit approval. The base quiz SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the base answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`.
 
 No runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment action occurred. All writes remain on the archive branch; `main` remains read-only. No separate ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — Lesson 8 §69 source correction (2026-11-11)
+
+A primary-source recheck of Celadet Alî Bedir-Xan, printed pp.66–68, §§67–70, caught and corrected a substantive error in the proposed replacement for Lesson 8 reviewed-draft line 292. Section 69 requires each linked complement/modifier to receive its own suffix according to its own gender and number; the earlier proposal incorrectly said the final component determines the suffix.
+
+- Editorial proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md`
+  - Corrected blob SHA: `061127ddf7fec01b4df5e43066053010bac0fe10`
+  - Update commit: `aae7ae016821d1e11b5c9697d7ec479a65a7fea2`
+  - Verified after update; remains proposal-only and unapplied.
+- Global audit section 28 appended and verified:
+  - Blob SHA: `b3f8b4a649b4388c5cbb0fd74a7b0e363facdf61`
+  - Update commit: `4daf9763400d5818809f00934f286e37c660b67a`
+
+The reviewed lesson draft remains at SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the reviewed answer key remains at SHA `879e1525e720bdc25b8f6e896de3e388801238d0`. Neither was edited. No runtime, tests/CI, manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. GitHub archive-branch history remains the persisted project record; no separate ZIP/off-site backup is claimed.
