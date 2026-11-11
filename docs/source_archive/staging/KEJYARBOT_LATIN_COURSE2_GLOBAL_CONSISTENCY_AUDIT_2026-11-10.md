@@ -509,3 +509,11 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - L10 Q2 is not certified as unambiguous: `forma bireserî` keyed `wê` conflicts in ordinary reading with the lesson's own analysis of `Wê ew dît` (`wê` = inflected agent/subject; `ew` = direct object). Requires editor/source ruling before any item/key revision.
 - L6 Q3's bare `bireser` is a high-priority terminology ambiguity. L10 Q5 and L11 Q3 retain source/register scope notes.
 - No learner-facing changes, key edits, tests/CI, runtime checks, or psychometric analysis. `main` remains read-only; no separate ZIP/off-site backup is claimed.
+
+
+## Section 56 — Course 2 quiz orthography and formatting audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_ORTHOGRAPHY_FORMATTING_AUDIT_2026-11-11.md`, SHA `6478e42c7231732ae1bf9ea5cba45ff9ae4636ff`.
+- Confirmed 62 questions and 62 key rows. Principal findings: Lesson 12 quiz heading/layout/capitalization differs from Lessons 1–11; metalinguistic code formatting is inconsistent; Lesson 1 Q4 key rationale has unresolved `kîtê/kitê` spellings.
+- Preserve `mehînê` in L5 Q3 and grammatical suffix distinctions. Open technical questions L10 Q2 and L12 Q1/Q3 must not be “corrected” by spell-check.
+- No source/key edits, parser compatibility check, tests/CI, or runtime checks. `main` remains read-only; no independent ZIP/off-site backup is claimed.
