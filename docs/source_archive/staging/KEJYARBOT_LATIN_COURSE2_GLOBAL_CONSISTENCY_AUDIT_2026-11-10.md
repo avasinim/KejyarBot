@@ -632,3 +632,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Rechecked L1 Q2, L2 Q2, L3 Q5, L4 Q2/Q5 and L5 Q1 against the exact stems/options, lesson explanations/examples and answer-key mapping. No new concrete key/rationale contradiction or wording correction was identified.
 - L4 recheck preserves the scoped indefinite paradigm distinction `hespek/hespin` versus inflected `hespan`; the corrected Q5 comparative wording remains in force. L5 Q1's reference to tense/verb type is supported by the lesson's §56 exception for transitive past clauses.
 - This covers six rows, not all 45 proposals; the overall review still requires a native-Kurmanji editorial pass. Held items remain held. No learner-facing/source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
+
+
+
+## Section 69 — Lessons 2–4 rationale targeted source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS2_4_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `892c51ee24499b7cc696eae367b9314bbe016db7`.
+- Rechecked ten rows: L2 Q1/Q3/Q4/Q5; L3 Q1–Q4; L4 Q1/Q3. Exact stems, options and lesson definitions/examples support the proposed rationale and current keys; no new mismatch or wording correction identified.
+- Confirmed L3 Q4 preserves the two senses of `dar` (living tree/plant feminine; dry wood/stick masculine), and L4 Q3 treats `mehînek` as singular only within the lesson's indefinite paradigm.
+- No source/key/learner-facing/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
