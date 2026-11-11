@@ -713,3 +713,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Exact L8 Q3 stem says “bê bireser”, but §66 of the lesson source defines the relevant paradigm as having no descriptive/qualifying element after the noun (“bê pêvekeke raveker li pey navdêrê”). In this course, `bireser` is used for noun complement (L6 term `bireserê navdêrê`) and clause object (L9–10); the Q3 stem therefore risks conflating distinct grammatical relations.
 - The rationale already uses the source-aligned condition. Key A (`-in`) remains supported. A stem wording alternative using `bê hêmaneke raveker li pey navdêrê` is recorded for editor review only; no change made.
 - This is a new editorial hold/review item, alongside L1 Q4, L12 Q1 and L12 Q3. No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 79 — Lesson 10 Q1 paradigm label vs clause role (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q1_OBJECT_PRONOUN_FORM_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `a639fa4783ecaf31d535b6ca0ed9e43166b1f30c`.
+- Exact stem asks “Kîjan yek ji pronavên bireser e?” with key B (`min`). The key is supported if “pronavên bireser” means membership in the lesson's named paradigm. But the lesson explicitly shows forms such as `min/te` can be inflected agents in transitive-past clauses while another form (`ez`) is the actual object. The stem can therefore be read as asking syntactic function, not paradigm membership.
+- Recorded alternative stem wording asking which form belongs to the lesson's “pronavên bireser” table. Key B remains; no correction applied. New editorial hold L10 Q1.
+- No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
