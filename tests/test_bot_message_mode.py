@@ -199,7 +199,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(update.message.reply_text.await_args.args[0], "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
         keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
-        self.assertIsNone(keyboard)
+        self.assertNotIn("reply_markup", update.message.reply_text.await_args.kwargs)
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
