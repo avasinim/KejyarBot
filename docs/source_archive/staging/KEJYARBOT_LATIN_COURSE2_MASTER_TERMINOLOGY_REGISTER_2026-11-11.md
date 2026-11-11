@@ -199,3 +199,14 @@ This is a provisional course-internal clarification, not an external terminology
 - Keep Q3's singular variation `rengdêrê jmarîn` (prose) vs `rengdêra jmarîn` (quiz option) unresolved until a Kurmanji editor reviews that exact construction. Do not global-replace.
 
 See the source-to-terminology alignment audit, `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_TO_TERMINOLOGY_ALIGNMENT_AUDIT_2026-11-11.md`. No learner-facing or runtime content was changed.
+
+
+## Lesson 12 internal definition/example consistency note (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_INTERNAL_DEFINITION_EXAMPLE_CONSISTENCY_AUDIT_2026-11-11.md`, blob SHA `6488333dfc374f7ba3fa36240cdf1ebc019c9d4c`.
+
+- The six adjective labels are the course's adopted taxonomy; the opening definition should not blur adjective, determiner, pronoun, and numeral distinctions.
+- Keep lexical class, phrase function, and surface form separate for context-sensitive `ev/ew`, `çend/gelek`, possessive constructions, and `nîv roj`.
+- Preserve the course disposition that `nîv` in `nîv roj` is lexically `jmarnav`, while its phrase-level relation to `roj` is quantifying/modifying.
+- Possessive section examples mix personal and demonstrative possessor forms; `kitêba vî` requires source/editor review before asserting that all possessors share one morphology.
+- No terminology normalization or learner-facing edits authorized; morphology query remains open.
