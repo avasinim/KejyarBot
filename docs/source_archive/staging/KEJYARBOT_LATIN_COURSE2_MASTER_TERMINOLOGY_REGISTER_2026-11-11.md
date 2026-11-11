@@ -276,3 +276,14 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_ANSWER_KEY_RATIONALE
 ### Register erratum — rationale audit note (2026-11-11)
 
 The preceding audit summary's L12 Q3 line has a punctuation typo in the displayed inline-code span. The unresolved forms are exactly `rengdêra jmarîn` and `rengdêrê jmarîn`; this correction clarifies the register note only and does not adjudicate either form.
+
+
+## Proposed answer-key rationale rewrite set — 44 items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md`, verified SHA `04931e2bc674c6a0d842a74b41e20f82e440f3d5`.
+
+- Drafted 44 item-specific rationale proposals for generic key entries; verified the proposal document contains exactly 44 rationale rows.
+- Three items are withheld: L10 Q2 (`wê` agent/object label conflict), L12 Q1 (adjective-definition scope), L12 Q3 (`rengdêra/rengdêrê jmarîn` morphology). L1 Q4 remains a separate orthographic hold (`kîtê/kitê`).
+- L6 Q3 is drafted only with the full term `bireserê navdêrê`; it must not be shortened to ambiguous bare `bireser`.
+- Proposals preserve lesson scope and distinctions; none have been copied into or applied to the answer-key file. They require editorial review and explicit approval.
+- No learner-facing, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI or psychometric analysis.
