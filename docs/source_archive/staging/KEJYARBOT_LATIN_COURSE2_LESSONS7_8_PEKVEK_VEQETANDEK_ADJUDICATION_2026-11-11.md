@@ -37,3 +37,19 @@ The practical teaching formulation should make clear that a `veqetandek` in thes
 ## Preservation record
 
 The source-aligned lesson file, reviewed lesson draft, reviewed answer key, runtime, manifests, and active bot state were not modified. No tests/CI were run; no live runtime or Botkeep state was inspected; no deployment or activation occurred. Work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only.
+
+
+## Source-page refinement — determiner as grammatical function vs affix as form (2026-11-11)
+
+The earlier adjudication is refined after locating the existing direct page-image verification for §§61–64 (printed pp.62–63) and rereading the source-aligned lesson text:
+
+1. **Source definition (§61):** a `veqetandek` is defined functionally as a small word placed before or after a noun to identify/limit its reference; the source states that determiners can mark gender/number and definite/indefinite reference. §62 then distinguishes definite from indefinite determiners. This is the category/function level, not a claim that every determiner is morphologically a suffix.
+2. **Lesson 7 realization:** `-ê/-a/-ên` are presented attached after the noun in the main examples, while the source separately shows shortened definite forms `ê/a/ên` before an adjective when the noun is understood/omitted. The lesson explicitly warns not to confuse these shortened independent forms with the post-nominal attached forms.
+3. **Lesson 8 realization:** the indefinite forms are taught in several position- and syntax-conditioned paradigms, including post-nominal forms and forms before a following adjective/modifier, plus a separate oblique environment. Their surface attachment/shape depends on the construction.
+4. **`pêvek` remains a morphological/form description:** the course uses it broadly for bound material added to a base (e.g. indefinite `-ek/-in`, noun inflection discussion, and comparative `-tir`). It can describe the suffixal realization of a determiner in a particular construction, but it is not the name of the determiner category itself.
+
+**Refined ruling:** distinguish (a) grammatical function/category `veqetandek`, (b) morphological realization such as a suffix/pêvek in a given construction, and (c) the specific definite/indefinite paradigms. Thus, `pêvek` and `veqetandek` are not interchangeable, but neither should `veqetandek` be defined too narrowly as “a suffix”. Prefer “determiner” as the category gloss; describe the attachment/position of each form separately and preserve the source's shortened pre-adjectival definite forms.
+
+**Primary-source evidence located:** the existing note `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS6_7_PAGE_IMAGE_REVIEW_2026-11-10.md` (printed pp.61–63, §§59–64; direct page images inspected), blob SHA `6ff6e84792bc13f5835010401bfab89acd446295`. The existing Lesson 8 image review covers §§65–71, printed pp.63–68, direct page images inspected, blob SHA `0eaa37c517fdaf244b48cc69f953400393ab0812`. The source-aligned Lesson 7 text itself also distinguishes attached post-nominal forms from shortened forms before adjectives.
+
+This refinement supersedes only the overly narrow wording in the preceding adjudication that described a determiner as inherently “suffix-like”. It does not alter any source lesson, reviewed lesson, quiz, answer key, or runtime file. The page images for §§61–64 were already directly inspected in the referenced source-review pass; no new scan file was modified.
