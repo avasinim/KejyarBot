@@ -308,3 +308,7 @@ No reviewed lesson/quiz or answer-key baseline was changed. All proposals remain
 The protected reviewed quiz and 62-row answer key were re-fetched and compared for the five proposal targets. Current option order supports the proposed keys without reordering: L6 Q3=A (`beza`); L8 Q3=A (`-in`); L8 Q5=C (`na, erkên wan cuda ne`); L10 Q1=B (`min`); L10 Q2=C (`wê`). The exact inventory is recorded in section 8 of the consolidated handoff, now blob SHA `565481fe4b5a8346e8c5c5d312e16056e09da37b`.
 
 This is an option/key alignment check, not final linguistic approval. The proposed wording remains unapproved and unapplied; the protected lesson/quiz and answer-key SHAs remain unchanged. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred.
+
+
+## 40. Lesson 8 line 292 supersession guard (2026-11-11)
+The consolidated handoff now explicitly warns that the earlier line 292 sentence in section 3 is not operative/approved copy. Section 6's later candidate using `bireserên navdêrê` is also only a candidate pending final Kurmanji syntax review. The settled source distinction remains §68 final-noun agreement versus §69 each-linked-complement agreement. Handoff blob SHA: `73cf22bbd2280e4d9dcf79ea88e494b22e7ed7fc`. No base lesson or quiz content changed.
