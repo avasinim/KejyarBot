@@ -566,12 +566,22 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         for index, question in enumerate(bank):
             message_id = context.user_data["arami_course1_active"]["message_id"]
             update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id)
-            await callback(update, context, ROOT, award_assessment=award)
+            approved = lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_06"
+            await callback(
+                update, context, ROOT, award_assessment=award,
+                can_take_assessment=approved,
+            )
             update, submit_query = self.make_update(f"submit:6", message_id)
-            await callback(update, context, ROOT, award_assessment=award)
+            await callback(
+                update, context, ROOT, award_assessment=award,
+                can_take_assessment=approved,
+            )
             if index < len(bank) - 1:
                 update, _ = self.make_update("next:6", message_id)
-                await callback(update, context, ROOT, award_assessment=award)
+                await callback(
+                    update, context, ROOT, award_assessment=award,
+                    can_take_assessment=approved,
+                )
 
         award.assert_called_once_with(123, "arami_course1_lesson_06")
         self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
@@ -603,10 +613,11 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertIsNot(assessment, practice)
 
         assessment_message_id = context.user_data["arami_course1_active"]["message_id"]
+        approved = lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_06"
         update, _ = self.make_update("pick:6:0", message_id=assessment_message_id)
-        await callback(update, context, ROOT)
+        await callback(update, context, ROOT, can_take_assessment=approved)
         update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
-        await callback(update, context, ROOT)
+        await callback(update, context, ROOT, can_take_assessment=approved)
         self.assertIn("وەڵامەکەت وەرگیرا", assessment_query.edit_message_text.await_args.args[0])
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
