@@ -17,7 +17,7 @@ This document supplies the matching answer-key rationales for the proposed Lesso
 | 6 / 3 | A | `beza` | Di koma navdêrî `hespê beza` de, `beza` hêmanê ku navdêrê `hesp` rave dike ye; ji ber vê yekê ew `bireserê navdêrê` ye. Divê ev term ji erkê bireserê rasterast di hevokê de cuda were fêmkirin. |
 | 8 / 5 | C | `Na, erkên wan cuda ne.` | `-ên` di vê kursê de veqetandeka binavkirî ya gelemjimar e; `-ine` di avahiya bi pêvekeke raveker de forma nebinavkirî ya gelemjimar e. Ji ber vê yekê ew ne heman form û ne heman erk in. |
 | 10 / 1 | B | `min` | Di hevoka `Tu min dibînî` de `tu` kirar e û `min` biresera rasterast e. Ev nimûne nîşan dide ku erkê pronavê ji avahiya hevokê tê diyarkirin; `min` bi xwe her tim bireser nîne. |
-| 10 / 2 | C | `wê` | Di hevoka `Tu wê dibînî` de `tu` kirar e û `wê` wek biresera rasterast a mê tê bikaranîn. Ev çarچêوە لە §86ی سەرچاوەکەدا بە هەمان شێوە هاتووە. Danîna hevokê rolekê diyar dike û rê nade ku `wê` bi forma kirarî ya rabirdûya lêkerên gerguhêz were tevlihevkirin. |
+| 10 / 2 | C | `wê` | Di hevoka `Tu wê dibînî` de `tu` kirar e û `wê` wek biresera rasterast a mê tê bikaranîn. Ev nimûne di §86ê de bi heman şêweyê hatiye nivîsîn. Danîna hevokê rolekê diyar dike û rê nade ku `wê` bi forma kirarî ya rabirdûya lêkerên gerguhêz were tevlihevkirin. |
 
 ## Validation checklist after approval
 
