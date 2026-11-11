@@ -878,3 +878,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Proposed answer-key letters are preserved: B, B, B, C, C, B respectively.
 - The proposal replaces obviously unrelated distractors with near-category alternatives, especially for tewang, definite/indefinite marking and adjective function. It remains editorial-only and requires Kurmanji idiom and single-answer defensibility review.
 - No quiz/key/lesson/runtime file changed; no tests/CI/runtime/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Section 98 — Pre-activation preservation branch snapshot (2026-11-11)
+
+- Created GitHub branch `backup/preactivation-preservation-2026-11-11` from exact commit `fe369c28ed667e859782ab6a3b9ff2fc53a4e4ae`, which contains the current append-only audit/checkpoint updates through Section 97.
+- GitHub API branch read-back confirmed the branch exists and points to that exact commit. This is a versioned repository snapshot on the same GitHub repository; it is not an independent offsite copy and does not include the authoritative Botkeep SQLite database.
+- Railway project `melodious-enthusiasm`, production environment: KejyarBot remains Offline with no deployment. Ten staged changes are pending; the 1 GB `kejyarbot-data` volume is staged-create and empty; `KEJYARBOT_DB_PATH` is staged, while only `TELEGRAM_BOT_TOKEN` is currently live in the service variables. The service is configured to run `python bot.py` if the staged patch is committed.
+- The authoritative Botkeep database backup/restore and Botkeep stopped-state remain unverified. PR #125 documents the unresolved Botkeep staging incident and explicitly says not to retry Resume, Cancel/restore, Replace, Sync or server restart until support confirms backend state. The Telegram poller must not be started until these conditions are met.
+- Therefore the Railway staged patch was deliberately NOT committed, no deployment/restart was triggered, and no Telegram polling instance was started. This is a data-protection hold, not a rejection of the user's approval.
