@@ -491,3 +491,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Principal controlled distinctions: `bireserê navdêrê` (noun-attached modifier) vs clause-level `bireser` vs `pronavên bireser`; `rengdêr` (word class) vs broad modifier function; `veqetandek` vs `pêvek` vs `tewang`; attributive vs independent/pronominal use; `jmarîn` vs `jmarnav`; `kirar` vs unresolved quiz form `kiryar`.
 - Lesson 6's `pêşnavdêr/bireser` slash label remains underdefined and must not be represented as synonymy. No automatic terminology normalization authorized.
 - This is a staged cross-lesson audit, not a fresh page-image/source audit of every grammar section. No learner-facing or protected runtime/deployment files changed; no tests/CI or live runtime checks occurred; `main` remains read-only; no independent ZIP/off-site backup is claimed.
+
+
+## Section 54 — Course 2 62-question terminology consistency audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_TERMINOLOGY_AUDIT_2026-11-11.md`, blob SHA `1cd41f566c4896450a4bd93b93cf0b75af9288f3`.
+- Independently counted 62 quiz/test items across 12 lessons (5 each in L1–L7, 7 in L8, 5 each in L9–L12) and checked the reviewed answer key's 62 rows. Source quiz SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; key SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- Most terminology is consistent. Main assessment wording risks: L6 Q3's bare `bireser`; L8 Q2's less parallel option wording; L10 Q2 `forma bireserî` vs Lesson 9 `forma kirarî` and Lesson 10's example labeling `wê` as agent/subject; L11 Q3's shortened `forma girêkî`.
+- L12 Q1 `kiryar/kirar` and Q3 `rengdêra/rengdêrê jmarîn` remain unresolved. The adjective definition item is correctly keyed among current options but is narrower than source-supported predicative/substantivized use.
+- No quiz/key edits, tests/CI, or runtime checks occurred. `main` remains read-only; no separate ZIP/off-site backup is claimed.
