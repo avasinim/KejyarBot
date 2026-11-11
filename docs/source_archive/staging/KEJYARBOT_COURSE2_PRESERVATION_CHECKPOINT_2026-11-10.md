@@ -514,3 +514,5 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_L8_MODIFIER_TERMINOLOGY_CLARIFICATION_2026-11-11.md`, SHA `5ab9adcaf4a05d30618b16de3dd9ee3f17f90e18`.
 - Important refinement: L8 Q3's local “bê bireser” follows the Lesson 8 section's own contrast, so do not label its key wrong on this basis. The ambiguity is cross-lesson: noun-attached `bireserê navdêrê` (L6) versus clause-level `bireser` (L10). Proposed explicit modifier wording in L8 and full compound in L6 Q3 stem, pending editor approval.
 - No lesson/quiz/key edits, approval or application. No tests/CI/runtime/deployment; `main` read-only; no separate offsite backup claimed.
+
+- Follow-up rationale proposals for L6 Q3 and L8 Q3 were appended to the clarification artifact, latest SHA `ffc5cea44282a08d32f390bd204c4bcaf6c267ae`. These explain the keyed forms but remain editorial proposals; no quiz/key content changed.
