@@ -292,3 +292,13 @@ This refinement supersedes only the earlier too-narrow phrase implying that all 
 Working distinction: `bireserê navdêrê` is the broad syntactic noun-attached modifier/complement function; `rengdêr` is the adjective word class; bare `bireser` is the clause-level object role. For `ev keçik`, Lesson 12's internal taxonomy supports demonstrative adjective/modifier; for `Ev hat.`, independent demonstrative pronoun. Lesson 6's `pêşnavdêr/bireser` slash-pair and Lesson 8's `bireser/rengdêr` shorthand remain editorial clarification targets, not silently corrected text. Lesson 12 page images were not reopened in this pass; that taxonomy is internally checked against the staged source-aligned text.
 
 No source-aligned lesson, reviewed lesson, quiz, answer key, runtime, parser, test, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime checks were performed. Work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 12 source-grounded category boundaries (2026-11-11)
+
+- Added source-grounded adjudication: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_GROUNDED_ADJECTIVE_PRONOUN_NUMERAL_ADJUDICATION_2026-11-11.md`, verified blob SHA `d6baeceb8981b661cdac7f10d4a42257db431a86`.
+- The reconciliation uses recorded page-image reviews: Lesson 12 pp.89–100, §§119–152 (blob `c712dd136e36154e5314efc65e9f7eef8c9cf4ab`), and pronoun sections pp.71–88, §§72–118 (blob `db629ed41eeb8783a09b662c75b838a90cd43ca6`).
+- Category depends on syntactic function: demonstrative/possessive forms can be adjective-like with an expressed noun or pronominal when replacing one; numeral adjective modifies a stated noun, while `jmarnav` is independently/substantively used in the course's adopted framework. Source labels and course teaching labels must be mapped explicitly. Descriptive adjectives may be predicative or substantivized.
+- Lesson 12 quiz Q3 form `rengdêra jmarîn` remains unresolved against prose `rengdêrê jmarîn`; do not silently normalize.
+
+No lesson, exercise, quiz, answer key, source-aligned text, runtime, parser, test, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks performed. Archive branch only; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
