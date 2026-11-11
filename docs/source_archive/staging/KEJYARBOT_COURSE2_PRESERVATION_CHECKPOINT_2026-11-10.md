@@ -538,3 +538,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Rechecked L8 Q2/Q3 against the quiz and §66/§67; key `-in` remains locally supported while cross-lesson bare `bireser` ambiguity remains. Rechecked L9/L10 form-vs-role, L11 `ko` uses, and L12 Q5 class/function distinction; no new correction found in these selected rows.
 - Appended corrected L1 Q1 and L6 Q5 wording to the base 44-row proposal; latest SHA `ccdd1fea505fa354d9c043dd0c010f8fe84faf2a`.
 - L1 Q4, L12 Q1 and L12 Q3 remain held. No learner-facing/source/key/runtime changes, no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
+
+
+
+## Checkpoint — early-lessons rationale source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_EARLY_LESSONS_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `02e8d8db530136ab7e1c2a941e437b5a5f9209d8`.
+- Rechecked six rows: L1 Q2, L2 Q2, L3 Q5, L4 Q2/Q5 and L5 Q1. No new key/rationale contradiction or proposal correction was found. L4 `hespek/hespin` remains distinct from inflected `hespan`; L5 Q1's tense/verb-type caveat is grounded in §56.
+- This is a targeted tranche, not full independent copy-edit of all 45 items. Held items and proposal-only status remain unchanged. No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; no separate offsite backup claimed.
