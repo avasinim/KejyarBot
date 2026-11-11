@@ -652,3 +652,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q2_BIRESER_FORM_LABEL_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `57b3a7dd1a532b48d6603b146bacfedf929f67e8`.
 - L10 Q2 key C (`wê`) remains supported as paradigm form; stem `forma bireserî` may be misread as actual object function, despite lesson example `Wê ew dît` showing `wê` as agent. Proposed stem names the “pronavên bireser” table. No change applied.
 - New hold L10 Q2 added. Open holds now: L1 Q4, L6 Q3, L6 Q4, L8 Q3, L10 Q1, L10 Q2, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lessons 1–8 quiz stem/scope second pass (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS01_08_QUIZ_STEM_SCOPE_SECOND_PASS_2026-11-11.md`, SHA `6b0b149ec551c3607207c0fbe1f9dc46ec648f6d`.
+- Screened 37 items in Lessons 1–8. No new hold added. Existing holds reaffirmed: L1 Q4, L6 Q3/Q4, L8 Q3.
+- This was a targeted editorial pass only. No source lesson, quiz, key, runtime, or deployment file changed; no tests/CI; `main` remains read-only. Archive branch is not an independent ZIP/offsite backup.
