@@ -71,7 +71,7 @@ Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an 
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
 
 ### Kuis — 5 pirs
-1. Navdêr çi nîşan dide? A) kes/heywan/tişt di kar an pêvajoyekê de B) kes/heywan/tişt C) taybetmendiya kes/heywan/tişt
+1. Navdêr çi nîşan dide? A) erkê peyvê di hevokê de B) kes/heywan/tişt C) taybetmendiya kes/heywan/tişt
 2. `hesp` çi ye? A) serenav B) daçek C) hevenav
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
 4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
@@ -621,7 +621,7 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 ### 10. Testa Kejyar
 1. Rengdêr çi dike?
 A) erkê navdêrê di hevokê de wek kirar an bireser nîşan dide
-B) taybetmendî an taybetiya navdêrê rave dike
+B) taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike
 C) lêkerê li gorî kes û mêjer diguherîne
 
 2. mezin di hespê mezin de çi ye?
