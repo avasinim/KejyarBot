@@ -432,3 +432,34 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - هەر هەوڵێکی نوێی GitHub import، restore، restart، Start یان deployment لە Botkeep قەدەغە/وەستێنراو دەمێنێتەوە تا وەڵامی نووسراوی ڕوونی پشتگیری بگات و ڕێگەی تاقیکردنەوە دیاری بکرێت.
 - داتابەیس و زانیاریی فێرخوازان دەستکاری نەکراون؛ کۆمیتی `54723763` بەڵگەی deployبوونی نییە.
 - ئەم پاشکۆیە تەنها تۆماری بەڵگەییە؛ هیچ کارێکی سێرڤەر، بۆت، Telegram یان داتابەیس نەکراوە.
+
+
+## ٩.١٥. پاشکۆی پشکنینی callback و ڕێڕەوی خەڵات — 2026-11-11
+
+### مەودای پشکنین
+لە کۆمیتی `fff5f01713bf17cd2a909454b9ff00c43d8f8c62` ئەم فایلانە بە شێوەی خوێندنەوەی تەنها پشکنران:
+- `bot.py`
+- `arami_course1_telegram.py`
+- `arami_lesson1_telegram.py`
+- `arami_lesson5_telegram.py`
+- `tests/test_bot_quiz_callbacks.py`
+- `tests/test_activated_courses.py`
+- تاقیکردنەوە تایبەتەکانی سێ مۆدی Arami.
+
+### دۆزینەوە پشتڕاستکراوەکان
+1. `start_quiz` پێش دروستکردنی session، `lesson_quiz_is_available`، تەواوبوونی وانە و ڕیزبەندی `can_open` دەچێکات.
+2. `quiz_answer` پێش نمرەدان sessionی وانەی review-only ڕەت دەکاتەوە؛ پێش نووسینی rewardیش مۆڵەتی quiz دووبارە دەچێکات.
+3. `finish_lesson` بۆ Beta ledgerی جیاواز بەکاردەهێنێت و XP، coin، chest و badge نادات؛ دۆخی Betaی کۆتایی لە پەیامی تەواوبوونی فەرمیی کۆرس جیا کراوەتەوە.
+4. هەرسێ callbackی Arami (`arami1:`, `aramiC:`, `arami5:`) لە کاتی دەستپێکردنی assessmentدا `can_take_assessment` بەکاردەهێنن؛ `award_arami_assessment` لە کاتی خەڵاتداندا هەمان پشکنین دووبارە دەکاتەوە.
+5. دوو regression testی نوێ بۆ callbackی ڕاستەوخۆی `grammar_13` و sessionی کۆنی `grammar_13` زیاد کراون. هەردووکیان لە فایلدا پشتڕاست کرانەوە؛ بەڵام هێشتا لە runnerدا نەجێبەجێ کراون.
+
+### سنووری ماوە بۆ پشکنینی دواتر
+ئەگەر statusی وانەی Arami لە کاتی sessionێکی assessmentدا بگۆڕدرێت، callbackەکانی هەڵبژاردن/ناردنی وەڵام لە sessionی چالاکدا هێشتا دەتوانن پرسیارەکان بەردەوام بکەن؛ بەڵام guardی `award_arami_assessment` لە کۆتاییدا reward ڕەت دەکاتەوە. بۆیە لە بەڵگەی ئێستادا هیچ XPیەکی assessmentی بێ‌مۆڵەت نادرێت، بەڵام پێویستە لە پشکنینی داهاتوودا revalidationی مۆڵەت لە هەر callbackی sessionدا زیادکردنی بۆ بکرێت تا خودی assessmentیش بلافاصڵە بوەستێت. ئەم دۆزینەوەیە پێشنیاری hardeningە، نەک بەڵگەی bypassی reward.
+
+### CI و سنووری گۆڕانکاری
+- Workflowەکانی `python-checks.yml` و `review-gate-validation.yml` بۆ branchی `release/**` push triggerیان هەیە.
+- بۆ SHAی سەرەوە، endpointی workflow-runs و combined commit status هیچ run/statusێکی نەگەڕاندەوە؛ بۆیە CIی ئەم SHAیە پشتڕاست نەکراوەتەوە.
+- فایلەکانی workflow پشکنران؛ هیچ workflow dispatch یان rerunیەک لەم پشکنینەدا ئەنجام نەدرا.
+- هیچ lesson، quiz bank، academic status، learner DB، runtimeی deployکراو، Botkeep یان Telegram نەگۆڕدرا.
+- PR هێشتا Open و Unmerged ـە.
+
