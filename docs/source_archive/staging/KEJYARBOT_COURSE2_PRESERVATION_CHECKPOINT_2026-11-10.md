@@ -484,3 +484,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - L10 Q2 no longer treated as a demonstrated source contradiction: §86 supports `wê` as the feminine form in the direct-object paradigm, while clause role can switch in transitive past constructions. Editorial wording clarification recommended; no answer-key change.
 - L12 Q1 still needs an authorized scope clarification for predicative/substantivized adjectives; L12 Q3 morphology and L1 Q4 spelling remain unresolved.
 - No lesson/quiz/key/runtime/deployment changes, no tests/CI. Archive branch only; main read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — rationale refinement patch (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_REFINEMENT_PATCH_2026-11-11.md`, blob SHA `2b82d52cd10ef336ccc2455eb7455e21746d9cd4`.
+- Patch records 11 refinements to existing rationale proposals plus a source-adjudicated proposed rationale for L10 Q2. The answer remains C (`wê`); rationale distinguishes its paradigm form from its clause role in a transitive past sentence.
+- 45 rationale items now have proposed wording across the 44-row base proposal and this delta patch. L12 Q1 and Q3 remain withheld; L1 Q4 notation issue remains open. None approved or applied.
+- No lesson, quiz, key, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI. `main` read-only; GitHub archive is not a separate ZIP/off-site backup.
