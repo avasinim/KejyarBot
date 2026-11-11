@@ -119,3 +119,19 @@ A primary-source recheck of Celadet Alî Bedir-Xan, printed pp.66–68, §§67�
   - Update commit: `4daf9763400d5818809f00934f286e37c660b67a`
 
 The reviewed lesson draft remains at SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the reviewed answer key remains at SHA `879e1525e720bdc25b8f6e896de3e388801238d0`. Neither was edited. No runtime, tests/CI, manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. GitHub archive-branch history remains the persisted project record; no separate ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — final Lesson 8 §§68–70 page-image adjudication (2026-11-11)
+
+A final visual reinspection distinguishes the adjacent source rules and resolves the temporary reversal in the proposed line 292 wording:
+- §68 (printed p.66): when several nouns are linked by one complement, the determiner is selected according to the final noun's gender.
+- §69 (printed pp.66–67): when several complements are linked in the described noun group, each complement receives its own determiner according to its own number and gender.
+- §70 (printed pp.67–68): the uninflected `-ek/-ek/-in` forms take oblique forms `-ekî/-ekê/-ina` in the stated object construction.
+
+The earlier §28 claim that §69 gives each element its own suffix was correct. A temporary later revision incorrectly conflated §68 with §69; the latest proposal now restores the correct §69 wording and explicitly distinguishes both rules. It also uses `formên netewandî` for the uninflected forms in the proposed line 290.
+
+- Current editorial proposal blob SHA: `2a468ec504434d6e98d5c31f86061f47f61c4b68` (verified after update; proposal-only).
+- Global audit section 29 blob SHA: `28b23564f3f47e567e62166599c2392d6c687f8e` (verified).
+- The reviewed lesson base remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the reviewed answer key remains `879e1525e720bdc25b8f6e896de3e388801238d0`.
+
+No base lesson, answer key, runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment state was changed. `main` remains read-only. The GitHub archive branch remains the persisted project record; no independent ZIP/off-site backup is claimed.
