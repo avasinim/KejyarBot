@@ -908,18 +908,18 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "complete_beta_lesson", return_value=False) as complete,
             patch.object(bot, "get_user_level") as level,
             patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, context)
 
         complete.assert_called_once_with(12345, lesson)
-        level.assert_called_once_with(12345)
+        level.assert_not_called()
         badges.assert_not_called()
         query.message.reply_text.assert_awaited_once()
         reply = query.message.reply_text.await_args
-        self.assertIn("پێشتر تەواو کراوە", reply.args[0])
+        self.assertIn("پێشتر بۆ پێشچوونی Beta تۆمار کراوە", reply.args[0])
         self.assertNotIn("+10 XP", reply.args[0])
         buttons = [
             button.callback_data
