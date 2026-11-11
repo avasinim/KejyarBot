@@ -429,3 +429,16 @@ Two items must not be force-keyed without a decision: `kurên van` can be read a
 Xebata 2 implicitly expects six examples (one per class) but does not state the count or marking criteria. Xebata 3 needs a teacher rubric that contrasts a numeral modifying an expressed noun (`sê mal`) with the independent `jmarnav` use in the course's adopted framework. A provisional model answer is archived, pending Kurmanji copy-edit.
 
 Detailed rubric: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`, blob SHA `6abe7c8440175b0f5f50781b1ee6f4456b54a4fc`. No learner-facing or protected content changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## Section 48 — Lesson 12 source-to-terminology alignment (2026-11-11)
+
+- New append-only audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_TO_TERMINOLOGY_ALIGNMENT_AUDIT_2026-11-11.md`, verified blob SHA `d0784cea1028a9a0625621f8f5f2859adadfee31`.
+- The six course adjective class labels remain: `wesfîn`, `îşarkî`, `jmarîn`, `pirsiyarkî`, `nebinavkirî`, `xwemalîn`. The ordinal `rêzîn) is a subtype in the numeral-adjective discussion, not a seventh top-level class.
+- Reaffirmed the four analytical levels: word class, subclass, syntactic function/use, and surface form. Adjective/pronoun distinction depends on whether a noun is expressed or replaced; numeral adjective/`jmarnav) depends on whether a numeral modifies a stated noun or is used independently.
+- Reconciled `nîv roj`: lesson-internal intended lexical label is `jmarnav`, while its phrase-level function is to quantify/modify expressed `roj`. Teacher key should state both levels. Reconciled `kurên van): lesson explicitly lists it under possessive examples; provisional course classification is `xwemalîn), with detailed syntax/idiomaticity still requiring editor review.
+- The opening adjective definition is too absolute if interpreted as requiring every adjective to accompany an expressed noun; recorded source §§124–127 include predicative and substantivized use. Recommend a scoped qualification only; no edit applied.
+- Source/course label mappings and Q3 morphology (`rengdêra jmarîn` vs `rengdêrê jmarîn`) remain explicitly documented; no automatic normalization.
+- Evidence reconciles the reviewed draft SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108` with recorded source-page reviews pp.89–100 and pp.71–88; page images were not newly rescanned in this pass.
+
+No lesson, exercise, quiz, answer key, terminology register, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime checks occurred. `main) remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
