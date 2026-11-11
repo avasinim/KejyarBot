@@ -6,6 +6,23 @@ from unittest.mock import AsyncMock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = None
+_beta_completion_test_default = None
+
+def setUpModule():
+    global _beta_ledger_test_default, _beta_completion_test_default
+    _beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+    _beta_completion_test_default = patch.object(bot, "complete_beta_lesson", return_value=True)
+    _beta_ledger_test_default.start()
+    _beta_completion_test_default.start()
+
+def tearDownModule():
+    if _beta_completion_test_default is not None:
+        _beta_completion_test_default.stop()
+    if _beta_ledger_test_default is not None:
+        _beta_ledger_test_default.stop()
+
 
 class AramiCourse1ProgressionTests(unittest.TestCase):
     def test_all_21_lessons_form_one_ordered_sequence_with_terminal_lesson(self):
@@ -280,6 +297,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "check_badges"),
             patch.object(bot, "quiz_requires_submission", return_value=False),
             patch.object(bot, "next_course_lesson", return_value=next_lesson),
+            patch.object(bot, "lesson_is_pending_review", return_value=False),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             await bot.finish_lesson(update, context)
 
@@ -303,6 +323,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
                     patch.object(bot, "complete_lesson_with_rewards", return_value=True),
                     patch.object(bot, "check_badges"),
+                    patch.object(bot, "lesson_is_pending_review", return_value=False),
+                    patch.object(bot, "lesson_is_beta_review", return_value=False),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.finish_lesson(update, context)
 
@@ -330,6 +353,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     patch.object(bot, "complete_lesson_with_rewards", return_value=True),
                     patch.object(bot, "check_badges"),
                     patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "lesson_is_pending_review", return_value=False),
+                    patch.object(bot, "lesson_is_beta_review", return_value=False),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.finish_lesson(update, context)
 
@@ -360,6 +386,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 with (
                     patch.object(bot, "get_completed_lessons", return_value=[lesson]),
                     patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.start_quiz(update, context)
 
@@ -396,6 +423,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         with (
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
             patch.object(bot, "can_open", return_value=False),
         ):
             await bot.start_quiz(update, context)
@@ -458,6 +486,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "course_is_active", return_value=True),
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             first = asyncio.create_task(bot.start_quiz(update, context))
             await asyncio.sleep(0)
@@ -477,7 +506,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertEqual(context.user_data["quiz"]["question_message_id"], 880)
 
-    async def test_latin_quiz_answer_requires_selection_then_submit(self):
+    async def test_draft_latin_quiz_is_cleared_before_scoring_or_rewards(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
         correct_index = question["options"].index(question["answer"])
@@ -499,9 +528,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             query.data = "submit_answer"
             await bot.submit_quiz_answer(update, context)
 
-        reward.assert_called_once_with(12345, lesson)
+        reward.assert_not_called()
         self.assertNotIn("quiz", context.user_data)
-        self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+        self.assertTrue(any("پێداچوونەوەی سەرچاوە" in call.args[0] for call in query.message.reply_text.await_args_list))
 
     async def test_selection_is_recorded_before_callback_acknowledgement(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
@@ -529,7 +558,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         await task
         query.edit_message_reply_markup.assert_awaited_once()
 
-    async def test_wrong_submitted_answer_shows_incorrect_and_reveals_correct_answer(self):
+    async def test_wrong_submitted_answer_in_draft_latin_quiz_is_not_officially_scored(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
         wrong_index = next(
@@ -550,7 +579,8 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.submit_quiz_answer(update, context)
 
         feedback = [call.args[0] for call in query.message.reply_text.await_args_list]
-        self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
+        self.assertTrue(any("پێداچوونەوەی سەرچاوە" in item for item in feedback))
+        self.assertFalse(any("❌" in item for item in feedback))
         self.assertNotIn("quiz", context.user_data)
 
     @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
@@ -878,18 +908,18 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "complete_beta_lesson", return_value=False) as complete,
             patch.object(bot, "get_user_level") as level,
             patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, context)
 
         complete.assert_called_once_with(12345, lesson)
-        level.assert_called_once_with(12345)
+        level.assert_not_called()
         badges.assert_not_called()
         query.message.reply_text.assert_awaited_once()
         reply = query.message.reply_text.await_args
-        self.assertIn("پێشتر تەواو کراوە", reply.args[0])
+        self.assertIn("پێشتر بۆ پێشچوونی Beta تۆمار کراوە", reply.args[0])
         self.assertNotIn("+10 XP", reply.args[0])
         buttons = [
             button.callback_data
@@ -976,17 +1006,14 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
             for button in row
         }
 
-    async def test_global_assessment_menu_includes_completed_arami_lessons(self):
+    async def test_global_assessment_menu_excludes_unapproved_arami_lessons(self):
         completed = [
             bot.ARMI_LESSON_IDS[0],
             bot.ARMI_LESSON_IDS[1],
             bot.ARMI_LESSON_IDS[4],
         ]
         callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
-        self.assertEqual(
-            callbacks,
-            {"arami1:assessment", "aramiC:assessment:2"},
-        )
+        self.assertEqual(callbacks, set())
 
     async def test_global_practice_menu_includes_completed_arami_lessons(self):
         completed = [
@@ -1023,12 +1050,65 @@ class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
             patch.object(bot, "check_badges"),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_is_pending_review", return_value=False),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             await bot.finish_lesson(update, context)
 
         message = query.message.reply_text.await_args.args[0]
         self.assertIn("\n", message)
         self.assertNotIn("\\n", message)
+
+
+class UnicodeQuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
+    def make_context(self, callback_data):
+        query = SimpleNamespace(
+            data=callback_data,
+            message=SimpleNamespace(message_id=77),
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            edit_message_reply_markup=AsyncMock(),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={
+            "quiz": {
+                "index": 0,
+                "lesson": "وانە_1",
+                "questions": [{
+                    "question": "پرسیار",
+                    "options": ["وەڵامی ١", "وەڵامی ٢"],
+                    "answer": "وەڵامی ١",
+                }],
+                "score": 0,
+                "question_message_id": 77,
+            }
+        })
+        return update, context, query
+
+    async def test_unicode_digit_answer_is_rejected_without_stranding_question(self):
+        update, context, query = self.make_context("answer_²")
+        await bot.quiz_answer(update, context)
+        self.assertEqual(context.user_data["quiz"]["index"], 0)
+        self.assertEqual(context.user_data["quiz"]["question_message_id"], 77)
+        self.assertEqual(context.user_data["quiz"]["score"], 0)
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_unicode_digit_selection_is_rejected_without_changing_selection(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        update, context, query = self.make_context("select_answer_²")
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+            "selected_answer_index": None,
+        })
+        await bot.select_quiz_answer(update, context)
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
 
 
 if __name__ == "__main__":
