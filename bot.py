@@ -153,6 +153,63 @@ GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
     GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
 )
+# Append-only quiz corrections: preserve the authored source bank and require
+# every replacement to match the exact original snapshot before applying.
+GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE = load_json("course_data/grammar_course4_quiz_overrides.json")
+if GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE.get("course_id") != "grammar":
+    raise ValueError("Course 4 quiz override file belongs to another course")
+GRAMMAR_COURSE4_QUIZ_OVERRIDES = GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE.get("overrides", [])
+_seen_course4_quiz_overrides = set()
+_course4_raw_by_id = {
+    lesson.get("id"): lesson for lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", [])
+}
+for _override in GRAMMAR_COURSE4_QUIZ_OVERRIDES:
+    if not isinstance(_override, dict):
+        raise ValueError("Invalid Course 4 quiz override record")
+    _lesson_id = _override.get("lesson_id")
+    _index = _override.get("question_index")
+    _snapshot = _override.get("original_snapshot")
+    _replacement = _override.get("replacement")
+    _key = (_lesson_id, _index)
+    if _key in _seen_course4_quiz_overrides:
+        raise ValueError(f"Duplicate Course 4 quiz override: {_key}")
+    _seen_course4_quiz_overrides.add(_key)
+    _raw_lesson = _course4_raw_by_id.get(_lesson_id)
+    if (
+        not isinstance(_index, int)
+        or isinstance(_index, bool)
+        or _index < 0
+        or _raw_lesson is None
+        or not isinstance(_snapshot, dict)
+        or not isinstance(_replacement, dict)
+        or _index >= len(_raw_lesson.get("quiz", []))
+        or _raw_lesson["quiz"][_index] != _snapshot
+        or _lesson_id not in GRAMMAR_COURSE4_QUIZZES
+        or _index >= len(GRAMMAR_COURSE4_QUIZZES[_lesson_id])
+    ):
+        raise ValueError(f"Course 4 quiz override source mismatch: {_key}")
+    _options = _replacement.get("options")
+    _answer_index = _replacement.get("answer")
+    if (
+        not isinstance(_replacement.get("q"), str)
+        or not _replacement["q"].strip()
+        or not isinstance(_options, list)
+        or len(_options) != 4
+        or any(not isinstance(_option, str) or not _option.strip() for _option in _options)
+        or len(_options) != len(set(_options))
+        or not isinstance(_answer_index, int)
+        or isinstance(_answer_index, bool)
+        or not 0 <= _answer_index < len(_options)
+        or not isinstance(_replacement.get("explanation"), str)
+        or not _replacement["explanation"].strip()
+    ):
+        raise ValueError(f"Invalid Course 4 quiz override replacement: {_key}")
+    GRAMMAR_COURSE4_QUIZZES[_lesson_id][_index] = {
+        "question": _replacement["q"],
+        "options": _options,
+        "answer": _options[_answer_index],
+        "explanation": _replacement["explanation"],
+    }
 # Course 4 expanded review drafts retain their authored Markdown as the display source.
 # Render it with the same table/heading-aware formatter used by the other lesson sources;
 # the structured fields remain available for quiz and review metadata.
