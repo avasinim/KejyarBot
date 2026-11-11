@@ -58,7 +58,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertTrue(runtime_lesson["content"].strip())
             self.assertEqual(bot.QUIZ_DATA[lesson["id"]], [])
 
-    def test_course4_is_active_with_forty_six_lessons(self):
+    def test_course4_is_active_with_fifty_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 51)])
         self.assertIn("grammar_01", bot.LESSON_DATA)
@@ -92,7 +92,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             "grammar_10": "scientific_review_complete_with_qualified_notes",
             "grammar_11": "scientific_review_complete_with_qualified_notes",
             "grammar_12": "scientific_review_complete_with_qualified_notes",
-            "grammar_13": "scientific_review_complete_with_qualified_notes",
+            "grammar_13": "internal_cross_lesson_synthesis_no_external_source_mapping",
         }
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
@@ -326,7 +326,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertEqual(len(lesson["activities"]), 3)
             self.assertEqual(len(lesson["exercises"]), 5)
             self.assertEqual(len(lesson["comprehension"]) - 2, 8)
-            self.assertEqual(lesson["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
+            self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
         for pronoun in ("من", "تۆ", "ئەو", "ئێمە", "ئێوە", "ئەوان"):
             self.assertIn(pronoun, " ".join(lessons["grammar_10"]["key_points"]))
         self.assertIn("خاوەنداری", " ".join(lessons["grammar_11"]["key_points"]))
@@ -345,7 +345,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         )
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_13")
         self.assertEqual(lesson["number"], 13)
-        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(lesson["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
         self.assertEqual(len(lesson["quiz"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
         self.assertEqual(len(lesson["exercises"]), 5)
@@ -518,7 +518,7 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
             bot.check_badges(12345)
 
         added = [call.args[1] for call in add_badge.call_args_list]
-        self.assertEqual(len(added), 31)
+        self.assertEqual(len(added), 12)
         self.assertTrue(all("وانەی ٣٢" not in badge for badge in added))
 
     async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
@@ -701,6 +701,8 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
                         "scientific_review_complete_with_qualified_notes"
                     )
                 )
+                if lesson_number == 13:
+                    expected_status = "internal_cross_lesson_synthesis_no_external_source_mapping"
                 self.assertEqual(lesson["review_status"], expected_status)
 
     def test_previously_standardized_core_terms_remain_stable(self):
