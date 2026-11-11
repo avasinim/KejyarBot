@@ -861,3 +861,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L3 Q3: replace second masculine example `çem` with feminine-list example `jin`; proposed key B (`mê`).
 - L4 Q5: replace duplicate `hespin` recognition with plural agreement in taught sentence `Ev mehîn in`; proposed key B (`in`).
 - These are proposals only; native-Kurmancî editorial validation is still recommended. No quiz/key/lesson or runtime file changed; no tests/CI/runtime/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Section 96 — Erratum: preserve answer-key letters in L3 Q3 and L4 Q5 proposals (2026-11-11)
+
+- A proposal-option ordering mismatch in Section 95 was detected and corrected in an append-only erratum in the full quiz audit, updated SHA `5fa075d9c705bfe8222bdfbb4b21df8e196957ae`.
+- Corrected L3 Q3 options: A) `mê`; B) `nêr`; C) `her du`; proposed key A, preserving the current key A.
+- Corrected L4 Q5 options: A) `e`; B) `hatin`; C) `in`; proposed key C, preserving the current key C.
+- L2 Q5 and L10 Q1 remain key B. All four proposed replacements therefore preserve existing key letters (B, A, C, B respectively). The earlier statement “all four proposed keys B” is superseded. No answer-key file was modified.
+- Proposal-only; no learner-facing changes, tests/CI/runtime/deployment. `main` remains read-only; no independent ZIP/offsite backup claimed.
