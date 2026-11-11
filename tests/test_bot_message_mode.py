@@ -6,6 +6,13 @@ from unittest.mock import AsyncMock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+_beta_ledger_test_default.start()
+
+def tearDownModule():
+    _beta_ledger_test_default.stop()
+
 
 class MessageModeTests(unittest.IsolatedAsyncioTestCase):
     def make_update_context(self, text, user_data=None):
