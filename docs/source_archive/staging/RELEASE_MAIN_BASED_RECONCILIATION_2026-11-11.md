@@ -1312,3 +1312,22 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - prototype نابێت بە production یان `bot.py` ببەسترێت تا aliasی course_id، baseline/hash validation، identity، unknown-field handling، variant selection و test لەسەر baseی ڕاستەقینە چاک نەکرێن.
 - ٣١-v2 بۆ پشکنین پێشنیار دەکرێت؛ دوو وەشانی ٢١ ناچارەسەر دەمێننەوە.
 - هیچ patchێک apply نەکرا؛ هیچ runtime JSON، lesson، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا. تەنها auditی نوێ لە GitHub و Library زیاد کرا.
+
+
+## ٩.٤٨. پشتڕاستکردنەوەی baselineی پەچەکانی ٢٩ و٣١ لەسەر runtimeی کۆتایی — 2026-11-11
+
+### سەرچاوە
+- Runtime JSON لە کۆمیتی `f3886571941b086818596efb039792a85bed96d2`: `course_data/grammar_course4_lessons.json`, blob SHA `1dd8abe8a128937c74a18cf04f99878b2e38d962`؛ `course_id=grammar`.
+- پەچی Libraryی وانەی ٢٩: `grammar_29_append_only_patch.json`؛ پەچی وانەی ٣١: `grammar_31_append_only_patch_v2.json`.
+
+### ئەنجامی baseline
+- پەچی ٣١-v2 ژمارەی baselineی ئێستا بۆ وانەی ٣١ تۆمار دەکات: key_points=14، examples=8، activities=3، exercises=5، comprehension_items=10، quiz_items=8، appendix_items=10. ژمارەکانی runtimeی پشکنراو بە تەواوی لە هەموو ٧ خانەکەدا هاوتان: 14/8/3/5/10/8/10. بۆیە discrepancyی ٩ بەرامبەر ١٠ی snapshotی Library لەسەر runtimeی ئەم کۆمیتەدا نییە؛ بەڵام snapshotی Library وەک بەڵگەی مێژوویی دەمێنێتەوە.
+- پەچی ٢٩ baselineی ژمارەیی یان SHAی سەرچاوەیی تێدا نییە. runtimeی وانەی ٢٩ ژمارەکانی 14/8/3/5/10/8/11 بۆ هەمان خانەکان هەیە. ئەمانە تەنها inventoryی ئێستای runtimeن، نە پشتڕاستکردنەوەی سەرچاوەی بنەڕەتیی پەچەکە.
+- هەردوو پەچەکە `course_id=grammar_course4`یان هەیە، بەڵام runtime base `course_id=grammar`ی هەیە. پڕۆتۆتای Library تەنها aliasی `grammar` و `course_grammar` دەناسێت؛ لەبەر ئەوە هەردوو پەچەکە لەسەر ئەم baseە بە کۆدی ئێستای prototype fail دەبن، پێش ئەوەی هیچ زیادکراوەیەک بگاتە lesson.
+- `preserve_existing=true` و operationی append-only لە هەردوو پەچەکەدا هەن. پەچی ٢٩ `append_sections_only` و پەچی ٣١-v2 `append_only_additions` بەکاردهێنن؛ هەردووکیان لەگەڵ policyی append-onlyی prototype دەگونجێن، بەڵام ئەمە کێشەی course_id یان بۆشایی baselineی ٢٩ چارەسەر ناکات.
+- هەردوو وانە لە runtimeدا `scientific_review_complete_with_qualified_notes`ن؛ ئەمە بڕیاری ئەکادیمیی نوێ نییە و هیچ statusێک لەم auditەدا نەگۆڕدرا.
+
+### بڕیاری فنی
+- تاقیکردنەوەی پێویست بۆ prototypeی داهاتوو: (١) runtime baseی ڕاستەقینە بە `course_id=grammar`، (٢) patchی ٢٩ و٣١-v2، (٣) validationی baselineی ژمارەیی ٣١، (٤) fail-closed بۆ پەچی ٢٩ کاتێک baseline نییە یان بە ڕوونی statusی no-baseline تۆمار دەکرێت، (٥) identityی hash-based و جیاکردنەوەی archive filename لە patch content.
+- ژمارەی baselineی ٣١ تەنها inventoryی ساختارییە؛ بەڵگەی exact content، provenance، دروستی زانستی یان پەسەندکردنی ئەکادیمی نییە.
+- هیچ patchێک apply نەکرا؛ هیچ runtime/lesson/quiz/review_status/DB/Botkeep/Telegram نەگۆڕدرا. ئەم پاشکۆیە تەنها بەڵگەی تاقیکردنەوەی baseline و integration blocker زیاد دەکات.
