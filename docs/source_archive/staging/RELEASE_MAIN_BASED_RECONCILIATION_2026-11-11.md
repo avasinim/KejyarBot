@@ -577,3 +577,18 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - ئەمە گۆڕینی status نییە؛ هیچ وانەیەک بە دەستی پەسەند نەکرا و هیچ quiz/rewardیەک چالاک نەکرا. پێویستە پەسەندکردنی ئەکادیمی لەسەر بنەمای بەڵگە و بڕیاری خاوەن پڕۆژە بێت.
 
 بڕیار: پاراستنی دوو ڕێڕەوی تایبەتی Arami بەهێز کرا و بە CI پشتڕاست کرایەوە. دۆخی ١٣٢ وانەی چوار کۆرسی چالاک تەنها بە شێوەی audit تۆمار کرا؛ هیچ status، ناوەڕۆک، DB، production data یان deployment نەگۆڕدرا.
+
+
+## ٩.٢٣. پشکنینی دووبارەی ledgerی Beta، completion، quiz و reward — 2026-11-11
+
+لە پشکنینی read-onlyی `bot.py` و `database.py` لە headی `5d9a4c6d3d5aefc5a5fe315c7754fef7455bcfe6` ئەم خاڵانە پشتڕاست کرانەوە:
+
+1. `finish_lesson` پێش نووسینی completion دۆخی Beta/review دەپشکنێت. بۆ Beta تەنها `complete_beta_lesson` بانگ دەکات؛ بۆ وانەی پەسەندکراو `complete_lesson_with_rewards` بەکاردێت. ئەم دوو ledgerە جیاوازن.
+2. `complete_beta_lesson` تەنها `beta_completed_lessons` نوێ دەکاتەوە؛ XP، score، coins، chests، badges یان `completed_lessons` زیاد ناکات. Transactionی `BEGIN IMMEDIATE` و rollback/commitی هەیە.
+3. `can_open` تەنها ئەو Beta completion recordانە بۆ unlock دەژمێرێت کە وانەکە هێشتا بە ڕوونی Beta/review ـە. ئەگەر وانەیەک دواتر پەسەند بکرێت، تۆماری Betaی کۆن بە completionی فەرمی دانانرێت.
+4. `start_quiz` لە دەستپێکدا active course، review/academic status، completionی خودی وانە و ڕیزبەندیی `can_open` دەپشکنێت.
+5. `quiz_answer` لە هەر callbackدا availability دووبارە دەپشکنێت؛ لە کۆتایی quizیش پێش نووسینی reward ledger availability جارێکی تر دەپشکنێت. سێشنی کۆن نابێت پاداشت بدات ئەگەر وانەکە لە نێواندا چووبێتە review.
+6. `complete_lesson_with_rewards` و `complete_quiz_with_rewards` تۆمارکردن و پاداشت لە transactionی atomic و idempotentدا ئەنجام دەدەن؛ completionی دووبارە پاداشتی دووبارە نادات.
+7. PR #152 تا کاتی پشکنین هیچ review، inline review comment یان issue commentی نوێی هەبوو نەبوو؛ PR هێشتا open و unmerged بوو. ئەمە تەنها snapshotی ئەم کاتەیە.
+
+بڕیار: هیچ کۆدی runtime یان DB نەگۆڕدرا. ئەم پشکنینە پشتگیریی ئەوە دەکات کە تۆماری Beta لە completionی فەرمی و پاداشت جیاوازە و گەیتەکانی quiz لە دەستپێک و کۆتاییدا دووبارە دەپشکنرێن. پێویستە هەر گۆڕانکاریی داهاتوو لەم ledgerانەدا بە تاقیکردنەوەی regression بپارێزرێت.
