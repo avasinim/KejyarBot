@@ -585,3 +585,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_ITEMS_EXACT_STEM_FINAL_BOUNDARY_CHECK_2026-11-11.md`, SHA `2c0337b672f234e93dfe28a9319224c9a128cdc2`.
 - L1 Q4 key B remains supported; spelling note `kîtê/kitê` held. L12 Q1 key B remains plausible but needs a non-absolute rationale scope. L12 Q3 category is clear but exact compound morphology remains unresolved. No answer-key change authorized or made.
 - No lesson/key/runtime/deployment changes or tests/CI. Holds remain; `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — Final base-proposal row check (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_L4_Q4_FINAL_ROW_CHECK_2026-11-11.md`, SHA `a56aab12447dcccdaa6add266ee855821cedfd6d`.
+- L4 Q4 is aligned: `mêjer` marks singular/plural quantity; `tewang` changes word form according to grammatical role and clause structure. Key B remains supported; no correction.
+- Targeted exact stem-option-key-source coverage of the 44 base proposal rows is now complete; L10 Q2 is the separately added 45th rationale and was checked separately. This is not a full native-Kurmanji editorial certification. L1 Q4, L12 Q1 and L12 Q3 remain held.
+- No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no separate offsite backup claimed.
