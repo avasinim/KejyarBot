@@ -82,22 +82,17 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action in {"practice", "assessment"}:
-        if can_open is None:
-            await query.message.reply_text("🔒 پشکنینی ڕێگەپێدانی وانەکە ئامادە نییە؛ ڕاهێنان و تاقیکردنەوە ناچالاکن.")
-            return
         if action == "assessment" and can_take_assessment is None:
             await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
             return
-        try:
-            manifest = load_manifest(base_dir)
-            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
-        except (OSError, ValueError, StopIteration):
-            await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+        if can_open is None:
+            await query.message.reply_text("🔒 پشکنینی ڕێگەپێدانی وانەکە ئامادە نییە؛ ڕاهێنان و تاقیکردنەوە ناچالاکن.")
             return
-        if action == "assessment" and not can_take_assessment(query.from_user.id, lesson_record["id"]):
+        lesson_id = "arami_course1_lesson_05"
+        if action == "assessment" and not can_take_assessment(query.from_user.id, lesson_id):
             await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
             return
-        if not can_open(query.from_user.id, lesson_record["id"]):
+        if not can_open(query.from_user.id, lesson_id):
             await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
             return
         try:
