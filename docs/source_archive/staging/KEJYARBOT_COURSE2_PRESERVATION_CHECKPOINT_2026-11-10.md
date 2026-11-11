@@ -674,3 +674,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_TO_45_RATIONALE_COVERAGE_AUDIT_2026-11-11.md`, SHA `b395c1f456a7d3ad802c03776b6948062f5ff5cf`.
 - Proposal pack contains 45 unique rationale rows; 17 quiz items are not represented there. All 62 items still have rationale cells in the answer-key file. The 14 non-held absent items are unselected for rewrite, not presumed defective.
 - No content/runtime/deployment changes or tests/CI. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Quality triage of 14 non-selected rationale rows (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_14_UNSELECTED_RATIONALES_QUALITY_TRIAGE_2026-11-11.md`, SHA `883b338b20e3737e8f059a1b3ea87d96fd79e4e7`.
+- All 14 non-held rows absent from the 45-row selective rewrite pack have existing, sufficiently grounded answer-key rationales. No forced rewrite needed. Proposal-pack coverage gap is not missing-answer-key-rationale gap.
+- No answer-key/source/runtime/deployment files changed; no tests/CI; `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
