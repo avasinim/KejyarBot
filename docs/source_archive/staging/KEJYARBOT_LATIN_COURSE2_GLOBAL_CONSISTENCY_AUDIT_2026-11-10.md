@@ -562,3 +562,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L12 Q3: exact `rengdêra/rengdêrê jmarîn` morphology remains unresolved; retain hold.
 - L1 Q4: prior page-image scope does not settle `kîtê/kitê`; retain separate orthographic hold.
 - No lesson, quiz, key, source, runtime or deployment changes; no tests/CI or psychometric validation. Archive branch only; main read-only; no separate ZIP/offsite backup claimed.
+
+
+## Section 61 — Append-only rationale refinement patch (2026-11-11)
+
+- Created and re-fetched `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_REFINEMENT_PATCH_2026-11-11.md`, verified blob SHA `2b82d52cd10ef336ccc2455eb7455e21746d9cd4`.
+- Recorded 11 precision refinements to existing rationale proposals and added an L10 Q2 rationale based on the §86 source adjudication. The L10 Q2 key remains C (`wê`); explain paradigm form separately from clause role in `Wê ew dît`.
+- The 45-item proposed wording set is not approval or application. L12 Q1 and Q3 remain withheld; L1 Q4 `kîtê/kitê` remains a separate notation hold.
+- No lesson, quiz, answer-key, source, runtime or deployment content changed. No tests/CI or psychometric validation. `main` remains read-only; no separate ZIP/off-site backup claimed.
