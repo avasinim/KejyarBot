@@ -737,3 +737,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 
 - Rechecked full Lesson 12: `nîv` is explicitly explained in the numeral section and used in `nîv roj`; L12 Q5 key C is instructionally grounded. The caution recorded in the full 62-question audit is resolved; no additional teaching note or key change is needed for this item.
 - Detail appended to the full quiz audit; Section 94 appended to Global Consistency Audit. No learner-facing files or runtime/deployment artifacts changed; no tests/CI/runtime checks. `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Checkpoint — Exact quiz revision proposals (2026-11-11)
+
+- Added Section 95 with four source-aligned, exact replacement proposals: L10 Q1 inventory-membership wording (key B unchanged); L2 Q5 contextual `Argesh/hesp` distinction (proposed B); L3 Q3 feminine `jin` example (proposed B); L4 Q5 plural agreement `Ev mehîn in` (proposed B).
+- Full proposals and reasoning are in the updated 62-question audit, SHA `49c8d4b7b7918928d682174ec7f0f06d80b312a2`.
+- Editorial proposals only; native-Kurmancî validation recommended. No learner-facing files, answer keys, runtime or deployment modified; no tests/CI/runtime checks. `main` remains read-only; no independent ZIP/offsite backup claimed.
