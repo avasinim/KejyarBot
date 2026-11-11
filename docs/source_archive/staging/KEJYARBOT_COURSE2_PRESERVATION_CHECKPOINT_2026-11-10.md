@@ -323,3 +323,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Q3's concept is correct, but `rengdêra jmarîn` remains an unresolved morphology/editorial form. No automatic normalization.
 - The generic answer-key rationales are pedagogically weak; item-specific explanations are recommended for a future approved patch only.
 - No lesson, quiz, answer key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+## Checkpoint update — Lesson 12 distractor and rationale quality audit (2026-11-11)
+
+- New audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_DISTRACTOR_AND_RATIONALE_QUALITY_AUDIT_2026-11-11.md`, verified blob SHA `7d90ba45aa64d7518b8c93d91c80eb76490cbd10`.
+- The five-question key remains **B / C / A / B / C**; no key-letter contradiction found.
+- Q4's distractors `di bin pronav de` and `di bin lêker de` are weak/nonparallel and need a future approved, language-editor-reviewed redesign. Q2 has the strongest category contrast; Q1/Q3/Q5 remain usable but uneven in distractor difficulty.
+- All five current key rationales are generic assertions; the audit supplies item-specific draft explanations, not approved key text. Q3's `rengdêra jmarîn` form remains unresolved.
+- No protected lesson, quiz, option, key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks were performed; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
