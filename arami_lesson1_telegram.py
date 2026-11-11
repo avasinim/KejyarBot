@@ -133,22 +133,22 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         return
 
     if action in {"practice", "assessment"}:
+        if can_open is None:
+            await query.message.reply_text("🔒 پشکنینی ڕێگەپێدانی وانەکە ئامادە نییە؛ ڕاهێنان و تاقیکردنەوە ناچالاکن.")
+            return
         if action == "assessment" and can_take_assessment is None:
             await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
             return
-        lesson_record = None
-        if can_open is not None or (action == "assessment" and can_take_assessment is not None):
-            try:
-                manifest = load_manifest(base_dir)
-                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 1)
-            except (OSError, ValueError, StopIteration):
-                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
-                return
-        if action == "assessment" and can_take_assessment is not None:
-            if not can_take_assessment(query.from_user.id, lesson_record["id"]):
-                await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
-                return
-        if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
+        try:
+            manifest = load_manifest(base_dir)
+            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 1)
+        except (OSError, ValueError, StopIteration):
+            await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+            return
+        if action == "assessment" and not can_take_assessment(query.from_user.id, lesson_record["id"]):
+            await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
+            return
+        if not can_open(query.from_user.id, lesson_record["id"]):
             await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
             return
         try:
@@ -172,6 +172,24 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if defer_ack:
             await query.answer()
         return
+
+    if session.get("mode") == "assessment":
+        lesson_id = "arami_course1_lesson_01"
+        authorized = (
+            can_take_assessment is not None
+            and can_open is not None
+            and can_take_assessment(query.from_user.id, lesson_id)
+            and can_open(query.from_user.id, lesson_id)
+        )
+        if not authorized:
+            context.user_data.pop("arami_lesson1_session", None)
+            context.user_data.pop("arami_lesson1_message_id", None)
+            if defer_ack:
+                await query.answer()
+            await query.message.reply_text(
+                "🛑 تاقیکردنەوە وەستێندرا؛ مۆڵەتی ئەکادیمی یان ڕێگەپێدانی وانەکە چیتر پشتڕاست نەکرایەوە."
+            )
+            return
 
     if action.startswith("pick:"):
         raw = action.removeprefix("pick:")
