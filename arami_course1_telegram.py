@@ -397,7 +397,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None, get_completed_beta_lessons=None):
     query = update.callback_query
     action = query.data.removeprefix("aramiC:")
     defer_ack = action.startswith(("pick:", "submit:"))
@@ -413,6 +413,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             return
         user_id = query.from_user.id
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
+        beta_completed = get_completed_beta_lessons(user_id) if get_completed_beta_lessons is not None else []
         can_open_for_user = (
             (lambda lesson_id: can_open(user_id, lesson_id))
             if can_open is not None else None
@@ -424,6 +425,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             parse_mode="HTML",
             reply_markup=course_menu_keyboard(
                 manifest, banks, completed_lessons=completed,
+                beta_completed_lessons=beta_completed,
                 can_open=can_open_for_user,
             ),
         )
