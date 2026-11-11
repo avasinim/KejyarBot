@@ -1099,3 +1099,31 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - ئەمە بە مانای پەسەندکردنی زانستیی وانەکان یان هەموو ٥٠ override نییە؛ پشکنینی ناوەڕۆکی هەر پرسیار و سەرچاوەکانی بە جیاوازی پێویستە.
 - هیچ کۆد، workflow، وانە، JSON، کویز، status، runtime، DB یان learner record لەم پشکنینەدا نەگۆڕدرا؛ تەنها ئەم پاشکۆیە زیاد کرا.
 - PR #152 هێشتا کراوە و نەیەکخراوە؛ Botkeep import/restore/restart/deploy و production Telegram گۆڕانکارییان پێ نەکرا.
+
+
+## ٩.٤٠. یەکخستنی فهرستی پاراستن بۆ وانەکانی ٤٧–٥٠ — 2026-11-11
+
+### دۆخی فهرست و bundleی پێشووتر
+- `docs/COURSE4_LESSONS_01_46_MASTER_PRESERVATION_INDEX_2026-11-08.md` بە ئاشکرا scopeی وانەکانی ١–٤٦ی مێژوویی هەیە و جیاوازیی ئەو ئەرشیفە لە کۆرسی چالاک ڕوون دەکاتەوە.
+- `docs/source_archive/COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json` metadataی `lesson_count=46`, `runtime_lesson_count=31`, `draft_lesson_count=15` و `curriculum_state=preservation_bundle_lessons_01_31_runtime_schema_plus_32_46_unapproved_expanded_drafts` هەیە. JSON ـەکە ٣١ snapshotی ١–٣١ و ١٥ ڕەشنووسی ٣٢–٤٦ لەخۆدەگرێت.
+- وانەکانی ٤٧–٥٠ لە دوای ئەو bundleە دروست کراون؛ بۆیە لە scopeی فهرست و bundleی ١–٤٦دا نین. ئەمە کێشەی index coverage ـە، نە بەڵگەی ونبوونی دەقەکان.
+
+### بەڵگەی فایلەکانی ٤٧–٥٠
+- وانەی ٤٧: `COURSE4_LESSON_047_NOUN_PHRASE_EXPANDED_DRAFT_V2_2026-11-09.md`; Git blob SHA `24460b064fdd0e32e9fd2cbd49186e6d7f95b633`; 9,741 chars.
+- وانەی ٤٨: `COURSE4_LESSON_048_VERB_PHRASE_VALENCY_ARGUMENT_STRUCTURE_DRAFT_V2_2026-11-09.md`; SHA `0cd09db604e9e36f30ffe5939190ebaa6e6163f5`; 9,601 chars.
+- وانەی ٤٩: `COURSE4_LESSON_049_SORANI_PERSON_MARKING_CLITICS_ALIGNMENT_DRAFT_V2_2026-11-09.md`; SHA `6db82e2caf3bbab4779a2312ef85f8650cf80b05`; 8,620 chars.
+- وانەی ٥٠: `COURSE4_LESSON_050_RELATIVE_CLAUSES_SORANI_DRAFT_V2_2026-11-09.md`; SHA `47c6a6fe88c6252afb51eee9e82d9b352f74dc81`; 11,743 chars.
+- پاشکۆی capstoneی وانەی ٥٠ بە جیاوازی پارێزراوە: `COURSE4_LESSON_050_CAPSTONE_SORANI_GRAMMATICAL_DATA_ANALYSIS_APPENDIX_2026-11-09.md`; SHA `6fc0fb9b179ec3ab8cc70a859740c1ef390d46d5`; 2,964 chars.
+- SHA ـەکان Git blob SHA ـی فایلە fetchکراوەکانن؛ قەبارەکان لە دەقی وەرگیراو ژمێردراون.
+
+### دۆخ و سنووری بەڵگە
+- بەپێی پشکنینی پێشووی Appendix 9.37، هەموو وانەکانی ٤٧–٥٠ ڕەشنووسی owner-review ـن؛ structured quiz و خانەکانی key_points/examples/exercisesی runtimeیان بەتاڵن. ئەمە بە مانای نەبوونی دەقی Markdown نییە.
+- Capstone وانەی ٥١ نییە؛ فایلێکی جیاوازی ڕاهێنانی پێشنیارکراوە، کویزی structuredی نییە و لە runtimeدا چالاک نییە.
+- ناکۆکیی `بەرڕستە/ژێرەڕستە` لە cross-referenceی وانەی ٥٠ و capstoneدا هەروا چارەسەرنەکراوە؛ ئەم تۆمارە هیچ بڕیارێکی زاراوەیی نادات.
+- فهرستی زیادەی پاراستن دروست کرا: `docs/source_archive/staging/COURSE4_LESSONS_047_050_PRESERVATION_ADDENDUM_2026-11-11.md`. ئەم فایلە supplementی فهرستی ١–٤٦ە؛ bundleی پێشووی ١–٤٦ نەگۆڕدراوە.
+
+### کاری جێبەجێکراو و سنووری پاراستن
+- تەنها دوو فایل زیاد کران: پاشکۆی فهرستی ٤٧–٥٠ و ئەم تۆماری ٩.٤٠.
+- هیچ دەقی وانە، source draft، JSON، کویز، plan، review_status، runtime، DB یان learner record نەگۆڕدرا.
+- هیچ merge، Botkeep import/restore/restart، deployment یان Telegram production action نەکرا.
+- ئەم پاشکۆیە بە شێوەی append-only زیاد کرا؛ هەموو بەڵگە مێژووییەکان لە شوێنی خۆیان ماونەتەوە.
