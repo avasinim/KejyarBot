@@ -148,7 +148,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 2. Forma gelemjimar a `hespek` di nimûneya dersê de çi ye? A) hespê B) hespa C) hespin
 3. `mehînek` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
 4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku yek tişt in B) ji ber ku ew du pêvajoyên rêzimanî ne C) ji ber ku navdêr tune ne
-5. Di hevoka “Ev mehîn __” de, ji bo gelemjimarê kîjan forma lêkerê rast e? A) e B) hatin C) in
+5. Di hevoka nasandinê ya “Ev mehîn __” de, kîjan forma lêkera girêdanê bo kirarê gelemjimar rast e? A) e B) hatin C) in
 
 ---
 
@@ -220,7 +220,7 @@ Di her nimûneyê de navdêr û bireserê wê cuda bike: `ev keçik`, `hespê be
 2. Di `ev keçik` de navdêr kîjan e? A) ev B) her du C) keçik
 3. Di `hespê beza` de bireser çi ye? A) beza B) hesp C) hespê
 4. Bireser dikare li ku were? A) tenê di dawiya qisetê B) pêşî an paşî navdêrê C) tenê pêşî lêkerê
-5. `xencera min` nimûneyek ji çi ye? A) pronavê kesîn B) lêker C) bireserê navdêrê
+5. Di Ders 6 de, koma `xencera min` wek nimûneya kîjan hêmanê hatiye dayîn? A) pronavê kesîn B) lêker C) bireserê navdêrê
 
 ---
 
