@@ -666,3 +666,10 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Rechecked 16 rows: L5 Q1/Q5; L6 Q1–Q4; L9 Q5; L10 Q1/Q3/Q4/Q5; L11 Q1/Q3/Q5; L12 Q2/Q4. Exact stems, keyed options and lesson explanations/examples align; no new contradiction or wording correction identified.
 - L6 Q5's superseding correction remains in force: `min` in `xencera min` is `rengdêra xwemalîn`, not `pronavê xwemalî`. The held L1 Q4, L12 Q1 and L12 Q3 are not resolved by this tranche.
 - No source/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
+
+
+## Section 73 — Held items exact-stem boundary check (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_ITEMS_EXACT_STEM_FINAL_BOUNDARY_CHECK_2026-11-11.md`, SHA `2c0337b672f234e93dfe28a9319224c9a128cdc2`.
+- Re-read exact held stems/options and key rows. L1 Q4 key B remains supported; only the `kîtê/kitê` explanatory spelling is unresolved. L12 Q1 key B remains plausible for the core adjective function, but rationale must not imply the noun-modifying prototype is exhaustive. L12 Q3's semantic class is clear, but exact inflected phrase `rengdêra jmarîn` remains unresolved against prose labels; no normalization by guesswork.
+- No key change or new contradiction identified. Holds remain. No source/key/runtime/deployment changes or tests/CI; `main` read-only; no offsite backup claimed.
