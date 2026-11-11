@@ -258,3 +258,14 @@ No base lesson/quiz/key edits were made; all proposals remain unapproved. No tes
 - Finding: `pêşnavdêr/bireser` is an unexplained slash-pair; distinguish pre-nominal position from noun-modifying function and from clause-level object `bireser`. Verify the technical sense of `pêşnavdêr` against the primary source before final wording.
 
 No lesson, quiz, answer key, or runtime changes; all proposals remain unapproved. No tests/CI or live runtime check occurred. `main` remains read-only.
+
+
+## Checkpoint update — Lessons 7–8 `pêvek` / `veqetandek` adjudication (2026-11-11)
+
+- New append-only adjudication: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS7_8_PEKVEK_VEQETANDEK_ADJUDICATION_2026-11-11.md`, verified blob SHA `ffac88211e309ede86159e8132d5e0d73c8c5be9`.
+- Master terminology register addendum: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_MASTER_TERMINOLOGY_REGISTER_2026-11-11.md`, verified blob SHA `a0268a554d8e5650bab7c8b20aa52537c4a628bc`.
+- Global consistency audit section 37 appended: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_GLOBAL_CONSISTENCY_AUDIT_2026-11-10.md`, update commit `38d20d35266132d62cfc83074f232e9e4cf4bdb4`, new blob SHA `835a12be4ba0eecabb7bf16ae87a367809dafc77`.
+
+Working ruling: `pêvek` is the broad affix/suffix term; `veqetandek` is the course-specific label for the definite/indefinite noun-determining paradigms in Lessons 7–8. Keep `veqetandeka binavkirî` and `veqetandeka nebinavkirî` stable. `pêveka raveker` is descriptive wording for a particular modifier-following environment, not evidence of synonymy. Avoid global replacement. This internal course distinction still requires Kurmanji language-editor confirmation before it is promoted as a formal glossary definition; §§61–67 primary-source pages were not independently reopened in this pass.
+
+No source-aligned lesson, reviewed lesson, quiz, answer key, runtime, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI were run; no live runtime or Botkeep state was inspected. All work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only. GitHub archive history is the persisted project record, not a separate ZIP/off-site backup.
