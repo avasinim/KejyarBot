@@ -158,7 +158,18 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("ڕێگەپێدانی وانەکە", query.message.reply_text.await_args.args[0])
 
     async def test_assessment_session_stops_when_academic_approval_is_revoked(self):
-        bank = self.bank
+        bank = {
+            "practice": [{
+                "id": "p1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "چەند پیت؟",
+                "options": ["٣٤", "٣٣"], "answer_index": 0,
+            }],
+            "assessment": [{
+                "id": "a1", "section_id": "lesson1_alphabet_count",
+                "type": "recognize", "prompt": "ئەلفبێ چەند پیتە؟",
+                "options": ["٣٣", "٣٤"], "answer_index": 1,
+            }],
+        }
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank), patch(
             "arami_lesson1_telegram.load_manifest",
