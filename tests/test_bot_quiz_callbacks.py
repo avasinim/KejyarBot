@@ -927,7 +927,7 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         ]
         self.assertEqual(buttons, ["aramiC:lesson:2"])
 
-    async def test_final_course1_lesson_offers_its_dedicated_assessment(self):
+    async def test_final_review_only_course1_lesson_stays_beta_without_official_assessment(self):
         lesson = bot.ARMI_LESSON_IDS[-1]
         query = SimpleNamespace(
             data=f"finish_{lesson}",
@@ -939,20 +939,22 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=True),
-            patch.object(bot, "get_user_level", side_effect=["A1.1", "A1.1"]),
-            patch.object(bot, "check_badges"),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as complete,
+            patch.object(bot, "complete_lesson_with_rewards") as official_complete,
+            patch.object(bot, "get_user_level") as level,
+            patch.object(bot, "check_badges") as badges,
         ):
             await bot.finish_lesson(update, context)
 
+        complete.assert_called_once_with(12345, lesson)
+        official_complete.assert_not_called()
+        level.assert_not_called()
+        badges.assert_not_called()
         reply = query.message.reply_text.await_args
-        buttons = [
-            button.callback_data
-            for row in reply.kwargs["reply_markup"].inline_keyboard
-            for button in row
-        ]
-        self.assertEqual(buttons, ["aramiC:assessment:21"])
-        self.assertIn("کۆرسی ١ تەواو بوو", reply.args[0])
+        self.assertIn("پێشچوونی Beta", reply.args[0])
+        self.assertIn("ڕێڕەوی تاقیکاریی Beta تەواو بوو", reply.args[0])
+        self.assertNotIn("کۆرسی ١ تەواو بوو", reply.args[0])
+        self.assertNotIn("reply_markup", reply.kwargs)
 
     async def test_completion_of_lesson_four_routes_to_dedicated_lesson_five_reader(self):
         lesson = bot.ARMI_LESSON_IDS[3]
