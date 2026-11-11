@@ -499,3 +499,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Verification note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_PROPOSALS_KEY_MAPPING_VERIFICATION_2026-11-11.md`, SHA `6d38e27867915d62dab0fd78140a346e4a67bbaa`.
 - Confirmed 44/44 base rationale rows map to the reviewed answer-key rows, with zero missing mappings and zero key-letter mismatches. The refinement patch contributes one additional distinct rationale, L10 Q2 (C / `wê`); its other 11 table rows refine items already in the base set. Total distinct proposed items: 45.
 - This is mapping validation only, not linguistic certification or approval. L12 Q1/Q3 remain held; L1 Q4 notation remains open. No lesson, quiz, answer key, runtime or deployment changes; no tests/CI. `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — explanation-to-option fit audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_EXPLANATION_OPTION_FIT_AUDIT_2026-11-11.md`, SHA `5e83fa49f311ff979dc63ea35d5bd6500fa2a8e4`.
+- Flagged L8 Q3 as P1: the stem's `bê bireser` does not match the §66 condition described in the rationale (no postnominal descriptive element); this conflates bare clause-level `bireser` with a noun-attached modifier. Requires editorial decision before certifying the rationale.
+- Flagged L1 Q1 lexical drift (`qaydeyên` in keyed option vs `rêzikên` in proposal) and L6 Q3 bare `bireser` in stem/options despite full `bireserê navdêrê` rationale. Also retained L5 tewang scope and L10 form/role cautions.
+- No proposal approved/applied; no learner-facing or protected files changed; no tests/CI/runtime/deployment. `main` read-only; no separate offsite backup claimed.
