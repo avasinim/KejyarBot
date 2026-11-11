@@ -744,3 +744,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Added Section 95 with four source-aligned, exact replacement proposals: L10 Q1 inventory-membership wording (key B unchanged); L2 Q5 contextual `Argesh/hesp` distinction (proposed B); L3 Q3 feminine `jin` example (proposed B); L4 Q5 plural agreement `Ev mehîn in` (proposed B).
 - Full proposals and reasoning are in the updated 62-question audit, SHA `49c8d4b7b7918928d682174ec7f0f06d80b312a2`.
 - Editorial proposals only; native-Kurmancî validation recommended. No learner-facing files, answer keys, runtime or deployment modified; no tests/CI/runtime checks. `main` remains read-only; no independent ZIP/offsite backup claimed.
+
+
+## Checkpoint — Section 96 option-order erratum (2026-11-11)
+
+- Corrected proposal option order for L3 Q3 (A = `mê`) and L4 Q5 (C = `in`) so all four Section 95 proposed replacements preserve existing key letters: L2 Q5 B, L3 Q3 A, L4 Q5 C, L10 Q1 B.
+- Erratum is appended to the full 62-question audit, updated SHA `5fa075d9c705bfe8222bdfbb4b21df8e196957ae`; Section 96 is in Global Consistency Audit.
+- No answer-key or learner-facing file changed; proposals remain unapproved. No tests/CI/runtime/deployment. `main` read-only; no independent ZIP/offsite backup claimed.
