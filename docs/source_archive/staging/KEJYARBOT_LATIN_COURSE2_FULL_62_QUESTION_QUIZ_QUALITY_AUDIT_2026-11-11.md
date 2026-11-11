@@ -182,3 +182,15 @@ The following proposals were drafted after re-reading the exact lesson text, rev
 - The L2 proposal reuses `Argesh`, which is present as a course-added example in the course material; it is not presented as a direct quote from the primary grammar source.
 - These four proposals should still receive a native-Kurmanji editorial read for naturalness and pedagogical register before approval.
 - No learner-facing file, quiz, key, lesson, rationale, runtime, parser, manifest, database, Botkeep, Telegram or deployment artifact was modified.
+
+
+## Erratum — Preserve current key letters in L3 Q3 and L4 Q5 proposals (2026-11-11)
+
+A consistency check caught a mismatch in the option ordering of the Section 95 proposals: the first proposed option sets would have moved the keyed letters for L3 Q3 (A to B) and L4 Q5 (C to B), contrary to the stated goal of retaining current answer-key letters. The following corrected option orders supersede only those two option lists in Section 95:
+
+- **L3 Q3** proposed stem remains: `“jin” di lîsteya dersê de di çi zayendê de hatiye dabeşkirin?` Corrected options: A) `mê`; B) `nêr`; C) `her du`. Proposed key remains **A**, matching the current key A for `çem` in the current item. The gender target changes to a feminine lexical example, but the answer-key letter does not.
+- **L4 Q5** proposed stem remains: `Di hevoka “Ev mehîn __” de, ji bo gelemjimarê kîjan forma lêkerê rast e?` Corrected options: A) `e`; B) `hatin`; C) `in`. Proposed key remains **C**, matching the current key C for `hespin` as plural. The tested target changes to plural agreement, but the answer-key letter does not.
+
+L2 Q5 remains key B and L10 Q1 remains key B. Thus all four replacement proposals now preserve the existing answer-key letters: L2 Q5 B, L3 Q3 A, L4 Q5 C, L10 Q1 B. This erratum supersedes the Section 95 claim that all four proposed keys were B. No answer-key file has been changed.
+
+This was a proposal-document consistency defect, not a defect in the live quiz or key. All four proposals remain unapproved and unapplied; native-Kurmancî review is still outstanding.
