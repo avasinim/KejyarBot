@@ -302,3 +302,14 @@ No source-aligned lesson, reviewed lesson, quiz, answer key, runtime, parser, te
 - Lesson 12 quiz Q3 form `rengdêra jmarîn` remains unresolved against prose `rengdêrê jmarîn`; do not silently normalize.
 
 No lesson, exercise, quiz, answer key, source-aligned text, runtime, parser, test, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks performed. Archive branch only; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 12 adjective-class/function boundary review (2026-11-11)
+
+- New audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_ADJECTIVE_CLASS_FUNCTION_BOUNDARY_REVIEW_2026-11-11.md`, verified blob SHA `d76164ef5c2bbad97d63c4b10058cad6a415e931`.
+- The source-grounded review records that descriptive adjectives can be predicative or substantivized (source §§124–127); the opening definition should be qualified rather than treating an expressed adjacent noun as mandatory.
+- Preserve the six adjective classes while separating word class from syntactic function. Demonstrative, possessive, interrogative, and indefinite forms may be adjective-like with an expressed noun or pronominal when they stand independently; numeral adjective modifies an expressed noun while `jmarnav` is independent/substantive in the course's adopted framework.
+- Map course terminology to source wording explicitly at first mention: `wesfîn` ↔ `çilobûn û çawabûnê`; `xwemalîn` ↔ `destdaniyê/xwedîtiyê`; `rêzîn` ↔ `rêzda`.
+- Lesson 12 Q3 `rengdêra jmarîn` remains unresolved; no automatic normalization.
+
+No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
