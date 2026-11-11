@@ -405,6 +405,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             result = bot.award_arami_assessment(12345, review_lesson_id)
 
         self.assertFalse(result)
+        self.assertFalse(bot.award_arami_assessment(12345, "unregistered_arami_lesson"))
+        self.assertFalse(bot.award_arami_assessment(12345, "grammar_13"))
         award.assert_not_called()
 
     def test_every_active_course_uses_explicit_fail_closed_academic_approval(self):
