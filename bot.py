@@ -62,12 +62,27 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def award_arami_assessment(user_id, lesson_id):
-    """Grant XP only for a registered, academically approved Arami lesson."""
+def can_take_arami_assessment(user_id, lesson_id):
+    """Fail closed: official assessment requires explicit academic approval."""
     if (
         LESSON_COURSE.get(lesson_id) != "arami_orthography_foundations"
         or lesson_is_beta_review(lesson_id)
     ):
+        return False
+    try:
+        manifest = load_arami_course1_manifest(BASE_DIR)
+        lesson_record = next(
+            item for item in manifest["lessons"] if item.get("id") == lesson_id
+        )
+    except (OSError, ValueError, KeyError, TypeError, StopIteration):
+        logger.exception("Could not verify Arami academic approval for %s", lesson_id)
+        return False
+    return lesson_is_academically_approved(lesson_record)
+
+
+def award_arami_assessment(user_id, lesson_id):
+    """Grant XP only for a registered, academically approved Arami lesson."""
+    if not can_take_arami_assessment(user_id, lesson_id):
         return False
     return complete_quiz_with_rewards(
         user_id, f"arami_assessment:{lesson_id}", points=20
@@ -1936,7 +1951,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
-            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^arami1:",
     ))
@@ -1947,7 +1962,7 @@ def main():
             award_assessment=award_arami_assessment,
             get_completed_lessons=get_completed_lessons,
             get_completed_beta_lessons=get_completed_beta_lessons,
-            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^aramiC:",
     ))
@@ -1956,7 +1971,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
-            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^arami5:",
     ))
