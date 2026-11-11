@@ -530,6 +530,34 @@
       "source_pages": null,
       "status": "owner_review_pending_expanded_draft",
       "note": "Expanded draft preserved separately; source provenance and owner/scientific review remain pending. This entry is available for beta reading only and is not final approval."
+    },
+    {
+      "lessons": "47",
+      "topic": "گرێی ناوی — پێکهاتە، سەرەکی و پەیوەندییە ناوخۆییەکان",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "V2 draft restored from its archived Git branch and preserved as source_markdown; available for read-only beta progression only. Examples and source/dialect claims remain subject to owner and scientific review; no quiz or official rewards."
+    },
+    {
+      "lessons": "48",
+      "topic": "گرێی کرداری، توانای کردار و پێکهاتەی بەشداربووان",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "V2 draft restored from its archived Git branch and preserved as source_markdown; available for read-only beta progression only. Examples and source/dialect claims remain subject to owner and scientific review; no quiz or official rewards."
+    },
+    {
+      "lessons": "49",
+      "topic": "نیشانەکانی کەس، لکاوەکان و ڕێکخستنی بکەر/بەرکار لە سۆرانیدا",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "V2 draft restored from its archived Git branch and preserved as source_markdown; available for read-only beta progression only. Examples and source/dialect claims remain subject to owner and scientific review; no quiz or official rewards."
+    },
+    {
+      "lessons": "50",
+      "topic": "پێڕستەی ڕێژەیی لە سۆرانیدا",
+      "source_pages": null,
+      "status": "owner_review_pending_expanded_draft",
+      "note": "V2 draft restored from its archived Git branch and preserved as source_markdown; available for read-only beta progression only. Examples and source/dialect claims remain subject to owner and scientific review; no quiz or official rewards."
     }
   ]
 }
