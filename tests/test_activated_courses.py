@@ -31,11 +31,13 @@ ROOT = Path(__file__).resolve().parents[1]
 class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
     def make_update(self, callback_data, user_id=12345):
         message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock(), message_id=77)
+        query_edit = AsyncMock()
         query = SimpleNamespace(
             data=callback_data,
             from_user=SimpleNamespace(id=user_id),
             message=message,
             answer=AsyncMock(),
+            edit_message_text=query_edit,
         )
         return SimpleNamespace(callback_query=query), message, query
 
@@ -317,12 +319,12 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             await bot.open_course_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_not_awaited()
-        message.edit_text.assert_awaited_once()
+        query.edit_message_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertIn("کۆرسی ٢: وتووێژ", rendered)
         self.assertIn("13 تا 24 لە 42", rendered)
         self.assertIn("لاپەڕەی 2/4", rendered)
-        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
+        keyboard = query.edit_message_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(len(keyboard), 7)
         self.assertEqual(
             keyboard[0][0].callback_data,
