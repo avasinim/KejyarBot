@@ -141,3 +141,14 @@ The proposed wording below is in Kurmanji Latin to match the course and key. Sec
 4. Existing non-generic rationales for L5 Q2–Q4, L7 Q2–Q4, L8 Q4/Q6/Q7, L9 Q1–Q4 and L11 Q4 are not rewritten here. They remain as recorded in the current answer-key draft.
 5. No answer letters, stems, options, lesson content or answer-key content have been changed. No runtime, parser, manifest, database, Botkeep, Telegram, deployment, tests/CI, learner-response or psychometric work was performed.
 6. Work remains confined to `archive/preservation-audit-2026-11-10`; `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
+
+
+## Verification addendum — keyed answer alignment (2026-11-11)
+
+A separate row-level comparison was run after drafting:
+- Proposed rationale rows: **44**.
+- Compared against the current reviewed answer key: **44/44 keyed option letters match**.
+- Missing question mappings: **0**.
+- Key-letter mismatches: **0**.
+
+This verifies only that each proposed rationale is attached to the same keyed option letter as the current draft. It does **not** independently certify the linguistic correctness of every keyed answer, resolve held items, or approve the proposed wording. No source or answer-key file was changed.
