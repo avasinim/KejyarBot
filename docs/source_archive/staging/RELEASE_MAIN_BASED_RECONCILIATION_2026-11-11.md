@@ -1377,3 +1377,28 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 2. بۆ وانەکانی ١–٣١، پێویستە manifestێکی نوێی provenance دروست بکرێت کە بۆ هەر وانەیەک source artifact، SHA-256، baseline JSON record، patch file hash، variant policy، Quiz snapshot و evidenceی review بە جیا تۆمار بکات.
 3. هەر شوێنێک baselineی بەڵگەدار نییە، بە `baseline_missing` نیشان بدرێت و loader fail-closed بێت؛ ژمارەی یەکسان یان statusی review بەڵگەی exact content نییە.
 4. هیچ source_path/source_markdown، review_status، Quiz، runtime record یان patch لەم پاشکۆیەدا نەگۆڕدرا؛ هیچ patchێک apply نەکرا؛ هیچ DB، Botkeep یان Telegram نەگۆڕدرا.
+
+
+## ٩.٥١. بەراوردی دووبارەی Preservation Bundleی ١–٣١ لەگەڵ runtimeی ٥٠ وانەیی — 2026-11-11
+
+### Snapshot و ژمارەی هاوتایی
+- Preservation Bundleی 2026-11-08، blob SHA: `6296b472b37ea14bb9d46dbf7e0ad4f249ff2a55`؛ ٣١ recordی وانەیی لەخۆدەگرێت.
+- Runtime JSONی ئێستا، blob SHA: `1dd8abe8a128937c74a18cf04f99878b2e38d962`؛ ٥٠ recordی وانەیی لەخۆدەگرێت.
+- لە بەراوردی فیلدەکانی title، objective، key_points، examples، activities، exercises، comprehension، quiz، appendix و review_status: **٢٤/٣١ record بە تەواوی هاوتان؛ ٧/٣١ record جیاوازییان هەیە.**
+- ئەم ٧ recordە: `grammar_11`, `grammar_12`, `grammar_13`, `grammar_26`, `grammar_29`, `grammar_30`, `grammar_31`.
+- لە هەموو ٧ وانەکەدا ژمارەی itemی fieldە گۆڕاوەکان هاوتایە؛ بەڵام ناوەڕۆکی هەندێک item گۆڕاوە. یەکسانیی ژمارە بەڵگەی یەکسانیی ناوەڕۆک نییە.
+
+### جۆری جیاوازییەکان
+1. **وانەی ١١:** تەنها appendix itemی یەکەم لە `پاشبەستە` بۆ `پاشنووس` گۆڕاوە.
+2. **وانەی ١٢:** appendix itemی یەکەم هەمان گۆڕانی زاراوەی `پاشبەستە` بۆ `پاشنووس`ی تێدایە.
+3. **وانەی ١٣:** دوو appendix item گۆڕاون؛ crosswalkی Root/Bound Root فراوانتر کراوە و `ئەفیکس` لە هەندێک دەق بە `گیرەک` گۆڕاوە. ئەمە گۆڕانی زاراوە و پێناسەیە، نە تەنها formatting.
+4. **وانەی ٢٦:** appendix itemی ١١ جیاوازە؛ بەراوردی وردی دەقی تەواوی item پێویستە بۆ دیاریکردنی ئەوەی گۆڕانەکە تەنها citation/wordingە یان کاریگەریی ناوەڕۆکی هەیە.
+5. **وانەی ٢٩:** key_pointی ٥، comprehensionی ١ و appendixی ١ جیاوازن؛ لە key_pointدا `لەچۆنایەتی` بۆ `گەردان` گۆڕاوە. ژمارەی itemەکان هاوتایە، بەڵام هیچ baselineی پەچی سەرەکی بۆ وانەی ٢٩ لە تۆماری پەچەکاندا پشتڕاست نەکراوەتەوە.
+6. **وانەی ٣٠:** appendix itemی ٨ جیاوازە؛ `لەچۆنایەتیی کردار` بۆ `گەردانی کردار` گۆڕاوە. پێویستی بە پشکنینی زاراوەیی/سەرچاوەیی هەیە.
+7. **وانەی ٣١:** key_points شەش item، examples دوو item، comprehension یەک item و appendix چوار item جیاوازن. بەشێکی دیاریکراوی گۆڕانەکان `گروپی ناوی` بۆ `گرێی ناوی` ـە. پەچی v2ی ٣١ ژمارەی baselineی ساختارییەکان لەگەڵ runtime هاوتا دەکات، بەڵام ئەم بەراوردە دەڵێت هاوتاییی ژمارە بە مانای exact-content match نییە.
+
+### سنووری ئەنجام
+- ئەم بەراوردە تەنها Bundleی 2026-11-08 بە runtimeی branchی ئێستا دەبەستێتەوە؛ بەڵگەی سەرچاوەی خاو، provenanceی ئەکادیمی، دروستیی هەر گۆڕانێک یان پەسەندکردنی خاوەن پڕۆژە نییە.
+- هەموو جیاوازییەکان دەبێت بە snapshot و دەقی سەرچاوەی بەڵگەدار لە هەر وانەیەکدا جیاواز هەڵبسەنگێندرێن. هیچ زاراوەیەک لەم پاشکۆیەدا پەسەند یان جێگیر نەکراوە.
+- دۆخی تایبەتی وانەی ١٣ وەک `internal_cross_lesson_synthesis_no_external_source_mapping` و review-only هەر وەک خۆی ماوەتەوە.
+- هیچ lesson، patch، quiz، review_status، runtime record، DB، Botkeep یان Telegram لەم پشکنینەدا نەگۆڕدرا؛ ئەم پاشکۆیە تەنها تۆماری auditی append-onlyیە.
