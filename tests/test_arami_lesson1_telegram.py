@@ -42,7 +42,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn('تێبینی: تێبینیی ڕەسەن', rendered_source)
 
     def test_menu_exposes_only_lesson1_actions(self):
-        keyboard = menu_keyboard()
+        keyboard = menu_keyboard(assessment_enabled=True)
         callbacks = [
             button.callback_data
             for row in keyboard.inline_keyboard
@@ -54,6 +54,12 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami5:menu",
             "aramiC:menu",
         ])
+
+    def test_menu_hides_assessment_by_default_without_approval(self):
+        keyboard = menu_keyboard()
+        callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+        self.assertNotIn("arami1:assessment", callbacks)
+        self.assertIn("arami1:practice", callbacks)
 
     async def test_lesson1_menu_uses_the_current_course_title(self):
         update, query = make_update("menu")
