@@ -1026,3 +1026,44 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 ٣. هیچ دەقی وانە، JSON، structured quiz، answer key، status، runtime، DB یان learner record نەگۆڕدرا.
 ٤. تەنها ئەم پاشکۆیە بە شێوەی append-only زیاد کرا؛ هیچ زاراوەیەک پەسەند یان overwrite نەکرا.
 
+
+
+## ٩.٣٨. پشتڕاستکردنەوەی CIی کۆمیتی کۆتایی و پشکنینی scopeی PR #152 — 2026-11-11
+
+### کۆمیت و دۆخی PR
+- کۆمیتی پشکنراو: `aa75c940667f983a0930426eb8100388ffd1bd79`
+- PR #152: کراوە، نەیەکخراو؛ base `7db20f242087e3eb9149e2e788f6c20529870f32`.
+- GitHub compare: `ahead_by=181`, `behind_by=0`, `status=ahead`.
+- PR: ٤٣ فایل، ٦٠٥١ زیادکراوە و ٣٩٢ سڕاوە.
+- هیچ issue commentێک لە پشکنینی کۆتایی PRدا نەبوو.
+
+### CIی پشتڕاستکراو بۆ هەمان کۆمیت
+ئەم جارە endpointی workflow runs بۆ هەمان SHA چوار runی تەواوکراوی `success` گەڕاندەوە؛ پێشتر ئەم runانە لە پشکنینی یەکەمدا نەگەڕابوونەوە.
+
+| Workflow | Run ID | دۆخ | بەڵگەی job |
+|---|---:|---|---|
+| Python checks | 43052257547 | success | compileall و unittest discover هەردووکیان success |
+| Orthography course structure tests | 43052255597 | success | validate orthography course structure and quiz draft: success |
+| Kurdish months tests | 43052255520 | success | Kurdish month data tests: success |
+| Course 4 beta review safety | 43052255514 | success | compile modules و complete test suite: success |
+
+- لۆگی Python checks دەڵێت: `Ran 570 tests`, `OK (skipped=11)`. واتە ٥٧٠ تاقیکردنەوە بە سەرکەوتوویی ڕاپۆرت کراون و ١١ دانە skip کراون؛ هیچ failureێک نییە.
+- لە jobی Python checksدا `python -m compileall -q .` سەرکەوتوو بوو.
+- ئەم CIیە بۆ SHAی کۆمیتی کۆتاییە؛ بەڵام پەسەندکردنی ئەکادیمی، چالاکبوونی Botkeep، دروستیی هەموو نموونەیەکی وانە، یان ئامادەبوونی production ناسەلمێنێت.
+
+### Scopeی ٤٣ فایلی PR
+پشکنینی لیستی فایلە گۆڕدراوەکان ئەم جۆرە گۆڕانکارییانەی پشتڕاست کردەوە:
+- ٧ فایل workflowی GitHub Actions (هەندێک زیادکراو و هەندێک نوێکراوە).
+- فایلەکانی runtime و Telegram: `bot.py`, `course_runtime.py`, `arami_course1_telegram.py`, `arami_lesson1_telegram.py`, `arami_lesson5_telegram.py`.
+- داتای کۆرس: `course_data/grammar_course4_lessons.json`, `course_data/grammar_course4_quiz_overrides.json`, `courses.json`, `curriculum/grammar_course4_plan.json`.
+- تاقیکردنەوەکان: academic menu, activated courses, Telegram lesson flows, quiz callbacks, Course 4 runtime and beta review, database, lesson search, launch-readiness matrix و quiz overrides.
+- پاشکۆ و ڕاپۆرتەکانی audit و draftی وانەکانی ٤٧–٥٠.
+
+### هەڵسەنگاندنی مەترسی و سنووری بڕیار
+- PR تەنها پاشکۆی docs نییە؛ فایلە runtime و course data و test و workflowیش دەگۆڕێت. بۆیە نابێت بە تەنها بە CIی سەرکەوتوو وەک release-ready پۆلێن بکرێت.
+- هیچ بەڵگەیەک لەم پشکنینەدا نیشان نادات کە PR merge کراوە یان Botkeep/Telegram deployment کراوە.
+- هیچ merge، import، restore، restart، deployment، DB migration یان گۆڕینی learner record لەم پشکنینەدا نەکرا.
+- بڕیاری پاراستن: PR #152 کراوە و نەیەکخراو دەمێنێتەوە تا پشکنینی جیاوازیی runtime و وەڵامی نووسراوی Node17 و گیتەکانی release بە جیاوازی تەواو بن.
+
+### تێبینیی تۆمار
+ئەم پاشکۆیە تەنها بەڵگەی CI و scopeی PR زیاد دەکات؛ هیچ فایلێکی کۆد، workflow، وانە، JSON، کویز، پلانی کۆرس یان داتای خوێندکار نەگۆڕدرا. پاشکۆ بە شێوەی append-only زیاد کرا.
