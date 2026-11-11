@@ -657,3 +657,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSON1_Q3_Q5_RECHECK_2026-11-11.md`, SHA `dfce471ab619202c8f4b307216b649be1de36ffb`.
 - Rechecked L1 Q3/Q5: the written-sign versus speech-sound definition of `tîp` and the `qiset`-from-`komek` distinction both match Lesson 1 and the keyed options. No new correction identified. L1 Q4 notation remains held.
 - No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
+
+
+
+## Section 72 — Remaining proposed rationale rows targeted source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_REMAINING_ROWS_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `bca455a18d0ad6d58d9c4b89dc3f2d327d23a4f7`.
+- Rechecked 16 rows: L5 Q1/Q5; L6 Q1–Q4; L9 Q5; L10 Q1/Q3/Q4/Q5; L11 Q1/Q3/Q5; L12 Q2/Q4. Exact stems, keyed options and lesson explanations/examples align; no new contradiction or wording correction identified.
+- L6 Q5's superseding correction remains in force: `min` in `xencera min` is `rengdêra xwemalîn`, not `pronavê xwemalî`. The held L1 Q4, L12 Q1 and L12 Q3 are not resolved by this tranche.
+- No source/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
