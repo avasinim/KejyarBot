@@ -338,3 +338,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - No unequivocal character-level spelling error was established from the staged text alone. Q1 has capitalization/answer-shape inconsistency and an open terminology query over `kiryar`; Q3's `rengdêra jmarîn` remains unresolved. Q4 A/C are surface-syntactically parallel but semantically weak; B has a different answer shape. Q5 options are not perfectly parallel in semantic type.
 - The audit corrects Section 43's overbroad statement: Q4 A/C are parallel in surface syntax; their problem is category meaning and mismatch against B, not A-vs-C syntax.
 - No protected course or runtime content changed; no tests/CI or live runtime checks were performed. `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+## Checkpoint update — Lesson 12 quiz parallelism and rationale audit (2026-11-11)
+
+- New verified audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_PARALLELISM_AND_RATIONALE_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `f076c4878192fd8cfdc4cf0b2c7384142a14341b`.
+- Q2 is the most parallel option set. Q1 mixes clause/fragment forms and capitalization; Q4 A/C are surface-parallel but semantically weak, while B has a different answer shape; Q5 mixes category labels with an example-description. Q3's category contrast is acceptable but uneven.
+- New unresolved terminology flag: Q1 `kiryarê` vs master register `kirar`. Do not normalize or substitute `kirde` without source/editor ruling.
+- Item-specific answer rationales are drafted in the audit only; no key text changed. Current key remains **B / C / A / B / C**.
+- No protected lesson, quiz, key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
