@@ -747,3 +747,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Exact stem asks `Forma bireserî ya ew mê çi ye?`; key C (`wê`) is supported as the feminine form in the course's named “pronavên bireser” paradigm. But `bireserî` can be read as actual syntactic object function, while the lesson's own `Wê ew dît` example has `wê` as inflected agent and `ew` as direct object.
 - Proposed stem explicitly refers to the table/paradigm “pronavên bireser”. Key C unchanged. Add L10 Q2 to editorial holds; L10 Q1 has a related paradigm/function ambiguity; L10 Q4 remains distinct and clear.
 - No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 83 — Lessons 1–8 quiz stem/scope second pass (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS01_08_QUIZ_STEM_SCOPE_SECOND_PASS_2026-11-11.md`, SHA `6b0b149ec551c3607207c0fbe1f9dc46ec648f6d`.
+- Screened all 37 items in Lessons 1–8 against the reviewed lesson text for scope, category/function distinctions, terminology, and key support. No new hold was justified.
+- Existing holds reaffirmed: L1 Q4 rationale spelling; L6 Q3/Q4 shortened `bireser` vs `bireserê navdêrê`; L8 Q3 imprecise `bê bireser` condition.
+- L2 Q2 E1 rationale refinement remains separate; no key change. L3 Q5 key C supported by lesson's grammatical-vs-biological gender distinction. L4 Q2, L5 Q2–Q4, L7 Q5, L8 Q7 screened as locally supported.
+- No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
