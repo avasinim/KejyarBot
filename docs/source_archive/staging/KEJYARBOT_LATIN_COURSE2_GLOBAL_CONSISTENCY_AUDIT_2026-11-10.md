@@ -641,3 +641,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Rechecked ten rows: L2 Q1/Q3/Q4/Q5; L3 Q1–Q4; L4 Q1/Q3. Exact stems, options and lesson definitions/examples support the proposed rationale and current keys; no new mismatch or wording correction identified.
 - Confirmed L3 Q4 preserves the two senses of `dar` (living tree/plant feminine; dry wood/stick masculine), and L4 Q3 treats `mehînek` as singular only within the lesson's indefinite paradigm.
 - No source/key/learner-facing/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
+
+
+
+## Section 70 — Lessons 7–8 rationale targeted source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS7_8_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `0ca63c1a261032d17c859d36a760e8132bfd8759`.
+- Rechecked L7 Q1/Q5 and L8 Q1/Q5. The definite suffix inventory (`-ê/-a/-ên`), `hespên Soro`, the indefinite definition, and the §67 `-ine` environment all align with the lesson and current keys. No new correction identified.
+- This is another targeted tranche only; it does not certify every rationale or resolve the remaining held items. No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
