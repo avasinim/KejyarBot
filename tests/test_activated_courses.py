@@ -319,12 +319,12 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             await bot.open_course_page(update, SimpleNamespace())
         query.answer.assert_awaited_once()
         message.reply_text.assert_not_awaited()
-        query.edit_message_text.assert_awaited_once()
+        message.edit_text.assert_awaited_once()
         rendered = message.edit_text.await_args.args[0]
         self.assertIn("کۆرسی ٢: وتووێژ", rendered)
         self.assertIn("13 تا 24 لە 42", rendered)
         self.assertIn("لاپەڕەی 2/4", rendered)
-        keyboard = query.edit_message_text.await_args.kwargs["reply_markup"].inline_keyboard
+        keyboard = message.edit_text.await_args.kwargs["reply_markup"].inline_keyboard
         self.assertEqual(len(keyboard), 7)
         self.assertEqual(
             keyboard[0][0].callback_data,
