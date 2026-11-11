@@ -57,7 +57,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_lesson1_menu_uses_the_current_course_title(self):
         update, query = make_update("menu")
-        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         shown = query.message.reply_text.await_args.args[0]
         self.assertIn("کۆرسی ١: ڕێنووسی سەرەتاییی کوردی", shown)
         self.assertNotIn("ڕێنووسی ئارامی", shown)
@@ -75,7 +75,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update("lesson")
         manifest = {"lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]}
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch("arami_lesson1_telegram.load_manifest", return_value=manifest), patch("arami_lesson1_telegram.send_lesson_infographic", new_callable=AsyncMock) as send_infographic:
-            await callback(update, SimpleNamespace(user_data={}), "/unused")
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         send_infographic.assert_awaited_once_with(query.message, manifest["lessons"][0], base_dir="/unused")
         query.message.reply_voice.assert_not_awaited()
         self.assertEqual(query.message.reply_text.await_count, 4)
@@ -99,13 +99,13 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch("arami_lesson1_telegram.load_arami_lesson1_content", return_value=lesson), patch(
             "arami_lesson1_telegram.load_manifest", return_value=manifest
         ):
-            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False)
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
     async def test_legacy_audio_callback_never_sends_voice(self):
         update, query = make_update("audio")
-        await callback(update, SimpleNamespace(user_data={}), "/unused")
+        await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         query.message.reply_voice.assert_not_awaited()
 
     async def test_practice_callback_starts_question_session(self):
@@ -119,7 +119,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update("practice")
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_message_id"], 11)
         query.message.reply_text.assert_awaited_once()
@@ -132,7 +132,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             with patch("arami_lesson1_telegram.load_manifest", return_value={
                 "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
             }):
-                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False)
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson1_session", context.user_data)
@@ -151,7 +151,7 @@ class AramiLesson1TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson1_message_id": 99,
         })
         update, query = make_update("pick:0", message_id=10)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
         query.edit_message_reply_markup.assert_not_awaited()
 
@@ -176,7 +176,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         update, query = make_update("assessment")
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=self.bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "assessment")
         question_message_id = context.user_data["arami_lesson1_message_id"]
         if selected_index == "correct":
@@ -186,9 +186,9 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
             selected_index = (question["answer_index"] + 1) % len(question["options"])
 
         update, query = make_update(f"pick:{selected_index}", message_id=question_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         update, query = make_update("submit", message_id=question_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         return context, query
 
     async def test_assessment_wrong_answer_offers_retry_and_retry_starts_practice(self):
@@ -206,7 +206,7 @@ class AramiLesson1TelegramAssessmentTests(unittest.IsolatedAsyncioTestCase):
         # The completed result is edited in place, retaining the question message id.
         result_message_id = context.user_data["arami_lesson1_message_id"]
         update, retry_query = make_update("retry", message_id=result_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_session"]["questions"][0]["id"], "a1")
         self.assertEqual(context.user_data["arami_lesson1_message_id"], result_message_id + 1)
@@ -249,35 +249,35 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         update, _query = make_update("practice")
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson1_telegram.load_arami_lesson1_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
 
         first_message_id = context.user_data["arami_lesson1_message_id"]
         update, query = make_update("submit", message_id=first_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["index"], 0)
         self.assertEqual(len(context.user_data["arami_lesson1_session"]["answers"]), 0)
         query.message.reply_text.assert_awaited_once_with("سەرەتا وەڵامێک هەڵبژێرە.")
 
         update, _query = make_update("pick:0", message_id=first_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         update, _query = make_update("submit", message_id=first_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["index"], 1)
         self.assertEqual(len(context.user_data["arami_lesson1_session"]["answers"]), 1)
 
         update, _query = make_update("next", message_id=first_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         second_message_id = context.user_data["arami_lesson1_message_id"]
         self.assertNotEqual(second_message_id, first_message_id)
         self.assertEqual(second_message_id, first_message_id + 1)
 
         update, stale_query = make_update("pick:1", message_id=first_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
         stale_query.edit_message_reply_markup.assert_not_awaited()
 
         update, _query = make_update("pick:0", message_id=second_message_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson1_session"]["selected_index"], 0)
 
 
@@ -286,7 +286,7 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         base_dir = str(Path(__file__).resolve().parents[1])
         context = SimpleNamespace(user_data={})
         update, _ = make_update("practice")
-        await callback(update, context, base_dir)
+        await callback(update, context, base_dir, can_take_assessment=lambda user_id, lesson_id: True)
         message_id = context.user_data["arami_lesson1_message_id"]
         session = context.user_data["arami_lesson1_session"]
 
@@ -294,14 +294,14 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
         async def assert_pick_committed():
             self.assertEqual(session["selected_index"], 0)
         pick_query.answer.side_effect = assert_pick_committed
-        await callback(update, context, base_dir)
+        await callback(update, context, base_dir, can_take_assessment=lambda user_id, lesson_id: True)
 
         update, submit_query = make_update("submit", message_id=message_id)
         async def assert_submit_committed():
             self.assertEqual(session["index"], 1)
             self.assertEqual(len(session["answers"]), 1)
         submit_query.answer.side_effect = assert_submit_committed
-        await callback(update, context, base_dir)
+        await callback(update, context, base_dir, can_take_assessment=lambda user_id, lesson_id: True)
 
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
@@ -353,7 +353,7 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson1_message_id": 10,
         })
         update, query = make_update("pick:²", message_id=10)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
@@ -373,7 +373,7 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson1_message_id": 10,
         })
         update, query = make_update("pick:99", message_id=10)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
         self.assertIsNone(context.user_data["arami_lesson1_session"]["selected_index"])
