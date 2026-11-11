@@ -130,3 +130,13 @@ A focused comparison of the source-aligned course text and reviewed lesson confi
 ## Lesson 6 addendum — `pêşnavdêr/bireser` (2026-11-11)
 
 Lesson 6 uses the slash-pair for `ev` in `ev keçik`, but does not define the two terms as synonyms. The source-aligned text separately defines `bireserê navdêrê` as a noun-attached modifier that may occur before or after the noun, while bare `bireser` is used elsewhere for clause-level object role. Provisional recommendation: do not keep the unexplained slash-pair; distinguish position (pre-nominal) from noun-modifying function, preserve independent demonstrative-pronoun use (`Ev hat.`), and verify the exact technical sense of `pêşnavdêr` against the primary source before choosing a replacement label. No lesson or quiz edits made. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON6_PRENOMINAL_MODIFIER_ADJUDICATION_2026-11-11.md`, blob SHA `9bcb2af635e61a5a78945c5cb17031f634cd8331`.
+
+
+## Lessons 7–8 adjudication addendum — broad affix vs specific determiner (2026-11-11)
+
+A focused review of Lessons 4–8 and the comparative suffix example in Lesson 12 resolves the working relationship between the terms at the course level:
+- `pêvek` is the broad morphological term for an affix/suffix attached to a base; it is used for more than one kind of bound morphology (including the comparative `-tir`).
+- `veqetandek` is the course's specific label for the definite and indefinite noun-determining forms taught in Lessons 7–8. Preserve `veqetandeka binavkirî` and `veqetandeka nebinavkirî` as stable paradigm labels.
+- `pêveka raveker` is descriptive wording for an affix/suffix in a modifier-following environment; it is not a synonym that should replace the formal paradigm label.
+
+Therefore, do not treat `pêvek` and `veqetandek` as interchangeable in headings, glossary definitions, or quiz answers. This is an internal course terminology adjudication, not a claim that every Kurdish grammar tradition uses `veqetandek` identically. A Kurmanji language editor should still confirm the formal glossary wording against the cited edition before it is promoted as an authoritative definition. No lesson/quiz/key text was normalized. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS7_8_PEKVEK_VEQETANDEK_ADJUDICATION_2026-11-11.md`, verified blob SHA `ffac88211e309ede86159e8132d5e0d73c8c5be9`.
