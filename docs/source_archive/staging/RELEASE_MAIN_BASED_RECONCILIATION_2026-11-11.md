@@ -1331,3 +1331,23 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - تاقیکردنەوەی پێویست بۆ prototypeی داهاتوو: (١) runtime baseی ڕاستەقینە بە `course_id=grammar`، (٢) patchی ٢٩ و٣١-v2، (٣) validationی baselineی ژمارەیی ٣١، (٤) fail-closed بۆ پەچی ٢٩ کاتێک baseline نییە یان بە ڕوونی statusی no-baseline تۆمار دەکرێت، (٥) identityی hash-based و جیاکردنەوەی archive filename لە patch content.
 - ژمارەی baselineی ٣١ تەنها inventoryی ساختارییە؛ بەڵگەی exact content، provenance، دروستی زانستی یان پەسەندکردنی ئەکادیمی نییە.
 - هیچ patchێک apply نەکرا؛ هیچ runtime/lesson/quiz/review_status/DB/Botkeep/Telegram نەگۆڕدرا. ئەم پاشکۆیە تەنها بەڵگەی تاقیکردنەوەی baseline و integration blocker زیاد دەکات.
+
+
+## ٩.٤٩. پشکنینی وردی تاقیکردنەوەکانی prototypeی loader و هەڵەی discoverability — 2026-11-11
+
+### سەرچاوەی پشکنین
+- فایلەکانی Library: `course4_patch_loader_prototype.py` و `test_course4_patch_loader.py`؛ بەڵام ئەم دوو فایلە لە GitHub repository/branchدا نین و بە runtime پەیوەست نین.
+- تاقیکردنەوەکان ZIPێکی مێژوویی بە ناوی `Course4_AppendOnly_Combined_Archive_Patches_01-02_08-45_Lesson46Review_2026-11-09.zip` دەخوێننەوە. ئەم ناوە لە فهرستی ئێستای Libraryی `/KejyarBot/Course4_Archive/`دا نەدۆزرایەوە؛ لەبەر ئەوە reproducibilityی تاقیکردنەوەکان بە فایلە ڕەسەنەکە پشتڕاست نەکراوەتەوە.
+
+### دۆزینەوە نوێیەکان
+1. **دووبارەبوونی method name لە unittest:** لە فایلەکەدا ١٥ دەرکردنی `def test_...` هەیە، بەڵام تەنها ٩ ناوی یەکتا. لە Pythonدا methodی دووبارە بە هەمان ناو لە classدا methodی پێشوو overwrite دەکات؛ بۆیە ٦ دەرکردنی دووبارە تاقیکردنەوەی جیاواز زیاد ناکەن. ژمارەی testی ڕاستەقینەی discoverable لە classەکەدا ٩ە، نە ١٥.
+2. **fake base سنووری course_id دەشارێتەوە:** `fake_base()` تەنها `lessons` دەگەڕێنێتەوە و `course_id`ی نییە. کۆدی loader تەنها کاتێک mismatch دەپشکنێت کە هەردوو course_id هەبن؛ بۆیە تاقیکردنەوەی سەرەکییەکە کێشەی `grammar_course4` بەرامبەر `grammar` نیشان نادات.
+3. **testی course mismatch ناهاوتاییی aliasی ڕاستەقینە ناپشکنێت:** تاقیکردنەوەی ئێستا `grammar_course_2` بەرامبەر `grammar` و `course_grammar` بەرامبەر `grammar` دەکات؛ ئەمە ئەو aliasە نییە کە پەچەکانی ٢٩ و٣١ بەکاریدەهێنن، واتە `grammar_course4`.
+4. **ناوی فایل و identity:** `_patch_identity()` پێناسە کراوە، بەڵام لە فەنکشنی applyدا بەکارنەهاتووە؛ `already_applied` بە archive filename دەناسێنرێت. هەروەها `seen_patch_lessons[lesson_id] = archive_name` لە کۆدی prototypeدا چەند جار پشت‌سەر یەک دووبارە کراوەتەوە؛ ئەم دووبارەنووسینانە کاریگەریی نوێیان نییە، بەڵام کۆدەکە پێویستی بە پاکسازییەکی ڕوون هەیە.
+5. **schema coverage:** normalization تەنها سێ fieldی `examples`, `appendix`, `activities` دەگرێتەوە؛ بۆیە ئەم prototypeە نابێت وەک جێبەجێکەری هەموو schemaی پەچەکانی ٤٤ فایل بناسرێت.
+
+### ئەنجامی فنی
+- تاقیکردنەوەی سەرەکی لەسەر fake base و ZIPی ناونراوی Library پشتڕاست نەکراوە؛ ٩ test methodی یەکتا لە sourceدا هەیە، بەڵام تاقیکردنەوەی ١٥ دەرکردنی method نابێت بە ١٥ testی جیاواز هەژمار بکرێت.
+- پێش هەر تاقیکردنەوەی integrationی داهاتوو، fixtureێکی نوێ و ڕوون پێویستە کە runtimeی ڕاستەقینەی `course_id=grammar` و patchەکانی ٢٩ و٣١-v2 لەخۆبگرێت؛ تاقیکردنەوەی aliasی `grammar_course4` بەرامبەر `grammar`، baseline validation و hash identity بە ناوی testی جیاواز زیاد بکرێن.
+- دووبارەبوونی method nameەکان دەبێت بە ناوی یەکتا چاک بکرێن و unittest discovery count بە شێوەی ڕاستەوخۆ assert بکرێت.
+- هیچ فایلێکی prototype یان test لە Library دەستکاری نەکرا؛ هیچ پەچێک apply نەکرا؛ runtime، وانە، quiz، status، DB، Botkeep و Telegram نەگۆڕدرا. ئەم پاشکۆیە تەنها تۆماری auditی append-onlyیە.
