@@ -532,18 +532,34 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 with self.subTest(lesson=number, mode=mode):
                     context = SimpleNamespace(user_data={})
                     update, _ = self.make_update(f"{mode}:{number}")
-                    await callback(update, context, ROOT)
+                    await callback(
+                        update, context, ROOT,
+                        can_take_assessment=lambda user_id, lesson_id: True,
+                    )
                     session = context.user_data["arami_course1_sessions"][str(number)]
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
                     self.assertEqual(context.user_data["arami_course1_active"]["lesson"], number)
+
+    async def test_assessment_fails_closed_when_permission_callback_is_missing(self):
+        context = SimpleNamespace(user_data={})
+        update, query = self.make_update("assessment:6")
+        award = Mock(return_value=True)
+        await callback(update, context, ROOT, award_assessment=award)
+        self.assertEqual(context.user_data, {})
+        award.assert_not_called()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("مۆڵەتی ئەکادیمی", query.message.reply_text.await_args.args[0])
 
     async def test_assessment_completion_awards_once_for_its_lesson(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
         award = Mock(return_value=True)
         update, _ = self.make_update("assessment:6")
-        await callback(update, context, ROOT, award_assessment=award)
+        await callback(
+            update, context, ROOT, award_assessment=award,
+            can_take_assessment=lambda user_id, lesson_id: True,
+        )
 
         bank = load_question_banks(ROOT)[6]["assessment"]
         for index, question in enumerate(bank):
