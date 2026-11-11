@@ -219,3 +219,11 @@ Protected lesson SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; answer-
 ## Checkpoint update — Lesson 8 Q3 proposal added (2026-11-11)
 
 The editorial patch proposal now includes a proposal-only Lesson 8 Q3 stem refinement: use `bê pêvekeke raveker li pey navdêrê` to name the §66 environment, rather than the ambiguous `bê bireser`; retain `-in` (A) in the current option order. Proposal blob SHA verified: `11b6c6c055a149283f2b4275da15922e28d1f82d`. The proposal is not applied to the protected quiz/lesson or answer key. The 62-question cross-check report remains `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_LESSON_QUIZ_TERMINOLOGY_CROSSCHECK_2026-11-11.md` (SHA `e5e7b67bcc98504d0fd39b7da8a348ba8bee7350`). No runtime/deployment/test actions occurred; `main` remains read-only.
+
+
+## Checkpoint update — consolidated five-item proposal handoff (2026-11-11)
+
+- Consolidated handoff: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_PATCH_REVIEW_2026-11-11.md`, blob SHA `31efd8edba0aca2820ebe9b53d8eec424746b83e`.
+- Answer-key rationale proposal addendum: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md`, blob SHA `3e202d34739d6f55d2b079e8d0a6c38b1ddcb1ff`.
+
+The handoff now includes five proposed quiz items: L6 Q3, L8 Q3, L8 Q5, L10 Q1 and L10 Q2, plus the three Lesson 8 explanatory-line candidates. The key rationale proposal includes a draft rationale for L8 Q3 but remains proposal-only. No base quiz/key or lesson content was changed. All proposals require explicit approval; the outstanding language-editor decisions remain clearly recorded. No tests/CI, live runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only; GitHub history is not an independent off-site backup.
