@@ -766,3 +766,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L9 paradigm forms, L10 Q3–Q5, L11 Q1–Q5, and L12 Q2/Q4/Q5 are supported within the lesson's own stated framework and examples.
 - Together with Section 83, all 62 quiz items have received a lesson-by-lesson second-pass stem/scope screen. This is not native-speaker, psychometric or runtime certification.
 - No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 85 — 62-question / 45-rationale proposal coverage (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_TO_45_RATIONALE_COVERAGE_AUDIT_2026-11-11.md`, SHA `b395c1f456a7d3ad802c03776b6948062f5ff5cf`.
+- Structural parse found 45 unique proposal rows, 0 duplicates, and 17 quiz coordinates absent from the selective proposal pack. The answer-key file itself has rationale text for all 62 rows.
+- Absent proposal coordinates: L1 Q4; L5 Q2–Q4; L7 Q2–Q4; L8 Q4/Q6/Q7; L9 Q1–Q4; L11 Q4; L12 Q1/Q3. L1 Q4 and L12 Q1/Q3 are explicitly held; the other 14 are simply not selected for rewrite and must not be mislabeled as missing answer-key rationales or defective items.
+- No key/rationale/lesson/quiz/runtime/deployment content changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
