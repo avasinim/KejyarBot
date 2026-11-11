@@ -551,3 +551,14 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Ten editorial precision recommendations are recorded. Key cautions: scope -in to the taught indefinite paradigm; preserve the course-specific grammatical gender classification; use hêmaneke raveker consistently; retain L10's min agent/object caveat; name the L11 qerse subtype; distinguish lexical jmarnav from phrase function in nîv roj.
 - Holds remain L10 Q2, L12 Q1, L12 Q3; separate L1 Q4 kîtê/kitê notation issue remains.
 - Comparison used the reviewed lesson draft, not a fresh page-image review of every original source section. No answer key, quiz, lesson or runtime changes. No tests/CI or psychometric validation; main read-only; no separate ZIP/off-site backup claimed.
+
+
+## Section 60 — Source adjudication of held rationale items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SOURCE_ADJUDICATION_2026-11-11.md`, verified SHA `c985701ac40e326519713f1c91440687f5e26c43`.
+
+- L10 Q2: source §86 supports `wê` in the direct-object pronoun paradigm; in `Wê ew dît`, the same form is the inflected agent and `ew` the direct object. This is a distinction between paradigm form and clause role. Downgrade the prior source-conflict hold to a wording/clarity review; do not change the key on this evidence.
+- L12 Q1: source §§124–127 explicitly allows descriptive adjectives predicatively and without an expressed noun. The simple opening definition is an introductory prototype, not an exhaustive absolute. Keep held pending authorized wording and option review.
+- L12 Q3: exact `rengdêra/rengdêrê jmarîn` morphology remains unresolved; retain hold.
+- L1 Q4: prior page-image scope does not settle `kîtê/kitê`; retain separate orthographic hold.
+- No lesson, quiz, key, source, runtime or deployment changes; no tests/CI or psychometric validation. Archive branch only; main read-only; no separate ZIP/offsite backup claimed.
