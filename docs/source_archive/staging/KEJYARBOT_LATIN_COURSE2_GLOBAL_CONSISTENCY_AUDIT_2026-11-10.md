@@ -851,3 +851,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L12 Q5 key C (`nimûneyeke jmarnav`) is instructionally grounded; the initial Section 93 “verify example coverage” caution is resolved. No extra teaching note is needed for this reason and no key change is proposed.
 - The detailed confirmation was appended to `KEJYARBOT_LATIN_COURSE2_FULL_62_QUESTION_QUIZ_QUALITY_AUDIT_2026-11-11.md`; its updated SHA is `cb686f5c48d0d27f38ee9a4400ac7dcff2b30f19`.
 - No learner-facing file changed; no tests/runtime/CI/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Section 95 — Exact replacement proposals for L2 Q5, L3 Q3, L4 Q5 and L10 Q1 (2026-11-11)
+
+- Exact proposed stems/options and justifications were appended to `KEJYARBOT_LATIN_COURSE2_FULL_62_QUESTION_QUIZ_QUALITY_AUDIT_2026-11-11.md`, updated SHA `49c8d4b7b7918928d682174ec7f0f06d80b312a2`.
+- L10 Q1: rephrase to ask which form occurs in the Lesson 10 object-pronoun inventory; keep options and key B (`min`).
+- L2 Q5: replace repeated common-noun definition with contextual `Argesh û hesp` classification; proposed key B (`Argesh`).
+- L3 Q3: replace second masculine example `çem` with feminine-list example `jin`; proposed key B (`mê`).
+- L4 Q5: replace duplicate `hespin` recognition with plural agreement in taught sentence `Ev mehîn in`; proposed key B (`in`).
+- These are proposals only; native-Kurmancî editorial validation is still recommended. No quiz/key/lesson or runtime file changed; no tests/CI/runtime/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
