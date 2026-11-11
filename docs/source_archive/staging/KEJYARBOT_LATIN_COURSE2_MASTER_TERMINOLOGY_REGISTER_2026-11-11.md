@@ -271,3 +271,8 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_ANSWER_KEY_RATIONALE
 - High-priority holds: L10 Q2 (`wê` is analyzed as inflected agent in `Wê ew dît`, conflicting with the stem's object-form label); L12 Q1's overly narrow adjective definition; L12 Q3 morphology `rengdêra/rengdêrê jmarîn); L1 Q4 unexplained `kîtê/kitê`.
 - L6 Q3 needs the full noun-attached category `bireserê navdêrê`, not ambiguous bare `bireser`. Preserve contextual distinctions among clause role, word class and phrase function.
 - No answer, rationale, quiz or lesson content was edited; no test/CI, runtime, psychometric or learner-response analysis was performed. This is staging/editorial guidance only.
+
+
+### Register erratum — rationale audit note (2026-11-11)
+
+The preceding audit summary's L12 Q3 line has a punctuation typo in the displayed inline-code span. The unresolved forms are exactly `rengdêra jmarîn` and `rengdêrê jmarîn`; this correction clarifies the register note only and does not adjudicate either form.
