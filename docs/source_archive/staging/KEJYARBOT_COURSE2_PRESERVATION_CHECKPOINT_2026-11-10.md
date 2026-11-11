@@ -709,3 +709,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_PARALLEL_LESSON_ARTIFACT_SCOPE_AUDIT_2026-11-11.md`, SHA `33bcf3591574e38b8d67cf4e340ad1e13c007eca`.
 - The source-aligned lesson artifact has 60 quiz snippets; the reviewed draft and its reviewed answer key form the aligned 62-question pair. Keep both artifacts distinct and preserved; do not overwrite or merge based on assumed duplication.
 - No learner-facing/source/key/runtime/deployment edits or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Distractor candidates primary-source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_DISTRACTOR_CANDIDATES_PRIMARY_SOURCE_RECHECK_2026-11-11.md`, SHA `e766e4c4b06a28ffb09aa58cebf1323fd91250cd`.
+- Six candidate sets rechecked against the primary grammar: four retained with caveats; L5 Q1 distractors require non-overlapping alternatives; optional L4 Q5 contrast should not be used in Lesson 4 because it tests the Lesson 5 inflection concept before instruction.
+- No learner-facing/source/key/runtime/deployment changes or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
