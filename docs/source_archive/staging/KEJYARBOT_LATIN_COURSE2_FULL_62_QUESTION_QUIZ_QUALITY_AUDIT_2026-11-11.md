@@ -241,3 +241,21 @@ This pass targets the six sets previously flagged as having one or more obviousl
 - No new key or answer text is asserted beyond the current key mapping. No answer-key, quiz, lesson, rationale or runtime file was modified.
 - This is a text-based editorial proposal pass, not native-speaker certification, learner-response analysis, or proof that each distractor is optimally calibrated. Before adoption, check idiomatic Kurmanji, category parallelism and whether any distractor could become defensible under the full lesson's exceptions.
 - Proposals remain unapproved and unapplied.
+
+
+## Adoption record — owner-approved distractor refinements (2026-11-11)
+
+The owner explicitly authorized and approved all previously proposed work. Accordingly, the six Section 97 distractor refinements have now been applied to the separate review branch `review/latin-course2-approved-distractors-2026-11-11` in the reviewed 62-question quiz artifact only:
+
+- L1 Q1 — grammar definition: narrower linguistic-domain distractors.
+- L2 Q1 — noun definition: entity/action/property contrast.
+- L5 Q1 — tewang definition: role-only vs formal vs meaning-only change.
+- L5 Q5 — inflection exceptions: bounded masculine-singular overgeneralization and universal-rule overgeneralization.
+- L7 Q5 — definite plural marker: indefinite plural and case-marking distractors.
+- L12 Q1 — adjective function: nominal clause role and verbal agreement distractors.
+
+All six original correct-answer positions remain unchanged: B, B, B, C, C, B respectively. The answer-key file was fetched on the review branch and its blob SHA remains exactly `879e1525e720bdc25b8f6e896de3e388801238d0`; no key text or letter was altered. All lesson text and the separate 60-snippet source-aligned lesson artifact remain untouched by this six-item patch.
+
+The original proposal and its initial “not approved/applied” preservation statement remain in the append-only historical record; this adoption entry supersedes that status for these six items only. The work is an editorial self-review, not native-speaker certification or psychometric validation. It is not merged to `main`, not connected to runtime, and not deployed.
+
+Verification: all six replacement strings were read back from the review branch; quiz file SHA is `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`; the answer-key SHA is unchanged.
