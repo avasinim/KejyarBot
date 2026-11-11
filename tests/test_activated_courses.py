@@ -225,8 +225,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_lesson_with_rewards", return_value=True) as complete,
-            patch.object(bot, "get_user_level", side_effect=[1, 1]),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as complete,
             patch.object(bot, "check_badges"),
             patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
         ):
