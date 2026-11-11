@@ -140,3 +140,12 @@ A focused review of Lessons 4–8 and the comparative suffix example in Lesson 1
 - `pêveka raveker` is descriptive wording for an affix/suffix in a modifier-following environment; it is not a synonym that should replace the formal paradigm label.
 
 Therefore, do not treat `pêvek` and `veqetandek` as interchangeable in headings, glossary definitions, or quiz answers. This is an internal course terminology adjudication, not a claim that every Kurdish grammar tradition uses `veqetandek` identically. A Kurmanji language editor should still confirm the formal glossary wording against the cited edition before it is promoted as an authoritative definition. No lesson/quiz/key text was normalized. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS7_8_PEKVEK_VEQETANDEK_ADJUDICATION_2026-11-11.md`, verified blob SHA `ffac88211e309ede86159e8132d5e0d73c8c5be9`.
+
+
+## Source-page refinement — `veqetandek` category vs `pêvek` realization (2026-11-11)
+
+The direct source-page review for §§61–64 (printed pp.62–63) refines the definition above: `veqetandek` is the grammatical determiner category/function, defined by the source as a small word placed before or after a noun to identify/limit reference. Do not define it simply as a suffix. In Lesson 7, `-ê/-a/-ên` are attached after nouns in the main paradigm, while shortened `ê/a/ên` also occur before adjectives when the noun is understood/omitted. Lesson 8 teaches several syntax-conditioned indefinite forms and positions. `pêvek` is the broader morphological term for an affix/suffix and may describe a particular bound realization, but it is not interchangeable with the determiner category `veqetandek`.
+
+**Preferred glossary framing:** `veqetandek` = determiner (grammatical function/category); `pêvek` = affix/suffix (morphological form). Explain the realization and position of each determiner paradigm separately; retain the distinction between post-nominal attached forms and shortened pre-adjectival forms. This is source-aligned for the reviewed sections; the broader use of these terms across all Kurdish grammar traditions is not asserted.
+
+Source verification references: `KEJYARBOT_LATIN_COURSE2_LESSONS6_7_PAGE_IMAGE_REVIEW_2026-11-10.md` (blob SHA `6ff6e84792bc13f5835010401bfab89acd446295`) and `KEJYARBOT_LATIN_COURSE2_LESSON8_PAGE_IMAGE_REVIEW_2026-11-10.md` (blob SHA `0eaa37c517fdaf244b48cc69f953400393ab0812`). The refinement supersedes any wording above that reduces all determiners to suffix-like forms. No course content was edited.
