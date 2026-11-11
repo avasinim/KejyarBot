@@ -336,3 +336,14 @@ A focused comparison of Lessons 4–8 and the Lesson 12 comparative-suffix examp
 Editorial consequence: avoid global find/replace and do not mechanically substitute one term for the other in lesson headings, definitions, or quiz answers. The distinction is internally supported by the reviewed course's usage; a Kurmanji editor should still confirm the formal glossary definition against the cited edition. The full primary-source pages for §§61–67 were not independently reopened in this pass; the existing page-image review of §§68–70 does not prove every glossary-level definition. No lesson, quiz, answer-key, or runtime changes were made.
 
 Evidence note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS7_8_PEKVEK_VEQETANDEK_ADJUDICATION_2026-11-11.md`, blob SHA `ffac88211e309ede86159e8132d5e0d73c8c5be9`. Master terminology register addendum verified at blob SHA `a0268a554d8e5650bab7c8b20aa52537c4a628bc`.
+
+
+## Section 38 — source-based refinement: determiner category vs affix realization (2026-11-11)
+
+The existing primary-source page-image review for Lesson 7 §§61–64 (printed pp.62–63) was revisited for the `pêvek/veqetandek` question. It confirms that §61 defines `veqetandek` functionally as a small word placed before or after a noun to identify/limit reference; §62 separates definite and indefinite determiners. The category must therefore not be defined simply as “a suffix”.
+
+The course's Lesson 7 main definite forms `-ê/-a/-ên` attach after nouns, but the source also gives shortened `ê/a/ên` before adjectives when the noun is understood/omitted. Lesson 8 has several syntax-conditioned indefinite forms and positions. By contrast, `pêvek` is the broader morphological term for affix/suffix and can describe a particular bound realization, without naming the determiner category itself.
+
+**Controlling distinction:** `veqetandek` = grammatical determiner category/function; `pêvek` = morphological affix/suffix. Describe each paradigm's position and form separately. This refines the previous section's wording where it could be read as making every determiner inherently suffixal; it does not reverse the broader-vs-specific distinction or authorize any text normalization.
+
+Evidence notes: Lesson 6–7 page-image review blob `6ff6e84792bc13f5835010401bfab89acd446295`; Lesson 8 page-image review blob `0eaa37c517fdaf244b48cc69f953400393ab0812`; focused adjudication note latest blob `a3b9e85c8f8d78a1dfe3d14767834ef06f86c967`. No lesson, quiz, answer key, or runtime content changed.
