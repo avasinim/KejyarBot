@@ -500,3 +500,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Most terminology is consistent. Main assessment wording risks: L6 Q3's bare `bireser`; L8 Q2's less parallel option wording; L10 Q2 `forma bireserî` vs Lesson 9 `forma kirarî` and Lesson 10's example labeling `wê` as agent/subject; L11 Q3's shortened `forma girêkî`.
 - L12 Q1 `kiryar/kirar` and Q3 `rengdêra/rengdêrê jmarîn` remain unresolved. The adjective definition item is correctly keyed among current options but is narrower than source-supported predicative/substantivized use.
 - No quiz/key edits, tests/CI, or runtime checks occurred. `main` remains read-only; no separate ZIP/off-site backup is claimed.
+
+
+## Section 55 — Course 2 62-question distractor quality audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_DISTRACTOR_QUALITY_AUDIT_2026-11-11.md`, SHA `92e83ee006cf388f5b31b726deb7c3c493c28719`.
+- Reviewed all 62 questions/options against lesson text and 62-row reviewed key. Most have a one-best-answer within the course's framework; several distractors are weak/easy or repetitive.
+- L10 Q2 is not certified as unambiguous: `forma bireserî` keyed `wê` conflicts in ordinary reading with the lesson's own analysis of `Wê ew dît` (`wê` = inflected agent/subject; `ew` = direct object). Requires editor/source ruling before any item/key revision.
+- L6 Q3's bare `bireser` is a high-priority terminology ambiguity. L10 Q5 and L11 Q3 retain source/register scope notes.
+- No learner-facing changes, key edits, tests/CI, runtime checks, or psychometric analysis. `main` remains read-only; no separate ZIP/off-site backup is claimed.
