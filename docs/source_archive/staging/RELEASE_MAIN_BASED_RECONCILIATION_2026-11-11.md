@@ -1351,3 +1351,29 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - پێش هەر تاقیکردنەوەی integrationی داهاتوو، fixtureێکی نوێ و ڕوون پێویستە کە runtimeی ڕاستەقینەی `course_id=grammar` و patchەکانی ٢٩ و٣١-v2 لەخۆبگرێت؛ تاقیکردنەوەی aliasی `grammar_course4` بەرامبەر `grammar`، baseline validation و hash identity بە ناوی testی جیاواز زیاد بکرێن.
 - دووبارەبوونی method nameەکان دەبێت بە ناوی یەکتا چاک بکرێن و unittest discovery count بە شێوەی ڕاستەوخۆ assert بکرێت.
 - هیچ فایلێکی prototype یان test لە Library دەستکاری نەکرا؛ هیچ پەچێک apply نەکرا؛ runtime، وانە، quiz، status، DB، Botkeep و Telegram نەگۆڕدرا. ئەم پاشکۆیە تەنها تۆماری auditی append-onlyیە.
+
+
+## ٩.٥٠. پشکنینی provenanceی وانەکانی ١–٣١ لە runtimeی ئێستا و جیاکردنەوەی فهرستی مێژوویی — 2026-11-11
+
+### سەرچاوە و دۆخی branch
+- فایلی ئێستای `course_data/grammar_course4_lessons.json` لە branchی `release/main-based-reconciled-2026-11-11`، blob SHA: `1dd8abe8a128937c74a18cf04f99878b2e38d962`.
+- JSONی ئێستا ٥٠ وانەی تێدایە؛ `course_id=grammar` و `curriculum_state=50_lessons_beta_review_31_existing_quizzes_19_pending_review_no_quizzes`.
+- فهرستی `docs/COURSE4_LESSONS_01_46_MASTER_PRESERVATION_INDEX_2026-11-08.md` و ماتریسی `docs/COURSE4_SOURCE_TO_RUNTIME_MAPPING_MATRIX_2026-11-08.md` بە ڕوونی دەڵێن لە branchی مێژوویی `feat/course4-clean-port-main-20261106` نووسراون؛ ئەوان بە خۆیان دۆخی branchی ئێستا ناگرنەوە. ئەم فهرستە لە مێژوودا ٣١ وانەی runtimeی ئەو branchە تۆمار دەکات، لە کاتێکدا branchی ئێستا ٥٠ وانەی Betaی تێدایە. ئەمە دوو snapshotی جیاوازن، نە بەڵگەی سڕینەوە یان هەڵەی داتای ئێستا.
+
+### ئەنجامی machine-readableی وانەکانی ١–٣١
+- هەموو ٣١ وانە لە JSONی ئێستا هەن و هەر یەکەیان ٨ Quiz itemیان هەیە.
+- هیچکام لە وانەکانی ١–٣١ `source_path` یان `source_markdown`ی پڕکراوە لەخۆناگرن؛ ٣١/٣١ بەم دوو خانەیە provenanceی ڕاستەوخۆی پەیوەست بە runtime نیشان نادەن.
+- هەموو ٣١ وانە `review_status=scientific_review_complete_with_qualified_notes`یان هەیە، جگە لە وانەی ١٣ کە `internal_cross_lesson_synthesis_no_external_source_mapping` ـە.
+- ئەم دۆزینەوەیە بە مانای نەبوونی سەرچاوە یان بەڵگەی مێژوویی نییە؛ بەڵکو واتای ئەوەیە کە لە خودی recordی runtimeدا پەیوەندیی source_path/source_markdownی ڕاستەوخۆ نییە. پێویستە provenanceی patch و archive بە جیاوازی بپارێزرێت و بۆ هەر وانە baselineی دیاریکراو بە SHA و snapshot پەیوەست بکرێت.
+
+### دۆخی پەچەکان و سنووری ئەم auditە
+- فهرستی Library پەچەکانی تاکەوانە ٤٤ فایل/٤٢ lesson_id تۆمار دەکات؛ وانەکانی ١،٢،٤،٥ و٨–٣١ لەو کۆمەڵەیەدان، لەگەڵ دوو وەشانی ٢١ و٣١. وانەکانی ٣،٦،٧ و٤٦ پەچی تاکەوانەیان لەو فۆڵدەرەدا نییە.
+- پەچی ٣١-v2 بە `course_id=grammar_course4` و baselineی ژمارەییی ساختاریی main branch تۆمارکراوە، بەڵام runtimeی ئێستا `course_id=grammar` بەکاردەهێنێت؛ alias mismatchەکە لە پاشکۆی ٩.٤٨/٩.٤٩دا تۆمارکراوە.
+- پەچی ٢٩ baselineی ڕوون و ژمارەییی پێش‌جێبەجێکردنی نییە؛ نابێت بە تەنها لەسەر ژمارەی runtimeی ئێستا پەسەند بکرێت.
+- پەچەکان بە شێوەی archive تۆمارکراون؛ ئەمە بەڵگەی جێبەجێبوونیان لە runtime نییە. هیچ generic loader لە runtimeدا پەچەکانی Library ناخوێنێتەوە.
+
+### یاسای پاراستن و هەنگاوی داهاتوو
+1. فهرست و ماتریسی 2026-11-08 وەک snapshotی مێژوویی دەمێننەوە؛ نابێت بەبێ تۆماری version/ref نوێ بکرێنەوە یان وەک دۆخی branchی ئێستا بخوێندرێنەوە.
+2. بۆ وانەکانی ١–٣١، پێویستە manifestێکی نوێی provenance دروست بکرێت کە بۆ هەر وانەیەک source artifact، SHA-256، baseline JSON record، patch file hash، variant policy، Quiz snapshot و evidenceی review بە جیا تۆمار بکات.
+3. هەر شوێنێک baselineی بەڵگەدار نییە، بە `baseline_missing` نیشان بدرێت و loader fail-closed بێت؛ ژمارەی یەکسان یان statusی review بەڵگەی exact content نییە.
+4. هیچ source_path/source_markdown، review_status، Quiz، runtime record یان patch لەم پاشکۆیەدا نەگۆڕدرا؛ هیچ patchێک apply نەکرا؛ هیچ DB، Botkeep یان Telegram نەگۆڕدرا.
