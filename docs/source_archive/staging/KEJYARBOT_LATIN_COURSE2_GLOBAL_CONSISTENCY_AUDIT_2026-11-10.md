@@ -418,3 +418,14 @@ The quiz does **not** directly assess the full six-class adjective taxonomy, deg
 Xebata 1's `nîv roj` needs an explicit teacher-facing rubric identifying whether the expected answer concerns lexical class, noun-phrase function, or the course's adjective/`jmarnav` distinction. Xebata 3 is the clearest practice for comparing numeral adjective with independent `jmarnav`; a model answer should make the “expressed noun vs independent use” criterion explicit. These are recommendations only; no lesson/exercise text was changed.
 
 Detailed matrix: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_LEARNING_OBJECTIVE_ASSESSMENT_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `c90ca1fee11df39f200fd7222ac0bfb284baf883`. No protected content or runtime files changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## 47. Lesson 12 exercises — teacher rubric and ambiguity review (2026-11-11)
+
+A provisional teacher-facing rubric has been archived for Xebata 1–3. Clear examples include `hespê mezin` (descriptive), `ev keçik` (demonstrative), `sê mal` (numeral adjective), `kîjan mirov` (interrogative), `hin çiya`/`gelek fêkî` (indefinite), and `hespê min` (possessive). `mehînên te` needs Kurmanji idiomaticity/morphology review. `tu mirov` needs context to disambiguate intended indefinite reading.
+
+Two items must not be force-keyed without a decision: `kurên van` can be read as a post-nominal/genitive demonstrative possessor rather than an attributive adjective modifying `kur`; `nîv roj` raises a category-vs-function issue because `nîv` is presented as a `jmarnav` example while it modifies an expressed noun here. Oblique forms `vî hespî` and `van hespan` need context if the exercise assesses interpretation rather than form recognition.
+
+Xebata 2 implicitly expects six examples (one per class) but does not state the count or marking criteria. Xebata 3 needs a teacher rubric that contrasts a numeral modifying an expressed noun (`sê mal`) with the independent `jmarnav` use in the course's adopted framework. A provisional model answer is archived, pending Kurmanji copy-edit.
+
+Detailed rubric: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`, blob SHA `6abe7c8440175b0f5f50781b1ee6f4456b54a4fc`. No learner-facing or protected content changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
