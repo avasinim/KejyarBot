@@ -366,8 +366,8 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 
 ## Checkpoint update — Lesson 12 source-to-terminology alignment (2026-11-11)
 
-- New audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_TO_TERMINOLOGY_ALIGNMENT_AUDIT_2026-11-11.md`, verified blob SHA `d0784cea1028a9a0625621f8f5f2859adadfee31`.
-- Global consistency audit Section 48 appended; verified global audit blob SHA: `6b861360235db8ed0e107ae28c82f4f9319e21e0`.
+- New audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_TO_TERMINOLOGY_ALIGNMENT_AUDIT_2026-11-11.md`, verified blob SHA `017faf373f704a08eb77f5be7a45b75ea1ece828`.
+- Global consistency audit Section 48 appended; verified global audit blob SHA: `90db4ec8a3c24cb8e49c6e4f8edb66c9441e1091`.
 - The six adjective classes remain unchanged; ordinal `rêzîn` is treated as a subtype within numeral adjectives, not a seventh class. The audit distinguishes word class, subclass, syntactic function, and surface form.
 - Clarified lesson-internal readings for exercise items: `nîv roj` = `jmarnav` used before an expressed noun (with a modifying/quantifying phrase function); `kurên van` is listed by the lesson under possessive examples and provisionally belongs to `xwemalîn`, subject to Kurmanji editor review.
 - Predicative/substantivized adjective uses and source/course terminology mappings are recorded. Q3's `rengdêra jmarîn` vs `rengdêrê jmarîn` remains unresolved.
