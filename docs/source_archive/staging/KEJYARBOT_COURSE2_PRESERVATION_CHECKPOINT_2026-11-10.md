@@ -817,3 +817,9 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Structural verification after edits: 62 quiz items, 62 answer-key rows, 62/62 keyed option text matches, zero mismatches.
 - Quiz SHA `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`; key SHA `66aa4476365f4766d7916403b25f2886f5fd2e70`.
 - Review branch only. No merge to `main`, runtime, Railway, Botkeep, Telegram or deployment action. Native-speaker review remains advisable.
+
+
+## Checkpoint — Section 105 lexical spelling decision (2026-11-11)
+
+- Documented the `mehin` source transcription / `mehîn` normalized teaching-spelling distinction using Kurmanji lexical and usage references.
+- Keep source-aligned text unchanged; retain `mehîn` in the reviewed teaching draft. No quiz or answer-key change.
