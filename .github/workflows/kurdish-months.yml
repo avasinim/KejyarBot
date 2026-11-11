@@ -14,6 +14,9 @@ on:
       - "tests/test_kurdish_months.py"
       - ".github/workflows/kurdish-months.yml"
 
+permissions:
+  contents: read
+
 jobs:
   test-kurdish-months:
     runs-on: ubuntu-latest
