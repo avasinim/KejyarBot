@@ -492,3 +492,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Patch records 11 refinements to existing rationale proposals plus a source-adjudicated proposed rationale for L10 Q2. The answer remains C (`wê`); rationale distinguishes its paradigm form from its clause role in a transitive past sentence.
 - 45 rationale items now have proposed wording across the 44-row base proposal and this delta patch. L12 Q1 and Q3 remain withheld; L1 Q4 notation issue remains open. None approved or applied.
 - No lesson, quiz, key, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI. `main` read-only; GitHub archive is not a separate ZIP/off-site backup.
+
+
+## Checkpoint — 45 rationale mapping verification (2026-11-11)
+
+- Verification note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_PROPOSALS_KEY_MAPPING_VERIFICATION_2026-11-11.md`, SHA `6d38e27867915d62dab0fd78140a346e4a67bbaa`.
+- Confirmed 44/44 base rationale rows map to the reviewed answer-key rows, with zero missing mappings and zero key-letter mismatches. The refinement patch contributes one additional distinct rationale, L10 Q2 (C / `wê`); its other 11 table rows refine items already in the base set. Total distinct proposed items: 45.
+- This is mapping validation only, not linguistic certification or approval. L12 Q1/Q3 remain held; L1 Q4 notation remains open. No lesson, quiz, answer key, runtime or deployment changes; no tests/CI. `main` read-only; no separate offsite backup claimed.
