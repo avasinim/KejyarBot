@@ -37,3 +37,22 @@ These are wording proposals only. Do not globally replace every occurrence of `b
 This note does not adjudicate the underlying grammar beyond the stated source-aligned lesson text. A Kurmanji editor should approve the preferred equivalent of “postnominal descriptive element” before any learner-facing copy is changed. Preserve the suffix paradigm, examples, keys and original content until explicit approval.
 
 No lesson, quiz, answer-key, runtime, parser, manifest, database, Botkeep, Telegram or deployment file was changed. No tests/CI, runtime checks, learner-response analysis or psychometric validation was performed. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
+
+
+## 5. Item-specific rationale proposals
+
+The current reviewed answer key still gives only a generic confirmation for L6 Q3 and L8 Q3. The following concise explanations are proposed for editorial review; they are not applied.
+
+**L6 Q3 — Key A (`beza`):**
+
+> Di koma `hespê beza` de `beza` navdêrê `hesp` rave dike û agahiyek li ser wê zêde dike; ji ber vê yekê `bireserê navdêrê` ye. `hesp` serê koma navdêrî ye, ne bireserê navdêrê.
+
+This explains why `beza` is the modifier and `hesp` is the head, while retaining the full technical term.
+
+**L8 Q3 — Key A (`-in`):**
+
+> Di paradigmaya §66 de, dema hêmaneke raveker li pey navdêrê nayê, `-in` forma gelemjimara nebinavkirî ye: `hespin` / `mehînin`. `-ên` veqetandeka binavkirî ye, lê `-a` di vê paradigmaya gelemjimara nebinavkirî de nîşana rast nîne. Dema hêmaneke raveker li pey navdêrê were, paradigma ya §67 formên cuda, wek `-ine`, bikar tîne.
+
+This explanation aligns with the actual option set A `-in`, B `-ên`, C `-a`, and the §66/§67 distinction. It should be paired with the proposed explicit stem wording in Section 3 so that “bê bireser” does not carry an unintended clause-level reading.
+
+The exact Kurdish wording remains subject to editorial review. No key letter or source text has been changed.
