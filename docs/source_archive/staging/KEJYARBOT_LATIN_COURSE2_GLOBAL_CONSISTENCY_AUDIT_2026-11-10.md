@@ -272,3 +272,11 @@ The source text uses `bireser` for the noun-attached elements in §69. Because t
 `Dema ku ji yekê zêdetir bireserên navdêrê bi navdêrê ve girêdayî bin û ew bireser bi hev re komeke navdêrî pêk bînin, her yek ji wan li gorî mêjer û zayenda xwe veqetandeka cuda werdigire.`
 
 This is a language-editor candidate, not a source quotation and not an approved edit. It preserves §69's each-linked-element rule and avoids confusion with the separate §68 final-noun rule. Consolidated handoff current blob SHA: `c648fae070f10691ebcb754b772544af0a343ff8`. Source PDF page images were directly inspected: printed p.66 (PDF index 66) shows §68 and the opening of §69; printed p.67 (PDF index 67) continues §69 and begins §70. No reviewed lesson, quiz, key, runtime or deployment file changed.
+
+
+## 34. Full 12-lesson terminology and orthography consistency audit (2026-11-11)
+A complete scan of the 651-line reviewed Course 2 draft was segmented by all 12 lesson headings, then key terminology occurrences were checked in context. The append-only report is `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_12LESSON_TERMINOLOGY_ORTHOGRAPHY_AUDIT_2026-11-11.md`, verified blob SHA `d727d0d2c49109f254eacc954ce22206054e568f`.
+
+Key findings: preserve the explicit distinction between `bireserê navdêrê` and clause-level `bireser`; retain a deliberate broad/specific distinction between `pêvek` and `veqetandek` rather than mechanically substituting; keep pronoun forms separate from syntactic roles; and do not globally normalize `ko` and `ku`, whose use is source/function-sensitive. Confirmed editorial issues include the within-Lesson-12 variation `rengdêrê jmarîn` / `rengdêra jmarîn`, unresolved mixed-script lines 290/292/294 in the protected Lesson 8 base, and the undefined paired gloss `pêşnavdêr/bireser` in Lesson 6. The preferred Lesson 12 form and Lesson 6 gloss require language-editor adjudication; no automatic replacements are authorized.
+
+The report is an audit only. The reviewed lesson base remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; no lesson, quiz, key, runtime, test, manifest, database, Botkeep, Telegram, or deployment files were changed. Tests/CI were not run; `main` remains read-only.
