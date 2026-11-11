@@ -47,7 +47,7 @@ Pêşî cudahiya zimanê devkî û nivîskî ronî bikin: di zimanê devkî de h
 4. Çima `Îro dinya sar e` komek e, ne tîp an kît?
 
 ### Kuis — 5 pirs
-1. Gramêr çi ye? A) Tenê rêz û awayê derxistina dengên ziman B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) Tenê pêkhate û avakirina peyvan
+1. Gramêr çi ye? A) tenê rêzikên bilêvkirina dengên ziman B) tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman C) tenê rêzikên avakirina peyvan
 2. Li gorî rêzimanê, çend hêmanên bingehîn ên ziman hene? A) 3 B) 4 C) 6
 3. Tîp çi ye? A) Dengê ku bi dev tê derxistin B) nîşana nivîskî C) Yekeya ku wateya xwe heye
 4. `hesp` wek yekeya watedar di rêzbendiya ziman de çi ye? A) kît B) bêje C) komek
@@ -71,7 +71,7 @@ Hevenav ji bo gelek endamên heman komê tê bikaranîn; serenav kes, heywan an 
 Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurdistan, hesp, Herekol`.
 
 ### Kuis — 5 pirs
-1. Navdêr çi nîşan dide? A) Kar an pêvajoya di hevokê de B) kes/heywan/tişt C) Taybetmendiya navdêrekê
+1. Navdêr çi nîşan dide? A) kes/heywan/tişt di kar an pêvajoyekê de B) kes/heywan/tişt C) taybetmendiya kes/heywan/tişt
 2. `hesp` çi ye? A) serenav B) daçek C) hevenav
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
 4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
@@ -184,11 +184,11 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 3. Ji bo çima `gund` di hin nimûneyan de bê tewang dimîne, sedemê ji rêbazê dengên `e/a` re girê bide.
 
 ### Kuis — 5 pirs
-1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
+1. Tewang çi ye? A) guherîna erkê peyvê bê guherîna forma wê B) guherîna forma peyvê C) guherîna wateya peyvê bê guherîna forma wê
 2. Di dema niha de, di nimûneya bireserê ya yekjimar nêr de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
 3. Di dema niha de, di nimûneya bireserê ya yekjimar mê de forma tewandî ya `mehîn` çi ye? A) mehînê B) mehîna C) mehînan
 4. Di hevoka `Ez hespan dibînim` de `hespan` çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
-5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
+5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) hemû navên nêr di yekjimarê de bi -î tên tewandin B) hemû navdêr bi heman rêbazê tên tewandin C) na
 
 ---
 
@@ -257,7 +257,7 @@ Veqetandeka rast hilbijêre:
 2. Di pergala veqetandekên binavkirî de `-ê` bi gelemperî ji bo çi ye? A) mê yekjimar B) gelemjimar C) nêr yekjimar
 3. Di pergala veqetandekên binavkirî de `-a` di nimûneyên rêzimanê de ji bo çi ye? A) mê yekjimar B) nêr yekjimar C) gelemjimar
 4. Di pergala veqetandekên binavkirî de `-ên` ji bo çi ye? A) tenê mê yekjimar B) gelemjara her du zayendan C) tenê nêr yekjimar
-5. `hespên Soro` çi ye? A) veqetandeka nebinavkirî B) lêker C) veqetandeka binavkirî ya gelemjimar
+5. `hespên Soro` çi ye? A) veqetandeka nebinavkirî ya gelemjimar B) nîşana tewangê C) veqetandeka binavkirî ya gelemjimar
 
 ---
 
@@ -620,9 +620,9 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 
 ### 10. Testa Kejyar
 1. Rengdêr çi dike?
-A) Têkiliya navdêrê bi lêkerê re diyar dike
+A) erkê navdêrê di hevokê de wek kirar an bireser nîşan dide
 B) taybetmendî an taybetiya navdêrê rave dike
-C) Kes û hejmarê lêkerê li gorî kiryarê diguherîne
+C) lêkerê li gorî kes û mêjer diguherîne
 
 2. mezin di hespê mezin de çi ye?
 A) jmarnav
