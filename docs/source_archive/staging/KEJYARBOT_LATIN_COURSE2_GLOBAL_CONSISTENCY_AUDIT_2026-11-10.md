@@ -201,3 +201,11 @@ Prepared a separate proposal document translating the distractor/orthography fin
 Proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md` (latest proposal blob `e2c9238cb36b6792ddc3b49ba260c49d6d2a5c6f`; initial creation commit `c81af46f19cb499116977a148b4193e73e652fee`; wording refinement commit `706b0a52978117695608222e2315b217817daa50`).
 
 The reviewed lesson and answer-key files remain unchanged. The proposal requires separate explicit approval before a new dated patch artifact is created. No runtime/test/manifest/DB/Botkeep/Telegram/deployment change was made; `main` remains read-only.
+
+
+## 27. Proposed answer-key rationale patch prepared (2026-11-11)
+A companion proposal now supplies matching answer-key rationale text for the four proposed quiz refinements: Lesson 6 Q3, Lesson 8 Q5, and Lesson 10 Q1–Q2. It preserves the current proposed key letters (L6 Q3=A, L8 Q5=C, L10 Q1=B, L10 Q2=C) and explains the intended grammatical context. It is explicitly proposal-only; no answer-key row has been changed.
+
+Proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md` (creation commit `43c248d19b347f33568763cbcf2cc5a45ff641a8`). It must be applied only to a new dated key copy after the related quiz/lesson proposal is explicitly approved. The final option order must be rechecked before retaining any answer letter.
+
+No baseline reviewed quiz/key, source lesson, runtime, tests, manifest, DB, Botkeep, Telegram, or deployment state changed. `main` remains read-only.
