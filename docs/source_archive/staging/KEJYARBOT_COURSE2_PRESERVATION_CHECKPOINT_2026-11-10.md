@@ -281,3 +281,14 @@ A further source-page review refined the Lesson 7–8 adjudication: §61 defines
 - Source page-image evidence: Lessons 6–7 review blob `6ff6e84792bc13f5835010401bfab89acd446295`; Lesson 8 review blob `0eaa37c517fdaf244b48cc69f953400393ab0812`.
 
 This refinement supersedes only the earlier too-narrow phrase implying that all determiners are suffix-like. No lesson, quiz, answer key, runtime, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime check occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lessons 6, 8 and 12 modifier/adjective/object adjudication (2026-11-11)
+
+- New append-only adjudication: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS6_8_12_MODIFIER_ADJECTIVE_OBJECT_ADJUDICATION_2026-11-11.md`, verified blob SHA `b245160ce26b27d6bc1adeb8416708febc722824`.
+- Master terminology register addendum verified blob SHA: `bcae04276e7946d4874a2df1a062636f99a946c3`.
+- Global consistency audit section 39 verified blob SHA: `0367e14204d552f6f0b46d5d5d68424ef938547d`.
+
+Working distinction: `bireserê navdêrê` is the broad syntactic noun-attached modifier/complement function; `rengdêr` is the adjective word class; bare `bireser` is the clause-level object role. For `ev keçik`, Lesson 12's internal taxonomy supports demonstrative adjective/modifier; for `Ev hat.`, independent demonstrative pronoun. Lesson 6's `pêşnavdêr/bireser` slash-pair and Lesson 8's `bireser/rengdêr` shorthand remain editorial clarification targets, not silently corrected text. Lesson 12 page images were not reopened in this pass; that taxonomy is internally checked against the staged source-aligned text.
+
+No source-aligned lesson, reviewed lesson, quiz, answer key, runtime, parser, test, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime checks were performed. Work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
