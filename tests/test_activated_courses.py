@@ -407,6 +407,29 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(result)
         award.assert_not_called()
 
+    def test_every_active_course_uses_explicit_fail_closed_academic_approval(self):
+        active_course_ids = {
+            course["id"] for course in bot.COURSES if course.get("status") == "active"
+        }
+        self.assertEqual(active_course_ids, set(bot.ACADEMIC_REVIEW_REQUIRED_COURSE_IDS))
+
+        # Course 4 Lesson 13 is explicitly approved with qualified notes.
+        self.assertFalse(bot.lesson_is_pending_review("grammar_13"))
+        self.assertFalse(bot.lesson_is_beta_review("grammar_13"))
+
+        # Unknown and missing statuses must never silently become official.
+        approved_record = dict(bot.LESSON_DATA["grammar_13"])
+        for status in ("future_unrecognized_status", "draft_editorial_review", None):
+            with self.subTest(status=status):
+                record = dict(approved_record)
+                if status is None:
+                    record.pop("review_status", None)
+                else:
+                    record["review_status"] = status
+                with patch.dict(bot.LESSON_DATA, {"grammar_13": record}):
+                    self.assertTrue(bot.lesson_is_pending_review("grammar_13"))
+                    self.assertTrue(bot.lesson_is_beta_review("grammar_13"))
+
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
