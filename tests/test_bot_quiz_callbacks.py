@@ -297,6 +297,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "check_badges"),
             patch.object(bot, "quiz_requires_submission", return_value=False),
             patch.object(bot, "next_course_lesson", return_value=next_lesson),
+            patch.object(bot, "lesson_is_pending_review", return_value=False),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             await bot.finish_lesson(update, context)
 
@@ -426,7 +429,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.start_quiz(update, context)
         self.assertNotIn("quiz", context.user_data)
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
+        self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
 
     async def test_initial_question_delivery_failure_clears_new_quiz_state(self):
         lesson = "grammar_01"
