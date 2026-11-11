@@ -347,3 +347,15 @@ The course's Lesson 7 main definite forms `-ê/-a/-ên` attach after nouns, but 
 **Controlling distinction:** `veqetandek` = grammatical determiner category/function; `pêvek` = morphological affix/suffix. Describe each paradigm's position and form separately. This refines the previous section's wording where it could be read as making every determiner inherently suffixal; it does not reverse the broader-vs-specific distinction or authorize any text normalization.
 
 Evidence notes: Lesson 6–7 page-image review blob `6ff6e84792bc13f5835010401bfab89acd446295`; Lesson 8 page-image review blob `0eaa37c517fdaf244b48cc69f953400393ab0812`; focused adjudication note latest blob `a3b9e85c8f8d78a1dfe3d14767834ef06f86c967`. No lesson, quiz, answer key, or runtime content changed.
+
+
+## Section 39 — Lessons 6, 8 and 12: noun modifier, adjective, and clause object (2026-11-11)
+
+Cross-check of the staged source-aligned text identifies three levels that must not be conflated:
+1. `bireserê navdêrê` is the broad syntactic noun-attached modifier/complement function (Lesson 6); its examples include several kinds of phrases and word classes, not adjectives alone.
+2. `rengdêr` is the adjective word class (Lesson 12), with demonstrative, numeral, interrogative, indefinite, descriptive, and possessive subclasses. An adjective can realize a noun-modifying function, but the broad noun complement is not synonymous with adjective.
+3. Bare `bireser` is the clause-level object role in other lessons; do not shorten `bireserê navdêrê` to bare `bireser` where ambiguity is possible.
+
+Internal consistency ruling: `ev` in `ev keçik` is a demonstrative adjective/modifier under the course's Lesson 12 `rengdêrên îşarkî` taxonomy; `Ev` in `Ev hat.` is an independent demonstrative pronoun. The Lesson 6 slash-pair `pêşnavdêr/bireser` remains unexplained and should be clarified only through an approved editorial patch; do not claim a definitive technical meaning for `pêşnavdêr` without source confirmation. Lesson 8's `bireser/rengdêr` shorthand should be expanded so broad following complement/modifier environments are not conflated with the narrower adjective class.
+
+Source limitation: Lesson 12 page images were not reopened in this pass; its taxonomy is verified against the staged source-aligned text. Existing Lesson 6 and Lesson 8 page-image reviews are cited in the dedicated adjudication. No lesson, quiz, key, or runtime content was changed. See adjudication blob SHA `b245160ce26b27d6bc1adeb8416708febc722824` and master register latest blob SHA `bcae04276e7946d4874a2df1a062636f99a946c3`.
