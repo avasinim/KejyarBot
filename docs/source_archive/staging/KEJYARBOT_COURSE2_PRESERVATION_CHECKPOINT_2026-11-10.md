@@ -688,3 +688,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ALL62_ANSWER_KEY_OPTION_ALIGNMENT_AUDIT_2026-11-11.md`, SHA `41c6659913e7f504902f732d1774251500ae34ac`.
 - All 62 quiz items and all 62 answer-key rows align by lesson/question coordinate; 0 duplicates, 0 missing keyed options, 0 answer-text mismatches.
 - Mapping verification only; not a linguistic correctness or runtime test. No source/key/runtime/deployment edits or tests/CI. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Targeted distractor refinement candidates (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_DISTRACTOR_REFINEMENT_CANDIDATES_2026-11-11.md`, SHA `2a583e79fc34325102328b04027f21a5715fb6e0`.
+- Six candidate distractor refinements retain existing key letters; one separate L4 Q5 coverage proposal changes key C to B. All remain unapproved/unapplied.
+- No learner-facing/source/key/runtime/deployment files changed; no tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
