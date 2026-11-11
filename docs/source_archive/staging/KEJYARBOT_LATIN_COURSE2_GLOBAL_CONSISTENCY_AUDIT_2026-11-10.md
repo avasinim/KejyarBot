@@ -673,3 +673,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_ITEMS_EXACT_STEM_FINAL_BOUNDARY_CHECK_2026-11-11.md`, SHA `2c0337b672f234e93dfe28a9319224c9a128cdc2`.
 - Re-read exact held stems/options and key rows. L1 Q4 key B remains supported; only the `kîtê/kitê` explanatory spelling is unresolved. L12 Q1 key B remains plausible for the core adjective function, but rationale must not imply the noun-modifying prototype is exhaustive. L12 Q3's semantic class is clear, but exact inflected phrase `rengdêra jmarîn` remains unresolved against prose labels; no normalization by guesswork.
 - No key change or new contradiction identified. Holds remain. No source/key/runtime/deployment changes or tests/CI; `main` read-only; no offsite backup claimed.
+
+
+## Section 74 — Final base-proposal row check and coverage boundary (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_L4_Q4_FINAL_ROW_CHECK_2026-11-11.md`, SHA `a56aab12447dcccdaa6add266ee855821cedfd6d`.
+- L4 Q4 was the final previously unreviewed row in the 44-item base proposal. The stem asks why `tewang` must be distinguished from `mêjer`; option/key B says they are two grammatical processes. The source and proposed rationale agree: number marks singular/plural, while inflection changes form according to grammatical role and clause structure; both may co-occur. No correction identified.
+- This completes targeted exact stem-option-key-source coverage of the 44 base proposal rows. The separate 45th item, L10 Q2, was source-adjudicated and checked in the prior targeted recheck. It does not constitute a native-speaker copy-edit or comprehensive linguistic certification. Held L1 Q4 notation, L12 Q1 scope and L12 Q3 morphology remain open.
+- No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
