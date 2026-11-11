@@ -473,3 +473,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Xebata 3's one-sentence task is clarified through the expressed-noun contrast: numeral adjective modifies a stated noun (`sê mal`), while `jmarnav` is presented independently/substantively in the course's framework. A provisional one-sentence model response and three-part marking criterion are recorded; equivalent correct wording should be accepted.
 - The audit preserves the unresolved morphology of `Rengdêrê jmarîn` vs quiz `rengdêra jmarîn` vs plural heading `rengdêrên jmarîn`; no normalization is authorized.
 - Audit-only: no learner-facing content, quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Section 52 — Lesson 12 internal definition/example consistency audit (2026-11-11)
+
+- Created and verified teacher-facing audit `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_INTERNAL_DEFINITION_EXAMPLE_CONSISTENCY_AUDIT_2026-11-11.md`, blob SHA `6488333dfc374f7ba3fa36240cdf1ebc019c9d4c`.
+- Reviewed Lesson 12 §§1–8 and its examples directly in reviewed draft SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108` (lines 479–619). This is an internal consistency audit, not a fresh source-page verification.
+- Findings: opening definition's umbrella is too broad without an explicit course-taxonomy caveat; attributive/pronominal readings of `ev/ew` and `çend/gelek` need context; demonstrative oblique forms and case-conditioned numeral examples need clause context; possessive examples mix possessor forms and need morphology separated; `nîv roj` must be described at both lexical-class (`jmarnav`) and phrase-function levels; reduced ordinals require recoverable nominal context.
+- Existing course dispositions are retained provisionally. No external claim is made that the course's six-way taxonomy is universal; `kitêba vî` and other constructions needing syntax/idiomaticity judgment remain open for source/editor review.
+- Audit-only: no learner-facing lesson/exercise/quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
