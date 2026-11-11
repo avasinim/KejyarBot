@@ -6,7 +6,7 @@ from arami_course1_telegram import load_manifest, _send_source, lesson_is_academ
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
-def menu_keyboard(assessment_enabled=True):
+def menu_keyboard(assessment_enabled=False):
     rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ٥", callback_data="arami5:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ٥", callback_data="arami5:practice")],
@@ -35,7 +35,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        assessment_enabled = True
+        assessment_enabled = False
         if can_take_assessment is not None:
             try:
                 manifest = load_manifest(base_dir)
@@ -73,8 +73,8 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             ]]),
         )
         assessment_enabled = (
-            can_take_assessment is None
-            or can_take_assessment(query.from_user.id, lesson_record["id"])
+            can_take_assessment is not None
+            and can_take_assessment(query.from_user.id, lesson_record["id"])
         )
         await query.message.reply_text(
             "📚 بۆ بینینی وانەکانی تر، منیووی کۆرسی ١ بکەرەوە.",
@@ -82,6 +82,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action in {"practice", "assessment"}:
+        if action == "assessment" and can_take_assessment is None:
+            await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
+            return
         lesson_record = None
         if can_open is not None or (action == "assessment" and can_take_assessment is not None):
             try:
