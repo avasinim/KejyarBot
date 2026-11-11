@@ -467,3 +467,12 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Updated proposal artifact: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md`, verified SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`.
 - Confirmed 44/44 proposed rationale rows map to the existing answer-key option letter; zero missing mappings and zero mismatches.
 - Mapping validation is not linguistic certification. All proposals remain unapproved; no key/quiz/lesson or runtime changes.
+
+
+## Checkpoint update — linguistic/source review of 44 rationale proposals (2026-11-11)
+
+- Audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_RATIONALE_PROPOSALS_LINGUISTIC_SOURCE_ALIGNMENT_AUDIT_2026-11-11.md`, verified SHA `d1275daeedd8e7576524f30d71d1eb6276795ada`.
+- All 44 proposals were compared with the reviewed lesson draft and corresponding quiz/key items. Overall alignment is good; ten precision refinements are recorded for editorial review.
+- Holds remain: L10 Q2, L12 Q1, L12 Q3; L1 Q4 is a separate spelling/notation hold.
+- This is not fresh inspection of every original book page and does not constitute approval. No key, quiz, lesson, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI, learner-response or psychometric analysis.
+- `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup; none is claimed.
