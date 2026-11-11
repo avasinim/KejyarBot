@@ -96,7 +96,7 @@ The following are proposed full-line replacements for the three affected lines i
 
 **Draft line 292 — proposed replacement**
 
-`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin û ew bireser tevde navdêr û peyhev bireserên hev bin, her yek ji wan li gorî mêjer û zayenda xۆی veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
+`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin û ew bireser tevde navdêr û peyhev bireserên hev bin, her yek ji wan li gorî mêjer û zayenda xwe veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
 
 **Draft line 294 — proposed replacement**
 
