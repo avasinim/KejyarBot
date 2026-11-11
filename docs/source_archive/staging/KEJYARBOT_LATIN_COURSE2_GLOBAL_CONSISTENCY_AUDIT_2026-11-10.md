@@ -774,3 +774,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Structural parse found 45 unique proposal rows, 0 duplicates, and 17 quiz coordinates absent from the selective proposal pack. The answer-key file itself has rationale text for all 62 rows.
 - Absent proposal coordinates: L1 Q4; L5 Q2–Q4; L7 Q2–Q4; L8 Q4/Q6/Q7; L9 Q1–Q4; L11 Q4; L12 Q1/Q3. L1 Q4 and L12 Q1/Q3 are explicitly held; the other 14 are simply not selected for rewrite and must not be mislabeled as missing answer-key rationales or defective items.
 - No key/rationale/lesson/quiz/runtime/deployment content changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 86 — Quality triage of 14 non-selected rationale rows (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_14_UNSELECTED_RATIONALES_QUALITY_TRIAGE_2026-11-11.md`, SHA `883b338b20e3737e8f059a1b3ea87d96fd79e4e7`.
+- Reviewed all 14 rows absent from the selective 45-row rewrite pack but not already held: L5 Q2–Q4; L7 Q2–Q4; L8 Q4/Q6/Q7; L9 Q1–Q4; L11 Q4.
+- Result: 14/14 have existing answer-key rationales and each is sufficiently grounded in the lesson's cited section, paradigm mapping, or exact sentence. L5 Q2–Q4 explicitly preserve the present-tense object vs transitive-past agent distinction. No rewrite is warranted merely to fill the selective pack.
+- Clarified that 17/62 is proposal-pack noncoverage, not missing answer-key rationales. The three held rows L1 Q4, L12 Q1 and L12 Q3 remain separate.
+- No source/key/quiz/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
