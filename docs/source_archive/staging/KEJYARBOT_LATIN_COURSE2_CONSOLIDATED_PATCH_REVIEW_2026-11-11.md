@@ -1,0 +1,90 @@
+# Course 2 — consolidated editorial patch review and handoff
+
+**Date:** 2026-11-11  
+**Branch:** `archive/preservation-audit-2026-11-10`  
+**Status:** consolidated proposal only — approval pending; nothing applied  
+**Reviewed quiz baseline SHA:** `abc88219e2a0e249883e8d62c5117a9b3aaa3108`  
+**Reviewed answer-key baseline SHA:** `879e1525e720bdc25b8f6e896de3e388801238d0`  
+**Runtime baseline SHA:** `7139aec3d585919baac65f93c2630a519c995e04`
+
+## 1. Why this handoff exists
+
+The detailed editorial proposal accumulated several append-only correction notes while the Lesson 8 source pages were being adjudicated. Some historical notes contradict later findings. This file consolidates only the currently operative interpretation and proposed wording, so the next review does not accidentally act on superseded text. The historical records remain intact.
+
+**Controlling Lesson 8 source interpretation:** §68 is the final-noun agreement rule; §69 is the separate construction in which each linked complement receives its own determiner according to its own gender and number; §70 gives oblique forms `-ekî/-ekê/-ina` for the stated object environment. The last page-image adjudication in the editorial proposal, the page-image review addendum, global audit §30, and the preservation checkpoint are authoritative. Earlier contradictory notes in the append-only history are superseded.
+
+## 2. Operative proposed quiz edits
+
+These are the four proposed stem/option changes, preserving the currently keyed answers:
+
+### Lesson 6, Q3
+- Stem: `Di koma navdêrî `hespê beza` de, kîjan hêman `bireserê navdêrê` ye?`
+- Keep current options and key A (`beza`).
+- Reason: use the full noun-modifier term, not the ambiguous shortened `bireser`, which elsewhere denotes clause-level object.
+
+### Lesson 8, Q5
+- Stem: `Ma veqetandeka binavkirî ya gelemjimar `-ên` û veqetandeka nebinavkirî `-ine` heman erkê hene?`
+- A) Erê, her du formên binavkirî ne.
+- B) Erê, her du formên nebinavkirî ne.
+- C) Na, erkên wan cuda ne.
+- Key C.
+- Reason: the options test two distinct confusions between the definite and indefinite plural paradigms.
+
+### Lesson 10, Q1
+- Stem: `Di hevoka dema niha de `Tu ___ dibînî`, kîjan pronav li cihê bireserê tê?`
+- A) `te`; B) `min`; C) `me`.
+- Key B (`min`).
+- Reason: §86 gives the exact present-tense frame `tu min dibînî`; the frame, not the pronoun form alone, identifies the object role.
+
+### Lesson 10, Q2
+- Stem: `Di hevoka dema niha de `Tu ___ dibînî`, kîjan form ji bo pronavê kesê sêyem yekjimar a mê wek bireser tê?`
+- A) `wî`; B) `ew`; C) `wê`.
+- Key C (`wê`).
+- Reason: §86 gives the exact frame `tu wê dibînî`, avoiding confusion with `wê` as an inflected agent in past-transitive clauses.
+
+## 3. Operative proposed Lesson 8 explanatory-line replacements
+
+The following are proposal text only. They do not replace the reviewed baseline until explicit approval.
+
+**Reviewed draft line 290 — proposed replacement**
+
+`Ji ber vê yekê formên tewandî divê ji formên netewandî yên `-ek/-ek/-in` cuda bên fêrkirin.`
+
+The source distinction is between uninflected `-ek/-ek/-in` and oblique inflected forms `-ekî/-ekê/-ina` in the stated object environment (§70).
+
+**Reviewed draft line 292 — proposed replacement**
+
+`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin û ew bireser tevde navdêr û peyhev bireserên hev bin, her yek ji wan li gorî mêjer û zayenda xwe veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
+
+Source rule (§69): in the described construction, each linked complement receives its own determiner according to its own gender and number. Do not substitute §68's final-noun agreement rule here.
+
+**Reviewed draft line 294 — proposed replacement**
+
+`Nîşe: `-ek/-ek/-in`, `-ekî/-eke/-ine` û `-î/-e/-en` sê komên formên cuda ne; divê her yek li gorî şert û erkê xwe were bikaranîn. Ev form ji veqetandekên binavkirî `ê/a/ên` cuda ne.`
+
+This separates three indefinite-determiner environments (§§66–68) from the definite forms. It also removes the unintended Kurdish-Arabic-script fragments from the Latin-script prose.
+
+## 4. Source cross-check status
+
+- L6 Q3: §59–60 includes `hespê beza`; the noun modifier is `beza`.
+- L8 Q5: §§63 and 66–67 distinguish definite `-ên` from indefinite `-ine`.
+- L8 lines 290/292/294: original page images were inspected; the §68/§69 distinction and §70 oblique paradigm are recorded in the page-image review addendum and global audit §30.
+- L10 Q1/Q2: §86 explicitly supplies `tu min dibînî` and `tu wê dibînî`.
+- Proposed key sequence remains A / C / B / C. Option order in the reviewed quiz was checked against those proposed letters.
+
+**Remaining editorial caution:** source-rule correctness is verified, but the exact Kurmanji Latin phrasing of the three explanatory-line replacements—especially the terminology and syntax in line 292—should receive a final language-editor pass before approval. This is not a reason to alter the source interpretation.
+
+## 5. Approval and preservation gates
+
+No changes have been applied to the reviewed lesson/quiz baseline, answer-key baseline, runtime, tests, manifest, database, Botkeep, Telegram, or deployment.
+
+After explicit approval only:
+1. Create new dated append-only lesson/quiz and answer-key patch artifacts; never overwrite the baselines.
+2. Apply only the approved changes above.
+3. Recheck all four answer letters and exact answer texts against the final option order.
+4. Re-parse all 62 questions and 62 answer-key rows; verify missing/orphan/duplicate rows, valid option labels, and normalized answer-text matches.
+5. Re-scan the complete Latin-script draft for unintended mixed-script text and terminology drift.
+6. Append fresh SHAs and verification results to the global audit and checkpoint.
+7. Keep runtime and deployment untouched unless separately authorized.
+
+Tests/CI have not been run. Runtime behavior has not been tested live. The archive branch and GitHub commit history are not an independent ZIP/off-site backup. `main` remains read-only.
