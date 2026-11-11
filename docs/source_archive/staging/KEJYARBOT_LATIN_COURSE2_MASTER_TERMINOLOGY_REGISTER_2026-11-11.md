@@ -259,3 +259,15 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_ORTHOGRAPHY
 - Preserve `mehînê` in Lesson 5 Q3. Do not normalize grammatical contrasts such as `hespî/hespê` or the Lesson 8 suffix paradigms as spelling variants.
 - Open terminology decisions remain L10 Q2 `forma bireserî`, L12 Q1 `kiryar/kirar`, L12 Q3 `rengdêra/rengdêrê jmarîn`; these are not safe spell-check substitutions.
 - No quiz or answer-key edits. A consistent house style is proposed, not applied; parser compatibility was not tested.
+
+
+## Answer-key rationale specificity and source-support audit — 62 items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_ANSWER_KEY_RATIONALE_SPECIFICITY_SOURCE_SUPPORT_AUDIT_2026-11-11.md`, verified SHA `fc1e91a3435fcd89c551efc51a5bdb476393e210`.
+
+- The reviewed key has 62 rows matching 62 quiz items. **47/62 (75.8%)** rationales are generic confirmation only; 15 are item-specific to varying degrees.
+- Stronger rationale models: L5 Q2–Q4 (environment, example, §§55–56 distinction); L8 Q6–Q7 (source sections §§68 and 70, with Q7's object-environment limitation retained); L11 Q4 (actual clause-linking example).
+- L7 Q2–Q4 and L9 Q1–Q4 state relevant paradigms and citations, but are repetitive and could distinguish each person/gender/number form more explicitly.
+- High-priority holds: L10 Q2 (`wê` is analyzed as inflected agent in `Wê ew dît`, conflicting with the stem's object-form label); L12 Q1's overly narrow adjective definition; L12 Q3 morphology `rengdêra/rengdêrê jmarîn); L1 Q4 unexplained `kîtê/kitê`.
+- L6 Q3 needs the full noun-attached category `bireserê navdêrê`, not ambiguous bare `bireser`. Preserve contextual distinctions among clause role, word class and phrase function.
+- No answer, rationale, quiz or lesson content was edited; no test/CI, runtime, psychometric or learner-response analysis was performed. This is staging/editorial guidance only.
