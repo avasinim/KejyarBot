@@ -1006,17 +1006,14 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
             for button in row
         }
 
-    async def test_global_assessment_menu_includes_completed_arami_lessons(self):
+    async def test_global_assessment_menu_excludes_unapproved_arami_lessons(self):
         completed = [
             bot.ARMI_LESSON_IDS[0],
             bot.ARMI_LESSON_IDS[1],
             bot.ARMI_LESSON_IDS[4],
         ]
         callbacks = await self._open_global_menu("📝 تاقیکردنەوەکان", completed)
-        self.assertEqual(
-            callbacks,
-            {"arami1:assessment", "aramiC:assessment:2"},
-        )
+        self.assertEqual(callbacks, set())
 
     async def test_global_practice_menu_includes_completed_arami_lessons(self):
         completed = [
