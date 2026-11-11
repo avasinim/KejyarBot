@@ -730,3 +730,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L12 Q3 “sê di sê mal de çi ye?” key A is supported by Lesson 12 §4, which names numeral adjectives and explicitly gives `sê mal`. Exact singular inflected option label `rengdêra jmarîn` versus `rengdêrê jmarîn` remains unresolved; do not guess. Keep key A.
 - The retrieved repository files contain lesson synthesis, not the full printed text of Celadet §§124–127, and no authoritative native-Kurmanji ruling was available in this pass.
 - No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 81 — Lesson 6 Q3/Q4 “bireser” term boundary (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON6_Q3_Q4_BIRESER_TERM_BOUNDARY_RECHECK_2026-11-11.md`, SHA `0788cb3a644cdc3b32c08ee3de4872bb5dc7c7cb`.
+- Lesson 6 explicitly distinguishes `bireserê navdêrê` (noun modifier) from clause `bireser` (object) and warns that bare `bireser` is insufficient without context. L6 Q3 and Q4 stems nevertheless abbreviate the full term to bare `bireser`.
+- L6 Q3 key A (`beza`) and L6 Q4 key B (before/after noun) remain supported by lesson context. Proposed stem clarifications restore `bireserê navdêrê`; no key changes.
+- Added L6 Q3 and L6 Q4 to editorial holds. Cross-lesson distinction with L8 `bê bireser` and L10 clause object remains explicit; no global replacement.
+- No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
