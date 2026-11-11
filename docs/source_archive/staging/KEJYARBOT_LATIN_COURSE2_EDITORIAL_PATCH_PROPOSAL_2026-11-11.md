@@ -96,7 +96,7 @@ The following are proposed full-line replacements for the three affected lines i
 
 **Draft line 292 — proposed replacement**
 
-`Dema ku çend hêman bi navdêrê ve girêdayî bin û bi hev re komeke navdêrî pêk bînin, veqetandek li gorî mêjer û zayenda navdêra dawî tê hilbijartin. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
+`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin û ew bireser tevde navdêr û peyhev bireserên hev bin, her yek ji wan li gorî mêjer û zayenda xۆی veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
 
 **Draft line 294 — proposed replacement**
 
@@ -131,3 +131,16 @@ A direct inspection of the source PDF text and page image at printed pp.66–68 
 The same source check also clarifies line 290: §70 contrasts the uninflected forms `-ek/-ek/-in` with their oblique inflected forms `-ekî/-ekê/-ina`. The proposal therefore uses `formên netewandî` (uninflected forms), not the vague `formên bingehîn`. The reviewed base lesson remains unchanged. This file remains proposal-only.
 
 Primary-source locator: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p.67, §69 (PDF page index 66), and printed pp.67–68, §70 (PDF page indices 66–67). In §69 the source explicitly states that the determiner is applied according to the gender of the final noun; §70 lists `-ekî/-ekê/-ina` as inflected forms. The printed examples support these distinctions.
+
+
+## Page-image adjudication — distinguish §68 from §69 (2026-11-11; supersedes the immediately preceding correction)
+
+The immediately preceding correction incorrectly transferred the rule at the end of §68 to §69. Direct inspection of the original page images resolves the distinction:
+
+- **§68, printed p.66:** its concluding note says that where several nouns are linked by one complement, the determiner is selected according to the gender of the final noun. This is the final-noun agreement rule.
+- **§69, printed pp.66–67:** a separate construction is introduced when more than one complement is attached to a noun and the complements themselves form a linked noun sequence. The text says that each one receives a distinct determiner according to its own number and gender. The examples continue on printed p.67.
+- **§70, printed pp.67–68:** the uninflected forms `-ek/-ek/-in` take oblique forms `-ekî/-ekê/-ina` in the stated object environment.
+
+Accordingly, the proposed line 292 above correctly expresses the §69 rule: each linked complement receives its own form according to its own gender and number. The previous proposed wording about the final noun belongs only to §68 and must not replace §69. Line 290 also remains clarified as `formên netewandî` for the uninflected `-ek/-ek/-in` forms, in contrast with the oblique forms in §70.
+
+Evidence: the original PDF page image for printed p.66 shows the §68 final-noun note and the opening of §69 separately; the image for printed p.67 continues §69's examples and then begins §70. See the cited source pages and the page-image review note. The reviewed base lesson remains unchanged; this artifact remains proposal-only.
