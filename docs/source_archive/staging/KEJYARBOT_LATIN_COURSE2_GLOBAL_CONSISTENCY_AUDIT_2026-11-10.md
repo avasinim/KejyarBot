@@ -442,3 +442,14 @@ Detailed rubric: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_E
 - Evidence reconciles the reviewed draft SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108` with recorded source-page reviews pp.89–100 and pp.71–88; page images were not newly rescanned in this pass.
 
 No lesson, exercise, quiz, answer key, terminology register, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime checks occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Section 49 — Lesson 12 exercise rubric reconciled with source taxonomy (2026-11-11)
+
+- Appended a source-aligned teacher-rubric addendum to `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`; verified blob SHA `c7b7a3fe4ca131cdecab3a7db59330d400146f86`.
+- The addendum supersedes only the earlier provisional dispositions for two Xebata 1 items: `kurên van` follows the lesson's explicit `xwemalîn` example list (with detailed syntax/idiomaticity still requiring Kurmanji editor review); `nîv roj` is `jmarnav` under the lesson's lexical taxonomy, with a separate phrase-level quantifying/modifying function over expressed `roj`.
+- It fixes the answer-key terminology at six top-level adjective classes; `rêzîn` remains an ordinal subtype within `jmarîn), not a seventh class. It separately names word class, subclass, syntactic function, and surface form.
+- Xebata 2's six-example criterion and Xebata 3's three-part marking rubric are clarified for teachers. The model answer remains provisional pending Kurmanji copy-edit.
+- Q3's `rengdêra jmarîn` vs prose `rengdêrê jmarîn` remains unresolved; no normalization is authorized.
+
+Teacher-facing audit only. No learner-facing lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
