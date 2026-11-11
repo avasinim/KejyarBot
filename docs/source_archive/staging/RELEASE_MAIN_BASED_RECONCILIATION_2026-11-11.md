@@ -534,3 +534,19 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 پشکنینی ٤٣ فایلە گۆڕدراوەکانی PR نیشانی دا workflow/test/docs/code/lesson-data ـە؛ هیچ `.env`، token، password یان فایلێکی نهێنی لە ناوی فایلە گۆڕدراوەکاندا نەبوو. پەڕگەی `database.py` لە diffی PR نییە؛ پشکنینی migrationی پێشووتر نیشانی دا زیادکردنی ستوونی Beta بە `ALTER TABLE` و بێ سڕینەوەی ستوونە کۆنەکانە. هیچ DBی بەکارهێنەر نەخوێندرایەوە یان نەگۆڕدرا.
 
 بڕیار: هیچ دەستکاریی وانە، quiz، status، DB یان deploy پێویست نەبوو؛ جیاوازییەکان لە سنووری گۆڕینی زاراوە، appendix، ڕەشنووسی review-only و زیادکردنی وانەی review-only دان. پێویستە پێداچوونەوەی مرۆیی و سەرچاوەیی بۆ ڕەشنووسەکان بەردەوام بێت.
+
+
+## ٩.٢١. قفڵی Fail-Closed بۆ مۆڵەتی assessment ـی Arami — 2026-11-11
+
+پشکنینی callback ـی `arami_course1_telegram.py` دۆزینەوەیەکی پاراستنی کرد: لە کاتی دروستکردنی سێشنی assessment، callbackی ئەکادیمی داواکراو بوو، بەڵام callbackی `can_open` ئەگەر نەبوو، ڕێڕەوی سەرەتایی و سێشنی دواتر بە هەڵە وەک ڕێگەپێدراو مامەڵەیان لەگەڵ دەکرا. پەیوەستکردنی production لە `bot.py` هەردوو callbackی دەنارد، بەڵام APIی callback بە تەنها fail-closed نەبوو.
+
+چارەسەر لە commit ـەکانی:
+- `78393d398a19eafbf09bf952cb6da4f05c2f4bdc`: assessment لە سەرەتا ڕەت دەکرێتەوە ئەگەر `can_take_assessment` یان `can_open` نەبێت؛ لە هەر callbackی سێشنیشدا هەردوو مۆڵەتەکە دووبارە داوا دەکرێن و نەبوونی `can_open` سێشنەکە دەوەستێنێت.
+- `97f8f34bfdc74370270a633833a2a8ee4184fc66`: چاککردنی fixture ـی تاقیکردنەوەی سێشنی Lesson 6 بۆ ناردنی unlock guard لە هەموو callback ـەکانی.
+
+دوو تاقیکردنەوەی نوێ زیاد کران: نەبوونی unlock callback لە سەرەتادا، و ونبوونی callback لە ناو سێشنی assessment. لە هەڵسەنگاندنی CIی کۆمیتی پێش چاککردنی fixture، 566 تاقیکردنەوە تەنها بەهۆی fixture ـێکی کۆن لە Lesson 6 شکستیان هێنا؛ هیچ runtime logicێک بۆ لاوازکردنی قفڵەکە نەگۆڕدرا. لە headی `97f8f34...`:
+- Python checks: 566 tests، 11 skipped، success.
+- Review gate regression، Course 4 Beta review safety، Course 4 50-lesson Beta validation، Orthography structure و Quiz override validation: هەموویان success.
+- دووبارە جێبەجێکردنی Python checks و Orthography structureیش success بوو.
+
+ئەم گۆڕانکارییە تەنها پاراستنی assessment ـی Arami و fixture ـی تاقیکردنەوەیە؛ هیچ دۆخی پەسەندکردنی ئەکادیمی، ناوەڕۆکی وانە، داتای فێرخواز، DBی production یان deployment نەگۆڕدرا.
