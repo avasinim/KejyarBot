@@ -716,3 +716,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_DISTRACTOR_CANDIDATES_PRIMARY_SOURCE_RECHECK_2026-11-11.md`, SHA `e766e4c4b06a28ffb09aa58cebf1323fd91250cd`.
 - Six candidate sets rechecked against the primary grammar: four retained with caveats; L5 Q1 distractors require non-overlapping alternatives; optional L4 Q5 contrast should not be used in Lesson 4 because it tests the Lesson 5 inflection concept before instruction.
 - No learner-facing/source/key/runtime/deployment changes or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — L5 Q1 distractor refinement and L4 Q5 sequencing (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L5_Q1_DISTRACTOR_REFINEMENT_AND_L4_Q5_SEQUENCE_PATCH_2026-11-11.md`, SHA `bd7a1fae9dc1315fc57bbcd99f579e9505c4c297`.
+- L5 Q1 now has a cleaner proposed A/B/C contrast with key B retained. The `hespan/hespin` contrast is reserved for cumulative review after Lesson 5, not Lesson 4.
+- No learner-facing/source/key/runtime/deployment changes or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
