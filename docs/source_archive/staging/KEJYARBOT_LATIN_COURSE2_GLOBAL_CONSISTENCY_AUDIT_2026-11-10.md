@@ -721,3 +721,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Exact stem asks “Kîjan yek ji pronavên bireser e?” with key B (`min`). The key is supported if “pronavên bireser” means membership in the lesson's named paradigm. But the lesson explicitly shows forms such as `min/te` can be inflected agents in transitive-past clauses while another form (`ez`) is the actual object. The stem can therefore be read as asking syntactic function, not paradigm membership.
 - Recorded alternative stem wording asking which form belongs to the lesson's “pronavên bireser” table. Key B remains; no correction applied. New editorial hold L10 Q1.
 - No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 80 — Lesson 12 Q1 scope and Q3 label morphology (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_Q1_Q3_SCOPE_AND_MORPHOLOGY_RECHECK_2026-11-11.md`, SHA `b54353948d19b933b62ddf4cf5a2e04ee0d0b714`.
+- L12 Q1 broad stem “Rengdêr çi dike?” has key B, which describes the wesfîn subtype/prototypical descriptive function, while the same lesson defines the broad adjective class through six groups (wesfîn, îşarkî, jmarîn, pirsiyarkî, nebinavkirî, xwemalîn). Finding: stem-scope mismatch, not a proven key error. Proposed stem “Rengdêra wesfîn çi dike?”; key B unchanged.
+- L12 Q3 “sê di sê mal de çi ye?” key A is supported by Lesson 12 §4, which names numeral adjectives and explicitly gives `sê mal`. Exact singular inflected option label `rengdêra jmarîn` versus `rengdêrê jmarîn` remains unresolved; do not guess. Keep key A.
+- The retrieved repository files contain lesson synthesis, not the full printed text of Celadet §§124–127, and no authoritative native-Kurmanji ruling was available in this pass.
+- No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
