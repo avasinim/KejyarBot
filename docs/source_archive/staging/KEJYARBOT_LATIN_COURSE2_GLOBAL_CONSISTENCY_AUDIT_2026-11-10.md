@@ -399,3 +399,11 @@ A read-only review of all five stems and fifteen options finds no unequivocal ch
 This pass corrects the wording in Section 43: Q4 A and C are parallel in surface syntax; their weakness is semantic/category fit, plus mismatch of answer shape against B. Full item findings and approval-gated edit order: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_KURMANJI_ORTHOGRAPHY_AND_WORDING_AUDIT_2026-11-11.md`, blob SHA `47329d8c24c0a5f854495434f4612f38fbb9d2eb`.
 
 No quiz, key, lesson, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+## 45. Lesson 12 quiz — option parallelism and rationale alignment (2026-11-11)
+
+A further structural-language pass confirms Q2 has the most parallel option set: all three choices are category labels. Q1 mixes a finite clause, predicate fragment, and finite clause; Q1 B is also the only lowercase-start option, potentially cueing the key. Q3 contrasts two adjective subclasses with a different word class; acceptable but uneven. Q4 A/C are surface-syntactically parallel (`di bin X de`) but semantically implausible as numeral classifications, while B uses a different answer shape. Q5 mixes category labels with an example-description. The earlier correction in Section 44 stands.
+
+New cross-document terminology flag: Q1 C uses `kiryarê`, while the master terminology register records `kirar` as “Subject/agent role”. This is an unresolved `kiryar/kirar` inconsistency, not proof of a typo; do not replace it by guess (including `kirde`). The five generic answer-key rationales are replaced only in a proposal table with item-specific draft explanations, pending Kurmanji copy-edit. Current key remains **B / C / A / B / C**.
+
+Detailed findings: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_PARALLELISM_AND_RATIONALE_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `f076c4878192fd8cfdc4cf0b2c7384142a14341b`. No protected content or runtime files changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
