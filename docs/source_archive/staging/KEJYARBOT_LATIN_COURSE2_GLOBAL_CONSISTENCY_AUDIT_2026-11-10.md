@@ -383,3 +383,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, databas
 ## 42. Lesson 12 five-question quiz/key alignment (2026-11-11)
 
 Compared all five reviewed Lesson 12 questions/options with the reviewed lesson and direct source page-image review §§119–152. No keyed-answer contradiction was found. Current key sequence is **B / C / A / B / C**. Q1's B is valid for the introductory basic definition, with the lesson definition requiring a qualification for predicative/substantivized adjective use. Q2 C, Q4 B, and Q5 C align directly. Q3 A is conceptually correct because `sê` modifies expressed noun `mal`; only the label form `rengdêra jmarîn` remains a Kurmanji morphology/editorial open item. The answer-key rationale column is generic and should receive item-specific explanations in a future approved patch. Full item table: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_FIVE_QUESTION_KEY_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `464b2c284dbff250f979aa03a091d10eaf49350d`. No quiz/key changes applied.
+
+## 43. Lesson 12 distractor and rationale quality (2026-11-11)
+
+A five-item review of the protected Lesson 12 quiz evaluates wrong-option plausibility, grammatical-category boundaries, and explanation quality. The answer sequence remains **B / C / A / B / C**; no key contradiction was found. Q2 has the strongest category-level distractors. Q4 is the weakest item: its alternatives `di bin pronav de` and `di bin lêker de` are not parallel or well-formed competing grammatical analyses against `wek beşeke serbixwe`; revise only through an approved, language-editor-reviewed patch. Q1, Q3, and Q5 are usable at introductory level but have uneven distractor difficulty. All five key rationales currently repeat a generic assertion and should receive item-specific explanations in a future approved revision. Q3's `rengdêra jmarîn` morphology remains unresolved and must not be normalized automatically.
+
+Detailed findings and draft rationales: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_DISTRACTOR_AND_RATIONALE_QUALITY_AUDIT_2026-11-11.md`, blob SHA `7d90ba45aa64d7518b8c93d91c80eb76490cbd10`.
+
+No question, option, key, lesson, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
