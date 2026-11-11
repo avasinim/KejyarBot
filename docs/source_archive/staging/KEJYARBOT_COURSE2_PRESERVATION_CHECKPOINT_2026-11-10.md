@@ -234,3 +234,8 @@ The handoff now includes five proposed quiz items: L6 Q3, L8 Q3, L8 Q5, L10 Q1 a
 The current option order and protected answer-key rows were rechecked for all five proposed edits. Confirmed sequence: **A / A / C / B / C** (L6 Q3, L8 Q3, L8 Q5, L10 Q1, L10 Q2). Exact options and answer texts are in section 8 of the consolidated handoff, blob SHA `565481fe4b5a8346e8c5c5d312e16056e09da37b`. This is not approval of the proposed wording; no quiz, lesson, or answer-key base file was modified.
 
 No tests/CI, live runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only.
+
+
+## Checkpoint update — Lesson 8 line 292 supersession guard (2026-11-11)
+
+The consolidated handoff now explicitly marks the earlier line 292 wording in section 3 as non-operative and not approved. The later section 6 candidate using `bireserên navdêrê` is also pending language-editor review; neither should be applied. The §68/§69 source distinction remains verified. Current handoff blob SHA: `73cf22bbd2280e4d9dcf79ea88e494b22e7ed7fc`. Protected base files remain unchanged.
