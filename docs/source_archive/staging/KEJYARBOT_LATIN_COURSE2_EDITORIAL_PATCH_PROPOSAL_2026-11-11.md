@@ -92,11 +92,11 @@ The following are proposed full-line replacements for the three affected lines i
 
 **Draft line 290 — proposed replacement**
 
-`Ji ber vê yekê formên tewandî divê ji formên bingehîn yên `-ek/-ek/-in` cuda bên fêrkirin.`
+`Ji ber vê yekê formên tewandî divê ji formên netewandî yên `-ek/-ek/-in` cuda bên fêrkirin.`
 
 **Draft line 292 — proposed replacement**
 
-`Dema ku ji yekê zêdetir bireser bi navdêrê ve girêdayî bin, hingê her yek ji wan li gorî mêjer û zayenda xwe veqetandekeke cuda werdigire. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
+`Dema ku çend hêman bi navdêrê ve girêdayî bin û bi hev re komeke navdêrî pêk bînin, veqetandek li gorî mêjer û zayenda navdêra dawî tê hilbijartin. Ev hûrgilî di vê dersê de wek rêgezeke pêşketî hatiye pêşkêşkirin, ne wek bingehê destpêkê.`
 
 **Draft line 294 — proposed replacement**
 
@@ -122,3 +122,12 @@ No proposed edit in this file has been applied. A separate explicit approval is 
 A direct recheck of Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, printed pp.66–67, §§67–70, found that the earlier proposed replacement for reviewed-draft line 292 repeated an inaccurate interpretation. Section 69 says that when more than one complement/modifier is attached in a linked noun group, **each** such element receives its own suffix according to its own gender and number. It does not state that only the final component determines the suffix. The proposed replacement above has therefore been corrected to express separate inflection for each element. The reviewed base lesson remains unchanged; this is still a proposal-only wording update.
 
 Source locator: printed p.67, §69; the preceding paradigms are §67 (printed p.66), §68 (printed p.66), and §70 (printed pp.67–68). The source PDF is the 2002 Nefel edition, ISBN 91-89687-04-3. The current source wording was checked against the PDF text and the original page image context; the source's §69 examples include the coordinated forms on printed pp.67–68.
+
+
+## Source-verification correction — Lesson 8, §§69–70 (2026-11-11, superseding prior correction)
+
+A direct inspection of the source PDF text and page image at printed pp.66–68 corrects the immediately preceding §69 note in this proposal. That previous note was mistaken: §69 does **not** say that every linked element receives its own suffix. It says that when several complements/modifiers form one linked noun group, the determiner is selected according to the gender and number of the **final noun** in that group. The corrected proposed line 292 above now reflects that source rule. The earlier audit section 28 and checkpoint entry describing separate suffixes for every element must be treated as superseded by this correction; a new audit/checkpoint addendum records the reversal.
+
+The same source check also clarifies line 290: §70 contrasts the uninflected forms `-ek/-ek/-in` with their oblique inflected forms `-ekî/-ekê/-ina`. The proposal therefore uses `formên netewandî` (uninflected forms), not the vague `formên bingehîn`. The reviewed base lesson remains unchanged. This file remains proposal-only.
+
+Primary-source locator: Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, Nefel, 2002, printed p.67, §69 (PDF page index 66), and printed pp.67–68, §70 (PDF page indices 66–67). In §69 the source explicitly states that the determiner is applied according to the gender of the final noun; §70 lists `-ekî/-ekê/-ina` as inflected forms. The printed examples support these distinctions.
