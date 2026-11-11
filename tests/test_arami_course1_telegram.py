@@ -454,8 +454,8 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         lesson2 = manifest["lessons"][1]
         lesson5 = manifest["lessons"][4]
         for number, expected in (
-            (2, {"aramiC:lesson:2", "aramiC:practice:2", "aramiC:assessment:2"}),
-            (5, {"arami5:lesson", "arami5:practice", "arami5:assessment"}),
+            (2, {"aramiC:lesson:2", "aramiC:practice:2"}),
+            (5, {"arami5:lesson", "arami5:practice"}),
         ):
             with self.subTest(lesson=number):
                 context = SimpleNamespace(user_data={})
@@ -472,6 +472,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                     for row in keyboard.inline_keyboard for button in row
                 }
                 self.assertTrue(expected.issubset(callbacks))
+                self.assertFalse(any(":assessment" in item for item in callbacks))
                 self.assertIn("aramiC:menu", callbacks)
                 self.assertEqual(query.message.reply_text.await_args.kwargs["parse_mode"], "HTML")
 
@@ -632,6 +633,57 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertEqual(context.user_data, {})
+
+    async def test_review_only_arami_assessments_are_blocked_on_all_callback_routes(self):
+        from arami_course1_telegram import callback as course_callback
+        from arami_lesson1_telegram import callback as lesson1_callback, menu_keyboard as lesson1_menu
+        from arami_lesson5_telegram import callback as lesson5_callback, menu_keyboard as lesson5_menu
+
+        for menu in (lesson1_menu(assessment_enabled=False), lesson5_menu(assessment_enabled=False)):
+            callbacks = {
+                button.callback_data
+                for row in menu.inline_keyboard for button in row
+            }
+            self.assertFalse(any(":assessment" in item for item in callbacks))
+
+        # Shared Course 1 route: a pending source-review lesson cannot start an assessment.
+        update, query = self.make_update("assessment:2")
+        context = SimpleNamespace(user_data={})
+        await course_callback(
+            update, context, ROOT,
+            can_open=lambda user_id, lesson_id: True,
+            can_take_assessment=lambda user_id, lesson_id: False,
+        )
+        self.assertEqual(context.user_data, {})
+        self.assertIn("پەسەندکردنی ئەکادیمی", query.message.reply_text.await_args.args[0])
+
+        # The dedicated Lesson 1 and Lesson 5 handlers must enforce the same gate.
+        for handler, callback_data in (
+            (lesson1_callback, "arami1:assessment"),
+            (lesson5_callback, "arami5:assessment"),
+        ):
+            message = SimpleNamespace(
+                message_id=10,
+                reply_text=AsyncMock(),
+                reply_photo=AsyncMock(),
+            )
+            query = SimpleNamespace(
+                data=callback_data,
+                message=message,
+                from_user=SimpleNamespace(id=123),
+                answer=AsyncMock(),
+                edit_message_reply_markup=AsyncMock(),
+                edit_message_text=AsyncMock(),
+            )
+            update = SimpleNamespace(callback_query=query)
+            context = SimpleNamespace(user_data={})
+            await handler(
+                update, context, ROOT,
+                can_open=lambda user_id, lesson_id: True,
+                can_take_assessment=lambda user_id, lesson_id: False,
+            )
+            self.assertEqual(context.user_data, {})
+            self.assertIn("پەسەندکردنی ئەکادیمی", message.reply_text.await_args.args[0])
 
     async def test_pick_and_submit_state_are_committed_before_callback_acknowledgement(self):
         from arami_course1_telegram import callback
