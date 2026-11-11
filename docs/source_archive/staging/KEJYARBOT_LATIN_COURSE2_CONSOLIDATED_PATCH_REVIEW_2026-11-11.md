@@ -130,3 +130,20 @@ The corresponding answer-key rationale proposal currently contains four rational
 ### Preservation and approval gate
 
 All five quiz edits and all three Lesson 8 prose replacements remain proposals only. The reviewed lesson/quiz baseline and answer-key baseline remain unchanged. Do not create a revised patch copy or modify the baseline until explicit approval. If approved, create new dated append-only copies, include the L8 Q3 rationale, and rerun the full 62-question/key, terminology, and script checks. No runtime, parser, manifest, database, Botkeep, Telegram, tests/CI, or deployment action is authorized by this handoff. `main` remains read-only.
+
+
+## 8. Exact five-item option/key cross-check (2026-11-11)
+
+The five proposed stems were compared against the protected reviewed quiz's current option order and the protected 62-row answer key. The baseline answer text and key letters align with the proposed edits; no option reorder is needed for the current proposal.
+
+| Item | Proposed stem / options | Current key and answer text |
+|---|---|---|
+| L6 Q3 | Stem from §2 above. A) `beza`; B) `hesp`; C) `hespê`. | A — `beza` |
+| L8 Q3 | `Di rewşa bê pêvekeke raveker li pey navdêrê de, forma gelemjimar a veqetandeka nebinavkirî çi ye?` A) `-in`; B) `-ên`; C) `-a`. | A — `-in` |
+| L8 Q5 | Stem/options in §2 above: A) both definite; B) both indefinite; C) `Na, erkên wan cuda ne.` | C — `na, erkên wan cuda ne` |
+| L10 Q1 | Stem in §2 above. A) `te`; B) `min`; C) `me`. | B — `min` |
+| L10 Q2 | Stem in §2 above. A) `wî`; B) `ew`; C) `wê`. | C — `wê` |
+
+The proposed key sequence is therefore **A / A / C / B / C** in the order L6 Q3, L8 Q3, L8 Q5, L10 Q1, L10 Q2. This confirms only the current option/key alignment. It does not independently certify the linguistic quality of the wording, approve any change, or alter the answer-key baseline. The new L8 Q3 rationale candidate is recorded in the separate answer-key proposal.
+
+Source baseline SHAs used for this comparison: reviewed quiz/lesson `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; reviewed answer key `879e1525e720bdc25b8f6e896de3e388801238d0`. All source files remain unchanged.
