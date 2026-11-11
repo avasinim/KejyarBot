@@ -32,14 +32,13 @@ This is an inventory of current source metadata, not a claim that all 203 lesson
 
 ## CI evidence at PR head
 
-Validated PR head: `90a2a15e05dd594441b7717b993c5423af93f870`.
+Validated PR head: `89703140fe2439407ed5aa2aa3d405b3bff848ba`.
 
-- Python checks: 547 tests passed; 11 intentionally skipped; compileall passed.
-- Course 4 Beta review safety: passed.
+- Python checks: 551 tests passed; 11 intentionally skipped; compileall passed.
+- Course 4 Beta review safety: passed (551 tests; 11 skipped).
 - Orthography course structure: 4/4 passed.
-- The four `ERROR` log lines in Python output are expected exception logs inside tests that simulate Telegram delivery failures; the suite concluded `OK (skipped=11)`.
-
-A new cross-course readiness regression test is added in this commit. Its result must be checked in the subsequent CI run before this updated head is considered validated.
+- Cross-course readiness regression: passed as part of the 551-test Python suite; confirms 203 active-course lessons, 30 approved, and 173 review-only.
+- The four `ERROR` log lines in Python output are expected exception logs inside tests that simulate Telegram delivery failures; the suite concluded `OK (skipped=11)`. They are not failed tests.
 
 ## Launch decision
 
