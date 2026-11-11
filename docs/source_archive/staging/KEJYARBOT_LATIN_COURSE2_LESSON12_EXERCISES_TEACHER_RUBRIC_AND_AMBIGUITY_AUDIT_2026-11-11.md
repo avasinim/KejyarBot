@@ -169,3 +169,60 @@ Use four explicit fields: (1) target word/form, (2) course class, (3) phrase/sen
 ### No-edit disposition
 
 This addendum is an audit-only classification matrix. It does not change the 13 learner prompts, lesson source, quiz, answer key, key letters, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment. No tests/CI or live runtime checks were performed. `main` remains read-only; GitHub archive history is not an independent ZIP/off-site backup.
+
+
+## Addendum — Xebata 2 and Xebata 3 coverage and marking audit (2026-11-11)
+
+### Source reviewed
+
+- Reviewed draft: `course_data/latin_course_2_reviewed_draft_2026-11-10.md`, blob SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`, Lesson 12 lines 525–625.
+- Source-aligned lesson collection: `course_data/latin_course_2_source_aligned_lessons_01_12.md`, blob SHA `19090077a11dc9d7211987e958e560b328fcd3d6`.
+- The exercise wording is preserved exactly in the reviewed draft:
+  - Xebata 2: “Ji bo her cureya rengdêrê yek nimûneya din binivîse.”
+  - Xebata 3: “Rengdêrê jmarîn ji jmarnav cuda bike û bi yek hevokê cudahiya wan rave bike.”
+
+### Xebata 2 — six-class coverage and marking rule
+
+The prompt is underspecified: “her cureya rengdêrê” does not explicitly state the number of examples, identify the six top-level classes, or say that each example must contain an expressed noun. In context, the intended criterion should be six new examples, one for each top-level class:
+
+1. `wesfîn`
+2. `îşarkî`
+3. `jmarîn`
+4. `pirsiyarkî`
+5. `nebinavkirî`
+6. `xwemalîn`
+
+Do not count `rêzîn` as a seventh top-level class: in this course it is an ordinal subtype discussed within `jmarîn`. A learner may choose an ordinal example for the `jmarîn` row if the noun is expressed and the ordinal relationship is clear, but that does not create an additional class row.
+
+Recommended teacher marking protocol (audit recommendation, not learner-facing revision):
+
+- Require six examples total, one per class, and require a noun to be expressed in each phrase so that the target is demonstrably used attributively in the course's teaching framework.
+- Mark each row on four dimensions: (a) target word/form is identifiable; (b) intended class is correct; (c) the noun is expressed; (d) the phrase is grammatically well formed and meaningfully interpretable.
+- Do not accept a bare numeral as a numeral-adjective example when the task is specifically testing `jmarîn`; distinguish `sê mal` from independent/substantive `jmarnav` use.
+- Do not mark a correct class label wrong merely because the learner uses a different valid lexical example. Conversely, a correct-looking label does not rescue a phrase whose syntax or meaning is unclear.
+- Avoid double-counting a single example for two classes. If a form is context-sensitive (especially possessive or demonstrative forms), request a complete phrase or sentence rather than infer the intended reading from the isolated form.
+- The lesson's source examples may be used as teaching references, but Xebata 2 asks for “nimûneya din” (another example); exact copying of the lesson's listed examples should not earn full originality credit.
+
+The current prompt does not specify whether examples must be phrases or full sentences. For a low-stakes practice task, well-formed noun phrases can suffice; where case, agreement, or a context-sensitive reading is being assessed, require a sentence that supplies the governing context. Do not silently impose sentence-level case testing on the current wording.
+
+### Xebata 3 — conceptual distinction and model response
+
+The task asks for one sentence. The core distinction in the lesson is relational/function-based, not merely a difference in the numeral's written form:
+
+- `rengdêra jmarîn`: a numeral/ordinal functioning with an expressed noun and specifying its number or order (e.g. `sê mal`, `stûna çaran`).
+- `jmarnav`: the separate numeral category in the lesson's adopted taxonomy, used independently/substantively rather than directly modifying an expressed noun.
+
+A compact provisional model response, retained for teacher use and pending Kurmanji copy-edit:
+
+`Di “sê mal” de “sê” navdêra “mal” diyar dike û rengdêra jmarîn e; lê jmarnav di vê rêbazê de wek beşeke serbixwe tê pêşkêşkirin.`
+
+Mark the response for three required ideas: (1) the numeral-adjective example has an expressed noun; (2) the numeral specifies that noun; (3) `jmarnav` is presented separately/independently in the course framework. The answer should not claim that every numeral form is inherently an adjective or inherently a `jmarnav`; syntactic use and relation to an expressed noun determine the intended course distinction.
+
+The model response is a single sentence with coordinated clauses, so it meets the prompt's “one sentence” constraint. Accept an equivalent accurate sentence; do not require verbatim reproduction. If a learner gives only definitions without an example or without the expressed-noun contrast, mark the distinction incomplete.
+
+### Editorial and scope cautions
+
+- Preserve the exercise's exact phrase `Rengdêrê jmarîn` in this audit. The singular morphology remains an open editorial query against `rengdêra jmarîn` in the quiz and `rengdêrên jmarîn` as the plural class heading. No normalization is authorized here.
+- The exercise is a practice prompt, not a full assessment of all six classes unless the teacher applies the six-row rubric above.
+- The six-class framework is course-internal. This audit does not claim that the same labels or boundaries are universal across all Kurmanji grammatical traditions.
+- These are teacher-facing clarifications only. No learner-facing exercise, lesson, quiz, answer key, terminology register, runtime, parser, tests, manifest, database, Botkeep bot, Telegram bot, or deployment file was changed. No tests/CI or live runtime checks were performed. `main` remains read-only; the archive branch is not an independent ZIP/off-site backup.
