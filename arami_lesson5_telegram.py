@@ -35,16 +35,15 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
     if not defer_ack:
         await query.answer()
     if action == "menu":
-        try:
-            manifest = load_manifest(base_dir)
-            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
-        except (OSError, ValueError, StopIteration):
-            await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
-            return
-        assessment_enabled = (
-            can_take_assessment is None
-            or can_take_assessment(query.from_user.id, lesson_record["id"])
-        )
+        assessment_enabled = True
+        if can_take_assessment is not None:
+            try:
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+            except (OSError, ValueError, StopIteration):
+                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+                return
+            assessment_enabled = can_take_assessment(query.from_user.id, lesson_record["id"])
         await query.message.reply_text(
             "وانەی ٥ — خوێندنەوە و ڕاهێنان؛ تاقیکردنەوەی فەرمی دوای پەسەندکردنی ئەکادیمی چالاک دەبێت:",
             reply_markup=menu_keyboard(assessment_enabled=assessment_enabled),
@@ -83,12 +82,14 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         )
         return
     if action in {"practice", "assessment"}:
-        try:
-            manifest = load_manifest(base_dir)
-            lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
-        except (OSError, ValueError, StopIteration):
-            await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
-            return
+        lesson_record = None
+        if can_open is not None or (action == "assessment" and can_take_assessment is not None):
+            try:
+                manifest = load_manifest(base_dir)
+                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+            except (OSError, ValueError, StopIteration):
+                await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
+                return
         if action == "assessment" and can_take_assessment is not None:
             if not can_take_assessment(query.from_user.id, lesson_record["id"]):
                 await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
