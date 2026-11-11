@@ -833,3 +833,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L5 Q1's earlier gender/number distractors are replaced in the proposal with cleaner contrasts: role change without form change; the correct form change conditioned by role; meaning change without form change. Key B retained.
 - The optional `hespan/hespin` contrast is kept out of Lesson 4's end quiz because its oblique/inflection concept is taught in Lesson 5. It is reserved for cumulative review after Lesson 5; current L4 Q5 key C remains unchanged.
 - Proposal only; no quiz/key/lesson changes; no tests/CI/runtime; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 93 — Full 62-question quiz quality audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_FULL_62_QUESTION_QUIZ_QUALITY_AUDIT_2026-11-11.md`, SHA `f9fc5a3c123c6b2d48d82d33e52cfc6aa5abe8fe`.
+- Re-fetched the exact reviewed 62-question quiz (SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`), reviewed 62-row answer key (SHA `879e1525e720bdc25b8f6e896de3e388801238d0`), and distinct 60-question source-aligned lesson artifact (SHA `19090077a11dc9d7211987e958e560b328fcd3d6`).
+- All 62 questions were inventoried for target overlap, distractor plausibility, keyed-answer defensibility, terminology and sequencing. No key-letter change is recommended by this pass.
+- Priority clarity items: tighten L10 Q1 because `min` belongs to the course's object-pronoun set but also appears as the agent form in the Lesson 9 paradigm; verify explicit teaching coverage for `nîv` before L12 Q5; preserve the construction conditions in Lesson 8 and the distinct `ko` functions in Lesson 11.
+- Main coverage/redundancy opportunities: L2 Q1/Q5 overlap; L3 Q2/Q3 both ask for masculine nouns; L4 Q2/Q5 repeat `hespin` as plural. Lesson 9's repeated paradigm cells are retained as purposeful coverage. Improve distractors particularly in L1 Q1, L2 Q1, L5 Q1/Q5, L7 Q5 and L12 Q1.
+- Editorial proposals only. No learner-facing lesson, quiz, key, rationale, source-aligned, runtime, parser, manifest, database, Botkeep, Telegram or deployment file changed. No tests/CI/runtime or learner-response analysis. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
