@@ -546,3 +546,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_EARLY_LESSONS_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `02e8d8db530136ab7e1c2a941e437b5a5f9209d8`.
 - Rechecked six rows: L1 Q2, L2 Q2, L3 Q5, L4 Q2/Q5 and L5 Q1. No new key/rationale contradiction or proposal correction was found. L4 `hespek/hespin` remains distinct from inflected `hespan`; L5 Q1's tense/verb-type caveat is grounded in §56.
 - This is a targeted tranche, not full independent copy-edit of all 45 items. Held items and proposal-only status remain unchanged. No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; no separate offsite backup claimed.
+
+
+
+## Checkpoint — Lessons 2–4 rationale source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS2_4_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `892c51ee24499b7cc696eae367b9314bbe016db7`.
+- Ten rows checked (L2 Q1/Q3/Q4/Q5; L3 Q1–Q4; L4 Q1/Q3); no new mismatch or wording correction. L3 `dar` sense distinction and L4 `mehînek` singular paradigm are preserved accurately.
+- No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no separate offsite backup claimed.
