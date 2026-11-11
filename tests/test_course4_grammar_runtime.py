@@ -400,12 +400,47 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
-    def test_lesson13_is_scientifically_reviewed_and_quiz_eligible(self):
+    def test_lesson13_review_status_matches_official_runtime_eligibility(self):
         lesson_id = "grammar_13"
+        record = bot.LESSON_DATA[lesson_id]
+        self.assertEqual(record["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertFalse(bot.lesson_is_pending_review(lesson_id))
         self.assertFalse(bot.lesson_is_beta_review(lesson_id))
         self.assertTrue(bot.lesson_quiz_is_available(lesson_id))
-        content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
+        self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
+        content = bot.lesson_display_content(lesson_id, record["content"])
         self.assertNotIn("وەشانی تاقیکاریی (Beta)", content)
+
+    def test_cross_course_editorial_drafts_are_beta_only_and_unlock_in_order(self):
+        lesson_id = "daily_conversation_01"
+        self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], "draft_editorial_review")
+        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+        self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
+        content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
+        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
+
+    async def test_cross_course_draft_completion_uses_beta_ledger_only(self):
+        lesson_id = "daily_conversation_01"
+        query = SimpleNamespace(
+            data=f"finish_{lesson_id}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
+            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
+            patch.object(bot, "complete_quiz_with_rewards") as quiz_reward,
+        ):
+            await bot.finish_lesson(update, context)
+        beta_progress.assert_called_once_with(12345, lesson_id)
+        official_reward.assert_not_called()
+        quiz_reward.assert_not_called()
 
     async def test_inflight_quiz_for_pending_lesson_is_cleared_without_rewards(self):
         lesson_id = "grammar_50"
