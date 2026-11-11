@@ -441,8 +441,9 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("هیچ XP", query.message.reply_text.await_args.args[0])
 
     def test_lesson13_beta_progress_unlocks_lesson14_without_official_completion(self):
+        official_prefix = [f"grammar_{number:02d}" for number in range(1, 13)]
         with (
-            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_lessons", return_value=official_prefix),
             patch.object(bot, "get_completed_beta_lessons", return_value=["grammar_13"]),
         ):
             self.assertTrue(bot.can_open(12345, "grammar_14"))
