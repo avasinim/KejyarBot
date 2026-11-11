@@ -80,3 +80,53 @@ Suggested marking: 1 point for identifying the expressed noun relation in the fi
 - No runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file was changed.
 - No tests/CI or live runtime checks were performed. `main` remains read-only.
 - Work remains on `archive/preservation-audit-2026-11-10`. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Addendum — revised exercise adjudication after source-to-terminology cross-check (2026-11-11)
+
+**This addendum supersedes only the provisional dispositions for `kurên van` and `nîv roj` in section 1 above.** The original audit is retained as an append-only record of the earlier uncertainty.
+
+### A. Stable classification language for the teacher key
+
+Use the six top-level class labels exactly as the lesson does:
+
+- `wesfîn` — descriptive
+- `îşarkî` — demonstrative
+- `jmarîn` — numeral
+- `pirsiyarkî` — interrogative
+- `nebinavkirî` — indefinite
+- `xwemalîn` — possessive
+
+Keep the levels distinct in every answer: (1) word class, (2) subclass, (3) syntactic function/use, and (4) surface form. The six labels are the course taxonomy; `rêzîn` is an ordinal subtype within numeral adjectives, not a seventh top-level class. Adjectives may also be predicative or substantivized, so “an expressed noun is present” is a diagnostic for attributive use, not a universal definition of every adjective.
+
+### B. Xebata 1 — updated rows
+
+| Item | Course-intended classification | Required explanation / marking note |
+|---|---|---|
+| `kurên van` | `van`: possessive element under `xwemalîn`, following the lesson's explicit example list | The lesson itself places `kurên van` and `keçên wan` in its possessive-adjective examples. Do not mark it as `îşarkî` solely because the surface form resembles a demonstrative. Precise syntax and idiomaticity remain flagged for Kurmanji editor review; avoid using it as a high-stakes diagnostic until reviewed. |
+| `nîv roj` | `nîv`: `jmarnav` under the lesson's own lexical taxonomy | State the second level too: in this noun phrase it quantifies/modifies the expressed noun `roj`. Do not relabel it as one of the six adjective subclasses merely because it has a noun-modifying phrase function. |
+
+All other rows in the original table remain provisional as previously stated. In particular, retain the context caveats for `tu mirov`, `vî hespî`, and `van hespan`, and the Kurmanji morphology/idiomaticity review for `mehînên te`.
+
+### C. Xebata 2 — six-class coverage without category/function conflation
+
+The six-example criterion remains: one original noun phrase for each of the six named adjective classes. Ask learners to underline the target modifier, identify its class, and show the noun it modifies. For the numeral-adjective example, require a stated noun (e.g. course pattern `sê mal)); do not use an independent `jmarnav` as a substitute. This is a proposed marking interpretation; learner-facing instruction has not been changed.
+
+### D. Xebata 3 — sharpened marking rubric
+
+The model answer remains:
+
+`Di “sê mal” de “sê” navdêra “mal” diyar dike û rengdêra jmarîn e; lê jmarnav di vê rêbazê de wek beşeke serbixwe tê pêşkêşkirin.`
+
+Mark separately for:
+1. recognizing that `sê` modifies the expressed noun `mal`;
+2. naming its course class as numeral adjective (`jmarîn`);
+3. stating that `jmarnav` is presented as a separate/independent class in this course framework.
+
+The sentence is explicitly scoped to the adopted course taxonomy, not claimed as a universal analysis across all linguistic frameworks. Kurmanji copy-edit remains necessary before adoption.
+
+### E. Editorial hold points
+
+- Keep `rengdêra jmarîn` (quiz Q3 option) vs `rengdêrê jmarîn` (singular explanatory prose) unresolved pending a Kurmanji editor's decision; preserve plural class heading `rengdêrên jmarîn`.
+- Do not globally normalize source/course crosswalks: `wesfîn` ↔ source `çilobûn û çawabûnê`; `xwemalîn` ↔ `destdaniyê/xwedîtiyê`; `rêzîn` ↔ `rêzda`; source comparison records `jmarda` for adjective numerals.
+- These are teacher-facing rubric clarifications only. No learner-facing wording, source lesson, quiz, answer key, or runtime file is changed by this addendum.
