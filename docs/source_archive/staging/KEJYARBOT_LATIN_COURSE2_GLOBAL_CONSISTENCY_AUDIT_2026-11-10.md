@@ -209,3 +209,11 @@ A companion proposal now supplies matching answer-key rationale text for the fou
 Proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md` (creation commit `43c248d19b347f33568763cbcf2cc5a45ff641a8`). It must be applied only to a new dated key copy after the related quiz/lesson proposal is explicitly approved. The final option order must be rechecked before retaining any answer letter.
 
 No baseline reviewed quiz/key, source lesson, runtime, tests, manifest, DB, Botkeep, Telegram, or deployment state changed. `main` remains read-only.
+
+
+## 28. Lesson 8 §69 source-verification correction to proposed patch (2026-11-11)
+A direct recheck of the primary source, Celadet Alî Bedir-Xan, *Elfabêya kurdî & Bingehên gramera kurdmancî*, printed pp.66–68, §§67–70, found a substantive wording error in the first version of the proposed replacement for reviewed-draft line 292. Section 69 states that when multiple complements/modifiers are linked in a noun group, each receives a separate suffix according to its own gender and number. It does not say that only the final component governs the suffix. The proposal was corrected to state that each element receives its own suffix according to its own gender and number.
+
+The corrected wording was committed to the proposal-only artifact KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md (new blob 061127ddf7fec01b4df5e43066053010bac0fe10; update commit aae7ae016821d1e11b5c9697d7ec479a65a7fea2). The prior reviewed draft's line 292 remains unchanged; no lesson, quiz, answer key, or runtime content was edited. This correction is evidence that the earlier proposal wording must not be applied as-is. The proposal remains unapproved and unapplied.
+
+Source locator: printed p.67, §69; related suffix paradigms §§67–68 on printed pp.66–67 and §70 on printed pp.67–68. No automated tests, runtime, Botkeep, Telegram, manifest, database, or deployment action occurred. main remains read-only.
