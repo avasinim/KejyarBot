@@ -887,3 +887,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Railway project `melodious-enthusiasm`, production environment: KejyarBot remains Offline with no deployment. Ten staged changes are pending; the 1 GB `kejyarbot-data` volume is staged-create and empty; `KEJYARBOT_DB_PATH` is staged, while only `TELEGRAM_BOT_TOKEN` is currently live in the service variables. The service is configured to run `python bot.py` if the staged patch is committed.
 - The authoritative Botkeep database backup/restore and Botkeep stopped-state remain unverified. PR #125 documents the unresolved Botkeep staging incident and explicitly says not to retry Resume, Cancel/restore, Replace, Sync or server restart until support confirms backend state. The Telegram poller must not be started until these conditions are met.
 - Therefore the Railway staged patch was deliberately NOT committed, no deployment/restart was triggered, and no Telegram polling instance was started. This is a data-protection hold, not a rejection of the user's approval.
+
+
+## Section 99 — Railway pre-activation gate evidence (2026-11-11)
+
+- Added a dedicated migration-gate evidence register at `docs/source_archive/staging/KEJYARBOT_PREACTIVATION_MIGRATION_GATE_2026-11-11.md`, SHA `f7ab2a8965d0f5f377955ab2e18af529becfeb69`.
+- PR #141 persistent-SQLite preparation remains Draft/Open/Unmerged at head `259d746cab1e546fa76d39bc1dc0be5d2c394176`; its three GitHub Actions workflows completed successfully on that exact head.
+- Railway production read-back remains Offline with no active deployment; one staged patch (3 resource/variable changes) remains pending; the staged 1 GB volume is empty/not restored.
+- PR #125 remains the documented Botkeep release hold; no support resolution or authoritative SQLite backup evidence is present in the retrieved records.
+- Owner authorization for activation is acknowledged, but deployment is withheld because no verified authoritative DB backup/restore exists and Botkeep poller stopped-state is unconfirmed. No accept-deploy, Botkeep recovery action, restart, or Telegram poller start was performed.
