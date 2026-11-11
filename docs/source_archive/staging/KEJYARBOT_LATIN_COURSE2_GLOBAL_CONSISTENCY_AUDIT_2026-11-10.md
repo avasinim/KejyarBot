@@ -870,3 +870,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Corrected L4 Q5 options: A) `e`; B) `hatin`; C) `in`; proposed key C, preserving the current key C.
 - L2 Q5 and L10 Q1 remain key B. All four proposed replacements therefore preserve existing key letters (B, A, C, B respectively). The earlier statement “all four proposed keys B” is superseded. No answer-key file was modified.
 - Proposal-only; no learner-facing changes, tests/CI/runtime/deployment. `main` remains read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 97 — Six-item distractor refinement proposal batch (2026-11-11)
+
+- Appended exact proposed distractor sets for L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5 and L12 Q1 to the full 62-question audit, updated SHA `9c305c86b57408274123e577d6450fefc24c812e`.
+- Proposed answer-key letters are preserved: B, B, B, C, C, B respectively.
+- The proposal replaces obviously unrelated distractors with near-category alternatives, especially for tewang, definite/indefinite marking and adjective function. It remains editorial-only and requires Kurmanji idiom and single-answer defensibility review.
+- No quiz/key/lesson/runtime file changed; no tests/CI/runtime/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
