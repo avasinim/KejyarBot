@@ -22,6 +22,19 @@ logger = logging.getLogger(__name__)
 COURSE_ID = "arami_orthography_foundations"
 LESSON_COUNT = 21
 QUESTION_BANK_FILE = "course_data/arami_course1_source_quiz_banks.json"
+ACADEMIC_APPROVAL_STATUSES = frozenset({
+    "scientific_review_complete",
+    "scientific_review_complete_with_qualified_notes",
+    "approved",
+})
+
+
+def lesson_is_academically_approved(lesson_record):
+    """Only explicit academic approval enables official assessment and rewards."""
+    return (
+        isinstance(lesson_record, dict)
+        and lesson_record.get("status") in ACADEMIC_APPROVAL_STATUSES
+    )
 
 
 class AramiCourseTelegramError(ValueError):
@@ -103,11 +116,7 @@ def course_menu_keyboard(
         title = str(lesson.get("title") or "وانە")
         label = title if len(title) <= 19 else title[:18] + "…"
         lesson_is_open = can_open is None or can_open(lesson_id)
-        review_only = lesson.get("status") not in {
-            "scientific_review_complete",
-            "scientific_review_complete_with_qualified_notes",
-            "approved",
-        }
+        review_only = not lesson_is_academically_approved(lesson)
         if not lesson_is_open:
             status = "🔒"
         elif lesson_id in beta_completed_lessons:
@@ -397,7 +406,7 @@ def _active_session(context, query, lesson_number):
     return sessions.get(str(lesson_number))
 
 
-async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None, get_completed_beta_lessons=None):
+async def callback(update, context, base_dir, can_open=None, award_assessment=None, get_completed_lessons=None, get_completed_beta_lessons=None, can_take_assessment=None):
     query = update.callback_query
     action = query.data.removeprefix("aramiC:")
     defer_ack = action.startswith(("pick:", "submit:"))
@@ -474,11 +483,16 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         else:
             practice_callback = assessment_callback = None
         action_rows = [[InlineKeyboardButton("📖 خوێندنەوەی وانە", callback_data=read_callback)]]
-        if practice_callback and assessment_callback:
-            action_rows.append([
-                InlineKeyboardButton("🎯 ڕاهێنان", callback_data=practice_callback),
-                InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=assessment_callback),
-            ])
+        if practice_callback:
+            if assessment_callback and lesson_is_academically_approved(lesson):
+                action_rows.append([
+                    InlineKeyboardButton("🎯 ڕاهێنان", callback_data=practice_callback),
+                    InlineKeyboardButton("📝 تاقیکردنەوە", callback_data=assessment_callback),
+                ])
+            else:
+                action_rows.append([
+                    InlineKeyboardButton("🎯 ڕاهێنان", callback_data=practice_callback)
+                ])
         action_rows.append([InlineKeyboardButton("⬅️ گەڕانەوە بۆ فهرست", callback_data="aramiC:menu")])
         completed = get_completed_lessons(user_id) if get_completed_lessons is not None else []
         beta_completed = get_completed_beta_lessons(user_id) if get_completed_beta_lessons is not None else []
@@ -561,15 +575,26 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         if not raw.isdecimal():
             return
         number = int(raw)
-        if can_open is not None:
+        lesson_record = None
+        if can_open is not None or (mode == "assessment" and can_take_assessment is not None):
             try:
                 lesson_record, _ = load_lesson_source(base_dir, number)
             except AramiCourseTelegramError:
                 await query.message.reply_text(f"⚠️ سەرچاوەی وانەی {number} ئامادە نییە.")
                 return
-            if not can_open(query.from_user.id, lesson_record["id"]):
-                await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+        if mode == "assessment" and can_take_assessment is not None:
+            if lesson_record is None:
+                try:
+                    lesson_record, _ = load_lesson_source(base_dir, number)
+                except AramiCourseTelegramError:
+                    await query.message.reply_text(f"⚠️ سەرچاوەی وانەی {number} ئامادە نییە.")
+                    return
+            if not can_take_assessment(query.from_user.id, lesson_record["id"]):
+                await query.message.reply_text("📚 تاقیکردنەوەی فەرمی تەنها دوای پەسەندکردنی ئەکادیمیی وانەکە چالاک دەبێت.")
                 return
+        if can_open is not None and not can_open(query.from_user.id, lesson_record["id"]):
+            await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ڕاهێنان و تاقیکردنەوەی ئەم وانەیە هێشتا نەکراونەتەوە.")
+            return
         try:
             banks = load_question_banks(base_dir)
             bank = banks[number]
