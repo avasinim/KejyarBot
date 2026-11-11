@@ -355,7 +355,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 50}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -675,6 +675,13 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=keyboard,
         )
     elif next_lesson is None:
+        if beta_review:
+            await query.message.reply_text(
+                message_text
+                + "\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو؛ ئەمە تەواوبوونی فەرمی کۆرس نییە. "
+                "وانەکان چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین."
+            )
+            return
         if lesson.startswith("وانە_"):
             last_lesson_number = lesson.removeprefix("وانە_")
             quiz_suffix = last_lesson_number
@@ -819,7 +826,7 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await query.answer()
         return
     raw_index = query.data.removeprefix("select_answer_")
-    if not raw_index.isdigit():
+    if not raw_index.isdecimal():
         await query.answer()
         return
     choice_index = int(raw_index)
@@ -937,7 +944,7 @@ async def quiz_answer(
         choice_index = selected_index
     else:
         raw_index = query.data.removeprefix("answer_")
-        if not raw_index.isdigit():
+        if not raw_index.isdecimal():
             await query.answer()
             return
         choice_index = int(raw_index)
@@ -1393,7 +1400,19 @@ async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE
     if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdigit():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی تاقیکردنەوە نادروستە.")
         return
-    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
+    items = quiz_menu_items(query.from_user.id, mode)
+    try:
+        keyboard, count = quiz_menu_keyboard(items, int(raw_page), mode)
+    except ValueError:
+        await query.message.reply_text("⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نیە.")
+        return
+    title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
+    first = int(raw_page) * QUIZ_MENU_PAGE_SIZE + 1
+    last = min(first + QUIZ_MENU_PAGE_SIZE - 1, len(items))
+    await query.edit_message_text(
+        f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {int(raw_page) + 1}/{count})",
+        reply_markup=keyboard,
+    )
 
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
