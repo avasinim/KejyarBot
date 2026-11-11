@@ -495,3 +495,14 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 
 ### سنوور
 گۆڕانکارییەکان تەنها لە callback code و test ـدان؛ هیچ statusی ئەکادیمی، وانە، بانک پرسیار، داتابەیس، learner record، Botkeep یان Telegram production نەگۆڕدراوە. CI بۆ کۆمیتە نوێکان چاوەڕوانە و پێش سەرکەوتنیان ئەم پاراستنە وەک تەواو پشتڕاستکراو ناژمێردرێت.
+
+
+## ٩.١٨. ئەنجامی CIی guardی session و ڕاستکردنەوەی fixture ـەکان — 2026-11-11
+
+کۆمیتی `e9aeedf86f7e31cdd6d5299a21b6db976788b510` لە CI ـدا شکستی هێنا:
+- 564 تاقیکردنەوە، 2 error، 11 skipped.
+- هەردوو error ـەکە لە تاقیکردنەوە کۆنەکانی `tests/test_arami_course1_telegram.py` بوون؛ callback ـەکانی assessment دوای دەستپێکردنی session، `can_take_assessment` ـیان دووبارە نەدەدا، بۆیە guardی نوێ بە شێوەی fail-closed session ـەکەی ڕەتکردەوە. ئەمە کێشەی fixture/test setup بوو، نەک هەڵەی مۆڵەتی ئەکادیمی.
+- دوو تاقیکردنەوەکە نوێ کرانەوە بۆ ناردنی هەمان approval guard لە هەموو callback ـەکانی assessment؛ practice بە guardی assessment ناگۆڕدرێت.
+- هیچ guard ـێک لاواز نەکرا و هیچ status ـێکی وانە نەگۆڕدرا.
+- کۆمیتی چاکسازیی test: `3fa976933c902ec06c01d183294eb59d64513f7b`.
+- CI بۆ کۆمیتی چاککراوە هێشتا چاوەڕوانە؛ تا سەرکەوتنی workflow ـەکان پشتڕاست نەکرێتەوە، ئەنجامی تەواو ڕاگەیەنراو نییە.
