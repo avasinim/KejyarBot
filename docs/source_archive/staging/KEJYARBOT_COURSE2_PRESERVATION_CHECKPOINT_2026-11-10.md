@@ -775,3 +775,13 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Railway production remains Offline; staged volume is empty and staged patch is not committed.
 - Authoritative Botkeep SQLite backup, integrity report, restore verification and confirmed Botkeep stopped-state are missing. No deployment/poller start is safe yet.
 - No source DB recovery action, Railway accept-deploy, restart, or live Telegram action performed.
+
+
+## Checkpoint — Section 100 approved Latin Course 2 quiz refinements (2026-11-11)
+
+- Dedicated review branch: `review/latin-course2-approved-distractors-2026-11-11`.
+- Six approved distractor sets applied to the reviewed quiz draft: L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5, L12 Q1.
+- All correct-answer letters preserved; answer-key artifact SHA unchanged at `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- Quiz SHA: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
+- Adoption details appended to the full quiz audit; global consistency audit updated in Section 100.
+- Review branch only. No merge to `main`, runtime activation, Botkeep/Telegram action, or deployment.
