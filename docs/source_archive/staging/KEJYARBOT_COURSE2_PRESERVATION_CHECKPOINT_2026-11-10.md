@@ -758,3 +758,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Six proposed distractor refinements recorded for L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5 and L12 Q1. Existing key letters preserved (B/B/B/C/C/B).
 - Full wording and caveats are in the full quiz audit, SHA `9c305c86b57408274123e577d6450fefc24c812e`; Section 97 is appended to Global Consistency Audit.
 - Proposal-only: no learner-facing quiz/key/lesson/runtime change, no tests/CI/runtime/deployment. `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Checkpoint — Pre-activation backup and deployment hold (2026-11-11)
+
+- Verified backup branch: `backup/preactivation-preservation-2026-11-11` -> commit `fe369c28ed667e859782ab6a3b9ff2fc53a4e4ae`. This is a same-repository snapshot, not an offsite or database backup.
+- Railway production remains Offline. The 10-change patch remains staged; the 1 GB `kejyarbot-data` volume is empty/staged-create; DB path is staged; live service variables currently include `TELEGRAM_BOT_TOKEN` only.
+- No deploy or poller start: Botkeep database backup/restore and Botkeep stopped-state are not verified; PR #125 records an unresolved Botkeep staging incident and warns not to retry staging recovery actions before support confirmation.
+- Global Audit Section 98 records the verified state. The Railway patch was not accepted, and no restart/deployment occurred.
