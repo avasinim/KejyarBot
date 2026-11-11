@@ -554,3 +554,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS2_4_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `892c51ee24499b7cc696eae367b9314bbe016db7`.
 - Ten rows checked (L2 Q1/Q3/Q4/Q5; L3 Q1–Q4; L4 Q1/Q3); no new mismatch or wording correction. L3 `dar` sense distinction and L4 `mehînek` singular paradigm are preserved accurately.
 - No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no separate offsite backup claimed.
+
+
+
+## Checkpoint — Lessons 7–8 rationale source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS7_8_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `0ca63c1a261032d17c859d36a760e8132bfd8759`.
+- Four rows checked (L7 Q1/Q5; L8 Q1/Q5); no new correction. Definite suffix inventory, indefinite definition, and §67 `-ine` distribution align with the course draft.
+- No source/key/runtime/deployment changes or tests/CI; proposals remain unapproved/unapplied. `main` read-only; no separate offsite backup claimed.
