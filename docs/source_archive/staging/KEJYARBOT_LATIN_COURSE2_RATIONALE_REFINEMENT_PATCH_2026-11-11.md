@@ -73,3 +73,12 @@ This is an editorial correction within the proposal only; no answer-key content 
 ## Terminology correction — L6 Q5 possessive modifier (2026-11-11)
 
 The L6 Q5 refinement in Section 2 incorrectly calls `min` in `xencera min` a `pronavê xwemalî`. Under the reviewed Lesson 12 taxonomy, `xencera min` parallels `hespê min` and is a possessive adjective (`rengdêra xwemalîn`) modifying an expressed noun. `Pronavên xwemalîn` are forms such as `yê min/ya min/yên min` that replace an understood noun/group. Use the corrected proposed wording in `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_Q5_POSSESSIVE_MODIFIER_RATIONALE_CORRECTION_2026-11-11.md`, SHA `f9ec5ed10da96c889393b9ab1502e648b937d380`. The key remains C; no answer-key or lesson text changed. This correction supersedes only the L6 Q5 sentence in the refinement table.
+
+
+## Terminology final-pass correction — L1 Q1 (2026-11-11)
+
+The original L1 Q1 proposal uses `rêzikên`, while the keyed option uses `qaydeyên`. For exact answer-option alignment, use `qaydeyên` unless a language editor explicitly approves a glossary change. Preferred proposal:
+
+> Gramêr tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e. Vebijarka A tenê aliyê deng û derxistina dengên ziman digire, û C jî tenê avakirina peyvan; her du jî ji pênaseya firehtir a dersê tengtir in.
+
+This is proposal-only; no key or lesson text changed. Together with the L6 Q5 terminology correction in the preceding addendum, this supersedes only those two rows in the refinement/base proposal set.
