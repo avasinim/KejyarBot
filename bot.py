@@ -61,7 +61,9 @@ logger = logging.getLogger(__name__)
 
 
 def award_arami_assessment(user_id, lesson_id):
-    """Grant 20 XP once for a Course 1 assessment, never for practice or retries."""
+    """Grant XP only after the lesson has an explicit academic approval status."""
+    if lesson_is_beta_review(lesson_id):
+        return False
     return complete_quiz_with_rewards(
         user_id, f"arami_assessment:{lesson_id}", points=20
     )
@@ -477,7 +479,28 @@ def check_badges(user_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
+def _arami_lesson_requires_review(lesson):
+    if LESSON_COURSE.get(lesson) != "arami_orthography_foundations":
+        return False
+    record = next(
+        (item for item in ARMI_MANIFEST.get("lessons", []) if item.get("id") == lesson),
+        None,
+    )
+    if record is None:
+        return True
+    # No Arami lesson is promoted to official rewards until its manifest
+    # carries an explicit scientific/owner approval state. Source receipt,
+    # immutability, and interaction wiring alone are not academic approval.
+    return record.get("status") not in {
+        "scientific_review_complete",
+        "scientific_review_complete_with_qualified_notes",
+        "approved",
+    }
+
+
 def lesson_is_pending_review(lesson):
+    if _arami_lesson_requires_review(lesson):
+        return True
     return LESSON_DATA.get(lesson, {}).get("review_status") in {
         "draft_editorial_review",
         "owner_review_pending_expanded_draft",
@@ -485,6 +508,8 @@ def lesson_is_pending_review(lesson):
 
 
 def lesson_is_beta_review(lesson):
+    if _arami_lesson_requires_review(lesson):
+        return True
     record = LESSON_DATA.get(lesson, {})
     # Editorial drafts across Courses 2, 3, and Latin courses can be read and
     # recorded as review progress, but never receive official quiz/rewards.
