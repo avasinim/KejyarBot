@@ -74,7 +74,7 @@ If approved, apply the edits only to a new dated append-only reviewed-draft/patc
 
 **Proposed stem**
 
-`Di hevoka dema niha de `Ez ___ dibînim`, kîjan form ji bo pronavê kesê sêyem yekjimar a mê wek bireser tê?`
+`Di hevoka dema niha de `Tu ___ dibînî`, kîjan form ji bo pronavê kesê sêyem yekjimar a mê wek bireser tê?`
 
 **Proposed options**
 
