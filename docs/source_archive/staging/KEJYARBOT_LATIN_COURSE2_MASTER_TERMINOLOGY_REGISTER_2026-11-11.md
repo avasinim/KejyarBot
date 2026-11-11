@@ -302,3 +302,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_RATIONALE_PROPOSALS_
 - Ten precision refinements are recorded, including qualified use of -in, the course-specific gender classification, consistent term hêmaneke raveker in L8, the L10 min agent/object caveat, the L11 qerse subtype, and lexical class vs phrase function for nîv roj.
 - L10 Q2, L12 Q1 and L12 Q3 remain held; L1 Q4 remains a separate kîtê/kitê notation hold.
 - This was comparison against the reviewed lesson transcription/draft, not a fresh inspection of every original book page. Proposals remain unapproved and unapplied; no answer key/lesson/runtime changes.
+
+
+## Source adjudication of held rationale items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SOURCE_ADJUDICATION_2026-11-11.md`, verified SHA `c985701ac40e326519713f1c91440687f5e26c43`.
+
+- L10 Q2: `wê` is source-supported in the §86 object-pronoun paradigm, but may function as inflected agent in a transitive past clause such as `Wê ew dît`. Keep form vs syntactic role distinct; wording clarification only, no key change proposed.
+- L12 Q1: qualify the basic adjective definition because source §§124–127 allow predicative and substantivized uses.
+- L12 Q3 morphology `rengdêra/rengdêrê jmarîn` and L1 Q4 `kîtê/kitê` remain unresolved holds.
