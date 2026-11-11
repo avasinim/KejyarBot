@@ -264,3 +264,11 @@ Created `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_PATCH_
 The handoff consolidates the four source-checked quiz edits (L6 Q3, L8 Q5, L10 Q1–Q2), the three proposed Lesson 8 explanatory-line replacements (290/292/294), the final §§68–70 interpretation, current A/C/B/C key sequence, and explicit approval/preservation gates. It warns that the exact Kurmanji Latin phrasing of the explanatory-line replacements—especially line 292—still merits a final language-editor pass even though the source rule is verified. It explicitly states that the proposal remains unapplied and that no runtime/deployment or tests/CI activity occurred.
 
 This handoff is a navigation aid and operative summary; the append-only history remains preserved in the detailed proposal, page-image review, and earlier audit sections. No baseline lesson, quiz, key, runtime, manifest, database, Botkeep, Telegram, or deployment file changed.
+
+
+## 33. Lesson 8 §69 terminology refinement candidate (2026-11-11)
+The source text uses `bireser` for the noun-attached elements in §69. Because the course also uses `bireser` for clause-level object roles, the consolidated handoff records a clearer candidate using the already established course term `bireserên navdêrê`:
+
+`Dema ku ji yekê zêdetir bireserên navdêrê bi navdêrê ve girêdayî bin û ew bireser bi hev re komeke navdêrî pêk bînin, her yek ji wan li gorî mêjer û zayenda xwe veqetandeka cuda werdigire.`
+
+This is a language-editor candidate, not a source quotation and not an approved edit. It preserves §69's each-linked-element rule and avoids confusion with the separate §68 final-noun rule. Consolidated handoff current blob SHA: `c648fae070f10691ebcb754b772544af0a343ff8`. Source PDF page images were directly inspected: printed p.66 (PDF index 66) shows §68 and the opening of §69; printed p.67 (PDF index 67) continues §69 and begins §70. No reviewed lesson, quiz, key, runtime or deployment file changed.
