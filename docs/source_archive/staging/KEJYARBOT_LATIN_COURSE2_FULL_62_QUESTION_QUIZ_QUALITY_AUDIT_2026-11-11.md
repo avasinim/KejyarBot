@@ -290,3 +290,13 @@ The rest of the 62 items were checked for taught-context answer uniqueness, incl
 
 Current reviewed quiz SHA: `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`.
 Current answer-key SHA: `66aa4476365f4766d7916403b25f2886f5fd2e70`.
+
+
+## Section 105 — lexical spelling check: `mehin` / `mehîn` (2026-11-11)
+
+A source-to-review comparison found that the source-aligned transcription retains `mehin` in several base-form examples, while the reviewed teaching draft consistently uses `mehîn` and its inflected forms (`mehîna`, `mehînê`, `mehînan`, `mehînek`, `mehînin`, etc.). This is not evidence of two different lexical items. External Kurmanji lexical/usage references list `mehîn` as a feminine noun meaning a female horse and give the corresponding inflectional paradigm; a 2025 Kurmanji usage article also uses `mehîn` in its feminine-noun examples:
+
+- Wiktionary, `mehîn`: https://ku.wiktionary.org/wiki/meh%C3%AEn
+- Rûdaw Kurmancî, “Tewanga Navên Nêrzayên Yekjimar”: https://www.rudaw.net/kurmanci/categories/opinion/865886
+
+Editorial decision for this draft: retain `mehîn` as the normalized teaching spelling in the reviewed course; preserve the source-aligned `mehin` readings unchanged as source evidence. Record the spelling normalization rather than silently rewriting the source transcript. This is a spelling/lexical consistency note, not a change to the 62 quiz items or answer key.
