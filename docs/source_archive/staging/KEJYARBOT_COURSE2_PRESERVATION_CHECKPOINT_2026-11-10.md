@@ -667,3 +667,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Screened 20 items in Lessons 9–12; no new hold added. Existing holds reaffirmed: L10 Q1/Q2 and L12 Q1/Q3.
 - Alongside Lessons 1–8 second pass, all 62 items have a documented stem/scope second pass. This does not constitute native-speaker certification or runtime testing.
 - No lesson/quiz/key/runtime/deployment file changed; no tests/CI; `main` read-only. Archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — 62-question / 45-rationale proposal coverage (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_TO_45_RATIONALE_COVERAGE_AUDIT_2026-11-11.md`, SHA `b395c1f456a7d3ad802c03776b6948062f5ff5cf`.
+- Proposal pack contains 45 unique rationale rows; 17 quiz items are not represented there. All 62 items still have rationale cells in the answer-key file. The 14 non-held absent items are unselected for rewrite, not presumed defective.
+- No content/runtime/deployment changes or tests/CI. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
