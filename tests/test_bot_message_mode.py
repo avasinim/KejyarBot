@@ -188,6 +188,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "can_open", return_value=True),
         ):
             await bot.message(update, context)
 
