@@ -460,3 +460,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - L6 Q3 wording retains `bireserê navdêrê` and avoids the ambiguous bare term `bireser`.
 - No answer-key or lesson edits; proposals are not approved or learner-facing. No runtime/parser/manifest/database/Botkeep/Telegram/deployment changes, tests/CI, or psychometric/learner-response analysis.
 - `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup; no separate backup is claimed.
+
+
+### Checkpoint addendum — rationale proposal alignment verification (2026-11-11)
+
+- Updated proposal artifact: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md`, verified SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`.
+- Confirmed 44/44 proposed rationale rows map to the existing answer-key option letter; zero missing mappings and zero mismatches.
+- Mapping validation is not linguistic certification. All proposals remain unapproved; no key/quiz/lesson or runtime changes.
