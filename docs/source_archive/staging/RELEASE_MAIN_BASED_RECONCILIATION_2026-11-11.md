@@ -1172,3 +1172,33 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 
 ### سنووری کار
 ئەمە تەنها پشکنین و پاراستنی بەڵگەییە؛ هیچ پەچ، source lesson، runtime JSON، quiz، review_status، DB یان فایلێکی پێشووی Library نەگۆڕدرا و نەسڕدرایەوە. تەنها فایلێکی auditی نوێ زیاد کرا.
+
+
+## ٩.٤٣. پشکنینی schemaی ٤٣ پەچی تاکەوانە — 2026-11-11
+
+### مەودا و ئەنجامی parse
+- هەموو ٤٣ فایلەی JSONی پەچی تاکەوانە لە Library materialize و parse کران؛ هەموویان JSONی دروست بوون.
+- ئەم فایلانە ٤٢ lesson_idی جیاواز دەگرنەوە، چونکە وانەی ٢١ دوو وەشانی هەیە.
+- دروستی JSON بەڵگەی سازگاریی patch runner یان دروستیی baseline نییە.
+
+### خێزانەکانی schemaی دۆزراو
+- وانەکانی ١–٢: `append_to.examples/appendix/activities` و `source_note`; هیچ `source_baseline`, `preserve_existing` یان `patch_type`ی ئاشکرا نییە.
+- وانەکانی ٤–٥: `additions.examples_additions/appendix_additions/activities_additions`؛ `source_baseline`, `source_preservation`, `preserve_existing=true` و `source_lesson_unchanged=true`یان هەیە.
+- وانەی ٨: `appendix_additions` و `activities_additions` لە top-level؛ `source_scope` و `preservation_rule`ی تایبەتی هەیە.
+- وانەی ٩: `append.examples/appendix/activities` لەگەڵ `source_preservation`.
+- وانەکانی ١٠–١١: `append_to.examples/appendix/activities` لەگەڵ `preservation_rule`.
+- وانەکانی ١٢–٢٨: `append.examples/appendix/activities` و `preserve_existing=true`.
+- وانەی ٢٩: `additions.examples/appendix/activities` و `editorial_notes`.
+- وانەی ٣٠: `new_examples`, `appendix_additions`, `activities_additions` لە top-level؛ schemaی تایبەتی.
+- وانەکانی ٣١–٤٥: `additions.examples_additions/appendix_additions/activities_additions` لەگەڵ `source_baseline`, `source_lesson_unchanged=true`, `preserve_existing=true`.
+- دوو وەشانی وانەی ٢١ لە ڕووی schema هاوشێوەن، بەڵام لە ناوەڕۆکدا جیاوازن؛ وردەکاری لە Appendix 9.42دا تۆمار کراوە.
+
+### مەترسی و بڕیاری فنی
+- parserێک کە تەنها یەک schema چاوەڕێ بکات، دەتوانێت زیادکراوەکانی خێزانەکانی دیکە پشتگوێ بخات؛ بۆیە applyی batch بەبێ schema mapping مەترسیدارە.
+- پەچەکانی ١–٢ baselineی machine-readableیان نییە؛ پێش هەر applyێک snapshotی runtime و source baseline بە جیا پشکنین بکرێت.
+- پەچەکانی ٤–٥ و ٣١–٤٥ baselineی وردتریان هەیە، بەڵام ئەمە بە مانای پەسەندکردنی ئەکادیمی نییە.
+- هیچ normalize، merge، apply یان overwriteێک نەکرا؛ parserی داهاتوو دەبێت schemaی هەر پەچ بناسێنێت و لە lesson_idی ناهاوتا یان خانەی نەناسراو fail-closed بکات.
+- فهرستی schema لە Library بە ناوی `README_KU_PATCH_SCHEMA_AUDIT_2026-11-11.md` زیاد کرا.
+
+### سنووری جێبەجێکردن
+ئەم پشکنینە تەنها خوێندنەوە و parseکردنی فایلە ئەرشیفییەکان بوو. هیچ source lesson، patch JSON، runtime JSON، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا؛ هیچ patchێک جێبەجێ نەکرا.
