@@ -1067,3 +1067,35 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 
 ### تێبینیی تۆمار
 ئەم پاشکۆیە تەنها بەڵگەی CI و scopeی PR زیاد دەکات؛ هیچ فایلێکی کۆد، workflow، وانە، JSON، کویز، پلانی کۆرس یان داتای خوێندکار نەگۆڕدرا. پاشکۆ بە شێوەی append-only زیاد کرا.
+
+
+## ٩.٣٩. پشکنینی ڕێڕەوی Beta، گەیتەکانی کویز و پاراستنی وانەی ١٣ — 2026-11-11
+
+ئەم پشکنینە لەسەر کۆمیتی کۆدی `aa75c940667f983a0930426eb8100388ffd1bd79` کرا؛ فایلەکانی `bot.py`, `course_runtime.py`, `tests/test_course4_beta_review.py`, `tests/test_course4_grammar_runtime.py`, `tests/test_database.py` و `tests/test_course4_quiz_overrides.py` خوێندرایەوە. ئەمە code reviewی خوێندنەوەیە، نەک گۆڕینی کۆد.
+
+### گەیتەکانی ئەکادیمی و Beta
+- `ACADEMIC_REVIEW_REQUIRED_COURSE_IDS` هەموو کۆرسە چالاکەکان دەگرێتەوە؛ `_lesson_requires_academic_approval` ئەگەر record نەبێت یان `review_status` لە `ACADEMIC_APPROVAL_STATUSES`دا نەبێت، fail-closed دەکات.
+- بۆ وانەکانی Arami، نەبوونی record لە manifestیش بە شێوەی fail-closed وەک پێویستی بە پێداچوونەوە مامەڵەی لەگەڵ دەکرێت.
+- `lesson_is_beta_review` وانەی پەسەندنەکراو وەک Beta دەناسێنێت؛ `lesson_quiz_is_available` کویز بۆ Beta ڕەت دەکاتەوە.
+- `start_quiz` پێش دروستکردنی session دۆخی course، availability، هەبوونی پرسیار، تەواوکردنی وانە و ڕیزبەندیی `can_open` دەپشکنێت.
+- `quiz_answer` availabilityی وانە دووبارە دەپشکنێت، sessionی ناچالاک پاک دەکاتەوە، و پێش نووسینی خەڵات لە ledger جارێکی تر گەیتەکە دەپشکنێتەوە.
+- `finish_lesson` بۆ وانەی Beta تەنها `complete_beta_lesson` بەکاردەهێنێت؛ XP، coin، chest و badge بەو ڕێگایە نادرێن. `can_open` تەنها ئەو Beta completionانە بەکار دەهێنێت کە هێشتا لە دۆخی reviewدان؛ تۆماری کۆنی Beta بە خۆکار نابێتە completionی فەرمی.
+- تاقیکردنەوەی DB دووبارەبوونەوە و هاوکاتیی Beta completion دەپشکنێت و پشتڕاست دەکاتەوە کە score، XP، quiz count، coins، chests، badges و official completion ledger زیاد نابن.
+
+### پاراستنی تایبەتی وانەی ١٣
+- تاقیکردنەوەی `Course4GrammarLesson13Tests` بە ڕوونی `review_status == internal_cross_lesson_synthesis_no_external_source_mapping` پشتڕاست دەکاتەوە.
+- هەمان تاقیکردنەوە دڵنیایی دەدات کە وانەی ١٣ source mapی ناوخۆیی هەیە، بەڵام هیچ سەرچاوەی دەرەکیی نوێی بۆ زیاد نەکراوە.
+- تاقیکردنەوەی جیاواز `test_lesson13_internal_source_map_cannot_enable_official_quiz_or_rewards` بۆ ڕێگری لە چالاکبوونی کویز/خەڵات هەیە.
+- لە تاقیکردنەوەی گشتیی schemaدا لابردنی وانەی ١٣ لە mapی status بە تەنها بەڵگەی گۆڕینی status نییە؛ تاقیکردنەوەی تایبەتیی سەرەوە statusی وردەکەی دەپشکنێت.
+
+### Overrideی کویزەکان
+- `course_data/grammar_course4_quiz_overrides.json` تۆماری ٥٠ overrideی append-only هەیە؛ ٤٤ پرسیار لە وانەکانی ١–٣٠ و ٦ پرسیار لە وانەی ٣١.
+- هەر overrideێک snapshotی پرسیاری سەرەکی و replacementی جیاواز هەیە؛ runtime ئەگەر snapshot لە سەرچاوەی ئێستا جیاواز بێت fail-closed دەکات.
+- تاقیکردنەوەکان uniqueness، فۆڕمی هەڵبژاردەکان، indexی وەڵام و هاوتاییی snapshot دەپشکنن؛ بانگەشەی ئەوە ناکرێت کە هەموو replacementەکان بە سەرچاوەی دەرەکی یان پەسەندی ئەکادیمی پشتڕاست کراون.
+- فایلەی بنەڕەتیی کویزەکان بە شێوەی snapshot پارێزراوە؛ runtime replacementەکان لە فایلێکی جیاوازەوە جێبەجێ دەکات.
+
+### سنوور و ئەنجام
+- لە code reviewی خوێندنەوەدا گەیتەکانی Beta/quiz و پاراستنی statusی وانەی ١٣ بە بەڵگەی کۆد و regression test پشتڕاست کرانەوە.
+- ئەمە بە مانای پەسەندکردنی زانستیی وانەکان یان هەموو ٥٠ override نییە؛ پشکنینی ناوەڕۆکی هەر پرسیار و سەرچاوەکانی بە جیاوازی پێویستە.
+- هیچ کۆد، workflow، وانە، JSON، کویز، status، runtime، DB یان learner record لەم پشکنینەدا نەگۆڕدرا؛ تەنها ئەم پاشکۆیە زیاد کرا.
+- PR #152 هێشتا کراوە و نەیەکخراوە؛ Botkeep import/restore/restart/deploy و production Telegram گۆڕانکارییان پێ نەکرا.
