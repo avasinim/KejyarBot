@@ -980,7 +980,11 @@ async def quiz_answer(
         except Exception:
             logger.debug("Quiz keyboard was already removed or could not be edited")
         answer = question["options"][choice_index]
-        if answer == question["answer"]:
+        if beta_practice_only:
+            # A quiz already open before a review gate changed may finish as
+            # unscored practice; it must not reveal the answer key or score.
+            await query.message.reply_text("✅ وەڵامەکەت وەرگیرا؛ کلیلی وەڵام لە قۆناغی پێداچوونەوەدا نیشان نادرێت.")
+        elif answer == question["answer"]:
             quiz["score"] += 1
             await query.message.reply_text("✅ ئافەرین! وەڵامی دروستە.")
         else:
@@ -993,6 +997,12 @@ async def quiz_answer(
 
         lesson = quiz["lesson"]
         earned = quiz["score"]
+        if beta_practice_only:
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "🧪 ڕاهێنانی Beta تەواو بوو؛ وەڵامەکان وەرگیران بەبێ نمرە، خەڵات یان تەواوکردنی فەرمی."
+            )
+            return
         # Revalidate immediately before writing the official reward ledger.
         if not lesson_quiz_is_available(lesson):
             context.user_data.pop("quiz", None)
