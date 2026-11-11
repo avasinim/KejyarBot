@@ -120,3 +120,8 @@
 - No tests/CI were run and no live runtime check was made.
 - `main` remains read-only.
 - GitHub archive branch history is the persisted project record; this register does not claim a separate ZIP or independent off-site backup.
+
+
+## Lesson 12 adjudication addendum — numeral-adjective label (2026-11-11)
+
+A focused comparison of the source-aligned course text and reviewed lesson confirms that both use plural `rengdêrên jmarîn` for the category and singular `rengdêrê jmarîn` in the explanatory contrast, while quiz Q3 uses `rengdêra jmarîn`. This difference predates the current review in the source-aligned course text. Provisional editorial preference: retain the plural class label and provisionally use `rengdêrê jmarîn` in singular explanatory prose; do not silently replace Q3's `rengdêra` until a Kurmanji editor checks whether it is a valid inflected/construct form in that option context. The original Lesson 12 source page image was not re-opened, so this is internal consistency evidence, not a definitive grammatical ruling. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_TERMINOLOGY_ADJUDICATION_2026-11-11.md`, verified blob SHA `833c34339eb6ae80de339e0d1b7c42b5fa65960b`.
