@@ -1289,3 +1289,26 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - هیچ جیاوازییەک لە نێوان Bundle و runtime بە خۆکارانە reconcile نەکرا؛ هیچ زاراوە، quiz، answer، appendix یان source fieldێک نەگۆڕدرا.
 - هیچ source rawێک بە خەمڵاندن دروست نەکرا؛ بۆشایی provenance و جیاوازییەکان بە بەڵگە تۆمار کران.
 - هیچ patchێک apply نەکرا؛ runtime JSON، quiz overrides، review_status، DB، Botkeep، Railway و Telegram نەگۆڕدرا.
+
+
+## ٩.٤٧. پشکنینی پڕۆتۆتای loader لە Library و چاکسازیی ژمارەی پەچەکان — 2026-11-11
+
+### چاکسازیی فهرستی Library
+- پشکنینی نوێی `/KejyarBot/Course4_Archive/` ژمارەی **٤٤ فایلەی JSONی پەچی تاکەوانە** پشتڕاست کردەوە؛ ئەمانە **٤٢ lesson_id**ی جیاواز دەگرنەوە: ١،٢،٤،٥ و٨–٤٥.
+- لەگەڵ دوو وەشانی وانەی ٢١، دوو وەشانی وانەی ٣١یش هەن. بۆیە ژمارەی ٤٣ لە `README_KU_PATCH_INDEX_2026-11-11.md` ژمارەیەکی کۆن/ناتەواوە؛ ئەم پاشکۆیە جێگرەوەی مێژوویی README نییە.
+- وەشانی `grammar_31_append_only_patch_v2.json` خانەی `supersedes`ی هەیە و بە ڕوونی v1ی metadata جێگرەوەیە بۆ پشکنین؛ ناوەڕۆکی `additions`ی هەردوو وەشان یەکسانە، بەڵام `source_baseline` و تێبینییەکانی وەشانی v2 ژمارەی ١٠ appendix لە main و ناهاوتاییی snapshotی Library تۆمار دەکەن. v1 هەر وەک بەڵگەی مێژوویی دەمێنێتەوە.
+- دوو وەشانی وانەی ٢١ هیچ `supersedes`ی نییە و هێشتا ناچارەسەرن؛ هیچکام بە خۆکار authoritative دانانرێت.
+- SHA-256 و وردەکارییەکانی variantەکان لە Library لە `README_KU_PATCH31_VARIANTS_AND_LOADER_AUDIT_2026-11-11.md` تۆمار کراون.
+
+### پڕۆتۆتای loader — جیا لە runtime
+- فایلەکانی `course4_patch_loader_prototype.py` و `test_course4_patch_loader.py` لە Library هەن، بەڵام لە repositoryی GitHubدا نین و بە `bot.py`/runtime پەیوەست نەکراون. ئەمە پڕۆتۆتایپی جیاوازە؛ بۆیە Appendix 9.45 تەنها لە سنووری repository/runtimeدا ڕاستە.
+- prototype بە deep-copy و append-only کار دەکات، target و ژمارە دەپشکنێت، و delete/replace ڕەت دەکاتەوە؛ بەڵام تەنها `examples`, `appendix`, `activities` normalize دەکات.
+- کێشەی integrationی پشتڕاستکراو: prototype تەنها aliasەکانی `grammar` و `course_grammar` دەناسێت؛ پەچەکانی `grammar_29` و `grammar_31` بە `course_id=grammar_course4`ن. baseی runtime `course_id=grammar` ـە؛ لە تاقیکردنەوەی سنوورداردا apply لە `grammar_29` بە `PatchError` وەستاوە. fake_baseی تاقیکردنەوە course_idی نەبوو، بۆیە ئەم کێشەیەی نەدۆزیبووەوە.
+- `_patch_identity` لە moduleدا پێناسە کراوە، بەڵام بەکارنەهاتووە؛ already-applied بە ناوی فایل دەناسێنرێت، نە hashی ناوەڕۆک. `source_baseline`یش بەراورد ناکرێت و خانەی نەناسراو دەتوانێت پشتگوێ بخرێت.
+- تاقیکردنەوەی prototype ٩/٩ بە ZIPێکی ناوخۆیی و کاتیی بازسازی‌کراو تێپەڕی؛ ئەم ZIPە archiveی Libraryی مێژوویی نییە و تاقیکردنەوەی fake baseە. ZIPی ڕەسەنی ناونراو لە فهرستی ئێستای Libraryدا نەدۆزرایەوە؛ بۆیە ئەنجامی ٩/٩ بەڵگەی integration لەسەر baseی ڕاستەقینە نییە.
+- فایلەی test ١٥ دەرکردنی `def test_...` هەیە بەڵام تەنها ٩ ناوی یەکتا؛ methodە دووبارەکراوەکان لە Pythonدا یەکتریان overwrite دەکەن.
+
+### بڕیار و سنووری کار
+- prototype نابێت بە production یان `bot.py` ببەسترێت تا aliasی course_id، baseline/hash validation، identity، unknown-field handling، variant selection و test لەسەر baseی ڕاستەقینە چاک نەکرێن.
+- ٣١-v2 بۆ پشکنین پێشنیار دەکرێت؛ دوو وەشانی ٢١ ناچارەسەر دەمێننەوە.
+- هیچ patchێک apply نەکرا؛ هیچ runtime JSON، lesson، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا. تەنها auditی نوێ لە GitHub و Library زیاد کرا.
