@@ -158,3 +158,16 @@ The lexical scan was followed by field-level reading of Lessons 3, 5, 11, 12, 13
 - Lesson 13's own crosswalk says Affix = گیرەک and explicitly notes a prior form; this is evidence of an intentional historical crosswalk in runtime, but not proof of academic approval.
 - Keep grammatical Subject, semantic Agent, Theme and Patient distinct. Lesson 31's Theme is not automatically Patient.
 - No lesson content was edited to repair these conflicts; this register records the defect for a future reviewed change.
+
+
+## Additional runtime-internal collisions — lessons 11, 13, 29 and 31 (2026-11-11)
+
+A targeted scan across all 50 runtime records found these same-record conflicts:
+
+1. **Enclitic — Lessons 11 and 13:** body/key_points use `پاشبەستە`; appendix glossary/crosswalk uses `پاشنووس`. Lesson 12 appendix also uses `پاشنووس`. See Appendix 9.56.
+2. **Inflection — Lesson 29:** key_points/comprehension use `گەردان`, but the quiz question and options still use `لەچۆنایەتی`; the quiz explanation switches to the English label `Inflection`. This creates a mixed terminology chain inside one lesson and its assessment.
+3. **Noun Phrase — Lesson 31:** key_points/examples/comprehension/appendix use `گرێی ناوی`, while several quiz options/explanations retain `گروپی ناوی`. This is a same-lesson assessment inconsistency, independent of the Lesson 31-v2 patch conflict.
+4. **Subject — Lessons 12 and 31:** Lesson 12 appendix explicitly maps `Subject = بکەر`; Lesson 31 uses `بابەت (Subject)` in its explanation of nominalized infinitive occupying the subject position. The course therefore has a direct label collision. Do not infer that بابەت and بکەر are synonyms: determine whether the Lesson 31 wording means grammatical Subject or semantic/discourse Topic and reconcile the definition accordingly.
+
+### Scope and action
+These are documentation-level findings only. They should be converted into a controlled terminology decision and assessment consistency review before any content patch. Do not silently edit quiz strings, because each term change may affect answer options, explanations and the intended distinction. No term was approved and no runtime data was modified.
