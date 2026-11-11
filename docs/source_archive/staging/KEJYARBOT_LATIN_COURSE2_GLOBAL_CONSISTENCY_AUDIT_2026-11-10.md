@@ -843,3 +843,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Priority clarity items: tighten L10 Q1 because `min` belongs to the course's object-pronoun set but also appears as the agent form in the Lesson 9 paradigm; verify explicit teaching coverage for `nîv` before L12 Q5; preserve the construction conditions in Lesson 8 and the distinct `ko` functions in Lesson 11.
 - Main coverage/redundancy opportunities: L2 Q1/Q5 overlap; L3 Q2/Q3 both ask for masculine nouns; L4 Q2/Q5 repeat `hespin` as plural. Lesson 9's repeated paradigm cells are retained as purposeful coverage. Improve distractors particularly in L1 Q1, L2 Q1, L5 Q1/Q5, L7 Q5 and L12 Q1.
 - Editorial proposals only. No learner-facing lesson, quiz, key, rationale, source-aligned, runtime, parser, manifest, database, Botkeep, Telegram or deployment file changed. No tests/CI/runtime or learner-response analysis. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Section 94 — L12 Q5 numeral example source-coverage confirmation (2026-11-11)
+
+- Targeted recheck of the full Lesson 12 text confirms `nîv` is explicitly taught in the numeral section: it is listed among basic examples, its standalone inflection is explained, and `nîv roj` appears in the classification exercise.
+- L12 Q5 key C (`nimûneyeke jmarnav`) is instructionally grounded; the initial Section 93 “verify example coverage” caution is resolved. No extra teaching note is needed for this reason and no key change is proposed.
+- The detailed confirmation was appended to `KEJYARBOT_LATIN_COURSE2_FULL_62_QUESTION_QUIZ_QUALITY_AUDIT_2026-11-11.md`; its updated SHA is `cb686f5c48d0d27f38ee9a4400ac7dcff2b30f19`.
+- No learner-facing file changed; no tests/runtime/CI/deployment. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
