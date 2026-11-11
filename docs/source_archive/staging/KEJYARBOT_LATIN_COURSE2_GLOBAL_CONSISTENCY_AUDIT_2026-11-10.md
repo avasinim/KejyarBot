@@ -464,3 +464,12 @@ Teacher-facing audit only. No learner-facing lesson, exercise, quiz, answer key,
 - The exercise mixes clean attributive fragments with possessive ezafe phrases and oblique forms. Do not assess category, case selection, and idiomaticity simultaneously without supplying the needed sentence context.
 
 Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## Section 51 — Lesson 12 Xebata 2 and Xebata 3 coverage audit (2026-11-11)
+
+- Appended a teacher-facing coverage and marking audit to `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`; verified blob SHA `4d3937cbc49dd4ca28e860fdd36a78cb579e05c3`.
+- Xebata 2's original instruction asks for one additional example for each adjective type but does not state the count or marking criteria. The audit specifies the contextual six top-level classes (`wesfîn`, `îşarkî`, `jmarîn`, `pirsiyarkî`, `nebinavkirî`, `xwemalîn)); `rêzîn` remains a subtype under `jmarîn`, not a seventh class. It recommends six new examples with expressed nouns and a four-part teacher rubric, while allowing phrase-only responses unless context/case is explicitly assessed.
+- Xebata 3's one-sentence task is clarified through the expressed-noun contrast: numeral adjective modifies a stated noun (`sê mal`), while `jmarnav` is presented independently/substantively in the course's framework. A provisional one-sentence model response and three-part marking criterion are recorded; equivalent correct wording should be accepted.
+- The audit preserves the unresolved morphology of `Rengdêrê jmarîn` vs quiz `rengdêra jmarîn` vs plural heading `rengdêrên jmarîn`; no normalization is authorized.
+- Audit-only: no learner-facing content, quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
