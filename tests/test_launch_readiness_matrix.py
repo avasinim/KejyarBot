@@ -44,6 +44,13 @@ class LaunchReadinessMatrixTests(unittest.TestCase):
             30,
         )
 
+    def test_course4_lesson13_remains_review_only_and_quiz_locked(self):
+        lesson_id = "grammar_13"
+        self.assertIn(lesson_id, bot.COURSE_LESSON_ORDER["grammar"])
+        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+
     def test_no_review_only_lesson_can_start_an_official_quiz(self):
         review_only = [
             lesson_id
