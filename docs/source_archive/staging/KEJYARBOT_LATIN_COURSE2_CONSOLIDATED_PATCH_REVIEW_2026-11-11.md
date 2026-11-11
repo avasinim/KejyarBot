@@ -88,3 +88,14 @@ After explicit approval only:
 7. Keep runtime and deployment untouched unless separately authorized.
 
 Tests/CI have not been run. Runtime behavior has not been tested live. The archive branch and GitHub commit history are not an independent ZIP/off-site backup. `main` remains read-only.
+
+
+## 6. Language-editor refinement candidate for Lesson 8 line 292 (2026-11-11)
+
+The original source §69 uses the term `bireser` for the elements attached to the noun in this construction. In this course, however, `bireser` also appears in clause-level object terminology, while Lesson 6 has already established the more precise phrase `bireserê navdêrê`. To reduce that potential ambiguity without changing the source rule, a clearer candidate sentence for final language-editor review is:
+
+`Dema ku ji yekê zêdetir bireserên navdêrê bi navdêrê ve girêdayî bin û ew bireser bi hev re komeke navdêrî pêk bînin, her yek ji wan li gorî mêjer û zayenda xwe veqetandeka cuda werdigire.`
+
+This is a wording candidate, not a source quotation and not an approved replacement. It preserves the source's §69 rule: each linked modifier receives its own determiner according to its own gender and number. It avoids suggesting that the final noun alone controls all forms (the separate §68 rule). The original proposed line remains available in section 3; a language editor should choose between the source-close wording and this clearer course-terminology wording before approval.
+
+Source image check: printed p.66 shows §68's final-noun rule followed by the opening of §69; printed p.67 continues §69's examples and begins §70. The source text at §69 explicitly says that each of the linked `bireser` elements receives a distinct determiner according to its own number and gender. See the PDF page images and extracted text.
