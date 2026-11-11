@@ -927,3 +927,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L4 Q5 now tests plural agreement in `Ev mehîn __`; key letter C retained, answer text changes `gelemjimar`→`in`.
 - Combined with Section 100's six distractor refinements, ten quiz items now have approved edits. Structural validation of all 62 quiz/key mappings is the next gate.
 - Review branch only; no `main`, runtime, Railway, Botkeep, Telegram, or deployment change.
+
+
+## Section 103 — full 62-item key alignment after approved edits (2026-11-11)
+
+- Full structural pass completed after Sections 100 and 102: 12 lesson quiz blocks contain 62 items (5,5,5,5,5,5,5,7,5,5,5,5).
+- All 62 answer-key rows map to the correct option letter and exact option text in the revised quiz: 62/62 matched; zero missing rows; zero mismatches.
+- Current reviewed quiz blob SHA: `3fe2bd44b9708551a4c9686d28148450003ac3c1`.
+- Current answer-key blob SHA: `2caf0fa40e9638551b3e47f9cccdef3683171c80`.
+- The intentional L2 Q5 key update C→B and answer-text changes for L3 Q3/L4 Q5 are reflected in the matching key. This supersedes the earlier intermediate key-SHA note from Section 101.
+- PR #142 remains the review path; CI workflow lookup returned no runs for the current head, so no CI success is claimed. Native Kurmanji editorial review remains outstanding.
