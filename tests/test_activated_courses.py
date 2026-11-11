@@ -415,9 +415,10 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         }
         self.assertEqual(active_course_ids, set(bot.ACADEMIC_REVIEW_REQUIRED_COURSE_IDS))
 
-        # Course 4 Lesson 13 is explicitly approved with qualified notes.
-        self.assertFalse(bot.lesson_is_pending_review("grammar_13"))
-        self.assertFalse(bot.lesson_is_beta_review("grammar_13"))
+        # Lesson 13 has an internal source map but remains pending external/source
+        # reconciliation; it must stay Beta-only until that review is complete.
+        self.assertTrue(bot.lesson_is_pending_review("grammar_13"))
+        self.assertTrue(bot.lesson_is_beta_review("grammar_13"))
 
         # Unknown and missing statuses must never silently become official.
         approved_record = dict(bot.LESSON_DATA["grammar_13"])
