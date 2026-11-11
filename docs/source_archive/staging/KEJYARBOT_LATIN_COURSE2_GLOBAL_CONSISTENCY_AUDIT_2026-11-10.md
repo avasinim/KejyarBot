@@ -407,3 +407,14 @@ A further structural-language pass confirms Q2 has the most parallel option set:
 New cross-document terminology flag: Q1 C uses `kiryarê`, while the master terminology register records `kirar` as “Subject/agent role”. This is an unresolved `kiryar/kirar` inconsistency, not proof of a typo; do not replace it by guess (including `kirde`). The five generic answer-key rationales are replaced only in a proposal table with item-specific draft explanations, pending Kurmanji copy-edit. Current key remains **B / C / A / B / C**.
 
 Detailed findings: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_PARALLELISM_AND_RATIONALE_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `f076c4878192fd8cfdc4cf0b2c7384142a14341b`. No protected content or runtime files changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## 46. Lesson 12 learning-objective and assessment alignment (2026-11-11)
+
+The five-question quiz is aligned with its own keyed concepts (basic adjective function; descriptive adjective; numeral adjective; `jmarnav` as a separate class in the adopted framework; and `nîv` as a numeral example). No contradiction between the five current key answers and the directly taught concepts was found.
+
+The quiz does **not** directly assess the full six-class adjective taxonomy, degrees of descriptive adjectives, adjective/pronoun distinction, or the interrogative, indefinite, and possessive adjective classes. These are taught in the lesson and some are practiced in Xebata 1, but they are not sampled directly by the five quiz items. Thus the issue is assessment coverage, not key correctness. The five-item quiz currently works as a short end-of-lesson checkpoint, not a representative test of all lesson objectives.
+
+Xebata 1's `nîv roj` needs an explicit teacher-facing rubric identifying whether the expected answer concerns lexical class, noun-phrase function, or the course's adjective/`jmarnav` distinction. Xebata 3 is the clearest practice for comparing numeral adjective with independent `jmarnav`; a model answer should make the “expressed noun vs independent use” criterion explicit. These are recommendations only; no lesson/exercise text was changed.
+
+Detailed matrix: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_LEARNING_OBJECTIVE_ASSESSMENT_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `c90ca1fee11df39f200fd7222ac0bfb284baf883`. No protected content or runtime files changed; no tests/CI or live runtime checks occurred; `main` remains read-only.
