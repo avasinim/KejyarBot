@@ -214,3 +214,8 @@ Protected baselines remain: reviewed lesson `abc88219e2a0e249883e8d62c5117a9b3aa
 All 62 questions across 12 lessons were cross-checked against lesson terminology and the 62-row reviewed answer key. New exact follow-ups: L8 Q3 should use the §66 condition `bê pêvekeke raveker li pey navdêrê` rather than ambiguous `bê bireser`; L6 Q3 retains the full term `bireserê navdêrê`; L8 Q5 and L10 Q1–Q2 remain covered by the existing proposal; L12 Q3 remains pending a language-editor decision on `rengdêra jmarîn` versus the source category heading `rengdêrên jmarîn`. No content edits were applied.
 
 Protected lesson SHA remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; answer-key SHA remains `879e1525e720bdc25b8f6e896de3e388801238d0`. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 8 Q3 proposal added (2026-11-11)
+
+The editorial patch proposal now includes a proposal-only Lesson 8 Q3 stem refinement: use `bê pêvekeke raveker li pey navdêrê` to name the §66 environment, rather than the ambiguous `bê bireser`; retain `-in` (A) in the current option order. Proposal blob SHA verified: `11b6c6c055a149283f2b4275da15922e28d1f82d`. The proposal is not applied to the protected quiz/lesson or answer key. The 62-question cross-check report remains `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_LESSON_QUIZ_TERMINOLOGY_CROSSCHECK_2026-11-11.md` (SHA `e5e7b67bcc98504d0fd39b7da8a348ba8bee7350`). No runtime/deployment/test actions occurred; `main` remains read-only.
