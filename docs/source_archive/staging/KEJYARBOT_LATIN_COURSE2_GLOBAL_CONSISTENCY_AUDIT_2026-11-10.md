@@ -193,3 +193,11 @@ A Unicode scan of the reviewed Latin-course lesson draft also identified three u
 Report: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_DISTRACTOR_ORTHOGRAPHY_REVIEW_2026-11-11.md` (creation commit `ec1353ec640e42990cccc2de52ebf412268a567d`; report blob `f42a72b2936b6075281c6e932419837b92239dae`).
 
 The review was limited to staged text and did not include psychometric learner data, a new full primary-source collation, runtime testing, or deployment verification. No source lesson, reviewed lesson draft, answer key, runtime, tests, manifest, DB, Botkeep, Telegram, or deployment state was modified. `main` remains read-only.
+
+
+## 26. Proposed editorial patch prepared for approval (2026-11-11)
+Prepared a separate proposal document translating the distractor/orthography findings into concrete suggested wording for Lesson 6 Q3, Lesson 8 Q5, Lesson 10 Q1–Q2, and the three mixed-script Lesson 8 explanatory lines. The proposal includes rationale, proposed answer options/keys, and a required validation sequence. It is explicitly marked **proposal only — not applied**.
+
+Proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md` (latest proposal blob `e2c9238cb36b6792ddc3b49ba260c49d6d2a5c6f`; initial creation commit `c81af46f19cb499116977a148b4193e73e652fee`; wording refinement commit `706b0a52978117695608222e2315b217817daa50`).
+
+The reviewed lesson and answer-key files remain unchanged. The proposal requires separate explicit approval before a new dated patch artifact is created. No runtime/test/manifest/DB/Botkeep/Telegram/deployment change was made; `main` remains read-only.
