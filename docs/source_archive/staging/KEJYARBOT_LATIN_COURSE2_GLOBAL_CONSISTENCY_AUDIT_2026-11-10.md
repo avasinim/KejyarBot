@@ -649,3 +649,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS7_8_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `0ca63c1a261032d17c859d36a760e8132bfd8759`.
 - Rechecked L7 Q1/Q5 and L8 Q1/Q5. The definite suffix inventory (`-ê/-a/-ên`), `hespên Soro`, the indefinite definition, and the §67 `-ine` environment all align with the lesson and current keys. No new correction identified.
 - This is another targeted tranche only; it does not certify every rationale or resolve the remaining held items. No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
+
+
+
+## Section 71 — Lesson 1 Q3/Q5 rationale source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSON1_Q3_Q5_RECHECK_2026-11-11.md`, SHA `dfce471ab619202c8f4b307216b649be1de36ffb`.
+- Rechecked L1 Q3/Q5: the written-sign versus speech-sound definition of `tîp` and the `qiset`-from-`komek` distinction both match Lesson 1 and the keyed options. No new correction identified. L1 Q4 notation remains held.
+- No source/key/runtime/deployment changes or tests/CI. `main` read-only; no offsite backup claimed.
