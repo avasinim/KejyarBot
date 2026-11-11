@@ -224,3 +224,14 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CROSS_LESSON_TERMINOLOG
 - Retain Lesson 12 distinction between `jmarîn` with an expressed noun and independent `jmarnav`; preserve the existing `nîv roj` lexical-class/phrase-function split.
 - `kiryar` in Lesson 12 Q1 vs controlled `kirar` remains unresolved; no normalization. The `rengdêra/rengdêrê jmarîn` morphology query also remains open.
 - Audit-only; no learner-facing or runtime/deployment files changed.
+
+
+## 62-question terminology audit (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_TERMINOLOGY_AUDIT_2026-11-11.md`, verified blob SHA `1cd41f566c4896450a4bd93b93cf0b75af9288f3`.
+
+- Verified 62 quiz items across 12 lessons (L8 has 7; each other lesson has 5) and 62 reviewed answer-key rows.
+- Most terminology aligns. Keep class/function/form distinctions, especially `bireserê navdêrê` vs clause `bireser`, `forma kirarî` vs clause role, `veqetandek` vs `tewang`, and `jmarîn` vs `jmarnav`.
+- Editorial risks: L6 Q3 shortens `bireserê navdêrê` to bare `bireser`; L8 Q2 option wording is less terminologically parallel; L10 Q2 `forma bireserî` conflicts in interpretation with Lesson 9 `forma kirarî` and L10's own `wê` example; L11 Q3 shortens `pronavê girêkî` to `forma girêkî`.
+- Existing open issues remain: L12 Q1 `kiryar/kirar`; L12 Q3 `rengdêra/rengdêrê jmarîn`; L12 Q1's adjective definition/answer framing remains narrower than predicative/substantivized source use.
+- No key letters or quiz content changed; this is an audit only.
