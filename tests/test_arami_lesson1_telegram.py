@@ -384,3 +384,15 @@ class AramiLesson1TelegramProgressionTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AramiLesson1FailClosedTests(unittest.IsolatedAsyncioTestCase):
+    async def test_assessment_fails_closed_when_permission_callback_is_missing(self):
+        update, query = make_update("assessment")
+        context = SimpleNamespace(user_data={})
+        with patch("arami_lesson1_telegram.load_manifest", return_value={
+            "lessons": [{"number": 1, "id": "arami_course1_lesson_01"}]
+        }):
+            await callback(update, context, "/unused")
+        self.assertNotIn("arami_lesson1_session", context.user_data)
+        self.assertIn("پەسەندکردنی ئەکادیمی", query.message.reply_text.await_args.args[0])
