@@ -739,3 +739,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L6 Q3 key A (`beza`) and L6 Q4 key B (before/after noun) remain supported by lesson context. Proposed stem clarifications restore `bireserê navdêrê`; no key changes.
 - Added L6 Q3 and L6 Q4 to editorial holds. Cross-lesson distinction with L8 `bê bireser` and L10 clause object remains explicit; no global replacement.
 - No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 82 — Lesson 10 Q2 paradigm label vs clause role (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q2_BIRESER_FORM_LABEL_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `57b3a7dd1a532b48d6603b146bacfedf929f67e8`.
+- Exact stem asks `Forma bireserî ya ew mê çi ye?`; key C (`wê`) is supported as the feminine form in the course's named “pronavên bireser” paradigm. But `bireserî` can be read as actual syntactic object function, while the lesson's own `Wê ew dît` example has `wê` as inflected agent and `ew` as direct object.
+- Proposed stem explicitly refers to the table/paradigm “pronavên bireser”. Key C unchanged. Add L10 Q2 to editorial holds; L10 Q1 has a related paradigm/function ambiguity; L10 Q4 remains distinct and clear.
+- No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
