@@ -516,3 +516,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - No lesson/quiz/key edits, approval or application. No tests/CI/runtime/deployment; `main` read-only; no separate offsite backup claimed.
 
 - Follow-up rationale proposals for L6 Q3 and L8 Q3 were appended to the clarification artifact, latest SHA `ffc5cea44282a08d32f390bd204c4bcaf6c267ae`. These explain the keyed forms but remain editorial proposals; no quiz/key content changed.
+
+
+## Checkpoint — L6 Q5 possessive terminology correction (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_Q5_POSSESSIVE_MODIFIER_RATIONALE_CORRECTION_2026-11-11.md`, SHA `f9ec5ed10da96c889393b9ab1502e648b937d380`.
+- Corrected a proposal-level terminology error: `min` in `xencera min` is a possessive adjective (`rengdêra xwemalîn`) modifying an expressed noun, not a possessive pronoun (`pronavê xwemalî`) replacing a noun. The latter category applies to forms such as `yê min/ya min/yên min`.
+- L6 Q5 key C unchanged. No lesson, quiz, answer-key or runtime edits; no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
