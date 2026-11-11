@@ -141,3 +141,8 @@ Most clearly weak distractor sets occur in L1 Q1, L2 Q1, L5 Q1/Q5, L7 Q5 and L12
 - No tests, CI, runtime checks, learner-response analysis or deployment were run.
 - `main` remains read-only.
 - Archive branch is not an independent ZIP/offsite backup; none is claimed.
+
+
+## Addendum — L12 Q5 `nîv` source-coverage confirmation (2026-11-11)
+
+A targeted recheck of the full Lesson 12 text resolves the coverage question raised in the initial register: `nîv` is explicitly taught in the numeral section, not merely mentioned in the quiz. The lesson lists `nîv` among its basic examples, explains its standalone inflection (`nîvî`, with the source form `nîvekî` also noted in the reviewed draft), and contrasts standalone use with use before a numeral or noun. It also includes `nîv roj` in the classification exercise. Therefore L12 Q5's keyed answer C (`nimûneyeke jmarnav`) is instructionally grounded; no extra teaching note is required for this reason. The item may remain as written. This targeted check does not validate every nuance of the taxonomy independently.
