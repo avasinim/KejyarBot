@@ -71,7 +71,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی سەرچاوەی وانەی پێنج.",
         ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest):
-            await callback(update, SimpleNamespace(user_data={}), "/unused")
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         query.message.reply_voice.assert_not_awaited()
         self.assertGreaterEqual(query.message.reply_text.await_count, 3)
         first_call = query.message.reply_text.await_args_list[0]
@@ -99,7 +99,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی وانە.",
         ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest):
-            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False)
+            await callback(update, SimpleNamespace(user_data={}), "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
 
@@ -110,7 +110,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
 
         update, _query = make_update("practice")
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         practice = context.user_data["arami_lesson5_session"]
         self.assertEqual(practice["mode"], "practice")
         self.assertEqual(context.user_data["arami_lesson1_session"], lesson1_session)
@@ -118,7 +118,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
 
         update, _query = make_update("assessment")
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         assessment = context.user_data["arami_lesson5_session"]
         self.assertEqual(assessment["mode"], "assessment")
         self.assertEqual(context.user_data["arami_lesson1_session"], lesson1_session)
@@ -131,7 +131,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             with patch("arami_lesson5_telegram.load_manifest", return_value={
                 "lessons": [{"number": 5, "id": "arami_course1_lesson_05"}]
             }):
-                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False)
+                await callback(update, context, "/unused", can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertNotIn("arami_lesson5_session", context.user_data)
@@ -141,22 +141,22 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, _query = make_update("practice")
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         first_id = context.user_data["arami_lesson5_message_id"]
 
         update, pick_query = make_update("pick:0", message_id=first_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         pick_query.edit_message_reply_markup.assert_awaited_once()
 
         update, submit_query = make_update("submit", message_id=first_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertFalse(context.user_data["arami_lesson5_session"]["closed"])
         submit_query.edit_message_text.assert_awaited_once()
         next_markup = submit_query.edit_message_text.await_args.kwargs["reply_markup"]
         self.assertEqual(next_markup.inline_keyboard[0][0].callback_data, "arami5:next")
 
         update, _next_query = make_update("next", message_id=first_id)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertEqual(context.user_data["arami_lesson5_session"]["index"], 1)
         self.assertEqual(context.user_data["arami_lesson5_message_id"], first_id + 1)
 
@@ -165,19 +165,19 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, _query = make_update("assessment")
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=bank):
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         for index in range(2):
             message_id = context.user_data["arami_lesson5_message_id"]
             update, _pick_query = make_update("pick:0", message_id=message_id)
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
             update, submit_query = make_update("submit", message_id=message_id)
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
             shown = submit_query.edit_message_text.await_args.args[0]
             self.assertNotIn("وەڵامی ڕاست", shown)
             if index == 0:
                 self.assertIn("وەڵامەکەت وەرگیرا", shown)
                 update, _next_query = make_update("next", message_id=message_id)
-                await callback(update, context, "/unused")
+                await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
             else:
                 self.assertIn("ئەنجام", shown)
                 self.assertNotIn("دووبارەکردنەوەی پرسیارە هەڵەکان", str(submit_query.edit_message_text.await_args.kwargs["reply_markup"]))
@@ -202,7 +202,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson5_message_id": 99,
         })
         update, query = make_update("pick:0", message_id=10)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
         query.edit_message_reply_markup.assert_not_awaited()
 
@@ -211,7 +211,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         with patch("arami_lesson5_telegram.load_arami_lesson5_interactions", return_value=sample_bank()):
             update, _ = make_update("practice")
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
             message_id = context.user_data["arami_lesson5_message_id"]
             session = context.user_data["arami_lesson5_session"]
 
@@ -219,14 +219,14 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             async def assert_pick_committed():
                 self.assertEqual(session["selected_index"], 0)
             pick_query.answer.side_effect = assert_pick_committed
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
 
             update, submit_query = make_update("submit", message_id=message_id)
             async def assert_submit_committed():
                 self.assertEqual(session["index"], 1)
                 self.assertEqual(len(session["answers"]), 1)
             submit_query.answer.side_effect = assert_submit_committed
-            await callback(update, context, "/unused")
+            await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
 
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
@@ -278,7 +278,7 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
             "arami_lesson5_message_id": 10,
         })
         update, query = make_update("pick:²", message_id=10)
-        await callback(update, context, "/unused")
+        await callback(update, context, "/unused", can_take_assessment=lambda user_id, lesson_id: True)
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
         self.assertIsNone(context.user_data["arami_lesson5_session"]["selected_index"])
