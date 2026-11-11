@@ -376,7 +376,7 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 
 ## Checkpoint update — terminology register Lesson 12 boundary addendum (2026-11-11)
 
-- Master terminology register addendum appended and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_MASTER_TERMINOLOGY_REGISTER_2026-11-11.md`, blob SHA `82fcc38e57da796f8696a41df97c5d9b52afad48`.
-- The addendum preserves the six top-level adjective classes, treats `rêzîn` as a numeral-adjective subtype, separates lexical class from syntactic function and surface form, and records the lesson-internal readings of `nîv roj` and `kurên van).
+- Master terminology register addendum appended and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_MASTER_TERMINOLOGY_REGISTER_2026-11-11.md`, blob SHA `494546c6e94504806b7f073c98e3e5a21ad0d194`.
+- The addendum preserves the six top-level adjective classes, treats `rêzîn` as a numeral-adjective subtype, separates lexical class from syntactic function and surface form, and records the lesson-internal readings of `nîv roj` and `kurên van`.
 - This is provisional course-internal guidance, not a final external standard; Kurmanji editor review remains needed for detailed syntax/idiomaticity and Q3 morphology.
 - No learner-facing lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
