@@ -408,7 +408,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.start_quiz(update, context)
         self.assertNotIn("quiz", context.user_data)
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("وانەکانی پێشوو", query.message.reply_text.await_args.args[0])
+        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
 
     async def test_initial_question_delivery_failure_clears_new_quiz_state(self):
         lesson = "grammar_01"
@@ -484,7 +484,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text.assert_awaited_once()
         self.assertEqual(context.user_data["quiz"]["question_message_id"], 880)
 
-    async def test_latin_quiz_answer_requires_selection_then_submit(self):
+    async def test_draft_latin_quiz_is_cleared_before_scoring_or_rewards(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
         correct_index = question["options"].index(question["answer"])
@@ -506,9 +506,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             query.data = "submit_answer"
             await bot.submit_quiz_answer(update, context)
 
-        reward.assert_called_once_with(12345, lesson)
+        reward.assert_not_called()
         self.assertNotIn("quiz", context.user_data)
-        self.assertTrue(any("1/1" in call.args[0] for call in query.message.reply_text.await_args_list))
+        self.assertTrue(any("پێداچوونەوەی سەرچاوە" in call.args[0] for call in query.message.reply_text.await_args_list))
 
     async def test_selection_is_recorded_before_callback_acknowledgement(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
@@ -536,7 +536,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         await task
         query.edit_message_reply_markup.assert_awaited_once()
 
-    async def test_wrong_submitted_answer_shows_incorrect_and_reveals_correct_answer(self):
+    async def test_wrong_submitted_answer_in_draft_latin_quiz_is_not_officially_scored(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
         wrong_index = next(
@@ -557,7 +557,8 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.submit_quiz_answer(update, context)
 
         feedback = [call.args[0] for call in query.message.reply_text.await_args_list]
-        self.assertTrue(any("❌" in item and question["answer"] in item for item in feedback))
+        self.assertTrue(any("پێداچوونەوەی سەرچاوە" in item for item in feedback))
+        self.assertFalse(any("❌" in item for item in feedback))
         self.assertNotIn("quiz", context.user_data)
 
     @unittest.skip("Legacy 22-lesson Course 1 retired; Arami 21-lesson interaction tests cover the replacement.")
