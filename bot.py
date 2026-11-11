@@ -1308,6 +1308,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(query.from_user.id),
+                beta_completed_lessons=get_completed_beta_lessons(query.from_user.id),
                 can_open=lambda lesson_id: can_open(query.from_user.id, lesson_id),
             ),
         )
@@ -1555,6 +1556,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(user_id),
+                beta_completed_lessons=get_completed_beta_lessons(user_id),
                 can_open=lambda lesson_id: can_open(user_id, lesson_id),
             ),
         )
@@ -1781,6 +1783,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(user_id),
+                beta_completed_lessons=get_completed_beta_lessons(user_id),
                 can_open=lambda lesson_id: can_open(user_id, lesson_id),
             ),
         )
