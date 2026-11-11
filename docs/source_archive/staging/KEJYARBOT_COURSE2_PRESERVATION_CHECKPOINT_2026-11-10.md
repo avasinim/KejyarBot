@@ -397,3 +397,12 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Global consistency audit Section 50 appended and verified: blob SHA `7adc1886654751a138392a40152741c74bbe4393`.
 - The matrix distinguishes course-intended class from phrase function, morphology, and context. `tu mirov` requires context; `hespê min` and `mehînên te` require careful possessive/pronoun terminology and Kurmanji editor review; `kurên van` remains the lesson-intended `xwemalîn` item pending syntax/idiomaticity review; `nîv roj` remains `jmarnav` with modifying phrase function stated separately.
 - No learner-facing lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## Checkpoint update — Lesson 12 Xebata 2 and Xebata 3 audit (2026-11-11)
+
+- Teacher-facing audit appended and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`, blob SHA `4d3937cbc49dd4ca28e860fdd36a78cb579e05c3`.
+- Global consistency audit Section 51 appended and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_GLOBAL_CONSISTENCY_AUDIT_2026-11-10.md`, blob SHA `a9b5edfecdc6982d8f471efbe7039bd7d37c108e`.
+- Xebata 2 rubric specifies six top-level adjective classes, one new noun-containing example per class; `rêzîn` remains a subtype within `jmarîn`, not a seventh class.
+- Xebata 3 rubric distinguishes numeral-adjective use with an expressed noun from independent/substantive `jmarnav` use and records a provisional one-sentence model response. Kurmanji copy-edit and the existing singular morphology query remain open.
+- No learner-facing content or protected runtime/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup was created or verified.
