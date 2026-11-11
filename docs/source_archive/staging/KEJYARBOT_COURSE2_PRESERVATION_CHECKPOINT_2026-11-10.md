@@ -442,3 +442,12 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_ORTHOGRAPHY_FORMATTING_AUDIT_2026-11-11.md`, SHA `6478e42c7231732ae1bf9ea5cba45ff9ae4636ff`.
 - Confirmed 62 questions and 62 answer-key rows. Main open editorial spelling item: L1 Q4 rationale `kîtê/kitê`; L12 quiz heading/layout/capitalization differs from earlier lessons.
 - Master terminology register updated and global audit Section 56 appended. No learner-facing changes or key edits; no parser/test/runtime verification. `main` remains read-only; no separate ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — 62-question answer-key rationale specificity and source-support audit (2026-11-11)
+
+- Audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_ANSWER_KEY_RATIONALE_SPECIFICITY_SOURCE_SUPPORT_AUDIT_2026-11-11.md`, blob SHA `fc1e91a3435fcd89c551efc51a5bdb476393e210`.
+- Verified 62 quiz items and 62 key rows. 47 rationales (75.8%) are generic confirmations; 15 contain item-specific explanations. The audit provides a complete 62-row review.
+- Stronger existing rationales: L5 Q2–Q4, L8 Q6–Q7, L11 Q4. Repeated but useful paradigms: L7 Q2–Q4 and L9 Q1–Q4.
+- Priority holds: L10 Q2 (`wê` agent vs stem's object-form label), L12 Q1 adjective-definition scope, L12 Q3 `rengdêra/rengdêrê jmarîn`, L1 Q4 `kîtê/kitê`. L6 Q3 must retain the full noun-attached modifier distinction.
+- No quiz, key, rationale or lesson text was edited. No tests/CI, live runtime checks, learner-response or psychometric analysis occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
