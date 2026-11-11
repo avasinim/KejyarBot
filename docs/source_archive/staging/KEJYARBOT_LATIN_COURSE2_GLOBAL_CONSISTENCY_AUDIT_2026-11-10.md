@@ -705,3 +705,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Re-fetched the consolidated 45-item rationale pack, editorial preflight, source-aligned lessons and reviewed quiz draft. E1 (L2 Q2), E2 (L11 Q2) and E3 (L10 Q2) are each supported by the exact lesson definition/example and quiz key. Alternative wording is recorded for qualified editor review only; all three answer keys remain unchanged (C).
 - The focused pass confirms the clarity rationale and source basis; it does not re-adjudicate the remaining 42 rows or certify idiomatic native-Kurmanji prose. L1 Q4, L12 Q1 and L12 Q3 remain held.
 - No lesson, quiz, answer-key, runtime, parser, manifest, database, Botkeep, Telegram or deployment file changed. No tests/CI or live runtime checks. Proposals remain unapproved/unapplied; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 78 — Lesson 8 Q3 “bê bireser” terminology boundary (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON8_Q3_BIRESER_TERMINOLOGY_BOUNDARY_RECHECK_2026-11-11.md`, SHA `5c90a8c46cc5ea6758a77c2d045dad6f68fdbfd2`.
+- Exact L8 Q3 stem says “bê bireser”, but §66 of the lesson source defines the relevant paradigm as having no descriptive/qualifying element after the noun (“bê pêvekeke raveker li pey navdêrê”). In this course, `bireser` is used for noun complement (L6 term `bireserê navdêrê`) and clause object (L9–10); the Q3 stem therefore risks conflating distinct grammatical relations.
+- The rationale already uses the source-aligned condition. Key A (`-in`) remains supported. A stem wording alternative using `bê hêmaneke raveker li pey navdêrê` is recorded for editor review only; no change made.
+- This is a new editorial hold/review item, alongside L1 Q4, L12 Q1 and L12 Q3. No lesson/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
