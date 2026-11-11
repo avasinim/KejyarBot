@@ -4,6 +4,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
 import bot
+import arami_course1_telegram as arami_course1
 
 # Most callback tests use an isolated/mock learner-progress ledger.
 _beta_ledger_test_default = None
@@ -1260,6 +1261,46 @@ class ReviewOnlyQuizLaunchGuardTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("هیچ خەڵاتێک", query.message.reply_text.await_args.args[0])
         award.assert_not_called()
 
+
+
+class AramiAssessmentSessionRevalidationTests(unittest.IsolatedAsyncioTestCase):
+    async def test_revoked_assessment_session_is_discarded_before_submit(self):
+        number = 1
+        lesson_id = "arami_course1_lesson_01"
+        session = {"mode": "assessment", "closed": False}
+        query = SimpleNamespace(
+            data=f"aramiC:submit:{number}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(
+                message_id=901,
+                reply_text=AsyncMock(),
+            ),
+            edit_message_text=AsyncMock(),
+        )
+        context = SimpleNamespace(user_data={
+            "arami_course1_active": {"lesson": number, "message_id": 901},
+            "arami_course1_sessions": {str(number): session},
+        })
+        update = SimpleNamespace(callback_query=query)
+        with (
+            patch.object(arami_course1, "_active_session", return_value=session),
+            patch.object(arami_course1, "can_take_assessment", create=True, return_value=False),
+        ):
+            await arami_course1.callback(
+                update,
+                context,
+                base_dir=".",
+                can_open=lambda user_id, lesson: True,
+                award_assessment=AsyncMock(),
+                can_take_assessment=lambda user_id, lesson: False,
+            )
+
+        self.assertNotIn(str(number), context.user_data["arami_course1_sessions"])
+        self.assertNotIn("arami_course1_active", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("وەستێندرا", query.message.reply_text.await_args.args[0])
 
 if __name__ == "__main__":
     unittest.main()
