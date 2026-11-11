@@ -421,3 +421,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Cross-lesson terminology audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CROSS_LESSON_TERMINOLOGY_CHAIN_AUDIT_2026-11-11.md`, blob SHA `178b0fb99da312265e27172208635a0221a9ef2b`.
 - Master terminology register updated to record the core distinctions and unresolved labels; global consistency audit Section 53 appended.
 - No learner-facing lesson/exercise/quiz/key or protected runtime/parser/tests/manifest/database/Botkeep/Telegram/deployment files changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — Course 2 62-question terminology audit (2026-11-11)
+
+- 62-item terminology audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_TERMINOLOGY_AUDIT_2026-11-11.md`, blob SHA `1cd41f566c4896450a4bd93b93cf0b75af9288f3`.
+- Confirmed 62 quiz items and 62 answer-key rows. Master terminology register updated; global consistency audit Section 54 appended.
+- No quiz/key or learner-facing content was edited. No tests/CI or runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
