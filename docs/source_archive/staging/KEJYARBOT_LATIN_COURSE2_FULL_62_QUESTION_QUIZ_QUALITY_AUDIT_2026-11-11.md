@@ -146,3 +146,39 @@ Most clearly weak distractor sets occur in L1 Q1, L2 Q1, L5 Q1/Q5, L7 Q5 and L12
 ## Addendum — L12 Q5 `nîv` source-coverage confirmation (2026-11-11)
 
 A targeted recheck of the full Lesson 12 text resolves the coverage question raised in the initial register: `nîv` is explicitly taught in the numeral section, not merely mentioned in the quiz. The lesson lists `nîv` among its basic examples, explains its standalone inflection (`nîvî`, with the source form `nîvekî` also noted in the reviewed draft), and contrasts standalone use with use before a numeral or noun. It also includes `nîv roj` in the classification exercise. Therefore L12 Q5's keyed answer C (`nimûneyeke jmarnav`) is instructionally grounded; no extra teaching note is required for this reason. The item may remain as written. This targeted check does not validate every nuance of the taxonomy independently.
+
+
+## Addendum — Exact replacement proposals for four priority quiz items (2026-11-11)
+
+The following proposals were drafted after re-reading the exact lesson text, reviewed quiz stems/options, and corresponding key rows. They are editorial candidates only; not approved or applied.
+
+### L10 Q1 — disambiguate inventory membership from sentence role
+- Current stem: `Kîjan yek ji pronavên bireser e?`
+- Current options/key: A) `ez`; B) `min`; C) `tu` — key B.
+- Proposed stem: `Di lîsteya formên pronavên bireser a Ders 10 de kîjan form heye?`
+- Options remain: A) `ez`; B) `min`; C) `tu` — key B.
+- Reason: the new stem asks about the explicitly taught inventory, not the syntactic role of `min` in every construction. Lesson 9's agent/ergative table remains intact and is no longer an unintended competing interpretation.
+
+### L2 Q5 — replace another definition check with contextual contrast
+- Current target repeats the common-noun definition already tested in Q1 and illustrated by Q2.
+- Proposed stem: `Di koma “Argesh û hesp” de, kîjan peyv serenav e?`
+- Options: A) `hesp`; B) `Argesh`; C) `her du` — proposed key B.
+- Reason: uses a course-listed name and a course-listed common noun, and checks classification in context rather than repeating the abstract definition. No other option is defensible under the lesson's own definitions.
+
+### L3 Q3 — broaden gender-example coverage
+- Current stem: `çem di rêzimanê de çi ye?` — key A (`nêr`).
+- Proposed stem: `“jin” di lîsteya dersê de di çi zayendê de hatiye dabeşkirin?`
+- Options: A) `nêr`; B) `mê`; C) `her du` — proposed key B.
+- Reason: `jin` appears explicitly in the lesson's feminine list. This removes the second consecutive masculine-list retrieval (after Q2 `derî`) and adds a clear feminine lexical example distinct from Q4's sense-conditioned `dar` item.
+
+### L4 Q5 — assess number agreement rather than repeat the same noun form
+- Current stem: `hespin çi nîşan dide?` — key C (`gelemjimar`), duplicating Q2's `hespek → hespin` pair.
+- Proposed stem: `Di hevoka “Ev mehîn __” de, ji bo gelemjimarê kîjan forma lêkerê rast e?`
+- Options: A) `e`; B) `in`; C) `hatin` — proposed key B.
+- Reason: Lesson 4 explicitly teaches `Ev mehîn e / Ev mehîn in`. The new item assesses plural agreement in a taught sentence, not the same `hespek/hespin` lexical conversion. It does not require Lesson 5's tewang knowledge.
+
+## Proposal validation and limitations
+- All proposed replacement content is grounded in the current Lesson 2–4 and Lesson 10 text. Proposed keys are B for all four; current keys are also unchanged (B for L2 Q5, A for L3 Q3, C for L4 Q5, B for L10 Q1), so the proposals do not require changing any answer-key letter.
+- The L2 proposal reuses `Argesh`, which is present as a course-added example in the course material; it is not presented as a direct quote from the primary grammar source.
+- These four proposals should still receive a native-Kurmanji editorial read for naturalness and pedagogical register before approval.
+- No learner-facing file, quiz, key, lesson, rationale, runtime, parser, manifest, database, Botkeep, Telegram or deployment artifact was modified.
