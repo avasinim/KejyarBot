@@ -63,8 +63,11 @@ logger = logging.getLogger(__name__)
 
 
 def award_arami_assessment(user_id, lesson_id):
-    """Grant XP only after the lesson has an explicit academic approval status."""
-    if lesson_is_beta_review(lesson_id):
+    """Grant XP only for a registered, academically approved Arami lesson."""
+    if (
+        LESSON_COURSE.get(lesson_id) != "arami_orthography_foundations"
+        or lesson_is_beta_review(lesson_id)
+    ):
         return False
     return complete_quiz_with_rewards(
         user_id, f"arami_assessment:{lesson_id}", points=20
