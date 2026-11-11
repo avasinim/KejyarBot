@@ -217,3 +217,15 @@ A direct recheck of the primary source, Celadet Alî Bedir-Xan, *Elfabêya kurd�
 The corrected wording was committed to the proposal-only artifact KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md (new blob 061127ddf7fec01b4df5e43066053010bac0fe10; update commit aae7ae016821d1e11b5c9697d7ec479a65a7fea2). The prior reviewed draft's line 292 remains unchanged; no lesson, quiz, answer key, or runtime content was edited. This correction is evidence that the earlier proposal wording must not be applied as-is. The proposal remains unapproved and unapplied.
 
 Source locator: printed p.67, §69; related suffix paradigms §§67–68 on printed pp.66–67 and §70 on printed pp.67–68. No automated tests, runtime, Botkeep, Telegram, manifest, database, or deployment action occurred. main remains read-only.
+
+
+## 29. Final page-image adjudication of Lesson 8 §§68–70 (2026-11-11)
+A direct visual reinspection of the original source pages resolves the apparent conflict between the end of §68 and §69. These are two distinct rules, not competing readings of one rule:
+
+- **§68, printed p.66:** where several nouns are linked by one complement, the determiner is selected according to the gender of the final noun in that linked noun group.
+- **§69, printed pp.66–67:** where more than one complement is attached and the complements themselves form a linked sequence, each complement receives its own distinct determiner according to its own number and gender. The examples continue on printed p.67.
+- **§70, printed pp.67–68:** the uninflected forms `-ek/-ek/-in` are inflected in the stated object environment as `-ekî/-ekê/-ina`.
+
+The prior section 28 statement that each §69 element receives its own suffix was correct. An intervening proposal revision mistakenly conflated the final-noun rule at the end of §68 with §69; that temporary reversal is now superseded. The current editorial proposal again states the §69 rule correctly and distinguishes it from §68. Its line 290 wording also now says `formên netewandî` for the uninflected `-ek/-ek/-in` forms.
+
+Updated proposal: `KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md`, current blob SHA `2a468ec504434d6e98d5c31f86061f47f61c4b68` (verified after correction). It remains proposal-only. The reviewed base lesson and answer key remain unchanged. Source evidence: original page images for printed pp.66–67 (PDF page indices 65–66), especially the end of §68, the opening of §69, and the §69 examples continuing on p.67. No runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment action occurred; `main` remains read-only.
