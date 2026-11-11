@@ -442,6 +442,27 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         official_reward.assert_not_called()
         quiz_reward.assert_not_called()
 
+    def test_arami_unapproved_sources_are_review_only_and_never_award_xp(self):
+        lesson_id = "arami_course1_lesson_02"
+        self.assertEqual(
+            next(item for item in bot.ARMI_MANIFEST["lessons"] if item["id"] == lesson_id)["status"],
+            "source_review_pending",
+        )
+        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+        with patch.object(bot, "complete_quiz_with_rewards") as reward:
+            self.assertFalse(bot.award_arami_assessment(12345, lesson_id))
+        reward.assert_not_called()
+
+    def test_arami_beta_progress_unlocks_the_next_lesson_without_official_completion(self):
+        first = "arami_course1_lesson_01"
+        second = "arami_course1_lesson_02"
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
+        ):
+            self.assertTrue(bot.can_open(12345, second))
+
     async def test_inflight_quiz_for_pending_lesson_is_cleared_without_rewards(self):
         lesson_id = "grammar_50"
         query = SimpleNamespace(
