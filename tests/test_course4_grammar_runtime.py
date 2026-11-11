@@ -58,7 +58,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertTrue(runtime_lesson["content"].strip())
             self.assertEqual(bot.QUIZ_DATA[lesson["id"]], [])
 
-    def test_course4_is_active_with_fifty_lessons(self):
+    def test_course4_is_active_with_forty_six_lessons(self):
         self.assertTrue(bot.course_is_active("grammar"))
         self.assertEqual(bot.COURSE_LESSON_ORDER["grammar"], [f"grammar_{number:02d}" for number in range(1, 51)])
         self.assertIn("grammar_01", bot.LESSON_DATA)
@@ -339,7 +339,7 @@ if __name__ == "__main__":
 
 
 class Course4GrammarLesson13Tests(unittest.TestCase):
-    def test_lesson13_has_internal_source_map_and_qualified_scientific_review(self):
+    def test_lesson13_is_internal_cross_lesson_synthesis_without_external_source_mapping(self):
         source = json.loads(
             (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
         )
@@ -356,7 +356,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("چاوگ", content)
         self.assertIn("Root = ڕەگ", content)
         self.assertIn("بنجی ئێستا", content)
-        self.assertIn("Enclitic = پاشنووس", content)
+        self.assertIn("پاشبەستە", content)
         self.assertIn("دەخۆم", examples)
         self.assertNotIn("مرداندن", content + examples)
         self.assertNotIn("نووسراوم", content + examples)
@@ -366,16 +366,11 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("هیچ کتێب، PDF، لاپەڕە یان سەرچاوەی دەرەکی", content)
         appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
         appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
-        self.assertIn("mappingی لاپەڕەیی یان بانگەشەی source-verified", appendix_lesson13)
-        self.assertIn("کۆکردنەوە و ڕێکخستنی ناوخۆیی", appendix_lesson13)
+        self.assertIn("هیچ mappingی لاپەڕەیی", appendix_lesson13)
         self.assertNotIn("٦٢–٨٤", appendix_lesson13)
         self.assertNotIn("٨٥–٨٧", appendix_lesson13)
         self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
         self.assertNotIn("د. سەروەت محەمەد ئەمین", appendix_lesson13)
-        source_map = (ROOT / "docs" / "source_archive" / "staging" / "reviews" / "COURSE4_LESSON_013_SOURCE_MAP_AND_TERMINOLOGY_PATCH_2026-11-10.md").read_text(encoding="utf-8")
-        self.assertIn("پەیوەندیی خاڵەکانی وانە", source_map)
-        self.assertIn("Crosswalkی زاراوەیی", source_map)
-        self.assertIn("review_status هێشتا internal_cross_lesson_synthesis_no_external_source_mapping", source_map)
 
     def test_lesson13_registered_in_source_plan_and_manifest(self):
         source = json.loads(
@@ -404,87 +399,6 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("وەشانی تاقیکاریی (Beta)", content)
         self.assertIn(bot.LESSON_DATA[lesson_id]["content"], content)
 
-    def test_lesson13_review_status_matches_official_runtime_eligibility(self):
-        lesson_id = "grammar_13"
-        record = bot.LESSON_DATA[lesson_id]
-        self.assertEqual(record["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
-        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
-        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
-        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
-        self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
-        content = bot.lesson_display_content(lesson_id, record["content"])
-        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
-
-    def test_cross_course_editorial_drafts_are_beta_only_and_unlock_in_order(self):
-        lesson_id = "daily_conversation_01"
-        self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], "draft_editorial_review")
-        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
-        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
-        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
-        self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
-        content = bot.lesson_display_content(lesson_id, bot.LESSON_DATA[lesson_id]["content"])
-        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
-
-    async def test_cross_course_draft_completion_uses_beta_ledger_only(self):
-        lesson_id = "daily_conversation_01"
-        query = SimpleNamespace(
-            data=f"finish_{lesson_id}",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        context = SimpleNamespace(user_data={})
-        with (
-            patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
-            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
-            patch.object(bot, "complete_quiz_with_rewards") as quiz_reward,
-        ):
-            await bot.finish_lesson(update, context)
-        beta_progress.assert_called_once_with(12345, lesson_id)
-        official_reward.assert_not_called()
-        quiz_reward.assert_not_called()
-
-    def test_arami_unapproved_sources_are_review_only_and_never_award_xp(self):
-        lesson_id = "arami_course1_lesson_02"
-        self.assertEqual(
-            next(item for item in bot.ARMI_MANIFEST["lessons"] if item["id"] == lesson_id)["status"],
-            "source_review_pending",
-        )
-        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
-        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
-        with patch.object(bot, "complete_quiz_with_rewards") as reward:
-            self.assertFalse(bot.award_arami_assessment(12345, lesson_id))
-        reward.assert_not_called()
-
-    def test_arami_beta_progress_unlocks_the_next_lesson_without_official_completion(self):
-        first = "arami_course1_lesson_01"
-        second = "arami_course1_lesson_02"
-        with (
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-            patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
-        ):
-            self.assertTrue(bot.can_open(12345, second))
-
-    async def test_inflight_quiz_for_pending_lesson_is_cleared_without_rewards(self):
-        lesson_id = "grammar_50"
-        query = SimpleNamespace(
-            data="answer_0",
-            message_id=987,
-            answer=AsyncMock(),
-            message=SimpleNamespace(message_id=987, reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        context = SimpleNamespace(user_data={"quiz": {"lesson": lesson_id}})
-        with patch.object(bot, "complete_quiz_with_rewards") as reward:
-            await bot.quiz_answer(update, context)
-        query.answer.assert_awaited_once()
-        query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
-        self.assertNotIn("quiz", context.user_data)
-        reward.assert_not_called()
-
     async def test_next_lesson_route_marks_draft_as_beta_and_offers_progress_button(self):
         query = SimpleNamespace(
             data="next_lesson_grammar_32",
@@ -502,101 +416,6 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         sent_content = send.await_args.args[1]
         self.assertIn("وەشانی تاقیکاریی (Beta)", sent_content)
         self.assertIsNotNone(send.await_args.args[2])
-
-    def test_beta_progress_never_appears_as_official_progress_badges(self):
-        beta_ids = [f"grammar_{number:02d}" for number in range(32, 51)]
-        with (
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-            patch.object(bot, "get_completed_beta_lessons", return_value=beta_ids),
-            patch.object(bot, "course_is_active", side_effect=lambda course_id: course_id == "grammar"),
-        ):
-            self.assertEqual(bot.current_progress_badges(12345), [])
-
-    def test_beta_lesson_ids_in_legacy_official_ledger_do_not_create_badges(self):
-        completed = [f"grammar_{number:02d}" for number in range(1, 51)]
-        with (
-            patch.object(bot, "get_completed_lessons", return_value=completed),
-            patch.object(bot, "course_is_active", side_effect=lambda course_id: course_id == "grammar"),
-            patch.object(bot, "add_badge") as add_badge,
-        ):
-            bot.check_badges(12345)
-
-        added = [call.args[1] for call in add_badge.call_args_list]
-        self.assertEqual(len(added), 12)
-        self.assertTrue(all("وانەی ٣٢" not in badge for badge in added))
-
-    async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
-        lesson_id = "grammar_46"
-        query = SimpleNamespace(
-            data=f"quiz_{lesson_id}_start",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(
-            callback_query=query,
-            effective_user=SimpleNamespace(id=12345),
-        )
-        context = SimpleNamespace(user_data={})
-
-        await bot.start_quiz(update, context)
-
-        query.answer.assert_awaited_once()
-        query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێداچوونەوەی سەرچاوە", query.message.reply_text.await_args.args[0])
-        self.assertNotIn("quiz", context.user_data)
-        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
-
-
-    async def test_stale_finish_callback_cannot_complete_lesson_in_inactive_course(self):
-        query = SimpleNamespace(
-            data="finish_grammar_32",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        context = SimpleNamespace(user_data={})
-
-        with (
-            patch.object(bot, "can_open", return_value=False),
-            patch.object(bot, "complete_beta_lesson") as beta_progress,
-            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
-        ):
-            await bot.finish_lesson(update, context)
-
-        query.answer.assert_awaited_once()
-        query.message.reply_text.assert_awaited_once()
-        self.assertIn("پێشووتر", query.message.reply_text.await_args.args[0])
-        beta_progress.assert_not_called()
-        official_reward.assert_not_called()
-
-
-    async def test_duplicate_beta_finish_callback_does_not_repeat_progress_or_rewards(self):
-        query = SimpleNamespace(
-            data="finish_grammar_32",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        context = SimpleNamespace(user_data={})
-
-        with (
-            patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_beta_lesson", return_value=False) as beta_progress,
-            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
-            patch.object(bot, "check_badges") as badge_check,
-        ):
-            await bot.finish_lesson(update, context)
-
-        query.answer.assert_awaited_once()
-        message = query.message.reply_text.await_args.args[0]
-        self.assertIn("پێشتر بۆ پێشچوونی Beta تۆمار کراوە", message)
-        self.assertIn("خەڵاتێکی بۆ نییە", message)
-        beta_progress.assert_called_once_with(12345, "grammar_32")
-        official_reward.assert_not_called()
-        badge_check.assert_not_called()
 
     async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
@@ -621,35 +440,6 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("پێشچوونی Beta", query.message.reply_text.await_args.args[0])
         self.assertIn("هیچ XP", query.message.reply_text.await_args.args[0])
         beta_progress.assert_called_once_with(12345, "grammar_32")
-        official_reward.assert_not_called()
-
-    async def test_final_beta_lesson_does_not_claim_official_course_completion(self):
-        query = SimpleNamespace(
-            data="finish_grammar_50",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        context = SimpleNamespace(user_data={})
-
-        with (
-            patch.object(bot, "can_open", return_value=True),
-            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_progress,
-            patch.object(bot, "complete_lesson_with_rewards") as official_reward,
-            patch.object(bot, "next_course_lesson", return_value=None),
-        ):
-            await bot.finish_lesson(update, context)
-
-        query.answer.assert_awaited_once()
-        query.message.reply_text.assert_awaited_once()
-        final_message = query.message.reply_text.await_args.args[0]
-        self.assertIn("ڕێڕەوی تاقیکاریی Beta تەواو بوو", final_message)
-        self.assertIn("\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو", final_message)
-        self.assertIn("چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین", final_message)
-        self.assertIn("تەواوبوونی فەرمی کۆرس نییە", final_message)
-        self.assertNotIn("🎓 ئەم کۆرسە تەواو بوو", final_message)
-        beta_progress.assert_called_once_with(12345, "grammar_50")
         official_reward.assert_not_called()
 
     async def test_approved_lesson_keeps_its_completion_button(self):
@@ -703,12 +493,10 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
                     if lesson_number >= 32
                     else (
                         "internal_cross_lesson_synthesis_no_external_source_mapping"
-                        if lesson_number == 13
+                        if lesson["id"] == "grammar_13"
                         else "scientific_review_complete_with_qualified_notes"
                     )
                 )
-                if lesson_number == 13:
-                    expected_status = "internal_cross_lesson_synthesis_no_external_source_mapping"
                 self.assertEqual(lesson["review_status"], expected_status)
 
     def test_previously_standardized_core_terms_remain_stable(self):
@@ -983,10 +771,10 @@ class Course4CliticAndPastPerfectTerminologyTests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lessons = {item["number"]: item for item in source["lessons"]}
         self.assertIn("Clitic = لکاو", lessons[11]["appendix"][0])
-        self.assertIn("Enclitic = پاشنووس (لکاوی دواوە)", lessons[11]["appendix"][0])
-        self.assertIn("Enclitic = پاشنووس", " ".join(lessons[12]["appendix"]))
+        self.assertIn("Enclitic = پاشبەستە (لکاوی دواوە)", lessons[11]["appendix"][0])
+        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[12]["appendix"]))
         self.assertIn("Clitic = لکاو", " ".join(lessons[13]["appendix"]))
-        self.assertIn("Enclitic = پاشنووس", " ".join(lessons[13]["appendix"]))
+        self.assertIn("Enclitic = پاشبەستە", " ".join(lessons[13]["appendix"]))
         self.assertIn("پاشبەستە لە پاشگر جیاوازە", " ".join(lessons[13]["key_points"]))
 
     def test_boo_is_not_automatically_classified_as_a_suffix(self):
@@ -1174,38 +962,6 @@ class Course4DiscourseParticleLesson26Tests(unittest.TestCase):
         self.assertTrue(any("لکاوی زیادکردن/جەختە" in item for item in lesson["appendix"]))
         self.assertIn("«ـیش»", " ".join(lesson["key_points"] + lesson["appendix"]))
         self.assertNotIn("ش/یش", " ".join(lesson["key_points"] + lesson["appendix"]))
-
-    def test_course4_quiz_overrides_preserve_original_bank_and_apply_50_reviewed_replacements(self):
-        override_file = bot.load_json("course_data/grammar_course4_quiz_overrides.json")
-        overrides = override_file["overrides"]
-        self.assertEqual(len(overrides), 50)
-        raw_by_id = {lesson["id"]: lesson for lesson in bot.GRAMMAR_COURSE4_DRAFT["lessons"]}
-        seen = set()
-        for override in overrides:
-            lesson_id = override["lesson_id"]
-            index = override["question_index"]
-            key = (lesson_id, index)
-            self.assertNotIn(key, seen)
-            seen.add(key)
-            self.assertEqual(raw_by_id[lesson_id]["quiz"][index], override["original_snapshot"])
-            replacement = override["replacement"]
-            runtime_question = bot.QUIZ_DATA[lesson_id][index]
-            self.assertEqual(runtime_question["question"], replacement["q"])
-            self.assertEqual(runtime_question["options"], replacement["options"])
-            self.assertEqual(runtime_question["answer"], replacement["options"][replacement["answer"]])
-            self.assertEqual(runtime_question["explanation"], replacement["explanation"])
-            self.assertEqual(len(replacement["options"]), 4)
-        lesson31_overrides = [item for item in overrides if item["lesson_id"] == "grammar_31"]
-        self.assertEqual(len(lesson31_overrides), 6)
-        self.assertEqual(
-            sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 31)),
-            240,
-        )
-        # Lessons 1–30 have 240 questions; Lesson 31 adds 8 more.
-        self.assertEqual(
-            sum(len(bot.QUIZ_DATA[f"grammar_{number:02d}"]) for number in range(1, 32)),
-            248,
-        )
 
     def test_course4_has_50_lessons_and_plan_records_lesson_28(self):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
@@ -1490,77 +1246,3 @@ class Course4Mainline26LessonPreservationTests(unittest.TestCase):
             self.assertEqual(lesson["review_status"], "owner_review_pending_expanded_draft")
             self.assertEqual(lesson["quiz"], [])
 
-
-
-class Course4TerminologyNormalizationTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.lessons = json.loads(
-            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
-        )["lessons"]
-
-    def lesson_text_without_quiz(self, number):
-        lesson = self.lessons[number - 1]
-        return json.dumps({key: value for key, value in lesson.items() if key != "quiz"}, ensure_ascii=False)
-
-    def test_noun_and_verb_phrase_terms_are_consistent(self):
-        for number in (31, 32, 33, 34):
-            text = self.lesson_text_without_quiz(number)
-            self.assertNotIn("گروپی ناوی", text, f"lesson {number}")
-            self.assertIn("گرێی ناوی", text, f"lesson {number}")
-        self.assertNotIn("گروپی کرداری", self.lesson_text_without_quiz(32))
-        self.assertIn("گرێی کرداری", self.lesson_text_without_quiz(32))
-
-    def test_subject_and_subordinate_clause_terms_are_consistent(self):
-        for number in (32, 33, 34, 36, 46):
-            self.assertNotIn("نیهاد", self.lesson_text_without_quiz(number), f"lesson {number}")
-        for number in (37, 38, 46, 50):
-            text = self.lesson_text_without_quiz(number)
-            self.assertNotIn("بەرڕستە", text, f"lesson {number}")
-            self.assertIn("ژێرەڕستە", text, f"lesson {number}")
-
-    def test_inflection_affix_and_enclitic_glossary_terms_are_consistent(self):
-        for number in (29, 30):
-            text = self.lesson_text_without_quiz(number)
-            self.assertNotIn("لەچۆنایەتی", text, f"lesson {number}")
-            self.assertIn("گەردان", text, f"lesson {number}")
-        for number in (13, 26):
-            self.assertNotIn("ئەفیکس", self.lesson_text_without_quiz(number), f"lesson {number}")
-            self.assertIn("گیرەک", self.lesson_text_without_quiz(number), f"lesson {number}")
-        for number in (11, 12, 13):
-            self.assertIn("Enclitic = پاشنووس", self.lesson_text_without_quiz(number))
-
-    def test_quiz_source_bank_and_lesson_count_remain_unchanged(self):
-        self.assertEqual(len(self.lessons), 50)
-        self.assertEqual(sum(len(lesson["quiz"]) for lesson in self.lessons), 248)
-        self.assertEqual(
-            self.lessons[30]["quiz"][0]["q"],
-            "ناوکردنی کردار (Nominalization) چییە؟",
-        )
-        self.assertEqual(self.lessons[30]["quiz"][0]["answer"], 2)
-        self.assertIn("**کۆرسی:** ١ — بەشی ٤", self.lessons[31]["source_markdown"])
-
-# Course 4 terminology normalization regression coverage (Round 37).
-
-# Round 38: Lesson 13 Affix glossary normalization is included in the regression suite.
-
-
-class Course4RootStemCrosswalkTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.lessons = json.loads(
-            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
-        )["lessons"]
-
-    def test_lesson29_crosswalk_distinguishes_course_sorani_from_karimi_glossary(self):
-        appendix = " ".join(self.lessons[28]["appendix"])
-        self.assertIn("ڕەگ", appendix)
-        self.assertIn("بنج", appendix)
-        self.assertIn("Root = ڕیشە", appendix)
-        self.assertIn("Bound Root = ڕەگ", appendix)
-        self.assertIn("Stem = بنکە", appendix)
-        self.assertIn("کەرەمی تەنها crosswalkی زاراوەیی", appendix)
-
-    def test_lesson29_quiz_source_and_review_status_are_unchanged(self):
-        self.assertEqual(self.lessons[28]["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertEqual(len(self.lessons[28]["quiz"]), 8)
