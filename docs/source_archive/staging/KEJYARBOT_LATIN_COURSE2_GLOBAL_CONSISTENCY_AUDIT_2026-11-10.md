@@ -229,3 +229,17 @@ A direct visual reinspection of the original source pages resolves the apparent 
 The prior section 28 statement that each §69 element receives its own suffix was correct. An intervening proposal revision mistakenly conflated the final-noun rule at the end of §68 with §69; that temporary reversal is now superseded. The current editorial proposal again states the §69 rule correctly and distinguishes it from §68. Its line 290 wording also now says `formên netewandî` for the uninflected `-ek/-ek/-in` forms.
 
 Updated proposal: `KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md`, current blob SHA `2a468ec504434d6e98d5c31f86061f47f61c4b68` (verified after correction). It remains proposal-only. The reviewed base lesson and answer key remain unchanged. Source evidence: original page images for printed pp.66–67 (PDF page indices 65–66), especially the end of §68, the opening of §69, and the §69 examples continuing on p.67. No runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment action occurred; `main` remains read-only.
+
+
+## 30. Definitive Lesson 8 mixed-script line verification (2026-11-11)
+A fresh inspection of the original page images confirms the exact distinction among §§68–70 and resolves the contradictory intermediate notes:
+
+- §68 (printed p.66): where several nouns are linked by one complement, the determiner follows the gender of the final noun.
+- §69 (printed pp.66–67): in the multi-complement construction described there, each linked complement receives its own determiner according to its own gender and number.
+- §70 (printed pp.67–68): the uninflected indefinite forms -ek/-ek/-in are inflected in the stated non-subject/object environment as -ekî/-ekê/-ina.
+
+Proposed line 290 accurately contrasts the uninflected forms with the inflected forms by using formên netewandî. Proposed line 292 accurately states the §69 each-complement rule and must not be replaced by the distinct final-noun rule in §68. Proposed line 294 correctly separates the three indefinite environments -ek/-ek/-in, -ekî/-eke/-ine, and -î/-e/-en from the definite forms -ê/-a/-ên. The replacements also remove the unintended mixed-script fragments in the source draft lines.
+
+Updated source-image review blob SHA: 0eaa37c517fdaf244b48cc69f953400393ab0812. Updated proposal blob SHA: a8e5d3fed8591c81b33f3b411a7d851ee3891224. Both were fetched again after update and verified. The source page images at printed pp.65–67 were inspected directly. The review note's older §69 summary and the intermediate proposal corrections are superseded by the appended controlling addenda.
+
+No base lesson, quiz, answer key, runtime, tests/CI, manifest, database, Botkeep, Telegram, or deployment state was modified. `main` remains read-only. Proposal remains unapproved and unapplied.
