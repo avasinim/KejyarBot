@@ -768,7 +768,13 @@ class AramiCourseMissingPermissionTests(unittest.IsolatedAsyncioTestCase):
     async def test_assessment_fails_closed_when_permission_callback_is_missing(self):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
-        update, query = self.make_update("assessment:2")
+        query = SimpleNamespace(
+            data="aramiC:assessment:2",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
         await callback(
             update, context, ROOT,
             can_open=lambda user_id, lesson_id: True,
