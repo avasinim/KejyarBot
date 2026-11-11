@@ -39,3 +39,14 @@ This document supplies the matching answer-key rationales for the proposed Lesso
 - **Lesson 10 Q2:** §86 explicitly lists `tu wê dibînî`; the proposed stem has therefore been adjusted to use that exact source frame, rather than the less directly sourced `Ez wê dibînim`. C (`wê`) remains the answer.
 
 The answer letters remain A/C/B/C respectively, subject to a final option-order check. This remains a proposal-only rationale document; no reviewed quiz, key, or runtime artifact has been edited.
+
+
+## Pointer and coverage addendum — Lesson 8 Q3 proposal (2026-11-11)
+
+The related editorial proposal was updated after this rationale file was first created. Its current verified blob SHA is `11b6c6c055a149283f2b4275da15922e28d1f82d` (not the older SHA in the header above). The editorial proposal now includes a fifth proposed quiz stem change, L8 Q3, clarifying the §66 environment as `bê pêvekeke raveker li pey navdêrê`; the existing key remains A (`-in`).
+
+If that quiz edit is approved, add a rationale in the new dated answer-key copy along these lines:
+
+`Di rewşa bê pêvekeke raveker li pey navdêrê de, veqetandeka nebinavkirî ya gelemjimar forma -in digire (§66). Ji ber vê yekê bersiva A rast e.`
+
+This is a rationale candidate only. The existing answer-key baseline and this four-row rationale proposal remain unchanged. Do not edit the key until explicit approval and final option-order validation.
