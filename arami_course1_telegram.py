@@ -89,10 +89,12 @@ def course_menu_keyboard(
     manifest,
     interactive_lessons=(),
     completed_lessons=(),
+    beta_completed_lessons=(),
     can_open=None,
 ):
     """Build a compact two-column catalogue; each lesson opens its own action panel."""
     completed_lessons = set(completed_lessons)
+    beta_completed_lessons = set(beta_completed_lessons)
     rows = []
     lesson_buttons = []
     for lesson in sorted(manifest["lessons"], key=lambda item: item["number"]):
@@ -101,8 +103,17 @@ def course_menu_keyboard(
         title = str(lesson.get("title") or "وانە")
         label = title if len(title) <= 19 else title[:18] + "…"
         lesson_is_open = can_open is None or can_open(lesson_id)
+        review_only = lesson.get("status") not in {
+            "scientific_review_complete",
+            "scientific_review_complete_with_qualified_notes",
+            "approved",
+        }
         if not lesson_is_open:
             status = "🔒"
+        elif lesson_id in beta_completed_lessons:
+            status = "🧪✓"
+        elif review_only:
+            status = "🧪"
         elif lesson_id in completed_lessons:
             status = "✅"
         else:
