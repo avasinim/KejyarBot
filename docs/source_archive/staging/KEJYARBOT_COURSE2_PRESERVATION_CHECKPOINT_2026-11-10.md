@@ -623,3 +623,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON8_Q3_BIRESER_TERMINOLOGY_BOUNDARY_RECHECK_2026-11-11.md`, SHA `5c90a8c46cc5ea6758a77c2d045dad6f68fdbfd2`.
 - L8 Q3 stem uses “bê bireser”, whereas source §66 says no descriptive/qualifying element follows the noun. This risks conflating `bireserê navdêrê` (L6 noun-complement term) and clause-object `bireser` (L9–10). Key A (`-in`) remains supported; stem refinement is proposed but not applied.
 - New review hold added for L8 Q3. Existing L1 Q4, L12 Q1 and L12 Q3 remain open. No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lesson 10 Q1 paradigm label vs clause role (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q1_OBJECT_PRONOUN_FORM_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `a639fa4783ecaf31d535b6ca0ed9e43166b1f30c`.
+- L10 Q1 key B (`min`) is supported as a member of the course's named paradigm, but the stem wording may be read as syntactic-object function. Lesson examples explicitly distinguish paradigm form from actual clause role. Alternative wording and hold recorded; no key or lesson change.
+- New hold L10 Q1 added. Existing L1 Q4, L8 Q3, L12 Q1 and L12 Q3 remain open. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
