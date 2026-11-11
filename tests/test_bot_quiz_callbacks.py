@@ -320,6 +320,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
                     patch.object(bot, "complete_lesson_with_rewards", return_value=True),
                     patch.object(bot, "check_badges"),
+                    patch.object(bot, "lesson_is_pending_review", return_value=False),
+                    patch.object(bot, "lesson_is_beta_review", return_value=False),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.finish_lesson(update, context)
 
@@ -347,6 +350,9 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     patch.object(bot, "complete_lesson_with_rewards", return_value=True),
                     patch.object(bot, "check_badges"),
                     patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "lesson_is_pending_review", return_value=False),
+                    patch.object(bot, "lesson_is_beta_review", return_value=False),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.finish_lesson(update, context)
 
@@ -377,6 +383,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 with (
                     patch.object(bot, "get_completed_lessons", return_value=[lesson]),
                     patch.object(bot, "quiz_is_available", return_value=True),
+                    patch.object(bot, "lesson_quiz_is_available", return_value=True),
                 ):
                     await bot.start_quiz(update, context)
 
@@ -413,6 +420,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         with (
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
             patch.object(bot, "can_open", return_value=False),
         ):
             await bot.start_quiz(update, context)
@@ -475,6 +483,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "course_is_active", return_value=True),
             patch.object(bot, "get_completed_lessons", return_value=[lesson]),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             first = asyncio.create_task(bot.start_quiz(update, context))
             await asyncio.sleep(0)
@@ -1041,6 +1050,9 @@ class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
             patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
             patch.object(bot, "check_badges"),
             patch.object(bot, "quiz_is_available", return_value=True),
+            patch.object(bot, "lesson_is_pending_review", return_value=False),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "lesson_quiz_is_available", return_value=True),
         ):
             await bot.finish_lesson(update, context)
 
