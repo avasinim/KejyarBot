@@ -38,8 +38,7 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
         assessment_enabled = False
         if can_take_assessment is not None:
             try:
-                manifest = load_manifest(base_dir)
-                lesson_record = next(item for item in manifest["lessons"] if item["number"] == 5)
+                lesson_record = {"id": "arami_course1_lesson_05"}
             except (OSError, ValueError, StopIteration):
                 await query.message.reply_text("⚠️ زانیاریی وانەکە ئامادە نییە.")
                 return
