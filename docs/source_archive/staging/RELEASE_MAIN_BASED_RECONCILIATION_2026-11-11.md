@@ -506,3 +506,16 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - هیچ guard ـێک لاواز نەکرا و هیچ status ـێکی وانە نەگۆڕدرا.
 - کۆمیتی چاکسازیی test: `3fa976933c902ec06c01d183294eb59d64513f7b`.
 - CI بۆ کۆمیتی چاککراوە هێشتا چاوەڕوانە؛ تا سەرکەوتنی workflow ـەکان پشتڕاست نەکرێتەوە، ئەنجامی تەواو ڕاگەیەنراو نییە.
+
+
+## ٩.١٩. CIی سەرکەوتووی guard ـی session و چاکسازیی تاقیکردنەوەکان — 2026-11-11
+
+کۆمیتی `d71a6a00f83dffbff915bccbbc7340df11ba2e1c` لە شەش Workflow ـی PR #152 سەرکەوتوو بوو:
+- Python checks: success؛ `Ran 564 tests`، `OK (skipped=11)`.
+- Review gate regression validation: success.
+- Course 4 quiz override validation: success.
+- Course 4 50-lesson Beta validation: success.
+- Course 4 beta review safety: success.
+- Orthography course structure tests: success؛ `Ran 4 tests`.
+
+ئەمە CIی ئەم کۆمیتەیە پشتڕاست دەکاتەوە، بەڵام تەنها پشتڕاستکردنەوەی تاقیکردنەوەکانە؛ بەڵگەی Botkeep runtime، Telegram end-to-end، یان ئامادەبوونی production نییە. PR هێشتا کراوە و merge نەکراوە؛ هیچ review/comment ـێکی نوێ لە API ـدا نەدۆزرایەوە. هیچ deployment، import، restore، DB mutation یان گۆڕینی دۆخی ئەکادیمی ئەنجام نەدرا.
