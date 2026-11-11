@@ -326,7 +326,7 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
             self.assertEqual(len(lesson["activities"]), 3)
             self.assertEqual(len(lesson["exercises"]), 5)
             self.assertEqual(len(lesson["comprehension"]) - 2, 8)
-            self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+            self.assertEqual(lesson["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
         for pronoun in ("من", "تۆ", "ئەو", "ئێمە", "ئێوە", "ئەوان"):
             self.assertIn(pronoun, " ".join(lessons["grammar_10"]["key_points"]))
         self.assertIn("خاوەنداری", " ".join(lessons["grammar_11"]["key_points"]))
@@ -356,7 +356,7 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("چاوگ", content)
         self.assertIn("Root = ڕەگ", content)
         self.assertIn("بنجی ئێستا", content)
-        self.assertIn("پاشبەستە", content)
+        self.assertIn("Enclitic = پاشنووس", content)
         self.assertIn("دەخۆم", examples)
         self.assertNotIn("مرداندن", content + examples)
         self.assertNotIn("نووسراوم", content + examples)
@@ -403,13 +403,13 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
     def test_lesson13_review_status_matches_official_runtime_eligibility(self):
         lesson_id = "grammar_13"
         record = bot.LESSON_DATA[lesson_id]
-        self.assertEqual(record["review_status"], "scientific_review_complete_with_qualified_notes")
-        self.assertFalse(bot.lesson_is_pending_review(lesson_id))
-        self.assertFalse(bot.lesson_is_beta_review(lesson_id))
-        self.assertTrue(bot.lesson_quiz_is_available(lesson_id))
+        self.assertEqual(record["review_status"], "internal_cross_lesson_synthesis_no_external_source_mapping")
+        self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+        self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+        self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
         self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
         content = bot.lesson_display_content(lesson_id, record["content"])
-        self.assertNotIn("وەشانی تاقیکاریی (Beta)", content)
+        self.assertIn("وەشانی تاقیکاریی (Beta)", content)
 
     def test_cross_course_editorial_drafts_are_beta_only_and_unlock_in_order(self):
         lesson_id = "daily_conversation_01"
