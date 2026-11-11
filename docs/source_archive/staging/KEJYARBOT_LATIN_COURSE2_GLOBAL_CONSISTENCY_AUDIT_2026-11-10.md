@@ -937,3 +937,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Current answer-key blob SHA: `2caf0fa40e9638551b3e47f9cccdef3683171c80`.
 - The intentional L2 Q5 key update C→B and answer-text changes for L3 Q3/L4 Q5 are reflected in the matching key. This supersedes the earlier intermediate key-SHA note from Section 101.
 - PR #142 remains the review path; CI workflow lookup returned no runs for the current head, so no CI success is claimed. Native Kurmanji editorial review remains outstanding.
+
+
+## Section 104 — Latin Course 2 single-answer defensibility (2026-11-11)
+
+- Reviewed all 62 question stems and option sets against the matching lesson content.
+- Four clarity risks were refined: L2 Q1 overlapping noun distractor; L4 Q5 ambiguous plural verb stem narrowed to the plural copula; L6 Q5 phrase classification contextualized to Lesson 6; L12 Q1 broadened to the source's general adjective definition.
+- Full structure rechecked: 12 lessons / 62 questions / 62 key rows; 62/62 keyed option texts match; zero missing or mismatched rows.
+- Quiz SHA `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`; key SHA `66aa4476365f4766d7916403b25f2886f5fd2e70`.
+- Editorial self-review only; native-speaker certification and psychometric analysis are not claimed. No runtime or production change.

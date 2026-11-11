@@ -273,3 +273,20 @@ The owner-approved four-item proposal set from the earlier audit addendum has no
 Answer-key row changes are limited to L2 Q5, L3 Q3 and L4 Q5; L10 Q1's rationale was sharpened without changing its answer. These changes are deliberate and are included in the answer-key file's new SHA. Structural post-patch validation must cover all 62 items before this branch is considered complete.
 
 This is still a review-branch editorial patch only. No merge to `main`, runtime/manifest/database changes, Railway/Botkeep/Telegram action, or deployment occurred. Editorial review remains self-review; native Kurmanji review is not claimed.
+
+
+## Section 104 — single-answer defensibility pass and four refinements (2026-11-11)
+
+A fresh editorial pass reviewed all 62 stems and option sets against the corresponding lesson text. Four clarity/overlap risks were corrected in the reviewed quiz and matching answer key:
+
+1. **L2 Q1 — noun definition:** the original A distractor described a person/animal/thing participating in an action or process, which overlapped semantically with the keyed B definition. A now tests the grammatical role of a word in a sentence; B remains the only option that answers what a noun denotes; C remains the adjective/quality category.
+2. **L4 Q5 — plural agreement:** the former stem asked generally for a plural verb form, leaving `hatin` potentially defensible in a different sentence meaning. It now explicitly asks for the plural copula in a nominal identification sentence (`Ev mehîn __`); `in` is the only matching linking form. The key remains C.
+3. **L6 Q5 — lesson taxonomy:** the stem now explicitly asks how the complete phrase `xencera min` is classified in Lesson 6, rather than presenting an unqualified category claim that could be confused with the possessive-adjective treatment later in Lesson 12. The key remains C (`bireserê navdêrê`).
+4. **L12 Q1 — adjective definition:** the keyed option was broadened to match Lesson 12's actual general definition, including indication, number, interrogative, indefinite and possessive functions, rather than describing only qualitative adjectives. The key remains B.
+
+The rest of the 62 items were checked for taught-context answer uniqueness, including the Lesson 8 suffix conditions and the Lesson 11 distinction between relative `ko` and conjunction `ko`. This is a text-based editorial defensibility review, not a native-speaker certification or empirical learner-item analysis. No claim is made about psychometric discrimination.
+
+**Post-edit structural verification:** 12 lesson blocks; counts 5,5,5,5,5,5,5,7,5,5,5,5 (62 total); 62 answer-key rows; every keyed letter maps to the exact option text (62/62; zero missing rows, zero mismatches).
+
+Current reviewed quiz SHA: `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`.
+Current answer-key SHA: `66aa4476365f4766d7916403b25f2886f5fd2e70`.

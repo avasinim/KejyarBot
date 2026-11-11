@@ -11,7 +11,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 1 | 3 | B | nîşana nivîskî | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
 | 1 | 4 | B | bêje | Di rêzbendiya ziman de, `hesp` yekeya watedar e (bêje); ew dikare ji yek kîtê/kitê pêk bê, lê pirs li ser yekeya watedar e. |
 | 1 | 5 | B | bi peyhevketina koman | Li gorî pirs û vebijarkên testa Ders 1, ev vebijarka rast e. |
-| 2 | 1 | B | kes/heywan/tişt | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
+| 2 | 1 | B | kes/heywan/tişt | Navdêr li gorî pênaseya Ders 2 kes, heywan an tişt nîşan dide; erkê peyvê di hevokê de (A) pênaseya navdêrê nîne û taybetmendî (C) bi rengdêr ve girêdayî ye. |
 | 2 | 2 | C | hevenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 3 | A | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
 | 2 | 4 | B | serenav | Li gorî pirs û vebijarkên testa Ders 2, ev vebijarka rast e. |
@@ -25,7 +25,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 4 | 2 | C | hespin | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 3 | A | yekjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 4 | 4 | B | ji ber ku ew du pêvajoyên rêzimanî ne | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
-| 4 | 5 | C | in | Di nimûneya `Ev mehîn in` de, lêkera `in` bi navdêra gelemjimar re li hev dike. |
+| 4 | 5 | C | in | Pirs bi awayekî zelal dawiya hevoka nasandinê û lêkera girêdanê dipirse; `in` forma gelemjimar e. `hatin` lêkera rabirdû ya tevgerê ye, ne forma girêdanê ya vê hevokê. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 2 | C | hespî | Di nimûneya bireserê ya yekjimar nêr a dema niha de, şêweya tewandî ya hesp `hespî` ye; mînak: `Ez hespî dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
 | 5 | 3 | A | mehînê | Di nimûneya bireserê ya yekjimar mê a dema niha de, şêweya tewandî ya mehîn `mehînê` ye; mînak: `Ez mehînê dibînim` (§55). Ev sînorkirin girîng e, ji ber ku di rabirdûya lêkerên gerguhêz de rêzika tewandinê cuda ye (§56). |
@@ -35,7 +35,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 6 | 2 | C | keçik | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 3 | A | beza | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
 | 6 | 4 | B | pêşî an paşî navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
-| 6 | 5 | C | bireserê navdêrê | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |
+| 6 | 5 | C | bireserê navdêrê | Di çarçoveya Ders 6 de, tevahiya koma `xencera min` wek nimûneya bireserê navdêrê hatiye pêşkêşkirin; pirs jî bi eşkereyî wê dabeşkirina dersê dipirse. |
 | 7 | 1 | B | 3 | Li gorî pirs û vebijarkên testa Ders 7, ev vebijarka rast e. |
 | 7 | 2 | C | nêr yekjimar | Di pergala veqetandekên binavkirî de, `-ê` forma nêr yekjimar e (§61–64). |
 | 7 | 3 | A | mê yekjimar | Di pergala veqetandekên binavkirî de, `-a` forma mê yekjimar e (§61–64). |
@@ -63,7 +63,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 11 | 3 | A | ko | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
 | 11 | 4 | B | gihanek | Di hevoka `Min got ko ez nayêm` de `ko` du hevok bi hev ve girêdide. |
 | 11 | 5 | C | hilbijartina kes/tişt di nav çend vebijarkan de | Li gorî pirs û vebijarkên testa Ders 11, ev vebijarka rast e. |
-| 12 | 1 | B | taybetmendî an taybetiya navdêrê rave dike | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
+| 12 | 1 | B | taybetmendî, nîşan, hejmar, pirs, nebinavkirin an xwedîtiya navdêrê diyar dike | Ev bersiv pênaseya fireh a rengdêrê di Ders 12 de diparêze; A erkê rêzimanî ya navdêrê û C guherîna lêkerê rave dike. |
 | 12 | 2 | C | rengdêra wesfîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 | 12 | 3 | A | rengdêra jmarîn | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
 | 12 | 4 | B | wek beşeke serbixwe | Li gorî pirs û vebijarkên testa Ders 12, ev vebijarka rast e. |
