@@ -256,3 +256,11 @@ The four proposed item changes were checked against the corresponding lesson con
 Proposed key letters remain L6 Q3=A, L8 Q5=C, L10 Q1=B, L10 Q2=C. The option orders in the staged quiz match those proposed letters. This is source and editorial verification only; no quiz/key changes were applied. Current proposal blobs: editorial `7ce8709d4847cc9fde265d198c69a0d694610787`; rationale `79b39c8fb499f45c61445f640dc268f32c05eecb`. Both were fetched after update and verified. The rationale proposal now points to the current editorial proposal blob.
 
 No tests, runtime, active manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. Both artifacts remain proposal-only.
+
+
+## 32. Consolidated proposal handoff (2026-11-11)
+Created `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_PATCH_REVIEW_2026-11-11.md` to provide one operative, contradiction-free handoff for the current proposal. Verified blob SHA: `ccd2ed2ead0783354699c2df5db26ba8fac8ca6d`.
+
+The handoff consolidates the four source-checked quiz edits (L6 Q3, L8 Q5, L10 Q1–Q2), the three proposed Lesson 8 explanatory-line replacements (290/292/294), the final §§68–70 interpretation, current A/C/B/C key sequence, and explicit approval/preservation gates. It warns that the exact Kurmanji Latin phrasing of the explanatory-line replacements—especially line 292—still merits a final language-editor pass even though the source rule is verified. It explicitly states that the proposal remains unapplied and that no runtime/deployment or tests/CI activity occurred.
+
+This handoff is a navigation aid and operative summary; the append-only history remains preserved in the detailed proposal, page-image review, and earlier audit sections. No baseline lesson, quiz, key, runtime, manifest, database, Botkeep, Telegram, or deployment file changed.
