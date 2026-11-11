@@ -147,3 +147,10 @@ The five proposed stems were compared against the protected reviewed quiz's curr
 The proposed key sequence is therefore **A / A / C / B / C** in the order L6 Q3, L8 Q3, L8 Q5, L10 Q1, L10 Q2. This confirms only the current option/key alignment. It does not independently certify the linguistic quality of the wording, approve any change, or alter the answer-key baseline. The new L8 Q3 rationale candidate is recorded in the separate answer-key proposal.
 
 Source baseline SHAs used for this comparison: reviewed quiz/lesson `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; reviewed answer key `879e1525e720bdc25b8f6e896de3e388801238d0`. All source files remain unchanged.
+
+
+## 9. Explicit supersession note — Lesson 8 line 292 (2026-11-11)
+
+To prevent an older wording from being applied accidentally: **do not treat the line 292 sentence printed in section 3 as approved or operative copy.** It is an earlier proposal draft and requires language-editor correction. Section 6 contains the later course-terminology candidate using `bireserên navdêrê`; that candidate is still pending final Kurmanji syntax review and is not approved either.
+
+The source rule itself is settled by the page-image adjudication: §68 concerns agreement with the final noun in its construction; §69 is distinct and assigns each linked complement its own determiner according to its own gender and number. Any future approved line must express §69 without importing §68's final-noun rule. Until a language editor approves the exact wording, retain the protected base and do not apply either candidate.
