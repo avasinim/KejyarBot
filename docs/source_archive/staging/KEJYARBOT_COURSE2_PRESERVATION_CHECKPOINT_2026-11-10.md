@@ -435,3 +435,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_DISTRACTOR_QUALITY_AUDIT_2026-11-11.md`, SHA `92e83ee006cf388f5b31b726deb7c3c493c28719`.
 - All 62 questions and options reviewed. Critical open issue: Lesson 10 Q2 `forma bireserî` vs keyed `wê`; high-priority wording risk: Lesson 6 Q3's bare `bireser`.
 - Master terminology register updated and global audit Section 55 appended. No quiz/key edits or runtime changes; no tests/CI or learner-response analysis. `main` remains read-only; no independent ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — 62-question orthography and formatting audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_ORTHOGRAPHY_FORMATTING_AUDIT_2026-11-11.md`, SHA `6478e42c7231732ae1bf9ea5cba45ff9ae4636ff`.
+- Confirmed 62 questions and 62 answer-key rows. Main open editorial spelling item: L1 Q4 rationale `kîtê/kitê`; L12 quiz heading/layout/capitalization differs from earlier lessons.
+- Master terminology register updated and global audit Section 56 appended. No learner-facing changes or key edits; no parser/test/runtime verification. `main` remains read-only; no separate ZIP/off-site backup is claimed.
