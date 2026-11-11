@@ -220,8 +220,8 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in menu_call.kwargs["reply_markup"].inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("🧪"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🧪"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
 
     def test_manifest_has_exactly_21_numbered_lessons(self):
