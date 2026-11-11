@@ -1345,6 +1345,10 @@ def quiz_menu_items(user_id, mode):
             lesson_id = item["id"]
             if lesson_id not in completed or not can_open(user_id, lesson_id):
                 continue
+            # Arami practice remains available for review lessons, but official
+            # assessment menus must never expose an unapproved lesson.
+            if mode == "assessment" and lesson_is_beta_review(lesson_id):
+                continue
             n = item["number"]
             callback_mode = "practice" if mode == "practice" else "assessment"
             callback = f"arami1:{callback_mode}" if n == 1 else (f"arami5:{callback_mode}" if n == 5 else f"aramiC:{callback_mode}:{n}")
