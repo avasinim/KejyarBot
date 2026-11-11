@@ -731,3 +731,9 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - All 62 quiz items were reviewed against the reviewed quiz/key and the separate 60-question source-aligned lesson artifact. The audit records redundancy, distractor-quality and scope findings; no key-letter change is recommended.
 - Priority follow-ups are L10 Q1 agent/object precision, explicit `nîv` instruction before L12 Q5, and maintaining the conditional construction boundaries in Lessons 8 and 11. Redundancy candidates are L2 Q5, L3 Q3 and L4 Q5; L9 paradigm repetition remains justified.
 - Proposals only. No learner-facing/source/key/runtime/deployment changes, tests/CI or runtime checks. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — L12 Q5 source-coverage confirmation (2026-11-11)
+
+- Rechecked full Lesson 12: `nîv` is explicitly explained in the numeral section and used in `nîv roj`; L12 Q5 key C is instructionally grounded. The caution recorded in the full 62-question audit is resolved; no additional teaching note or key change is needed for this item.
+- Detail appended to the full quiz audit; Section 94 appended to Global Consistency Audit. No learner-facing files or runtime/deployment artifacts changed; no tests/CI/runtime checks. `main` read-only; no independent ZIP/offsite backup claimed.
