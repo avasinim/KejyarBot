@@ -751,3 +751,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Corrected proposal option order for L3 Q3 (A = `mê`) and L4 Q5 (C = `in`) so all four Section 95 proposed replacements preserve existing key letters: L2 Q5 B, L3 Q3 A, L4 Q5 C, L10 Q1 B.
 - Erratum is appended to the full 62-question audit, updated SHA `5fa075d9c705bfe8222bdfbb4b21df8e196957ae`; Section 96 is in Global Consistency Audit.
 - No answer-key or learner-facing file changed; proposals remain unapproved. No tests/CI/runtime/deployment. `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Checkpoint — Section 97 distractor proposal batch (2026-11-11)
+
+- Six proposed distractor refinements recorded for L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5 and L12 Q1. Existing key letters preserved (B/B/B/C/C/B).
+- Full wording and caveats are in the full quiz audit, SHA `9c305c86b57408274123e577d6450fefc24c812e`; Section 97 is appended to Global Consistency Audit.
+- Proposal-only: no learner-facing quiz/key/lesson/runtime change, no tests/CI/runtime/deployment. `main` read-only; no independent ZIP/offsite backup claimed.
