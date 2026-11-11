@@ -453,3 +453,14 @@ No lesson, exercise, quiz, answer key, terminology register, runtime, parser, te
 - Q3's `rengdêra jmarîn` vs prose `rengdêrê jmarîn` remains unresolved; no normalization is authorized.
 
 Teacher-facing audit only. No learner-facing lesson, exercise, quiz, answer key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+
+## Section 50 — complete 13-item Lesson 12 exercise audit (2026-11-11)
+
+- Appended a full 13-row teacher-facing classification matrix to `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_EXERCISES_TEACHER_RUBRIC_AND_AMBIGUITY_AUDIT_2026-11-11.md`; verified blob SHA `99694a86c9457e3b5a296d105209b5175b24a25b`.
+- The matrix separately records target form, course-intended class, phrase/sentence function, morphology/context, and disposition. Stable course-key rows: `hespê mezin` (`wesfîn`), `ev keçik` (`îşarkî`), `sê mal` (`jmarîn`), `kîjan mirov` (`pirsiyarkî`), `hin çiya` (`nebinavkirî`), `gelek fêkî` (`nebinavkirî` in attributive use), and demonstratives `vî hespî`/`van hespan` (`îşarkî`, oblique forms; case context not supplied).
+- Possessive examples `hespê min` and `mehînên te` are explicitly described as possessive constructions/modifiers under the lesson taxonomy, while noting that `min/te` are oblique personal-pronoun forms; terminology and morphology need Kurmanji editor review. `kurên van` remains the lesson's intended `xwemalîn` example, with exact syntax/idiomaticity review pending.
+- `tu mirov` is context-sensitive and should not be a stand-alone diagnostic without a full sentence. `nîv roj` is `jmarnav` under the lesson's lexical taxonomy, with quantifying/modifying phrase function stated separately.
+- The exercise mixes clean attributive fragments with possessive ezafe phrases and oblique forms. Do not assess category, case selection, and idiomaticity simultaneously without supplying the needed sentence context.
+
+Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
