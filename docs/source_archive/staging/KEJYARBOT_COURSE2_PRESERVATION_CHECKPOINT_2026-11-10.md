@@ -174,3 +174,10 @@ A single operative handoff has been created and fetched back successfully:
 Verified blob SHA: `ccd2ed2ead0783354699c2df5db26ba8fac8ca6d`.
 
 It consolidates the four proposed quiz edits and the three proposed Lesson 8 prose-line replacements, records the controlling §§68–70 interpretation, and clearly labels all changes as unapproved and unapplied. It also flags a remaining language-editor pass for the exact Kurmanji Latin syntax/terminology of the prose replacements, particularly line 292. The baseline reviewed lesson, quiz, answer key and runtime remain unchanged. Tests/CI were not run; runtime was not tested live; no deployment or Botkeep/Telegram operation occurred. `main` remains read-only. GitHub archive history is not an independent ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 8 §69 terminology candidate (2026-11-11)
+
+The consolidated handoff now contains a language-editor candidate for line 292 that uses the course's precise term `bireserên navdêrê` rather than the potentially ambiguous bare `bireser`. The candidate is explicitly proposal-only and requires final language-editor review. It does not alter the source-based rule: each linked modifier receives its own determiner according to its own gender and number (§69), distinct from §68's final-noun agreement rule.
+
+Consolidated handoff current blob SHA: `c648fae070f10691ebcb754b772544af0a343ff8`. No base lesson, quiz, key, runtime, manifest, database, Botkeep, Telegram, or deployment file changed. Tests/CI not run; `main` remains read-only.
