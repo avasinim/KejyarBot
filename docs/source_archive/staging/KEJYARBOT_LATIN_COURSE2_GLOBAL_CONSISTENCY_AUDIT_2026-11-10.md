@@ -526,3 +526,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Strong examples are L5 Q2–Q4, L8 Q6–Q7 and L11 Q4. L7 Q2–Q4 and L9 Q1–Q4 are source-anchored but repetitive.
 - Holds: L10 Q2 stem/key terminology conflict (`wê` is agent in the lesson's `Wê ew dît` analysis); L12 Q1 adjective definition scope; L12 Q3 singular label morphology; L1 Q4 `kîtê/kitê` spelling ambiguity. L6 Q3 rationale must distinguish `bireserê navdêrê` from clause-level `bireser`.
 - No quiz/key/lesson edits or protected runtime changes. No tests/CI, live runtime checks, learner-response analysis or psychometric validation. `main` remains read-only; no independent ZIP/off-site backup is claimed.
+
+
+## Section 58 — 44 proposed answer-key rationale rewrites (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md`, SHA `04931e2bc674c6a0d842a74b41e20f82e440f3d5`; independent content check confirms exactly 44 proposed rationale rows across Lessons 1–12.
+- The proposals target 44 of the 47 generic rationales identified in Section 57. Three generic items remain deliberately held: L10 Q2, L12 Q1 and L12 Q3. L1 Q4 is a separate unresolved `kîtê/kitê` notation issue.
+- L6 Q3 proposal uses the full noun-attached term `bireserê navdêrê` and explicitly distinguishes it from clause-level `bireser`.
+- Drafted wording is in Kurmanji Latin to match the course. It is editorial proposal text only; no key, quiz or lesson content has been changed or approved.
+- No runtime/parser/manifest/database/Botkeep/Telegram/deployment changes, tests/CI, learner-response analysis or psychometric validation. `main` remains read-only; no independent ZIP/off-site backup is claimed.
