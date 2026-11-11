@@ -896,3 +896,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Railway production read-back remains Offline with no active deployment; one staged patch (3 resource/variable changes) remains pending; the staged 1 GB volume is empty/not restored.
 - PR #125 remains the documented Botkeep release hold; no support resolution or authoritative SQLite backup evidence is present in the retrieved records.
 - Owner authorization for activation is acknowledged, but deployment is withheld because no verified authoritative DB backup/restore exists and Botkeep poller stopped-state is unconfirmed. No accept-deploy, Botkeep recovery action, restart, or Telegram poller start was performed.
+
+
+## Section 100 — Latin Course 2 approved distractor patch (2026-11-11)
+
+- Owner-approved Section 97 refinements applied to six items in a dedicated review branch: `review/latin-course2-approved-distractors-2026-11-11`.
+- Items: L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5, L12 Q1.
+- Correct answer letters remain B, B, B, C, C, B; the answer-key artifact remains byte-for-byte at its prior blob SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- Quiz artifact blob SHA after patch: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
+- Full audit adoption note appended; original historical proposal text preserved. This is a review-branch editorial patch only: no merge to `main`, runtime change, Railway/Botkeep/Telegram action, or deployment.
+- Remaining work: inspect exact diff and run structural assertions over all 62 quiz/key mappings; Kurmanji idiom review by a qualified native editor remains advisable.
