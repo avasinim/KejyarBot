@@ -783,3 +783,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Result: 14/14 have existing answer-key rationales and each is sufficiently grounded in the lesson's cited section, paradigm mapping, or exact sentence. L5 Q2–Q4 explicitly preserve the present-tense object vs transitive-past agent distinction. No rewrite is warranted merely to fill the selective pack.
 - Clarified that 17/62 is proposal-pack noncoverage, not missing answer-key rationales. The three held rows L1 Q4, L12 Q1 and L12 Q3 remain separate.
 - No source/key/quiz/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 87 — Full 62-item answer-key to quiz-option alignment (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ALL62_ANSWER_KEY_OPTION_ALIGNMENT_AUDIT_2026-11-11.md`, SHA `41c6659913e7f504902f732d1774251500ae34ac`.
+- Parsed 62/62 quiz items and 62/62 answer-key rows; 62/62 expected coordinates present; 0 duplicates; 0 missing keyed option letters; 0 answer-text mismatches after conservative text normalization.
+- This validates question/option/key mapping only, not linguistic correctness, distractor quality, native-speaker naturalness, or bot runtime.
+- Existing 8 editorial holds remain unchanged. No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
