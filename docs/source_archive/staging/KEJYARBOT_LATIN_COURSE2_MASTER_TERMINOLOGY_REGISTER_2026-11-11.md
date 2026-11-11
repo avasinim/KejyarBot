@@ -287,3 +287,8 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_
 - L6 Q3 is drafted only with the full term `bireserê navdêrê`; it must not be shortened to ambiguous bare `bireser`.
 - Proposals preserve lesson scope and distinctions; none have been copied into or applied to the answer-key file. They require editorial review and explicit approval.
 - No learner-facing, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI or psychometric analysis.
+
+
+### Verification addendum — proposed rationale key alignment (2026-11-11)
+
+The 44-row proposal file `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_PROPOSED_ANSWER_KEY_RATIONALE_REWRITES_2026-11-11.md` was re-fetched at SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`. A row-level comparison against the reviewed answer key confirmed **44/44 proposed rationale rows map to the existing keyed option letter**, with zero missing mappings and zero mismatches. This checks mapping only, not linguistic certification or approval.
