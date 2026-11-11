@@ -391,3 +391,11 @@ A five-item review of the protected Lesson 12 quiz evaluates wrong-option plausi
 Detailed findings and draft rationales: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_DISTRACTOR_AND_RATIONALE_QUALITY_AUDIT_2026-11-11.md`, blob SHA `7d90ba45aa64d7518b8c93d91c80eb76490cbd10`.
 
 No question, option, key, lesson, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
+
+## 44. Lesson 12 quiz — Kurmanji orthography, option shape, and wording (2026-11-11)
+
+A read-only review of all five stems and fifteen options finds no unequivocal character-level misspelling from the staged text alone. It does identify editorial consistency issues: Q1 mixes uppercase/lowercase option starts and mixes a noun phrase with finite clauses; Q4's A/C are syntactically parallel to each other (`di bin X de`) but semantically weak as competing numeral classifications, while B has a different answer shape; Q5 mixes category labels with an example-description. Q1's `kiryar` should be checked against the course's controlled term for grammatical subject/controller (possibly `kirde`), but this is an open terminology query, not a confirmed typo. Q3's `rengdêra jmarîn` remains unresolved against heading `rengdêrên jmarîn` and prose `rengdêrê jmarîn`. Do not silently normalize any of these forms.
+
+This pass corrects the wording in Section 43: Q4 A and C are parallel in surface syntax; their weakness is semantic/category fit, plus mismatch of answer shape against B. Full item findings and approval-gated edit order: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_KURMANJI_ORTHOGRAPHY_AND_WORDING_AUDIT_2026-11-11.md`, blob SHA `47329d8c24c0a5f854495434f4612f38fbb9d2eb`.
+
+No quiz, key, lesson, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only.
