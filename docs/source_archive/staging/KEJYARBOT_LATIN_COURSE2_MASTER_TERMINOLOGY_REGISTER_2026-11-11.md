@@ -149,3 +149,15 @@ The direct source-page review for §§61–64 (printed pp.62–63) refines the d
 **Preferred glossary framing:** `veqetandek` = determiner (grammatical function/category); `pêvek` = affix/suffix (morphological form). Explain the realization and position of each determiner paradigm separately; retain the distinction between post-nominal attached forms and shortened pre-adjectival forms. This is source-aligned for the reviewed sections; the broader use of these terms across all Kurdish grammar traditions is not asserted.
 
 Source verification references: `KEJYARBOT_LATIN_COURSE2_LESSONS6_7_PAGE_IMAGE_REVIEW_2026-11-10.md` (blob SHA `6ff6e84792bc13f5835010401bfab89acd446295`) and `KEJYARBOT_LATIN_COURSE2_LESSON8_PAGE_IMAGE_REVIEW_2026-11-10.md` (blob SHA `0eaa37c517fdaf244b48cc69f953400393ab0812`). The refinement supersedes any wording above that reduces all determiners to suffix-like forms. No course content was edited.
+
+
+## Lessons 6, 8 and 12 adjudication — noun modifier vs adjective vs object (2026-11-11)
+
+A focused comparison of the source-aligned Lessons 6, 8 and 12 establishes three separate levels:
+- `bireserê navdêrê`: broad syntactic noun-attached modifier/complement function; it may be realized by different word classes or phrases and is not itself a lexical word class.
+- `rengdêr`: adjective, a word class. Lesson 12 names demonstrative, numeral, interrogative, indefinite, descriptive, and possessive adjective classes. An adjective may realize the noun-modifying function, but not every noun complement is an adjective.
+- bare `bireser`: clause-level object role; do not use it as an abbreviation for `bireserê navdêrê` where ambiguity results.
+
+Specific internal consistency: classify `ev` in `ev keçik` as a demonstrative adjective/modifier under Lesson 12's own `rengdêrên îşarkî` framework; classify `Ev` in `Ev hat.` as an independent demonstrative pronoun. Avoid the unexplained Lesson 6 slash-pair `pêşnavdêr/bireser`; do not assert a definitive technical definition of `pêşnavdêr` without primary-source confirmation. In Lesson 8, do not present `bireser/rengdêr` as interchangeable labels: distinguish the broad following complement/modifier environment from the narrower adjective class.
+
+The primary-source pages for Lesson 12 were not reopened in this pass, so the Lesson 12 taxonomy is currently internally verified against the staged source-aligned text. Lesson 6 and Lesson 8 page-image review references are recorded in the adjudication note. No lesson/quiz/key text was changed. See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS6_8_12_MODIFIER_ADJECTIVE_OBJECT_ADJUDICATION_2026-11-11.md`, blob SHA `b245160ce26b27d6bc1adeb8416708febc722824`.
