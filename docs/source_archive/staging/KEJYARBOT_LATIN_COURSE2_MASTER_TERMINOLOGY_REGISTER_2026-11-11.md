@@ -235,3 +235,15 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_TERMINOLOGY
 - Editorial risks: L6 Q3 shortens `bireserê navdêrê` to bare `bireser`; L8 Q2 option wording is less terminologically parallel; L10 Q2 `forma bireserî` conflicts in interpretation with Lesson 9 `forma kirarî` and L10's own `wê` example; L11 Q3 shortens `pronavê girêkî` to `forma girêkî`.
 - Existing open issues remain: L12 Q1 `kiryar/kirar`; L12 Q3 `rengdêra/rengdêrê jmarîn`; L12 Q1's adjective definition/answer framing remains narrower than predicative/substantivized source use.
 - No key letters or quiz content changed; this is an audit only.
+
+
+## Distractor quality audit — 62 quiz items (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_DISTRACTOR_QUALITY_AUDIT_2026-11-11.md`, verified SHA `92e83ee006cf388f5b31b726deb7c3c493c28719`.
+
+- Reviewed all 62 questions and their A/B/C options against the lesson text and reviewed key.
+- Most items have a one-best-answer under the course's current framework; many distractors are clear but some are weak/easy or repeat the same target.
+- Critical unresolved item: L10 Q2 asks for `forma bireserî` but keys `wê`, while the lesson's `Wê ew dît` explicitly labels `wê` as inflected agent/subject and `ew` as direct object. Resolve the technical label with a Kurmanji editor before certifying or changing the item/key.
+- High priority: L6 Q3 should not abbreviate `bireserê navdêrê` to bare `bireser`.
+- Preserve source scope for L10 Q5 (two/three participants in the cited §90 account) and L11 Q3 (`ko` traditional form; do not imply `ku` is universally wrong).
+- No answer letters or learner-facing content changed. No learner-response data or psychometric analysis available.
