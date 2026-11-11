@@ -227,3 +227,10 @@ The editorial patch proposal now includes a proposal-only Lesson 8 Q3 stem refin
 - Answer-key rationale proposal addendum: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md`, blob SHA `3e202d34739d6f55d2b079e8d0a6c38b1ddcb1ff`.
 
 The handoff now includes five proposed quiz items: L6 Q3, L8 Q3, L8 Q5, L10 Q1 and L10 Q2, plus the three Lesson 8 explanatory-line candidates. The key rationale proposal includes a draft rationale for L8 Q3 but remains proposal-only. No base quiz/key or lesson content was changed. All proposals require explicit approval; the outstanding language-editor decisions remain clearly recorded. No tests/CI, live runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only; GitHub history is not an independent off-site backup.
+
+
+## Checkpoint update — five-item option/key alignment (2026-11-11)
+
+The current option order and protected answer-key rows were rechecked for all five proposed edits. Confirmed sequence: **A / A / C / B / C** (L6 Q3, L8 Q3, L8 Q5, L10 Q1, L10 Q2). Exact options and answer texts are in section 8 of the consolidated handoff, blob SHA `565481fe4b5a8346e8c5c5d312e16056e09da37b`. This is not approval of the proposed wording; no quiz, lesson, or answer-key base file was modified.
+
+No tests/CI, live runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred. `main` remains read-only.
