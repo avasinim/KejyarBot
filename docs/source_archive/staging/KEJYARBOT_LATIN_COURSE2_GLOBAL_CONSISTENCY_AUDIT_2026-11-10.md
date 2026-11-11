@@ -756,3 +756,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Existing holds reaffirmed: L1 Q4 rationale spelling; L6 Q3/Q4 shortened `bireser` vs `bireserê navdêrê`; L8 Q3 imprecise `bê bireser` condition.
 - L2 Q2 E1 rationale refinement remains separate; no key change. L3 Q5 key C supported by lesson's grammatical-vs-biological gender distinction. L4 Q2, L5 Q2–Q4, L7 Q5, L8 Q7 screened as locally supported.
 - No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 84 — Lessons 9–12 quiz stem/scope second pass (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS09_12_QUIZ_STEM_SCOPE_SECOND_PASS_2026-11-11.md`, SHA `4b2b4790b37d01ebd1585e38aab3708ffb133f1f`.
+- Screened 20 items in Lessons 9–12. No new hold was justified.
+- Existing holds reaffirmed: L10 Q1/Q2 (paradigm membership vs clause role); L12 Q1 (whole adjective class vs `wesfîn` subtype); L12 Q3 (unresolved singular morphology of option label).
+- L9 paradigm forms, L10 Q3–Q5, L11 Q1–Q5, and L12 Q2/Q4/Q5 are supported within the lesson's own stated framework and examples.
+- Together with Section 83, all 62 quiz items have received a lesson-by-lesson second-pass stem/scope screen. This is not native-speaker, psychometric or runtime certification.
+- No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
