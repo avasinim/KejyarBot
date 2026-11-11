@@ -659,3 +659,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS01_08_QUIZ_STEM_SCOPE_SECOND_PASS_2026-11-11.md`, SHA `6b0b149ec551c3607207c0fbe1f9dc46ec648f6d`.
 - Screened 37 items in Lessons 1–8. No new hold added. Existing holds reaffirmed: L1 Q4, L6 Q3/Q4, L8 Q3.
 - This was a targeted editorial pass only. No source lesson, quiz, key, runtime, or deployment file changed; no tests/CI; `main` remains read-only. Archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lessons 9–12 quiz stem/scope second pass (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSONS09_12_QUIZ_STEM_SCOPE_SECOND_PASS_2026-11-11.md`, SHA `4b2b4790b37d01ebd1585e38aab3708ffb133f1f`.
+- Screened 20 items in Lessons 9–12; no new hold added. Existing holds reaffirmed: L10 Q1/Q2 and L12 Q1/Q3.
+- Alongside Lessons 1–8 second pass, all 62 items have a documented stem/scope second pass. This does not constitute native-speaker certification or runtime testing.
+- No lesson/quiz/key/runtime/deployment file changed; no tests/CI; `main` read-only. Archive branch is not an independent ZIP/offsite backup.
