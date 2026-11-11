@@ -587,3 +587,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - P2: L1 Q1 rationale drifts from keyed wording `qaydeyên` to `rêzikên`; prefer exact course/key wording. P2: L6 Q3 rationale correctly says `bireserê navdêrê`, but stem/options retain bare `bireser`; retain full term and flag the item wording.
 - Further precision notes: preserve L1 Q2's four-item scope; keep L4 Q5 erratum; avoid defining tewang by position alone; retain form-vs-clause-role distinction in L10.
 - Audit-only. No lesson, quiz, key, runtime, tests/CI or deployment changes; `main` read-only; no independent ZIP/off-site backup claimed.
+
+
+## Section 64 — Lesson 6 / Lesson 8 modifier terminology clarification (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_L8_MODIFIER_TERMINOLOGY_CLARIFICATION_2026-11-11.md`, SHA `5ab9adcaf4a05d30618b16de3dd9ee3f17f90e18`.
+- Refined the L8 Q3 diagnosis: the local Lesson 8 heading “bê bireser” matches its own §66/§67 contrast, so the keyed `-in` is not thereby disproved. The risk is cross-lesson ambiguity because Lesson 6 uses full `bireserê navdêrê` for a noun-attached modifier, while Lesson 10 uses bare `bireser` for clause-level object.
+- Proposed explicit “bê hêmaneke raveker li pey navdêrê” wording for Lesson 8, pending Kurmanji editor approval; proposed full `bireserê navdêrê` in L6 Q3 stem. No global replacement and no source/key changes.
+- Audit-only; no learner-facing/runtime/deployment changes or tests/CI. `main` read-only; no independent offsite backup claimed.
