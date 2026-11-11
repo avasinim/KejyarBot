@@ -99,3 +99,34 @@ The original source §69 uses the term `bireser` for the elements attached to th
 This is a wording candidate, not a source quotation and not an approved replacement. It preserves the source's §69 rule: each linked modifier receives its own determiner according to its own gender and number. It avoids suggesting that the final noun alone controls all forms (the separate §68 rule). The original proposed line remains available in section 3; a language editor should choose between the source-close wording and this clearer course-terminology wording before approval.
 
 Source image check: printed p.66 shows §68's final-noun rule followed by the opening of §69; printed p.67 continues §69's examples and begins §70. The source text at §69 explicitly says that each of the linked `bireser` elements receives a distinct determiner according to its own number and gender. See the PDF page images and extracted text.
+
+
+## 7. Controlling update — include Lesson 8 Q3 and refresh proposal pointers (2026-11-11)
+
+This section is the current operative queue and supersedes the four-item-only scope in section 2 and any earlier stale blob pointers in this handoff.
+
+### Complete proposed quiz queue (five items)
+
+1. **L6 Q3:** use the full term `bireserê navdêrê`; keep A (`beza`).
+2. **L8 Q3:** replace the ambiguous `bê bireser` with `bê pêvekeke raveker li pey navdêrê` in the stem; retain A (`-in`). The exact proposed stem is in the current editorial proposal.
+3. **L8 Q5:** use the expanded definite/indefinite contrast stem and distinct A/B misconception distractors; keep C.
+4. **L10 Q1:** use `Tu ___ dibînî`; keep B (`min`).
+5. **L10 Q2:** use `Tu ___ dibînî`; keep C (`wê`).
+
+The corresponding answer-key rationale proposal currently contains four rationale rows (L6 Q3, L8 Q5, L10 Q1–Q2). L8 Q3 retains its existing answer A and should receive a matching rationale only in a future dated key copy if the quiz edit is approved. No key file has been changed.
+
+### Current artifact pointers
+
+- Editorial proposal, including the new L8 Q3 candidate: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_PATCH_PROPOSAL_2026-11-11.md`, blob SHA `11b6c6c055a149283f2b4275da15922e28d1f82d`.
+- Answer-key rationale proposal: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_ANSWER_KEY_PATCH_PROPOSAL_2026-11-11.md`, blob SHA `79b39c8fb499f45c61445f640dc268f32c05eecb` (its older related-proposal pointer is corrected in an addendum to that file).
+- Full 62-question terminology cross-check: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62Q_LESSON_QUIZ_TERMINOLOGY_CROSSCHECK_2026-11-11.md`, blob SHA `e5e7b67bcc98504d0fd39b7da8a348ba8bee7350`.
+
+### Remaining language-editor decisions
+
+- Review the exact Kurmanji Latin phrasing of Lesson 8 explanatory line 292; the source rule is settled, but the wording candidate must not be mistaken for a source quotation.
+- Decide the preferred Lesson 12 label form around `rengdêrê/rengdêra jmarîn` against the source heading `rengdêrên jmarîn`.
+- Resolve the Lesson 6 paired glossary label `pêşnavdêr/bireser` without collapsing the established noun-modifier / clause-object distinction.
+
+### Preservation and approval gate
+
+All five quiz edits and all three Lesson 8 prose replacements remain proposals only. The reviewed lesson/quiz baseline and answer-key baseline remain unchanged. Do not create a revised patch copy or modify the baseline until explicit approval. If approved, create new dated append-only copies, include the L8 Q3 rationale, and rerun the full 62-question/key, terminology, and script checks. No runtime, parser, manifest, database, Botkeep, Telegram, tests/CI, or deployment action is authorized by this handoff. `main` remains read-only.
