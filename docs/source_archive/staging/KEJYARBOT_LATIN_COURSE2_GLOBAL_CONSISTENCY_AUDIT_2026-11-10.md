@@ -482,3 +482,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Findings: opening definition's umbrella is too broad without an explicit course-taxonomy caveat; attributive/pronominal readings of `ev/ew` and `çend/gelek` need context; demonstrative oblique forms and case-conditioned numeral examples need clause context; possessive examples mix possessor forms and need morphology separated; `nîv roj` must be described at both lexical-class (`jmarnav`) and phrase-function levels; reduced ordinals require recoverable nominal context.
 - Existing course dispositions are retained provisionally. No external claim is made that the course's six-way taxonomy is universal; `kitêba vî` and other constructions needing syntax/idiomaticity judgment remain open for source/editor review.
 - Audit-only: no learner-facing lesson/exercise/quiz/key, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
+
+
+## Section 53 — Course 2 cross-lesson terminology chain audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CROSS_LESSON_TERMINOLOGY_CHAIN_AUDIT_2026-11-11.md`, blob SHA `178b0fb99da312265e27172208635a0221a9ef2b`.
+- Cross-checked the complete staged reviewed draft (Lessons 1–12; SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`) and source-aligned course text (SHA `19090077a11dc9d7211987e958e560b328fcd3d6`).
+- Principal controlled distinctions: `bireserê navdêrê` (noun-attached modifier) vs clause-level `bireser` vs `pronavên bireser`; `rengdêr` (word class) vs broad modifier function; `veqetandek` vs `pêvek` vs `tewang`; attributive vs independent/pronominal use; `jmarîn` vs `jmarnav`; `kirar` vs unresolved quiz form `kiryar`.
+- Lesson 6's `pêşnavdêr/bireser` slash label remains underdefined and must not be represented as synonymy. No automatic terminology normalization authorized.
+- This is a staged cross-lesson audit, not a fresh page-image/source audit of every grammar section. No learner-facing or protected runtime/deployment files changed; no tests/CI or live runtime checks occurred; `main` remains read-only; no independent ZIP/off-site backup is claimed.
