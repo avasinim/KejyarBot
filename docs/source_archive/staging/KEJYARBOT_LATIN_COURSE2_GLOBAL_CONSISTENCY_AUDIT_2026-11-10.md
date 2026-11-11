@@ -946,3 +946,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Full structure rechecked: 12 lessons / 62 questions / 62 key rows; 62/62 keyed option texts match; zero missing or mismatched rows.
 - Quiz SHA `2f9dfd550e4dd6f16906113f2fa3e6beaac24c9f`; key SHA `66aa4476365f4766d7916403b25f2886f5fd2e70`.
 - Editorial self-review only; native-speaker certification and psychometric analysis are not claimed. No runtime or production change.
+
+
+## Section 105 — lexical spelling normalization (`mehin` / `mehîn`) (2026-11-11)
+
+- Source-aligned transcription retains `mehin` in older examples; reviewed teaching draft normalizes the lemma and inflected paradigm as `mehîn`.
+- Kurmanji lexical/usage references support `mehîn` as a feminine noun for a female horse and show forms such as `mehîna`, `mehînê`, `mehînan`; source-aligned text remains immutable.
+- Decision: retain `mehîn` in the reviewed teaching draft and preserve `mehin` in source evidence, with the normalization explicitly documented.
+- References: https://ku.wiktionary.org/wiki/meh%C3%AEn ; https://www.rudaw.net/kurmanci/categories/opinion/865886
