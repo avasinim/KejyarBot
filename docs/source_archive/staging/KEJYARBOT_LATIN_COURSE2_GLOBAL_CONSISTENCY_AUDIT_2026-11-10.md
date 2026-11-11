@@ -302,3 +302,9 @@ The editorial proposal now includes an additional proposal-only replacement for 
 The consolidated patch-review handoff now records the complete five-item quiz proposal queue, including the new L8 Q3 wording candidate, and current pointers to the editorial proposal, answer-key rationale proposal, and 62-question cross-check. Handoff blob SHA: `31efd8edba0aca2820ebe9b53d8eec424746b83e`. The answer-key proposal now also records the current editorial proposal SHA and a rationale candidate for L8 Q3; key-proposal blob SHA: `3e202d34739d6f55d2b079e8d0a6c38b1ddcb1ff`.
 
 No reviewed lesson/quiz or answer-key baseline was changed. All proposals remain unapproved. The L8 Q3 rationale is only a candidate and must be added to a new dated key copy only if the corresponding quiz edit is approved. The remaining language-editor decisions are L8 line 292 phrasing, L12 `rengdêrê/rengdêra jmarîn`, and the L6 paired glossary label. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred; `main` remains read-only.
+
+
+## 39. Exact option/key alignment verified for five proposed items (2026-11-11)
+The protected reviewed quiz and 62-row answer key were re-fetched and compared for the five proposal targets. Current option order supports the proposed keys without reordering: L6 Q3=A (`beza`); L8 Q3=A (`-in`); L8 Q5=C (`na, erkên wan cuda ne`); L10 Q1=B (`min`); L10 Q2=C (`wê`). The exact inventory is recorded in section 8 of the consolidated handoff, now blob SHA `565481fe4b5a8346e8c5c5d312e16056e09da37b`.
+
+This is an option/key alignment check, not final linguistic approval. The proposed wording remains unapproved and unapplied; the protected lesson/quiz and answer-key SHAs remain unchanged. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment operation occurred.
