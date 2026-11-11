@@ -364,9 +364,15 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertNotIn("لاپەڕەکانی ٨٥–٨٧", content)
         self.assertIn("هیچ کتێب، PDF، لاپەڕە یان سەرچاوەی دەرەکی", content)
         appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
-        appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
-        self.assertIn("source mapی خاڵ بە خاڵ", appendix_lesson13)
-        self.assertIn("Source mapی ناوخۆیی", appendix_lesson13)
+        appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n\\n## 26.", 1)[0]
+        self.assertIn("هیچ mappingی لاپەڕەیی", appendix_lesson13)
+        source_map = (
+            ROOT / "docs" / "source_archive" / "staging" / "reviews"
+            / "COURSE4_LESSON_013_SOURCE_MAP_AND_TERMINOLOGY_PATCH_2026-11-10.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Source mapی ناوخۆیی", source_map)
+        self.assertIn("review_status هێشتا internal_cross_lesson_synthesis_no_external_source_mapping", source_map)
+        self.assertIn("هیچ سەرچاوەی دەرەکیی نوێ زیاد نەکراوە", source_map)
         self.assertNotIn("٦٢–٨٤", appendix_lesson13)
         self.assertNotIn("٨٥–٨٧", appendix_lesson13)
         self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
@@ -517,8 +523,8 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
             bot.check_badges(12345)
 
         added = [call.args[1] for call in add_badge.call_args_list]
-        self.assertEqual(len(added), 31)
-        self.assertTrue(all("وانەی ٣٢" not in badge for badge in added))
+        self.assertEqual(len(added), 12)
+        self.assertEqual(added, [f"🏅 {bot.BADGE_COURSE_TITLES['grammar']} — وانەی {n}" for n in range(1, 13)])
 
     async def test_beta_draft_quiz_callback_is_rejected_without_creating_quiz_state(self):
         lesson_id = "grammar_46"
