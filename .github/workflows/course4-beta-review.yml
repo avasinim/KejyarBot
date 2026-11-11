@@ -6,7 +6,7 @@ on:
     branches: [main]
   push:
     branches:
-      - feature/course4-beta-review-progression-round26-2026-11-09
+      - 'release/**'
 
 permissions:
   contents: read
