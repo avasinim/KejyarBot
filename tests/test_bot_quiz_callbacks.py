@@ -1145,3 +1145,53 @@ class UnicodeQuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AramiAcademicAssessmentFailClosedTests(unittest.TestCase):
+    def setUp(self):
+        self.lesson_id = bot.ARMI_LESSON_IDS[0]
+
+    def test_assessment_requires_explicit_academic_approval(self):
+        manifest = {
+            "lessons": [{
+                "id": self.lesson_id,
+                "status": "owner_review_pending_expanded_draft",
+            }]
+        }
+        with (
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "load_arami_course1_manifest", return_value=manifest),
+        ):
+            self.assertFalse(bot.can_take_arami_assessment(12345, self.lesson_id))
+
+    def test_approved_lesson_can_take_official_assessment(self):
+        manifest = {
+            "lessons": [{
+                "id": self.lesson_id,
+                "status": "scientific_review_complete_with_qualified_notes",
+            }]
+        }
+        with (
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "load_arami_course1_manifest", return_value=manifest),
+        ):
+            self.assertTrue(bot.can_take_arami_assessment(12345, self.lesson_id))
+
+    def test_missing_manifest_fails_closed(self):
+        with (
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+            patch.object(bot, "load_arami_course1_manifest", side_effect=OSError("missing")),
+        ):
+            self.assertFalse(bot.can_take_arami_assessment(12345, self.lesson_id))
+
+    def test_beta_lesson_cannot_take_official_assessment(self):
+        with patch.object(bot, "lesson_is_beta_review", return_value=True):
+            self.assertFalse(bot.can_take_arami_assessment(12345, self.lesson_id))
+
+    def test_assessment_reward_is_not_granted_without_academic_approval(self):
+        with (
+            patch.object(bot, "can_take_arami_assessment", return_value=False),
+            patch.object(bot, "complete_quiz_with_rewards") as complete,
+        ):
+            self.assertFalse(bot.award_arami_assessment(12345, self.lesson_id))
+        complete.assert_not_called()
