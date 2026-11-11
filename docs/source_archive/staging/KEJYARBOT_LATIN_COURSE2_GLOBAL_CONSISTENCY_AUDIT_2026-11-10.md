@@ -517,3 +517,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Confirmed 62 questions and 62 key rows. Principal findings: Lesson 12 quiz heading/layout/capitalization differs from Lessons 1–11; metalinguistic code formatting is inconsistent; Lesson 1 Q4 key rationale has unresolved `kîtê/kitê` spellings.
 - Preserve `mehînê` in L5 Q3 and grammatical suffix distinctions. Open technical questions L10 Q2 and L12 Q1/Q3 must not be “corrected” by spell-check.
 - No source/key edits, parser compatibility check, tests/CI, or runtime checks. `main` remains read-only; no independent ZIP/off-site backup is claimed.
+
+
+## Section 57 — Course 2 answer-key rationale specificity and source-support audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_ANSWER_KEY_RATIONALE_SPECIFICITY_SOURCE_SUPPORT_AUDIT_2026-11-11.md`, blob SHA `fc1e91a3435fcd89c551efc51a5bdb476393e210`.
+- Confirmed 62 quiz questions and 62 key rows. **47/62 rationales (75.8%)** are generic confirmations that do not explain the tested rule; 15 provide item-specific reasoning of varying quality.
+- Strong examples are L5 Q2–Q4, L8 Q6–Q7 and L11 Q4. L7 Q2–Q4 and L9 Q1–Q4 are source-anchored but repetitive.
+- Holds: L10 Q2 stem/key terminology conflict (`wê` is agent in the lesson's `Wê ew dît` analysis); L12 Q1 adjective definition scope; L12 Q3 singular label morphology; L1 Q4 `kîtê/kitê` spelling ambiguity. L6 Q3 rationale must distinguish `bireserê navdêrê` from clause-level `bireser`.
+- No quiz/key/lesson edits or protected runtime changes. No tests/CI, live runtime checks, learner-response analysis or psychometric validation. `main` remains read-only; no independent ZIP/off-site backup is claimed.
