@@ -155,3 +155,22 @@ This section is the controlling summary of the page-image review and supersedes 
 - **Line 294 / §§66–68:** -ek/-ek/-in, -ekî/-eke/-ine, and -î/-e/-en belong to three distinct indefinite-determiner environments. They are not the definite forms -ê/-a/-ên. The proposed line makes that distinction and removes the mixed-script fragments from the source draft.
 
 The source-image review confirms the distinctions on printed pp.65–67. The proposal remains unapproved and unapplied; no reviewed lesson, quiz, answer key, or runtime file has been modified.
+
+
+## Additional terminology refinement — Lesson 8, Question 3 (2026-11-11)
+
+**Status:** proposal only; not applied to the reviewed lesson/quiz base.
+
+**Current stem**
+
+`Forma gelemjimar a nebinavkirî ya bê bireser çi ye?`
+
+**Proposed stem**
+
+`Di rewşa bê pêvekeke raveker li pey navdêrê de, forma gelemjimar a veqetandeka nebinavkirî çi ye?`
+
+**Options and key:** retain the existing options and answer A (`-in`), subject to the normal final option/key verification.
+
+**Reason:** Lesson 8 §66 defines this environment as the indefinite form used after a noun when no descriptive/modifying element follows it. The current phrase `bê bireser` is not the lesson's exact label and risks confusion with the course's clause-level `bireser` (object) terminology. The proposed stem names the §66 environment directly and leaves the grammatical target and answer unchanged.
+
+This is an additional candidate for the next dated patch copy. It does not approve the earlier proposals or alter any protected base file. If adopted, recheck the 62-question key mapping and the complete lesson/quiz terminology scan.
