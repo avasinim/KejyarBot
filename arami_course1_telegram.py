@@ -498,12 +498,30 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             if can_open is not None and not can_open(query.from_user.id, lesson["id"]):
                 await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە؛ ئەم وانەیە هێشتا نەکراوەتەوە.")
                 return
-            await _send_source(query.message, f"وانەی {number} — {lesson.get('title', '')}", source)
+            review_only = lesson.get("status") not in {
+                "scientific_review_complete",
+                "scientific_review_complete_with_qualified_notes",
+                "approved",
+            }
+            review_notice = (
+                "\n\n🧪 ئەم وانەیە لە قۆناغی پێداچوونەوەدایە؛ "
+                "پێشکەوتنەکە تەنیا لە Beta تۆمار دەکرێت و XP/خەڵاتی فەرمی نییە."
+                if review_only else ""
+            )
+            await _send_source(
+                query.message,
+                f"وانەی {number} — {lesson.get('title', '')}{review_notice}",
+                source,
+            )
             await send_lesson_infographic(query.message, lesson, source, base_dir=base_dir)
+            completion_label = (
+                "🧪 تۆمارکردنی پێشکەوتنی Beta"
+                if review_only else "✅ تەواوکردنی وانە"
+            )
             await query.message.reply_text(
-                f"✅ کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
+                f"کاتێک خوێندنەوەی وانەی {number} تەواو کرد، دوگمەی خوارەوە دابگرە بۆ تۆمارکردنی پێشکەوتنت.",
                 reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson['id']}")
+                    InlineKeyboardButton(completion_label, callback_data=f"finish_{lesson['id']}")
                 ]]),
             )
         except AramiCourseTelegramError:
