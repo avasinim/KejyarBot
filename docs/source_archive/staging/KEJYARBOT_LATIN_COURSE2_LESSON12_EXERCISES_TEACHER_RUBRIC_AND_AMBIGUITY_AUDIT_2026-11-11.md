@@ -130,3 +130,42 @@ The sentence is explicitly scoped to the adopted course taxonomy, not claimed as
 - Keep `rengdêra jmarîn` (quiz Q3 option) vs `rengdêrê jmarîn` (singular explanatory prose) unresolved pending a Kurmanji editor's decision; preserve plural class heading `rengdêrên jmarîn`.
 - Do not globally normalize source/course crosswalks: `wesfîn` ↔ source `çilobûn û çawabûnê`; `xwemalîn` ↔ `destdaniyê/xwedîtiyê`; `rêzîn` ↔ `rêzda`; source comparison records `jmarda` for adjective numerals.
 - These are teacher-facing rubric clarifications only. No learner-facing wording, source lesson, quiz, answer key, or runtime file is changed by this addendum.
+
+
+## Addendum — all 13 Xebata 1 items: class, function, form, and context audit (2026-11-11)
+
+This is a teacher-facing audit of the complete exercise list in the reviewed Lesson 12 source (blob SHA `abc88219e2a0e249883e8d62c5117a9b3aaa3108`). It distinguishes the course-intended category from phrase function and surface morphology. It is not a universal grammar ruling and does not alter learner-facing material.
+
+### Full 13-item adjudication
+
+| # | Exercise form | Course-intended class / label | Function and form observation | Disposition |
+|---:|---|---|---|---|
+| 1 | `hespê mezin` | `mezin`: `wesfîn` | Postnominal descriptive modifier in an ezafe-linked noun phrase; describes `hesp`. | **Stable for course key.** |
+| 2 | `ev keçik` | `ev`: `îşarkî` | Demonstrative modifier with an expressed feminine singular noun; compare independent `Ev hat.` | **Stable for course key.** |
+| 3 | `sê mal` | `sê`: `jmarîn` (numeral adjective) | Cardinal numeral modifies the expressed noun `mal`; the noun's form is the relevant phrase context. | **Stable for course key.** |
+| 4 | `kîjan mirov` | `kîjan`: `pirsiyarkî` | Interrogative determiner/modifier before an expressed noun. The sentence context determines whether the whole phrase asks “which person”. | **Stable for course key.** |
+| 5 | `hin çiya` | `hin`: `nebinavkirî` | Indefinite/quantifying modifier before an expressed plural noun. | **Stable within course taxonomy.** |
+| 6 | `hespê min` | `min`: `xwemalîn`, in the lesson's adopted analysis | Possessive relation follows the noun through the ezafe construction; `min` is the oblique personal-pronoun form. Do not describe it as an ordinary inflecting adjective without qualification. | **Course key may use `xwemalîn`; terminology/editor review needed** on whether to call the element a possessive modifier, pronoun, or possessive construction. |
+| 7 | `mehînên te` | `te`: intended `xwemalîn` | Possessive relation to the expressed plural noun; `te` is an oblique personal-pronoun form. Number/ezafe agreement and idiomaticity need a fluent Kurmanji review. | **Provisional; hold as diagnostic until editor review.** |
+| 8 | `kurên van` | `van`: intended `xwemalîn`, explicitly listed by the lesson | The source lesson itself groups this form with possessive examples. Surface `van` also has demonstrative uses elsewhere, so the answer key must state the intended possessive construction rather than infer class from form alone. Exact syntax/idiomaticity needs editor review. | **Provisional course-intended answer; not a high-stakes item pending review.** |
+| 9 | `tu mirov` | `tu`: intended `nebinavkirî` | The isolated phrase is context-sensitive: `tu` can be read as the second-person singular pronoun in other environments. The intended indefinite reading must be demonstrated by a full sentence or discourse context. | **Do not use as a stand-alone diagnostic; add context or accept only with stated intended reading.** |
+| 10 | `gelek fêkî` | `gelek`: `nebinavkirî` in the lesson | Indefinite quantity/degree modifier before the expressed noun. It can also be used pronominally in other sentence positions, as the lesson itself notes. | **Stable for this attributive phrase; context needed for other uses.** |
+| 11 | `vî hespî` | `vî`: `îşarkî`, oblique masculine singular form | Demonstrative form accompanies `hesp); the oblique case is not explained by the two-word fragment alone. | **Class stable; add a governing sentence/context if testing case selection.** |
+| 12 | `van hespan` | `van`: `îşarkî`, oblique plural form | Demonstrative form accompanies the plural noun; oblique environment is not recoverable from the fragment alone. | **Class stable; add a governing sentence/context if testing case selection.** |
+| 13 | `nîv roj` | `nîv`: `jmarnav) under the lesson's lexical taxonomy | The lesson specifically preserves `nîv` before a noun. In this phrase it quantifies/modifies expressed `roj`; that phrase function does not convert the course lexical label into one of the six adjective subclasses. | **Course-intended answer: `jmarnav`; state function separately.** |
+
+### What the exercise currently tests—and what it does not
+
+- It can test recognition of the six course adjective subclasses and the course's separate `jmarnav` category.
+- It does **not** consistently test sentence-level interpretation: several prompts are fragments, not full clauses.
+- It mixes clear attributive examples (`hespê mezin`, `ev keçik`, `sê mal`, `kîjan mirov`, `hin çiya`, `gelek fêkî`) with possessive ezafe constructions and oblique demonstrative forms whose full syntax is not shown.
+- It should not simultaneously grade category recognition, case selection, and idiomaticity when the prompt supplies no governing context.
+- In particular, `tu mirov`, `mehînên te`, and `kurên van` should be held from high-stakes use until context and Kurmanji editorial review settle their intended reading.
+
+### Teacher-key format recommended for all 13 rows
+
+Use four explicit fields: (1) target word/form, (2) course class, (3) phrase/sentence function, and (4) context or editorial caveat. Where the lesson's own taxonomy supplies the intended label, mark it as “course-intended” rather than presenting it as a universally agreed grammatical category.
+
+### No-edit disposition
+
+This addendum is an audit-only classification matrix. It does not change the 13 learner prompts, lesson source, quiz, answer key, key letters, runtime, parser, tests, manifest, database, Botkeep, Telegram, or deployment. No tests/CI or live runtime checks were performed. `main` remains read-only; GitHub archive history is not an independent ZIP/off-site backup.
