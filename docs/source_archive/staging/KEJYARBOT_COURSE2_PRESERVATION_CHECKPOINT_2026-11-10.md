@@ -428,3 +428,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - 62-item terminology audit created and verified: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_TERMINOLOGY_AUDIT_2026-11-11.md`, blob SHA `1cd41f566c4896450a4bd93b93cf0b75af9288f3`.
 - Confirmed 62 quiz items and 62 answer-key rows. Master terminology register updated; global consistency audit Section 54 appended.
 - No quiz/key or learner-facing content was edited. No tests/CI or runtime checks occurred; `main` remains read-only. No independent ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — 62-question distractor quality audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_62_QUESTION_DISTRACTOR_QUALITY_AUDIT_2026-11-11.md`, SHA `92e83ee006cf388f5b31b726deb7c3c493c28719`.
+- All 62 questions and options reviewed. Critical open issue: Lesson 10 Q2 `forma bireserî` vs keyed `wê`; high-priority wording risk: Lesson 6 Q3's bare `bireser`.
+- Master terminology register updated and global audit Section 55 appended. No quiz/key edits or runtime changes; no tests/CI or learner-response analysis. `main` remains read-only; no independent ZIP/off-site backup is claimed.
