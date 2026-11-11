@@ -346,3 +346,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - New unresolved terminology flag: Q1 `kiryarê` vs master register `kirar`. Do not normalize or substitute `kirde` without source/editor ruling.
 - Item-specific answer rationales are drafted in the audit only; no key text changed. Current key remains **B / C / A / B / C**.
 - No protected lesson, quiz, key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 12 learning-objective and assessment alignment (2026-11-11)
+
+- New verified audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_LEARNING_OBJECTIVE_ASSESSMENT_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `c90ca1fee11df39f200fd7222ac0bfb284baf883`.
+- The five current key answers align with the concepts they test; no key contradiction was found. The quiz samples only a subset of the lesson objectives: it does not directly test the six-class taxonomy as a whole, adjective degrees, adjective/pronoun distinction, or the interrogative, indefinite, and possessive classes.
+- The quiz is best characterized as a short end-of-lesson checkpoint, not a representative assessment of all objectives. Xebata 1's `nîv roj` needs a teacher-facing answer criterion; Xebata 3 should model the expressed-noun vs independent numeral distinction.
+- Recommendations are audit-only. No lesson, exercise, quiz, key, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
