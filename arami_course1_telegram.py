@@ -582,9 +582,6 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             except AramiCourseTelegramError:
                 await query.message.reply_text(f"⚠️ سەرچاوەی وانەی {number} ئامادە نییە.")
                 return
-        if mode == "assessment" and can_take_assessment is None:
-            await query.message.reply_text("📚 تاقیکردنەوەی فەرمی بەبێ پشکنینی پەسەندکردنی ئەکادیمی چالاک ناکرێت.")
-            return
         if mode == "assessment" and can_take_assessment is not None:
             if lesson_record is None:
                 try:
