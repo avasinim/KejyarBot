@@ -53,6 +53,8 @@ from arami_course1_telegram import (
     course_menu_keyboard as arami_course1_menu_keyboard,
     load_manifest as load_arami_course1_manifest,
     load_question_banks as load_arami_course1_question_banks,
+    lesson_is_academically_approved,
+    ACADEMIC_APPROVAL_STATUSES,
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -61,7 +63,12 @@ logger = logging.getLogger(__name__)
 
 
 def award_arami_assessment(user_id, lesson_id):
-    """Grant 20 XP once for a Course 1 assessment, never for practice or retries."""
+    """Grant XP only for a registered, academically approved Arami lesson."""
+    if (
+        LESSON_COURSE.get(lesson_id) != "arami_orthography_foundations"
+        or lesson_is_beta_review(lesson_id)
+    ):
+        return False
     return complete_quiz_with_rewards(
         user_id, f"arami_assessment:{lesson_id}", points=20
     )
@@ -296,6 +303,15 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+# Every active course requires an explicit academic approval state before
+# official assessment, rewards, or badges are enabled.
+ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset(
+    course.get("id")
+    for course in COURSES
+    if course.get("status") == "active" and isinstance(course.get("id"), str)
+)
+
+
 LATIN_COURSE_IDS = {
     "kurmanji_latin_orthography",
     "kurmanji_latin_grammar",
@@ -429,8 +445,12 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    if course_id == "grammar":
-        completed.update(get_completed_beta_lessons(user_id))
+    # Beta progress remains separate and only unlocks lessons still in review.
+    completed.update(
+        beta_lesson
+        for beta_lesson in get_completed_beta_lessons(user_id)
+        if lesson_is_beta_review(beta_lesson)
+    )
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
@@ -475,14 +495,38 @@ def check_badges(user_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
-def lesson_is_pending_review(lesson):
-    return (
-        LESSON_DATA.get(lesson, {}).get("review_status")
-        == "owner_review_pending_expanded_draft"
+def _arami_lesson_requires_review(lesson):
+    if LESSON_COURSE.get(lesson) != "arami_orthography_foundations":
+        return False
+    record = next(
+        (item for item in ARMI_MANIFEST.get("lessons", []) if item.get("id") == lesson),
+        None,
     )
+    if record is None:
+        return True
+    return not lesson_is_academically_approved(record)
+
+
+def _lesson_requires_academic_approval(lesson):
+    """Fail closed for active courses unless academic approval is explicit."""
+    if _arami_lesson_requires_review(lesson):
+        return True
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id not in ACADEMIC_REVIEW_REQUIRED_COURSE_IDS:
+        return False
+    record = LESSON_DATA.get(lesson)
+    if not isinstance(record, dict):
+        return True
+    return record.get("review_status") not in ACADEMIC_APPROVAL_STATUSES
+
+
+def lesson_is_pending_review(lesson):
+    return _lesson_requires_academic_approval(lesson)
 
 
 def lesson_is_beta_review(lesson):
+    if _lesson_requires_academic_approval(lesson):
+        return True
     return is_beta_review_lesson(
         LESSON_COURSE.get(lesson), lesson, LESSON_DATA.get(lesson, {})
     )
@@ -824,6 +868,14 @@ async def quiz_answer(
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
+    active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
+    if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
+        await query.answer()
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا."
+        )
+        return
     # Claim the answer synchronously before acknowledging the callback. Telegram
     # can deliver duplicate submit callbacks while query.answer() is awaiting;
     # the flag prevents both handlers from scoring the same question.
@@ -922,6 +974,13 @@ async def quiz_answer(
 
         lesson = quiz["lesson"]
         earned = quiz["score"]
+        # Revalidate immediately before writing the official reward ledger.
+        if not lesson_quiz_is_available(lesson):
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا."
+            )
+            return
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
             f"🎉 تاقیکردنەوە تەواو بوو!\n"
@@ -1772,6 +1831,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^arami1:",
     ))
@@ -1781,6 +1841,8 @@ def main():
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
             get_completed_lessons=get_completed_lessons,
+            get_completed_beta_lessons=get_completed_beta_lessons,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^aramiC:",
     ))
@@ -1789,6 +1851,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=lambda user_id, lesson_id: not lesson_is_beta_review(lesson_id),
         ),
         pattern=r"^arami5:",
     ))
