@@ -259,3 +259,17 @@ All six original correct-answer positions remain unchanged: B, B, B, C, C, B res
 The original proposal and its initial “not approved/applied” preservation statement remain in the append-only historical record; this adoption entry supersedes that status for these six items only. The work is an editorial self-review, not native-speaker certification or psychometric validation. It is not merged to `main`, not connected to runtime, and not deployed.
 
 Verification: all six replacement strings were read back from the review branch; quiz file SHA is `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`; the answer-key SHA is unchanged.
+
+
+## Adoption record — approved stem and coverage refinements (2026-11-11)
+
+The owner-approved four-item proposal set from the earlier audit addendum has now been applied to the reviewed quiz and its matching answer key on this review branch:
+
+- L10 Q1: stem now asks which form appears in Lesson 10's object-pronoun inventory; options and key B (`min`) are unchanged.
+- L2 Q5: replaced the repeated common-noun definition with the contextual contrast `Argesh û hesp`; options A `hesp`, B `Argesh`, C `her du`; correct answer is B (`Argesh`). **Correction to the earlier proposal erratum:** the actual baseline answer-key row in the source file was C (`navê giştî`), not B as the erratum had stated. Therefore this approved replacement correctly changes the key letter C→B and updates the answer text/rationale to `Argesh`. The previous claim that all four proposals preserved the original key letters was inaccurate for L2 Q5.
+- L3 Q3: changed the repeated masculine `çem` question to the explicitly listed feminine noun `jin`; corrected option order A `mê`, B `nêr`, C `her du`. Key letter A is retained, while the answer text changes from `nêr` to `mê`.
+- L4 Q5: changed the repeated `hespin` classification to plural agreement in `Ev mehîn __`; options A `e`, B `hatin`, C `in`. Key letter C is retained, while the answer text changes from `gelemjimar` to `in`.
+
+Answer-key row changes are limited to L2 Q5, L3 Q3 and L4 Q5; L10 Q1's rationale was sharpened without changing its answer. These changes are deliberate and are included in the answer-key file's new SHA. Structural post-patch validation must cover all 62 items before this branch is considered complete.
+
+This is still a review-branch editorial patch only. No merge to `main`, runtime/manifest/database changes, Railway/Botkeep/Telegram action, or deployment occurred. Editorial review remains self-review; native Kurmanji review is not claimed.
