@@ -906,3 +906,13 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Quiz artifact blob SHA after patch: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
 - Full audit adoption note appended; original historical proposal text preserved. This is a review-branch editorial patch only: no merge to `main`, runtime change, Railway/Botkeep/Telegram action, or deployment.
 - Remaining work: inspect exact diff and run structural assertions over all 62 quiz/key mappings; Kurmanji idiom review by a qualified native editor remains advisable.
+
+
+## Section 101 — structural post-patch verification (2026-11-11)
+
+- Parsed all 12 lesson quiz blocks: counts are 5,5,5,5,5,5,5,7,5,5,5,5 (62 total), unchanged from baseline.
+- Parsed all 62 answer-key rows and matched each keyed option letter to the option text in the reviewed quiz: 62/62 matched, zero missing rows, zero mismatches.
+- Six patched items retain the approved keys B/B/B/C/C/B. The answer-key artifact remains unchanged (SHA `879e1525e720bdc25b8f6e896de3e388801238d0`).
+- PR #142 is Open/Unmerged, head `20b703b3614c75650459683e96d202f1c92d3a57`, targeting the preservation/audit branch, not `main`. The workflow-run lookup currently returned no runs for this PR head; no CI success is claimed for this patch.
+- Exact PR diff inspected: four files only (reviewed quiz draft, full quiz audit, global audit, preservation checkpoint). No lesson, answer-key, runtime, database, infrastructure, or deployment files changed.
+- Native Kurmanji idiom review remains a separate editorial quality limitation; the structural checks do not certify idiomaticity or psychometric quality.
