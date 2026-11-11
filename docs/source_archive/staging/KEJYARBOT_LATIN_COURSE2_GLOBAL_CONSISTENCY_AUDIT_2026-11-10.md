@@ -578,3 +578,12 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Parsed the base proposal table: 44/44 rows map to existing answer-key rows; zero missing mappings and zero option-letter mismatches.
 - The refinement patch's 11 rows are refinements of existing base items, not 11 new items. It adds one new item, L10 Q2 (key C, `wê`). Thus there are 45 distinct proposed rationale items across base plus patch.
 - Mapping is not linguistic certification or approval. L12 Q1 and Q3 remain held; L1 Q4 notation remains open. No lesson/quiz/key/runtime changes or tests/CI.
+
+
+## Section 63 — Explanation-to-option fit audit of 45 proposed rationales (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_EXPLANATION_OPTION_FIT_AUDIT_2026-11-11.md`, SHA `5e83fa49f311ff979dc63ea35d5bd6500fa2a8e4`.
+- Main P1 finding: L8 Q3 stem says `bê bireser`, while the rationale's §66 rule concerns absence of a postnominal descriptive element/modifier. In the course's controlled terminology, bare `bireser` means clause-level object; this is a stem/construct mismatch requiring editorial resolution, not silent rationale-only correction.
+- P2: L1 Q1 rationale drifts from keyed wording `qaydeyên` to `rêzikên`; prefer exact course/key wording. P2: L6 Q3 rationale correctly says `bireserê navdêrê`, but stem/options retain bare `bireser`; retain full term and flag the item wording.
+- Further precision notes: preserve L1 Q2's four-item scope; keep L4 Q5 erratum; avoid defining tewang by position alone; retain form-vs-clause-role distinction in L10.
+- Audit-only. No lesson, quiz, key, runtime, tests/CI or deployment changes; `main` read-only; no independent ZIP/off-site backup claimed.
