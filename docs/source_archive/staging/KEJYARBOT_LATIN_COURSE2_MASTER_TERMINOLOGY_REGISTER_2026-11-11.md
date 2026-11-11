@@ -210,3 +210,17 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_INTERNAL_DEFIN
 - Preserve the course disposition that `nîv` in `nîv roj` is lexically `jmarnav`, while its phrase-level relation to `roj` is quantifying/modifying.
 - Possessive section examples mix personal and demonstrative possessor forms; `kitêba vî` requires source/editor review before asserting that all possessors share one morphology.
 - No terminology normalization or learner-facing edits authorized; morphology query remains open.
+
+
+## Course 2 cross-lesson terminology chain audit (2026-11-11)
+
+See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CROSS_LESSON_TERMINOLOGY_CHAIN_AUDIT_2026-11-11.md`, verified blob SHA `178b0fb99da312265e27172208635a0221a9ef2b`.
+
+- Preserve the full compound `bireserê navdêrê` for noun-attached modifier/complement; do not shorten it to clause-level `bireser` or conflate it with Lesson 10 `pronavên bireser`.
+- `pêşnavdêr/bireser` in Lesson 6 remains an unresolved slash label; do not assert synonymy. Describe `ev` in `ev keçik` by its demonstrative attributive function until source/editor ruling.
+- `rengdêr` is a word-class label in Lesson 12; `bireserê navdêrê` is a broader syntactic function. Not every noun modifier is automatically an adjective.
+- Keep `veqetandek`, `pêvek`, and `tewang` distinct: determiner/definiteness function, broader affix term, and inflection/case process respectively.
+- `pronav` vs adjective use is contextual for forms such as `ev/ew`, `çend`, `gelek`, and `hemî`; preserve full phrase/sentence diagnostics.
+- Retain Lesson 12 distinction between `jmarîn` with an expressed noun and independent `jmarnav`; preserve the existing `nîv roj` lexical-class/phrase-function split.
+- `kiryar` in Lesson 12 Q1 vs controlled `kirar` remains unresolved; no normalization. The `rengdêra/rengdêrê jmarîn` morphology query also remains open.
+- Audit-only; no learner-facing or runtime/deployment files changed.
