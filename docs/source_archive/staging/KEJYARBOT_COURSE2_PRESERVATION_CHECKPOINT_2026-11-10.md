@@ -313,3 +313,13 @@ No lesson, exercise, quiz, answer key, source-aligned text, runtime, parser, tes
 - Lesson 12 Q3 `rengdêra jmarîn` remains unresolved; no automatic normalization.
 
 No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
+
+
+## Checkpoint update — Lesson 12 five-question quiz/key audit (2026-11-11)
+
+- Audit file: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_FIVE_QUESTION_KEY_ALIGNMENT_AUDIT_2026-11-11.md`, verified blob SHA `464b2c284dbff250f979aa03a091d10eaf49350d`.
+- Compared all five question stems/options and answer-key rows with the reviewed lesson and direct source page-image review §§119–152.
+- No keyed-answer contradiction found; current answer sequence **B / C / A / B / C** remains correct at the concept level.
+- Q3's concept is correct, but `rengdêra jmarîn` remains an unresolved morphology/editorial form. No automatic normalization.
+- The generic answer-key rationales are pedagogically weak; item-specific explanations are recommended for a future approved patch only.
+- No lesson, quiz, answer key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks occurred; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
