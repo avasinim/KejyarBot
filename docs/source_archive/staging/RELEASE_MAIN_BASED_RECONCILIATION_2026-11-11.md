@@ -1202,3 +1202,35 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 
 ### سنووری جێبەجێکردن
 ئەم پشکنینە تەنها خوێندنەوە و parseکردنی فایلە ئەرشیفییەکان بوو. هیچ source lesson، patch JSON، runtime JSON، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا؛ هیچ patchێک جێبەجێ نەکرا.
+
+
+## ٩.٤٤. بەراوردی baselineی پەچە هەڵبژێردراوەکان لەگەڵ runtimeی main — 2026-11-11
+
+### سەرچاوەی بەراورد
+- `course_data/grammar_course4_lessons.json` لە `main` خوێندرایەوە؛ ٤٦ وانەی `grammar_01` تا `grammar_46` تێدایە.
+- مەبەست تەنها پشکنینی baseline و count ـە؛ هیچ پەچێک apply نەکرا و هیچ داتای runtime نەگۆڕدرا.
+
+### وانەکانی ١–٢: baselineی ناتەواو
+- پەچەکانی ١–٢ `source_note` و `append_to`یان هەیە، بەڵام `source_baseline`، inventoryی structured fields و `preserve_existing`ی machine-readableیان نییە.
+- لە `main`، وانەی ١: key_points=6, examples=3, activities=3, exercises=5, comprehension=10, quiz=8, appendix=5.
+- لە `main`، وانەی ٢: key_points=8, examples=4, activities=3, exercises=5, comprehension=10, quiz=8, appendix=5.
+- بۆیە پێش هەر applyێک پێویستە snapshotی کاتی دروستکردنی پەچ و baselineی سەرچاوە بگەڕێندرێتەوە؛ countsی ئێستای main بە تەنها provenanceی پەچە کۆنەکان ناسەلمێنێت.
+
+### وانەکانی ٤–٥: baselineی هاوتا
+- `grammar_04_append_only_patch.json` inventoryی بنەڕەتیی ٩ key_points، ٦ examples، ٣ activities، ٥ exercises، ١٠ comprehension، ٨ quiz و ٦ appendix تۆمار دەکات؛ هەمان ژمارەکان لە runtimeی `main`دا پشتڕاست کرانەوە.
+- `grammar_05_append_only_patch.json` inventoryی ١٢ key_points، ٦ examples، ٣ activities، ٥ exercises، ١٠ comprehension، ٨ quiz و ٧ appendix تۆمار دەکات؛ هەمان ژمارەکان لە runtimeی `main`دا پشتڕاست کرانەوە.
+- هەردوو پەچە statusی `scientific_review_complete_with_qualified_notes` و baselineی `main`یان تۆمار کردووە؛ ئەمە هاوتاییی count ـە، نە بەڵگەی applyبوون یان پەسەندی هەموو زیادکراوەکان.
+
+### وانەی ٢١: conflictی ناوەڕۆک و baselineی ناتەواو
+- runtimeی `main`: key_points=8, examples=8, activities=3, exercises=5, comprehension=10, quiz=8, appendix=8؛ status=`scientific_review_complete_with_qualified_notes`.
+- هەردوو وەشانی پەچی ٢١ `preserve_existing=true`یان هەیە، بەڵام source_baselineی countیان نییە و ناوەڕۆکی نموونە/پاشکۆ/چالاکی جیاوازە.
+- بۆیە هەردوو وەشانەکە پێویستیان بە baselineی مێژوویی و diffی سەرچاوەیی هەیە؛ هیچکام بە خۆکار هەڵنەبژێردرا.
+
+### وانەکانی ٤٥–٤٦: دۆخی پێداچوونەوە
+- پەچی ٤٥ baselineی structuredی ١ key_point، ٠ example، ٢٣ exercise، ٠ comprehension و ٠ quiz تۆمار دەکات؛ runtimeی `main` هەمان count ـەکان هەیە و status=`owner_review_pending_expanded_draft` ـە.
+- وانەی ٤٦ لە runtimeی `main`دا هەمان دۆخی `owner_review_pending_expanded_draft` هەیە، ٠ example، ٣٥ exercise، ٦ comprehension و ٠ quiz؛ هیچ پەچی تاکەوانەی ٤٦ لە Libraryی پشکنراودا نەدۆزرایەوە.
+- نەبوونی پەچی ٤٦ بە مانای ونبوونی وانە نییە؛ بەڵام نابێت بەهۆی پەچەکانی دیکەوە خۆکارانە دروست بکرێت.
+
+### سنووری بڕیار
+- هاوتاییی ژمارەی baseline بە تەنها دروستیی ناوەڕۆکی patch، provenance یان پەسەندی زانستی ناسەلمێنێت.
+- هیچ پەچێک apply، normalize، merge یان overwrite نەکرا؛ runtime JSON، source lesson، quiz، status، DB، Botkeep، Railway و Telegram نەگۆڕدران.
