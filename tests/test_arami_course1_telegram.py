@@ -508,7 +508,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         }
         self.assertIn("arami1:lesson", callbacks)
         self.assertIn("arami1:practice", callbacks)
-        self.assertIn("arami1:assessment", callbacks)
+        self.assertNotIn("arami1:assessment", callbacks)
 
     async def test_selecting_locked_lesson_does_not_expose_actions(self):
         from arami_course1_telegram import callback
