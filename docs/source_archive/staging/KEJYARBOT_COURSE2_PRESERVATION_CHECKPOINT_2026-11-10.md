@@ -793,3 +793,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Answer-key artifact unchanged at SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
 - PR #142 Open/Unmerged, targeting archive/preservation branch; no workflow runs were returned for its head, so no CI pass is claimed.
 - Four-file diff inspected; no runtime, database, Railway, Botkeep, Telegram, or production changes.
+
+
+## Checkpoint — Section 102 approved stem and coverage refinements (2026-11-11)
+
+- Applied approved L10 Q1, L2 Q5, L3 Q3, and L4 Q5 proposals to the review-branch quiz and answer key.
+- L2 Q5 correct key changed from the source row's C to B; the earlier audit erratum incorrectly described the baseline key as B. L3 Q3 key A and L4 Q5 key C remain unchanged while their answer text is updated; L10 Q1 remains B.
+- Section 100's six approved distractor refinements remain applied. Re-run full 62-item key alignment before considering the review branch complete.
+- No merge to `main`, runtime, Railway, Botkeep, Telegram, or deployment action.
