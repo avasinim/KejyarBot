@@ -570,3 +570,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Recorded 11 precision refinements to existing rationale proposals and added an L10 Q2 rationale based on the §86 source adjudication. The L10 Q2 key remains C (`wê`); explain paradigm form separately from clause role in `Wê ew dît`.
 - The 45-item proposed wording set is not approval or application. L12 Q1 and Q3 remain withheld; L1 Q4 `kîtê/kitê` remains a separate notation hold.
 - No lesson, quiz, answer-key, source, runtime or deployment content changed. No tests/CI or psychometric validation. `main` remains read-only; no separate ZIP/off-site backup claimed.
+
+
+## Section 62 — Verification of 45 distinct rationale proposal mappings (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_PROPOSALS_KEY_MAPPING_VERIFICATION_2026-11-11.md`, SHA `6d38e27867915d62dab0fd78140a346e4a67bbaa`.
+- Parsed the base proposal table: 44/44 rows map to existing answer-key rows; zero missing mappings and zero option-letter mismatches.
+- The refinement patch's 11 rows are refinements of existing base items, not 11 new items. It adds one new item, L10 Q2 (key C, `wê`). Thus there are 45 distinct proposed rationale items across base plus patch.
+- Mapping is not linguistic certification or approval. L12 Q1 and Q3 remain held; L1 Q4 notation remains open. No lesson/quiz/key/runtime changes or tests/CI.
