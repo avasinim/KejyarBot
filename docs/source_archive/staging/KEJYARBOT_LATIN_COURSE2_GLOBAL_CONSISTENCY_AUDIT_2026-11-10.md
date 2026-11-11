@@ -697,3 +697,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Screened all 45 consolidated rationales against their lesson/quiz wording and existing terminology decisions. Three clarity refinements were identified for editor review only: L2 Q2 (avoid tautological `hesp` wording), L11 Q2 (state that `yê/ya/yên` do not encode proximity/distance), and L10 Q2 (make the pronoun-form vs clause-role distinction clearer).
 - No new concrete correction was established for the other 42 rows in this pass. This is not native-speaker certification or a complete line-by-line re-adjudication. Holds L1 Q4, L12 Q1, L12 Q3 remain; L10 Q2 wording still needs review.
 - No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
+
+
+## Section 77 — Editorial refinements E1–E3 source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EDITORIAL_REFINEMENT_E1_E3_SOURCE_RECHECK_2026-11-11.md`, SHA `b5456386a9fd56320eff4e0c8176a8a24433e39f`.
+- Re-fetched the consolidated 45-item rationale pack, editorial preflight, source-aligned lessons and reviewed quiz draft. E1 (L2 Q2), E2 (L11 Q2) and E3 (L10 Q2) are each supported by the exact lesson definition/example and quiz key. Alternative wording is recorded for qualified editor review only; all three answer keys remain unchanged (C).
+- The focused pass confirms the clarity rationale and source basis; it does not re-adjudicate the remaining 42 rows or certify idiomatic native-Kurmanji prose. L1 Q4, L12 Q1 and L12 Q3 remain held.
+- No lesson, quiz, answer-key, runtime, parser, manifest, database, Botkeep, Telegram or deployment file changed. No tests/CI or live runtime checks. Proposals remain unapproved/unapplied; `main` read-only; no independent ZIP/offsite backup claimed.
