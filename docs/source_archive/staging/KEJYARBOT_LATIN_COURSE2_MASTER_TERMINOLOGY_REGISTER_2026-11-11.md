@@ -180,3 +180,7 @@ The source-page reconciliation confirms that the opening classroom diagnostic (�
 ## Lesson 12 quiz label note (2026-11-11)
 
 The five-item quiz/key alignment audit confirms that Q3's concept and key letter A are correct: `sê` in `sê mal` is a numeral adjective modifying an expressed noun. The label `rengdêra jmarîn` remains unresolved against class heading `rengdêrên jmarîn` and explanatory singular `rengdêrê jmarîn`. Do not normalize pending a Kurmanji editor's ruling. Audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_FIVE_QUESTION_KEY_ALIGNMENT_AUDIT_2026-11-11.md` (blob SHA `464b2c284dbff250f979aa03a091d10eaf49350d`).
+
+## Open terminology query — `kiryar` vs `kirar` (2026-11-11)
+
+Lesson 12 Q1 option C contains `kiryarê` in the phrase `Kes û hejmarê lêkerê li gorî kiryarê diguherîne`. This register records `kirar` as “Subject/agent role”. The difference may be lexical, orthographic, or inflectional; the current evidence does not decide which. Do not silently normalize `kiryar` to `kirar`, and do not substitute `kirde` without checking the source and controlled glossary. A Kurmanji editor should adjudicate the intended lemma and inflected form. Quiz parallelism/rationale audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_PARALLELISM_AND_RATIONALE_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `f076c4878192fd8cfdc4cf0b2c7384142a14341b`. No lesson or quiz text changed.
