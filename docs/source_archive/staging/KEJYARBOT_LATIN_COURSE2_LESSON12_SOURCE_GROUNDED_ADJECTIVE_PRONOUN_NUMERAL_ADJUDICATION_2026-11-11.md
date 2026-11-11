@@ -26,7 +26,7 @@ Therefore, retain this functional diagnostic:
 
 The same diagnostic applies to possessive forms:
 - `hespê min`: the possessive element accompanies an expressed noun; this is possessive-adjective use in the course framework.
-- `yê min` (as in the source-review examples `destmalên min — yên min`, `gopalê min — yê min)): the form replaces an understood noun/group; this is possessive-pronoun use.
+- `yê min` (as in the source-review examples `destmalên min — yên min`, `gopalê min — yê min`): the form replaces an understood noun/group; this is possessive-pronoun use.
 The course already explains this contrast; preserve it and avoid describing both constructions simply as “possessive pronouns/adjectives” without the expressed-noun test.
 
 Interrogative and indefinite forms can likewise have adjective or pronoun use depending on whether they accompany a stated noun or function independently. The source review records this for forms such as `çend`; the lesson should teach the syntactic test rather than imply that a surface form has one permanent category in every sentence.
@@ -34,7 +34,7 @@ Interrogative and indefinite forms can likewise have adjective or pronoun use de
 ## 3. Numeral adjective vs `jmarnav`
 
 The source treats adjective numerals within its adjective discussion (§§134–140) and separately treats numerals and their forms/inflection in §§141–152. The course's adopted teaching distinction is function-based:
-- numeral adjective: modifies a stated noun, e.g. `sê mal`, `çar xanî`, `deh bizin), or an ordinal phrase such as `stûna çaran`;
+- numeral adjective: modifies a stated noun, e.g. `sê mal`, `çar xanî`, `deh bizin`), or an ordinal phrase such as `stûna çaran`;
 - `jmarnav`: numeral used independently/substantively, with its own syntactic role and the source's numeral inflection patterns.
 
 Do not claim that numeral adjective and numeral pronoun are distinguished merely because the book discusses them in separate sections. The learner-facing test must be whether the numeral modifies an expressed noun or is used independently in the clause. Some forms overlap; form alone is not sufficient.
