@@ -775,3 +775,37 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Railway production remains Offline; staged volume is empty and staged patch is not committed.
 - Authoritative Botkeep SQLite backup, integrity report, restore verification and confirmed Botkeep stopped-state are missing. No deployment/poller start is safe yet.
 - No source DB recovery action, Railway accept-deploy, restart, or live Telegram action performed.
+
+
+## Checkpoint — Section 100 approved Latin Course 2 quiz refinements (2026-11-11)
+
+- Dedicated review branch: `review/latin-course2-approved-distractors-2026-11-11`.
+- Six approved distractor sets applied to the reviewed quiz draft: L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5, L12 Q1.
+- All correct-answer letters preserved; answer-key artifact SHA unchanged at `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- Quiz SHA: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
+- Adoption details appended to the full quiz audit; global consistency audit updated in Section 100.
+- Review branch only. No merge to `main`, runtime activation, Botkeep/Telegram action, or deployment.
+
+
+## Checkpoint — Section 101 post-patch verification (2026-11-11)
+
+- Structural verification: 12 lessons and 62 quiz items retained; all 62 keyed option letters and answer texts match the quiz (62/62, zero mismatches).
+- Answer-key artifact unchanged at SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- PR #142 Open/Unmerged, targeting archive/preservation branch; no workflow runs were returned for its head, so no CI pass is claimed.
+- Four-file diff inspected; no runtime, database, Railway, Botkeep, Telegram, or production changes.
+
+
+## Checkpoint — Section 102 approved stem and coverage refinements (2026-11-11)
+
+- Applied approved L10 Q1, L2 Q5, L3 Q3, and L4 Q5 proposals to the review-branch quiz and answer key.
+- L2 Q5 correct key changed from the source row's C to B; the earlier audit erratum incorrectly described the baseline key as B. L3 Q3 key A and L4 Q5 key C remain unchanged while their answer text is updated; L10 Q1 remains B.
+- Section 100's six approved distractor refinements remain applied. Re-run full 62-item key alignment before considering the review branch complete.
+- No merge to `main`, runtime, Railway, Botkeep, Telegram, or deployment action.
+
+
+## Checkpoint — Section 103 full quiz/key alignment (2026-11-11)
+
+- Post-edit structural verification: 62 quiz questions, 62 key rows, 62/62 option-letter and answer-text matches; zero missing rows or mismatches.
+- Quiz SHA: `3fe2bd44b9708551a4c9686d28148450003ac3c1`.
+- Answer-key SHA: `2caf0fa40e9638551b3e47f9cccdef3683171c80`.
+- PR #142 is the open review path; no CI run is currently returned for its head. No merge to `main` or production deployment.

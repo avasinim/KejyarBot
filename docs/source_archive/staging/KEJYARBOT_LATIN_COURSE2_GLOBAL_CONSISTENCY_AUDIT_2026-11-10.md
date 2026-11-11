@@ -896,3 +896,44 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Railway production read-back remains Offline with no active deployment; one staged patch (3 resource/variable changes) remains pending; the staged 1 GB volume is empty/not restored.
 - PR #125 remains the documented Botkeep release hold; no support resolution or authoritative SQLite backup evidence is present in the retrieved records.
 - Owner authorization for activation is acknowledged, but deployment is withheld because no verified authoritative DB backup/restore exists and Botkeep poller stopped-state is unconfirmed. No accept-deploy, Botkeep recovery action, restart, or Telegram poller start was performed.
+
+
+## Section 100 — Latin Course 2 approved distractor patch (2026-11-11)
+
+- Owner-approved Section 97 refinements applied to six items in a dedicated review branch: `review/latin-course2-approved-distractors-2026-11-11`.
+- Items: L1 Q1, L2 Q1, L5 Q1, L5 Q5, L7 Q5, L12 Q1.
+- Correct answer letters remain B, B, B, C, C, B; the answer-key artifact remains byte-for-byte at its prior blob SHA `879e1525e720bdc25b8f6e896de3e388801238d0`.
+- Quiz artifact blob SHA after patch: `d3142d0d9f9de07c3dbd88e4d18640930da7efd8`.
+- Full audit adoption note appended; original historical proposal text preserved. This is a review-branch editorial patch only: no merge to `main`, runtime change, Railway/Botkeep/Telegram action, or deployment.
+- Remaining work: inspect exact diff and run structural assertions over all 62 quiz/key mappings; Kurmanji idiom review by a qualified native editor remains advisable.
+
+
+## Section 101 — structural post-patch verification (2026-11-11)
+
+- Parsed all 12 lesson quiz blocks: counts are 5,5,5,5,5,5,5,7,5,5,5,5 (62 total), unchanged from baseline.
+- Parsed all 62 answer-key rows and matched each keyed option letter to the option text in the reviewed quiz: 62/62 matched, zero missing rows, zero mismatches.
+- Six patched items retain the approved keys B/B/B/C/C/B. The answer-key artifact remains unchanged (SHA `879e1525e720bdc25b8f6e896de3e388801238d0`).
+- PR #142 is Open/Unmerged, head `20b703b3614c75650459683e96d202f1c92d3a57`, targeting the preservation/audit branch, not `main`. The workflow-run lookup currently returned no runs for this PR head; no CI success is claimed for this patch.
+- Exact PR diff inspected: four files only (reviewed quiz draft, full quiz audit, global audit, preservation checkpoint). No lesson, answer-key, runtime, database, infrastructure, or deployment files changed.
+- Native Kurmanji idiom review remains a separate editorial quality limitation; the structural checks do not certify idiomaticity or psychometric quality.
+
+
+## Section 102 — approved Latin Course 2 stem and coverage refinements (2026-11-11)
+
+- Applied the previously approved L10 Q1, L2 Q5, L3 Q3 and L4 Q5 proposals to the review-branch quiz and answer key.
+- L10 Q1 retains key B (`min`) with a more precise inventory-membership stem.
+- L2 Q5 now tests `Argesh` versus `hesp`; key letter changes C→B and answer text/rationale updates accordingly. This corrects the earlier audit erratum, which incorrectly stated the baseline key was B; the source answer-key row was C.
+- L3 Q3 now tests `jin` as feminine; key letter A retained, answer text changes `nêr`→`mê`.
+- L4 Q5 now tests plural agreement in `Ev mehîn __`; key letter C retained, answer text changes `gelemjimar`→`in`.
+- Combined with Section 100's six distractor refinements, ten quiz items now have approved edits. Structural validation of all 62 quiz/key mappings is the next gate.
+- Review branch only; no `main`, runtime, Railway, Botkeep, Telegram, or deployment change.
+
+
+## Section 103 — full 62-item key alignment after approved edits (2026-11-11)
+
+- Full structural pass completed after Sections 100 and 102: 12 lesson quiz blocks contain 62 items (5,5,5,5,5,5,5,7,5,5,5,5).
+- All 62 answer-key rows map to the correct option letter and exact option text in the revised quiz: 62/62 matched; zero missing rows; zero mismatches.
+- Current reviewed quiz blob SHA: `3fe2bd44b9708551a4c9686d28148450003ac3c1`.
+- Current answer-key blob SHA: `2caf0fa40e9638551b3e47f9cccdef3683171c80`.
+- The intentional L2 Q5 key update C→B and answer-text changes for L3 Q3/L4 Q5 are reflected in the matching key. This supersedes the earlier intermediate key-SHA note from Section 101.
+- PR #142 remains the review path; CI workflow lookup returned no runs for the current head, so no CI success is claimed. Native Kurmanji editorial review remains outstanding.
