@@ -135,3 +135,19 @@ The earlier §28 claim that §69 gives each element its own suffix was correct. 
 - The reviewed lesson base remains `abc88219e2a0e249883e8d62c5117a9b3aaa3108`; the reviewed answer key remains `879e1525e720bdc25b8f6e896de3e388801238d0`.
 
 No base lesson, answer key, runtime, tests/CI, manifest, DB, Botkeep, Telegram, or deployment state was changed. `main` remains read-only. The GitHub archive branch remains the persisted project record; no independent ZIP/off-site backup is claimed.
+
+
+## Checkpoint update — definitive Lesson 8 lines 290, 292 and 294 review (2026-11-11)
+
+Direct inspection of the original source page images confirms:
+- §68: final-noun agreement when several nouns are linked by one complement.
+- §69: each linked complement in the specified multi-complement construction receives its own determiner according to its own gender and number.
+- §70: uninflected -ek/-ek/-in forms inflect as -ekî/-ekê/-ina in the stated object environment.
+
+The proposed line 290 uses formên netewandî accurately for the uninflected forms; line 292 preserves §69's own-form-for-each-complement rule; line 294 separates the three indefinite environments from the definite forms -ê/-a/-ên and removes mixed-script fragments. This is the controlling source-based interpretation. Earlier contradictory intermediate summaries are superseded by the latest addenda in the proposal and page-image review note.
+
+- Page-image review current blob SHA: 0eaa37c517fdaf244b48cc69f953400393ab0812.
+- Editorial proposal current blob SHA: a8e5d3fed8591c81b33f3b411a7d851ee3891224.
+- Global audit section 30 is being appended in the same work sequence.
+
+All reviewed lesson, answer-key, and runtime baselines remain unchanged. No tests/CI, runtime, manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. The proposal remains unapplied; no independent ZIP/off-site backup is claimed.
