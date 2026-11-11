@@ -982,6 +982,38 @@ class AramiCourse1CompletionNavigationTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(buttons, ["arami5:lesson"])
 
 
+    async def test_final_course1_beta_lesson_does_not_offer_official_assessment(self):
+        lesson = bot.ARMI_LESSON_IDS[-1]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "lesson_is_beta_review", return_value=True),
+            patch.object(bot, "lesson_is_pending_review", return_value=True),
+            patch.object(bot, "complete_beta_lesson", return_value=True) as beta_complete,
+            patch.object(bot, "complete_lesson_with_rewards") as official_complete,
+            patch.object(bot, "get_user_level") as level,
+            patch.object(bot, "check_badges") as badges,
+        ):
+            await bot.finish_lesson(update, context)
+
+        beta_complete.assert_called_once_with(12345, lesson)
+        official_complete.assert_not_called()
+        level.assert_not_called()
+        badges.assert_not_called()
+        reply = query.message.reply_text.await_args
+        self.assertIn("پێشچوونی Beta", reply.args[0])
+        self.assertIn("مانای تەواوبوونی فەرمی کۆرس نییە", reply.args[0])
+        self.assertNotIn("کۆرسی ١ تەواو بوو", reply.args[0])
+        self.assertNotIn("reply_markup", reply.kwargs)
+
+
 class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
     async def _open_global_menu(self, menu_text, completed):
         message = SimpleNamespace(text=menu_text, reply_text=AsyncMock())
