@@ -523,3 +523,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_Q5_POSSESSIVE_MODIFIER_RATIONALE_CORRECTION_2026-11-11.md`, SHA `f9ec5ed10da96c889393b9ab1502e648b937d380`.
 - Corrected a proposal-level terminology error: `min` in `xencera min` is a possessive adjective (`rengdêra xwemalîn`) modifying an expressed noun, not a possessive pronoun (`pronavê xwemalî`) replacing a noun. The latter category applies to forms such as `yê min/ya min/yên min`.
 - L6 Q5 key C unchanged. No lesson, quiz, answer-key or runtime edits; no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — controlled terminology final pass (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALE_CONTROLLED_TERMINOLOGY_FINAL_PASS_2026-11-11.md`, SHA `7f912cbca35233b18df7281c3d685fead169f0ed`.
+- Two proposal-level corrections: L6 Q5 `min` in `xencera min` is `rengdêra xwemalîn` (possessive adjective), not `pronavê xwemalî`; L1 Q1 should use `qaydeyên` to match the keyed option.
+- No learner-facing/key/lesson/runtime changes; no tests/CI/deployment. `main` read-only; no separate offsite backup claimed.
