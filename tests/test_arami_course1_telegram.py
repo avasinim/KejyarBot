@@ -272,7 +272,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
         second_id = manifest["lessons"][1]["id"]
         keyboard = course_menu_keyboard(
             manifest,
-            completed_lessons={first_id},
+            beta_completed_lessons={first_id},
             can_open=lambda lesson_id: lesson_id in {first_id, second_id},
         )
         buttons = {
@@ -280,8 +280,8 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
-        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🔓"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("🧪✓"))
+        self.assertTrue(buttons["aramiC:select:2"].text.startswith("🧪"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
 
     def test_stale_completed_lesson_is_displayed_as_locked(self):
@@ -298,7 +298,7 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             for row in keyboard.inline_keyboard
             for button in row
         }
-        self.assertTrue(buttons["aramiC:select:1"].text.startswith("✅"))
+        self.assertTrue(buttons["aramiC:select:1"].text.startswith("🧪"))
         self.assertTrue(buttons["aramiC:select:3"].text.startswith("🔒"))
         self.assertFalse(any(
             button.callback_data in {"aramiC:practice:3", "aramiC:assessment:3"}
