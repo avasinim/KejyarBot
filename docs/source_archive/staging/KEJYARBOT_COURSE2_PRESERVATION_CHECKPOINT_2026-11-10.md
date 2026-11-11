@@ -507,3 +507,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Flagged L8 Q3 as P1: the stem's `bê bireser` does not match the §66 condition described in the rationale (no postnominal descriptive element); this conflates bare clause-level `bireser` with a noun-attached modifier. Requires editorial decision before certifying the rationale.
 - Flagged L1 Q1 lexical drift (`qaydeyên` in keyed option vs `rêzikên` in proposal) and L6 Q3 bare `bireser` in stem/options despite full `bireserê navdêrê` rationale. Also retained L5 tewang scope and L10 form/role cautions.
 - No proposal approved/applied; no learner-facing or protected files changed; no tests/CI/runtime/deployment. `main` read-only; no separate offsite backup claimed.
+
+
+## Checkpoint — Lesson 6 / Lesson 8 terminology clarification (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_L8_MODIFIER_TERMINOLOGY_CLARIFICATION_2026-11-11.md`, SHA `5ab9adcaf4a05d30618b16de3dd9ee3f17f90e18`.
+- Important refinement: L8 Q3's local “bê bireser” follows the Lesson 8 section's own contrast, so do not label its key wrong on this basis. The ambiguity is cross-lesson: noun-attached `bireserê navdêrê` (L6) versus clause-level `bireser` (L10). Proposed explicit modifier wording in L8 and full compound in L6 Q3 stem, pending editor approval.
+- No lesson/quiz/key edits, approval or application. No tests/CI/runtime/deployment; `main` read-only; no separate offsite backup claimed.
