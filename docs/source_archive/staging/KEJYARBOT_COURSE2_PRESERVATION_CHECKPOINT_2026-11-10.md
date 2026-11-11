@@ -269,3 +269,15 @@ No lesson, quiz, answer key, or runtime changes; all proposals remain unapproved
 Working ruling: `pêvek` is the broad affix/suffix term; `veqetandek` is the course-specific label for the definite/indefinite noun-determining paradigms in Lessons 7–8. Keep `veqetandeka binavkirî` and `veqetandeka nebinavkirî` stable. `pêveka raveker` is descriptive wording for a particular modifier-following environment, not evidence of synonymy. Avoid global replacement. This internal course distinction still requires Kurmanji language-editor confirmation before it is promoted as a formal glossary definition; §§61–67 primary-source pages were not independently reopened in this pass.
 
 No source-aligned lesson, reviewed lesson, quiz, answer key, runtime, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI were run; no live runtime or Botkeep state was inspected. All work remains on `archive/preservation-audit-2026-11-10`; `main` remains read-only. GitHub archive history is the persisted project record, not a separate ZIP/off-site backup.
+
+
+## Checkpoint refinement — source-verified `veqetandek` vs `pêvek` distinction (2026-11-11)
+
+A further source-page review refined the Lesson 7–8 adjudication: §61 defines `veqetandek` as the grammatical determiner category/function (a small word before or after a noun that identifies/limits reference), not inherently as a suffix. Lesson 7 includes both post-nominal attached `-ê/-a/-ên` and shortened pre-adjectival `ê/a/ên` forms when the noun is understood/omitted. Lesson 8's indefinite forms vary by syntactic environment. `pêvek` remains the broader morphological term for affix/suffix and may describe a bound realization, but is not the category label.
+
+- Focused adjudication refinement latest blob SHA: `a3b9e85c8f8d78a1dfe3d14767834ef06f86c967`.
+- Master terminology register latest blob SHA: `98c6c52a34e3f9733e208bad8d230808e9b9779b`.
+- Global audit section 38 latest blob SHA: `8ef98cc4b3a200d7fa4a8ba91c4f495001c9ad86`.
+- Source page-image evidence: Lessons 6–7 review blob `6ff6e84792bc13f5835010401bfab89acd446295`; Lesson 8 review blob `0eaa37c517fdaf244b48cc69f953400393ab0812`.
+
+This refinement supersedes only the earlier too-narrow phrase implying that all determiners are suffix-like. No lesson, quiz, answer key, runtime, manifest, database, Botkeep, Telegram, or deployment file was changed. No tests/CI or live runtime check occurred. `main` remains read-only; GitHub archive history is not a separate ZIP/off-site backup.
