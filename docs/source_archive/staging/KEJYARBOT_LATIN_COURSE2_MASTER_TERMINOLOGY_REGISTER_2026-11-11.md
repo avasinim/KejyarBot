@@ -184,3 +184,18 @@ The five-item quiz/key alignment audit confirms that Q3's concept and key letter
 ## Open terminology query — `kiryar` vs `kirar` (2026-11-11)
 
 Lesson 12 Q1 option C contains `kiryarê` in the phrase `Kes û hejmarê lêkerê li gorî kiryarê diguherîne`. This register records `kirar` as “Subject/agent role”. The difference may be lexical, orthographic, or inflectional; the current evidence does not decide which. Do not silently normalize `kiryar` to `kirar`, and do not substitute `kirde` without checking the source and controlled glossary. A Kurmanji editor should adjudicate the intended lemma and inflected form. Quiz parallelism/rationale audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_PARALLELISM_AND_RATIONALE_ALIGNMENT_AUDIT_2026-11-11.md`, blob SHA `f076c4878192fd8cfdc4cf0b2c7384142a14341b`. No lesson or quiz text changed.
+
+
+## Lesson 12 source-to-terminology alignment addendum (2026-11-11)
+
+This is a provisional course-internal clarification, not an external terminology standard or final Kurmanji grammar ruling.
+
+- Preserve the six top-level adjective class labels exactly: `rengdêrên wesfîn`, `rengdêrên îşarkî`, `rengdêrên jmarîn`, `rengdêrên pirsiyarkî`, `rengdêrên nebinavkirî`, and `rengdêrên xwemalîn`.
+- `rêzîn` is treated in Lesson 12 as an ordinal subtype within the numeral-adjective discussion, not a seventh top-level adjective class. Source/course crosswalk: course `rêzîn` ↔ source wording `rêzda`.
+- Keep four levels separate: word class, subclass, syntactic function/use, and surface form. Adjectives can be attributive, predicative, or substantivized; an expressed noun is a useful diagnostic for attributive adjective vs pronoun, not a universal requirement for every adjective.
+- For numerals, distinguish a numeral modifying an expressed noun (numeral-adjective use) from an independent/substantive `jmarnav` use. In the lesson's own taxonomy, `nîv roj` is `jmarnav` used before an expressed noun; its phrase-level function is quantifying/modifying `roj`.
+- The lesson explicitly lists `kurên van` under possessive-adjective examples; provisional course classification is `xwemalîn), while precise syntax and idiomaticity remain for Kurmanji editor review.
+- Source/course labels are a crosswalk, not synonyms: `wesfîn` ↔ `çilobûn û çawabûnê`; `xwemalîn` ↔ `destdaniyê/xwedîtiyê`; `jmarîn` ↔ source comparison `jmarda`; `rêzîn` ↔ `rêzda`.
+- Keep Q3's singular variation `rengdêrê jmarîn` (prose) vs `rengdêra jmarîn` (quiz option) unresolved until a Kurmanji editor reviews that exact construction. Do not global-replace.
+
+See the source-to-terminology alignment audit, `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_SOURCE_TO_TERMINOLOGY_ALIGNMENT_AUDIT_2026-11-11.md`. No learner-facing or runtime content was changed.
