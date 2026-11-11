@@ -542,3 +542,12 @@ Audit-only. No learner-facing content, source lesson, quiz/key, runtime, parser,
 - Proposal document re-verified at SHA `133c9105a9a3315ceed3d5e2d84d69bf1d472b28`.
 - Independent row-level comparison: 44 proposed rationale rows, 44/44 option letters match the existing answer-key rows; zero missing mappings and zero mismatches.
 - This is a mapping check only. It does not certify the underlying answer's linguistic validity, resolve the three held items, or approve any proposal. No quiz/key edits.
+
+
+## Section 59 — Linguistic/source alignment review of 44 proposed rationales (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_44_RATIONALE_PROPOSALS_LINGUISTIC_SOURCE_ALIGNMENT_AUDIT_2026-11-11.md`, SHA `d1275daeedd8e7576524f30d71d1eb6276795ada`.
+- Checked all 44 proposal rows against lesson wording, question scope and the current answer-key mapping. Overall source alignment is good; no explicit rule reversal was identified.
+- Ten editorial precision recommendations are recorded. Key cautions: scope -in to the taught indefinite paradigm; preserve the course-specific grammatical gender classification; use hêmaneke raveker consistently; retain L10's min agent/object caveat; name the L11 qerse subtype; distinguish lexical jmarnav from phrase function in nîv roj.
+- Holds remain L10 Q2, L12 Q1, L12 Q3; separate L1 Q4 kîtê/kitê notation issue remains.
+- Comparison used the reviewed lesson draft, not a fresh page-image review of every original source section. No answer key, quiz, lesson or runtime changes. No tests/CI or psychometric validation; main read-only; no separate ZIP/off-site backup claimed.
