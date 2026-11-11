@@ -243,3 +243,16 @@ Proposed line 290 accurately contrasts the uninflected forms with the inflected 
 Updated source-image review blob SHA: 0eaa37c517fdaf244b48cc69f953400393ab0812. Updated proposal blob SHA: a8e5d3fed8591c81b33f3b411a7d851ee3891224. Both were fetched again after update and verified. The source page images at printed pp.65–67 were inspected directly. The review note's older §69 summary and the intermediate proposal corrections are superseded by the appended controlling addenda.
 
 No base lesson, quiz, answer key, runtime, tests/CI, manifest, database, Botkeep, Telegram, or deployment state was modified. `main` remains read-only. Proposal remains unapproved and unapplied.
+
+
+## 31. Source verification of four proposed quiz revisions (2026-11-11)
+The four proposed item changes were checked against the corresponding lesson content and the primary source:
+
+- **Lesson 6 Q3:** Celadet's §59–60 (printed pp.61–62) classifies noun complements and includes the exact example `hespê beza`. `beza` is the noun complement; the full term `bireserê navdêrê` is required to avoid confusion with clause-level object `bireser`.
+- **Lesson 8 Q5:** §§63 and 66–67 distinguish definite `-ên` from indefinite `-ine`. The revised A/B distractors encode separate false conflations (both definite / both indefinite); C is the only supported answer.
+- **Lesson 10 Q1:** §86 (printed p.76) explicitly gives `tu min dibînî`, so `min` is a present-tense object pronoun in that frame.
+- **Lesson 10 Q2:** §86 explicitly gives `tu wê dibînî`. The proposed stem has been aligned to this exact source frame, replacing the less directly evidenced example `Ez wê dibînim`; `wê` remains the feminine third-person singular object.
+
+Proposed key letters remain L6 Q3=A, L8 Q5=C, L10 Q1=B, L10 Q2=C. The option orders in the staged quiz match those proposed letters. This is source and editorial verification only; no quiz/key changes were applied. Current proposal blobs: editorial `7ce8709d4847cc9fde265d198c69a0d694610787`; rationale `79b39c8fb499f45c61445f640dc268f32c05eecb`. Both were fetched after update and verified. The rationale proposal now points to the current editorial proposal blob.
+
+No tests, runtime, active manifest, database, Botkeep, Telegram, or deployment action occurred. `main` remains read-only. Both artifacts remain proposal-only.
