@@ -597,3 +597,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Audit-only; no learner-facing/runtime/deployment changes or tests/CI. `main` read-only; no independent offsite backup claimed.
 
 - Follow-up: added item-specific rationale proposals for L6 Q3 (why `beza` is the noun-attached modifier) and L8 Q3 (why `-in` is correct under §66 and how it differs from `-ên` / `-a` and §67 `-ine`). Clarification artifact latest SHA `ffc5cea44282a08d32f390bd204c4bcaf6c267ae`. Proposals remain unapproved/unapplied.
+
+
+## Section 65 — L6 Q5 possessive modifier terminology correction (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_Q5_POSSESSIVE_MODIFIER_RATIONALE_CORRECTION_2026-11-11.md`, SHA `f9ec5ed10da96c889393b9ab1502e648b937d380`.
+- Found a terminology error in the L6 Q5 refinement: it called `min` in `xencera min` a `pronavê xwemalî`. Lesson 12 classifies `hespê min`-type noun-modifying forms as `rengdêrên xwemalîn`; `pronavên xwemalîn` are `yê/ya/yên + personal pronoun` forms replacing an understood noun/group.
+- Proposed corrected L6 Q5 rationale using `rengdêra xwemalîn`, preserving `bireserê navdêrê` as the broader noun-attached modifier function. Key C unchanged; proposal only.
+- No learner-facing, source, key, runtime or deployment changes; no tests/CI. `main` read-only; no independent offsite backup claimed.
