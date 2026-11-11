@@ -645,3 +645,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON6_Q3_Q4_BIRESER_TERM_BOUNDARY_RECHECK_2026-11-11.md`, SHA `0788cb3a644cdc3b32c08ee3de4872bb5dc7c7cb`.
 - L6 Q3 and Q4 omit `ê navdêrê` from the term although Lesson 6 explicitly warns bare `bireser` can be confused with Lesson 10 clause object. Keys A and B remain supported; stem clarifications proposed, not applied.
 - New holds: L6 Q3 and L6 Q4. Current open holds: L1 Q4, L6 Q3, L6 Q4, L8 Q3, L10 Q1, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lesson 10 Q2 paradigm label vs clause role (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON10_Q2_BIRESER_FORM_LABEL_VS_CLAUSE_ROLE_RECHECK_2026-11-11.md`, SHA `57b3a7dd1a532b48d6603b146bacfedf929f67e8`.
+- L10 Q2 key C (`wê`) remains supported as paradigm form; stem `forma bireserî` may be misread as actual object function, despite lesson example `Wê ew dît` showing `wê` as agent. Proposed stem names the “pronavên bireser” table. No change applied.
+- New hold L10 Q2 added. Open holds now: L1 Q4, L6 Q3, L6 Q4, L8 Q3, L10 Q1, L10 Q2, L12 Q1, L12 Q3. No tests/CI or runtime/deployment changes. `main` read-only; archive branch is not an independent ZIP/offsite backup.
