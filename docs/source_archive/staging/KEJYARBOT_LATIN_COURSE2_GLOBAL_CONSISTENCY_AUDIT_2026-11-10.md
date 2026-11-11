@@ -296,3 +296,9 @@ The report also records that the protected Lesson 8 base still has mixed-script 
 
 ## 37. Lesson 8 Q3 terminology refinement added to proposal queue (2026-11-11)
 The editorial proposal now includes an additional proposal-only replacement for Lesson 8 Q3. It replaces the ambiguous `bê bireser` with the exact §66 environment `bê pêvekeke raveker li pey navdêrê`, while retaining the existing option order and keyed answer `-in` (A). Proposal file fetched back and verified at blob SHA `11b6c6c055a149283f2b4275da15922e28d1f82d`. No reviewed quiz or key content was changed; this remains an unapproved candidate.
+
+
+## 38. Consolidated five-item proposal handoff refreshed (2026-11-11)
+The consolidated patch-review handoff now records the complete five-item quiz proposal queue, including the new L8 Q3 wording candidate, and current pointers to the editorial proposal, answer-key rationale proposal, and 62-question cross-check. Handoff blob SHA: `31efd8edba0aca2820ebe9b53d8eec424746b83e`. The answer-key proposal now also records the current editorial proposal SHA and a rationale candidate for L8 Q3; key-proposal blob SHA: `3e202d34739d6f55d2b079e8d0a6c38b1ddcb1ff`.
+
+No reviewed lesson/quiz or answer-key baseline was changed. All proposals remain unapproved. The L8 Q3 rationale is only a candidate and must be added to a new dated key copy only if the corresponding quiz edit is approved. The remaining language-editor decisions are L8 line 292 phrasing, L12 `rengdêrê/rengdêra jmarîn`, and the L6 paired glossary label. No tests/CI, runtime, manifest, DB, Botkeep, Telegram, or deployment action occurred; `main` remains read-only.
