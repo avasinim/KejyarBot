@@ -791,3 +791,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Parsed 62/62 quiz items and 62/62 answer-key rows; 62/62 expected coordinates present; 0 duplicates; 0 missing keyed option letters; 0 answer-text mismatches after conservative text normalization.
 - This validates question/option/key mapping only, not linguistic correctness, distractor quality, native-speaker naturalness, or bot runtime.
 - Existing 8 editorial holds remain unchanged. No lesson/quiz/key/runtime/deployment files changed; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
+
+
+## Section 88 — Targeted distractor refinement candidates (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_DISTRACTOR_REFINEMENT_CANDIDATES_2026-11-11.md`, SHA `2a583e79fc34325102328b04027f21a5715fb6e0`.
+- Six no-key-change candidate sets drafted for L1 Q5, L3 Q5, L4 Q1, L5 Q1, L8 Q2 and L11 Q5 to make distractors more parallel and conceptually adjacent.
+- Separate optional L4 Q5 proposal tests the source-backed `hespan` vs `hespin` distinction; it would change that item's key from C to B and is not part of the six no-key-change proposals.
+- These are proposals only; none approved or applied. Existing 8 holds remain unchanged, especially L10 Q1/Q2 terminology issues. No source/quiz/key/runtime/deployment changes; no tests/CI; `main` read-only; no independent ZIP/offsite backup claimed.
