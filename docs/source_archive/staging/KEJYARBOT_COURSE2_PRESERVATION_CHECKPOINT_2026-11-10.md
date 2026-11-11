@@ -476,3 +476,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Holds remain: L10 Q2, L12 Q1, L12 Q3; L1 Q4 is a separate spelling/notation hold.
 - This is not fresh inspection of every original book page and does not constitute approval. No key, quiz, lesson, runtime, parser, manifest, database, Botkeep, Telegram or deployment changes; no tests/CI, learner-response or psychometric analysis.
 - `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup; none is claimed.
+
+
+## Checkpoint — held rationale source adjudication (2026-11-11)
+
+- Adjudication note: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SOURCE_ADJUDICATION_2026-11-11.md`, verified SHA `c985701ac40e326519713f1c91440687f5e26c43`.
+- L10 Q2 no longer treated as a demonstrated source contradiction: §86 supports `wê` as the feminine form in the direct-object paradigm, while clause role can switch in transitive past constructions. Editorial wording clarification recommended; no answer-key change.
+- L12 Q1 still needs an authorized scope clarification for predicative/substantivized adjectives; L12 Q3 morphology and L1 Q4 spelling remain unresolved.
+- No lesson/quiz/key/runtime/deployment changes, no tests/CI. Archive branch only; main read-only; no separate offsite backup claimed.
