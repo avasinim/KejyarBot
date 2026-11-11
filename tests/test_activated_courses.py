@@ -220,26 +220,29 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             "aramiC:lesson:2",
         )
 
-    async def test_finishing_arami_course_final_lesson_shows_course_completion(self):
+    async def test_finishing_arami_final_review_only_lesson_stays_beta_without_assessment(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][-1]
         update, message, query = self.make_update(f"finish_{lesson_id}")
         with (
             patch.object(bot, "can_open", return_value=True),
             patch.object(bot, "complete_beta_lesson", return_value=True) as complete,
-            patch.object(bot, "check_badges"),
-            patch.dict(bot.QUIZ_DATA, {lesson_id: []}),
+            patch.object(bot, "complete_lesson_with_rewards") as official_complete,
+            patch.object(bot, "check_badges") as badges,
+            patch.object(bot, "get_user_level") as level,
         ):
             await bot.finish_lesson(update, SimpleNamespace(user_data={}))
 
         complete.assert_called_once_with(12345, lesson_id)
+        official_complete.assert_not_called()
+        badges.assert_not_called()
+        level.assert_not_called()
         message.reply_text.assert_awaited_once()
-        self.assertIn("کۆرسی ١ تەواو بوو", message.reply_text.await_args.args[0])
-        self.assertNotIn("وانەی دواتر ئامادەیە", message.reply_text.await_args.args[0])
-        keyboard = message.reply_text.await_args.kwargs["reply_markup"]
-        self.assertEqual(
-            keyboard.inline_keyboard[0][0].callback_data,
-            "aramiC:assessment:21",
-        )
+        reply = message.reply_text.await_args
+        self.assertIn("پێشچوونی Beta", reply.args[0])
+        self.assertIn("ڕێڕەوی تاقیکاریی Beta تەواو بوو", reply.args[0])
+        self.assertNotIn("کۆرسی ١ تەواو بوو", reply.args[0])
+        self.assertNotIn("وانەی دواتر ئامادەیە", reply.args[0])
+        self.assertNotIn("reply_markup", reply.kwargs)
 
     async def test_uncompleted_previous_lesson_blocks_arami_reward_claim(self):
         lesson_id = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"][1]
