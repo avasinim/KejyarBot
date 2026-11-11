@@ -681,3 +681,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - L4 Q4 was the final previously unreviewed row in the 44-item base proposal. The stem asks why `tewang` must be distinguished from `mêjer`; option/key B says they are two grammatical processes. The source and proposed rationale agree: number marks singular/plural, while inflection changes form according to grammatical role and clause structure; both may co-occur. No correction identified.
 - This completes targeted exact stem-option-key-source coverage of the 44 base proposal rows. The separate 45th item, L10 Q2, was source-adjudicated and checked in the prior targeted recheck. It does not constitute a native-speaker copy-edit or comprehensive linguistic certification. Held L1 Q4 notation, L12 Q1 scope and L12 Q3 morphology remain open.
 - No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
+
+
+## Section 75 — Consolidated 45-item editorial review pack and key alignment (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_RATIONALE_EDITORIAL_REVIEW_PACK_2026-11-11.md`, SHA `177faaaa5260879bf4b2211474dede013f8d002c`. It consolidates 44 base rationale proposals plus the separately source-adjudicated L10 Q2; latest corrections L1 Q1, L4 Q5 and L6 Q5 are active in this clean review copy.
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_PACK_KEY_ALIGNMENT_VERIFICATION_2026-11-11.md`, SHA `3bca6cd89bda8186c8ed52c9b6b2553c7d6093d5`. Re-parsed the pack and reviewed answer key: 45/45 row IDs map, 45/45 letters match, 0 mismatches, 0 missing mappings, 0 duplicates.
+- This is structural/key-letter verification, not linguistic certification or approval. L1 Q4, L12 Q1 and L12 Q3 remain held; L10 Q2 still requires editorial clarity review. Native-Kurmanji copy-edit remains outstanding.
+- No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; no independent offsite backup claimed.
