@@ -331,3 +331,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Q4's distractors `di bin pronav de` and `di bin lêker de` are weak/nonparallel and need a future approved, language-editor-reviewed redesign. Q2 has the strongest category contrast; Q1/Q3/Q5 remain usable but uneven in distractor difficulty.
 - All five current key rationales are generic assertions; the audit supplies item-specific draft explanations, not approved key text. Q3's `rengdêra jmarîn` form remains unresolved.
 - No protected lesson, quiz, option, key, runtime, parser, test, manifest, DB, Botkeep, Telegram, or deployment file changed. No tests/CI or live runtime checks were performed; `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
+
+## Checkpoint update — Lesson 12 Kurmanji orthography and wording audit (2026-11-11)
+
+- New verified audit: `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON12_QUIZ_KURMANJI_ORTHOGRAPHY_AND_WORDING_AUDIT_2026-11-11.md`, blob SHA `47329d8c24c0a5f854495434f4612f38fbb9d2eb`.
+- No unequivocal character-level spelling error was established from the staged text alone. Q1 has capitalization/answer-shape inconsistency and an open terminology query over `kiryar`; Q3's `rengdêra jmarîn` remains unresolved. Q4 A/C are surface-syntactically parallel but semantically weak; B has a different answer shape. Q5 options are not perfectly parallel in semantic type.
+- The audit corrects Section 43's overbroad statement: Q4 A/C are parallel in surface syntax; their problem is category meaning and mismatch against B, not A-vs-C syntax.
+- No protected course or runtime content changed; no tests/CI or live runtime checks were performed. `main` remains read-only. GitHub archive history is not a separate ZIP/off-site backup.
