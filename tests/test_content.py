@@ -338,7 +338,7 @@ class ContentConsistencyTests(unittest.TestCase):
         end = bot_source.find("\nasync def ", start + 1)
         handler = bot_source[start:end if end >= 0 else len(bot_source)]
         self.assertLess(
-            handler.index('if not raw_index.isdigit():'),
+            handler.index('if not raw_index.isdecimal():'),
             handler.index('quiz["question_message_id"] = None'),
         )
         self.assertLess(
