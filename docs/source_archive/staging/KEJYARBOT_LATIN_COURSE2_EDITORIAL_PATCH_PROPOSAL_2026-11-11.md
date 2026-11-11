@@ -144,3 +144,14 @@ The immediately preceding correction incorrectly transferred the rule at the end
 Accordingly, the proposed line 292 above correctly expresses the §69 rule: each linked complement receives its own form according to its own gender and number. The previous proposed wording about the final noun belongs only to §68 and must not replace §69. Line 290 also remains clarified as `formên netewandî` for the uninflected `-ek/-ek/-in` forms, in contrast with the oblique forms in §70.
 
 Evidence: the original PDF page image for printed p.66 shows the §68 final-noun note and the opening of §69 separately; the image for printed p.67 continues §69's examples and then begins §70. See the cited source pages and the page-image review note. The reviewed base lesson remains unchanged; this artifact remains proposal-only.
+
+
+## Final consolidated verification — proposed lines 290, 292 and 294 (2026-11-11)
+
+This section is the controlling summary of the page-image review and supersedes the contradictory intermediate correction notes above:
+
+- **Line 290 / §70:** -ek/-ek/-in are the uninflected indefinite forms in the base construction; in the stated non-subject/object environment they are inflected as -ekî/-ekê/-ina. The proposed wording formên netewandî accurately names the first set in contrast with the inflected forms.
+- **Line 292 / §69:** each linked complement in the described multi-complement construction receives its own determiner according to its own gender and number. The proposed line now expresses this accurately. Do not substitute the final-noun agreement rule from §68.
+- **Line 294 / §§66–68:** -ek/-ek/-in, -ekî/-eke/-ine, and -î/-e/-en belong to three distinct indefinite-determiner environments. They are not the definite forms -ê/-a/-ên. The proposed line makes that distinction and removes the mixed-script fragments from the source draft.
+
+The source-image review confirms the distinctions on printed pp.65–67. The proposal remains unapproved and unapplied; no reviewed lesson, quiz, answer key, or runtime file has been modified.
