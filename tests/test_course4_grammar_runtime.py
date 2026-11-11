@@ -366,8 +366,8 @@ class Course4GrammarLesson13Tests(unittest.TestCase):
         self.assertIn("هیچ کتێب، PDF، لاپەڕە یان سەرچاوەی دەرەکی", content)
         appendix = (ROOT / "docs" / "COURSE4_GRAMMAR_APPENDIX.md").read_text(encoding="utf-8")
         appendix_lesson13 = appendix.split("## 25. وانەی ١٣", 1)[1].split("\\n## 26.", 1)[0]
-        self.assertIn("source mapی خاڵ بە خاڵ", appendix_lesson13)
-        self.assertIn("Source mapی ناوخۆیی", appendix_lesson13)
+        self.assertIn("mappingی لاپەڕەیی یان بانگەشەی source-verified", appendix_lesson13)
+        self.assertIn("کۆکردنەوە و ڕێکخستنی ناوخۆیی", appendix_lesson13)
         self.assertNotIn("٦٢–٨٤", appendix_lesson13)
         self.assertNotIn("٨٥–٨٧", appendix_lesson13)
         self.assertNotIn("A New Revision about the Rules of Kurdish Verbs and Tenses", appendix_lesson13)
