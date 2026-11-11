@@ -689,3 +689,11 @@ See `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_HELD_RATIONALE_ITEMS_SO
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_CONSOLIDATED_45_PACK_KEY_ALIGNMENT_VERIFICATION_2026-11-11.md`, SHA `3bca6cd89bda8186c8ed52c9b6b2553c7d6093d5`. Re-parsed the pack and reviewed answer key: 45/45 row IDs map, 45/45 letters match, 0 mismatches, 0 missing mappings, 0 duplicates.
 - This is structural/key-letter verification, not linguistic certification or approval. L1 Q4, L12 Q1 and L12 Q3 remain held; L10 Q2 still requires editorial clarity review. Native-Kurmanji copy-edit remains outstanding.
 - No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; no independent offsite backup claimed.
+
+
+## Section 76 — Editorial preflight of consolidated 45 rationales (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_45_RATIONALES_EDITORIAL_PREFLIGHT_2026-11-11.md`, SHA `70e075aaddf5848aee1598e6f59c3e4251a455a5`.
+- Screened all 45 consolidated rationales against their lesson/quiz wording and existing terminology decisions. Three clarity refinements were identified for editor review only: L2 Q2 (avoid tautological `hesp` wording), L11 Q2 (state that `yê/ya/yên` do not encode proximity/distance), and L10 Q2 (make the pronoun-form vs clause-role distinction clearer).
+- No new concrete correction was established for the other 42 rows in this pass. This is not native-speaker certification or a complete line-by-line re-adjudication. Holds L1 Q4, L12 Q1, L12 Q3 remain; L10 Q2 wording still needs review.
+- No lesson/key/runtime/deployment changes or tests/CI. Proposals remain unapproved/unapplied; `main` read-only; no independent offsite backup claimed.
