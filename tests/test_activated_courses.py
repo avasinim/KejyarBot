@@ -400,6 +400,17 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any(callback.startswith(arami_prefixes) for _, callback in practice_items))
         self.assertFalse(any(callback.startswith(arami_prefixes) for _, callback in assessment_items))
 
+    def test_latin_draft_lessons_are_beta_only_and_use_practice_submission(self):
+        for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
+            lesson_id = bot.COURSE_LESSON_ORDER[course_id][0]
+            with self.subTest(course_id=course_id):
+                self.assertEqual(bot.LESSON_COURSE[lesson_id], course_id)
+                self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], "draft_editorial_review")
+                self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+                self.assertTrue(bot.quiz_requires_submission(lesson_id))
+                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+
     def test_arami_review_assessment_cannot_grant_official_rewards(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         review_lesson_id = arami[1]
