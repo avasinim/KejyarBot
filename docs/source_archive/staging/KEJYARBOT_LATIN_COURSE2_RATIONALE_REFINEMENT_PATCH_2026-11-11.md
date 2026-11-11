@@ -68,3 +68,8 @@ The table above contains an awkward comparative phrase in L4 Q5: “Ev form ji `
 > `hespin` di paradigmaya nebinavkirî ya ku di vê dersê de hatiye fêrkirin de forma gelemjimar e. Ev form ji forma yekjimara `hespek` cuda ye û divê ji formên tewandî yên wek `hespan` were cudakirin.
 
 This is an editorial correction within the proposal only; no answer-key content was changed.
+
+
+## Terminology correction — L6 Q5 possessive modifier (2026-11-11)
+
+The L6 Q5 refinement in Section 2 incorrectly calls `min` in `xencera min` a `pronavê xwemalî`. Under the reviewed Lesson 12 taxonomy, `xencera min` parallels `hespê min` and is a possessive adjective (`rengdêra xwemalîn`) modifying an expressed noun. `Pronavên xwemalîn` are forms such as `yê min/ya min/yên min` that replace an understood noun/group. Use the corrected proposed wording in `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L6_Q5_POSSESSIVE_MODIFIER_RATIONALE_CORRECTION_2026-11-11.md`, SHA `f9ec5ed10da96c889393b9ab1502e648b937d380`. The key remains C; no answer-key or lesson text changed. This correction supersedes only the L6 Q5 sentence in the refinement table.
