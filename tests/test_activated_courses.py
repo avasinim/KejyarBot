@@ -398,6 +398,15 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any(callback.startswith(arami_prefixes) for _, callback in practice_items))
         self.assertFalse(any(callback.startswith(arami_prefixes) for _, callback in assessment_items))
 
+    def test_arami_review_assessment_cannot_grant_official_rewards(self):
+        arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        review_lesson_id = arami[1]
+        with patch.object(bot, "complete_quiz_with_rewards") as award:
+            result = bot.award_arami_assessment(12345, review_lesson_id)
+
+        self.assertFalse(result)
+        award.assert_not_called()
+
     def test_progress_badges_use_only_completed_lessons_from_active_courses(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         daily = bot.COURSE_LESSON_ORDER["daily_conversation"]
