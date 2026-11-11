@@ -75,7 +75,7 @@ Di vê rêzê de hevenav û serenav ji hev cuda bike: `Zîn, pisîk, şêr, Kurd
 2. `hesp` çi ye? A) serenav B) daçek C) hevenav
 3. `Kurdistan` çi ye? A) serenav B) hevenav C) rengdêr
 4. `Zîn` di vê nimûneyê de çi ye? A) hevenav B) serenav C) kît
-5. Hevenav ji bo çi tê? A) navê taybet tenê B) pirs C) navê giştî
+5. Di koma “Argesh û hesp” de, kîjan peyv serenav e? A) hesp B) Argesh C) her du
 
 ---
 
@@ -108,7 +108,7 @@ Nimûneyên zayenda navdêran:
 ### Kuis — 5 pirs
 1. Di kurmancî de çend zayend hene? A) 3 B) 2 C) 4
 2. `derî` li gorî lîsteya navdêran nêr e an mê? A) mê B) bêzayend C) nêr
-3. `çem` di rêzimanê de çi ye? A) nêr B) mê C) her du
+3. `“jin” di lîsteya dersê de di çi zayendê de hatiye dabeşkirin?` A) mê B) nêr C) her du
 4. `dar` bi wateya riwekê çi ye? A) nêr B) mê C) bêzayend
 5. Zayenda navên tiştên bêcan çawa tê diyarkirin? A) tenê zayenda biyolojîk B) bi rengê wan C) zayenda rêzimanî
 
@@ -148,7 +148,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 2. Forma gelemjimar a `hespek` di nimûneya dersê de çi ye? A) hespê B) hespa C) hespin
 3. `mehînek` yekjimar e an gelemjimar? A) yekjimar B) gelemjimar C) her du
 4. Çima divê tewang ji mêjerê cuda were fêrbûn? A) ji ber ku yek tişt in B) ji ber ku ew du pêvajoyên rêzimanî ne C) ji ber ku navdêr tune ne
-5. `hespin` çi nîşan dide? A) yekjimar B) serenav C) gelemjimar
+5. Di hevoka “Ev mehîn __” de, ji bo gelemjimarê kîjan forma lêkerê rast e? A) e B) hatin C) in
 
 ---
 
@@ -407,7 +407,7 @@ Ev form divê ji `wan` cuda were fêrbûn; `ê` yekjimar e û `wan` gelemjimar.
 4. Rastekirina hevoka `Min bi wî pê ve da` bike û sedemê rave bike.
 
 ### Kuis — 5 pirs
-1. Kîjan yek ji pronavên bireser e? A) ez B) min C) tu
+1. Di lîsteya formên pronavên bireser a Ders 10 de kîjan form heye? A) ez B) min C) tu
 2. Forma bireserî ya `ew` mê çi ye? A) wî B) ew C) wê
 3. Ji bo pronavên berbihevîn kîjan forman dide? A) hev, êk B) ez, tu C) min, te
 4. Di hevoka `Wan ew xwar` de `ew` kîjan erk digire? A) kirar B) bireser C) rengdêr
