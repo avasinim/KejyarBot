@@ -160,7 +160,6 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             update,
             SimpleNamespace(user_data={}),
             ROOT,
-            can_take_assessment=lambda user_id, lesson_id: True,
             can_open=can_open,
             get_completed_lessons=get_completed,
         )
@@ -202,7 +201,6 @@ class AramiCourseTelegramTests(unittest.IsolatedAsyncioTestCase):
             update,
             SimpleNamespace(user_data={}),
             ROOT,
-            can_take_assessment=lambda user_id, lesson_id: True,
             can_open=can_open,
             get_completed_lessons=get_completed,
         )
@@ -503,7 +501,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, query = self.make_update("select:1")
         query.from_user = SimpleNamespace(id=123)
-        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: True)
         keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
         callbacks = {
             button.callback_data for row in keyboard.inline_keyboard for button in row
@@ -517,7 +515,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, query = self.make_update("select:2")
         query.from_user = SimpleNamespace(id=123)
-        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
         keyboard = query.message.reply_text.await_args.kwargs["reply_markup"]
@@ -534,7 +532,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
                 with self.subTest(lesson=number, mode=mode):
                     context = SimpleNamespace(user_data={})
                     update, _ = self.make_update(f"{mode}:{number}")
-                    await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+                    await callback(update, context, ROOT)
                     session = context.user_data["arami_course1_sessions"][str(number)]
                     self.assertEqual(session["mode"], mode)
                     self.assertEqual(len(session["questions"]), len(bank[mode]))
@@ -545,18 +543,18 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         award = Mock(return_value=True)
         update, _ = self.make_update("assessment:6")
-        await callback(update, context, ROOT, award_assessment=award, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT, award_assessment=award)
 
         bank = load_question_banks(ROOT)[6]["assessment"]
         for index, question in enumerate(bank):
             message_id = context.user_data["arami_course1_active"]["message_id"]
             update, _ = self.make_update(f"pick:6:{question['answer_index']}", message_id)
-            await callback(update, context, ROOT, award_assessment=award, can_take_assessment=lambda user_id, lesson_id: True)
+            await callback(update, context, ROOT, award_assessment=award)
             update, submit_query = self.make_update(f"submit:6", message_id)
-            await callback(update, context, ROOT, award_assessment=award, can_take_assessment=lambda user_id, lesson_id: True)
+            await callback(update, context, ROOT, award_assessment=award)
             if index < len(bank) - 1:
                 update, _ = self.make_update("next:6", message_id)
-                await callback(update, context, ROOT, award_assessment=award, can_take_assessment=lambda user_id, lesson_id: True)
+                await callback(update, context, ROOT, award_assessment=award)
 
         award.assert_called_once_with(123, "arami_course1_lesson_06")
         self.assertIn("+20 XP", submit_query.edit_message_text.await_args.args[0])
@@ -565,7 +563,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
         update, _ = self.make_update("practice:6")
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         practice = context.user_data["arami_course1_sessions"]["6"]
         self.assertEqual(practice["mode"], "practice")
         question_id = context.user_data["arami_course1_active"]["message_id"]
@@ -573,22 +571,22 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         practice_question = practice["questions"][0]
         wrong_index = (practice_question["answer_index"] + 1) % len(practice_question["options"])
         update, _ = self.make_update(f"pick:6:{wrong_index}", message_id=question_id)
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         update, submit_query = self.make_update("submit:6", message_id=question_id)
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         self.assertIn("وەڵامی ڕاست", submit_query.edit_message_text.await_args.args[0])
 
         update, _ = self.make_update("assessment:6")
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         assessment = context.user_data["arami_course1_sessions"]["6"]
         self.assertEqual(assessment["mode"], "assessment")
         self.assertIsNot(assessment, practice)
 
         assessment_message_id = context.user_data["arami_course1_active"]["message_id"]
         update, _ = self.make_update("pick:6:0", message_id=assessment_message_id)
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         update, assessment_query = self.make_update("submit:6", message_id=assessment_message_id)
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         self.assertIn("وەڵامەکەت وەرگیرا", assessment_query.edit_message_text.await_args.args[0])
         self.assertNotIn("وەڵامی ڕاست:", assessment_query.edit_message_text.await_args.args[0])
 
@@ -598,7 +596,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         context = SimpleNamespace(user_data={})
         update, query = self.make_update("lesson:2")
         query.from_user = SimpleNamespace(id=123)
-        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
         query.message.reply_text.assert_awaited_once()
         self.assertIn("سەرەتا وانەی پێشووتر", query.message.reply_text.await_args.args[0])
         self.assertEqual(query.message.reply_text.await_args.kwargs.get("reply_markup"), None)
@@ -610,7 +608,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         query.from_user = SimpleNamespace(id=123)
         query.message.reply_document = AsyncMock()
         query.message.reply_voice = AsyncMock()
-        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01", can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_01")
         self.assertEqual(query.message.reply_document.await_count, 0)
         self.assertEqual(query.message.reply_voice.await_count, 0)
         self.assertFalse(any("دەنگی وانەکە" in call.args[0] for call in query.message.reply_text.await_args_list))
@@ -631,7 +629,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
             update, query = self.make_update(action)
             query.from_user = SimpleNamespace(id=123)
             context = SimpleNamespace(user_data={})
-            await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False, can_take_assessment=lambda user_id, lesson_id: True)
+            await callback(update, context, ROOT, can_open=lambda user_id, lesson_id: False)
             query.message.reply_text.assert_awaited_once()
             self.assertIn("ڕاهێنان و تاقیکردنەوە", query.message.reply_text.await_args.args[0])
             self.assertEqual(context.user_data, {})
@@ -691,7 +689,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         from arami_course1_telegram import callback
         context = SimpleNamespace(user_data={})
         update, _ = self.make_update("practice:2")
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
         session = context.user_data["arami_course1_sessions"]["2"]
         message_id = context.user_data["arami_course1_active"]["message_id"]
 
@@ -699,14 +697,14 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         async def assert_pick_committed():
             self.assertEqual(session["selected_index"], 0)
         pick_query.answer.side_effect = assert_pick_committed
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
 
         update, submit_query = self.make_update("submit:2", message_id=message_id)
         async def assert_submit_committed():
             self.assertEqual(session["index"], 1)
             self.assertEqual(len(session["answers"]), 1)
         submit_query.answer.side_effect = assert_submit_committed
-        await callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await callback(update, context, ROOT)
 
     async def test_duplicate_next_callback_sends_only_one_question(self):
         import asyncio
@@ -754,7 +752,7 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
         update = SimpleNamespace(callback_query=query)
         context = SimpleNamespace(user_data={})
 
-        await arami_course1_callback(update, context, ROOT, can_take_assessment=lambda user_id, lesson_id: True)
+        await arami_course1_callback(update, context, ROOT)
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_not_awaited()
@@ -762,22 +760,3 @@ class AramiCourseQuizCallbackTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-class AramiCourseMissingPermissionTests(unittest.IsolatedAsyncioTestCase):
-    async def test_assessment_fails_closed_when_permission_callback_is_missing(self):
-        from arami_course1_telegram import callback
-        context = SimpleNamespace(user_data={})
-        query = SimpleNamespace(
-            data="aramiC:assessment:2",
-            from_user=SimpleNamespace(id=12345),
-            answer=AsyncMock(),
-            message=SimpleNamespace(reply_text=AsyncMock()),
-        )
-        update = SimpleNamespace(callback_query=query)
-        await callback(
-            update, context, ROOT,
-            can_open=lambda user_id, lesson_id: True,
-        )
-        self.assertEqual(context.user_data, {})
-        self.assertIn("پەسەندکردنی ئەکادیمی", query.message.reply_text.await_args.args[0])
