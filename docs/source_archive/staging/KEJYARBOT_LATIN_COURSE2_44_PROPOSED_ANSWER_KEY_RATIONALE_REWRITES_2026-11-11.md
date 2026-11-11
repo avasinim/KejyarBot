@@ -152,3 +152,22 @@ A separate row-level comparison was run after drafting:
 - Key-letter mismatches: **0**.
 
 This verifies only that each proposed rationale is attached to the same keyed option letter as the current draft. It does **not** independently certify the linguistic correctness of every keyed answer, resolve held items, or approve the proposed wording. No source or answer-key file was changed.
+
+
+## Superseding editorial corrections — L1 Q1 and L6 Q5 (2026-11-11)
+
+These two corrections supersede the corresponding rows in Section 2 above; the original text is retained for audit history.
+
+### L1 Q1 — match the keyed option's lexical head
+
+The keyed answer uses `qaydeyên`, while the original proposal used `rêzikên`. Use the keyed wording:
+
+> Gramêr tevahiya qaydeyên rastaxaftin û rastnivîsandina ziman e. Vebijarka A tenê aliyê deng û derxistina dengên ziman digire, û C jî tenê avakirina peyvan; her du jî ji pênaseya firehtir a dersê tengtir in.
+
+### L6 Q5 — distinguish possessive adjective from possessive pronoun
+
+The original refinement called `min` in `xencera min` a `pronavê xwemalî`. This is inconsistent with Lesson 12, which treats `hespê min`-type forms as `rengdêrên xwemalîn`, and reserves `pronavên xwemalîn` for forms such as `yê min/ya min/yên min` replacing an understood noun/group. Use:
+
+> Di koma `xencera min` de `min` rengdêra xwemalîn e ku têkiliya xwedîtiyê ya navdêrê `xencera` diyar dike. Tevahiya komê komeke navdêrî ye; `min` li vir ne pronavê xwemalî ye ku li şûna navdêrekê bisekine.
+
+Key C remains unchanged. These are proposal corrections only; no answer-key or lesson text was changed.
