@@ -237,3 +237,23 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 **لێکدانەوەی سنووردار:** مێژووی Git نیشان دەدات source_path ـەکانی 32–46 لە snapshotی 8ی نۆڤەمبەرەوە ماونەتەوە، لە کاتێکدا manifest لە 11ی نۆڤەمبەر گۆڕدراوە؛ بۆیە هەندێک embedded text نوێتر دەردەکەوێت. ئەم دۆخە بەڵگەی provenance ـە، نە بەڵگەی دروستیی زانستی. وانەی 50 جیاوازە چونکە source_pathی v2 لە 9ی نۆڤەمبەرە و embedded text لەوانەیە پاشکۆی نوێتری هەبێت.
 
 **بڕیاری پاراستن:** هیچ دەقێک بە تەنها لەبەر نوێتر بوونی commit ـەکە canonical دانانرێت. هەردوو وەشانەکە دەمێننەوە تا پشکنینی سەرچاوەی زانستی و بڕیاری ئەکادیمی بە شێوەی ڕوون تۆمار بکرێت.
+
+
+### ٩.٦. پاشکۆی پشکنینی fail-closed لە ڕێڕەوی خوێندن، کویز و خەڵات — 2026-11-11 12:51 UTC
+
+پشکنینی خوێندنەوەی کۆدی `bot.py` و `course_runtime.py` لە headی `bf61aac9351ae5520ce2019e2ba45e1c603f0914` ئەنجام درا. ئەم پشکنینە read-only بوو؛ هیچ runtime code نەگۆڕدرا.
+
+**ئەنجامی پشکنینی ڕێڕەوە سەرەکییەکان:**
+- `_lesson_requires_academic_approval()` بۆ هەموو کۆرسە چالاکەکان statusی ڕوونی پەسەندکردن داوا دەکات؛ recordی ون یان statusی نەناسراو پەسەندکراو دانانرێت.
+- `lesson_is_beta_review()` سەرەتا academic approval gate جێبەجێ دەکات؛ تەنها دوای ئەوە helperی تایبەتی Beta بۆ وانەکانی 32–50ی Course 4 بەکاردێت.
+- `lesson_quiz_is_available()` هەر وانەی review-only لە کویزە فەرمییەکان دەخاتە دەرەوە.
+- `open_selected_lesson()` و `open_next_lesson()` پێش ناردنی وانە `can_open()` بانگ دەکەن؛ `can_open()` کۆرسی ناچالاک/ناسراو نەبوو ڕەت دەکات و تەنها زنجیرەی پێشووی تەواوکراو ڕێگە پێدەدات.
+- `finish_lesson()` وانەی review-onlyی ناتایبەتی Beta ڕەت دەکات؛ وانەی Beta تەنها لە Beta ledger تۆمار دەکات، نە لە official completion/reward ledger.
+- `start_quiz()` پێش دروستکردنی session، active course، academic quiz eligibility، بەردەستبوونی پرسیار، تەواوکردنی وانە و زنجیرەی پێشوو دەپشکنێت.
+- `quiz_answer()` eligibility دووبارە دەپشکنێت، sessionی stale/corrupt پاک دەکاتەوە، و پێش نووسینی خەڵاتی کویزیش eligibility دووبارە پشتڕاست دەکاتەوە.
+- `can_open()` تەنها Beta ledgerی وانەی هێشتا review-only بەکاردهێنێت؛ ئەگەر وانەیەک دواتر پەسەند بکرێت، تۆماری Betaی پێشوو نابێت وەک official completion حساب بکرێت.
+- `validate_activated_course_runtime()` ژمارە و بوونی وانەکانی کۆرسە چالاکەکان و بنەمای runtimeی Arami لە startup پشکنین دەکات.
+
+**ئەنجام:** لەو callback و helper ـانەی پشکنراندا fail-openی ڕاستەوخۆ بۆ کویز/خەڵات یان تێپەڕاندنی زنجیرەی وانە نەدۆزرایەوە. ئەمە پشکنینی کۆد و test ـە؛ تاقیکردنەوەی live Telegram، runtimeی Botkeep یان production database نییە. بۆیە سنووری deploy هەروا وەک خۆی دەمێنێتەوە.
+
+**بەڵگەی تاقیکردنەوە:** لە headی پێش ئەم پاشکۆیەدا 9/9 CI سەرکەوتوو بوو؛ Python suite 555 تاقیکردنەوەی سەرکەوتوو و 11 skipی هەبوو. ئەم پاشکۆیە تەنها documentation ـە و بۆ headی نوێ CI دووبارە دەکرێتەوە.
