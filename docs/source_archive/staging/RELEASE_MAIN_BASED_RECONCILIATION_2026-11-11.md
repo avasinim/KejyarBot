@@ -1254,3 +1254,38 @@ PR #152 تەنها بەڵگەی ئامادەکاریی کۆد و CI ـە. سەر
 - نابێت هیچ پەچی Library بە کۆپی‌کردن بۆ JSONی runtime یان بە scriptێکی نەناسراو جێبەجێ بکرێت. پێویستە پێش هەر کارێکی داهاتوو: schemaی هەر پەچ دیاری بکرێت، baselineی سەرچاوە و runtime snapshot بپشکنرێت، diffی append-only دروست بکرێت، و تاقیکردنەوەی idempotency/duplicate/replay/rollback بۆ runnerێکی جیاواز دابنرێت.
 - ئەم پشکنینە هیچ runnerێکی نوێ دروست نەکرد و هیچ patchێک apply نەکرد.
 - هیچ source lesson، runtime JSON، quiz، review_status، DB، Botkeep، Railway یان Telegram نەگۆڕدرا؛ هیچ merge/deploy/restart/sync ئەنجام نەدرا.
+
+
+## ٩.٤٦. بەراوردی snapshotی پاراستن و runtimeی ئێستای وانەکانی ١–٣١ — 2026-11-11
+
+### سەرچاوە و ژمارەکان
+- runtimeی ئێستا: `course_data/grammar_course4_lessons.json`, Git blob SHA `1dd8abe8a128937c74a18cf04f99878b2e38d962`; ٥٠ وانەی `grammar_01` تا `grammar_50`.
+- Preservation Bundle: `docs/source_archive/COURSE4_LESSONS_01_46_PRESERVATION_BUNDLE_2026-11-08.json`, SHA `6296b472b37ea14bb9d46dbf7e0ad4f249ff2a55`; ٣١ snapshotی runtime و ١٥ ڕەشنووسی ٣٢–٤٦.
+- تەنها وانەکانی ١–٣١ بەراورد کران؛ ٢٤/٣١ وانە لە هەموو top-level fieldەکاندا exact match بوون. ٧/٣١ وانە جیاوازییان هەبوو: ١١، ١٢، ١٣، ٢٦، ٢٩، ٣٠ و٣١.
+
+### جیاوازییە بەڵگەدارەکان
+- وانەی ١١: appendix[0] لە `Enclitic = پاشبەستە` بۆ `پاشنووس` گۆڕاوە.
+- وانەی ١٢: appendix[0] هەمان گۆڕانی `پاشبەستە` بۆ `پاشنووس`ی هەیە.
+- وانەی ١٣: appendix[0] فراوانکراوە بە crosswalkی سۆرانی/فەرهەنگۆکی کەرەمی و جیاکردنەوەی Root، Bound Root و Stem؛ appendix[1]یش `ئەفیکس`ی کۆن بە `گیرەک` گۆڕیوە.
+- وانەی ٢٦: appendix[10] لە ڕوونکردنەوەی جیاوازیی `لکاو و ئەفیکس` بۆ `لکاو و گیرەک` گۆڕاوە.
+- وانەی ٢٩: key_points[4]، comprehension[0] و appendix[0] زاراوەی `Inflection` لە `لەچۆنایەتی` بۆ `گەردان` گۆڕیوە؛ appendixی ئێستا crosswalkی ڕەگ/بنج و سۆرانی/کەرەمی فراوانتر دەکات.
+- وانەی ٣٠: appendix[7] لە `لەچۆنایەتیی کردار` بۆ `گەردانی کردار` گۆڕاوە.
+- وانەی ٣١: key_points، examples، comprehension و appendix جیاوازن؛ زاراوەی `گروپی ناوی` لە چەند شوێنێکدا بووە بە `گرێی ناوی`. هەندێک ڕوونکردنەوەی سەرچاوەیی و سنووری بەڵگەش فراوانتر کراون. جیاوازییەکان بە ژمارەی index و دەقی هەردوو وەشان پشکنران.
+- ئەم جیاوازییانە وەک جیاوازیی نێوان دوو snapshot تۆمار دەکرێن؛ بەراوردەکە بە تەنها نایسەلمێنێت کە هەموو گۆڕانکارییەکان پەسەندکراوی ئەکادیمی یان دروستن.
+
+### سنووری provenanceی سەرچاوە
+- هیچ یەک لە ٣١ objectی runtime خانەی `source_path`, `source_markdown` یان `raw_source`ی تێدا نییە. بۆیە runtime JSON و Preservation Bundle بەڵگەی پاراستنی وەشانی structuredن، نە بەڵگەی سەرچاوەی خامی سەربەخۆ بۆ هەر وانەیەک.
+- بەڵگەنامەکانی پشکنین بۆ وانەکانی ١–٣١ هەن؛ بەڵام لە درەختی repositoryدا فایلێکی خامی جیاواز و source_pathی دیاریکراو بۆ هەر یەک لە وانەکانی ١–٣١ نەدۆزرایەوە. بۆ وانەکانی ١–٥، auditی 2026-11-07 بە ڕوونی دەڵێت پشکنین لەسەر runtime کراوە و سەرچاوەی دەرەکی/کتێبی کۆن بەکارنەهاتووە. بۆ ٢٩–٣١یش auditی تایبەتی source-gap، نەگەڕانەوەی هەندێک لیستی خام و سنووری بەڵگە تۆمار دەکات.
+- ئەمە بە مانای ونبوونی سەرچاوە لە هەموو شوێنێکدا نییە؛ بەڵکو provenanceی خام لە repository/runtimeی پشکنراودا بە source pointerی وانە بە وانە پشتڕاست نەکراوەتەوە.
+
+### Quiz overrides — پشکنینی exact snapshot
+- فایل `course_data/grammar_course4_quiz_overrides.json` ٥٠ overrideی یەکتا هەیە لە ٢٣ وانەدا؛ ٤٤ دانە بۆ وانەکانی ١–٣٠ و ٦ دانە بۆ وانەی ٣١.
+- هەر ٥٠ `original_snapshot` بە پرسیاری بنەڕەتیی هەمان `lesson_id` و `question_index` لە runtime بە exact JSON equality هاوتا بوو؛ ٥٠/٥٠، mismatch=0، duplicate target=0.
+- هەموو ٥٠ replacement خانەکانی `q`, چوار `options`, `answer` لە سنووری ٠–٣ و `explanation`ی بەتاڵنەبوویان هەبوو.
+- وانەی ١٣ یەک overrideی هەیە، و runtimeیش ٨ پرسیاری quizی structuredی هەیە؛ بەڵام review_statusی ئەو وانەیە هەر `internal_cross_lesson_synthesis_no_external_source_mapping` ـە. هەبوونی payload/override بەڵگەی ڕێگەپێدانی quizی فەرمی نییە؛ review gate دەبێت وەک خۆی بمێنێتەوە.
+- تاقیکردنەوەی exact snapshot و validationی replacement لە کۆدی runtime/testsدا هەیە؛ ئەم auditەش بەراوردی ڕاستەوخۆی ٥٠ snapshotی JSON کرد.
+
+### بڕیار و سنووری کار
+- هیچ جیاوازییەک لە نێوان Bundle و runtime بە خۆکارانە reconcile نەکرا؛ هیچ زاراوە، quiz، answer، appendix یان source fieldێک نەگۆڕدرا.
+- هیچ source rawێک بە خەمڵاندن دروست نەکرا؛ بۆشایی provenance و جیاوازییەکان بە بەڵگە تۆمار کران.
+- هیچ patchێک apply نەکرا؛ runtime JSON، quiz overrides، review_status، DB، Botkeep، Railway و Telegram نەگۆڕدرا.
