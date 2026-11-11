@@ -31,13 +31,11 @@ ROOT = Path(__file__).resolve().parents[1]
 class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
     def make_update(self, callback_data, user_id=12345):
         message = SimpleNamespace(reply_text=AsyncMock(), edit_text=AsyncMock(), message_id=77)
-        query_edit = AsyncMock()
         query = SimpleNamespace(
             data=callback_data,
             from_user=SimpleNamespace(id=user_id),
             message=message,
             answer=AsyncMock(),
-            edit_message_text=query_edit,
         )
         return SimpleNamespace(callback_query=query), message, query
 
@@ -400,17 +398,6 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any(callback.startswith(arami_prefixes) for _, callback in practice_items))
         self.assertFalse(any(callback.startswith(arami_prefixes) for _, callback in assessment_items))
 
-    def test_latin_draft_lessons_are_beta_only_and_use_practice_submission(self):
-        for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
-            lesson_id = bot.COURSE_LESSON_ORDER[course_id][0]
-            with self.subTest(course_id=course_id):
-                self.assertEqual(bot.LESSON_COURSE[lesson_id], course_id)
-                self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], "draft_editorial_review")
-                self.assertTrue(bot.lesson_is_pending_review(lesson_id))
-                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
-                self.assertTrue(bot.quiz_requires_submission(lesson_id))
-                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
-
     def test_arami_review_assessment_cannot_grant_official_rewards(self):
         arami = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
         review_lesson_id = arami[1]
@@ -428,10 +415,23 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         }
         self.assertEqual(active_course_ids, set(bot.ACADEMIC_REVIEW_REQUIRED_COURSE_IDS))
 
-        # Lesson 13 has an internal source map but remains pending external/source
-        # reconciliation; it must stay Beta-only until that review is complete.
+        # Lesson 13 remains review-only until its source mapping is fully reconciled.
+        self.assertEqual(
+            bot.LESSON_DATA["grammar_13"]["review_status"],
+            "internal_cross_lesson_synthesis_no_external_source_mapping",
+        )
         self.assertTrue(bot.lesson_is_pending_review("grammar_13"))
         self.assertTrue(bot.lesson_is_beta_review("grammar_13"))
+        self.assertFalse(bot.lesson_quiz_is_available("grammar_13"))
+
+        # Review-state distribution is a release gate, not inferred from runtime activation.
+        course4 = [
+            bot.LESSON_DATA[lesson_id]
+            for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]
+        ]
+        self.assertEqual(sum(x.get("review_status") == "scientific_review_complete_with_qualified_notes" for x in course4), 30)
+        self.assertEqual(sum(x.get("review_status") == "internal_cross_lesson_synthesis_no_external_source_mapping" for x in course4), 1)
+        self.assertEqual(sum(x.get("review_status") == "owner_review_pending_expanded_draft" for x in course4), 19)
 
         # Unknown and missing statuses must never silently become official.
         approved_record = dict(bot.LESSON_DATA["grammar_13"])
