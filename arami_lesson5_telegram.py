@@ -6,7 +6,7 @@ from arami_course1_telegram import load_manifest, _send_source, lesson_is_academ
 from arami_lesson1_interaction import create_session, current_question, select_answer, submit_answer, session_result, retry_missed
 logger = logging.getLogger(__name__)
 
-def menu_keyboard(assessment_enabled=True):
+def menu_keyboard(assessment_enabled=False):
     rows = [
         [InlineKeyboardButton("📖 خوێندنەوەی وانەی ٥", callback_data="arami5:lesson")],
         [InlineKeyboardButton("🎯 ڕاهێنانی وانەی ٥", callback_data="arami5:practice")],
