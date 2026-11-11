@@ -702,3 +702,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_EIGHT_HELD_ITEMS_PRIMARY_SOURCE_ADJUDICATION_2026-11-11.md`, SHA `af48c1b3a5263f083a9a400e7a6ccf01f7c9d5ec`.
 - Full 2002 Nefel edition PDF of Celadet Alî Bedir-Xan's grammar was inspected directly for §§13–15, 59–60, 65–68, 86, 119–124 and 134–135. All eight held items now have a source-backed proposal path; no answer key changes proposed. Native-Kurmanji review still advised.
 - Proposals remain unapplied. No learner-facing/source/key/runtime/deployment changes or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Parallel lesson-artifact scope and quiz-count audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_PARALLEL_LESSON_ARTIFACT_SCOPE_AUDIT_2026-11-11.md`, SHA `33bcf3591574e38b8d67cf4e340ad1e13c007eca`.
+- The source-aligned lesson artifact has 60 quiz snippets; the reviewed draft and its reviewed answer key form the aligned 62-question pair. Keep both artifacts distinct and preserved; do not overwrite or merge based on assumed duplication.
+- No learner-facing/source/key/runtime/deployment edits or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
