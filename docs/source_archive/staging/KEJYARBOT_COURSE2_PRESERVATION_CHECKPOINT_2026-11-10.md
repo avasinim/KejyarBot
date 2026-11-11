@@ -562,3 +562,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSONS7_8_TARGETED_SOURCE_RECHECK_2026-11-11.md`, SHA `0ca63c1a261032d17c859d36a760e8132bfd8759`.
 - Four rows checked (L7 Q1/Q5; L8 Q1/Q5); no new correction. Definite suffix inventory, indefinite definition, and §67 `-ine` distribution align with the course draft.
 - No source/key/runtime/deployment changes or tests/CI; proposals remain unapproved/unapplied. `main` read-only; no separate offsite backup claimed.
+
+
+
+## Checkpoint — Lesson 1 Q3/Q5 rationale source recheck (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_RATIONALE_LESSON1_Q3_Q5_RECHECK_2026-11-11.md`, SHA `dfce471ab619202c8f4b307216b649be1de36ffb`.
+- Two rows checked: L1 Q3 (`tîp` as written sign, not speech sound) and L1 Q5 (`qiset` formed from `komek` units). Both align; no correction. L1 Q4 remains held.
+- No source/key/runtime/deployment changes or tests/CI; `main` read-only; no separate offsite backup claimed.
