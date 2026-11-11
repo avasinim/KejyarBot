@@ -881,7 +881,14 @@ async def quiz_answer(
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
     active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
-    if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
+    beta_practice_only = (
+        isinstance(active_lesson, str)
+        and lesson_is_beta_review(active_lesson)
+        and quiz_requires_submission(active_lesson)
+    )
+    if not isinstance(active_lesson, str) or (
+        not lesson_quiz_is_available(active_lesson) and not beta_practice_only
+    ):
         await query.answer()
         context.user_data.pop("quiz", None)
         await query.message.reply_text(
