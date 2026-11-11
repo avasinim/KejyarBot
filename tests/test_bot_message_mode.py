@@ -6,6 +6,23 @@ from unittest.mock import AsyncMock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = None
+_beta_completion_test_default = None
+
+def setUpModule():
+    global _beta_ledger_test_default, _beta_completion_test_default
+    _beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+    _beta_completion_test_default = patch.object(bot, "complete_beta_lesson", return_value=True)
+    _beta_ledger_test_default.start()
+    _beta_completion_test_default.start()
+
+def tearDownModule():
+    if _beta_completion_test_default is not None:
+        _beta_completion_test_default.stop()
+    if _beta_ledger_test_default is not None:
+        _beta_ledger_test_default.stop()
+
 
 class MessageModeTests(unittest.IsolatedAsyncioTestCase):
     def make_update_context(self, text, user_data=None):
@@ -178,22 +195,20 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("سەرەتا وانەیەک بکەرەوە", call.args[0])
         self.assertEqual(bot.ORDER, [])
 
-    async def test_clickable_practice_menu_hides_unapproved_latin_quizzes(self):
+    async def test_practice_menu_hides_latin_quizzes_until_editorial_approval(self):
         update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
         completed = [
-            *bot.ORDER,
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=completed),
-            patch.object(bot, "can_open", return_value=True),
         ):
             await bot.message(update, context)
 
-        self.assertIn("سەرەتا وانەیەک بکەرەوە", update.message.reply_text.await_args.args[0])
-        self.assertIsNone(update.message.reply_text.await_args.kwargs.get("reply_markup"))
+        self.assertEqual(update.message.reply_text.await_args.args[0], "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        self.assertNotIn("reply_markup", update.message.reply_text.await_args.kwargs)
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
