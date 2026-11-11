@@ -701,6 +701,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         elif QUIZ_DATA.get(lesson):
             await query.message.reply_text(message_text + "\n\n📚 تاقیکردنەوەی ئەم وانەیە هێشتا لە پێداچوونەوەدایە.")
+        elif beta_review:
+            await query.message.reply_text(
+                message_text
+                + "\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو؛ چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین. ئەمە تەواوبوونی فەرمی کۆرس نییە."
+            )
         else:
             await query.message.reply_text(message_text + "\n\n🎓 ئەم کۆرسە تەواو بوو.")
     else:
