@@ -425,15 +425,14 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    if course_id == "grammar":
-        # Beta progress unlocks only lessons that are still explicitly pending
-        # review. If a draft is approved later, its old Beta record must not
-        # silently count as official completion in the approved course path.
-        completed.update(
-            beta_lesson
-            for beta_lesson in get_completed_beta_lessons(user_id)
-            if lesson_is_beta_review(beta_lesson)
-        )
+    # Beta/review progress is separate from official completion for every
+    # course. It unlocks only lessons that are still explicitly in review;
+    # once approved, old beta records cannot count as official completion.
+    completed.update(
+        beta_lesson
+        for beta_lesson in get_completed_beta_lessons(user_id)
+        if lesson_is_beta_review(beta_lesson)
+    )
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
@@ -479,16 +478,19 @@ def check_badges(user_id):
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
 def lesson_is_pending_review(lesson):
-    return (
-        LESSON_DATA.get(lesson, {}).get("review_status")
-        == "owner_review_pending_expanded_draft"
-    )
+    return LESSON_DATA.get(lesson, {}).get("review_status") in {
+        "draft_editorial_review",
+        "owner_review_pending_expanded_draft",
+    }
 
 
 def lesson_is_beta_review(lesson):
-    return is_beta_review_lesson(
-        LESSON_COURSE.get(lesson), lesson, LESSON_DATA.get(lesson, {})
-    )
+    record = LESSON_DATA.get(lesson, {})
+    # Editorial drafts across Courses 2, 3, and Latin courses can be read and
+    # recorded as review progress, but never receive official quiz/rewards.
+    if record.get("review_status") == "draft_editorial_review":
+        return True
+    return is_beta_review_lesson(LESSON_COURSE.get(lesson), lesson, record)
 
 
 def lesson_quiz_is_available(lesson):
@@ -496,7 +498,7 @@ def lesson_quiz_is_available(lesson):
 
 
 def lesson_keyboard(lesson):
-    # Course 4 review drafts may advance beta progress, but never earn rewards.
+    # Review drafts may advance only the separate beta ledger, never rewards.
     if lesson_is_pending_review(lesson) and not lesson_is_beta_review(lesson):
         return None
     return InlineKeyboardMarkup([[
@@ -1157,7 +1159,7 @@ def course_menu_keyboard(course_id, user_id, page=0):
     if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
         raise ValueError("invalid course menu page")
     completed = set(get_completed_lessons(user_id))
-    beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
+    beta_completed = set(get_completed_beta_lessons(user_id))
     start_index = page * COURSE_MENU_PAGE_SIZE
     lesson_buttons = []
     for offset, lesson in enumerate(order[start_index:start_index + COURSE_MENU_PAGE_SIZE]):
