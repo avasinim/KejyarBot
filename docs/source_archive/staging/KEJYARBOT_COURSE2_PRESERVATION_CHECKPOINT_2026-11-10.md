@@ -616,3 +616,10 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Source recheck confirms the three clarity refinements for L2 Q2, L11 Q2 and L10 Q2; suggested wording is recorded for qualified editor review only. The answer keys remain unchanged (C).
 - This was a focused review of the three flagged items, not a re-adjudication of all 45 rows or native-speaker certification. L1 Q4, L12 Q1 and L12 Q3 remain held.
 - No learner-facing, lesson, quiz, answer-key, runtime or deployment files changed; no tests/CI or live runtime checks. `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Lesson 8 Q3 “bê bireser” terminology boundary (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_LESSON8_Q3_BIRESER_TERMINOLOGY_BOUNDARY_RECHECK_2026-11-11.md`, SHA `5c90a8c46cc5ea6758a77c2d045dad6f68fdbfd2`.
+- L8 Q3 stem uses “bê bireser”, whereas source §66 says no descriptive/qualifying element follows the noun. This risks conflating `bireserê navdêrê` (L6 noun-complement term) and clause-object `bireser` (L9–10). Key A (`-in`) remains supported; stem refinement is proposed but not applied.
+- New review hold added for L8 Q3. Existing L1 Q4, L12 Q1 and L12 Q3 remain open. No lesson/key/runtime/deployment changes or tests/CI. `main` read-only; archive branch is not an independent ZIP/offsite backup.
