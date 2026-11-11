@@ -312,3 +312,9 @@ This is an option/key alignment check, not final linguistic approval. The propos
 
 ## 40. Lesson 8 line 292 supersession guard (2026-11-11)
 The consolidated handoff now explicitly warns that the earlier line 292 sentence in section 3 is not operative/approved copy. Section 6's later candidate using `bireserên navdêrê` is also only a candidate pending final Kurmanji syntax review. The settled source distinction remains §68 final-noun agreement versus §69 each-linked-complement agreement. Handoff blob SHA: `73cf22bbd2280e4d9dcf79ea88e494b22e7ed7fc`. No base lesson or quiz content changed.
+
+
+## 41. Lesson 12 numeral-adjective terminology adjudication (2026-11-11)
+A focused comparison found that the source-aligned course text and reviewed lesson both use plural `rengdêrên jmarîn` as the category label and singular `rengdêrê jmarîn` in explanatory prose, while quiz Q3's option A reads `rengdêra jmarîn`. The discrepancy predates the latest review. A provisional internal-consistency preference is recorded: retain the plural class label and provisionally use `rengdêrê jmarîn` in singular prose; do not change Q3 until a Kurmanji editor determines whether `rengdêra` is grammatically valid in that exact option context. The original Lesson 12 source page image was not reopened, so no definitive grammatical ruling is claimed. Adjudication note SHA: `833c34339eb6ae80de339e0d1b7c42b5fa65960b`; master terminology register addendum commit: `4c7578d4d0f5f46155a8c3b2aea7e605c4745102`.
+
+No lesson, quiz, key, source-aligned text, runtime, parser, tests, manifest, DB, Botkeep, Telegram, or deployment file was changed. `main` remains read-only; no tests/CI or live runtime check occurred.
