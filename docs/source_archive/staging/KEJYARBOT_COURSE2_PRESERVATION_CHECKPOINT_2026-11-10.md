@@ -723,3 +723,11 @@ No lesson, exercise, quiz, answer key, runtime, parser, test, manifest, DB, Botk
 - Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_L5_Q1_DISTRACTOR_REFINEMENT_AND_L4_Q5_SEQUENCE_PATCH_2026-11-11.md`, SHA `bd7a1fae9dc1315fc57bbcd99f579e9505c4c297`.
 - L5 Q1 now has a cleaner proposed A/B/C contrast with key B retained. The `hespan/hespin` contrast is reserved for cumulative review after Lesson 5, not Lesson 4.
 - No learner-facing/source/key/runtime/deployment changes or tests/CI; `main` read-only; archive branch is not an independent ZIP/offsite backup.
+
+
+## Checkpoint — Full 62-question quiz quality audit (2026-11-11)
+
+- Created and verified `docs/source_archive/staging/KEJYARBOT_LATIN_COURSE2_FULL_62_QUESTION_QUIZ_QUALITY_AUDIT_2026-11-11.md`, SHA `f9fc5a3c123c6b2d48d82d33e52cfc6aa5abe8fe`.
+- All 62 quiz items were reviewed against the reviewed quiz/key and the separate 60-question source-aligned lesson artifact. The audit records redundancy, distractor-quality and scope findings; no key-letter change is recommended.
+- Priority follow-ups are L10 Q1 agent/object precision, explicit `nîv` instruction before L12 Q5, and maintaining the conditional construction boundaries in Lessons 8 and 11. Redundancy candidates are L2 Q5, L3 Q3 and L4 Q5; L9 paradigm repetition remains justified.
+- Proposals only. No learner-facing/source/key/runtime/deployment changes, tests/CI or runtime checks. `main` remains read-only; archive branch is not an independent ZIP/offsite backup.
