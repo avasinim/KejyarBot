@@ -40,3 +40,20 @@ The following are support-reported facts, not independently verified from Botkee
 ## Preservation note
 
 This is an append-only support-event record. It does not modify application source, database files, environment variables, Botkeep server state, or Railway deployment state.
+
+
+## Duplicate ticket closure — ticket #d1c46493 (Alfredo, 2026-11-11 03:36 UTC)
+
+Ticket: https://botkeep.cloud/app/support/d1c46493-0288-4dc9-b48b-f0f29da2c175
+
+Support explicitly identified this ticket as the same KejyarBot-Test incident as ticket #a1a7aa05 and closed it as a duplicate. The duplicate-ticket response independently reiterates the following support-reported outcome:
+
+- The stuck cancellation is complete; no pending GitHub import or active restore operation remains.
+- No server files were deleted, overwritten, or restored.
+- Partial staging files, `kejyar.db`, Environment, and backups were preserved.
+- Requested commit `54723763` was not deployed.
+- The bot was left Offline; no Start command was sent.
+- No new import was created.
+- The remaining Node17 infrastructure limitation is documented in ticket #a1a7aa05; support instructs the user to avoid further import/restore attempts while it persists.
+
+This duplicate response is consistent with the primary ticket's detailed technical statement. It does not establish that Node17 is healthy, that a new import is safe, or that an independent SQLite export exists.
