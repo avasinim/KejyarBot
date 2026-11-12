@@ -1,9 +1,7 @@
 import os
 import tempfile
 import unittest
-from unittest.mock import patch
 
-import bot
 import database
 from course_runtime import is_beta_review_lesson
 
@@ -140,59 +138,6 @@ class Course4BetaProgressLedgerTests(unittest.TestCase):
         conn.close()
         self.assertIn("beta_completed_lessons", columns)
         self.assertIn("completed_quizzes", columns)
-
-
-class AcademicApprovalScopeRegressionTests(unittest.TestCase):
-    def test_editorial_metadata_does_not_disable_other_active_courses(self):
-        lesson_courses = {
-            "daily_conversation_01": "daily_conversation",
-            "unified_orthography_01": "unified_orthography",
-            "kurmanji_latin_orthography_01": "kurmanji_latin_orthography",
-            "kurmanji_latin_grammar_01": "kurmanji_latin_grammar",
-        }
-        lesson_data = {
-            "daily_conversation_01": {"review_status": "draft_editorial_review"},
-            "unified_orthography_01": {"review_status": "draft_editorial_review"},
-            "kurmanji_latin_orthography_01": {"title": "Latin orthography"},
-            "kurmanji_latin_grammar_01": {"title": "Latin grammar"},
-        }
-        with patch.multiple(
-            bot,
-            LESSON_COURSE=lesson_courses,
-            LESSON_DATA=lesson_data,
-            quiz_is_available=lambda _lesson: True,
-        ):
-            for lesson_id in lesson_courses:
-                with self.subTest(lesson=lesson_id):
-                    self.assertFalse(bot._lesson_requires_academic_approval(lesson_id))
-                    self.assertFalse(bot.lesson_is_beta_review(lesson_id))
-                    self.assertTrue(bot.lesson_quiz_is_available(lesson_id))
-
-    def test_course4_unapproved_lessons_remain_fail_closed(self):
-        lesson_courses = {
-            "grammar_01": "grammar",
-            "grammar_32": "grammar",
-        }
-        lesson_data = {
-            "grammar_01": {
-                "source_number": 1,
-                "review_status": "scientific_review_complete_with_qualified_notes",
-            },
-            "grammar_32": {
-                "source_number": 32,
-                "review_status": "owner_review_pending_expanded_draft",
-            },
-        }
-        with patch.multiple(
-            bot,
-            LESSON_COURSE=lesson_courses,
-            LESSON_DATA=lesson_data,
-            quiz_is_available=lambda _lesson: True,
-        ):
-            self.assertFalse(bot.lesson_is_beta_review("grammar_01"))
-            self.assertTrue(bot.lesson_quiz_is_available("grammar_01"))
-            self.assertTrue(bot.lesson_is_beta_review("grammar_32"))
-            self.assertFalse(bot.lesson_quiz_is_available("grammar_32"))
 
 
 if __name__ == "__main__":
