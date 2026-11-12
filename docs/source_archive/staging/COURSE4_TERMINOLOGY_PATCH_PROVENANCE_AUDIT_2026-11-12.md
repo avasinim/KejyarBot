@@ -201,3 +201,28 @@ Compared the full structured lesson objects from `main` and the PR branch for Le
 
 ### Result
 Only the Lesson 26 appendix wording difference was found. It is recorded as a provenance/terminology issue, not accepted as an authoritative canonical decision. No lesson content, quiz, status, or runtime data was changed in this audit. No merge or deployment action was taken.
+
+
+## Runtime parity and terminology audit: Lessons 29–38 (2026-11-12)
+
+Compared the structured records for Lessons 29–38 between `main` and the PR branch, including the key points, examples, comprehension, quizzes, appendices, review statuses, and embedded Markdown source where present.
+
+### Lessons 29–31: targeted terminology deltas
+- **Lesson 29:** three structured-field differences. The PR changes `لەچۆنایەتی (Inflection)` to `گەردان (Inflection)` in a key point, comprehension summary, and glossary. It also adds a Sorani/Kurmanji terminology crosswalk distinguishing Root, Bound Root and Stem, while explicitly saying the Sorani paradigm of Lessons 16 and 28 is primary. The quiz still contains `لەچۆنایەتی`; therefore the term replacement is not fully propagated. Both terms are present in the PR glossary/crosswalk context. No canonical equivalent is established by this mechanical branch comparison.
+- **Lesson 30:** one appendix wording delta changes the phrase describing verbal particles from “not part of `لەچۆنایەتی` of the verb” to “not part of `گەردان` of the verb.” This follows the Lesson 29 label change but does not itself resolve the wider terminology decision.
+- **Lesson 31:** the PR changes the Noun Phrase label from `گروپی ناوی` to `گرێی ناوی` in most teaching prose and in the glossary. Five residual occurrences of `گروپی ناوی` remain in the PR record, so propagation is incomplete. This includes the earlier identified quiz-related residue. The owner-source Markdown is absent from the structured record; both branches retain the same review status.
+
+### Lessons 32–38: draft terminology and editorial deltas
+- Lessons 32–34 and 36–38 differ between branches; Lesson 35 is identical. These are all `owner_review_pending_expanded_draft`, not academically approved runtime lessons. Their embedded source Markdown is present and must remain preserved.
+- Lessons 32–34 contain changes to the use/count of `بکەر` and/or Noun Phrase terminology (`گروپی ناوی` / `گرێی ناوی`). The changes are in pending draft material, not evidence of an owner-approved terminology decision. In Lesson 34 the count of `بکەر` rises sharply in the PR record; this requires careful line-by-line editorial review rather than accepting a global replacement as a semantic correction.
+- Lesson 36 has a small change in the number of `بکەر` occurrences; Lesson 37 has a small source-Markdown length change but no change in its structured lesson status or content counts. These small deltas are recorded for provenance and are not independently judged correct.
+- **Lesson 38:** the PR changes the term `بەرڕستە` to `ژێرەڕستە` in the title, objective, explanatory text, exercises, and comprehension/source Markdown. This is a systematic terminology substitution, but the owner-source segment is separately preserved and the lesson remains pending owner review. Do not treat the substitution as an approved canonical choice until owner review confirms it.
+
+### Shared source and safety observations
+- Lessons 29–31 are marked `scientific_review_complete_with_qualified_notes`; this status does not erase the recorded terminology inconsistencies or the absence of embedded owner-source Markdown.
+- Lessons 32–38 remain pending owner review. Their Markdown drafts are present (roughly 5.0–7.5 KB each) and must not be overwritten or silently promoted to runtime.
+- The branch comparison found no reason to apply any further content edits as part of this audit. The existing lesson/quiz/status data was not changed; only this append-only evidence document was extended.
+- The terminology decisions still requiring explicit owner/academic adjudication include: `گەردان` vs `لەچۆنایەتی` for Inflection; `گرێی ناوی` vs `گروپی ناوی` for Noun Phrase; and `ژێرەڕستە` vs `بەرڕستە` for Subordinate Clause. Keep Subject (`بکەری ڕێزمانی`), Agent (`ئەنجامدەری کردار`), Theme/Patient, and discourse Topic conceptually distinct.
+
+### Result
+This is a source/runtime comparison record, not approval of any changed term. No canonical term was selected, no owner-pending lesson was promoted, no lesson or quiz was edited, and no runtime data or production service was touched.
