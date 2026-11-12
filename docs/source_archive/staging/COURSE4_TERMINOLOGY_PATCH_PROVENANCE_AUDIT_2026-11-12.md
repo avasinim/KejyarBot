@@ -226,3 +226,27 @@ Compared the structured records for Lessons 29–38 between `main` and the PR br
 
 ### Result
 This is a source/runtime comparison record, not approval of any changed term. No canonical term was selected, no owner-pending lesson was promoted, no lesson or quiz was edited, and no runtime data or production service was touched.
+
+
+## Runtime parity and terminology audit: Lessons 39–46 (2026-11-12)
+
+Compared the complete structured records for Lessons 39–46 between `main` and the PR branch, including objectives, key points, examples, activities, exercises, comprehension, quizzes, appendices, status and embedded source Markdown.
+
+### Lessons 39–45
+- Lessons 39, 40, 41, 42, 43, 44 and 45 are identical between `main` and the PR branch at the parsed structured-record level.
+- All seven remain `owner_review_pending_expanded_draft`. Their preserved source Markdown is present (approximately 7.2–8.4 KB each).
+- Their unchanged terminology includes the distinct concepts of Object, transitivity, intransitivity, light/compound verb constructions, clitic pronouns, grammatical Subject and semantic Agent. The unchanged status means these drafts are not approved runtime teaching material.
+
+### Lesson 46
+- Lesson 46 differs in 11 structured fields. The PR systematically substitutes `ژێرەڕستە` for `بەرڕستە` in the title, objective, explanatory material, exercises, comprehension and embedded source Markdown.
+- The PR source also changes one phrase from `بکەر/نیهاد` to `بکەر/بکەر`; this appears to remove a synonym rather than introduce a new grammatical distinction, but requires editorial/source review.
+- The draft itself explicitly states that the Compound/Complex distinction is a proposal and not a final course-owner decision.
+- Lesson 46 remains `owner_review_pending_expanded_draft`; its preserved source Markdown is present (9,958 characters). The systematic terminology substitution is not evidence of approval.
+
+### Cross-lesson terminology implications
+- The PR's use of `ژێرەڕستە` in Lessons 37, 38 and 46 is consistent as an editorial direction, but Lesson 37–38 and Lesson 46 remain owner-review drafts. It must not be silently treated as the final course-wide canonical term.
+- The established distinctions remain important: `بکەری ڕێزمانی` (grammatical Subject) is not interchangeable with `ئەنجامدەری کردار` (Agent); Object is a separate grammatical relation; Theme/Patient and discourse Topic are semantic/discourse notions and must not be collapsed into Subject or Agent.
+- Lessons 39–45 contain no branch delta, so no new PR-only terminology change was found there. Their equality with `main` does not certify the academic correctness of their content.
+
+### Result
+Lessons 39–45 are parity-identical; Lesson 46 has 11 recorded field differences, primarily a systematic replacement of `بەرڕستە` with `ژێرەڕستە`. No term was canonized, no owner-review lesson was promoted, and no lesson/quiz/runtime or production data was modified. This section is an evidence-only append to the provenance audit.
