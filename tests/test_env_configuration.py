@@ -104,15 +104,25 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
         source = source_path.read_text(encoding="utf-8")
         main_source = source[source.index("def main():"):]
 
-        token_lookup = main_source.index(
-            'token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")'
+        primary_token_lookup = main_source.index(
+            'token = os.environ.get("TELEGRAM_BOT_TOKEN")'
         )
-        missing_token_check = main_source.index("if not token:", token_lookup)
+        primary_blank_check = main_source.index(
+            "if token is None or not token.strip():", primary_token_lookup
+        )
+        fallback_token_lookup = main_source.index(
+            'token = os.environ.get("BOT_TOKEN")', primary_blank_check
+        )
+        fallback_blank_check = main_source.index(
+            "if token is None or not token.strip():", fallback_token_lookup
+        )
         runtime_validation = main_source.index("validate_activated_course_runtime()")
         database_init = main_source.index("init_db()")
 
-        self.assertLess(token_lookup, missing_token_check)
-        self.assertLess(missing_token_check, runtime_validation)
+        self.assertLess(primary_token_lookup, primary_blank_check)
+        self.assertLess(primary_blank_check, fallback_token_lookup)
+        self.assertLess(fallback_token_lookup, fallback_blank_check)
+        self.assertLess(fallback_blank_check, runtime_validation)
         self.assertLess(
             runtime_validation,
             database_init,
