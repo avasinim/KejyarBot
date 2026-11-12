@@ -181,3 +181,23 @@ Fetched the complete `course_data/grammar_course4_lessons.json` from `main` and 
 
 ### Result
 No patch or lesson edit is warranted from this parity check. The seven records remain unchanged; this is a verified no-delta checkpoint, not an endorsement of every underlying claim. No canonical term was changed, and no lesson, quiz, review status, or runtime data was modified.
+
+
+## Runtime parity and terminology audit: Lessons 21–28 (2026-11-12)
+
+Compared the full structured lesson objects from `main` and the PR branch for Lessons 21–28.
+
+### Branch comparison
+- Lessons 21–25 and 27–28 are identical between `main` and PR at the structured-record level.
+- Lesson 26 has exactly one field-level difference: `appendix[10]` changes the description of the 2021 Ahmadi preprint from “distinguishing clitic and affix” to “distinguishing clitic and `گیرەک`.” No other Lesson 26 field or item count differs.
+- All eight records have `scientific_review_complete_with_qualified_notes` in both branches; all have `source_markdown` absent (length 0). Lesson 21, 22, 23, 24, 25, 27 and 28 carry 8/8 quiz questions; Lesson 26 also has 8 quiz questions. This parity note does not independently re-validate the academic claims or quiz keys.
+
+### Terminology and provenance observations
+- Lesson 21 and 22 appendices distinguish word class / syntactic function and note owner-supplied material with incomplete bibliographic metadata (Lesson 21), while Lesson 22 identifies the directly supplied owner material and no external source mapping.
+- Lessons 23–25 similarly identify owner-supplied source material; their appendices preserve distinctions among conjunction, vocative, and ezafe. Lesson 23 explicitly treats `ـیش` as a bound additive/emphatic clitic, not a free discourse particle.
+- Lesson 26 cites Radnia (2022) for Sorani discourse particles and Ahmadi (2021) as a preprint. The PR's single wording change `ئەفیکس` → `گیرەک` creates a terminology-chain question against other project records that use `ئەفیکس` and/or `گیرەک`. It must not be silently normalized: “Affix” is the broader category, while Clitic is a distinct bound form; owner/academic decision is needed on the Kurdish label and on whether `گیرەک` is intended as a defined equivalent or a broader morpheme label.
+- Lesson 27 keeps Interjection, Exclamation and Vocative as distinct levels/categories and explicitly points back to Lessons 24 and 26. Its long owner-supplied list of forms is not treated as a closed or universally validated inventory.
+- Lesson 28 distinguishes Infinitive, Past Stem, Present Stem, Finite and Non-finite forms; it cites Kareem (2016), Haig (2018), and Ahmadi (2021), with the latter described as a preprint. It cautions that past-stem grouping is not a set of five infinitive classes and that stem formation is not a universal mechanical rule.
+
+### Result
+Only the Lesson 26 appendix wording difference was found. It is recorded as a provenance/terminology issue, not accepted as an authoritative canonical decision. No lesson content, quiz, status, or runtime data was changed in this audit. No merge or deployment action was taken.
