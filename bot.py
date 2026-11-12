@@ -5,6 +5,8 @@ import os
 import re
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from telegram import (
     Update,
     ReplyKeyboardMarkup,
@@ -58,6 +60,7 @@ from arami_course1_telegram import (
 )
 
 BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
