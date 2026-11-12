@@ -461,7 +461,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📘 کۆرسەکان", "🔎 گەڕانی وانە"],
         ["📚 وانەکان", "ڕێنووسی لاتینی کوردیی"],
-        ["📕 ڕێنووسی سەرەتاییی کوردی", "💬 گفتوگۆی ڕۆژانە"],
+        ["📕 ڕێنووسی سەرەتاییی کوردیی", "💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"],
         ["🎁 سەنوقی خەڵات", "🗓️ مانگەکانی ساڵ لەناو کورداندا"],
@@ -1594,7 +1594,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    if text == "📕 ڕێنووسی سەرەتاییی کوردی":
+    if text == "📕 ڕێنووسی سەرەتاییی کوردیی":
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
@@ -1795,7 +1795,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
+        "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردیی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
         "⌨️ تەختەکلیلی کوردی",
