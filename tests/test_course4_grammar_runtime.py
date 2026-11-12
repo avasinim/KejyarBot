@@ -1596,3 +1596,21 @@ class Course4RootStemCrosswalkTests(unittest.TestCase):
     def test_lesson29_quiz_source_and_review_status_are_unchanged(self):
         self.assertEqual(self.lessons[28]["review_status"], "scientific_review_complete_with_qualified_notes")
         self.assertEqual(len(self.lessons[28]["quiz"]), 8)
+
+
+class Course4DraftSourceMarkdownRuntimeTests(unittest.TestCase):
+    def test_unstructured_lessons_47_to_50_render_full_preserved_source_as_beta_text(self):
+        source = json.loads(
+            (ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8")
+        )
+        for raw in source["lessons"]:
+            if raw["number"] not in (47, 48, 49, 50):
+                continue
+            lesson_id = raw["id"]
+            with self.subTest(lesson=lesson_id):
+                expected = bot.format_lesson_draft(raw["source_markdown"])
+                runtime = bot.LESSON_DATA[lesson_id]
+                self.assertEqual(runtime["content"], expected)
+                self.assertGreater(len(runtime["content"]), len(raw["objective"]) * 2)
+                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
