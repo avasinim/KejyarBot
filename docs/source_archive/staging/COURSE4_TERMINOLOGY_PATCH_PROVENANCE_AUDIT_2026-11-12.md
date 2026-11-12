@@ -166,3 +166,18 @@ The full structured runtime records for Lessons 11, 12, and 13 were fetched from
 - The PR changes only the glossary/crosswalk labels in Lessons 11–12, while the teaching definition in Lesson 11 and the teaching explanation in Lesson 13 retain `پاشبەستە`. This is a concrete propagation gap.
 - Lesson 12 uses `بکەر` for grammatical Subject. Preserve the distinction between grammatical Subject, semantic Agent (`ئەنجامدەری کردار`), and discourse Topic; do not mechanically substitute `بابەت` or Agent for Subject.
 - No term was selected or normalized during this audit. These are evidence findings only; no lesson, quiz, status, or runtime data was changed.
+
+
+## Runtime parity audit: Lessons 14–20 (2026-11-12)
+
+Fetched the complete `course_data/grammar_course4_lessons.json` from `main` and the PR branch, parsed both, and compared each entire structured lesson object (not just selected fields). Lessons 14, 15, 16, 17, 18, 19, and 20 are byte-for-byte equivalent at the parsed JSON-object serialization level: no runtime lesson-field differences were found in this range.
+
+### Findings and source boundaries
+- Lesson 14: no branch delta. Its appendix distinguishes noun-internal complements from the grammatical role of the whole noun phrase; no new terminology discrepancy surfaced in this comparison.
+- Lessons 15–17: no branch delta. Existing distinctions remain: Tense vs Aspect; past vs non-past forms; Imperative as Mood rather than future tense; present stem vs past stem; and morpheme boundaries should not be inferred mechanically from similar endings.
+- Lesson 18: no branch delta. It explicitly distinguishes Voice (active/passive) from alignment. Its appendix states no external source or page mapping was used and that a previously rejected source file must not be cited. Treat the current content as course teaching material, not source-verified external doctrine.
+- Lessons 19–20: no branch delta. Their appendices state the base text was supplied by the project owner but bibliographic metadata is incomplete. Preserve the distinction between adverb as a word class and adverbial as a syntactic function; do not assume every `بە-` initial form is a prefix.
+- All seven lessons have `scientific_review_complete_with_qualified_notes` status in both branches, but each structured record has no embedded owner-source Markdown (`source_markdown` length 0). Review status does not replace missing source provenance.
+
+### Result
+No patch or lesson edit is warranted from this parity check. The seven records remain unchanged; this is a verified no-delta checkpoint, not an endorsement of every underlying claim. No canonical term was changed, and no lesson, quiz, review status, or runtime data was modified.
