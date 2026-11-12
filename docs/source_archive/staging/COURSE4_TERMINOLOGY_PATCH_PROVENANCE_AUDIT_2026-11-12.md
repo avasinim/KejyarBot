@@ -89,3 +89,26 @@ Additional source-level observations from the parsed patch JSON:
 - Lesson 31 v1 patch baseline records 14 key points, 8 examples, 3 activities, 5 exercises, 8 quiz items and 9 appendix items. Its added appendix explicitly uses `گروپی ناوی` for Noun Phrase. The v2 package/metadata remains a separate historical variant; do not overwrite v1 or erase the runtime 9-versus-10 appendix discrepancy.
 
 **Integrity limit:** byte/hash verification proves the identity of the archived patch files inspected; it does not prove that the owner-source Markdown referenced in patch metadata was retrieved, nor that the patches are applied to the current runtime. No patch was applied and no lesson/quiz/status was changed.
+
+
+## Checkpoint ZIP inspection — Lessons 29 and 31 v2 (2026-11-12)
+
+The Library checkpoint ZIP `Course4_AppendOnly_Checkpoint_Lessons29-38_2026-11-09.zip` was materialized and inspected, including the nested lesson packages.
+
+### Lesson 29
+- The nested package contains only `grammar_29_append_only_patch.json`; it does not contain the owner-source lesson Markdown.
+- The patch title is `چاوگی سادە و داڕێژراو — بنەما و شێوازی دروستبوون`.
+- It adds 6 pedagogical Sorani examples, 9 appendix entries, and 3 activities.
+- It explicitly distinguishes Derivation from Inflection conceptually, but the patch itself contains no Kurdish equivalent selection for Inflection. Therefore the existing runtime discrepancy `گەردان / لەچۆنایەتی` is not resolved by this patch.
+- The patch editorial note states its new examples are pedagogical Sorani and are not attributed to a specified source.
+
+### Lesson 31 v2
+- The nested package contains `grammar_31_append_only_patch_v2.json` and `README_KU.txt`; no owner-source Markdown is included.
+- Its source baseline identifies `main:course_data/grammar_course4_lessons.json` and a secondary text snapshot at lines 5248–5432. It records a 9-vs-10 appendix discrepancy between that Library text snapshot and main JSON.
+- The v2 patch adds 6 examples, 9 appendix entries, and 3 activities; examples are marked pedagogical.
+- Appendix addition `grammar_31_app_add_09` explicitly recommends using `گروپی ناوی` for Noun Phrase in future lessons, while also saying source-specific alternative terms should be clarified in a note. This is an editorial recommendation inside an append-only patch, not evidence that the original owner lesson or an external academic authority canonically selected that form.
+- The v2 README records SHA-256 `2d394c7f1fac433636b6292f0e891b806cdf39d967c5fe20ef99948ad5094c69` for the patch file. The checkpoint ZIP contains this v2 patch; it is distinct from the older v1 patch hash recorded above.
+
+**Correction/precision:** Lesson 29's patch is about simple and derived infinitives; it does not resolve the runtime Inflection translation conflict. The conflict is visible in the lesson's runtime quiz/content, but this checkpoint package is not its source provenance.
+
+**Current source-access result:** the nested Lesson 29 and Lesson 31 v2 packages do not include the owner-source Markdown. No owner-source lesson text was found in this inspected checkpoint. No canonical terminology decision, lesson edit, quiz edit, status change, or deployment was made.
