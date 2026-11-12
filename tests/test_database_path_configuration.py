@@ -55,6 +55,14 @@ class DatabasePathConfigurationTests(unittest.TestCase):
             self.assertEqual(result.stdout.strip(), expected)
             self.assertTrue(Path(expected).is_file())
 
+    def test_leading_whitespace_in_configured_path_is_preserved(self):
+        env = os.environ.copy()
+        env["KEJYARBOT_DB_PATH"] = "  persistent data/kejyar.db"
+        result = self.run_database(env)
+        expected = str((REPOSITORY_ROOT / "  persistent data" / "kejyar.db").resolve())
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), expected)
+
     def test_blank_database_path_is_rejected_before_sqlite_can_create_a_file(self):
         for invalid_path in ("", "   "):
             with self.subTest(invalid_path=repr(invalid_path)):
