@@ -96,7 +96,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
-        update, context = self.make_update_context("📕 ڕێنووسی سەرەتاییی کوردی")
+        update, context = self.make_update_context("📕 ڕێنووسی سەرەتاییی کوردیی")
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=[]),
