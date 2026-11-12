@@ -7,6 +7,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+# Load host configuration before importing database.py, which resolves
+# KEJYARBOT_DB_PATH at module import time.
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
+
 from telegram import (
     Update,
     ReplyKeyboardMarkup,
@@ -59,8 +64,6 @@ from arami_course1_telegram import (
     ACADEMIC_APPROVAL_STATUSES,
 )
 
-BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
