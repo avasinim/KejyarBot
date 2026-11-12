@@ -175,26 +175,22 @@ GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
     GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
 )
-# Some owner-review Course 4 drafts (currently Lessons 47–50) are preserved
-# as complete Markdown source records rather than structured section fields.
-# Render that source verbatim-as-text for Beta reading; academic review status
-# still blocks official quizzes and rewards.
+# Lessons 47–50 are preserved as complete Markdown source records rather
+# than structured section fields. Render those source drafts for Beta reading;
+# their academic review status still blocks official quizzes and rewards.
 for _raw_course4_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
-    _lesson_id = _raw_course4_lesson.get("id")
+    _number = _raw_course4_lesson.get("number")
+    if _number not in (47, 48, 49, 50):
+        continue
+    _lesson_id = f"grammar_{_number:02d}"
     _source_markdown = _raw_course4_lesson.get("source_markdown")
-    _has_structured_body = any(
-        _raw_course4_lesson.get(field)
-        for field in ("key_points", "examples", "exercises", "comprehension", "role_play")
+    if _lesson_id not in GRAMMAR_COURSE4_LESSONS:
+        raise RuntimeError(f"Missing Course 4 runtime record for source draft {_lesson_id}")
+    if not isinstance(_source_markdown, str) or not _source_markdown.strip():
+        raise RuntimeError(f"Missing preserved Markdown source for Beta lesson {_lesson_id}")
+    GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
+        _source_markdown
     )
-    if (
-        _lesson_id in GRAMMAR_COURSE4_LESSONS
-        and isinstance(_source_markdown, str)
-        and _source_markdown.strip()
-        and not _has_structured_body
-    ):
-        GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
-            _source_markdown
-        )
 # Append-only quiz corrections: the authored source bank remains untouched.
 # Each override carries an exact original snapshot; mismatches fail closed.
 GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE = load_json("course_data/grammar_course4_quiz_overrides.json")
