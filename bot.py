@@ -1954,8 +1954,10 @@ async def log_polling_start(application):
 
 def main():
     # Validate required credentials before any database initialization side effect.
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
-    if not token:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if token is None or not token.strip():
+        token = os.environ.get("BOT_TOKEN")
+    if token is None or not token.strip():
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
 
     validate_activated_course_runtime()
