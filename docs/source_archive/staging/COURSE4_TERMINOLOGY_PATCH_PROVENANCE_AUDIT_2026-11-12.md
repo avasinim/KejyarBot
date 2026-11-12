@@ -66,3 +66,26 @@ The current runtime comparison was read from `course_data/grammar_course4_lesson
 ## Preservation and operational boundary
 
 This audit changes no lesson JSON, patch, quiz, academic status, database, Botkeep environment, or Telegram state. It does not apply any archived patch. No merge, import, restore, restart, sync, or deployment is performed or authorized by this record.
+
+
+## Exact archived-patch byte verification — 2026-11-12 (append-only)
+
+The five Library JSON files were materialized as raw bytes and parsed independently. SHA-256 was recomputed from those exact bytes and compared with the archive README where an index entry exists:
+
+| Patch | Bytes | Recomputed SHA-256 | Result |
+|---|---:|---|---|
+| `grammar_11_append_only_patch.json` | 7,415 | `fc5d92bd29baacf4e9f589f64ad2f78194bc88157823dc232861221665bccff0` | matches README |
+| `grammar_12_append_only_patch.json` | 5,412 | `e49c84486fa86be8d4f49f94d81b8c6d5c5f79bd531f52d67c46c396bf5264ac` | matches README |
+| `grammar_13_append_only_patch.json` | 5,858 | `2c6f24dfd2c0ff97c189c2b758bb70bfca2214811690b8ef15ecff365e9820db` | matches README |
+| `grammar_29_append_only_patch.json` | 6,276 | `896bba6987b49f26fb43015dc068d5d2936e781eee88584840c53e091e2dcbae` | exact bytes verified; no matching hash line was surfaced in the inspected README excerpt |
+| `grammar_31_append_only_patch.json` (v1) | 11,804 | `223f58744bb09cc5fe9052865b7afdef04e38333bfd5d004a19397ec31c00d06` | matches v1 archive record |
+
+Additional source-level observations from the parsed patch JSON:
+
+- Lesson 11 patch explicitly describes Enclitic as a post-host clitic and labels it `پاشبەستە`; it says that this positional label alone does not determine grammatical/semantic function.
+- Lesson 12 patch explicitly warns that Clitic pronoun is a form/category while Subject, Object and Possession are functions/relations. Its examples distinguish possessive `ـیان` from possible subject marking in a past transitive construction. It does not establish an Enclitic translation.
+- Lesson 13 patch states that Enclitic and Suffix are not interchangeable and gives `پاشبەستە`; its examples are explicitly pedagogical Sorani examples, not quotations or rules attributed to Saeed Karimi.
+- Lesson 29 patch itself gives the Derivation/Inflection conceptual contrast but does not choose either Kurdish equivalent for Inflection. Its added examples are identified as pedagogical Sorani.
+- Lesson 31 v1 patch baseline records 14 key points, 8 examples, 3 activities, 5 exercises, 8 quiz items and 9 appendix items. Its added appendix explicitly uses `گروپی ناوی` for Noun Phrase. The v2 package/metadata remains a separate historical variant; do not overwrite v1 or erase the runtime 9-versus-10 appendix discrepancy.
+
+**Integrity limit:** byte/hash verification proves the identity of the archived patch files inspected; it does not prove that the owner-source Markdown referenced in patch metadata was retrieved, nor that the patches are applied to the current runtime. No patch was applied and no lesson/quiz/status was changed.
