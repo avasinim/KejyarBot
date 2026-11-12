@@ -14,7 +14,7 @@ if _configured_db_path is not None and not _configured_db_path.strip():
 # process working directory; ~ is expanded using the host user's home folder.
 DB_NAME = str(
     Path(
-        _configured_db_path.strip()
+        _configured_db_path
         if _configured_db_path is not None
         else BASE_DIR / "kejyar.db"
     ).expanduser().resolve()
