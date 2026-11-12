@@ -250,3 +250,24 @@ Compared the complete structured records for Lessons 39–46 between `main` and 
 
 ### Result
 Lessons 39–45 are parity-identical; Lesson 46 has 11 recorded field differences, primarily a systematic replacement of `بەرڕستە` with `ژێرەڕستە`. No term was canonized, no owner-review lesson was promoted, and no lesson/quiz/runtime or production data was modified. This section is an evidence-only append to the provenance audit.
+
+
+## Cross-course terminology-chain scan: Lessons 1–46 (2026-11-12)
+
+A lexical co-occurrence scan was run over the PR branch's structured Course 4 lesson records (all 46 lessons). This scan is a triage index only: co-occurrence of two forms does not prove synonymy or inconsistency, because a lesson may explicitly contrast grammatical functions, semantic roles, or competing terminology.
+
+### Confirmed propagation candidates requiring manual semantic review
+- **Enclitic — Lessons 11 and 13:** Lesson 11 contains both `پاشبەستە` and `پاشنووس`; Lesson 13 contains both (13 and 1 lexical occurrences respectively) and remains `internal_cross_lesson_synthesis_no_external_source_mapping`. These are high-priority propagation conflicts already documented above. Do not use Lesson 13 as a canonical authority.
+- **Inflection — Lesson 29:** both `گەردان` and `لەچۆنایەتی` occur (3 each in the serialized lesson record), consistent with the incomplete propagation between explanatory text and quiz/glossary material already recorded.
+- **Noun Phrase — Lesson 31:** both `گرێی ناوی` (15) and `گروپی ناوی` (5) remain in the same record. Review the five residual instances in context; do not mechanically replace every occurrence without checking quotations, historical notes, and quiz text.
+- **Root/Stem crosswalk — Lessons 13, 15–17, 29:** both `ڕەگ` and `بنج` occur in lessons that discuss Root and Stem distinctions. Their co-occurrence is expected in contrastive explanations and is not itself a conflict. Lesson 13 also includes crosswalk forms `ڕیشە` and `بنکە`; the audit must preserve the explicit distinction between the course's Sorani terms and Kareem's Central Kurdish glossary terms.
+- **Subject/Agent/Topic — Lessons 1, 3, 6, 8–10, 13, 18, 22–24, 27–29, 31–34, 39, 42–45:** several lessons contain two or more of `بکەر`, `ئەنجامدەری کردار`, and `بابەت`. This is a review flag, not an instruction to unify them. In particular, grammatical Subject, semantic Agent, and discourse Topic must remain distinct; Lesson 31's use of `بابەت (Subject)` requires context-level review.
+- **Derivation — Lessons 3, 5 and 29:** both `داڕێژە` and `داڕشتن` occur. The forms may appear in different morphological contexts (derivational morpheme/process); inspect the definition and grammatical category before deciding whether a wording inconsistency exists.
+
+### Lesson-state coverage
+- The branch contains 46 Course 4 lessons: 30 `scientific_review_complete_with_qualified_notes`, 1 `internal_cross_lesson_synthesis_no_external_source_mapping`, and 15 `owner_review_pending_expanded_draft`.
+- Lessons 32–46 are pending owner review; lexical findings within them must not be promoted to official terminology decisions.
+- The scan does not replace source-level review or the full reading of examples, quiz options, explanations and appendices. It is a discovery aid to guide targeted inspection.
+
+### Result
+No automated terminology replacement was performed. No canonical forms were selected. No lesson, quiz, status, source record, or runtime content was changed by this scan; only this append-only audit was extended.
