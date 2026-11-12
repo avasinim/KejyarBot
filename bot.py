@@ -646,6 +646,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         first_completion = complete_lesson_with_rewards(user_id, lesson)
     # Acknowledge only after the idempotent database claim has completed.
     await query.answer()
+    # Reconcile the idempotent badge ledger on retries too. If the process
+    # failed after lesson completion but during badge persistence, a repeated
+    # callback must be able to finish the missing badge writes.
+    if not beta_review:
+        check_badges(user_id)
     if beta_review:
         message_text = (
             "🧪 وانەکە بۆ پێشچوونی Beta تۆمار کرا؛ "
@@ -654,7 +659,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else "🧪 ئەم وانەیە پێشتر بۆ پێشچوونی Beta تۆمار کراوە؛ خەڵاتێکی بۆ نییە."
         )
     elif first_completion:
-        check_badges(user_id)
         new_level = get_user_level(user_id)
         message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
         if old_level != new_level:
