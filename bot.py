@@ -314,11 +314,14 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
-# Course 4 has a dedicated academic approval gate. Arami Course 1 is
-# checked separately against its own manifest above. Other owner-activated
-# courses retain their established quiz/reward behavior: editorial draft
-# metadata is not, by itself, an academic-approval gate.
-ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset({"grammar"})
+# Every active course must carry an explicit academic approval status before
+# official assessments, rewards, or badges are enabled. New active courses
+# inherit this fail-closed rule automatically.
+ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset(
+    course.get("id")
+    for course in COURSES
+    if course.get("status") == "active" and isinstance(course.get("id"), str)
+)
 
 
 LATIN_COURSE_IDS = {
