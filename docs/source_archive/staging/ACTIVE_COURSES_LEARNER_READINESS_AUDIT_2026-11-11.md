@@ -43,3 +43,25 @@ Not explicitly approved and therefore restricted from official assessment/reward
 ## Launch decision
 
 A safe limited learner pilot can only be considered after Botkeep clearance and verified test-bot smoke tests. A claim of a fully academically approved six-course launch is not supported by current lesson metadata: 173 of 203 active lessons remain review-gated. Academic approval must come from source review, not from bypassing the runtime gate.
+
+
+## Append-only runtime revalidation — Arami Course 1 (2026-11-12)
+
+Re-read the current branch manifest, shared Course 1 Telegram adapter, dedicated Lesson 1 and Lesson 5 adapters, and their tests after the academic approval gate was added.
+
+### Manifest status and learner-facing behavior
+- The 21 lesson records still contain **zero explicitly approved lessons** under the allowlist `scientific_review_complete`, `scientific_review_complete_with_qualified_notes`, or `approved`.
+- The 16 `source_review_pending` records, Lesson 5's `source_received_preserved; lesson_identity_confirmed_as_5`, Lessons 14–15 `source_received_preserved`, Lesson 16 `user_supplied_source_received_and_preserved`, and Lesson 1's missing `status` all fail closed for official assessment/reward. Receipt/preservation is not academic approval; a missing status is not approval.
+- The catalogue labels non-approved lessons with the Beta/review marker. The shared selector exposes reading and practice, but hides the official assessment button unless explicit approval is present.
+- The shared reader displays a Beta-only notice and records Beta completion rather than official completion for lessons without approved status.
+- The dedicated Lesson 1 and Lesson 5 adapters also derive assessment-button visibility from `can_take_arami_assessment`; their assessment callbacks fail closed when the permission callback is missing or returns false. Active assessment sessions recheck approval and unlock status before accepting further answers.
+- `can_take_arami_assessment` verifies course identity, rejects Beta-review lessons, reads the manifest, and fails closed on missing records or load errors. `award_arami_assessment` rechecks this permission before awarding XP.
+
+### Tests and remaining semantic caution
+- The four PR workflows on head `f105a36661bee013d93e169fdc3f4faa0c6f5e81` completed successfully: Python checks, Kurdish months tests, Course 4 beta review safety, and Orthography course structure tests.
+- The Arami tests include review-only assessment blocking, missing permission/unlock callback behavior, session revalidation, and no XP award for unapproved assessments. The workflow result is CI evidence, not a live Telegram end-to-end smoke test.
+- Manifest records currently label the activation mode as `reader_practice_assessment_enabled_text_only`; that label can be misread as unconditional official assessment availability. Runtime code correctly gates official assessment and rewards by explicit academic approval, but the activation label should be clarified in a future manifest-only, append-only metadata change after confirming every consumer of this field.
+- No academic status was promoted, no lesson source or question bank was changed, and no Telegram/Botkeep deployment or live-user data was touched.
+
+### Result
+Arami Course 1's current runtime gate is internally consistent with the fail-closed policy: reading and practice can remain available, while official assessments and rewards remain disabled until explicit academic approval. The activation-status wording is a documentation/metadata clarity issue, not evidence that the runtime gate has been bypassed.
