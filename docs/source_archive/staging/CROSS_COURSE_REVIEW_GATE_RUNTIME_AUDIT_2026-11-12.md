@@ -29,3 +29,14 @@ Read-only source inspection of the PR branch `release/main-based-reconciled-2026
 - PR head reported by GitHub metadata: `58f4bb386be8c8c4a042d8e19531f8a9b02c12f0`; PR open, unmerged, mergeable.
 - Four PR-triggered workflows for that exact head completed successfully: Python checks, Kurdish months tests, Course 4 beta review safety, Orthography course structure tests.
 - This audit is evidence-only. It does not authorize merge, import, restart, deployment, or Telegram rollout.
+
+
+## Regression-test coverage inspected (read-only)
+- `tests/test_launch_readiness_matrix.py` asserts the six active courses contain 203 unique lesson IDs, exactly 30 lessons are outside Beta/review-only state, and all 173 review-only lessons fail `lesson_quiz_is_available`. This includes the 42 Course 2 and 66 Course 3 draft lessons and the 24 Latin draft lessons through the aggregate inventory.
+- `tests/test_bot_quiz_callbacks.py` includes a Lesson 13 start attempt while quiz availability is false and asserts no quiz session is created; it also includes a stale Lesson 13 quiz-session answer attempt after availability is revoked and asserts the session is discarded and the reward function is not called.
+- `tests/test_arami_course1_telegram.py` covers missing assessment permission callback, missing unlock callback, permission revocation during an active assessment session, and successful assessment reward routing for an explicitly permitted lesson.
+- `tests/test_activated_courses.py` asserts Arami review lessons remain out of official assessment menus, cannot receive official rewards, and that unknown/missing review statuses fail closed.
+- `tests/test_course3_runtime_ux.py` tests Course 3 sequential lesson access and text-only lesson flow; its separate quiz UX tests patch quiz availability true, so the cross-course gate coverage is supplied by the launch-readiness matrix and generic quiz callback tests, not by that UX test alone.
+
+## Test-coverage conclusion and remaining limitation
+The inspected suite has direct regression coverage for aggregate fail-closed eligibility, generic quiz start/answer revocation, Arami assessment revocation, and no implicit Arami approval. It does not constitute a live Telegram/Botkeep smoke test, nor does it independently validate every source term or academic decision. No code or test file was changed in this audit; no test command was executed in a local runtime. The four successful GitHub Actions runs remain the execution evidence for the exact audited commit, not a claim that the bot is deployed or live-tested.
