@@ -29,7 +29,7 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
     def test_dotenv_database_path_is_applied_before_database_import(self):
         source = (REPOSITORY_ROOT / "bot.py").read_text(encoding="utf-8")
         # Execute the real startup prefix, stopping before Telegram imports.
-        startup_prefix = source.split("\\nfrom telegram import", 1)[0] + "\\n"
+        startup_prefix = source.split("\nfrom telegram import", 1)[0] + "\n"
 
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
@@ -38,7 +38,7 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
             bot_path.write_text(startup_prefix, encoding="utf-8")
             expected = str((temp_root / "persistent data" / "kejyar.db").resolve())
             (temp_root / ".env").write_text(
-                f"KEJYARBOT_DB_PATH={expected}\\n",
+                f"KEJYARBOT_DB_PATH={expected}\n",
                 encoding="utf-8",
             )
 
@@ -65,7 +65,7 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
     def test_host_environment_database_path_overrides_dotenv(self):
         source = (REPOSITORY_ROOT / "bot.py").read_text(encoding="utf-8")
         # Execute the real startup prefix, stopping before Telegram imports.
-        startup_prefix = source.split("\\nfrom telegram import", 1)[0] + "\\n"
+        startup_prefix = source.split("\nfrom telegram import", 1)[0] + "\n"
 
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
@@ -75,7 +75,7 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
             dotenv_path = str((temp_root / "dotenv" / "kejyar.db").resolve())
             host_path = str((temp_root / "host" / "kejyar.db").resolve())
             (temp_root / ".env").write_text(
-                f"KEJYARBOT_DB_PATH={dotenv_path}\\n",
+                f"KEJYARBOT_DB_PATH={dotenv_path}\n",
                 encoding="utf-8",
             )
 
