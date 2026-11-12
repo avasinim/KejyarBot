@@ -271,3 +271,18 @@ A lexical co-occurrence scan was run over the PR branch's structured Course 4 le
 
 ### Result
 No automated terminology replacement was performed. No canonical forms were selected. No lesson, quiz, status, source record, or runtime content was changed by this scan; only this append-only audit was extended.
+
+
+## Detailed review of pending-draft deltas: Lessons 32–38 (2026-11-12)
+
+A second field-level comparison was performed to distinguish exact terminology edits from broader draft text differences.
+
+- **Lesson 32 (4 differing fields):** the PR changes `گروپی ناوی` / `گروپی کرداری` to `گرێی ناوی` / `گرێی کرداری` in the exercise and comprehension summary, and makes corresponding edits in the draft source field. The draft remains pending owner review.
+- **Lesson 33 (2 differing fields):** the key-point/source preamble differs; the PR does not establish a broad new canonical term from the visible structured comparison. Retain the original owner-source segment and review the complete source/draft pair before accepting any content revision.
+- **Lesson 34 (7 differing fields):** the PR changes the lesson framing from `نیهاد` to `بکەر` in the title, objective, examples/exercises and comprehension; it also changes `گروپی ناوی` to `گرێی ناوی` in one exercise. This is not a harmless spelling normalization: `نیهاد` and grammatical Subject/`بکەر` may encode different analyses depending on the syntactic framework. Require academic adjudication of the intended grammatical function and example analysis before accepting this substitution.
+- **Lesson 35:** no structured-record difference.
+- **Lesson 36 (2 differing fields):** the key-point field and source Markdown differ, while the visible comparison did not identify a separate targeted term replacement. Preserve as an editorial/source-draft delta pending review.
+- **Lesson 37 (7 differing fields):** the PR replaces `بەرڕستە` with `ژێرەڕستە` in objective, exercises, comprehension and the corresponding draft text. It remains an owner-review draft; this substitution must be reviewed together with Lessons 38 and 46, not approved by propagation alone.
+- **Lesson 38:** the previously recorded seven field differences are the same systematic `بەرڕستە` → `ژێرەڕستە` replacement across title/objective, examples and exercises, comprehension and source Markdown.
+
+All Lessons 32–38 remain `owner_review_pending_expanded_draft`. The comparison does not establish the canonical choice between `نیهاد` and `بکەر`, or between `بەرڕستە` and `ژێرەڕستە`. No changes were made to lesson data or source drafts; this is an append-only audit note.
