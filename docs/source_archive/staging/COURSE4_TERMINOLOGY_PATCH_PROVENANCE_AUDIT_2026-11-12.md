@@ -137,3 +137,32 @@ The previously timed-out source retrieval was retried successfully. The exact `c
 - The PR head at this check is `6049f5381183a27586bb1dcf8ec31d79bc942665`; base `main` is `7db20f242087e3eb9149e2e788f6c20529870f32`. The branch is 219 commits ahead and 0 behind.
 - All 10 GitHub check runs attached to this exact head are completed with `success`, including Python checks, Course 4 Beta review, review-gate regression, Lesson 47–50 Beta validation, quiz override validation, orthography structure, and Kurdish months.
 - CI and mergeability do not resolve the semantic/source approval gaps. PR remains unmerged; no merge, deployment, Botkeep import, restart, or database operation was performed.
+
+
+## Runtime terminology comparison: Lessons 11–13 (2026-11-12)
+
+The full structured runtime records for Lessons 11, 12, and 13 were fetched from both `main` and the PR branch and compared across key points, examples, activities, exercises, quiz, and appendix. All three records have no embedded owner-source Markdown (`source_markdown` length 0).
+
+### Lesson 11 — Enclitic
+- `main` key points define Enclitic as `پاشبەستە`; the appendix crosswalk also says `Enclitic = پاشبەستە`.
+- PR head keeps `پاشبەستە` in the key-point definition, but changes the appendix crosswalk to `Enclitic = پاشنووس`.
+- This creates an explicit within-lesson mismatch between the definition and glossary. The rest of the lesson's quiz remains about Clitic pronouns and does not resolve the label.
+- The lesson's status is `scientific_review_complete_with_qualified_notes`; this is not an owner-approved terminology decision.
+
+### Lesson 12 — Enclitic
+- `main` appendix says `Enclitic = پاشبەستە`; PR changes it to `پاشنووس`.
+- No corresponding explanatory definition or teaching content was changed to justify the new glossary form.
+- The lesson's main subject distinction remains grammatical Subject = `بکەر`; its examples separately distinguish grammatical subject marking from possessive function. This does not justify translating semantic Agent or discourse Topic as the same category.
+
+### Lesson 13 — terminology and approval boundary
+- Lesson 13 remains `internal_cross_lesson_synthesis_no_external_source_mapping`, so it is not a source-verified authority for the disputed terminology.
+- Its key point continues to define Enclitic as `پاشبەستە` and explicitly distinguishes it from Suffix = `پاشگر`.
+- PR appendix adds a crosswalk with `Affix = گیرەک`, `Clitic = لکاو`, `Enclitic = پاشنووس`, and `Proclitic = پێشنووس`; it also records the older form `پاشبەستە` in the body/crosswalk history.
+- The PR runtime still contains both `پاشبەستە` and `پاشنووس` in Lesson 13; it has not established one consistent final label.
+- The PR changes `Affix` from the earlier `ئەفیکس` to `گیرەک` in the new crosswalk while retaining a note that the earlier form existed. This is a crosswalk/editorial change, not a demonstrated owner-approved canonical decision.
+- Lesson 13 keeps the distinction between enclitic and suffix; do not collapse `پاشنووس/پاشبەستە` into `پاشگر`.
+
+### Cross-lesson interpretation
+- The PR changes only the glossary/crosswalk labels in Lessons 11–12, while the teaching definition in Lesson 11 and the teaching explanation in Lesson 13 retain `پاشبەستە`. This is a concrete propagation gap.
+- Lesson 12 uses `بکەر` for grammatical Subject. Preserve the distinction between grammatical Subject, semantic Agent (`ئەنجامدەری کردار`), and discourse Topic; do not mechanically substitute `بابەت` or Agent for Subject.
+- No term was selected or normalized during this audit. These are evidence findings only; no lesson, quiz, status, or runtime data was changed.
