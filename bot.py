@@ -1964,11 +1964,13 @@ async def log_polling_start(application):
 
 
 def main():
-    validate_activated_course_runtime()
-    init_db()
+    # Validate required credentials before any database initialization side effect.
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
+
+    validate_activated_course_runtime()
+    init_db()
     app = Application.builder().token(token).post_init(log_polling_start).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(open_kurdish_months, pattern=r"^months:(sorani|kurmanji|kalhuri|hawrami|laki)$"))
