@@ -10,7 +10,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 
 
 class StartupTokenGateTests(unittest.TestCase):
-    def test_missing_token_stops_before_runtime_validation_and_database_init(self):
+    def test_missing_or_whitespace_token_stops_before_startup_side_effects(self):
         source = (REPOSITORY_ROOT / "bot.py").read_text(encoding="utf-8")
         module = ast.parse(source, filename="bot.py")
         main_node = next(
@@ -32,13 +32,27 @@ class StartupTokenGateTests(unittest.TestCase):
         }
         exec(compile(isolated_module, "bot.py", "exec"), namespace)
 
-        with patch.dict(
-            os.environ,
-            {"TELEGRAM_BOT_TOKEN": "", "BOT_TOKEN": ""},
-            clear=False,
-        ):
-            with self.assertRaisesRegex(RuntimeError, "TELEGRAM_BOT_TOKEN"):
-                namespace["main"]()
+        invalid_configurations = (
+            ("", ""),
+            ("   ", ""),
+            ("", " \t\n"),
+            (" \t ", "  "),
+        )
+        for telegram_token, fallback_token in invalid_configurations:
+            with self.subTest(
+                telegram_token=repr(telegram_token),
+                fallback_token=repr(fallback_token),
+            ):
+                with patch.dict(
+                    os.environ,
+                    {
+                        "TELEGRAM_BOT_TOKEN": telegram_token,
+                        "BOT_TOKEN": fallback_token,
+                    },
+                    clear=False,
+                ):
+                    with self.assertRaisesRegex(RuntimeError, "TELEGRAM_BOT_TOKEN"):
+                        namespace["main"]()
 
         namespace["validate_activated_course_runtime"].assert_not_called()
         namespace["init_db"].assert_not_called()
