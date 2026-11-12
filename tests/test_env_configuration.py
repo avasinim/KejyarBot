@@ -18,6 +18,26 @@ class EnvironmentConfigurationOrderTests(unittest.TestCase):
             "KEJYARBOT_DB_PATH at import time.",
         )
 
+    def test_token_is_validated_before_runtime_validation_and_database_init(self):
+        source_path = Path(__file__).resolve().parents[1] / "bot.py"
+        source = source_path.read_text(encoding="utf-8")
+        main_source = source[source.index("def main():"):]
+
+        token_lookup = main_source.index(
+            'token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")'
+        )
+        missing_token_check = main_source.index("if not token:", token_lookup)
+        runtime_validation = main_source.index("validate_activated_course_runtime()")
+        database_init = main_source.index("init_db()")
+
+        self.assertLess(token_lookup, missing_token_check)
+        self.assertLess(missing_token_check, runtime_validation)
+        self.assertLess(
+            runtime_validation,
+            database_init,
+            "Database initialization must happen only after required token validation.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
