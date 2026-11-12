@@ -112,3 +112,28 @@ The Library checkpoint ZIP `Course4_AppendOnly_Checkpoint_Lessons29-38_2026-11-0
 **Correction/precision:** Lesson 29's patch is about simple and derived infinitives; it does not resolve the runtime Inflection translation conflict. The conflict is visible in the lesson's runtime quiz/content, but this checkpoint package is not its source provenance.
 
 **Current source-access result:** the nested Lesson 29 and Lesson 31 v2 packages do not include the owner-source Markdown. No owner-source lesson text was found in this inspected checkpoint. No canonical terminology decision, lesson edit, quiz edit, status change, or deployment was made.
+
+
+## Runtime baseline comparison: main vs PR head (2026-11-12)
+
+The previously timed-out source retrieval was retried successfully. The exact `course_data/grammar_course4_lessons.json` files were fetched from both `main` and the PR branch and parsed as JSON. This is a direct runtime-data comparison, not a reconstruction from patch archives.
+
+### Lesson 29 — Inflection terminology
+- `main` lesson 29 key point and appendix use `لەچۆنایەتی (Inflection)`.
+- PR-head lesson 29 key point and appendix use `گەردان (Inflection)`.
+- The PR-head quiz still uses `لەچۆنایەتی` in the question/options/explanation for the Derivation-vs-Inflection item. Thus the PR has not fully propagated its new prose/appendix form into the quiz; an internal terminology mismatch remains.
+- The Lesson 29 research note at `docs/COURSE4_LESSON29_DERIVATION_RESEARCH.md` defines the conceptual distinction between Derivation and Inflection but does not choose a Kurdish equivalent. It therefore supports the conceptual distinction, not either Kurdish label.
+- This comparison establishes what each runtime branch currently contains. It does not establish an owner-approved canonical term.
+
+### Lesson 31 — Noun Phrase terminology
+- `main` Lesson 31 key points and appendix use `گروپی ناوی (Noun Phrase)`.
+- PR-head Lesson 31 key points and appendix use `گرێی ناوی (Noun Phrase)`.
+- The PR-head lesson still contains occurrences of `گروپی ناوی` in prose/examples/quiz explanations, so this is not a fully normalized switch. Both forms remain in the PR-head runtime.
+- The Lesson 31 research note at `docs/COURSE4_LESSON31_INFINITIVE_NOMINALIZATION_RESEARCH.md` discusses nominalized infinitives in a noun phrase but does not adjudicate between these Kurdish labels.
+- The owner-source Markdown is still absent from both lesson records (`source_markdown` length 0). The comparison is limited to the structured runtime content and research notes.
+
+### PR readiness recheck
+- GitHub's earlier `mergeable=false` response was transient/stale. A fresh PR metadata read now reports `mergeable=true`; PR #152 remains open and unmerged.
+- The PR head at this check is `6049f5381183a27586bb1dcf8ec31d79bc942665`; base `main` is `7db20f242087e3eb9149e2e788f6c20529870f32`. The branch is 219 commits ahead and 0 behind.
+- All 10 GitHub check runs attached to this exact head are completed with `success`, including Python checks, Course 4 Beta review, review-gate regression, Lesson 47–50 Beta validation, quiz override validation, orthography structure, and Kurdish months.
+- CI and mergeability do not resolve the semantic/source approval gaps. PR remains unmerged; no merge, deployment, Botkeep import, restart, or database operation was performed.
