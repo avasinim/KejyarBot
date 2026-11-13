@@ -94,17 +94,6 @@ def award_arami_assessment(user_id, lesson_id):
         user_id, f"arami_assessment:{lesson_id}", points=20
     )
 
-# Load .env without requiring an extra dependency. Environment variables already
-# set by the host always take precedence.
-ENV_FILE = BASE_DIR / ".env"
-if ENV_FILE.is_file():
-    for raw_line in ENV_FILE.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
 def load_json(filename):
     path = BASE_DIR / filename
     with path.open("r", encoding="utf-8") as file:
@@ -1964,11 +1953,15 @@ async def log_polling_start(application):
 
 
 def main():
+    # Validate required credentials before any database initialization side effect.
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if token is None or not token.strip():
+        token = os.environ.get("BOT_TOKEN")
+    if token is None or not token.strip():
+        raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
+
     validate_activated_course_runtime()
     init_db()
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
-    if not token:
-        raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).post_init(log_polling_start).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(open_kurdish_months, pattern=r"^months:(sorani|kurmanji|kalhuri|hawrami|laki)$"))
