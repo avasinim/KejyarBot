@@ -90,3 +90,46 @@ The previous version of this runbook named `main` as the production source branc
 - GitHub deployment guide: https://botkeep.cloud/docs/github
 - Hosting and backup guidance: https://botkeep.cloud/docs/hosting
 - FAQ (restart, backup, runtime state): https://botkeep.cloud/faq
+
+
+
+---
+
+## Append-only correction and latest checkpoint (2026-11-13 06:40 UTC)
+
+This addendum supersedes earlier statements in this runbook where they conflict with the verified state below. Earlier text is retained for audit history.
+
+### Latest source and CI
+- Latest release-branch / PR #152 head at this checkpoint: `7ee4269f92c71d315d499bd479c90c5979902bed`.
+- Four PR-triggered workflows checked against this exact head completed successfully: Python checks, Course 4 beta review safety, Orthography course structure tests, and Kurdish months tests.
+- PR #152 remains open, unmerged, and mergeable. CI success is not academic approval or production deployment approval.
+- The earlier runbook's references to `6fd5833...` as latest are historical; use the exact current head above for any future source comparison.
+
+### Correct authoritative course numbering
+**Kurdish courses**
+1. Course 1 — Introductory Orthography (ڕێنووسی سەرەتاییی)
+2. Course 2 — Conversation (وتووێژ)
+3. Course 3 — Unified Orthography (ڕێنووسی یەکگرتوو)
+4. Course 4 — Grammar (ڕێزمان)
+
+**Separate Kurmanji Latin courses**
+1. Kurmanji Latin Course 1 — Introductory Orthography
+2. Kurmanji Latin Course 2 — Grammar
+
+The two sequences are separate. Do not label a Kurdish course with a Latin course number or vice versa. The active manifest uses `arami_orthography_foundations` for Kurdish Course 1; the old `orthography_basic` entry is retired/replaced. Kurdish Course 2 is `daily_conversation`; Course 3 is `unified_orthography`; Course 4 is `grammar`. Latin Course 1 is `kurmanji_latin_orthography`; Latin Course 2 is `kurmanji_latin_grammar`.
+
+### Academic review gate — corrected interpretation
+- Source inspection confirms the global gate applies to every active course: official assessments, rewards, and badges remain unavailable unless lesson review status is explicitly approved.
+- Conversation and Unified Orthography adapters default missing review status to `draft_editorial_review`; the Latin runtime assigns that status to both separate Latin course lesson sets.
+- This confirms a policy/documentation mismatch with a nearby source comment, but does **not** prove a code regression or establish that these courses should be automatically approved.
+- Do not weaken the fail-closed gate or mass-change review statuses without an explicit owner policy decision and appropriate academic/source evidence.
+- Course 4 has its separate Beta progression behavior for specifically designated review lessons. Keep Beta completion separate from official assessment/reward records.
+
+### Production and Botkeep boundary remains unchanged
+- No successful Botkeep source sync, restart, or healthy Telegram polling has been verified. The bot must not be described as online.
+- The earlier staging error remains unresolved: `Source staging was interrupted. Existing application files were not changed. Resume or cancel the import.`
+- Do not blindly resume or cancel the interrupted import. Wait for Botkeep support to diagnose staging and provide a fresh Merge preview for the exact latest release head.
+- Preserve `.env`, `.botkeep`, `kejyar.db`, server-only files, and the completed 2026-11-13 backup. Never use Replace files, overwrite the live database, or enable pull-before-start before a successful reviewed manual sync.
+- User clarification remains authoritative: no PDF or audio files are expected in the bot; its teaching material includes instructional text and some images.
+
+This addendum records source inspection and owner clarifications only. It does not change application code, course content, review statuses, database, Botkeep settings, or production runtime.
