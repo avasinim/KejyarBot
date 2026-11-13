@@ -164,3 +164,31 @@ This entry supersedes earlier checkpoint references in this runbook where they n
 - Keep the completed 2026-11-13 backup. Do not merge PR #152, sync, restart, restore, replace files, or enable pull-before-start as part of this checkpoint.
 
 This is an append-only evidence correction. Earlier runbook text remains intact. No application, course, database, Botkeep configuration, or production runtime change was made.
+
+---
+
+## Append-only correction — exact release head and current blocker (2026-11-13 06:51 UTC)
+
+This entry supersedes the 06:45 checkpoint above where it names `958a56ad0ba8349ed29fd38420f9a6ffd7ceb4c9` as the latest release head. That checkpoint remains as historical evidence.
+
+### Exact current repository state
+- Repository: `avasinim/KejyarBot`
+- Branch: `release/main-based-reconciled-2026-11-11`
+- PR #152 and release branch head: `c4b0c147dd02aecba0ee4d1d2a16c373a767d5b3`.
+- PR #152 remains open, unmerged, and reported mergeable. The GitHub review endpoint currently returns no submitted reviews and no inline review comments.
+- Comparing `958a56ad0ba8349ed29fd38420f9a6ffd7ceb4c9` to `c4b0c147dd02aecba0ee4d1d2a16c373a767d5b3` shows exactly one changed file: this runbook, with 31 additions and zero deletions. No application code, lesson/course content, quizzes, academic statuses, database, or runtime files changed in this increment.
+- All four configured workflows on exact head `c4b0c14` completed successfully: Python checks, Course 4 beta review safety, Orthography course structure tests, and Kurdish months tests.
+
+### Provider support state
+- Gmail search of the Botkeep support thread `#a1a7aa05` through 2026-11-13 06:50 UTC found no provider reply later than 2026-11-12 14:00:29 UTC.
+- The owner's latest escalation remains 2026-11-13 06:11:05 UTC.
+- The interrupted staging attempt remains unresolved. No fresh Merge preview or live-workload file comparison has been supplied.
+- Do not send repetitive follow-up messages without new evidence. Do not blindly resume or cancel the interrupted import.
+
+### Required safety boundary
+- Keep PR #152 open and unmerged.
+- Do not import/sync, restart, restore, replace files, alter environment settings, or enable pull-before-start until Botkeep diagnoses staging and provides a fresh exact-head Merge preview plus explicit preservation confirmation for `.env`, `.botkeep`, `kejyar.db`, server-only files, and user data.
+- Keep the completed 2026-11-13 backup and its downloaded copy.
+- CI success and documentation-only changes do not establish academic approval, Botkeep clearance, Telegram polling, or a healthy live bot.
+
+This addendum is append-only operational evidence. No production or application changes were made.
