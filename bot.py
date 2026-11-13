@@ -7,6 +7,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+# Load host configuration before importing database.py, which resolves
+# KEJYARBOT_DB_PATH at module import time.
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
+
 from telegram import (
     Update,
     ReplyKeyboardMarkup,
@@ -59,8 +64,6 @@ from arami_course1_telegram import (
     ACADEMIC_APPROVAL_STATUSES,
 )
 
-BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -643,6 +646,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         first_completion = complete_lesson_with_rewards(user_id, lesson)
     # Acknowledge only after the idempotent database claim has completed.
     await query.answer()
+    # Reconcile the idempotent badge ledger on retries too. If the process
+    # failed after lesson completion but during badge persistence, a repeated
+    # callback must be able to finish the missing badge writes.
+    if not beta_review:
+        check_badges(user_id)
     if beta_review:
         message_text = (
             "🧪 وانەکە بۆ پێشچوونی Beta تۆمار کرا؛ "
@@ -651,7 +659,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else "🧪 ئەم وانەیە پێشتر بۆ پێشچوونی Beta تۆمار کراوە؛ خەڵاتێکی بۆ نییە."
         )
     elif first_completion:
-        check_badges(user_id)
         new_level = get_user_level(user_id)
         message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
         if old_level != new_level:

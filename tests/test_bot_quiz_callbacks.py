@@ -306,6 +306,35 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
 
+    async def test_duplicate_official_completion_reconciles_badges_without_repeating_rewards(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"][0]
+        query = SimpleNamespace(
+            data=f"finish_{lesson}",
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=True),
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+            patch.object(bot, "complete_lesson_with_rewards", return_value=False) as complete,
+            patch.object(bot, "check_badges") as badges,
+            patch.object(bot, "quiz_requires_submission", return_value=False),
+            patch.object(bot, "next_course_lesson", return_value=None),
+            patch.object(bot, "lesson_is_pending_review", return_value=False),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+        ):
+            await bot.finish_lesson(update, context)
+
+        complete.assert_called_once_with(12345, lesson)
+        badges.assert_called_once_with(12345)
+        reply = query.message.reply_text.await_args.args[0]
+        self.assertIn("پێشتر تەواو کراوە", reply)
+        self.assertNotIn("+10 XP", reply)
+        self.assertNotIn("+5 Coin", reply)
+
     async def test_latin_lesson_completion_offers_next_lesson_in_same_course(self):
         for course_id in ("kurmanji_latin_orthography", "kurmanji_latin_grammar"):
             with self.subTest(course_id=course_id):
