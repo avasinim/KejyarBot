@@ -192,3 +192,34 @@ This entry supersedes the 06:45 checkpoint above where it names `958a56ad0ba8349
 - CI success and documentation-only changes do not establish academic approval, Botkeep clearance, Telegram polling, or a healthy live bot.
 
 This addendum is append-only operational evidence. No production or application changes were made.
+
+
+---
+
+## Append-only correction — exact release head, completed CI, and provider hold (2026-11-13 06:52 UTC)
+
+This entry supersedes the 06:51 checkpoint above where it names `c4b0c147dd02aecba0ee4d1d2a16c373a767d5b3` as the latest release head. The earlier checkpoint remains as historical evidence.
+
+### Exact repository state
+- Repository: `avasinim/KejyarBot`
+- Branch: `release/main-based-reconciled-2026-11-11`
+- Exact current branch head: `eb796be1b3b4ee34df05f46ef2869407b7d7fae3`
+- Parent: `c4b0c147dd02aecba0ee4d1d2a16c373a767d5b3`
+- The parent-to-head comparison confirms exactly one changed file: `docs/operations/BOTKEEP_PRODUCTION_UPDATE_RUNBOOK_2026-11-09.md`, 28 additions and zero deletions. This increment contains no application code, course content, quizzes, academic statuses, database, or runtime changes.
+- All four configured PR-triggered workflows on exact head `eb796be1b3b4ee34df05f46ef2869407b7d7fae3` completed successfully: Python checks, Course 4 beta review safety, Orthography course structure tests, and Kurdish months tests.
+- PR #152 remains open and unmerged; GitHub reports it mergeable. Do not merge it as part of this checkpoint.
+
+### Botkeep support state
+- The support thread for incident #a1a7aa05 was re-read at 2026-11-13 06:52 UTC. No provider reply later than 2026-11-12 14:00:29 UTC was present.
+- The owner's escalation dated 2026-11-13 06:11:05 UTC remains the latest message in the thread.
+- Botkeep's prior archive inventory was for older commit `f5142caf`; it is not a fresh Merge preview or live-server comparison for current head `eb796be1`.
+- No current-head Merge preview, verified live-file comparison, or provider diagnosis of interrupted staging has been supplied.
+
+### Safety boundary
+- Keep PR #152 open and unmerged.
+- Do not resume or cancel the interrupted staging operation blindly.
+- Do not sync/import, restart, restore, replace files, alter environment settings, or enable pull-before-start until Botkeep diagnoses the staging issue and supplies a fresh preview for exact head `eb796be1`, with explicit preservation confirmation for `.env`, `.botkeep`, `kejyar.db`, server-only files, and existing user data.
+- Keep the completed 2026-11-13 backup and downloaded copy.
+- Successful CI and this documentation-only checkpoint do not establish Botkeep deployment clearance, Telegram polling, academic approval, or a healthy live bot.
+
+This correction is append-only. Earlier records remain intact. No production or application changes were made.
