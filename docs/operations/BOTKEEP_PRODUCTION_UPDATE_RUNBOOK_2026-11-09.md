@@ -133,3 +133,34 @@ The two sequences are separate. Do not label a Kurdish course with a Latin cours
 - User clarification remains authoritative: no PDF or audio files are expected in the bot; its teaching material includes instructional text and some images.
 
 This addendum records source inspection and owner clarifications only. It does not change application code, course content, review statuses, database, Botkeep settings, or production runtime.
+
+---
+
+## Append-only correction — exact release head and CI result (2026-11-13 06:45 UTC)
+
+This entry supersedes earlier checkpoint references in this runbook where they name `7ee4269...` or `6fd5833...` as the latest release head. Those references remain as historical records.
+
+### Exact current source checkpoint
+- Repository: `avasinim/KejyarBot`
+- Branch: `release/main-based-reconciled-2026-11-11`
+- Exact release branch / PR #152 head: `958a56ad0ba8349ed29fd38420f9a6ffd7ceb4c9`.
+- Compared with parent `7ee4269f92c71d315d499bd479c90c5979902bed`, this head is one commit ahead and changes exactly one file: `docs/operations/BOTKEEP_PRODUCTION_UPDATE_RUNBOOK_2026-11-09.md` (+43 lines, 0 deletions). No application code, course data, quiz, review status, database, or runtime file changed in that final commit.
+- All four GitHub Actions workflows completed successfully on this exact head:
+  - Python checks — run `43380392078`
+  - Course 4 beta review safety — run `43380391946`
+  - Orthography course structure tests — run `43380391879`
+  - Kurdish months tests — run `43380391864`
+- PR #152 was rechecked and remains open, unmerged, and reported mergeable. A verification comment was appended as PR comment `6846202506`.
+
+### What CI does and does not establish
+- The four successful workflows establish that the configured automated checks passed on exact head `958a56a`.
+- They do not constitute academic sign-off, a decision to change the global fail-closed academic review policy, Botkeep import clearance, a successful restart, Telegram polling confirmation, or proof that the bot is online.
+- The global academic review gate remains a confirmed source behavior and policy/documentation mismatch; do not change lesson statuses or weaken the gate without explicit owner policy and source-based academic review.
+
+### Botkeep remains blocked
+- No new Botkeep support reply had arrived by the 2026-11-13 06:45 UTC check; the latest located provider reply remained dated 2026-11-12 14:00:29 UTC.
+- The interrupted source-staging attempt remains unresolved. Do not resume or cancel it blindly.
+- The next safe provider-side prerequisite is a fresh Merge preview for exact head `958a56ad0ba8349ed29fd38420f9a6ffd7ceb4c9`, with a comparison against the live workload and explicit confirmation that `.env`, `.botkeep`, `kejyar.db`, server-only files, and existing user data will be preserved.
+- Keep the completed 2026-11-13 backup. Do not merge PR #152, sync, restart, restore, replace files, or enable pull-before-start as part of this checkpoint.
+
+This is an append-only evidence correction. Earlier runbook text remains intact. No application, course, database, Botkeep configuration, or production runtime change was made.
