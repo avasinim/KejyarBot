@@ -3,8 +3,8 @@ import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-# Railway persistent storage can be mounted at /data and selected explicitly.
-# Local development keeps the historical project-local database by default.
+# A host-mounted persistent directory can be selected explicitly with
+# KEJYARBOT_DB_PATH. The project-local database remains the default.
 _configured_db_path = os.environ.get("KEJYARBOT_DB_PATH")
 if _configured_db_path is not None and not _configured_db_path.strip():
     raise RuntimeError("KEJYARBOT_DB_PATH is set but empty.")
