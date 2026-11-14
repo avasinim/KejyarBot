@@ -1,5 +1,6 @@
 """Telegram delivery for Arami Course 1 Lesson 5; isolated from Lesson 1."""
 import logging
+from lesson_image_delivery import send_shared_lesson_image
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from arami_course1_runtime import load_arami_lesson5_interactions, load_arami_lesson5_source
 from arami_course1_telegram import load_manifest, _send_source, lesson_is_academically_approved
@@ -65,6 +66,9 @@ async def callback(update, context, base_dir, can_open=None, award_assessment=No
             query.message,
             f"وانەی ٥ — {lesson_record.get('title', 'پیتەکان و هاوتای لاتینی')}",
             source,
+        )
+        await send_shared_lesson_image(
+            query.message, "arami_orthography_foundations", lesson_record["id"], base_dir=base_dir
         )
         await query.message.reply_text(
             "⭐ کۆتایی وانەی ٥",

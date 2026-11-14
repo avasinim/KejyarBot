@@ -76,8 +76,13 @@ class AramiLesson5TelegramTests(unittest.IsolatedAsyncioTestCase):
         with patch(
             "arami_lesson5_telegram.load_arami_lesson5_source",
             return_value="# وانەی ٥\n\nدەقی سەرچاوەی وانەی پێنج.",
-        ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest):
+        ), patch("arami_lesson5_telegram.load_manifest", return_value=manifest), patch(
+            "arami_lesson5_telegram.send_shared_lesson_image", new_callable=AsyncMock, return_value=True
+        ) as send_image:
             await callback(update, SimpleNamespace(user_data={}), "/unused", can_take_assessment=lambda user_id, lesson_id: True, can_open=lambda user_id, lesson_id: True)
+        send_image.assert_awaited_once_with(
+            query.message, "arami_orthography_foundations", "arami_course1_lesson_05", base_dir="/unused"
+        )
         query.message.reply_voice.assert_not_awaited()
         self.assertGreaterEqual(query.message.reply_text.await_count, 3)
         first_call = query.message.reply_text.await_args_list[0]
