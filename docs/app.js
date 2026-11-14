@@ -194,7 +194,21 @@
     }
   }
 
+  function formatStatus(status) {
+    if (status === "draft_editorial_review" || status === "draft_for_review") return "ڕەشنووسی پێداچوونەوە";
+    if (status === "scientific_review_complete_with_qualified_notes") return "پشکنینی زانستی تەواوە، بە تێبینی";
+    if (status === "internal_cross_lesson_synthesis_no_external_source_mapping") return "پێداچوونەوەی ناوخۆیی";
+    if (status === "owner_review_pending_expanded_draft") return "چاوەڕوانی پێداچوونەوەی خاوەندار";
+    if (status === "source_review_pending") return "چاوەڕوانی پێداچوونەوەی سەرچاوە";
+    if (status.includes("source_received")) return "سەرچاوە وەرگیراو و پارێزراو";
+    return status;
+  }
+
   function renderStructured(parent, lesson, courseId) {
+    if (courseId === "grammar" && lesson.source_markdown) {
+      renderMarkdown(parent, lesson.source_markdown);
+      return;
+    }
     addSection(parent, "🎯 ئامانج", lesson.objective);
     if (lesson.dialogue) {
       addText(parent, "h2", "🗣️ گفتوگۆ");
@@ -340,12 +354,12 @@
       } else if (course.id === "daily_conversation") {
         lessons = dailyLessons.map(item => ({
           id: "daily_conversation_" + String(item.number).padStart(2, "0"),
-          number: item.number, title: item.title, type: "structured", source: item
+          number: item.number, title: item.title, status: item.review_status, type: "structured", source: item
         }));
       } else if (course.id === "unified_orthography") {
         lessons = unified.lessons.map(item => ({
           id: "unified_orthography_" + String(item.number).padStart(2, "0"),
-          number: item.number, title: item.title, type: "structured", source: item
+          number: item.number, title: item.title, status: item.review_status, type: "structured", source: item
         }));
       } else if (course.id === "grammar") {
         lessons = grammar.lessons.map(item => {
@@ -353,7 +367,7 @@
             const replacement = overrideMap.get(item.id + ":" + index);
             return replacement || question;
           });
-          return { id: item.id, number: item.number, title: item.title, type: "structured", source: { ...item, quiz } };
+          return { id: item.id, number: item.number, title: item.title, status: item.review_status, type: "structured", source: { ...item, quiz } };
         });
       } else if (course.id === "kurmanji_latin_orthography") {
         lessons = latin1Lessons.map(item => ({ ...item, type: "markdown" }));
@@ -438,7 +452,7 @@
     addText(lessonContentEl, "h1", selectedLesson.title);
     const meta = document.createElement("div"); meta.className = "lesson-meta";
     addText(meta, "span", "وانەی " + selectedLesson.number, "meta-pill");
-    if (selectedLesson.status) addText(meta, "span", "دۆخ: " + selectedLesson.status, "meta-pill");
+    if (selectedLesson.status) addText(meta, "span", "دۆخ: " + formatStatus(selectedLesson.status), "meta-pill");
     lessonContentEl.appendChild(meta);
     addText(lessonContentEl, "p", "ناوەڕۆک بار دەکرێت...", "loading");
     try {
