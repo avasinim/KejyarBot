@@ -25,7 +25,7 @@ class LaunchReadinessMatrixTests(unittest.TestCase):
             )),
         )
 
-    def test_exactly_thirty_lessons_are_academically_approved(self):
+    def test_exactly_twenty_seven_lessons_are_academically_approved(self):
         active_ids = [
             lesson_id
             for course in bot.COURSES
@@ -36,12 +36,17 @@ class LaunchReadinessMatrixTests(unittest.TestCase):
         review_only = [lesson_id for lesson_id in active_ids if bot.lesson_is_beta_review(lesson_id)]
 
         self.assertEqual(len(active_ids), 203)
-        self.assertEqual(len(approved), 30)
-        self.assertEqual(len(review_only), 173)
+        self.assertEqual(len(approved), 27)
+        self.assertEqual(len(review_only), 176)
         self.assertEqual(
             sum(not bot.lesson_is_beta_review(lesson_id)
                 for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]),
-            30,
+            27,
+        )
+        self.assertEqual(
+            sum(bot.lesson_is_beta_review(lesson_id)
+                for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]),
+            23,
         )
 
     def test_course4_lesson13_remains_review_only_and_quiz_locked(self):

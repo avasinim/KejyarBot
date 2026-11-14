@@ -149,7 +149,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
         order = bot.COURSE_LESSON_ORDER["grammar"]
         lesson_32 = order[31]
         lesson_33 = order[32]
-        official_prefix = order[:31]
+        official_prefix = order[:28]
+        beta_prefix = order[28:31]
         approved_record = {
             **bot.LESSON_DATA[lesson_32],
             "review_status": "scientific_review_complete_with_qualified_notes",
@@ -157,7 +158,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
         with (
             patch.object(bot, "get_completed_lessons", return_value=official_prefix),
-            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[*beta_prefix, lesson_32]),
             patch.dict(bot.LESSON_DATA, {lesson_32: approved_record}),
         ):
             # The old Beta record must not stand in for official completion
@@ -432,9 +433,14 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             bot.LESSON_DATA[lesson_id]
             for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]
         ]
-        self.assertEqual(sum(x.get("review_status") == "scientific_review_complete_with_qualified_notes" for x in course4), 30)
+        self.assertEqual(sum(x.get("review_status") == "scientific_review_complete_with_qualified_notes" for x in course4), 27)
+        self.assertEqual(sum(x.get("review_status") == "independent_academic_research_owner_requested_lesson" for x in course4), 3)
         self.assertEqual(sum(x.get("review_status") == "internal_cross_lesson_synthesis_no_external_source_mapping" for x in course4), 1)
         self.assertEqual(sum(x.get("review_status") == "owner_review_pending_expanded_draft" for x in course4), 19)
+        for lesson_id in ("grammar_29", "grammar_30", "grammar_31"):
+            self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+            self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+            self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
 
         # Unknown and missing statuses must never silently become official.
         approved_record = dict(bot.LESSON_DATA["grammar_13"])

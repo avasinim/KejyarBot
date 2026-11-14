@@ -96,6 +96,20 @@ class Course4GrammarRuntimeTests(unittest.TestCase):
         for lesson_id, expected_status in expected_review_status.items():
             self.assertEqual(bot.LESSON_DATA[lesson_id]["review_status"], expected_status)
 
+    def test_curriculum_plan_and_runtime_review_statuses_match(self):
+        plan = json.loads((ROOT / "curriculum" / "grammar_course4_plan.json").read_text(encoding="utf-8"))
+        source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+        plan_statuses = {lesson["id"]: lesson["status"] for lesson in plan["lessons"]}
+        for lesson in source["lessons"]:
+            with self.subTest(lesson=lesson["id"]):
+                self.assertEqual(lesson["review_status"], plan_statuses[lesson["id"]])
+
+        for lesson_id in ("grammar_29", "grammar_30", "grammar_31"):
+            with self.subTest(lesson=lesson_id):
+                self.assertTrue(bot.lesson_is_pending_review(lesson_id))
+                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+                self.assertIsNotNone(bot.lesson_keyboard(lesson_id))
 
     def test_lessons_1_to_5_scientific_review_corrections(self):
         lessons = {item["id"]: item for item in json.loads(
@@ -687,8 +701,8 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         official_reward.assert_not_called()
 
     async def test_approved_lesson_keeps_its_completion_button(self):
-        self.assertFalse(bot.lesson_is_pending_review("grammar_31"))
-        self.assertIsNotNone(bot.lesson_keyboard("grammar_31"))
+        self.assertFalse(bot.lesson_is_pending_review("grammar_28"))
+        self.assertIsNotNone(bot.lesson_keyboard("grammar_28"))
 
 
 class Course4GrammarLessons14To17Tests(unittest.TestCase):
@@ -736,9 +750,13 @@ class Course4TerminologyConsistencyTests(unittest.TestCase):
                     "internal_cross_lesson_synthesis_no_external_source_mapping"
                     if lesson_number == 13
                     else (
-                        "owner_review_pending_expanded_draft"
-                        if lesson_number >= 32
-                        else "scientific_review_complete_with_qualified_notes"
+                        "independent_academic_research_owner_requested_lesson"
+                        if lesson_number in {29, 30, 31}
+                        else (
+                            "owner_review_pending_expanded_draft"
+                            if lesson_number >= 32
+                            else "scientific_review_complete_with_qualified_notes"
+                        )
                     )
                 )
                 self.assertEqual(lesson["review_status"], expected_status)
@@ -1353,7 +1371,7 @@ class Course4ComplexPredicateLesson30Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_30")
         self.assertEqual(lesson["number"], 30)
-        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(lesson["review_status"], "independent_academic_research_owner_requested_lesson")
         self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
@@ -1416,7 +1434,7 @@ class Course4NominalizedInfinitiveLesson31Tests(unittest.TestCase):
         source = json.loads((ROOT / "course_data" / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
         lesson = next(item for item in source["lessons"] if item["id"] == "grammar_31")
         self.assertEqual(lesson["number"], 31)
-        self.assertEqual(lesson["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(lesson["review_status"], "independent_academic_research_owner_requested_lesson")
         self.assertEqual(len(lesson["key_points"]), 14)
         self.assertEqual(len(lesson["examples"]), 8)
         self.assertEqual(len(lesson["activities"]), 3)
@@ -1594,8 +1612,11 @@ class Course4RootStemCrosswalkTests(unittest.TestCase):
         self.assertIn("کەرەمی تەنها crosswalkی زاراوەیی", appendix)
 
     def test_lesson29_quiz_source_and_review_status_are_unchanged(self):
-        self.assertEqual(self.lessons[28]["review_status"], "scientific_review_complete_with_qualified_notes")
+        self.assertEqual(self.lessons[28]["review_status"], "independent_academic_research_owner_requested_lesson")
         self.assertEqual(len(self.lessons[28]["quiz"]), 8)
+        self.assertTrue(bot.lesson_is_pending_review("grammar_29"))
+        self.assertTrue(bot.lesson_is_beta_review("grammar_29"))
+        self.assertFalse(bot.lesson_quiz_is_available("grammar_29"))
 
 
 class Course4DraftSourceMarkdownRuntimeTests(unittest.TestCase):
