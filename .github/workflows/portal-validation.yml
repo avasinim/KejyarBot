@@ -1,0 +1,49 @@
+name: Validate free learning portal
+
+on:
+  push:
+    branches:
+      - web/free-kurdish-learning-portal-2026-11-14
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: node --check docs/app.js
+      - name: Check portal assets and lesson inventory
+        run: |
+          test -s docs/index.html
+          test -s docs/style.css
+          test -s docs/app.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("course_data")
+          courses = json.loads(Path("courses.json").read_text(encoding="utf-8"))
+          active = [c for c in courses["courses"] if c.get("status") == "active"]
+          assert len(active) == 6, len(active)
+          arami = json.loads((root / "arami_course1_manifest.json").read_text(encoding="utf-8"))
+          daily = sum(len(json.loads((root / name).read_text(encoding="utf-8"))["lessons"]) for name in [
+              "daily_conversation_lessons_01_06.json",
+              "daily_conversation_lessons_07_30.json",
+              "daily_conversation_lessons_31_36.json",
+              "daily_conversation_lessons_37_42.json",
+          ])
+          unified = json.loads((root / "unified_orthography_lessons_01_66.json").read_text(encoding="utf-8"))
+          grammar = json.loads((root / "grammar_course4_lessons.json").read_text(encoding="utf-8"))
+          latin1 = (root / "latin_course_1_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+          latin2 = (root / "latin_course_2_source_aligned_lessons_01_12.md").read_text(encoding="utf-8")
+          import re
+          latin_count = sum(len(re.findall(r"^## Ders\s+\d+\s*[:—-]", source, re.M)) for source in (latin1, latin2))
+          total = len(arami["lessons"]) + daily + len(unified["lessons"]) + len(grammar["lessons"]) + latin_count
+          assert (len(arami["lessons"]), daily, len(unified["lessons"]), len(grammar["lessons"]), latin_count, total) == (21, 42, 66, 50, 24, 203)
+          print(f"Verified 6 active courses and {total} lessons.")
+          PY
