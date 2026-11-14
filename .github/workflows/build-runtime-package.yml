@@ -1,0 +1,45 @@
+name: Build KejyarBot runtime package
+on:
+  push:
+    branches: ["release/main-based-reconciled-2026-11-11"]
+    paths:
+      - ".github/workflows/build-runtime-package.yml"
+permissions:
+  contents: read
+  actions: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 53393395224ffb6f676c660d51e0e6f7cdda425c
+      - name: Build allowlisted runtime archive
+        run: |
+          cat > /tmp/build_package.py <<'PY'
+          import hashlib, json, pathlib, zipfile
+          root=pathlib.Path.cwd()
+          paths=["arami_course1_runtime.py","arami_course1_telegram.py","arami_lesson1_interaction.py","arami_lesson1_telegram.py","arami_lesson5_telegram.py","assets/course1_infographics/lesson_01.png","assets/course1_infographics/lesson_02.png","assets/course1_infographics/lesson_03.png","assets/course1_infographics/lesson_04.png","assets/course1_infographics/lesson_06.png","assets/course1_infographics/lesson_07.png","assets/lessons/kejyar_lesson5_kurdish_letters_v2.png","bot.py","course_data/arami_course1_lesson_01_content.json","course_data/arami_course1_lesson_01_interactions.json","course_data/arami_course1_lesson_02_vowels_source.md","course_data/arami_course1_lesson_03_vowel_rules_source.md","course_data/arami_course1_lesson_04_source.md","course_data/arami_course1_lesson_05_interactions.json","course_data/arami_course1_lesson_05_source.md","course_data/arami_course1_lesson_07_source.md","course_data/arami_course1_lesson_08_t_z_combined_source.md","course_data/arami_course1_lesson_09_alef_aa_source.md","course_data/arami_course1_lesson_10_hamza_source.md","course_data/arami_course1_lesson_11_vowels_bore_sara_zhera_source.md","course_data/arami_course1_lesson_12_y_source.md","course_data/arami_course1_lesson_13_w_source.md","course_data/arami_course1_lesson_14_bizroke_hishu_source.md","course_data/arami_course1_lesson_15_l_ll_source.md","course_data/arami_course1_lesson_16_r_rr_source.md","course_data/arami_course1_lesson_16_v_source.md","course_data/arami_course1_lesson_17_he_e_source.md","course_data/arami_course1_lesson_18_k_g_mukriani_source.md","course_data/arami_course1_lesson_19_cluster_source.md","course_data/arami_course1_lesson_20_syllable_cluster_source.md","course_data/arami_course1_manifest.json","course_data/arami_course1_received_lesson_06_source.md","course_data/arami_course1_source_quiz_banks.json","course_data/daily_conversation_lessons_01_06.json","course_data/daily_conversation_lessons_07_30.json","course_data/daily_conversation_lessons_31_36.json","course_data/daily_conversation_lessons_37_42.json","course_data/grammar_course4_lessons.json","course_data/grammar_course4_quiz_overrides.json","course_data/latin_course_1_quiz_answer_key_draft.md","course_data/latin_course_1_source_aligned_lessons_01_12.md","course_data/latin_course_2_quiz_answer_key_draft.md","course_data/latin_course_2_source_aligned_lessons_01_12.md","course_data/latin_courses_manifest_draft.json","course_data/unified_orthography_lessons_01_66.json","course_lesson_adapters.py","course_quiz_review.py","course_runtime.py","courses.json","daily_chat.py","database.py","kurdish_months.py","latin_course_runtime.py","lesson_image_delivery.py","quiz_option_order.py","requirements.txt"]
+          out=root/'KejyarBot-runtime-5339339.zip'
+          missing=[p for p in paths if not (root/p).is_file()]
+          if missing: raise SystemExit('Missing: '+repr(missing))
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for p in paths: z.write(root/p,p)
+          with zipfile.ZipFile(out) as z:
+              names=z.namelist()
+              assert len(names)==len(paths) and set(names)==set(paths)
+              forbidden=[n for n in names if n.endswith(('.pdf','.mp3','.wav','.ogg','.jpg','.jpeg','.svg')) or n=='.env' or 'kejyar.db' in n]
+              assert not forbidden, forbidden
+          print(json.dumps({'archive':out.name,'files':len(names),'bytes':out.stat().st_size,'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'paths':names},ensure_ascii=False))
+          
+          PY
+          python /tmp/build_package.py > package-report.json
+          cat package-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KejyarBot-runtime-5339339
+          path: |
+            KejyarBot-runtime-5339339.zip
+            package-report.json
+          if-no-files-found: error
+          retention-days: 7
