@@ -429,6 +429,7 @@
     track.appendChild(fill); row.appendChild(track); addText(row, "span", percent + "%");
     courseOverviewEl.appendChild(row);
     if (selectedCourse.id === "grammar") addText(courseOverviewEl, "p", "هەندێک وانە لە دۆخی پێداچوونەوەی Beta دان؛ کویز و پەسەندکردنی فەرمی بەپێی دۆخی وانە جیاوازن.", "status-note");
+    else if (selectedCourse.id === "daily_conversation") addText(courseOverviewEl, "p", "وانەکانی ئەم کۆرسە لە دۆخی ڕەشنووسی پێداچوونەوەی دەق دان.", "status-note");
     else if (selectedCourse.id === "unified_orthography") addText(courseOverviewEl, "p", "ناوەڕۆکی ئەم کۆرسە لە دۆخی پێداچوونەوەی دەق و فێرکارییە.", "status-note");
     else if (selectedCourse.id.startsWith("kurmanji_latin_")) addText(courseOverviewEl, "p", "ئەم کۆرسە وەک ڕەشنووسی سەرچاوەیی نیشان دەدرێت؛ پێویستی بە پێداچوونەوەی کۆتایی هەیە.", "status-note");
     else if (selectedCourse.id === "arami_orthography_foundations") addText(courseOverviewEl, "p", "سەرچاوەی وانەکان پارێزراوە؛ دۆخی پێداچوونەوەی هەر وانە لە تۆماری سەرچاوەدا هەیە.", "status-note");
@@ -502,7 +503,7 @@
     try {
       courseListEl.innerHTML = '<p class="muted">کۆرسەکان بار دەکرێن...</p>';
       courseData = await loadAllData();
-      courses = Array.from(courseData.values()).sort((a, b) => a.order - b.order);
+      courses = Array.from(courseData.values());
       $("#course-count").textContent = courses.length;
       renderCourseList();
       if (courses.length) selectCourse(courses[0].id);
