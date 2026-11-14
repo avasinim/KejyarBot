@@ -64,7 +64,7 @@ class LaunchReadinessMatrixTests(unittest.TestCase):
             for lesson_id in bot.COURSE_LESSON_ORDER[course["id"]]
             if bot.lesson_is_beta_review(lesson_id)
         ]
-        self.assertEqual(len(review_only), 173)
+        self.assertEqual(len(review_only), 176)
         for lesson_id in review_only:
             with self.subTest(lesson_id=lesson_id):
                 self.assertFalse(bot.lesson_quiz_is_available(lesson_id))

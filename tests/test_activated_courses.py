@@ -167,7 +167,7 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
         with (
             patch.object(bot, "get_completed_lessons", return_value=official_prefix),
-            patch.object(bot, "get_completed_beta_lessons", return_value=[lesson_32]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[*beta_prefix, lesson_32]),
         ):
             # While lesson 32 is still an eligible Beta draft, its separate
             # Beta completion may continue the Beta review sequence.
