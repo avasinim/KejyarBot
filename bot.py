@@ -5,6 +5,13 @@ import os
 import re
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+# Load host configuration before importing database.py, which resolves
+# KEJYARBOT_DB_PATH at module import time.
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
+
 from telegram import (
     Update,
     ReplyKeyboardMarkup,
@@ -38,6 +45,7 @@ from course_runtime import can_open_lesson, visible_course_lessons, is_beta_revi
 from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from lesson_image_delivery import send_shared_lesson_image
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
@@ -53,29 +61,39 @@ from arami_course1_telegram import (
     course_menu_keyboard as arami_course1_menu_keyboard,
     load_manifest as load_arami_course1_manifest,
     load_question_banks as load_arami_course1_question_banks,
+    lesson_is_academically_approved,
+    ACADEMIC_APPROVAL_STATUSES,
 )
 
-BASE_DIR = Path(__file__).resolve().parent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+def can_take_arami_assessment(user_id, lesson_id):
+    """Fail closed: official assessment requires explicit academic approval."""
+    if (
+        LESSON_COURSE.get(lesson_id) != "arami_orthography_foundations"
+        or lesson_is_beta_review(lesson_id)
+    ):
+        return False
+    try:
+        manifest = load_arami_course1_manifest(BASE_DIR)
+        lesson_record = next(
+            item for item in manifest["lessons"] if item.get("id") == lesson_id
+        )
+    except (OSError, ValueError, KeyError, TypeError, StopIteration):
+        logger.exception("Could not verify Arami academic approval for %s", lesson_id)
+        return False
+    return lesson_is_academically_approved(lesson_record)
+
+
 def award_arami_assessment(user_id, lesson_id):
-    """Grant 20 XP once for a Course 1 assessment, never for practice or retries."""
+    """Grant XP only for a registered, academically approved Arami lesson."""
+    if not can_take_arami_assessment(user_id, lesson_id):
+        return False
     return complete_quiz_with_rewards(
         user_id, f"arami_assessment:{lesson_id}", points=20
     )
-
-# Load .env without requiring an extra dependency. Environment variables already
-# set by the host always take precedence.
-ENV_FILE = BASE_DIR / ".env"
-if ENV_FILE.is_file():
-    for raw_line in ENV_FILE.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 def load_json(filename):
     path = BASE_DIR / filename
@@ -153,6 +171,75 @@ GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
 GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
     GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
 )
+# Lessons 47–50 are preserved as complete Markdown source records rather
+# than structured section fields. Render those source drafts for Beta reading;
+# their academic review status still blocks official quizzes and rewards.
+for _raw_course4_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
+    _number = _raw_course4_lesson.get("number")
+    if _number not in (47, 48, 49, 50):
+        continue
+    _lesson_id = f"grammar_{_number:02d}"
+    _source_markdown = _raw_course4_lesson.get("source_markdown")
+    if _lesson_id not in GRAMMAR_COURSE4_LESSONS:
+        raise RuntimeError(f"Missing Course 4 runtime record for source draft {_lesson_id}")
+    if not isinstance(_source_markdown, str) or not _source_markdown.strip():
+        raise RuntimeError(f"Missing preserved Markdown source for Beta lesson {_lesson_id}")
+    GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
+        _source_markdown
+    )
+# Append-only quiz corrections: the authored source bank remains untouched.
+# Each override carries an exact original snapshot; mismatches fail closed.
+GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE = load_json("course_data/grammar_course4_quiz_overrides.json")
+GRAMMAR_COURSE4_QUIZ_OVERRIDES = GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE.get("overrides", [])
+_seen_course4_quiz_overrides = set()
+_course4_raw_by_id = {
+    lesson.get("id"): lesson for lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", [])
+}
+for _override in GRAMMAR_COURSE4_QUIZ_OVERRIDES:
+    _lesson_id = _override.get("lesson_id")
+    _index = _override.get("question_index")
+    _snapshot = _override.get("original_snapshot")
+    _replacement = _override.get("replacement")
+    _key = (_lesson_id, _index)
+    if _key in _seen_course4_quiz_overrides:
+        raise ValueError(f"Duplicate Course 4 quiz override: {_key}")
+    _seen_course4_quiz_overrides.add(_key)
+    _raw_lesson = _course4_raw_by_id.get(_lesson_id)
+    if (
+        not isinstance(_index, int)
+        or isinstance(_index, bool)
+        or _index < 0
+        or _raw_lesson is None
+        or not isinstance(_snapshot, dict)
+        or not isinstance(_replacement, dict)
+        or _index >= len(_raw_lesson.get("quiz", []))
+        or _raw_lesson["quiz"][_index] != _snapshot
+        or _lesson_id not in GRAMMAR_COURSE4_QUIZZES
+        or _index >= len(GRAMMAR_COURSE4_QUIZZES[_lesson_id])
+    ):
+        raise ValueError(f"Course 4 quiz override source mismatch: {_key}")
+    _options = _replacement.get("options")
+    _answer_index = _replacement.get("answer")
+    if (
+        not isinstance(_replacement.get("q"), str)
+        or not _replacement["q"].strip()
+        or not isinstance(_options, list)
+        or len(_options) != 4
+        or any(not isinstance(_option, str) or not _option.strip() for _option in _options)
+        or len(_options) != len(set(_options))
+        or not isinstance(_answer_index, int)
+        or isinstance(_answer_index, bool)
+        or not 0 <= _answer_index < len(_options)
+        or not isinstance(_replacement.get("explanation"), str)
+        or not _replacement["explanation"].strip()
+    ):
+        raise ValueError(f"Invalid Course 4 quiz override replacement: {_key}")
+    GRAMMAR_COURSE4_QUIZZES[_lesson_id][_index] = {
+        "question": _replacement["q"],
+        "options": _options,
+        "answer": _options[_answer_index],
+        "explanation": _replacement["explanation"],
+    }
 # Course 4 expanded review drafts retain their authored Markdown as the display source.
 # Render it with the same table/heading-aware formatter used by the other lesson sources;
 # the structured fields remain available for quiz and review metadata.
@@ -239,6 +326,16 @@ def course_is_active(course_id):
     return bool(course and course.get("status") == "active")
 
 
+# Every active course must carry an explicit academic approval status before
+# official assessments, rewards, or badges are enabled. New active courses
+# inherit this fail-closed rule automatically.
+ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset(
+    course.get("id")
+    for course in COURSES
+    if course.get("status") == "active" and isinstance(course.get("id"), str)
+)
+
+
 LATIN_COURSE_IDS = {
     "kurmanji_latin_orthography",
     "kurmanji_latin_grammar",
@@ -282,7 +379,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 46}
+    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 50}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")
@@ -357,7 +454,7 @@ MENU = ReplyKeyboardMarkup(
     [
         ["📘 کۆرسەکان", "🔎 گەڕانی وانە"],
         ["📚 وانەکان", "ڕێنووسی لاتینی کوردیی"],
-        ["📕 ڕێنووسی سەرەتاییی کوردی", "💬 گفتوگۆی ڕۆژانە"],
+        ["📕 ڕێنووسی سەرەتاییی کوردیی", "💬 گفتوگۆی ڕۆژانە"],
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"],
         ["🎁 سەنوقی خەڵات", "🗓️ مانگەکانی ساڵ لەناو کورداندا"],
@@ -372,8 +469,14 @@ def can_open(user_id, lesson):
     if course_id is None or not course_is_active(course_id):
         return False
     completed = set(get_completed_lessons(user_id))
-    if course_id == "grammar":
-        completed.update(get_completed_beta_lessons(user_id))
+    # Beta/review progress is separate from official completion for every
+    # course. It unlocks only lessons that are still explicitly in review;
+    # once approved, old beta records cannot count as official completion.
+    completed.update(
+        beta_lesson
+        for beta_lesson in get_completed_beta_lessons(user_id)
+        if lesson_is_beta_review(beta_lesson)
+    )
     order = COURSE_LESSON_ORDER.get(course_id, [])
     # Every course follows one strict sequence. A stale/non-contiguous progress
     # record must never unlock a later lesson while any earlier lesson is missing.
@@ -418,17 +521,43 @@ def check_badges(user_id):
                 break
             add_badge(user_id, f"🏅 {title} — وانەی {number}")
 
-def lesson_is_pending_review(lesson):
-    return (
-        LESSON_DATA.get(lesson, {}).get("review_status")
-        == "owner_review_pending_expanded_draft"
+def _arami_lesson_requires_review(lesson):
+    if LESSON_COURSE.get(lesson) != "arami_orthography_foundations":
+        return False
+    record = next(
+        (item for item in ARMI_MANIFEST.get("lessons", []) if item.get("id") == lesson),
+        None,
     )
+    if record is None:
+        return True
+    # No Arami lesson is promoted to official rewards until its manifest
+    # carries an explicit academic approval state. Source receipt,
+    # immutability, and interaction wiring alone are not academic approval.
+    return not lesson_is_academically_approved(record)
+
+
+def _lesson_requires_academic_approval(lesson):
+    """Fail closed for every active course unless its review status is explicitly approved."""
+    if _arami_lesson_requires_review(lesson):
+        return True
+    course_id = LESSON_COURSE.get(lesson)
+    if course_id not in ACADEMIC_REVIEW_REQUIRED_COURSE_IDS:
+        return False
+    record = LESSON_DATA.get(lesson)
+    if not isinstance(record, dict):
+        return True
+    return record.get("review_status") not in ACADEMIC_APPROVAL_STATUSES
+
+
+def lesson_is_pending_review(lesson):
+    return _lesson_requires_academic_approval(lesson)
 
 
 def lesson_is_beta_review(lesson):
-    return is_beta_review_lesson(
-        LESSON_COURSE.get(lesson), lesson, LESSON_DATA.get(lesson, {})
-    )
+    if _lesson_requires_academic_approval(lesson):
+        return True
+    record = LESSON_DATA.get(lesson, {})
+    return is_beta_review_lesson(LESSON_COURSE.get(lesson), lesson, record)
 
 
 def lesson_quiz_is_available(lesson):
@@ -436,7 +565,7 @@ def lesson_quiz_is_available(lesson):
 
 
 def lesson_keyboard(lesson):
-    # Course 4 review drafts may advance beta progress, but never earn rewards.
+    # Review drafts may advance only the separate beta ledger, never rewards.
     if lesson_is_pending_review(lesson) and not lesson_is_beta_review(lesson):
         return None
     return InlineKeyboardMarkup([[
@@ -507,6 +636,11 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         first_completion = complete_lesson_with_rewards(user_id, lesson)
     # Acknowledge only after the idempotent database claim has completed.
     await query.answer()
+    # Reconcile the idempotent badge ledger on retries too. If the process
+    # failed after lesson completion but during badge persistence, a repeated
+    # callback must be able to finish the missing badge writes.
+    if not beta_review:
+        check_badges(user_id)
     if beta_review:
         message_text = (
             "🧪 وانەکە بۆ پێشچوونی Beta تۆمار کرا؛ "
@@ -515,7 +649,6 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else "🧪 ئەم وانەیە پێشتر بۆ پێشچوونی Beta تۆمار کراوە؛ خەڵاتێکی بۆ نییە."
         )
     elif first_completion:
-        check_badges(user_id)
         new_level = get_user_level(user_id)
         message_text = "✅ وانەکە تەواو بوو!\n\n🔥 +10 XP\n🪙 +5 Coin\n🎁 +1 سەنوقی خەڵات"
         if old_level != new_level:
@@ -560,6 +693,15 @@ async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text(
             message_text + f"\n\n🔓 وانەی دواتر ئامادەیە: {next_title}",
             reply_markup=keyboard,
+        )
+    elif next_lesson is None and beta_review:
+        # Beta completion takes precedence over course-specific official
+        # completion flows, including Arami's final assessment button.
+        await query.message.reply_text(
+            message_text
+            + "\n\n🧪 ڕێڕەوی تاقیکاریی Beta تەواو بوو. "
+            + "وانەکان هێشتا چاوەڕوانی پێداچوونەوە و پەسەندکردنی ئەکادیمین؛ "
+            + "ئەمە بە مانای تەواوبوونی فەرمی کۆرس نییە."
         )
     elif next_lesson is None and LESSON_COURSE.get(lesson) == "arami_orthography_foundations":
         final_number = int(lesson.rsplit("_", 1)[1])
@@ -619,7 +761,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     user_id = query.from_user.id
     suffix = query.data.removeprefix("quiz_").removesuffix("_start")
-    if suffix.isdigit():
+    if suffix.isdecimal():
         lesson = f"وانە_{suffix}"
         if lesson not in ORDER:
             await query.answer()
@@ -718,7 +860,7 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await query.answer()
         return
     raw_index = query.data.removeprefix("select_answer_")
-    if not raw_index.isdigit():
+    if not raw_index.isdecimal():
         await query.answer()
         return
     choice_index = int(raw_index)
@@ -766,6 +908,12 @@ async def quiz_answer(
     if not quiz:
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
+        return
+    active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
+    if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
+        await query.answer()
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
         return
     # Claim the answer synchronously before acknowledging the callback. Telegram
     # can deliver duplicate submit callbacks while query.answer() is awaiting;
@@ -828,7 +976,7 @@ async def quiz_answer(
         choice_index = selected_index
     else:
         raw_index = query.data.removeprefix("answer_")
-        if not raw_index.isdigit():
+        if not raw_index.isdecimal():
             await query.answer()
             return
         choice_index = int(raw_index)
@@ -865,6 +1013,12 @@ async def quiz_answer(
 
         lesson = quiz["lesson"]
         earned = quiz["score"]
+        # Revalidate immediately before the reward ledger write. A quiz session
+        # opened before a lesson became pending must never award stale rewards.
+        if not lesson_quiz_is_available(lesson):
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
+            return
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
             f"🎉 تاقیکردنەوە تەواو بوو!\n"
@@ -1052,6 +1206,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1067,6 +1222,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 COURSE_MENU_PAGE_SIZE = 12
 
@@ -1078,22 +1234,29 @@ def course_menu_keyboard(course_id, user_id, page=0):
     if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < page_count:
         raise ValueError("invalid course menu page")
     completed = set(get_completed_lessons(user_id))
-    beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
+    beta_completed = set(get_completed_beta_lessons(user_id))
     start_index = page * COURSE_MENU_PAGE_SIZE
     lesson_buttons = []
     for offset, lesson in enumerate(order[start_index:start_index + COURSE_MENU_PAGE_SIZE]):
         lesson_number = start_index + offset + 1
         is_open = can_open(user_id, lesson)
-        if lesson_is_beta_review(lesson):
+        # Access state takes precedence over completion/review labels. A stale
+        # completion record must never make a locked lesson look available.
+        if not is_open:
+            if lesson_is_beta_review(lesson):
+                status = "🔒 🧪"
+            elif lesson_is_pending_review(lesson):
+                status = "🔒 📝"
+            else:
+                status = "🔒"
+        elif lesson_is_beta_review(lesson):
             status = "🧪✓" if lesson in beta_completed else "🧪"
         elif lesson_is_pending_review(lesson):
             status = "📝"
         elif lesson in completed:
             status = "✅"
-        elif is_open:
-            status = "🔓"
         else:
-            status = "🔒"
+            status = "🔓"
         title = LESSON_DATA[lesson]["title"]
         label = title if len(title) <= 20 else title[:19] + "…"
         lesson_buttons.append(InlineKeyboardButton(
@@ -1123,12 +1286,20 @@ def course_menu_keyboard(course_id, user_id, page=0):
 async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     if course is None or not course_is_active(course_id):
-        await message.reply_text("⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە.")
+        notice = "⚠️ ئەم کۆرسە چالاک نییە یان نەدۆزرایەوە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     try:
         keyboard, page_count = course_menu_keyboard(course_id, user_id, page)
     except ValueError:
-        await message.reply_text("⚠️ ئەم لاپەڕەیە لە لیستی وانەکاندا نییە.")
+        notice = "⚠️ ئەم لاپەڕەیە لە لیستی وانەکاندا نییە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     order = COURSE_LESSON_ORDER.get(course_id, [])
     first = page * COURSE_MENU_PAGE_SIZE + 1
@@ -1140,16 +1311,21 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         if lesson in completed and not lesson_is_beta_review(lesson)
     )
     beta_count = sum(1 for lesson in order if lesson_is_beta_review(lesson))
-    description = course.get("description", "")
+    description = html.escape(str(course.get("description", "")))
+    title = html.escape(str(course.get("title", "")))
     text = (
-        f"🎓 <b>{course['title']}</b>\n"
+        f"🎓 <b>{title}</b>\n"
         f"{description}\n\n"
         f"📚 <b>فهرستی وانەکان</b> — {first} تا {last} لە {len(order)}\n"
         f"📄 لاپەڕەی {page + 1}/{page_count}  •  "
         f"✅ تەواوکراو: {completed_count}"
     )
     if beta_count:
-        text += f"  •  🧪 Beta: {len(beta_completed)}/{beta_count}"
+        valid_beta_completed = sum(
+            1 for lesson in order
+            if lesson_is_beta_review(lesson) and lesson in beta_completed
+        )
+        text += f"  •  🧪 Beta: {valid_beta_completed}/{beta_count}"
     text += (
         "\n\n"
         "🔓 ئامادەی خوێندن  |  🔒 داخراو  |  ✅ تەواوکراو"
@@ -1166,6 +1342,9 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     course_id = query.data.removeprefix("course_")
     if course_id == "arami_orthography_foundations":
+        if not course_is_active(course_id):
+            await query.message.reply_text("📌 ئەم کۆرسە هێشتا چالاک نییە.")
+            return
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
@@ -1179,6 +1358,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(query.from_user.id),
+                beta_completed_lessons=get_completed_beta_lessons(query.from_user.id),
                 can_open=lambda lesson_id: can_open(query.from_user.id, lesson_id),
             ),
         )
@@ -1198,7 +1378,7 @@ async def open_course_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     prefix, _, remainder = query.data.partition(":")
     course_id, separator, raw_page = remainder.rpartition(":")
-    if prefix != "coursepage" or not separator or not raw_page.isdigit():
+    if prefix != "coursepage" or not separator or not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی وانەکان نادروستە.")
         return
     await send_course_page(query.message, course_id, query.from_user.id, int(raw_page), edit=True)
@@ -1229,6 +1409,8 @@ def quiz_menu_items(user_id, mode):
             lesson_id = item["id"]
             if lesson_id not in completed or not can_open(user_id, lesson_id):
                 continue
+            if mode != "practice" and not lesson_is_academically_approved(item):
+                continue
             n = item["number"]
             callback_mode = "practice" if mode == "practice" else "assessment"
             callback = f"arami1:{callback_mode}" if n == 1 else (f"arami5:{callback_mode}" if n == 5 else f"aramiC:{callback_mode}:{n}")
@@ -1250,30 +1432,85 @@ def quiz_menu_keyboard(items, page, mode):
         rows.append(nav)
     return InlineKeyboardMarkup(rows), count
 
-async def send_quiz_menu(message, user_id, mode, page=0):
+async def send_quiz_menu(message, user_id, mode, page=0, *, edit=False):
     items = quiz_menu_items(user_id, mode)
     if not items:
-        await message.reply_text("🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        notice = "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     try:
         keyboard, count = quiz_menu_keyboard(items, page, mode)
     except ValueError:
-        await message.reply_text("⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نیە.")
+        notice = "⚠️ ئەم لاپەڕەیەی منووی تاقیکردنەوە دروست نییە."
+        if edit:
+            await message.edit_text(notice)
+        else:
+            await message.reply_text(notice)
         return
     title = "🎯 ڕاهێنانی کرتەیی" if mode == "practice" else "📝 تاقیکردنەوەکان"
     first = page * QUIZ_MENU_PAGE_SIZE + 1
     last = min(first + QUIZ_MENU_PAGE_SIZE - 1, len(items))
-    await message.reply_text(f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {page + 1}/{count})", reply_markup=keyboard)
+    rendered = f"{title} — {first}–{last} لە کۆی {len(items)} (لاپەڕەی {page + 1}/{count})"
+    if edit:
+        await message.edit_text(rendered, reply_markup=keyboard)
+    else:
+        await message.reply_text(rendered, reply_markup=keyboard)
 
 async def open_quiz_menu_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     prefix, sep, rest = query.data.partition(":")
     mode, sep2, raw_page = rest.partition(":")
-    if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdigit():
+    if prefix != "quizmenu" or not sep or not sep2 or mode not in {"practice", "assessment"} or not raw_page.isdecimal():
         await query.message.reply_text("⚠️ داواکاریی لاپەڕەی تاقیکردنەوە نادروستە.")
         return
-    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page))
+    await send_quiz_menu(query.message, query.from_user.id, mode, int(raw_page), edit=True)
+
+
+LESSON_SEARCH_PAGE_SIZE = 12
+
+
+def lesson_search_keyboard(results, page):
+    """Build a paginated keyboard for the current user's saved search results."""
+    page_count = max(1, (len(results) + LESSON_SEARCH_PAGE_SIZE - 1) // LESSON_SEARCH_PAGE_SIZE)
+    page = max(0, min(page, page_count - 1))
+    start = page * LESSON_SEARCH_PAGE_SIZE
+    visible = results[start:start + LESSON_SEARCH_PAGE_SIZE]
+    rows = [
+        [InlineKeyboardButton(label, callback_data=callback)]
+        for label, callback in visible
+    ]
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton("⬅️ پێشوو", callback_data=f"lessonsearch:{page - 1}"))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton("دواتر ➡️", callback_data=f"lessonsearch:{page + 1}"))
+    if navigation:
+        rows.append(navigation)
+    return InlineKeyboardMarkup(rows), page, page_count, start + 1, min(start + len(visible), len(results))
+
+
+async def open_lesson_search_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    raw_page = query.data.partition(":")[2]
+    if not raw_page.isdecimal():
+        await query.message.reply_text("⚠️ داواکاریی لاپەڕەی گەڕان نادروستە.")
+        return
+    results = context.user_data.get("lesson_search_results", [])
+    if not results:
+        await query.message.reply_text("🔎 ئەنجامی گەڕان بەردەست نییە؛ تکایە دووبارە گەڕانێک بکە.")
+        return
+    keyboard, page, page_count, first, last = lesson_search_keyboard(results, int(raw_page))
+    await query.edit_message_text(
+        f"🔎 <b>ئەنجامی گەڕان</b> — {len(results)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\n"
+        "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
 
 
 async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1282,6 +1519,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     get_user(user_id)
 
     if text == "🔎 گەڕانی وانە":
+        context.user_data.pop("lesson_search_results", None)
         context.user_data["lesson_search_mode"] = True
         context.user_data["daily_chat_mode"] = False
         context.user_data.pop("daily_chat_scenario", None)
@@ -1293,6 +1531,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=MENU,
         )
         return
+
+    # A reply-keyboard menu choice must leave search mode instead of being
+    # consumed as a lesson-title query. Ordinary text remains a search query.
+    if context.user_data.get("lesson_search_mode") and text in {
+        button.text for row in MENU.keyboard for button in row
+    } and text != "🔎 گەڕانی وانە":
+        context.user_data.pop("lesson_search_mode", None)
+        context.user_data.pop("lesson_search_results", None)
 
     if context.user_data.pop("lesson_search_mode", False):
         needle = " ".join(text.casefold().split())
@@ -1331,24 +1577,23 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         f"open_lesson_{lesson_id}",
                     ))
         if not matches:
+            context.user_data.pop("lesson_search_results", None)
             await update.message.reply_text(
                 "🔍 هیچ وانەیەک بەو وشەیە نەدۆزرایەوە. وشەیەکی تر تاقی بکەرەوە.",
                 reply_markup=MENU,
             )
             return
-        rows = [
-            [InlineKeyboardButton(label, callback_data=callback)]
-            for label, callback in matches[:12]
-        ]
+        context.user_data["lesson_search_results"] = matches
+        keyboard, page, page_count, first, last = lesson_search_keyboard(matches, 0)
         await update.message.reply_text(
-            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ یەکەم ١٢ دانە پیشان دراون.\n"
+            f"🔎 <b>ئەنجامی گەڕان</b> — {len(matches)} وانە دۆزرایەوە؛ {first}–{last} پیشان دەدرێن. (لاپەڕەی {page + 1}/{page_count})\n"
             "وانەیەک هەڵبژێرە؛ ئەگەر داخراو بێت، ڕێڕەوی پێشوو پێویستە.",
             parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup(rows),
+            reply_markup=keyboard,
         )
         return
 
-    if text == "📕 ڕێنووسی سەرەتاییی کوردی":
+    if text == "📕 ڕێنووسی سەرەتاییی کوردیی":
         try:
             arami_manifest = load_arami_course1_manifest(BASE_DIR)
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
@@ -1363,6 +1608,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(user_id),
+                beta_completed_lessons=get_completed_beta_lessons(user_id),
                 can_open=lambda lesson_id: can_open(user_id, lesson_id),
             ),
         )
@@ -1548,7 +1794,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Menu selections leave free conversation mode; ordinary text stays in it.
     if text in LESSON_BUTTONS or text in {
-        "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردی",
+        "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردیی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
         "⌨️ تەختەکلیلی کوردی",
@@ -1589,6 +1835,7 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 arami_manifest,
                 arami_banks,
                 completed_lessons=get_completed_lessons(user_id),
+                beta_completed_lessons=get_completed_beta_lessons(user_id),
                 can_open=lambda lesson_id: can_open(user_id, lesson_id),
             ),
         )
@@ -1696,17 +1943,28 @@ async def open_kurdish_months(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
 
+async def acknowledge_unhandled_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Stop Telegram's loading indicator for callback payloads no handler recognizes."""
+    query = getattr(update, "callback_query", None)
+    if query is not None:
+        await query.answer()
+
+
 async def log_polling_start(application):
     """Log readiness only after python-telegram-bot has initialized successfully."""
     logger.info("KejyarBot Telegram initialization succeeded; polling is starting")
 
 
 def main():
+    # Validate required credentials before any database initialization side effect.
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if token is None or not token.strip():
+        token = os.environ.get("BOT_TOKEN")
+    if token is None or not token.strip():
+        raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
+
     validate_activated_course_runtime()
     init_db()
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("BOT_TOKEN")
-    if not token:
-        raise RuntimeError("TELEGRAM_BOT_TOKEN (or BOT_TOKEN) is missing. Set it in .env or the host environment.")
     app = Application.builder().token(token).post_init(log_polling_start).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(open_kurdish_months, pattern=r"^months:(sorani|kurmanji|kalhuri|hawrami|laki)$"))
@@ -1715,6 +1973,7 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^arami1:",
     ))
@@ -1724,6 +1983,8 @@ def main():
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
             get_completed_lessons=get_completed_lessons,
+            get_completed_beta_lessons=get_completed_beta_lessons,
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^aramiC:",
     ))
@@ -1732,12 +1993,14 @@ def main():
             update, context, BASE_DIR,
             can_open=lambda user_id, lesson_id: can_open(user_id, lesson_id),
             award_assessment=award_arami_assessment,
+            can_take_assessment=can_take_arami_assessment,
         ),
         pattern=r"^arami5:",
     ))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(open_course_page, pattern=r"^coursepage:"))
+    app.add_handler(CallbackQueryHandler(open_lesson_search_page, pattern=r"^lessonsearch:"))
     app.add_handler(CallbackQueryHandler(open_quiz_menu_page, pattern=r"^quizmenu:"))
     app.add_handler(CallbackQueryHandler(start_quiz, pattern=r"^quiz_.+_start$"))
     app.add_handler(CallbackQueryHandler(quiz_answer, pattern=r"^answer_\d+$"))
@@ -1745,6 +2008,9 @@ def main():
     app.add_handler(CallbackQueryHandler(submit_quiz_answer, pattern=r"^submit_answer$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
+    # Last in the callback handler group: acknowledge stale/unknown buttons so
+    # Telegram does not leave the user's loading indicator spinning forever.
+    app.add_handler(CallbackQueryHandler(acknowledge_unhandled_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message))
     app.run_polling()
 

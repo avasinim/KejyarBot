@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - fix/kejyarbot-stability-2026-10-25
+      - 'release/**'
   pull_request:
     branches:
       - main

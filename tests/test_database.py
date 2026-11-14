@@ -189,6 +189,42 @@ class DatabaseTests(unittest.TestCase):
         database.add_badge(12345, "🏅 وانەی یەکەم")
         self.assertEqual(database.get_badges(12345), ["🏅 وانەی یەکەم"])
 
+    def test_beta_lesson_progress_is_separate_and_grants_no_rewards(self):
+        self.assertTrue(database.complete_beta_lesson(12345, "grammar_32"))
+        self.assertFalse(database.complete_beta_lesson(12345, "grammar_32"))
+
+        self.assertEqual(database.get_completed_beta_lessons(12345), ["grammar_32"])
+        self.assertEqual(database.get_completed_lessons(12345), [])
+        user = database.get_user(12345)
+        self.assertEqual(user[1], 0)   # score
+        self.assertEqual(user[2], 0)   # XP
+        self.assertEqual(user[7], 0)   # quiz/test count
+        self.assertEqual(user[8], 0)   # coins
+        self.assertEqual(user[9], 0)   # chests
+        self.assertEqual(database.get_badges(12345), [])
+        self.assertEqual(user[10], '')  # completed quiz ledger
+
+        self.assertTrue(database.complete_lesson_with_rewards(12345, "grammar_31"))
+        self.assertEqual(database.get_completed_lessons(12345), ["grammar_31"])
+        self.assertEqual(database.get_completed_beta_lessons(12345), ["grammar_32"])
+
+    def test_concurrent_beta_completion_is_recorded_only_once(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(
+                lambda _: database.complete_beta_lesson(12345, "grammar_33"),
+                range(16),
+            ))
+        self.assertEqual(sum(results), 1)
+        self.assertEqual(database.get_completed_beta_lessons(12345), ["grammar_33"])
+        self.assertEqual(database.get_completed_lessons(12345), [])
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 0)   # XP
+        self.assertEqual(user[7], 0)   # quiz/test count
+        self.assertEqual(user[8], 0)   # coins
+        self.assertEqual(user[9], 0)   # chests
+        self.assertEqual(database.get_badges(12345), [])
+        self.assertEqual(user[10], '')  # completed quiz ledger
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
