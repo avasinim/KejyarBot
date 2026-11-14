@@ -45,6 +45,7 @@ from course_runtime import can_open_lesson, visible_course_lessons, is_beta_revi
 from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from lesson_image_delivery import send_shared_lesson_image
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
@@ -1205,6 +1206,7 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1220,6 +1222,7 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
     await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 COURSE_MENU_PAGE_SIZE = 12
 

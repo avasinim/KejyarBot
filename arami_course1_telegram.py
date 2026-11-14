@@ -6,6 +6,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+from lesson_image_delivery import shared_lesson_image_path
 
 from arami_lesson1_interaction import (
     InvalidQuestionBank,
@@ -338,7 +339,11 @@ COURSE1_INFOGRAPHIC_LESSONS = frozenset({1, 2, 3, 4, 6, 7})
 
 
 def lesson_infographic_path(base_dir, lesson):
-    """Return an approved Course 1 infographic path; Lesson 5 stays text-only."""
+    """Return only the exact approved image for each registered Course 1 lesson."""
+    if isinstance(lesson, dict):
+        shared_path = shared_lesson_image_path(base_dir, COURSE_ID, lesson.get("id"))
+        if shared_path is not None:
+            return shared_path
     number = lesson.get("number") if isinstance(lesson, dict) else None
     if not isinstance(number, int) or isinstance(number, bool) or number not in COURSE1_INFOGRAPHIC_LESSONS:
         return None
