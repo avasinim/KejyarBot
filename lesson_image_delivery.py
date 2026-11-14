@@ -40,7 +40,7 @@ async def send_shared_lesson_image(message, course_id, lesson_id, base_dir=None)
         with path.open("rb") as image:
             await message.reply_photo(
                 photo=image,
-                caption="🖼️ وێنەی فێرکاری — وانەی ٥",
+                caption="🖼️ وێنەی فێرکاری",
             )
     except Exception:
         logger.exception(

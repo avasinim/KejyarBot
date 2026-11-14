@@ -70,6 +70,10 @@ class SharedLessonImageDeliveryTests(unittest.IsolatedAsyncioTestCase):
             )
             self.assertTrue(sent)
             message.reply_photo.assert_awaited_once()
+            self.assertEqual(
+                message.reply_photo.await_args.kwargs["caption"],
+                "🖼️ وێنەی فێرکاری",
+            )
 
             message.reply_photo.reset_mock()
             not_sent = await send_shared_lesson_image(
