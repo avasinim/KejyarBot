@@ -225,8 +225,19 @@
     if (Array.isArray(payload.sections)) {
       payload.sections.forEach((section, index) => {
         addText(parent, "h2", section.title || ("بەشی " + (index + 1)));
+        if (section.body) renderMarkdown(parent, section.body);
         if (section.content) renderMarkdown(parent, section.content);
         if (section.text) renderMarkdown(parent, section.text);
+        if (Array.isArray(section.table)) {
+          const table = document.createElement("table");
+          section.table.forEach((row, rowIndex) => {
+            const tr = document.createElement("tr");
+            row.forEach(cell => addText(tr, rowIndex === 0 ? "th" : "td", cell));
+            table.appendChild(tr);
+          });
+          parent.appendChild(table);
+        }
+        if (section.note) addText(parent, "p", section.note, "muted");
         if (section.points) addSection(parent, "خاڵە سەرەکییەکان", section.points);
         if (section.examples) addSection(parent, "نموونەکان", section.examples);
       });
