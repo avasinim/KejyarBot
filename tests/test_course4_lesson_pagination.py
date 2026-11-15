@@ -21,6 +21,22 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         for number in (1, 2, 40, 80, 120):
             self.assertIn(f"بەشی {number}:", rendered)
 
+    def test_academic_pages_keep_section_headings_with_their_content(self):
+        blocks = []
+        for number in range(1, 4):
+            blocks.extend([
+                f"<b>📖 بەشی فێرکاری {number}</b>",
+                "ڕوونکردنەوەی ئەم بەشە. " * 45,
+            ])
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1100)
+
+        self.assertEqual(len(pages), 3)
+        for number, page in enumerate(pages, start=1):
+            self.assertTrue(page.startswith(f"<b>📖 بەشی فێرکاری {number}</b>"))
+            self.assertIn("ڕوونکردنەوەی ئەم بەشە.", page)
+            self.assertLessEqual(len(page), 1100)
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
