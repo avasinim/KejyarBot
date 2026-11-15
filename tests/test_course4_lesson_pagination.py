@@ -289,6 +289,27 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     f"{[len(page) for page in pages]}",
                 )
 
+    def test_structured_lessons_1_to_31_have_clear_first_page_labels_and_balanced_pages(self):
+        for number in range(1, 32):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertTrue(pages)
+                self.assertEqual(
+                    bot.grammar_academic_page_label(pages[0]),
+                    "ئامانجی فێربوون",
+                    f"{lesson_id} first page should introduce learning objectives",
+                )
+                self.assertTrue(
+                    all(len(page) >= 500 for page in pages),
+                    f"{lesson_id} contains an unusually short page: "
+                    f"{[len(page) for page in pages]}",
+                )
+                self.assertTrue(all(len(page) <= 2200 for page in pages))
+
     def test_lesson_three_topic_outline_preserves_every_source_item_in_order(self):
         raw = next(
             item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
