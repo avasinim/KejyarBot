@@ -8,7 +8,7 @@ import bot
 
 class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
     def test_lesson_pages_preserve_all_rendered_blocks_and_respect_page_limit(self):
-        source = "\\n\\n".join(
+        source = "\n\n".join(
             f"بەشی {number}: ئەم دەقە تەنها بۆ تاقیکردنەوەی دابەشکردنی پێشکەشکردنە."
             for number in range(1, 121)
         )
@@ -17,7 +17,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertGreater(len(pages), 1)
         self.assertTrue(all(len(page) <= 2200 for page in pages))
-        rendered = "\\n".join(pages)
+        rendered = "\n".join(pages)
         for number in (1, 2, 40, 80, 120):
             self.assertIn(f"بەشی {number}:", rendered)
 
@@ -44,7 +44,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_grammar_lesson_opens_one_page_with_navigation(self):
         message = SimpleNamespace(reply_text=AsyncMock())
-        content = "وانەی تاقیکاری\\n\\n" + "\\n\\n".join(
+        content = "وانەی تاقیکاری\n\n" + "\n\n".join(
             f"خاڵی فێرکاری {number}: " + ("دەقی فێرکاریی پارێزراو. " * 12)
             for number in range(1, 90)
         )
