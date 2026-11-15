@@ -670,5 +670,18 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         send_image.assert_not_awaited()
 
 
+    def test_main_menu_uses_consistent_kurdish_spelling_for_three_entries(self):
+        menu_labels = {
+            label
+            for row in bot.MENU.keyboard
+            for label in row
+        }
+        self.assertIn("⌨️ تەختەکلیلی کوردیی", menu_labels)
+        self.assertIn("📖 وشەنامەی کوردیی", menu_labels)
+        self.assertIn("📕 ڕێنووسی سەرەتاییی کوردیی", menu_labels)
+        self.assertNotIn("⌨️ تەختەکلیلی کوردی", menu_labels)
+        self.assertNotIn("📖 وشەنامەی کوردی", menu_labels)
+
+
 if __name__ == "__main__":
     unittest.main()
