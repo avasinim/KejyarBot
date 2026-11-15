@@ -19,7 +19,10 @@ SECTION_HEADINGS = {
 ITEM_PREFIX = re.compile(r"^(?:•\s+|\d+[.)]\s+)")
 
 def build_grammar_lesson_pages(content, items_per_page=4):
-    """Return ordered display pages without changing or dropping source lines."""
+    """Return ordered display pages without changing or dropping source lines.
+
+Only section boundaries and page labels are added to the presentation layer.
+"""
     lines = content.splitlines()
     sections = []
     current_title = None
