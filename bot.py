@@ -1182,12 +1182,36 @@ def split_lesson_academic_pages(blocks, limit=2200):
         "<b>🎭 ",
     )
 
+    named_section_titles = {
+        "ئامانجەکانی فێربوون",
+        "خۆت تاقی بکەرەوە",
+        "ڕاهێنانی فێرخواز",
+        "نموونەی شیکردنەوە",
+        "نموونەی ڕاهێنان",
+        "هەڵەی باو",
+        "🎯 ئامانج",
+        "🎯 چالاکییەکان",
+        "📎 پاشکۆ",
+        "🗣️ گفتوگۆ",
+        "📚 وشە و دەستەواژە",
+        "✍️ ڕاهێنان",
+        "🧠 تێگەیشتن",
+        "🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان",
+        "✍️ نموونەکان",
+        "🧩 ڕاهێنان",
+        "🧠 پرسیارەکانی تێگەیشتن",
+        "🛠️ کاری پڕاکتیکی",
+    }
+
     def is_section_heading(block):
         if not isinstance(block, str) or not block.startswith("<b>"):
             return False
         if block.startswith(section_prefixes):
             return True
-        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\s+\S", block))
+        heading = html.unescape(re.sub(r"<[^>]+>", "", block)).strip()
+        if heading in named_section_titles or heading.startswith(("کورتەی وانە:", "کورتەی وانە")):
+            return True
+        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\\s+\\S", block))
 
     sections = []
     current_section = []
