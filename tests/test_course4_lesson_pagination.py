@@ -372,6 +372,17 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("دەقی سەرەکی.", rendered)
         self.assertIn("دەقی ژێربەش.", rendered)
 
+    def test_lesson_50_capstone_project_has_a_distinct_page_label(self):
+        content = (
+            "<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>\\n"
+            "<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>\\n"
+            "دەقی پڕۆژە."
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label(content),
+            "پڕۆژە و کاری پڕاکتیکی",
+        )
+
     def test_lesson_50_capstone_headings_remain_structured_in_runtime(self):
         lesson = bot.LESSON_DATA["grammar_50"]
         blocks = bot.render_lesson_html_blocks(lesson["content"])
