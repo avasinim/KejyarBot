@@ -1272,6 +1272,36 @@ def split_lesson_academic_pages(blocks, limit=2200):
 
     if current_page:
         pages.append("\n".join(current_page))
+
+    # A large instructional section can leave a very short continuation page.
+    # Rebalance it by moving complete rendered blocks from the preceding page;
+    # never split or rewrite a block, and keep every page within the hard limit.
+    short_page_threshold = min(500, limit // 4)
+    minimum_previous_length = limit // 2
+    maximum_balanced_length = limit
+    for page_index in range(1, len(pages)):
+        if len(pages[page_index]) >= short_page_threshold:
+            continue
+        previous_blocks = pages[page_index - 1].split("\n")
+        continuation_blocks = pages[page_index].split("\n")
+        while (
+            len("\n".join(continuation_blocks)) < short_page_threshold
+            and len(previous_blocks) > 1
+        ):
+            candidate_previous = previous_blocks[:-1]
+            candidate_continuation = [previous_blocks[-1], *continuation_blocks]
+            previous_text = "\n".join(candidate_previous)
+            continuation_text = "\n".join(candidate_continuation)
+            if (
+                len(previous_text) < minimum_previous_length
+                or len(continuation_text) > maximum_balanced_length
+            ):
+                break
+            previous_blocks = candidate_previous
+            continuation_blocks = candidate_continuation
+        pages[page_index - 1] = "\n".join(previous_blocks)
+        pages[page_index] = "\n".join(continuation_blocks)
+
     return pages or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
 
 
