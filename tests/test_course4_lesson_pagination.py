@@ -246,6 +246,42 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 1000,
             )
 
+
+    def test_review_draft_section_headings_survive_runtime_formatting_and_pagination(self):
+        for number in range(32, 51):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            lesson_id = f"grammar_{number:02d}"
+            content = bot.LESSON_DATA[lesson_id]["content"]
+            source = raw.get("source_markdown") or raw.get("key_points", [""])[0]
+            headings = [
+                line.lstrip("#").strip()
+                for line in source.splitlines()
+                if line.startswith(("## ", "### "))
+            ]
+            previous = -1
+            for heading in headings:
+                if not heading:
+                    continue
+                position = content.find(heading)
+                self.assertGreater(
+                    position, previous,
+                    f"lesson {number} section heading missing or reordered: {heading}",
+                )
+                previous = position
+
+            pages = bot.split_lesson_academic_pages(
+                bot.render_lesson_html_blocks(content),
+                limit=2200,
+            )
+            self.assertTrue(pages)
+            self.assertTrue(
+                all(len(page) <= 2200 for page in pages),
+                f"lesson {number} exceeds Telegram page limit",
+            )
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
