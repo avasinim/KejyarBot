@@ -95,6 +95,44 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             "پێشەکی و بنەمای بابەت",
         )
 
+    def test_expanded_draft_cover_title_does_not_set_first_page_label(self):
+        cases = (
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٣٨",
+                "📖 پێڕستە، سەرڕستە و ژێرەڕستە؛ شیکاری و ڕاهێنان",
+            ),
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٤١",
+                "📖 کردارە سادە و لێکدراوەکان و پەیوەندییان بە بەرکارەوە",
+            ),
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٤٧",
+                "📖 گرێی ناوی: پێکهاتە و پەیوەندییە ناوخۆییەکان",
+            ),
+        )
+        for cover, topic in cases:
+            with self.subTest(cover=cover):
+                content = (
+                    f"<b>{cover}</b>\\n"
+                    f"<b>{topic}</b>\\n"
+                    "<b>📖 ١. ئامانجی وانە</b>\\n"
+                    "دەقی ئامانج."
+                )
+                self.assertEqual(
+                    bot.grammar_academic_page_label(content),
+                    "ئامانجی فێربوون",
+                )
+
+        # An appendix H1 is a real section boundary; its project H2 must remain.
+        capstone = (
+            "<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>\\n"
+            "<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>"
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label(capstone),
+            "پڕۆژە و کاری پڕاکتیکی",
+        )
+
     def test_lesson_title_does_not_override_academic_page_label(self):
         content = (
             "<b>📘 ڕستە و پێکهاتەکانی ڕێزمان</b>\\n"
