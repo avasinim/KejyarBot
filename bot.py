@@ -43,7 +43,7 @@ from database import (
 from daily_chat import PROMPTS, reply_to_daily_message
 from course_runtime import can_open_lesson, visible_course_lessons, is_beta_review_lesson
 from quiz_option_order import randomized_question_copy
-from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
+from course_lesson_adapters import adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
 from lesson_image_delivery import send_shared_lesson_image
 from latin_course_runtime import load_latin_courses
@@ -155,112 +155,18 @@ LESSON_BUTTONS = {}
 # Courses 2 and 3 are activated by the project owner. Editorial review
 # metadata stays attached to lesson data; it is not an activation gate.
 COURSE_MANIFEST = load_json("courses.json")
-COURSES = sorted(COURSE_MANIFEST.get("courses", []), key=lambda item: item.get("order", 999))
-CONVERSATION_DRAFTS = [
-    load_json("course_data/daily_conversation_lessons_01_06.json"),
-    load_json("course_data/daily_conversation_lessons_07_30.json"),
-    load_json("course_data/daily_conversation_lessons_31_36.json"),
-    load_json("course_data/daily_conversation_lessons_37_42.json"),
-]
-CONVERSATION_LESSONS, CONVERSATION_QUIZZES = adapt_conversation_lessons(
-    "daily_conversation", CONVERSATION_DRAFTS
+ALLOWED_RUNTIME_COURSE_IDS = {"arami_orthography_foundations", "unified_orthography", "kurmanji_latin_orthography"}
+COURSES = sorted(
+    (item for item in COURSE_MANIFEST.get("courses", []) if item.get("id") in ALLOWED_RUNTIME_COURSE_IDS),
+    key=lambda item: item.get("order", 999),
 )
 UNIFIED_ORTHOGRAPHY_DRAFT = load_json("course_data/unified_orthography_lessons_01_66.json")
 UNIFIED_LESSONS, UNIFIED_QUIZZES = adapt_unified_orthography_lessons(UNIFIED_ORTHOGRAPHY_DRAFT)
-GRAMMAR_COURSE4_DRAFT = load_json("course_data/grammar_course4_lessons.json")
-GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES = adapt_unified_orthography_lessons(
-    GRAMMAR_COURSE4_DRAFT, include_extended_sections=True
-)
-# Lessons 47–50 are preserved as complete Markdown source records rather
-# than structured section fields. Render those source drafts for Beta reading;
-# their academic review status still blocks official quizzes and rewards.
-for _raw_course4_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
-    _number = _raw_course4_lesson.get("number")
-    if _number not in (47, 48, 49, 50):
-        continue
-    _lesson_id = f"grammar_{_number:02d}"
-    _source_markdown = _raw_course4_lesson.get("source_markdown")
-    if _lesson_id not in GRAMMAR_COURSE4_LESSONS:
-        raise RuntimeError(f"Missing Course 4 runtime record for source draft {_lesson_id}")
-    if not isinstance(_source_markdown, str) or not _source_markdown.strip():
-        raise RuntimeError(f"Missing preserved Markdown source for Beta lesson {_lesson_id}")
-    GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
-        _source_markdown
-    )
-# Append-only quiz corrections: the authored source bank remains untouched.
-# Each override carries an exact original snapshot; mismatches fail closed.
-GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE = load_json("course_data/grammar_course4_quiz_overrides.json")
-GRAMMAR_COURSE4_QUIZ_OVERRIDES = GRAMMAR_COURSE4_QUIZ_OVERRIDE_FILE.get("overrides", [])
-_seen_course4_quiz_overrides = set()
-_course4_raw_by_id = {
-    lesson.get("id"): lesson for lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", [])
-}
-for _override in GRAMMAR_COURSE4_QUIZ_OVERRIDES:
-    _lesson_id = _override.get("lesson_id")
-    _index = _override.get("question_index")
-    _snapshot = _override.get("original_snapshot")
-    _replacement = _override.get("replacement")
-    _key = (_lesson_id, _index)
-    if _key in _seen_course4_quiz_overrides:
-        raise ValueError(f"Duplicate Course 4 quiz override: {_key}")
-    _seen_course4_quiz_overrides.add(_key)
-    _raw_lesson = _course4_raw_by_id.get(_lesson_id)
-    if (
-        not isinstance(_index, int)
-        or isinstance(_index, bool)
-        or _index < 0
-        or _raw_lesson is None
-        or not isinstance(_snapshot, dict)
-        or not isinstance(_replacement, dict)
-        or _index >= len(_raw_lesson.get("quiz", []))
-        or _raw_lesson["quiz"][_index] != _snapshot
-        or _lesson_id not in GRAMMAR_COURSE4_QUIZZES
-        or _index >= len(GRAMMAR_COURSE4_QUIZZES[_lesson_id])
-    ):
-        raise ValueError(f"Course 4 quiz override source mismatch: {_key}")
-    _options = _replacement.get("options")
-    _answer_index = _replacement.get("answer")
-    if (
-        not isinstance(_replacement.get("q"), str)
-        or not _replacement["q"].strip()
-        or not isinstance(_options, list)
-        or len(_options) != 4
-        or any(not isinstance(_option, str) or not _option.strip() for _option in _options)
-        or len(_options) != len(set(_options))
-        or not isinstance(_answer_index, int)
-        or isinstance(_answer_index, bool)
-        or not 0 <= _answer_index < len(_options)
-        or not isinstance(_replacement.get("explanation"), str)
-        or not _replacement["explanation"].strip()
-    ):
-        raise ValueError(f"Invalid Course 4 quiz override replacement: {_key}")
-    GRAMMAR_COURSE4_QUIZZES[_lesson_id][_index] = {
-        "question": _replacement["q"],
-        "options": _options,
-        "answer": _options[_answer_index],
-        "explanation": _replacement["explanation"],
-    }
-# Course 4 expanded review drafts retain their authored Markdown as the display source.
-# Render it with the same table/heading-aware formatter used by the other lesson sources;
-# the structured fields remain available for quiz and review metadata.
-for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
-    source_markdown = raw_lesson.get("source_markdown")
-    lesson_id = raw_lesson.get("id")
-    if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
-        rendered_source = format_lesson_draft(source_markdown)
-        if raw_lesson["title"] not in rendered_source:
-            rendered_source = f'{raw_lesson["title"]}\n\n{rendered_source}'
-        GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = rendered_source
-for course_lessons, course_quizzes in (
-    (CONVERSATION_LESSONS, CONVERSATION_QUIZZES),
-    (UNIFIED_LESSONS, UNIFIED_QUIZZES),
-    (GRAMMAR_COURSE4_LESSONS, GRAMMAR_COURSE4_QUIZZES),
-):
-    duplicate_ids = set(LESSON_DATA).intersection(course_lessons)
-    if duplicate_ids:
-        raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_ids)}")
-    LESSON_DATA.update(course_lessons)
-    QUIZ_DATA.update(course_quizzes)
+duplicate_ids = set(LESSON_DATA).intersection(UNIFIED_LESSONS)
+if duplicate_ids:
+    raise ValueError(f"Duplicate lesson IDs across courses: {sorted(duplicate_ids)}")
+LESSON_DATA.update(UNIFIED_LESSONS)
+QUIZ_DATA.update(UNIFIED_QUIZZES)
 
 # The two Kurmanji Latin courses remain separate by source part, lesson IDs and quiz keys.
 LATIN_COURSE_DRAFT = load_json("course_data/latin_courses_manifest_draft.json")
@@ -336,10 +242,7 @@ ACADEMIC_REVIEW_REQUIRED_COURSE_IDS = frozenset(
 )
 
 
-LATIN_COURSE_IDS = {
-    "kurmanji_latin_orthography",
-    "kurmanji_latin_grammar",
-}
+LATIN_COURSE_IDS = {"kurmanji_latin_orthography"}
 
 
 def quiz_requires_submission(lesson):
@@ -379,7 +282,7 @@ def validate_activated_course_runtime():
         "Course runtime ready: %s status=active lessons=21 readers=21 practice=21 assessment=21 shared_banks=19 dedicated_banks=2",
         "arami_orthography_foundations",
     )
-    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 50}
+    expected_counts = {"unified_orthography": 66, "kurmanji_latin_orthography": 12}
     for course_id, expected_count in expected_counts.items():
         if not course_is_active(course_id):
             raise RuntimeError(f"Required course {course_id} is not active in courses.json")

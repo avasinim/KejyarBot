@@ -25,29 +25,6 @@
         "kurmanji_latin_orthography_11",
         "kurmanji_latin_orthography_12"
       ]
-    },
-    {
-      "id": "kurmanji_latin_grammar",
-      "key": "course_kurmanji_latin_grammar",
-      "order": 2,
-      "title": "Kursa 2: Bingehên Gramera Kurmancî",
-      "description": "12 dersên bingehên gramera kurmancî li gorî çavkaniya Celadet Alî Bedir-Xan.",
-      "source_part": "Part II — Celadet Alî Bedir-Xan — Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), printed pages 37–100.",
-      "status": "draft",
-      "lesson_ids": [
-        "kurmanji_latin_grammar_01",
-        "kurmanji_latin_grammar_02",
-        "kurmanji_latin_grammar_03",
-        "kurmanji_latin_grammar_04",
-        "kurmanji_latin_grammar_05",
-        "kurmanji_latin_grammar_06",
-        "kurmanji_latin_grammar_07",
-        "kurmanji_latin_grammar_08",
-        "kurmanji_latin_grammar_09",
-        "kurmanji_latin_grammar_10",
-        "kurmanji_latin_grammar_11",
-        "kurmanji_latin_grammar_12"
-      ]
     }
   ]
 }

@@ -10,9 +10,7 @@ import re
 
 ROOT = Path(__file__).resolve().parent
 COURSE1_SOURCE_PATH = ROOT / "course_data" / "latin_course_1_source_aligned_lessons_01_12.md"
-COURSE2_SOURCE_PATH = ROOT / "course_data" / "latin_course_2_source_aligned_lessons_01_12.md"
 COURSE1_KEY_PATH = ROOT / "course_data" / "latin_course_1_quiz_answer_key_draft.md"
-COURSE2_KEY_PATH = ROOT / "course_data" / "latin_course_2_quiz_answer_key_draft.md"
 
 COURSES = (
     {
@@ -21,13 +19,6 @@ COURSES = (
         "first_heading": "## Ders 1:",
         "lesson_prefix": "kurmanji_latin_orthography",
         "key_path": COURSE1_KEY_PATH,
-    },
-    {
-        "id": "kurmanji_latin_grammar",
-        "source_part": "Part II — Celadet Alî Bedir-Xan — Bingehên gramera kurdmancî (Nefel, Stockholm, 2002), printed pages 37–100.",
-        "first_heading": "## Ders 1 —",
-        "lesson_prefix": "kurmanji_latin_grammar",
-        "key_path": COURSE2_KEY_PATH,
     },
 )
 LESSON_HEADING = re.compile(r"^## Ders (\d+)\s*[:—-]\s*(.+?)\s*$")
@@ -181,17 +172,12 @@ def _strip_inline_options(text):
 
 
 def load_latin_courses():
-    """Return (lesson_data, quiz_data, course_records), validating all 24 lessons."""
+    """Return (lesson_data, quiz_data, course_records), validating Latin Course 1's 12 lessons."""
     lesson_data, quiz_data, course_records = {}, {}, []
     for course in COURSES:
         # Each Latin course reads only its own source section/document.
         # Course 2 is never inferred as the second half of a combined master.
-        source_path = (
-            COURSE2_SOURCE_PATH
-            if course["id"] == "kurmanji_latin_grammar"
-            else COURSE1_SOURCE_PATH
-        )
-        source_text = _read(source_path)
+        source_text = _read(COURSE1_SOURCE_PATH)
         selected = _split_master(source_text)
         selected = [item for item in selected if item[2].startswith("## Ders")][:12]
         if len(selected) != 12:
@@ -223,6 +209,6 @@ def load_latin_courses():
             "source_part": course["source_part"],
             "lesson_ids": ids,
         })
-    if len(lesson_data) != 24 or len(quiz_data) != 24:
-        raise ValueError("Latin runtime loader did not produce exactly 24 lessons and quizzes")
+    if len(lesson_data) != 12 or len(quiz_data) != 12:
+        raise ValueError("Latin Course 1 runtime loader did not produce exactly 12 lessons and quizzes")
     return lesson_data, quiz_data, course_records
