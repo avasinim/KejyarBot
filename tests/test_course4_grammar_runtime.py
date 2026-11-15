@@ -409,13 +409,14 @@ class Course4PendingDraftRuntimeTests(unittest.IsolatedAsyncioTestCase):
         update = SimpleNamespace(callback_query=query)
         context = SimpleNamespace(user_data={})
         with patch.object(bot, "can_open", return_value=True), patch.object(
-            bot, "send_lesson_text", new_callable=AsyncMock
+            bot, "send_grammar_lesson_page", new_callable=AsyncMock
         ) as send:
             await bot.open_next_lesson(update, context)
 
-        sent_content = send.await_args.args[1]
+        sent_content = send.await_args.args[2]
         self.assertIn("وەشانی تاقیکاریی (Beta)", sent_content)
-        self.assertIsNotNone(send.await_args.args[2])
+        self.assertIn(bot.LESSON_DATA["grammar_32"]["content"], sent_content)
+        self.assertEqual(send.await_args.args[3], 0)
 
     async def test_beta_draft_records_separate_progress_without_rewards(self):
         query = SimpleNamespace(
