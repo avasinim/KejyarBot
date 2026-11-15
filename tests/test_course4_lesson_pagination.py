@@ -181,6 +181,29 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     previous = position
             self.assertIn("📖 ", content)
 
+
+    def test_topic_outlines_for_lessons_4_to_28_preserve_every_key_point(self):
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            bot.GRAMMAR_COURSE4_DRAFT,
+            include_extended_sections=True,
+        )
+        for number in range(4, 29):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            content = adapted[f"grammar_{number:02d}"]["content"]
+            self.assertIn("📖 ", content, f"lesson {number} lacks topic headings")
+            previous = -1
+            for item in raw.get("key_points", []):
+                rendered = f"• {item}"
+                position = content.find(rendered)
+                self.assertGreater(
+                    position, previous,
+                    f"lesson {number} key point missing or reordered",
+                )
+                previous = position
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
