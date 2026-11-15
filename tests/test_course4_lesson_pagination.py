@@ -37,6 +37,21 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕوونکردنەوەی ئەم بەشە.", page)
             self.assertLessEqual(len(page), 1250)
 
+    def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
+        self.assertEqual(len(lesson_ids), 50)
+        self.assertEqual(lesson_ids[0], "grammar_01")
+        self.assertEqual(lesson_ids[-1], "grammar_50")
+
+        for lesson_id in lesson_ids:
+            with self.subTest(lesson=lesson_id):
+                content = bot.LESSON_DATA[lesson_id]["content"]
+                blocks = bot.render_lesson_html_blocks(content)
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertTrue(pages)
+                self.assertTrue(all(page.strip() for page in pages))
+                self.assertTrue(all(len(page) <= 2200 for page in pages))
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
