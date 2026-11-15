@@ -100,8 +100,12 @@ def load_json(filename):
     with path.open("r", encoding="utf-8") as file:
         return json.load(file)
 
-def format_lesson_draft(markdown):
-    """Render lesson Markdown as readable Telegram text while preserving table values."""
+def format_lesson_draft(markdown, preserve_markdown_headings=False):
+    """Render lesson Markdown as readable Telegram text while preserving table values.
+
+    Grammar Course 4 keeps Markdown heading levels until the Telegram renderer
+    converts them into academic headings and pagination boundaries.
+    """
     source_lines = markdown.splitlines()
     lines = []
     index = 0
@@ -133,7 +137,11 @@ def format_lesson_draft(markdown):
                     lines.append(" | ".join(headers))
             continue
         if stripped.startswith("#"):
-            line = stripped.lstrip("#").strip()
+            line = (
+                stripped
+                if preserve_markdown_headings
+                else stripped.lstrip("#").strip()
+            )
         elif stripped.startswith(">"):
             line = stripped.lstrip(">").strip()
         else:
@@ -185,7 +193,7 @@ for _raw_course4_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
     if not isinstance(_source_markdown, str) or not _source_markdown.strip():
         raise RuntimeError(f"Missing preserved Markdown source for Beta lesson {_lesson_id}")
     GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
-        _source_markdown
+        _source_markdown, preserve_markdown_headings=True
     )
 # Append-only quiz corrections: the authored source bank remains untouched.
 # Each override carries an exact original snapshot; mismatches fail closed.
@@ -247,7 +255,9 @@ for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
     source_markdown = raw_lesson.get("source_markdown")
     lesson_id = raw_lesson.get("id")
     if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
-        rendered_source = format_lesson_draft(source_markdown)
+        rendered_source = format_lesson_draft(
+            source_markdown, preserve_markdown_headings=True
+        )
         if raw_lesson["title"] not in rendered_source:
             rendered_source = f'{raw_lesson["title"]}\n\n{rendered_source}'
         GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = rendered_source
