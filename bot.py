@@ -1119,8 +1119,8 @@ def render_lesson_html_blocks(content):
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith("وانەی "):
             blocks.append(f"<b>{escaped}</b>")
-        elif re.match(r"^#{1,6}\\s+\\S", line):
-            heading_match = re.match(r"^(#{1,6})\\s+(.+)$", line)
+        elif re.match(r"^#{1,6}\s+\S", line):
+            heading_match = re.match(r"^(#{1,6})\s+(.+)$", line)
             level = len(heading_match.group(1))
             title = heading_match.group(2).strip()
             safe_title = html.escape(title, quote=False)
