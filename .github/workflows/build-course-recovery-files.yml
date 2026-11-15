@@ -1,0 +1,50 @@
+name: Build course recovery files
+on:
+  push:
+    branches:
+      - recovery/restore-all-six-active-courses-2026-11-15
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify preserved active courses and package exact recovery files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("courses.json").read_text(encoding="utf-8"))
+          active=[c["id"] for c in data["courses"] if c.get("status")=="active"]
+          expected={
+            "arami_orthography_foundations","daily_conversation",
+            "unified_orthography","grammar",
+            "kurmanji_latin_orthography","kurmanji_latin_grammar"
+          }
+          missing=sorted(expected-set(active))
+          if missing:
+            raise SystemExit(f"Missing active courses: {missing}")
+          if "orthography_basic" in active:
+            raise SystemExit("Retired legacy orthography_basic must not be active")
+          latin=Path("latin_course_runtime.py").read_text(encoding="utf-8")
+          if "kurmanji_latin_grammar" not in latin:
+            raise SystemExit("Latin grammar loader missing")
+          required=[
+            "bot.py","courses.json","latin_course_runtime.py",
+            "course_data/latin_courses_manifest_draft.json"
+          ]
+          for p in required:
+            if not Path(p).is_file():
+              raise SystemExit(f"Missing recovery file: {p}")
+          print("Verified active courses:", ", ".join(sorted(expected)))
+          PY
+          mkdir -p recovery
+          zip -j recovery/KejyarBot-restore-four-files.zip bot.py courses.json latin_course_runtime.py course_data/latin_courses_manifest_draft.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KejyarBot-restore-four-files
+          path: recovery/KejyarBot-restore-four-files.zip
+          retention-days: 7
