@@ -94,7 +94,8 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     expected,
                     "Pagination must preserve every rendered word and its order.",
                 )
-\n    def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
+
+    def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
         ]])
