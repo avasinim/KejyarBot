@@ -1298,7 +1298,7 @@ def grammar_academic_page_label(page_content):
         for heading in raw_headings
     ]
     for heading in headings:
-        normalized = re.sub(r"^[📖🎯🔎✍️📎🧩🧠🛠️🗣️📚🎭\s]*", "", heading)
+        normalized = re.sub(r"^[📘📖🎯🔎✍️📎🧩🧠🛠️🗣️📚🎭\s]*", "", heading)
         normalized = re.sub(r"^[٠-٩0-9]+[.)]\s*", "", normalized)
         if not normalized or normalized.startswith(("وانەی ", "کۆرسی ")):
             continue
