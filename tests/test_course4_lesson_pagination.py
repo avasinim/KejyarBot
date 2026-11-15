@@ -37,6 +37,23 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("ڕوونکردنەوەی ئەم بەشە.", page)
             self.assertLessEqual(len(page), 1250)
 
+    def test_plain_academic_section_titles_start_new_pages(self):
+        blocks = [
+            "<b>ئامانجەکانی فێربوون</b>",
+            "ناوەڕۆکی ئامانج. " * 35,
+            "<b>خۆت تاقی بکەرەوە</b>",
+            "پرسیارەکانی تاقیکردنەوە. " * 35,
+            "<b>کورتەی وانە: گرنگترین خاڵەکان</b>",
+            "پوختەی وانە. " * 35,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 3)
+        self.assertTrue(pages[0].startswith("<b>ئامانجەکانی فێربوون</b>"))
+        self.assertTrue(pages[1].startswith("<b>خۆت تاقی بکەرەوە</b>"))
+        self.assertTrue(pages[2].startswith("<b>کورتەی وانە: گرنگترین خاڵەکان</b>"))
+
     def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
         self.assertEqual(len(lesson_ids), 50)
