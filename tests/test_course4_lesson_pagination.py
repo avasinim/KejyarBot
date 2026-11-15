@@ -75,6 +75,28 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(content=content):
                 self.assertEqual(bot.grammar_academic_page_label(content), expected)
 
+    def test_markdown_heading_levels_render_as_academic_hierarchy(self):
+        content = "\\n".join([
+            "# ڕەشنووسی پەرەپێدراو — وانەی ٣٦",
+            "## تەواوکەر و پێکهاتەکانی ناو ڕستە",
+            "دەقی سەرەکیی بابەت.",
+            "### ٣.١ بەرکار (Object)",
+            "دەقی ژێربەش.",
+        ])
+        blocks = bot.render_lesson_html_blocks(content)
+        rendered = "\\n".join(blocks)
+
+        self.assertIn("<b>📘 ڕەشنووسی پەرەپێدراو — وانەی ٣٦</b>", rendered)
+        self.assertIn("<b>📖 تەواوکەر و پێکهاتەکانی ناو ڕستە</b>", rendered)
+        self.assertIn("<b>　↳ ٣.١ بەرکار (Object)</b>", rendered)
+        self.assertNotIn("## ", rendered)
+        self.assertNotIn("### ", rendered)
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+        self.assertEqual(len(pages), 1)
+        self.assertIn("دەقی سەرەکیی بابەت.", pages[0])
+        self.assertIn("دەقی ژێربەش.", pages[0])
+
     def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
         self.assertEqual(len(lesson_ids), 50)
