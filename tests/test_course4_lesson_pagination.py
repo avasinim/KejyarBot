@@ -107,6 +107,51 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     "Pagination must preserve every rendered word and its order.",
                 )
 
+
+    def test_lesson_three_topic_outline_preserves_every_source_item_in_order(self):
+        raw = next(
+            item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+            if item["number"] == 3
+        )
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            {"course_id": "grammar", "lessons": [raw]},
+            include_extended_sections=True,
+        )
+        content = adapted["grammar_03"]["content"]
+
+        expected_headings = (
+            "📖 پێناسە، ناسینەوە و پۆلێنی ناو",
+            "📖 دۆخی ناو و ژمارەی ڕێزمانی",
+            "📖 ڕەگەز و پۆلێنکردنی واتایی",
+            "📖 پێکهاتەی ناو و وشەسازی",
+            "📖 سنووری بابەت: ناو و کردار",
+            "📖 لێکدراو، ناوبەند و پشکنینی شێوەزاری",
+            "📖 نموونەی پۆل و ئەرکی ناو",
+            "📖 نموونەی دۆخ و ژمارە",
+            "📖 نموونەی داڕشتن و ناوی چەمکی",
+            "📖 نموونەی سنووری بابەت",
+            "📖 نموونەی لێکدراو و ناوبەند",
+            "📖 پوختەی تیۆری و جیاوازییە بنەڕەتییەکان",
+            "📖 سەرچاوە بنەڕەتییەکان",
+            "📖 سنووری شێوەزار و سنووری بابەت",
+            "📖 تێبینییەکانی بەڵگە، شیکردنەوە و پشکنینی زیاتر",
+        )
+        for heading in expected_headings:
+            self.assertIn(heading, content)
+
+        for field in ("key_points", "examples", "appendix"):
+            previous = -1
+            for item in raw[field]:
+                if field == "key_points":
+                    rendered = f"• {item}"
+                elif field == "examples":
+                    rendered = f"• {item[0]}: {item[1]}"
+                else:
+                    rendered = f"{raw[field].index(item) + 1}. {item}"
+                position = content.find(rendered)
+                self.assertGreater(position, previous, f"{field} item missing or reordered")
+                previous = position
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")

@@ -85,6 +85,50 @@ def format_conversation_lesson(lesson):
     return "\n".join(sections)
 
 
+
+# Presentation-only outline for the exceptionally dense third grammar lesson.
+# Ranges are 1-based source positions: no source item is rewritten or reordered.
+GRAMMAR_ACADEMIC_OUTLINES = {
+    3: {
+        "key_points": (
+            (1, 9, "پێناسە، ناسینەوە و پۆلێنی ناو"),
+            (10, 18, "دۆخی ناو و ژمارەی ڕێزمانی"),
+            (19, 21, "ڕەگەز و پۆلێنکردنی واتایی"),
+            (22, 25, "پێکهاتەی ناو و وشەسازی"),
+            (26, 27, "سنووری بابەت: ناو و کردار"),
+            (28, 35, "لێکدراو، ناوبەند و پشکنینی شێوەزاری"),
+        ),
+        "examples": (
+            (1, 4, "نموونەی پۆل و ئەرکی ناو"),
+            (5, 7, "نموونەی دۆخ و ژمارە"),
+            (8, 9, "نموونەی داڕشتن و ناوی چەمکی"),
+            (10, 10, "نموونەی سنووری بابەت"),
+            (11, 15, "نموونەی لێکدراو و ناوبەند"),
+        ),
+        "appendix": (
+            (1, 4, "پوختەی تیۆری و جیاوازییە بنەڕەتییەکان"),
+            (5, 7, "سەرچاوە بنەڕەتییەکان"),
+            (8, 10, "سنووری شێوەزار و سنووری بابەت"),
+            (11, 30, "تێبینییەکانی بەڵگە، شیکردنەوە و پشکنینی زیاتر"),
+        ),
+    },
+}
+
+
+def _append_grouped_academic_items(sections, items, groups, formatter):
+    """Insert navigable topic headings while preserving every source item in order."""
+    expected_start = 1
+    for start, end, heading in groups:
+        if start != expected_start or end < start or end > len(items):
+            raise ValueError("Invalid academic outline range")
+        sections.extend(["", f"📖 {heading}"])
+        for index in range(start - 1, end):
+            sections.append(formatter(items[index], index + 1))
+        expected_start = end + 1
+    if expected_start != len(items) + 1:
+        raise ValueError("Academic outline does not cover every source item")
+
+
 def adapt_unified_orthography_lessons(payload, include_extended_sections=False):
     """Adapt course drafts to namespaced lesson and quiz records.
 
@@ -117,16 +161,32 @@ def adapt_unified_orthography_lessons(payload, include_extended_sections=False):
         ]
         if raw.get("objective"):
             sections.extend(["", "🎯 ئامانج", raw["objective"]])
+        outline = GRAMMAR_ACADEMIC_OUTLINES.get(number, {}) if course_id == "grammar" else {}
         if raw.get("key_points"):
             sections.extend(["", "🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان"])
-            sections.extend(f"• {point}" for point in raw["key_points"])
+            if "key_points" in outline:
+                _append_grouped_academic_items(
+                    sections, raw["key_points"], outline["key_points"],
+                    lambda item, index: f"• {item}",
+                )
+            else:
+                sections.extend(f"• {point}" for point in raw["key_points"])
         if raw.get("examples"):
             sections.extend(["", "✍️ نموونەکان"])
-            sections.extend(
-                f"• {example[0]}: {example[1]}"
-                for example in raw["examples"]
+            valid_examples = [
+                example for example in raw["examples"]
                 if isinstance(example, (list, tuple)) and len(example) == 2
-            )
+            ]
+            if "examples" in outline:
+                _append_grouped_academic_items(
+                    sections, valid_examples, outline["examples"],
+                    lambda example, index: f"• {example[0]}: {example[1]}",
+                )
+            else:
+                sections.extend(
+                    f"• {example[0]}: {example[1]}"
+                    for example in valid_examples
+                )
         if include_extended_sections:
             for label, field in (
                 ("📎 پاشکۆ", "appendix"),
@@ -134,10 +194,16 @@ def adapt_unified_orthography_lessons(payload, include_extended_sections=False):
             ):
                 if raw.get(field):
                     sections.extend(["", label])
-                    sections.extend(
-                        f"{index}. {item}"
-                        for index, item in enumerate(raw[field], 1)
-                    )
+                    if field in outline:
+                        _append_grouped_academic_items(
+                            sections, raw[field], outline[field],
+                            lambda item, index: f"{index}. {item}",
+                        )
+                    else:
+                        sections.extend(
+                            f"{index}. {item}"
+                            for index, item in enumerate(raw[field], 1)
+                        )
         for label, field in (
             ("🧩 ڕاهێنان", "exercises"),
             ("🧠 پرسیارەکانی تێگەیشتن", "comprehension"),
