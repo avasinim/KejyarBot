@@ -152,7 +152,8 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
         # Every contiguous Beta completion prefix unlocks exactly its next lesson.
         for completed_count in range(1, len(order)):
-            with self.subTest(completed_count=completed_count), (
+            with (
+                self.subTest(completed_count=completed_count),
                 patch.object(bot, "get_completed_lessons", return_value=[]),
                 patch.object(
                     bot,
