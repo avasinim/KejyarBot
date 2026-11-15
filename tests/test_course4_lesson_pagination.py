@@ -134,6 +134,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     "<b>وانەی ٣٨: ناونیشانی سەرەکیی وانە</b>\\n"
                     f"<b>{cover}</b>\\n"
                     f"<b>{topic}</b>\\n"
+                    "<b>　↳ پێڕستە، سەرڕستە و ژێرەڕستە</b>\\n"
                     "<b>📖 ١. ئامانجی وانە</b>\\n"
                     "دەقی ئامانج."
                 )
