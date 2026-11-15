@@ -1352,10 +1352,17 @@ def grammar_academic_page_label(page_content, page=0):
         None,
     )
     if cover_index is not None:
-        for index in range(cover_index + 1, len(headings)):
-            if headings[index].startswith("📖 "):
-                headings.pop(index)
+        index = cover_index + 1
+        while index < len(headings):
+            heading = headings[index]
+            if heading.startswith("📖 ") and re.match(
+                r"📖\s*[٠-٩0-9]+[.)]\s*", heading
+            ):
                 break
+            if heading.startswith(("📖 ", "↳ ")):
+                headings.pop(index)
+                continue
+            break
     for heading in headings:
         # H1 (📘) is the lesson title, not the academic section label.
         if heading.startswith("📘 "):
