@@ -141,6 +141,36 @@ QUIZ_DATA.update(UNIFIED_QUIZZES)
         "Latin course ID allowlist",
     )
 
+    source = replace_once(
+        source,
+        '    expected_counts = {"daily_conversation": 42, "unified_orthography": 66, "kurmanji_latin_orthography": 12, "kurmanji_latin_grammar": 12, "grammar": 50}',
+        '    expected_counts = {"unified_orthography": 66, "kurmanji_latin_orthography": 12}',
+        "activated course count allowlist",
+    )
+    source = replace_once(
+        source,
+        '''BADGE_COURSE_TITLES = {
+    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی",
+    "daily_conversation": "کۆرسی ٢: وتووێژ",
+    "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
+    "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
+    "kurmanji_latin_grammar": "Kursa 2: Bingehên Gramera Kurmancî",
+    "grammar": "کەژیار | زانستی زمان — بەشی ڕێزمان",
+}''',
+        '''BADGE_COURSE_TITLES = {
+    "arami_orthography_foundations": "کۆرسی ١: ڕێنووسی سەرەتاییی کوردی",
+    "unified_orthography": "کۆرسی ٣: ڕێنووسی یەکگرتوو",
+    "kurmanji_latin_orthography": "Kursa 1: Bingehên Rastnivîsîna Kurmancî ya Latînî",
+}''',
+        "badge title allowlist",
+    )
+    source = replace_once(
+        source,
+        '    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))',
+        '    app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|unified_orthography|kurmanji_latin_orthography)$"))',
+        "course callback allowlist",
+    )
+
     # Image delivery is deliberately omitted; lesson text and assessments remain intact.
     source = re.sub(
         r"^[ \t]*await send_shared_lesson_image\([^\n]*\)\n",
