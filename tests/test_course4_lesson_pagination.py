@@ -147,7 +147,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
         message.reply_text.assert_awaited_once()
         args, kwargs = message.reply_text.await_args
-        self.assertIn("بەشی 1 لە", args[0])
+        self.assertIn("پەڕە 1 لە", args[0])
         self.assertIn("وانەی ١", args[0])
         self.assertIsNotNone(kwargs["reply_markup"])
         callbacks = [
@@ -173,7 +173,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
         query.answer.assert_awaited_once()
         query.message.reply_text.assert_awaited_once()
-        self.assertIn("بەشی 2 لە", query.message.reply_text.await_args.args[0])
+        self.assertIn("پەڕە 2 لە", query.message.reply_text.await_args.args[0])
         send_image.assert_not_awaited()
 
 
