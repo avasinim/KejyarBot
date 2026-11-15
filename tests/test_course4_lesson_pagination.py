@@ -96,6 +96,23 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             "پێناسە و بنەماکانی بابەت",
         )
 
+    def test_top_level_academic_headings_start_new_pages(self):
+        blocks = [
+            "<b>📘 ڕەشنووسی وانە</b>",
+            "<b>📖 پێشەکی</b>",
+            "دەقی پێشەکی. " * 20,
+            "<b>📘 پاشکۆی کۆتایی وانە</b>",
+            "<b>📖 داتای پڕۆژە</b>",
+            "دەقی پاشکۆ. " * 20,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 2)
+        self.assertTrue(pages[0].startswith("<b>📘 ڕەشنووسی وانە</b>"))
+        self.assertTrue(pages[1].startswith("<b>📘 پاشکۆی کۆتایی وانە</b>"))
+        self.assertIn("دەقی پاشکۆ.", pages[1])
+
     def test_markdown_heading_levels_render_as_academic_hierarchy(self):
         content = "\n".join([
             "# ڕەشنووسی پەرەپێدراو — وانەی ٣٦",
