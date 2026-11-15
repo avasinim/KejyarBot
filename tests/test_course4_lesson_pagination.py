@@ -204,6 +204,42 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 )
                 previous = position
 
+
+    def test_lessons_32_to_50_remain_review_gated_beta_drafts(self):
+        self.assertEqual(
+            len([
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if 32 <= item["number"] <= 50
+            ]),
+            19,
+        )
+        for number in range(32, 51):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                raw = next(
+                    item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                    if item["number"] == number
+                )
+                runtime = bot.LESSON_DATA[lesson_id]
+                self.assertEqual(
+                    raw["review_status"],
+                    "owner_review_pending_expanded_draft",
+                )
+                self.assertEqual(runtime["review_status"], raw["review_status"])
+                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+
+        for number in range(47, 51):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            self.assertTrue(raw.get("source_markdown", "").strip())
+            self.assertIn(
+                "## ",
+                bot.LESSON_DATA[f"grammar_{number:02d}"]["content"],
+            )
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
