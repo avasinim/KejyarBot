@@ -320,7 +320,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_dictionary_section_has_clean_single_heading_and_real_line_breaks(self):
-        update, context = self.make_update_context("📖 وشەنامەی کوردی")
+        update, context = self.make_update_context("📖 وشەنامەی کوردیی")
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
 
@@ -328,10 +328,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
         self.assertNotIn(r"\n", output)
         self.assertEqual(output.count("📚 <b>کتێبخانەی وشەنامەی کوردی</b>"), 1)
-        self.assertNotIn("📖 <b>وشەنامەی کوردی</b>", output)
+        self.assertNotIn("📖 <b>وشەنامەی کوردیی</b>", output)
 
     async def test_keyboard_section_has_clean_single_heading_and_real_line_breaks(self):
-        update, context = self.make_update_context("⌨️ تەختەکلیلی کوردی")
+        update, context = self.make_update_context("⌨️ تەختەکلیلی کوردیی")
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
 
@@ -339,7 +339,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
         self.assertNotIn(r"\n", output)
         self.assertEqual(output.count("⌨️ <b>ناوەندی تەختەکلیلی کوردی</b>"), 1)
-        self.assertNotIn("⌨️ <b>تەختەکلیلی کوردی</b>", output)
+        self.assertNotIn("⌨️ <b>تەختەکلیلی کوردیی</b>", output)
 
     async def test_kurmanji_months_callback_preserves_bold_html_tags(self):
         query = SimpleNamespace(
