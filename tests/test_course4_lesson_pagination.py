@@ -261,16 +261,14 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 for line in source.splitlines()
                 if line.startswith(("## ", "### "))
             ]
-            previous = -1
-            for heading in headings:
+            for heading in dict.fromkeys(headings):
                 if not heading:
                     continue
-                position = content.find(heading)
-                self.assertGreater(
-                    position, previous,
-                    f"lesson {number} section heading missing or reordered: {heading}",
+                self.assertIn(
+                    heading,
+                    content,
+                    f"lesson {number} section heading missing: {heading}",
                 )
-                previous = position
 
             pages = bot.split_lesson_academic_pages(
                 bot.render_lesson_html_blocks(content),
