@@ -85,6 +85,16 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(content=content):
                 self.assertEqual(bot.grammar_academic_page_label(content), expected)
 
+    def test_heading_free_later_page_is_labeled_as_continuation(self):
+        self.assertEqual(
+            bot.grammar_academic_page_label("دەقی بەردەوامیی بابەت.", page=1),
+            "بەردەوامیی بابەت",
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label("دەقی سەرەتایی بابەت.", page=0),
+            "پێشەکی و بنەمای بابەت",
+        )
+
     def test_lesson_title_does_not_override_academic_page_label(self):
         content = (
             "<b>📘 ڕستە و پێکهاتەکانی ڕێزمان</b>\\n"
