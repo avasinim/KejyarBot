@@ -573,6 +573,27 @@ def lesson_keyboard(lesson):
     ]])
 
 
+def lesson_page_keyboard(lesson, page, page_count, completion_markup=None):
+    """Keep grammar lesson navigation separate from completion and assessment actions."""
+    rows = []
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton(
+            "⬅️ بەشی پێشوو",
+            callback_data=f"lessonpage:{lesson}:{page - 1}",
+        ))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton(
+            "بەشی دواتر ➡️",
+            callback_data=f"lessonpage:{lesson}:{page + 1}",
+        ))
+    if navigation:
+        rows.append(navigation)
+    if page == page_count - 1 and completion_markup is not None:
+        rows.extend(completion_markup.inline_keyboard)
+    return InlineKeyboardMarkup(rows) if rows else None
+
+
 def lesson_display_content(lesson, content):
     if lesson_is_beta_review(lesson):
         notice = (
@@ -1172,15 +1193,35 @@ def add_kejyar_brand_signature(content):
     return content
 
 
-async def send_lesson_text(message, content, reply_markup=None):
-    """Send lessons in a consistent academic layout, preserving all lesson wording."""
+async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=None, page=0):
+    """Send a lesson; Course 4 uses learner-controlled academic reading pages."""
     content = re.sub(
-        r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
+        r"(?im)^\\s*⚠️?\\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
         "",
         content,
     )
     content = add_kejyar_brand_signature(content)
-    chunks = split_lesson_html(render_lesson_html_blocks(content))
+    blocks = render_lesson_html_blocks(content)
+    if lesson_id and LESSON_COURSE.get(lesson_id) == "grammar":
+        # Presentation-only pagination: the authored lesson and all its sections
+        # remain untouched; only the amount shown in each Telegram message changes.
+        pages = split_lesson_html(blocks, limit=2200)
+        if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < len(pages):
+            page = 0
+        title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
+        page_header = (
+            f"<b>{title}</b>\\n"
+            f"📄 بەشی {page + 1} لە {len(pages)}"
+        )
+        await message.reply_text(
+            f"{page_header}\\n\\n{pages[page]}",
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=lesson_page_keyboard(lesson_id, page, len(pages), reply_markup),
+        )
+        return
+
+    chunks = split_lesson_html(blocks)
     for index, chunk in enumerate(chunks):
         await message.reply_text(
             chunk,
@@ -1205,7 +1246,12 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+    )
     await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 
@@ -1221,8 +1267,46 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+    )
     await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
+
+
+async def open_lesson_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Open one requested page of a Course 4 lesson without resending its image."""
+    query = update.callback_query
+    await query.answer()
+    prefix, separator, remainder = query.data.partition(":")
+    lesson, page_separator, raw_page = remainder.rpartition(":")
+    if (
+        prefix != "lessonpage"
+        or not separator
+        or not page_separator
+        or not raw_page.isdecimal()
+        or LESSON_COURSE.get(lesson) != "grammar"
+    ):
+        await query.message.reply_text("⚠️ داواکاریی بەشی وانەکە نادروستە.")
+        return
+    user_id = query.from_user.id
+    if lesson not in LESSON_COURSE or not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+        page=int(raw_page),
+    )
+
 
 COURSE_MENU_PAGE_SIZE = 12
 
@@ -1873,7 +1957,12 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
-        await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
+        await send_lesson_text(
+            update.message,
+            lesson_display_content(lesson, data["content"]),
+            lesson_keyboard(lesson),
+            lesson_id=lesson,
+        )
         await send_lesson_infographic(update.message, lesson)
         return
 
@@ -2007,6 +2096,7 @@ def main():
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))
     app.add_handler(CallbackQueryHandler(submit_quiz_answer, pattern=r"^submit_answer$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
+    app.add_handler(CallbackQueryHandler(open_lesson_page, pattern=r"^lessonpage:"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     # Last in the callback handler group: acknowledge stale/unknown buttons so
     # Telegram does not leave the user's loading indicator spinning forever.
