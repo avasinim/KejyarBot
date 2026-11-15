@@ -75,6 +75,17 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(content=content):
                 self.assertEqual(bot.grammar_academic_page_label(content), expected)
 
+    def test_unclassified_heading_does_not_mask_later_academic_label(self):
+        content = (
+            "<b>📖 ناونیشانی تایبەتی بەش</b>\\n"
+            "<b>📖 ٢. پێناسە و بنەماکانی بابەت</b>"
+        )
+
+        self.assertEqual(
+            bot.grammar_academic_page_label(content),
+            "پێناسە و بنەماکانی بابەت",
+        )
+
     def test_markdown_heading_levels_render_as_academic_hierarchy(self):
         content = "\n".join([
             "# ڕەشنووسی پەرەپێدراو — وانەی ٣٦",
