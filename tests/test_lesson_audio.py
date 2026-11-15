@@ -9,6 +9,19 @@ class TextOnlyLessonReaderTests(unittest.TestCase):
         self.assertFalse(hasattr(arami_course1_telegram, "send_lesson_audio"))
         self.assertFalse(hasattr(arami_course1_telegram, "load_lesson_audio_files"))
 
+    def test_repository_contains_no_pdf_files(self):
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[1]
+        pdf_files = [
+            path.relative_to(root).as_posix()
+            for path in root.rglob("*")
+            if path.is_file()
+            and ".git" not in path.parts
+            and path.suffix.lower() == ".pdf"
+        ]
+        self.assertEqual(pdf_files, [], f"Unexpected PDF files: {pdf_files}")
+
     def test_repository_contains_no_prerecorded_audio_files(self):
         from pathlib import Path
 
