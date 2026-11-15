@@ -1227,7 +1227,11 @@ def split_lesson_academic_pages(blocks, limit=2200):
     sections = []
     current_section = []
     for block in blocks:
-        if is_section_heading(block) and current_section:
+        top_level_heading_only = (
+            len(current_section) == 1
+            and current_section[0].startswith("<b>📘 ")
+        )
+        if is_section_heading(block) and current_section and not top_level_heading_only:
             sections.append(current_section)
             current_section = []
         current_section.append(block)
