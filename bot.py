@@ -468,7 +468,7 @@ MENU = ReplyKeyboardMarkup(
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"],
         ["🎁 سەنوقی خەڵات", "🗓️ مانگەکانی ساڵ لەناو کورداندا"],
-        ["📖 وشەنامەی کوردی", "⌨️ تەختەکلیلی کوردی"],
+        ["📖 وشەنامەی کوردیی", "⌨️ تەختەکلیلی کوردیی"],
         ["🌐 گۆڕینی زمانی تەلەگرام"],
     ],
     resize_keyboard=True,
@@ -1702,7 +1702,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -1948,10 +1948,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردیی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n"
             "٢١ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
@@ -1975,8 +1975,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    if text == "📖 وشەنامەی کوردی":
-        dictionary_help = """📖 <b>وشەنامەی کوردی</b>
+    if text == "📖 وشەنامەی کوردیی":
+        dictionary_help = """📖 <b>وشەنامەی کوردیی</b>
 کۆمەڵەیەک فەرهەنگ و سەرچاوەی وشەسازیی کوردی؛ بە پێی شێوەزار و جۆری فەرهەنگ ڕێکخراون.
 
 🌐 <b>فەرهەنگە گشتییەکان و چەندشێوەزارییەکان</b>
@@ -2046,8 +2046,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         return
 
-    if text == "⌨️ تەختەکلیلی کوردی":
-        keyboard_help = """⌨️ <b>تەختەکلیلی کوردی</b>
+    if text == "⌨️ تەختەکلیلی کوردیی":
+        keyboard_help = """⌨️ <b>تەختەکلیلی کوردیی</b>
 بەستەری تەختەکلیل و ڕێنمایی دامەزراندن بەپێی ئامێر و شێوەزاری کوردی.
 
 🪟 <b>Windows</b>
@@ -2146,8 +2146,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردیی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
-        "⌨️ تەختەکلیلی کوردی",
-        "📖 وشەنامەی کوردی",
+        "⌨️ تەختەکلیلی کوردیی",
+        "📖 وشەنامەی کوردیی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -2176,10 +2176,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردیی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
