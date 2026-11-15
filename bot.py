@@ -331,6 +331,17 @@ LESSON_COURSE = {
     for lesson_id in lesson_ids
 }
 
+def is_course4_grammar_lesson(lesson_id):
+    """Recognize Course 4 by its stable lesson namespace, even if a manifest map is stale."""
+    return (
+        isinstance(lesson_id, str)
+        and lesson_id in LESSON_DATA
+        and (
+            LESSON_COURSE.get(lesson_id) == "grammar"
+            or lesson_id.startswith("grammar_")
+        )
+    )
+
 def course_is_active(course_id):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
     return bool(course and course.get("status") == "active")
@@ -1454,7 +1465,14 @@ async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=Non
     )
     content = add_kejyar_brand_signature(content)
     blocks = render_lesson_html_blocks(content)
-    if lesson_id and LESSON_COURSE.get(lesson_id) == "grammar":
+    course4_pagination = is_course4_grammar_lesson(lesson_id)
+    logger.info(
+        "Lesson delivery route: lesson_id=%s mapped_course=%s course4_pagination=%s",
+        lesson_id,
+        LESSON_COURSE.get(lesson_id),
+        course4_pagination,
+    )
+    if course4_pagination:
         # Presentation-only pagination: the authored lesson and all its sections
         # remain untouched; only the amount shown in each Telegram message changes.
         pages = split_lesson_academic_pages(blocks, limit=2200)
@@ -1543,7 +1561,7 @@ async def open_lesson_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
         or not separator
         or not page_separator
         or not raw_page.isdecimal()
-        or LESSON_COURSE.get(lesson) != "grammar"
+        or not is_course4_grammar_lesson(lesson)
     ):
         await query.message.reply_text("⚠️ داواکاریی بەشی وانەکە نادروستە.")
         return
