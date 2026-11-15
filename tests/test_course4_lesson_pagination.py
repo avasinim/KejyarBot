@@ -100,10 +100,10 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         blocks = [
             "<b>📘 ڕەشنووسی وانە</b>",
             "<b>📖 پێشەکی</b>",
-            "دەقی پێشەکی. " * 20,
+            "دەقی پێشەکی. " * 40,
             "<b>📘 پاشکۆی کۆتایی وانە</b>",
             "<b>📖 داتای پڕۆژە</b>",
-            "دەقی پاشکۆ. " * 20,
+            "دەقی پاشکۆ. " * 55,
         ]
 
         pages = bot.split_lesson_academic_pages(blocks, limit=1000)
