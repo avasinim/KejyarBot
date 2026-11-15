@@ -9,6 +9,15 @@ on:
       - "assets/**"
       - "courses.json"
       - "requirements.txt"
+  pull_request:
+    branches: ["release/main-based-reconciled-2026-11-11"]
+    paths:
+      - ".github/workflows/build-runtime-package.yml"
+      - "**.py"
+      - "course_data/**"
+      - "assets/**"
+      - "courses.json"
+      - "requirements.txt"
 permissions:
   contents: read
   actions: write
