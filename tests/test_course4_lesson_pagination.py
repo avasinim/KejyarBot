@@ -152,6 +152,35 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertGreater(position, previous, f"{field} item missing or reordered")
                 previous = position
 
+
+    def test_topic_outlines_for_lessons_29_to_31_preserve_source_order(self):
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            bot.GRAMMAR_COURSE4_DRAFT,
+            include_extended_sections=True,
+        )
+        for number in (29, 30, 31):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            content = adapted[f"grammar_{number:02d}"]["content"]
+            for field in ("key_points", "examples", "appendix"):
+                previous = -1
+                for index, item in enumerate(raw.get(field, []), 1):
+                    if field == "key_points":
+                        rendered = f"• {item}"
+                    elif field == "examples":
+                        rendered = f"• {item[0]}: {item[1]}"
+                    else:
+                        rendered = f"{index}. {item}"
+                    position = content.find(rendered)
+                    self.assertGreater(
+                        position, previous,
+                        f"lesson {number} {field} item missing or reordered",
+                    )
+                    previous = position
+            self.assertIn("📖 ", content)
+
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
