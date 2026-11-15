@@ -52,7 +52,9 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         await bot.send_lesson_text(
             message,
             content,
-            bot.lesson_keyboard("grammar_01"),
+            bot.InlineKeyboardMarkup([[
+                bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
+            ]]),
             lesson_id="grammar_01",
             page=0,
         )
