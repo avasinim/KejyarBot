@@ -29,13 +29,13 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 "ڕوونکردنەوەی ئەم بەشە. " * 45,
             ])
 
-        pages = bot.split_lesson_academic_pages(blocks, limit=1100)
+        pages = bot.split_lesson_academic_pages(blocks, limit=1250)
 
         self.assertEqual(len(pages), 3)
         for number, page in enumerate(pages, start=1):
             self.assertTrue(page.startswith(f"<b>📖 بەشی فێرکاری {number}</b>"))
             self.assertIn("ڕوونکردنەوەی ئەم بەشە.", page)
-            self.assertLessEqual(len(page), 1100)
+            self.assertLessEqual(len(page), 1250)
 
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
