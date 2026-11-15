@@ -145,6 +145,35 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, order[1]))
             self.assertFalse(bot.can_open(12345, order[2]))
 
+    def test_arami_beta_ledger_unlocks_only_the_next_review_lesson(self):
+        order = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        beta_review = lambda lesson_id: lesson_id in order
+
+        # One completed Beta lesson opens lesson 2, but not lesson 3.
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[order[0]]),
+            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+        ):
+            self.assertTrue(bot.can_open(12345, order[1]))
+            self.assertFalse(bot.can_open(12345, order[2]))
+
+        # Two consecutive Beta completions open lesson 3.
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=order[:2]),
+            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+        ):
+            self.assertTrue(bot.can_open(12345, order[2]))
+
+        # A gap in the Beta ledger must never unlock a later lesson.
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[order[0], order[2]]),
+            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+        ):
+            self.assertFalse(bot.can_open(12345, order[3]))
+
     def test_approved_course4_lesson_does_not_reuse_stale_beta_completion(self):
         order = bot.COURSE_LESSON_ORDER["grammar"]
         lesson_32 = order[31]
