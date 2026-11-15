@@ -83,8 +83,6 @@ def transform_courses_json(path: Path) -> None:
     ids = {item.get("id") for item in courses}
     if ids != COURSE_IDS or len(courses) != 3:
         raise RuntimeError(f"Course manifest mismatch: found {sorted(ids)}")
-    if "kurmanji_latin_grammar" in original_ids:
-        raise RuntimeError("Latin Course 2 unexpectedly entered the selected manifest")
     data["courses"] = courses
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
