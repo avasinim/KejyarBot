@@ -1,0 +1,111 @@
+name: Build verified full runtime from Release
+on:
+  push:
+    branches:
+      - recovery/verified-full-runtime-from-release-2026-11-15
+permissions:
+  contents: read
+jobs:
+  verify-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact Release source
+        uses: actions/checkout@v4
+        with:
+          ref: 3ae9e7d7d681f75fe689e3849dcc45ecd48e2ddc
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify six courses, current grammar and safe assets
+        working-directory: source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          courses=json.loads(Path("courses.json").read_text(encoding="utf-8"))["courses"]
+          active={c["id"]:len(c.get("lesson_ids",[])) for c in courses if c.get("status")=="active"}
+          expected={
+            "arami_orthography_foundations":21,
+            "daily_conversation":42,
+            "unified_orthography":66,
+            "grammar":50,
+            "kurmanji_latin_orthography":12,
+            "kurmanji_latin_grammar":12,
+          }
+          if active != expected:
+            raise SystemExit(f"Active course inventory mismatch: {active}")
+          legacy=next(c for c in courses if c["id"]=="orthography_basic")
+          if legacy.get("status")!="retired_replaced_by_arami_course1" or legacy.get("lesson_ids"):
+            raise SystemExit("Legacy 22-lesson Course 1 must remain retired")
+          grammar=json.loads(Path("course_data/grammar_course4_lessons.json").read_text(encoding="utf-8"))
+          lessons=grammar["lessons"]
+          if len(lessons)!=50 or [x.get("number") for x in lessons]!=list(range(1,51)):
+            raise SystemExit("Course 4 must contain all 50 ordered lesson records")
+          approved=[x for x in lessons if x.get("review_status")=="scientific_review_complete_with_qualified_notes"]
+          internal=[x for x in lessons if x.get("review_status")=="internal_cross_lesson_synthesis_no_external_source_mapping"]
+          pending=[x for x in lessons if x.get("review_status")=="owner_review_pending_expanded_draft"]
+          if (len(approved),len(internal),len(pending))!=(30,1,19):
+            raise SystemExit(f"Course 4 review-state mismatch: approved={len(approved)}, internal={len(internal)}, pending={len(pending)}")
+          if any(x.get("quiz") for x in pending):
+            raise SystemExit("Owner-review draft lessons 32-50 must not gain quizzes")
+          if any(not x.get("source_markdown","").strip() for x in pending):
+            raise SystemExit("A Course 4 owner-review lesson lost its preserved source Markdown")
+          latin=json.loads(Path("course_data/latin_courses_manifest_draft.json").read_text(encoding="utf-8"))
+          latin_ids=[x.get("id") for x in latin.get("courses",[])]
+          if latin_ids!=["kurmanji_latin_orthography","kurmanji_latin_grammar"]:
+            raise SystemExit(f"Latin course manifest mismatch: {latin_ids}")
+          routes=Path("lesson_image_delivery.py").read_text(encoding="utf-8")
+          if '("kurmanji_latin_orthography",\n        "kurmanji_latin_orthography_01"' not in routes:
+            raise SystemExit("Latin Course 1 Lesson 1 shared-image route is missing")
+          print("Verified 6 active courses / 203 lessons.")
+          print("Course 4: 50 lessons; 30 approved, 1 internal synthesis, 19 owner-review Beta drafts.")
+          print("Both 12-lesson Latin courses and the retired legacy course boundary are intact.")
+          PY
+      - name: Install dependencies and run complete repository checks
+        working-directory: source
+        run: |
+          python -m pip install -r requirements.txt
+          python -m compileall -q .
+          python -m unittest discover -s tests -v
+      - name: Build allowlisted runtime ZIP
+        working-directory: source
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, zipfile
+          root=pathlib.Path.cwd()
+          paths=[
+            "arami_course1_runtime.py","arami_course1_telegram.py","arami_lesson1_interaction.py","arami_lesson1_telegram.py","arami_lesson5_telegram.py",
+            "assets/course1_infographics/lesson_01.png","assets/course1_infographics/lesson_02.png","assets/course1_infographics/lesson_03.png","assets/course1_infographics/lesson_04.png","assets/course1_infographics/lesson_06.png","assets/course1_infographics/lesson_07.png","assets/lessons/kejyar_lesson5_kurdish_letters_v2.png",
+            "bot.py",
+            "course_data/arami_course1_lesson_01_content.json","course_data/arami_course1_lesson_01_interactions.json","course_data/arami_course1_lesson_02_vowels_source.md","course_data/arami_course1_lesson_03_vowel_rules_source.md","course_data/arami_course1_lesson_04_source.md","course_data/arami_course1_lesson_05_interactions.json","course_data/arami_course1_lesson_05_source.md","course_data/arami_course1_lesson_07_source.md","course_data/arami_course1_lesson_08_t_z_combined_source.md","course_data/arami_course1_lesson_09_alef_aa_source.md","course_data/arami_course1_lesson_10_hamza_source.md","course_data/arami_course1_lesson_11_vowels_bore_sara_zhera_source.md","course_data/arami_course1_lesson_12_y_source.md","course_data/arami_course1_lesson_13_w_source.md","course_data/arami_course1_lesson_14_bizroke_hishu_source.md","course_data/arami_course1_lesson_15_l_ll_source.md","course_data/arami_course1_lesson_16_r_rr_source.md","course_data/arami_course1_lesson_16_v_source.md","course_data/arami_course1_lesson_17_he_e_source.md","course_data/arami_course1_lesson_18_k_g_mukriani_source.md","course_data/arami_course1_lesson_19_cluster_source.md","course_data/arami_course1_lesson_20_syllable_cluster_source.md","course_data/arami_course1_manifest.json","course_data/arami_course1_received_lesson_06_source.md","course_data/arami_course1_source_quiz_banks.json",
+            "course_data/daily_conversation_lessons_01_06.json","course_data/daily_conversation_lessons_07_30.json","course_data/daily_conversation_lessons_31_36.json","course_data/daily_conversation_lessons_37_42.json",
+            "course_data/grammar_course4_lessons.json","course_data/grammar_course4_quiz_overrides.json",
+            "course_data/latin_course_1_quiz_answer_key_draft.md","course_data/latin_course_1_source_aligned_lessons_01_12.md","course_data/latin_course_2_quiz_answer_key_draft.md","course_data/latin_course_2_source_aligned_lessons_01_12.md","course_data/latin_courses_manifest_draft.json",
+            "course_data/unified_orthography_lessons_01_66.json",
+            "course_lesson_adapters.py","course_quiz_review.py","course_runtime.py","courses.json","daily_chat.py","database.py","kurdish_months.py","latin_course_runtime.py","lesson_image_delivery.py","quiz_option_order.py","requirements.txt"
+          ]
+          missing=[p for p in paths if not (root/p).is_file()]
+          if missing: raise SystemExit("Missing allowlisted files: "+repr(missing))
+          images=[p for p in paths if pathlib.Path(p).suffix.lower() in {".png",".webp",".gif",".jpg",".jpeg"}]
+          if len(images)!=7: raise SystemExit(f"Expected 7 approved image files, found {len(images)}")
+          out=root/"KejyarBot-runtime-release-3ae9e7d.zip"
+          with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+            for p in paths: z.write(root/p,p)
+          with zipfile.ZipFile(out) as z:
+            names=z.namelist()
+            if len(names)!=len(paths) or set(names)!=set(paths): raise SystemExit("ZIP path inventory mismatch")
+            forbidden=[n for n in names if n.lower().endswith((".pdf",".mp3",".wav",".ogg",".flac",".m4a",".jpg",".jpeg",".svg")) or n==".env" or "kejyar.db" in n.lower()]
+            if forbidden: raise SystemExit("Forbidden files in ZIP: "+repr(forbidden))
+          report={"source_branch":"release/main-based-reconciled-2026-11-11","source_commit":"3ae9e7d7d681f75fe689e3849dcc45ecd48e2ddc","archive":out.name,"file_count":len(names),"image_file_count":len(images),"sha256":hashlib.sha256(out.read_bytes()).hexdigest(),"paths":names}
+          (root/"package-report.json").write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
+          print(json.dumps(report,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KejyarBot-runtime-release-3ae9e7d
+          path: |
+            source/KejyarBot-runtime-release-3ae9e7d.zip
+            source/package-report.json
+          if-no-files-found: error
+          retention-days: 7
