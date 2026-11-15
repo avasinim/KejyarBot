@@ -69,7 +69,32 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(all(page.strip() for page in pages))
                 self.assertTrue(all(len(page) <= 2200 for page in pages))
 
-    def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
+
+    def test_pagination_preserves_every_rendered_text_block_in_order_for_all_fifty_lessons(self):
+        import html
+        import re
+
+        def normalized_visible_text(value):
+            value = re.sub(r"<[^>]*>", " ", value)
+            return " ".join(html.unescape(value).split())
+
+        lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
+        self.assertEqual(len(lesson_ids), 50)
+
+        for lesson_id in lesson_ids:
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                expected = normalized_visible_text("\\n".join(blocks))
+                actual = normalized_visible_text("\\n".join(pages))
+                self.assertEqual(
+                    actual,
+                    expected,
+                    "Pagination must preserve every rendered word and its order.",
+                )
+\n    def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
         completion = bot.InlineKeyboardMarkup([[
             bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
         ]])
