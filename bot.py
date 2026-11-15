@@ -1119,9 +1119,19 @@ def render_lesson_html_blocks(content):
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith("وانەی "):
             blocks.append(f"<b>{escaped}</b>")
-        elif line.startswith(("💬 ", "📖 ", "## ")):
-            title = line.removeprefix("## ").strip()
-            blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
+        elif re.match(r"^#{1,6}\\s+\\S", line):
+            heading_match = re.match(r"^(#{1,6})\\s+(.+)$", line)
+            level = len(heading_match.group(1))
+            title = heading_match.group(2).strip()
+            safe_title = html.escape(title, quote=False)
+            if level == 1:
+                blocks.append(f"<b>📘 {safe_title}</b>")
+            elif level == 2:
+                blocks.append(f"<b>📖 {safe_title}</b>")
+            else:
+                blocks.append(f"<b>　↳ {safe_title}</b>")
+        elif line.startswith(("💬 ", "📖 ")):
+            blocks.append(f"<b>{html.escape(line, quote=False)}</b>")
         elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
             blocks.append(f"<b>{escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
