@@ -1,0 +1,50 @@
+name: Build Nov 14 course recovery files
+on:
+  push:
+    branches:
+      - recovery/restore-nov14-six-courses-2026-11-15
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify six active courses and package original files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("courses.json").read_text(encoding="utf-8"))
+          active={c["id"]:len(c.get("lesson_ids",[])) for c in data["courses"] if c.get("status")=="active"}
+          expected={
+            "arami_orthography_foundations":21,
+            "daily_conversation":42,
+            "unified_orthography":66,
+            "grammar":50,
+            "kurmanji_latin_orthography":12,
+            "kurmanji_latin_grammar":12
+          }
+          if active != expected:
+            raise SystemExit(f"Active course inventory mismatch: {active}")
+          if any(c.get("id")=="orthography_basic" and c.get("status")=="active" for c in data["courses"]):
+            raise SystemExit("Retired legacy orthography_basic is unexpectedly active")
+          latin=Path("latin_course_runtime.py").read_text(encoding="utf-8")
+          if "kurmanji_latin_grammar" not in latin:
+            raise SystemExit("Latin grammar loader missing")
+          required=[
+            "bot.py","courses.json","latin_course_runtime.py",
+            "course_data/latin_courses_manifest_draft.json"
+          ]
+          for p in required:
+            if not Path(p).is_file():
+              raise SystemExit(f"Missing recovery file: {p}")
+          print("Verified exact active course inventory:", active)
+          PY
+          mkdir -p recovery
+          zip recovery/KejyarBot-restore-four-files.zip bot.py courses.json latin_course_runtime.py course_data/latin_courses_manifest_draft.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KejyarBot-restore-four-files-nov14
+          path: recovery/KejyarBot-restore-four-files.zip
+          retention-days: 7
