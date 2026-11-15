@@ -54,6 +54,18 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(pages[1].startswith("<b>خۆت تاقی بکەرەوە</b>"))
         self.assertTrue(pages[2].startswith("<b>کورتەی وانە: گرنگترین خاڵەکان</b>"))
 
+    def test_academic_page_labels_classify_instructional_sections(self):
+        cases = (
+            ("<b>🎯 ئامانج</b>\\nدەقی ئامانج", "ئامانجی فێربوون"),
+            ("<b>🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان</b>", "بنەما و ڕوونکردنەوەی زانستی"),
+            ("<b>✍️ نموونەکان</b>", "نموونە و شیکردنەوە"),
+            ("<b>📎 پاشکۆ</b>", "پاشکۆی زانستی"),
+            ("<b>🧩 ڕاهێنان</b>", "ڕاهێنان"),
+        )
+        for content, expected in cases:
+            with self.subTest(content=content):
+                self.assertEqual(bot.grammar_academic_page_label(content), expected)
+
     def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
         self.assertEqual(len(lesson_ids), 50)
