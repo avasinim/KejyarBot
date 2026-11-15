@@ -1279,6 +1279,28 @@ def add_kejyar_brand_signature(content):
     return content
 
 
+def grammar_academic_page_label(page_content):
+    """Return a restrained academic section label for the current reading page."""
+    visible = html.unescape(re.sub(r"<[^>]+>", " ", page_content))
+    visible = " ".join(visible.split())
+    labels = (
+        (("🎯 ئامانج", "ئامانجەکانی فێربوون"), "ئامانجی فێربوون"),
+        (("🔎 ڕوونکردنەوە",), "بنەما و ڕوونکردنەوەی زانستی"),
+        (("✍️ نموونە", "نموونەی شیکردنەوە"), "نموونە و شیکردنەوە"),
+        (("📎 پاشکۆ",), "پاشکۆی زانستی"),
+        (("🎯 چالاکی",), "چالاکیی فێرکاری"),
+        (("🧩 ڕاهێنان", "✍️ ڕاهێنان"), "ڕاهێنان"),
+        (("🧠 تێگەیشتن", "پرسیارەکانی تێگەیشتن"), "هەڵسەنگاندنی تێگەیشتن"),
+        (("📚 سەرچاوە", "سەرچاوەکان"), "سەرچاوە و تێبینی"),
+    )
+    for prefixes, label in labels:
+        if any(prefix in visible[:180] for prefix in prefixes):
+            return label
+    if re.search(r"(?:^|\\s)[٠-٩0-9]+[.)]", visible):
+        return "خاڵە سەرەکییەکانی وانە"
+    return "پێشەکی و بنەمای بابەت"
+
+
 async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=None, page=0):
     """Send a lesson; Course 4 uses learner-controlled academic reading pages."""
     content = re.sub(
@@ -1295,9 +1317,13 @@ async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=Non
         if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < len(pages):
             page = 0
         title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
+        section_label = html.escape(grammar_academic_page_label(pages[page]), quote=False)
         page_header = (
+            "<b>کۆرسی ٤ | زانستی ڕێزمان</b>\n"
             f"<b>{title}</b>\n"
-            f"📄 بەشی {page + 1} لە {len(pages)}"
+            f"<code>پەڕە {page + 1} لە {len(pages)}</code> · "
+            f"<i>{section_label}</i>\n"
+            "━━━━━━━━━━━━━━━━"
         )
         await message.reply_text(
             f"{page_header}\n\n{pages[page]}",
