@@ -246,6 +246,14 @@ def transform_latin_runtime(path: Path) -> None:
         '"""Return (lesson_data, quiz_data, course_records), validating all 24 lessons."""',
         '"""Return (lesson_data, quiz_data, course_records), validating 12 lessons."""',
     )
+    source = replace_once(
+        source,
+        '''    if len(lesson_data) != 24 or len(quiz_data) != 24:
+        raise ValueError("Latin runtime loader did not produce exactly 24 lessons and quizzes")''',
+        '''    if len(lesson_data) != 12 or len(quiz_data) != 12:
+        raise ValueError("Latin Course 1 loader did not produce exactly 12 lessons and quizzes")''',
+        "Latin Course 1 lesson count validation",
+    )
     if "kurmanji_latin_grammar" in source or "COURSE2_SOURCE_PATH" in source:
         raise RuntimeError("Latin Course 2 references remain in packaged Latin runtime")
     path.write_text(source, encoding="utf-8")
