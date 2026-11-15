@@ -55,8 +55,9 @@ jobs:
           latin_ids=[x.get("id") for x in latin.get("courses",[])]
           if latin_ids!=["kurmanji_latin_orthography","kurmanji_latin_grammar"]:
             raise SystemExit(f"Latin course manifest mismatch: {latin_ids}")
-          routes=Path("lesson_image_delivery.py").read_text(encoding="utf-8")
-          if '("kurmanji_latin_orthography",\n        "kurmanji_latin_orthography_01"' not in routes:
+          from lesson_image_delivery import SHARED_LESSON_IMAGE_ROUTES
+          expected_route=("kurmanji_latin_orthography","kurmanji_latin_orthography_01")
+          if SHARED_LESSON_IMAGE_ROUTES.get(expected_route)!="assets/lessons/kejyar_lesson5_kurdish_letters_v2.png":
             raise SystemExit("Latin Course 1 Lesson 1 shared-image route is missing")
           print("Verified 6 active courses / 203 lessons.")
           print("Course 4: 50 lessons; 30 approved, 1 internal synthesis, 19 owner-review Beta drafts.")
