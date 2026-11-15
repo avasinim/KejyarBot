@@ -76,7 +76,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(bot.grammar_academic_page_label(content), expected)
 
     def test_markdown_heading_levels_render_as_academic_hierarchy(self):
-        content = "\\n".join([
+        content = "\n".join([
             "# ڕەشنووسی پەرەپێدراو — وانەی ٣٦",
             "## تەواوکەر و پێکهاتەکانی ناو ڕستە",
             "دەقی سەرەکیی بابەت.",
@@ -84,7 +84,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             "دەقی ژێربەش.",
         ])
         blocks = bot.render_lesson_html_blocks(content)
-        rendered = "\\n".join(blocks)
+        rendered = "\n".join(blocks)
 
         self.assertIn("<b>📘 ڕەشنووسی پەرەپێدراو — وانەی ٣٦</b>", rendered)
         self.assertIn("<b>📖 تەواوکەر و پێکهاتەکانی ناو ڕستە</b>", rendered)
