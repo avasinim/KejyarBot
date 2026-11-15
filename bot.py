@@ -1196,7 +1196,7 @@ def add_kejyar_brand_signature(content):
 async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=None, page=0):
     """Send a lesson; Course 4 uses learner-controlled academic reading pages."""
     content = re.sub(
-        r"(?im)^\\s*⚠️?\\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
+        r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
         "",
         content,
     )
@@ -1210,11 +1210,11 @@ async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=Non
             page = 0
         title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
         page_header = (
-            f"<b>{title}</b>\\n"
+            f"<b>{title}</b>\n"
             f"📄 بەشی {page + 1} لە {len(pages)}"
         )
         await message.reply_text(
-            f"{page_header}\\n\\n{pages[page]}",
+            f"{page_header}\n\n{pages[page]}",
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=lesson_page_keyboard(lesson_id, page, len(pages), reply_markup),
