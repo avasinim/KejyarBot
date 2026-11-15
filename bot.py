@@ -1280,25 +1280,37 @@ def add_kejyar_brand_signature(content):
 
 
 def grammar_academic_page_label(page_content):
-    """Return a restrained academic section label for the current reading page."""
-    visible = html.unescape(re.sub(r"<[^>]+>", " ", page_content))
-    visible = " ".join(visible.split())
-    labels = (
-        (("🎯 ئامانج", "ئامانجەکانی فێربوون"), "ئامانجی فێربوون"),
-        (("🔎 ڕوونکردنەوە",), "بنەما و ڕوونکردنەوەی زانستی"),
-        (("✍️ نموونە", "نموونەی شیکردنەوە"), "نموونە و شیکردنەوە"),
-        (("📎 پاشکۆ",), "پاشکۆی زانستی"),
-        (("🎯 چالاکی",), "چالاکیی فێرکاری"),
-        (("🧩 ڕاهێنان", "✍️ ڕاهێنان"), "ڕاهێنان"),
-        (("🧠 تێگەیشتن", "پرسیارەکانی تێگەیشتن"), "هەڵسەنگاندنی تێگەیشتن"),
-        (("📚 سەرچاوە", "سەرچاوەکان"), "سەرچاوە و تێبینی"),
-    )
-    for prefixes, label in labels:
-        if any(prefix in visible[:180] for prefix in prefixes):
-            return label
-    if re.search(r"(?:^|\s)[٠-٩0-9]+[.)]", visible):
-        return "خاڵە سەرەکییەکانی وانە"
+    """Classify a reading page from its first meaningful instructional heading."""
+    raw_headings = re.findall(r"<b>(.*?)</b>", page_content, flags=re.DOTALL)
+    headings = [
+        " ".join(html.unescape(re.sub(r"<[^>]+>", " ", heading)).split())
+        for heading in raw_headings
+    ]
+    for heading in headings:
+        normalized = re.sub(r"^[📖🎯🔎✍️📎🧩🧠🛠️🗣️📚🎭\\s]*", "", heading)
+        normalized = re.sub(r"^[٠-٩0-9]+[.)]\\s*", "", normalized)
+        if not normalized or normalized.startswith(("وانەی ", "کۆرسی ")):
+            continue
+        rules = (
+            (("ئامانج",), "ئامانجی فێربوون"),
+            (("ڕاهێنان", "کاری پڕاکتیکی", "چالاکی"), "ڕاهێنان و کاری پڕاکتیکی"),
+            (("کویز", "تاقیکردنەوە", "پرسیارەکانی تێگەیشتن"), "هەڵسەنگاندنی فێربوون"),
+            (("کورتە", "پوختە"), "پوختە و کۆکردنەوەی بابەت"),
+            (("پاشکۆ", "زاراوە", "سەرچاوە"), "پاشکۆ و زاراوەی زانستی"),
+            (("هەڵە",), "هەڵە باوەکان و چاکسازی"),
+            (("نموونە", "شیکردنەوە", "شیکاری"), "نموونە و شیکردنەوە"),
+            (("پەیوەندی",), "پەیوەندیی بابەتەکان"),
+            (("ڕیزبەندی", "گواستنەوە", "جەخت"), "ڕیزبەندی و جەختی ڕستە"),
+            (("جۆرەکان", "پۆلێن"), "جۆر و پۆلێنکردنی ڕێزمانی"),
+            (("پێکهاتە", "گرێی", "توانای کردار"), "پێکهاتە و ئەرکی ڕێزمانی"),
+            (("پێناسە", "چییە", "بنەما"), "پێناسە و بنەماکانی بابەت"),
+        )
+        for prefixes, label in rules:
+            if any(prefix in normalized for prefix in prefixes):
+                return label
+        return "بابەتی سەرەکیی وانە"
     return "پێشەکی و بنەمای بابەت"
+
 
 
 async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=None, page=0):
