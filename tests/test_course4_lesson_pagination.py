@@ -633,6 +633,24 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any(value.startswith("lessonpage:grammar_01:") for value in callbacks))
         self.assertNotIn("finish_grammar_01", callbacks)
 
+    async def test_page_callback_rejects_out_of_range_page_without_falling_back_to_first_page(self):
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            data="lessonpage:grammar_01:999999",
+            from_user=SimpleNamespace(id=12345),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        with patch.object(bot, "can_open", return_value=True), patch.object(
+            bot, "send_lesson_text", new=AsyncMock()
+        ) as send_lesson:
+            await bot.open_lesson_page(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("لە سنووری وانەکەدا نییە", query.message.reply_text.await_args.args[0])
+        send_lesson.assert_not_awaited()
+
     async def test_page_callback_reopens_only_requested_grammar_page_without_resending_image(self):
         query = SimpleNamespace(
             answer=AsyncMock(),
