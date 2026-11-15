@@ -21,6 +21,24 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         for number in (1, 2, 40, 80, 120):
             self.assertIn(f"بەشی {number}:", rendered)
 
+    def test_short_continuation_pages_are_rebalanced_without_exceeding_limit(self):
+        blocks = [
+            "<b>📖 بەشی فێرکاری</b>",
+            "A" * 700,
+            "B" * 700,
+            "C" * 200,
+            "D" * 100,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 3)
+        self.assertTrue(all(len(page) <= 1000 for page in pages))
+        self.assertGreaterEqual(len(pages[2]), 250)
+        self.assertIn("C" * 200, pages[2])
+        self.assertIn("D" * 100, pages[2])
+        self.assertIn("B" * 700, pages[1])
+
     def test_academic_pages_keep_section_headings_with_their_content(self):
         blocks = []
         for number in range(1, 4):
@@ -113,6 +131,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         for cover, topic in cases:
             with self.subTest(cover=cover):
                 content = (
+                    "<b>وانەی ٣٨: ناونیشانی سەرەکیی وانە</b>\\n"
                     f"<b>{cover}</b>\\n"
                     f"<b>{topic}</b>\\n"
                     "<b>📖 ١. ئامانجی وانە</b>\\n"
@@ -250,6 +269,24 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     "Pagination must preserve every rendered word and its order.",
                 )
 
+
+    def test_expanded_review_drafts_have_correct_first_page_labels_and_no_tiny_pages(self):
+        for number in range(32, 51):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertEqual(
+                    bot.grammar_academic_page_label(pages[0]),
+                    "ئامانجی فێربوون",
+                )
+                self.assertTrue(
+                    all(len(page) >= 500 for page in pages),
+                    f"{lesson_id} contains an unusually short page: "
+                    f"{[len(page) for page in pages]}",
+                )
 
     def test_lesson_three_topic_outline_preserves_every_source_item_in_order(self):
         raw = next(
