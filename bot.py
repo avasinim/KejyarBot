@@ -1302,6 +1302,9 @@ def grammar_academic_page_label(page_content):
         for heading in raw_headings
     ]
     for heading in headings:
+        # H1 (📘) is the lesson title, not the academic section label.
+        if heading.startswith("📘 "):
+            continue
         normalized = re.sub(r"^[📘📖🎯🔎✍️📎🧩🧠🛠️🗣️📚🎭\s]*", "", heading)
         normalized = re.sub(r"^[٠-٩0-9]+[.)]\s*", "", normalized)
         if not normalized or normalized.startswith(("وانەی ", "کۆرسی ")):
