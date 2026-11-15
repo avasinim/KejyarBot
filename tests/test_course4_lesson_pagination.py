@@ -259,6 +259,22 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("دەقی سەرەکیی بابەت.", pages[0])
         self.assertIn("دەقی ژێربەش.", pages[0])
 
+    async def test_course4_delivery_uses_stable_lesson_namespace_if_manifest_mapping_is_stale(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        with patch.dict(bot.LESSON_COURSE, {"grammar_01": "unexpected_course"}):
+            await bot.send_lesson_text(
+                message,
+                "🎯 ئامانج\\n" + ("دەقی تاقیکردنەوە. " * 30),
+                lesson_id="grammar_01",
+            )
+
+        message.reply_text.assert_awaited_once()
+        sent_text = message.reply_text.await_args.args[0]
+        self.assertIn("کۆرسی ٤ | زانستی ڕێزمان", sent_text)
+        self.assertIn("پەڕە 1 لە", sent_text)
+        self.assertIsNotNone(message.reply_text.await_args.kwargs.get("reply_markup"))
+
+
     def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
         lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
         self.assertEqual(len(lesson_ids), 50)
