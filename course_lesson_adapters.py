@@ -89,6 +89,20 @@ def format_conversation_lesson(lesson):
 # Presentation-only outline for the exceptionally dense third grammar lesson.
 # Ranges are 1-based source positions: no source item is rewritten or reordered.
 GRAMMAR_ACADEMIC_OUTLINES = {
+    1: {
+        "key_points": (
+            (1, 2, "پێناسەی ڕێزمان و دوو بوارە سەرەکییەکەی"),
+            (3, 4, "سینتاکس و ڕێزمانی تایبەت/گشتی"),
+            (5, 6, "بوارەکانی زمانناسی و پەیوەندیی مۆرفۆلۆژی/سینتاکس"),
+        ),
+    },
+    2: {
+        "key_points": (
+            (1, 3, "پێوەر و نموونەکانی پۆلێنکردنی بەشەکانی ئاخاوتن"),
+            (4, 5, "ئامرازی پەیوەندی، پێشبەند، ژمارە و پارتیکڵ"),
+            (6, 8, "بەراوردی پۆلێنکردن و سنووری جێبەجێکردنیان بۆ کوردی"),
+        ),
+    },
     3: {
         "key_points": (
             (1, 9, "پێناسە، ناسینەوە و پۆلێنی ناو"),
