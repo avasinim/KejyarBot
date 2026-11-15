@@ -235,9 +235,15 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 if item["number"] == number
             )
             self.assertTrue(raw.get("source_markdown", "").strip())
-            self.assertIn(
-                "## ",
-                bot.LESSON_DATA[f"grammar_{number:02d}"]["content"],
+            self.assertTrue(
+                any(
+                    line.startswith("## ")
+                    for line in raw["source_markdown"].splitlines()
+                )
+            )
+            self.assertGreater(
+                len(bot.LESSON_DATA[f"grammar_{number:02d}"]["content"]),
+                1000,
             )
 
     def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
