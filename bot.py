@@ -1311,6 +1311,14 @@ def grammar_academic_page_label(page_content, page=0):
         " ".join(html.unescape(re.sub(r"<[^>]+>", " ", heading)).split())
         for heading in raw_headings
     ]
+    # Expanded review drafts repeat the lesson topic as an H2 immediately
+    # after the H1 cover. It is a title, not the first instructional section.
+    # Do not apply this rule to later H1 appendices (for example lesson 50).
+    if headings and headings[0].startswith("📘 ڕەشنووسی پەرەپێدراو"):
+        for index, heading in enumerate(headings[1:], start=1):
+            if heading.startswith("📖 "):
+                headings.pop(index)
+                break
     for heading in headings:
         # H1 (📘) is the lesson title, not the academic section label.
         if heading.startswith("📘 "):
