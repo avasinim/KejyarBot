@@ -1319,8 +1319,9 @@ def grammar_academic_page_label(page_content):
         for prefixes, label in rules:
             if any(prefix in normalized for prefix in prefixes):
                 return label
-        return "بابەتی سەرەکیی وانە"
-    return "پێشەکی و بنەمای بابەت"
+        # An unclassified heading should not hide a later, recognizable
+        # instructional heading on the same page.
+    return "بابەتی سەرەکیی وانە" if headings else "پێشەکی و بنەمای بابەت"
 
 
 
