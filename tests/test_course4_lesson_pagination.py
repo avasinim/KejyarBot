@@ -75,6 +75,16 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(content=content):
                 self.assertEqual(bot.grammar_academic_page_label(content), expected)
 
+    def test_academic_page_labels_distinguish_answer_keys_and_comparisons(self):
+        cases = (
+            ("<b>📖 ١٢. کلیلی ڕاهێنان</b>", "کلیلی وەڵام و ڕاستکردنەوە"),
+            ("<b>📖 ٥. بەراوردی کارا و نەکارا</b>", "بەراورد و جیاوازیی چەمکەکان"),
+            ("<b>📖 ٦. پێوەرەکانی شیکردنەوە</b>", "پێوەر و نیشانەکانی شیکردنەوە"),
+        )
+        for content, expected in cases:
+            with self.subTest(content=content):
+                self.assertEqual(bot.grammar_academic_page_label(content), expected)
+
     def test_unclassified_heading_does_not_mask_later_academic_label(self):
         content = (
             "<b>📖 ناونیشانی تایبەتی بەش</b>\\n"
