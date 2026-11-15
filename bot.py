@@ -1339,7 +1339,9 @@ def grammar_academic_page_label(page_content, page=0):
                 return label
         # An unclassified heading should not hide a later, recognizable
         # instructional heading on the same page.
-    if headings:\n        return "بابەتی سەرەکیی وانە"\n    return "بەردەوامیی بابەت" if page > 0 else "پێشەکی و بنەمای بابەت"
+    if headings:
+        return "بابەتی سەرەکیی وانە"
+    return "بەردەوامیی بابەت" if page > 0 else "پێشەکی و بنەمای بابەت"
 
 
 
