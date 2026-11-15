@@ -97,6 +97,7 @@ def transform_latin_manifest(path: Path) -> None:
         raise RuntimeError("Latin source manifest must contain exactly Latin Course 1")
     data["courses"] = courses
     data["status"] = "runtime_package_filtered_to_latin_course_1"
+    data["source_volume"] = "Celadet Alî Bedir-Xan, Elfabêya Kurdî (Nefel, Stockholm, 2002); Latin Course 1 uses Part I, printed pages 11–36."
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 

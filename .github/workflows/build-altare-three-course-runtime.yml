@@ -28,10 +28,9 @@ jobs:
         run: python tools/build_altare_three_course_package.py --output-dir dist/altare-three-courses
 
       - name: Compile and smoke-test the packaged bot
-        env:
-          PYTHONPATH: dist/altare-three-courses/runtime
+        working-directory: dist/altare-three-courses/runtime
         run: |
-          python -m compileall -q dist/altare-three-courses/runtime
+          python -m compileall -q .
           python - <<'PY'
           import bot
           expected = {
