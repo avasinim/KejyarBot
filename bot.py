@@ -1957,9 +1957,14 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
+        display_content = (
+            lesson_display_content(lesson, data["content"])
+            if LESSON_COURSE.get(lesson) == "grammar"
+            else data["content"]
+        )
         await send_lesson_text(
             update.message,
-            lesson_display_content(lesson, data["content"]),
+            display_content,
             lesson_keyboard(lesson),
             lesson_id=lesson,
         )
