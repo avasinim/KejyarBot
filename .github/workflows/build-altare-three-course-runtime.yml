@@ -1,0 +1,60 @@
+name: Build Altare three-course runtime
+
+on:
+  push:
+    branches:
+      - work/three-orthography-courses-2026-11-15
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out isolated package branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Build curated package
+        run: python tools/build_altare_three_course_package.py --output-dir dist/altare-three-courses
+
+      - name: Compile and smoke-test the packaged bot
+        env:
+          PYTHONPATH: dist/altare-three-courses/runtime
+        run: |
+          python -m compileall -q dist/altare-three-courses/runtime
+          python - <<'PY'
+          import bot
+          expected = {
+              "arami_orthography_foundations",
+              "unified_orthography",
+              "kurmanji_latin_orthography",
+          }
+          actual = {course["id"] for course in bot.COURSES}
+          assert actual == expected, (actual, expected)
+          assert len(bot.ARMI_LESSON_IDS) == 21, len(bot.ARMI_LESSON_IDS)
+          assert len(bot.UNIFIED_LESSONS) == 66, len(bot.UNIFIED_LESSONS)
+          assert len(bot.LATIN_LESSONS) == 12, len(bot.LATIN_LESSONS)
+          bot.load_arami_course1_manifest(bot.BASE_DIR)
+          bot.load_arami_course1_question_banks(bot.BASE_DIR)
+          print("PASS: exactly 3 courses; 21 Arami, 66 unified, 12 Latin Course 1 lessons.")
+          PY
+
+      - name: Upload verified Altare package
+        uses: actions/upload-artifact@v4
+        with:
+          name: kejyarbot-altare-three-courses
+          path: |
+            dist/altare-three-courses/kejyarbot-altare-three-courses.zip
+            dist/altare-three-courses/ALTARE_UPLOAD_FILES.txt
+          if-no-files-found: error
+          retention-days: 14
