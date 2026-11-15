@@ -1164,6 +1164,66 @@ def split_lesson_html(blocks, limit=3500):
     return chunks or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
 
 
+def split_lesson_academic_pages(blocks, limit=2200):
+    """Keep complete instructional sections together when paginating a grammar lesson."""
+    section_prefixes = (
+        "<b>📖 ",
+        "<b>🎯 ",
+        "<b>🔎 ",
+        "<b>✍️ ",
+        "<b>📎 ",
+        "<b>🧩 ",
+        "<b>🧠 ",
+        "<b>🛠️ ",
+        "<b>🗣️ ",
+        "<b>📚 ",
+        "<b>🎭 ",
+    )
+
+    def is_section_heading(block):
+        if not isinstance(block, str) or not block.startswith("<b>"):
+            return False
+        if block.startswith(section_prefixes):
+            return True
+        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\\s+\\S", block))
+
+    sections = []
+    current_section = []
+    for block in blocks:
+        if is_section_heading(block) and current_section:
+            sections.append(current_section)
+            current_section = []
+        current_section.append(block)
+    if current_section:
+        sections.append(current_section)
+
+    pages = []
+    current_page = []
+    current_length = 0
+    for section in sections:
+        section_pages = split_lesson_html(section, limit=limit)
+        if len(section_pages) > 1:
+            if current_page:
+                pages.append("\\n".join(current_page))
+                current_page = []
+                current_length = 0
+            pages.extend(section_pages)
+            continue
+
+        section_text = section_pages[0]
+        extra = len(section_text) + (1 if current_page else 0)
+        if current_page and current_length + extra > limit:
+            pages.append("\\n".join(current_page))
+            current_page = []
+            current_length = 0
+        current_page.append(section_text)
+        current_length += len(section_text) + (1 if len(current_page) > 1 else 0)
+
+    if current_page:
+        pages.append("\\n".join(current_page))
+    return pages or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+
+
 def split_lesson_text(content, limit=3800):
     """Legacy plain-text splitter retained for callers and regression compatibility."""
     content = content.strip()
@@ -1205,7 +1265,7 @@ async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=Non
     if lesson_id and LESSON_COURSE.get(lesson_id) == "grammar":
         # Presentation-only pagination: the authored lesson and all its sections
         # remain untouched; only the amount shown in each Telegram message changes.
-        pages = split_lesson_html(blocks, limit=2200)
+        pages = split_lesson_academic_pages(blocks, limit=2200)
         if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < len(pages):
             page = 0
         title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
