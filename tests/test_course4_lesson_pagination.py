@@ -87,8 +87,8 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     bot.LESSON_DATA[lesson_id]["content"]
                 )
                 pages = bot.split_lesson_academic_pages(blocks, limit=2200)
-                expected = normalized_visible_text("\\n".join(blocks))
-                actual = normalized_visible_text("\\n".join(pages))
+                expected = normalized_visible_text("\n".join(blocks))
+                actual = normalized_visible_text("\n".join(pages))
                 self.assertEqual(
                     actual,
                     expected,
