@@ -1185,7 +1185,7 @@ def split_lesson_academic_pages(blocks, limit=2200):
             return False
         if block.startswith(section_prefixes):
             return True
-        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\\s+\\S", block))
+        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\s+\S", block))
 
     sections = []
     current_section = []
@@ -1204,7 +1204,7 @@ def split_lesson_academic_pages(blocks, limit=2200):
         section_pages = split_lesson_html(section, limit=limit)
         if len(section_pages) > 1:
             if current_page:
-                pages.append("\\n".join(current_page))
+                pages.append("\n".join(current_page))
                 current_page = []
                 current_length = 0
             pages.extend(section_pages)
@@ -1213,14 +1213,14 @@ def split_lesson_academic_pages(blocks, limit=2200):
         section_text = section_pages[0]
         extra = len(section_text) + (1 if current_page else 0)
         if current_page and current_length + extra > limit:
-            pages.append("\\n".join(current_page))
+            pages.append("\n".join(current_page))
             current_page = []
             current_length = 0
         current_page.append(section_text)
         current_length += len(section_text) + (1 if len(current_page) > 1 else 0)
 
     if current_page:
-        pages.append("\\n".join(current_page))
+        pages.append("\n".join(current_page))
     return pages or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
 
 
