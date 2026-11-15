@@ -1555,12 +1555,21 @@ async def open_lesson_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
+    requested_page = int(raw_page)
+    page_content = add_kejyar_brand_signature(
+        lesson_display_content(lesson, data["content"])
+    )
+    page_blocks = render_lesson_html_blocks(page_content)
+    page_count = len(split_lesson_academic_pages(page_blocks, limit=2200))
+    if requested_page >= page_count:
+        await query.message.reply_text("⚠️ ئەم پەڕەیە لە سنووری وانەکەدا نییە.")
+        return
     await send_lesson_text(
         query.message,
         lesson_display_content(lesson, data["content"]),
         lesson_keyboard(lesson),
         lesson_id=lesson,
-        page=int(raw_page),
+        page=requested_page,
     )
 
 
