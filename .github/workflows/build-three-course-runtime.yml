@@ -39,10 +39,10 @@ jobs:
           python - <<'PY'
           import hashlib, json, pathlib, zipfile
           from arami_course1_runtime import (
-              load_arami_course1_manifest, load_arami_course1_question_banks,
               load_arami_lesson1_content, load_arami_lesson1_interactions,
               load_arami_lesson5_interactions, load_arami_lesson5_source,
           )
+          from arami_course1_telegram import load_manifest, load_question_banks
           from course_lesson_adapters import adapt_unified_orthography_lessons
           from latin_course_runtime import load_latin_courses
 
@@ -57,9 +57,9 @@ jobs:
           latin_manifest = json.loads((root / "course_data/latin_courses_manifest_draft.json").read_text(encoding="utf-8"))
           assert [c["id"] for c in latin_manifest["courses"]] == ["kurmanji_latin_orthography"]
 
-          arami = load_arami_course1_manifest(root)
+          arami = load_manifest(root)
           assert len(arami["lessons"]) == 21
-          banks = load_arami_course1_question_banks(root)
+          banks = load_question_banks(root)
           assert len(banks) == 19
           assert load_arami_lesson1_content(root)
           assert load_arami_lesson1_interactions(root)
