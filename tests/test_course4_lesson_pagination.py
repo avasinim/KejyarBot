@@ -182,12 +182,12 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn("📖 ", content)
 
 
-    def test_topic_outlines_for_lessons_4_to_28_preserve_every_key_point(self):
+    def test_topic_outlines_for_lessons_1_to_28_preserve_every_key_point(self):
         adapted, _ = bot.adapt_unified_orthography_lessons(
             bot.GRAMMAR_COURSE4_DRAFT,
             include_extended_sections=True,
         )
-        for number in range(4, 29):
+        for number in range(1, 29):
             raw = next(
                 item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
                 if item["number"] == number
