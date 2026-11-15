@@ -1179,6 +1179,7 @@ def split_lesson_html(blocks, limit=3500):
 def split_lesson_academic_pages(blocks, limit=2200):
     """Keep complete instructional sections together when paginating a grammar lesson."""
     section_prefixes = (
+        "<b>📘 ",
         "<b>📖 ",
         "<b>🎯 ",
         "<b>🔎 ",
