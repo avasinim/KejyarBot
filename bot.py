@@ -100,8 +100,12 @@ def load_json(filename):
     with path.open("r", encoding="utf-8") as file:
         return json.load(file)
 
-def format_lesson_draft(markdown):
-    """Render lesson Markdown as readable Telegram text while preserving table values."""
+def format_lesson_draft(markdown, preserve_markdown_headings=False):
+    """Render lesson Markdown as readable Telegram text while preserving table values.
+
+    Grammar Course 4 keeps Markdown heading levels until the Telegram renderer
+    converts them into academic headings and pagination boundaries.
+    """
     source_lines = markdown.splitlines()
     lines = []
     index = 0
@@ -133,7 +137,11 @@ def format_lesson_draft(markdown):
                     lines.append(" | ".join(headers))
             continue
         if stripped.startswith("#"):
-            line = stripped.lstrip("#").strip()
+            line = (
+                stripped
+                if preserve_markdown_headings
+                else stripped.lstrip("#").strip()
+            )
         elif stripped.startswith(">"):
             line = stripped.lstrip(">").strip()
         else:
@@ -185,7 +193,7 @@ for _raw_course4_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
     if not isinstance(_source_markdown, str) or not _source_markdown.strip():
         raise RuntimeError(f"Missing preserved Markdown source for Beta lesson {_lesson_id}")
     GRAMMAR_COURSE4_LESSONS[_lesson_id]["content"] = format_lesson_draft(
-        _source_markdown
+        _source_markdown, preserve_markdown_headings=True
     )
 # Append-only quiz corrections: the authored source bank remains untouched.
 # Each override carries an exact original snapshot; mismatches fail closed.
@@ -247,7 +255,9 @@ for raw_lesson in GRAMMAR_COURSE4_DRAFT.get("lessons", []):
     source_markdown = raw_lesson.get("source_markdown")
     lesson_id = raw_lesson.get("id")
     if source_markdown and lesson_id in GRAMMAR_COURSE4_LESSONS:
-        rendered_source = format_lesson_draft(source_markdown)
+        rendered_source = format_lesson_draft(
+            source_markdown, preserve_markdown_headings=True
+        )
         if raw_lesson["title"] not in rendered_source:
             rendered_source = f'{raw_lesson["title"]}\n\n{rendered_source}'
         GRAMMAR_COURSE4_LESSONS[lesson_id]["content"] = rendered_source
@@ -320,6 +330,17 @@ LESSON_COURSE = {
     for course_id, lesson_ids in COURSE_LESSON_ORDER.items()
     for lesson_id in lesson_ids
 }
+
+def is_course4_grammar_lesson(lesson_id):
+    """Recognize Course 4 by its stable lesson namespace, even if a manifest map is stale."""
+    return (
+        isinstance(lesson_id, str)
+        and lesson_id in LESSON_DATA
+        and (
+            LESSON_COURSE.get(lesson_id) == "grammar"
+            or lesson_id.startswith("grammar_")
+        )
+    )
 
 def course_is_active(course_id):
     course = next((item for item in COURSES if item.get("id") == course_id), None)
@@ -458,7 +479,7 @@ MENU = ReplyKeyboardMarkup(
         ["👤 پێشکەوتنم", "🧭 ڕێگای فێربوون"],
         ["📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی"],
         ["🎁 سەنوقی خەڵات", "🗓️ مانگەکانی ساڵ لەناو کورداندا"],
-        ["📖 وشەنامەی کوردی", "⌨️ تەختەکلیلی کوردی"],
+        ["📖 وشەنامەی کوردیی", "⌨️ تەختەکلیلی کوردیی"],
         ["🌐 گۆڕینی زمانی تەلەگرام"],
     ],
     resize_keyboard=True,
@@ -571,6 +592,27 @@ def lesson_keyboard(lesson):
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("✅ تەواوکردنی وانە", callback_data=f"finish_{lesson}")
     ]])
+
+
+def lesson_page_keyboard(lesson, page, page_count, completion_markup=None):
+    """Keep grammar lesson navigation separate from completion and assessment actions."""
+    rows = []
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton(
+            "⬅️ بەشی پێشوو",
+            callback_data=f"lessonpage:{lesson}:{page - 1}",
+        ))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton(
+            "بەشی دواتر ➡️",
+            callback_data=f"lessonpage:{lesson}:{page + 1}",
+        ))
+    if navigation:
+        rows.append(navigation)
+    if page == page_count - 1 and completion_markup is not None:
+        rows.extend(completion_markup.inline_keyboard)
+    return InlineKeyboardMarkup(rows) if rows else None
 
 
 def lesson_display_content(lesson, content):
@@ -1047,6 +1089,8 @@ def render_lesson_html_blocks(content):
         "نموونەی ڕاهێنان",
         "هەڵەی باو",
         "🎯 ئامانج",
+        "🎯 چالاکییەکان",
+        "📎 پاشکۆ",
         "🗣️ گفتوگۆ",
         "📚 وشە و دەستەواژە",
         "✍️ ڕاهێنان",
@@ -1096,9 +1140,19 @@ def render_lesson_html_blocks(content):
             blocks.append(f"<b>{escaped}</b>")
         elif line.startswith("وانەی "):
             blocks.append(f"<b>{escaped}</b>")
-        elif line.startswith(("💬 ", "📖 ", "## ")):
-            title = line.removeprefix("## ").strip()
-            blocks.append(f"<b>📖 {html.escape(title, quote=False)}</b>")
+        elif re.match(r"^#{1,6}\s+\S", line):
+            heading_match = re.match(r"^(#{1,6})\s+(.+)$", line)
+            level = len(heading_match.group(1))
+            title = heading_match.group(2).strip()
+            safe_title = html.escape(title, quote=False)
+            if level == 1:
+                blocks.append(f"<b>📘 {safe_title}</b>")
+            elif level == 2:
+                blocks.append(f"<b>📖 {safe_title}</b>")
+            else:
+                blocks.append(f"<b>　↳ {safe_title}</b>")
+        elif line.startswith(("💬 ", "📖 ")):
+            blocks.append(f"<b>{html.escape(line, quote=False)}</b>")
         elif line in section_titles or line.startswith(("کورتەی وانە:", "کورتەی وانە")):
             blocks.append(f"<b>{escaped}</b>")
         elif re.match(r"^[٠-٩0-9]+[.)]\s+\S", line) and len(line) <= 100:
@@ -1143,6 +1197,125 @@ def split_lesson_html(blocks, limit=3500):
     return chunks or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
 
 
+def split_lesson_academic_pages(blocks, limit=2200):
+    """Keep complete instructional sections together when paginating a grammar lesson."""
+    section_prefixes = (
+        "<b>📘 ",
+        "<b>📖 ",
+        "<b>🎯 ",
+        "<b>🔎 ",
+        "<b>✍️ ",
+        "<b>📎 ",
+        "<b>🧩 ",
+        "<b>🧠 ",
+        "<b>🛠️ ",
+        "<b>🗣️ ",
+        "<b>📚 ",
+        "<b>🎭 ",
+    )
+
+    named_section_titles = {
+        "ئامانجەکانی فێربوون",
+        "خۆت تاقی بکەرەوە",
+        "ڕاهێنانی فێرخواز",
+        "نموونەی شیکردنەوە",
+        "نموونەی ڕاهێنان",
+        "هەڵەی باو",
+        "🎯 ئامانج",
+        "🎯 چالاکییەکان",
+        "📎 پاشکۆ",
+        "🗣️ گفتوگۆ",
+        "📚 وشە و دەستەواژە",
+        "✍️ ڕاهێنان",
+        "🧠 تێگەیشتن",
+        "🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان",
+        "✍️ نموونەکان",
+        "🧩 ڕاهێنان",
+        "🧠 پرسیارەکانی تێگەیشتن",
+        "🛠️ کاری پڕاکتیکی",
+    }
+
+    def is_section_heading(block):
+        if not isinstance(block, str) or not block.startswith("<b>"):
+            return False
+        if block.startswith(section_prefixes):
+            return True
+        heading = html.unescape(re.sub(r"<[^>]+>", "", block)).strip()
+        if heading in named_section_titles or heading.startswith(("کورتەی وانە:", "کورتەی وانە")):
+            return True
+        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\s+\S", block))
+
+    sections = []
+    current_section = []
+    for block in blocks:
+        top_level_heading_only = (
+            len(current_section) == 1
+            and current_section[0].startswith("<b>📘 ")
+        )
+        if is_section_heading(block) and current_section and not top_level_heading_only:
+            sections.append(current_section)
+            current_section = []
+        current_section.append(block)
+    if current_section:
+        sections.append(current_section)
+
+    pages = []
+    current_page = []
+    current_length = 0
+    for section in sections:
+        section_pages = split_lesson_html(section, limit=limit)
+        if len(section_pages) > 1:
+            if current_page:
+                pages.append("\n".join(current_page))
+                current_page = []
+                current_length = 0
+            pages.extend(section_pages)
+            continue
+
+        section_text = section_pages[0]
+        extra = len(section_text) + (1 if current_page else 0)
+        if current_page and current_length + extra > limit:
+            pages.append("\n".join(current_page))
+            current_page = []
+            current_length = 0
+        current_page.append(section_text)
+        current_length += len(section_text) + (1 if len(current_page) > 1 else 0)
+
+    if current_page:
+        pages.append("\n".join(current_page))
+
+    # A large instructional section can leave a very short continuation page.
+    # Rebalance it by moving complete rendered blocks from the preceding page;
+    # never split or rewrite a block, and keep every page within the hard limit.
+    short_page_threshold = min(500, limit // 4)
+    minimum_previous_length = limit // 2
+    maximum_balanced_length = limit
+    for page_index in range(1, len(pages)):
+        if len(pages[page_index]) >= short_page_threshold:
+            continue
+        previous_blocks = pages[page_index - 1].split("\n")
+        continuation_blocks = pages[page_index].split("\n")
+        while (
+            len("\n".join(continuation_blocks)) < short_page_threshold
+            and len(previous_blocks) > 1
+        ):
+            candidate_previous = previous_blocks[:-1]
+            candidate_continuation = [previous_blocks[-1], *continuation_blocks]
+            previous_text = "\n".join(candidate_previous)
+            continuation_text = "\n".join(candidate_continuation)
+            if (
+                len(previous_text) < minimum_previous_length
+                or len(continuation_text) > maximum_balanced_length
+            ):
+                break
+            previous_blocks = candidate_previous
+            continuation_blocks = candidate_continuation
+        pages[page_index - 1] = "\n".join(previous_blocks)
+        pages[page_index] = "\n".join(continuation_blocks)
+
+    return pages or ["⚠️ ناوەڕۆکی ئەم وانەیە بەردەست نییە."]
+
+
 def split_lesson_text(content, limit=3800):
     """Legacy plain-text splitter retained for callers and regression compatibility."""
     content = content.strip()
@@ -1172,15 +1345,157 @@ def add_kejyar_brand_signature(content):
     return content
 
 
-async def send_lesson_text(message, content, reply_markup=None):
-    """Send lessons in a consistent academic layout, preserving all lesson wording."""
+def grammar_academic_page_label(page_content, page=0):
+    """Classify a reading page from its first meaningful instructional heading."""
+    raw_headings = re.findall(r"<b>(.*?)</b>", page_content, flags=re.DOTALL)
+    headings = [
+        " ".join(html.unescape(re.sub(r"<[^>]+>", " ", heading)).split())
+        for heading in raw_headings
+    ]
+    # Expanded review drafts repeat the lesson topic as an H2 immediately
+    # after the H1 cover. It is a title, not the first instructional section.
+    # Do not apply this rule to later H1 appendices (for example lesson 50).
+    cover_index = next(
+        (
+            index for index, heading in enumerate(headings)
+            if heading.startswith("📘 ڕەشنووسی پەرەپێدراو")
+        ),
+        None,
+    )
+    if cover_index is not None:
+        index = cover_index + 1
+        while index < len(headings):
+            heading = headings[index]
+            if heading.startswith("📖 ") and re.match(
+                r"📖\s*[٠-٩0-9]+[.)]\s*", heading
+            ):
+                break
+            if heading.startswith(("📖 ", "↳ ")):
+                headings.pop(index)
+                continue
+            break
+    for heading in headings:
+        # H1 (📘) is the lesson title, not the academic section label.
+        if heading.startswith("📘 "):
+            continue
+        normalized = re.sub(r"^[📘📖🎯🔎✍️📎🧩🧠🛠️🗣️📚🎭\s]*", "", heading)
+        normalized = re.sub(r"^[٠-٩0-9]+[.)]\s*", "", normalized)
+        if not normalized or normalized.startswith(("وانەی ", "کۆرسی ")):
+            continue
+        rules = (
+            (("ئامانج",), "ئامانجی فێربوون"),
+            (("پێویست بە پشکنین", "پێویست بە پەسەندکردن"), "تێبینیی پشکنین و پەسەندکردن"),
+            (("داتای پڕۆژە", "دۆخی جێبەجێکردن"), "تێبینی و دۆخی پڕۆژە"),
+            (("پڕۆژە",), "پڕۆژە و کاری پڕاکتیکی"),
+            (("کارەکانی خوێندکار",), "ئەرکی خوێندکار"),
+            (("ڕێنماییی مامۆستا",), "ڕێنماییی مامۆستا"),
+            (("بابەتکردن", "زانیاریی کۆن", "جەخت"), "ڕیزبەندی و جەختی ڕستە"),
+            (("ڕوونکردنەوە", "خاڵە سەرەکییەکان"), "بنەما و ڕوونکردنەوەی زانستی"),
+            (("کلیلی ڕاهێنان", "وەڵامی ڕاهێنان", "وەڵامەکانی ڕاهێنان"), "کلیلی وەڵام و ڕاستکردنەوە"),
+            (("ڕاهێنان", "کاری پڕاکتیکی", "چالاکی"), "ڕاهێنان و کاری پڕاکتیکی"),
+            (("پێوەر", "نیشانە"), "پێوەر و نیشانەکانی شیکردنەوە"),
+            (("ڕستەی پرسیاری", "پرسیاری کراوە", "پرسیاری بەڵێ"), "ڕستەی پرسیاری و جۆرەکانی"),
+            (("کویز", "تاقیکردنەوە", "پرسیارەکانی تێگەیشتن"), "هەڵسەنگاندنی فێربوون"),
+            (("کورتە", "پوختە"), "پوختە و کۆکردنەوەی بابەت"),
+            (("پاشکۆ", "زاراوە"), "پاشکۆ و زاراوەی زانستی"),
+            (("هەڵە",), "هەڵە باوەکان و چاکسازی"),
+            (("چاوگ",), "چاوگ و بنەمای کردار"),
+            (("نموونە", "شیکردنەوە", "شیکاری"), "نموونە و شیکردنەوە"),
+            (("پەیوەندیی وانەکان",), "پەیوەندیی وانەکان"),
+            (("پەیوەندی",), "پەیوەندیی بابەتەکان"),
+            (("ڕیزبەندی", "گواستنەوە", "جەخت"), "ڕیزبەندی و جەختی ڕستە"),
+            (("هاوەڵناو",), "هاوەڵناو و ئەرکی ڕستەیی"),
+            (("جۆرەکان", "پۆلێن"), "جۆر و پۆلێنکردنی ڕێزمانی"),
+            (("بەراورد", "جیاوازی"), "بەراورد و جیاوازیی چەمکەکان"),
+            (("بەڵگە", "سەرچاوە"), "سەرچاوە و بەڵگەی شیکاری"),
+            (("پێکهاتە", "گرێی", "توانای کردار"), "پێکهاتە و ئەرکی ڕێزمانی"),
+            (("سینتاکس",), "سینتاکس و ڕێزمانی ڕستە"),
+            (("سنووری شێوەزار", "شێوەزار"), "سنووری شێوەزار و بەڵگە"),
+            (("سنووری بابەت",), "سنووری بابەت و چوارچێوە"),
+            (("دۆخی ناو", "ژمارەی ڕێزمانی"), "دۆخی ناو و ژمارەی ڕێزمانی"),
+            (("ڕەگەز",), "ڕەگەز و پۆلێنکردنی ناو"),
+            (("ناسراوی", "نەناسراوی", "ئاماژە"), "ناسراوی و ئاماژەی ناو"),
+            (("ژمارەی سادە", "ژمارەی لێکدراو"), "پێکهاتە و جۆری ژمارە"),
+            (("شەش خانەی کەسی", "جێناوی کەسی"), "جێناوی کەسی و خانەکانی کەس"),
+            (("جێناوی لکاو",), "جێناوی لکاو و ئەرکەکانی"),
+            (("ڕێککەوتن", "بەکارهێنانی سیاقی"), "ڕێککەوتن و بەکارهێنانی جێناو"),
+            (("جیاکردنەوەی ئەرک", "جیاوازیی ئەرکی"), "جیاوازیی ئەرکی ڕێزمانی"),
+            (("ئەرجەتیڤی",), "ڕێکخستنی ئەرجەتیڤی"),
+            (("کات، ڕانەبردوو", "کات و ڕانەبردوو"), "کات و فۆڕمی کردار"),
+            (("پاشبەستە",), "کەس و پاشبەستەکانی کردار"),
+            (("چوار دەمی",), "دەمەکانی کردار"),
+            (("مۆرفۆلۆژی",), "گۆڕانی مۆرفۆلۆژی"),
+            (("نەرێکردن",), "نەرێکردن و فۆڕمی کردار"),
+            (("بنجی ئێستا",), "بنجی ئێستا و فۆڕمی کردار"),
+            (("داخوازی",), "فۆڕمی داخوازی و شێوەکانی"),
+            (("هاوەڵکاریی کات",), "هاوەڵکاریی کات و شوێن"),
+            (("داڕشتنی هاوەڵکاری",), "داڕشتن و پێکهاتەی هاوەڵکار"),
+            (("پێشبەند", "واتا و ئەرکی لە، بە و بۆ"), "پێشبەند و ئەرکی ڕستەیی"),
+            (("ئیزافە",), "ئیزافە و پێکهاتەی گرێی ناوی"),
+            (("بانگکردن", "بانگکراو"), "پێکهاتە و شوێنی بانگکردن"),
+            (("پارتیکڵ",), "پارتیکڵ و ئەرکی گفتوگۆیی"),
+            (("بنجی ڕابردوو",), "بنجی ڕابردوو و گروپەکانی"),
+            (("کردارە سووکەکان", "LV", "NV"), "پێکهاتەی کردارە سووکەکان"),
+            (("پێشگر", "پاشگر"), "پێشگر و پاشگری وشەسازی"),
+            (("لێکدراو", "ناوبەند"), "پێکهاتەی لێکدراو و ناوبەند"),
+            (("گرێی ناوی",), "پێکهاتەی گرێی ناوی"),
+            (("تەواوکەری ناو",), "تەواوکەری ناو و ئیزافە"),
+            (("تەواوکەری کردار",), "تەواوکەری کردار و هاوەڵکاری"),
+            (("ناوکردنی کردار",), "ناوکردنی کردار و ئەرکی سینتاکسی"),
+            (("پێناسە", "چییە", "بنەما"), "پێناسە و بنەماکانی بابەت"),
+            (("بکەر", "بەرکار", "کردار", "تەواوکەر", "دیارخەر", "جێناو", "گرێی", "هاولکی", "سەرڕستە", "ژێرەڕستە", "پێڕستە", "Argument", "Adjunct"), "پێکهاتە و ئەرکی ڕێزمانی"),
+        )
+        for prefixes, label in rules:
+            if any(prefix in normalized for prefix in prefixes):
+                return label
+        # An unclassified heading should not hide a later, recognizable
+        # instructional heading on the same page.
+    if headings:
+        return "بابەتی سەرەکیی وانە"
+    return "بەردەوامیی بابەت" if page > 0 else "پێشەکی و بنەمای بابەت"
+
+
+
+async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=None, page=0):
+    """Send a lesson; Course 4 uses learner-controlled academic reading pages."""
     content = re.sub(
         r"(?im)^\s*⚠️?\s*دەنگی وانەکە.*(?:پڕۆژەدا|پەیوەست نەکراوە).*$",
         "",
         content,
     )
     content = add_kejyar_brand_signature(content)
-    chunks = split_lesson_html(render_lesson_html_blocks(content))
+    blocks = render_lesson_html_blocks(content)
+    course4_pagination = is_course4_grammar_lesson(lesson_id)
+    logger.info(
+        "Lesson delivery route: lesson_id=%s mapped_course=%s course4_pagination=%s",
+        lesson_id,
+        LESSON_COURSE.get(lesson_id),
+        course4_pagination,
+    )
+    if course4_pagination:
+        # Presentation-only pagination: the authored lesson and all its sections
+        # remain untouched; only the amount shown in each Telegram message changes.
+        pages = split_lesson_academic_pages(blocks, limit=2200)
+        if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < len(pages):
+            page = 0
+        title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
+        section_label = html.escape(grammar_academic_page_label(pages[page], page=page), quote=False)
+        page_header = (
+            "<b>کۆرسی ٤ | زانستی ڕێزمان</b>\n"
+            f"<b>{title}</b>\n"
+            f"<code>پەڕە {page + 1} لە {len(pages)}</code> · "
+            f"<i>{section_label}</i>\n"
+            "━━━━━━━━━━━━━━━━"
+        )
+        await message.reply_text(
+            f"{page_header}\n\n{pages[page]}",
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=lesson_page_keyboard(lesson_id, page, len(pages), reply_markup),
+        )
+        return
+
+    chunks = split_lesson_html(blocks)
     for index, chunk in enumerate(chunks):
         await message.reply_text(
             chunk,
@@ -1205,7 +1520,12 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+    )
     await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
 
 
@@ -1221,8 +1541,55 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+    )
     await send_shared_lesson_image(query.message, LESSON_COURSE.get(lesson), lesson, base_dir=BASE_DIR)
+
+
+async def open_lesson_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Open one requested page of a Course 4 lesson without resending its image."""
+    query = update.callback_query
+    await query.answer()
+    prefix, separator, remainder = query.data.partition(":")
+    lesson, page_separator, raw_page = remainder.rpartition(":")
+    if (
+        prefix != "lessonpage"
+        or not separator
+        or not page_separator
+        or not raw_page.isdecimal()
+        or not is_course4_grammar_lesson(lesson)
+    ):
+        await query.message.reply_text("⚠️ داواکاریی بەشی وانەکە نادروستە.")
+        return
+    user_id = query.from_user.id
+    if lesson not in LESSON_COURSE or not can_open(user_id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    requested_page = int(raw_page)
+    page_content = add_kejyar_brand_signature(
+        lesson_display_content(lesson, data["content"])
+    )
+    page_blocks = render_lesson_html_blocks(page_content)
+    page_count = len(split_lesson_academic_pages(page_blocks, limit=2200))
+    if requested_page >= page_count:
+        await query.message.reply_text("⚠️ ئەم پەڕەیە لە سنووری وانەکەدا نییە.")
+        return
+    await send_lesson_text(
+        query.message,
+        lesson_display_content(lesson, data["content"]),
+        lesson_keyboard(lesson),
+        lesson_id=lesson,
+        page=requested_page,
+    )
+
 
 COURSE_MENU_PAGE_SIZE = 12
 
@@ -1353,7 +1720,7 @@ async def open_course(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئامادە نییە.")
             return
         await query.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -1599,10 +1966,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردیی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n"
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n"
             "٢١ وانە؛ وانەی خۆت هەڵبژێرە. بۆ هەر وانەیەک ڕێگای خوێندنەوە و ڕاهێنان/تاقیکردنەوەی تایبەت هەیە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
@@ -1626,8 +1993,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    if text == "📖 وشەنامەی کوردی":
-        dictionary_help = """📖 <b>وشەنامەی کوردی</b>
+    if text == "📖 وشەنامەی کوردیی":
+        dictionary_help = """📖 <b>وشەنامەی کوردیی</b>
 کۆمەڵەیەک فەرهەنگ و سەرچاوەی وشەسازیی کوردی؛ بە پێی شێوەزار و جۆری فەرهەنگ ڕێکخراون.
 
 🌐 <b>فەرهەنگە گشتییەکان و چەندشێوەزارییەکان</b>
@@ -1697,8 +2064,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         return
 
-    if text == "⌨️ تەختەکلیلی کوردی":
-        keyboard_help = """⌨️ <b>تەختەکلیلی کوردی</b>
+    if text == "⌨️ تەختەکلیلی کوردیی":
+        keyboard_help = """⌨️ <b>تەختەکلیلی کوردیی</b>
 بەستەری تەختەکلیل و ڕێنمایی دامەزراندن بەپێی ئامێر و شێوەزاری کوردی.
 
 🪟 <b>Windows</b>
@@ -1797,8 +2164,8 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📚 وانەکان", "📘 کۆرسەکان", "🔎 گەڕانی وانە", "ڕێنووسی لاتینی کوردیی", "📕 ڕێنووسی سەرەتاییی کوردیی",
         "🗓️ مانگەکانی ساڵ لەناو کورداندا",
         "🌐 گۆڕینی زمانی تەلەگرام",
-        "⌨️ تەختەکلیلی کوردی",
-        "📖 وشەنامەی کوردی",
+        "⌨️ تەختەکلیلی کوردیی",
+        "📖 وشەنامەی کوردیی",
         "👤 پێشکەوتنم", "🧭 ڕێگای فێربوون",
         "🎁 سەنوقی خەڵات", "📝 تاقیکردنەوەکان", "🎯 ڕاهێنانی کرتەیی",
     }:
@@ -1827,10 +2194,10 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             arami_banks = load_arami_course1_question_banks(BASE_DIR)
         except Exception:
             logger.exception("Could not open the 21-lesson Arami Course 1 catalogue")
-            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردی ئێستا بار ناکرێت.")
+            await update.message.reply_text("⚠️ لیستی ٢١ وانەی ڕێنووسی سەرەتاییی کوردیی ئێستا بار ناکرێت.")
             return
         await update.message.reply_text(
-            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
+            "📚 کۆرسی ١ — ڕێنووسی سەرەتاییی کوردیی\n٢١ وانە؛ وانەی خۆت هەڵبژێرە.",
             reply_markup=arami_course1_menu_keyboard(
                 arami_manifest,
                 arami_banks,
@@ -1873,7 +2240,17 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not data:
             await update.message.reply_text("⚠️ ناوەڕۆکی وانەکە نەدۆزرایەوە.")
             return
-        await send_lesson_text(update.message, data["content"], lesson_keyboard(lesson))
+        display_content = (
+            lesson_display_content(lesson, data["content"])
+            if LESSON_COURSE.get(lesson) == "grammar"
+            else data["content"]
+        )
+        await send_lesson_text(
+            update.message,
+            display_content,
+            lesson_keyboard(lesson),
+            lesson_id=lesson,
+        )
         await send_lesson_infographic(update.message, lesson)
         return
 
@@ -2007,6 +2384,7 @@ def main():
     app.add_handler(CallbackQueryHandler(select_quiz_answer, pattern=r"^select_answer_\d+$"))
     app.add_handler(CallbackQueryHandler(submit_quiz_answer, pattern=r"^submit_answer$"))
     app.add_handler(CallbackQueryHandler(open_next_lesson, pattern=r"^next_lesson_"))
+    app.add_handler(CallbackQueryHandler(open_lesson_page, pattern=r"^lessonpage:"))
     app.add_handler(CallbackQueryHandler(open_selected_lesson, pattern=r"^open_lesson_"))
     # Last in the callback handler group: acknowledge stale/unknown buttons so
     # Telegram does not leave the user's loading indicator spinning forever.

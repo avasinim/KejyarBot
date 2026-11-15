@@ -2,9 +2,9 @@ name: Python checks
 
 on:
   push:
-    branches: ["main", "fix/**", "feat/**", "work/**", "release/**"]
+    branches: ["main", "fix/**", "feat/**", "work/**", "release/**", "grammar-course4-academic-pages-**"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "release/**"]
 
 # This workflow only reads source files and runs tests; no write permissions are needed.
 permissions:
