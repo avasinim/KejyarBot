@@ -352,6 +352,38 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             )
 
 
+    def test_grammar_draft_formatter_preserves_markdown_heading_hierarchy(self):
+        source = "\n".join([
+            "# ڕەشنووسی پەرەپێدراو — وانەی ٥٠",
+            "## پێڕستەی ڕێژەیی لە سۆرانیدا",
+            "دەقی سەرەکی.",
+            "### دیاریکەر",
+            "دەقی ژێربەش.",
+        ])
+        formatted = bot.format_lesson_draft(
+            source, preserve_markdown_headings=True
+        )
+        blocks = bot.render_lesson_html_blocks(formatted)
+        rendered = "\n".join(blocks)
+
+        self.assertIn("<b>📘 ڕەشنووسی پەرەپێدراو — وانەی ٥٠</b>", rendered)
+        self.assertIn("<b>📖 پێڕستەی ڕێژەیی لە سۆرانیدا</b>", rendered)
+        self.assertIn("<b>　↳ دیاریکەر</b>", rendered)
+        self.assertIn("دەقی سەرەکی.", rendered)
+        self.assertIn("دەقی ژێربەش.", rendered)
+
+    def test_lesson_50_capstone_headings_remain_structured_in_runtime(self):
+        lesson = bot.LESSON_DATA["grammar_50"]
+        blocks = bot.render_lesson_html_blocks(lesson["content"])
+        rendered = "\n".join(blocks)
+
+        self.assertIn("<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>", rendered)
+        self.assertIn("<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>", rendered)
+        self.assertIn("<b>📖 داتای پڕۆژە</b>", rendered)
+        pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+        self.assertTrue(all(len(page) <= 2200 for page in pages))
+        self.assertTrue(any("داتای پڕۆژە" in page for page in pages))
+
     def test_review_draft_section_headings_survive_runtime_formatting_and_pagination(self):
         for number in range(32, 51):
             raw = next(
