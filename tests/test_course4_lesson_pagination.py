@@ -114,7 +114,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
             if item["number"] == 3
         )
         adapted, _ = bot.adapt_unified_orthography_lessons(
-            {"course_id": "grammar", "lessons": [raw]},
+            bot.GRAMMAR_COURSE4_DRAFT,
             include_extended_sections=True,
         )
         content = adapted["grammar_03"]["content"]
@@ -141,13 +141,13 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
         for field in ("key_points", "examples", "appendix"):
             previous = -1
-            for item in raw[field]:
+            for index, item in enumerate(raw[field], 1):
                 if field == "key_points":
                     rendered = f"• {item}"
                 elif field == "examples":
                     rendered = f"• {item[0]}: {item[1]}"
                 else:
-                    rendered = f"{raw[field].index(item) + 1}. {item}"
+                    rendered = f"{index}. {item}"
                 position = content.find(rendered)
                 self.assertGreater(position, previous, f"{field} item missing or reordered")
                 previous = position
