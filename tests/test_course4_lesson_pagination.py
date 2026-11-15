@@ -264,7 +264,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
         with patch.dict(bot.LESSON_COURSE, {"grammar_01": "unexpected_course"}):
             await bot.send_lesson_text(
                 message,
-                "🎯 ئامانج\\n" + ("دەقی تاقیکردنەوە. " * 30),
+                "🎯 ئامانج\\n" + ("دەقی تاقیکردنەوە. " * 500),
                 lesson_id="grammar_01",
             )
 
