@@ -38,6 +38,7 @@ from course_runtime import can_open_lesson, visible_course_lessons, is_beta_revi
 from quiz_option_order import randomized_question_copy
 from course_lesson_adapters import adapt_conversation_lessons, adapt_unified_orthography_lessons
 from course_quiz_review import quiz_is_available
+from grammar_lesson_pagination import build_grammar_lesson_pages
 from latin_course_runtime import load_latin_courses
 from arami_lesson1_telegram import callback as arami_lesson1_callback
 from arami_lesson5_telegram import callback as arami_lesson5_callback
@@ -1036,6 +1037,72 @@ async def send_lesson_text(message, content, reply_markup=None):
         )
 
 
+
+async def send_grammar_lesson_page(message, lesson, content, page_index=0):
+    """Present Course 4 lesson content in short academic pages; source stays unchanged."""
+    pages = build_grammar_lesson_pages(content)
+    if not isinstance(page_index, int) or isinstance(page_index, bool) or not 0 <= page_index < len(pages):
+        await message.reply_text("⚠️ ئەم بەشەی وانەکە بەردەست نییە.")
+        return
+    page_text = (
+        f"📘 وانەی {LESSON_DATA[lesson].get('source_number', '')} — "
+        f"{LESSON_DATA[lesson].get('title', '')}\\n"
+        f"📑 بەشی {page_index + 1} لە {len(pages)}\\n\\n"
+        f"{pages[page_index]}"
+    )
+    if page_index == len(pages) - 1:
+        page_text = add_kejyar_brand_signature(page_text)
+    rows = []
+    navigation = []
+    if page_index > 0:
+        navigation.append(InlineKeyboardButton(
+            "⬅️ پێشوو", callback_data=f"grammar_page:{lesson}:{page_index - 1}"
+        ))
+    if page_index + 1 < len(pages):
+        navigation.append(InlineKeyboardButton(
+            "دواتر ➡️", callback_data=f"grammar_page:{lesson}:{page_index + 1}"
+        ))
+    if navigation:
+        rows.append(navigation)
+    if page_index == len(pages) - 1:
+        completion = lesson_keyboard(lesson)
+        if completion:
+            rows.extend(completion.inline_keyboard)
+    markup = InlineKeyboardMarkup(rows) if rows else None
+    chunks = split_lesson_html(render_lesson_html_blocks(page_text))
+    for index, chunk in enumerate(chunks):
+        await message.reply_text(
+            chunk,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=markup if index == len(chunks) - 1 else None,
+        )
+
+
+async def show_grammar_lesson_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    try:
+        _, lesson, raw_page = query.data.split(":", 2)
+        page_index = int(raw_page)
+    except (ValueError, TypeError):
+        await query.message.reply_text("⚠️ داواکاریی گواستنەوە دروست نییە.")
+        return
+    if lesson not in LESSON_COURSE or LESSON_COURSE.get(lesson) != "grammar":
+        await query.message.reply_text("❌ ئەم وانەیە لە کۆرسی ڕێزماندا نییە.")
+        return
+    if not can_open(query.from_user.id, lesson):
+        await query.message.reply_text("🔒 سەرەتا وانەی پێشووتر تەواو بکە.")
+        return
+    data = LESSON_DATA.get(lesson)
+    if not data:
+        await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
+        return
+    await send_grammar_lesson_page(
+        query.message, lesson, lesson_display_content(lesson, data["content"]), page_index
+    )
+
+
 async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -1051,7 +1118,11 @@ async def open_selected_lesson(update: Update, context: ContextTypes.DEFAULT_TYP
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    content = lesson_display_content(lesson, data["content"])
+    if LESSON_COURSE.get(lesson) == "grammar":
+        await send_grammar_lesson_page(query.message, lesson, content, 0)
+    else:
+        await send_lesson_text(query.message, content, lesson_keyboard(lesson))
 
 
 async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1066,7 +1137,12 @@ async def open_next_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not data:
         await query.message.reply_text("⚠️ ناوەڕۆکی ئەم وانەیە نەدۆزرایەوە.")
         return
-    await send_lesson_text(query.message, lesson_display_content(lesson, data["content"]), lesson_keyboard(lesson))
+    content = lesson_display_content(lesson, data["content"])
+    if LESSON_COURSE.get(lesson) == "grammar":
+        await send_grammar_lesson_page(query.message, lesson, content, 0)
+    else:
+        await send_lesson_text(query.message, content, lesson_keyboard(lesson))
+
 
 COURSE_MENU_PAGE_SIZE = 12
 
@@ -1735,6 +1811,7 @@ def main():
         ),
         pattern=r"^arami5:",
     ))
+    app.add_handler(CallbackQueryHandler(show_grammar_lesson_page, pattern=r"^grammar_page:"))
     app.add_handler(CallbackQueryHandler(finish_lesson, pattern=r"^finish_"))
     app.add_handler(CallbackQueryHandler(open_course, pattern=r"^course_(arami_orthography_foundations|orthography_basic|daily_conversation|unified_orthography|grammar|kurmanji_latin_orthography|kurmanji_latin_grammar)$"))
     app.add_handler(CallbackQueryHandler(open_course_page, pattern=r"^coursepage:"))
