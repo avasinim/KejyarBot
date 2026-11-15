@@ -1046,8 +1046,8 @@ async def send_grammar_lesson_page(message, lesson, content, page_index=0):
         return
     page_text = (
         f"📘 وانەی {LESSON_DATA[lesson].get('source_number', '')} — "
-        f"{LESSON_DATA[lesson].get('title', '')}\\n"
-        f"📑 بەشی {page_index + 1} لە {len(pages)}\\n\\n"
+        f"{LESSON_DATA[lesson].get('title', '')}\n"
+        f"📑 بەشی {page_index + 1} لە {len(pages)}\n\n"
         f"{pages[page_index]}"
     )
     if page_index == len(pages) - 1:
