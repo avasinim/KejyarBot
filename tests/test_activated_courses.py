@@ -145,6 +145,35 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(bot.can_open(12345, order[1]))
             self.assertFalse(bot.can_open(12345, order[2]))
 
+    def test_arami_beta_ledger_unlocks_only_the_next_review_lesson(self):
+        order = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        self.assertEqual(len(order), 21)
+        beta_review = lambda lesson_id: lesson_id in order
+
+        # Every contiguous Beta completion prefix unlocks exactly its next lesson.
+        for completed_count in range(1, len(order)):
+            with (
+                self.subTest(completed_count=completed_count),
+                patch.object(bot, "get_completed_lessons", return_value=[]),
+                patch.object(
+                    bot,
+                    "get_completed_beta_lessons",
+                    return_value=order[:completed_count],
+                ),
+                patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+            ):
+                self.assertTrue(bot.can_open(12345, order[completed_count]))
+                if completed_count + 1 < len(order):
+                    self.assertFalse(bot.can_open(12345, order[completed_count + 1]))
+
+        # A gap in the Beta ledger must never unlock a later lesson.
+        with (
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[order[0], order[2]]),
+            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+        ):
+            self.assertFalse(bot.can_open(12345, order[3]))
+
     def test_approved_course4_lesson_does_not_reuse_stale_beta_completion(self):
         order = bot.COURSE_LESSON_ORDER["grammar"]
         lesson_32 = order[31]
