@@ -147,24 +147,23 @@ class ActivatedCoursesTests(unittest.IsolatedAsyncioTestCase):
 
     def test_arami_beta_ledger_unlocks_only_the_next_review_lesson(self):
         order = bot.COURSE_LESSON_ORDER["arami_orthography_foundations"]
+        self.assertEqual(len(order), 21)
         beta_review = lambda lesson_id: lesson_id in order
 
-        # One completed Beta lesson opens lesson 2, but not lesson 3.
-        with (
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-            patch.object(bot, "get_completed_beta_lessons", return_value=[order[0]]),
-            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
-        ):
-            self.assertTrue(bot.can_open(12345, order[1]))
-            self.assertFalse(bot.can_open(12345, order[2]))
-
-        # Two consecutive Beta completions open lesson 3.
-        with (
-            patch.object(bot, "get_completed_lessons", return_value=[]),
-            patch.object(bot, "get_completed_beta_lessons", return_value=order[:2]),
-            patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
-        ):
-            self.assertTrue(bot.can_open(12345, order[2]))
+        # Every contiguous Beta completion prefix unlocks exactly its next lesson.
+        for completed_count in range(1, len(order)):
+            with self.subTest(completed_count=completed_count), (
+                patch.object(bot, "get_completed_lessons", return_value=[]),
+                patch.object(
+                    bot,
+                    "get_completed_beta_lessons",
+                    return_value=order[:completed_count],
+                ),
+                patch.object(bot, "lesson_is_beta_review", side_effect=beta_review),
+            ):
+                self.assertTrue(bot.can_open(12345, order[completed_count]))
+                if completed_count + 1 < len(order):
+                    self.assertFalse(bot.can_open(12345, order[completed_count + 1]))
 
         # A gap in the Beta ledger must never unlock a later lesson.
         with (
