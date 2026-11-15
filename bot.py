@@ -1294,7 +1294,7 @@ def add_kejyar_brand_signature(content):
     return content
 
 
-def grammar_academic_page_label(page_content):
+def grammar_academic_page_label(page_content, page=0):
     """Classify a reading page from its first meaningful instructional heading."""
     raw_headings = re.findall(r"<b>(.*?)</b>", page_content, flags=re.DOTALL)
     headings = [
@@ -1339,7 +1339,7 @@ def grammar_academic_page_label(page_content):
                 return label
         # An unclassified heading should not hide a later, recognizable
         # instructional heading on the same page.
-    return "بابەتی سەرەکیی وانە" if headings else "پێشەکی و بنەمای بابەت"
+    if headings:\n        return "بابەتی سەرەکیی وانە"\n    return "بەردەوامیی بابەت" if page > 0 else "پێشەکی و بنەمای بابەت"
 
 
 
@@ -1359,7 +1359,7 @@ async def send_lesson_text(message, content, reply_markup=None, *, lesson_id=Non
         if not isinstance(page, int) or isinstance(page, bool) or not 0 <= page < len(pages):
             page = 0
         title = html.escape(LESSON_DATA.get(lesson_id, {}).get("title", lesson_id), quote=False)
-        section_label = html.escape(grammar_academic_page_label(pages[page]), quote=False)
+        section_label = html.escape(grammar_academic_page_label(pages[page], page=page), quote=False)
         page_header = (
             "<b>کۆرسی ٤ | زانستی ڕێزمان</b>\n"
             f"<b>{title}</b>\n"
