@@ -1211,7 +1211,7 @@ def split_lesson_academic_pages(blocks, limit=2200):
         heading = html.unescape(re.sub(r"<[^>]+>", "", block)).strip()
         if heading in named_section_titles or heading.startswith(("کورتەی وانە:", "کورتەی وانە")):
             return True
-        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\\s+\\S", block))
+        return bool(re.match(r"<b>[٠-٩0-9]+[.)]\s+\S", block))
 
     sections = []
     current_section = []
