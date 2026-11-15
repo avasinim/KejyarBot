@@ -672,9 +672,9 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
 
     def test_main_menu_uses_consistent_kurdish_spelling_for_three_entries(self):
         menu_labels = {
-            label
+            button.text
             for row in bot.MENU.keyboard
-            for label in row
+            for button in row
         }
         self.assertIn("⌨️ تەختەکلیلی کوردیی", menu_labels)
         self.assertIn("📖 وشەنامەی کوردیی", menu_labels)
