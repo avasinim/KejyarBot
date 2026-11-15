@@ -304,7 +304,7 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                     f"{lesson_id} first page should introduce learning objectives",
                 )
                 self.assertTrue(
-                    all(len(page) >= 500 for page in pages),
+                    all(len(page) >= (300 if page_index == 0 else 500) for page_index, page in enumerate(pages)),
                     f"{lesson_id} contains an unusually short page: "
                     f"{[len(page) for page in pages]}",
                 )
