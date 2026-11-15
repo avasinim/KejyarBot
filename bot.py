@@ -1296,7 +1296,7 @@ def grammar_academic_page_label(page_content):
     for prefixes, label in labels:
         if any(prefix in visible[:180] for prefix in prefixes):
             return label
-    if re.search(r"(?:^|\\s)[٠-٩0-9]+[.)]", visible):
+    if re.search(r"(?:^|\s)[٠-٩0-9]+[.)]", visible):
         return "خاڵە سەرەکییەکانی وانە"
     return "پێشەکی و بنەمای بابەت"
 
