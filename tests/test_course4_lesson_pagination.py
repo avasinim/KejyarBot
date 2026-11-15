@@ -340,6 +340,33 @@ class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
                 )
                 self.assertTrue(all(len(page) <= 2200 for page in pages))
 
+    def test_all_pages_have_a_specific_academic_label_or_true_continuation(self):
+        import re
+
+        unclassified = []
+        continuation_without_heading = []
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            blocks = bot.render_lesson_html_blocks(
+                bot.LESSON_DATA[lesson_id]["content"]
+            )
+            pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+            for page_index, page in enumerate(pages):
+                label = bot.grammar_academic_page_label(page, page=page_index)
+                has_heading = bool(re.search(r"<b>.*?</b>", page, re.DOTALL))
+                if label == "بابەتی سەرەکیی وانە":
+                    unclassified.append((lesson_id, page_index + 1, page[:360]))
+                if page_index > 0 and not has_heading and label != "بەردەوامیی بابەت":
+                    continuation_without_heading.append((lesson_id, page_index + 1, label))
+        self.assertFalse(
+            unclassified,
+            "Pages with instructional headings need meaningful labels: "
+            f"{unclassified}",
+        )
+        self.assertFalse(
+            continuation_without_heading,
+            f"Heading-free continuation pages were misclassified: {continuation_without_heading}",
+        )
+
     def test_lesson_three_topic_outline_preserves_every_source_item_in_order(self):
         raw = next(
             item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
