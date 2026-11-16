@@ -67,6 +67,11 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(first_numbers, list(range(1, 13)))
         self.assertEqual(second_numbers, list(range(1, 13)))
 
+    def test_course_one_lesson_two_has_single_editorial_note(self):
+        source = COURSE1_SOURCE.read_text(encoding="utf-8")
+        note = "**Têbînî:** Celadet di Beşa I de alfabeyê bi herfên biçûk pêşkêş dike; bikaranîna herfên mezin li vir wek rêbaza giştî ya nivîsandina latînî tê fêrkirin, ne wek koma herfên nû."
+        self.assertEqual(source.count(note), 1)
+
     def test_each_answer_key_has_sixty_rows_and_all_lessons(self):
         for key_path in (COURSE1_KEY, COURSE2_KEY):
             rows = []
