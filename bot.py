@@ -645,6 +645,18 @@ def lesson_display_content(lesson, content):
             "دەتوانیت بیخوێنیت و بۆ بەردەوامبوونی ڕێڕەو تەواوی بکەیت؛ "
             "بەڵام تا پشکنین و پەسەندکردنی ئەکادیمی، کویز و خەڵات بۆی نییە.\n\n"
         )
+        # Course 3 has an explicit owner-approved textual brand hierarchy:
+        # wordmark first, lesson title second, then the Beta-status note.
+        if LESSON_COURSE.get(lesson) == "unified_orthography":
+            lines = content.splitlines()
+            if (
+                len(lines) >= 2
+                and lines[0] == "✦ کەژیار ✦"
+                and lines[1].startswith("📖 ")
+            ):
+                return "\\n".join(
+                    [*lines[:2], "", notice.strip(), "", *lines[2:]]
+                )
         return notice + content
     if lesson_is_pending_review(lesson):
         notice = (
