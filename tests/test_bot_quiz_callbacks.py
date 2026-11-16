@@ -340,6 +340,25 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             await bot.quiz_answer(update, context)
             reward.assert_called_once_with(12345, "وانە_1")
 
+
+    async def test_first_quiz_completion_announces_level_promotion(self):
+        update, context, query = self.make_context("answer_0")
+        query.message.reply_text = AsyncMock()
+        with (
+            patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward,
+            patch.object(
+                bot, "get_user_level", side_effect=["A1.1 🌱", "A1.2 🌿"]
+            ) as level,
+        ):
+            await bot.quiz_answer(update, context)
+
+        reward.assert_called_once_with(12345, "وانە_1")
+        self.assertEqual(level.call_count, 2)
+        final_message = query.message.reply_text.await_args_list[-1].args[0]
+        self.assertIn("⭐ +20 XP", final_message)
+        self.assertIn("🎉 بەرزبوویتەوە بۆ: A1.2 🌿", final_message)
+
+
     async def test_correct_answer_on_nonfinal_question_advances_once(self):
         update, context, query = self.make_context("answer_0")
         context.user_data["quiz"]["questions"].append({
