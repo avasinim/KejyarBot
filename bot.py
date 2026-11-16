@@ -513,6 +513,29 @@ BADGE_COURSE_TITLES = {
 }
 
 
+def course_progress_counts(user_id, course_id):
+    """Count only the contiguous official and Beta prefixes of a course."""
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    completed = set(get_completed_lessons(user_id))
+    beta_completed = set(get_completed_beta_lessons(user_id))
+    official_count = 0
+    beta_count = 0
+    in_beta = False
+
+    for lesson_id in order:
+        if lesson_is_beta_review(lesson_id):
+            in_beta = True
+            if lesson_id not in beta_completed:
+                break
+            beta_count += 1
+            continue
+        if in_beta or lesson_id not in completed:
+            break
+        official_count += 1
+
+    return official_count, beta_count
+
+
 def current_progress_badges(user_id):
     """Build visible badges from current active lesson IDs, never stale stored labels."""
     completed = set(get_completed_lessons(user_id))
@@ -1719,10 +1742,7 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
     completed = set(get_completed_lessons(user_id))
     beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
-    completed_count = sum(
-        1 for lesson in order
-        if lesson in completed and not lesson_is_beta_review(lesson)
-    )
+    completed_count, valid_beta_completed = course_progress_counts(user_id, course_id)
     beta_count = sum(1 for lesson in order if lesson_is_beta_review(lesson))
     description = html.escape(str(course.get("description", "")))
     title = html.escape(str(course.get("title", "")))
@@ -1734,10 +1754,6 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         f"✅ تەواوکراو: {completed_count}"
     )
     if beta_count:
-        valid_beta_completed = sum(
-            1 for lesson in order
-            if lesson_is_beta_review(lesson) and lesson in beta_completed
-        )
         text += f"  •  🧪 Beta: {valid_beta_completed}/{beta_count}"
     text += (
         "\n\n"
@@ -2324,19 +2340,29 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "🧭 ڕێگای فێربوون":
-        completed = set(get_completed_lessons(user_id))
         manifest = load_arami_course1_manifest(BASE_DIR)
+        ordered_items = sorted(manifest["lessons"], key=lambda lesson: lesson["number"])
+        completed_count, beta_completed_count = course_progress_counts(
+            user_id, "arami_orthography_foundations"
+        )
+        beta_total = sum(1 for item in ordered_items if lesson_is_beta_review(item["id"]))
         lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی"]
-        completed_count = 0
-        for item in sorted(manifest["lessons"], key=lambda lesson: lesson["number"]):
+        for index, item in enumerate(ordered_items):
             lesson_id = item["id"]
-            if lesson_id in completed:
+            if index < completed_count:
                 status = "✅ تەواو کراوە"
-                completed_count += 1
+            elif (
+                lesson_is_beta_review(lesson_id)
+                and completed_count <= index < completed_count + beta_completed_count
+            ):
+                status = "🧪 Beta تەواو کراوە"
             else:
                 status = "🔓 ئامادەیە" if can_open(user_id, lesson_id) else "🔒 داخراوە"
             lines.append(f"{status} — وانەی {item['number']}: {item['title']}")
-        lines.insert(1, f"پێشکەوتن: {completed_count}/{len(manifest['lessons'])} وانە")
+        progress_line = f"پێشکەوتنی فەرمی: {completed_count}/{len(ordered_items)} وانە"
+        if beta_total:
+            progress_line += f"  •  🧪 Beta: {beta_completed_count}/{beta_total}"
+        lines.insert(1, progress_line)
         await update.message.reply_text("\n".join(lines))
         return
 
