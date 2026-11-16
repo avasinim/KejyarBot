@@ -890,7 +890,7 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     quiz = context.user_data.get("quiz")
     if not isinstance(quiz, dict):
         await query.answer()
-        if quiz:
+        if quiz is not None:
             context.user_data.pop("quiz", None)
             await query.message.reply_text(
                 "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
@@ -950,14 +950,14 @@ async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     quiz = context.user_data.get("quiz")
     if not isinstance(quiz, dict):
         await query.answer()
-        if quiz:
+        if quiz is None:
+            await query.message.reply_text(
+                "ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە."
+            )
+        else:
             context.user_data.pop("quiz", None)
             await query.message.reply_text(
                 "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
-            )
-        else:
-            await query.message.reply_text(
-                "ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە."
             )
         return
     selected = quiz.get("selected_answer_index")
@@ -974,7 +974,7 @@ async def quiz_answer(
 ):
     query = update.callback_query
     quiz = context.user_data.get("quiz")
-    if not quiz:
+    if quiz is None:
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
         return
