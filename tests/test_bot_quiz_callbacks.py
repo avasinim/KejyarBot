@@ -87,7 +87,7 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
         first, second = order[31], order[32]
         with (
             patch.object(bot, "course_is_active", return_value=True),
-            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_lessons", return_value=order[:31]),
             patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
             patch.object(bot, "lesson_is_beta_review", side_effect=lambda lesson: lesson == first),
         ):
@@ -100,7 +100,7 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
         # must not be treated as official completion for sequence unlocking.
         with (
             patch.object(bot, "course_is_active", return_value=True),
-            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_lessons", return_value=order[:31]),
             patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
             patch.object(bot, "lesson_is_beta_review", return_value=False),
         ):
@@ -207,6 +207,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_answer_callback_from_another_chat_cannot_use_active_quiz(self):
         update, context, query = self.make_context("answer_0", chat_id=999)
+        context.user_data["quiz"]["chat_id"] = 555
 
         await bot.quiz_answer(update, context)
 
@@ -220,6 +221,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
         question = bot.QUIZ_DATA[lesson][0]
         update, context, query = self.make_context("select_answer_0", chat_id=999)
+        context.user_data["quiz"]["chat_id"] = 555
         context.user_data["quiz"].update({
             "lesson": lesson,
             "questions": [question],
