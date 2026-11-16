@@ -41,7 +41,10 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
     if any(phrase in clean for phrase in ("ناوت چی", "کێیت", "تۆ کێی")):
         return "من کەژیارم، یاریدەدەری فێربوونی زمانی کوردی. دەتوانین وانە بخوێنینەوە و گفتوگۆی ڕۆژانە ڕاهێنان بکەین. 🌱"
 
-    if any(word in clean for word in ("سوپاس", "دەستخۆش", "زۆر باش")) and not (\n        state.get("daily_chat_scenario") == "food"\n        and state.get("daily_chat_stage") == 2\n    ):
+    if any(word in clean for word in ("سوپاس", "دەستخۆش", "زۆر باش")) and not (
+        state.get("daily_chat_scenario") == "food"
+        and state.get("daily_chat_stage") == 2
+    ):
         return "سەرچاوە، بە خۆشییەوە! 😊 ئامادەیت بە ڕستەیەکی تری ڕۆژانە ڕاهێنان بکەین؟"
 
     if any(word in clean for word in ("ببورە", "لێم خۆش بە")):
