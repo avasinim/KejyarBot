@@ -314,7 +314,10 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         query.message.reply_text = AsyncMock(
             side_effect=[None, RuntimeError("Final result send failed")]
         )
-        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+        with (
+            patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward,
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+        ):
             with self.assertRaisesRegex(RuntimeError, "Final result send failed"):
                 await bot.quiz_answer(update, context)
 
@@ -327,7 +330,10 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         update, context, query = self.make_context("answer_0")
         query.message.reply_text = AsyncMock()
-        with patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward:
+        with (
+            patch.object(bot, "complete_quiz_with_rewards", return_value=True) as reward,
+            patch.object(bot, "get_user_level", return_value="A1.1 🌱"),
+        ):
             await bot.quiz_answer(update, context)
 
             self.assertNotIn("quiz", context.user_data)
