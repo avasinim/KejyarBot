@@ -296,6 +296,14 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_completed_lessons(12345), ["grammar_31"])
         self.assertEqual(database.get_completed_beta_lessons(12345), ["grammar_32"])
 
+    def test_beta_completion_rejects_invalid_ids_without_mutation(self):
+        before = database.get_user(12345)
+        for lesson_id in ("", "   ", "lesson_a,lesson_b", None, 123):
+            with self.subTest(lesson_id=lesson_id), self.assertRaises(ValueError):
+                database.complete_beta_lesson(12345, lesson_id)
+        self.assertEqual(database.get_user(12345), before)
+        self.assertEqual(database.get_completed_beta_lessons(12345), [])
+
     def test_concurrent_beta_completion_is_recorded_only_once(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(
