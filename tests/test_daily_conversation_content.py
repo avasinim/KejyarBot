@@ -37,6 +37,20 @@ class DailyConversationContentTests(unittest.TestCase):
             with self.subTest(lesson=lesson_number):
                 self.assertIn(expected_line, dialogue_text)
 
+    def test_lesson_2_asks_about_residence_before_residence_reply(self):
+        path = ROOT / "course_data" / "daily_conversation_lessons_01_06.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        lesson = next(item for item in payload["lessons"] if item["number"] == 2)
+        dialogue = lesson["dialogue"]
+        self.assertIn(
+            ["کەژیار", "من خەڵکی ئەم شارەم. تۆ لە کوێ نیشتەجێیت؟"],
+            dialogue,
+        )
+        self.assertIn(
+            ["ئاڕگەش", "منیش دانیشتوی ئەم شارەم."],
+            dialogue,
+        )
+
     def test_dialogue_uses_requested_terms_and_speakers(self):
         paths = [
             ROOT / "course_data" / "daily_conversation_lessons_01_06.json",
