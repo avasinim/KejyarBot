@@ -2351,11 +2351,15 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             lesson_id = item["id"]
             if index < completed_count:
                 status = "✅ تەواو کراوە"
-            elif (
-                lesson_is_beta_review(lesson_id)
-                and completed_count <= index < completed_count + beta_completed_count
-            ):
-                status = "🧪 Beta تەواو کراوە"
+            elif lesson_is_beta_review(lesson_id):
+                if completed_count <= index < completed_count + beta_completed_count:
+                    status = "🧪 Beta تەواو کراوە"
+                else:
+                    status = (
+                        "🧪 Beta ئامادەیە"
+                        if can_open(user_id, lesson_id)
+                        else "🔒 🧪 Beta داخراوە"
+                    )
             else:
                 status = "🔓 ئامادەیە" if can_open(user_id, lesson_id) else "🔒 داخراوە"
             lines.append(f"{status} — وانەی {item['number']}: {item['title']}")
