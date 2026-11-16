@@ -1,0 +1,703 @@
+"""Regression tests for presentation-only Course 4 grammar lesson pagination."""
+import unittest
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, patch
+
+import bot
+
+
+class Course4LessonPaginationTests(unittest.IsolatedAsyncioTestCase):
+    def test_lesson_pages_preserve_all_rendered_blocks_and_respect_page_limit(self):
+        source = "\n\n".join(
+            f"بەشی {number}: ئەم دەقە تەنها بۆ تاقیکردنەوەی دابەشکردنی پێشکەشکردنە."
+            for number in range(1, 121)
+        )
+        blocks = bot.render_lesson_html_blocks(source)
+        pages = bot.split_lesson_html(blocks, limit=2200)
+
+        self.assertGreater(len(pages), 1)
+        self.assertTrue(all(len(page) <= 2200 for page in pages))
+        rendered = "\n".join(pages)
+        for number in (1, 2, 40, 80, 120):
+            self.assertIn(f"بەشی {number}:", rendered)
+
+    def test_short_continuation_pages_are_rebalanced_without_exceeding_limit(self):
+        blocks = [
+            "<b>📖 بەشی فێرکاری</b>",
+            "A" * 700,
+            "B" * 700,
+            "C" * 200,
+            "D" * 100,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 3)
+        self.assertTrue(all(len(page) <= 1000 for page in pages))
+        self.assertGreaterEqual(len(pages[2]), 250)
+        self.assertIn("C" * 200, pages[2])
+        self.assertIn("D" * 100, pages[2])
+        self.assertIn("B" * 700, pages[1])
+
+    def test_academic_pages_keep_section_headings_with_their_content(self):
+        blocks = []
+        for number in range(1, 4):
+            blocks.extend([
+                f"<b>📖 بەشی فێرکاری {number}</b>",
+                "ڕوونکردنەوەی ئەم بەشە. " * 45,
+            ])
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1250)
+
+        self.assertEqual(len(pages), 3)
+        for number, page in enumerate(pages, start=1):
+            self.assertTrue(page.startswith(f"<b>📖 بەشی فێرکاری {number}</b>"))
+            self.assertIn("ڕوونکردنەوەی ئەم بەشە.", page)
+            self.assertLessEqual(len(page), 1250)
+
+    def test_plain_academic_section_titles_start_new_pages(self):
+        blocks = [
+            "<b>ئامانجەکانی فێربوون</b>",
+            "ناوەڕۆکی ئامانج. " * 35,
+            "<b>خۆت تاقی بکەرەوە</b>",
+            "پرسیارەکانی تاقیکردنەوە. " * 35,
+            "<b>کورتەی وانە: گرنگترین خاڵەکان</b>",
+            "پوختەی وانە. " * 35,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 3)
+        self.assertTrue(pages[0].startswith("<b>ئامانجەکانی فێربوون</b>"))
+        self.assertTrue(pages[1].startswith("<b>خۆت تاقی بکەرەوە</b>"))
+        self.assertTrue(pages[2].startswith("<b>کورتەی وانە: گرنگترین خاڵەکان</b>"))
+
+    def test_academic_page_labels_classify_instructional_sections(self):
+        cases = (
+            ("<b>🎯 ئامانج</b>\\nدەقی ئامانج", "ئامانجی فێربوون"),
+            ("<b>🔎 ڕوونکردنەوە و خاڵە سەرەکییەکان</b>", "بنەما و ڕوونکردنەوەی زانستی"),
+            ("<b>✍️ نموونەکان</b>", "نموونە و شیکردنەوە"),
+            ("<b>📎 پاشکۆ</b>", "پاشکۆ و زاراوەی زانستی"),
+            ("<b>🧩 ڕاهێنان</b>", "ڕاهێنان و کاری پڕاکتیکی"),
+            ("<b>📖 وانەی 32: بنەماکانی ڕستە</b>\\n<b>📖 ١. ئامانجی وانە</b>", "ئامانجی فێربوون"),
+            ("<b>📖 ٢. ڕستە چییە؟</b>", "پێناسە و بنەماکانی بابەت"),
+            ("<b>📖 ٣. پێکهاتە سەرەکییەکان</b>", "پێکهاتە و ئەرکی ڕێزمانی"),
+            ("<b>📖 ٤. جۆرەکانی ڕستە</b>", "جۆر و پۆلێنکردنی ڕێزمانی"),
+            ("<b>📖 ٥. شیکردنەوەی نموونەکان</b>", "نموونە و شیکردنەوە"),
+            ("<b>📖 ٦. هەڵە باوەکان</b>", "هەڵە باوەکان و چاکسازی"),
+            ("<b>📖 ٧. پەیوەندی بە وانەکانی تر</b>", "پەیوەندیی بابەتەکان"),
+            ("<b>📖 ٨. کورتەی وانە</b>", "پوختە و کۆکردنەوەی بابەت"),
+            ("<b>📖 ٩. پاشکۆی زاراوەیی</b>", "پاشکۆ و زاراوەی زانستی"),
+        )
+        for content, expected in cases:
+            with self.subTest(content=content):
+                self.assertEqual(bot.grammar_academic_page_label(content), expected)
+
+    def test_academic_page_labels_distinguish_answer_keys_and_comparisons(self):
+        cases = (
+            ("<b>📖 ١٢. کلیلی ڕاهێنان</b>", "کلیلی وەڵام و ڕاستکردنەوە"),
+            ("<b>📖 ٥. بەراوردی کارا و نەکارا</b>", "بەراورد و جیاوازیی چەمکەکان"),
+            ("<b>📖 ٦. پێوەرەکانی شیکردنەوە</b>", "پێوەر و نیشانەکانی شیکردنەوە"),
+        )
+        for content, expected in cases:
+            with self.subTest(content=content):
+                self.assertEqual(bot.grammar_academic_page_label(content), expected)
+
+    def test_heading_free_later_page_is_labeled_as_continuation(self):
+        self.assertEqual(
+            bot.grammar_academic_page_label("دەقی بەردەوامیی بابەت.", page=1),
+            "بەردەوامیی بابەت",
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label("دەقی سەرەتایی بابەت.", page=0),
+            "پێشەکی و بنەمای بابەت",
+        )
+
+    def test_expanded_draft_cover_title_does_not_set_first_page_label(self):
+        cases = (
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٣٨",
+                "📖 پێڕستە، سەرڕستە و ژێرەڕستە؛ شیکاری و ڕاهێنان",
+            ),
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٤١",
+                "📖 کردارە سادە و لێکدراوەکان و پەیوەندییان بە بەرکارەوە",
+            ),
+            (
+                "📘 ڕەشنووسی پەرەپێدراو — وانەی ٤٧",
+                "📖 گرێی ناوی: پێکهاتە و پەیوەندییە ناوخۆییەکان",
+            ),
+        )
+        for cover, topic in cases:
+            with self.subTest(cover=cover):
+                content = (
+                    "<b>وانەی ٣٨: ناونیشانی سەرەکیی وانە</b>\\n"
+                    f"<b>{cover}</b>\\n"
+                    f"<b>{topic}</b>\\n"
+                    "<b>　↳ پێڕستە، سەرڕستە و ژێرەڕستە</b>\\n"
+                    "<b>📖 ١. ئامانجی وانە</b>\\n"
+                    "دەقی ئامانج."
+                )
+                self.assertEqual(
+                    bot.grammar_academic_page_label(content),
+                    "ئامانجی فێربوون",
+                )
+
+        # An appendix H1 is a real section boundary; its project H2 must remain.
+        capstone = (
+            "<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>\\n"
+            "<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>"
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label(capstone),
+            "پڕۆژە و کاری پڕاکتیکی",
+        )
+
+    def test_lesson_title_does_not_override_academic_page_label(self):
+        content = (
+            "<b>📘 ڕستە و پێکهاتەکانی ڕێزمان</b>\\n"
+            "<b>📖 ٤. جۆرەکانی ڕستە</b>\\n"
+            "ڕوونکردنەوەی جۆرەکان."
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label(content),
+            "جۆر و پۆلێنکردنی ڕێزمانی",
+        )
+
+    def test_academic_page_labels_cover_review_notes_and_grammar_structures(self):
+        cases = (
+            ("<b>📖 خاڵەکانی پێویست بە پشکنین</b>", "تێبینیی پشکنین و پەسەندکردن"),
+            ("<b>📖 داتای پڕۆژە</b>", "تێبینی و دۆخی پڕۆژە"),
+            ("<b>📖 کارەکانی خوێندکار</b>", "ئەرکی خوێندکار"),
+            ("<b>📖 ڕێنماییی مامۆستا</b>", "ڕێنماییی مامۆستا"),
+            ("<b>📖 بابەتکردن</b>", "ڕیزبەندی و جەختی ڕستە"),
+            ("<b>📖 بکەر و کردار</b>", "پێکهاتە و ئەرکی ڕێزمانی"),
+            ("<b>📖 نموونەی بەرکار</b>", "نموونە و شیکردنەوە"),
+            ("<b>📖 پوختەی ڕستە</b>", "پوختە و کۆکردنەوەی بابەت"),
+        )
+        for content, expected in cases:
+            with self.subTest(content=content):
+                self.assertEqual(bot.grammar_academic_page_label(content), expected)
+
+    def test_academic_page_labels_cover_structured_grammar_topic_outlines(self):
+        cases = (
+            ("سینتاکس و ڕێزمانی تایبەت/گشتی", "سینتاکس و ڕێزمانی ڕستە"),
+            ("دۆخی ناو و ژمارەی ڕێزمانی", "دۆخی ناو و ژمارەی ڕێزمانی"),
+            ("ڕەگەزی سروشتی و ڕێزمانی", "ڕەگەز و پۆلێنکردنی ناو"),
+            ("ناسراوی، نەناسراوی و ئاماژە", "ناسراوی و ئاماژەی ناو"),
+            ("شەش خانەی کەسی لە سۆرانی", "جێناوی کەسی و خانەکانی کەس"),
+            ("ڕێکخستنی ئەرجەتیڤی لە ڕابردووی تێپەڕ", "ڕێکخستنی ئەرجەتیڤی"),
+            ("چوار دەمی سەرەکیی ڕابردوو", "دەمەکانی کردار"),
+            ("نەرێکردن و لێکدانەوەی سیاقی", "نەرێکردن و فۆڕمی کردار"),
+            ("دۆزینەوەی بنجی ئێستا", "بنجی ئێستا و فۆڕمی کردار"),
+            ("واتا و ئەرکی لە، بە و بۆ", "پێشبەند و ئەرکی ڕستەیی"),
+            ("شوێنی پێش و دوای ناوی بانگکراو", "پێکهاتە و شوێنی بانگکردن"),
+            ("ئەرک و شوێنی پارتیکڵەکان", "پارتیکڵ و ئەرکی گفتوگۆیی"),
+            ("پێنج گروپی بنجی ڕابردوو", "بنجی ڕابردوو و گروپەکانی"),
+            ("پێکهاتەی ناو/هاوەڵناو + کردار", "هاوەڵناو و ئەرکی ڕستەیی"),
+            ("جۆرەکانی هاوەڵناو", "هاوەڵناو و ئەرکی ڕستەیی"),
+            ("پێناسەی چاوگ و بنەمای شیکردنەوەی بنج", "چاوگ و بنەمای کردار"),
+            ("واتا و ئەرکی لە، بە و بۆ", "پێشبەند و ئەرکی ڕستەیی"),
+            ("پەیوەندیی وانەکان و تێبینیی کۆتایی", "پەیوەندیی وانەکان"),
+            ("تایبەتمەندیی LV و NV", "پێکهاتەی کردارە سووکەکان"),
+            ("بەڵگەی سەرچاوە و پێکهاتەی گرێی ناوی", "سەرچاوە و بەڵگەی شیکاری"),
+        )
+        for heading, expected in cases:
+            with self.subTest(heading=heading):
+                self.assertEqual(
+                    bot.grammar_academic_page_label(f"<b>📖 {heading}</b>"),
+                    expected,
+                )
+
+    def test_unclassified_heading_does_not_mask_later_academic_label(self):
+        content = (
+            "<b>📖 ناونیشانی تایبەتی بەش</b>\\n"
+            "<b>📖 ٢. پێناسە و بنەماکانی بابەت</b>"
+        )
+
+        self.assertEqual(
+            bot.grammar_academic_page_label(content),
+            "پێناسە و بنەماکانی بابەت",
+        )
+
+    def test_top_level_academic_headings_start_new_pages(self):
+        blocks = [
+            "<b>📘 ڕەشنووسی وانە</b>",
+            "<b>📖 پێشەکی</b>",
+            "دەقی پێشەکی. " * 40,
+            "<b>📘 پاشکۆی کۆتایی وانە</b>",
+            "<b>📖 داتای پڕۆژە</b>",
+            "دەقی پاشکۆ. " * 55,
+        ]
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=1000)
+
+        self.assertEqual(len(pages), 2)
+        self.assertTrue(pages[0].startswith("<b>📘 ڕەشنووسی وانە</b>"))
+        self.assertTrue(pages[1].startswith("<b>📘 پاشکۆی کۆتایی وانە</b>"))
+        self.assertIn("دەقی پاشکۆ.", pages[1])
+
+    def test_markdown_heading_levels_render_as_academic_hierarchy(self):
+        content = "\n".join([
+            "# ڕەشنووسی پەرەپێدراو — وانەی ٣٦",
+            "## تەواوکەر و پێکهاتەکانی ناو ڕستە",
+            "دەقی سەرەکیی بابەت.",
+            "### ٣.١ بەرکار (Object)",
+            "دەقی ژێربەش.",
+        ])
+        blocks = bot.render_lesson_html_blocks(content)
+        rendered = "\n".join(blocks)
+
+        self.assertIn("<b>📘 ڕەشنووسی پەرەپێدراو — وانەی ٣٦</b>", rendered)
+        self.assertIn("<b>📖 تەواوکەر و پێکهاتەکانی ناو ڕستە</b>", rendered)
+        self.assertIn("<b>　↳ ٣.١ بەرکار (Object)</b>", rendered)
+        self.assertNotIn("## ", rendered)
+        self.assertNotIn("### ", rendered)
+
+        pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+        self.assertEqual(len(pages), 1)
+        self.assertIn("دەقی سەرەکیی بابەت.", pages[0])
+        self.assertIn("دەقی ژێربەش.", pages[0])
+
+    async def test_course4_delivery_uses_stable_lesson_namespace_if_manifest_mapping_is_stale(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        with patch.dict(bot.LESSON_COURSE, {"grammar_01": "unexpected_course"}):
+            await bot.send_lesson_text(
+                message,
+                "🎯 ئامانج\\n" + ("دەقی تاقیکردنەوە. " * 500),
+                lesson_id="grammar_01",
+            )
+
+        message.reply_text.assert_awaited_once()
+        sent_text = message.reply_text.await_args.args[0]
+        self.assertIn("کۆرسی ٤ | زانستی ڕێزمان", sent_text)
+        self.assertIn("پەڕە 1 لە", sent_text)
+        self.assertIsNotNone(message.reply_text.await_args.kwargs.get("reply_markup"))
+
+
+    def test_all_fifty_course4_lessons_produce_telegram_safe_pages(self):
+        lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
+        self.assertEqual(len(lesson_ids), 50)
+        self.assertEqual(lesson_ids[0], "grammar_01")
+        self.assertEqual(lesson_ids[-1], "grammar_50")
+
+        for lesson_id in lesson_ids:
+            with self.subTest(lesson=lesson_id):
+                content = bot.LESSON_DATA[lesson_id]["content"]
+                blocks = bot.render_lesson_html_blocks(content)
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertTrue(pages)
+                self.assertTrue(all(page.strip() for page in pages))
+                self.assertTrue(all(len(page) <= 2200 for page in pages))
+
+
+    def test_pagination_preserves_every_rendered_text_block_in_order_for_all_fifty_lessons(self):
+        import html
+        import re
+
+        def normalized_visible_text(value):
+            value = re.sub(r"<[^>]*>", " ", value)
+            return " ".join(html.unescape(value).split())
+
+        lesson_ids = bot.COURSE_LESSON_ORDER["grammar"]
+        self.assertEqual(len(lesson_ids), 50)
+
+        for lesson_id in lesson_ids:
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                expected = normalized_visible_text("\n".join(blocks))
+                actual = normalized_visible_text("\n".join(pages))
+                self.assertEqual(
+                    actual,
+                    expected,
+                    "Pagination must preserve every rendered word and its order.",
+                )
+
+
+    def test_expanded_review_drafts_have_correct_first_page_labels_and_no_tiny_pages(self):
+        for number in range(32, 51):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertEqual(
+                    bot.grammar_academic_page_label(pages[0]),
+                    "ئامانجی فێربوون",
+                )
+                self.assertTrue(
+                    all(len(page) >= 500 for page in pages),
+                    f"{lesson_id} contains an unusually short page: "
+                    f"{[len(page) for page in pages]}",
+                )
+
+    def test_structured_lessons_1_to_31_have_clear_first_page_labels_and_balanced_pages(self):
+        for number in range(1, 32):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                blocks = bot.render_lesson_html_blocks(
+                    bot.LESSON_DATA[lesson_id]["content"]
+                )
+                pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+                self.assertTrue(pages)
+                self.assertEqual(
+                    bot.grammar_academic_page_label(pages[0]),
+                    "ئامانجی فێربوون",
+                    f"{lesson_id} first page should introduce learning objectives",
+                )
+                self.assertTrue(
+                    all(len(page) >= (300 if page_index == 0 else 500) for page_index, page in enumerate(pages)),
+                    f"{lesson_id} contains an unusually short page: "
+                    f"{[len(page) for page in pages]}",
+                )
+                self.assertTrue(all(len(page) <= 2200 for page in pages))
+
+    def test_all_pages_have_a_specific_academic_label_or_true_continuation(self):
+        import re
+
+        unclassified = []
+        continuation_without_heading = []
+        for lesson_id in bot.COURSE_LESSON_ORDER["grammar"]:
+            blocks = bot.render_lesson_html_blocks(
+                bot.LESSON_DATA[lesson_id]["content"]
+            )
+            pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+            for page_index, page in enumerate(pages):
+                label = bot.grammar_academic_page_label(page, page=page_index)
+                has_heading = bool(re.search(r"<b>.*?</b>", page, re.DOTALL))
+                if label == "بابەتی سەرەکیی وانە":
+                    unclassified.append((lesson_id, page_index + 1, page[:360]))
+                if page_index > 0 and not has_heading and label != "بەردەوامیی بابەت":
+                    continuation_without_heading.append((lesson_id, page_index + 1, label))
+        self.assertFalse(
+            unclassified,
+            "Pages with instructional headings need meaningful labels: "
+            f"{unclassified}",
+        )
+        self.assertFalse(
+            continuation_without_heading,
+            f"Heading-free continuation pages were misclassified: {continuation_without_heading}",
+        )
+
+    def test_lesson_three_topic_outline_preserves_every_source_item_in_order(self):
+        raw = next(
+            item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+            if item["number"] == 3
+        )
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            bot.GRAMMAR_COURSE4_DRAFT,
+            include_extended_sections=True,
+        )
+        content = adapted["grammar_03"]["content"]
+
+        expected_headings = (
+            "📖 پێناسە، ناسینەوە و پۆلێنی ناو",
+            "📖 دۆخی ناو و ژمارەی ڕێزمانی",
+            "📖 ڕەگەز و پۆلێنکردنی واتایی",
+            "📖 پێکهاتەی ناو و وشەسازی",
+            "📖 سنووری بابەت: ناو و کردار",
+            "📖 لێکدراو، ناوبەند و پشکنینی شێوەزاری",
+            "📖 نموونەی پۆل و ئەرکی ناو",
+            "📖 نموونەی دۆخ و ژمارە",
+            "📖 نموونەی داڕشتن و ناوی چەمکی",
+            "📖 نموونەی سنووری بابەت",
+            "📖 نموونەی لێکدراو و ناوبەند",
+            "📖 پوختەی تیۆری و جیاوازییە بنەڕەتییەکان",
+            "📖 سەرچاوە بنەڕەتییەکان",
+            "📖 سنووری شێوەزار و سنووری بابەت",
+            "📖 تێبینییەکانی بەڵگە، شیکردنەوە و پشکنینی زیاتر",
+        )
+        for heading in expected_headings:
+            self.assertIn(heading, content)
+
+        for field in ("key_points", "examples", "appendix"):
+            previous = -1
+            for index, item in enumerate(raw[field], 1):
+                if field == "key_points":
+                    rendered = f"• {item}"
+                elif field == "examples":
+                    rendered = f"• {item[0]}: {item[1]}"
+                else:
+                    rendered = f"{index}. {item}"
+                position = content.find(rendered)
+                self.assertGreater(position, previous, f"{field} item missing or reordered")
+                previous = position
+
+
+    def test_topic_outlines_for_lessons_29_to_31_preserve_source_order(self):
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            bot.GRAMMAR_COURSE4_DRAFT,
+            include_extended_sections=True,
+        )
+        for number in (29, 30, 31):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            content = adapted[f"grammar_{number:02d}"]["content"]
+            for field in ("key_points", "examples", "appendix"):
+                previous = -1
+                for index, item in enumerate(raw.get(field, []), 1):
+                    if field == "key_points":
+                        rendered = f"• {item}"
+                    elif field == "examples":
+                        rendered = f"• {item[0]}: {item[1]}"
+                    else:
+                        rendered = f"{index}. {item}"
+                    position = content.find(rendered)
+                    self.assertGreater(
+                        position, previous,
+                        f"lesson {number} {field} item missing or reordered",
+                    )
+                    previous = position
+            self.assertIn("📖 ", content)
+
+
+    def test_topic_outlines_for_lessons_1_to_28_preserve_every_key_point(self):
+        adapted, _ = bot.adapt_unified_orthography_lessons(
+            bot.GRAMMAR_COURSE4_DRAFT,
+            include_extended_sections=True,
+        )
+        for number in range(1, 29):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            content = adapted[f"grammar_{number:02d}"]["content"]
+            self.assertIn("📖 ", content, f"lesson {number} lacks topic headings")
+            previous = -1
+            for item in raw.get("key_points", []):
+                rendered = f"• {item}"
+                position = content.find(rendered)
+                self.assertGreater(
+                    position, previous,
+                    f"lesson {number} key point missing or reordered",
+                )
+                previous = position
+
+
+    def test_lessons_32_to_50_remain_review_gated_beta_drafts(self):
+        self.assertEqual(
+            len([
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if 32 <= item["number"] <= 50
+            ]),
+            19,
+        )
+        for number in range(32, 51):
+            lesson_id = f"grammar_{number:02d}"
+            with self.subTest(lesson=lesson_id):
+                raw = next(
+                    item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                    if item["number"] == number
+                )
+                runtime = bot.LESSON_DATA[lesson_id]
+                self.assertEqual(
+                    raw["review_status"],
+                    "owner_review_pending_expanded_draft",
+                )
+                self.assertEqual(runtime["review_status"], raw["review_status"])
+                self.assertTrue(bot.lesson_is_beta_review(lesson_id))
+                self.assertFalse(bot.lesson_quiz_is_available(lesson_id))
+
+        for number in range(47, 51):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            self.assertTrue(raw.get("source_markdown", "").strip())
+            self.assertTrue(
+                any(
+                    line.startswith("## ")
+                    for line in raw["source_markdown"].splitlines()
+                )
+            )
+            self.assertGreater(
+                len(bot.LESSON_DATA[f"grammar_{number:02d}"]["content"]),
+                1000,
+            )
+
+
+    def test_grammar_draft_formatter_preserves_markdown_heading_hierarchy(self):
+        source = "\n".join([
+            "# ڕەشنووسی پەرەپێدراو — وانەی ٥٠",
+            "## پێڕستەی ڕێژەیی لە سۆرانیدا",
+            "دەقی سەرەکی.",
+            "### دیاریکەر",
+            "دەقی ژێربەش.",
+        ])
+        formatted = bot.format_lesson_draft(
+            source, preserve_markdown_headings=True
+        )
+        blocks = bot.render_lesson_html_blocks(formatted)
+        rendered = "\n".join(blocks)
+
+        self.assertIn("<b>📘 ڕەشنووسی پەرەپێدراو — وانەی ٥٠</b>", rendered)
+        self.assertIn("<b>📖 پێڕستەی ڕێژەیی لە سۆرانیدا</b>", rendered)
+        self.assertIn("<b>　↳ دیاریکەر</b>", rendered)
+        self.assertIn("دەقی سەرەکی.", rendered)
+        self.assertIn("دەقی ژێربەش.", rendered)
+
+    def test_lesson_50_capstone_project_has_a_distinct_page_label(self):
+        content = (
+            "<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>\\n"
+            "<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>\\n"
+            "دەقی پڕۆژە."
+        )
+        self.assertEqual(
+            bot.grammar_academic_page_label(content),
+            "پڕۆژە و کاری پڕاکتیکی",
+        )
+
+    def test_lesson_50_capstone_headings_remain_structured_in_runtime(self):
+        lesson = bot.LESSON_DATA["grammar_50"]
+        blocks = bot.render_lesson_html_blocks(lesson["content"])
+        rendered = "\n".join(blocks)
+
+        self.assertIn("<b>📘 پاشکۆی کۆتایی وانەی ٥٠</b>", rendered)
+        self.assertIn("<b>📖 پڕۆژەی شیکاریی نموونەی ڕێزمانیی سۆرانی</b>", rendered)
+        self.assertIn("<b>📖 داتای پڕۆژە</b>", rendered)
+        pages = bot.split_lesson_academic_pages(blocks, limit=2200)
+        self.assertTrue(all(len(page) <= 2200 for page in pages))
+        self.assertTrue(any("داتای پڕۆژە" in page for page in pages))
+
+    def test_review_draft_section_headings_survive_runtime_formatting_and_pagination(self):
+        for number in range(32, 51):
+            raw = next(
+                item for item in bot.GRAMMAR_COURSE4_DRAFT["lessons"]
+                if item["number"] == number
+            )
+            lesson_id = f"grammar_{number:02d}"
+            content = bot.LESSON_DATA[lesson_id]["content"]
+            source = raw.get("source_markdown") or raw.get("key_points", [""])[0]
+            headings = [
+                line.lstrip("#").strip()
+                for line in source.splitlines()
+                if line.startswith(("## ", "### "))
+            ]
+            for heading in dict.fromkeys(headings):
+                if not heading:
+                    continue
+                self.assertIn(
+                    heading,
+                    content,
+                    f"lesson {number} section heading missing: {heading}",
+                )
+
+            pages = bot.split_lesson_academic_pages(
+                bot.render_lesson_html_blocks(content),
+                limit=2200,
+            )
+            self.assertTrue(pages)
+            self.assertTrue(
+                all(len(page) <= 2200 for page in pages),
+                f"lesson {number} exceeds Telegram page limit",
+            )
+
+    def test_navigation_buttons_show_previous_and_next_and_finish_only_on_last_page(self):
+        completion = bot.InlineKeyboardMarkup([[
+            bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
+        ]])
+
+        first = bot.lesson_page_keyboard("grammar_01", 0, 3, completion)
+        middle = bot.lesson_page_keyboard("grammar_01", 1, 3, completion)
+        last = bot.lesson_page_keyboard("grammar_01", 2, 3, completion)
+
+        first_callbacks = [button.callback_data for row in first.inline_keyboard for button in row]
+        middle_callbacks = [button.callback_data for row in middle.inline_keyboard for button in row]
+        last_callbacks = [button.callback_data for row in last.inline_keyboard for button in row]
+
+        self.assertIn("lessonpage:grammar_01:1", first_callbacks)
+        self.assertNotIn("finish_grammar_01", first_callbacks)
+        self.assertIn("lessonpage:grammar_01:0", middle_callbacks)
+        self.assertIn("lessonpage:grammar_01:2", middle_callbacks)
+        self.assertNotIn("finish_grammar_01", middle_callbacks)
+        self.assertIn("lessonpage:grammar_01:1", last_callbacks)
+        self.assertIn("finish_grammar_01", last_callbacks)
+
+    async def test_grammar_lesson_opens_one_page_with_navigation(self):
+        message = SimpleNamespace(reply_text=AsyncMock())
+        content = "وانەی تاقیکاری\n\n" + "\n\n".join(
+            f"خاڵی فێرکاری {number}: " + ("دەقی فێرکاریی پارێزراو. " * 12)
+            for number in range(1, 90)
+        )
+
+        await bot.send_lesson_text(
+            message,
+            content,
+            bot.InlineKeyboardMarkup([[
+                bot.InlineKeyboardButton("finish", callback_data="finish_grammar_01")
+            ]]),
+            lesson_id="grammar_01",
+            page=0,
+        )
+
+        message.reply_text.assert_awaited_once()
+        args, kwargs = message.reply_text.await_args
+        self.assertIn("پەڕە 1 لە", args[0])
+        self.assertIn("وانەی ١", args[0])
+        self.assertIsNotNone(kwargs["reply_markup"])
+        callbacks = [
+            button.callback_data
+            for row in kwargs["reply_markup"].inline_keyboard
+            for button in row
+        ]
+        self.assertTrue(any(value.startswith("lessonpage:grammar_01:") for value in callbacks))
+        self.assertNotIn("finish_grammar_01", callbacks)
+
+    async def test_page_callback_rejects_out_of_range_page_without_falling_back_to_first_page(self):
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            data="lessonpage:grammar_01:999999",
+            from_user=SimpleNamespace(id=12345),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        with patch.object(bot, "can_open", return_value=True), patch.object(
+            bot, "send_lesson_text", new=AsyncMock()
+        ) as send_lesson:
+            await bot.open_lesson_page(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("لە سنووری وانەکەدا نییە", query.message.reply_text.await_args.args[0])
+        send_lesson.assert_not_awaited()
+
+    async def test_page_callback_reopens_only_requested_grammar_page_without_resending_image(self):
+        query = SimpleNamespace(
+            answer=AsyncMock(),
+            data="lessonpage:grammar_01:1",
+            from_user=SimpleNamespace(id=12345),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        with patch.object(bot, "can_open", return_value=True), patch.object(
+            bot, "send_shared_lesson_image", new=AsyncMock()
+        ) as send_image:
+            await bot.open_lesson_page(update, SimpleNamespace())
+
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        self.assertIn("پەڕە 2 لە", query.message.reply_text.await_args.args[0])
+        send_image.assert_not_awaited()
+
+
+    def test_main_menu_uses_consistent_kurdish_spelling_for_three_entries(self):
+        menu_labels = {
+            button.text
+            for row in bot.MENU.keyboard
+            for button in row
+        }
+        self.assertIn("⌨️ تەختەکلیلی کوردیی", menu_labels)
+        self.assertIn("📖 وشەنامەی کوردیی", menu_labels)
+        self.assertIn("📕 ڕێنووسی سەرەتاییی کوردیی", menu_labels)
+        self.assertNotIn("⌨️ تەختەکلیلی کوردی", menu_labels)
+        self.assertNotIn("📖 وشەنامەی کوردی", menu_labels)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -6,6 +6,23 @@ from unittest.mock import AsyncMock, patch
 
 import bot
 
+# Most callback tests use an isolated/mock learner-progress ledger.
+_beta_ledger_test_default = None
+_beta_completion_test_default = None
+
+def setUpModule():
+    global _beta_ledger_test_default, _beta_completion_test_default
+    _beta_ledger_test_default = patch.object(bot, "get_completed_beta_lessons", return_value=[])
+    _beta_completion_test_default = patch.object(bot, "complete_beta_lesson", return_value=True)
+    _beta_ledger_test_default.start()
+    _beta_completion_test_default.start()
+
+def tearDownModule():
+    if _beta_completion_test_default is not None:
+        _beta_completion_test_default.stop()
+    if _beta_ledger_test_default is not None:
+        _beta_ledger_test_default.stop()
+
 
 class MessageModeTests(unittest.IsolatedAsyncioTestCase):
     def make_update_context(self, text, user_data=None):
@@ -24,6 +41,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         message = SimpleNamespace(reply_text=AsyncMock())
         update = SimpleNamespace(
             message=message,
+            effective_message=message,
             effective_user=SimpleNamespace(id=12345),
         )
         context = SimpleNamespace(user_data={
@@ -79,7 +97,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_arami_menu_opens_all_21_lessons_with_practice_and_assessment(self):
-        update, context = self.make_update_context("📕 ڕێنووسی سەرەتاییی کوردی")
+        update, context = self.make_update_context("📕 ڕێنووسی سەرەتاییی کوردیی")
         with (
             patch.object(bot, "get_user"),
             patch.object(bot, "get_completed_lessons", return_value=[]),
@@ -102,17 +120,19 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         completed = ["arami_course1_lesson_01", "arami_course1_lesson_02"]
         with (
             patch.object(bot, "get_user"),
-            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=completed),
             patch.object(bot, "can_open", side_effect=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_03"),
         ):
             await bot.message(update, context)
 
         update.message.reply_text.assert_awaited_once()
         output = update.message.reply_text.await_args.args[0]
-        self.assertIn("پێشکەوتن: 2/21 وانە", output)
-        self.assertIn("✅ تەواو کراوە — وانەی 1:", output)
-        self.assertIn("🔓 ئامادەیە — وانەی 3:", output)
-        self.assertIn("🔒 داخراوە — وانەی 4:", output)
+        self.assertIn("پێشکەوتنی فەرمی: 0/21 وانە", output)
+        self.assertIn("🧪 Beta: 2/21", output)
+        self.assertIn("🧪 Beta تەواو کراوە — وانەی 1:", output)
+        self.assertIn("🧪 Beta ئامادەیە — وانەی 3:", output)
+        self.assertIn("🔒 🧪 Beta داخراوە — وانەی 4:", output)
         self.assertEqual(sum(" — وانەی " in line for line in output.splitlines()), 21)
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
@@ -178,10 +198,9 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("سەرەتا وانەیەک بکەرەوە", call.args[0])
         self.assertEqual(bot.ORDER, [])
 
-    async def test_clickable_practice_menu_lists_only_lesson_three_and_both_latin_courses(self):
+    async def test_practice_menu_hides_latin_quizzes_until_editorial_approval(self):
         update, context = self.make_update_context("🎯 ڕاهێنانی کرتەیی")
         completed = [
-            *bot.ORDER,
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
             *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
         ]
@@ -191,22 +210,8 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         ):
             await bot.message(update, context)
 
-        self.assertIn("ڕاهێنانی کرتەیی", update.message.reply_text.await_args.args[0])
-        keyboard = update.message.reply_text.await_args.kwargs["reply_markup"]
-        buttons = [button for row in keyboard.inline_keyboard for button in row]
-        expected = [
-            *bot.COURSE_LESSON_ORDER["kurmanji_latin_orthography"],
-            *bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"],
-        ]
-        lesson_callbacks = [
-            button.callback_data for button in buttons
-            if button.callback_data.startswith("quiz_")
-        ]
-        self.assertEqual(
-            lesson_callbacks,
-            [bot.lesson_practice_callback(lesson) for lesson in expected[:bot.QUIZ_MENU_PAGE_SIZE]],
-        )
-        self.assertEqual(buttons[-1].callback_data, "quizmenu:practice:1")
+        self.assertEqual(update.message.reply_text.await_args.args[0], "🔒 سەرەتا وانەیەک بکەرەوە و تەواوی بکە.")
+        self.assertNotIn("reply_markup", update.message.reply_text.await_args.kwargs)
 
     async def test_long_lesson_is_chunked_and_completion_keyboard_is_only_on_last_chunk(self):
         message = SimpleNamespace(reply_text=AsyncMock())
@@ -318,7 +323,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
 
 
     async def test_dictionary_section_has_clean_single_heading_and_real_line_breaks(self):
-        update, context = self.make_update_context("📖 وشەنامەی کوردی")
+        update, context = self.make_update_context("📖 وشەنامەی کوردیی")
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
 
@@ -326,10 +331,10 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
         self.assertNotIn(r"\n", output)
         self.assertEqual(output.count("📚 <b>کتێبخانەی وشەنامەی کوردی</b>"), 1)
-        self.assertNotIn("📖 <b>وشەنامەی کوردی</b>", output)
+        self.assertNotIn("📖 <b>وشەنامەی کوردیی</b>", output)
 
     async def test_keyboard_section_has_clean_single_heading_and_real_line_breaks(self):
-        update, context = self.make_update_context("⌨️ تەختەکلیلی کوردی")
+        update, context = self.make_update_context("⌨️ تەختەکلیلی کوردیی")
         with patch.object(bot, "get_user"):
             await bot.message(update, context)
 
@@ -337,7 +342,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("╭━━━━━━━━━━━━━━━━━━━━╮\n", output)
         self.assertNotIn(r"\n", output)
         self.assertEqual(output.count("⌨️ <b>ناوەندی تەختەکلیلی کوردی</b>"), 1)
-        self.assertNotIn("⌨️ <b>تەختەکلیلی کوردی</b>", output)
+        self.assertNotIn("⌨️ <b>تەختەکلیلی کوردیی</b>", output)
 
     async def test_kurmanji_months_callback_preserves_bold_html_tags(self):
         query = SimpleNamespace(

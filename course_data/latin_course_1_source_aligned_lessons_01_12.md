@@ -135,8 +135,6 @@ Ev nîşanên taybet girîng in, ji ber ku herfên nîşankirî dikarin dengê p
 
 **Têbînî:** Celadet di Beşa I de alfabeyê bi herfên biçûk pêşkêş dike; bikaranîna herfên mezin li vir wek rêbaza giştî ya nivîsandina latînî tê fêrkirin, ne wek koma herfên nû.
 
-**Têbînî:** Celadet di Beşa I de alfabeyê bi herfên biçûk pêşkêş dike; bikaranîna herfên mezin li vir wek rêbaza giştî ya nivîsandina latînî tê fêrkirin, ne wek koma herfên nû.
-
 Her herfek du awayên nivîsînê hene:
 
 - **Herfa mezin:** di destpêka hevokê û di navên taybet de tê bikaranîn.

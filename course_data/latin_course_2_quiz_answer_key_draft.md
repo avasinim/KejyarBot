@@ -28,7 +28,7 @@ Ev mifte bersiva rast bi nivîsê tomar dike, ne bi jimara vebijarkê; bi vî aw
 | 4 | 5 | C | gelemjimar | Li gorî pirs û vebijarkên testa Ders 4, ev vebijarka rast e. |
 | 5 | 1 | B | guherîna forma peyvê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 2 | C | hespî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
-| 5 | 3 | A | mehinê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
+| 5 | 3 | A | mehînê | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 4 | B | forma gelemjimar a tewandî | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 5 | 5 | C | na | Li gorî pirs û vebijarkên testa Ders 5, ev vebijarka rast e. |
 | 6 | 1 | B | navdêrê rave dike/taybet dike | Li gorî pirs û vebijarkên testa Ders 6, ev vebijarka rast e. |

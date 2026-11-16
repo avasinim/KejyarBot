@@ -16,9 +16,6 @@ class DailyConversationContentTests(unittest.TestCase):
         self.assertNotIn("دینار", dialogue_text)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
     def test_requested_dialogue_wording_updates(self):
         expected = {
             1: ("course_data/daily_conversation_lessons_01_06.json", "کات باش کەژیار خاتوو!"),
@@ -40,6 +37,20 @@ if __name__ == "__main__":
             with self.subTest(lesson=lesson_number):
                 self.assertIn(expected_line, dialogue_text)
 
+    def test_lesson_2_asks_about_residence_before_residence_reply(self):
+        path = ROOT / "course_data" / "daily_conversation_lessons_01_06.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        lesson = next(item for item in payload["lessons"] if item["number"] == 2)
+        dialogue = lesson["dialogue"]
+        self.assertIn(
+            ["کەژیار", "من خەڵکی ئەم شارەم. تۆ لە کوێ نیشتەجێیت؟"],
+            dialogue,
+        )
+        self.assertIn(
+            ["ئاڕگەش", "منیش دانیشتوی ئەم شارەم."],
+            dialogue,
+        )
+
     def test_dialogue_uses_requested_terms_and_speakers(self):
         paths = [
             ROOT / "course_data" / "daily_conversation_lessons_01_06.json",
@@ -60,3 +71,7 @@ if __name__ == "__main__":
         self.assertIn(("چێشلێنەر", "بەڵێ، فەرموون. چی دەتەوێت؟"), [(s, line) for _, s, line in all_dialogue])
         self.assertIn(("چێشلێنەر", "بەڵێ، فەرموو. ئەمڕۆ خواردنی ڕۆژمان هەیە."), [(s, line) for _, s, line in all_dialogue])
         self.assertIn(("فەرمانبەر", "لە ڕەفی سێیەم، لای چەپ."), [(s, line) for _, s, line in all_dialogue])
+
+
+if __name__ == "__main__":
+    unittest.main()

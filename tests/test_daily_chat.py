@@ -54,12 +54,34 @@ class DailyConversationTests(unittest.TestCase):
         self.assertEqual(state["daily_chat_scenario"], "market")
         self.assertEqual(state["daily_chat_stage"], 2)
 
+        finished = reply_to_daily_message("تکایە، داشکاندن بکە", state)
+        self.assertIn("بابەتێکی تر", finished)
+        self.assertNotIn("daily_chat_scenario", state)
+        self.assertNotIn("daily_chat_stage", state)
+
     def test_food_roleplay_has_a_followup_turn(self):
         state = {"daily_chat_mode": True}
         first = reply_to_daily_message("با لە خواردن گفتوگۆ بکەین", state)
         second = reply_to_daily_message("چای دەمەوێت", state)
         self.assertIn("چێشتخانە", first)
         self.assertIn("داواکاری", second)
+
+        finished = reply_to_daily_message("سوپاس", state)
+        self.assertIn("تەواو بوو", finished)
+        self.assertNotIn("daily_chat_scenario", state)
+        self.assertNotIn("daily_chat_stage", state)
+
+    def test_school_roleplay_clears_state_when_finished(self):
+        state = {"daily_chat_mode": True}
+        first = reply_to_daily_message("با لە قوتابخانە گفتوگۆ بکەین", state)
+        second = reply_to_daily_message("زمانی کوردی", state)
+        self.assertIn("قوتابخانە", first)
+        self.assertIn("مامۆستا", second)
+
+        finished = reply_to_daily_message("چونکە حەزم لێیە", state)
+        self.assertIn("گفتوگۆکەمان", finished)
+        self.assertNotIn("daily_chat_scenario", state)
+        self.assertNotIn("daily_chat_stage", state)
 
 
 if __name__ == "__main__":

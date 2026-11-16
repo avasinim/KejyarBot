@@ -1,11 +1,29 @@
+import os
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_NAME = str(BASE_DIR / "kejyar.db")
+# A host-mounted persistent directory can be selected explicitly with
+# KEJYARBOT_DB_PATH. The project-local database remains the default.
+_configured_db_path = os.environ.get("KEJYARBOT_DB_PATH")
+if _configured_db_path is not None and not _configured_db_path.strip():
+    raise RuntimeError("KEJYARBOT_DB_PATH is set but empty.")
+
+# Resolve the path once so directory creation and every SQLite connection
+# target exactly the same database file. Relative paths resolve from the
+# process working directory; ~ is expanded using the host user's home folder.
+DB_NAME = str(
+    Path(
+        _configured_db_path
+        if _configured_db_path is not None
+        else BASE_DIR / "kejyar.db"
+    ).expanduser().resolve()
+)
 
 
 def init_db():
+    # Ensure the canonical database parent exists before opening SQLite.
+    Path(DB_NAME).parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         cur = conn.cursor()
@@ -53,6 +71,16 @@ def get_user(user_id):
         conn.close()
 
 
+def _validate_non_negative_integer(value, name):
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ValueError(f"{name} must be a non-negative integer")
+
+
+def _validate_ledger_id(value, name):
+    if not isinstance(value, str) or not value.strip() or "," in value:
+        raise ValueError(f"{name} must be a non-empty string without commas")
+
+
 def calculate_level(xp):
     if xp<50:return 'A1.1 🌱'
     if xp<100:return 'A1.2 🌿'
@@ -65,12 +93,17 @@ def calculate_level(xp):
 
 
 def update_level(user_id):
-    user = get_user(user_id)
+    """Recalculate the level from the latest XP under a write lock."""
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
         conn.execute(
             "UPDATE users SET level=? WHERE user_id=?",
-            (calculate_level(user[2]), user_id),
+            (calculate_level(xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -81,11 +114,21 @@ def update_level(user_id):
 
 
 def add_score(user_id, points):
+    """Atomically add score/XP, the lesson coin bonus, and the matching level."""
+    _validate_non_negative_integer(points, "points")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
+        new_xp = xp + points
         conn.execute(
-            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
-            (points, points, user_id),
+            """UPDATE users
+               SET score=score+?, xp=?, coins=coins+5, level=?
+               WHERE user_id=?""",
+            (points, new_xp, calculate_level(new_xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -93,17 +136,23 @@ def add_score(user_id, points):
         raise
     finally:
         conn.close()
-    add_coins(user_id, 5)
-    update_level(user_id)
 
 
 def add_xp(user_id, amount):
-    """Add XP/score without awarding the lesson-specific coin bonus."""
+    """Atomically add XP/score and keep the level synchronized."""
+    _validate_non_negative_integer(amount, "amount")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
+        new_xp = xp + amount
         conn.execute(
-            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
-            (amount, amount, user_id),
+            """UPDATE users SET score=score+?, xp=?, level=?
+               WHERE user_id=?""",
+            (amount, new_xp, calculate_level(new_xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -111,10 +160,9 @@ def add_xp(user_id, amount):
         raise
     finally:
         conn.close()
-    update_level(user_id)
-
 
 def add_coins(user_id, amount):
+    _validate_non_negative_integer(amount, "amount")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         conn.execute(
@@ -211,6 +259,10 @@ def complete_lesson(user_id, lesson_id):
 
 def complete_lesson_with_rewards(user_id, lesson_id, points=10, coins=5, chests=1):
     """Atomically record first completion and grant its score, coins, and chest."""
+    _validate_ledger_id(lesson_id, "lesson_id")
+    _validate_non_negative_integer(points, "points")
+    _validate_non_negative_integer(coins, "coins")
+    _validate_non_negative_integer(chests, "chests")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
@@ -252,6 +304,7 @@ def get_completed_lessons(user_id):
 
 def complete_beta_lesson(user_id, lesson_id):
     """Record beta-only lesson progress separately from official completions."""
+    _validate_ledger_id(lesson_id, "lesson_id")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
@@ -357,6 +410,8 @@ def complete_quiz(user_id, quiz_id):
 
 def complete_quiz_with_rewards(user_id, quiz_id, points=20):
     """Atomically record a first quiz completion and grant its XP/score."""
+    _validate_ledger_id(quiz_id, "quiz_id")
+    _validate_non_negative_integer(points, "points")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
