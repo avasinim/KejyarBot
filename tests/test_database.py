@@ -178,7 +178,7 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[2], 20 * len(quiz_ids))  # XP
         self.assertEqual(user[1], 20 * len(quiz_ids))  # score
         self.assertEqual(user[7], len(quiz_ids))       # completed tests
-        self.assertEqual(set(database.get_completed_quizzes(12345)), set(quiz_ids))
+        self.assertEqual(set(database.get_user(12345)[10].split(",")), set(quiz_ids))
 
 
     def test_xp_reward_does_not_add_coin_bonus(self):
