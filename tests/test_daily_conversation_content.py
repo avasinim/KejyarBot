@@ -16,9 +16,6 @@ class DailyConversationContentTests(unittest.TestCase):
         self.assertNotIn("دینار", dialogue_text)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
     def test_requested_dialogue_wording_updates(self):
         expected = {
             1: ("course_data/daily_conversation_lessons_01_06.json", "کات باش کەژیار خاتوو!"),
@@ -60,3 +57,7 @@ if __name__ == "__main__":
         self.assertIn(("چێشلێنەر", "بەڵێ، فەرموون. چی دەتەوێت؟"), [(s, line) for _, s, line in all_dialogue])
         self.assertIn(("چێشلێنەر", "بەڵێ، فەرموو. ئەمڕۆ خواردنی ڕۆژمان هەیە."), [(s, line) for _, s, line in all_dialogue])
         self.assertIn(("فەرمانبەر", "لە ڕەفی سێیەم، لای چەپ."), [(s, line) for _, s, line in all_dialogue])
+
+
+if __name__ == "__main__":
+    unittest.main()
