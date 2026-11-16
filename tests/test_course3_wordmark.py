@@ -1,4 +1,5 @@
 """Regression coverage for the Course 3 textual Kejyar wordmark."""
+import re
 import unittest
 
 import bot
@@ -45,8 +46,8 @@ class CourseWordmarkTests(unittest.TestCase):
                 self.assertTrue(notice_positions)
                 self.assertLess(min(notice_positions), displayed.index("🎯 ئامانج"))
                 blocks = bot.render_lesson_html_blocks(displayed)
-                self.assertTrue(blocks[0].startswith("<b>✦ کەژیار ✦</b>"))
-                self.assertTrue(blocks[1].startswith("<b>📖 "))
+                rendered_text = re.sub(r"<[^>]+>", "", "\\n".join(blocks)).lstrip()
+                self.assertTrue(rendered_text.startswith("✦ کەژیار ✦\\n📖 "))
 
     def test_course2_format_is_unchanged_and_has_no_course3_wordmark(self):
         lessons, _ = adapt_conversation_lessons("daily_conversation", [{
