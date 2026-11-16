@@ -654,7 +654,7 @@ def lesson_display_content(lesson, content):
                 and lines[0] == "✦ کەژیار ✦"
                 and lines[1].startswith("📖 ")
             ):
-                return "\\n".join(
+                return "\n".join(
                     [*lines[:2], "", notice.strip(), "", *lines[2:]]
                 )
         return notice + content
