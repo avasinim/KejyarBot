@@ -73,5 +73,33 @@ class OfficialProgressBadgeBoundaryTests(unittest.TestCase):
         add_badge.assert_not_called()
 
 
+    def test_course_progress_counts_only_official_prefix_then_beta_prefix(self):
+        with (
+            patch.object(bot, "COURSE_LESSON_ORDER", {"grammar": self.lesson_ids}),
+            patch.object(bot, "get_completed_lessons", return_value=self.lesson_ids),
+            patch.object(bot, "get_completed_beta_lessons", return_value=["grammar_03"]),
+            patch.object(
+                bot, "lesson_is_beta_review",
+                side_effect=lambda lesson: lesson == "grammar_03",
+            ),
+        ):
+            self.assertEqual(bot.course_progress_counts(12345, "grammar"), (2, 1))
+
+    def test_course_progress_does_not_count_completions_after_a_gap(self):
+        with (
+            patch.object(bot, "COURSE_LESSON_ORDER", {"grammar": self.lesson_ids}),
+            patch.object(
+                bot, "get_completed_lessons",
+                return_value=["grammar_01", "grammar_03", "grammar_04"],
+            ),
+            patch.object(bot, "get_completed_beta_lessons", return_value=["grammar_03"]),
+            patch.object(
+                bot, "lesson_is_beta_review",
+                side_effect=lambda lesson: lesson == "grammar_03",
+            ),
+        ):
+            self.assertEqual(bot.course_progress_counts(12345, "grammar"), (1, 0))
+
+
 if __name__ == "__main__":
     unittest.main()
