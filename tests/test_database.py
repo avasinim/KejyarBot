@@ -181,6 +181,25 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(set(database.get_user(12345)[10].split(",")), set(quiz_ids))
 
 
+    def test_concurrent_legacy_score_and_xp_helpers_keep_level_and_rewards_consistent(self):
+        operations = [("score", 10)] * 12 + [("xp", 10)] * 12
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda item: (
+                    database.add_score(12345, item[1])
+                    if item[0] == "score"
+                    else database.add_xp(12345, item[1])
+                ),
+                operations,
+            ))
+
+        user = database.get_user(12345)
+        self.assertEqual(len(results), len(operations))
+        self.assertEqual(user[1], 240)  # score: 24 × 10
+        self.assertEqual(user[2], 240)  # XP: 24 × 10
+        self.assertEqual(user[8], 60)   # only 12 add_score calls add 5 coins
+        self.assertEqual(user[3], database.calculate_level(240))
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)
