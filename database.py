@@ -83,12 +83,17 @@ def calculate_level(xp):
 
 
 def update_level(user_id):
-    user = get_user(user_id)
+    """Recalculate the level from the latest XP under a write lock."""
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
         conn.execute(
             "UPDATE users SET level=? WHERE user_id=?",
-            (calculate_level(user[2]), user_id),
+            (calculate_level(xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -99,11 +104,20 @@ def update_level(user_id):
 
 
 def add_score(user_id, points):
+    """Atomically add score/XP, the lesson coin bonus, and the matching level."""
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
+        new_xp = xp + points
         conn.execute(
-            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
-            (points, points, user_id),
+            """UPDATE users
+               SET score=score+?, xp=?, coins=coins+5, level=?
+               WHERE user_id=?""",
+            (points, new_xp, calculate_level(new_xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -111,17 +125,22 @@ def add_score(user_id, points):
         raise
     finally:
         conn.close()
-    add_coins(user_id, 5)
-    update_level(user_id)
 
 
 def add_xp(user_id, amount):
-    """Add XP/score without awarding the lesson-specific coin bonus."""
+    """Atomically add XP/score and keep the level synchronized."""
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("INSERT OR IGNORE INTO users(user_id) VALUES(?)", (user_id,))
+        xp = conn.execute(
+            "SELECT xp FROM users WHERE user_id=?", (user_id,)
+        ).fetchone()[0]
+        new_xp = xp + amount
         conn.execute(
-            "UPDATE users SET score=score+?, xp=xp+? WHERE user_id=?",
-            (amount, amount, user_id),
+            """UPDATE users SET score=score+?, xp=?, level=?
+               WHERE user_id=?""",
+            (amount, new_xp, calculate_level(new_xp), user_id),
         )
         conn.commit()
     except Exception:
@@ -129,8 +148,6 @@ def add_xp(user_id, amount):
         raise
     finally:
         conn.close()
-    update_level(user_id)
-
 
 def add_coins(user_id, amount):
     conn = sqlite3.connect(DB_NAME, timeout=10)
