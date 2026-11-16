@@ -101,5 +101,65 @@ class QuizBankQualityTests(unittest.TestCase):
                 self.assertTrue(str(question.get("explanation", "")).strip())
 
 
+    def test_daily_and_unified_course_quiz_prompts_are_unique_with_explanations(self):
+        daily_paths = (
+            "daily_conversation_lessons_01_06.json",
+            "daily_conversation_lessons_07_30.json",
+            "daily_conversation_lessons_31_36.json",
+            "daily_conversation_lessons_37_42.json",
+        )
+        daily_questions = []
+        daily_lessons = []
+        for filename in daily_paths:
+            payload = json.loads(
+                (ROOT / "course_data" / filename).read_text(encoding="utf-8")
+            )
+            daily_lessons.extend(payload["lessons"])
+            daily_questions.extend(
+                (lesson["number"], question)
+                for lesson in payload["lessons"]
+                for question in lesson.get("quiz", [])
+            )
+
+        self.assertEqual(len(daily_lessons), 42)
+        self.assertEqual(len(daily_questions), 87)
+
+        orthography = json.loads(
+            (ROOT / "course_data" / "unified_orthography_lessons_01_66.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        orthography_lessons = orthography["lessons"]
+        orthography_questions = [
+            (lesson["number"], question)
+            for lesson in orthography_lessons
+            for question in lesson.get("quiz", [])
+        ]
+        self.assertEqual(len(orthography_lessons), 66)
+        self.assertEqual(len(orthography_questions), 201)
+
+        for course_name, questions in (
+            ("Daily Conversation", daily_questions),
+            ("Unified Orthography", orthography_questions),
+        ):
+            seen = {}
+            for lesson_number, question in questions:
+                prompt = _normalized_prompt(
+                    question.get("q", question.get("question", question.get("prompt", "")))
+                )
+                with self.subTest(course=course_name, lesson=lesson_number, prompt=prompt):
+                    self.assertTrue(prompt, "quiz prompt must not be empty")
+                    self.assertNotIn(
+                        prompt,
+                        seen,
+                        f"Duplicate prompt in lessons {seen.get(prompt)} and {lesson_number}",
+                    )
+                    seen[prompt] = lesson_number
+                    self.assertTrue(
+                        str(question.get("explanation", "")).strip(),
+                        "every active quiz question needs an explanation",
+                    )
+
+
 if __name__ == "__main__":
     unittest.main()
