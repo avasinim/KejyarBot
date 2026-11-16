@@ -157,6 +157,30 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 self.assertIn("دۆخی تاقیکردنەوە نادروست", query.message.reply_text.await_args.args[0])
                 query.edit_message_reply_markup.assert_not_awaited()
 
+    async def test_malformed_quiz_state_is_cleared_by_selection_callback(self):
+        update, context, query = self.make_context("select_answer_0")
+        context.user_data["quiz"] = ["corrupt"]
+        query.message.reply_text = AsyncMock()
+
+        await bot.select_quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_malformed_quiz_state_is_cleared_by_submit_callback(self):
+        update, context, query = self.make_context("submit_answer")
+        context.user_data["quiz"] = "corrupt"
+        query.message.reply_text = AsyncMock()
+
+        await bot.submit_quiz_answer(update, context)
+
+        self.assertNotIn("quiz", context.user_data)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_answer_callback_from_another_chat_cannot_use_active_quiz(self):
         update, context, query = self.make_context("answer_0", chat_id=999)
 
