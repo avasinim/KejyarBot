@@ -953,6 +953,10 @@ async def quiz_answer(
 ):
     query = update.callback_query
     quiz = context.user_data.get("quiz")
+    if not quiz:
+        await query.answer()
+        await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
+        return
     if not isinstance(quiz, dict):
         await query.answer()
         context.user_data.pop("quiz", None)
