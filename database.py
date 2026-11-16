@@ -303,6 +303,7 @@ def get_completed_lessons(user_id):
 
 def complete_beta_lesson(user_id, lesson_id):
     """Record beta-only lesson progress separately from official completions."""
+    _validate_ledger_id(lesson_id, "lesson_id")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
