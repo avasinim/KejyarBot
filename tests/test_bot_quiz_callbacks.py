@@ -230,7 +230,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
 
         await bot.select_quiz_answer(update, context)
 
-        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        self.assertNotIn("selected_answer_index", context.user_data["quiz"])
         self.assertEqual(context.user_data["quiz"]["chat_id"], 555)
         query.answer.assert_awaited_once()
         query.edit_message_reply_markup.assert_not_awaited()
