@@ -178,6 +178,21 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_user(12345)[9], 0)
         self.assertIn(paid_rewards[0], {10, 20, 50, 100})
 
+    def test_concurrent_chest_opening_consumes_exactly_available_inventory(self):
+        database.add_chest(12345)
+        database.add_chest(12345)
+        before = database.get_user(12345)
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            rewards = list(pool.map(lambda _: database.open_chest(12345), range(24)))
+
+        paid_rewards = [reward for reward in rewards if reward > 0]
+        after = database.get_user(12345)
+        self.assertEqual(len(paid_rewards), 2)
+        self.assertTrue(all(reward in {10, 20, 50, 100} for reward in paid_rewards))
+        self.assertEqual(after[9], 0)
+        self.assertEqual(after[8] - before[8], sum(paid_rewards))
+
     def test_concurrent_badge_updates_do_not_overwrite_each_other(self):
         badges = [f"badge-{index}" for index in range(12)]
         with ThreadPoolExecutor(max_workers=8) as pool:
