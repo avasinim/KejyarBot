@@ -119,17 +119,19 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         completed = ["arami_course1_lesson_01", "arami_course1_lesson_02"]
         with (
             patch.object(bot, "get_user"),
-            patch.object(bot, "get_completed_lessons", return_value=completed),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=completed),
             patch.object(bot, "can_open", side_effect=lambda user_id, lesson_id: lesson_id == "arami_course1_lesson_03"),
         ):
             await bot.message(update, context)
 
         update.message.reply_text.assert_awaited_once()
         output = update.message.reply_text.await_args.args[0]
-        self.assertIn("پێشکەوتن: 2/21 وانە", output)
-        self.assertIn("✅ تەواو کراوە — وانەی 1:", output)
-        self.assertIn("🔓 ئامادەیە — وانەی 3:", output)
-        self.assertIn("🔒 داخراوە — وانەی 4:", output)
+        self.assertIn("پێشکەوتنی فەرمی: 0/21 وانە", output)
+        self.assertIn("🧪 Beta: 2/21", output)
+        self.assertIn("🧪 Beta تەواو کراوە — وانەی 1:", output)
+        self.assertIn("🧪 Beta ئامادەیە — وانەی 3:", output)
+        self.assertIn("🔒 🧪 Beta داخراوە — وانەی 4:", output)
         self.assertEqual(sum(" — وانەی " in line for line in output.splitlines()), 21)
 
     async def test_latin_menu_key_groups_both_active_latin_courses(self):
