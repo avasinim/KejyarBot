@@ -82,6 +82,30 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
                     ):
                         self.assertTrue(bot.can_open(12345, order[3]))
 
+    def test_beta_completion_unlocks_next_lesson_only_while_both_remain_beta(self):
+        order = bot.COURSE_LESSON_ORDER["grammar"]
+        first, second = order[31], order[32]
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
+            patch.object(bot, "lesson_is_beta_review", side_effect=lambda lesson: lesson in {first, second}),
+        ):
+            self.assertTrue(bot.can_open(12345, second))
+
+    def test_old_beta_completion_does_not_unlock_after_review_status_changes(self):
+        order = bot.COURSE_LESSON_ORDER["grammar"]
+        first, second = order[31], order[32]
+        # Once the prior lesson is no longer Beta, its old Beta ledger entry
+        # must not be treated as official completion for sequence unlocking.
+        with (
+            patch.object(bot, "course_is_active", return_value=True),
+            patch.object(bot, "get_completed_lessons", return_value=[]),
+            patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
+            patch.object(bot, "lesson_is_beta_review", return_value=False),
+        ):
+            self.assertFalse(bot.can_open(12345, second))
+
     def test_inactive_course_cannot_open_any_lesson(self):
         with patch.object(bot, "course_is_active", return_value=False), patch.object(
             bot, "get_completed_lessons", return_value=[]
