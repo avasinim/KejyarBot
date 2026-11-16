@@ -56,7 +56,8 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
         return "با یەک ڕستەی سادە تاقی بکەینەوە: «تکایە، ئەمە چەندە؟» بە وشەی خۆت بنووسە."
 
     if scenario == "market" and state.get("daily_chat_stage") == 2:
-        state["daily_chat_stage"] = 3
+        state.pop("daily_chat_scenario", None)
+        state.pop("daily_chat_stage", None)
         return "باشە، دەتوانیت بڵێیت: «تکایە، کەمێک داشکاندنم بۆ بکە». گفتوگۆکەمان باش بوو! دەتەوێت بابەتێکی تر هەڵبژێریت؟"
 
     if scenario == "food" and state.get("daily_chat_stage") == 1:
@@ -64,7 +65,8 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
         return "باشە! فرۆشیار دەڵێت: «چی دەتەوێت بخۆیتەوە؟» تۆ داواکارییەک بە کوردی بنووسە."
 
     if scenario == "food" and state.get("daily_chat_stage") == 2:
-        state["daily_chat_stage"] = 3
+        state.pop("daily_chat_scenario", None)
+        state.pop("daily_chat_stage", None)
         return "زۆر باشە! دەتوانیت زیاد بکەیت: «تکایە، سوپاس». گفتوگۆکەمان تەواو بوو؛ بابەتێکی تر هەڵبژێرە."
 
     if scenario == "school" and state.get("daily_chat_stage") == 1:
@@ -72,7 +74,8 @@ def reply_to_daily_message(text: str, state: dict | None = None) -> str:
         return "مامۆستا دەپرسێت: «کام وانە بە دڵتە؟» بە ڕستەیەک وەڵام بدەرەوە."
 
     if scenario == "school" and state.get("daily_chat_stage") == 2:
-        state["daily_chat_stage"] = 3
+        state.pop("daily_chat_scenario", None)
+        state.pop("daily_chat_stage", None)
         return "وەڵامێکی باشە! دەتوانیت هۆکارەکەشی زیاد بکەیت: «چونکە ...». گفتوگۆکەمان بەردەوام بکەین؟"
 
     if any(word in clean for word in ("بازاڕ", "کڕین", "نرخ", "پارە")):
