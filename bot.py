@@ -513,6 +513,29 @@ BADGE_COURSE_TITLES = {
 }
 
 
+def course_progress_counts(user_id, course_id):
+    """Count only the contiguous official and Beta prefixes of a course."""
+    order = COURSE_LESSON_ORDER.get(course_id, [])
+    completed = set(get_completed_lessons(user_id))
+    beta_completed = set(get_completed_beta_lessons(user_id))
+    official_count = 0
+    beta_count = 0
+    in_beta = False
+
+    for lesson_id in order:
+        if lesson_is_beta_review(lesson_id):
+            in_beta = True
+            if lesson_id not in beta_completed:
+                break
+            beta_count += 1
+            continue
+        if in_beta or lesson_id not in completed:
+            break
+        official_count += 1
+
+    return official_count, beta_count
+
+
 def current_progress_badges(user_id):
     """Build visible badges from current active lesson IDs, never stale stored labels."""
     completed = set(get_completed_lessons(user_id))
@@ -622,12 +645,37 @@ def lesson_display_content(lesson, content):
             "دەتوانیت بیخوێنیت و بۆ بەردەوامبوونی ڕێڕەو تەواوی بکەیت؛ "
             "بەڵام تا پشکنین و پەسەندکردنی ئەکادیمی، کویز و خەڵات بۆی نییە.\n\n"
         )
+        # Course 3 has an explicit owner-approved textual brand hierarchy:
+        # wordmark first, lesson title second, then the Beta-status note.
+        if LESSON_COURSE.get(lesson) == "unified_orthography":
+            lines = content.splitlines()
+            if (
+                len(lines) >= 2
+                and lines[0] == "✦ کەژیار ✦"
+                and lines[1].startswith("📖 ")
+            ):
+                return "\n".join(
+                    [*lines[:2], "", notice.strip(), "", *lines[2:]]
+                )
         return notice + content
     if lesson_is_pending_review(lesson):
         notice = (
             "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
             "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و تەواوکردنی بۆ چالاک نەکراوە.\n\n"
         )
+        # Course 3 has an explicit owner-approved textual brand hierarchy:
+        # wordmark first, lesson title second, then the editorial-status note.
+        # Keep the warning visible without displacing the course identity.
+        if LESSON_COURSE.get(lesson) == "unified_orthography":
+            lines = content.splitlines()
+            if (
+                len(lines) >= 2
+                and lines[0] == "✦ کەژیار ✦"
+                and lines[1].startswith("📖 ")
+            ):
+                return "\n".join(
+                    [*lines[:2], "", notice.strip(), "", *lines[2:]]
+                )
         return notice + content
     return content
 
@@ -840,9 +888,11 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 ڕێڕەوی وانەکان بە پێی ڕیزبەندی پێویستە؛ سەرەتا وانەکانی پێشوو تەواو بکە.")
         return
     active_quiz = context.user_data.get("quiz")
+    chat_id = getattr(getattr(query.message, "chat", None), "id", None)
     if (
         isinstance(active_quiz, dict)
         and active_quiz.get("lesson") == lesson
+        and active_quiz.get("chat_id") == chat_id
         and active_quiz.get("start_message_id") == getattr(query.message, "message_id", None)
     ):
         # Ignore duplicate callbacks from the same launch button.
@@ -852,6 +902,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["quiz"] = {
         "index": 0,
         "lesson": lesson,
+        "chat_id": chat_id,
         "questions": randomized_question_copy(source_questions),
         "score": 0,
         "question_message_id": None,
@@ -885,7 +936,18 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     """Store a learner's choice before awaiting Telegram callback acknowledgement."""
     query = update.callback_query
     quiz = context.user_data.get("quiz")
-    if not isinstance(quiz, dict) or not quiz_requires_submission(quiz.get("lesson")):
+    if not isinstance(quiz, dict):
+        await query.answer()
+        if quiz is not None:
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            )
+        return
+    if not quiz_requires_submission(quiz.get("lesson")):
+        await query.answer()
+        return
+    if quiz.get("chat_id") != getattr(getattr(query.message, "chat", None), "id", None):
         await query.answer()
         return
     questions = quiz.get("questions")
@@ -932,10 +994,23 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Submit the currently selected answer; selection alone never scores it."""
+    query = update.callback_query
     quiz = context.user_data.get("quiz")
-    selected = quiz.get("selected_answer_index") if isinstance(quiz, dict) else None
+    if not isinstance(quiz, dict):
+        await query.answer()
+        if quiz is None:
+            await query.message.reply_text(
+                "ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە."
+            )
+        else:
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            )
+        return
+    selected = quiz.get("selected_answer_index")
     if not isinstance(selected, int) or isinstance(selected, bool):
-        await update.callback_query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
+        await query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
         return
     await quiz_answer(update, context, selected_index=selected)
 
@@ -947,9 +1022,19 @@ async def quiz_answer(
 ):
     query = update.callback_query
     quiz = context.user_data.get("quiz")
-    if not quiz:
+    if quiz is None:
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
+        return
+    if not isinstance(quiz, dict):
+        await query.answer()
+        context.user_data.pop("quiz", None)
+        await query.message.reply_text(
+            "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+        )
+        return
+    if quiz.get("chat_id") != getattr(getattr(query.message, "chat", None), "id", None):
+        await query.answer()
         return
     active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
     if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
@@ -1061,6 +1146,7 @@ async def quiz_answer(
             context.user_data.pop("quiz", None)
             await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
             return
+        old_level = get_user_level(update.effective_user.id)
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
             f"🎉 تاقیکردنەوە تەواو بوو!\n"
@@ -1068,6 +1154,9 @@ async def quiz_answer(
         )
         if first_completion:
             result += "⭐ +20 XP"
+            new_level = get_user_level(update.effective_user.id)
+            if old_level != new_level:
+                result += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
         else:
             result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
         await query.message.reply_text(result)
@@ -1624,8 +1713,17 @@ def course_menu_keyboard(course_id, user_id, page=0):
             status = "✅"
         else:
             status = "🔓"
-        title = LESSON_DATA[lesson]["title"]
-        label = title if len(title) <= 20 else title[:19] + "…"
+        title = str(LESSON_DATA[lesson].get("title", lesson)).strip()
+        # The catalogue already displays the lesson number separately.
+        # Remove a repeated title prefix so the limited button width shows
+        # the actual topic; the full source title remains unchanged in lessons.
+        label = re.sub(
+            r"^(?:وانەی|Ders)\s+\d+\s*[:：—–-]\s*",
+            "",
+            title,
+            flags=re.IGNORECASE,
+        )
+        label = label if len(label) <= 20 else label[:19] + "…"
         lesson_buttons.append(InlineKeyboardButton(
             f"{status} {lesson_number:02d} · {label}",
             callback_data=f"open_lesson_{lesson}",
@@ -1673,10 +1771,7 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
     last = min(first + COURSE_MENU_PAGE_SIZE - 1, len(order))
     completed = set(get_completed_lessons(user_id))
     beta_completed = set(get_completed_beta_lessons(user_id)) if course_id == "grammar" else set()
-    completed_count = sum(
-        1 for lesson in order
-        if lesson in completed and not lesson_is_beta_review(lesson)
-    )
+    completed_count, valid_beta_completed = course_progress_counts(user_id, course_id)
     beta_count = sum(1 for lesson in order if lesson_is_beta_review(lesson))
     description = html.escape(str(course.get("description", "")))
     title = html.escape(str(course.get("title", "")))
@@ -1688,10 +1783,6 @@ async def send_course_page(message, course_id, user_id, page=0, *, edit=False):
         f"✅ تەواوکراو: {completed_count}"
     )
     if beta_count:
-        valid_beta_completed = sum(
-            1 for lesson in order
-            if lesson_is_beta_review(lesson) and lesson in beta_completed
-        )
         text += f"  •  🧪 Beta: {valid_beta_completed}/{beta_count}"
     text += (
         "\n\n"
@@ -2278,19 +2369,33 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "🧭 ڕێگای فێربوون":
-        completed = set(get_completed_lessons(user_id))
         manifest = load_arami_course1_manifest(BASE_DIR)
+        ordered_items = sorted(manifest["lessons"], key=lambda lesson: lesson["number"])
+        completed_count, beta_completed_count = course_progress_counts(
+            user_id, "arami_orthography_foundations"
+        )
+        beta_total = sum(1 for item in ordered_items if lesson_is_beta_review(item["id"]))
         lines = ["📘 ڕێگای فێربوونی کۆرسی ١ — ڕێنووسی سەرەتاییی کوردی"]
-        completed_count = 0
-        for item in sorted(manifest["lessons"], key=lambda lesson: lesson["number"]):
+        for index, item in enumerate(ordered_items):
             lesson_id = item["id"]
-            if lesson_id in completed:
+            if index < completed_count:
                 status = "✅ تەواو کراوە"
-                completed_count += 1
+            elif lesson_is_beta_review(lesson_id):
+                if completed_count <= index < completed_count + beta_completed_count:
+                    status = "🧪 Beta تەواو کراوە"
+                else:
+                    status = (
+                        "🧪 Beta ئامادەیە"
+                        if can_open(user_id, lesson_id)
+                        else "🔒 🧪 Beta داخراوە"
+                    )
             else:
                 status = "🔓 ئامادەیە" if can_open(user_id, lesson_id) else "🔒 داخراوە"
             lines.append(f"{status} — وانەی {item['number']}: {item['title']}")
-        lines.insert(1, f"پێشکەوتن: {completed_count}/{len(manifest['lessons'])} وانە")
+        progress_line = f"پێشکەوتنی فەرمی: {completed_count}/{len(ordered_items)} وانە"
+        if beta_total:
+            progress_line += f"  •  🧪 Beta: {beta_completed_count}/{beta_total}"
+        lines.insert(1, progress_line)
         await update.message.reply_text("\n".join(lines))
         return
 

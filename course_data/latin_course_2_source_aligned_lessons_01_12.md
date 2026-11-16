@@ -84,7 +84,7 @@ Di kurmancî de du zayend hene: **nêr** û **mê**. Zayenda navdêran her dem b
 
 Nimûneyên zayenda navdêran:
 - **Nêr:** `Cemşîd`, `mêş`, `nêrî`, `ga`, `xanî`, `gir`, `Ferat`, `can`, `beran`, `Xurşîd`, `derî`, `êzing`, `hiş`, `çem`, `kevir`, `law`, `dirhav`.
-- **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehin`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
+- **Mê:** `Sînemxan`, `jin`, `meh`, `dar`, `çêlek`, `mehîn`, `tifing`, `bizin`, `bîr`, `gol`, `pehnav`, `Herekol`, `Hezarom`, `co`, `enî`, `top`, `ejnû`, `Kurdistan`.
 
 **Navê `dar` li gorî wateyê dikare zayenda xwe biguherîne:** dema ku wateya dara kesk/riwekê dide mê ye (`vê darê`); dema ku wateya dara hişk/çûbê dide nêr e (`vî darî`). Ev nimûne nîşan dide ku zayenda rêzimanî dikare bi wateya bêjeyê ve girêdayî be.
 
@@ -116,9 +116,9 @@ Mêjer diyar dike ka navdêr di hevokê de yek kes/tişt an ji yekê zêdetir n�
 | Yekjimar | Gelemjimar |
 |---|---|
 | `Mîr hat.` | `Mîr hatin.` |
-| `Ev mehin e.` | `Ev mehin in.` |
-| `Min mehin dît.` | `Min mehin dîtin.` |
-| `Ez mehinê dibînim.` | `Ez mehînan dibînim.` |
+| `Ev mehîn e.` | `Ev mehîn in.` |
+| `Min mehîn dît.` | `Min mehîn dîtin.` |
+| `Ez mehînê dibînim.` | `Ez mehînan dibînim.` |
 | `Tu vî hespî dibînî?` | `Tu van hespan dibînî?` |
 
 Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide û `-in` forma gelemjimar a wê ye: `hespek/hespin`, `mehînek/mehînin`. Lê ev pêvekên nebinavkirî ne ku di van nimûneyan de mêjerê jî diyar dikin; ew ne pêvekên giştî yên hemû gelemjmaran in.
@@ -126,7 +126,7 @@ Di hin nimûneyan de pêveka `-ek` navdêra yekjimar a nebinavkirî nîşan dide
 **Têbînî:** `hespan` û `mehînan` di nimûneyên jorîn de bi tewangê ve girêdayî ne. Ji ber vê yekê ew tenê wek nîşana gelemjimarê pêşkêş nakin. Tewang di wan de di van dersên paşîn de bi serê xwe tê fêrbûn. Navên taybet jî bi gelemperî wek navên giştî gelemjimar nabin; ev yek jî bi taybetî tê nîşandan.
 
 ### Xebat
-1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehin e/Ev mehin in` de cuda bike.
+1. Yekjimar û gelemjimar di cotên `Mîr hat/Mîr hatin` û `Ev mehîn e/Ev mehîn in` de cuda bike.
 2. Di `hespek/hespin` de pêveka nebinavkirî bibîne.
 3. Rave bike çima `hespan` di dersa tewangê de tê xwendin, ne wek pêveka gelemjimarê ya bingehîn.
 
@@ -151,7 +151,7 @@ Kurmancî zimanekî tewangbar e: hin bêje di hevokê de li gorî erk û cihê x
 | Erk / rewş | Nêr yekjimar | Mê yekjimar | Gelemjimar |
 |---|---|---|---|
 | Kirar | `Hesp hat.` | `Mehin hat.` | `Hesp hatin.` / `Mehin hatin.` |
-| Bireser | `Ez hespî dibînim.` | `Ez mehinê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
+| Bireser | `Ez hespî dibînim.` | `Ez mehînê dibînim.` | `Ez hespan dibînim.` / `Ez mehînan dibînim.` |
 
 Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê`, û gelemjara her du zayendan bi `-an` tewandinê nîşan didin. Lê ev rêbaz bê şert nîne.
 
@@ -163,13 +163,13 @@ Bi gelemperî, navdêrên nêr di yekjimarê de bi `-î`, navdêrên mê bi `-ê
 
 ### Xebat
 1. Di `Hesp hat` û `Ez hespî dibînim` de erkên navdêrê cuda bike.
-2. Guherîna `mehin → mehinê` û `mehin → mehînan` bi zayend û mêjer ve girê bide.
+2. Guherîna `mehîn → mehînê` û `mehîn → mehînan` bi zayend û mêjer ve girê bide.
 3. Ji bo çima `gund` di hin nimûneyan de bê tewang dimîne, sedemê ji rêbazê dengên `e/a` re girê bide.
 
 ### Kuis — 5 pirs
 1. Tewang çi ye? A) zêdekirina reng B) guherîna forma peyvê C) pirs
 2. Di nimûneya dersê de forma tewandî ya `hesp` çi ye? A) hespin B) hespê C) hespî
-3. Forma tewandî ya `mehin` di nimûneya yekjimar de çi ye? A) mehinê B) mehina C) mehinan
+3. Forma tewandî ya `mehîn` di nimûneya yekjimar de çi ye? A) mehînê B) mehîna C) mehînan
 4. `hespan` di nimûneya dersê de çi nîşan dide? A) forma yekjimar B) forma gelemjimar a tewandî C) serenav
 5. Ma hemû nav bi heman şêweyî tewandinê diguherin? A) erê B) tenê navên mê C) na
 
@@ -183,7 +183,7 @@ Nasîna hêmanên ku navdêrekê rave dikin an sînorê wî teng dikin.
 ### Naverok
 Bireserê navdêrê bêje an komek bêjeyan e ku navdêrê rave dike, taybet dike an jê re agahiyek din zêde dike. Ew dikare pêşî an paşî navdêrê were.
 - Pêşî navdêrê: `ev keçik`, `kîjan mirov`, `çar xanî`, `hin çiya`, `çend kitêb`, `deh bizin`, `van zarokan`.
-- Paşî navdêrê: `hespê beza`, `mehinên spehî`, `xencera min`.
+- Paşî navdêrê: `hespê beza`, `mehînên spehî`, `xencera min`.
 
 Di hin hevokan de bireser dikare ji yek hêmanê zêdetir pêk were: `xencera xulamê min`. Di vê komê de her hêman dikare hêmaneke din jî rave bike.
 
@@ -212,7 +212,7 @@ Nasîna veqetandekên ku navdêrê diyar û nasnamekirî dikin.
 Sê veqetandekên binavkirî hene:
 - `-ê`: bo navdêrên nêr ên yekjimar — `hespê Soro`, `deriyê malê`.
 - `-a`: bo navdêrên mê ên yekjimar — `mehîna Cemşîd`, `ava tenik`.
-- `-ên`: bo gelemjara her du zayendan — `hespên Soro`, `mehinên Cemşîd`.
+- `-ên`: bo gelemjara her du zayendan — `hespên Soro`, `mehînên Cemşîd`.
 
 Veqetandek piştî navdêrê tê û navdêrê bi awayekî binavkirî dide nasîn. Ev pêveka binavkirinê divê ji tewangê cuda were fêrbûn; her du dikarin di formên hevokê de hev re xuya bibin, lê erkên wan yek nînin.
 
@@ -226,7 +226,7 @@ Ev formên kurtkirî ji bo ku navdêr ji nû ve neyê dubarekirin tên bikaranî
 ### Xebat
 Veqetandeka rast hilbijêre:
 1. `hesp__ Soro`
-2. `mehin__ Cemşîd`
+2. `mehîn__ Cemşîd`
 3. `hesp__ Soro` (gelemjimar)
 
 ### Kuis — 5 pirs
@@ -262,8 +262,8 @@ Nîşe: formên `-ek/-ek/-in` ji bo navdêrên nebinavkirî yên ku bi tenê tê
 Forma guncaw hilbijêre û sedemê bibêje:
 - `hesp__ hat`
 - `hesp__ delal hat`
-- `mehin__ hat`
-- `mehin__ delal hat`
+- `mehîn__ hat`
+- `mehîn__ delal hat`
 
 ### Kuis — 5 pirs
 1. Veqetandeka nebinavkirî çi nîşan dide? A) tiştekî her tim nas B) tiştekî hê nenaskirî C) tenê cih
@@ -444,7 +444,7 @@ Ev rengdêr taybetmendiya navdêrê rave dikin.
 Mînak:
 - mirovê baş
 - hespê mezin
-- mehinên spehî
+- mehînên spehî
 
 Hin rengdêrên wesfîn dikarin dereceya taybetmendiyê nîşan bidin:
 - Asta bingehîn: mezin
@@ -461,8 +461,8 @@ Mînakên vê mijarê:
 - `ew mirov` — mirovê dûr an yê ku berê hatiye gotin.
 - `vî hespî / van hespan` — formên nêr li gorî mêjer û tewangê.
 - `wî hespî / wan hespan` — formên nêr ên dûr.
-- `vê mehinê / van mehinan` — formên mê.
-- `wê mehinê / wan mehinan` — formên mê ên dûr.
+- `vê mehînê / van mehînan` — formên mê.
+- `wê mehînê / wan mehînan` — formên mê ên dûr.
 
 Dema rengdêrê îşarkî li pêş navdêrê tê, navdêr li gorî zayend, mêjer û tewangê dikare biguhere. Di komên navdêrên yek zayendê de, carinan tenê navdêra dawî bi rengdêrê îşarkî tê nîşandan.
 
@@ -516,7 +516,7 @@ Ev rengdêr têkiliya xwedîtiyê diyar dikin.
 
 Mînakên vê mijarê:
 - `hespê min`
-- `mehinên te`
+- `mehînên te`
 - `kitêba vî`
 - `qelemên wê`
 - `xaniyê me`
@@ -555,7 +555,7 @@ Di van koman de cureya rengdêr an jmarnav diyar bike:
 - kîjan mirov
 - hin çiya
 - hespê min
-- mehinên te
+- mehînên te
 - kurên van
 - `tu mirov`
 - `gelek fêkî`

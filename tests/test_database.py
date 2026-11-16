@@ -101,6 +101,24 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[8], 5)
         self.assertEqual(user[9], 1)
 
+
+    def test_concurrent_distinct_lesson_rewards_accumulate_without_lost_updates(self):
+        lesson_ids = [f"parallel_lesson_{index}" for index in range(12)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda lesson_id: database.complete_lesson_with_rewards(12345, lesson_id),
+                lesson_ids,
+            ))
+
+        self.assertEqual(sum(results), len(lesson_ids))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 10 * len(lesson_ids))  # XP
+        self.assertEqual(user[1], 10 * len(lesson_ids))  # score
+        self.assertEqual(user[8], 5 * len(lesson_ids))   # coins
+        self.assertEqual(user[9], len(lesson_ids))       # chests
+        self.assertEqual(set(database.get_completed_lessons(12345)), set(lesson_ids))
+
+
     def test_concurrent_lesson_completion_has_one_winner(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(
@@ -146,6 +164,64 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[2], 20)
         self.assertEqual(user[7], 1)
 
+
+    def test_concurrent_distinct_quiz_rewards_accumulate_without_lost_updates(self):
+        quiz_ids = [f"parallel_quiz_{index}" for index in range(12)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda quiz_id: database.complete_quiz_with_rewards(12345, quiz_id),
+                quiz_ids,
+            ))
+
+        self.assertEqual(sum(results), len(quiz_ids))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20 * len(quiz_ids))  # XP
+        self.assertEqual(user[1], 20 * len(quiz_ids))  # score
+        self.assertEqual(user[7], len(quiz_ids))       # completed tests
+        self.assertEqual(set(database.get_user(12345)[10].split(",")), set(quiz_ids))
+
+
+    def test_concurrent_legacy_score_and_xp_helpers_keep_level_and_rewards_consistent(self):
+        operations = [("score", 10)] * 12 + [("xp", 10)] * 12
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda item: (
+                    database.add_score(12345, item[1])
+                    if item[0] == "score"
+                    else database.add_xp(12345, item[1])
+                ),
+                operations,
+            ))
+
+        user = database.get_user(12345)
+        self.assertEqual(len(results), len(operations))
+        self.assertEqual(user[1], 240)  # score: 24 × 10
+        self.assertEqual(user[2], 240)  # XP: 24 × 10
+        self.assertEqual(user[8], 60)   # only 12 add_score calls add 5 coins
+        self.assertEqual(user[3], database.calculate_level(240))
+
+    def test_reward_helpers_reject_negative_or_invalid_values_without_mutation(self):
+        before = database.get_user(12345)
+        invalid_calls = [
+            lambda: database.add_score(12345, -1),
+            lambda: database.add_xp(12345, -1),
+            lambda: database.add_coins(12345, -1),
+            lambda: database.add_coins(12345, True),
+            lambda: database.add_coins(12345, 1.5),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", points=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", coins=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", chests=-1),
+            lambda: database.complete_quiz_with_rewards(12345, "bad", points=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad,id"),
+            lambda: database.complete_quiz_with_rewards(12345, ""),
+        ]
+        for operation in invalid_calls:
+            with self.subTest(operation=operation), self.assertRaises(ValueError):
+                operation()
+        self.assertEqual(database.get_user(12345), before)
+        self.assertEqual(database.get_completed_lessons(12345), [])
+        self.assertEqual(database.get_user(12345)[10], "")
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)
@@ -178,6 +254,21 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_user(12345)[9], 0)
         self.assertIn(paid_rewards[0], {10, 20, 50, 100})
 
+    def test_concurrent_chest_opening_consumes_exactly_available_inventory(self):
+        database.add_chest(12345)
+        database.add_chest(12345)
+        before = database.get_user(12345)
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            rewards = list(pool.map(lambda _: database.open_chest(12345), range(24)))
+
+        paid_rewards = [reward for reward in rewards if reward > 0]
+        after = database.get_user(12345)
+        self.assertEqual(len(paid_rewards), 2)
+        self.assertTrue(all(reward in {10, 20, 50, 100} for reward in paid_rewards))
+        self.assertEqual(after[9], 0)
+        self.assertEqual(after[8] - before[8], sum(paid_rewards))
+
     def test_concurrent_badge_updates_do_not_overwrite_each_other(self):
         badges = [f"badge-{index}" for index in range(12)]
         with ThreadPoolExecutor(max_workers=8) as pool:
@@ -208,6 +299,14 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_completed_lessons(12345), ["grammar_31"])
         self.assertEqual(database.get_completed_beta_lessons(12345), ["grammar_32"])
 
+    def test_beta_completion_rejects_invalid_ids_without_mutation(self):
+        before = database.get_user(12345)
+        for lesson_id in ("", "   ", "lesson_a,lesson_b", None, 123):
+            with self.subTest(lesson_id=lesson_id), self.assertRaises(ValueError):
+                database.complete_beta_lesson(12345, lesson_id)
+        self.assertEqual(database.get_user(12345), before)
+        self.assertEqual(database.get_completed_beta_lessons(12345), [])
+
     def test_concurrent_beta_completion_is_recorded_only_once(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(
@@ -224,6 +323,63 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[9], 0)   # chests
         self.assertEqual(database.get_badges(12345), [])
         self.assertEqual(user[10], '')  # completed quiz ledger
+
+
+    def test_legacy_database_migration_preserves_existing_learner_data(self):
+        legacy_path = Path(self.temp_dir.name) / "legacy.db"
+        database.DB_NAME = str(legacy_path)
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            conn.execute("""
+                CREATE TABLE users (
+                    user_id INTEGER PRIMARY KEY,
+                    score INTEGER DEFAULT 0,
+                    xp INTEGER DEFAULT 0,
+                    level TEXT DEFAULT 'A1.1 🌱',
+                    correct_answers INTEGER DEFAULT 0,
+                    completed_lessons TEXT DEFAULT '',
+                    badges TEXT DEFAULT '',
+                    tests INTEGER DEFAULT 0,
+                    coins INTEGER DEFAULT 0,
+                    chests INTEGER DEFAULT 0
+                )
+            """)
+            conn.execute(
+                """INSERT INTO users
+                   (user_id, score, xp, level, correct_answers,
+                    completed_lessons, badges, tests, coins, chests)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    98765, 340, 325, "B1.1 🚀", 27,
+                    "lesson_01,lesson_02", "badge_a,badge_b", 8, 45, 3,
+                ),
+            )
+            conn.commit()
+
+        database.init_db()
+        database.init_db()
+
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            columns = {
+                row[1] for row in conn.execute("PRAGMA table_info(users)").fetchall()
+            }
+            row = conn.execute(
+                """SELECT user_id, score, xp, level, correct_answers,
+                          completed_lessons, badges, tests, coins, chests,
+                          completed_quizzes, beta_completed_lessons
+                   FROM users WHERE user_id=?""",
+                (98765,),
+            ).fetchone()
+
+        self.assertIn("completed_quizzes", columns)
+        self.assertIn("beta_completed_lessons", columns)
+        self.assertEqual(
+            row,
+            (
+                98765, 340, 325, "B1.1 🚀", 27,
+                "lesson_01,lesson_02", "badge_a,badge_b", 8, 45, 3, "", "",
+            ),
+        )
+
 
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
