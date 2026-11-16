@@ -67,6 +67,14 @@ class LatinCoursesManifestTests(unittest.TestCase):
         self.assertEqual(first_numbers, list(range(1, 13)))
         self.assertEqual(second_numbers, list(range(1, 13)))
 
+    def test_course_two_preserves_circumflex_in_mehin_noun(self):
+        source = COURSE2_SOURCE.read_text(encoding="utf-8")
+        answer_key = COURSE2_KEY.read_text(encoding="utf-8")
+        self.assertIn("mehîn", source)
+        self.assertIn("mehîn", answer_key)
+        self.assertNotIn("mehin", source)
+        self.assertNotIn("mehin", answer_key)
+
     def test_course_one_lesson_two_has_single_editorial_note(self):
         source = COURSE1_SOURCE.read_text(encoding="utf-8")
         note = "**Têbînî:** Celadet di Beşa I de alfabeyê bi herfên biçûk pêşkêş dike; bikaranîna herfên mezin li vir wek rêbaza giştî ya nivîsandina latînî tê fêrkirin, ne wek koma herfên nû."
