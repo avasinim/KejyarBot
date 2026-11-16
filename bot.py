@@ -1121,6 +1121,7 @@ async def quiz_answer(
             context.user_data.pop("quiz", None)
             await query.message.reply_text("📚 ئەم تاقیکردنەوەیە بەهۆی پێداچوونەوەی سەرچاوەوە ناچالاکە؛ هیچ خەڵاتێک بۆی تۆمار نەکرا.")
             return
+        old_level = get_user_level(update.effective_user.id)
         first_completion = complete_quiz_with_rewards(update.effective_user.id, lesson)
         result = (
             f"🎉 تاقیکردنەوە تەواو بوو!\n"
@@ -1128,6 +1129,9 @@ async def quiz_answer(
         )
         if first_completion:
             result += "⭐ +20 XP"
+            new_level = get_user_level(update.effective_user.id)
+            if old_level != new_level:
+                result += f"\n\n🎉 بەرزبوویتەوە بۆ: {new_level}"
         else:
             result += "ℹ️ خەڵاتی ئەم تاقیکردنەوەیە پێشتر وەرگیراوە؛ XPی دووبارە نادرێت."
         await query.message.reply_text(result)
