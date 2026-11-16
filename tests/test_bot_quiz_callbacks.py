@@ -432,6 +432,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                     from_user=SimpleNamespace(id=12345),
                     answer=AsyncMock(),
                     message=SimpleNamespace(
+                        chat=SimpleNamespace(id=555),
                         reply_text=AsyncMock(return_value=SimpleNamespace(message_id=880))
                     ),
                 )
@@ -451,6 +452,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
                 quiz = context.user_data["quiz"]
                 expected = bot.QUIZ_DATA[lesson][0]
                 self.assertEqual(quiz["lesson"], lesson)
+                self.assertEqual(quiz["chat_id"], 555)
                 self.assertEqual(len(quiz["questions"]), len(bot.QUIZ_DATA[lesson]))
                 for randomized, source in zip(quiz["questions"], bot.QUIZ_DATA[lesson]):
                     self.assertEqual(set(randomized["options"]), set(source["options"]))
