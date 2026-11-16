@@ -55,3 +55,13 @@ A future improvement may use a one-column layout or adaptive row widths for long
 ## 5. Safety and scope
 
 This audit did not modify lesson content, lesson order, images, credentials, production runtime, SQLite data, or deployment settings. No merge, production deployment, or restart was performed. CI for the current PR head has not been verified; no test success is claimed.
+
+## 6. Catalogue-label fix (implemented in the review branch)
+
+The catalogue label builder now removes a leading numbered lesson prefix in Sorani (`وانەی N:`) and Kurmanji Latin (`Ders N:`) before applying the existing 20-character display limit. The number remains visible in the catalogue's dedicated number field; the complete lesson title and all lesson records remain unchanged. A regression test covers both title forms, a title without a prefix, and unchanged callback IDs.
+
+Implementation commits:
+- `efd1605bbedd6080d744e14277d0e3b3675ba2f0` — display-only fix
+- `ab3e5848d0d57889eae0fd87d00cfa0184f1f8ae` — regression test
+
+CI workflow runs for the test commit were not returned by GitHub at the time of this update; the test is committed but not yet reported as passing.
