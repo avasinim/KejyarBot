@@ -162,6 +162,7 @@ def add_xp(user_id, amount):
         conn.close()
 
 def add_coins(user_id, amount):
+    _validate_non_negative_integer(amount, "amount")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         conn.execute(
