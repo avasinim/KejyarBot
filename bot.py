@@ -1624,8 +1624,17 @@ def course_menu_keyboard(course_id, user_id, page=0):
             status = "✅"
         else:
             status = "🔓"
-        title = LESSON_DATA[lesson]["title"]
-        label = title if len(title) <= 20 else title[:19] + "…"
+        title = str(LESSON_DATA[lesson].get("title", lesson)).strip()
+        # The catalogue already displays the lesson number separately.
+        # Remove a repeated title prefix so the limited button width shows
+        # the actual topic; the full source title remains unchanged in lessons.
+        label = re.sub(
+            r"^(?:وانەی|Ders)\s+\d+\s*[:：—–-]\s*",
+            "",
+            title,
+            flags=re.IGNORECASE,
+        )
+        label = label if len(label) <= 20 else label[:19] + "…"
         lesson_buttons.append(InlineKeyboardButton(
             f"{status} {lesson_number:02d} · {label}",
             callback_data=f"open_lesson_{lesson}",
