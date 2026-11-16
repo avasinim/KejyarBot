@@ -114,10 +114,10 @@ class QuizMenuAvailabilityTests(unittest.TestCase):
 
 
 class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
-    def make_context(self, callback_data, message_id=77):
+    def make_context(self, callback_data, message_id=77, chat_id=555):
         query = SimpleNamespace(
             data=callback_data,
-            message=SimpleNamespace(message_id=message_id),
+            message=SimpleNamespace(message_id=message_id, chat=SimpleNamespace(id=chat_id)),
             from_user=SimpleNamespace(id=12345),
             answer=AsyncMock(),
             edit_message_reply_markup=AsyncMock(),
@@ -130,6 +130,7 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             "quiz": {
                 "index": 0,
                 "lesson": "وانە_1",
+                "chat_id": chat_id,
                 "questions": [{
                     "question": "پرسیار",
                     "options": ["وەڵامی ١", "وەڵامی ٢"],
@@ -140,6 +141,34 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
             }
         })
         return update, context, query
+
+    async def test_answer_callback_from_another_chat_cannot_use_active_quiz(self):
+        update, context, query = self.make_context("answer_0", chat_id=999)
+
+        await bot.quiz_answer(update, context)
+
+        self.assertEqual(context.user_data["quiz"]["index"], 0)
+        self.assertEqual(context.user_data["quiz"]["score"], 0)
+        self.assertEqual(context.user_data["quiz"]["chat_id"], 555)
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
+
+    async def test_selection_callback_from_another_chat_is_ignored(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
+        question = bot.QUIZ_DATA[lesson][0]
+        update, context, query = self.make_context("select_answer_0", chat_id=999)
+        context.user_data["quiz"].update({
+            "lesson": lesson,
+            "questions": [question],
+            "score": 0,
+        })
+
+        await bot.select_quiz_answer(update, context)
+
+        self.assertIsNone(context.user_data["quiz"]["selected_answer_index"])
+        self.assertEqual(context.user_data["quiz"]["chat_id"], 555)
+        query.answer.assert_awaited_once()
+        query.edit_message_reply_markup.assert_not_awaited()
 
     async def test_malformed_answer_does_not_strand_active_question(self):
         update, context, query = self.make_context("answer_nope")
