@@ -26,7 +26,6 @@ from telegram.ext import (
     ContextTypes,
     filters,
     TypeHandler,
-    ApplicationHandlerStop,
 )
 
 from database import (
