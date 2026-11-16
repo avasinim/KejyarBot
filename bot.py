@@ -2452,8 +2452,8 @@ def main():
     validate_activated_course_runtime()
     init_db()
     app = Application.builder().token(token).post_init(log_polling_start).build()
-    # Run before every command, callback, and message; fail closed unless both
-    # owner-specified channels confirm the user's membership.
+    # Run before every command, callback, and message; require the user's
+    # explicit session-only confirmation because the bot is not a channel admin.
     app.add_handler(TypeHandler(Update, subscription_guard), group=-1)
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(start, pattern=r"^subscription:check$"))
