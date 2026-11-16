@@ -41,6 +41,7 @@ class MessageModeTests(unittest.IsolatedAsyncioTestCase):
         message = SimpleNamespace(reply_text=AsyncMock())
         update = SimpleNamespace(
             message=message,
+            effective_message=message,
             effective_user=SimpleNamespace(id=12345),
         )
         context = SimpleNamespace(user_data={

@@ -25,6 +25,7 @@ from telegram.ext import (
     CallbackQueryHandler,
     ContextTypes,
     filters,
+    TypeHandler,
 )
 
 from database import (
@@ -56,6 +57,7 @@ from arami_course1_runtime import (
     load_arami_lesson5_source,
 )
 from kurdish_months import months_menu_keyboard, get_months_lesson
+from subscription_gate import subscription_guard
 from arami_course1_telegram import (
     callback as arami_course1_callback,
     course_menu_keyboard as arami_course1_menu_keyboard,
@@ -695,7 +697,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 پڕ لە گوڵ و نەسرینە
 
 ئامادەیت دەست پێ بکەیت؟ 🌱"""
-    await update.message.reply_text(welcome, reply_markup=MENU)
+    message = update.effective_message
+    if message is not None:
+        await message.reply_text(welcome, reply_markup=MENU)
 
 async def finish_lesson(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -2448,7 +2452,11 @@ def main():
     validate_activated_course_runtime()
     init_db()
     app = Application.builder().token(token).post_init(log_polling_start).build()
+    # Run before every command, callback, and message; require the user's
+    # explicit session-only confirmation because the bot is not a channel admin.
+    app.add_handler(TypeHandler(Update, subscription_guard), group=-1)
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(start, pattern=r"^subscription:check$"))
     app.add_handler(CallbackQueryHandler(open_kurdish_months, pattern=r"^months:(sorani|kurmanji|kalhuri|hawrami|laki)$"))
     app.add_handler(CallbackQueryHandler(
         lambda update, context: arami_lesson1_callback(
