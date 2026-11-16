@@ -651,6 +651,19 @@ def lesson_display_content(lesson, content):
             "⚠️ ئەم وانەیە دەقی پێداچوونەوەی خاوەن پڕۆژەیە؛ "
             "هێشتا وانەی کۆتایی‌پەسەندکراو نییە و تەواوکردنی بۆ چالاک نەکراوە.\n\n"
         )
+        # Course 3 has an explicit owner-approved textual brand hierarchy:
+        # wordmark first, lesson title second, then the editorial-status note.
+        # Keep the warning visible without displacing the course identity.
+        if LESSON_COURSE.get(lesson) == "unified_orthography":
+            lines = content.splitlines()
+            if (
+                len(lines) >= 2
+                and lines[0] == "✦ کەژیار ✦"
+                and lines[1].startswith("📖 ")
+            ):
+                return "\n".join(
+                    [*lines[:2], "", notice.strip(), "", *lines[2:]]
+                )
         return notice + content
     return content
 
