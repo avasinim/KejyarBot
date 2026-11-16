@@ -205,6 +205,9 @@ class DatabaseTests(unittest.TestCase):
         invalid_calls = [
             lambda: database.add_score(12345, -1),
             lambda: database.add_xp(12345, -1),
+            lambda: database.add_coins(12345, -1),
+            lambda: database.add_coins(12345, True),
+            lambda: database.add_coins(12345, 1.5),
             lambda: database.complete_lesson_with_rewards(12345, "bad", points=-1),
             lambda: database.complete_lesson_with_rewards(12345, "bad", coins=-1),
             lambda: database.complete_lesson_with_rewards(12345, "bad", chests=-1),
