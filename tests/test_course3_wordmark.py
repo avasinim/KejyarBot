@@ -46,7 +46,7 @@ class CourseWordmarkTests(unittest.TestCase):
                 self.assertTrue(notice_positions)
                 self.assertLess(min(notice_positions), displayed.index("🎯 ئامانج"))
                 blocks = bot.render_lesson_html_blocks(displayed)
-                rendered_text = re.sub(r"<[^>]+>", "", "\\n".join(blocks)).lstrip()
+                rendered_text = re.sub(r"<[^>]+>", "", "\n".join(blocks)).lstrip()
                 self.assertTrue(rendered_text.startswith("✦ کەژیار ✦\\n📖 "))
 
     def test_course2_format_is_unchanged_and_has_no_course3_wordmark(self):
