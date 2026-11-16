@@ -200,6 +200,25 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[8], 60)   # only 12 add_score calls add 5 coins
         self.assertEqual(user[3], database.calculate_level(240))
 
+    def test_reward_helpers_reject_negative_or_invalid_values_without_mutation(self):
+        before = database.get_user(12345)
+        invalid_calls = [
+            lambda: database.add_score(12345, -1),
+            lambda: database.add_xp(12345, -1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", points=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", coins=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad", chests=-1),
+            lambda: database.complete_quiz_with_rewards(12345, "bad", points=-1),
+            lambda: database.complete_lesson_with_rewards(12345, "bad,id"),
+            lambda: database.complete_quiz_with_rewards(12345, ""),
+        ]
+        for operation in invalid_calls:
+            with self.subTest(operation=operation), self.assertRaises(ValueError):
+                operation()
+        self.assertEqual(database.get_user(12345), before)
+        self.assertEqual(database.get_completed_lessons(12345), [])
+        self.assertEqual(database.get_user(12345)[10], "")
+
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
         database.add_xp(12345, 20)
