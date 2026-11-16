@@ -888,7 +888,15 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     """Store a learner's choice before awaiting Telegram callback acknowledgement."""
     query = update.callback_query
     quiz = context.user_data.get("quiz")
-    if not isinstance(quiz, dict) or not quiz_requires_submission(quiz.get("lesson")):
+    if not isinstance(quiz, dict):
+        await query.answer()
+        if quiz:
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            )
+        return
+    if not quiz_requires_submission(quiz.get("lesson")):
         await query.answer()
         return
     if quiz.get("chat_id") != getattr(getattr(query.message, "chat", None), "id", None):
@@ -938,10 +946,23 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def submit_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Submit the currently selected answer; selection alone never scores it."""
+    query = update.callback_query
     quiz = context.user_data.get("quiz")
-    selected = quiz.get("selected_answer_index") if isinstance(quiz, dict) else None
+    if not isinstance(quiz, dict):
+        await query.answer()
+        if quiz:
+            context.user_data.pop("quiz", None)
+            await query.message.reply_text(
+                "⚠️ دۆخی تاقیکردنەوە نادروست بوو؛ تکایە لە منوودا دووبارە دەستی پێ بکە."
+            )
+        else:
+            await query.message.reply_text(
+                "ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە."
+            )
+        return
+    selected = quiz.get("selected_answer_index")
     if not isinstance(selected, int) or isinstance(selected, bool):
-        await update.callback_query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
+        await query.answer("سەرەتا وەڵامێک هەڵبژێرە.", show_alert=True)
         return
     await quiz_answer(update, context, selected_index=selected)
 
