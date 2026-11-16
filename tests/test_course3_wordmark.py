@@ -34,9 +34,9 @@ class CourseWordmarkTests(unittest.TestCase):
         for lesson_id in lesson_ids:
             with self.subTest(lesson=lesson_id):
                 source = bot.LESSON_DATA[lesson_id]["content"]
-                self.assertTrue(source.startswith("✦ کەژیار ✦\\n📖 "))
+                self.assertTrue(source.startswith("✦ کەژیار ✦\n📖 "))
                 displayed = bot.lesson_display_content(lesson_id, source)
-                self.assertTrue(displayed.startswith("✦ کەژیار ✦\\n📖 "))
+                self.assertTrue(displayed.startswith("✦ کەژیار ✦\n📖 "))
                 self.assertLess(displayed.index("⚠️"), displayed.index("🎯 ئامانج"))
                 blocks = bot.render_lesson_html_blocks(displayed)
                 self.assertTrue(blocks[0].startswith("<b>✦ کەژیار ✦</b>"))
