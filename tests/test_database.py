@@ -225,6 +225,63 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(database.get_badges(12345), [])
         self.assertEqual(user[10], '')  # completed quiz ledger
 
+
+    def test_legacy_database_migration_preserves_existing_learner_data(self):
+        legacy_path = Path(self.temp_dir.name) / "legacy.db"
+        database.DB_NAME = str(legacy_path)
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            conn.execute("""
+                CREATE TABLE users (
+                    user_id INTEGER PRIMARY KEY,
+                    score INTEGER DEFAULT 0,
+                    xp INTEGER DEFAULT 0,
+                    level TEXT DEFAULT 'A1.1 🌱',
+                    correct_answers INTEGER DEFAULT 0,
+                    completed_lessons TEXT DEFAULT '',
+                    badges TEXT DEFAULT '',
+                    tests INTEGER DEFAULT 0,
+                    coins INTEGER DEFAULT 0,
+                    chests INTEGER DEFAULT 0
+                )
+            """)
+            conn.execute(
+                """INSERT INTO users
+                   (user_id, score, xp, level, correct_answers,
+                    completed_lessons, badges, tests, coins, chests)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    98765, 340, 325, "B1.1 🚀", 27,
+                    "lesson_01,lesson_02", "badge_a,badge_b", 8, 45, 3,
+                ),
+            )
+            conn.commit()
+
+        database.init_db()
+        database.init_db()
+
+        with closing(database.sqlite3.connect(database.DB_NAME)) as conn:
+            columns = {
+                row[1] for row in conn.execute("PRAGMA table_info(users)").fetchall()
+            }
+            row = conn.execute(
+                """SELECT user_id, score, xp, level, correct_answers,
+                          completed_lessons, badges, tests, coins, chests,
+                          completed_quizzes, beta_completed_lessons
+                   FROM users WHERE user_id=?""",
+                (98765,),
+            ).fetchone()
+
+        self.assertIn("completed_quizzes", columns)
+        self.assertIn("beta_completed_lessons", columns)
+        self.assertEqual(
+            row,
+            (
+                98765, 340, 325, "B1.1 🚀", 27,
+                "lesson_01,lesson_02", "badge_a,badge_b", 8, 45, 3, "", "",
+            ),
+        )
+
+
     def test_existing_database_schema_is_migrated_idempotently(self):
         database.init_db()
         database.init_db()
