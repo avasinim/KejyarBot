@@ -1190,6 +1190,41 @@ class AramiCourse1GlobalQuizMenuTests(unittest.IsolatedAsyncioTestCase):
 
 
 
+class StaleLessonNavigationCallbackTests(unittest.IsolatedAsyncioTestCase):
+    async def _assert_locked(self, callback_data, handler):
+        query = SimpleNamespace(
+            data=callback_data,
+            from_user=SimpleNamespace(id=12345),
+            answer=AsyncMock(),
+            message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+        update = SimpleNamespace(callback_query=query)
+        context = SimpleNamespace(user_data={})
+        with (
+            patch.object(bot, "can_open", return_value=False),
+            patch.object(bot, "send_lesson_text", new=AsyncMock()) as send_text,
+            patch.object(bot, "send_shared_lesson_image", new=AsyncMock()) as send_image,
+        ):
+            await handler(update, context)
+        query.answer.assert_awaited_once()
+        query.message.reply_text.assert_awaited_once()
+        send_text.assert_not_awaited()
+        send_image.assert_not_awaited()
+
+    async def test_old_next_lesson_button_cannot_bypass_sequence_lock(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][3]
+        await self._assert_locked(f"next_lesson_{lesson}", bot.open_next_lesson)
+
+    async def test_old_catalogue_button_cannot_bypass_sequence_lock(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][3]
+        await self._assert_locked(f"open_lesson_{lesson}", bot.open_selected_lesson)
+
+    async def test_old_lesson_page_button_cannot_bypass_sequence_lock(self):
+        lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][3]
+        with patch.object(bot, "is_course4_grammar_lesson", return_value=True):
+            await self._assert_locked(f"lessonpage:{lesson}:0", bot.open_lesson_page)
+
+
 class LessonCompletionFormattingTests(unittest.IsolatedAsyncioTestCase):
     async def test_lesson_completion_rewards_use_real_line_breaks(self):
         lesson = bot.COURSE_LESSON_ORDER["kurmanji_latin_grammar"][0]
