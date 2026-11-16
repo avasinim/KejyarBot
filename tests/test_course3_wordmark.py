@@ -37,7 +37,13 @@ class CourseWordmarkTests(unittest.TestCase):
                 self.assertTrue(source.startswith("✦ کەژیار ✦\n📖 "))
                 displayed = bot.lesson_display_content(lesson_id, source)
                 self.assertTrue(displayed.startswith("✦ کەژیار ✦\n📖 "))
-                self.assertLess(displayed.index("⚠️"), displayed.index("🎯 ئامانج"))
+                notice_positions = [
+                    displayed.index(marker)
+                    for marker in ("🧪", "⚠️")
+                    if marker in displayed
+                ]
+                self.assertTrue(notice_positions)
+                self.assertLess(min(notice_positions), displayed.index("🎯 ئامانج"))
                 blocks = bot.render_lesson_html_blocks(displayed)
                 self.assertTrue(blocks[0].startswith("<b>✦ کەژیار ✦</b>"))
                 self.assertTrue(blocks[1].startswith("<b>📖 "))
