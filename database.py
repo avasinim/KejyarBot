@@ -71,6 +71,16 @@ def get_user(user_id):
         conn.close()
 
 
+def _validate_non_negative_integer(value, name):
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ValueError(f"{name} must be a non-negative integer")
+
+
+def _validate_ledger_id(value, name):
+    if not isinstance(value, str) or not value.strip() or "," in value:
+        raise ValueError(f"{name} must be a non-empty string without commas")
+
+
 def calculate_level(xp):
     if xp<50:return 'A1.1 🌱'
     if xp<100:return 'A1.2 🌿'
@@ -105,6 +115,7 @@ def update_level(user_id):
 
 def add_score(user_id, points):
     """Atomically add score/XP, the lesson coin bonus, and the matching level."""
+    _validate_non_negative_integer(points, "points")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         conn.execute("BEGIN IMMEDIATE")
@@ -129,6 +140,7 @@ def add_score(user_id, points):
 
 def add_xp(user_id, amount):
     """Atomically add XP/score and keep the level synchronized."""
+    _validate_non_negative_integer(amount, "amount")
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
         conn.execute("BEGIN IMMEDIATE")
@@ -246,6 +258,10 @@ def complete_lesson(user_id, lesson_id):
 
 def complete_lesson_with_rewards(user_id, lesson_id, points=10, coins=5, chests=1):
     """Atomically record first completion and grant its score, coins, and chest."""
+    _validate_ledger_id(lesson_id, "lesson_id")
+    _validate_non_negative_integer(points, "points")
+    _validate_non_negative_integer(coins, "coins")
+    _validate_non_negative_integer(chests, "chests")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
@@ -392,6 +408,8 @@ def complete_quiz(user_id, quiz_id):
 
 def complete_quiz_with_rewards(user_id, quiz_id, points=20):
     """Atomically record a first quiz completion and grant its XP/score."""
+    _validate_ledger_id(quiz_id, "quiz_id")
+    _validate_non_negative_integer(points, "points")
     get_user(user_id)
     conn = sqlite3.connect(DB_NAME, timeout=10)
     try:
