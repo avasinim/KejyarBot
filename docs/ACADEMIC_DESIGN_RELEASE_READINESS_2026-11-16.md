@@ -74,12 +74,16 @@ A controlled Telegram smoke test is a separate engineering check. It can verify 
 3. Keep Course 4 Lessons 32–50 in Beta; do not add official quizzes, XP, coins, chests, badges, or official completion.
 4. Keep Latin courses as source-aligned drafts until source-page and linguistic review is complete.
 5. PR #161 is still Draft and not merged/deployed. The Altare app has `AUTO_UPDATE=0`; repository commits do not by themselves update the live bot.
-6. Before any Altare restart, identify the original learner SQLite database at its authoritative persistent path, preserve applicable `-wal`/`-shm` sidecars, verify integrity and learner/progress counts, and confirm the bot is not already polling with the same Telegram token.
-7. The inspected startup path can create a new empty SQLite database when the configured path is missing. Therefore **do not restart against an unverified or missing database path**. A source backup or deployment archive is not a substitute for the live learner database.
-8. Only after the approved revision is deployed, runtime files are verified, and the original database is safely attached, perform one controlled restart and a limited Telegram smoke test. Do not use learner-facing rewards or real learner accounts for destructive tests.
+6. The project owner has explicitly confirmed that the bot is empty and no learners have used it. There is no learner database to recover, migrate, or preserve for this activation; do not spend time on learner-data restoration or request learner records.
+7. A fresh empty SQLite database created by the normal startup path is acceptable for this first activation. The only database-related check is that the bot can initialize its own empty database at the intended writable runtime path; this is not a blocker requiring a recovery workflow.
+8. After the approved revision is on the deployment branch and runtime files/configuration are verified, the owner can perform one controlled restart and a limited Telegram smoke test. No existing learner records are at risk because none exist. Do not test destructive operations against future real learner accounts.
 
 ## Verification boundary
 
 This document consolidates repository records and current branch metadata. It does not claim that all lesson examples have been scientifically checked, that all course designs have been visually tested on Telegram clients, that the current PR is deployed, or that Altare's persistent SQLite database has been recovered and verified.
 
 No production runtime, SQLite database, Telegram credential, Altare setting, schedule, start, or restart was changed for this audit.
+
+
+## Owner clarification — learner-data scope (2026-11-16)
+The project owner explicitly corrected the earlier operational assumption: KejyarBot is an empty/new bot and has never been used by learners. There are no learner records that need backup, migration, restoration, or preservation before first activation. Any prior release checklist that treated recovery of an existing learner database as a hard gate does not apply to this first activation. This clarification changes only the release checklist; it does not authorize touching unrelated database files or making production changes without the owner's requested restart/deploy sequence.
