@@ -840,9 +840,11 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🔒 ڕێڕەوی وانەکان بە پێی ڕیزبەندی پێویستە؛ سەرەتا وانەکانی پێشوو تەواو بکە.")
         return
     active_quiz = context.user_data.get("quiz")
+    chat_id = getattr(getattr(query.message, "chat", None), "id", None)
     if (
         isinstance(active_quiz, dict)
         and active_quiz.get("lesson") == lesson
+        and active_quiz.get("chat_id") == chat_id
         and active_quiz.get("start_message_id") == getattr(query.message, "message_id", None)
     ):
         # Ignore duplicate callbacks from the same launch button.
@@ -852,6 +854,7 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["quiz"] = {
         "index": 0,
         "lesson": lesson,
+        "chat_id": chat_id,
         "questions": randomized_question_copy(source_questions),
         "score": 0,
         "question_message_id": None,
@@ -886,6 +889,9 @@ async def select_quiz_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     query = update.callback_query
     quiz = context.user_data.get("quiz")
     if not isinstance(quiz, dict) or not quiz_requires_submission(quiz.get("lesson")):
+        await query.answer()
+        return
+    if quiz.get("chat_id") != getattr(getattr(query.message, "chat", None), "id", None):
         await query.answer()
         return
     questions = quiz.get("questions")
@@ -950,6 +956,9 @@ async def quiz_answer(
     if not quiz:
         await query.answer()
         await query.message.reply_text("ℹ️ تاقیکردنەوەیەکی چالاک نیە؛ لە منوودا دووبارە دەستی پێ بکە.")
+        return
+    if quiz.get("chat_id") != getattr(getattr(query.message, "chat", None), "id", None):
+        await query.answer()
         return
     active_lesson = quiz.get("lesson") if isinstance(quiz, dict) else None
     if not isinstance(active_lesson, str) or not lesson_quiz_is_available(active_lesson):
