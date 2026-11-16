@@ -142,6 +142,21 @@ class QuizCallbackValidationTests(unittest.IsolatedAsyncioTestCase):
         })
         return update, context, query
 
+    async def test_malformed_non_dict_quiz_state_is_cleared_without_crashing(self):
+        for malformed_state in ([], "stale", 17):
+            with self.subTest(state=malformed_state):
+                update, context, query = self.make_context("answer_0")
+                context.user_data["quiz"] = malformed_state
+                query.message.reply_text = AsyncMock()
+
+                await bot.quiz_answer(update, context)
+
+                self.assertNotIn("quiz", context.user_data)
+                query.answer.assert_awaited_once()
+                query.message.reply_text.assert_awaited_once()
+                self.assertIn("دۆخی تاقیکردنەوە نادروست", query.message.reply_text.await_args.args[0])
+                query.edit_message_reply_markup.assert_not_awaited()
+
     async def test_answer_callback_from_another_chat_cannot_use_active_quiz(self):
         update, context, query = self.make_context("answer_0", chat_id=999)
 
