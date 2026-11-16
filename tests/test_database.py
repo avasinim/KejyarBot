@@ -101,6 +101,24 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(user[8], 5)
         self.assertEqual(user[9], 1)
 
+
+    def test_concurrent_distinct_lesson_rewards_accumulate_without_lost_updates(self):
+        lesson_ids = [f"parallel_lesson_{index}" for index in range(12)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda lesson_id: database.complete_lesson_with_rewards(12345, lesson_id),
+                lesson_ids,
+            ))
+
+        self.assertEqual(sum(results), len(lesson_ids))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 10 * len(lesson_ids))  # XP
+        self.assertEqual(user[1], 10 * len(lesson_ids))  # score
+        self.assertEqual(user[8], 5 * len(lesson_ids))   # coins
+        self.assertEqual(user[9], len(lesson_ids))       # chests
+        self.assertEqual(set(database.get_completed_lessons(12345)), set(lesson_ids))
+
+
     def test_concurrent_lesson_completion_has_one_winner(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(
@@ -145,6 +163,23 @@ class DatabaseTests(unittest.TestCase):
         user = database.get_user(12345)
         self.assertEqual(user[2], 20)
         self.assertEqual(user[7], 1)
+
+
+    def test_concurrent_distinct_quiz_rewards_accumulate_without_lost_updates(self):
+        quiz_ids = [f"parallel_quiz_{index}" for index in range(12)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            results = list(pool.map(
+                lambda quiz_id: database.complete_quiz_with_rewards(12345, quiz_id),
+                quiz_ids,
+            ))
+
+        self.assertEqual(sum(results), len(quiz_ids))
+        user = database.get_user(12345)
+        self.assertEqual(user[2], 20 * len(quiz_ids))  # XP
+        self.assertEqual(user[1], 20 * len(quiz_ids))  # score
+        self.assertEqual(user[7], len(quiz_ids))       # completed tests
+        self.assertEqual(set(database.get_completed_quizzes(12345)), set(quiz_ids))
+
 
     def test_xp_reward_does_not_add_coin_bonus(self):
         before = database.get_user(12345)
