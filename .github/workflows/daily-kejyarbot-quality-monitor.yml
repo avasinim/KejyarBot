@@ -1,0 +1,56 @@
+name: Daily KejyarBot quality monitor
+
+on:
+  schedule:
+    # GitHub scheduled workflows use UTC. Runs daily at 05:17 UTC.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "release/**"
+      - "fix/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-kejyarbot-quality-monitor
+  cancel-in-progress: false
+
+jobs:
+  quality-monitor:
+    name: Source, course data, and regression checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Compile Python source
+        run: python -m compileall -q .
+
+      - name: Run complete automated test suite
+        run: python -m unittest discover -s tests -v
+
+      - name: Record monitoring scope
+        if: always()
+        run: |
+          {
+            echo "## Daily KejyarBot quality monitor"
+            echo ""
+            echo "- Date (UTC): $(date -u +'%Y-%m-%d %H:%M:%S')"
+            echo "- Revision: \`${GITHUB_SHA}\`"
+            echo "- Python: 3.12"
+            echo "- Scope: source compilation and automated repository tests"
+            echo "- Production Altare runtime, Telegram polling, schedules, and learner SQLite data are not accessed or modified by this workflow."
+            echo "- A successful run validates this repository revision only; it does not prove that the live Altare service is online."
+          } >> "$GITHUB_STEP_SUMMARY"
