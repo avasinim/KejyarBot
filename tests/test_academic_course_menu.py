@@ -37,6 +37,37 @@ class AcademicCourseMenuTests(unittest.TestCase):
         self.assertTrue(buttons[1].text.startswith("🔒"))
         self.assertTrue(buttons[2].text.startswith("🔒"))
 
+    def test_catalogue_removes_duplicate_lesson_number_and_shows_topic(self):
+        lesson_ids = ["grammar_01", "latin_01", "already_short"]
+        lesson_data = {
+            "grammar_01": {"title": "وانەی ١: پێشەکی — ڕێزمان"},
+            "latin_01": {"title": "Ders 2: Rêza Herfan û Taybetmendiyên Wan"},
+            "already_short": {"title": "پیت و دەنگ"},
+        }
+        with patch.multiple(
+            bot,
+            COURSE_LESSON_ORDER={"sample": lesson_ids},
+            LESSON_DATA=lesson_data,
+            get_completed_lessons=lambda _user_id: [],
+            get_completed_beta_lessons=lambda _user_id: [],
+            can_open=lambda _user_id, _lesson_id: True,
+            lesson_is_beta_review=lambda _lesson_id: False,
+            lesson_is_pending_review=lambda _lesson_id: False,
+        ):
+            keyboard, _ = bot.course_menu_keyboard("sample", 123, 0)
+
+        buttons = [button for row in keyboard.inline_keyboard for button in row]
+        self.assertIn("پێشەکی", buttons[0].text)
+        self.assertNotIn("وانەی ١:", buttons[0].text)
+        self.assertIn("Rêza", buttons[1].text)
+        self.assertNotIn("Ders 2:", buttons[1].text)
+        self.assertIn("پیت و دەنگ", buttons[2].text)
+        self.assertEqual(
+            [button.callback_data for button in buttons],
+            ["open_lesson_grammar_01", "open_lesson_latin_01", "open_lesson_already_short"],
+        )
+
+
     def test_course_catalogue_keeps_page_navigation(self):
         lesson_ids = [f"sample_{index:02d}" for index in range(1, 14)]
         lesson_data = {
