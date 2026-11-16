@@ -82,14 +82,14 @@ class AramiCourse1ProgressionTests(unittest.TestCase):
                     ):
                         self.assertTrue(bot.can_open(12345, order[3]))
 
-    def test_beta_completion_unlocks_next_lesson_only_while_both_remain_beta(self):
+    def test_beta_completion_unlocks_next_lesson_while_prior_lesson_remains_beta(self):
         order = bot.COURSE_LESSON_ORDER["grammar"]
         first, second = order[31], order[32]
         with (
             patch.object(bot, "course_is_active", return_value=True),
             patch.object(bot, "get_completed_lessons", return_value=[]),
             patch.object(bot, "get_completed_beta_lessons", return_value=[first]),
-            patch.object(bot, "lesson_is_beta_review", side_effect=lambda lesson: lesson in {first, second}),
+            patch.object(bot, "lesson_is_beta_review", side_effect=lambda lesson: lesson == first),
         ):
             self.assertTrue(bot.can_open(12345, second))
 
