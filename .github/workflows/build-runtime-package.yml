@@ -36,9 +36,9 @@ jobs:
           cat package-report.json
       - uses: actions/upload-artifact@v4
         with:
-          name: KejyarBot-runtime-5339339
+          name: KejyarBot-runtime-${{ github.sha }}
           path: |
-            KejyarBot-runtime-5339339.zip
+            KejyarBot-runtime-*.zip
             package-report.json
           if-no-files-found: error
           retention-days: 7
