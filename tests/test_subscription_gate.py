@@ -1,13 +1,15 @@
-"""Tests for the mandatory two-channel membership gate."""
+"""Tests for the non-admin, self-attested channel prompt."""
 import unittest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
 
+from telegram.ext import ApplicationHandlerStop
+
 from subscription_gate import (
     REQUIRED_CHANNELS,
-    SubscriptionCheckError,
-    _is_active_member,
-    get_missing_channels,
+    SESSION_ATTESTATION_KEY,
+    subscription_guard,
+    subscription_prompt,
 )
 
 
@@ -22,56 +24,82 @@ class SubscriptionGateTests(unittest.IsolatedAsyncioTestCase):
             ("https://t.me/zimannasi", "https://t.me/f_z_k_pr"),
         )
 
-    def test_member_statuses_are_accepted(self):
-        for status in ("creator", "administrator", "member"):
-            with self.subTest(status=status):
-                self.assertTrue(_is_active_member(SimpleNamespace(status=status)))
-
-    def test_restricted_user_must_still_be_a_member(self):
-        self.assertTrue(
-            _is_active_member(SimpleNamespace(status="restricted", is_member=True))
-        )
-        self.assertFalse(
-            _is_active_member(SimpleNamespace(status="restricted", is_member=False))
-        )
-
-    def test_left_and_kicked_users_are_not_members(self):
-        for status in ("left", "kicked", None):
-            with self.subTest(status=status):
-                self.assertFalse(_is_active_member(SimpleNamespace(status=status)))
-
-    async def test_both_joined_returns_no_missing_channels(self):
-        bot = SimpleNamespace(
-            get_chat_member=AsyncMock(
-                side_effect=[
-                    SimpleNamespace(status="member"),
-                    SimpleNamespace(status="administrator"),
-                ]
-            )
-        )
-        self.assertEqual(await get_missing_channels(bot, 12345), [])
-        self.assertEqual(bot.get_chat_member.await_count, 2)
-
-    async def test_missing_second_channel_is_reported(self):
-        bot = SimpleNamespace(
-            get_chat_member=AsyncMock(
-                side_effect=[
-                    SimpleNamespace(status="member"),
-                    SimpleNamespace(status="left"),
-                ]
-            )
+    def test_prompt_contains_both_join_links_and_self_attestation(self):
+        markup = subscription_prompt()
+        buttons = [button for row in markup.inline_keyboard for button in row]
+        self.assertEqual(
+            [button.url for button in buttons if button.url],
+            ["https://t.me/zimannasi", "https://t.me/f_z_k_pr"],
         )
         self.assertEqual(
-            await get_missing_channels(bot, 12345),
-            [REQUIRED_CHANNELS[1]],
+            [button.callback_data for button in buttons if button.callback_data],
+            ["subscription:check"],
         )
 
-    async def test_api_failure_fails_closed(self):
-        bot = SimpleNamespace(
-            get_chat_member=AsyncMock(side_effect=RuntimeError("bot is not admin"))
+    async def test_self_attestation_sets_only_session_state(self):
+        query = SimpleNamespace(
+            data="subscription:check",
+            answer=AsyncMock(),
         )
-        with self.assertRaises(SubscriptionCheckError):
-            await get_missing_channels(bot, 12345)
+        context = SimpleNamespace(user_data={})
+        update = SimpleNamespace(
+            effective_user=SimpleNamespace(id=12345),
+            callback_query=query,
+            effective_message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+
+        await subscription_guard(update, context)
+
+        self.assertTrue(context.user_data[SESSION_ATTESTATION_KEY])
+        query.answer.assert_awaited_once()
+        update.effective_message.reply_text.assert_not_awaited()
+
+    async def test_attested_user_passes_without_channel_api_or_database(self):
+        context = SimpleNamespace(user_data={SESSION_ATTESTATION_KEY: True})
+        update = SimpleNamespace(
+            effective_user=SimpleNamespace(id=12345),
+            callback_query=None,
+            effective_message=SimpleNamespace(reply_text=AsyncMock()),
+        )
+
+        await subscription_guard(update, context)
+
+        update.effective_message.reply_text.assert_not_awaited()
+
+    async def test_unconfirmed_user_receives_prompt_and_is_stopped(self):
+        context = SimpleNamespace(user_data={})
+        message = SimpleNamespace(reply_text=AsyncMock())
+        update = SimpleNamespace(
+            effective_user=SimpleNamespace(id=12345),
+            callback_query=None,
+            effective_message=message,
+        )
+
+        with self.assertRaises(ApplicationHandlerStop):
+            await subscription_guard(update, context)
+
+        message.reply_text.assert_awaited_once()
+        args, kwargs = message.reply_text.await_args
+        self.assertIn("@zimannasi", args[0])
+        self.assertIn("@f_z_k_pr", args[0])
+        self.assertIn("ناتوانێت ئەندامبوونت", args[0])
+        self.assertIsNotNone(kwargs.get("reply_markup"))
+
+    async def test_other_callback_is_blocked_until_confirmation(self):
+        query = SimpleNamespace(data="course_example", answer=AsyncMock())
+        message = SimpleNamespace(reply_text=AsyncMock())
+        context = SimpleNamespace(user_data={})
+        update = SimpleNamespace(
+            effective_user=SimpleNamespace(id=12345),
+            callback_query=query,
+            effective_message=message,
+        )
+
+        with self.assertRaises(ApplicationHandlerStop):
+            await subscription_guard(update, context)
+
+        query.answer.assert_awaited_once()
+        message.reply_text.assert_awaited_once()
 
 
 if __name__ == "__main__":
